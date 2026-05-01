@@ -1,3 +1,4 @@
+
 import type Bamf3 from '@girs/bamf-3';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

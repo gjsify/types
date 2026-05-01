@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace GUPnPIgd {
+
     /**
      * GUPnPIgd-1.6
      */
+
 
     /**
      * Errors coming out of the GUPnPSimpleIGD object.
@@ -30,6 +33,7 @@ export namespace GUPnPIgd {
         SIMPLE_IGD_ERROR_EXTERNAL_ADDRESS,
     }
 
+
     namespace SimpleIgd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -41,7 +45,7 @@ export namespace GUPnPIgd {
              * @signal
              * @run-last
              */
-            'context-available': (arg0: GObject.Object) => boolean | void;
+            "context-available": (arg0: GObject.Object) => (boolean | void);
             /**
              * This means that mapping a port on a specific IGD has failed (it may still
              * succeed on other IGDs on the network).
@@ -49,30 +53,15 @@ export namespace GUPnPIgd {
              * @detailed
              * @run-last
              */
-            'error-mapping-port': (
-                arg0: GLib.Error,
-                arg1: string,
-                arg2: number,
-                arg3: string,
-                arg4: number,
-                arg5: string,
-            ) => void;
+            "error-mapping-port": (arg0: GLib.Error, arg1: string, arg2: number, arg3: string, arg4: number, arg5: string) => void;
             /**
              * This signal means that an IGD has been found that that adding a port
              * mapping has succeeded.
              * @signal
              * @run-last
              */
-            'mapped-external-port': (
-                arg0: string,
-                arg1: string,
-                arg2: string,
-                arg3: number,
-                arg4: string,
-                arg5: number,
-                arg6: string,
-            ) => void;
-            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            "mapped-external-port": (arg0: string, arg1: string, arg2: string, arg3: number, arg4: string, arg5: number, arg6: string) => void;
+            "notify::main-context": (pspec: GObject.ParamSpec) => void;
             /**
              * This means that mapping a port on a specific IGD has failed (it may still
              * succeed on other IGDs on the network).
@@ -80,26 +69,11 @@ export namespace GUPnPIgd {
              * @detailed
              * @run-last
              */
-            'error-mapping-port::main-context': (
-                arg0: GLib.Error,
-                arg1: string,
-                arg2: number,
-                arg3: string,
-                arg4: number,
-                arg5: string,
-            ) => void;
-            [key: `error-mapping-port::${string}`]: (
-                arg0: GLib.Error,
-                arg1: string,
-                arg2: number,
-                arg3: string,
-                arg4: number,
-                arg5: string,
-            ) => void;
+            "error-mapping-port::main-context": (arg0: GLib.Error, arg1: string, arg2: number, arg3: string, arg4: number, arg5: string) => void;
+            [key: `error-mapping-port::${string}`]: (arg0: GLib.Error, arg1: string, arg2: number, arg3: string, arg4: number, arg5: string) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             main_context: any;
             mainContext: any;
@@ -114,11 +88,11 @@ export namespace GUPnPIgd {
         static $gtype: GObject.GType<SimpleIgd>;
 
         // Properties
-
         /**
          * @read-only
          */
         get main_context(): any;
+
         /**
          * @read-only
          */
@@ -134,46 +108,35 @@ export namespace GUPnPIgd {
         $signals: SimpleIgd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SimpleIgd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SimpleIgd;
+        static ["new"](): SimpleIgd;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SimpleIgd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SimpleIgd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SimpleIgd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SimpleIgd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SimpleIgd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SimpleIgd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SimpleIgd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleIgd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * This adds a port to the router's forwarding table. The mapping will
          * be automatically refreshed by this object until it is either
          * removed with `gupnp_simple_igd_remove_port()`,
          * `gupnp_simple_igd_remove_port_local()` or the object disapears.
-         *
+         * 
          * If there is a problem, the {@link GUPnPIgd.SimpleIgd.SignalSignatures.error_mapping_port | GUPnPIgd.SimpleIgd::error-mapping-port} signal will
          * be emitted. If a router is found and a port is mapped correctly,
          * {@link GUPnPIgd.SimpleIgd.SignalSignatures.mapped_external_port | GUPnPIgd.SimpleIgd::mapped-external-port} will be emitted. These signals may
@@ -185,20 +148,15 @@ export namespace GUPnPIgd {
          * @param lease_duration The duration of the lease (it will be auto-renewed before it expires). This is in seconds.
          * @param description The description that will appear in the router's table
          */
-        add_port(
-            protocol: string,
-            external_port: number,
-            local_ip: string,
-            local_port: number,
-            lease_duration: number,
-            description: string,
-        ): void;
+        add_port(protocol: string, external_port: number, local_ip: string, local_port: number, lease_duration: number, description: string): void;
+
         /**
          * Removes all mappings and prevents other from being formed
          * Should only be called by the dispose function of subclasses
          * @returns `true` if the object can be disposed, `false` otherwise
          */
         delete_all_mappings(): boolean;
+
         /**
          * This tries to remove a port entry from the routers that was previously added
          * with `gupnp_simple_igd_add_port()`. There is no indicated of success or failure
@@ -208,6 +166,7 @@ export namespace GUPnPIgd {
          * @param external_port The port to try to open on the external device as given to  `gupnp_simple_igd_add_port()`
          */
         remove_port(protocol: string, external_port: number): void;
+
         /**
          * This tries to remove a port entry from the routers that was previously added
          * with `gupnp_simple_igd_add_port()`. There is no indicated of success or failure
@@ -220,15 +179,17 @@ export namespace GUPnPIgd {
         remove_port_local(protocol: string, local_ip: string, local_port: number): void;
     }
 
+
     namespace SimpleIgdThread {
         // Signal signatures
         interface SignalSignatures extends SimpleIgd.SignalSignatures {
-            'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            "notify::main-context": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends SimpleIgd.ConstructorProps {
 
-        interface ConstructorProps extends SimpleIgd.ConstructorProps {}
+        }
     }
 
     /**
@@ -248,39 +209,32 @@ export namespace GUPnPIgd {
         $signals: SimpleIgdThread.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SimpleIgdThread.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SimpleIgdThread;
+        static ["new"](): SimpleIgdThread;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SimpleIgdThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SimpleIgdThread.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SimpleIgdThread.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SimpleIgdThread.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SimpleIgdThread.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SimpleIgdThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SimpleIgdThread.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleIgdThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type SimpleIgdClass = typeof SimpleIgd;
+
     /**
      * @gir-type Struct
      */
@@ -288,10 +242,12 @@ export namespace GUPnPIgd {
         static $gtype: GObject.GType<SimpleIgdPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SimpleIgdThreadClass = typeof SimpleIgdThread;
+
     /**
      * @gir-type Struct
      */
@@ -299,11 +255,13 @@ export namespace GUPnPIgd {
         static $gtype: GObject.GType<SimpleIgdThreadPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

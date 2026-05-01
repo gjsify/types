@@ -1,3 +1,4 @@
+
 import type Eog30 from '@girs/eog-3.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

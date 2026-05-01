@@ -1,3 +1,4 @@
+
 import type GPaste2 from '@girs/gpaste-2';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

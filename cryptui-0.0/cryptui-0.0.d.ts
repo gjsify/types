@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,13 +26,15 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace CryptUI {
+
     /**
      * CryptUI-0.0
      */
 
+
     /**
      * Used in key properties to indicate what kind of key it is
-     *
+     * 
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
      * @gir-type Enum
@@ -59,6 +62,7 @@ export namespace CryptUI {
         MAXVALUE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -69,10 +73,11 @@ export namespace CryptUI {
         MUSTSIGN,
     }
 
+
     /**
      * Used in key properties to indicate a key's status.  These values are
      * logically OR'd together.
-     *
+     * 
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
      * @gir-type Enum
@@ -112,6 +117,7 @@ export namespace CryptUI {
         EXPORTABLE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -121,9 +127,10 @@ export namespace CryptUI {
         RESULTS,
     }
 
+
     /**
      * Indicates where a key is located.
-     *
+     * 
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
      * @gir-type Enum
@@ -151,9 +158,10 @@ export namespace CryptUI {
         LOCAL,
     }
 
+
     /**
      * What the validity of the key is.
-     *
+     * 
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
      * @gir-type Enum
@@ -189,18 +197,21 @@ export namespace CryptUI {
         ULTIMATE,
     }
 
+
     /**
      * @gir-type Callback
      */
     interface KeyStoreFilterFunc {
         (ckset: Keyset, key: string): boolean;
     }
+
     /**
      * @gir-type Struct
      */
     class KeyChooser {
         static $gtype: GObject.GType<KeyChooser>;
     }
+
 
     /**
      * @gir-type Struct
@@ -209,12 +220,14 @@ export namespace CryptUI {
         static $gtype: GObject.GType<KeyChooserClass>;
     }
 
+
     /**
      * @gir-type Struct
      */
     abstract class KeyChooserPriv {
         static $gtype: GObject.GType<KeyChooserPriv>;
     }
+
 
     /**
      * @gir-type Struct
@@ -223,12 +236,14 @@ export namespace CryptUI {
         static $gtype: GObject.GType<KeyStore>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class KeyStoreClass {
         static $gtype: GObject.GType<KeyStoreClass>;
     }
+
 
     /**
      * @gir-type Struct
@@ -237,12 +252,14 @@ export namespace CryptUI {
         static $gtype: GObject.GType<KeyStorePriv>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class Keyset {
         static $gtype: GObject.GType<Keyset>;
     }
+
 
     /**
      * @gir-type Struct
@@ -251,6 +268,7 @@ export namespace CryptUI {
         static $gtype: GObject.GType<KeysetClass>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -258,11 +276,13 @@ export namespace CryptUI {
         static $gtype: GObject.GType<KeysetPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

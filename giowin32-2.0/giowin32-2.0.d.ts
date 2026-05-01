@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GioWin32 {
+
     /**
      * GioWin32-2.0
      */
+
 
     /**
      * If `registry_key` is `null` then the default path
@@ -27,27 +30,27 @@ export namespace GioWin32 {
      * @returns a registry-backed {@link Gio.SettingsBackend}
      * @since 2.78
      */
-    function registry_settings_backend_new(registry_key: string | null): Gio.SettingsBackend;
+    function registry_settings_backend_new(registry_key: (string | null)): Gio.SettingsBackend;
+
     namespace InputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.InputStream.SignalSignatures {
-            'notify::close-handle': (pspec: GObject.ParamSpec) => void;
-            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            "notify::close-handle": (pspec: GObject.ParamSpec) => void;
+            "notify::handle": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gio.InputStream.ConstructorProps {
             close_handle: boolean;
             closeHandle: boolean;
-            handle: any | null;
+            handle: (any | null);
         }
     }
 
     /**
      * {@link GioWin32.InputStream} implements {@link Gio.InputStream} for reading from a
      * Windows file handle.
-     *
+     * 
      * Note that `<gio/gwin32inputstream.h>` belongs to the Windows-specific GIO
      * interfaces, thus you have to use the `gio-windows-2.0.pc` pkg-config file
      * when using it.
@@ -57,7 +60,6 @@ export namespace GioWin32 {
         static $gtype: GObject.GType<InputStream>;
 
         // Properties
-
         /**
          * Whether to close the file handle when the stream is closed.
          * @since 2.26
@@ -65,6 +67,7 @@ export namespace GioWin32 {
          */
         get close_handle(): boolean;
         set close_handle(val: boolean);
+
         /**
          * Whether to close the file handle when the stream is closed.
          * @since 2.26
@@ -72,12 +75,13 @@ export namespace GioWin32 {
          */
         get closeHandle(): boolean;
         set closeHandle(val: boolean);
+
         /**
          * The handle that the stream reads from.
          * @since 2.26
          * @construct-only
          */
-        get handle(): any | null;
+        get handle(): (any | null);
 
         /**
          * Compile-time signal type information.
@@ -89,47 +93,39 @@ export namespace GioWin32 {
         $signals: InputStream.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](handle: any | null, close_handle: boolean): InputStream;
+        static ["new"](handle: (any | null), close_handle: boolean): InputStream;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputStream.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns whether the handle of `stream` will be
          * closed when the stream is closed.
          * @returns `true` if the handle is closed when done
          */
         get_close_handle(): boolean;
+
         /**
          * Return the Windows file handle that the stream reads from.
          * @returns The file handle of `stream`
          */
-        get_handle(): any | null;
+        get_handle(): (any | null);
+
         /**
          * Sets whether the handle of `stream` shall be closed
          * when the stream is closed.
@@ -138,26 +134,26 @@ export namespace GioWin32 {
         set_close_handle(close_handle: boolean): void;
     }
 
+
     namespace OutputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.OutputStream.SignalSignatures {
-            'notify::close-handle': (pspec: GObject.ParamSpec) => void;
-            'notify::handle': (pspec: GObject.ParamSpec) => void;
+            "notify::close-handle": (pspec: GObject.ParamSpec) => void;
+            "notify::handle": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {
             close_handle: boolean;
             closeHandle: boolean;
-            handle: any | null;
+            handle: (any | null);
         }
     }
 
     /**
      * {@link GioWin32.OutputStream} implements {@link Gio.OutputStream} for writing to a
      * Windows file handle.
-     *
+     * 
      * Note that `<gio/gwin32outputstream.h>` belongs to the Windows-specific GIO
      * interfaces, thus you have to use the `gio-windows-2.0.pc` pkg-config file
      * when using it.
@@ -167,7 +163,6 @@ export namespace GioWin32 {
         static $gtype: GObject.GType<OutputStream>;
 
         // Properties
-
         /**
          * Whether to close the file handle when the stream is closed.
          * @since 2.26
@@ -175,6 +170,7 @@ export namespace GioWin32 {
          */
         get close_handle(): boolean;
         set close_handle(val: boolean);
+
         /**
          * Whether to close the file handle when the stream is closed.
          * @since 2.26
@@ -182,12 +178,13 @@ export namespace GioWin32 {
          */
         get closeHandle(): boolean;
         set closeHandle(val: boolean);
+
         /**
          * The file handle that the stream writes to.
          * @since 2.26
          * @construct-only
          */
-        get handle(): any | null;
+        get handle(): (any | null);
 
         /**
          * Compile-time signal type information.
@@ -199,47 +196,39 @@ export namespace GioWin32 {
         $signals: OutputStream.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](handle: any | null, close_handle: boolean): OutputStream;
+        static ["new"](handle: (any | null), close_handle: boolean): OutputStream;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputStream.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputStream.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns whether the handle of `stream` will be closed when the
          * stream is closed.
          * @returns `true` if the handle is closed when done
          */
         get_close_handle(): boolean;
+
         /**
          * Return the Windows handle that the stream writes to.
          * @returns The handle descriptor of `stream`
          */
-        get_handle(): any | null;
+        get_handle(): (any | null);
+
         /**
          * Sets whether the handle of `stream` shall be closed when the stream
          * is closed.
@@ -248,10 +237,12 @@ export namespace GioWin32 {
         set_close_handle(close_handle: boolean): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InputStreamClass = typeof InputStream;
+
     /**
      * @gir-type Struct
      */
@@ -259,12 +250,14 @@ export namespace GioWin32 {
         static $gtype: GObject.GType<InputStreamPrivate>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class NetworkMonitor {
         static $gtype: GObject.GType<NetworkMonitor>;
     }
+
 
     /**
      * @gir-type Struct
@@ -274,12 +267,11 @@ export namespace GioWin32 {
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                parent_class: any;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            parent_class: any;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -288,10 +280,12 @@ export namespace GioWin32 {
         static $gtype: GObject.GType<NetworkMonitorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type OutputStreamClass = typeof OutputStream;
+
     /**
      * @gir-type Struct
      */
@@ -299,11 +293,13 @@ export namespace GioWin32 {
         static $gtype: GObject.GType<OutputStreamPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

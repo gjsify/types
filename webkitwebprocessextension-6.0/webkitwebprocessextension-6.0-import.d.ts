@@ -1,3 +1,4 @@
+
 import type WebKitWebProcessExtension60 from '@girs/webkitwebprocessextension-6.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

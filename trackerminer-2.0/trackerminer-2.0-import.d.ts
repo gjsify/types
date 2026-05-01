@@ -1,3 +1,4 @@
+
 import type TrackerMiner20 from '@girs/trackerminer-2.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

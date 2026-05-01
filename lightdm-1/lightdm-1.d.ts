@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace LightDM {
+
     /**
      * LightDM-1
      */
+
 
     /**
      * Error codes returned by greeter operations.
@@ -28,36 +31,38 @@ export namespace LightDM {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * error communicating with daemon.
          */
         static COMMUNICATION_ERROR: number;
+
         /**
          * failed to connect to the daemon.
          */
         static CONNECTION_FAILED: number;
+
         /**
          * requested session failed to start.
          */
         static SESSION_FAILED: number;
+
         /**
          * autologin not configured.
          */
         static NO_AUTOLOGIN: number;
+
         /**
          * autologin not configured.
          */
         static INVALID_USER: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -79,6 +84,7 @@ export namespace LightDM {
          */
         ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -102,156 +108,190 @@ export namespace LightDM {
         SECRET,
     }
 
+
     const GREETER_SIGNAL_AUTHENTICATION_COMPLETE: string;
+
     const GREETER_SIGNAL_AUTOLOGIN_TIMER_EXPIRED: string;
+
     const GREETER_SIGNAL_IDLE: string;
+
     const GREETER_SIGNAL_RESET: string;
+
     const GREETER_SIGNAL_SHOW_MESSAGE: string;
+
     const GREETER_SIGNAL_SHOW_PROMPT: string;
+
     const SIGNAL_USER_CHANGED: string;
+
     const USER_LIST_SIGNAL_USER_ADDED: string;
+
     const USER_LIST_SIGNAL_USER_CHANGED: string;
+
     const USER_LIST_SIGNAL_USER_REMOVED: string;
+
     /**
      * Checks if is authorized to do a system hibernate.
      * @returns `TRUE` if can hibernate the system
      */
     function get_can_hibernate(): boolean;
+
     /**
      * Checks if is authorized to do a system restart.
      * @returns `TRUE` if can restart the system
      */
     function get_can_restart(): boolean;
+
     /**
      * Checks if is authorized to do a system shutdown.
      * @returns `TRUE` if can shutdown the system
      */
     function get_can_shutdown(): boolean;
+
     /**
      * Checks if authorized to do a system suspend.
      * @returns `TRUE` if can suspend the system
      */
     function get_can_suspend(): boolean;
+
     /**
      * @returns The name of the host we are running on.
      */
     function get_hostname(): string;
+
     /**
      * Get the current language.
      * @returns The current language or `NULL` if no language.
      */
     function get_language(): Language;
+
     /**
      * Get a list of languages to present to the user.
      * @returns A list of {@link LightDM.Language} that should be presented to the user.
      */
     function get_languages(): Language[];
+
     /**
      * Get the current keyboard layout.
      * @returns The currently active layout for this user.
      */
     function get_layout(): Layout;
+
     /**
      * Get a list of keyboard layouts to present to the user.
      * @returns A list of {@link LightDM.Layout} that should be presented to the user.
      */
     function get_layouts(): Layout[];
+
     /**
      * Get a system message that should be presented to the user.
      * e.g. "Welcome to Yoyodyne"
      * @returns a string (the contents of /etc/motd) or `null` if not set.
      */
-    function get_motd(): string | null;
+    function get_motd(): (string | null);
+
     /**
      * Get a word describing the OS, suitable for checking which OS the greeter is running on.
      * e.g. "ubuntu"
      * @returns a string (ID variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_id(): string | null;
+    function get_os_id(): (string | null);
+
     /**
      * Get a line of text describing the OS without version information, suitable for presentation to the user.
      * e.g. "Ubuntu"
      * @returns a string (NAME variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_name(): string | null;
+    function get_os_name(): (string | null);
+
     /**
      * Get a line of text describing the OS, suitable for presentation to the user.
      * e.g. "Ubuntu 16.04.1 LTS"
      * @returns a string (PRETTY_NAME variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_pretty_name(): string | null;
+    function get_os_pretty_name(): (string | null);
+
     /**
      * Get a line of text describing the OS version, suitable for presentation to the user.
      * e.g. "16.04.1 LTS (Xenial Xapus)"
      * @returns a string (VERSION variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_version(): string | null;
+    function get_os_version(): (string | null);
+
     /**
      * Get a word descibing the OS version, suitable for checking which version of the OS this greeter is running on.
      * e.g. "16.04"
      * @returns a string (VERSION_ID variable from /etc/os-release) or `null` if not set.
      */
-    function get_os_version_id(): string | null;
+    function get_os_version_id(): (string | null);
+
     /**
      * Get the available remote sessions.
      * @returns A list of {@link LightDM.Session}
      */
     function get_remote_sessions(): Session[];
+
     /**
      * Get the available sessions.
      * @returns A list of {@link LightDM.Session}
      */
     function get_sessions(): Session[];
+
     function greeter_error_quark(): GLib.Quark;
+
     /**
      * Triggers a system hibernate.
      * @returns `TRUE` if hibernate initiated.
      */
     function hibernate(): boolean;
+
     /**
      * Triggers a system restart.
      * @returns `TRUE` if restart initiated.
      */
     function restart(): boolean;
+
     /**
      * Set the layout for this session.
      * @param layout The layout to use
      */
     function set_layout(layout: Layout): void;
+
     /**
      * Triggers a system shutdown.
      * @returns `TRUE` if shutdown initiated.
      */
     function shutdown(): boolean;
+
     /**
      * Triggers a system suspend.
      * @returns `TRUE` if suspend initiated.
      */
     function suspend(): boolean;
+
     namespace Greeter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * The ::authentication-complete signal gets emitted when the greeter
              * has completed authentication.
-             *
+             * 
              * Call `lightdm_greeter_get_is_authenticated()` to check if the authentication
              * was successful.
              * @signal
              * @run-last
              */
-            'authentication-complete': () => void;
+            "authentication-complete": () => void;
             /**
              * The ::timed-login signal gets emitted when the automatic login timer has expired.
              * The application should then call `lightdm_greeter_authenticate_autologin()`.
              * @signal
              * @run-last
              */
-            'autologin-timer-expired': () => void;
+            "autologin-timer-expired": () => void;
             /**
              * The ::idle signal gets emitted when the user has logged in and the
              * greeter is no longer needed.
-             *
+             * 
              * This signal only matters if the greeter has marked itself as
              * resettable using `lightdm_greeter_set_resettable()`.
              * @signal
@@ -261,7 +301,7 @@ export namespace LightDM {
             /**
              * The ::reset signal gets emitted when the user is returning to a greeter
              * that was previously marked idle.
-             *
+             * 
              * This signal only matters if the greeter has marked itself as
              * resettable using `lightdm_greeter_set_resettable()`.
              * @signal
@@ -274,48 +314,47 @@ export namespace LightDM {
              * @signal
              * @run-last
              */
-            'show-message': (arg0: string, arg1: MessageType) => void;
+            "show-message": (arg0: string, arg1: MessageType) => void;
             /**
              * The ::show-prompt signal gets emitted when the greeter should show a
              * prompt to the user.  The given text should be displayed and an input
              * field for the user to provide a response.
-             *
+             * 
              * Call `lightdm_greeter_respond()` with the resultant input or
              * `lightdm_greeter_cancel_authentication()` to abort the authentication.
              * @signal
              * @run-last
              */
-            'show-prompt': (arg0: string, arg1: PromptType) => void;
-            'notify::authentication-user': (pspec: GObject.ParamSpec) => void;
-            'notify::autologin-guest-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::autologin-session-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::autologin-timeout-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::autologin-user-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::default-session-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::has-guest-account-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-users-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::in-authentication': (pspec: GObject.ParamSpec) => void;
-            'notify::is-authenticated': (pspec: GObject.ParamSpec) => void;
-            'notify::lock-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::select-guest-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::select-user-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::show-manual-login-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::show-remote-login-hint': (pspec: GObject.ParamSpec) => void;
+            "show-prompt": (arg0: string, arg1: PromptType) => void;
+            "notify::authentication-user": (pspec: GObject.ParamSpec) => void;
+            "notify::autologin-guest-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::autologin-session-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::autologin-timeout-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::autologin-user-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::default-session-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::has-guest-account-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-users-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::in-authentication": (pspec: GObject.ParamSpec) => void;
+            "notify::is-authenticated": (pspec: GObject.ParamSpec) => void;
+            "notify::lock-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::select-guest-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::select-user-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::show-manual-login-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::show-remote-login-hint": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            authentication_user: string | null;
-            authenticationUser: string | null;
+            authentication_user: (string | null);
+            authenticationUser: (string | null);
             autologin_guest_hint: boolean;
             autologinGuestHint: boolean;
-            autologin_session_hint: string | null;
-            autologinSessionHint: string | null;
+            autologin_session_hint: (string | null);
+            autologinSessionHint: (string | null);
             autologin_timeout_hint: number;
             autologinTimeoutHint: number;
-            autologin_user_hint: string | null;
-            autologinUserHint: string | null;
+            autologin_user_hint: (string | null);
+            autologinUserHint: (string | null);
             default_session_hint: string;
             defaultSessionHint: string;
             has_guest_account_hint: boolean;
@@ -330,8 +369,8 @@ export namespace LightDM {
             lockHint: boolean;
             select_guest_hint: boolean;
             selectGuestHint: boolean;
-            select_user_hint: string | null;
-            selectUserHint: string | null;
+            select_user_hint: (string | null);
+            selectUserHint: (string | null);
             show_manual_login_hint: boolean;
             showManualLoginHint: boolean;
             show_remote_login_hint: boolean;
@@ -348,152 +387,180 @@ export namespace LightDM {
         static $gtype: GObject.GType<Greeter>;
 
         // Properties
+        /**
+         * @read-only
+         * @default null
+         */
+        get authentication_user(): (string | null);
 
         /**
          * @read-only
          * @default null
          */
-        get authentication_user(): string | null;
-        /**
-         * @read-only
-         * @default null
-         */
-        get authenticationUser(): string | null;
+        get authenticationUser(): (string | null);
+
         /**
          * @read-only
          * @default false
          */
         get autologin_guest_hint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get autologinGuestHint(): boolean;
+
         /**
          * @read-only
          * @default null
          */
-        get autologin_session_hint(): string | null;
+        get autologin_session_hint(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get autologinSessionHint(): string | null;
+        get autologinSessionHint(): (string | null);
+
         /**
          * @read-only
          * @default 0
          */
         get autologin_timeout_hint(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get autologinTimeoutHint(): number;
+
         /**
          * @read-only
          * @default null
          */
-        get autologin_user_hint(): string | null;
+        get autologin_user_hint(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get autologinUserHint(): string | null;
+        get autologinUserHint(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
         get default_session_hint(): string;
+
         /**
          * @read-only
          * @default null
          */
         get defaultSessionHint(): string;
+
         /**
          * @read-only
          * @default false
          */
         get has_guest_account_hint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get hasGuestAccountHint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get hide_users_hint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get hideUsersHint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get in_authentication(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get inAuthentication(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get is_authenticated(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get isAuthenticated(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get lock_hint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get lockHint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get select_guest_hint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get selectGuestHint(): boolean;
+
         /**
          * @read-only
          * @default null
          */
-        get select_user_hint(): string | null;
+        get select_user_hint(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get selectUserHint(): string | null;
+        get selectUserHint(): (string | null);
+
         /**
          * @read-only
          * @default false
          */
         get show_manual_login_hint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get showManualLoginHint(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get show_remote_login_hint(): boolean;
+
         /**
          * @read-only
          * @default false
@@ -510,147 +577,150 @@ export namespace LightDM {
         $signals: Greeter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Greeter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Greeter;
+        static ["new"](): Greeter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Greeter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Greeter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Greeter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Greeter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Greeter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Greeter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Greeter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Greeter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Greeter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Greeter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Greeter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Greeter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_authentication_complete(): void;
+
         /**
          * @virtual
          */
         vfunc_autologin_timer_expired(): void;
+
         /**
          * @virtual
          */
         vfunc_idle(): void;
+
         /**
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
-         * @param text
-         * @param type
+         * @param text 
+         * @param type 
          * @virtual
          */
         vfunc_show_message(text: string, type: MessageType): void;
+
         /**
-         * @param text
-         * @param type
+         * @param text 
+         * @param type 
          * @virtual
          */
         vfunc_show_prompt(text: string, type: PromptType): void;
 
         // Methods
-
         /**
          * Starts the authentication procedure for a user.
          * @param username A username or `NULL` to prompt for a username.
          * @returns `TRUE` if authentication request sent.
          */
-        authenticate(username: string | null): boolean;
+        authenticate(username: (string | null)): boolean;
+
         /**
          * Starts the authentication procedure for the guest user.
          * @returns `TRUE` if authentication request sent.
          */
         authenticate_as_guest(): boolean;
+
         /**
          * Starts the authentication procedure for the automatic login user.
          * @returns `TRUE` if authentication request sent.
          */
         authenticate_autologin(): boolean;
+
         /**
          * Start authentication for a remote session type.
          * @param session The name of a remote session
          * @param username A username of `NULL` to prompt for a username.
          * @returns `TRUE` if authentication request sent.
          */
-        authenticate_remote(session: string, username: string | null): boolean;
+        authenticate_remote(session: string, username: (string | null)): boolean;
+
         /**
          * Cancel the current user authentication.
          * @returns `TRUE` if cancel request sent.
          */
         cancel_authentication(): boolean;
+
         /**
          * Cancel the automatic login.
          */
         cancel_autologin(): void;
+
         /**
          * Connects the greeter to the display manager.  Will block until connected.
          * @returns `TRUE` if successfully connected
          */
         connect_sync(): boolean;
+
         /**
          * Asynchronously connects the greeter to the display manager.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked. You can then call `lightdm_greeter_connect_to_daemon_finish()` to get the result of the operation.
-         *
+         * 
          * See `lightdm_greeter_connect_to_daemon_sync()` for the synchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        connect_to_daemon(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        connect_to_daemon(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously connects the greeter to the display manager.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked. You can then call `lightdm_greeter_connect_to_daemon_finish()` to get the result of the operation.
-         *
-         * See `lightdm_greeter_connect_to_daemon_sync()` for the synchronous version.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
-         */
-        connect_to_daemon(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Asynchronously connects the greeter to the display manager.
-         *
-         * When the operation is finished, `callback` will be invoked. You can then call `lightdm_greeter_connect_to_daemon_finish()` to get the result of the operation.
-         *
+         * 
          * See `lightdm_greeter_connect_to_daemon_sync()` for the synchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        connect_to_daemon(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        connect_to_daemon(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously connects the greeter to the display manager.
+         * 
+         * When the operation is finished, `callback` will be invoked. You can then call `lightdm_greeter_connect_to_daemon_finish()` to get the result of the operation.
+         * 
+         * See `lightdm_greeter_connect_to_daemon_sync()` for the synchronous version.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
+         */
+        connect_to_daemon(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an operation started with `lightdm_greeter_connect_to_daemon()`.
          * @param result A {@link Gio.AsyncResult}.
          * @returns `TRUE` if successfully connected
          */
         connect_to_daemon_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Connects the greeter to the display manager.  Will block until connected.
          * @returns `TRUE` if successfully connected
          */
         connect_to_daemon_sync(): boolean;
+
         /**
          * Ensure that a shared data dir for the given user is available.  Both the
          * greeter user and `username` will have write access to that folder.  The
@@ -658,14 +728,15 @@ export namespace LightDM {
          * that the greeter creates but wants to give to a user -- like camera
          * photos -- or files that the user creates but wants the greeter to
          * see -- like contact avatars).
-         *
+         * 
          * LightDM will automatically create these if the user actually logs in, so
          * greeters only need to call this method if they want to store something in
          * the directory themselves.
          * @param username A username
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        ensure_shared_data_dir(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
+        ensure_shared_data_dir(username: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+
         /**
          * Ensure that a shared data dir for the given user is available.  Both the
          * greeter user and `username` will have write access to that folder.  The
@@ -673,27 +744,7 @@ export namespace LightDM {
          * that the greeter creates but wants to give to a user -- like camera
          * photos -- or files that the user creates but wants the greeter to
          * see -- like contact avatars).
-         *
-         * LightDM will automatically create these if the user actually logs in, so
-         * greeters only need to call this method if they want to store something in
-         * the directory themselves.
-         * @param username A username
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
-         */
-        ensure_shared_data_dir(
-            username: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Ensure that a shared data dir for the given user is available.  Both the
-         * greeter user and `username` will have write access to that folder.  The
-         * intention is that larger pieces of shared data would be stored there (files
-         * that the greeter creates but wants to give to a user -- like camera
-         * photos -- or files that the user creates but wants the greeter to
-         * see -- like contact avatars).
-         *
+         * 
          * LightDM will automatically create these if the user actually logs in, so
          * greeters only need to call this method if they want to store something in
          * the directory themselves.
@@ -701,17 +752,32 @@ export namespace LightDM {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        ensure_shared_data_dir(
-            username: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string> | void;
+        ensure_shared_data_dir(username: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Ensure that a shared data dir for the given user is available.  Both the
+         * greeter user and `username` will have write access to that folder.  The
+         * intention is that larger pieces of shared data would be stored there (files
+         * that the greeter creates but wants to give to a user -- like camera
+         * photos -- or files that the user creates but wants the greeter to
+         * see -- like contact avatars).
+         * 
+         * LightDM will automatically create these if the user actually logs in, so
+         * greeters only need to call this method if they want to store something in
+         * the directory themselves.
+         * @param username A username
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
+         */
+        ensure_shared_data_dir(username: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+
         /**
          * Function to call from lightdm_greeter_ensure_shared_data_dir callback.
          * @param result A {@link Gio.AsyncResult}.
          * @returns The path to the shared directory, free with g_free.
          */
         ensure_shared_data_dir_finish(result: Gio.AsyncResult): string;
+
         /**
          * Ensure that a shared data dir for the given user is available.  Both the
          * greeter user and `username` will have write access to that folder.  The
@@ -719,7 +785,7 @@ export namespace LightDM {
          * that the greeter creates but wants to give to a user -- like camera
          * photos -- or files that the user creates but wants the greeter to
          * see -- like contact avatars).
-         *
+         * 
          * LightDM will automatically create these if the user actually logs in, so
          * greeters only need to call this method if they want to store something in
          * the directory themselves.
@@ -727,83 +793,98 @@ export namespace LightDM {
          * @returns The path to the shared directory, free with g_free.
          */
         ensure_shared_data_dir_sync(username: string): string;
+
         /**
          * Get the user that is being authenticated.
          * @returns The username of the authentication user being authenticated or `NULL` if no authentication in progress.
          */
-        get_authentication_user(): string | null;
+        get_authentication_user(): (string | null);
+
         /**
          * Check if the guest account should be automatically logged into when the timer expires.
          * @returns `TRUE` if the guest account should be automatically logged into.
          */
         get_autologin_guest_hint(): boolean;
+
         /**
          * Get the session used to automatically log into when the timer expires.
          * @returns The session name or `null` if configured to use the default.
          */
-        get_autologin_session_hint(): string | null;
+        get_autologin_session_hint(): (string | null);
+
         /**
          * Get the number of seconds to wait before automatically logging in.
          * @returns The number of seconds to wait before automatically logging in or 0 for no timeout.
          */
         get_autologin_timeout_hint(): number;
+
         /**
          * Get the user account to automatically log into when the timer expires.
          * @returns The user account to automatically log into or `null` if none configured.
          */
-        get_autologin_user_hint(): string | null;
+        get_autologin_user_hint(): (string | null);
+
         /**
          * Get the default session to use.
          * @returns The session name
          */
         get_default_session_hint(): string;
+
         /**
          * Check if guest sessions are supported.
          * @returns `TRUE` if guest sessions are supported.
          */
         get_has_guest_account_hint(): boolean;
+
         /**
          * Check if user accounts should be shown.  If this is TRUE then the list of
          * accounts should be taken from {@link LightDM.UserList} and displayed in the greeter
          * for the user to choose from.  Note that this list can be empty and it is
          * recommended you show a method for the user to enter a username manually.
-         *
+         * 
          * If this option is shown the greeter should only allow these users to be
          * chosen for login unless the manual login hint is set.
          * @returns `TRUE` if the available users should not be shown.
          */
         get_hide_users_hint(): boolean;
+
         /**
          * Get a hint.
          * @param name The hint name to query.
          * @returns The value for this hint or `NULL` if not set.
          */
-        get_hint(name: string): string | null;
+        get_hint(name: string): (string | null);
+
         /**
          * Checks if the greeter is in the process of authenticating.
          * @returns `TRUE` if the greeter is authenticating a user.
          */
         get_in_authentication(): boolean;
+
         /**
          * Checks if the greeter has successfully authenticated.
          * @returns `TRUE` if the greeter is authenticated for login.
          */
         get_is_authenticated(): boolean;
+
         /**
          * Check if the greeter is acting as a lock screen.
          * @returns `TRUE` if the greeter was triggered by locking the seat.
          */
         get_lock_hint(): boolean;
+
         /**
          * Check if the guest account should be selected by default.
          * @returns `TRUE` if the guest account should be selected by default.
          */
         get_select_guest_hint(): boolean;
+
         /**
          * Get the user to select by default.
          * @returns A username or `null` if no particular user should be selected.
          */
-        get_select_user_hint(): string | null;
+        get_select_user_hint(): (string | null);
+
         /**
          * Check if a manual login option should be shown.  If set the GUI
          * should provide a way for a username to be entered manually.
@@ -812,94 +893,95 @@ export namespace LightDM {
          * @returns `TRUE` if a manual login option should be shown.
          */
         get_show_manual_login_hint(): boolean;
+
         /**
          * Check if a remote login option should be shown.  If set the GUI
          * should provide a way for a user to log into a remote desktop server.
          * @returns `TRUE` if a remote login option should be shown.
          */
         get_show_remote_login_hint(): boolean;
+
         /**
          * Provide response to a prompt.  May be one in a series.
          * @param response Response to a prompt
          * @returns `TRUE` if response sent.
          */
         respond(response: string): boolean;
+
         /**
          * Set the language for the currently authenticated user.
          * @param language The language to use for this user in the form of a locale specification (e.g. "de_DE.UTF-8").
          * @returns `TRUE` if set language request sent.
          */
         set_language(language: string): boolean;
+
         /**
          * Set whether the greeter will be reset instead of killed after the user logs in.
          * This must be called before lightdm_greeter_connect is called.
          * @param resettable Whether the greeter wants to be reset instead of killed after the user logs in
          */
         set_resettable(resettable: boolean): void;
+
         /**
          * Asynchronously start a session for the authenticated user.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked. You can then call `lightdm_greeter_start_session_finish()` to get the result of the operation.
-         *
+         * 
          * See `lightdm_greeter_start_session_sync()` for the synchronous version.
          * @param session The session to log into or `NULL` to use the default.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        start_session(session: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        start_session(session: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously start a session for the authenticated user.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked. You can then call `lightdm_greeter_start_session_finish()` to get the result of the operation.
-         *
-         * See `lightdm_greeter_start_session_sync()` for the synchronous version.
-         * @param session The session to log into or `NULL` to use the default.
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
-         */
-        start_session(
-            session: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously start a session for the authenticated user.
-         *
-         * When the operation is finished, `callback` will be invoked. You can then call `lightdm_greeter_start_session_finish()` to get the result of the operation.
-         *
+         * 
          * See `lightdm_greeter_start_session_sync()` for the synchronous version.
          * @param session The session to log into or `NULL` to use the default.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
          */
-        start_session(
-            session: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        start_session(session: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously start a session for the authenticated user.
+         * 
+         * When the operation is finished, `callback` will be invoked. You can then call `lightdm_greeter_start_session_finish()` to get the result of the operation.
+         * 
+         * See `lightdm_greeter_start_session_sync()` for the synchronous version.
+         * @param session The session to log into or `NULL` to use the default.
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when completed or `null`.
+         */
+        start_session(session: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Start a session for the authenticated user.
          * @param result A {@link Gio.AsyncResult}.
          * @returns TRUE if the session was started.
          */
         start_session_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Start a session for the authenticated user.
          * @param session The session to log into or `NULL` to use the default.
          * @returns TRUE if the session was started.
          */
-        start_session_sync(session: string | null): boolean;
+        start_session_sync(session: (string | null)): boolean;
     }
+
 
     namespace Language {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::code': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::territory': (pspec: GObject.ParamSpec) => void;
+            "notify::code": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::territory": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             code: string;
             name: string;
@@ -916,17 +998,18 @@ export namespace LightDM {
         static $gtype: GObject.GType<Language>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get code(): string;
+
         /**
          * @read-only
          * @default null
          */
         get name(): string;
+
         /**
          * @read-only
          * @default null
@@ -943,49 +1026,42 @@ export namespace LightDM {
         $signals: Language.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Language.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Language.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Language.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Language.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Language.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Language.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Language.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Language.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the code of a language (e.g. "de_DE.UTF-8")
          * @returns The code of the language
          */
         get_code(): string;
+
         /**
          * Get the name of a language.
          * @returns The name of the language
          */
         get_name(): string;
+
         /**
          * Get the territory the language is used in.
          * @returns The territory the language is used in.
          */
         get_territory(): string;
+
         /**
          * Check if a language code matches this language.
          * @param code A language code
@@ -994,16 +1070,16 @@ export namespace LightDM {
         matches(code: string): boolean;
     }
 
+
     namespace Layout {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::short-description': (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::short-description": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             description: string;
             name: string;
@@ -1021,22 +1097,24 @@ export namespace LightDM {
         static $gtype: GObject.GType<Layout>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get description(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get short_description(): string;
+
         /**
          * @construct-only
          * @default null
@@ -1053,44 +1131,36 @@ export namespace LightDM {
         $signals: Layout.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Layout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Layout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Layout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layout.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Layout.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Layout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the long description of a layout.
          * @returns A long description of the layout
          */
         get_description(): string;
+
         /**
          * Get the name of a layout.
          * @returns The name of the layout
          */
         get_name(): string;
+
         /**
          * Get the short description of a layout.
          * @returns A short description of the layout
@@ -1098,16 +1168,16 @@ export namespace LightDM {
         get_short_description(): string;
     }
 
+
     namespace Session {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::comment': (pspec: GObject.ParamSpec) => void;
-            'notify::key': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::comment": (pspec: GObject.ParamSpec) => void;
+            "notify::key": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             comment: string;
             key: string;
@@ -1124,17 +1194,18 @@ export namespace LightDM {
         static $gtype: GObject.GType<Session>;
 
         // Properties
-
         /**
          * @read-only
          * @default null
          */
         get comment(): string;
+
         /**
          * @read-only
          * @default null
          */
         get key(): string;
+
         /**
          * @read-only
          * @default null
@@ -1151,55 +1222,49 @@ export namespace LightDM {
         $signals: Session.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the comment for a session
          * @returns The session comment
          */
         get_comment(): string;
+
         /**
          * Get the key for a session
          * @returns The session key
          */
         get_key(): string;
+
         /**
          * Get the name for a session
          * @returns The session name
          */
         get_name(): string;
+
         /**
          * Get the type a session
          * @returns The session type, e.g. x or mir
          */
         get_session_type(): string;
     }
+
 
     namespace User {
         // Signal signatures
@@ -1210,45 +1275,44 @@ export namespace LightDM {
              * @run-last
              */
             changed: () => void;
-            'notify::background': (pspec: GObject.ParamSpec) => void;
-            'notify::display-name': (pspec: GObject.ParamSpec) => void;
-            'notify::has-messages': (pspec: GObject.ParamSpec) => void;
-            'notify::home-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::image': (pspec: GObject.ParamSpec) => void;
-            'notify::is-locked': (pspec: GObject.ParamSpec) => void;
-            'notify::language': (pspec: GObject.ParamSpec) => void;
-            'notify::layout': (pspec: GObject.ParamSpec) => void;
-            'notify::layouts': (pspec: GObject.ParamSpec) => void;
-            'notify::logged-in': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::real-name': (pspec: GObject.ParamSpec) => void;
-            'notify::session': (pspec: GObject.ParamSpec) => void;
-            'notify::uid': (pspec: GObject.ParamSpec) => void;
+            "notify::background": (pspec: GObject.ParamSpec) => void;
+            "notify::display-name": (pspec: GObject.ParamSpec) => void;
+            "notify::has-messages": (pspec: GObject.ParamSpec) => void;
+            "notify::home-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::image": (pspec: GObject.ParamSpec) => void;
+            "notify::is-locked": (pspec: GObject.ParamSpec) => void;
+            "notify::language": (pspec: GObject.ParamSpec) => void;
+            "notify::layout": (pspec: GObject.ParamSpec) => void;
+            "notify::layouts": (pspec: GObject.ParamSpec) => void;
+            "notify::logged-in": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::real-name": (pspec: GObject.ParamSpec) => void;
+            "notify::session": (pspec: GObject.ParamSpec) => void;
+            "notify::uid": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            background: string | null;
+            background: (string | null);
             display_name: string;
             displayName: string;
             has_messages: boolean;
             hasMessages: boolean;
             home_directory: string;
             homeDirectory: string;
-            image: string | null;
+            image: (string | null);
             is_locked: boolean;
             isLocked: boolean;
-            language: string | null;
-            layout: string | null;
+            language: (string | null);
+            layout: (string | null);
             layouts: string[];
             logged_in: boolean;
             loggedIn: boolean;
             name: string;
             real_name: string;
             realName: string;
-            session: string | null;
-            uid: bigint | number;
+            session: (string | null);
+            uid: (bigint | number);
         }
     }
 
@@ -1261,101 +1325,119 @@ export namespace LightDM {
         static $gtype: GObject.GType<User>;
 
         // Properties
+        /**
+         * @read-only
+         * @default null
+         */
+        get background(): (string | null);
 
         /**
          * @read-only
          * @default null
          */
-        get background(): string | null;
-        /**
-         * @read-only
-         * @default null
-         */
         get display_name(): string;
+
         /**
          * @read-only
          * @default null
          */
         get displayName(): string;
+
         /**
          * @read-only
          * @default false
          */
         get has_messages(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get hasMessages(): boolean;
+
         /**
          * @read-only
          * @default null
          */
         get home_directory(): string;
+
         /**
          * @read-only
          * @default null
          */
         get homeDirectory(): string;
+
         /**
          * @read-only
          * @default null
          */
-        get image(): string | null;
+        get image(): (string | null);
+
         /**
          * @read-only
          * @default false
          */
         get is_locked(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get isLocked(): boolean;
+
         /**
          * @read-only
          * @default null
          */
-        get language(): string | null;
+        get language(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get layout(): string | null;
+        get layout(): (string | null);
+
         /**
          * @read-only
          */
         get layouts(): string[];
+
         /**
          * @read-only
          * @default false
          */
         get logged_in(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get loggedIn(): boolean;
+
         /**
          * @read-only
          * @default null
          */
         get name(): string;
+
         /**
          * @read-only
          * @default null
          */
         get real_name(): string;
+
         /**
          * @read-only
          * @default null
          */
         get realName(): string;
+
         /**
          * @read-only
          * @default null
          */
-        get session(): string | null;
+        get session(): (string | null);
+
         /**
          * @read-only
          * @default 0
@@ -1372,112 +1454,115 @@ export namespace LightDM {
         $signals: User.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<User.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof User.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, User.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof User.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof User.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, User.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof User.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_changed(): void;
 
         // Methods
-
         /**
          * Get the background file path for a user.
          * @returns The background file path for the given user or `NULL` if no path
          */
-        get_background(): string | null;
+        get_background(): (string | null);
+
         /**
          * Get the display name of a user.
          * @returns The display name of the given user
          */
         get_display_name(): string;
+
         /**
          * Check if a user has waiting messages.
          * @returns `TRUE` if the user has waiting messages.
          */
         get_has_messages(): boolean;
+
         /**
          * Get the home directory for a user.
          * @returns The users home directory
          */
         get_home_directory(): string;
+
         /**
          * Get the image URI for a user.
          * @returns The image URI for the given user or `NULL` if no URI
          */
-        get_image(): string | null;
+        get_image(): (string | null);
+
         /**
          * Get if the user is locked.
          * @returns `true` if the user is locked
          */
         get_is_locked(): boolean;
+
         /**
          * Get the language for a user.
          * @returns The language in the form of a local specification (e.g. "de_DE.UTF-8") for the given user or `NULL` if using the system default locale.
          */
-        get_language(): string | null;
+        get_language(): (string | null);
+
         /**
          * Get the keyboard layout for a user.
          * @returns The keyboard layout for the given user or `NULL` if using system defaults.  Copy the value if you want to use it long term.
          */
-        get_layout(): string | null;
+        get_layout(): (string | null);
+
         /**
          * Get the configured keyboard layouts for a user.
          * @returns A NULL-terminated array of keyboard layouts for the given user.  Copy the values if you want to use them long term.
          */
         get_layouts(): string[];
+
         /**
          * Check if a user is logged in.
          * @returns `TRUE` if the user is currently logged in.
          */
         get_logged_in(): boolean;
+
         /**
          * Get the name of a user.
          * @returns The name of the given user
          */
         get_name(): string;
+
         /**
          * Get the real name of a user.
          * @returns The real name of the given user
          */
         get_real_name(): string;
+
         /**
          * Get the session for a user.
          * @returns The session for the given user or `NULL` if using system defaults.
          */
-        get_session(): string | null;
+        get_session(): (string | null);
+
         /**
          * Get the uid of a user.
          * @returns The uid of the given user
          */
         get_uid(): never;
     }
+
 
     namespace UserList {
         // Signal signatures
@@ -1487,25 +1572,24 @@ export namespace LightDM {
              * @signal
              * @run-last
              */
-            'user-added': (arg0: User) => void;
+            "user-added": (arg0: User) => void;
             /**
              * The ::user-changed signal gets emitted when a user account is modified.
              * @signal
              * @run-last
              */
-            'user-changed': (arg0: User) => void;
+            "user-changed": (arg0: User) => void;
             /**
              * The ::user-removed signal gets emitted when a user account is removed.
              * @signal
              * @run-last
              */
-            'user-removed': (arg0: User) => void;
-            'notify::length': (pspec: GObject.ParamSpec) => void;
-            'notify::num-users': (pspec: GObject.ParamSpec) => void;
+            "user-removed": (arg0: User) => void;
+            "notify::length": (pspec: GObject.ParamSpec) => void;
+            "notify::num-users": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             length: number;
             num_users: number;
@@ -1522,17 +1606,18 @@ export namespace LightDM {
         static $gtype: GObject.GType<UserList>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get length(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get num_users(): number;
+
         /**
          * @read-only
          * @default 0
@@ -1549,69 +1634,61 @@ export namespace LightDM {
         $signals: UserList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UserList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UserList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UserList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UserList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UserList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UserList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UserList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UserList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get the user list.
          */
         static get_instance(): UserList;
 
         // Virtual methods
-
         /**
-         * @param user
+         * @param user 
          * @virtual
          */
         vfunc_user_added(user: User): void;
+
         /**
-         * @param user
+         * @param user 
          * @virtual
          */
         vfunc_user_changed(user: User): void;
+
         /**
-         * @param user
+         * @param user 
          * @virtual
          */
         vfunc_user_removed(user: User): void;
 
         // Methods
-
         /**
          * @returns The number of users able to log in
          */
         get_length(): number;
+
         /**
          * Get information about a given user or `NULL` if this user doesn't exist.
          * @param username Name of user to get.
          * @returns A {@link LightDM.User} entry for the given user.
          */
         get_user_by_name(username: string): User;
+
         /**
          * Get a list of users to present to the user.  This list may be a subset of the
          * available users and may be empty depending on the server configuration.
@@ -1620,35 +1697,43 @@ export namespace LightDM {
         get_users(): User[];
     }
 
+
     /**
      * @gir-type Alias
      */
     type GreeterClass = typeof Greeter;
+
     /**
      * @gir-type Alias
      */
     type LanguageClass = typeof Language;
+
     /**
      * @gir-type Alias
      */
     type LayoutClass = typeof Layout;
+
     /**
      * @gir-type Alias
      */
     type SessionClass = typeof Session;
+
     /**
      * @gir-type Alias
      */
     type UserClass = typeof User;
+
     /**
      * @gir-type Alias
      */
     type UserListClass = typeof UserList;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

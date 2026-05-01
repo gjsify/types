@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -28,61 +29,57 @@ import type Gcr from '@girs/gcr-4';
 import type Gck from '@girs/gck-2';
 
 export namespace GcrGtk4 {
+
     /**
      * GcrGtk4-4
      */
 
+
     namespace CertificateWidget {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::certificate': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            "notify::certificate": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
-            certificate: Gcr.Certificate | null;
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
+            certificate: (Gcr.Certificate | null);
         }
     }
 
@@ -93,9 +90,8 @@ export namespace GcrGtk4 {
         static $gtype: GObject.GType<CertificateWidget>;
 
         // Properties
-
-        get certificate(): Gcr.Certificate | null;
-        set certificate(val: Gcr.Certificate | null);
+        get certificate(): (Gcr.Certificate | null);
+        set certificate(val: (Gcr.Certificate | null));
 
         /**
          * Compile-time signal type information.
@@ -107,128 +103,130 @@ export namespace GcrGtk4 {
         $signals: CertificateWidget.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CertificateWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](certificate: Gcr.Certificate | null): CertificateWidget;
+        static ["new"](certificate: (Gcr.Certificate | null)): CertificateWidget;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CertificateWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertificateWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CertificateWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CertificateWidget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CertificateWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CertificateWidget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CertificateWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CertificateWidget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CertificateWidget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CertificateWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CertificateWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CertificateWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the certificate displayed in the widget.
          * @returns the certificate
          */
-        get_certificate(): Gcr.Certificate | null;
+        get_certificate(): (Gcr.Certificate | null);
+
         /**
          * Set the certificate displayed in the widget
          * @param certificate the certificate to display
          */
-        set_certificate(certificate: Gcr.Certificate | null): void;
+        set_certificate(certificate: (Gcr.Certificate | null)): void;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -236,24 +234,28 @@ export namespace GcrGtk4 {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -264,102 +266,114 @@ export namespace GcrGtk4 {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -367,14 +381,16 @@ export namespace GcrGtk4 {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -383,7 +399,8 @@ export namespace GcrGtk4 {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -393,12 +410,8 @@ export namespace GcrGtk4 {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -408,12 +421,8 @@ export namespace GcrGtk4 {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -421,17 +430,15 @@ export namespace GcrGtk4 {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -439,47 +446,53 @@ export namespace GcrGtk4 {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CertificateWidgetClass = typeof CertificateWidget;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

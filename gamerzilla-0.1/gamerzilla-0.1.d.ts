@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,20 +15,21 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Gamerzilla {
+
     /**
      * Gamerzilla-0.1
      */
 
+
     namespace GamerzillaGobj {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::url': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::url": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             password: string;
             url: string;
@@ -42,11 +44,12 @@ export namespace Gamerzilla {
         static $gtype: GObject.GType<GamerzillaGobj>;
 
         // Properties
-
         get password(): string;
         set password(val: string);
+
         get url(): string;
         set url(val: string);
+
         get username(): string;
         set username(val: string);
 
@@ -60,55 +63,50 @@ export namespace Gamerzilla {
         $signals: GamerzillaGobj.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GamerzillaGobj.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): GamerzillaGobj;
+        static ["new"](): GamerzillaGobj;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GamerzillaGobj.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GamerzillaGobj.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GamerzillaGobj.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GamerzillaGobj.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GamerzillaGobj.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GamerzillaGobj.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GamerzillaGobj.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GamerzillaGobj.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GamerzillaGobj.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GamerzillaGobj.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GamerzillaGobj.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GamerzillaGobj.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         connect(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Runs the server.
          */
         serverstart(): void;
+
         /**
          * Stops the server.
          */
         serverstop(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GamerzillaGobjClass = typeof GamerzillaGobj;
+
     /**
      * @gir-type Struct
      */
@@ -116,11 +114,13 @@ export namespace Gamerzilla {
         static $gtype: GObject.GType<GamerzillaGobjPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

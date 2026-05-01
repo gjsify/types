@@ -1,3 +1,4 @@
+
 import type Lasem06 from '@girs/lasem-0.6';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

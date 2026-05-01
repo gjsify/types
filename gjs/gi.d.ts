@@ -1,3 +1,4 @@
+
 /**
  * Requires a GObject Introspection namespace, optionally at a specific version.
  * If a version is specified and a different version of the same namespace is
@@ -7,7 +8,7 @@
  * @param version The version of the namespace (e.g. '4.0', '2.0')
  * @returns The imported namespace module
  */
-export function require(namespace: string, version?: string): any;
+export function require(namespace: string, version?: string): any
 
 /**
  * The `gi` module provides a single entry point for importing GObject
@@ -23,6 +24,9 @@ export function require(namespace: string, version?: string): any;
  */
 declare const Gi: {
     readonly require: typeof require;
-};
+}
 
-export default Gi;
+export default Gi
+
+
+

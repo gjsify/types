@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GrlNet {
+
     /**
      * GrlNet-0.2
      */
+
 
     /**
      * These constants identify all the available errors managed by
@@ -66,18 +69,18 @@ export namespace GrlNet {
         CANCELLED,
     }
 
+
     namespace Wc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cache': (pspec: GObject.ParamSpec) => void;
-            'notify::cache-size': (pspec: GObject.ParamSpec) => void;
-            'notify::loglevel': (pspec: GObject.ParamSpec) => void;
-            'notify::throttling': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            "notify::cache": (pspec: GObject.ParamSpec) => void;
+            "notify::cache-size": (pspec: GObject.ParamSpec) => void;
+            "notify::loglevel": (pspec: GObject.ParamSpec) => void;
+            "notify::throttling": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             cache: boolean;
             cache_size: number;
@@ -96,19 +99,24 @@ export namespace GrlNet {
         static $gtype: GObject.GType<Wc>;
 
         // Properties
-
         get cache(): boolean;
         set cache(val: boolean);
+
         get cache_size(): number;
         set cache_size(val: number);
+
         get cacheSize(): number;
         set cacheSize(val: number);
+
         get loglevel(): number;
         set loglevel(val: number);
+
         get throttling(): number;
         set throttling(val: number);
+
         get user_agent(): string;
         set user_agent(val: string);
+
         get userAgent(): string;
         set userAgent(val: string);
 
@@ -122,63 +130,42 @@ export namespace GrlNet {
         $signals: Wc.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Wc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Wc;
+        static ["new"](): Wc;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Wc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Wc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Wc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Wc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Wc.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Wc.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Wc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Wc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Wc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * This method will flush all the pending request in the queue.
          */
         flush_delayed_requests(): void;
+
         /**
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
          * @param uri The URI of the resource to request
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          */
-        request_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, bigint | number]>;
-        /**
-         * Request the fetching of a web resource given the `uri`. This request is
-         * asynchronous, thus the result will be returned within the `callback`.
-         * @param uri The URI of the resource to request
-         * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
-         * @param callback The callback when the result is ready
-         */
-        request_async(
-            uri: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        request_async(uri: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[string, (bigint | number)]>;
+
         /**
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
@@ -186,22 +173,29 @@ export namespace GrlNet {
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
-        request_async(
-            uri: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[string, bigint | number]> | void;
+        request_async(uri: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Request the fetching of a web resource given the `uri`. This request is
+         * asynchronous, thus the result will be returned within the `callback`.
+         * @param uri The URI of the resource to request
+         * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
+         * @param callback The callback when the result is ready
+         */
+        request_async(uri: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[string, (bigint | number)]> | void);
+
         /**
          * Finishes an asynchronous load of the file's contents.
          * The contents are placed in contents, and length is set to the size of the
          * contents string.
-         *
+         * 
          * The content address will be invalidated at the next request. So if you
          * want to keep it, please copy it into another address.
          * @param result The result of the request
          * @returns `true` if the request was successfull. If `false` an error occurred.
          */
         request_finish(result: Gio.AsyncResult): [boolean, string, number];
+
         /**
          * Request the fetching of a web resource given the `uri`. This request is
          * asynchronous, thus the result will be returned within the `callback`.
@@ -210,12 +204,8 @@ export namespace GrlNet {
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
          */
-        request_with_headers_async(
-            uri: string,
-            headers: GLib.HashTable<string, string> | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        request_with_headers_async(uri: string, headers: (GLib.HashTable<string, string> | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Sets if cache must be used. Note that this will only work if caching is
          * supporting.  If sets `true`, a new cache will be created. If sets to `false`,
@@ -223,18 +213,21 @@ export namespace GrlNet {
          * @param use_cache if cache must be used or not
          */
         set_cache(use_cache: boolean): void;
+
         /**
          * Sets the new maximum size of cache, in Megabytes. Default value is 10. Using
          * 0 means no cache will be done.
          * @param cache_size size of cache (in Mb)
          */
         set_cache_size(cache_size: number): void;
+
         /**
          * Setting the log level the logger feature is added into
          * the libsoup session.
          * @param log_level the libsoup log level to set [0,3]
          */
         set_log_level(log_level: number): void;
+
         /**
          * Setting this property, the {@link GrlNet.Wc} will queue all the requests and
          * will dispatch them with a pause between them of this value.
@@ -243,10 +236,12 @@ export namespace GrlNet {
         set_throttling(throttling: number): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WcClass = typeof Wc;
+
     /**
      * @gir-type Struct
      */
@@ -254,11 +249,13 @@ export namespace GrlNet {
         static $gtype: GObject.GType<WcPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -19,20 +20,23 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstGL from '@girs/gstgl-1.0';
 
 export namespace GstGLX11 {
+
     /**
      * GstGLX11-1.0
      */
 
+
     namespace GLDisplayX11 {
         // Signal signatures
         interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstGL.GLDisplay.ConstructorProps {
 
-        interface ConstructorProps extends GstGL.GLDisplay.ConstructorProps {}
+        }
     }
 
     /**
@@ -53,47 +57,41 @@ export namespace GstGLX11 {
         $signals: GLDisplayX11.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GLDisplayX11.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string | null): GLDisplayX11;
-        // Conflicted with GstGL.GLDisplay.new
+        static ["new"](name: (string | null)): GLDisplayX11;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with GstGL.GLDisplay.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GLDisplayX11.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GLDisplayX11.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GLDisplayX11.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GLDisplayX11.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GLDisplayX11.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GLDisplayX11.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GLDisplayX11.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GLDisplayX11.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GLDisplayX11.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GLDisplayX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GLDisplayX11.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GLDisplayX11.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type GLDisplayX11Class = typeof GLDisplayX11;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace EvinceDocument {
+
     /**
      * EvinceDocument-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -52,6 +55,7 @@ export namespace EvinceDocument {
         UNKNOWN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -68,6 +72,7 @@ export namespace EvinceDocument {
         UNDERLINE,
         SQUIGGLY,
     }
+
 
     /**
      * @gir-type Enum
@@ -86,6 +91,7 @@ export namespace EvinceDocument {
         TEXT_MARKUP,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -102,6 +108,7 @@ export namespace EvinceDocument {
         YES,
         NOT,
     }
+
 
     /**
      * @gir-type Enum
@@ -120,6 +127,7 @@ export namespace EvinceDocument {
         LZMA,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -136,6 +144,7 @@ export namespace EvinceDocument {
         YES,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -143,19 +152,19 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID: number;
+
         static UNSUPPORTED_CONTENT: number;
+
         static ENCRYPTED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -176,6 +185,7 @@ export namespace EvinceDocument {
         TWO_PAGE_RIGHT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -195,6 +205,7 @@ export namespace EvinceDocument {
         PRESENTATION,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -210,6 +221,7 @@ export namespace EvinceDocument {
         PS,
         PDF,
     }
+
 
     /**
      * @gir-type Enum
@@ -227,6 +239,7 @@ export namespace EvinceDocument {
         RADIO,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -241,6 +254,7 @@ export namespace EvinceDocument {
         COMBO,
         LIST,
     }
+
 
     /**
      * @gir-type Enum
@@ -257,6 +271,7 @@ export namespace EvinceDocument {
         MULTILINE,
         FILE_SELECT,
     }
+
 
     /**
      * @gir-type Enum
@@ -277,6 +292,7 @@ export namespace EvinceDocument {
         LAYERS_STATE,
         RESET_FORM,
     }
+
 
     /**
      * @gir-type Enum
@@ -300,6 +316,7 @@ export namespace EvinceDocument {
         UNKNOWN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -316,6 +333,7 @@ export namespace EvinceDocument {
         LINE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -331,6 +349,7 @@ export namespace EvinceDocument {
         VERTICAL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -345,6 +364,7 @@ export namespace EvinceDocument {
         INWARD,
         OUTWARD,
     }
+
 
     /**
      * @gir-type Enum
@@ -371,42 +391,49 @@ export namespace EvinceDocument {
         FADE,
     }
 
+
     /**
      * The major version number of the EV library
      * (e.g. in version 3.1.4 this is 3).
      */
     const MAJOR_VERSION: number;
+
     /**
      * The minor version number of the EV library
      * (e.g. in version 3.1.4 this is 1).
      */
     const MINOR_VERSION: number;
+
     /**
      * @param mime_type a mime type hint
      * @returns a new {@link EvinceDocument.Document}
      */
     function backends_manager_get_document(mime_type: string): Document;
+
     /**
-     * @param document
+     * @param document 
      */
     function backends_manager_get_document_module_name(document: Document): string;
+
     function document_error_quark(): GLib.Quark;
+
     /**
      * Compresses the file at `uri`.
-     *
+     * 
      * If `type` is {@link EvinceDocument.CompressionType.NONE}, it does nothing and returns `null`.
-     *
+     * 
      * Otherwise, it returns the filename of a
      * temporary file containing the compressed data from the file at `uri`.
-     *
+     * 
      * On error it returns `null` and fills in `error`.
-     *
+     * 
      * It is the caller's responsibility to unlink the temp file after use.
      * @param uri a file URI
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
      */
     function file_compress(uri: string, type: CompressionType): string;
+
     /**
      * Performs a `g_file_copy_attributes()` with {@link Gio.FileCopyFlags.ALL_METADATA}
      * from `from` to `to`.
@@ -416,52 +443,60 @@ export namespace EvinceDocument {
      * @since 3.4
      */
     function file_copy_metadata(from: string, to: string): boolean;
+
     /**
      * @param uri the URI
      * @param fast whether to use fast MIME type detection
      * @returns a newly allocated string with the MIME type of the file at   `uri`, or `null` on error or if the MIME type could not be determined
      */
     function file_get_mime_type(uri: string, fast: boolean): string;
+
     /**
      * @param fd an file descriptor (must be seekable)
      * @returns a newly allocated string with the MIME type of the file referred to   by `fd`, or `null` on error or if the MIME type could not be determined
      */
     function file_get_mime_type_from_fd(fd: number): string;
+
     /**
-     * @param file
+     * @param file 
      */
     function file_is_temp(file: Gio.File): boolean;
+
     /**
      * Uncompresses the file at `uri`.
-     *
+     * 
      * If `type` is {@link EvinceDocument.CompressionType.NONE}, it does nothing and returns `null`.
-     *
+     * 
      * Otherwise, it returns the filename of a
      * temporary file containing the decompressed data from the file at `uri`.
      * On error it returns `null` and fills in `error`.
-     *
+     * 
      * It is the caller's responsibility to unlink the temp file after use.
      * @param uri a file URI
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
      */
     function file_uncompress(uri: string, type: CompressionType): string;
+
     function get_locale_dir(): string;
+
     /**
      * Initializes the evince document library, and binds the evince
      * gettext domain.
-     *
+     * 
      * You must call this before calling any other function in the evince
      * document library.
      * @returns `true` if any backends were found; `false` otherwise
      */
     function init(): boolean;
+
     /**
      * Creates a temp directory in the evince temp directory.
      * @param tmpl a template string; must end in 'XXXXXX'
      * @returns a newly allocated string with the temp directory name, or `null`   on error with `error` filled in
      */
     function mkdtemp(tmpl: string): string;
+
     /**
      * Creates a temp file in the evince temp directory.
      * @param tmpl a template string; must contain 'XXXXXX', but not necessarily as a suffix
@@ -469,39 +504,47 @@ export namespace EvinceDocument {
      * @returns a file descriptor to the newly created temp file name, or %-1   on error with `error` filled in
      */
     function mkstemp(tmpl: string, file_name: string): number;
+
     /**
      * Creates a temp {@link Gio.File} in the evince temp directory. See `ev_mkstemp()` for more information.
      * @param tmpl a template string; must contain 'XXXXXX', but not necessarily as a suffix
      * @returns a newly allocated {@link Gio.File} for the newly created temp file name, or `null`   on error with `error` filled in
      */
     function mkstemp_file(tmpl: string): Gio.File;
+
     /**
-     * @param a
-     * @param b
+     * @param a 
+     * @param b 
      */
     function rect_cmp(a: Rectangle, b: Rectangle): number;
+
     /**
      * Checks whether evince should use the portal.
      * @returns whether evince should use the portal
      * @since 3.30
      */
     function should_use_portal(): boolean;
+
     /**
      * Shuts the evince document library down.
      */
     function shutdown(): void;
+
     /**
-     * @param file
+     * @param file 
      */
     function tmp_file_unlink(file: Gio.File): void;
+
     /**
-     * @param filename
+     * @param filename 
      */
     function tmp_filename_unlink(filename: string): void;
+
     /**
-     * @param uri
+     * @param uri 
      */
     function tmp_uri_unlink(uri: string): void;
+
     /**
      * Performs a `g_file_copy()` from `from` to `to`.
      * @param from the source URI
@@ -509,12 +552,14 @@ export namespace EvinceDocument {
      * @returns `true` on success, or `false` on error with `error` filled in
      */
     function xfer_uri_simple(from: string, to: string): boolean;
+
     /**
-     * @param xmp
-     * @param size
-     * @param info
+     * @param xmp 
+     * @param size 
+     * @param info 
      */
-    function xmp_parse(xmp: string, size: bigint | number, info: DocumentInfo): boolean;
+    function xmp_parse(xmp: string, size: (bigint | number), info: DocumentInfo): boolean;
+
     /**
      * @gir-type Flags
      */
@@ -540,6 +585,7 @@ export namespace EvinceDocument {
         TEXT_MARKUP_TYPE,
         ALL,
     }
+
 
     /**
      * @gir-type Flags
@@ -573,6 +619,7 @@ export namespace EvinceDocument {
         CONTAINS_JS,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -587,6 +634,7 @@ export namespace EvinceDocument {
         NONE,
         NO_CACHE,
     }
+
 
     /**
      * @gir-type Flags
@@ -605,6 +653,7 @@ export namespace EvinceDocument {
         OK_TO_ADD_NOTES,
         FULL,
     }
+
 
     /**
      * @gir-type Flags
@@ -625,6 +674,7 @@ export namespace EvinceDocument {
         DISPLAY_DOC_TITLE,
         DIRECTION_RTL,
     }
+
 
     /**
      * @gir-type Flags
@@ -648,6 +698,7 @@ export namespace EvinceDocument {
         NUMBER_UP,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -664,20 +715,20 @@ export namespace EvinceDocument {
         WHOLE_WORDS_ONLY,
     }
 
+
     namespace Annotation {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::area': (pspec: GObject.ParamSpec) => void;
-            'notify::color': (pspec: GObject.ParamSpec) => void;
-            'notify::contents': (pspec: GObject.ParamSpec) => void;
-            'notify::modified': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::rgba': (pspec: GObject.ParamSpec) => void;
+            "notify::area": (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::contents": (pspec: GObject.ParamSpec) => void;
+            "notify::modified": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::rgba": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             area: Rectangle;
             color: any;
@@ -696,39 +747,44 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<Annotation>;
 
         // Properties
-
         /**
          * The area of the page where the annotation is placed.
-         *
+         * 
          * Since 3.18
          */
         get area(): Rectangle;
         set area(val: Rectangle);
+
         /**
          * The colour of the annotation as a {@link Gdk.Color}.
          * @deprecated since 3.6: Use {@link EvinceDocument.Annotation.rgba} instead.
          */
         get color(): any;
         set color(val: any);
+
         /**
          * @default null
          */
         get contents(): string;
         set contents(val: string);
+
         /**
          * @default null
          */
         get modified(): string;
         set modified(val: string);
+
         /**
          * @default null
          */
         get name(): string;
         set name(val: string);
+
         /**
          * @construct-only
          */
         set page(val: Page);
+
         /**
          * The colour of the annotation as a {@link Gdk.RGBA}.
          * @since 3.6
@@ -746,49 +802,43 @@ export namespace EvinceDocument {
         $signals: Annotation.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Annotation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Annotation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Annotation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Annotation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Annotation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Annotation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Annotation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Annotation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Annotation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Compare `annot` and `other`.
          * @param other another {@link EvinceDocument.Annotation}
          * @returns `true` if `annot` is equal to `other`, `false` otherwise
          */
         equal(other: Annotation): boolean;
+
         get_annotation_type(): AnnotationType;
+
         /**
          * Gets the area of `annot`.
          */
         get_area(): Rectangle;
+
         /**
          * Get the color of `annot`.
          */
         get_color(): Gdk.Color;
+
         /**
          * Get the contents of `annot`. The contents of
          * `annot` is the text that is displayed in the annotation, or an
@@ -796,11 +846,13 @@ export namespace EvinceDocument {
          * @returns a string with the contents of the annotation or `null` if `annot` has no contents.
          */
         get_contents(): string;
+
         /**
          * Get the last modification date of `annot`.
          * @returns A string containing the last modification date.
          */
         get_modified(): string;
+
         /**
          * Get the name of `annot`. The name of the annotation is a string
          * that uniquely indenftifies `annot` amongs all the annotations
@@ -808,27 +860,32 @@ export namespace EvinceDocument {
          * @returns the string with the annotation's name.
          */
         get_name(): string;
+
         /**
          * Get the page where `annot` appears.
          * @returns the {@link EvinceDocument.Page} where `annot` appears
          */
         get_page(): Page;
+
         /**
          * Get the index of the page where `annot` appears. Note that the index
          * is 0 based.
          * @returns the page index.
          */
         get_page_index(): number;
+
         /**
          * Gets the color of `annot`.
          */
         get_rgba(): Gdk.RGBA;
+
         /**
          * Set the area of the annotation to `area`.
          * @param area a {@link EvinceDocument.Rectangle}
          * @returns `true` if the area has been changed, `false` otherwise
          */
         set_area(area: Rectangle): boolean;
+
         /**
          * Set the color of the annotation to `color`. You can monitor
          * changes to the annotation's color by connecting to
@@ -837,14 +894,16 @@ export namespace EvinceDocument {
          * @returns `true`  when the color has been changed, `false` otherwise.
          */
         set_color(color: Gdk.Color): boolean;
+
         /**
          * Set the contents of `annot`. You can monitor
          * changes in the annotation's  contents by connecting to
          * notify::contents signal of `annot`.
-         * @param contents
+         * @param contents 
          * @returns `true` if the contents have been changed, `false` otherwise.
          */
         set_contents(contents: string): boolean;
+
         /**
          * Set the last modification date of `annot` to `modified`. To
          * set the last modification date using a `time_t`, use
@@ -855,6 +914,7 @@ export namespace EvinceDocument {
          * @returns `true` if the last modification date has been updated, `false` otherwise.
          */
         set_modified(modified: string): boolean;
+
         /**
          * Set the last modification date of `annot` to `utime`.  You can
          * monitor changes to the last modification date by connecting to the
@@ -864,6 +924,7 @@ export namespace EvinceDocument {
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
         set_modified_from_time(utime: GLib.Time): boolean;
+
         /**
          * Set the last modification date of `annot` to `utime`.  You can
          * monitor changes to the last modification date by connecting to the
@@ -872,15 +933,17 @@ export namespace EvinceDocument {
          * @param utime a `time_t`
          * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
-        set_modified_from_time_t(utime: bigint | number): boolean;
+        set_modified_from_time_t(utime: (bigint | number)): boolean;
+
         /**
          * Set the name of `annot`.
          * You can monitor changes of the annotation name by connecting
          * to the notify::name signal on `annot`.
-         * @param name
+         * @param name 
          * @returns `true` when the name has been changed, `false` otherwise.
          */
         set_name(name: string): boolean;
+
         /**
          * Set the color of the annotation to `rgba`.
          * @param rgba a {@link Gdk.RGBA}
@@ -889,27 +952,27 @@ export namespace EvinceDocument {
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
 
+
     namespace AnnotationAttachment {
         // Signal signatures
         interface SignalSignatures extends Annotation.SignalSignatures {
-            'notify::attachment': (pspec: GObject.ParamSpec) => void;
-            'notify::area': (pspec: GObject.ParamSpec) => void;
-            'notify::color': (pspec: GObject.ParamSpec) => void;
-            'notify::contents': (pspec: GObject.ParamSpec) => void;
-            'notify::modified': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::can-have-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::has-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::popup-is-open': (pspec: GObject.ParamSpec) => void;
-            'notify::rectangle': (pspec: GObject.ParamSpec) => void;
+            "notify::attachment": (pspec: GObject.ParamSpec) => void;
+            "notify::area": (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::contents": (pspec: GObject.ParamSpec) => void;
+            "notify::modified": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::can-have-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::has-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::popup-is-open": (pspec: GObject.ParamSpec) => void;
+            "notify::rectangle": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
             attachment: Attachment;
         }
@@ -922,7 +985,6 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<AnnotationAttachment>;
 
         // Properties
-
         get attachment(): Attachment;
         set attachment(val: Attachment);
 
@@ -936,148 +998,155 @@ export namespace EvinceDocument {
         $signals: AnnotationAttachment.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AnnotationAttachment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](page: Page, attachment: Attachment): AnnotationAttachment;
+        static ["new"](page: Page, attachment: Attachment): AnnotationAttachment;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AnnotationAttachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AnnotationAttachment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AnnotationAttachment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AnnotationAttachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AnnotationAttachment.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AnnotationAttachment.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof AnnotationAttachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationAttachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns an {@link EvinceDocument.Attachment}
          */
         get_attachment(): Attachment;
+
         /**
-         * @param attachment
+         * @param attachment 
          */
         set_attachment(attachment: Attachment): boolean;
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
-        can_have_popup: boolean | any;
+     can_have_popup: boolean | any;
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+
         /**
          * @default true
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
-        has_popup: boolean | any;
+     has_popup: boolean | any;
+
         /**
          * @default true
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+
         /**
          * @default null
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get label(): string;
         set label(val: string);
+
         /**
          * @default 1
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get opacity(): number;
         set opacity(val: number);
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
+
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
+
         get_label(): string;
+
         get_opacity(): number;
+
         get_popup_is_open(): boolean;
+
         /**
-         * @param ev_rect
+         * @param ev_rect 
          */
         get_rectangle(ev_rect: Rectangle): void;
+
         /**
-         * @param has_popup
+         * @param has_popup 
          */
         set_has_popup(has_popup: boolean): boolean;
+
         /**
-         * @param label
+         * @param label 
          */
         set_label(label: string): boolean;
+
         /**
-         * @param opacity
+         * @param opacity 
          */
         set_opacity(opacity: number): boolean;
+
         /**
-         * @param is_open
+         * @param is_open 
          */
         set_popup_is_open(is_open: boolean): boolean;
+
         /**
-         * @param ev_rect
+         * @param ev_rect 
          */
         set_rectangle(ev_rect: Rectangle): boolean;
     }
 
+
     namespace AnnotationText {
         // Signal signatures
         interface SignalSignatures extends Annotation.SignalSignatures {
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::is-open': (pspec: GObject.ParamSpec) => void;
-            'notify::area': (pspec: GObject.ParamSpec) => void;
-            'notify::color': (pspec: GObject.ParamSpec) => void;
-            'notify::contents': (pspec: GObject.ParamSpec) => void;
-            'notify::modified': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::can-have-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::has-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::popup-is-open': (pspec: GObject.ParamSpec) => void;
-            'notify::rectangle': (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::is-open": (pspec: GObject.ParamSpec) => void;
+            "notify::area": (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::contents": (pspec: GObject.ParamSpec) => void;
+            "notify::modified": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::can-have-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::has-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::popup-is-open": (pspec: GObject.ParamSpec) => void;
+            "notify::rectangle": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
             icon: AnnotationTextIcon;
             is_open: boolean;
@@ -1092,17 +1161,18 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<AnnotationText>;
 
         // Properties
-
         /**
          * @default EvinceDocument.AnnotationTextIcon.NOTE
          */
         get icon(): AnnotationTextIcon;
         set icon(val: AnnotationTextIcon);
+
         /**
          * @default false
          */
         get is_open(): boolean;
         set is_open(val: boolean);
+
         /**
          * @default false
          */
@@ -1119,147 +1189,158 @@ export namespace EvinceDocument {
         $signals: AnnotationText.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AnnotationText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](page: Page): AnnotationText;
+        static ["new"](page: Page): AnnotationText;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AnnotationText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AnnotationText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AnnotationText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AnnotationText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AnnotationText.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AnnotationText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AnnotationText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_icon(): AnnotationTextIcon;
+
         get_is_open(): boolean;
+
         /**
-         * @param icon
+         * @param icon 
          */
         set_icon(icon: AnnotationTextIcon): boolean;
+
         /**
-         * @param is_open
+         * @param is_open 
          */
         set_is_open(is_open: boolean): boolean;
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
-        can_have_popup: boolean | any;
+     can_have_popup: boolean | any;
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+
         /**
          * @default true
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
-        has_popup: boolean | any;
+     has_popup: boolean | any;
+
         /**
          * @default true
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+
         /**
          * @default null
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get label(): string;
         set label(val: string);
+
         /**
          * @default 1
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get opacity(): number;
         set opacity(val: number);
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
+
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
+
         get_label(): string;
+
         get_opacity(): number;
+
         get_popup_is_open(): boolean;
+
         /**
-         * @param ev_rect
+         * @param ev_rect 
          */
         get_rectangle(ev_rect: Rectangle): void;
+
         /**
-         * @param has_popup
+         * @param has_popup 
          */
         set_has_popup(has_popup: boolean): boolean;
+
         /**
-         * @param label
+         * @param label 
          */
         set_label(label: string): boolean;
+
         /**
-         * @param opacity
+         * @param opacity 
          */
         set_opacity(opacity: number): boolean;
+
         /**
-         * @param is_open
+         * @param is_open 
          */
         set_popup_is_open(is_open: boolean): boolean;
+
         /**
-         * @param ev_rect
+         * @param ev_rect 
          */
         set_rectangle(ev_rect: Rectangle): boolean;
     }
 
+
     namespace AnnotationTextMarkup {
         // Signal signatures
         interface SignalSignatures extends Annotation.SignalSignatures {
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::area': (pspec: GObject.ParamSpec) => void;
-            'notify::color': (pspec: GObject.ParamSpec) => void;
-            'notify::contents': (pspec: GObject.ParamSpec) => void;
-            'notify::modified': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::can-have-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::has-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::popup-is-open': (pspec: GObject.ParamSpec) => void;
-            'notify::rectangle': (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::area": (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::contents": (pspec: GObject.ParamSpec) => void;
+            "notify::modified": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::can-have-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::has-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::popup-is-open": (pspec: GObject.ParamSpec) => void;
+            "notify::rectangle": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
             type: AnnotationTextMarkupType;
         }
@@ -1272,7 +1353,6 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<AnnotationTextMarkup>;
 
         // Properties
-
         /**
          * @default EvinceDocument.AnnotationTextMarkupType.HIGHLIGHT
          */
@@ -1289,7 +1369,6 @@ export namespace EvinceDocument {
         $signals: AnnotationTextMarkup.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AnnotationTextMarkup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -1303,133 +1382,141 @@ export namespace EvinceDocument {
         static underline_new(page: Page): AnnotationTextMarkup;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AnnotationTextMarkup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AnnotationTextMarkup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AnnotationTextMarkup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AnnotationTextMarkup.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof AnnotationTextMarkup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AnnotationTextMarkup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_markup_type(): AnnotationTextMarkupType;
+
         /**
-         * @param markup_type
+         * @param markup_type 
          */
         set_markup_type(markup_type: AnnotationTextMarkupType): boolean;
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
-        can_have_popup: boolean | any;
+     can_have_popup: boolean | any;
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+
         /**
          * @default true
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         // This accessor conflicts with a field or function name in a parent class or interface.
-        has_popup: boolean | any;
+     has_popup: boolean | any;
+
         /**
          * @default true
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+
         /**
          * @default null
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get label(): string;
         set label(val: string);
+
         /**
          * @default 1
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get opacity(): number;
         set opacity(val: number);
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+
         /**
          * @default false
-         * @category Inherited from EvinceDocument.AnnotationMarkup
+          * @category Inherited from EvinceDocument.AnnotationMarkup
          */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
+
         /** @category Inherited from EvinceDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
+
         get_label(): string;
+
         get_opacity(): number;
+
         get_popup_is_open(): boolean;
+
         /**
-         * @param ev_rect
+         * @param ev_rect 
          */
         get_rectangle(ev_rect: Rectangle): void;
+
         /**
-         * @param has_popup
+         * @param has_popup 
          */
         set_has_popup(has_popup: boolean): boolean;
+
         /**
-         * @param label
+         * @param label 
          */
         set_label(label: string): boolean;
+
         /**
-         * @param opacity
+         * @param opacity 
          */
         set_opacity(opacity: number): boolean;
+
         /**
-         * @param is_open
+         * @param is_open 
          */
         set_popup_is_open(is_open: boolean): boolean;
+
         /**
-         * @param ev_rect
+         * @param ev_rect 
          */
         set_rectangle(ev_rect: Rectangle): boolean;
     }
 
+
     namespace Attachment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::ctime': (pspec: GObject.ParamSpec) => void;
-            'notify::data': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::mtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::ctime": (pspec: GObject.ParamSpec) => void;
+            "notify::data": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::mtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ctime: bigint | number;
+            ctime: (bigint | number);
             data: any;
             description: string;
-            mtime: bigint | number;
+            mtime: (bigint | number);
             name: string;
             size: number;
         }
@@ -1442,31 +1529,35 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<Attachment>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 0
          */
-        set ctime(val: bigint | number);
+        set ctime(val: (bigint | number));
+
         /**
          * @construct-only
          */
         set data(val: any);
+
         /**
          * @construct-only
          * @default null
          */
         set description(val: string);
+
         /**
          * @construct-only
          * @default 0
          */
-        set mtime(val: bigint | number);
+        set mtime(val: (bigint | number));
+
         /**
          * @construct-only
          * @default null
          */
         set name(val: string);
+
         /**
          * @construct-only
          * @default 0
@@ -1483,75 +1574,62 @@ export namespace EvinceDocument {
         $signals: Attachment.SignalSignatures;
 
         // Fields
-
         base_instance: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Attachment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            name: string,
-            description: string,
-            mtime: GLib.Time,
-            ctime: GLib.Time,
-            size: bigint | number,
-            data: any | null,
-        ): Attachment;
+        static ["new"](name: string, description: string, mtime: GLib.Time, ctime: GLib.Time, size: (bigint | number), data: (any | null)): Attachment;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Attachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Attachment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Attachment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Attachment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Attachment.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Attachment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         get_creation_date(): GLib.Time;
+
         get_description(): string;
+
         get_mime_type(): string;
+
         get_modification_date(): GLib.Time;
+
         get_name(): string;
+
         /**
-         * @param screen
-         * @param timestamp
+         * @param screen 
+         * @param timestamp 
          */
         open(screen: Gdk.Screen, timestamp: number): boolean;
+
         /**
-         * @param file
+         * @param file 
          */
         save(file: Gio.File): boolean;
     }
 
+
     namespace Document {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::modified': (pspec: GObject.ParamSpec) => void;
+            "notify::modified": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             modified: boolean;
         }
@@ -1564,7 +1642,6 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<Document>;
 
         // Properties
-
         /**
          * @default false
          */
@@ -1581,54 +1658,47 @@ export namespace EvinceDocument {
         $signals: Document.SignalSignatures;
 
         // Fields
-
         base: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Document.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Document.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Document.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Document.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Document.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static doc_mutex_lock(): void;
+
         static doc_mutex_trylock(): boolean;
+
         static doc_mutex_unlock(): void;
+
         /**
          * Adds some file filters to `chooser`.
-         *
+         * 
          * Always add a "All documents" format.
-         *
+         * 
          * If `document` is not `null`, adds a {@link Gtk.FileFilter} for `document`'s MIME type.
-         *
+         * 
          * If `document` is `null`, adds a {@link Gtk.FileFilter} for each document type that evince
          * can handle.
          * @param chooser a {@link Gtk.FileChooser}
          * @param document a {@link EvinceDocument.Document}, or `null`
          */
         static factory_add_filters(chooser: Gtk.Widget, document: Document): void;
+
         /**
          * Creates a {@link EvinceDocument.Document} for the document at `uri`; or, if no backend handling
          * the document's type is found, or an error occurred on opening the document,
@@ -1638,6 +1708,7 @@ export namespace EvinceDocument {
          * @param uri an URI
          */
         static factory_get_document(uri: string): Document;
+
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document from `fd` using the backend
          * for loading documents of type `mime_type`; or, if the backend does not support
@@ -1645,10 +1716,10 @@ export namespace EvinceDocument {
          * returns `null` and fills in `error`.
          * If the document is encrypted, it is returned but also `error` is set to
          * {@link EvinceDocument.DocumentError.ENCRYPTED}.
-         *
+         * 
          * If the mime type cannot be inferred from the file descriptor, and `mime_type` is `null`,
          * an error is returned.
-         *
+         * 
          * Note that this function takes ownership of `fd`; you must not ever
          * operate on it again. It will be closed automatically if the document
          * is destroyed, or if this function returns `null`.
@@ -1657,12 +1728,8 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static factory_get_document_for_fd(
-            fd: number,
-            mime_type: string,
-            flags: DocumentLoadFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Document;
+        static factory_get_document_for_fd(fd: number, mime_type: string, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): Document;
+
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document at `file`; or, if no
          * backend handling the document's type is found, or an error occurred on
@@ -1673,18 +1740,15 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static factory_get_document_for_gfile(
-            file: Gio.File,
-            flags: DocumentLoadFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Document;
+        static factory_get_document_for_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): Document;
+
         /**
          * Synchronously creates a {@link EvinceDocument.Document} for the document from `stream`; or, if no
          * backend handling the document's type is found, or an error occurred
          * on opening the document, returns `null` and fills in `error`.
          * If the document is encrypted, it is returned but also `error` is set to
          * {@link EvinceDocument.DocumentError.ENCRYPTED}.
-         *
+         * 
          * If `mime_type` is non-`null`, this overrides any type inferred from the stream.
          * If the mime type cannot be inferred from the stream, and `mime_type` is `null`,
          * an error is returned.
@@ -1693,12 +1757,8 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static factory_get_document_for_stream(
-            stream: Gio.InputStream,
-            mime_type: string | null,
-            flags: DocumentLoadFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Document;
+        static factory_get_document_for_stream(stream: Gio.InputStream, mime_type: (string | null), flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): Document;
+
         /**
          * Creates a {@link EvinceDocument.Document} for the document at `uri`; or, if no backend handling
          * the document's type is found, or an error occurred on opening the document,
@@ -1709,50 +1769,57 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          */
         static factory_get_document_full(uri: string, flags: DocumentLoadFlags): Document;
+
         static fc_mutex_lock(): void;
+
         static fc_mutex_trylock(): boolean;
+
         static fc_mutex_unlock(): void;
+
         /**
          * @param utime a {@link GLib.Time}
          */
         static misc_format_date(utime: GLib.Time): string;
+
         /**
          * Determine the preferred date and time representation for the current locale
          * for `dt`.
          * @param dt a {@link GLib.DateTime}
          */
         static misc_format_datetime(dt: GLib.DateTime): string;
+
         /**
          * @param width the desired width
          * @param height the desired height
          * @param inverted_colors whether to invert colors
          */
         static misc_get_loading_thumbnail(width: number, height: number, inverted_colors: boolean): GdkPixbuf.Pixbuf;
+
         /**
-         * @param page_width
-         * @param page_height
-         * @param border
+         * @param page_width 
+         * @param page_height 
+         * @param border 
          */
         static misc_get_page_border_size(page_width: number, page_height: number, border: Gtk.Border): void;
+
         /**
          * Get the pointer's x and y position relative to `widget`.
          * @param widget a {@link Gtk.Widget}
          */
         static misc_get_pointer_position(widget: Gtk.Widget): [number, number];
+
         /**
          * @param screen a {@link Gdk.Screen}
          */
         static misc_get_screen_dpi(screen: Gdk.Screen): number;
+
         /**
          * @param width the desired width
          * @param height the desired height
          * @param source_pixbuf a {@link GdkPixbuf.Pixbuf}
          */
-        static misc_get_thumbnail_frame(
-            width: number,
-            height: number,
-            source_pixbuf: GdkPixbuf.Pixbuf,
-        ): GdkPixbuf.Pixbuf;
+        static misc_get_thumbnail_frame(width: number, height: number, source_pixbuf: GdkPixbuf.Pixbuf): GdkPixbuf.Pixbuf;
+
         /**
          * Returns sensible guess for DPI of monitor on which given widget has been
          * realized. If HiDPI display, use 192, else 96.
@@ -1760,136 +1827,126 @@ export namespace EvinceDocument {
          * @param widget a {@link Gtk.Widget}
          */
         static misc_get_widget_dpi(widget: Gtk.Widget): number;
+
         /**
-         * @param pixbuf
+         * @param pixbuf 
          */
         static misc_invert_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
+
         /**
-         * @param surface
+         * @param surface 
          */
         static misc_invert_surface(surface: cairo.Surface): void;
+
         /**
          * @param cr a #cairo_tEvannotation `widget` a {@link Gtk.Widget}
-         * @param widget
+         * @param widget 
          * @param area a {@link Gdk.Rectangle}
          * @param border a {@link Gtk.Border}
          * @param highlight whether to highlight the text
          * @param inverted_colors whether to invert colors
          */
-        static misc_paint_one_page(
-            cr: cairo.Context,
-            widget: Gtk.Widget,
-            area: Gdk.Rectangle,
-            border: Gtk.Border,
-            highlight: boolean,
-            inverted_colors: boolean,
-        ): void;
+        static misc_paint_one_page(cr: cairo.Context, widget: Gtk.Widget, area: Gdk.Rectangle, border: Gtk.Border, highlight: boolean, inverted_colors: boolean): void;
+
         /**
          * @param surface a {@link cairo.Surface}
          */
         static misc_pixbuf_from_surface(surface: cairo.Surface): GdkPixbuf.Pixbuf;
+
         /**
          * @param widget a {@link Gtk.Widget} to use for style information
          * @param width the desired width
          * @param height the desired height
          * @param inverted_colors whether to invert colors
          */
-        static misc_render_loading_thumbnail(
-            widget: Gtk.Widget,
-            width: number,
-            height: number,
-            inverted_colors: boolean,
-        ): GdkPixbuf.Pixbuf;
+        static misc_render_loading_thumbnail(widget: Gtk.Widget, width: number, height: number, inverted_colors: boolean): GdkPixbuf.Pixbuf;
+
         /**
          * @param widget a {@link Gtk.Widget} to use for style information
          * @param width the desired width
          * @param height the desired height
          * @param inverted_colors whether to invert colors
          */
-        static misc_render_loading_thumbnail_surface(
-            widget: Gtk.Widget,
-            width: number,
-            height: number,
-            inverted_colors: boolean,
-        ): cairo.Surface;
+        static misc_render_loading_thumbnail_surface(widget: Gtk.Widget, width: number, height: number, inverted_colors: boolean): cairo.Surface;
+
         /**
          * @param widget a {@link Gtk.Widget} to use for style information
          * @param source_surface a {@link cairo.Surface}
          * @param width the desired width
          * @param height the desired height
          */
-        static misc_render_thumbnail_surface_with_frame(
-            widget: Gtk.Widget,
-            source_surface: cairo.Surface,
-            width: number,
-            height: number,
-        ): cairo.Surface;
+        static misc_render_thumbnail_surface_with_frame(widget: Gtk.Widget, source_surface: cairo.Surface, width: number, height: number): cairo.Surface;
+
         /**
          * @param widget a {@link Gtk.Widget} to use for style information
          * @param source_pixbuf a {@link GdkPixbuf.Pixbuf}
          */
         static misc_render_thumbnail_with_frame(widget: Gtk.Widget, source_pixbuf: GdkPixbuf.Pixbuf): GdkPixbuf.Pixbuf;
+
         /**
-         * @param pixbuf
+         * @param pixbuf 
          */
         static misc_surface_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): cairo.Surface;
+
         /**
-         * @param surface
-         * @param dest_width
-         * @param dest_height
-         * @param dest_rotation
+         * @param surface 
+         * @param dest_width 
+         * @param dest_height 
+         * @param dest_rotation 
          */
-        static misc_surface_rotate_and_scale(
-            surface: cairo.Surface,
-            dest_width: number,
-            dest_height: number,
-            dest_rotation: number,
-        ): cairo.Surface;
+        static misc_surface_rotate_and_scale(surface: cairo.Surface, dest_width: number, dest_height: number, dest_rotation: number): cairo.Surface;
 
         // Virtual methods
-
         /**
-         * @param info
+         * @param info 
          * @virtual
          */
         vfunc_get_backend_info(info: DocumentBackendInfo): boolean;
+
         /**
          * Returns the {@link EvinceDocument.DocumentInfo} for the document.
          * @virtual
          */
         vfunc_get_info(): DocumentInfo;
+
         /**
          * @virtual
          */
         vfunc_get_n_pages(): number;
+
         /**
          * @param index index of page
          * @virtual
          */
         vfunc_get_page(index: number): Page;
+
         /**
-         * @param page
+         * @param page 
          * @virtual
          */
         vfunc_get_page_label(page: Page): string;
+
         /**
          * @param page_index index of page
          * @virtual
          */
         vfunc_get_page_size(page_index: Page): [number, number];
+
         /**
          * @param rc an {@link EvinceDocument.RenderContext}
          * @virtual
          */
         vfunc_get_thumbnail(rc: RenderContext): GdkPixbuf.Pixbuf;
+
         /**
          * @param rc an {@link EvinceDocument.RenderContext}
          * @virtual
          */
         vfunc_get_thumbnail_surface(rc: RenderContext): cairo.Surface;
+
         /**
          * Loads `document` from `uri`.
-         *
+         * 
          * On failure, `false` is returned and `error` is filled in.
          * If the document is encrypted, EV_DEFINE_ERROR_ENCRYPTED is returned.
          * If the backend cannot load the specific document, EV_DOCUMENT_ERROR_INVALID
@@ -1901,21 +1958,23 @@ export namespace EvinceDocument {
          * @virtual
          */
         vfunc_load(uri: string): boolean;
+
         /**
          * Synchronously loads the document from `fd`, which must refer to
          * a regular file.
-         *
+         * 
          * Note that this function takes ownership of `fd`; you must not ever
          * operate on it again. It will be closed automatically if the document
          * is destroyed, or if this function returns `null`.
-         *
+         * 
          * See `ev_document_load()` for more information.
          * @param fd a file descriptor
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
+        vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Synchronously loads the document from `file`.
          * See `ev_document_load()` for more information.
@@ -1924,7 +1983,8 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
+        vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Synchronously loads the document from `stream`.
          * See `ev_document_load()` for more information.
@@ -1933,92 +1993,110 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @virtual
          */
-        vfunc_load_stream(
-            stream: Gio.InputStream,
-            flags: DocumentLoadFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        vfunc_load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param rc
+         * @param rc 
          * @virtual
          */
         vfunc_render(rc: RenderContext): cairo.Surface;
+
         /**
          * Saves `document` to `uri`.
          * @param uri the target URI
          * @virtual
          */
         vfunc_save(uri: string): boolean;
+
         /**
          * @virtual
          */
         vfunc_support_synctex(): boolean;
 
         // Methods
-
         check_dimensions(): boolean;
+
         /**
-         * @param page_label
-         * @param page_index
+         * @param page_label 
+         * @param page_index 
          */
         find_page_by_label(page_label: string, page_index: number): boolean;
+
         /**
-         * @param info
+         * @param info 
          */
         get_backend_info(info: DocumentBackendInfo): boolean;
+
         /**
          * Returns the {@link EvinceDocument.DocumentInfo} for the document.
          * @returns a {@link EvinceDocument.DocumentInfo}
          */
         get_info(): DocumentInfo;
+
         get_max_label_len(): number;
+
         /**
-         * @param width
-         * @param height
+         * @param width 
+         * @param height 
          */
         get_max_page_size(width: number, height: number): void;
+
         /**
-         * @param width
-         * @param height
+         * @param width 
+         * @param height 
          */
         get_min_page_size(width: number, height: number): void;
+
         /**
          * @returns `true` iff the document has been modified. You can monitor changes to the modification state by connecting to the notify::modified signal on `document`.
          */
         get_modified(): boolean;
+
         get_n_pages(): number;
+
         /**
          * @param index index of page
          * @returns Newly created {@link EvinceDocument.Page} for the given index.
          */
         get_page(index: number): Page;
+
         /**
-         * @param page_index
+         * @param page_index 
          */
         get_page_label(page_index: number): string;
+
         /**
          * @param page_index index of page
          */
         get_page_size(page_index: number): [number, number];
+
         get_size(): number;
+
         /**
          * @param rc an {@link EvinceDocument.RenderContext}
          * @returns a {@link GdkPixbuf.Pixbuf}
          */
         get_thumbnail(rc: RenderContext): GdkPixbuf.Pixbuf;
+
         /**
          * @param rc an {@link EvinceDocument.RenderContext}
          * @returns a {@link cairo.Surface}
          */
         get_thumbnail_surface(rc: RenderContext): cairo.Surface;
+
         get_title(): string;
+
         get_uri(): string;
+
         has_synctex(): boolean;
+
         has_text_page_labels(): boolean;
+
         is_page_size_uniform(): boolean;
+
         /**
          * Loads `document` from `uri`.
-         *
+         * 
          * On failure, `false` is returned and `error` is filled in.
          * If the document is encrypted, EV_DEFINE_ERROR_ENCRYPTED is returned.
          * If the backend cannot load the specific document, EV_DOCUMENT_ERROR_INVALID
@@ -2030,24 +2108,26 @@ export namespace EvinceDocument {
          * @returns `true` on success, or `false` on failure.
          */
         load(uri: string): boolean;
+
         /**
          * Synchronously loads the document from `fd`, which must refer to
          * a regular file.
-         *
+         * 
          * Note that this function takes ownership of `fd`; you must not ever
          * operate on it again. It will be closed automatically if the document
          * is destroyed, or if this function returns `null`.
-         *
+         * 
          * See `ev_document_load()` for more information.
          * @param fd a file descriptor
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
+        load_fd(fd: number, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Loads `document` from `uri`.
-         *
+         * 
          * On failure, `false` is returned and `error` is filled in.
          * If the document is encrypted, EV_DEFINE_ERROR_ENCRYPTED is returned.
          * If the backend cannot load the specific document, EV_DOCUMENT_ERROR_INVALID
@@ -2059,6 +2139,7 @@ export namespace EvinceDocument {
          * @returns `true` on success, or `false` on failure.
          */
         load_full(uri: string, flags: DocumentLoadFlags): boolean;
+
         /**
          * Synchronously loads the document from `file`.
          * See `ev_document_load()` for more information.
@@ -2067,7 +2148,8 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
+        load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Synchronously loads the document from `stream`.
          * See `ev_document_load()` for more information.
@@ -2076,22 +2158,26 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          */
-        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
+        load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param rc
+         * @param rc 
          */
         render(rc: RenderContext): cairo.Surface;
+
         /**
          * Saves `document` to `uri`.
          * @param uri the target URI
          * @returns `true` on success, or `false` on error with `error` filled in
          */
         save(uri: string): boolean;
+
         /**
          * Set the `document` modification state as `modified`.
          * @param modified a boolean value to set the document as modified or not.
          */
         set_modified(modified: boolean): void;
+
         /**
          * Peforms a Synctex backward search to obtain the TeX input file, line and
          * (possibly) column  corresponding to the  position (`x`,`y`) (in 72dpi
@@ -2104,13 +2190,16 @@ export namespace EvinceDocument {
         synctex_backward_search(page_index: number, x: number, y: number): SourceLink;
     }
 
+
     namespace FormField {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2129,49 +2218,47 @@ export namespace EvinceDocument {
         $signals: FormField.SignalSignatures;
 
         // Fields
-
         id: number;
+
         is_read_only: boolean;
+
         font_size: number;
+
         activation_link: Link;
+
         page: Page;
+
         changed: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<FormField.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FormField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FormField.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FormField.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FormField.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FormField.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FormField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FormField.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FormFieldButton {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {}
+        interface SignalSignatures extends FormField.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends FormField.ConstructorProps {
 
-        interface ConstructorProps extends FormField.ConstructorProps {}
+        }
     }
 
     /**
@@ -2190,47 +2277,41 @@ export namespace EvinceDocument {
         $signals: FormFieldButton.SignalSignatures;
 
         // Fields
-
         type: FormFieldButtonType;
+
         state: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<FormFieldButton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: number, type: FormFieldButtonType): FormFieldButton;
+        static ["new"](id: number, type: FormFieldButtonType): FormFieldButton;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FormFieldButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FormFieldButton.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FormFieldButton.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FormFieldButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FormFieldButton.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FormFieldButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FormFieldButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FormFieldChoice {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {}
+        interface SignalSignatures extends FormField.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends FormField.ConstructorProps {
 
-        interface ConstructorProps extends FormField.ConstructorProps {}
+        }
     }
 
     /**
@@ -2249,52 +2330,51 @@ export namespace EvinceDocument {
         $signals: FormFieldChoice.SignalSignatures;
 
         // Fields
-
         type: FormFieldChoiceType;
+
         multi_select: boolean;
+
         is_editable: boolean;
+
         do_spell_check: boolean;
+
         commit_on_sel_change: boolean;
+
         selected_items: any[];
+
         text: string;
 
         // Constructors
-
         constructor(properties?: Partial<FormFieldChoice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: number, type: FormFieldChoiceType): FormFieldChoice;
+        static ["new"](id: number, type: FormFieldChoiceType): FormFieldChoice;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FormFieldChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FormFieldChoice.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FormFieldChoice.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FormFieldChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FormFieldChoice.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FormFieldChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FormFieldChoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FormFieldSignature {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {}
+        interface SignalSignatures extends FormField.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends FormField.ConstructorProps {
 
-        interface ConstructorProps extends FormField.ConstructorProps {}
+        }
     }
 
     /**
@@ -2313,42 +2393,36 @@ export namespace EvinceDocument {
         $signals: FormFieldSignature.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FormFieldSignature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: number): FormFieldSignature;
+        static ["new"](id: number): FormFieldSignature;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FormFieldSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FormFieldSignature.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FormFieldSignature.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FormFieldSignature.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FormFieldSignature.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FormFieldSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FormFieldSignature.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace FormFieldText {
         // Signal signatures
-        interface SignalSignatures extends FormField.SignalSignatures {}
+        interface SignalSignatures extends FormField.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends FormField.ConstructorProps {
 
-        interface ConstructorProps extends FormField.ConstructorProps {}
+        }
     }
 
     /**
@@ -2367,53 +2441,53 @@ export namespace EvinceDocument {
         $signals: FormFieldText.SignalSignatures;
 
         // Fields
-
         type: FormFieldTextType;
+
         do_spell_check: boolean;
+
         do_scroll: boolean;
+
         comb: boolean;
+
         is_rich_text: boolean;
+
         is_password: boolean;
+
         max_len: number;
+
         text: string;
 
         // Constructors
-
         constructor(properties?: Partial<FormFieldText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: number, type: FormFieldTextType): FormFieldText;
+        static ["new"](id: number, type: FormFieldTextType): FormFieldText;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FormFieldText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FormFieldText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FormFieldText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FormFieldText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FormFieldText.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FormFieldText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FormFieldText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormFieldText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2432,62 +2506,58 @@ export namespace EvinceDocument {
         $signals: Image.SignalSignatures;
 
         // Fields
-
         base_instance: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](page: number, img_id: number): Image;
+        static ["new"](page: number, img_id: number): Image;
 
         static new_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Image;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_id(): number;
+
         get_page(): number;
+
         /**
          * @returns a {@link GdkPixbuf.Pixbuf}
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
+
         get_tmp_uri(): string;
+
         /**
-         * @param pixbuf
+         * @param pixbuf 
          */
         save_tmp(pixbuf: GdkPixbuf.Pixbuf): string;
     }
 
+
     namespace Layer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2506,53 +2576,43 @@ export namespace EvinceDocument {
         $signals: Layer.SignalSignatures;
 
         // Fields
-
         base_instance: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](is_parent: boolean, rb_group: number): Layer;
+        static ["new"](is_parent: boolean, rb_group: number): Layer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_rb_group(): number;
+
         is_parent(): boolean;
     }
+
 
     namespace Link {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::action': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
+            "notify::action": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             action: LinkAction;
             title: string;
@@ -2566,11 +2626,11 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<Link>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get action(): LinkAction;
+
         /**
          * @construct-only
          * @default null
@@ -2587,61 +2647,52 @@ export namespace EvinceDocument {
         $signals: Link.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Link.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string, action: LinkAction): Link;
+        static ["new"](title: string, action: LinkAction): Link;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Link.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Link.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Link.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Link.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Link.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Link.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns an {@link EvinceDocument.LinkAction}
          */
         get_action(): LinkAction;
+
         get_title(): string;
     }
+
 
     namespace LinkAction {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dest': (pspec: GObject.ParamSpec) => void;
-            'notify::exclude-reset-fields': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-list': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::params': (pspec: GObject.ParamSpec) => void;
-            'notify::reset-fields': (pspec: GObject.ParamSpec) => void;
-            'notify::show-list': (pspec: GObject.ParamSpec) => void;
-            'notify::toggle-list': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            "notify::dest": (pspec: GObject.ParamSpec) => void;
+            "notify::exclude-reset-fields": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-list": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::params": (pspec: GObject.ParamSpec) => void;
+            "notify::reset-fields": (pspec: GObject.ParamSpec) => void;
+            "notify::show-list": (pspec: GObject.ParamSpec) => void;
+            "notify::toggle-list": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dest: LinkDest;
             exclude_reset_fields: boolean;
@@ -2669,73 +2720,87 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<LinkAction>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get dest(): LinkDest;
+
         /**
          * @construct-only
          * @default false
          */
         get exclude_reset_fields(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get excludeResetFields(): boolean;
+
         /**
          * @construct-only
          * @default null
          */
         get filename(): string;
+
         /**
          * @construct-only
          */
         get hide_list(): any;
+
         /**
          * @construct-only
          */
         get hideList(): any;
+
         /**
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get params(): string;
+
         /**
          * @construct-only
          */
         get reset_fields(): any;
+
         /**
          * @construct-only
          */
         get resetFields(): any;
+
         /**
          * @construct-only
          */
         get show_list(): any;
+
         /**
          * @construct-only
          */
         get showList(): any;
+
         /**
          * @construct-only
          */
         get toggle_list(): any;
+
         /**
          * @construct-only
          */
         get toggleList(): any;
+
         /**
          * @construct-only
          * @default EvinceDocument.LinkActionType.GOTO_DEST
          */
         get type(): LinkActionType;
+
         /**
          * @construct-only
          * @default null
@@ -2752,7 +2817,6 @@ export namespace EvinceDocument {
         $signals: LinkAction.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LinkAction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -2772,82 +2836,84 @@ export namespace EvinceDocument {
         static new_reset_form(fields: string[], exclude_fields: boolean): LinkAction;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LinkAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LinkAction.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LinkAction.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LinkAction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LinkAction.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LinkAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LinkAction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Checks whether `a` and `b` are equal.
          * @param b a {@link EvinceDocument.LinkAction}
          * @returns `true` iff `a` and `b` are equal
          */
         equal(b: LinkAction): boolean;
+
         get_action_type(): LinkActionType;
+
         /**
          * @returns an {@link EvinceDocument.LinkDest}
          */
         get_dest(): LinkDest;
+
         /**
          * @returns whether to exclude reset fields when resetting form
          */
         get_exclude_reset_fields(): boolean;
+
         get_filename(): string;
+
         /**
          * @returns a list of {@link EvinceDocument.Layer} objects
          */
         get_hide_list(): Layer[];
+
         get_name(): string;
+
         get_params(): string;
+
         /**
          * @returns a list of fields to reset
          */
         get_reset_fields(): string[];
+
         /**
          * @returns a list of {@link EvinceDocument.Layer} objects
          */
         get_show_list(): Layer[];
+
         /**
          * @returns a list of {@link EvinceDocument.Layer} objects
          */
         get_toggle_list(): Layer[];
+
         get_uri(): string;
     }
+
 
     namespace LinkDest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::change': (pspec: GObject.ParamSpec) => void;
-            'notify::left': (pspec: GObject.ParamSpec) => void;
-            'notify::named': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::page-label': (pspec: GObject.ParamSpec) => void;
-            'notify::right': (pspec: GObject.ParamSpec) => void;
-            'notify::top': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom': (pspec: GObject.ParamSpec) => void;
+            "notify::bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::change": (pspec: GObject.ParamSpec) => void;
+            "notify::left": (pspec: GObject.ParamSpec) => void;
+            "notify::named": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::page-label": (pspec: GObject.ParamSpec) => void;
+            "notify::right": (pspec: GObject.ParamSpec) => void;
+            "notify::top": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             bottom: number;
             change: number;
@@ -2870,57 +2936,66 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<LinkDest>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 0
          */
         get bottom(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get change(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get left(): number;
+
         /**
          * @construct-only
          * @default null
          */
         get named(): string;
+
         /**
          * @construct-only
          * @default 0
          */
         get page(): number;
+
         /**
          * @construct-only
          * @default null
          */
         get page_label(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get pageLabel(): string;
+
         /**
          * @construct-only
          * @default 0
          */
         get right(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get top(): number;
+
         /**
          * @construct-only
          * @default EvinceDocument.LinkDestType.UNKNOWN
          */
         get type(): LinkDestType;
+
         /**
          * @construct-only
          * @default 0
@@ -2937,7 +3012,6 @@ export namespace EvinceDocument {
         $signals: LinkDest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LinkDest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -2956,72 +3030,67 @@ export namespace EvinceDocument {
 
         static new_page_label(page_label: string): LinkDest;
 
-        static new_xyz(
-            page: number,
-            left: number,
-            top: number,
-            zoom: number,
-            change_left: boolean,
-            change_top: boolean,
-            change_zoom: boolean,
-        ): LinkDest;
+        static new_xyz(page: number, left: number, top: number, zoom: number, change_left: boolean, change_top: boolean, change_zoom: boolean): LinkDest;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LinkDest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LinkDest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LinkDest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LinkDest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LinkDest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LinkDest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LinkDest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LinkDest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Checks whether `a` and `b` are equal.
          * @param b a {@link EvinceDocument.LinkDest}
          * @returns `true` iff `a` and `b` are equal
          */
         equal(b: LinkDest): boolean;
+
         get_bottom(): number;
+
         get_dest_type(): LinkDestType;
+
         /**
-         * @param change_left
+         * @param change_left 
          */
         get_left(change_left: boolean): number;
+
         get_named_dest(): string;
+
         get_page(): number;
+
         get_page_label(): string;
+
         get_right(): number;
+
         /**
-         * @param change_top
+         * @param change_top 
          */
         get_top(change_top: boolean): number;
+
         /**
-         * @param change_zoom
+         * @param change_zoom 
          */
         get_zoom(change_zoom: boolean): number;
     }
 
+
     namespace Media {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3040,11 +3109,9 @@ export namespace EvinceDocument {
         $signals: Media.SignalSignatures;
 
         // Fields
-
         base_instance: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -3052,44 +3119,41 @@ export namespace EvinceDocument {
         static new_for_uri(page: Page, uri: string): Media;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_page_index(): number;
+
         get_show_controls(): boolean;
+
         get_uri(): string;
+
         /**
-         * @param show_controls
+         * @param show_controls 
          */
         set_show_controls(show_controls: boolean): void;
     }
 
+
     namespace Page {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3108,49 +3172,45 @@ export namespace EvinceDocument {
         $signals: Page.SignalSignatures;
 
         // Fields
-
         base_instance: GObject.Object;
+
         index: number;
+
         backend_page: BackendPage;
+
         backend_destroy_func: BackendPageDestroyFunc;
 
         // Constructors
-
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](index: number): Page;
+        static ["new"](index: number): Page;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Page.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Page.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Page.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace RenderContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3169,109 +3229,98 @@ export namespace EvinceDocument {
         $signals: RenderContext.SignalSignatures;
 
         // Fields
-
         page: Page;
+
         rotation: number;
+
         scale: number;
+
         target_width: number;
+
         target_height: number;
 
         // Constructors
-
         constructor(properties?: Partial<RenderContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](page: Page, rotation: number, scale: number): RenderContext;
+        static ["new"](page: Page, rotation: number, scale: number): RenderContext;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RenderContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RenderContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RenderContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RenderContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RenderContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RenderContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RenderContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RenderContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param width_points 
+         * @param height_points 
+         * @param scaled_width 
+         * @param scaled_height 
+         */
+        compute_scaled_size(width_points: number, height_points: number, scaled_width: number, scaled_height: number): void;
 
         /**
-         * @param width_points
-         * @param height_points
-         * @param scaled_width
-         * @param scaled_height
-         */
-        compute_scaled_size(
-            width_points: number,
-            height_points: number,
-            scaled_width: number,
-            scaled_height: number,
-        ): void;
-        /**
-         * @param width_points
-         * @param height_points
-         * @param scale_x
-         * @param scale_y
+         * @param width_points 
+         * @param height_points 
+         * @param scale_x 
+         * @param scale_y 
          */
         compute_scales(width_points: number, height_points: number, scale_x: number, scale_y: number): void;
+
         /**
-         * @param width_points
-         * @param height_points
-         * @param transformed_width
-         * @param transformed_height
+         * @param width_points 
+         * @param height_points 
+         * @param transformed_width 
+         * @param transformed_height 
          */
-        compute_transformed_size(
-            width_points: number,
-            height_points: number,
-            transformed_width: number,
-            transformed_height: number,
-        ): void;
+        compute_transformed_size(width_points: number, height_points: number, transformed_width: number, transformed_height: number): void;
+
         /**
-         * @param page
+         * @param page 
          */
         set_page(page: Page): void;
+
         /**
-         * @param rotation
+         * @param rotation 
          */
         set_rotation(rotation: number): void;
+
         /**
-         * @param scale
+         * @param scale 
          */
         set_scale(scale: number): void;
+
         /**
-         * @param target_width
-         * @param target_height
+         * @param target_width 
+         * @param target_height 
          */
         set_target_size(target_width: number, target_height: number): void;
     }
 
+
     namespace TransitionEffect {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::alignment': (pspec: GObject.ParamSpec) => void;
-            'notify::angle': (pspec: GObject.ParamSpec) => void;
-            'notify::direction': (pspec: GObject.ParamSpec) => void;
-            'notify::duration': (pspec: GObject.ParamSpec) => void;
-            'notify::duration-real': (pspec: GObject.ParamSpec) => void;
-            'notify::rectangular': (pspec: GObject.ParamSpec) => void;
-            'notify::scale': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
+            "notify::alignment": (pspec: GObject.ParamSpec) => void;
+            "notify::angle": (pspec: GObject.ParamSpec) => void;
+            "notify::direction": (pspec: GObject.ParamSpec) => void;
+            "notify::duration": (pspec: GObject.ParamSpec) => void;
+            "notify::duration-real": (pspec: GObject.ParamSpec) => void;
+            "notify::rectangular": (pspec: GObject.ParamSpec) => void;
+            "notify::scale": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             alignment: TransitionEffectAlignment;
             angle: number;
@@ -3292,47 +3341,54 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<TransitionEffect>;
 
         // Properties
-
         /**
          * @default EvinceDocument.TransitionEffectAlignment.HORIZONTAL
          */
         get alignment(): TransitionEffectAlignment;
         set alignment(val: TransitionEffectAlignment);
+
         /**
          * @default 0
          */
         get angle(): number;
         set angle(val: number);
+
         /**
          * @default EvinceDocument.TransitionEffectDirection.INWARD
          */
         get direction(): TransitionEffectDirection;
         set direction(val: TransitionEffectDirection);
+
         /**
          * @default 0
          */
         get duration(): number;
         set duration(val: number);
+
         /**
          * @default 0
          */
         get duration_real(): number;
         set duration_real(val: number);
+
         /**
          * @default 0
          */
         get durationReal(): number;
         set durationReal(val: number);
+
         /**
          * @default false
          */
         get rectangular(): boolean;
         set rectangular(val: boolean);
+
         /**
          * @default 1
          */
         get scale(): number;
         set scale(val: number);
+
         /**
          * @default EvinceDocument.TransitionEffectType.REPLACE
          */
@@ -3349,69 +3405,70 @@ export namespace EvinceDocument {
         $signals: TransitionEffect.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TransitionEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TransitionEffect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TransitionEffect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TransitionEffect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TransitionEffect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TransitionEffect.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TransitionEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TransitionEffect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransitionEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AnnotationAttachmentClass = typeof AnnotationAttachment;
+
     /**
      * @gir-type Alias
      */
     type AnnotationClass = typeof Annotation;
+
     /**
      * @gir-type Alias
      */
     type AnnotationMarkupInterface = typeof AnnotationMarkup;
+
     /**
      * @gir-type Alias
      */
     type AnnotationTextClass = typeof AnnotationText;
+
     /**
      * @gir-type Alias
      */
     type AnnotationTextMarkupClass = typeof AnnotationTextMarkup;
+
     /**
      * @gir-type Alias
      */
     type AsyncRendererInterface = typeof AsyncRenderer;
+
     /**
      * @gir-type Alias
      */
     type AttachmentClass = typeof Attachment;
+
     /**
      * @gir-type Alias
      */
     type DocumentAnnotationsInterface = typeof DocumentAnnotations;
+
     /**
      * @gir-type Alias
      */
     type DocumentAttachmentsInterface = typeof DocumentAttachments;
+
     /**
      * @gir-type Struct
      */
@@ -3419,40 +3476,44 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<DocumentBackendInfo>;
 
         // Fields
-
         name: string;
+
         version: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                name: string;
-                version: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            name: string;
+            version: string;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type DocumentClass = typeof Document;
+
     /**
      * @gir-type Alias
      */
     type DocumentFindInterface = typeof DocumentFind;
+
     /**
      * @gir-type Alias
      */
     type DocumentFontsInterface = typeof DocumentFonts;
+
     /**
      * @gir-type Alias
      */
     type DocumentFormsInterface = typeof DocumentForms;
+
     /**
      * @gir-type Alias
      */
     type DocumentImagesInterface = typeof DocumentImages;
+
     /**
      * @gir-type Struct
      */
@@ -3460,95 +3521,119 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<DocumentInfo>;
 
         // Fields
-
         title: string;
+
         format: string;
+
         author: string;
+
         subject: string;
+
         keywords: string;
+
         creator: string;
+
         producer: string;
+
         linearized: string;
+
         security: string;
+
         creation_date: GLib.Time;
+
         modified_date: GLib.Time;
+
         layout: DocumentLayout;
+
         mode: DocumentMode;
+
         ui_hints: number;
+
         permissions: number;
+
         n_pages: number;
+
         paper_height: number;
+
         paper_width: number;
+
         license: DocumentLicense;
+
         contains_js: DocumentContainsJS;
+
         fields_mask: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                title: string;
-                format: string;
-                author: string;
-                subject: string;
-                keywords: string;
-                creator: string;
-                producer: string;
-                linearized: string;
-                security: string;
-                creation_date: GLib.Time;
-                modified_date: GLib.Time;
-                layout: DocumentLayout;
-                mode: DocumentMode;
-                ui_hints: number;
-                permissions: number;
-                n_pages: number;
-                paper_height: number;
-                paper_width: number;
-                contains_js: DocumentContainsJS;
-                fields_mask: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            title: string;
+            format: string;
+            author: string;
+            subject: string;
+            keywords: string;
+            creator: string;
+            producer: string;
+            linearized: string;
+            security: string;
+            creation_date: GLib.Time;
+            modified_date: GLib.Time;
+            layout: DocumentLayout;
+            mode: DocumentMode;
+            ui_hints: number;
+            permissions: number;
+            n_pages: number;
+            paper_height: number;
+            paper_width: number;
+            contains_js: DocumentContainsJS;
+            fields_mask: number;
+        }>);
 
-        static ['new'](): DocumentInfo;
+        static ["new"](): DocumentInfo;
 
         // Methods
-
         /**
          * @returns a copy of `info`
          */
         copy(): DocumentInfo;
+
         /**
          * Frees `info`.
          */
         free(): void;
+
         /**
          * @returns a {@link GLib.DateTime} for when the document was created
          */
-        get_created_datetime(): GLib.DateTime | null;
+        get_created_datetime(): (GLib.DateTime | null);
+
         /**
          * @returns a {@link GLib.DateTime} for when the document was last modified
          */
-        get_modified_datetime(): GLib.DateTime | null;
+        get_modified_datetime(): (GLib.DateTime | null);
+
         /**
-         * @param xmp
-         * @param size
+         * @param xmp 
+         * @param size 
          */
-        set_from_xmp(xmp: string, size: bigint | number): boolean;
+        set_from_xmp(xmp: string, size: (bigint | number)): boolean;
+
         /**
-         * @param datetime
+         * @param datetime 
          */
         take_created_datetime(datetime: GLib.DateTime): void;
+
         /**
-         * @param datetime
+         * @param datetime 
          */
         take_modified_datetime(datetime: GLib.DateTime): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type DocumentLayersInterface = typeof DocumentLayers;
+
     /**
      * @gir-type Struct
      */
@@ -3556,59 +3641,65 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<DocumentLicense>;
 
         // Fields
-
         text: string;
+
         uri: string;
+
         web_statement: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                text: string;
-                uri: string;
-                web_statement: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            text: string;
+            uri: string;
+            web_statement: string;
+        }>);
 
-        static ['new'](): DocumentLicense;
+        static ["new"](): DocumentLicense;
 
         // Methods
-
         /**
          * @returns a copy of `license`, or `null`
          */
         copy(): DocumentLicense;
+
         /**
          * Frees `license`.
          */
         free(): void;
+
         /**
          * @returns the license text
          */
-        get_text(): string | null;
+        get_text(): (string | null);
+
         /**
          * @returns the license URI
          */
-        get_uri(): string | null;
+        get_uri(): (string | null);
+
         /**
          * @returns the license web statement
          */
-        get_web_statement(): string | null;
+        get_web_statement(): (string | null);
     }
+
 
     /**
      * @gir-type Alias
      */
     type DocumentLinksInterface = typeof DocumentLinks;
+
     /**
      * @gir-type Alias
      */
     type DocumentMediaInterface = typeof DocumentMedia;
+
     /**
      * @gir-type Alias
      */
     type DocumentPrintInterface = typeof DocumentPrint;
+
     /**
      * @gir-type Struct
      */
@@ -3616,18 +3707,22 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<DocumentPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DocumentSecurityInterface = typeof DocumentSecurity;
+
     /**
      * @gir-type Alias
      */
     type DocumentTextInterface = typeof DocumentText;
+
     /**
      * @gir-type Alias
      */
     type DocumentTransitionInterface = typeof DocumentTransition;
+
     /**
      * @gir-type Struct
      */
@@ -3635,21 +3730,29 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<FileExporterContext>;
 
         // Fields
-
         format: FileExporterFormat;
+
         filename: string;
+
         first_page: number;
+
         last_page: number;
+
         paper_width: number;
+
         paper_height: number;
+
         duplex: boolean;
+
         pages_per_sheet: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type FileExporterInterface = typeof FileExporter;
+
     /**
      * @gir-type Struct
      */
@@ -3657,59 +3760,68 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<FindRectangle>;
 
         // Fields
-
         x1: number;
+
         y1: number;
+
         x2: number;
+
         y2: number;
+
         next_line: boolean;
+
         after_hyphen: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x1: number;
-                y1: number;
-                x2: number;
-                y2: number;
-                next_line: boolean;
-                after_hyphen: boolean;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x1: number;
+            y1: number;
+            x2: number;
+            y2: number;
+            next_line: boolean;
+            after_hyphen: boolean;
+        }>);
 
-        static ['new'](): FindRectangle;
+        static ["new"](): FindRectangle;
 
         // Methods
-
         copy(): FindRectangle;
+
         free(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type FormFieldButtonClass = typeof FormFieldButton;
+
     /**
      * @gir-type Alias
      */
     type FormFieldChoiceClass = typeof FormFieldChoice;
+
     /**
      * @gir-type Alias
      */
     type FormFieldClass = typeof FormField;
+
     /**
      * @gir-type Alias
      */
     type FormFieldSignatureClass = typeof FormFieldSignature;
+
     /**
      * @gir-type Alias
      */
     type FormFieldTextClass = typeof FormFieldText;
+
     /**
      * @gir-type Alias
      */
     type ImageClass = typeof Image;
+
     /**
      * @gir-type Struct
      */
@@ -3717,10 +3829,12 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<ImagePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LayerClass = typeof Layer;
+
     /**
      * @gir-type Struct
      */
@@ -3728,10 +3842,12 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<LayerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LinkActionClass = typeof LinkAction;
+
     /**
      * @gir-type Struct
      */
@@ -3739,20 +3855,24 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<LinkActionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LinkClass = typeof Link;
+
     /**
      * @gir-type Alias
      */
     type LinkDestClass = typeof LinkDest;
+
     /**
      * @gir-type Struct
      */
     abstract class LinkDestPrivate {
         static $gtype: GObject.GType<LinkDestPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3761,6 +3881,7 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<LinkPrivate>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -3768,19 +3889,18 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<Mapping>;
 
         // Fields
-
         area: Rectangle;
+
         data: any;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                area: Rectangle;
-                data: any;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            area: Rectangle;
+            data: any;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -3789,59 +3909,69 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<MappingList>;
 
         // Constructors
-
         constructor(page: number, list: Mapping[]);
 
-        static ['new'](page: number, list: Mapping[]): MappingList;
+        static ["new"](page: number, list: Mapping[]): MappingList;
 
         // Methods
-
         /**
          * @param data mapping data to find
          * @returns an {@link EvinceDocument.Mapping}
          */
-        find(data: any | null): Mapping;
+        find(data: (any | null)): Mapping;
+
         /**
          * @param data mapping data to find
          * @param func function to use for equality check
          * @returns an {@link EvinceDocument.Mapping}
          */
-        find_custom(data: any | null, func: GLib.CompareFunc): Mapping;
+        find_custom(data: (any | null), func: GLib.CompareFunc): Mapping;
+
         /**
          * @param x X coordinate
          * @param y Y coordinate
          * @returns the {@link EvinceDocument.Mapping} in the list at coordinates (x, y)
          */
         get(x: number, y: number): Mapping;
+
         /**
          * @param x X coordinate
          * @param y Y coordinate
          * @returns the data of a mapping in the list at coordinates (x, y)
          */
-        get_data(x: number, y: number): any | null;
+        get_data(x: number, y: number): (any | null);
+
         /**
          * @returns the data for this mapping list
          */
         get_list(): Mapping[];
+
         get_page(): number;
+
         length(): number;
+
         /**
          * @param n the position to retrieve
          * @returns the `Evmapping` at position `n` in `mapping_list`
          */
         nth(n: number): Mapping;
+
         ref(): MappingList;
+
         /**
          * @param mapping {@link EvinceDocument.Mapping} to remove
          */
         remove(mapping: Mapping): void;
+
         unref(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type MediaClass = typeof Media;
+
     /**
      * @gir-type Struct
      */
@@ -3849,10 +3979,12 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<MediaPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PageClass = typeof Page;
+
     /**
      * @gir-type Struct
      */
@@ -3860,19 +3992,18 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<Point>;
 
         // Fields
-
         x: number;
+
         y: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -3881,39 +4012,42 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<Rectangle>;
 
         // Fields
-
         x1: number;
+
         y1: number;
+
         x2: number;
+
         y2: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x1: number;
-                y1: number;
-                x2: number;
-                y2: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x1: number;
+            y1: number;
+            x2: number;
+            y2: number;
+        }>);
 
-        static ['new'](): Rectangle;
+        static ["new"](): Rectangle;
 
         // Methods
-
         copy(): Rectangle;
+
         free(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RenderContextClass = typeof RenderContext;
+
     /**
      * @gir-type Alias
      */
     type SelectionInterface = typeof Selection;
+
     /**
      * @gir-type Struct
      */
@@ -3921,33 +4055,34 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<SourceLink>;
 
         // Fields
-
         filename: string;
+
         line: number;
+
         col: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                filename: string;
-                line: number;
-                col: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            filename: string;
+            line: number;
+            col: number;
+        }>);
 
-        static ['new'](filename: string, line: number, col: number): SourceLink;
+        static ["new"](filename: string, line: number, col: number): SourceLink;
 
         // Methods
-
         copy(): SourceLink;
+
         free(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type TransitionEffectClass = typeof TransitionEffect;
+
     /**
      * @gir-type Struct
      */
@@ -3955,23 +4090,22 @@ export namespace EvinceDocument {
         static $gtype: GObject.GType<TypeInfo>;
 
         // Fields
-
         desc: string;
+
         mime_types: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                desc: string;
-                mime_types: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            desc: string;
+            mime_types: string;
+        }>);
     }
 
-    namespace AnnotationMarkup {
-        // Constructor properties interface
 
+    namespace AnnotationMarkup {
+
+        // Constructor properties interface
         interface ConstructorProps extends Annotation.ConstructorProps {
             can_have_popup: boolean;
             canHavePopup: boolean;
@@ -3993,81 +4127,97 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface AnnotationMarkup extends Annotation {
-        // Properties
 
+        // Properties
         /**
          * @default false
          */
         get can_have_popup(): boolean;
         set can_have_popup(val: boolean);
+
         /**
          * @default false
          */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+
         /**
          * @default true
          */
         get has_popup(): boolean;
         set has_popup(val: boolean);
+
         /**
          * @default true
          */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+
         /**
          * @default null
          */
         get label(): string;
         set label(val: string);
+
         /**
          * @default 1
          */
         get opacity(): number;
         set opacity(val: number);
+
         /**
          * @default false
          */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+
         /**
          * @default false
          */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
+
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
 
         // Methods
-
         get_label(): string;
+
         get_opacity(): number;
+
         get_popup_is_open(): boolean;
+
         /**
-         * @param ev_rect
+         * @param ev_rect 
          */
         get_rectangle(ev_rect: Rectangle): void;
+
         /**
-         * @param has_popup
+         * @param has_popup 
          */
         set_has_popup(has_popup: boolean): boolean;
+
         /**
-         * @param label
+         * @param label 
          */
         set_label(label: string): boolean;
+
         /**
-         * @param opacity
+         * @param opacity 
          */
         set_opacity(opacity: number): boolean;
+
         /**
-         * @param is_open
+         * @param is_open 
          */
         set_popup_is_open(is_open: boolean): boolean;
+
         /**
-         * @param ev_rect
+         * @param ev_rect 
          */
         set_rectangle(ev_rect: Rectangle): boolean;
     }
+
 
     export const AnnotationMarkup: AnnotationMarkupNamespace & {
         new (): AnnotationMarkup; // This allows `obj instanceof AnnotationMarkup`
@@ -4079,25 +4229,28 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param pixbuf
+             * @param pixbuf 
              * @virtual
              */
             vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
+
             /**
-             * @param page
-             * @param scale
-             * @param rotation
+             * @param page 
+             * @param scale 
+             * @param rotation 
              * @virtual
              */
             vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface AsyncRendererNamespace {
@@ -4108,15 +4261,16 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface AsyncRenderer extends GObject.Object, AsyncRenderer.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param page
-         * @param scale
-         * @param rotation
+         * @param page 
+         * @param scale 
+         * @param rotation 
          */
         render_pixbuf(page: number, scale: number, rotation: number): void;
     }
+
 
     export const AsyncRenderer: AsyncRendererNamespace & {
         new (): AsyncRenderer; // This allows `obj instanceof AsyncRenderer`
@@ -4128,46 +4282,53 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param annot
-             * @param rect
+             * @param annot 
+             * @param rect 
              * @virtual
              */
             vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
+
             /**
              * @virtual
              */
             vfunc_document_is_modified(): boolean;
+
             /**
-             * @param page
+             * @param page 
              * @virtual
              */
             vfunc_get_annotations(page: Page): MappingList;
+
             /**
-             * @param annot
-             * @param x
-             * @param y
+             * @param annot 
+             * @param x 
+             * @param y 
              * @virtual
              */
             vfunc_over_markup(annot: Annotation, x: number, y: number): AnnotationsOverMarkup;
+
             /**
-             * @param annot
+             * @param annot 
              * @virtual
              */
             vfunc_remove_annotation(annot: Annotation): void;
+
             /**
-             * @param annot
-             * @param mask
+             * @param annot 
+             * @param mask 
              * @virtual
              */
             vfunc_save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentAnnotationsNamespace {
@@ -4178,36 +4339,44 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentAnnotations extends GObject.Object, DocumentAnnotations.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param annot
-         * @param rect
+         * @param annot 
+         * @param rect 
          */
         add_annotation(annot: Annotation, rect: Rectangle): void;
+
         can_add_annotation(): boolean;
+
         can_remove_annotation(): boolean;
+
         document_is_modified(): boolean;
+
         /**
-         * @param page
+         * @param page 
          */
         get_annotations(page: Page): MappingList;
+
         /**
-         * @param annot
-         * @param x
-         * @param y
+         * @param annot 
+         * @param x 
+         * @param y 
          */
         over_markup(annot: Annotation, x: number, y: number): AnnotationsOverMarkup;
+
         /**
-         * @param annot
+         * @param annot 
          */
         remove_annotation(annot: Annotation): void;
+
         /**
-         * @param annot
-         * @param mask
+         * @param annot 
+         * @param mask 
          */
         save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
     }
+
 
     export const DocumentAnnotations: DocumentAnnotationsNamespace & {
         new (): DocumentAnnotations; // This allows `obj instanceof DocumentAnnotations`
@@ -4219,21 +4388,24 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_attachments(): Attachment[];
+
             /**
              * @virtual
              */
             vfunc_has_attachments(): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentAttachmentsNamespace {
@@ -4244,14 +4416,16 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentAttachments extends GObject.Object, DocumentAttachments.Interface {
-        // Methods
 
+        // Methods
         /**
          * @returns a list of {@link EvinceDocument.Attachment} objects
          */
         get_attachments(): Attachment[];
+
         has_attachments(): boolean;
     }
+
 
     export const DocumentAttachments: DocumentAttachmentsNamespace & {
         new (): DocumentAttachments; // This allows `obj instanceof DocumentAttachments`
@@ -4263,8 +4437,8 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @param page an {@link EvinceDocument.Page}
              * @param text text to find
@@ -4272,6 +4446,7 @@ export namespace EvinceDocument {
              * @virtual
              */
             vfunc_find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
+
             /**
              * @param page an {@link EvinceDocument.Page}
              * @param text text to find
@@ -4279,6 +4454,7 @@ export namespace EvinceDocument {
              * @virtual
              */
             vfunc_find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[];
+
             /**
              * @param page an {@link EvinceDocument.Page}
              * @param text text to find
@@ -4286,15 +4462,18 @@ export namespace EvinceDocument {
              * @virtual
              */
             vfunc_find_text_with_options(page: Page, text: string, options: FindOptions): Rectangle[];
+
             /**
              * @virtual
              */
             vfunc_get_supported_options(): FindOptions;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentFindNamespace {
@@ -4305,8 +4484,8 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentFind extends GObject.Object, DocumentFind.Interface {
-        // Methods
 
+        // Methods
         /**
          * @param page an {@link EvinceDocument.Page}
          * @param text text to find
@@ -4314,6 +4493,7 @@ export namespace EvinceDocument {
          * @returns a list of results
          */
         find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[];
+
         /**
          * @param page an {@link EvinceDocument.Page}
          * @param text text to find
@@ -4321,6 +4501,7 @@ export namespace EvinceDocument {
          * @returns a list of results
          */
         find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[];
+
         /**
          * @param page an {@link EvinceDocument.Page}
          * @param text text to find
@@ -4328,8 +4509,10 @@ export namespace EvinceDocument {
          * @returns a list of results
          */
         find_text_with_options(page: Page, text: string, options: FindOptions): Rectangle[];
+
         get_supported_options(): FindOptions;
     }
+
 
     export const DocumentFind: DocumentFindNamespace & {
         new (): DocumentFind; // This allows `obj instanceof DocumentFind`
@@ -4341,31 +4524,36 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param model
+             * @param model 
              * @virtual
              */
             vfunc_fill_model(model: Gtk.TreeModel): void;
+
             /**
              * @virtual
              */
             vfunc_get_fonts_summary(): string;
+
             /**
              * @virtual
              */
             vfunc_get_progress(): number;
+
             /**
-             * @param n_pages
+             * @param n_pages 
              * @virtual
              */
             vfunc_scan(n_pages: number): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentFontsNamespace {
@@ -4376,19 +4564,23 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentFonts extends GObject.Object, DocumentFonts.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param model
+         * @param model 
          */
         fill_model(model: Gtk.TreeModel): void;
+
         get_fonts_summary(): string;
+
         get_progress(): number;
+
         /**
-         * @param n_pages
+         * @param n_pages 
          */
         scan(n_pages: number): boolean;
     }
+
 
     export const DocumentFonts: DocumentFontsNamespace & {
         new (): DocumentFonts; // This allows `obj instanceof DocumentFonts`
@@ -4400,94 +4592,110 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_document_is_modified(): boolean;
+
             /**
-             * @param field
+             * @param field 
              * @virtual
              */
             vfunc_form_field_button_get_state(field: FormField): boolean;
+
             /**
-             * @param field
-             * @param state
+             * @param field 
+             * @param state 
              * @virtual
              */
             vfunc_form_field_button_set_state(field: FormField, state: boolean): void;
+
             /**
-             * @param field
-             * @param index
+             * @param field 
+             * @param index 
              * @virtual
              */
             vfunc_form_field_choice_get_item(field: FormField, index: number): string;
+
             /**
-             * @param field
+             * @param field 
              * @virtual
              */
             vfunc_form_field_choice_get_n_items(field: FormField): number;
+
             /**
-             * @param field
+             * @param field 
              * @virtual
              */
             vfunc_form_field_choice_get_text(field: FormField): string;
+
             /**
-             * @param field
-             * @param index
+             * @param field 
+             * @param index 
              * @virtual
              */
             vfunc_form_field_choice_is_item_selected(field: FormField, index: number): boolean;
+
             /**
-             * @param field
-             * @param index
+             * @param field 
+             * @param index 
              * @virtual
              */
             vfunc_form_field_choice_select_item(field: FormField, index: number): void;
+
             /**
-             * @param field
-             * @param text
+             * @param field 
+             * @param text 
              * @virtual
              */
             vfunc_form_field_choice_set_text(field: FormField, text: string): void;
+
             /**
-             * @param field
-             * @param index
+             * @param field 
+             * @param index 
              * @virtual
              */
             vfunc_form_field_choice_toggle_item(field: FormField, index: number): void;
+
             /**
-             * @param field
+             * @param field 
              * @virtual
              */
             vfunc_form_field_choice_unselect_all(field: FormField): void;
+
             /**
-             * @param field
+             * @param field 
              * @virtual
              */
             vfunc_form_field_text_get_text(field: FormField): string;
+
             /**
-             * @param field
-             * @param text
+             * @param field 
+             * @param text 
              * @virtual
              */
             vfunc_form_field_text_set_text(field: FormField, text: string): void;
+
             /**
-             * @param page
+             * @param page 
              * @virtual
              */
             vfunc_get_form_fields(page: Page): MappingList;
+
             /**
-             * @param action
+             * @param action 
              * @virtual
              */
             vfunc_reset_form(action: LinkAction): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentFormsNamespace {
@@ -4498,73 +4706,88 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentForms extends GObject.Object, DocumentForms.Interface {
-        // Methods
 
+        // Methods
         document_is_modified(): boolean;
+
         /**
-         * @param field
+         * @param field 
          */
         form_field_button_get_state(field: FormField): boolean;
+
         /**
-         * @param field
-         * @param state
+         * @param field 
+         * @param state 
          */
         form_field_button_set_state(field: FormField, state: boolean): void;
+
         /**
-         * @param field
-         * @param index
+         * @param field 
+         * @param index 
          */
         form_field_choice_get_item(field: FormField, index: number): string;
+
         /**
-         * @param field
+         * @param field 
          */
         form_field_choice_get_n_items(field: FormField): number;
+
         /**
-         * @param field
+         * @param field 
          */
         form_field_choice_get_text(field: FormField): string;
+
         /**
-         * @param field
-         * @param index
+         * @param field 
+         * @param index 
          */
         form_field_choice_is_item_selected(field: FormField, index: number): boolean;
+
         /**
-         * @param field
-         * @param index
+         * @param field 
+         * @param index 
          */
         form_field_choice_select_item(field: FormField, index: number): void;
+
         /**
-         * @param field
-         * @param text
+         * @param field 
+         * @param text 
          */
         form_field_choice_set_text(field: FormField, text: string): void;
+
         /**
-         * @param field
-         * @param index
+         * @param field 
+         * @param index 
          */
         form_field_choice_toggle_item(field: FormField, index: number): void;
+
         /**
-         * @param field
+         * @param field 
          */
         form_field_choice_unselect_all(field: FormField): void;
+
         /**
-         * @param field
+         * @param field 
          */
         form_field_text_get_text(field: FormField): string;
+
         /**
-         * @param field
-         * @param text
+         * @param field 
+         * @param text 
          */
         form_field_text_set_text(field: FormField, text: string): void;
+
         /**
-         * @param page
+         * @param page 
          */
         get_form_fields(page: Page): MappingList;
+
         /**
-         * @param action
+         * @param action 
          */
         reset_form(action: LinkAction): void;
     }
+
 
     export const DocumentForms: DocumentFormsNamespace & {
         new (): DocumentForms; // This allows `obj instanceof DocumentForms`
@@ -4576,23 +4799,26 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @param image an {@link EvinceDocument.Image}
              * @virtual
              */
             vfunc_get_image(image: Image): GdkPixbuf.Pixbuf;
+
             /**
-             * @param page
+             * @param page 
              * @virtual
              */
             vfunc_get_image_mapping(page: Page): MappingList;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentImagesNamespace {
@@ -4603,18 +4829,20 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentImages extends GObject.Object, DocumentImages.Interface {
-        // Methods
 
+        // Methods
         /**
          * @param image an {@link EvinceDocument.Image}
          * @returns a {@link GdkPixbuf.Pixbuf}
          */
         get_image(image: Image): GdkPixbuf.Pixbuf;
+
         /**
-         * @param page
+         * @param page 
          */
         get_image_mapping(page: Page): MappingList;
     }
+
 
     export const DocumentImages: DocumentImagesNamespace & {
         new (): DocumentImages; // This allows `obj instanceof DocumentImages`
@@ -4626,36 +4854,42 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_layers(): Gtk.TreeModel;
+
             /**
              * @virtual
              */
             vfunc_has_layers(): boolean;
+
             /**
-             * @param layer
+             * @param layer 
              * @virtual
              */
             vfunc_hide_layer(layer: Layer): void;
+
             /**
-             * @param layer
+             * @param layer 
              * @virtual
              */
             vfunc_layer_is_visible(layer: Layer): boolean;
+
             /**
-             * @param layer
+             * @param layer 
              * @virtual
              */
             vfunc_show_layer(layer: Layer): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentLayersNamespace {
@@ -4666,26 +4900,31 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentLayers extends GObject.Object, DocumentLayers.Interface {
-        // Methods
 
+        // Methods
         /**
          * @returns a {@link Gtk.TreeModel}
          */
         get_layers(): Gtk.TreeModel;
+
         has_layers(): boolean;
+
         /**
-         * @param layer
+         * @param layer 
          */
         hide_layer(layer: Layer): void;
+
         /**
-         * @param layer
+         * @param layer 
          */
         layer_is_visible(layer: Layer): boolean;
+
         /**
-         * @param layer
+         * @param layer 
          */
         show_layer(layer: Layer): void;
     }
+
 
     export const DocumentLayers: DocumentLayersNamespace & {
         new (): DocumentLayers; // This allows `obj instanceof DocumentLayers`
@@ -4697,36 +4936,42 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @param link_name the link name
              * @virtual
              */
             vfunc_find_link_dest(link_name: string): LinkDest;
+
             /**
-             * @param link_name
+             * @param link_name 
              * @virtual
              */
             vfunc_find_link_page(link_name: string): number;
+
             /**
-             * @param page
+             * @param page 
              * @virtual
              */
             vfunc_get_links(page: Page): MappingList;
+
             /**
              * @virtual
              */
             vfunc_get_links_model(): Gtk.TreeModel;
+
             /**
              * @virtual
              */
             vfunc_has_document_links(): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentLinksNamespace {
@@ -4737,43 +4982,52 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentLinks extends GObject.Object, DocumentLinks.Interface {
-        // Methods
 
+        // Methods
         /**
          * @param link_name the link name
          * @returns an {@link EvinceDocument.LinkDest}
          */
         find_link_dest(link_name: string): LinkDest;
+
         /**
-         * @param link_name
+         * @param link_name 
          */
         find_link_page(link_name: string): number;
+
         /**
-         * @param dest
+         * @param dest 
          */
         get_dest_page(dest: LinkDest): number;
+
         /**
-         * @param dest
+         * @param dest 
          */
         get_dest_page_label(dest: LinkDest): string;
+
         /**
-         * @param link
+         * @param link 
          */
         get_link_page(link: Link): number;
+
         /**
-         * @param link
+         * @param link 
          */
         get_link_page_label(link: Link): string;
+
         /**
-         * @param page
+         * @param page 
          */
         get_links(page: Page): MappingList;
+
         /**
          * @returns a {@link Gtk.TreeModel}
          */
         get_links_model(): Gtk.TreeModel;
+
         has_document_links(): boolean;
     }
+
 
     export const DocumentLinks: DocumentLinksNamespace & {
         new (): DocumentLinks; // This allows `obj instanceof DocumentLinks`
@@ -4785,18 +5039,20 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param page
+             * @param page 
              * @virtual
              */
             vfunc_get_media_mapping(page: Page): MappingList;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentMediaNamespace {
@@ -4807,13 +5063,14 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentMedia extends GObject.Object, DocumentMedia.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param page
+         * @param page 
          */
         get_media_mapping(page: Page): MappingList;
     }
+
 
     export const DocumentMedia: DocumentMediaNamespace & {
         new (): DocumentMedia; // This allows `obj instanceof DocumentMedia`
@@ -4825,19 +5082,21 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param page
-             * @param cr
+             * @param page 
+             * @param cr 
              * @virtual
              */
             vfunc_print_page(page: Page, cr: cairo.Context): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentPrintNamespace {
@@ -4848,14 +5107,15 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentPrint extends GObject.Object, DocumentPrint.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param page
-         * @param cr
+         * @param page 
+         * @param cr 
          */
         print_page(page: Page, cr: cairo.Context): void;
     }
+
 
     export const DocumentPrint: DocumentPrintNamespace & {
         new (): DocumentPrint; // This allows `obj instanceof DocumentPrint`
@@ -4867,22 +5127,25 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_has_document_security(): boolean;
+
             /**
-             * @param password
+             * @param password 
              * @virtual
              */
             vfunc_set_password(password: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentSecurityNamespace {
@@ -4893,14 +5156,16 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentSecurity extends GObject.Object, DocumentSecurity.Interface {
-        // Methods
 
+        // Methods
         has_document_security(): boolean;
+
         /**
-         * @param password
+         * @param password 
          */
         set_password(password: string): void;
     }
+
 
     export const DocumentSecurity: DocumentSecurityNamespace & {
         new (): DocumentSecurity; // This allows `obj instanceof DocumentSecurity`
@@ -4912,36 +5177,41 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param page
+             * @param page 
              * @virtual
              */
             vfunc_get_text(page: Page): string;
+
             /**
              * FIXME
              * @param page a {@link EvinceDocument.Page}
              * @virtual
              */
             vfunc_get_text_attrs(page: Page): Pango.AttrList;
+
             /**
-             * @param page
-             * @param areas
-             * @param n_areas
+             * @param page 
+             * @param areas 
+             * @param n_areas 
              * @virtual
              */
             vfunc_get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
+
             /**
-             * @param page
+             * @param page 
              * @virtual
              */
             vfunc_get_text_mapping(page: Page): cairo.Region;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentTextNamespace {
@@ -4952,29 +5222,33 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentText extends GObject.Object, DocumentText.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param page
+         * @param page 
          */
         get_text(page: Page): string;
+
         /**
          * FIXME
          * @param page a {@link EvinceDocument.Page}
          * @returns a newly created {@link Pango.AttrList}
          */
         get_text_attrs(page: Page): Pango.AttrList;
+
         /**
-         * @param page
-         * @param areas
-         * @param n_areas
+         * @param page 
+         * @param areas 
+         * @param n_areas 
          */
         get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
+
         /**
-         * @param page
+         * @param page 
          */
         get_text_mapping(page: Page): cairo.Region;
     }
+
 
     export const DocumentText: DocumentTextNamespace & {
         new (): DocumentText; // This allows `obj instanceof DocumentText`
@@ -4986,23 +5260,26 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @param page a page index
              * @virtual
              */
             vfunc_get_effect(page: number): TransitionEffect;
+
             /**
-             * @param page
+             * @param page 
              * @virtual
              */
             vfunc_get_page_duration(page: number): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DocumentTransitionNamespace {
@@ -5013,18 +5290,20 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface DocumentTransition extends GObject.Object, DocumentTransition.Interface {
-        // Methods
 
+        // Methods
         /**
          * @param page a page index
          * @returns an {@link EvinceDocument.TransitionEffect}
          */
         get_effect(page: number): TransitionEffect;
+
         /**
-         * @param page
+         * @param page 
          */
         get_page_duration(page: number): number;
     }
+
 
     export const DocumentTransition: DocumentTransitionNamespace & {
         new (): DocumentTransition; // This allows `obj instanceof DocumentTransition`
@@ -5036,39 +5315,46 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param fc
+             * @param fc 
              * @virtual
              */
             vfunc_begin(fc: FileExporterContext): void;
+
             /**
              * @virtual
              */
             vfunc_begin_page(): void;
+
             /**
-             * @param rc
+             * @param rc 
              * @virtual
              */
             vfunc_do_page(rc: RenderContext): void;
+
             /**
              * @virtual
              */
             vfunc_end(): void;
+
             /**
              * @virtual
              */
             vfunc_end_page(): void;
+
             /**
              * @virtual
              */
             vfunc_get_capabilities(): FileExporterCapabilities;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface FileExporterNamespace {
@@ -5079,21 +5365,27 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface FileExporter extends GObject.Object, FileExporter.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param fc
+         * @param fc 
          */
         begin(fc: FileExporterContext): void;
+
         begin_page(): void;
+
         /**
-         * @param rc
+         * @param rc 
          */
         do_page(rc: RenderContext): void;
+
         end(): void;
+
         end_page(): void;
+
         get_capabilities(): FileExporterCapabilities;
     }
+
 
     export const FileExporter: FileExporterNamespace & {
         new (): FileExporter; // This allows `obj instanceof FileExporter`
@@ -5105,46 +5397,42 @@ export namespace EvinceDocument {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param page
-             * @param style
-             * @param points
+             * @param page 
+             * @param style 
+             * @param points 
              * @virtual
              */
             vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
+
             /**
-             * @param rc
-             * @param style
-             * @param points
+             * @param rc 
+             * @param style 
+             * @param points 
              * @virtual
              */
             vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
+
             /**
-             * @param rc
-             * @param surface
-             * @param points
-             * @param old_points
-             * @param style
-             * @param text
-             * @param base
+             * @param rc 
+             * @param surface 
+             * @param points 
+             * @param old_points 
+             * @param style 
+             * @param text 
+             * @param base 
              * @virtual
              */
-            vfunc_render_selection(
-                rc: RenderContext,
-                surface: cairo.Surface,
-                points: Rectangle,
-                old_points: Rectangle,
-                style: SelectionStyle,
-                text: Gdk.Color,
-                base: Gdk.Color,
-            ): void;
+            vfunc_render_selection(rc: RenderContext, surface: cairo.Surface, points: Rectangle, old_points: Rectangle, style: SelectionStyle, text: Gdk.Color, base: Gdk.Color): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SelectionNamespace {
@@ -5155,39 +5443,34 @@ export namespace EvinceDocument {
      * @gir-type Interface
      */
     interface Selection extends GObject.Object, Selection.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param page
-         * @param style
-         * @param points
+         * @param page 
+         * @param style 
+         * @param points 
          */
         get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
+
         /**
-         * @param rc
-         * @param style
-         * @param points
+         * @param rc 
+         * @param style 
+         * @param points 
          */
         get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
+
         /**
-         * @param rc
-         * @param surface
-         * @param points
-         * @param old_points
-         * @param style
-         * @param text
-         * @param base
+         * @param rc 
+         * @param surface 
+         * @param points 
+         * @param old_points 
+         * @param style 
+         * @param text 
+         * @param base 
          */
-        render_selection(
-            rc: RenderContext,
-            surface: cairo.Surface,
-            points: Rectangle,
-            old_points: Rectangle,
-            style: SelectionStyle,
-            text: Gdk.Color,
-            base: Gdk.Color,
-        ): void;
+        render_selection(rc: RenderContext, surface: cairo.Surface, points: Rectangle, old_points: Rectangle, style: SelectionStyle, text: Gdk.Color, base: Gdk.Color): void;
     }
+
 
     export const Selection: SelectionNamespace & {
         new (): Selection; // This allows `obj instanceof Selection`
@@ -5197,15 +5480,18 @@ export namespace EvinceDocument {
      * @gir-type Alias
      */
     type BackendPage = any;
+
     /**
      * @gir-type Alias
      */
     type BackendPageDestroyFunc = GLib.DestroyNotify;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

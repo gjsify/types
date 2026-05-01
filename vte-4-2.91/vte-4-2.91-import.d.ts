@@ -1,3 +1,4 @@
+
 import type Vte4291 from '@girs/vte-4-2.91';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Unique {
+
     /**
      * Unique-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -50,6 +53,7 @@ export namespace Unique {
         CLOSE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -70,6 +74,7 @@ export namespace Unique {
         PASSTHROUGH,
     }
 
+
     namespace App {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -79,7 +84,7 @@ export namespace Unique {
              * message using `unique_app_send_message()`. The currently running instance
              * should check `command` for the action to execute and `message_data` for
              * eventual other parameters (see {@link Unique.MessageData}).
-             *
+             * 
              * The signal handler should return a {@link Unique.Response} value depending on
              * whether the command was successfully completed or not. If the
              * {@link Unique.Response.PASSTHROUGH} return value is used, the signal
@@ -88,15 +93,14 @@ export namespace Unique {
              * @signal
              * @run-last
              */
-            'message-received': (arg0: number, arg1: MessageData, arg2: number) => Response;
-            'notify::is-running': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
+            "message-received": (arg0: number, arg1: MessageData, arg2: number) => Response;
+            "notify::is-running": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             is_running: boolean;
             isRunning: boolean;
@@ -117,28 +121,31 @@ export namespace Unique {
         static $gtype: GObject.GType<App>;
 
         // Properties
-
         /**
          * Whether another instance of the application is running.
          * @read-only
          */
         get is_running(): boolean;
+
         /**
          * Whether another instance of the application is running.
          * @read-only
          */
         get isRunning(): boolean;
+
         /**
          * The unique name of the application. It must be in form of
          * a domain-like string, like <literal>org.gnome.MyApplication</literal>.
          * @construct-only
          */
         get name(): string;
+
         /**
          * The {@link Gdk.Screen} of the application.
          */
         get screen(): Gdk.Screen;
         set screen(val: Gdk.Screen);
+
         /**
          * The startup notification id, needed to complete the startup
          * notification sequence. If not set, a default id will be
@@ -146,6 +153,7 @@ export namespace Unique {
          * @construct-only
          */
         get startup_id(): string;
+
         /**
          * The startup notification id, needed to complete the startup
          * notification sequence. If not set, a default id will be
@@ -164,51 +172,40 @@ export namespace Unique {
         $signals: App.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, startup_id: string): App;
+        static ["new"](name: string, startup_id: string): App;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof App.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof App.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof App.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param command
-         * @param message_data
-         * @param time_
+         * @param command 
+         * @param message_data 
+         * @param time_ 
          * @virtual
          */
         vfunc_message_received(command: number, message_data: MessageData, time_: number): Response;
 
         // Methods
-
         /**
          * Adds `command_name` as a custom command that can be used by `app`. You
          * must call `unique_app_add_command()` before `unique_app_send_message()` in
          * order to use the newly added command.
-         *
+         * 
          * The command name is used internally: you need to use the command's logical
          * id in `unique_app_send_message()` and inside the UniqueApp::message-received
          * signal.
@@ -216,12 +213,13 @@ export namespace Unique {
          * @param command_id command logical id
          */
         add_command(command_name: string, command_id: number): void;
+
         /**
          * Sends `command` to a running instance of `app`. If you need to pass data
          * to the instance, you should create a {@link Unique.MessageData} object using
          * `unique_message_data_new()` and then fill it with the data you intend to
          * pass.
-         *
+         * 
          * The running application will receive a UniqueApp::message-received signal
          * and will call the various signal handlers attach to it. If any handler
          * returns a {@link Unique.Response} different than {@link Unique.Response.OK}, the emission
@@ -231,6 +229,7 @@ export namespace Unique {
          * @returns The {@link Unique.Response} returned by the running instance
          */
         send_message(command_id: number, message_data: MessageData): Response;
+
         /**
          * Makes `app` "watch" a window. Every watched window will receive
          * startup notification changes automatically.
@@ -239,13 +238,16 @@ export namespace Unique {
         watch_window(window: Gtk.Window): void;
     }
 
+
     namespace Backend {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -266,34 +268,24 @@ export namespace Unique {
         $signals: Backend.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Backend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a {@link Unique.Backend} using the default backend defined at
          * compile time. You can override the default backend by setting the
@@ -303,14 +295,14 @@ export namespace Unique {
         static create(): Backend;
 
         // Virtual methods
-
         /**
          * Requests the name set using `unique_backend_set_name()` using `backend`.
-         *
+         * 
          * already is a registered name
          * @virtual
          */
         vfunc_request_name(): boolean;
+
         /**
          * Sends `command_id`, and optionally `message_data`, to a running instance
          * using `backend`.
@@ -322,34 +314,38 @@ export namespace Unique {
         vfunc_send_message(command_id: number, message_data: MessageData, time_: number): Response;
 
         // Methods
-
         /**
          * FIXME
          * @returns FIXME
          */
         get_name(): string;
+
         /**
          * FIXME
          * @returns FIXME
          */
         get_screen(): Gdk.Screen;
+
         /**
          * FIXME
          * @returns FIXME
          */
         get_startup_id(): string;
+
         /**
          * Retrieves the current workspace.
          * @returns a workspace number
          */
         get_workspace(): number;
+
         /**
          * Requests the name set using `unique_backend_set_name()` using `backend`.
-         *
+         * 
          * already is a registered name
          * @returns `true` if the name was assigned to us, `false` if there
          */
         request_name(): boolean;
+
         /**
          * Sends `command_id`, and optionally `message_data`, to a running instance
          * using `backend`.
@@ -359,16 +355,19 @@ export namespace Unique {
          * @returns a {@link Unique.Response} value sent by the running instance
          */
         send_message(command_id: number, message_data: MessageData, time_: number): Response;
+
         /**
          * FIXME
          * @param name FIXME
          */
         set_name(name: string): void;
+
         /**
          * FIXME
          * @param screen FIXME
          */
         set_screen(screen: Gdk.Screen): void;
+
         /**
          * FIXME
          * @param startup_id FIXME
@@ -376,10 +375,12 @@ export namespace Unique {
         set_startup_id(startup_id: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AppClass = typeof App;
+
     /**
      * @gir-type Struct
      */
@@ -387,10 +388,12 @@ export namespace Unique {
         static $gtype: GObject.GType<AppPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BackendClass = typeof Backend;
+
     /**
      * {@link Unique.MessageData} contains the data passed between instances of
      * a {@link Unique.App}. The {@link Unique.MessageData} structure received inside
@@ -404,38 +407,43 @@ export namespace Unique {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): MessageData;
+        }>);
+
+        static ["new"](): MessageData;
 
         // Methods
-
         /**
          * Copies `message_data`.
          * @returns a copy of the passed {@link Unique.MessageData}
          */
         copy(): MessageData;
+
         /**
          * Frees all the resources allocated by `message_data`.
          */
         free(): void;
+
         /**
          * Retrieves the raw contents of `message_data` set using
          * `unique_messaget_data_set()`.
-         *
+         * 
          * returned string is owned by the {@link Unique.MessageData} and should
          * never be modified or freed
          * @returns the contents of the message data or `null`. The
          */
         get(): [number, number];
+
         /**
          * Retrieves the filename set with `unique_message_data_set_filename()`.
-         *
+         * 
          * filename. Use `g_free()` to free the resources used by the returned
          * value.
          * @returns a newly allocated string containing the
          */
         get_filename(): string;
+
         /**
          * Returns a pointer to the screen from where the message came. You
          * can use `gtk_window_set_screen()` to move windows or dialogs to the
@@ -443,50 +451,57 @@ export namespace Unique {
          * @returns a {@link Gdk.Screen}
          */
         get_screen(): Gdk.Screen;
+
         /**
          * Retrieves the startup notification id set inside `message_data`. This
          * field is always set by the Unique library.
-         *
+         * 
          * owned by the {@link Unique.MessageData} structure and should not be
          * modified or freed
          * @returns the startup notification id. The returned string is
          */
         get_startup_id(): string;
+
         /**
          * Retrieves the text set using `unique_message_data_set_text()`.
          * @returns a newly-allocated string.
          */
         get_text(): string;
+
         /**
          * Retrieves a `null`-terminated string vector containing the URIs set with
          * `unique_message_data_set_uris()`.
-         *
+         * 
          * `null`-terminated list of URIs. Use `g_strfreev()` to free it.
          * @returns a newly-allocated,
          */
         get_uris(): string[];
+
         /**
          * Retrieves the workspace number from where the message came. This
          * field is always set by the Unique library.
          * @returns the workspace number
          */
         get_workspace(): number;
+
         /**
          * Sets `data` as the payload of `message_data`. Any other data is removed
          * from the message data. If `data` is `null`, a `length` of -1 will unset
          * the payload, while a `length` of 0 will set the payload to an empty
          * string.
-         *
+         * 
          * You can use `unique_message_data_get()` to retrieve the data.
          * @param data binary blob to set, or `null`
          * @param length length of `data`
          */
-        set(data: number, length: bigint | number): void;
+        set(data: number, length: (bigint | number)): void;
+
         /**
          * Sets `filename` as the contents of `message_data`.
          * @param filename a filename
          */
         set_filename(filename: string): void;
+
         /**
          * Sets `str` as the plain text payload of `message_data`, converting it
          * to UTF-8 if needed. If `length` is -1, the length of the string will
@@ -495,7 +510,8 @@ export namespace Unique {
          * @param length length of the text, or -1
          * @returns `true` if the text was successfully converted to UTF-8
          */
-        set_text(str: string, length: bigint | number): boolean;
+        set_text(str: string, length: (bigint | number)): boolean;
+
         /**
          * Converts `uris` to a valid URI list and sets it as payload of
          * `message_data`. You can use `unique_message_data_get_uris()` to
@@ -506,11 +522,13 @@ export namespace Unique {
         set_uris(uris: string[]): boolean;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

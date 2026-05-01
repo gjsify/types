@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace MyPaint {
+
     /**
      * MyPaint-1.6
      */
+
 
     /**
      * @gir-type Enum
@@ -42,6 +45,7 @@ export namespace MyPaint {
         INPUT_BRUSH_RADIUS,
         INPUTS_COUNT,
     }
+
 
     /**
      * @gir-type Enum
@@ -114,6 +118,7 @@ export namespace MyPaint {
         SETTINGS_COUNT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -165,94 +170,83 @@ export namespace MyPaint {
         STATES_COUNT,
     }
 
+
     /**
-     * @param cname
+     * @param cname 
      */
     function brush_input_from_cname(cname: string): BrushInput;
+
     /**
-     * @param id
+     * @param id 
      */
     function brush_input_info(id: BrushInput): BrushInputInfo;
+
     /**
-     * @param cname
+     * @param cname 
      */
     function brush_setting_from_cname(cname: string): BrushSetting;
+
     /**
-     * @param id
+     * @param id 
      */
     function brush_setting_info(id: BrushSetting): BrushSettingInfo;
+
     /**
      * @gir-type Callback
      */
     interface SurfaceBeginAtomicFunction {
         (self: Surface): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface SurfaceDestroyFunction {
         (self: Surface): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface SurfaceDrawDabFunction {
-        (
-            self: Surface,
-            x: number,
-            y: number,
-            radius: number,
-            color_r: number,
-            color_g: number,
-            color_b: number,
-            opaque: number,
-            hardness: number,
-            alpha_eraser: number,
-            aspect_ratio: number,
-            angle: number,
-            lock_alpha: number,
-            colorize: number,
-        ): number;
+        (self: Surface, x: number, y: number, radius: number, color_r: number, color_g: number, color_b: number, opaque: number, hardness: number, alpha_eraser: number, aspect_ratio: number, angle: number, lock_alpha: number, colorize: number): number;
     }
+
     /**
      * @gir-type Callback
      */
     interface SurfaceEndAtomicFunction {
         (self: Surface, roi: Rectangle): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface SurfaceGetColorFunction {
-        (
-            self: Surface,
-            x: number,
-            y: number,
-            radius: number,
-            color_r: number,
-            color_g: number,
-            color_b: number,
-            color_a: number,
-        ): void;
+        (self: Surface, x: number, y: number, radius: number, color_r: number, color_g: number, color_b: number, color_a: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface SurfaceSavePngFunction {
         (self: Surface, path: string, x: number, y: number, width: number, height: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface TileRequestEndFunction {
         (self: TiledSurface, request: TileRequest): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface TileRequestStartFunction {
         (self: TiledSurface, request: TileRequest): void;
     }
+
     /**
      * The MyPaint brush engine class.
      * @gir-type Struct
@@ -262,142 +256,154 @@ export namespace MyPaint {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): Brush;
+        }>);
+
+        static ["new"](): Brush;
 
         static new_with_buckets(num_smudge_buckets: number): Brush;
 
         // Static methods
-
         /**
-         * @param cname
+         * @param cname 
          */
         static input_from_cname(cname: string): BrushInput;
+
         /**
-         * @param cname
+         * @param cname 
          */
         static setting_from_cname(cname: string): BrushSetting;
 
         // Methods
-
         from_defaults(): void;
+
         /**
-         * @param string
+         * @param string 
          */
         from_string(string: string): boolean;
+
         /**
          * Get the base value of a brush setting.
-         * @param id
+         * @param id 
          */
         get_base_value(id: BrushSetting): number;
+
         /**
          * Returns how many inputs are used for the dynamics of a {@link MyPaint.BrushSetting}
-         * @param id
+         * @param id 
          */
         get_inputs_used_n(id: BrushSetting): number;
+
         /**
          * Get the number of points used for the dynamics mapping between a {@link MyPaint.BrushInput} and {@link MyPaint.BrushSetting}.
-         * @param id
-         * @param input
+         * @param id 
+         * @param input 
          */
         get_mapping_n(id: BrushSetting, input: BrushInput): number;
+
         /**
          * Get a X,Y point of a dynamics mapping.
-         * @param id
-         * @param input
-         * @param index
+         * @param id 
+         * @param input 
+         * @param index 
          */
         get_mapping_point(id: BrushSetting, input: BrushInput, index: number): [number, number];
+
         /**
          * Get an internal brush engine state.
          * Normally used for debugging, but can be used to implement record & replay functionality.
-         * @param i
+         * @param i 
          */
         get_state(i: BrushState): number;
+
         /**
          * Return the total amount of painting time for the current stroke.
          */
         get_total_stroke_painting_time(): number;
+
         /**
          * Returns TRUE if the brush has no dynamics for the given {@link MyPaint.BrushSetting}
-         * @param id
+         * @param id 
          */
         is_constant(id: BrushSetting): boolean;
+
         /**
          * Start a new stroke.
          */
         new_stroke(): void;
+
         /**
          * Increase the reference count.
          */
         ref(): void;
+
         /**
          * Reset the current brush engine state.
          * Used when the next `mypaint_brush_stroke_to()` call is not related to the current state.
          * Note that the reset request is queued and changes in state will only happen on next `stroke_to()`
          */
         reset(): void;
+
         /**
          * Set the base value of a brush setting.
-         * @param id
-         * @param value
+         * @param id 
+         * @param value 
          */
         set_base_value(id: BrushSetting, value: number): void;
+
         /**
          * Set the number of points used for the dynamics mapping between a {@link MyPaint.BrushInput} and {@link MyPaint.BrushSetting}.
-         * @param id
-         * @param input
-         * @param n
+         * @param id 
+         * @param input 
+         * @param n 
          */
         set_mapping_n(id: BrushSetting, input: BrushInput, n: number): void;
+
         /**
          * Set a X,Y point of a dynamics mapping.
          * The index must be within the number of points set using `mypaint_brush_set_mapping_n()`
-         * @param id
-         * @param input
-         * @param index
-         * @param x
-         * @param y
+         * @param id 
+         * @param input 
+         * @param index 
+         * @param x 
+         * @param y 
          */
         set_mapping_point(id: BrushSetting, input: BrushInput, index: number, x: number, y: number): void;
+
         /**
          * Enable/Disable printing of brush engine inputs on stderr. Intended for debugging only.
-         * @param enabled
+         * @param enabled 
          */
         set_print_inputs(enabled: boolean): void;
+
         /**
          * Set an internal brush engine state.
          * Normally used for debugging, but can be used to implement record & replay functionality.
-         * @param i
-         * @param value
+         * @param i 
+         * @param value 
          */
         set_state(i: BrushState, value: number): void;
+
         /**
          * Should be called once for each motion event.
-         * @param surface
-         * @param x
-         * @param y
-         * @param pressure
-         * @param xtilt
-         * @param ytilt
+         * @param surface 
+         * @param x 
+         * @param y 
+         * @param pressure 
+         * @param xtilt 
+         * @param ytilt 
          * @param dtime Time since last motion event, in seconds.
          * @returns non-0 if the stroke is finished or empty, else 0.
          */
-        stroke_to(
-            surface: Surface,
-            x: number,
-            y: number,
-            pressure: number,
-            xtilt: number,
-            ytilt: number,
-            dtime: number,
-        ): number;
+        stroke_to(surface: Surface, x: number, y: number, pressure: number, xtilt: number, ytilt: number, dtime: number): number;
+
         /**
          * Decrease the reference count. Will be freed when it hits 0.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -406,36 +412,41 @@ export namespace MyPaint {
         static $gtype: GObject.GType<BrushInputInfo>;
 
         // Fields
-
         cname: string;
+
         hard_min: number;
+
         soft_min: number;
+
         normal: number;
+
         soft_max: number;
+
         hard_max: number;
+
         name: string;
+
         tooltip: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                cname: string;
-                hard_min: number;
-                soft_min: number;
-                normal: number;
-                soft_max: number;
-                hard_max: number;
-                name: string;
-                tooltip: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            cname: string;
+            hard_min: number;
+            soft_min: number;
+            normal: number;
+            soft_max: number;
+            hard_max: number;
+            name: string;
+            tooltip: string;
+        }>);
 
         // Methods
-
         get_name(): string;
+
         get_tooltip(): string;
     }
+
 
     /**
      * @gir-type Struct
@@ -444,34 +455,38 @@ export namespace MyPaint {
         static $gtype: GObject.GType<BrushSettingInfo>;
 
         // Fields
-
         cname: string;
+
         name: string;
+
         constant: boolean;
+
         min: number;
+
         def: number;
+
         max: number;
+
         tooltip: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                cname: string;
-                name: string;
-                constant: boolean;
-                min: number;
-                def: number;
-                max: number;
-                tooltip: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            cname: string;
+            name: string;
+            constant: boolean;
+            min: number;
+            def: number;
+            max: number;
+            tooltip: string;
+        }>);
 
         // Methods
-
         get_name(): string;
+
         get_tooltip(): string;
     }
+
 
     /**
      * Simple {@link MyPaint.TiledSurface} subclass that implements a fixed sized {@link MyPaint.Surface}.
@@ -483,17 +498,18 @@ export namespace MyPaint {
         static $gtype: GObject.GType<FixedTiledSurface>;
 
         // Constructors
-
         constructor(width: number, height: number);
 
-        static ['new'](width: number, height: number): FixedTiledSurface;
+        static ["new"](width: number, height: number): FixedTiledSurface;
 
         // Methods
-
         get_height(): number;
+
         get_width(): number;
-        ['interface'](): Surface;
+
+        ["interface"](): Surface;
     }
+
 
     /**
      * @gir-type Struct
@@ -502,36 +518,38 @@ export namespace MyPaint {
         static $gtype: GObject.GType<Rectangle>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
 
         // Methods
-
         copy(): Rectangle;
+
         /**
-         * @param x
-         * @param y
+         * @param x 
+         * @param y 
          */
         expand_to_include_point(x: number, y: number): void;
+
         /**
-         * @param other
+         * @param other 
          */
         expand_to_include_rect(other: Rectangle): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -540,18 +558,17 @@ export namespace MyPaint {
         static $gtype: GObject.GType<Rectangles>;
 
         // Fields
-
         num_rectangles: number;
+
         rectangles: Rectangle;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                num_rectangles: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            num_rectangles: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -560,86 +577,71 @@ export namespace MyPaint {
         static $gtype: GObject.GType<Surface>;
 
         // Fields
-
         destroy: SurfaceDestroyFunction;
+
         refcount: number;
 
         // Methods
-
         begin_atomic(): void;
+
         /**
          * Draw a dab onto the surface.
-         * @param x
-         * @param y
-         * @param radius
-         * @param color_r
-         * @param color_g
-         * @param color_b
-         * @param opaque
-         * @param hardness
-         * @param alpha_eraser
-         * @param aspect_ratio
-         * @param angle
-         * @param lock_alpha
-         * @param colorize
+         * @param x 
+         * @param y 
+         * @param radius 
+         * @param color_r 
+         * @param color_g 
+         * @param color_b 
+         * @param opaque 
+         * @param hardness 
+         * @param alpha_eraser 
+         * @param aspect_ratio 
+         * @param angle 
+         * @param lock_alpha 
+         * @param colorize 
          */
-        draw_dab(
-            x: number,
-            y: number,
-            radius: number,
-            color_r: number,
-            color_g: number,
-            color_b: number,
-            opaque: number,
-            hardness: number,
-            alpha_eraser: number,
-            aspect_ratio: number,
-            angle: number,
-            lock_alpha: number,
-            colorize: number,
-        ): number;
+        draw_dab(x: number, y: number, radius: number, color_r: number, color_g: number, color_b: number, opaque: number, hardness: number, alpha_eraser: number, aspect_ratio: number, angle: number, lock_alpha: number, colorize: number): number;
+
         end_atomic(): Rectangle | null;
+
         /**
-         * @param x
-         * @param y
-         * @param radius
+         * @param x 
+         * @param y 
+         * @param radius 
          */
         get_alpha(x: number, y: number, radius: number): number;
+
         /**
-         * @param x
-         * @param y
-         * @param radius
-         * @param color_r
-         * @param color_g
-         * @param color_b
-         * @param color_a
+         * @param x 
+         * @param y 
+         * @param radius 
+         * @param color_r 
+         * @param color_g 
+         * @param color_b 
+         * @param color_a 
          */
-        get_color(
-            x: number,
-            y: number,
-            radius: number,
-            color_r: number,
-            color_g: number,
-            color_b: number,
-            color_a: number,
-        ): void;
+        get_color(x: number, y: number, radius: number, color_r: number, color_g: number, color_b: number, color_a: number): void;
+
         /**
          * Increase the reference count.
          */
         ref(): void;
+
         /**
-         * @param path
-         * @param x
-         * @param y
-         * @param width
-         * @param height
+         * @param path 
+         * @param x 
+         * @param y 
+         * @param width 
+         * @param height 
          */
         save_png(path: string, x: number, y: number, width: number, height: number): void;
+
         /**
          * Decrease the reference count.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -648,41 +650,44 @@ export namespace MyPaint {
         static $gtype: GObject.GType<TileRequest>;
 
         // Fields
-
         tx: number;
+
         ty: number;
+
         readonly: boolean;
+
         buffer: number;
+
         context: any;
+
         thread_id: number;
+
         mipmap_level: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                tx: number;
-                ty: number;
-                readonly: boolean;
-                buffer: number;
-                context: any;
-                thread_id: number;
-                mipmap_level: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            tx: number;
+            ty: number;
+            readonly: boolean;
+            buffer: number;
+            context: any;
+            thread_id: number;
+            mipmap_level: number;
+        }>);
 
         // Methods
-
         /**
          * Initialize a request for use with `mypaint_tiled_surface_tile_request_start()`
          * and `mypaint_tiled_surface_tile_request_end()`
-         * @param level
-         * @param tx
-         * @param ty
-         * @param readonly
+         * @param level 
+         * @param tx 
+         * @param ty 
+         * @param readonly 
          */
         init(level: number, tx: number, ty: number, readonly: boolean): void;
     }
+
 
     /**
      * Testing if this comment ends up in the gir.
@@ -692,49 +697,58 @@ export namespace MyPaint {
         static $gtype: GObject.GType<TiledSurface>;
 
         // Fields
-
         surface_do_symmetry: boolean;
+
         surface_center_x: number;
+
         operation_queue: any;
+
         dirty_bbox: Rectangle;
+
         threadsafe_tile_requests: boolean;
+
         tile_size: number;
 
         // Methods
-
         /**
          * Deallocate resources set up by `mypaint_tiled_surface_init()`
          * Does not free the {@link MyPaint.TiledSurface} itself.
          * Note: Only intended to be called from subclasses of {@link MyPaint.TiledSurface}
          */
         destroy(): void;
+
         /**
-         * @param x
-         * @param y
-         * @param radius
+         * @param x 
+         * @param y 
+         * @param radius 
          */
         get_alpha(x: number, y: number, radius: number): number;
+
         /**
          * Enable/Disable symmetric brush painting across an X axis.
          * @param active TRUE to enable, FALSE to disable.
          * @param center_x X axis to mirror events across.
          */
         set_symmetry_state(active: boolean, center_x: number): void;
+
         /**
-         * @param request
+         * @param request 
          */
         tile_request_end(request: TileRequest): void;
+
         /**
-         * @param request
+         * @param request 
          */
         tile_request_start(request: TileRequest): void;
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

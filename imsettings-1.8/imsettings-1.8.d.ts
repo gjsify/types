@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace IMSettings {
+
     /**
      * IMSettings-1.8
      */
+
 
     /**
      * Error codes used in imsettings.
@@ -51,77 +54,91 @@ export namespace IMSettings {
         NOT_TARGETED_DESKTOP,
     }
 
+
     /**
      * The global configuration filename.
      */
     const GLOBAL_XINPUT_CONF: string;
+
     /**
      * An interface name for imsettings used in DBus.
      */
     const INTERFACE_DBUS: string;
+
     /**
      * The configuration filename used for "disabled".
      * The real filename would be `IMSETTINGS_NONE_CONF` + something specified
      * with --xinput-suffix build option that the default value is ".conf".
      */
     const NONE_CONF: string;
+
     /**
      * A path name for imsettings used in DBus.
      */
     const PATH_DBUS: string;
+
     /**
      * A service name for imsettings used in DBus.
      */
     const SERVICE_DBUS: string;
+
     /**
      * A DBus API version in imsettings.
      */
     const SETTINGS_API_VERSION: number;
+
     /**
      * The user configuration filename.
      */
     const USER_XINPUT_CONF: string;
+
     /**
      * The configuration filename used for XIM.
      * The real filename would be `IMSETTINGS_XIM_CONF` + something specified
      * with --xinput-suffix build option that the default value is ".conf".
      */
     const XIM_CONF: string;
+
     /**
      * An interface name for imsettings-xim XIM server used in DBus.
      */
     const XIM_INTERFACE_DBUS: string;
+
     /**
      * A path name for imsettings-xim XIM server used in DBus.
      */
     const XIM_PATH_DBUS: string;
+
     /**
      * A service name for imsettings-xim XIM server used in DBus.
      */
     const XIM_SERVICE_DBUS: string;
+
     function g_error_quark(): GLib.Quark;
+
     /**
      * Returns the {@link Gio.DBusInterfaceInfo}, if any, specifying the minimal
      * interface that imsettings conforms to.
-     *
+     * 
      * See the {@link Gio.DBusProxy.g_interface_info} property for more details.
      * @returns a {@link Gio.DBusInterfaceInfo} or `null`.  Do not unref the returned object, it is owned by an instance of {@link Gio.DBusProxy}.
      */
     function get_interface_info(): Gio.DBusInterfaceInfo;
+
     /**
      * Check if current environment are supposed to work with imsettings.
      * @returns `true` if imsettings is enabled, otherwise `false`.
      */
     function is_enabled(): boolean;
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::desktop': (pspec: GObject.ParamSpec) => void;
-            'notify::locale': (pspec: GObject.ParamSpec) => void;
+            "notify::desktop": (pspec: GObject.ParamSpec) => void;
+            "notify::locale": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             desktop: string;
             locale: string;
@@ -135,12 +152,12 @@ export namespace IMSettings {
         static $gtype: GObject.GType<Client>;
 
         // Properties
-
         /**
          * @default null
          */
         get desktop(): string;
         set desktop(val: string);
+
         /**
          * @default null
          */
@@ -157,42 +174,32 @@ export namespace IMSettings {
         $signals: Client.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](locale: string): Client;
+        static ["new"](locale: string): Client;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Check if X Display can be open or not.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='CanXDisplayOpen'&gt;
@@ -200,11 +207,12 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if supported, returns `true` otherwise `false`.
          */
-        can_x_display_open(cancellable: Gio.Cancellable | null): boolean;
+        can_x_display_open(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Obtains the result of the request from
          * `imsettings_client_can_x_display_open_start()`.
@@ -212,21 +220,20 @@ export namespace IMSettings {
          * @returns if the operation is successfully done, returns `true`          otherwise `false`
          */
         can_x_display_open_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Request asking if current desktop is supported or not asynchronously
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        can_x_display_open_start(
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        can_x_display_open_start(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Obtains the Input Method information that is currently running on.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='GetActiveVariant'&gt;
@@ -234,16 +241,18 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link IMSettings.Info} for active Input Method. if not, `null` then.
          */
-        get_active_im_info(cancellable: Gio.Cancellable | null): Info;
+        get_active_im_info(cancellable: (Gio.Cancellable | null)): Info;
+
         /**
          * Obtains current desktop information in `client`.
          * @returns a reference to the desktop name in `client`. it shouldn't be freed          in applications.
          */
         get_desktop(): string;
+
         /**
          * A convenient function to get {@link IMSettings.Info} from the result of
          * `imsettings_client_get_info_variant()`.
@@ -251,13 +260,14 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link IMSettings.Info} or `null`.
          */
-        get_info_object(module: string, cancellable: Gio.Cancellable | null): Info;
+        get_info_object(module: string, cancellable: (Gio.Cancellable | null)): Info;
+
         /**
          * Obtains the information for the specific Input Method in `module`.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='GetInfoVariant'&gt;
@@ -267,12 +277,13 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param module an Input Method name to obtain the information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
-        get_info_variant(module: string, cancellable: Gio.Cancellable | null): GLib.Variant;
+        get_info_variant(module: string, cancellable: (Gio.Cancellable | null)): GLib.Variant;
+
         /**
          * Obtains the result of the request from
          * `imsettings_client_get_info_variant_start()`.
@@ -280,23 +291,21 @@ export namespace IMSettings {
          * @returns a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
         get_info_variant_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Request obtaining asynchronously the Input Method information for `module`.
          * @param module an Input Method name to obtain the information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        get_info_variant_start(
-            module: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        get_info_variant_start(module: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Obtains all of the Input Method information available on the system.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='GetInfoVariants'&gt;
@@ -305,39 +314,40 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} contains some pairs of an Input Method name and          a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
-        get_info_variants(cancellable: Gio.Cancellable | null): GLib.Variant;
+        get_info_variants(cancellable: (Gio.Cancellable | null)): GLib.Variant;
+
         /**
          * Obtains the result of the request from
          * `imsettings_client_get_info_variants_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns a {@link GLib.Variant} contains some pairs of an Input Method name and          a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
          */
-        get_info_variants_finish(result: Gio.AsyncResult): any | null;
+        get_info_variants_finish(result: Gio.AsyncResult): (any | null);
+
         /**
          * Request obtaining asynchronously all of the Input Method information
          * available on the system.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        get_info_variants_start(
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        get_info_variants_start(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Obtains current locale information in `client`.
          * @returns a reference to the locale string in `client`. it shouldn't be freed          in applications.
          */
         get_locale(): string;
+
         /**
          * Obtains current Input Method settings in the backend modules.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='DumpModuleSettings'&gt;
@@ -345,17 +355,18 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} that contains some pairs of the module name and          the Input Method name.
          */
-        get_module_settings(cancellable: Gio.Cancellable | null): GLib.Variant;
+        get_module_settings(cancellable: (Gio.Cancellable | null)): GLib.Variant;
+
         /**
          * Obtains an Input Method name that currently is active for the system-wide.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='GetSystemIM'&gt;
@@ -366,11 +377,12 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an Input Method name or `null`.
          */
-        get_system_im(cancellable: Gio.Cancellable | null): string;
+        get_system_im(cancellable: (Gio.Cancellable | null)): string;
+
         /**
          * Obtains the result of the request from
          * `imsettings_client_get_system_im_start()`.
@@ -378,21 +390,23 @@ export namespace IMSettings {
          * @returns an Input Method name or `null`.
          */
         get_system_im_finish(result: Gio.AsyncResult): string;
+
         /**
          * Request obtaining asynchronously an input method name that currently is
          * active for the system-wide.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        get_system_im_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        get_system_im_start(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Obtains an Input Method name that currently is active for the user.
          * If one doesn't have the user xinputrc on their home, this simply returns the same
          * value to what `imsettings_client_get_system_im()` returns.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='GetUserIM'&gt;
@@ -403,11 +417,12 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an Input Method name or `null`.
          */
-        get_user_im(cancellable: Gio.Cancellable | null): string;
+        get_user_im(cancellable: (Gio.Cancellable | null)): string;
+
         /**
          * Obtains the result of the request from
          * `imsettings_client_get_user_im_start()`.
@@ -415,23 +430,25 @@ export namespace IMSettings {
          * @returns an Input Method name or `null`.
          */
         get_user_im_finish(result: Gio.AsyncResult): string;
+
         /**
          * Request obtaining asynchronously an input method name that currently is
          * active for the user.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        get_user_im_start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        get_user_im_start(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Obtains the version information of imsettings-daemon running.
          * This is expected to invoke at first if the return value is same to
          * `IMSETTINGS_SETTINGS_API_VERSION`. otherwise it may not works as expected
          * due to the changes of the implementation between imsettings-daemon and
          * client APIs.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='GetVersion'&gt;
@@ -439,17 +456,18 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a version number.
          */
-        get_version(cancellable: Gio.Cancellable | null): number;
+        get_version(cancellable: (Gio.Cancellable | null)): number;
+
         /**
          * Checks whether `module` is the system default or not.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='IsSystemDefault'&gt;
@@ -459,18 +477,19 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param module an Input Method name to ask.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
          */
-        im_is_system_default(module: string, cancellable: Gio.Cancellable | null): boolean;
+        im_is_system_default(module: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Checks whether `module` is the user default or not.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='IsUserDefault'&gt;
@@ -480,18 +499,19 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param module an Input Method name to ask.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
          */
-        im_is_user_default(module: string, cancellable: Gio.Cancellable | null): boolean;
+        im_is_user_default(module: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Checks whether `module` is the Input Method for XIM only or not.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='IsXIM'&gt;
@@ -501,18 +521,19 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param module an Input Method name to ask.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
          */
-        im_is_xim(module: string, cancellable: Gio.Cancellable | null): boolean;
+        im_is_xim(module: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Check if IMSettings is supposed to be taken any acttions.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='IsActionNeeded'&gt;
@@ -523,12 +544,13 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
-         * @param module
+         * 
+         * @param module 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if any actions needed, returns `true` otherwise `false`.
          */
-        is_action_needed(module: string, cancellable: Gio.Cancellable | null): boolean;
+        is_action_needed(module: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Obtains the result of the request from
          * `imsettings_client_is_action_needed_start()`.
@@ -536,23 +558,21 @@ export namespace IMSettings {
          * @returns if the operation is successfully done, returns `true`          otherwise `false`
          */
         is_action_needed_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Request asking if IMSettings is supposed to be taken any actions
-         * @param module
+         * @param module 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        is_action_needed_start(
-            module: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        is_action_needed_start(module: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Check if current desktop is supported by IMSettings or not.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='IsSupportedDesktop'&gt;
@@ -561,11 +581,12 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if supported, returns `true` otherwise `false`.
          */
-        is_supported_desktop(cancellable: Gio.Cancellable | null): boolean;
+        is_supported_desktop(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Obtains the result of the request from
          * `imsettings_client_is_supported_desktop_start()`.
@@ -573,40 +594,40 @@ export namespace IMSettings {
          * @returns if the operation is successfully done, returns `true`          otherwise `false`
          */
         is_supported_desktop_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Request asking if current desktop is supported or not asynchronously
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        is_supported_desktop_start(
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        is_supported_desktop_start(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Check whether the process is running.
          * @returns `true` if imsettings-daemon is running. otherwise `false`.
          */
         ping(): boolean;
+
         /**
          * Reloads imsettings-daemon.
-         *
+         * 
          * Note that `send_signal` option is for the backward compatibility.
          * imsettings-daemon doesn't do anything since `IMSETTINGS_SETTINGS_API_VERSION`
          * is 4. so you will get the expected behavior with:
-         *
-         *
+         * 
+         * 
          * ```
          *   int api_version;
-         *
+         * 
          *   if ((api_version = imsettings_client_get_version(client)) != IMSETTINGS_SETTINGS_API_VERSION) {
          *       imsettings_client_reload(client, api_version < 4, NULL, &error);
          *   }
          * ```
-         *
-         *
+         * 
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;signal name='Reload'&gt;
@@ -617,12 +638,13 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param send_signal `true` to send a signal instead of invoking a method.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation is successfully done, otherwise `false`.
          */
-        reload(send_signal: boolean, cancellable: Gio.Cancellable | null): boolean;
+        reload(send_signal: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Update the desktop name in `client` to `desktop`. if `desktop` is `null`,
          * the desktop detection will be done in the server side.
@@ -630,18 +652,20 @@ export namespace IMSettings {
          * @returns `true` if successfully updated, otherwise `false`.
          */
         set_desktop(desktop: string): boolean;
+
         /**
          * Update the locale information in `client` with `locale`.
          * @param locale a locale to obtain information for or to give it for Input Method.          or `null` if you want to pass current locale.
          * @returns `true` if successfully updated, otherwise `false`.
          */
         set_locale(locale: string): boolean;
+
         /**
          * Changes the Input Method to `module`.
-         *
+         * 
          * You could access through DBus API instead:
-         *
-         *
+         * 
+         * 
          * ```
          *   &lt;interface name='com.redhat.imsettings'&gt;
          *     &lt;method name='SwitchIM'&gt;
@@ -652,13 +676,14 @@ export namespace IMSettings {
          *     &lt;/method&gt;
          *   &lt;/interface&gt;
          * ```
-         *
+         * 
          * @param module an Input Method name changing to, or `null` to disable          the Input Method.
          * @param update_xinputrc `true` to update the user xinputrc, otherwise `false`.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if the operation is successfully done, returns `true`          otherwise `false`.
          */
-        switch_im(module: string, update_xinputrc: boolean, cancellable: Gio.Cancellable | null): boolean;
+        switch_im(module: string, update_xinputrc: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Obtains the result of the request from
          * `imsettings_client_switch_im_start()`.
@@ -666,6 +691,7 @@ export namespace IMSettings {
          * @returns if the operation is successfully done, returns `true`          otherwise `false`.
          */
         switch_im_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Request changing asynchronously the Input Method to `module`.
          * @param module an Input Method name changing to, or `null` to disable          the Input Method.
@@ -673,21 +699,19 @@ export namespace IMSettings {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        switch_im_start(
-            module: string,
-            update_xinputrc: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        switch_im_start(module: string, update_xinputrc: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
     }
+
 
     namespace Info {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -706,36 +730,26 @@ export namespace IMSettings {
         $signals: Info.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Info.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](parameters: GLib.Variant): Info;
+        static ["new"](parameters: GLib.Variant): Info;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Info.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Info.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Info.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Info.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Info.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Info.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Generates a {@link GLib.Variant} from the content of `filename`.
          * This API is mainly used in imsettings-daemon and not supposed to
@@ -744,6 +758,7 @@ export namespace IMSettings {
          * @param language a locale being desired to work on.
          */
         static variant_new(filename: string, language: string): GLib.Variant;
+
         /**
          * Generates a {@link GLib.Variant} from the content of `filename`.
          * This API is mainly used in imsettings-daemon and not supposed to
@@ -755,7 +770,6 @@ export namespace IMSettings {
         static variant_new_with_desktop(filename: string, language: string, desktop: string): GLib.Variant;
 
         // Methods
-
         /**
          * Compares two {@link IMSettings.Info} instance.
          * This function would simply compares the result of the real value in
@@ -768,176 +782,200 @@ export namespace IMSettings {
          * @returns `true` if `i1` and `i2` match, otherwise `false`.
          */
         compare(info2: Info): boolean;
+
         /**
          * Obtains the arguments of the auxiliary program.
-         *
+         * 
          * This gives you same value of `AUXILIARY_ARGS` parameter in the xinput
          * configuration file.
          * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_aux_args(): string;
+
         /**
          * Obtains the auxiliary program name, which will be invoked by imsettings-daemon
          * with the arguments from `imsettings_info_get_aux_args()`.
-         *
+         * 
          * This gives you same value of `AUXILIARY_PROGRAM` parameter in the xinput
          * configuration file.
          * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_aux_program(): string;
+
         /**
          * Obtains the xinput configuration filename.
          * @returns a string. this shouldn't be freed.
          */
         get_filename(): string;
+
         /**
          * Obtains the GTK+ immodule name. this is same value of `GTK_IM_MODULE`
          * parameter in the xinput configuration file.
          * @returns a string. this shouldn't be freed.
          */
         get_gtkimm(): string;
+
         /**
          * Obtains the icon filename for the Input Method.
-         *
+         * 
          * This gives you same value of `ICON` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
         get_icon_file(): string;
+
         /**
          * Obtains the Input Method name. this is same value of `SHORT_DESC`
          * if it doesn't contain the sub module information that is separate with ':'
          * like:
-         *
-         *
+         * 
+         * 
          * ```
          *   SHORT_DESC=foo-im:bar-subim
          * ```
-         *
+         * 
          * @returns a string. this shouldn't be freed.
          */
         get_im_name(): string;
+
         /**
          * Obtains the language that `info` genereated by.
          * @returns a string. this shouldn't be freed.
          */
         get_language(): string;
+
         /**
          * Obtains the long description for Input Method.
-         *
+         * 
          * This gives you same value of `LONG_DESC` parameter in the xinput
          * configuration file.
          * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_long_desc(): string;
+
         /**
          * Obtains non-targeted desktop session for the Input Method.
-         *
+         * 
          * This gives you same value of `NOT_RUN` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
         get_non_target(): string;
+
         /**
          * Obtains the arguments of the preference program.
-         *
+         * 
          * This gives you same value of `PREFERENCE_ARGS` parameter in the xinput
          * configuration file.
          * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_prefs_args(): string;
+
         /**
          * Obtains the preference program name for the Input Method.
-         *
+         * 
          * This gives you same value of `PREFERENCE_PROGRAM` parameter in the xinput
          * configuration file.
          * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_prefs_program(): string;
+
         /**
          * Obtains the Qt immodule name.
-         *
+         * 
          * This gives you same value of `QT_IM_MODULE` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
         get_qtimm(): string;
+
         /**
          * Obtains the short description for Input Method.
-         *
+         * 
          * This gives you same value of `SHORT_DESC` parameter in the xinput
          * configuration file.  If it doesn't contain, the result would be same
          * to what `imsettings_info_get_xim()` returns.
          * @returns a string. this shouldn't be freed.
          */
         get_short_desc(): string;
+
         /**
          * Obtains the sub Input Method name.
          * @returns a string or `null` if `SHORT_DESC` doesn't contain any information          for sub Input Method.
          */
         get_sub_im_name(): string;
+
         /**
          * Obtains the XIM atom that is supposed to be used with XMODIFIERS=\`im`=.
-         *
+         * 
          * This gives you same value of `XIM` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
         get_xim(): string;
+
         /**
          * Obtains the arguments of XIM program.
-         *
+         * 
          * This gives you same value of `XIM_ARGS` parameter in the xinput
          * configuration file.
          * @returns a string or `null` if it's not specified. this shouldn't be freed.
          */
         get_xim_args(): string;
+
         /**
          * Obtains the XIM program name, which will be invoked by imsettings-daemon
          * with the arguments from `imsettings_info_get_xim_args()`.
-         *
+         * 
          * This gives you same value of `XIM_PROGRAM` parameter in the xinput
          * configuration file.
          * @returns a string. this shouldn't be freed.
          */
         get_xim_program(): string;
+
         /**
          * Checks whether the IMSettings need to be taken any actions for.
          * @returns `true` if it is, otherwise `false`.
          */
         is_action_needed(): boolean;
+
         /**
          * Checks whether the Input Method in `info` is supposed to work for
          * immodule only.
          * @returns `true` if it is. otherwise `false`.
          */
         is_immodule_only(): boolean;
+
         /**
          * Checks whether the xinput configuration file is the scripting language.
-         *
+         * 
          * This is useful to see if the result may be different when the condition
          * is changed.
          * @returns `true` if the xinput configuration file is the scripting language.          otherwise `false`.
          */
         is_script(): boolean;
+
         /**
          * Checks whether the Input Method in `info` is the system default.
          * @returns `true` if it is. otherwise `false`.
          */
         is_system_default(): boolean;
+
         /**
          * Checks whether the Input Method in `info` is the user default.
          * @returns `true` if it is. otherwise `false`.
          */
         is_user_default(): boolean;
+
         /**
          * Checks whether the Input Method is visible.
-         *
+         * 
          * The result would be same what the xinput configuration file specifies in
          * `IMSETTINGS_IGNORE_ME`.
          * @returns `true` if it's visible, otherwise `false`.
          */
         is_visible(): boolean;
+
         /**
          * Checks whether the Input Method in `info` is supposed to work on XIM only.
          * @returns `true` if it is, otherwise `false`.
@@ -945,10 +983,12 @@ export namespace IMSettings {
         is_xim(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ClientClass = typeof Client;
+
     /**
      * @gir-type Struct
      */
@@ -956,10 +996,12 @@ export namespace IMSettings {
         static $gtype: GObject.GType<ClientPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InfoClass = typeof Info;
+
     /**
      * @gir-type Struct
      */
@@ -967,11 +1009,13 @@ export namespace IMSettings {
         static $gtype: GObject.GType<InfoPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

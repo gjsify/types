@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Libosinfo {
+
     /**
      * Libosinfo-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -57,6 +60,7 @@ export namespace Libosinfo {
         WARN,
     }
 
+
     /**
      * {@link GLib.Error} codes used for errors in #OSINFO_ERROR domain.
      * @gir-type Struct
@@ -65,23 +69,21 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Generic Osinfo error;
          */
         static GENERIC: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets a {@link GLib.Quark} representing the string "libosinfo"
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -110,6 +112,7 @@ export namespace Libosinfo {
         OPTIONAL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -134,6 +137,7 @@ export namespace Libosinfo {
         NETWORK,
     }
 
+
     /**
      * {@link GLib.Error} codes used for errors in the #OSINFO_MEDIA_ERROR domain, during
      * reading of data from install media location.
@@ -143,27 +147,31 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * No descriptors.
          */
         static NO_DESCRIPTORS: number;
+
         /**
          * No Primary volume descriptor.
          */
         static NO_PVD: number;
+
         /**
          * No supplementary volume descriptor.
          */
         static NO_SVD: number;
+
         /**
          * Not enough metadata.
          */
         static INSUFFICIENT_METADATA: number;
+
         /**
          * Install media not bootable.
          */
         static NOT_BOOTABLE: number;
+
         /**
          * No directory record extent
          * found.
@@ -171,13 +179,12 @@ export namespace Libosinfo {
         static NO_DIRECTORY_RECORD_EXTENT: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -199,6 +206,7 @@ export namespace Libosinfo {
          */
         DOS,
     }
+
 
     /**
      * @gir-type Enum
@@ -225,6 +233,7 @@ export namespace Libosinfo {
          */
         CLONES,
     }
+
 
     /**
      * @gir-type Enum
@@ -260,6 +269,7 @@ export namespace Libosinfo {
         ROLLING,
     }
 
+
     /**
      * {@link GLib.Error} codes used for errors in the #OSINFO_TREE_ERROR domain, during
      * reading the treeinfo from a URI.
@@ -269,181 +279,314 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * No treeinfo found;
          */
         static NO_TREEINFO: number;
+
         /**
          * The URL protocol is not supported.
          */
         static NOT_SUPPORTED_PROTOCOL: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets a {@link GLib.Quark} representing the string "osinfo-tree-error"
          */
         static quark(): GLib.Quark;
     }
 
+
     const ARCHITECTURE_ALL: string;
+
     const AVATAR_FORMAT_PROP_ALPHA: string;
+
     const AVATAR_FORMAT_PROP_HEIGHT: string;
+
     const AVATAR_FORMAT_PROP_MIME_TYPE: string;
+
     const AVATAR_FORMAT_PROP_WIDTH: string;
+
     const DEVICELINK_PROP_DRIVER: string;
+
     const DEVICELINK_PROP_SUPPORTED: string;
+
     const DEVICE_DRIVER_DEFAULT_PRIORITY: number;
+
     const DEVICE_DRIVER_PROP_ARCHITECTURE: string;
+
     const DEVICE_DRIVER_PROP_DEVICE: string;
+
     const DEVICE_DRIVER_PROP_FILE: string;
+
     const DEVICE_DRIVER_PROP_LOCATION: string;
+
     const DEVICE_DRIVER_PROP_PRE_INSTALLABLE: string;
+
     const DEVICE_DRIVER_PROP_PRIORITY: string;
+
     const DEVICE_DRIVER_PROP_SIGNED: string;
+
     const DEVICE_PROP_BUS_TYPE: string;
+
     const DEVICE_PROP_CLASS: string;
+
     const DEVICE_PROP_NAME: string;
+
     const DEVICE_PROP_PRODUCT: string;
+
     const DEVICE_PROP_PRODUCT_ID: string;
+
     const DEVICE_PROP_SUBSYSTEM: string;
+
     const DEVICE_PROP_VENDOR: string;
+
     const DEVICE_PROP_VENDOR_ID: string;
+
     const ENTITY_PROP_ID: string;
+
     const FIRMWARE_PROP_ARCHITECTURE: string;
+
     const FIRMWARE_PROP_SUPPORTED: string;
+
     const FIRMWARE_PROP_TYPE: string;
+
     const GIBIBYTES: number;
+
     const IMAGE_PROP_ARCHITECTURE: string;
+
     const IMAGE_PROP_CLOUD_INIT: string;
+
     const IMAGE_PROP_FORMAT: string;
+
     const IMAGE_PROP_URL: string;
+
     const IMAGE_PROP_VARIANT: string;
+
     const INSTALL_CONFIG_PARAM_PROP_DATAMAP: string;
+
     const INSTALL_CONFIG_PARAM_PROP_NAME: string;
+
     const INSTALL_CONFIG_PARAM_PROP_POLICY: string;
+
     const INSTALL_CONFIG_PROP_ADMIN_PASSWORD: string;
+
     const INSTALL_CONFIG_PROP_AVATAR_DISK: string;
+
     const INSTALL_CONFIG_PROP_AVATAR_LOCATION: string;
+
     const INSTALL_CONFIG_PROP_DRIVER_SIGNING: string;
+
     const INSTALL_CONFIG_PROP_HARDWARE_ARCH: string;
+
     const INSTALL_CONFIG_PROP_HOSTNAME: string;
+
     const INSTALL_CONFIG_PROP_INSTALLATION_URL: string;
+
     const INSTALL_CONFIG_PROP_L10N_KEYBOARD: string;
+
     const INSTALL_CONFIG_PROP_L10N_LANGUAGE: string;
+
     const INSTALL_CONFIG_PROP_L10N_TIMEZONE: string;
+
     const INSTALL_CONFIG_PROP_POST_INSTALL_DRIVERS_DISK: string;
+
     const INSTALL_CONFIG_PROP_POST_INSTALL_DRIVERS_LOCATION: string;
+
     const INSTALL_CONFIG_PROP_PRE_INSTALL_DRIVERS_DISK: string;
+
     const INSTALL_CONFIG_PROP_PRE_INSTALL_DRIVERS_LOCATION: string;
+
     const INSTALL_CONFIG_PROP_REG_LOGIN: string;
+
     const INSTALL_CONFIG_PROP_REG_PASSWORD: string;
+
     const INSTALL_CONFIG_PROP_REG_PRODUCTKEY: string;
+
     const INSTALL_CONFIG_PROP_SCRIPT_DISK: string;
+
     const INSTALL_CONFIG_PROP_TARGET_DISK: string;
+
     const INSTALL_CONFIG_PROP_USER_ADMIN: string;
+
     const INSTALL_CONFIG_PROP_USER_AUTOLOGIN: string;
+
     const INSTALL_CONFIG_PROP_USER_LOGIN: string;
+
     const INSTALL_CONFIG_PROP_USER_PASSWORD: string;
+
     const INSTALL_CONFIG_PROP_USER_REALNAME: string;
+
     const INSTALL_SCRIPT_PROFILE_DESKTOP: string;
+
     const INSTALL_SCRIPT_PROFILE_JEOS: string;
+
     const INSTALL_SCRIPT_PROP_CAN_POST_INSTALL_DRIVERS: string;
+
     const INSTALL_SCRIPT_PROP_CAN_PRE_INSTALL_DRIVERS: string;
+
     const INSTALL_SCRIPT_PROP_EXPECTED_FILENAME: string;
+
     const INSTALL_SCRIPT_PROP_INJECTION_METHOD: string;
+
     const INSTALL_SCRIPT_PROP_INSTALLATION_SOURCE: string;
+
     const INSTALL_SCRIPT_PROP_NEEDS_INTERNET: string;
+
     const INSTALL_SCRIPT_PROP_PATH_FORMAT: string;
+
     const INSTALL_SCRIPT_PROP_POST_INSTALL_DRIVERS_SIGNING_REQ: string;
+
     const INSTALL_SCRIPT_PROP_PREFERRED_INJECTION_METHOD: string;
+
     const INSTALL_SCRIPT_PROP_PRE_INSTALL_DRIVERS_SIGNING_REQ: string;
+
     const INSTALL_SCRIPT_PROP_PRODUCT_KEY_FORMAT: string;
+
     const INSTALL_SCRIPT_PROP_PROFILE: string;
+
     const INSTALL_SCRIPT_PROP_TEMPLATE_DATA: string;
+
     const INSTALL_SCRIPT_PROP_TEMPLATE_URI: string;
+
     const KIBIBYTES: number;
+
     /**
      * libosinfo major version number.
      */
     const MAJOR_VERSION: number;
+
     const MEBIBYTES: number;
+
     const MEDIA_PROP_APPLICATION_ID: string;
+
     const MEDIA_PROP_ARCHITECTURE: string;
+
     const MEDIA_PROP_BOOTABLE: string;
+
     const MEDIA_PROP_EJECT_AFTER_INSTALL: string;
+
     const MEDIA_PROP_INITRD: string;
+
     const MEDIA_PROP_INSTALLER: string;
+
     const MEDIA_PROP_INSTALLER_REBOOTS: string;
+
     const MEDIA_PROP_INSTALLER_SCRIPT: string;
+
     const MEDIA_PROP_KERNEL: string;
+
     const MEDIA_PROP_LANG: string;
+
     const MEDIA_PROP_LANG_MAP: string;
+
     const MEDIA_PROP_LANG_REGEX: string;
+
     const MEDIA_PROP_LIVE: string;
+
     const MEDIA_PROP_PUBLISHER_ID: string;
+
     const MEDIA_PROP_SYSTEM_ID: string;
+
     const MEDIA_PROP_URL: string;
+
     const MEDIA_PROP_VARIANT: string;
+
     const MEDIA_PROP_VOLUME_ID: string;
+
     const MEDIA_PROP_VOLUME_SIZE: string;
+
     const MEGAHERTZ: number;
+
     /**
      * libosinfo micro version number.
      */
     const MICRO_VERSION: number;
+
     /**
      * libosinfo minor version number.
      */
     const MINOR_VERSION: number;
+
     const OS_PROP_CLOUD_IMAGE_USERNAME: string;
+
     const OS_PROP_DISTRO: string;
+
     const OS_PROP_FAMILY: string;
+
     const OS_PROP_KERNEL_URL_ARGUMENT: string;
+
     const OS_PROP_RELEASE_STATUS: string;
+
     const OS_VARIANT_PROP_NAME: string;
+
     const PRODUCT_PROP_CODENAME: string;
+
     const PRODUCT_PROP_EOL_DATE: string;
+
     const PRODUCT_PROP_LOGO: string;
+
     const PRODUCT_PROP_NAME: string;
+
     const PRODUCT_PROP_RELEASE_DATE: string;
+
     const PRODUCT_PROP_SHORT_ID: string;
+
     const PRODUCT_PROP_VENDOR: string;
+
     const PRODUCT_PROP_VERSION: string;
+
     const RESOURCES_PROP_ARCHITECTURE: string;
+
     const RESOURCES_PROP_CPU: string;
+
     const RESOURCES_PROP_N_CPUS: string;
+
     const RESOURCES_PROP_RAM: string;
+
     const RESOURCES_PROP_STORAGE: string;
+
     const TREE_PROP_ARCHITECTURE: string;
+
     const TREE_PROP_BOOT_ISO: string;
+
     const TREE_PROP_HAS_TREEINFO: string;
+
     const TREE_PROP_INITRD: string;
+
     const TREE_PROP_KERNEL: string;
+
     const TREE_PROP_TREEINFO_ARCH: string;
+
     const TREE_PROP_TREEINFO_FAMILY: string;
+
     const TREE_PROP_TREEINFO_VARIANT: string;
+
     const TREE_PROP_TREEINFO_VERSION: string;
+
     const TREE_PROP_URL: string;
+
     const TREE_PROP_VARIANT: string;
+
     /**
      * Gets a {@link GLib.Quark} representing the string "libosinfo"
      * @returns the {@link GLib.Quark} representing the string.
      * @since 1.3.0
      */
     function error_quark(): GLib.Quark;
+
     function media_error_quark(): GLib.Quark;
+
     /**
      * Gets a {@link GLib.Quark} representing the string "osinfo-tree-error"
      * @returns the {@link GLib.Quark} representing the string.
      * @since 0.1.0
      */
     function tree_error_quark(): GLib.Quark;
+
     /**
      * @gir-type Flags
      */
@@ -483,6 +626,7 @@ export namespace Libosinfo {
         WEB,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -500,18 +644,18 @@ export namespace Libosinfo {
         BOOTABLE,
     }
 
+
     namespace AvatarFormat {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::alpha': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::mime-types': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::alpha": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::mime-types": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             alpha: boolean;
             height: number;
@@ -528,29 +672,32 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<AvatarFormat>;
 
         // Properties
-
         /**
          * Whether alpha channel is supported in the avatar.
          * @read-only
          * @default true
          */
         get alpha(): boolean;
+
         /**
          * The required height (in pixels) of the avatar.
          * @read-only
          * @default -1
          */
         get height(): number;
+
         /**
          * The allowed mime-types for the avatar.
          * @read-only
          */
         get mime_types(): string[];
+
         /**
          * The allowed mime-types for the avatar.
          * @read-only
          */
         get mimeTypes(): string[];
+
         /**
          * The required width (in pixels) of the avatar.
          * @read-only
@@ -568,63 +715,58 @@ export namespace Libosinfo {
         $signals: AvatarFormat.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AvatarFormat.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): AvatarFormat;
+        static ["new"](): AvatarFormat;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AvatarFormat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvatarFormat.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AvatarFormat.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AvatarFormat.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AvatarFormat.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AvatarFormat.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AvatarFormat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvatarFormat.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AvatarFormat.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AvatarFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AvatarFormat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AvatarFormat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns Whether alpha channel is supported in the avatar.
          */
         get_alpha(): boolean;
+
         /**
          * @returns the required height (in pixels) of the avatar, or -1.
          */
         get_height(): number;
+
         /**
          * @returns the required mime-types of the avatar.
          */
         get_mime_types(): string[];
+
         /**
          * @returns the required width (in pixels) of the avatar, or -1.
          */
         get_width(): number;
     }
 
+
     namespace Datamap {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Entity.ConstructorProps {
 
-        interface ConstructorProps extends Entity.ConstructorProps {}
+        }
     }
 
     /**
@@ -643,36 +785,26 @@ export namespace Libosinfo {
         $signals: Datamap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Datamap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string): Datamap;
+        static ["new"](id: string): Datamap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Datamap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Datamap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Datamap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Datamap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Datamap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Datamap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Datamap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Datamap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Datamap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Datamap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Datamap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Datamap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the input value and the output value associated to it to
          * the `map`.
@@ -680,11 +812,13 @@ export namespace Libosinfo {
          * @param outval the output value
          */
         insert(inval: string, outval: string): void;
+
         /**
          * Returns the output value with which `inval` is associated to.
          * @param inval the input value
          */
         lookup(inval: string): string;
+
         /**
          * Returns the input value with which `outval` is associated to.
          * @param outval the output value
@@ -692,15 +826,17 @@ export namespace Libosinfo {
         reverse_lookup(outval: string): string;
     }
 
+
     namespace DatamapList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -719,42 +855,36 @@ export namespace Libosinfo {
         $signals: DatamapList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DatamapList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DatamapList;
+        static ["new"](): DatamapList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DatamapList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatamapList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DatamapList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DatamapList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DatamapList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DatamapList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DatamapList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatamapList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DatamapList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DatamapList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DatamapList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DatamapList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Db {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -773,60 +903,56 @@ export namespace Libosinfo {
         $signals: Db.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Db.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Db;
+        static ["new"](): Db;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Db.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Db.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Db.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Db.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Db.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Db.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Db.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Db.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Db.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Db.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Db.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Db.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @param datamap an install datamap
          */
         add_datamap(datamap: Datamap): void;
+
         /**
          * @param deployment a deployment
          */
         add_deployment(deployment: Deployment): void;
+
         /**
          * @param device a device
          */
         add_device(device: Device): void;
+
         /**
          * @param script an install script
          */
         add_install_script(script: InstallScript): void;
+
         /**
          * @param os an operating system
          */
         add_os(os: Os): void;
+
         /**
          * @param platform an platform
          */
         add_platform(platform: Platform): void;
+
         /**
          * Find the deployment for `os` on `platform`, if any.
          * @param os the operating system to find
@@ -834,79 +960,94 @@ export namespace Libosinfo {
          * @returns the deployment, or NULL
          */
         find_deployment(os: Os, platform: Platform): Deployment;
+
         /**
          * @param id the unique operating system identifier
          * @returns the install datamap, or NULL if none is found
          */
         get_datamap(id: string): Datamap;
+
         /**
          * @returns the list of install datamaps
          */
         get_datamap_list(): DatamapList;
+
         /**
          * @param id the unique operating system identifier
          * @returns the operating system, or NULL if none is found
          */
         get_deployment(id: string): Deployment;
+
         /**
          * @returns the list of deployments
          */
         get_deployment_list(): DeploymentList;
+
         /**
          * @param id the unique device identifier
          * @returns the device, or NULL if none is found
          */
         get_device(id: string): Device;
+
         /**
          * @returns the list of devices
          */
         get_device_list(): DeviceList;
+
         /**
          * @param id the unique operating system identifier
          * @returns the install script, or NULL if none is found
          */
         get_install_script(id: string): InstallScript;
+
         /**
          * @returns the list of install scripts
          */
         get_install_script_list(): InstallScriptList;
+
         /**
          * @param id the unique operating system identifier
          * @returns the operating system, or NULL if none is found
          */
         get_os(id: string): Os;
+
         /**
          * @returns the list of operating systems
          */
         get_os_list(): OsList;
+
         /**
          * @param id the unique platform identifier
          * @returns the platform, or NULL if none is found
          */
         get_platform(id: string): Platform;
+
         /**
          * @returns the list of platforms
          */
         get_platform_list(): PlatformList;
+
         /**
          * Guess operating system given an {@link Libosinfo.Media} object.
          * @param media the installation media
          * @returns the operating system, or NULL if guessing failed
          */
         guess_os_from_media(media: Media): [Os, Media | null];
+
         /**
          * Guess operating system given an {@link Libosinfo.Tree} object.
          * @param tree the installation tree
          * @returns the operating system, or NULL if guessing failed
          */
         guess_os_from_tree(tree: Tree): [Os, Tree | null];
+
         /**
          * Try to match a newly created `media` with a media description from `db`.
          * If found, `media` will be filled with the corresponding information
          * stored in `db`. In particular, after a call to `osinfo_db_identify_media()`, if
          * the media could be identified, its OsinfoEntify::id and OsinfoMedia::os
          * properties will be set.
-         *
+         * 
          * The match for `media` in `db` is not guaranteed to be unique and
          * this method will only return the first match found. The order
          * in which matches are identified is not guaranteed, so when there
@@ -917,6 +1058,7 @@ export namespace Libosinfo {
          * @returns TRUE if `media` was found in `db`, FALSE otherwise
          */
         identify_media(media: Media): boolean;
+
         /**
          * Try to match a newly created `media` with a media description from `db`.
          * The return list will contain any {@link Libosinfo.Media} instances from `db` that
@@ -928,13 +1070,14 @@ export namespace Libosinfo {
          * @returns a list containing any matches for `media` found in `db`
          */
         identify_medialist(media: Media): MediaList;
+
         /**
          * Try to match a newly created `tree` with a tree description from `db`.
          * If found, `tree` will be filled with the corresponding information
          * stored in `db`. In particular, after a call to `osinfo_db_identify_tree()`, if
          * the tree could be identified, its OsinfoEntify::id and OsinfoMedia::os
          * properties will be set.
-         *
+         * 
          * The match for `tree` in `db` is not guaranteed to be unique and
          * this method will only return the first match found. The order
          * in which matches are identified is not guaranteed, so when there
@@ -945,6 +1088,7 @@ export namespace Libosinfo {
          * @returns TRUE if `tree` was found in `db`, FALSE otherwise
          */
         identify_tree(tree: Tree): boolean;
+
         /**
          * Try to match a newly created `tree` with a tree description from `db`.
          * The return list will contain any {@link Libosinfo.Tree} instances from `db` that
@@ -956,6 +1100,7 @@ export namespace Libosinfo {
          * @returns a list containing any matches for `tree` found in `db`
          */
         identify_treelist(tree: Tree): TreeList;
+
         /**
          * Get all operating systems that are the referee
          * in an operating system relationship.
@@ -963,6 +1108,7 @@ export namespace Libosinfo {
          * @returns a list of operating systems
          */
         unique_values_for_os_relationship(relshp: ProductRelationship): OsList;
+
         /**
          * Get all platforms that are the referee
          * in an platform relationship.
@@ -970,6 +1116,7 @@ export namespace Libosinfo {
          * @returns a list of virtualization platforms
          */
         unique_values_for_platform_relationship(relshp: ProductRelationship): PlatformList;
+
         /**
          * Get all unique values for a named property amongst all
          * deployments in the database
@@ -977,6 +1124,7 @@ export namespace Libosinfo {
          * @returns a list of strings
          */
         unique_values_for_property_in_deployment(propName: string): string[];
+
         /**
          * Get all unique values for a named property amongst all
          * devices in the database
@@ -984,6 +1132,7 @@ export namespace Libosinfo {
          * @returns a list of strings
          */
         unique_values_for_property_in_device(propName: string): string[];
+
         /**
          * Get all unique values for a named property amongst all
          * operating systems in the database
@@ -991,6 +1140,7 @@ export namespace Libosinfo {
          * @returns a list of strings
          */
         unique_values_for_property_in_os(propName: string): string[];
+
         /**
          * Get all unique values for a named property amongst all
          * platforms in the database
@@ -1000,16 +1150,16 @@ export namespace Libosinfo {
         unique_values_for_property_in_platform(propName: string): string[];
     }
 
+
     namespace Deployment {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::os': (pspec: GObject.ParamSpec) => void;
-            'notify::platform': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::os": (pspec: GObject.ParamSpec) => void;
+            "notify::platform": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             os: Os;
             platform: Platform;
@@ -1023,12 +1173,12 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Deployment>;
 
         // Properties
-
         /**
          * The operating system to be deployed
          * @construct-only
          */
         get os(): Os;
+
         /**
          * The platform to deploy on
          * @construct-only
@@ -1045,36 +1195,26 @@ export namespace Libosinfo {
         $signals: Deployment.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Deployment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, os: Os, platform: Platform): Deployment;
+        static ["new"](id: string, os: Os, platform: Platform): Deployment;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Deployment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Deployment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Deployment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Deployment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Deployment.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Deployment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Deployment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Deployment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Associate a device with a deployment. The returned {@link Libosinfo.DeviceLink}
          * can be used to record extra metadata against the link
@@ -1082,54 +1222,62 @@ export namespace Libosinfo {
          * @returns the device association
          */
         add_device(dev: Device): DeviceLink;
+
         /**
          * Retrieve all the associated devices matching the filter.
          * The filter matches against the link, not the device.
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_device_links(filter: Filter | null): DeviceLinkList;
+        get_device_links(filter: (Filter | null)): DeviceLinkList;
+
         /**
          * Retrieve all the associated devices matching the filter.
          * The filter matches against the device, not the link.
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_devices(filter: Filter | null): DeviceList;
+        get_devices(filter: (Filter | null)): DeviceList;
+
         /**
          * Get the operating system for the deployment
          * @returns an OS, or NULL
          */
         get_os(): Os;
+
         /**
          * Get the platform for the deployment
          * @returns a platform, or NULL
          */
         get_platform(): Platform;
+
         /**
          * Get the preferred device matching a given filter
          * @param filter a device metadata filter
          * @returns a device, or NULL
          */
-        get_preferred_device(filter: Filter | null): Device;
+        get_preferred_device(filter: (Filter | null)): Device;
+
         /**
          * Get the preferred device link matching a given filter and platform.
          * The filter matches against attributes on the link, not the device.
          * @param filter a device metadata filter
          * @returns a device, or NULL
          */
-        get_preferred_device_link(filter: Filter | null): DeviceLink;
+        get_preferred_device_link(filter: (Filter | null)): DeviceLink;
     }
+
 
     namespace DeploymentList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -1148,42 +1296,33 @@ export namespace Libosinfo {
         $signals: DeploymentList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeploymentList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DeploymentList;
+        static ["new"](): DeploymentList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeploymentList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeploymentList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeploymentList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeploymentList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeploymentList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeploymentList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeploymentList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeploymentList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeploymentList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeploymentList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeploymentList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeploymentList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new deployment list that is filled with deployments
          * from `source`
          * @returns a copy of the deployment list
          */
         new_copy(): DeploymentList;
+
         /**
          * Construct a new deployment list that is filled with deployments
          * from `source` that match `filter`
@@ -1191,6 +1330,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the deployment list
          */
         new_filtered(filter: Filter): DeploymentList;
+
         /**
          * Construct a new deployment list that is filled with only the
          * deployments that are present in both `sourceOne` and `sourceTwo`.
@@ -1198,6 +1338,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two deployment lists
          */
         new_intersection(sourceTwo: DeploymentList): DeploymentList;
+
         /**
          * Construct a new deployment list that is filled with all the
          * deployments that are present in either `sourceOne` and `sourceTwo`.
@@ -1207,15 +1348,17 @@ export namespace Libosinfo {
         new_union(sourceTwo: DeploymentList): DeploymentList;
     }
 
+
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Entity.ConstructorProps {
 
-        interface ConstructorProps extends Entity.ConstructorProps {}
+        }
     }
 
     /**
@@ -1234,58 +1377,57 @@ export namespace Libosinfo {
         $signals: Device.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string): Device;
+        static ["new"](id: string): Device;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_bus_type(): string;
+
         get_class(): string;
+
         get_name(): string;
+
         get_product(): string;
+
         get_product_id(): string;
+
         /**
          * @returns the value of the device's subsystem.
          */
         get_subsystem(): string;
+
         get_vendor(): string;
+
         get_vendor_id(): string;
     }
+
 
     namespace DeviceDriver {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Entity.ConstructorProps {
 
-        interface ConstructorProps extends Entity.ConstructorProps {}
+        }
     }
 
     /**
@@ -1304,64 +1446,60 @@ export namespace Libosinfo {
         $signals: DeviceDriver.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceDriver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceDriver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceDriver.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceDriver.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceDriver.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceDriver.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceDriver.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceDriver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceDriver.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceDriver.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceDriver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceDriver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceDriver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the target hardware architecture of `driver`.
          * @returns the hardware architecture.
          */
         get_architecture(): string;
+
         /**
          * @returns The list of devices supported by this driver.
          */
         get_devices(): DeviceList;
+
         /**
          * Retrieves the names of driver files under the location returned by
          * `osinfo_device_driver_get_location`.
          * @returns The list of driver files.
          */
         get_files(): string[];
+
         /**
          * Retrieves the location of the `driver` as a URL.
          * @returns the location of the driver.
          */
         get_location(): string;
+
         /**
          * @returns TRUE if `driver` is pre-installable, FALSE otherwise.
          */
         get_pre_installable(): boolean;
+
         /**
          * Returns the priority of the device driver. The higher the value, the more
          * important it is.
          * @returns the priority of the device driver.
          */
         get_priority(): number;
+
         /**
          * Some OS vendors recommend or require device drivers to be signed by them
          * before these device drivers could be installed on their OS.
@@ -1370,15 +1508,17 @@ export namespace Libosinfo {
         get_signed(): boolean;
     }
 
+
     namespace DeviceDriverList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -1397,44 +1537,35 @@ export namespace Libosinfo {
         $signals: DeviceDriverList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceDriverList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DeviceDriverList;
+        static ["new"](): DeviceDriverList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceDriverList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceDriverList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceDriverList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceDriverList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceDriverList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceDriverList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceDriverList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceDriverList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceDriverList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceDriverList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceDriverList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceDriverList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace DeviceLink {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::target': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::target": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             target: Device;
         }
@@ -1447,7 +1578,6 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DeviceLink>;
 
         // Properties
-
         /**
          * The target of the device link.
          * @construct-only
@@ -1464,37 +1594,28 @@ export namespace Libosinfo {
         $signals: DeviceLink.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceLink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](target: Device): DeviceLink;
+        static ["new"](target: Device): DeviceLink;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceLink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceLink.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceLink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceLink.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceLink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceLink.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceLink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceLink.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceLink.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceLink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceLink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceLink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_driver(): string;
+
         /**
          * Retrieve the {@link Libosinfo.Device} that the link points to.
          * @returns the target of the device link
@@ -1502,14 +1623,14 @@ export namespace Libosinfo {
         get_target(): Device;
     }
 
+
     namespace DeviceLinkFilter {
         // Signal signatures
         interface SignalSignatures extends Filter.SignalSignatures {
-            'notify::target-filter': (pspec: GObject.ParamSpec) => void;
+            "notify::target-filter": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Filter.ConstructorProps {
             target_filter: Filter;
             targetFilter: Filter;
@@ -1523,12 +1644,12 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DeviceLinkFilter>;
 
         // Properties
-
         /**
          * The operating system to be deployed
          * @construct-only
          */
         get target_filter(): Filter;
+
         /**
          * The operating system to be deployed
          * @construct-only
@@ -1545,39 +1666,29 @@ export namespace Libosinfo {
         $signals: DeviceLinkFilter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceLinkFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filter: Filter): DeviceLinkFilter;
-        // Conflicted with Libosinfo.Filter.new
+        static ["new"](filter: Filter): DeviceLinkFilter;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Libosinfo.Filter.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceLinkFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceLinkFilter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceLinkFilter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceLinkFilter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceLinkFilter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceLinkFilter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceLinkFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceLinkFilter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceLinkFilter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceLinkFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceLinkFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceLinkFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieve the filter used to match against the target of
          * the device link
@@ -1586,15 +1697,17 @@ export namespace Libosinfo {
         get_target_filter(): Filter;
     }
 
+
     namespace DeviceLinkList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -1613,48 +1726,40 @@ export namespace Libosinfo {
         $signals: DeviceLinkList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceLinkList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DeviceLinkList;
+        static ["new"](): DeviceLinkList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceLinkList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceLinkList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceLinkList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceLinkList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceLinkList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceLinkList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceLinkList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceLinkList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceLinkList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceLinkList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceLinkList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceLinkList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get all devices matching a given filter
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_devices(filter: Filter | null): DeviceList;
+        get_devices(filter: (Filter | null)): DeviceList;
+
         /**
          * Construct a new devicelink list that is filled with devicelinks
          * from `source`
          * @returns a copy of the devicelink list
          */
         new_copy(): DeviceLinkList;
+
         /**
          * Construct a new devicelink list that is filled with devicelinks
          * from `source` that match `filter`
@@ -1662,6 +1767,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the devicelink list
          */
         new_filtered(filter: Filter): DeviceLinkList;
+
         /**
          * Construct a new devicelink list that is filled with only the
          * devicelinks that are present in both `sourceOne` and `sourceTwo`.
@@ -1669,6 +1775,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two devicelink lists
          */
         new_intersection(sourceTwo: DeviceLinkList): DeviceLinkList;
+
         /**
          * Construct a new devicelink list that is filled with all the
          * devicelinks that are present in either `sourceOne` and `sourceTwo`.
@@ -1678,15 +1785,17 @@ export namespace Libosinfo {
         new_union(sourceTwo: DeviceLinkList): DeviceLinkList;
     }
 
+
     namespace DeviceList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -1705,42 +1814,33 @@ export namespace Libosinfo {
         $signals: DeviceList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DeviceList;
+        static ["new"](): DeviceList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new device list that is filled with devices
          * from `source`
          * @returns a copy of the device list
          */
         new_copy(): DeviceList;
+
         /**
          * Construct a new device list that is filled with devices
          * from `source` that match `filter`
@@ -1748,6 +1848,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the device list
          */
         new_filtered(filter: Filter): DeviceList;
+
         /**
          * Construct a new device list that is filled with only the
          * devices that are present in both `sourceOne` and `sourceTwo`.
@@ -1755,6 +1856,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two device lists
          */
         new_intersection(sourceTwo: DeviceList): DeviceList;
+
         /**
          * Construct a new device list that is filled with all the
          * devices that are present in either `sourceOne` and `sourceTwo`.
@@ -1764,14 +1866,14 @@ export namespace Libosinfo {
         new_union(sourceTwo: DeviceList): DeviceList;
     }
 
+
     namespace Entity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: string;
         }
@@ -1784,7 +1886,6 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Entity>;
 
         // Properties
-
         /**
          * The unique identifier for the entity The format of identifiers
          * is undefined, but the recommended practice is to use a URI.
@@ -1805,34 +1906,24 @@ export namespace Libosinfo {
         $signals: Entity.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Entity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Entity.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Entity.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Entity.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Entity.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Entity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Entity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Entity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new parameter against the entity. A key can have multiple
          * values associated. Thus repeated calls with the same key will
@@ -1841,23 +1932,27 @@ export namespace Libosinfo {
          * @param value the data to associated with that key
          */
         add_param(key: string, value: string): void;
+
         /**
          * Remove all values associated with a key
          * @param key the name of the key
          */
         clear_param(key: string): void;
+
         /**
          * Retrieves the unique key for the entity. The format of identifiers
          * is undefined, but the recommended practice is to use a URI.
          * @returns the unique key for the entity
          */
         get_id(): string;
+
         /**
          * Retrieve all the known parameter keys associated with
          * the entity
          * @returns The list of string parameters
          */
         get_param_keys(): string[];
+
         /**
          * Retrieve the parameter value associated with a named key. If
          * multiple values are stored against the key, only the first
@@ -1866,6 +1961,7 @@ export namespace Libosinfo {
          * @returns the value associated with the key, or NULL
          */
         get_param_value(key: string): string;
+
         /**
          * Retrieve the parameter value associated with a named key as a
          * boolean. If multiple values are stored against the key, only the
@@ -1874,6 +1970,7 @@ export namespace Libosinfo {
          * @returns the value associated with the key as a boolean, or FALSE
          */
         get_param_value_boolean(key: string): boolean;
+
         /**
          * Retrieve the parameter value associated with a named key as a
          * boolean. If multiple values are stored against the key, only the
@@ -1884,6 +1981,7 @@ export namespace Libosinfo {
          * @returns the value associated with the key as a boolean, or `default_value`
          */
         get_param_value_boolean_with_default(key: string, default_value: boolean): boolean;
+
         /**
          * Retrieve the parameter value associated with a named key as an
          * enum value. If multiple values are stored against the key, only
@@ -1895,6 +1993,7 @@ export namespace Libosinfo {
          * @returns the enum value associated with the key, or `default_value`.
          */
         get_param_value_enum(key: string, enum_type: GObject.GType, default_value: number): number;
+
         /**
          * Retrieve the parameter value associated with a named key as an
          * int64. If multiple values are stored against the key, only the
@@ -1903,6 +2002,7 @@ export namespace Libosinfo {
          * @returns the value associated with the key as an int64, or -1.
          */
         get_param_value_int64(key: string): number;
+
         /**
          * Retrieve the parameter value associated with a named key as an
          * int64. If multiple values are stored against the key, only the
@@ -1912,7 +2012,8 @@ export namespace Libosinfo {
          * @param default_value the value to be returned in case there's no value                 associated with the `key`
          * @returns the value associated with the key as an int64, or `default_value`
          */
-        get_param_value_int64_with_default(key: string, default_value: bigint | number): number;
+        get_param_value_int64_with_default(key: string, default_value: (bigint | number)): number;
+
         /**
          * Retrieve all the parameter values associated with a named
          * key. If no values are associated, NULL is returned
@@ -1920,6 +2021,7 @@ export namespace Libosinfo {
          * @returns the values associated with the key
          */
         get_param_value_list(key: string): string[];
+
         /**
          * Sets a new parameter against the entity. If the key already
          * has a value associated with it, the existing value will be
@@ -1928,6 +2030,7 @@ export namespace Libosinfo {
          * @param value the data to associated with that key
          */
         set_param(key: string, value: string): void;
+
         /**
          * Sets a new parameter against the entity. If the key already
          * has a value associated with it, the existing value will be
@@ -1936,6 +2039,7 @@ export namespace Libosinfo {
          * @param value the boolean value to be associated with that key
          */
         set_param_boolean(key: string, value: boolean): void;
+
         /**
          * Sets a new parameter against the entity. If the key already
          * has a value associated with it, the existing value will be
@@ -1945,6 +2049,7 @@ export namespace Libosinfo {
          * @param enum_type the enum type
          */
         set_param_enum(key: string, value: number, enum_type: GObject.GType): void;
+
         /**
          * Sets a new parameter against the entity. If the key already
          * has a value associated with it, the existing value will be
@@ -1952,16 +2057,19 @@ export namespace Libosinfo {
          * @param key the name of the key
          * @param value the int64 value to be associated with that key
          */
-        set_param_int64(key: string, value: bigint | number): void;
+        set_param_int64(key: string, value: (bigint | number)): void;
     }
+
 
     namespace Filter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1980,36 +2088,26 @@ export namespace Libosinfo {
         $signals: Filter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Filter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Filter;
+        static ["new"](): Filter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Filter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Filter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Filter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Determine of an entity matches a filter
          * @param entity an entity to query
@@ -2018,7 +2116,6 @@ export namespace Libosinfo {
         vfunc_matches(entity: Entity): boolean;
 
         // Methods
-
         /**
          * Adds a constraint that requires the entity to have
          * a property key `propName` with a value of `propVal`.
@@ -2029,27 +2126,32 @@ export namespace Libosinfo {
          * @param propVal the required property value
          */
         add_constraint(propName: string, propVal: string): void;
+
         /**
          * Remove all filter constraints for the matching property
          * name.
          * @param propName name of the key to remove constraints for
          */
         clear_constraint(propName: string): void;
+
         /**
          * Remove all filter property constraints
          */
         clear_constraints(): void;
+
         /**
          * Get a list of all constraint property keys
          * @returns List of constraint keys
          */
         get_constraint_keys(): string[];
+
         /**
          * Get a list values for filter constraints with the named key
          * @param propName the name of the key
          * @returns List of constraint values
          */
         get_constraint_values(propName: string): string[];
+
         /**
          * Determine of an entity matches a filter
          * @param entity an entity to query
@@ -2058,16 +2160,16 @@ export namespace Libosinfo {
         matches(entity: Entity): boolean;
     }
 
+
     namespace Firmware {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::architecture': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::architecture": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             architecture: string;
             type: string;
@@ -2081,13 +2183,13 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Firmware>;
 
         // Properties
-
         /**
          * The target hardware architecture of this firmware.
          * @default null
          */
         get architecture(): string;
         set architecture(val: string);
+
         /**
          * @default null
          */
@@ -2104,46 +2206,38 @@ export namespace Libosinfo {
         $signals: Firmware.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Firmware.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, architecture: string, type: string): Firmware;
+        static ["new"](id: string, architecture: string, type: string): Firmware;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Firmware.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Firmware.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Firmware.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Firmware.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Firmware.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Firmware.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Firmware.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Firmware.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Firmware.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Firmware.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Firmware.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Firmware.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the target hardware architecture of the OS `firmware` provides.
          * @returns the hardware architecture, or NULL
          */
         get_architecture(): string;
+
         /**
          * The type of the `firmware`
          * @returns the type, or NULL
          */
         get_firmware_type(): string;
+
         /**
          * Whether the `firmware` is supported or not
          * @returns TRUE if supported, FALSE otherwise.
@@ -2151,15 +2245,17 @@ export namespace Libosinfo {
         is_supported(): boolean;
     }
 
+
     namespace FirmwareList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -2178,47 +2274,38 @@ export namespace Libosinfo {
         $signals: FirmwareList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FirmwareList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): FirmwareList;
+        static ["new"](): FirmwareList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FirmwareList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FirmwareList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FirmwareList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FirmwareList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FirmwareList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FirmwareList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FirmwareList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FirmwareList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FirmwareList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FirmwareList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FirmwareList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FirmwareList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Image {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::architecture': (pspec: GObject.ParamSpec) => void;
-            'notify::cloud-init': (pspec: GObject.ParamSpec) => void;
-            'notify::format': (pspec: GObject.ParamSpec) => void;
-            'notify::url': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::architecture": (pspec: GObject.ParamSpec) => void;
+            "notify::cloud-init": (pspec: GObject.ParamSpec) => void;
+            "notify::format": (pspec: GObject.ParamSpec) => void;
+            "notify::url": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             architecture: string;
             cloud_init: string;
@@ -2235,31 +2322,34 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Image>;
 
         // Properties
-
         /**
          * The target hardware architecture of this image.
          * @default null
          */
         get architecture(): string;
         set architecture(val: string);
+
         /**
          * Whether the image supports cloud-init customizations or not.
          * @default null
          */
         get cloud_init(): string;
         set cloud_init(val: string);
+
         /**
          * Whether the image supports cloud-init customizations or not.
          * @default null
          */
         get cloudInit(): string;
         set cloudInit(val: string);
+
         /**
          * The image format.
          * @default null
          */
         get format(): string;
         set format(val: string);
+
         /**
          * The URL to this image.
          * @default null
@@ -2277,65 +2367,61 @@ export namespace Libosinfo {
         $signals: Image.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, architecture: string, format: string): Image;
+        static ["new"](id: string, architecture: string, format: string): Image;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the target hardware architecture of the OS `image` provides.
          * @returns the hardware architecture, or NULL
          */
         get_architecture(): string;
+
         /**
          * Whether `image` supports cloud init customizations
          * @returns `TRUE` if `image` supports cloud init customizations, `FALSE` otherwise.
          */
         get_cloud_init(): boolean;
+
         /**
          * The format of the `image`
          * @returns the format, or NULL
          */
         get_format(): string;
+
         /**
          * @returns the operating system, or NULL
          */
         get_os(): Os;
+
         /**
          * Gets the varriants of the associated operating system
          * @returns the operating system variants, or NULL
          */
         get_os_variants(): OsVariantList;
+
         /**
          * The URL to the `image`
          * @returns the URL, or NULL
          */
         get_url(): string;
+
         /**
          * Sets the {@link Libosinfo.Os} associated to the {@link Libosinfo.Image} instance.
          * @param os an {@link Libosinfo.Os} instance
@@ -2343,15 +2429,17 @@ export namespace Libosinfo {
         set_os(os: Os): void;
     }
 
+
     namespace ImageList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -2370,44 +2458,37 @@ export namespace Libosinfo {
         $signals: ImageList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImageList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ImageList;
+        static ["new"](): ImageList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImageList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImageList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImageList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImageList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImageList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImageList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImageList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InstallConfig {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Entity.ConstructorProps {
 
-        interface ConstructorProps extends Entity.ConstructorProps {}
+        }
     }
 
     /**
@@ -2426,158 +2507,175 @@ export namespace Libosinfo {
         $signals: InstallConfig.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InstallConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string): InstallConfig;
+        static ["new"](id: string): InstallConfig;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InstallConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallConfig.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InstallConfig.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallConfig.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InstallConfig.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallConfig.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InstallConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallConfig.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InstallConfig.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InstallConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InstallConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InstallConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_ADMIN_PASSWORD parameter,          or NULL.
          */
         get_admin_password(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_AVATAR_DISK parameter,          or NULL.
          */
         get_avatar_disk(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_AVATAR_LOCATION parameter,          or NULL.
          */
         get_avatar_location(): string;
+
         /**
          * @returns `true` if driver signing is currently enabled, `false` otherwise, see `osinfo_install_config_set_driver_signing`() for more details about driver signing.
          */
         get_driver_signing(): boolean;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_HARDWARE_ARCH parameter,          or NULL.
          */
         get_hardware_arch(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_HOSTNAME parameter,          or NULL.
          */
         get_hostname(): string;
+
         /**
          * Returns the URL the script will use to perform the installation.
          */
         get_installation_url(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_L10N_KEYBOARD parameter,          or NULL.
          */
         get_l10n_keyboard(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_L10N_LANGUAGE parameter,          or NULL.
          */
         get_l10n_language(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_L10N_TIMEZONE parameter,          or NULL.
          */
         get_l10n_timezone(): string;
+
         /**
          * @returns The disk on which post-installation drivers are located, or NULL if its not set using `osinfo_install_config_set_post_install_drivers_disk`().
          */
         get_post_install_drivers_disk(): string;
+
         /**
          * @returns The disk on which post-installation drivers are located, or NULL if its not set using `osinfo_install_config_set_post_install_drivers_location`().
          */
         get_post_install_drivers_location(): string;
+
         /**
          * @returns The disk on which pre-installation drivers are located, or NULL if its not set using `osinfo_install_config_set_pre_install_drivers_disk`().
          */
         get_pre_install_drivers_disk(): string;
+
         /**
          * @returns The location on which pre-installation drivers are located, or NULL if its not set using `osinfo_install_config_set_pre_install_drivers_location`().
          */
         get_pre_install_drivers_location(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_REG_LOGIN parameter,          or NULL.
          */
         get_reg_login(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_REG_PASSWORD parameter,          or NULL.
          */
         get_reg_password(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_REG_PRODUCTKEY parameter,          or NULL.
          */
         get_reg_product_key(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_SCRIPT_DISK parameter,          or NULL.
          */
         get_script_disk(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_TARGET_DISK parameter,          or NULL.
          */
         get_target_disk(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_ADMIN parameter,          or NULL.
          */
         get_user_administrator(): boolean;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_AUTOLOGIN parameter,          or NULL.
          */
         get_user_autologin(): boolean;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_LOGIN parameter,          or NULL.
          */
         get_user_login(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_PASSWORD parameter,          or NULL.
          */
         get_user_password(): string;
+
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_REALNAME parameter,          or NULL.
          */
         get_user_realname(): string;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_ADMIN_PASSWORD parameter
          * @param password the administrator password to be set
          */
         set_admin_password(password: string): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_AVATAR_DISK parameter.
-         *
+         * 
          * Please read documentation on `osinfo_install_config_set_target_disk`() for
          * explanation on the format of `disk` string.
          * @param disk the avatar disk
          */
         set_avatar_disk(disk: string): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_AVATAR_LOCATION parameter.
-         *
+         * 
          * Note that the format of this string is dependent on the installer script
          * `config` is going to be used with. You can use
          * `osinfo_install_script_get_path_format`() to find out which format
          * does the script expects this string to be in.
-         *
+         * 
          * Also note that in case of #OSINFO_PATH_FORMAT_DOS, the drive/disk letter
          * and the leading ':' must not be included in the path.
          * @param location new location
          */
         set_avatar_location(location: string): void;
+
         /**
          * If a script requires drivers to be signed, this function can be used to
          * disable that security feature. WARNING: Disabling driver signing may very
@@ -2585,16 +2683,18 @@ export namespace Libosinfo {
          * @param signing boolean value
          */
         set_driver_signing(signing: boolean): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_HARDWARE_ARCH parameter.
-         *
+         * 
          * The list of valid architectures are part of osinfo.rng schema
          * @param arch the hardware architecture
          */
         set_hardware_arch(arch: string): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_HOSTNAME parameter.
-         *
+         * 
          * Note that some operating systems have restrictions on maximum number of, and
          * allowed characters in hostname (or its equivalent) so it is highly
          * recommended that you keep the actual hostname less than or equal to 15
@@ -2604,120 +2704,133 @@ export namespace Libosinfo {
          * @param hostname the desired hostname
          */
         set_hostname(hostname: string): void;
+
         /**
          * When performing a tree based installation the script will need the installation
          * URL to be set, whenever the installation is performed from a non canonical place.
          * @param url the URL used to perform the installation
          */
         set_installation_url(url: string): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_L10N_KEYBOARD parameter.
-         *
+         * 
          * The expected format of this string is the same as
          * `osinfo_install_config_set_l10n_language` function's 'language' parameter.
          * @param keyboard the keyboard
          */
         set_l10n_keyboard(keyboard: string): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_L10N_LANGUAGE parameter.
-         *
+         * 
          * The expected format of this string is the gettext locale names standard:
-         *
+         * 
          * https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/Locale-Names.html
-         *
+         * 
          * Encoding and variant are (at least for now) not supported. For example,
          * 'pt_BR' is accepted is accepted as the language codes for Brazilian Portuguese
          * but 'pt_BR.utf8' is not.
          * @param language the language
          */
         set_l10n_language(language: string): void;
+
         /**
          * Set the #OSINFO_INSTALL_CONFIG_PROP_L10N_TIMEZONE parameter.
-         *
+         * 
          * The expected format of this string is the tzdata names standard.
          * @param tz the timezone
          */
         set_l10n_timezone(tz: string): void;
+
         /**
          * Specify the disk on which drivers to be installed at the end of installation,
          * are available.
-         *
+         * 
          * Please read documentation on `osinfo_install_config_set_target_disk`() for
          * explanation on the format of `disk` string.
-         *
+         * 
          * NOTE: Not every install script supports post-installation of drivers. Use
          * `osinfo_install_script_get_can_post_install_drivers`() to find out if an
          * install script supports it.
          * @param disk the target disk
          */
         set_post_install_drivers_disk(disk: string): void;
+
         /**
          * Specify the disk on which drivers to be installed at the end of installation,
          * are available.
-         *
+         * 
          * Please read documentation on `osinfo_install_config_set_avatar_location`() for
          * explanation on the format of `location` string.
-         *
+         * 
          * NOTE: Not every install script supports post-installation of drivers. Use
          * `osinfo_install_script_get_can_post_install_drivers`() to find out if an
          * install script supports it.
          * @param location the location of avatar
          */
         set_post_install_drivers_location(location: string): void;
+
         /**
          * Specify the disk on which drivers to be installed at the very beginning of
          * installation, are available. This is usually needed for devices for which the
          * OS in question does not have out of the box support for and devices are
          * required/preferred to be available during actual installation.
-         *
+         * 
          * Please read documentation on `osinfo_install_config_set_target_disk`() for
          * explanation on the format of `disk` string.
-         *
+         * 
          * NOTE: Not every install script supports pre-installation of drivers. Use
          * `osinfo_install_script_get_can_pre_install_drivers`() to find out if an
          * installer script supports it.
-         *
+         * 
          * NOTE: Microsoft Windows XP requires pre-installation driver files to be
          * present in the script disk under the toplevel directory.
          * @param disk the disk
          */
         set_pre_install_drivers_disk(disk: string): void;
+
         /**
          * Specify the location on which drivers to be installed at the very beginning of
          * installation, are available. Please read documentation on
          * `osinfo_install_config_set_pre_install_drivers_disk`() for more information
          * about pre-installation of drivers.
-         *
+         * 
          * Please read documentation on `osinfo_install_config_set_avatar_location`() for
          * explanation on the format of `location` string.
          * @param location the location
          */
         set_pre_install_drivers_location(location: string): void;
+
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_REG_LOGIN parameter.
          * @param name the registration login
          */
         set_reg_login(name: string): void;
+
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_REG_PASSWORD parameter.
          * @param password the registration password
          */
         set_reg_password(password: string): void;
+
         /**
-         * @param key
+         * @param key 
          */
         set_reg_product_key(key: string): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_SCRIPT_DISK parameter.
-         *
+         * 
          * Please read documentation on `osinfo_install_config_set_target_disk`() for
          * explanation on the format of `disk` string.
          * @param disk the disk
          */
         set_script_disk(disk: string): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_TARGET_DISK parameter.
-         *
+         * 
          * Note that the format of this string is dependent on the installer script
          * `config` is going to be used with. You can use
          * `osinfo_install_script_get_path_format`() to find out which format
@@ -2727,26 +2840,31 @@ export namespace Libosinfo {
          * @param disk the target disk
          */
         set_target_disk(disk: string): void;
+
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_ADMIN parameter.
          * @param admin whether the user should be set as administrator or not
          */
         set_user_administrator(admin: boolean): void;
+
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_AUTOLOGIN parameter.
          * @param autologin whether autologin should be set for the user or not
          */
         set_user_autologin(autologin: boolean): void;
+
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_LOGIN parameter.
          * @param username the chosen username for the user log into the system
          */
         set_user_login(username: string): void;
+
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_USER_PASSWORD parameter
          * @param password the user password to be set
          */
         set_user_password(password: string): void;
+
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_REALNAME parameter.
          * @param name the user real name to be displayed
@@ -2754,17 +2872,17 @@ export namespace Libosinfo {
         set_user_realname(name: string): void;
     }
 
+
     namespace InstallConfigParam {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::policy': (pspec: GObject.ParamSpec) => void;
-            'notify::value-map': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::policy": (pspec: GObject.ParamSpec) => void;
+            "notify::value-map": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             name: string;
             policy: InstallConfigParamPolicy;
@@ -2780,25 +2898,27 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<InstallConfigParam>;
 
         // Properties
-
         /**
          * The name of the configuration parameter.
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * The policy of the configuration parameter.
          * @read-only
          * @default Libosinfo.InstallConfigParamPolicy.OPTIONAL
          */
         get policy(): InstallConfigParamPolicy;
+
         /**
          * The mapping between generic values and OS-specific values for this
          * configuration parameter
          */
         get value_map(): Datamap;
         set value_map(val: Datamap);
+
         /**
          * The mapping between generic values and OS-specific values for this
          * configuration parameter
@@ -2816,56 +2936,51 @@ export namespace Libosinfo {
         $signals: InstallConfigParam.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InstallConfigParam.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): InstallConfigParam;
+        static ["new"](name: string): InstallConfigParam;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InstallConfigParam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallConfigParam.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InstallConfigParam.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallConfigParam.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InstallConfigParam.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallConfigParam.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InstallConfigParam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallConfigParam.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InstallConfigParam.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InstallConfigParam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InstallConfigParam.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InstallConfigParam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the name of the configuration parameter
          */
         get_name(): string;
+
         /**
          * @returns the policy of the configuration parameter
          */
         get_policy(): InstallConfigParamPolicy;
+
         /**
          * @returns The data map used to transform values set for this                           parameter to OS-specific values, or NULL.
          */
         get_value_map(): Datamap;
+
         /**
          * @returns TRUE if the config_param is optional. FALSE otherwise.
          */
         is_optional(): boolean;
+
         /**
          * @returns TRUE if the config_param is required. FALSE otherwise.
          */
         is_required(): boolean;
+
         /**
          * After a call to `osinfo_install_config_param_set_value_map()`, `datamap` will
          * be used to transform values set for this parameter to OS-specific
@@ -2875,15 +2990,17 @@ export namespace Libosinfo {
         set_value_map(datamap: Datamap): void;
     }
 
+
     namespace InstallConfigParamList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -2902,53 +3019,42 @@ export namespace Libosinfo {
         $signals: InstallConfigParamList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InstallConfigParamList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): InstallConfigParamList;
+        static ["new"](): InstallConfigParamList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InstallConfigParamList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallConfigParamList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InstallConfigParamList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallConfigParamList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InstallConfigParamList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallConfigParamList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InstallConfigParamList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallConfigParamList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InstallConfigParamList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InstallConfigParamList.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof InstallConfigParamList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InstallConfigParamList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InstallScript {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::avatar-format': (pspec: GObject.ParamSpec) => void;
-            'notify::installation-source': (pspec: GObject.ParamSpec) => void;
-            'notify::path-format': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-injection-method': (pspec: GObject.ParamSpec) => void;
-            'notify::product-key-format': (pspec: GObject.ParamSpec) => void;
-            'notify::profile': (pspec: GObject.ParamSpec) => void;
-            'notify::template-data': (pspec: GObject.ParamSpec) => void;
-            'notify::template-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::avatar-format": (pspec: GObject.ParamSpec) => void;
+            "notify::installation-source": (pspec: GObject.ParamSpec) => void;
+            "notify::path-format": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-injection-method": (pspec: GObject.ParamSpec) => void;
+            "notify::product-key-format": (pspec: GObject.ParamSpec) => void;
+            "notify::profile": (pspec: GObject.ParamSpec) => void;
+            "notify::template-data": (pspec: GObject.ParamSpec) => void;
+            "notify::template-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             avatar_format: AvatarFormat;
             avatarFormat: AvatarFormat;
@@ -2975,75 +3081,88 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<InstallScript>;
 
         // Properties
-
         /**
          * @read-only
          */
         get avatar_format(): AvatarFormat;
+
         /**
          * @read-only
          */
         get avatarFormat(): AvatarFormat;
+
         /**
          * @read-only
          * @default Libosinfo.InstallScriptInstallationSource.MEDIA
          */
         get installation_source(): InstallScriptInstallationSource;
+
         /**
          * @read-only
          * @default Libosinfo.InstallScriptInstallationSource.MEDIA
          */
         get installationSource(): InstallScriptInstallationSource;
+
         /**
          * @read-only
          * @default Libosinfo.PathFormat.UNIX
          */
         get path_format(): PathFormat;
+
         /**
          * @read-only
          * @default Libosinfo.PathFormat.UNIX
          */
         get pathFormat(): PathFormat;
+
         /**
          * @default Libosinfo.InstallScriptInjectionMethod.DISK
          */
         get preferred_injection_method(): InstallScriptInjectionMethod;
         set preferred_injection_method(val: InstallScriptInjectionMethod);
+
         /**
          * @default Libosinfo.InstallScriptInjectionMethod.DISK
          */
         get preferredInjectionMethod(): InstallScriptInjectionMethod;
         set preferredInjectionMethod(val: InstallScriptInjectionMethod);
+
         /**
          * @read-only
          * @default null
          */
         get product_key_format(): string;
+
         /**
          * @read-only
          * @default null
          */
         get productKeyFormat(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get profile(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get template_data(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get templateData(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get template_uri(): string;
+
         /**
          * @construct-only
          * @default null
@@ -3060,40 +3179,30 @@ export namespace Libosinfo {
         $signals: InstallScript.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InstallScript.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string): InstallScript;
+        static ["new"](id: string): InstallScript;
 
         static new_data(id: string, profile: string, templateData: string): InstallScript;
 
         static new_uri(id: string, profile: string, templateUri: string): InstallScript;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InstallScript.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallScript.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InstallScript.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallScript.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InstallScript.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallScript.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InstallScript.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallScript.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InstallScript.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InstallScript.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InstallScript.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InstallScript.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Creates an install script.
          * @param os the os
@@ -3101,42 +3210,26 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string. If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_for_tree`() in instead.
          */
-        generate(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
+        generate(os: Os, config: InstallConfig, cancellable: (Gio.Cancellable | null)): string;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
          * call `osinfo_install_script_generate_finish`() to conclude this call and get
          * the generated script.
-         *
+         * 
          * If you are generating the script for a specific media, it is recommended that
          * you use `osinfo_install_script_generate_for_media_async`() instead.
          * @param os the os
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
+        generate_async(os: Os, config: InstallConfig, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
          * call `osinfo_install_script_generate_finish`() to conclude this call and get
          * the generated script.
-         *
-         * If you are generating the script for a specific media, it is recommended that
-         * you use `osinfo_install_script_generate_for_media_async`() instead.
-         * @param os the os
-         * @param config the install script config
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_async(
-            os: Os,
-            config: InstallConfig,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
-         * call `osinfo_install_script_generate_finish`() to conclude this call and get
-         * the generated script.
-         *
+         * 
          * If you are generating the script for a specific media, it is recommended that
          * you use `osinfo_install_script_generate_for_media_async`() instead.
          * @param os the os
@@ -3144,23 +3237,33 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_async(
-            os: Os,
-            config: InstallConfig,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string> | void;
+        generate_async(os: Os, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate`(). From the callback,
+         * call `osinfo_install_script_generate_finish`() to conclude this call and get
+         * the generated script.
+         * 
+         * If you are generating the script for a specific media, it is recommended that
+         * you use `osinfo_install_script_generate_for_media_async`() instead.
+         * @param os the os
+         * @param config the install script config
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_async(os: Os, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+
         /**
          * Some install scripts need to pass a command line to the kernel, Such install
          * scripts belong to OSs that provide paths to the kernel and initrd files that
          * can be used to directly boot
          * (http://wiki.qemu.org/download/qemu-doc.html#direct_005flinux_005fboot)
          * the OS in order to pass the needed commandline to it.
-         *
+         * 
          * If you are generating the command line for a specific media, it is
          * recommended that you use
          * `osinfo_install_script_generate_command_line_for_media`() instead.
-         *
+         * 
          * If you are generating the command line for a specific tree, it is
          * recommended that you use
          * `osinfo_install_script_generate_command_line_for_tree`() instead.
@@ -3169,13 +3272,14 @@ export namespace Libosinfo {
          * @returns The generated command line string, NULL otherwise.
          */
         generate_command_line(os: Os, config: InstallConfig): string;
+
         /**
          * Some install scripts need to pass a command line to the kernel, Such install
          * scripts belong to OSs that provide paths to the kernel and initrd files that
          * can be used to directly boot
          * (http://wiki.qemu.org/download/qemu-doc.html#direct_005flinux_005fboot)
          * the OS in order to pass the needed commandline to it.
-         *
+         * 
          * The media `media` must have been identified successfully using
          * `osinfo_db_identify_media`() before calling this function.
          * @param media the media
@@ -3183,13 +3287,14 @@ export namespace Libosinfo {
          * @returns The generated command line string, NULL otherwise.
          */
         generate_command_line_for_media(media: Media, config: InstallConfig): string;
+
         /**
          * Some install scripts need to pass a command line to the kernel, Such install
          * scripts belong to OSs that provide paths to the kernel and initrd files that
          * can be used to directly boot
          * (http://wiki.qemu.org/download/qemu-doc.html#direct_005flinux_005fboot)
          * the OS in order to pass the needed commandline to it.
-         *
+         * 
          * The tree `tree` must have been identified successfully using
          * `osinfo_db_identify_tree`() before calling this function.
          * @param tree the tree
@@ -3197,11 +3302,13 @@ export namespace Libosinfo {
          * @returns The generated command line string, NULL otherwise.
          */
         generate_command_line_for_tree(tree: Tree, config: InstallConfig): string;
+
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL on error
          */
         generate_finish(res: Gio.AsyncResult): string;
+
         /**
          * Creates an install script. The media `media` must have been identified
          * successfully using `osinfo_db_identify_media`() before calling this function.
@@ -3210,7 +3317,8 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
          */
-        generate_for_media(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
+        generate_for_media(media: Media, config: InstallConfig, cancellable: (Gio.Cancellable | null)): string;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
          * callback, call `osinfo_install_script_generate_for_media_finish`() to
@@ -3219,26 +3327,8 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_for_media_async(
-            media: Media,
-            config: InstallConfig,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<string>;
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
-         * callback, call `osinfo_install_script_generate_for_media_finish`() to
-         * conclude this call and get the generated script.
-         * @param media the media
-         * @param config the install script config
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_for_media_async(
-            media: Media,
-            config: InstallConfig,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        generate_for_media_async(media: Media, config: InstallConfig, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
          * callback, call `osinfo_install_script_generate_for_media_finish`() to
@@ -3248,17 +3338,25 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_for_media_async(
-            media: Media,
-            config: InstallConfig,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string> | void;
+        generate_for_media_async(media: Media, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_for_media`(). From the
+         * callback, call `osinfo_install_script_generate_for_media_finish`() to
+         * conclude this call and get the generated script.
+         * @param media the media
+         * @param config the install script config
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_for_media_async(media: Media, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL on error
          */
         generate_for_media_finish(res: Gio.AsyncResult): string;
+
         /**
          * Creates an install script. The tree `tree` must have been identified
          * successfully using `osinfo_db_identify_tree`() before calling this function.
@@ -3267,7 +3365,8 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
          */
-        generate_for_tree(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
+        generate_for_tree(tree: Tree, config: InstallConfig, cancellable: (Gio.Cancellable | null)): string;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
          * callback, call `osinfo_install_script_generate_for_tree_finish`() to
@@ -3276,26 +3375,8 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_for_tree_async(
-            tree: Tree,
-            config: InstallConfig,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<string>;
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
-         * callback, call `osinfo_install_script_generate_for_tree_finish`() to
-         * conclude this call and get the generated script.
-         * @param tree the tree
-         * @param config the install script config
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_for_tree_async(
-            tree: Tree,
-            config: InstallConfig,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
          * callback, call `osinfo_install_script_generate_for_tree_finish`() to
@@ -3305,17 +3386,25 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_for_tree_async(
-            tree: Tree,
-            config: InstallConfig,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string> | void;
+        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_for_tree`(). From the
+         * callback, call `osinfo_install_script_generate_for_tree_finish`() to
+         * conclude this call and get the generated script.
+         * @param tree the tree
+         * @param config the install script config
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL or error
          */
         generate_for_tree_finish(res: Gio.AsyncResult): string;
+
         /**
          * Creates an install script that is written to the returned file.
          * @param os the os entity
@@ -3324,17 +3413,13 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_output_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_output_for_tree`() instead.
          */
-        generate_output(
-            os: Os,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.File;
+        generate_output(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): Gio.File;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
          * callback, call `osinfo_install_script_generate_output_finish`() to conclude
          * this call and get the generated script.
-         *
+         * 
          * If you are generating the script for a specific media, it is recommended that
          * you use `osinfo_install_script_generate_output_for_media_async`() instead.
          * @param os the os
@@ -3342,17 +3427,13 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_output_async(
-            os: Os,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.File>;
+        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
          * callback, call `osinfo_install_script_generate_output_finish`() to conclude
          * this call and get the generated script.
-         *
+         * 
          * If you are generating the script for a specific media, it is recommended that
          * you use `osinfo_install_script_generate_output_for_media_async`() instead.
          * @param os the os
@@ -3361,18 +3442,13 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_output_async(
-            os: Os,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output`(). From the
          * callback, call `osinfo_install_script_generate_output_finish`() to conclude
          * this call and get the generated script.
-         *
+         * 
          * If you are generating the script for a specific media, it is recommended that
          * you use `osinfo_install_script_generate_output_for_media_async`() instead.
          * @param os the os
@@ -3381,18 +3457,14 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_output_async(
-            os: Os,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.File> | void;
+        generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error
          */
         generate_output_finish(res: Gio.AsyncResult): Gio.File;
+
         /**
          * Creates an install script that is written to the returned file.
          * @param media the media
@@ -3401,12 +3473,8 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script.
          */
-        generate_output_for_media(
-            media: Media,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.File;
+        generate_output_for_media(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): Gio.File;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
          * From the callback, call
@@ -3417,30 +3485,8 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_output_for_media_async(
-            media: Media,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.File>;
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
-         * From the callback, call
-         * `osinfo_install_script_generate_output_for_media_finish`() to conclude this
-         * call and get the generated file.
-         * @param media the media
-         * @param config the install script config
-         * @param output_dir the directory where the file containing the output script              will be written
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_output_for_media_async(
-            media: Media,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
          * From the callback, call
@@ -3452,18 +3498,27 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_output_for_media_async(
-            media: Media,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.File> | void;
+        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_output_for_media`().
+         * From the callback, call
+         * `osinfo_install_script_generate_output_for_media_finish`() to conclude this
+         * call and get the generated file.
+         * @param media the media
+         * @param config the install script config
+         * @param output_dir the directory where the file containing the output script              will be written
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error.
          */
         generate_output_for_media_finish(res: Gio.AsyncResult): Gio.File;
+
         /**
          * Creates an install script that is written to the returned file.
          * @param tree the tree
@@ -3472,12 +3527,8 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script.
          */
-        generate_output_for_tree(
-            tree: Tree,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.File;
+        generate_output_for_tree(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): Gio.File;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
          * From the callback, call
@@ -3488,30 +3539,8 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        generate_output_for_tree_async(
-            tree: Tree,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.File>;
-        /**
-         * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
-         * From the callback, call
-         * `osinfo_install_script_generate_output_for_tree_finish`() to conclude this
-         * call and get the generated file.
-         * @param tree the tree
-         * @param config the install script config
-         * @param output_dir the directory where the file containing the output script              will be written
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback Function to call when result of this call is ready
-         */
-        generate_output_for_tree_async(
-            tree: Tree,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+
         /**
          * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
          * From the callback, call
@@ -3523,18 +3552,27 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        generate_output_for_tree_async(
-            tree: Tree,
-            config: InstallConfig,
-            output_dir: Gio.File,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.File> | void;
+        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronous variant of `osinfo_install_script_generate_output_for_tree`().
+         * From the callback, call
+         * `osinfo_install_script_generate_output_for_tree_finish`() to conclude this
+         * call and get the generated file.
+         * @param tree the tree
+         * @param config the install script config
+         * @param output_dir the directory where the file containing the output script              will be written
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback Function to call when result of this call is ready
+         */
+        generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error.
          */
         generate_output_for_tree_finish(res: Gio.AsyncResult): Gio.File;
+
         /**
          * Some install scripts have restrictions on the format of the user avatar. Use
          * this method to retrieve those restrictions in the form of an
@@ -3542,6 +3580,7 @@ export namespace Libosinfo {
          * @returns The avatar format, or NULL if there is no restrictions on the                           format of avatar
          */
         get_avatar_format(): AvatarFormat;
+
         /**
          * Whether install script can install drivers at the very end of installation
          * This can be used for installing devices which the OS in question does not
@@ -3549,6 +3588,7 @@ export namespace Libosinfo {
          * @returns TRUE if install script supports post-installable drivers, FALSE otherwise.
          */
         get_can_post_install_drivers(): boolean;
+
         /**
          * Whether install script can install drivers at the very beginning of
          * installation. This is needed for devices for which the OS in question does
@@ -3557,42 +3597,50 @@ export namespace Libosinfo {
          * @returns TRUE if install script supports pre-installable drivers, FALSE otherwise.
          */
         get_can_pre_install_drivers(): boolean;
+
         /**
          * Get a config param from the config param's list
          * @param name name of the parameter
          * @returns the sought config param, if exists.                           NULL otherwise. This code assumes that the 'id' and 'name' entity properties are the same.
          */
         get_config_param(name: string): InstallConfigParam;
+
         /**
          * Get the list of valid config parameters for `script`.
          * @returns the list of valid {@link Libosinfo.InstallConfigParam} parameters. Free with `g_list_free()` when done. The elements are owned by libosinfo.
          */
         get_config_param_list(): InstallScript[];
+
         /**
          * Get the list of valid config parameters for `script`.
          * @returns the list of valid {@link Libosinfo.InstallConfigParam} parameters.
          */
         get_config_params(): InstallConfigParamList;
+
         /**
          * Some operating systems (as Windows) expect that script filename has
          * particular name to work.
          * @returns the expected script filename
          */
         get_expected_filename(): string;
+
         /**
          * Retrieve the supported method to inject the script in to the installation process.
          * @returns bitwise-or of supported methods for install script injection.
          */
         get_injection_methods(): InstallScriptInjectionMethod;
+
         /**
          * @returns the installation source to be used with the script. If none is set, it defaults to OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_MEDIA.
          */
         get_installation_source(): InstallScriptInstallationSource;
+
         /**
          * Some install scripts cannot ensure that they work without an internet connection.
          * @returns TRUE if script needs an internet connection, FALSE otherwise internet connection.
          */
         get_needs_internet(): boolean;
+
         /**
          * Some operating systems are able to use any script filename, allowing the
          * application to set the filename as desired. libosinfo provides this
@@ -3601,44 +3649,50 @@ export namespace Libosinfo {
          * @returns the output script filename
          */
         get_output_filename(): string;
+
         /**
          * @returns the prefix of the file generated
          */
         get_output_prefix(): string;
+
         /**
          * Returns the path format to be used for the files and disks which will
          * be used during the installation.
          * @returns the path format to be used. OSINFO_PATH_FORMAT_UNIX is the          default option.
          */
         get_path_format(): PathFormat;
+
         /**
          * If install script can install drivers at the end of installation, this
          * function retrieves the requirement about signed status of drivers.
          */
         get_post_install_drivers_signing_req(): DeviceDriverSigningReq;
+
         /**
          * If install script can install drivers at the very beginning of installation,
          * this function retrieves the requirement about signed status of drivers.
          */
         get_pre_install_drivers_signing_req(): DeviceDriverSigningReq;
+
         /**
          * @returns the preferred injection method for the script. If none is set and OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK is supported, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK is returned, otherwise OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_INITRD is returned.
          */
         get_preferred_injection_method(): InstallScriptInjectionMethod;
+
         /**
          * If this function returns a non-NULL string, it means that the `script`
          * requires you to specify product registration key through {@link Libosinfo.InstallConfig}
          * instance passed to script generation methods.
-         *
+         * 
          * The returned string specifies the expected format of the product key like this:
-         *
+         * 
          * @ - any character
          * % - alphabet
          * # - numeric character
          * $ - alphanumeric character
-         *
+         * 
          * All other characters represent themselves.
-         *
+         * 
          * For example in case of installer for Microsoft Windows XP, you'll get
          * "$$$$$-$$$$$-$$$$$-$$$$$-$$$$$". That means a product key consists of 24
          * alphanumeric characters and 4 '-' characters at (0-based) indices 5, 11, 17
@@ -3646,44 +3700,52 @@ export namespace Libosinfo {
          * @returns Product key format mask, or NULL.
          */
         get_product_key_format(): string;
+
         /**
          * Returns a string representing the install script profile that's going to be
          * used.
-         *
+         * 
          * The values supported are "jeos" for minimal installations and "desktop" for
          * workstation/desktop installations.
          */
         get_profile(): string;
+
         /**
          * Returns the stylesheet data used to construct the install script.
          */
         get_template_data(): string;
+
         /**
          * Returns the stylesheet URI used to construct the install script.
          */
         get_template_uri(): string;
+
         /**
          * Returns whether the `script` has the `config_param` searched or not.
-         *
+         * 
          * This code assumes that the 'id' and 'name' entity properties are the same.
          * @param config_param an {@link Libosinfo.InstallConfigParam}
          */
         has_config_param(config_param: InstallConfigParam): boolean;
+
         /**
          * Returns whether the `script` has a configuration parameter matching `name` or not.
          * @param name the configuration parameter name
          */
         has_config_param_name(name: string): boolean;
+
         /**
          * Set the installation source to be used with the `script`.
          * @param source one of the installation sources: OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_MEDIA, OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_NETWORK
          */
         set_installation_source(source: InstallScriptInstallationSource): void;
+
         /**
          * Mind that not all installers support any name for the installer scripts.
          * @param prefix a prefix to be added to the file generated
          */
         set_output_prefix(prefix: string): void;
+
         /**
          * Set the preferred injection method to be used with the `script`
          * @param method one of the injection methods: OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_CDROM, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_FLOPPY, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_INITRD, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_WEB
@@ -3691,15 +3753,17 @@ export namespace Libosinfo {
         set_preferred_injection_method(method: InstallScriptInjectionMethod): void;
     }
 
+
     namespace InstallScriptList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -3718,42 +3782,33 @@ export namespace Libosinfo {
         $signals: InstallScriptList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InstallScriptList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): InstallScriptList;
+        static ["new"](): InstallScriptList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InstallScriptList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallScriptList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InstallScriptList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallScriptList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InstallScriptList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InstallScriptList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InstallScriptList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InstallScriptList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InstallScriptList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InstallScriptList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InstallScriptList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InstallScriptList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new install_script list that is filled with install_scripts
          * from `source`
          * @returns a copy of the install_script list
          */
         new_copy(): InstallScriptList;
+
         /**
          * Construct a new install_script list that is filled with install_scripts
          * from `source` that match `filter`
@@ -3761,6 +3816,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the install_script list
          */
         new_filtered(filter: Filter): InstallScriptList;
+
         /**
          * Construct a new install_script list that is filled with only the
          * install_scripts that are present in both `sourceOne` and `sourceTwo`.
@@ -3768,6 +3824,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two install_script lists
          */
         new_intersection(sourceTwo: InstallScriptList): InstallScriptList;
+
         /**
          * Construct a new install_script list that is filled with all the
          * install_scripts that are present in either `sourceOne` and `sourceTwo`.
@@ -3777,14 +3834,14 @@ export namespace Libosinfo {
         new_union(sourceTwo: InstallScriptList): InstallScriptList;
     }
 
+
     namespace List {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             element_type: GObject.GTypeInput;
             elementType: GObject.GTypeInput;
@@ -3798,7 +3855,6 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<List>;
 
         // Properties
-
         /**
          * The specialization of the list. The list will be
          * restricted to storing {@link Libosinfo.Entity} objects of
@@ -3806,6 +3862,7 @@ export namespace Libosinfo {
          * @construct-only
          */
         get element_type(): GObject.GType;
+
         /**
          * The specialization of the list. The list will be
          * restricted to storing {@link Libosinfo.Entity} objects of
@@ -3824,39 +3881,30 @@ export namespace Libosinfo {
         $signals: List.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<List.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof List.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, List.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof List.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, List.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof List.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, List.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof List.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, List.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof List.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<List.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof List.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<List.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new entity to the list.
          * @param entity the entity to add to the list
          */
         add(entity: Entity): void;
+
         /**
          * Adds all entities from `source` to `list`. Using one
          * of the constructors in a subclass is preferable
@@ -3864,6 +3912,7 @@ export namespace Libosinfo {
          * @param source the list to add
          */
         add_all(source: List): void;
+
         /**
          * Adds all entities from `source` which are matched by `filter`. Using one
          * of the constructors in a subclass is preferable
@@ -3872,6 +3921,7 @@ export namespace Libosinfo {
          * @param filter filter to process the source with
          */
         add_filtered(source: List, filter: Filter): void;
+
         /**
          * Computes the intersection between `sourceOne` and `sourceTwo` and
          * adds the resulting list of entities to the `list`. Using one
@@ -3881,6 +3931,7 @@ export namespace Libosinfo {
          * @param sourceTwo the second list to add
          */
         add_intersection(sourceOne: List, sourceTwo: List): void;
+
         /**
          * Computes the union between `sourceOne` and `sourceTwo` and
          * adds the resulting list of entities to the `list`. Using one
@@ -3890,6 +3941,7 @@ export namespace Libosinfo {
          * @param sourceTwo the second list to add
          */
         add_union(sourceOne: List, sourceTwo: List): void;
+
         /**
          * Search the list looking for the entity with a matching
          * unique identifier.
@@ -3897,23 +3949,27 @@ export namespace Libosinfo {
          * @returns the matching entity, or NULL
          */
         find_by_id(id: string): Entity;
+
         /**
          * Retrieves the type of the subclass of {@link Libosinfo.Entity}
          * that may be stored in the list
          * @returns the type of entity stored
          */
         get_element_type(): GObject.GType;
+
         /**
          * Retrieve a linked list of all elements in the list.
          * @returns the list elements
          */
         get_elements(): Entity[];
+
         /**
          * Retrieves the number of elements currently stored
          * in the list
          * @returns the list length
          */
         get_length(): number;
+
         /**
          * Retrieves the element in the list at position `idx`. If
          * `idx` is less than zero, or greater than the number of
@@ -3922,11 +3978,13 @@ export namespace Libosinfo {
          * @returns the list element or `null`
          */
         get_nth(idx: number): Entity;
+
         /**
          * Construct a new list that is filled with elements from `source`
          * @returns a copy of the list
          */
         new_copy(): List;
+
         /**
          * Construct a new list that is filled with elements from `source` that
          * match `filter`
@@ -3934,6 +3992,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the list
          */
         new_filtered(filter: Filter): List;
+
         /**
          * Construct a new list that is filled with only the elements
          * that are present in both `sourceOne` and `sourceTwo`.
@@ -3941,6 +4000,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two lists
          */
         new_intersection(sourceTwo: List): List;
+
         /**
          * Construct a new list that is filled with all the that are present in
          * either `sourceOne` and `sourceTwo`. `sourceOne` and `sourceTwo` must be of
@@ -3951,13 +4011,16 @@ export namespace Libosinfo {
         new_union(sourceTwo: List): List;
     }
 
+
     namespace Loader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3976,46 +4039,39 @@ export namespace Libosinfo {
         $signals: Loader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Loader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Loader;
+        static ["new"](): Loader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Loader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Loader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Loader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the database being populated
          * @returns the database
          */
         get_db(): Db;
+
         process_default_path(): void;
+
         /**
          * Loads data from the local path.
          */
         process_local_path(): void;
+
         /**
          * Loads data from the specified path. If the path
          * points to a file, that will be loaded as XML
@@ -4024,10 +4080,12 @@ export namespace Libosinfo {
          * @param path the fully qualified path
          */
         process_path(path: string): void;
+
         /**
          * Loads data from the system path.
          */
         process_system_path(): void;
+
         /**
          * Loads data from the specified URI. If the URI
          * points to a file, that will be loaded as XML
@@ -4036,36 +4094,37 @@ export namespace Libosinfo {
          * @param uri the data source URI
          */
         process_uri(uri: string): void;
+
         /**
          * Loads data from user path.
          */
         process_user_path(): void;
     }
 
+
     namespace Media {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::application-id': (pspec: GObject.ParamSpec) => void;
-            'notify::architecture': (pspec: GObject.ParamSpec) => void;
-            'notify::eject-after-install': (pspec: GObject.ParamSpec) => void;
-            'notify::initrd-path': (pspec: GObject.ParamSpec) => void;
-            'notify::installer': (pspec: GObject.ParamSpec) => void;
-            'notify::installer-reboots': (pspec: GObject.ParamSpec) => void;
-            'notify::installer-script': (pspec: GObject.ParamSpec) => void;
-            'notify::kernel-path': (pspec: GObject.ParamSpec) => void;
-            'notify::languages': (pspec: GObject.ParamSpec) => void;
-            'notify::live': (pspec: GObject.ParamSpec) => void;
-            'notify::os': (pspec: GObject.ParamSpec) => void;
-            'notify::publisher-id': (pspec: GObject.ParamSpec) => void;
-            'notify::system-id': (pspec: GObject.ParamSpec) => void;
-            'notify::url': (pspec: GObject.ParamSpec) => void;
-            'notify::volume-id': (pspec: GObject.ParamSpec) => void;
-            'notify::volume-size': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::application-id": (pspec: GObject.ParamSpec) => void;
+            "notify::architecture": (pspec: GObject.ParamSpec) => void;
+            "notify::eject-after-install": (pspec: GObject.ParamSpec) => void;
+            "notify::initrd-path": (pspec: GObject.ParamSpec) => void;
+            "notify::installer": (pspec: GObject.ParamSpec) => void;
+            "notify::installer-reboots": (pspec: GObject.ParamSpec) => void;
+            "notify::installer-script": (pspec: GObject.ParamSpec) => void;
+            "notify::kernel-path": (pspec: GObject.ParamSpec) => void;
+            "notify::languages": (pspec: GObject.ParamSpec) => void;
+            "notify::live": (pspec: GObject.ParamSpec) => void;
+            "notify::os": (pspec: GObject.ParamSpec) => void;
+            "notify::publisher-id": (pspec: GObject.ParamSpec) => void;
+            "notify::system-id": (pspec: GObject.ParamSpec) => void;
+            "notify::url": (pspec: GObject.ParamSpec) => void;
+            "notify::volume-id": (pspec: GObject.ParamSpec) => void;
+            "notify::volume-size": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             application_id: string;
             applicationId: string;
@@ -4091,8 +4150,8 @@ export namespace Libosinfo {
             url: string;
             volume_id: string;
             volumeId: string;
-            volume_size: bigint | number;
-            volumeSize: bigint | number;
+            volume_size: (bigint | number);
+            volumeSize: (bigint | number);
         }
     }
 
@@ -4103,28 +4162,30 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Media>;
 
         // Properties
-
         /**
          * Expected application ID (regular expression) for ISO9660 image/device.
          * @default null
          */
         get application_id(): string;
         set application_id(val: string);
+
         /**
          * Expected application ID (regular expression) for ISO9660 image/device.
          * @default null
          */
         get applicationId(): string;
         set applicationId(val: string);
+
         /**
          * The target hardware architecture of this media.
          * @default null
          */
         get architecture(): string;
         set architecture(val: string);
+
         /**
          * Whether the media should be ejected after the installation process.
-         *
+         * 
          * Some distros need their media to not be ejected after the final reboot
          * during its installation process as some packages are installed after the
          * reboot (which may cause the media to be ejected, depending on the
@@ -4133,9 +4194,10 @@ export namespace Libosinfo {
          */
         get eject_after_install(): boolean;
         set eject_after_install(val: boolean);
+
         /**
          * Whether the media should be ejected after the installation process.
-         *
+         * 
          * Some distros need their media to not be ejected after the final reboot
          * during its installation process as some packages are installed after the
          * reboot (which may cause the media to be ejected, depending on the
@@ -4144,32 +4206,36 @@ export namespace Libosinfo {
          */
         get ejectAfterInstall(): boolean;
         set ejectAfterInstall(val: boolean);
+
         /**
          * The path to the initrd image in the install tree.
          * @default null
          */
         get initrd_path(): string;
         set initrd_path(val: string);
+
         /**
          * The path to the initrd image in the install tree.
          * @default null
          */
         get initrdPath(): string;
         set initrdPath(val: string);
+
         /**
          * Whether media provides an installer for an OS.
          * @default true
          */
         get installer(): boolean;
         set installer(val: boolean);
+
         /**
          * If media is an installer, this property indicates the number of reboots
          * the installer takes before installation is complete.
-         *
+         * 
          * This property is not applicable to media that has no installer. You can
          * use `osinfo_media_get_installer`(or OsinfoMedia::installer) to check
          * that.
-         *
+         * 
          * Warning: Some media allow you to install from live sessions, in which
          * case number of reboots *alone* is not a reliable method for tracking
          * installation.
@@ -4177,14 +4243,15 @@ export namespace Libosinfo {
          */
         get installer_reboots(): number;
         set installer_reboots(val: number);
+
         /**
          * If media is an installer, this property indicates the number of reboots
          * the installer takes before installation is complete.
-         *
+         * 
          * This property is not applicable to media that has no installer. You can
          * use `osinfo_media_get_installer`(or OsinfoMedia::installer) to check
          * that.
-         *
+         * 
          * Warning: Some media allow you to install from live sessions, in which
          * case number of reboots *alone* is not a reliable method for tracking
          * installation.
@@ -4192,40 +4259,45 @@ export namespace Libosinfo {
          */
         get installerReboots(): number;
         set installerReboots(val: number);
+
         /**
          * Whether the media supports installation via an install-script.
-         *
+         * 
          * Some distros provide a few different medias and not all the medias support
          * installation via an install script.
          * @default true
          */
         get installer_script(): boolean;
         set installer_script(val: boolean);
+
         /**
          * Whether the media supports installation via an install-script.
-         *
+         * 
          * Some distros provide a few different medias and not all the medias support
          * installation via an install script.
          * @default true
          */
         get installerScript(): boolean;
         set installerScript(val: boolean);
+
         /**
          * The path to the kernel image in the install tree.
          * @default null
          */
         get kernel_path(): string;
         set kernel_path(val: string);
+
         /**
          * The path to the kernel image in the install tree.
          * @default null
          */
         get kernelPath(): string;
         set kernelPath(val: string);
+
         /**
          * If media is an installer, this property indicates the languages that
          * can be used during automatic installations.
-         *
+         * 
          * On media that are not installers, this property will indicate the
          * languages that the user interface can be displayed in.
          * Use `osinfo_media_get_installer`(or OsinfoMedia::installer) to know
@@ -4233,12 +4305,14 @@ export namespace Libosinfo {
          * @read-only
          */
         get languages(): string[];
+
         /**
          * Whether media can boot directly an OS without any installations.
          * @default false
          */
         get live(): boolean;
         set live(val: boolean);
+
         /**
          * Os information for the current media. For media stored in an
          * {@link Libosinfo.Db}, it will be filled when the database is loaded, otherwise
@@ -4247,60 +4321,69 @@ export namespace Libosinfo {
          */
         get os(): Os;
         set os(val: Os);
+
         /**
          * Expected publisher ID (regular expression) for ISO9660 image/device.
          * @default null
          */
         get publisher_id(): string;
         set publisher_id(val: string);
+
         /**
          * Expected publisher ID (regular expression) for ISO9660 image/device.
          * @default null
          */
         get publisherId(): string;
         set publisherId(val: string);
+
         /**
          * Expected system ID (regular expression) for ISO9660 image/device.
          * @default null
          */
         get system_id(): string;
         set system_id(val: string);
+
         /**
          * Expected system ID (regular expression) for ISO9660 image/device.
          * @default null
          */
         get systemId(): string;
         set systemId(val: string);
+
         /**
          * The URL to this media.
          * @default null
          */
         get url(): string;
         set url(val: string);
+
         /**
          * Expected volume ID (regular expression) for ISO9660 image/device.
          * @default null
          */
         get volume_id(): string;
         set volume_id(val: string);
+
         /**
          * Expected volume ID (regular expression) for ISO9660 image/device.
          * @default null
          */
         get volumeId(): string;
         set volumeId(val: string);
+
         /**
          * Expected volume size, in bytes for ISO9660 image/device.
          * @default -1
          */
         get volume_size(): number;
-        set volume_size(val: bigint | number);
+        set volume_size(val: (bigint | number));
+
         /**
          * Expected volume size, in bytes for ISO9660 image/device.
          * @default -1
          */
         get volumeSize(): number;
-        set volumeSize(val: bigint | number);
+        set volumeSize(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -4312,45 +4395,36 @@ export namespace Libosinfo {
         $signals: Media.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, architecture: string): Media;
+        static ["new"](id: string, architecture: string): Media;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new {@link Libosinfo.Media} for installation media at `location`. The `location`
          * could be a http:// or a https:// URI or a local path.
-         *
+         * 
          * NOTE: Currently this only works for ISO images/devices.
          * @param location the location of an installation media
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static create_from_location(location: string, cancellable: Gio.Cancellable | null): Media;
+        static create_from_location(location: string, cancellable: (Gio.Cancellable | null)): Media;
+
         /**
          * Asynchronous variant of `osinfo_media_create_from_location`.
          * @param location the location of an installation media
@@ -4358,32 +4432,26 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        static create_from_location_async(
-            location: string,
-            priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<Media> | null,
-        ): void;
+        static create_from_location_async(location: string, priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Media> | null)): void;
+
         /**
          * Finishes an asynchronous media object creation process started with
          * `osinfo_media_create_from_location_async`.
          * @param res a {@link Gio.AsyncResult}
          */
         static create_from_location_finish(res: Gio.AsyncResult): Media;
+
         /**
          * Creates a new {@link Libosinfo.Media} for installation media at `location`. The `location`
          * could be a http:// or a https:// URI or a local path.
-         *
+         * 
          * NOTE: Currently this only works for ISO images/devices.
          * @param location the location of an installation media
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param flags An `OsinfoMediaDetectFlag`, or 0.
          */
-        static create_from_location_with_flags(
-            location: string,
-            cancellable: Gio.Cancellable | null,
-            flags: number,
-        ): Media;
+        static create_from_location_with_flags(location: string, cancellable: (Gio.Cancellable | null), flags: number): Media;
+
         /**
          * Asynchronous variant of `osinfo_media_create_from_location_with_flags`.
          * @param location the location of an installation media
@@ -4392,13 +4460,8 @@ export namespace Libosinfo {
          * @param callback Function to call when result of this call is ready
          * @param flags An `OsinfoMediaDetectFlag`, or 0.
          */
-        static create_from_location_with_flags_async(
-            location: string,
-            priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<Media> | null,
-            flags: number,
-        ): void;
+        static create_from_location_with_flags_async(location: string, priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Media> | null), flags: number): void;
+
         /**
          * Finishes an asynchronous media object creation process started with
          * `osinfo_media_create_from_location_async`.
@@ -4407,72 +4470,80 @@ export namespace Libosinfo {
         static create_from_location_with_flags_finish(res: Gio.AsyncResult): Media;
 
         // Methods
-
         /**
          * Adds an `script` to the specified `media`
          * @param script an {@link Libosinfo.InstallScript} instance
          */
         add_install_script(script: InstallScript): void;
+
         /**
          * If `media` is an ISO9660 image/device, this function retrieves the expected
          * application ID.
-         *
+         * 
          * Note: In practice, this will usually not be the exact copy of the application
          * ID string on the ISO image/device but rather a regular expression that
          * matches it.
          * @returns the application id, or NULL
          */
         get_application_id(): string;
+
         /**
          * Retrieves the target hardware architecture of the OS `media` provides.
          * @returns the hardware architecture, or NULL
          */
         get_architecture(): string;
+
         /**
          * Whether `media` should ejected after the installation procces.
          * @returns `TRUE` if media should be ejected, `FALSE` otherwise
          */
         get_eject_after_install(): boolean;
+
         /**
          * Retrieves the path to the initrd image in the install tree.
-         *
+         * 
          * Note: This only applies to installer medias of 'linux' OS family.
          * @returns the path to initrd image, or NULL
          */
         get_initrd_path(): string;
+
         /**
          * @returns a list of the install scripts for the specified media
          */
         get_install_script_list(): InstallScriptList;
+
         /**
          * Whether `media` provides an installer for an OS.
          * @returns `TRUE` if media is installer, `FALSE` otherwise
          */
         get_installer(): boolean;
+
         /**
          * If media is an installer, this method retrieves the number of reboots the
          * installer takes before installation is complete.
-         *
+         * 
          * This function is not supposed to be called on media that has no installer.
          * You can use `osinfo_media_get_installer`(or OsinfoMedia::installer) to check
          * that.
-         *
+         * 
          * Warning: Some media allow you to install from live sessions, in which case
          * number of reboots *alone* is not a reliable method for tracking installation.
          * @returns the number of installer reboots or -1 if media is not an installer
          */
         get_installer_reboots(): number;
+
         /**
          * Retrieves the path to the kernel image in the install tree.
-         *
+         * 
          * Note: This only applies to installer medias of 'linux' OS family.
          * @returns the path to kernel image, or NULL
          */
         get_kernel_path(): string;
+
         /**
          * If media is an installer, this property indicates the languages that
          * can be used during automatic installations.
-         *
+         * 
          * On media that are not installers, this property will indicate the
          * languages that the user interface can be displayed in.
          * Use `osinfo_media_get_installer`(or OsinfoMedia::installer) to know
@@ -4480,73 +4551,84 @@ export namespace Libosinfo {
          * @returns a {@link GLib.List} containing the list of the UI languages this media supports. The list must be freed with `g_list_free()` when no longer needed. If the supported languages are unknown, NULL will be returned.
          */
         get_languages(): string[];
+
         /**
          * Whether `media` can boot directly an OS without any installations.
          * @returns `TRUE` if media is live, `FALSE` otherwise
          */
         get_live(): boolean;
+
         /**
          * @returns the operating system, or NULL
          */
         get_os(): Os;
+
         /**
          * Gets the variants of the associated operating system.
          * @returns the operating system variant, or NULL
          */
         get_os_variants(): OsVariantList;
+
         /**
          * If `media` is an ISO9660 image/device, this function retrieves the expected
          * publisher ID.
-         *
+         * 
          * Note: In practice, this will usually not be the exact copy of the publisher
          * ID string on the ISO image/device but rather a regular expression that
          * matches it.
          * @returns the publisher id, or NULL
          */
         get_publisher_id(): string;
+
         /**
          * If `media` is an ISO9660 image/device, this function retrieves the expected
          * system ID.
-         *
+         * 
          * Note: In practice, this will usually not be the exact copy of the system ID
          * string on the ISO image/device but rather a regular expression that matches
          * it.
          * @returns the system id, or NULL
          */
         get_system_id(): string;
+
         /**
          * The URL to the `media`
          * @returns the URL, or NULL
          */
         get_url(): string;
+
         /**
          * If `media` is an ISO9660 image/device, this function retrieves the expected
          * volume ID.
-         *
+         * 
          * Note: In practice, this will usually not be the exact copy of the volume ID
          * string on the ISO image/device but rather a regular expression that matches
          * it.
          * @returns the volume id, or NULL
          */
         get_volume_id(): string;
+
         /**
          * @returns the ISO9660 volume size, in bytes or -1 if size is unknown or media is not an ISO9660 device/image.
          */
         get_volume_size(): number;
+
         /**
          * @returns `TRUE` if the `media` is bootable. `FALSE` otherwise.
          */
         is_bootable(): boolean;
+
         /**
          * Determines whether the metadata for the unidentified `media` is a match
          * for the `reference` media.
-         *
+         * 
          * The metadata in the unidentified `media` must be literal strings,
          * while the metadata in the `reference` media must be regular expressions.
          * @param reference a reference {@link Libosinfo.Media} instance
          * @returns `TRUE` if `media` is a match for `reference`. `FALSE` otherwise
          */
         matches(reference: Media): boolean;
+
         /**
          * Whether `media` supports installation using install scripts.
          * @returns `TRUE` if install-scripts are supported by the media, `FALSE` otherwise
@@ -4554,15 +4636,17 @@ export namespace Libosinfo {
         supports_installer_script(): boolean;
     }
 
+
     namespace MediaList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -4581,42 +4665,33 @@ export namespace Libosinfo {
         $signals: MediaList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MediaList;
+        static ["new"](): MediaList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new media list that is filled with medias
          * from `source`
          * @returns a copy of the media list
          */
         new_copy(): MediaList;
+
         /**
          * Construct a new media list that is filled with medias
          * from `source` that match `filter`
@@ -4624,6 +4699,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the media list
          */
         new_filtered(filter: Filter): MediaList;
+
         /**
          * Construct a new media list that is filled with only the
          * medias that are present in both `sourceOne` and `sourceTwo`.
@@ -4631,6 +4707,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two media lists
          */
         new_intersection(sourceTwo: MediaList): MediaList;
+
         /**
          * Construct a new media list that is filled with all the
          * medias that are present in either `sourceOne` and `sourceTwo`.
@@ -4640,24 +4717,24 @@ export namespace Libosinfo {
         new_union(sourceTwo: MediaList): MediaList;
     }
 
+
     namespace Os {
         // Signal signatures
         interface SignalSignatures extends Product.SignalSignatures {
-            'notify::cloud-image-username': (pspec: GObject.ParamSpec) => void;
-            'notify::distro': (pspec: GObject.ParamSpec) => void;
-            'notify::family': (pspec: GObject.ParamSpec) => void;
-            'notify::kernel-url-argument': (pspec: GObject.ParamSpec) => void;
-            'notify::codename': (pspec: GObject.ParamSpec) => void;
-            'notify::logo': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::short-id': (pspec: GObject.ParamSpec) => void;
-            'notify::vendor': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::cloud-image-username": (pspec: GObject.ParamSpec) => void;
+            "notify::distro": (pspec: GObject.ParamSpec) => void;
+            "notify::family": (pspec: GObject.ParamSpec) => void;
+            "notify::kernel-url-argument": (pspec: GObject.ParamSpec) => void;
+            "notify::codename": (pspec: GObject.ParamSpec) => void;
+            "notify::logo": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::short-id": (pspec: GObject.ParamSpec) => void;
+            "notify::vendor": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Product.ConstructorProps {
             cloud_image_username: string;
             cloudImageUsername: string;
@@ -4675,19 +4752,20 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Os>;
 
         // Properties
-
         /**
          * The username to be passed to the cloud-init program.
          * @read-only
          * @default null
          */
         get cloud_image_username(): string;
+
         /**
          * The username to be passed to the cloud-init program.
          * @read-only
          * @default null
          */
         get cloudImageUsername(): string;
+
         /**
          * The generic distro this OS belongs to, for example fedora, windows,
          * solaris, freebsd etc.
@@ -4695,6 +4773,7 @@ export namespace Libosinfo {
          * @default null
          */
         get distro(): string;
+
         /**
          * The generic family this OS belongs to, based upon its kernel,
          * for example linux, winnt, solaris, freebsd etc.
@@ -4702,6 +4781,7 @@ export namespace Libosinfo {
          * @default null
          */
         get family(): string;
+
         /**
          * The argument to be passed to kernel command line when performing a
          * tree based installation of this OS.
@@ -4709,6 +4789,7 @@ export namespace Libosinfo {
          * @default null
          */
         get kernel_url_argument(): string;
+
         /**
          * The argument to be passed to kernel command line when performing a
          * tree based installation of this OS.
@@ -4727,36 +4808,26 @@ export namespace Libosinfo {
         $signals: Os.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Os.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string): Os;
+        static ["new"](id: string): Os;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Os.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Os.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Os.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Os.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Os.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Os.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Os.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Os.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Os.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Os.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Os.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Os.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Associated a device with an operating system.  The
          * returned {@link Libosinfo.DeviceLink} can be used to record
@@ -4765,67 +4836,80 @@ export namespace Libosinfo {
          * @returns the device association
          */
         add_device(dev: Device): DeviceLink;
+
         /**
          * Adds `driver` to the list of device drivers of operating system `os`.
          * @param driver the device driver to add
          */
         add_device_driver(driver: DeviceDriver): void;
+
         /**
          * Adds `firmware` to the list of firmwares of operating system `os`.
          * @param firmware the firmware to add
          */
         add_firmware(firmware: Firmware): void;
+
         /**
          * Adds an installed image `image` to operating system `os`.
          * @param image the image to add
          */
         add_image(image: Image): void;
+
         /**
          * Adds `script` to the list of scripts of operating system `os`.
          * @param script the install script to add
          */
         add_install_script(script: InstallScript): void;
+
         /**
          * Adds `resources` to list of maximum resources of operating system `os`.
          * @param resources the resources to add
          */
         add_maximum_resources(resources: Resources): void;
+
         /**
          * Adds installation media `media` to operating system `os`.
          * @param media the media to add
          */
         add_media(media: Media): void;
+
         /**
          * Adds `resources` to list of minimum resources of operating system `os`.
          * @param resources the resources to add
          */
         add_minimum_resources(resources: Resources): void;
+
         /**
          * Adds `resources` to list of resources needed for network installing an
          * operating system `os`.
          * @param resources the resources to add
          */
         add_network_install_resources(resources: Resources): void;
+
         /**
          * Adds `resources` to list of recommended resources of operating system `os`.
          * @param resources the resources to add
          */
         add_recommended_resources(resources: Resources): void;
+
         /**
          * Adds installation tree `tree` to operating system `os`.
          * @param tree the tree to add
          */
         add_tree(tree: Tree): void;
+
         /**
          * Adds a variant `variant` to operating system `os`.
          * @param variant the variant to add
          */
         add_variant(variant: OsVariant): void;
+
         /**
          * @param profile the install script profile that must be either OSINFO_INSTALL_SCRIPT_PROFILE_DESKTOP or OSINFO_INSTALL_SCRIPT_PROFILE_JEOS
          * @returns A new {@link Libosinfo.InstallScript} for the `os` `profile`
          */
         find_install_script(profile: string): InstallScript;
+
         /**
          * Get all devicelinks matching a given filter but unlike
          * osinfo_os_get_device_links this function also retrieves devices from all
@@ -4833,7 +4917,8 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of OsinfoDeviceLink
          */
-        get_all_device_links(filter: Filter | null): DeviceLinkList;
+        get_all_device_links(filter: (Filter | null)): DeviceLinkList;
+
         /**
          * Get all devices matching a given filter but unlike osinfo_os_get_devices
          * this function also retrieves devices from all derived and cloned operating
@@ -4841,42 +4926,49 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_all_devices(filter: Filter | null): DeviceList;
+        get_all_devices(filter: (Filter | null)): DeviceList;
+
         /**
          * Gets the username expected to be passed to the cloud image when performing
          * installation.
          * @returns the username, if present. Otherwise, NULL.
          */
         get_cloud_image_username(): string;
+
         /**
          * Get the complete firmwares matching a given filter, including the non-supported ones.
          * @param filter an optional firmware property filter
          * @returns A list of firmwares
          */
-        get_complete_firmware_list(filter: Filter | null): FirmwareList;
+        get_complete_firmware_list(filter: (Filter | null)): FirmwareList;
+
         /**
          * Gets list of all available device drivers for OS `os`.
          * @returns A list of device drivers
          */
         get_device_drivers(): DeviceDriverList;
+
         /**
          * Gets list of the highest priority device drivers for OS `os`.
          * @returns A list of device drivers
          */
         get_device_drivers_prioritized(): DeviceDriverList;
+
         /**
          * Get all devices matching a given filter. The filter
          * matches against the links, not the devices.
          * @param filter an optional device property filter
          * @returns A list of device links
          */
-        get_device_links(filter: Filter | null): DeviceLinkList;
+        get_device_links(filter: (Filter | null)): DeviceLinkList;
+
         /**
          * Get all devices matching a given filter
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_devices(filter: Filter | null): DeviceList;
+        get_devices(filter: (Filter | null)): DeviceList;
+
         /**
          * A utility function that gets devices found from the list of devices
          * `os` supports, for which the value of `property` is `value`.
@@ -4886,75 +4978,89 @@ export namespace Libosinfo {
          * @returns The found devices
          */
         get_devices_by_property(property: string, value: string, inherited: boolean): DeviceList;
+
         /**
          * Retrieves the generic family the OS `os` belongs to, for example fedora,
          * ubuntu, windows, solaris, freebsd etc.
          * @returns the distro of this os
          */
         get_distro(): string;
+
         /**
          * Retrieves the generic family the OS `os` belongs to, based upon its kernel,
          * for example linux, winnt, solaris, freebsd etc.
          * @returns the family of this os
          */
         get_family(): string;
+
         /**
          * Get all the supported firmwares matching a given filter
          * @param filter an optional firmware property filter
          * @returns A list of firmwares
          */
-        get_firmware_list(filter: Filter | null): FirmwareList;
+        get_firmware_list(filter: (Filter | null)): FirmwareList;
+
         /**
          * Get all installed images associated with operating system `os`.
          * @returns A list of images
          */
         get_image_list(): ImageList;
+
         /**
          * @returns a list of the install scripts for the specified os
          */
         get_install_script_list(): InstallScriptList;
+
         /**
          * Gets the argument expected to be passed to the kernel command line when
          * performing a tree based installation.
          * @returns the kernel url argument, if present. Otherwise, NULL.
          */
         get_kernel_url_argument(): string;
+
         /**
          * Get the list of maximum resources for the operating system `os`.
          * @returns A list of resources
          */
         get_maximum_resources(): ResourcesList;
+
         /**
          * Get all installation medias associated with operating system `os`.
          * @returns A list of medias
          */
         get_media_list(): MediaList;
+
         /**
          * Get the list of minimum required resources for the operating system `os`.
          * @returns A list of resources
          */
         get_minimum_resources(): ResourcesList;
+
         /**
          * Get the list of resources needed for network installing an operating system
          * `os`.
          * @returns A list of resources
          */
         get_network_install_resources(): ResourcesList;
+
         /**
          * Get the list of recommended resources for the operating system `os`.
          * @returns A list of resources
          */
         get_recommended_resources(): ResourcesList;
+
         /**
          * Use this to determine the release status of the `os`.
          * @returns release status of `os`.
          */
         get_release_status(): ReleaseStatus;
+
         /**
          * Get all installation trees associated with operating system `os`.
          * @returns A list of trees
          */
         get_tree_list(): TreeList;
+
         /**
          * Gets all known variants of operating system `os`.
          * @returns A list of variants
@@ -4962,15 +5068,17 @@ export namespace Libosinfo {
         get_variant_list(): OsVariantList;
     }
 
+
     namespace OsList {
         // Signal signatures
         interface SignalSignatures extends ProductList.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ProductList.ConstructorProps {
 
-        interface ConstructorProps extends ProductList.ConstructorProps {}
+        }
     }
 
     /**
@@ -4989,42 +5097,33 @@ export namespace Libosinfo {
         $signals: OsList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OsList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): OsList;
+        static ["new"](): OsList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OsList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OsList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OsList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OsList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OsList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OsList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OsList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OsList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OsList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OsList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OsList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OsList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new os list that is filled with oss
          * from `source`
          * @returns a copy of the os list
          */
         new_copy(): OsList;
+
         /**
          * Construct a new os list that is filled with oss
          * from `source` that match `filter`
@@ -5032,6 +5131,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the os list
          */
         new_filtered(filter: Filter): OsList;
+
         /**
          * Construct a new os list that is filled with only the
          * oss that are present in both `sourceOne` and `sourceTwo`.
@@ -5039,6 +5139,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two os lists
          */
         new_intersection(sourceTwo: OsList): OsList;
+
         /**
          * Construct a new os list that is filled with all the
          * oss that are present in either `sourceOne` and `sourceTwo`.
@@ -5048,15 +5149,15 @@ export namespace Libosinfo {
         new_union(sourceTwo: OsList): OsList;
     }
 
+
     namespace OsVariant {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             name: string;
         }
@@ -5069,7 +5170,6 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<OsVariant>;
 
         // Properties
-
         /**
          * The name to this variant.
          * @default null
@@ -5087,36 +5187,26 @@ export namespace Libosinfo {
         $signals: OsVariant.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OsVariant.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string): OsVariant;
+        static ["new"](id: string): OsVariant;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OsVariant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OsVariant.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OsVariant.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OsVariant.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OsVariant.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OsVariant.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OsVariant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OsVariant.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OsVariant.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OsVariant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OsVariant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OsVariant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * The name of the `variant`
          * @returns the name, or NULL
@@ -5124,15 +5214,17 @@ export namespace Libosinfo {
         get_name(): string;
     }
 
+
     namespace OsVariantList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -5151,50 +5243,43 @@ export namespace Libosinfo {
         $signals: OsVariantList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OsVariantList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): OsVariantList;
+        static ["new"](): OsVariantList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OsVariantList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OsVariantList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OsVariantList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OsVariantList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OsVariantList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OsVariantList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OsVariantList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OsVariantList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OsVariantList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OsVariantList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OsVariantList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OsVariantList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Platform {
         // Signal signatures
         interface SignalSignatures extends Product.SignalSignatures {
-            'notify::codename': (pspec: GObject.ParamSpec) => void;
-            'notify::logo': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::short-id': (pspec: GObject.ParamSpec) => void;
-            'notify::vendor': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::codename": (pspec: GObject.ParamSpec) => void;
+            "notify::logo": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::short-id": (pspec: GObject.ParamSpec) => void;
+            "notify::vendor": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Product.ConstructorProps {
 
-        interface ConstructorProps extends Product.ConstructorProps {}
+        }
     }
 
     /**
@@ -5213,36 +5298,26 @@ export namespace Libosinfo {
         $signals: Platform.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Platform.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string): Platform;
+        static ["new"](id: string): Platform;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Platform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Platform.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Platform.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Platform.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Platform.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Platform.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Platform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Platform.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Platform.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Platform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Platform.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Platform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Associate a device with a platform. The returned {@link Libosinfo.DeviceLink}
          * can be used to record extra metadata against the link
@@ -5250,6 +5325,7 @@ export namespace Libosinfo {
          * @returns the device association
          */
         add_device(dev: Device): DeviceLink;
+
         /**
          * Get all platforms matching a given filter but unlike
          * osinfo_platform_get_devices this function also retrieves devices from
@@ -5257,32 +5333,36 @@ export namespace Libosinfo {
          * @param filter an optional device property filter
          * @returns A list of devices
          */
-        get_all_devices(filter: Filter | null): DeviceList;
+        get_all_devices(filter: (Filter | null)): DeviceList;
+
         /**
          * Retrieve all the associated devices matching the filter.
          * The filter matches against the link, not the device.
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_device_links(filter: Filter | null): DeviceLinkList;
+        get_device_links(filter: (Filter | null)): DeviceLinkList;
+
         /**
          * Retrieve all the associated devices matching the filter.
          * The filter matches against the device, not the link.
          * @param filter an optional filter
          * @returns a list of {@link Libosinfo.Device} entities
          */
-        get_devices(filter: Filter | null): DeviceList;
+        get_devices(filter: (Filter | null)): DeviceList;
     }
+
 
     namespace PlatformList {
         // Signal signatures
         interface SignalSignatures extends ProductList.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends ProductList.ConstructorProps {
 
-        interface ConstructorProps extends ProductList.ConstructorProps {}
+        }
     }
 
     /**
@@ -5301,42 +5381,33 @@ export namespace Libosinfo {
         $signals: PlatformList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PlatformList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PlatformList;
+        static ["new"](): PlatformList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PlatformList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlatformList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PlatformList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlatformList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PlatformList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlatformList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PlatformList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlatformList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PlatformList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PlatformList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PlatformList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlatformList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new platform list that is filled with platforms
          * from `source`
          * @returns a copy of the platform list
          */
         new_copy(): PlatformList;
+
         /**
          * Construct a new platform list that is filled with platforms
          * from `source` that match `filter`
@@ -5344,6 +5415,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the platform list
          */
         new_filtered(filter: Filter): PlatformList;
+
         /**
          * Construct a new platform list that is filled with only the
          * platforms that are present in both `sourceOne` and `sourceTwo`.
@@ -5351,6 +5423,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two platform lists
          */
         new_intersection(sourceTwo: PlatformList): PlatformList;
+
         /**
          * Construct a new platform list that is filled with all the
          * platforms that are present in either `sourceOne` and `sourceTwo`.
@@ -5360,20 +5433,20 @@ export namespace Libosinfo {
         new_union(sourceTwo: PlatformList): PlatformList;
     }
 
+
     namespace Product {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::codename': (pspec: GObject.ParamSpec) => void;
-            'notify::logo': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::short-id': (pspec: GObject.ParamSpec) => void;
-            'notify::vendor': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::codename": (pspec: GObject.ParamSpec) => void;
+            "notify::logo": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::short-id": (pspec: GObject.ParamSpec) => void;
+            "notify::vendor": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             codename: string;
             logo: string;
@@ -5392,43 +5465,48 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Product>;
 
         // Properties
-
         /**
          * The codename of this product.
          * @read-only
          * @default null
          */
         get codename(): string;
+
         /**
          * The URI of the logo of the product.
          * @read-only
          * @default null
          */
         get logo(): string;
+
         /**
          * The name of this product.
          * @read-only
          * @default null
          */
         get name(): string;
+
         /**
          * The short ID of this product.
          * @read-only
          * @default null
          */
         get short_id(): string;
+
         /**
          * The short ID of this product.
          * @read-only
          * @default null
          */
         get shortId(): string;
+
         /**
          * The Vendor of this product.
          * @read-only
          * @default null
          */
         get vendor(): string;
+
         /**
          * The version of the product.
          * @read-only
@@ -5446,54 +5524,50 @@ export namespace Libosinfo {
         $signals: Product.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Product.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Product.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Product.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Product.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Product.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Product.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Product.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Product.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Product.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Product.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Product.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Product.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Product.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add an association between two products
          * @param relshp the relationship
          * @param otherproduct the product to relate to
          */
         add_related(relshp: ProductRelationship, otherproduct: Product): void;
+
         /**
          * @returns The product's codename, or NULL.
          */
         get_codename(): string;
+
         /**
          * @returns A {@link GLib.Date} representing the product's EOL date,                           or NULL.
          */
         get_eol_date(): GLib.Date;
+
         /**
          * @returns A string representing the product's EOL date, or NULL.
          */
         get_eol_date_string(): string;
+
         get_logo(): string;
+
         get_name(): string;
+
         /**
          * Get a list of products satisfying the requested
          * relationship
@@ -5501,31 +5575,40 @@ export namespace Libosinfo {
          * @returns a list of related products
          */
         get_related(relshp: ProductRelationship): ProductList;
+
         /**
          * @returns A {@link GLib.Date} representing the product's release date,                           or NULL.
          */
         get_release_date(): GLib.Date;
+
         /**
          * @returns A string representing the product's release date, or NULL.
          */
         get_release_date_string(): string;
+
         get_short_id(): string;
+
         /**
          * Retrieve all the short-ids associated with the product.
          * @returns the list of short-ids.
          */
         get_short_id_list(): string[];
+
         get_vendor(): string;
+
         get_version(): string;
     }
 
+
     namespace ProductFilter {
         // Signal signatures
-        interface SignalSignatures extends Filter.SignalSignatures {}
+        interface SignalSignatures extends Filter.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Filter.ConstructorProps {
 
-        interface ConstructorProps extends Filter.ConstructorProps {}
+        }
     }
 
     /**
@@ -5544,36 +5627,26 @@ export namespace Libosinfo {
         $signals: ProductFilter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ProductFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ProductFilter;
+        static ["new"](): ProductFilter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ProductFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProductFilter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ProductFilter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProductFilter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ProductFilter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProductFilter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ProductFilter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProductFilter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ProductFilter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ProductFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ProductFilter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProductFilter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a constraint that matches products which
          * have a relationship `relshp` with `product`. Multiple constraints
@@ -5583,19 +5656,23 @@ export namespace Libosinfo {
          * @param product the target product to filter on
          */
         add_product_constraint(relshp: ProductRelationship, product: Product): number;
+
         /**
-         * @param when
+         * @param when 
          */
         add_support_date_constraint(when: GLib.Date): void;
+
         /**
          * Remove all constraints for the relationship `relshp`
          * @param relshp the relationship to clear
          */
         clear_product_constraint(relshp: ProductRelationship): void;
+
         /**
          * Remove all relationship constraints
          */
         clear_product_constraints(): void;
+
         /**
          * Retrieve a list of all operating systems that are
          * the target of constraint for the  relationship
@@ -5606,15 +5683,17 @@ export namespace Libosinfo {
         get_product_constraint_values(relshp: ProductRelationship): Product[];
     }
 
+
     namespace ProductList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -5633,42 +5712,33 @@ export namespace Libosinfo {
         $signals: ProductList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ProductList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ProductList;
+        static ["new"](): ProductList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ProductList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProductList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ProductList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProductList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ProductList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProductList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ProductList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProductList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ProductList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ProductList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ProductList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProductList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new os list that is filled with oss
          * from `source`
          * @returns a copy of the os list
          */
         new_copy(): ProductList;
+
         /**
          * Construct a new os list that is filled with oss
          * from `source` that match `filter`
@@ -5676,6 +5746,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the os list
          */
         new_filtered(filter: Filter): ProductList;
+
         /**
          * Construct a new os list that is filled with only the
          * oss that are present in both `sourceOne` and `sourceTwo`.
@@ -5683,6 +5754,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two os lists
          */
         new_intersection(sourceTwo: ProductList): ProductList;
+
         /**
          * Construct a new os list that is filled with all the
          * oss that are present in either `sourceOne` and `sourceTwo`.
@@ -5692,26 +5764,26 @@ export namespace Libosinfo {
         new_union(sourceTwo: ProductList): ProductList;
     }
 
+
     namespace Resources {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::architecture': (pspec: GObject.ParamSpec) => void;
-            'notify::cpu': (pspec: GObject.ParamSpec) => void;
-            'notify::n-cpus': (pspec: GObject.ParamSpec) => void;
-            'notify::ram': (pspec: GObject.ParamSpec) => void;
-            'notify::storage': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::architecture": (pspec: GObject.ParamSpec) => void;
+            "notify::cpu": (pspec: GObject.ParamSpec) => void;
+            "notify::n-cpus": (pspec: GObject.ParamSpec) => void;
+            "notify::ram": (pspec: GObject.ParamSpec) => void;
+            "notify::storage": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             architecture: string;
-            cpu: bigint | number;
+            cpu: (bigint | number);
             n_cpus: number;
             nCpus: number;
-            ram: bigint | number;
-            storage: bigint | number;
+            ram: (bigint | number);
+            storage: (bigint | number);
         }
     }
 
@@ -5722,43 +5794,47 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Resources>;
 
         // Properties
-
         /**
          * The target hardware architecture to which these resources applies.
          * @construct-only
          * @default null
          */
         get architecture(): string;
+
         /**
          * The CPU frequency in hertz (Hz).
          * @default -1
          */
         get cpu(): number;
-        set cpu(val: bigint | number);
+        set cpu(val: (bigint | number));
+
         /**
          * The number of CPUs.
          * @default -1
          */
         get n_cpus(): number;
         set n_cpus(val: number);
+
         /**
          * The number of CPUs.
          * @default -1
          */
         get nCpus(): number;
         set nCpus(val: number);
+
         /**
          * The amount of Random Access Memory (RAM) in bytes.
          * @default -1
          */
         get ram(): number;
-        set ram(val: bigint | number);
+        set ram(val: (bigint | number));
+
         /**
          * The amount of storage space in bytes.
          * @default -1
          */
         get storage(): number;
-        set storage(val: bigint | number);
+        set storage(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -5770,36 +5846,26 @@ export namespace Libosinfo {
         $signals: Resources.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Resources.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, architecture: string): Resources;
+        static ["new"](id: string, architecture: string): Resources;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Resources.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Resources.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Resources.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Resources.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Resources.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Resources.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Resources.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Resources.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Resources.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Resources.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Resources.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Resources.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the target hardware architecture to which `resources` applies. Some
          * operating systems specify the same requirements and recommendations for all
@@ -5808,60 +5874,70 @@ export namespace Libosinfo {
          * @returns the hardware architecture.
          */
         get_architecture(): string;
+
         /**
          * Retrieves the CPU frequency in hertz (Hz). Divide the value by #OSINFO_MEGAHERTZ if
          * you need this value in megahertz (MHz).
          * @returns the CPU frequency, or -1.
          */
         get_cpu(): number;
+
         /**
          * Retrieves the number of CPUs.
          * @returns the number of CPUs, or -1.
          */
         get_n_cpus(): number;
+
         /**
          * Retrieves the amount of Random Access Memory (RAM) in bytes. Divide the value
          * by #OSINFO_MEBIBYTES if you need this value in mebibytes.
          * @returns the amount of RAM, or -1.
          */
         get_ram(): number;
+
         /**
          * Retrieves the amount of storage space in bytes. Divide the value by
          * #OSINFO_GIBIBYTES if you need this value in gibibytes.
          * @returns the amount of storage, or -1.
          */
         get_storage(): number;
+
         /**
          * Sets the CPU frequency.
          * @param cpu the CPU frequency in hertz (Hz)
          */
-        set_cpu(cpu: bigint | number): void;
+        set_cpu(cpu: (bigint | number)): void;
+
         /**
          * Sets the number of CPUs.
          * @param n_cpus the number of CPUs
          */
         set_n_cpus(n_cpus: number): void;
+
         /**
          * Sets the amount of RAM in bytes.
          * @param ram the amount of ram in bytes
          */
-        set_ram(ram: bigint | number): void;
+        set_ram(ram: (bigint | number)): void;
+
         /**
          * Sets the amount of storage space.
          * @param storage the amount of storage in bytes
          */
-        set_storage(storage: bigint | number): void;
+        set_storage(storage: (bigint | number)): void;
     }
+
 
     namespace ResourcesList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -5880,42 +5956,33 @@ export namespace Libosinfo {
         $signals: ResourcesList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ResourcesList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ResourcesList;
+        static ["new"](): ResourcesList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ResourcesList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourcesList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ResourcesList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ResourcesList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ResourcesList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ResourcesList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ResourcesList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResourcesList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ResourcesList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ResourcesList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ResourcesList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResourcesList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new resources list that is filled with resources instances
          * from `source`
          * @returns a copy of the resources list
          */
         new_copy(): ResourcesList;
+
         /**
          * Construct a new resources list that is filled with resources instances
          * from `source` that match `filter`
@@ -5923,6 +5990,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the resources list
          */
         new_filtered(filter: Filter): ResourcesList;
+
         /**
          * Construct a new resources list that is filled with only the
          * resources instances that are present in both `sourceOne` and `sourceTwo`.
@@ -5930,6 +5998,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two resources lists
          */
         new_intersection(sourceTwo: ResourcesList): ResourcesList;
+
         /**
          * Construct a new resources list that is filled with all the
          * resources instances that are present in either `sourceOne` and `sourceTwo`.
@@ -5939,25 +6008,25 @@ export namespace Libosinfo {
         new_union(sourceTwo: ResourcesList): ResourcesList;
     }
 
+
     namespace Tree {
         // Signal signatures
         interface SignalSignatures extends Entity.SignalSignatures {
-            'notify::architecture': (pspec: GObject.ParamSpec) => void;
-            'notify::boot-iso-path': (pspec: GObject.ParamSpec) => void;
-            'notify::has-treeinfo': (pspec: GObject.ParamSpec) => void;
-            'notify::initrd-path': (pspec: GObject.ParamSpec) => void;
-            'notify::kernel-path': (pspec: GObject.ParamSpec) => void;
-            'notify::os': (pspec: GObject.ParamSpec) => void;
-            'notify::treeinfo-arch': (pspec: GObject.ParamSpec) => void;
-            'notify::treeinfo-family': (pspec: GObject.ParamSpec) => void;
-            'notify::treeinfo-variant': (pspec: GObject.ParamSpec) => void;
-            'notify::treeinfo-version': (pspec: GObject.ParamSpec) => void;
-            'notify::url': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::architecture": (pspec: GObject.ParamSpec) => void;
+            "notify::boot-iso-path": (pspec: GObject.ParamSpec) => void;
+            "notify::has-treeinfo": (pspec: GObject.ParamSpec) => void;
+            "notify::initrd-path": (pspec: GObject.ParamSpec) => void;
+            "notify::kernel-path": (pspec: GObject.ParamSpec) => void;
+            "notify::os": (pspec: GObject.ParamSpec) => void;
+            "notify::treeinfo-arch": (pspec: GObject.ParamSpec) => void;
+            "notify::treeinfo-family": (pspec: GObject.ParamSpec) => void;
+            "notify::treeinfo-variant": (pspec: GObject.ParamSpec) => void;
+            "notify::treeinfo-version": (pspec: GObject.ParamSpec) => void;
+            "notify::url": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Entity.ConstructorProps {
             architecture: string;
             boot_iso_path: string;
@@ -5988,61 +6057,69 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<Tree>;
 
         // Properties
-
         /**
          * The target hardware architecture of this tree.
          * @default null
          */
         get architecture(): string;
         set architecture(val: string);
+
         /**
          * The path to the boot ISO in the install tree
          * @default null
          */
         get boot_iso_path(): string;
         set boot_iso_path(val: string);
+
         /**
          * The path to the boot ISO in the install tree
          * @default null
          */
         get bootIsoPath(): string;
         set bootIsoPath(val: string);
+
         /**
          * Whether the tree has treeinfo or not
          * @default false
          */
         get has_treeinfo(): boolean;
         set has_treeinfo(val: boolean);
+
         /**
          * Whether the tree has treeinfo or not
          * @default false
          */
         get hasTreeinfo(): boolean;
         set hasTreeinfo(val: boolean);
+
         /**
          * The path to the initrd image in the install tree.
          * @default null
          */
         get initrd_path(): string;
         set initrd_path(val: string);
+
         /**
          * The path to the initrd image in the install tree.
          * @default null
          */
         get initrdPath(): string;
         set initrdPath(val: string);
+
         /**
          * The path to the kernel image in the install tree.
          * @default null
          */
         get kernel_path(): string;
         set kernel_path(val: string);
+
         /**
          * The path to the kernel image in the install tree.
          * @default null
          */
         get kernelPath(): string;
         set kernelPath(val: string);
+
         /**
          * Os information for the current tree. For tree stored in an
          * {@link Libosinfo.Db}, it will be filled when the database is loaded, otherwise
@@ -6051,54 +6128,63 @@ export namespace Libosinfo {
          */
         get os(): Os;
         set os(val: Os);
+
         /**
          * The treeinfo arch
          * @default null
          */
         get treeinfo_arch(): string;
         set treeinfo_arch(val: string);
+
         /**
          * The treeinfo arch
          * @default null
          */
         get treeinfoArch(): string;
         set treeinfoArch(val: string);
+
         /**
          * The treeinfo family
          * @default null
          */
         get treeinfo_family(): string;
         set treeinfo_family(val: string);
+
         /**
          * The treeinfo family
          * @default null
          */
         get treeinfoFamily(): string;
         set treeinfoFamily(val: string);
+
         /**
          * The treeinfo variant
          * @default null
          */
         get treeinfo_variant(): string;
         set treeinfo_variant(val: string);
+
         /**
          * The treeinfo variant
          * @default null
          */
         get treeinfoVariant(): string;
         set treeinfoVariant(val: string);
+
         /**
          * The treeinfo version
          * @default null
          */
         get treeinfo_version(): string;
         set treeinfo_version(val: string);
+
         /**
          * The treeinfo version
          * @default null
          */
         get treeinfoVersion(): string;
         set treeinfoVersion(val: string);
+
         /**
          * The URL to this tree.
          * @default null
@@ -6116,45 +6202,36 @@ export namespace Libosinfo {
         $signals: Tree.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, architecture: string): Tree;
+        static ["new"](id: string, architecture: string): Tree;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Tree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Tree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Tree.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new {@link Libosinfo.Tree} for installation tree at `location`. The `location`
          * could be a http:// or a https:// URI, or a local file.
-         *
+         * 
          * NOTE: Currently this only works for trees with a .treeinfo file
          * @param location the location of an installation tree
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        static create_from_location(location: string, cancellable: Gio.Cancellable | null): Tree;
+        static create_from_location(location: string, cancellable: (Gio.Cancellable | null)): Tree;
+
         /**
          * Asynchronous variant of `osinfo_tree_create_from_location`.
          * @param location the location of an installation tree
@@ -6162,18 +6239,15 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          */
-        static create_from_location_async(
-            location: string,
-            priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<Tree> | null,
-        ): void;
+        static create_from_location_async(location: string, priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Tree> | null)): void;
+
         /**
          * Finishes an asynchronous tree object creation process started with
          * `osinfo_tree_create_from_location_async`.
          * @param res a {@link Gio.AsyncResult}
          */
         static create_from_location_finish(res: Gio.AsyncResult): Tree;
+
         /**
          * Creates a new {@link Libosinfo.Tree} for installation tree represented by `treeinfo`.
          * @param treeinfo a string representing the .treeinfo content
@@ -6182,87 +6256,98 @@ export namespace Libosinfo {
         static create_from_treeinfo(treeinfo: string, location: string): Tree;
 
         // Methods
-
         /**
          * Retrieves the target hardware architecture of the OS `tree` provides.
          * @returns the hardware architecture, or NULL
          */
         get_architecture(): string;
+
         /**
          * Retrieves the path to the boot_iso image in the install tree.
          * @returns the path to boot_iso image, or NULL
          */
         get_boot_iso_path(): string;
+
         /**
          * Retrieves the path to the initrd image in the install tree.
-         *
+         * 
          * Note: This only applies to installer trees of 'linux' OS family.
          * @returns the path to initrd image, or NULL
          */
         get_initrd_path(): string;
+
         /**
          * Retrieves the path to the kernel image in the install tree.
-         *
+         * 
          * Note: This only applies to installer trees of 'linux' OS family.
          * @returns the path to kernel image, or NULL
          */
         get_kernel_path(): string;
+
         /**
          * @returns the operating system, or NULL
          */
         get_os(): Os;
+
         /**
          * Gets the variants of the associated operating system.
          * @returns the operating system variant, or NULL
          */
         get_os_variants(): OsVariantList;
+
         /**
          * If `tree` has treeinfo, this function retrieves the expected architecture.
-         *
+         * 
          * Note: In practice, this will usually not be the exact copy of the
          * architecture but rather a regular expression that matches it.
          * @returns the treeinfo architecture, or NULL
          */
         get_treeinfo_arch(): string;
+
         /**
          * If `tree` has treeinfo, this function retrieves the expected family.
-         *
+         * 
          * Note: In practice, this will usually not be the exact copy of the family
          * but rather a regular expression that matches it.
          * @returns the treeinfo family, or NULL
          */
         get_treeinfo_family(): string;
+
         /**
          * If `tree` has treeinfo, this function retrieves the expected variant.
-         *
+         * 
          * Note: In practice, this will usually not be the exact copy of the variant
          * but rather a regular expression that matches it.
          * @returns the treeinfo variant, or NULL
          */
         get_treeinfo_variant(): string;
+
         /**
          * If `tree` has treeinfo, this function retrieves the expected version.
-         *
+         * 
          * Note: In practice, this will usually not be the exact copy of version but
          * rather a regular expression that matches it.
          * @returns the treeinfo version, or NULL
          */
         get_treeinfo_version(): string;
+
         /**
          * The URL to the `tree`
          * @returns the URL, or NULL
          */
         get_url(): string;
+
         /**
          * Determines whether the metadata for the unidentified `tree` is a match
          * for the `reference` tree.
-         *
+         * 
          * The metadata in the unidentified `tree` must be literal strings,
          * while the metadata in the `reference` tree must be regular expressions.
          * @param reference a reference {@link Libosinfo.Tree} instance
          * @returns `TRUE` if `tree` is a match for `reference`. `FALSE` otherwise
          */
         matches(reference: Tree): boolean;
+
         /**
          * Sets the {@link Libosinfo.Os} associated to the {@link Libosinfo.Tree} instance.
          * @param os an {@link Libosinfo.Os} instance
@@ -6270,15 +6355,17 @@ export namespace Libosinfo {
         set_os(os: Os): void;
     }
 
+
     namespace TreeList {
         // Signal signatures
         interface SignalSignatures extends List.SignalSignatures {
-            'notify::element-type': (pspec: GObject.ParamSpec) => void;
+            "notify::element-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends List.ConstructorProps {
 
-        interface ConstructorProps extends List.ConstructorProps {}
+        }
     }
 
     /**
@@ -6297,42 +6384,33 @@ export namespace Libosinfo {
         $signals: TreeList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TreeList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TreeList;
+        static ["new"](): TreeList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Construct a new tree list that is filled with trees
          * from `source`
          * @returns a copy of the tree list
          */
         new_copy(): TreeList;
+
         /**
          * Construct a new tree list that is filled with trees
          * from `source` that match `filter`
@@ -6340,6 +6418,7 @@ export namespace Libosinfo {
          * @returns a filtered copy of the tree list
          */
         new_filtered(filter: Filter): TreeList;
+
         /**
          * Construct a new tree list that is filled with only the
          * trees that are present in both `sourceOne` and `sourceTwo`.
@@ -6347,6 +6426,7 @@ export namespace Libosinfo {
          * @returns an intersection of the two tree lists
          */
         new_intersection(sourceTwo: TreeList): TreeList;
+
         /**
          * Construct a new tree list that is filled with all the
          * trees that are present in either `sourceOne` and `sourceTwo`.
@@ -6356,10 +6436,12 @@ export namespace Libosinfo {
         new_union(sourceTwo: TreeList): TreeList;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AvatarFormatClass = typeof AvatarFormat;
+
     /**
      * @gir-type Struct
      */
@@ -6367,20 +6449,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<AvatarFormatPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DatamapClass = typeof Datamap;
+
     /**
      * @gir-type Alias
      */
     type DatamapListClass = typeof DatamapList;
+
     /**
      * @gir-type Struct
      */
     abstract class DatamapListPrivate {
         static $gtype: GObject.GType<DatamapListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6389,10 +6475,12 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DatamapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DbClass = typeof Db;
+
     /**
      * @gir-type Struct
      */
@@ -6400,20 +6488,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DbPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DeploymentClass = typeof Deployment;
+
     /**
      * @gir-type Alias
      */
     type DeploymentListClass = typeof DeploymentList;
+
     /**
      * @gir-type Struct
      */
     abstract class DeploymentListPrivate {
         static $gtype: GObject.GType<DeploymentListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6422,24 +6514,29 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DeploymentPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DeviceClass = typeof Device;
+
     /**
      * @gir-type Alias
      */
     type DeviceDriverClass = typeof DeviceDriver;
+
     /**
      * @gir-type Alias
      */
     type DeviceDriverListClass = typeof DeviceDriverList;
+
     /**
      * @gir-type Struct
      */
     abstract class DeviceDriverListPrivate {
         static $gtype: GObject.GType<DeviceDriverListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6448,14 +6545,17 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DeviceDriverPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DeviceLinkClass = typeof DeviceLink;
+
     /**
      * @gir-type Alias
      */
     type DeviceLinkFilterClass = typeof DeviceLinkFilter;
+
     /**
      * @gir-type Struct
      */
@@ -6463,16 +6563,19 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DeviceLinkFilterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DeviceLinkListClass = typeof DeviceLinkList;
+
     /**
      * @gir-type Struct
      */
     abstract class DeviceLinkListPrivate {
         static $gtype: GObject.GType<DeviceLinkListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6481,16 +6584,19 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DeviceLinkPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DeviceListClass = typeof DeviceList;
+
     /**
      * @gir-type Struct
      */
     abstract class DeviceListPrivate {
         static $gtype: GObject.GType<DeviceListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6499,10 +6605,12 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<DevicePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type EntityClass = typeof Entity;
+
     /**
      * @gir-type Struct
      */
@@ -6510,10 +6618,12 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<EntityPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FilterClass = typeof Filter;
+
     /**
      * @gir-type Struct
      */
@@ -6521,20 +6631,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<FilterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FirmwareClass = typeof Firmware;
+
     /**
      * @gir-type Alias
      */
     type FirmwareListClass = typeof FirmwareList;
+
     /**
      * @gir-type Struct
      */
     abstract class FirmwareListPrivate {
         static $gtype: GObject.GType<FirmwareListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6543,20 +6657,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<FirmwarePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ImageClass = typeof Image;
+
     /**
      * @gir-type Alias
      */
     type ImageListClass = typeof ImageList;
+
     /**
      * @gir-type Struct
      */
     abstract class ImageListPrivate {
         static $gtype: GObject.GType<ImageListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6565,24 +6683,29 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<ImagePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InstallConfigClass = typeof InstallConfig;
+
     /**
      * @gir-type Alias
      */
     type InstallConfigParamClass = typeof InstallConfigParam;
+
     /**
      * @gir-type Alias
      */
     type InstallConfigParamListClass = typeof InstallConfigParamList;
+
     /**
      * @gir-type Struct
      */
     abstract class InstallConfigParamListPrivate {
         static $gtype: GObject.GType<InstallConfigParamListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6591,6 +6714,7 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<InstallConfigParamPrivate>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -6598,20 +6722,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<InstallConfigPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InstallScriptClass = typeof InstallScript;
+
     /**
      * @gir-type Alias
      */
     type InstallScriptListClass = typeof InstallScriptList;
+
     /**
      * @gir-type Struct
      */
     abstract class InstallScriptListPrivate {
         static $gtype: GObject.GType<InstallScriptListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6620,10 +6748,12 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<InstallScriptPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ListClass = typeof List;
+
     /**
      * @gir-type Struct
      */
@@ -6631,10 +6761,12 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<ListPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LoaderClass = typeof Loader;
+
     /**
      * @gir-type Struct
      */
@@ -6642,20 +6774,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<LoaderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MediaClass = typeof Media;
+
     /**
      * @gir-type Alias
      */
     type MediaListClass = typeof MediaList;
+
     /**
      * @gir-type Struct
      */
     abstract class MediaListPrivate {
         static $gtype: GObject.GType<MediaListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6664,20 +6800,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<MediaPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type OsClass = typeof Os;
+
     /**
      * @gir-type Alias
      */
     type OsListClass = typeof OsList;
+
     /**
      * @gir-type Struct
      */
     abstract class OsListPrivate {
         static $gtype: GObject.GType<OsListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6686,20 +6826,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<OsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type OsVariantClass = typeof OsVariant;
+
     /**
      * @gir-type Alias
      */
     type OsVariantListClass = typeof OsVariantList;
+
     /**
      * @gir-type Struct
      */
     abstract class OsVariantListPrivate {
         static $gtype: GObject.GType<OsVariantListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6708,20 +6852,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<OsVariantPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlatformClass = typeof Platform;
+
     /**
      * @gir-type Alias
      */
     type PlatformListClass = typeof PlatformList;
+
     /**
      * @gir-type Struct
      */
     abstract class PlatformListPrivate {
         static $gtype: GObject.GType<PlatformListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6730,14 +6878,17 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<PlatformPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ProductClass = typeof Product;
+
     /**
      * @gir-type Alias
      */
     type ProductFilterClass = typeof ProductFilter;
+
     /**
      * @gir-type Struct
      */
@@ -6745,16 +6896,19 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<ProductFilterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ProductListClass = typeof ProductList;
+
     /**
      * @gir-type Struct
      */
     abstract class ProductListPrivate {
         static $gtype: GObject.GType<ProductListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6763,20 +6917,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<ProductPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ResourcesClass = typeof Resources;
+
     /**
      * @gir-type Alias
      */
     type ResourcesListClass = typeof ResourcesList;
+
     /**
      * @gir-type Struct
      */
     abstract class ResourcesListPrivate {
         static $gtype: GObject.GType<ResourcesListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6785,20 +6943,24 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<ResourcesPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeClass = typeof Tree;
+
     /**
      * @gir-type Alias
      */
     type TreeListClass = typeof TreeList;
+
     /**
      * @gir-type Struct
      */
     abstract class TreeListPrivate {
         static $gtype: GObject.GType<TreeListPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6807,11 +6969,13 @@ export namespace Libosinfo {
         static $gtype: GObject.GType<TreePrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

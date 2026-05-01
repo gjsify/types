@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Ministream {
+
     /**
      * Ministream-1
      */
+
 
     /**
      * @gir-type Struct
@@ -25,28 +28,30 @@ export namespace Ministream {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static NO_COMPONENT: number;
+
         static NO_IDENTIFIER: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * Ministream major version component.
      */
     const MAJOR_VERSION: number;
+
     /**
      * Ministream minor version component.
      */
     const MINOR_VERSION: number;
+
     function error_quark(): GLib.Quark;
+
     /**
      * @gir-type Struct
      */
@@ -54,77 +59,86 @@ export namespace Ministream {
         static $gtype: GObject.GType<Component>;
 
         // Constructors
+        constructor(data: (Uint8Array | string));
 
-        constructor(data: Uint8Array | string);
-
-        static new_from_xml_data(data: Uint8Array | string): Component;
+        static new_from_xml_data(data: (Uint8Array | string)): Component;
 
         // Methods
-
         /**
          * Get the bugtracker URI of this component.
          * @returns the bugtracker URI
          */
-        get_bugtracker_uri(): string | null;
+        get_bugtracker_uri(): (string | null);
+
         /**
          * Gets the desktop launchables this component provides.
          * @returns the desktop launchables
          */
-        get_desktop_launchables(): string[] | null;
+        get_desktop_launchables(): (string[] | null);
+
         /**
          * Gets the name of the developer that has written this component in the
          * best locale available.
          * @returns the localized developer name
          */
-        get_developer_name(): string | null;
+        get_developer_name(): (string | null);
+
         /**
          * Get the help URI of this component.
          * @returns the help URI
          */
-        get_help_uri(): string | null;
+        get_help_uri(): (string | null);
+
         /**
          * Get the homepage URI of this component.
          * @returns the hompage URI
          */
-        get_homepage_uri(): string | null;
+        get_homepage_uri(): (string | null);
+
         /**
          * Get the application identifier of this component. This should be in
          * the big-endian domain format.
          * @returns the application identifier
          */
         get_id(): string;
+
         /**
          * Get the application name of this component in the best locale
          * available.
          * @returns the localized application name
          */
-        get_name(): string | null;
+        get_name(): (string | null);
+
         /**
          * Get the license of the project this component is part of. This should
          * be an identifier part of the SPDX license list.
          * @returns the project license identifier
          */
-        get_project_license(): string | null;
+        get_project_license(): (string | null);
+
         /**
          * Gets the releases information of this component.
          * @returns the releases of this component
          */
-        get_releases(): Release[] | null;
+        get_releases(): (Release[] | null);
+
         /**
          * Increment the reference count of the component.
-         *
+         * 
          * This is an atomic operation and as such, threadsafe.
          * @returns the new reference of `self`
          */
         ref(): Component;
+
         /**
          * Decrements the reference count of the component. Once the count
          * reaches zero, `self` will be freed.
-         *
+         * 
          * As such, do not use `self` after calling this method.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -133,27 +147,29 @@ export namespace Ministream {
         static $gtype: GObject.GType<Release>;
 
         // Methods
-
         /**
          * Gets the description attached to the releease, or `null` if not set.
-         *
+         * 
          * The description is encoded as markup, containg paragraphs, ordered
          * and unordered lists, aswell as list items within them.
          * @returns the description of the release
          */
-        get_description(): string | null;
+        get_description(): (string | null);
+
         /**
          * Gets the version attached to the release, or `null` if not set.
          * @returns the version of the release
          */
-        get_version(): string | null;
+        get_version(): (string | null);
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

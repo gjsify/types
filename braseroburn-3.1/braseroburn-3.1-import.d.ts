@@ -1,3 +1,4 @@
+
 import type BraseroBurn31 from '@girs/braseroburn-3.1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 import type Libxfce4util10 from '@girs/libxfce4util-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

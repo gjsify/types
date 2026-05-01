@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type Gegl from '@girs/gegl-0.4';
 import type Babl from '@girs/babl-0.1';
 
 export namespace MyPaintGegl {
+
     /**
      * MyPaintGegl-1.6
      */
+
 
     /**
      * @gir-type Struct
@@ -29,28 +32,33 @@ export namespace MyPaintGegl {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): TiledSurface;
+        }>);
+
+        static ["new"](): TiledSurface;
 
         // Methods
-
         /**
          * @returns The buffer this surface is backed by.
          */
         get_buffer(): Gegl.Buffer;
-        ['interface'](): MyPaint.Surface;
+
+        ["interface"](): MyPaint.Surface;
+
         /**
          * @param buffer The buffer which shall back this surface.
          */
         set_buffer(buffer: Gegl.Buffer): void;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

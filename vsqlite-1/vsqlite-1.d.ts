@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -22,9 +23,11 @@ import type GXml from '@girs/gxml-0.20';
 import type libxml2 from '@girs/libxml2-2.0';
 
 export namespace Vsqlite {
+
     /**
      * Vsqlite-1
      */
+
 
     /**
      * @gir-type Struct
@@ -33,26 +36,26 @@ export namespace Vsqlite {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_FILE_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     namespace Connection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::status': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
-            'notify::is-opened': (pspec: GObject.ParamSpec) => void;
-            'notify::connection-string': (pspec: GObject.ParamSpec) => void;
+            "notify::status": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
+            "notify::is-opened": (pspec: GObject.ParamSpec) => void;
+            "notify::connection-string": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Vda.Connection.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Vda.Connection.ConstructorProps {}
+        }
     }
 
     /**
@@ -71,239 +74,274 @@ export namespace Vsqlite {
         $signals: Connection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Connection;
+        static ["new"](): Connection;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param t
+         * @param t 
          */
         type_to_gtype(t: number): GObject.GType;
+
         /**
          * @read-only
-         * @category Inherited from Vda.Connection
+          * @category Inherited from Vda.Connection
          */
         get status(): Vda.ConnectionStatus;
+
         /** @category Inherited from Vda.Connection */
         get parameters(): Vda.ConnectionParameters;
         set parameters(val: Vda.ConnectionParameters);
+
         /**
          * @read-only
-         * @category Inherited from Vda.Connection
+          * @category Inherited from Vda.Connection
          */
         get is_opened(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Vda.Connection
+          * @category Inherited from Vda.Connection
          */
         get isOpened(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Vda.Connection
+          * @category Inherited from Vda.Connection
          */
         get connection_string(): string;
+
         /**
          * @read-only
-         * @category Inherited from Vda.Connection
+          * @category Inherited from Vda.Connection
          */
         get connectionString(): string;
+
         close(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         close(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        close(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        close(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         close_finish(_res_: Gio.AsyncResult): void;
+
         open(): globalThis.Promise<Vda.ConnectionStatus>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
         open(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        open(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<Vda.ConnectionStatus> | void;
+        open(_callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Vda.ConnectionStatus> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         open_finish(_res_: Gio.AsyncResult): Vda.ConnectionStatus;
+
         /**
-         * @param cnc_string
+         * @param cnc_string 
          */
         open_from_string(cnc_string: string): globalThis.Promise<Vda.ConnectionStatus>;
+
         /**
-         * @param cnc_string
-         * @param _callback_
+         * @param cnc_string 
+         * @param _callback_ 
          */
         open_from_string(cnc_string: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param cnc_string
-         * @param _callback_
+         * @param cnc_string 
+         * @param _callback_ 
          */
-        open_from_string(
-            cnc_string: string,
-            _callback_?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Vda.ConnectionStatus> | void;
+        open_from_string(cnc_string: string, _callback_?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Vda.ConnectionStatus> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         open_from_string_finish(_res_: Gio.AsyncResult): Vda.ConnectionStatus;
+
         /**
-         * @param sql
+         * @param sql 
          */
         parse_string(sql: string): Vda.Query;
+
         /**
-         * @param name
-         * @param sql
+         * @param name 
+         * @param sql 
          */
         parse_string_prepared(name: string, sql: string): Vda.PreparedQuery;
+
         /**
-         * @param name
+         * @param name 
          */
         get_prepared_query(name: string): Vda.PreparedQuery;
+
         /**
-         * @param cmd
-         * @param name
+         * @param cmd 
+         * @param name 
          */
         query_from_command(cmd: Vda.SqlCommand, name: string): Vda.PreparedQuery;
+
         /**
-         * @param v
+         * @param v 
          */
         value_to_quoted_string(v: Vda.SqlValue): string;
+
         /**
-         * @param category
+         * @param category 
          */
         locale(category: string): string;
+
         get_status(): Vda.ConnectionStatus;
+
         get_parameters(): Vda.ConnectionParameters;
+
         /**
-         * @param value
+         * @param value 
          */
         set_parameters(value: Vda.ConnectionParameters): void;
+
         get_is_opened(): boolean;
+
         get_connection_string(): string;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          * @virtual
          */
         vfunc_close(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_close_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          * @virtual
          */
         vfunc_open(_callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_open_finish(_res_: Gio.AsyncResult): Vda.ConnectionStatus;
+
         /**
-         * @param cnc_string
-         * @param _callback_
+         * @param cnc_string 
+         * @param _callback_ 
          * @virtual
          */
         vfunc_open_from_string(cnc_string: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_open_from_string_finish(_res_: Gio.AsyncResult): Vda.ConnectionStatus;
+
         /**
-         * @param sql
+         * @param sql 
          * @virtual
          */
         vfunc_parse_string(sql: string): Vda.Query;
+
         /**
-         * @param name
-         * @param sql
+         * @param name 
+         * @param sql 
          * @virtual
          */
         vfunc_parse_string_prepared(name: string, sql: string): Vda.PreparedQuery;
+
         /**
-         * @param name
+         * @param name 
          * @virtual
          */
         vfunc_get_prepared_query(name: string): Vda.PreparedQuery;
+
         /**
-         * @param cmd
-         * @param name
+         * @param cmd 
+         * @param name 
          * @virtual
          */
         vfunc_query_from_command(cmd: Vda.SqlCommand, name: string): Vda.PreparedQuery;
+
         /**
-         * @param v
+         * @param v 
          * @virtual
          */
         vfunc_value_to_quoted_string(v: Vda.SqlValue): string;
+
         /**
-         * @param category
+         * @param category 
          * @virtual
          */
         vfunc_locale(category: string): string;
+
         /**
          * @virtual
          */
         vfunc_get_status(): Vda.ConnectionStatus;
+
         /**
          * @virtual
          */
         vfunc_get_parameters(): Vda.ConnectionParameters;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_parameters(value: Vda.ConnectionParameters): void;
+
         /**
          * @virtual
          */
         vfunc_get_is_opened(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_connection_string(): string;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionClass = typeof Connection;
+
     /**
      * @gir-type Struct
      */
@@ -311,11 +349,13 @@ export namespace Vsqlite {
         static $gtype: GObject.GType<ConnectionPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

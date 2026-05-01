@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Hs {
+
     /**
      * Hs-1
      */
+
 
     /**
      * @gir-type Enum
@@ -58,6 +61,7 @@ export namespace Hs {
         PADDLES,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -80,6 +84,7 @@ export namespace Hs {
         BEGINNER,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -99,6 +104,7 @@ export namespace Hs {
         FIRE_5,
         FIRE_9,
     }
+
 
     /**
      * @gir-type Enum
@@ -121,6 +127,7 @@ export namespace Hs {
          */
         BLACK_WHITE,
     }
+
 
     /**
      * @gir-type Enum
@@ -148,6 +155,7 @@ export namespace Hs {
         LIGHTGUN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -170,6 +178,7 @@ export namespace Hs {
         BEGINNER,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -188,6 +197,7 @@ export namespace Hs {
         ONE,
         TWO,
     }
+
 
     /**
      * @gir-type Enum
@@ -211,11 +221,12 @@ export namespace Hs {
         PAUSE,
     }
 
+
     /**
      * An error code used in various methods in {@link Core}.
-     *
+     * 
      * These errors can be used over D-Bus, mapped as:
-     *
+     * 
      * Error Code                            | D-Bus Error Name
      * ------------------------------------- | ------------------------------------------------------------
      * {@link Hs.CoreError.COULDNT_LOAD_ROM} | `org.gnome.gitlab.alicem.libhighscore.Error.CouldntLoadROM`
@@ -230,43 +241,46 @@ export namespace Hs {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Failed to load the ROM, probably invalid ROM
          */
         static COULDNT_LOAD_ROM: number;
+
         /**
          * The core doesn't support this game
          */
         static UNSUPPORTED_GAME: number;
+
         /**
          * Out of memory
          */
         static OUT_OF_MEMORY: number;
+
         /**
          * The core requires firmware and it's missing
          */
         static MISSING_BIOS: number;
+
         /**
          * Input/output errors
          */
         static IO: number;
+
         /**
          * Internal errors, e.g. core bugs
          */
         static INTERNAL: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the {@link Hs.Core} error quark.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * An error code used in {@link GLContext.realize}.
@@ -276,23 +290,21 @@ export namespace Hs {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * incompatible GL version
          */
         static INCOMPATIBLE_VERSION: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the GL context error quark.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -320,6 +332,7 @@ export namespace Hs {
         ES,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -343,6 +356,7 @@ export namespace Hs {
         R,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -363,6 +377,7 @@ export namespace Hs {
         SELECT,
         START,
     }
+
 
     /**
      * @gir-type Enum
@@ -402,6 +417,7 @@ export namespace Hs {
         SUPER_GAME_BOY_2,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -421,6 +437,7 @@ export namespace Hs {
         TWO,
         START,
     }
+
 
     /**
      * @gir-type Enum
@@ -456,6 +473,7 @@ export namespace Hs {
         CRITICAL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -474,6 +492,7 @@ export namespace Hs {
         ONE,
         TWO,
     }
+
 
     /**
      * @gir-type Enum
@@ -500,6 +519,7 @@ export namespace Hs {
         MODE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -519,6 +539,7 @@ export namespace Hs {
         B,
         OPTION,
     }
+
 
     /**
      * @gir-type Enum
@@ -546,6 +567,7 @@ export namespace Hs {
         PADDLE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -566,6 +588,7 @@ export namespace Hs {
         SELECT,
         START,
     }
+
 
     /**
      * @gir-type Enum
@@ -588,6 +611,7 @@ export namespace Hs {
          */
         LOUD,
     }
+
 
     /**
      * @gir-type Enum
@@ -616,6 +640,7 @@ export namespace Hs {
         START,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -643,6 +668,7 @@ export namespace Hs {
         RUMBLE_PAK,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -667,6 +693,7 @@ export namespace Hs {
         L,
         R,
     }
+
 
     /**
      * @gir-type Enum
@@ -693,6 +720,7 @@ export namespace Hs {
         RUN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -702,7 +730,7 @@ export namespace Hs {
 
     /**
      * TurboGrafx-16 pad mode.
-     *
+     * 
      * Most games only work with 2-button mode, but some have improved controls for
      * 6-button mode.
      * @gir-type Enum
@@ -717,6 +745,7 @@ export namespace Hs {
          */
         SIX_BUTTONS,
     }
+
 
     /**
      * @gir-type Enum
@@ -746,6 +775,7 @@ export namespace Hs {
          */
         B8G8R8X8,
     }
+
 
     /**
      * @gir-type Enum
@@ -851,6 +881,7 @@ export namespace Hs {
         WONDERSWAN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -877,6 +908,7 @@ export namespace Hs {
         EU,
         N_BIOS,
     }
+
 
     /**
      * @gir-type Enum
@@ -907,6 +939,7 @@ export namespace Hs {
         START,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -930,6 +963,7 @@ export namespace Hs {
         ANALOG,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -944,6 +978,7 @@ export namespace Hs {
         LEFT,
         RIGHT,
     }
+
 
     /**
      * @gir-type Enum
@@ -971,6 +1006,7 @@ export namespace Hs {
         PAL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -986,6 +1022,7 @@ export namespace Hs {
         DIGITAL,
         ANALOG,
     }
+
 
     /**
      * @gir-type Enum
@@ -1008,6 +1045,7 @@ export namespace Hs {
          */
         US_EU,
     }
+
 
     /**
      * @gir-type Enum
@@ -1035,6 +1073,7 @@ export namespace Hs {
         START,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1048,8 +1087,9 @@ export namespace Hs {
      */
     enum SegaSaturnController {
         CONTROL_PAD,
-        '3D_CONTROL_PAD',
+        "3D_CONTROL_PAD",
     }
+
 
     /**
      * @gir-type Enum
@@ -1069,6 +1109,7 @@ export namespace Hs {
         ONE,
         TWO,
     }
+
 
     /**
      * @gir-type Enum
@@ -1094,6 +1135,7 @@ export namespace Hs {
         L,
         R,
     }
+
 
     /**
      * @gir-type Enum
@@ -1122,6 +1164,7 @@ export namespace Hs {
         R,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1146,196 +1189,238 @@ export namespace Hs {
         START,
     }
 
+
     /**
      * The maximum number of players in Atari 2600 games.
      */
     const ATARI_2600_MAX_PLAYERS: number;
+
     /**
      * The maximum number of players in Atari 7800 games.
      */
     const ATARI_7800_MAX_PLAYERS: number;
+
     /**
      * The number of Atari Lynx buttons.
      */
     const ATARI_LYNX_N_BUTTONS: number;
+
     /**
      * The number of Game Boy Advance buttons.
      */
     const GAME_BOY_ADVANCE_N_BUTTONS: number;
+
     /**
      * The number of Game Boy buttons.
      */
     const GAME_BOY_N_BUTTONS: number;
+
     /**
      * The number of Game Gear buttons.
      */
     const GAME_GEAR_N_BUTTONS: number;
+
     /**
      * libhighscore major version component (e.g. 1 if the version is 1.2.3)
      */
     const MAJOR_VERSION: number;
+
     /**
      * The maximum number of players in Master System games.
      */
     const MASTER_SYSTEM_MAX_PLAYERS: number;
+
     /**
      * The number of Master System pad buttons.
      */
     const MASTER_SYSTEM_N_BUTTONS: number;
+
     /**
      * The maximum allowed duration in {@link Core.rumble}, in milliseconds.
      */
     const MAX_RUMBLE_DURATION: number;
+
     /**
      * The maximum number of players in Mega Drive games.
      */
     const MEGA_DRIVE_MAX_PLAYERS: number;
+
     /**
      * The number of Mega Drive pad buttons.
      */
     const MEGA_DRIVE_N_BUTTONS: number;
+
     /**
      * libhighscore micro version component (e.g. 3 if the version is 1.2.3)
      */
     const MICRO_VERSION: number;
+
     /**
      * libhighscore minor version component (e.g. 2 if the version is 1.2.3)
      */
     const MINOR_VERSION: number;
+
     /**
      * The number of Neo Geo Pocket buttons.
      */
     const NEO_GEO_POCKET_N_BUTTONS: number;
+
     /**
      * The maximum number of players in NES games.
      */
     const NES_MAX_PLAYERS: number;
+
     /**
      * The number of NES pad buttons.
      */
     const NES_N_BUTTONS: number;
+
     /**
      * The maximum number of players in Nintendo 64 games.
      */
     const NINTENDO_64_MAX_PLAYERS: number;
+
     /**
      * The number of Nintendo 64 pad buttons.
      */
     const NINTENDO_64_N_BUTTONS: number;
+
     /**
      * The number of Nintendo DS buttons.
      */
     const NINTENDO_DS_N_BUTTONS: number;
+
     /**
      * The maximum number of players in TurboGrafx-16 games.
      */
     const PC_ENGINE_MAX_PLAYERS: number;
+
     /**
      * The number of TurboGrafx-16 pad buttons.
      */
     const PC_ENGINE_N_BUTTONS: number;
+
     /**
      * The maximum number of players in PlayStation games.
      */
     const PLAYSTATION_MAX_PLAYERS: number;
+
     /**
      * The number of PlayStation pad buttons.
      */
     const PLAYSTATION_N_BUTTONS: number;
+
     /**
      * The number of PlayStation pad sticks.
      */
     const PLAYSTATION_N_STICKS: number;
+
     /**
      * The maximum number of players in Sega Saturn games.
      */
     const SEGA_SATURN_MAX_PLAYERS: number;
+
     /**
      * The number of Sega Saturn pad buttons.
      */
     const SEGA_SATURN_N_BUTTONS: number;
+
     /**
      * The maximum number of players in SG-1000 games.
      */
     const SG1000_MAX_PLAYERS: number;
+
     /**
      * The number of SG-1000 pad buttons.
      */
     const SG1000_N_BUTTONS: number;
+
     /**
      * The maximum number of players in Super NES games.
      */
     const SUPER_NES_MAX_PLAYERS: number;
+
     /**
      * The number of Super NES pad buttons.
      */
     const SUPER_NES_N_BUTTONS: number;
+
     /**
      * libhighscore version, encoded as a string, useful for printing and
      * concatenation.
      */
     const VERSION_S: string;
+
     /**
      * The number of Virtual Boy buttons.
      */
     const VIRTUAL_BOY_N_BUTTONS: number;
+
     /**
      * The number of WonderSwan buttons.
      */
     const WONDERSWAN_N_BUTTONS: number;
+
     /**
      * Gets the {@link Hs.Core} error quark.
      * @returns the quark
      */
     function core_error_quark(): GLib.Quark;
+
     /**
      * Gets the GL context error quark.
      * @returns a quark
      */
     function gl_context_error_quark(): GLib.Quark;
+
     /**
      * Gets the size of a pixel in a given format, in bytes.
      * @param format a pixel format
      * @returns the size of a pixel
      */
     function pixel_format_get_pixel_size(format: PixelFormat): number;
+
     /**
      * Gets the base platform for `platform`.
-     *
+     * 
      * If `platform` is an add-on for another platform, returns the other platform.
      * Specifically, it returns:
-     *
+     * 
      * - {@link Hs.Platform.NES} for {@link Hs.Platform.FAMICOM_DISK_SYSTEM};
      * - {@link Hs.Platform.PC_ENGINE} for {@link Hs.Platform.PC_ENGINE_CD}.
-     *
+     * 
      * Otherwise, returns `platform`.
      * @param platform a platform
      * @returns the base platform
      */
     function platform_get_base_platform(platform: Platform): Platform;
+
     /**
      * Gets the platform matching `name`.
-     *
+     * 
      * The names are the same ones as returned by {@link Platform.get_name}.
      * @param name a platform name
      * @returns the platform for `name`
      */
     function platform_get_from_name(name: string): Platform;
+
     /**
      * Gets the name of `platform`.
-     *
+     * 
      * The names are listed in the
      * [core descriptor documentation](core-descriptors.html#platforms).
      * @param platform a platform
      * @returns the platform name
      */
     function platform_get_name(platform: Platform): string;
+
     /**
      * @gir-type Callback
      */
     interface StateCallback {
         (self: Core): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -1375,21 +1460,21 @@ export namespace Hs {
         DIRECT_FB_ACCESS,
     }
 
+
     namespace Core {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::current-media': (pspec: GObject.ParamSpec) => void;
-            'notify::frontend': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::platform': (pspec: GObject.ParamSpec) => void;
+            "notify::current-media": (pspec: GObject.ParamSpec) => void;
+            "notify::frontend": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::platform": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             current_media: number;
             currentMedia: number;
-            frontend: Frontend | null;
+            frontend: (Frontend | null);
             name: string;
             platform: Platform;
         }
@@ -1397,13 +1482,13 @@ export namespace Hs {
 
     /**
      * Base class for the cores.
-     *
+     * 
      * To register the core in the frontend, it must have an exported function
      * `GType hs_get_core_type (void)`, returning the {@link GObject.Type} of the
      * core class.
-     *
+     * 
      * Subclasses must override the following virtual methods:
-     *
+     * 
      * - {@link Core.load_rom}
      * - {@link Core.poll_input}
      * - {@link Core.run_frame}
@@ -1414,198 +1499,198 @@ export namespace Hs {
      * - {@link Core.get_frame_rate}
      * - {@link Core.get_aspect_ratio}
      * - {@link Core.get_sample_rate}
-     *
+     * 
      * Everything else is optional and should be overridden as needed for the
      * particular core.
-     *
+     * 
      * {@link Hs.Core} also provides methods proxying to {@link Frontend}, such as
      * {@link Core.play_samples}. This is done just for convenience, so that cores
      * don't have to use {@link Core.get_frontend} manually.
-     *
+     * 
      * ## Platform Support
-     *
+     * 
      * Every platform has its own interface for platform-specific methods:
      * {@link NesCore} for NES and so on. Cores must implement the corresponding
      * interfaces for their supported platforms.
-     *
+     * 
      * ## Running the Game
-     *
+     * 
      * Every core must override the {@link Core.load_rom} method and load the
      * provided game, as well as initialize input and output within it.
-     *
+     * 
      * After that, the game can be started using the {@link Core.start} method, and
      * stopped with {@link Core.stop}. When pausing and unpausing the game,
      * {@link Core.pause} and {@link Core.resume} will be called respectively. All
      * of these methods are optional, for example a single-threaded core doesn't
      * need to override `pause()` and `resume()`.
-     *
+     * 
      * On every frame, the frontend calls {@link Core.run_frame}. The core is
      * expected to run a single frame of emulation in it, as well as output video
      * and audio as appropriate.
-     *
+     * 
      * The game can be reset with {@link Core.reset}.
-     *
+     * 
      * ## Region
-     *
+     * 
      * Cores should override the {@link Core.get_region} method to signal their
      * region (NTSC/PAL) where appropriate. The frontend may use this info for e.g.
      * deciding which video filter to use.
-     *
+     * 
      * ## Input
-     *
+     * 
      * The core must override the {@link Core.poll_input} method and read input from
      * the provided {@link InputState}.
-     *
+     * 
      * {@link Hs.InputState} contains input data for every platform, and the core must only
      * access the state from its current platform. If the core supports multiple
      * platforms, it must query the current platform first. Accessing any other
      * platform will result in undefined behavior.
-     *
+     * 
      * The specific layout of the input data will differ depending on the platform,
      * see the corresponding documentation - for example, {@link NesInputState} for
      * NES.
-     *
+     * 
      * ::: note
      *     Add-on platforms do not have their own input state and reuse the one from
      *     their base platform.
-     *
+     * 
      * ### Rumble
-     *
+     * 
      * To use gamepad rumble, call {@link Core.rumble}.
-     *
+     * 
      * ## Audio Output
-     *
+     * 
      * Cores must override the {@link Core.get_sample_rate} method, providing their
      * audio sample rate. Optionally, {@link Core.get_channels} can be overridden as
      * well, providing the number of audio channels the core uses. If not
      * overridden, frontend will assume 2 channels.
-     *
+     * 
      * To play audio, the core should call {@link Core.play_samples}. The number
      * of samples should be consistent with the framerate.
-     *
+     * 
      * ## Video Output
-     *
+     * 
      * Every core must override the {@link Core.get_frame_rate} and
      * {@link Core.get_aspect_ratio} methods, reporting their current framerate and
      * aspect ratio.
-     *
+     * 
      * ### Software Rendering
-     *
+     * 
      * To use software rendering, the core must create a context using
      * {@link Core.create_software_context} within `load_rom()`.
-     *
+     * 
      * For software contexts, the size and format of the framebuffer must be
      * provided right away and cannot be changed later, though the core is allowed
      * to recreate the context later. If the core can use multiple resolutions and
      * it's not known at the creation time, provide the maximum size, and then use a
      * smaller area via {@link SoftwareContext.set_area} and/or
      * {@link SoftwareContext.set_row_stride}.
-     *
+     * 
      * To output the data, call {@link SoftwareContext.get_framebuffer} and write
      * your pixel data into that buffer. This must be done in
      * {@link Core.run_frame}.
-     *
+     * 
      * ### OpenGL Rendering
-     *
+     * 
      * To use OpenGL, the core must create a context using
      * {@link Core.create_gl_context} within `load_rom()`.
-     *
+     * 
      * GL contexts need to be realized before being used, using
      * {@link GLContext.realize}. This can fail, for example if the core requested
      * an unavailable profile or version. If that happens, the core should try a
      * different configuration or software rendering if possible, before failing to
      * load entirely.
-     *
+     * 
      * After that, the context needs to be resized using {@link GLContext.set_size}.
      * This can be done at any time.
-     *
+     * 
      * The core must render its output into the default framebuffer, provided by the
      * frontend and accessed with {@link GLContext.get_default_framebuffer}. The
      * framebuffer will have a color attachment, as well as depth and stencil
      * attachment according to the flags passed into `create_gl_context()`.
-     *
+     * 
      * Use {@link GLContext.get_proc_address} to retrieve OpenGL symbols if the
      * core doesn't have a way to do it on its own.
-     *
+     * 
      * After rendering each frame, the core must call
      * {@link GLContext.swap_buffers}.
-     *
+     * 
      * OpenGL core output will often be vertically flipped. Pass
      * {@link Hs.GLFlags.FLIPPED} flag when creating the context to let the frontend
      * know that this is the case.
-     *
+     * 
      * In some cases, the output data will be pre-downloaded and post-processed on
      * CPU. Instead of uploading it back to GPU, pass the
      * {@link Hs.GLFlags.DIRECT_FB_ACCESS} flag when creating the context, and then
      * use {@link GLContext.acquire_framebuffer} and
      * {@link GLContext.release_framebuffer} to access the underlying framebuffer.
-     *
+     * 
      * ::: important
      *     Using direct framebuffer access prevents some optimizations in the
      *     frontend and should only be used as the last resort.
-     *
+     * 
      * Before disposing the context, {@link GLContext.unrealize} must be called.
-     *
+     * 
      * ## Save Data
-     *
+     * 
      * The save data is stored in the save location, received as the `save_path`
      * parameter in {@link Core.load_rom} and {@link Core.reload_save}.
-     *
+     * 
      * The core can either save its data directly into that location, or create a
      * folder there and have save data inside it.
-     *
+     * 
      * The frontend provides no guarantees about the ROM filenames, so the core must
      * not base its save data filenames on the ROM filename. Instead, use names like
      * `save`, `save.dat`, or base it on the game's internal identifiers.
-     *
+     * 
      * The core does not have to monitor the save location for changes - when the
      * frontend changes the save data, it must call {@link Core.reload_save} to
      * request that. Note that the save path may be different with every
      * `reload_save()` call, and the core needs to switch to the new path and forget
      * about the previous location.
-     *
+     * 
      * Some cores update their save data as soon as possible, whenever the game
      * modifies it. Those cores that don't do that must implement
      * {@link Core.sync_save} and save it there.
-     *
+     * 
      * ## Save States
-     *
+     * 
      * Cores must override two methods: {@link Core.load_state} and
      * {@link Core.save_state}. Both of these methods are asynchronous and don't
      * have to be completed right away.
-     *
+     * 
      * ## Multiple Media
-     *
+     * 
      * Some games come on multiple media, e.g. multiple CDs on PlayStation. In that
      * case, {@link Core.load_rom} will receive multiple filenames in `rom_paths`
      * and the core will need to switch which disc is currently active.
-     *
+     * 
      * For this, the core must implement {@link Core.get_current_media} and
      * {@link Core.set_current_media}. They will be called by the frontend to query
      * and change the current media respectively.
-     *
+     * 
      * When changing the current media from the core (both within
      * `set_current_media()` and otherwise), the core must call
      * {@link Core.notify_current_media}.
-     *
+     * 
      * The frontend can access {@link Core.current_media} for convenience.
-     *
+     * 
      * ## Logging
-     *
+     * 
      * To log information, use {@link Core.log}. It's `printf()`-formatted and has
      * {@link Core.log_valist} and {@link Core.log_literal} variants as well.
-     *
+     * 
      * Cores should not output anything directly to standard output.
-     *
+     * 
      * ## Cache
-     *
+     * 
      * Some cores need a location for temporary files, shader cache etc. Use
      * {@link Core.get_cache_path} to get the cache location. Cores should not use
      * any other directories for this purpose.
-     *
+     * 
      * The core is responsible for creating the cache file/directory if it doesn't
      * exist.
-     *
+     * 
      * ::: note
      *     The frontend may use a shared directory for everything or a separate
      *     directory for each game. Do not store per-game data like saves in the
@@ -1616,48 +1701,51 @@ export namespace Hs {
         static $gtype: GObject.GType<Core>;
 
         // Properties
-
         /**
          * Index of the current media (e.g. a CD on PlayStation).
-         *
+         * 
          * To use it, cores must implement {@link Core.get_current_media} and
          * {@link Core.set_current_media}. Otherwise, it's always set to 0.
-         *
+         * 
          * To notify this property, use {@link Core.notify_current_media}.
          * @default 0
          */
         get current_media(): number;
         set current_media(val: number);
+
         /**
          * Index of the current media (e.g. a CD on PlayStation).
-         *
+         * 
          * To use it, cores must implement {@link Core.get_current_media} and
          * {@link Core.set_current_media}. Otherwise, it's always set to 0.
-         *
+         * 
          * To notify this property, use {@link Core.notify_current_media}.
          * @default 0
          */
         get currentMedia(): number;
         set currentMedia(val: number);
+
         /**
          * The {@link Hs.Frontend} instance, set by the frontend.
-         *
+         * 
          * Cores shouldn't touch this property directly, but instead use methods like
          * {@link Core.play_samples}.
          */
-        get frontend(): Frontend | null;
-        set frontend(val: Frontend | null);
+        get frontend(): (Frontend | null);
+        set frontend(val: (Frontend | null));
+
         /**
          * The core name, set by the frontend.
-         *
+         * 
          * Matches the `Name` key from the descriptor file.
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * The game platform, set by the frontend.
-         *
+         * 
          * Cores that support multiple platforms can query it to determine the current
          * platform.
          * @construct-only
@@ -1675,74 +1763,70 @@ export namespace Hs {
         $signals: Core.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Core.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Core.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Gets the aspect ratio of `self`.
          * @virtual
          */
         vfunc_get_aspect_ratio(): number;
+
         /**
          * Gets the number of audio channels `self` uses.
-         *
+         * 
          * If not implemented, assumes 2 channel.
          * @virtual
          */
         vfunc_get_channels(): number;
+
         /**
          * Gets index of the current media (e.g. a CD on PlayStation).
          * @virtual
          */
         vfunc_get_current_media(): number;
+
         /**
          * Gets the frame rate of `self` in frames per second.
          * @virtual
          */
         vfunc_get_frame_rate(): number;
+
         /**
          * Gets the region of the current game.
-         *
+         * 
          * If not implemented, assumes `{@link Hs.Region.UNKNOWN}.
          * @virtual
          */
         vfunc_get_region(): Region;
+
         /**
          * Gets the sample rate of `self`.
          * @virtual
          */
         vfunc_get_sample_rate(): number;
+
         /**
          * Loads a game from `rom_paths`, with the save data at `save_path`.
-         *
+         * 
          * If the save data exists, it's guaranteed to be present at `save_path` by the
          * time this method is called.
-         *
+         * 
          * The core should initialize the emulation, as well as audio and video output
          * here.
          * @param rom_paths an array of file paths
@@ -1750,20 +1834,22 @@ export namespace Hs {
          * @virtual
          */
         vfunc_load_rom(rom_paths: string[], save_path: string): boolean;
+
         /**
          * Called when `self` is paused.
-         *
+         * 
          * Multi-threaded cores should pause the background threads here.
          * @virtual
          */
         vfunc_pause(): void;
+
         /**
          * Reads input from `input_state`.
-         *
+         * 
          * Frontend will call this before {@link Core.run_frame}. Cores must read the
          * provided input from `input_state` here, corresponding to their current
          * platform.
-         *
+         * 
          * ::: note
          *     Add-on platforms do not have their own input state and reuse the one from
          *     their base platform.
@@ -1771,70 +1857,78 @@ export namespace Hs {
          * @virtual
          */
         vfunc_poll_input(input_state: InputState): void;
+
         /**
          * Reloads the save data from `save_path`.
-         *
+         * 
          * The core must switch its save data location to `save_path` and forget about
          * the previous location.
-         *
+         * 
          * If the save data exists, it's guaranteed to be present at `save_path` by the
          * time this method is called.
          * @param save_path path of the save location
          * @virtual
          */
         vfunc_reload_save(save_path: string): boolean;
+
         /**
          * Resets the game running in `self`.
-         *
+         * 
          * If `hard` is `TRUE`, performs a hard reset (turning the system off and back
          * on), otherwise a soft reset if available (pressing the reset button).
          * @param hard whether to perform a hard reset
          * @virtual
          */
         vfunc_reset(hard: boolean): void;
+
         /**
          * Called when `self` is resumed from a pause.
-         *
+         * 
          * Multi-threaded cores should unpause the background threads here.
          * @virtual
          */
         vfunc_resume(): void;
+
         /**
          * Runs a single frame of emulation.
-         *
+         * 
          * When using software rendering, the cores are expected to access
          * {@link SoftwareContext.get_framebuffer} here and nowhere else.
          * @virtual
          */
         vfunc_run_frame(): void;
+
         /**
          * Sets index of the current media (e.g. a CD on PlayStation).
          * @param media index of the newly selected media
          * @virtual
          */
         vfunc_set_current_media(media: number): void;
+
         /**
          * Starts the game.
-         *
+         * 
          * The game must have already been loaded in the {@link Core.load_rom} function.
          * @virtual
          */
         vfunc_start(): void;
+
         /**
          * Stops the running the game.
-         *
+         * 
          * The game must have already been loaded in the {@link Core.load_rom} function
          * and started with {@link Core.start}.
-         *
+         * 
          * The core should undo everything created in `load_rom()`. When using GL
          * rendering, {@link GLContext.unrealize} should be called before disposing
          * the context.
          * @virtual
          */
         vfunc_stop(): void;
+
         /**
          * Syncs the save data.
-         *
+         * 
          * Cores that don't sync it as soon as the game modifies it must do it here
          * instead.
          * @virtual
@@ -1842,12 +1936,11 @@ export namespace Hs {
         vfunc_sync_save(): boolean;
 
         // Methods
-
         /**
          * Creates an OpenGL context for `self`.
-         *
+         * 
          * The context will use the provided profile and version.
-         *
+         * 
          * The context must be realized before use, using {@link GLContext.realize}.
          * `realize()` can fail, for example if the requested profile and/or version is
          * not available.
@@ -1858,13 +1951,14 @@ export namespace Hs {
          * @returns a newly created OpenGL context
          */
         create_gl_context(profile: GLProfile, major_version: number, minor_version: number, flags: GLFlags): GLContext;
+
         /**
          * Creates a software rendering context for `self`.
-         *
+         * 
          * The context will have a framebuffer with the size `width` × `height`, with the
          * pixel format defined by `format`. The size and format cannot be changed later,
          * though the core is allowed to recreate the context.
-         *
+         * 
          * If the core can use multiple resolutions and it's not known at the creation
          * time, provide the maximum size, and then use a smaller area via
          * {@link SoftwareContext.set_area} and/or
@@ -1875,20 +1969,22 @@ export namespace Hs {
          * @returns a newly created software rendering context
          */
         create_software_context(width: number, height: number, format: PixelFormat): SoftwareContext;
+
         /**
          * Gets the aspect ratio of `self`.
          * @returns the aspect ratio
          */
         get_aspect_ratio(): number;
+
         /**
          * Gets the path to the cache location.
-         *
+         * 
          * It can be used for temporary files, cache and so on. Cores should not use
          * any other directories for this purpose.
-         *
+         * 
          * The core is responsible for creating the cache file/directory if it doesn't
          * exist.
-         *
+         * 
          * ::: note
          *     The frontend may use a shared directory for everything or a separate
          *     directory for each game. Do not store per-game data like saves in the
@@ -1896,62 +1992,71 @@ export namespace Hs {
          * @returns the cache path
          */
         get_cache_path(): string;
+
         /**
          * Gets the number of audio channels `self` uses.
-         *
+         * 
          * If not implemented, assumes 2 channel.
          * @returns the number of channels.
          */
         get_channels(): number;
+
         /**
          * Gets index of the current media (e.g. a CD on PlayStation).
          * @returns index of the current media
          */
         get_current_media(): number;
+
         /**
          * Gets the frame rate of `self` in frames per second.
          * @returns the frame rate
          */
         get_frame_rate(): number;
+
         /**
          * Gets the {@link Hs.Frontend} instance.
-         *
+         * 
          * Cores shouldn't call this method directly, but instead use methods like
          * {@link Core.play_samples}.
          * @returns the frontend instance
          */
-        get_frontend(): Frontend | null;
+        get_frontend(): (Frontend | null);
+
         /**
          * Gets the name of `self`.
-         *
+         * 
          * Matches the `Name` key from the descriptor file.
          */
         get_name(): string;
+
         /**
          * Gets the current game platform.
-         *
+         * 
          * Cores that support multiple platforms can query it to determine the current
          * platform.
          */
         get_platform(): Platform;
+
         /**
          * Gets the region of the current game.
-         *
+         * 
          * If not implemented, assumes `{@link Hs.Region.UNKNOWN}.
          * @returns the region
          */
         get_region(): Region;
+
         /**
          * Gets the sample rate of `self`.
          * @returns the sample rate
          */
         get_sample_rate(): number;
+
         /**
          * Loads a game from `rom_paths`, with the save data at `save_path`.
-         *
+         * 
          * If the save data exists, it's guaranteed to be present at `save_path` by the
          * time this method is called.
-         *
+         * 
          * The core should initialize the emulation, as well as audio and video output
          * here.
          * @param rom_paths an array of file paths
@@ -1959,34 +2064,30 @@ export namespace Hs {
          * @returns `TRUE` on successful load, `FALSE` on error
          */
         load_rom(rom_paths: string[], save_path: string): boolean;
+
         /**
          * Loads a save state from `path`.
          * @param path path to the save state file
          * @param cancellable an optional cancellable object
          */
-        load_state(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Loads a save state from `path`.
-         * @param path path to the save state file
-         * @param cancellable an optional cancellable object
-         * @param callback the async callback to call when     the load is finished
-         */
-        load_state(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        load_state(path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Loads a save state from `path`.
          * @param path path to the save state file
          * @param cancellable an optional cancellable object
          * @param callback the async callback to call when     the load is finished
          */
-        load_state(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        load_state(path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Loads a save state from `path`.
+         * @param path path to the save state file
+         * @param cancellable an optional cancellable object
+         * @param callback the async callback to call when     the load is finished
+         */
+        load_state(path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous save state loading operation started with
          * {@link Core.load_state}.
@@ -1994,79 +2095,88 @@ export namespace Hs {
          * @returns `TRUE` on successful load, `FALSE` on error
          */
         load_state_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Logs `message` with the log level `level`.
-         *
+         * 
          * Cores should not output anything directly to stdout.
          * @param level the log level
          * @param message the message to log
          */
         log_literal(level: LogLevel, message: string): void;
+
         /**
          * Called when the current media index changes.
-         *
+         * 
          * Notifies {@link Core.current_media}.
          */
         notify_current_media(): void;
+
         /**
          * Called when `self` is paused.
-         *
+         * 
          * Multi-threaded cores should pause the background threads here.
          */
         pause(): void;
+
         /**
          * Plays provided audio samples.
-         *
+         * 
          * The samples must be 16 bit, signed, interleaved.
          * @param samples the sample data
          */
         play_samples(samples: number[]): void;
+
         /**
          * Reads input from `input_state`.
-         *
+         * 
          * Frontend will call this before {@link Core.run_frame}. Cores must read the
          * provided input from `input_state` here, corresponding to their current
          * platform.
-         *
+         * 
          * ::: note
          *     Add-on platforms do not have their own input state and reuse the one from
          *     their base platform.
          * @param input_state a snapshot of the current input state
          */
         poll_input(input_state: InputState): void;
+
         /**
          * Reloads the save data from `save_path`.
-         *
+         * 
          * The core must switch its save data location to `save_path` and forget about
          * the previous location.
-         *
+         * 
          * If the save data exists, it's guaranteed to be present at `save_path` by the
          * time this method is called.
          * @param save_path path of the save location
          * @returns `TRUE` on success, `FALSE` if there was an error.
          */
         reload_save(save_path: string): boolean;
+
         /**
          * Resets the game running in `self`.
-         *
+         * 
          * If `hard` is `TRUE`, performs a hard reset (turning the system off and back
          * on), otherwise a soft reset if available (pressing the reset button).
          * @param hard whether to perform a hard reset
          */
         reset(hard: boolean): void;
+
         /**
          * Called when `self` is resumed from a pause.
-         *
+         * 
          * Multi-threaded cores should unpause the background threads here.
          */
         resume(): void;
+
         /**
          * Makes `player`'s controller rumble for `milliseconds`.
-         *
+         * 
          * The heavy and light motors will rumble at their respectively defined
          * magnitudes, in the [0-1] range, 0 meaning no rumble, 1 meaning very strong
          * rumble.
-         *
+         * 
          * `milliseconds` cannot exceed {@link MAX_RUMBLE_DURATION}.
          * @param player the player to do rumble for
          * @param strong_magnitude the magnitude for the heavy motor
@@ -2074,41 +2184,38 @@ export namespace Hs {
          * @param milliseconds the rumble effect play time in milliseconds
          */
         rumble(player: number, strong_magnitude: number, weak_magnitude: number, milliseconds: number): void;
+
         /**
          * Runs a single frame of emulation.
-         *
+         * 
          * When using software rendering, the cores are expected to access
          * {@link SoftwareContext.get_framebuffer} here and nowhere else.
          */
         run_frame(): void;
+
         /**
          * Saves the current state into `path`.
          * @param path path to the save state location
          * @param cancellable an optional cancellable object
          */
-        save_state(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Saves the current state into `path`.
-         * @param path path to the save state location
-         * @param cancellable an optional cancellable object
-         * @param callback the async callback to call when     the save is finished
-         */
-        save_state(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        save_state(path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Saves the current state into `path`.
          * @param path path to the save state location
          * @param cancellable an optional cancellable object
          * @param callback the async callback to call when     the save is finished
          */
-        save_state(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        save_state(path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Saves the current state into `path`.
+         * @param path path to the save state location
+         * @param cancellable an optional cancellable object
+         * @param callback the async callback to call when     the save is finished
+         */
+        save_state(path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous state saving operation started with
          * {@link Core.save_state}.
@@ -2116,41 +2223,46 @@ export namespace Hs {
          * @returns `TRUE` on successful load, `FALSE` on error
          */
         save_state_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Sets index of the current media (e.g. a CD on PlayStation).
          * @param media index of the newly selected media
          */
         set_current_media(media: number): void;
+
         /**
          * Sets the {@link Hs.Frontend} instance.
-         *
+         * 
          * This should be called from the frontend to enable methods like
          * {@link Core.play_samples} to work.
-         *
+         * 
          * Cores must never call this function.
          * @param frontend the new frontend instance
          */
-        set_frontend(frontend: Frontend | null): void;
+        set_frontend(frontend: (Frontend | null)): void;
+
         /**
          * Starts the game.
-         *
+         * 
          * The game must have already been loaded in the {@link Core.load_rom} function.
          */
         start(): void;
+
         /**
          * Stops the running the game.
-         *
+         * 
          * The game must have already been loaded in the {@link Core.load_rom} function
          * and started with {@link Core.start}.
-         *
+         * 
          * The core should undo everything created in `load_rom()`. When using GL
          * rendering, {@link GLContext.unrealize} should be called before disposing
          * the context.
          */
         stop(): void;
+
         /**
          * Syncs the save data.
-         *
+         * 
          * Cores that don't sync it as soon as the game modifies it must do it here
          * instead.
          * @returns `TRUE` on success, `FALSE` if there was an error.
@@ -2158,10 +2270,12 @@ export namespace Hs {
         sync_save(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type Atari2600CoreInterface = typeof Atari2600Core;
+
     /**
      * @gir-type Struct
      */
@@ -2169,22 +2283,31 @@ export namespace Hs {
         static $gtype: GObject.GType<Atari2600InputState>;
 
         // Fields
-
         joystick: number[];
+
         driving_axis: number[];
+
         driving_fire: boolean[];
+
         paddle_axis: number[];
+
         paddle_speed: number[];
+
         paddle_fire: boolean[];
+
         tv_type: Atari2600TVType;
+
         difficulty: Atari2600Difficulty[];
+
         select_switch: boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type Atari7800CoreInterface = typeof Atari7800Core;
+
     /**
      * @gir-type Struct
      */
@@ -2192,20 +2315,27 @@ export namespace Hs {
         static $gtype: GObject.GType<Atari7800InputState>;
 
         // Fields
-
         joystick: number[];
+
         lightgun_fire: boolean;
+
         lightgun_x: number;
+
         lightgun_y: number;
+
         difficulty: Atari7800Difficulty[];
+
         pause_button: boolean;
+
         select_button: boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AtariLynxCoreInterface = typeof AtariLynxCore;
+
     /**
      * @gir-type Struct
      */
@@ -2213,38 +2343,41 @@ export namespace Hs {
         static $gtype: GObject.GType<AtariLynxInputState>;
 
         // Fields
-
         buttons: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                buttons: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            buttons: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type CoreClass = typeof Core;
+
     /**
      * @gir-type Alias
      */
     type FdsCoreInterface = typeof FdsCore;
+
     /**
      * @gir-type Alias
      */
     type FrontendInterface = typeof Frontend;
+
     /**
      * @gir-type Alias
      */
     type GLContextInterface = typeof GLContext;
+
     /**
      * @gir-type Alias
      */
     type GameBoyAdvanceCoreInterface = typeof GameBoyAdvanceCore;
+
     /**
      * @gir-type Struct
      */
@@ -2252,22 +2385,21 @@ export namespace Hs {
         static $gtype: GObject.GType<GameBoyAdvanceInputState>;
 
         // Fields
-
         buttons: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                buttons: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            buttons: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type GameBoyCoreInterface = typeof GameBoyCore;
+
     /**
      * @gir-type Struct
      */
@@ -2275,22 +2407,21 @@ export namespace Hs {
         static $gtype: GObject.GType<GameBoyInputState>;
 
         // Fields
-
         buttons: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                buttons: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            buttons: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type GameGearCoreInterface = typeof GameGearCore;
+
     /**
      * @gir-type Struct
      */
@@ -2298,22 +2429,21 @@ export namespace Hs {
         static $gtype: GObject.GType<GameGearInputState>;
 
         // Fields
-
         buttons: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                buttons: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            buttons: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type MasterSystemCoreInterface = typeof MasterSystemCore;
+
     /**
      * @gir-type Struct
      */
@@ -2321,30 +2451,33 @@ export namespace Hs {
         static $gtype: GObject.GType<MasterSystemInputState>;
 
         // Fields
-
         pad_buttons: number[];
+
         pause_button: boolean;
+
         light_phaser_fire: boolean;
+
         light_phaser_x: number;
+
         light_phaser_y: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                pad_buttons: number[];
-                pause_button: boolean;
-                light_phaser_fire: boolean;
-                light_phaser_x: number;
-                light_phaser_y: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            pad_buttons: number[];
+            pause_button: boolean;
+            light_phaser_fire: boolean;
+            light_phaser_x: number;
+            light_phaser_y: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type MegaDriveCoreInterface = typeof MegaDriveCore;
+
     /**
      * @gir-type Struct
      */
@@ -2352,22 +2485,21 @@ export namespace Hs {
         static $gtype: GObject.GType<MegaDriveInputState>;
 
         // Fields
-
         pad_buttons: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                pad_buttons: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            pad_buttons: number[];
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type NeoGeoPocketCoreInterface = typeof NeoGeoPocketCore;
+
     /**
      * @gir-type Struct
      */
@@ -2375,22 +2507,21 @@ export namespace Hs {
         static $gtype: GObject.GType<NeoGeoPocketInputState>;
 
         // Fields
-
         buttons: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                buttons: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            buttons: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type NesCoreInterface = typeof NesCore;
+
     /**
      * @gir-type Struct
      */
@@ -2398,21 +2529,29 @@ export namespace Hs {
         static $gtype: GObject.GType<NesInputState>;
 
         // Fields
-
         pad_buttons: number[];
+
         mic_level: NesMicLevel;
+
         zapper_fire: boolean;
+
         zapper_x: number;
+
         zapper_y: number;
+
         paddle_position: number;
+
         paddle_speed: number;
+
         paddle_button: boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type Nintendo64CoreInterface = typeof Nintendo64Core;
+
     /**
      * @gir-type Struct
      */
@@ -2420,26 +2559,27 @@ export namespace Hs {
         static $gtype: GObject.GType<Nintendo64InputState>;
 
         // Fields
-
         pad_buttons: number[];
+
         pad_control_stick_x: number[];
+
         pad_control_stick_y: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                pad_buttons: number[];
-                pad_control_stick_x: number[];
-                pad_control_stick_y: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            pad_buttons: number[];
+            pad_control_stick_x: number[];
+            pad_control_stick_y: number[];
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type NintendoDsCoreInterface = typeof NintendoDsCore;
+
     /**
      * @gir-type Struct
      */
@@ -2447,34 +2587,38 @@ export namespace Hs {
         static $gtype: GObject.GType<NintendoDsInputState>;
 
         // Fields
-
         buttons: number;
+
         touch_pressed: boolean;
+
         touch_x: number;
+
         touch_y: number;
+
         mic_active: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                buttons: number;
-                touch_pressed: boolean;
-                touch_x: number;
-                touch_y: number;
-                mic_active: boolean;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            buttons: number;
+            touch_pressed: boolean;
+            touch_x: number;
+            touch_y: number;
+            mic_active: boolean;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type PcEngineCdCoreInterface = typeof PcEngineCdCore;
+
     /**
      * @gir-type Alias
      */
     type PcEngineCoreInterface = typeof PcEngineCore;
+
     /**
      * @gir-type Struct
      */
@@ -2482,15 +2626,17 @@ export namespace Hs {
         static $gtype: GObject.GType<PcEngineInputState>;
 
         // Fields
-
         pad_buttons: number[];
+
         pad_mode: PcEnginePadMode[];
     }
+
 
     /**
      * @gir-type Alias
      */
     type PlayStationCoreInterface = typeof PlayStationCore;
+
     /**
      * @gir-type Struct
      */
@@ -2498,25 +2644,25 @@ export namespace Hs {
         static $gtype: GObject.GType<PlayStationInputState>;
 
         // Fields
-
         pad_buttons: number[];
+
         pad_sticks_x: number[];
+
         pad_sticks_y: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                pad_buttons: number[];
-                pad_sticks_x: number[];
-                pad_sticks_y: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            pad_buttons: number[];
+            pad_sticks_x: number[];
+            pad_sticks_y: number[];
+        }>);
     }
+
 
     /**
      * An integer rectangle.
-     *
+     * 
      * Used for {@link SoftwareContext.set_area}.
      * @gir-type Struct
      */
@@ -2524,34 +2670,35 @@ export namespace Hs {
         static $gtype: GObject.GType<Rectangle>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
 
         // Methods
-
         /**
          * Copies `self`.
          * @returns a copy of `self`
          */
         copy(): Rectangle;
+
         /**
          * Frees `self`.
          */
         free(): void;
+
         /**
          * Initializes the given rectangle with the given values.
          * @param x the X coordinate of the top left corner
@@ -2562,10 +2709,12 @@ export namespace Hs {
         init(x: number, y: number, width: number, height: number): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SegaSaturnCoreInterface = typeof SegaSaturnCore;
+
     /**
      * @gir-type Struct
      */
@@ -2573,19 +2722,25 @@ export namespace Hs {
         static $gtype: GObject.GType<SegaSaturnInputState>;
 
         // Fields
-
         pad_buttons: number[];
+
         pad_mode: SegaSaturn3DPadMode[];
+
         pad_stick_x: number[];
+
         pad_stick_y: number[];
+
         pad_left_trigger: number[];
+
         pad_right_trigger: number[];
     }
+
 
     /**
      * @gir-type Alias
      */
     type Sg1000CoreInterface = typeof Sg1000Core;
+
     /**
      * @gir-type Struct
      */
@@ -2593,28 +2748,29 @@ export namespace Hs {
         static $gtype: GObject.GType<Sg1000InputState>;
 
         // Fields
-
         pad_buttons: number[];
+
         pause_button: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                pad_buttons: number[];
-                pause_button: boolean;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            pad_buttons: number[];
+            pause_button: boolean;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type SoftwareContextInterface = typeof SoftwareContext;
+
     /**
      * @gir-type Alias
      */
     type SuperNesCoreInterface = typeof SuperNesCore;
+
     /**
      * @gir-type Struct
      */
@@ -2622,22 +2778,21 @@ export namespace Hs {
         static $gtype: GObject.GType<SuperNesInputState>;
 
         // Fields
-
         pad_buttons: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                pad_buttons: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            pad_buttons: number[];
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type VirtualBoyCoreInterface = typeof VirtualBoyCore;
+
     /**
      * @gir-type Struct
      */
@@ -2645,22 +2800,21 @@ export namespace Hs {
         static $gtype: GObject.GType<VirtualBoyInputState>;
 
         // Fields
-
         buttons: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                buttons: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            buttons: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type WonderSwanCoreInterface = typeof WonderSwanCore;
+
     /**
      * @gir-type Struct
      */
@@ -2668,21 +2822,19 @@ export namespace Hs {
         static $gtype: GObject.GType<WonderSwanInputState>;
 
         // Fields
-
         buttons: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                buttons: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            buttons: number;
+        }>);
     }
+
 
     /**
      * A union of input states from the different platforms.
-     *
+     * 
      * Cores should access it from {@link Core.poll_input}, only for their current
      * platform.
      * *
@@ -2695,22 +2847,35 @@ export namespace Hs {
         static $gtype: GObject.GType<InputState>;
 
         // Fields
-
         atari_lynx: AtariLynxInputState;
+
         game_boy: GameBoyInputState;
+
         game_boy_advance: GameBoyAdvanceInputState;
+
         game_gear: GameGearInputState;
+
         master_system: MasterSystemInputState;
+
         mega_drive: MegaDriveInputState;
+
         neo_geo_pocket: NeoGeoPocketInputState;
+
         nintendo_64: Nintendo64InputState;
+
         nintendo_ds: NintendoDsInputState;
+
         psx: PlayStationInputState;
+
         sg1000: Sg1000InputState;
+
         super_nes: SuperNesInputState;
+
         virtual_boy: VirtualBoyInputState;
+
         wonderswan: WonderSwanInputState;
     }
+
 
     namespace Atari2600Core {
         /**
@@ -2718,17 +2883,18 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the current controller for `player`.
              * @param player the player
              * @virtual
              */
             vfunc_get_controller(player: number): Atari2600Controller;
+
             /**
              * Gets the default difficulty for `player`.
-             *
+             * 
              * Player 0 corresponds to the left difficulty switch, player 2 to the right
              * difficulty switch.
              * @param player the player
@@ -2737,9 +2903,11 @@ export namespace Hs {
             vfunc_get_default_difficulty(player: number): Atari2600Difficulty;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface Atari2600CoreNamespace {
@@ -2748,22 +2916,23 @@ export namespace Hs {
     }
     /**
      * An interface for Atari 2600 cores.
-     *
+     * 
      * Defines functions specific to Atari 2600.
      * @gir-type Interface
      */
     interface Atari2600Core extends Core, Atari2600Core.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the current controller for `player`.
          * @param player the player
          * @returns the controller
          */
         get_controller(player: number): Atari2600Controller;
+
         /**
          * Gets the default difficulty for `player`.
-         *
+         * 
          * Player 0 corresponds to the left difficulty switch, player 2 to the right
          * difficulty switch.
          * @param player the player
@@ -2771,6 +2940,7 @@ export namespace Hs {
          */
         get_default_difficulty(player: number): Atari2600Difficulty;
     }
+
 
     export const Atari2600Core: Atari2600CoreNamespace & {
         new (): Atari2600Core; // This allows `obj instanceof Atari2600Core`
@@ -2782,17 +2952,18 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the current controller for `player`.
              * @param player the player
              * @virtual
              */
             vfunc_get_controller(player: number): Atari7800Controller;
+
             /**
              * Gets the default difficulty for `player`.
-             *
+             * 
              * Player 0 corresponds to the left difficulty switch, player 2 to the right
              * difficulty switch.
              * @param player the player
@@ -2801,9 +2972,11 @@ export namespace Hs {
             vfunc_get_default_difficulty(player: number): Atari7800Difficulty;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface Atari7800CoreNamespace {
@@ -2812,22 +2985,23 @@ export namespace Hs {
     }
     /**
      * An interface for Atari 7800 cores.
-     *
+     * 
      * Defines functions specific to Atari 7800.
      * @gir-type Interface
      */
     interface Atari7800Core extends Core, Atari7800Core.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the current controller for `player`.
          * @param player the player
          * @returns the controller
          */
         get_controller(player: number): Atari7800Controller;
+
         /**
          * Gets the default difficulty for `player`.
-         *
+         * 
          * Player 0 corresponds to the left difficulty switch, player 2 to the right
          * difficulty switch.
          * @param player the player
@@ -2835,6 +3009,7 @@ export namespace Hs {
          */
         get_default_difficulty(player: number): Atari7800Difficulty;
     }
+
 
     export const Atari7800Core: Atari7800CoreNamespace & {
         new (): Atari7800Core; // This allows `obj instanceof Atari7800Core`
@@ -2846,8 +3021,8 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Sets the path to the Lynx boot ROM.
              * @param path the path to the BIOS
@@ -2856,9 +3031,11 @@ export namespace Hs {
             vfunc_set_bios_path(path: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface AtariLynxCoreNamespace {
@@ -2867,19 +3044,20 @@ export namespace Hs {
     }
     /**
      * An interface for Atari Lynx cores.
-     *
+     * 
      * Defines functions specific to Atari Lynx.
      * @gir-type Interface
      */
     interface AtariLynxCore extends Core, AtariLynxCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Sets the path to the Lynx boot ROM.
          * @param path the path to the BIOS
          */
         set_bios_path(path: string): void;
     }
+
 
     export const AtariLynxCore: AtariLynxCoreNamespace & {
         new (): AtariLynxCore; // This allows `obj instanceof AtariLynxCore`
@@ -2891,37 +3069,40 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the number of disk sides.
-             *
+             * 
              * For multi-disk games, the number of sides may go above 2. For example, if a
              * game consists of 3 disks, the number of sides will be 6.
              * @virtual
              */
             vfunc_get_n_sides(): number;
+
             /**
              * Gets the current disk side.
-             *
+             * 
              * Side A corresponds to 0, side B to 1.
-             *
+             * 
              * If a game consists of multiple disks, disk 2 side A corresponds to 3, and so
              * on.
              * @virtual
              */
             vfunc_get_side(): number;
+
             /**
              * Sets the path to the Famicom Disk System BIOS.
              * @param path the path to the BIOS
              * @virtual
              */
             vfunc_set_bios_path(path: string): void;
+
             /**
              * Sets the current disk side.
-             *
+             * 
              * Side A corresponds to 0, side B to 1.
-             *
+             * 
              * If a game consists of multiple disks, disk 2 side A corresponds to 3, and so
              * on.
              * @param side the new disk side
@@ -2930,9 +3111,11 @@ export namespace Hs {
             vfunc_set_side(side: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface FdsCoreNamespace {
@@ -2941,49 +3124,53 @@ export namespace Hs {
     }
     /**
      * An interface for Famicom Disk System cores.
-     *
+     * 
      * Defines functions specific to Famicom Disk System.
-     *
+     * 
      * Classes implementing this interface must also implement {@link NesCore}.
      * @gir-type Interface
      */
     interface FdsCore extends Core, FdsCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the number of disk sides.
-         *
+         * 
          * For multi-disk games, the number of sides may go above 2. For example, if a
          * game consists of 3 disks, the number of sides will be 6.
          * @returns the number of disk sides
          */
         get_n_sides(): number;
+
         /**
          * Gets the current disk side.
-         *
+         * 
          * Side A corresponds to 0, side B to 1.
-         *
+         * 
          * If a game consists of multiple disks, disk 2 side A corresponds to 3, and so
          * on.
          * @returns the current side
          */
         get_side(): number;
+
         /**
          * Sets the path to the Famicom Disk System BIOS.
          * @param path the path to the BIOS
          */
         set_bios_path(path: string): void;
+
         /**
          * Sets the current disk side.
-         *
+         * 
          * Side A corresponds to 0, side B to 1.
-         *
+         * 
          * If a game consists of multiple disks, disk 2 side A corresponds to 3, and so
          * on.
          * @param side the new disk side
          */
         set_side(side: number): void;
     }
+
 
     export const FdsCore: FdsCoreNamespace & {
         new (): FdsCore; // This allows `obj instanceof FdsCore`
@@ -2995,13 +3182,13 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Creates an OpenGL context.
-             *
+             * 
              * The context will use the provided profile and version.
-             *
+             * 
              * The context must be realized before use, using {@link GLContext.realize}.
              * `realize()` can fail, for example if the requested profile and/or version is
              * not available.
@@ -3011,19 +3198,15 @@ export namespace Hs {
              * @param flags additional parameters for the context
              * @virtual
              */
-            vfunc_create_gl_context(
-                profile: GLProfile,
-                major_version: number,
-                minor_version: number,
-                flags: GLFlags,
-            ): GLContext;
+            vfunc_create_gl_context(profile: GLProfile, major_version: number, minor_version: number, flags: GLFlags): GLContext;
+
             /**
              * Creates a software rendering context.
-             *
+             * 
              * The context will have a framebuffer with the size `width` × `height`, with the
              * pixel format defined by `format`. The size and format cannot be changed later,
              * though the core is allowed to recreate the context.
-             *
+             * 
              * If the core can use multiple resolutions and it's not known at the creation
              * time, provide the maximum size, and then use a smaller area via
              * {@link SoftwareContext.set_area} and/or
@@ -3034,44 +3217,48 @@ export namespace Hs {
              * @virtual
              */
             vfunc_create_software_context(width: number, height: number, format: PixelFormat): SoftwareContext;
+
             /**
              * Gets the path to the cache location.
-             *
+             * 
              * It can be used for temporary files, cache and so on. Cores should not use
              * any other directories for this purpose.
-             *
+             * 
              * The core is responsible for creating the cache file/directory if it doesn't
              * exist.
-             *
+             * 
              * The frontend is allowed to use a shared directory for everything or a
              * separate directory for each game.
              * @virtual
              */
             vfunc_get_cache_path(): string;
+
             /**
              * Logs `message` with the log level `level`.
-             *
+             * 
              * Cores should not output anything directly to stdout.
              * @param level the log level
              * @param message the message to log
              * @virtual
              */
             vfunc_log(level: LogLevel, message: string): void;
+
             /**
              * Plays provided audio samples.
-             *
+             * 
              * The samples must be 16 bit, signed, interleaved.
              * @param samples the sample data
              * @virtual
              */
             vfunc_play_samples(samples: number[]): void;
+
             /**
              * Makes `player`'s controller rumble for `milliseconds`.
-             *
+             * 
              * The heavy and light motors will rumble at their respectively defined
              * magnitudes, in the [0-1] range, 0 meaning no rumble, 1 meaning very strong
              * rumble.
-             *
+             * 
              * `milliseconds` cannot exceed {@link MAX_RUMBLE_DURATION}.
              * @param player the player to do rumble for
              * @param strong_magnitude the magnitude for the heavy motor
@@ -3082,9 +3269,11 @@ export namespace Hs {
             vfunc_rumble(player: number, strong_magnitude: number, weak_magnitude: number, milliseconds: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface FrontendNamespace {
@@ -3093,19 +3282,19 @@ export namespace Hs {
     }
     /**
      * An interface defining a frontend.
-     *
+     * 
      * The frontend must have a {@link Hs.Frontend} implementation and set it as the
      * {@link Core.frontend} value.
      * @gir-type Interface
      */
     interface Frontend extends GObject.Object, Frontend.Interface {
-        // Methods
 
+        // Methods
         /**
          * Creates an OpenGL context.
-         *
+         * 
          * The context will use the provided profile and version.
-         *
+         * 
          * The context must be realized before use, using {@link GLContext.realize}.
          * `realize()` can fail, for example if the requested profile and/or version is
          * not available.
@@ -3116,13 +3305,14 @@ export namespace Hs {
          * @returns a newly created OpenGL context
          */
         create_gl_context(profile: GLProfile, major_version: number, minor_version: number, flags: GLFlags): GLContext;
+
         /**
          * Creates a software rendering context.
-         *
+         * 
          * The context will have a framebuffer with the size `width` × `height`, with the
          * pixel format defined by `format`. The size and format cannot be changed later,
          * though the core is allowed to recreate the context.
-         *
+         * 
          * If the core can use multiple resolutions and it's not known at the creation
          * time, provide the maximum size, and then use a smaller area via
          * {@link SoftwareContext.set_area} and/or
@@ -3133,42 +3323,46 @@ export namespace Hs {
          * @returns a newly created software rendering context
          */
         create_software_context(width: number, height: number, format: PixelFormat): SoftwareContext;
+
         /**
          * Gets the path to the cache location.
-         *
+         * 
          * It can be used for temporary files, cache and so on. Cores should not use
          * any other directories for this purpose.
-         *
+         * 
          * The core is responsible for creating the cache file/directory if it doesn't
          * exist.
-         *
+         * 
          * The frontend is allowed to use a shared directory for everything or a
          * separate directory for each game.
          * @returns the cache path
          */
         get_cache_path(): string;
+
         /**
          * Logs `message` with the log level `level`.
-         *
+         * 
          * Cores should not output anything directly to stdout.
          * @param level the log level
          * @param message the message to log
          */
         log(level: LogLevel, message: string): void;
+
         /**
          * Plays provided audio samples.
-         *
+         * 
          * The samples must be 16 bit, signed, interleaved.
          * @param samples the sample data
          */
         play_samples(samples: number[]): void;
+
         /**
          * Makes `player`'s controller rumble for `milliseconds`.
-         *
+         * 
          * The heavy and light motors will rumble at their respectively defined
          * magnitudes, in the [0-1] range, 0 meaning no rumble, 1 meaning very strong
          * rumble.
-         *
+         * 
          * `milliseconds` cannot exceed {@link MAX_RUMBLE_DURATION}.
          * @param player the player to do rumble for
          * @param strong_magnitude the magnitude for the heavy motor
@@ -3177,6 +3371,7 @@ export namespace Hs {
          */
         rumble(player: number, strong_magnitude: number, weak_magnitude: number, milliseconds: number): void;
     }
+
 
     export const Frontend: FrontendNamespace & {
         new (): Frontend; // This allows `obj instanceof Frontend`
@@ -3188,49 +3383,54 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Locks and returns the software framebuffer for direct rendering.
-             *
+             * 
              * Can only be called if {@link Hs.GLFlags.DIRECT_FB_ACCESS} is set.
              * @virtual
              */
-            vfunc_acquire_framebuffer(): any | null;
+            vfunc_acquire_framebuffer(): (any | null);
+
             /**
              * Gets the name of the default framebuffer object.
-             *
+             * 
              * The cores must render into this framebuffer, unless
              * {@link Hs.GLFlags.DIRECT_FB_ACCESS} is set.
              * @virtual
              */
             vfunc_get_default_framebuffer(): number;
+
             /**
              * Retrieves a GL symbol with the name `name`.
              * @param name name of a GL symbol
              * @virtual
              */
-            vfunc_get_proc_address(name: string): any | null;
+            vfunc_get_proc_address(name: string): (any | null);
+
             /**
              * Initializes GL resources for `self`.
-             *
+             * 
              * {@link Hs.GLContextError.INCOMPATIBLE_VERSION} will be returned if the core
              * requested an unavailable version. If this happens, the core should dispose
              * `self` and try to create a context for a lower version, or otherwise fall back
              * to software rendering or fail entirely.
-             *
+             * 
              * Frontend is responsible for automatically unrealizing the context if an error
              * happens here.
              * @virtual
              */
             vfunc_realize(): boolean;
+
             /**
              * Unlocks the software framebuffer.
-             *
+             * 
              * Can only be called if {@link Hs.GLFlags.DIRECT_FB_ACCESS} is set.
              * @virtual
              */
             vfunc_release_framebuffer(): void;
+
             /**
              * Resizes the default framebuffer to `width` × `height`.
              * @param width the framebuffer width
@@ -3238,25 +3438,29 @@ export namespace Hs {
              * @virtual
              */
             vfunc_set_size(width: number, height: number): void;
+
             /**
              * Swap buffers and end the current frame.
-             *
+             * 
              * Cores must call this at the end of each frame.
              * @virtual
              */
             vfunc_swap_buffers(): void;
+
             /**
              * Destroys GL resources for `self`.
-             *
+             * 
              * Must be called by the core before disposing the context.
              * @virtual
              */
             vfunc_unrealize(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface GLContextNamespace {
@@ -3265,118 +3469,128 @@ export namespace Hs {
     }
     /**
      * An interface defining an OpenGL context.
-     *
+     * 
      * Cores should use {@link Core.create_gl_context} within `load_rom()` to
      * create a context.
-     *
+     * 
      * Frontends must implement {@link Frontend.create_gl_context} and create a
      * context within it.
-     *
+     * 
      * {@link Hs.GLContext} needs to be realized before being used, using
      * {@link GLContext.realize}. This can fail, for example if the core requested
      * an unavailable profile or version. If that happens, the core should try a
      * different configuration or software rendering if possible, before failing to
      * load entirely.
-     *
+     * 
      * After that, the context needs to be resized using {@link GLContext.set_size}.
      * This can be done at any time.
-     *
+     * 
      * The core must render its output into the default framebuffer, provided by the
      * frontend and accessed with {@link GLContext.get_default_framebuffer}. The
      * framebuffer will have a color attachment, as well as depth and stencil
      * attachment according to the flags passed into `create_gl_context()`.
-     *
+     * 
      * Use {@link GLContext.get_proc_address} to retrieve OpenGL symbols if the
      * core doesn't have a way to do it on its own.
-     *
+     * 
      * After rendering each frame, the core must call
      * {@link GLContext.swap_buffers}.
-     *
+     * 
      * OpenGL core output will often be vertically flipped. Pass
      * {@link Hs.GLFlags.FLIPPED} flag when creating the context to let the frontend
      * know that this is the case.
-     *
+     * 
      * In some cases, the output data will be pre-downloaded and post-processed on
      * CPU. Instead of uploading it back to GPU, pass the
      * {@link Hs.GLFlags.DIRECT_FB_ACCESS} flag when creating the context, and then
      * use {@link GLContext.acquire_framebuffer} and
      * {@link GLContext.release_framebuffer} to access the underlying framebuffer.
-     *
+     * 
      * ::: important
      *     Using direct framebuffer access prevents some optimizations in the
      *     frontend and should only be used as the last resort.
      * @gir-type Interface
      */
     interface GLContext extends GObject.Object, GLContext.Interface {
-        // Methods
 
+        // Methods
         /**
          * Locks and returns the software framebuffer for direct rendering.
-         *
+         * 
          * Can only be called if {@link Hs.GLFlags.DIRECT_FB_ACCESS} is set.
          * @returns location of the software framebuffer
          */
-        acquire_framebuffer(): any | null;
+        acquire_framebuffer(): (any | null);
+
         /**
          * Gets the name of the default framebuffer object.
-         *
+         * 
          * The cores must render into this framebuffer, unless
          * {@link Hs.GLFlags.DIRECT_FB_ACCESS} is set.
          */
         get_default_framebuffer(): number;
+
         /**
          * Retrieves a GL symbol with the name `name`.
          * @param name name of a GL symbol
          * @returns location of the symbol
          */
-        get_proc_address(name: string): any | null;
+        get_proc_address(name: string): (any | null);
+
         /**
          * Initializes GL resources for `self`.
-         *
+         * 
          * {@link Hs.GLContextError.INCOMPATIBLE_VERSION} will be returned if the core
          * requested an unavailable version. If this happens, the core should dispose
          * `self` and try to create a context for a lower version, or otherwise fall back
          * to software rendering or fail entirely.
-         *
+         * 
          * Frontend is responsible for automatically unrealizing the context if an error
          * happens here.
          * @returns `TRUE` is `self` was successfully realized, `FALSE` on error
          */
         realize(): boolean;
+
         /**
          * Unlocks the software framebuffer.
-         *
+         * 
          * Can only be called if {@link Hs.GLFlags.DIRECT_FB_ACCESS} is set.
          */
         release_framebuffer(): void;
+
         /**
          * Resizes the default framebuffer to `width` × `height`.
          * @param width the framebuffer width
          * @param height the framebuffer height
          */
         set_size(width: number, height: number): void;
+
         /**
          * Swap buffers and end the current frame.
-         *
+         * 
          * Cores must call this at the end of each frame.
          */
         swap_buffers(): void;
+
         /**
          * Destroys GL resources for `self`.
-         *
+         * 
          * Must be called by the core before disposing the context.
          */
         unrealize(): void;
     }
+
 
     export const GLContext: GLContextNamespace & {
         new (): GLContext; // This allows `obj instanceof GLContext`
     };
 
     namespace GameBoyAdvanceCore {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface GameBoyAdvanceCoreNamespace {
@@ -3385,11 +3599,13 @@ export namespace Hs {
     }
     /**
      * An interface for Game Boy Advance cores.
-     *
+     * 
      * Defines functions specific to Game Boy Advance.
      * @gir-type Interface
      */
-    interface GameBoyAdvanceCore extends Core {}
+    interface GameBoyAdvanceCore extends Core {
+    }
+
 
     export const GameBoyAdvanceCore: GameBoyAdvanceCoreNamespace & {
         new (): GameBoyAdvanceCore; // This allows `obj instanceof GameBoyAdvanceCore`
@@ -3401,21 +3617,22 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Sets the Game Boy model.
              * @param model the new model
              * @virtual
              */
             vfunc_set_model(model: GameBoyModel): void;
+
             /**
              * Sets a palette to use for Game Boy games.
-             *
+             * 
              * `n_colors` must be either 4 or 12.
-             *
+             * 
              * Each of the colors in `colors` is an sRGB color in the hex representation.
-             *
+             * 
              * Does not affect Game Boy Color and Super Game Boy games.
              * @param colors colors
              * @virtual
@@ -3423,9 +3640,11 @@ export namespace Hs {
             vfunc_set_palette(colors: number[]): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface GameBoyCoreNamespace {
@@ -3434,39 +3653,43 @@ export namespace Hs {
     }
     /**
      * An interface for Game Boy and Game Boy Color cores.
-     *
+     * 
      * Defines functions specific to Game Boy and Game Boy Color.
      * @gir-type Interface
      */
     interface GameBoyCore extends Core, GameBoyCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Sets the Game Boy model.
          * @param model the new model
          */
         set_model(model: GameBoyModel): void;
+
         /**
          * Sets a palette to use for Game Boy games.
-         *
+         * 
          * `n_colors` must be either 4 or 12.
-         *
+         * 
          * Each of the colors in `colors` is an sRGB color in the hex representation.
-         *
+         * 
          * Does not affect Game Boy Color and Super Game Boy games.
          * @param colors colors
          */
         set_palette(colors: number[]): void;
     }
 
+
     export const GameBoyCore: GameBoyCoreNamespace & {
         new (): GameBoyCore; // This allows `obj instanceof GameBoyCore`
     };
 
     namespace GameGearCore {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface GameGearCoreNamespace {
@@ -3475,11 +3698,13 @@ export namespace Hs {
     }
     /**
      * An interface for Game Gear cores.
-     *
+     * 
      * Defines functions specific to Game Gear.
      * @gir-type Interface
      */
-    interface GameGearCore extends Core {}
+    interface GameGearCore extends Core {
+    }
+
 
     export const GameGearCore: GameGearCoreNamespace & {
         new (): GameGearCore; // This allows `obj instanceof GameGearCore`
@@ -3491,26 +3716,28 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the number of players in the current game.
-             *
+             * 
              * If not overridden, returns {@link MASTER_SYSTEM_MAX_PLAYERS}.
              * @virtual
              */
             vfunc_get_players(): number;
+
             /**
              * Sets whether to use FM audio.
-             *
+             * 
              * Only works for games that support the FM Sound Unit.
              * @param enable_fm_audio whether to use FM audio
              * @virtual
              */
             vfunc_set_enable_fm_audio(enable_fm_audio: boolean): void;
+
             /**
              * Sets whether to use Light Phaser.
-             *
+             * 
              * Only works for games that support Light Phaser.
              * @param enable_light_phaser whether to use Light Phaser
              * @virtual
@@ -3518,9 +3745,11 @@ export namespace Hs {
             vfunc_set_enable_light_phaser(enable_light_phaser: boolean): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface MasterSystemCoreNamespace {
@@ -3529,35 +3758,38 @@ export namespace Hs {
     }
     /**
      * An interface for Master System cores.
-     *
+     * 
      * Defines functions specific to Master System.
      * @gir-type Interface
      */
     interface MasterSystemCore extends Core, MasterSystemCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the number of players in the current game.
-         *
+         * 
          * If not overridden, returns {@link MASTER_SYSTEM_MAX_PLAYERS}.
          * @returns the number of players
          */
         get_players(): number;
+
         /**
          * Sets whether to use FM audio.
-         *
+         * 
          * Only works for games that support the FM Sound Unit.
          * @param enable_fm_audio whether to use FM audio
          */
         set_enable_fm_audio(enable_fm_audio: boolean): void;
+
         /**
          * Sets whether to use Light Phaser.
-         *
+         * 
          * Only works for games that support Light Phaser.
          * @param enable_light_phaser whether to use Light Phaser
          */
         set_enable_light_phaser(enable_light_phaser: boolean): void;
     }
+
 
     export const MasterSystemCore: MasterSystemCoreNamespace & {
         new (): MasterSystemCore; // This allows `obj instanceof MasterSystemCore`
@@ -3569,20 +3801,22 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the number of players in the current game.
-             *
+             * 
              * If not overridden, returns {@link MEGA_DRIVE_MAX_PLAYERS}.
              * @virtual
              */
             vfunc_get_players(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface MegaDriveCoreNamespace {
@@ -3591,30 +3825,33 @@ export namespace Hs {
     }
     /**
      * An interface for Mega Drive cores.
-     *
+     * 
      * Defines functions specific to Mega Drive.
      * @gir-type Interface
      */
     interface MegaDriveCore extends Core, MegaDriveCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the number of players in the current game.
-         *
+         * 
          * If not overridden, returns {@link MEGA_DRIVE_MAX_PLAYERS}.
          * @returns the number of players
          */
         get_players(): number;
     }
 
+
     export const MegaDriveCore: MegaDriveCoreNamespace & {
         new (): MegaDriveCore; // This allows `obj instanceof MegaDriveCore`
     };
 
     namespace NeoGeoPocketCore {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface NeoGeoPocketCoreNamespace {
@@ -3623,11 +3860,13 @@ export namespace Hs {
     }
     /**
      * An interface for Neo Geo Pocket and Neo Geo Pocket Color cores.
-     *
+     * 
      * Defines functions specific to Neo Geo Pocket and Neo Geo Pocket Color.
      * @gir-type Interface
      */
-    interface NeoGeoPocketCore extends Core {}
+    interface NeoGeoPocketCore extends Core {
+    }
+
 
     export const NeoGeoPocketCore: NeoGeoPocketCoreNamespace & {
         new (): NeoGeoPocketCore; // This allows `obj instanceof NeoGeoPocketCore`
@@ -3639,30 +3878,34 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the current accessory, if any.
              * @virtual
              */
             vfunc_get_accessory(): NesAccessory;
+
             /**
              * Gets whether the current game supports mic input.
              * @virtual
              */
             vfunc_get_has_mic(): boolean;
+
             /**
              * Gets the number of players in the current game.
-             *
+             * 
              * If not overridden, returns {@link NES_MAX_PLAYERS}.
              * @virtual
              */
             vfunc_get_players(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface NesCoreNamespace {
@@ -3671,31 +3914,34 @@ export namespace Hs {
     }
     /**
      * An interface for NES cores.
-     *
+     * 
      * Defines functions specific to NES.
      * @gir-type Interface
      */
     interface NesCore extends Core, NesCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the current accessory, if any.
          * @returns the current accessory, or `HS_NES_ACCESSORY_NONE`
          */
         get_accessory(): NesAccessory;
+
         /**
          * Gets whether the current game supports mic input.
          * @returns whether the current game supports mic
          */
         get_has_mic(): boolean;
+
         /**
          * Gets the number of players in the current game.
-         *
+         * 
          * If not overridden, returns {@link NES_MAX_PLAYERS}.
          * @returns the number of players
          */
         get_players(): number;
     }
+
 
     export const NesCore: NesCoreNamespace & {
         new (): NesCore; // This allows `obj instanceof NesCore`
@@ -3707,13 +3953,14 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the number of players in the current game.
              * @virtual
              */
             vfunc_get_players(): number;
+
             /**
              * Sets the controller for `player`.
              * @param player the player
@@ -3724,9 +3971,11 @@ export namespace Hs {
             vfunc_set_controller(player: number, present: boolean, pak: Nintendo64Pak): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface Nintendo64CoreNamespace {
@@ -3735,18 +3984,19 @@ export namespace Hs {
     }
     /**
      * An interface for Nintendo 64 cores.
-     *
+     * 
      * Defines functions specific to Nintendo 64.
      * @gir-type Interface
      */
     interface Nintendo64Core extends Core, Nintendo64Core.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the number of players in the current game.
          * @returns the number of players
          */
         get_players(): number;
+
         /**
          * Sets the controller for `player`.
          * @param player the player
@@ -3756,14 +4006,17 @@ export namespace Hs {
         set_controller(player: number, present: boolean, pak: Nintendo64Pak): void;
     }
 
+
     export const Nintendo64Core: Nintendo64CoreNamespace & {
         new (): Nintendo64Core; // This allows `obj instanceof Nintendo64Core`
     };
 
     namespace NintendoDsCore {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface NintendoDsCoreNamespace {
@@ -3772,15 +4025,17 @@ export namespace Hs {
     }
     /**
      * An interface for Nintendo DS cores.
-     *
+     * 
      * Defines functions specific to Nintendo DS.
-     *
+     * 
      * Nintendo DS cores are expected to output the two screens stacked vertically,
      * with no gap. The frontend will split the screens into whatever layout it
      * needs.
      * @gir-type Interface
      */
-    interface NintendoDsCore extends Core {}
+    interface NintendoDsCore extends Core {
+    }
+
 
     export const NintendoDsCore: NintendoDsCoreNamespace & {
         new (): NintendoDsCore; // This allows `obj instanceof NintendoDsCore`
@@ -3792,8 +4047,8 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Sets the path to the System Card 3.
              * @param path the path to the BIOS
@@ -3802,9 +4057,11 @@ export namespace Hs {
             vfunc_set_bios_path(path: string): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface PcEngineCdCoreNamespace {
@@ -3813,21 +4070,22 @@ export namespace Hs {
     }
     /**
      * An interface for TurboGrafx-CD cores.
-     *
+     * 
      * Defines functions specific to TurboGrafx-CD.
-     *
+     * 
      * Classes implementing this interface must also implement {@link PcEngineCore}.
      * @gir-type Interface
      */
     interface PcEngineCdCore extends Core, PcEngineCdCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Sets the path to the System Card 3.
          * @param path the path to the BIOS
          */
         set_bios_path(path: string): void;
     }
+
 
     export const PcEngineCdCore: PcEngineCdCoreNamespace & {
         new (): PcEngineCdCore; // This allows `obj instanceof PcEngineCdCore`
@@ -3839,20 +4097,22 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the number of players in the current game.
-             *
+             * 
              * If not overridden, returns {@link PC_ENGINE_MAX_PLAYERS}.
              * @virtual
              */
             vfunc_get_players(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface PcEngineCoreNamespace {
@@ -3861,21 +4121,22 @@ export namespace Hs {
     }
     /**
      * An interface for TurboGrafx-16 cores.
-     *
+     * 
      * Defines functions specific to TurboGrafx-16.
      * @gir-type Interface
      */
     interface PcEngineCore extends Core, PcEngineCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the number of players in the current game.
-         *
+         * 
          * If not overridden, returns {@link PC_ENGINE_MAX_PLAYERS}.
          * @returns the number of players
          */
         get_players(): number;
     }
+
 
     export const PcEngineCore: PcEngineCoreNamespace & {
         new (): PcEngineCore; // This allows `obj instanceof PcEngineCore`
@@ -3887,28 +4148,31 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the mode DualShock is using for `player`.
-             *
+             * 
              * If not using DualShock, returns {@link Hs.PlayStationDualShockMode.DIGITAL}.
              * @param player the player
              * @virtual
              */
             vfunc_get_dualshock_mode(player: number): PlayStationDualShockMode;
+
             /**
              * Gets the number of players in the current game.
-             *
+             * 
              * If not overridden, returns {@link PLAYSTATION_MAX_PLAYERS}.
              * @virtual
              */
             vfunc_get_players(): number;
+
             /**
              * Gets the currently used PlayStation BIOS type.
              * @virtual
              */
             vfunc_get_used_bios(): PlayStationBios;
+
             /**
              * Sets the path to the PlayStation BIOS specified by `type`.
              * @param type The BIOS type
@@ -3916,9 +4180,10 @@ export namespace Hs {
              * @virtual
              */
             vfunc_set_bios_path(type: PlayStationBios, path: string): void;
+
             /**
              * Sets the mode DualShock is using for `player`.
-             *
+             * 
              * This can fail if the game doesn't allow to change modes.
              * @param player the player
              * @param mode the new mode
@@ -3927,9 +4192,11 @@ export namespace Hs {
             vfunc_set_dualshock_mode(player: number, mode: PlayStationDualShockMode): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface PlayStationCoreNamespace {
@@ -3938,49 +4205,54 @@ export namespace Hs {
     }
     /**
      * An interface for PlayStation cores.
-     *
+     * 
      * Defines functions specific to PlayStation.
      * @gir-type Interface
      */
     interface PlayStationCore extends Core, PlayStationCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Notifies frontend when DualShock mode changes for `player`.
-         *
+         * 
          * See {@link PlayStationCore.set_dualshock_mode}.
          * @param player the player
          */
         emit_dualshock_mode_changed(player: number): void;
+
         /**
          * Gets the mode DualShock is using for `player`.
-         *
+         * 
          * If not using DualShock, returns {@link Hs.PlayStationDualShockMode.DIGITAL}.
          * @param player the player
          * @returns the DualShock mode
          */
         get_dualshock_mode(player: number): PlayStationDualShockMode;
+
         /**
          * Gets the number of players in the current game.
-         *
+         * 
          * If not overridden, returns {@link PLAYSTATION_MAX_PLAYERS}.
          * @returns the number of players
          */
         get_players(): number;
+
         /**
          * Gets the currently used PlayStation BIOS type.
          * @returns the BIOS type
          */
         get_used_bios(): PlayStationBios;
+
         /**
          * Sets the path to the PlayStation BIOS specified by `type`.
          * @param type The BIOS type
          * @param path the path to the BIOS
          */
         set_bios_path(type: PlayStationBios, path: string): void;
+
         /**
          * Sets the mode DualShock is using for `player`.
-         *
+         * 
          * This can fail if the game doesn't allow to change modes.
          * @param player the player
          * @param mode the new mode
@@ -3988,6 +4260,7 @@ export namespace Hs {
          */
         set_dualshock_mode(player: number, mode: PlayStationDualShockMode): boolean;
     }
+
 
     export const PlayStationCore: PlayStationCoreNamespace & {
         new (): PlayStationCore; // This allows `obj instanceof PlayStationCore`
@@ -3999,20 +4272,22 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the number of players in the current game.
-             *
+             * 
              * If not overridden, returns {@link SEGA_SATURN_MAX_PLAYERS}.
              * @virtual
              */
             vfunc_get_players(): number;
+
             /**
              * Gets the currently used Sega Saturn BIOS type.
              * @virtual
              */
             vfunc_get_used_bios(): SegaSaturnBios;
+
             /**
              * Sets the path to the Sega Saturn BIOS specified by `type`.
              * @param type The BIOS type
@@ -4020,6 +4295,7 @@ export namespace Hs {
              * @virtual
              */
             vfunc_set_bios_path(type: SegaSaturnBios, path: string): void;
+
             /**
              * Sets the controller for `player`.
              * @param player the player
@@ -4029,9 +4305,11 @@ export namespace Hs {
             vfunc_set_controller(player: number, controller: SegaSaturnController): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface SegaSaturnCoreNamespace {
@@ -4040,31 +4318,34 @@ export namespace Hs {
     }
     /**
      * An interface for Sega Saturn cores.
-     *
+     * 
      * Defines functions specific to Sega Saturn.
      * @gir-type Interface
      */
     interface SegaSaturnCore extends Core, SegaSaturnCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the number of players in the current game.
-         *
+         * 
          * If not overridden, returns {@link SEGA_SATURN_MAX_PLAYERS}.
          * @returns the number of players
          */
         get_players(): number;
+
         /**
          * Gets the currently used Sega Saturn BIOS type.
          * @returns the BIOS type
          */
         get_used_bios(): SegaSaturnBios;
+
         /**
          * Sets the path to the Sega Saturn BIOS specified by `type`.
          * @param type The BIOS type
          * @param path the path to the BIOS
          */
         set_bios_path(type: SegaSaturnBios, path: string): void;
+
         /**
          * Sets the controller for `player`.
          * @param player the player
@@ -4072,6 +4353,7 @@ export namespace Hs {
          */
         set_controller(player: number, controller: SegaSaturnController): void;
     }
+
 
     export const SegaSaturnCore: SegaSaturnCoreNamespace & {
         new (): SegaSaturnCore; // This allows `obj instanceof SegaSaturnCore`
@@ -4083,20 +4365,22 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the number of players in the current game.
-             *
+             * 
              * If not overridden, returns {@link SG1000_MAX_PLAYERS}.
              * @virtual
              */
             vfunc_get_players(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface Sg1000CoreNamespace {
@@ -4105,21 +4389,22 @@ export namespace Hs {
     }
     /**
      * An interface for SG-1000 cores.
-     *
+     * 
      * Defines functions specific to SG-1000.
      * @gir-type Interface
      */
     interface Sg1000Core extends Core, Sg1000Core.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the number of players in the current game.
-         *
+         * 
          * If not overridden, returns {@link SG1000_MAX_PLAYERS}.
          * @returns the number of players
          */
         get_players(): number;
     }
+
 
     export const Sg1000Core: Sg1000CoreNamespace & {
         new (): Sg1000Core; // This allows `obj instanceof Sg1000Core`
@@ -4131,24 +4416,26 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Retrieves the framebuffer to render into.
              * @virtual
              */
-            vfunc_get_framebuffer(): any | null;
+            vfunc_get_framebuffer(): (any | null);
+
             /**
              * Sets the usable area within the framebuffer.
-             *
+             * 
              * The frontend will display this area and ignore the rest of the buffer.
              * @param area the new area
              * @virtual
              */
             vfunc_set_area(area: Rectangle): void;
+
             /**
              * Sets the row stride for `self`.
-             *
+             * 
              * By default the row stride is equal to width multiplied by the size of a
              * single pixel.
              * @param row_stride the new row stride
@@ -4157,9 +4444,11 @@ export namespace Hs {
             vfunc_set_row_stride(row_stride: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface SoftwareContextNamespace {
@@ -4168,49 +4457,52 @@ export namespace Hs {
     }
     /**
      * An interface defining an software rendering context.
-     *
+     * 
      * Cores should use {@link Core.create_software_context} within `load_rom()` to
      * create a context.
-     *
+     * 
      * Frontends must implement {@link Frontend.create_software_context} and create
      * a context within it.
-     *
+     * 
      * The size and format of the framebuffer must be provided right away and cannot
      * be changed later, though the core is allowed to recreate the context later.
      * If the core can use multiple resolutions and it's not known at the creation
      * time, provide the maximum size, and then use a smaller area via
      * {@link SoftwareContext.set_area} and/or
      * {@link SoftwareContext.set_row_stride}.
-     *
+     * 
      * To output the data, call {@link SoftwareContext.get_framebuffer} and write
      * your pixel data into that buffer. This must be done in
      * {@link Core.run_frame}.
      * @gir-type Interface
      */
     interface SoftwareContext extends GObject.Object, SoftwareContext.Interface {
-        // Methods
 
+        // Methods
         /**
          * Retrieves the framebuffer to render into.
          * @returns location of the framebuffer
          */
-        get_framebuffer(): any | null;
+        get_framebuffer(): (any | null);
+
         /**
          * Sets the usable area within the framebuffer.
-         *
+         * 
          * The frontend will display this area and ignore the rest of the buffer.
          * @param area the new area
          */
         set_area(area: Rectangle): void;
+
         /**
          * Sets the row stride for `self`.
-         *
+         * 
          * By default the row stride is equal to width multiplied by the size of a
          * single pixel.
          * @param row_stride the new row stride
          */
         set_row_stride(row_stride: number): void;
     }
+
 
     export const SoftwareContext: SoftwareContextNamespace & {
         new (): SoftwareContext; // This allows `obj instanceof SoftwareContext`
@@ -4222,20 +4514,22 @@ export namespace Hs {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the number of players in the current game.
-             *
+             * 
              * If not overridden, returns {@link SUPER_NES_MAX_PLAYERS}.
              * @virtual
              */
             vfunc_get_players(): number;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface SuperNesCoreNamespace {
@@ -4244,30 +4538,33 @@ export namespace Hs {
     }
     /**
      * An interface for Super NES cores.
-     *
+     * 
      * Defines functions specific to Super NES.
      * @gir-type Interface
      */
     interface SuperNesCore extends Core, SuperNesCore.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the number of players in the current game.
-         *
+         * 
          * If not overridden, returns {@link SUPER_NES_MAX_PLAYERS}.
          * @returns the number of players
          */
         get_players(): number;
     }
 
+
     export const SuperNesCore: SuperNesCoreNamespace & {
         new (): SuperNesCore; // This allows `obj instanceof SuperNesCore`
     };
 
     namespace VirtualBoyCore {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface VirtualBoyCoreNamespace {
@@ -4276,24 +4573,28 @@ export namespace Hs {
     }
     /**
      * An interface for Virtual Boy cores.
-     *
+     * 
      * Defines functions specific to Virtual Boy.
-     *
+     * 
      * Virtual Boy cores are expected to output the two screens together as a
      * red/blue image, with the left screen in the red channel and the right screen
      * in the blue channel. The frontend will recolor it as needed.
      * @gir-type Interface
      */
-    interface VirtualBoyCore extends Core {}
+    interface VirtualBoyCore extends Core {
+    }
+
 
     export const VirtualBoyCore: VirtualBoyCoreNamespace & {
         new (): VirtualBoyCore; // This allows `obj instanceof VirtualBoyCore`
     };
 
     namespace WonderSwanCore {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Core.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Core.ConstructorProps {
+
+        }
     }
 
     export interface WonderSwanCoreNamespace {
@@ -4302,11 +4603,13 @@ export namespace Hs {
     }
     /**
      * An interface for WonderSwan and WonderSwan Color cores.
-     *
+     * 
      * Defines functions specific to WonderSwan and WonderSwan Color.
      * @gir-type Interface
      */
-    interface WonderSwanCore extends Core {}
+    interface WonderSwanCore extends Core {
+    }
+
 
     export const WonderSwanCore: WonderSwanCoreNamespace & {
         new (): WonderSwanCore; // This allows `obj instanceof WonderSwanCore`
@@ -4317,6 +4620,7 @@ export namespace Hs {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

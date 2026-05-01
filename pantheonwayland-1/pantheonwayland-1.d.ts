@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,18 +27,23 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace PantheonWayland {
+
     /**
      * PantheonWayland-1
      */
+
 
     /**
      * @gir-type Alias
      */
     type ExtendedBehaviorIface = typeof ExtendedBehavior;
-    namespace ExtendedBehavior {
-        // Constructor properties interface
 
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
+    namespace ExtendedBehavior {
+
+        // Constructor properties interface
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
+
+        }
     }
 
     export interface ExtendedBehaviorNamespace {
@@ -48,17 +54,22 @@ export namespace PantheonWayland {
      * @gir-type Interface
      */
     interface ExtendedBehavior extends Gtk.Widget {
-        // Methods
 
+        // Methods
         connect_to_shell(): void;
+
         set_keep_above(): void;
+
         make_centered(): void;
+
         focus(): void;
+
         /**
-         * @param dim
+         * @param dim 
          */
         make_modal(dim: boolean): void;
     }
+
 
     export const ExtendedBehavior: ExtendedBehaviorNamespace & {
         new (): ExtendedBehavior; // This allows `obj instanceof ExtendedBehavior`
@@ -69,6 +80,7 @@ export namespace PantheonWayland {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

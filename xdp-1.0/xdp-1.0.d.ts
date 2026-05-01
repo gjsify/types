@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Xdp {
+
     /**
      * Xdp-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -43,6 +46,7 @@ export namespace Xdp {
         PRESSED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -56,6 +60,7 @@ export namespace Xdp {
     enum CameraFlags {
         NONE,
     }
+
 
     /**
      * @gir-type Enum
@@ -80,6 +85,7 @@ export namespace Xdp {
         VERTICAL_SCROLL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -93,6 +99,7 @@ export namespace Xdp {
     enum EmailFlags {
         NONE,
     }
+
 
     /**
      * @gir-type Enum
@@ -116,6 +123,7 @@ export namespace Xdp {
          */
         PRESSED,
     }
+
 
     /**
      * @gir-type Enum
@@ -156,6 +164,7 @@ export namespace Xdp {
         EXACT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -169,6 +178,7 @@ export namespace Xdp {
     enum LocationMonitorFlags {
         NONE,
     }
+
 
     /**
      * @gir-type Enum
@@ -199,6 +209,7 @@ export namespace Xdp {
         ENDING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -212,6 +223,7 @@ export namespace Xdp {
     enum NotificationFlags {
         NONE,
     }
+
 
     /**
      * @gir-type Enum
@@ -239,6 +251,7 @@ export namespace Xdp {
         PERSISTENT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -252,6 +265,7 @@ export namespace Xdp {
     enum PrintFlags {
         NONE,
     }
+
 
     /**
      * @gir-type Enum
@@ -267,6 +281,7 @@ export namespace Xdp {
         NONE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -280,6 +295,7 @@ export namespace Xdp {
     enum SessionMonitorFlags {
         NONE,
     }
+
 
     /**
      * @gir-type Enum
@@ -307,6 +323,7 @@ export namespace Xdp {
         CLOSED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -329,6 +346,7 @@ export namespace Xdp {
         REMOTE_DESKTOP,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -343,6 +361,7 @@ export namespace Xdp {
         NONE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -356,6 +375,7 @@ export namespace Xdp {
     enum UpdateMonitorFlags {
         NONE,
     }
+
 
     /**
      * @gir-type Enum
@@ -389,6 +409,7 @@ export namespace Xdp {
         FAILED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -403,7 +424,9 @@ export namespace Xdp {
         NONE,
     }
 
+
     const WALLPAPER_TARGET_BOTH: number;
+
     /**
      * @gir-type Flags
      */
@@ -430,6 +453,7 @@ export namespace Xdp {
         ACTIVATABLE,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -455,6 +479,7 @@ export namespace Xdp {
          */
         METADATA,
     }
+
 
     /**
      * @gir-type Flags
@@ -486,6 +511,7 @@ export namespace Xdp {
         TOUCHSCREEN,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -516,6 +542,7 @@ export namespace Xdp {
         IDLE,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -538,6 +565,7 @@ export namespace Xdp {
         WEBAPP,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -559,6 +587,7 @@ export namespace Xdp {
          */
         MULTIPLE,
     }
+
 
     /**
      * @gir-type Flags
@@ -585,6 +614,7 @@ export namespace Xdp {
          */
         WRITABLE,
     }
+
 
     /**
      * @gir-type Flags
@@ -616,6 +646,7 @@ export namespace Xdp {
         VIRTUAL,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -637,6 +668,7 @@ export namespace Xdp {
          */
         MULTIPLE,
     }
+
 
     /**
      * @gir-type Flags
@@ -660,6 +692,7 @@ export namespace Xdp {
         MULTIPLE,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -674,6 +707,7 @@ export namespace Xdp {
         NONE,
         INTERACTIVE,
     }
+
 
     /**
      * @gir-type Flags
@@ -714,6 +748,7 @@ export namespace Xdp {
         WATCH,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -744,6 +779,7 @@ export namespace Xdp {
         PREVIEW,
     }
 
+
     namespace Portal {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -752,23 +788,13 @@ export namespace Xdp {
              * @signal
              * @run-first
              */
-            'location-updated': (
-                arg0: number,
-                arg1: number,
-                arg2: number,
-                arg3: number,
-                arg4: number,
-                arg5: number,
-                arg6: string,
-                arg7: number,
-                arg8: number,
-            ) => void;
+            "location-updated": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: string, arg7: number, arg8: number) => void;
             /**
              * Emitted when a non-exported action is activated on a notification.
              * @signal
              * @run-first
              */
-            'notification-action-invoked': (arg0: string, arg1: string, arg2: GLib.Variant | null) => void;
+            "notification-action-invoked": (arg0: string, arg1: string, arg2: (GLib.Variant | null)) => void;
             /**
              * Emitted when session state monitoring is
              * enabled and the state of the login session changes or
@@ -776,26 +802,26 @@ export namespace Xdp {
              * @signal
              * @run-first
              */
-            'session-state-changed': (arg0: boolean, arg1: LoginSessionState) => void;
+            "session-state-changed": (arg0: boolean, arg1: LoginSessionState) => void;
             /**
              * Emitted when a process that was spawned with {@link Portal.spawn} exits.
              * @signal
              * @run-first
              */
-            'spawn-exited': (arg0: number, arg1: number) => void;
+            "spawn-exited": (arg0: number, arg1: number) => void;
             /**
              * Emitted when updates monitoring is enabled
              * and a new update is available.
-             *
+             * 
              * It is only sent once with the same information, but it can be sent many
              * times if new updates appear.
              * @signal
              * @run-first
              */
-            'update-available': (arg0: string, arg1: string, arg2: string) => void;
+            "update-available": (arg0: string, arg1: string, arg2: string) => void;
             /**
              * Emitted to indicate progress of an update installation.
-             *
+             * 
              * It is undefined exactly how often it is sent, but it will be emitted at
              * least once at the end with a non-zero `status`. For each successful
              * operation in the update, we're also guaranteed to send exactly one signal
@@ -803,27 +829,21 @@ export namespace Xdp {
              * @signal
              * @run-first
              */
-            'update-progress': (
-                arg0: number,
-                arg1: number,
-                arg2: number,
-                arg3: UpdateStatus,
-                arg4: string,
-                arg5: string,
-            ) => void;
+            "update-progress": (arg0: number, arg1: number, arg2: number, arg3: UpdateStatus, arg4: string, arg5: string) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
+        }
     }
 
     /**
      * Context for portal calls.
-     *
+     * 
      * The XdpPortal object provides the main context object
      * for the portal operations of libportal.
-     *
+     * 
      * Typically, an application will create a single XdpPortal
      * object with {@link Portal.new} and use it throughout its lifetime.
      * @gir-type Class
@@ -841,80 +861,68 @@ export namespace Xdp {
         $signals: Portal.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Portal.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         static initable_new(): Portal;
 
-        static ['new'](): Portal;
+        static ["new"](): Portal;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Portal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Portal.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Portal.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Portal.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Portal.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Portal.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Portal.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Portal.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Portal.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Portal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Portal.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Portal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Detects if running inside of a Flatpak or WebKit sandbox.
-         *
+         * 
          * See also: {@link Portal.running_under_sandbox}.
          */
         static running_under_flatpak(): boolean;
+
         /**
          * This function tries to determine if the current process is running under a
          * sandbox that requires the use of portals.
-         *
+         * 
          * If you need to check error conditions see {@link Portal.running_under_snap}.
-         *
+         * 
          * Note that these functions are all cached and will always return the same result.
          */
         static running_under_sandbox(): boolean;
+
         /**
          * Detects if you are running inside of a Snap sandbox.
-         *
+         * 
          * See also: {@link Portal.running_under_sandbox}.
          */
         static running_under_snap(): boolean;
 
         // Methods
+        /**
+         * Request access to a camera.
+         * 
+         * When the request is done, `callback` will be called.
+         * You can then call {@link Portal.access_camera_finish}
+         * to get the results.
+         * @param parent parent window information
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         */
+        access_camera(parent: (Parent | null), flags: CameraFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * Request access to a camera.
-         *
-         * When the request is done, `callback` will be called.
-         * You can then call {@link Portal.access_camera_finish}
-         * to get the results.
-         * @param parent parent window information
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         */
-        access_camera(
-            parent: Parent | null,
-            flags: CameraFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Request access to a camera.
-         *
+         * 
          * When the request is done, `callback` will be called.
          * You can then call {@link Portal.access_camera_finish}
          * to get the results.
@@ -923,15 +931,11 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        access_camera(
-            parent: Parent | null,
-            flags: CameraFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        access_camera(parent: (Parent | null), flags: CameraFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Request access to a camera.
-         *
+         * 
          * When the request is done, `callback` will be called.
          * You can then call {@link Portal.access_camera_finish}
          * to get the results.
@@ -940,17 +944,13 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        access_camera(
-            parent: Parent | null,
-            flags: CameraFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        access_camera(parent: (Parent | null), flags: CameraFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a camera acess request.
-         *
+         * 
          * Returns the result as a boolean.
-         *
+         * 
          * If the access was granted, you can then call
          * {@link Portal.open_pipewire_remote_for_camera}
          * to obtain a pipewire remote.
@@ -958,11 +958,12 @@ export namespace Xdp {
          * @returns `TRUE` if access to a camera was granted
          */
         access_camera_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Sends a desktop notification.
-         *
+         * 
          * The following keys may be present in `notification`:
-         *
+         * 
          * - title `s`: a user-visible string to display as title
          * - body `s`: a user-visible string to display as body
          * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize})
@@ -972,40 +973,36 @@ export namespace Xdp {
          * - default-action-target `v`: target parameter to send along when
          *     activating the default action.
          * - buttons `aa{sv}`: array of serialized buttons
-         *
+         * 
          * Each serialized button is a dictionary with the following supported keys:
-         *
+         * 
          * - label `s`: user-visible lable for the button. Mandatory
          * - action `s`: name of an action that will be activated when
          *     the user clicks on the button. Mandatory
          * - target `v`: target parameter to send along when activating
          *     the button
-         *
+         * 
          * Actions with a prefix of "app." are assumed to be exported by the
          * application and will be activated via the org.freedesktop.Application
          * interface, others are activated by emitting the
          * `Xdp.Portal::notification-action-invoked` signal.
-         *
+         * 
          * It is the callers responsibility to ensure that the ID is unique
          * among all notifications.
-         *
+         * 
          * To withdraw a notification, use {@link Portal.remove_notification}.
          * @param id unique ID for the notification
          * @param notification a {@link GLib.Variant} dictionary with the content of the notification
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        add_notification(
-            id: string,
-            notification: GLib.Variant,
-            flags: NotificationFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        add_notification(id: string, notification: GLib.Variant, flags: NotificationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Sends a desktop notification.
-         *
+         * 
          * The following keys may be present in `notification`:
-         *
+         * 
          * - title `s`: a user-visible string to display as title
          * - body `s`: a user-visible string to display as body
          * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize})
@@ -1015,68 +1012,23 @@ export namespace Xdp {
          * - default-action-target `v`: target parameter to send along when
          *     activating the default action.
          * - buttons `aa{sv}`: array of serialized buttons
-         *
+         * 
          * Each serialized button is a dictionary with the following supported keys:
-         *
+         * 
          * - label `s`: user-visible lable for the button. Mandatory
          * - action `s`: name of an action that will be activated when
          *     the user clicks on the button. Mandatory
          * - target `v`: target parameter to send along when activating
          *     the button
-         *
+         * 
          * Actions with a prefix of "app." are assumed to be exported by the
          * application and will be activated via the org.freedesktop.Application
          * interface, others are activated by emitting the
          * `Xdp.Portal::notification-action-invoked` signal.
-         *
+         * 
          * It is the callers responsibility to ensure that the ID is unique
          * among all notifications.
-         *
-         * To withdraw a notification, use {@link Portal.remove_notification}.
-         * @param id unique ID for the notification
-         * @param notification a {@link GLib.Variant} dictionary with the content of the notification
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        add_notification(
-            id: string,
-            notification: GLib.Variant,
-            flags: NotificationFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Sends a desktop notification.
-         *
-         * The following keys may be present in `notification`:
-         *
-         * - title `s`: a user-visible string to display as title
-         * - body `s`: a user-visible string to display as body
-         * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize})
-         * - priority `s`: "low", "normal", "high" or "urgent"
-         * - default-action `s`: name of an action that
-         *     will be activated when the user clicks on the notification
-         * - default-action-target `v`: target parameter to send along when
-         *     activating the default action.
-         * - buttons `aa{sv}`: array of serialized buttons
-         *
-         * Each serialized button is a dictionary with the following supported keys:
-         *
-         * - label `s`: user-visible lable for the button. Mandatory
-         * - action `s`: name of an action that will be activated when
-         *     the user clicks on the button. Mandatory
-         * - target `v`: target parameter to send along when activating
-         *     the button
-         *
-         * Actions with a prefix of "app." are assumed to be exported by the
-         * application and will be activated via the org.freedesktop.Application
-         * interface, others are activated by emitting the
-         * `Xdp.Portal::notification-action-invoked` signal.
-         *
-         * It is the callers responsibility to ensure that the ID is unique
-         * among all notifications.
-         *
+         * 
          * To withdraw a notification, use {@link Portal.remove_notification}.
          * @param id unique ID for the notification
          * @param notification a {@link GLib.Variant} dictionary with the content of the notification
@@ -1084,25 +1036,61 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        add_notification(
-            id: string,
-            notification: GLib.Variant,
-            flags: NotificationFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        add_notification(id: string, notification: GLib.Variant, flags: NotificationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Sends a desktop notification.
+         * 
+         * The following keys may be present in `notification`:
+         * 
+         * - title `s`: a user-visible string to display as title
+         * - body `s`: a user-visible string to display as body
+         * - icon `v`: a serialized icon (in the format produced by {@link Gio.Icon.serialize})
+         * - priority `s`: "low", "normal", "high" or "urgent"
+         * - default-action `s`: name of an action that
+         *     will be activated when the user clicks on the notification
+         * - default-action-target `v`: target parameter to send along when
+         *     activating the default action.
+         * - buttons `aa{sv}`: array of serialized buttons
+         * 
+         * Each serialized button is a dictionary with the following supported keys:
+         * 
+         * - label `s`: user-visible lable for the button. Mandatory
+         * - action `s`: name of an action that will be activated when
+         *     the user clicks on the button. Mandatory
+         * - target `v`: target parameter to send along when activating
+         *     the button
+         * 
+         * Actions with a prefix of "app." are assumed to be exported by the
+         * application and will be activated via the org.freedesktop.Application
+         * interface, others are activated by emitting the
+         * `Xdp.Portal::notification-action-invoked` signal.
+         * 
+         * It is the callers responsibility to ensure that the ID is unique
+         * among all notifications.
+         * 
+         * To withdraw a notification, use {@link Portal.remove_notification}.
+         * @param id unique ID for the notification
+         * @param notification a {@link GLib.Variant} dictionary with the content of the notification
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        add_notification(id: string, notification: GLib.Variant, flags: NotificationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the notification request.
-         *
+         * 
          * Returns the result as a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the notification was added
          */
         add_notification_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Presents a window that lets the user compose an email,
          * with some pre-filled information.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.compose_email_finish} to get the results.
          * @param parent parent window information
@@ -1115,50 +1103,12 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        compose_email(
-            parent: Parent | null,
-            addresses: string[] | null,
-            cc: string[] | null,
-            bcc: string[] | null,
-            subject: string | null,
-            body: string | null,
-            attachments: string[] | null,
-            flags: EmailFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        compose_email(parent: (Parent | null), addresses: (string[] | null), cc: (string[] | null), bcc: (string[] | null), subject: (string | null), body: (string | null), attachments: (string[] | null), flags: EmailFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Presents a window that lets the user compose an email,
          * with some pre-filled information.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.compose_email_finish} to get the results.
-         * @param parent parent window information
-         * @param addresses the email addresses to send to
-         * @param cc the email addresses to cc
-         * @param bcc the email addresses to bcc
-         * @param subject the subject for the email
-         * @param body the body for the email
-         * @param attachments an array of paths for files to attach
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        compose_email(
-            parent: Parent | null,
-            addresses: string[] | null,
-            cc: string[] | null,
-            bcc: string[] | null,
-            subject: string | null,
-            body: string | null,
-            attachments: string[] | null,
-            flags: EmailFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Presents a window that lets the user compose an email,
-         * with some pre-filled information.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.compose_email_finish} to get the results.
          * @param parent parent window information
@@ -1172,27 +1122,37 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        compose_email(
-            parent: Parent | null,
-            addresses: string[] | null,
-            cc: string[] | null,
-            bcc: string[] | null,
-            subject: string | null,
-            body: string | null,
-            attachments: string[] | null,
-            flags: EmailFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        compose_email(parent: (Parent | null), addresses: (string[] | null), cc: (string[] | null), bcc: (string[] | null), subject: (string | null), body: (string | null), attachments: (string[] | null), flags: EmailFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Presents a window that lets the user compose an email,
+         * with some pre-filled information.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.compose_email_finish} to get the results.
+         * @param parent parent window information
+         * @param addresses the email addresses to send to
+         * @param cc the email addresses to cc
+         * @param bcc the email addresses to bcc
+         * @param subject the subject for the email
+         * @param body the body for the email
+         * @param attachments an array of paths for files to attach
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        compose_email(parent: (Parent | null), addresses: (string[] | null), cc: (string[] | null), bcc: (string[] | null), subject: (string | null), body: (string | null), attachments: (string[] | null), flags: EmailFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the compose-email request.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request was handled successfully
          */
         compose_email_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Creates a session for remote desktop.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.create_remote_desktop_session_finish} to get the results.
          * @param devices which kinds of input devices to ofer in the new dialog
@@ -1201,36 +1161,11 @@ export namespace Xdp {
          * @param cursor_mode the cursor mode of the session
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        create_remote_desktop_session(
-            devices: DeviceType,
-            outputs: OutputType,
-            flags: RemoteDesktopFlags,
-            cursor_mode: CursorMode,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Session>;
+        create_remote_desktop_session(devices: DeviceType, outputs: OutputType, flags: RemoteDesktopFlags, cursor_mode: CursorMode, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Session>;
+
         /**
          * Creates a session for remote desktop.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.create_remote_desktop_session_finish} to get the results.
-         * @param devices which kinds of input devices to ofer in the new dialog
-         * @param outputs which kinds of source to offer in the dialog
-         * @param flags options for this call
-         * @param cursor_mode the cursor mode of the session
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        create_remote_desktop_session(
-            devices: DeviceType,
-            outputs: OutputType,
-            flags: RemoteDesktopFlags,
-            cursor_mode: CursorMode,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Creates a session for remote desktop.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.create_remote_desktop_session_finish} to get the results.
          * @param devices which kinds of input devices to ofer in the new dialog
@@ -1240,23 +1175,32 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        create_remote_desktop_session(
-            devices: DeviceType,
-            outputs: OutputType,
-            flags: RemoteDesktopFlags,
-            cursor_mode: CursorMode,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Session> | void;
+        create_remote_desktop_session(devices: DeviceType, outputs: OutputType, flags: RemoteDesktopFlags, cursor_mode: CursorMode, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Creates a session for remote desktop.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_remote_desktop_session_finish} to get the results.
+         * @param devices which kinds of input devices to ofer in the new dialog
+         * @param outputs which kinds of source to offer in the dialog
+         * @param flags options for this call
+         * @param cursor_mode the cursor mode of the session
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        create_remote_desktop_session(devices: DeviceType, outputs: OutputType, flags: RemoteDesktopFlags, cursor_mode: CursorMode, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Session> | void);
+
         /**
          * Finishes the create-remote-desktop request, and returns a {@link Session}.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Session}
          */
         create_remote_desktop_session_finish(result: Gio.AsyncResult): Session;
+
         /**
          * Creates a session for a screencast.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.create_screencast_session_finish} to get the results.
          * @param outputs which kinds of source to offer in the dialog
@@ -1266,39 +1210,11 @@ export namespace Xdp {
          * @param restore_token the token of a previous screencast session to restore
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        create_screencast_session(
-            outputs: OutputType,
-            flags: ScreencastFlags,
-            cursor_mode: CursorMode,
-            persist_mode: PersistMode,
-            restore_token: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Session>;
+        create_screencast_session(outputs: OutputType, flags: ScreencastFlags, cursor_mode: CursorMode, persist_mode: PersistMode, restore_token: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Session>;
+
         /**
          * Creates a session for a screencast.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.create_screencast_session_finish} to get the results.
-         * @param outputs which kinds of source to offer in the dialog
-         * @param flags options for this call
-         * @param cursor_mode the cursor mode of the session
-         * @param persist_mode the persist mode of the session
-         * @param restore_token the token of a previous screencast session to restore
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        create_screencast_session(
-            outputs: OutputType,
-            flags: ScreencastFlags,
-            cursor_mode: CursorMode,
-            persist_mode: PersistMode,
-            restore_token: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Creates a session for a screencast.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.create_screencast_session_finish} to get the results.
          * @param outputs which kinds of source to offer in the dialog
@@ -1309,35 +1225,45 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        create_screencast_session(
-            outputs: OutputType,
-            flags: ScreencastFlags,
-            cursor_mode: CursorMode,
-            persist_mode: PersistMode,
-            restore_token: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Session> | void;
+        create_screencast_session(outputs: OutputType, flags: ScreencastFlags, cursor_mode: CursorMode, persist_mode: PersistMode, restore_token: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Creates a session for a screencast.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.create_screencast_session_finish} to get the results.
+         * @param outputs which kinds of source to offer in the dialog
+         * @param flags options for this call
+         * @param cursor_mode the cursor mode of the session
+         * @param persist_mode the persist mode of the session
+         * @param restore_token the token of a previous screencast session to restore
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        create_screencast_session(outputs: OutputType, flags: ScreencastFlags, cursor_mode: CursorMode, persist_mode: PersistMode, restore_token: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Session> | void);
+
         /**
          * Finishes the create-screencast request, and returns a {@link Session}.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Session}
          */
         create_screencast_session_finish(result: Gio.AsyncResult): Session;
+
         /**
          * This function gets the contents of a .desktop file that was previously
          * installed by the dynamic launcher portal.
-         *
+         * 
          * The `desktop_file_id` must be prefixed with the caller's app ID followed by a
          * "." and suffixed with ".desktop".
          * @param desktop_file_id the .desktop file name
          * @returns the contents of the desktop file, or `null` with   `error` set
          */
         dynamic_launcher_get_desktop_entry(desktop_file_id: string): string;
+
         /**
          * This function gets the icon associated with a .desktop file that was previously
          * installed by the dynamic launcher portal.
-         *
+         * 
          * The `desktop_file_id` must be prefixed with the caller's app ID followed by a
          * "." and suffixed with ".desktop".
          * @param desktop_file_id the .desktop file name
@@ -1345,18 +1271,15 @@ export namespace Xdp {
          * @param out_icon_size return location for icon size
          * @returns the icon in a format recognized by `g_icon_deserialize()`,   or `null` with `error` set
          */
-        dynamic_launcher_get_icon(
-            desktop_file_id: string,
-            out_icon_format: string | null,
-            out_icon_size: number | null,
-        ): GLib.Variant;
+        dynamic_launcher_get_icon(desktop_file_id: string, out_icon_format: (string | null), out_icon_size: (number | null)): GLib.Variant;
+
         /**
          * This function completes installation of a launcher so that the icon and name
          * given in previous method calls will show up in the desktop environment's menu.
-         *
+         * 
          * The `desktop_file_id` must be prefixed with the caller's app ID followed by a
          * "." and suffixed with ".desktop".
-         *
+         * 
          * The `desktop_entry` data need not include Icon= or Name= entries since these
          * will be added by the portal, and the Exec= entry will be rewritten to call
          * the application with e.g. "flatpak run" depending on the sandbox status of
@@ -1367,15 +1290,17 @@ export namespace Xdp {
          * @returns `true` if the installation was successful, `false` with `error` set   otherwise
          */
         dynamic_launcher_install(token: string, desktop_file_id: string, desktop_entry: string): boolean;
+
         /**
-         * @param desktop_file_id
-         * @param activation_token
+         * @param desktop_file_id 
+         * @param activation_token 
          */
         dynamic_launcher_launch(desktop_file_id: string, activation_token: string): boolean;
+
         /**
          * Presents a dialog to the user so they can confirm they want to install a
          * launcher to their desktop.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.dynamic_launcher_prepare_install_finish} to get the results.
          * @param parent parent window information
@@ -1387,47 +1312,12 @@ export namespace Xdp {
          * @param editable_icon if `true`, the user will be able to edit the icon of the launcher, if the implementation supports this
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        dynamic_launcher_prepare_install(
-            parent: Parent | null,
-            name: string,
-            icon_v: GLib.Variant,
-            launcher_type: LauncherType,
-            target: string | null,
-            editable_name: boolean,
-            editable_icon: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Variant>;
+        dynamic_launcher_prepare_install(parent: (Parent | null), name: string, icon_v: GLib.Variant, launcher_type: LauncherType, target: (string | null), editable_name: boolean, editable_icon: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
          * Presents a dialog to the user so they can confirm they want to install a
          * launcher to their desktop.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.dynamic_launcher_prepare_install_finish} to get the results.
-         * @param parent parent window information
-         * @param name the name for the launcher
-         * @param icon_v a {@link Gio.BytesIcon} as returned by `g_icon_serialize()`. Must be a png or jpeg no larger than 512x512, or an svg
-         * @param launcher_type the type of the launcher
-         * @param target the URL if the launcher is for a web app, or `null`
-         * @param editable_name if `true`, the user will be able to edit the name of the launcher
-         * @param editable_icon if `true`, the user will be able to edit the icon of the launcher, if the implementation supports this
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        dynamic_launcher_prepare_install(
-            parent: Parent | null,
-            name: string,
-            icon_v: GLib.Variant,
-            launcher_type: LauncherType,
-            target: string | null,
-            editable_name: boolean,
-            editable_icon: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Presents a dialog to the user so they can confirm they want to install a
-         * launcher to their desktop.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.dynamic_launcher_prepare_install_finish} to get the results.
          * @param parent parent window information
@@ -1440,21 +1330,30 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        dynamic_launcher_prepare_install(
-            parent: Parent | null,
-            name: string,
-            icon_v: GLib.Variant,
-            launcher_type: LauncherType,
-            target: string | null,
-            editable_name: boolean,
-            editable_icon: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        dynamic_launcher_prepare_install(parent: (Parent | null), name: string, icon_v: GLib.Variant, launcher_type: LauncherType, target: (string | null), editable_name: boolean, editable_icon: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Presents a dialog to the user so they can confirm they want to install a
+         * launcher to their desktop.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.dynamic_launcher_prepare_install_finish} to get the results.
+         * @param parent parent window information
+         * @param name the name for the launcher
+         * @param icon_v a {@link Gio.BytesIcon} as returned by `g_icon_serialize()`. Must be a png or jpeg no larger than 512x512, or an svg
+         * @param launcher_type the type of the launcher
+         * @param target the URL if the launcher is for a web app, or `null`
+         * @param editable_name if `true`, the user will be able to edit the name of the launcher
+         * @param editable_icon if `true`, the user will be able to edit the icon of the launcher, if the implementation supports this
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        dynamic_launcher_prepare_install(parent: (Parent | null), name: string, icon_v: GLib.Variant, launcher_type: LauncherType, target: (string | null), editable_name: boolean, editable_icon: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Finishes the prepare-install-launcher request, and returns
          * {@link GLib.Variant} dictionary with the following information:
-         *
+         * 
          * - name s: the name chosen by the user (or the provided name if the
          *     editable_name option was not set)
          * - token s: a token that can by used in a {@link Portal.dynamic_launcher_install}
@@ -1463,10 +1362,11 @@ export namespace Xdp {
          * @returns a {@link GLib.Variant} dictionary with launcher   information
          */
         dynamic_launcher_prepare_install_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Requests a token which can be passed to {@link Portal.dynamic_launcher_install}
          * to complete installation of the launcher without user interaction.
-         *
+         * 
          * This function only works when the caller's app ID is in the allowlist for
          * the portal backend being used. It's intended for software centers such as
          * GNOME Software or KDE Discover.
@@ -1475,19 +1375,21 @@ export namespace Xdp {
          * @returns a token that can be passed to   {@link Portal.dynamic_launcher_install}, or `null` with `error` set
          */
         dynamic_launcher_request_install_token(name: string, icon_v: GLib.Variant): string;
+
         /**
          * This function uninstalls a launcher that was previously installed using the
          * dynamic launcher portal, resulting in the .desktop file and icon being deleted.
-         *
+         * 
          * The `desktop_file_id` must be prefixed with the caller's app ID followed by a
          * "." and suffixed with ".desktop".
          * @param desktop_file_id the .desktop file name
          * @returns `true` if the uninstallation was successful, `false` with `error` set   otherwise
          */
         dynamic_launcher_uninstall(desktop_file_id: string): boolean;
+
         /**
          * Gets information about the user.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.get_user_information_finish} to get the results.
          * @param parent parent window information
@@ -1495,33 +1397,11 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        get_user_information(
-            parent: Parent | null,
-            reason: string | null,
-            flags: UserInformationFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Variant>;
+        get_user_information(parent: (Parent | null), reason: (string | null), flags: UserInformationFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
          * Gets information about the user.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.get_user_information_finish} to get the results.
-         * @param parent parent window information
-         * @param reason a string that can be shown in the dialog to explain    why the information is needed
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        get_user_information(
-            parent: Parent | null,
-            reason: string | null,
-            flags: UserInformationFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Gets information about the user.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.get_user_information_finish} to get the results.
          * @param parent parent window information
@@ -1530,19 +1410,27 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        get_user_information(
-            parent: Parent | null,
-            reason: string | null,
-            flags: UserInformationFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        get_user_information(parent: (Parent | null), reason: (string | null), flags: UserInformationFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Gets information about the user.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.get_user_information_finish} to get the results.
+         * @param parent parent window information
+         * @param reason a string that can be shown in the dialog to explain    why the information is needed
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        get_user_information(parent: (Parent | null), reason: (string | null), flags: UserInformationFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Finishes the get-user-information request.
-         *
+         * 
          * Returns the result in the form of a {@link GLib.Variant} dictionary
          * containing the following fields:
-         *
+         * 
          * - id `s`: the user ID
          * - name `s`: the users real name
          * - image `s`: the uri of an image file for the users avatar picture
@@ -1550,19 +1438,21 @@ export namespace Xdp {
          * @returns a {@link GLib.Variant} dictionary with user information
          */
         get_user_information_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Returns whether any camera are present.
          * @returns `TRUE` if the system has cameras
          */
         is_camera_present(): boolean;
+
         /**
          * Makes {@link Xdp.Portal} start monitoring location changes.
-         *
+         * 
          * When the location changes, the `Xdp.Portal::location-updated`.
          * signal is emitted.
-         *
+         * 
          * Use {@link Portal.location_monitor_stop} to stop monitoring.
-         *
+         * 
          * Note that {@link Portal} only maintains a single location monitor
          * at a time. If you want to change the `distance_threshold`,
          * `time_threshold` or `accuracy` of the current monitor, you
@@ -1575,52 +1465,16 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        location_monitor_start(
-            parent: Parent | null,
-            distance_threshold: number,
-            time_threshold: number,
-            accuracy: LocationAccuracy,
-            flags: LocationMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        location_monitor_start(parent: (Parent | null), distance_threshold: number, time_threshold: number, accuracy: LocationAccuracy, flags: LocationMonitorFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Makes {@link Xdp.Portal} start monitoring location changes.
-         *
+         * 
          * When the location changes, the `Xdp.Portal::location-updated`.
          * signal is emitted.
-         *
+         * 
          * Use {@link Portal.location_monitor_stop} to stop monitoring.
-         *
-         * Note that {@link Portal} only maintains a single location monitor
-         * at a time. If you want to change the `distance_threshold`,
-         * `time_threshold` or `accuracy` of the current monitor, you
-         * first have to call {@link Portal.location_monitor_stop} to
-         * stop monitoring.
-         * @param parent a {@link Parent}, or `NULL`
-         * @param distance_threshold distance threshold, in meters
-         * @param time_threshold time threshold, in seconds
-         * @param accuracy desired accuracy
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        location_monitor_start(
-            parent: Parent | null,
-            distance_threshold: number,
-            time_threshold: number,
-            accuracy: LocationAccuracy,
-            flags: LocationMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Makes {@link Xdp.Portal} start monitoring location changes.
-         *
-         * When the location changes, the `Xdp.Portal::location-updated`.
-         * signal is emitted.
-         *
-         * Use {@link Portal.location_monitor_stop} to stop monitoring.
-         *
+         * 
          * Note that {@link Portal} only maintains a single location monitor
          * at a time. If you want to change the `distance_threshold`,
          * `time_threshold` or `accuracy` of the current monitor, you
@@ -1634,31 +1488,49 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        location_monitor_start(
-            parent: Parent | null,
-            distance_threshold: number,
-            time_threshold: number,
-            accuracy: LocationAccuracy,
-            flags: LocationMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        location_monitor_start(parent: (Parent | null), distance_threshold: number, time_threshold: number, accuracy: LocationAccuracy, flags: LocationMonitorFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Makes {@link Xdp.Portal} start monitoring location changes.
+         * 
+         * When the location changes, the `Xdp.Portal::location-updated`.
+         * signal is emitted.
+         * 
+         * Use {@link Portal.location_monitor_stop} to stop monitoring.
+         * 
+         * Note that {@link Portal} only maintains a single location monitor
+         * at a time. If you want to change the `distance_threshold`,
+         * `time_threshold` or `accuracy` of the current monitor, you
+         * first have to call {@link Portal.location_monitor_stop} to
+         * stop monitoring.
+         * @param parent a {@link Parent}, or `NULL`
+         * @param distance_threshold distance threshold, in meters
+         * @param time_threshold time threshold, in seconds
+         * @param accuracy desired accuracy
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        location_monitor_start(parent: (Parent | null), distance_threshold: number, time_threshold: number, accuracy: LocationAccuracy, flags: LocationMonitorFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a location-monitor request.
-         *
+         * 
          * Returns result in the form of boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request succeeded
          */
         location_monitor_start_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Stops location monitoring that was started with
          * {@link Portal.location_monitor_start}.
          */
         location_monitor_stop(): void;
+
         /**
          * Opens the directory containing the file specified by the `uri`.
-         *
+         * 
          * which must be a file: uri pointing to a file that the application has access
          * to.
          * @param parent parent window information
@@ -1666,33 +1538,11 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        open_directory(
-            parent: Parent,
-            uri: string,
-            flags: OpenUriFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        open_directory(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Opens the directory containing the file specified by the `uri`.
-         *
-         * which must be a file: uri pointing to a file that the application has access
-         * to.
-         * @param parent parent window information
-         * @param uri the URI to open
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        open_directory(
-            parent: Parent,
-            uri: string,
-            flags: OpenUriFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Opens the directory containing the file specified by the `uri`.
-         *
+         * 
          * which must be a file: uri pointing to a file that the application has access
          * to.
          * @param parent parent window information
@@ -1701,32 +1551,41 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        open_directory(
-            parent: Parent,
-            uri: string,
-            flags: OpenUriFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        open_directory(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Opens the directory containing the file specified by the `uri`.
+         * 
+         * which must be a file: uri pointing to a file that the application has access
+         * to.
+         * @param parent parent window information
+         * @param uri the URI to open
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        open_directory(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the open-directory request.
-         *
+         * 
          * Returns the result in the form of a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the call succeeded
          */
         open_directory_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Asks the user to open one or more files.
-         *
+         * 
          * The format for the `filters` argument is `a(sa(us))`.
          * Each item in the array specifies a single filter to offer to the user.
          * The first string is a user-visible name for the filter. The `a(us)`
          * specifies a list of filter strings, which can be either a glob pattern
          * (indicated by 0) or a mimetype (indicated by 1).
-         *
+         * 
          * Example: `[('Images', [(0, '*.ico'), (1, 'image/png')]), ('Text', [(0, '*.txt')])]`
-         *
+         * 
          * The format for the `choices` argument is `a(ssa(ss)s)`.
          * For each element, the first string is an ID that will be returned
          * with the response, te second string is a user-visible label. The
@@ -1734,13 +1593,13 @@ export namespace Xdp {
          * user-visible label. The final string is the initial selection,
          * or `""`, to let the portal decide which choice will be initially selected.
          * None of the strings, except for the initial selection, should be empty.
-         *
+         * 
          * As a special case, passing an empty array for the list of choices
          * indicates a boolean choice that is typically displayed as a check
          * button, using `"true"` and `"false"` as the choices.
-         *
+         * 
          * Example: `[('encoding', 'Encoding', [('utf8', 'Unicode (UTF-8)'), ('latin15', 'Western')], 'latin15'), ('reencode', 'Reencode', [], 'false')]`
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.open_file_finish} to get the results.
          * @param parent parent window information
@@ -1751,26 +1610,19 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        open_file(
-            parent: Parent | null,
-            title: string,
-            filters: GLib.Variant | null,
-            current_filter: GLib.Variant | null,
-            choices: GLib.Variant | null,
-            flags: OpenFileFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Variant>;
+        open_file(parent: (Parent | null), title: string, filters: (GLib.Variant | null), current_filter: (GLib.Variant | null), choices: (GLib.Variant | null), flags: OpenFileFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
          * Asks the user to open one or more files.
-         *
+         * 
          * The format for the `filters` argument is `a(sa(us))`.
          * Each item in the array specifies a single filter to offer to the user.
          * The first string is a user-visible name for the filter. The `a(us)`
          * specifies a list of filter strings, which can be either a glob pattern
          * (indicated by 0) or a mimetype (indicated by 1).
-         *
+         * 
          * Example: `[('Images', [(0, '*.ico'), (1, 'image/png')]), ('Text', [(0, '*.txt')])]`
-         *
+         * 
          * The format for the `choices` argument is `a(ssa(ss)s)`.
          * For each element, the first string is an ID that will be returned
          * with the response, te second string is a user-visible label. The
@@ -1778,59 +1630,13 @@ export namespace Xdp {
          * user-visible label. The final string is the initial selection,
          * or `""`, to let the portal decide which choice will be initially selected.
          * None of the strings, except for the initial selection, should be empty.
-         *
+         * 
          * As a special case, passing an empty array for the list of choices
          * indicates a boolean choice that is typically displayed as a check
          * button, using `"true"` and `"false"` as the choices.
-         *
+         * 
          * Example: `[('encoding', 'Encoding', [('utf8', 'Unicode (UTF-8)'), ('latin15', 'Western')], 'latin15'), ('reencode', 'Reencode', [], 'false')]`
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.open_file_finish} to get the results.
-         * @param parent parent window information
-         * @param title title for the file chooser dialog
-         * @param filters a {@link GLib.Variant} describing file filters
-         * @param current_filter a {@link GLib.Variant} describing the current file filter
-         * @param choices a {@link GLib.Variant} describing extra widgets
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        open_file(
-            parent: Parent | null,
-            title: string,
-            filters: GLib.Variant | null,
-            current_filter: GLib.Variant | null,
-            choices: GLib.Variant | null,
-            flags: OpenFileFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asks the user to open one or more files.
-         *
-         * The format for the `filters` argument is `a(sa(us))`.
-         * Each item in the array specifies a single filter to offer to the user.
-         * The first string is a user-visible name for the filter. The `a(us)`
-         * specifies a list of filter strings, which can be either a glob pattern
-         * (indicated by 0) or a mimetype (indicated by 1).
-         *
-         * Example: `[('Images', [(0, '*.ico'), (1, 'image/png')]), ('Text', [(0, '*.txt')])]`
-         *
-         * The format for the `choices` argument is `a(ssa(ss)s)`.
-         * For each element, the first string is an ID that will be returned
-         * with the response, te second string is a user-visible label. The
-         * `a(ss)` is the list of choices, each being a is an ID and a
-         * user-visible label. The final string is the initial selection,
-         * or `""`, to let the portal decide which choice will be initially selected.
-         * None of the strings, except for the initial selection, should be empty.
-         *
-         * As a special case, passing an empty array for the list of choices
-         * indicates a boolean choice that is typically displayed as a check
-         * button, using `"true"` and `"false"` as the choices.
-         *
-         * Example: `[('encoding', 'Encoding', [('utf8', 'Unicode (UTF-8)'), ('latin15', 'Western')], 'latin15'), ('reencode', 'Reencode', [], 'false')]`
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.open_file_finish} to get the results.
          * @param parent parent window information
@@ -1842,22 +1648,52 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        open_file(
-            parent: Parent | null,
-            title: string,
-            filters: GLib.Variant | null,
-            current_filter: GLib.Variant | null,
-            choices: GLib.Variant | null,
-            flags: OpenFileFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        open_file(parent: (Parent | null), title: string, filters: (GLib.Variant | null), current_filter: (GLib.Variant | null), choices: (GLib.Variant | null), flags: OpenFileFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asks the user to open one or more files.
+         * 
+         * The format for the `filters` argument is `a(sa(us))`.
+         * Each item in the array specifies a single filter to offer to the user.
+         * The first string is a user-visible name for the filter. The `a(us)`
+         * specifies a list of filter strings, which can be either a glob pattern
+         * (indicated by 0) or a mimetype (indicated by 1).
+         * 
+         * Example: `[('Images', [(0, '*.ico'), (1, 'image/png')]), ('Text', [(0, '*.txt')])]`
+         * 
+         * The format for the `choices` argument is `a(ssa(ss)s)`.
+         * For each element, the first string is an ID that will be returned
+         * with the response, te second string is a user-visible label. The
+         * `a(ss)` is the list of choices, each being a is an ID and a
+         * user-visible label. The final string is the initial selection,
+         * or `""`, to let the portal decide which choice will be initially selected.
+         * None of the strings, except for the initial selection, should be empty.
+         * 
+         * As a special case, passing an empty array for the list of choices
+         * indicates a boolean choice that is typically displayed as a check
+         * button, using `"true"` and `"false"` as the choices.
+         * 
+         * Example: `[('encoding', 'Encoding', [('utf8', 'Unicode (UTF-8)'), ('latin15', 'Western')], 'latin15'), ('reencode', 'Reencode', [], 'false')]`
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.open_file_finish} to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param filters a {@link GLib.Variant} describing file filters
+         * @param current_filter a {@link GLib.Variant} describing the current file filter
+         * @param choices a {@link GLib.Variant} describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        open_file(parent: (Parent | null), title: string, filters: (GLib.Variant | null), current_filter: (GLib.Variant | null), choices: (GLib.Variant | null), flags: OpenFileFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Finishes the open-file request
-         *
+         * 
          * Returns the result in the form of a {@link GLib.Variant} dictionary
          * containing the following fields:
-         *
+         * 
          * - uris `as`: an array of strings containing the uris of selected files
          * - choices `a(ss)`: an array of pairs of strings, the first string being the
          *     ID of a combobox that was passed into this call, the second string
@@ -1866,16 +1702,18 @@ export namespace Xdp {
          * @returns a {@link GLib.Variant} dictionary with the results
          */
         open_file_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Opens a file descriptor to the pipewire remote where the camera
          * nodes are available.
-         *
+         * 
          * The file descriptor should be used to create a pw_core object, by using
          * `pw_context_connect_fd()`. Only the camera nodes will be available from this
          * pipewire node.
          * @returns the file descriptor
          */
         open_pipewire_remote_for_camera(): number;
+
         /**
          * Opens `uri` with an external handler.
          * @param parent parent window information
@@ -1883,27 +1721,8 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        open_uri(
-            parent: Parent,
-            uri: string,
-            flags: OpenUriFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Opens `uri` with an external handler.
-         * @param parent parent window information
-         * @param uri the URI to open
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        open_uri(
-            parent: Parent,
-            uri: string,
-            flags: OpenUriFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        open_uri(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Opens `uri` with an external handler.
          * @param parent parent window information
@@ -1912,70 +1731,72 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        open_uri(
-            parent: Parent,
-            uri: string,
-            flags: OpenUriFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        open_uri(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Opens `uri` with an external handler.
+         * @param parent parent window information
+         * @param uri the URI to open
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        open_uri(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the open-uri request.
-         *
+         * 
          * Returns the result in the form of a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the call succeeded
          */
         open_uri_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Lets the user pick a color from the screen.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.pick_color_finish} to get the results.
          * @param parent parent window information
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        pick_color(parent: Parent | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
+        pick_color(parent: (Parent | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
          * Lets the user pick a color from the screen.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.pick_color_finish} to get the results.
-         * @param parent parent window information
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        pick_color(
-            parent: Parent | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Lets the user pick a color from the screen.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.pick_color_finish} to get the results.
          * @param parent parent window information
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        pick_color(
-            parent: Parent | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        pick_color(parent: (Parent | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Lets the user pick a color from the screen.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.pick_color_finish} to get the results.
+         * @param parent parent window information
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        pick_color(parent: (Parent | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Finishes a pick-color request.
-         *
+         * 
          * Returns the result in the form of a GVariant of the form (ddd), containing
          * red, green and blue components in the range [0,1].
          * @param result a {@link Gio.AsyncResult}
          * @returns GVariant containing the color
          */
         pick_color_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Presents a print dialog to the user and returns print settings and page setup.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.prepare_print_finish} to get the results.
          * @param parent parent window information
@@ -1985,39 +1806,11 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        prepare_print(
-            parent: Parent | null,
-            title: string,
-            settings: GLib.Variant | null,
-            page_setup: GLib.Variant | null,
-            flags: PrintFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Variant>;
+        prepare_print(parent: (Parent | null), title: string, settings: (GLib.Variant | null), page_setup: (GLib.Variant | null), flags: PrintFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
          * Presents a print dialog to the user and returns print settings and page setup.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.prepare_print_finish} to get the results.
-         * @param parent parent window information
-         * @param title tile for the print dialog
-         * @param settings Serialized print settings
-         * @param page_setup Serialized page setup
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        prepare_print(
-            parent: Parent | null,
-            title: string,
-            settings: GLib.Variant | null,
-            page_setup: GLib.Variant | null,
-            flags: PrintFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Presents a print dialog to the user and returns print settings and page setup.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.prepare_print_finish} to get the results.
          * @param parent parent window information
@@ -2028,20 +1821,28 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        prepare_print(
-            parent: Parent | null,
-            title: string,
-            settings: GLib.Variant | null,
-            page_setup: GLib.Variant | null,
-            flags: PrintFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        prepare_print(parent: (Parent | null), title: string, settings: (GLib.Variant | null), page_setup: (GLib.Variant | null), flags: PrintFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Presents a print dialog to the user and returns print settings and page setup.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.prepare_print_finish} to get the results.
+         * @param parent parent window information
+         * @param title tile for the print dialog
+         * @param settings Serialized print settings
+         * @param page_setup Serialized page setup
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        prepare_print(parent: (Parent | null), title: string, settings: (GLib.Variant | null), page_setup: (GLib.Variant | null), flags: PrintFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Finishes the prepare-print request.
-         *
+         * 
          * Returns a {@link GLib.Variant} dictionary with the following information:
-         *
+         * 
          * - settings `a{sv}`: print settings as set up by the user in the print dialog
          * - page-setup `a{sv}: page setup as set up by the user in the print dialog
          * - token u: a token that can by used in a {@link Portal.print_file} call to
@@ -2050,13 +1851,14 @@ export namespace Xdp {
          * @returns a {@link GLib.Variant} dictionary with print information
          */
         prepare_print_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Prints a file.
-         *
+         * 
          * If a valid token is present in the `options`, then this call will print
          * with the settings from the Print call that the token refers to. If
          * no token is present, then a print dialog will be presented to the user.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.print_file_finish} to get the results.
          * @param parent parent window information
@@ -2066,47 +1868,15 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        print_file(
-            parent: Parent | null,
-            title: string,
-            token: number,
-            file: string,
-            flags: PrintFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        print_file(parent: (Parent | null), title: string, token: number, file: string, flags: PrintFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Prints a file.
-         *
+         * 
          * If a valid token is present in the `options`, then this call will print
          * with the settings from the Print call that the token refers to. If
          * no token is present, then a print dialog will be presented to the user.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.print_file_finish} to get the results.
-         * @param parent parent window information
-         * @param title tile for the print dialog
-         * @param token token that was returned by a previous {@link Portal.prepare_print} call, or 0
-         * @param file path of the document to print
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        print_file(
-            parent: Parent | null,
-            title: string,
-            token: number,
-            file: string,
-            flags: PrintFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Prints a file.
-         *
-         * If a valid token is present in the `options`, then this call will print
-         * with the settings from the Print call that the token refers to. If
-         * no token is present, then a print dialog will be presented to the user.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.print_file_finish} to get the results.
          * @param parent parent window information
@@ -2117,29 +1887,43 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        print_file(
-            parent: Parent | null,
-            title: string,
-            token: number,
-            file: string,
-            flags: PrintFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        print_file(parent: (Parent | null), title: string, token: number, file: string, flags: PrintFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Prints a file.
+         * 
+         * If a valid token is present in the `options`, then this call will print
+         * with the settings from the Print call that the token refers to. If
+         * no token is present, then a print dialog will be presented to the user.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.print_file_finish} to get the results.
+         * @param parent parent window information
+         * @param title tile for the print dialog
+         * @param token token that was returned by a previous {@link Portal.prepare_print} call, or 0
+         * @param file path of the document to print
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        print_file(parent: (Parent | null), title: string, token: number, file: string, flags: PrintFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the print request.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request was successful
          */
         print_file_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Withdraws a desktop notification.
          * @param id the ID of an notification
          */
         remove_notification(id: string): void;
+
         /**
          * Requests background permissions.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.request_background_finish} to get the results.
          * @param parent parent window information
@@ -2148,36 +1932,11 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        request_background(
-            parent: Parent | null,
-            reason: string | null,
-            commandline: string[],
-            flags: BackgroundFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        request_background(parent: (Parent | null), reason: (string | null), commandline: string[], flags: BackgroundFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Requests background permissions.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.request_background_finish} to get the results.
-         * @param parent parent window information
-         * @param reason reason to present to user for request
-         * @param commandline command line to autostart
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        request_background(
-            parent: Parent | null,
-            reason: string | null,
-            commandline: string[],
-            flags: BackgroundFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Requests background permissions.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.request_background_finish} to get the results.
          * @param parent parent window information
@@ -2187,29 +1946,38 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        request_background(
-            parent: Parent | null,
-            reason: string | null,
-            commandline: string[],
-            flags: BackgroundFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        request_background(parent: (Parent | null), reason: (string | null), commandline: string[], flags: BackgroundFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Requests background permissions.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.request_background_finish} to get the results.
+         * @param parent parent window information
+         * @param reason reason to present to user for request
+         * @param commandline command line to autostart
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        request_background(parent: (Parent | null), reason: (string | null), commandline: string[], flags: BackgroundFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the request.
-         *
+         * 
          * Returns `TRUE` if successful.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if successful.
          */
         request_background_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Asks the user for a location to save a file.
-         *
+         * 
          * The format for the `filters` argument is the same as for {@link Portal.open_file}.
-         *
+         * 
          * The format for the `choices` argument is the same as for {@link Portal.open_file}.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.save_file_finish} to get the results.
          * @param parent parent window information
@@ -2223,59 +1991,15 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        save_file(
-            parent: Parent | null,
-            title: string,
-            current_name: string | null,
-            current_folder: string | null,
-            current_file: string | null,
-            filters: GLib.Variant | null,
-            current_filter: GLib.Variant | null,
-            choices: GLib.Variant | null,
-            flags: SaveFileFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Variant>;
+        save_file(parent: (Parent | null), title: string, current_name: (string | null), current_folder: (string | null), current_file: (string | null), filters: (GLib.Variant | null), current_filter: (GLib.Variant | null), choices: (GLib.Variant | null), flags: SaveFileFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
          * Asks the user for a location to save a file.
-         *
+         * 
          * The format for the `filters` argument is the same as for {@link Portal.open_file}.
-         *
+         * 
          * The format for the `choices` argument is the same as for {@link Portal.open_file}.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.save_file_finish} to get the results.
-         * @param parent parent window information
-         * @param title title for the file chooser dialog
-         * @param current_name suggested filename
-         * @param current_folder suggested folder to save the file in
-         * @param current_file the current file (when saving an existing file)
-         * @param filters a {@link GLib.Variant} describing file filters
-         * @param current_filter a {@link GLib.Variant} describing the current file filter
-         * @param choices a {@link GLib.Variant} describing extra widgets
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        save_file(
-            parent: Parent | null,
-            title: string,
-            current_name: string | null,
-            current_folder: string | null,
-            current_file: string | null,
-            filters: GLib.Variant | null,
-            current_filter: GLib.Variant | null,
-            choices: GLib.Variant | null,
-            flags: SaveFileFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asks the user for a location to save a file.
-         *
-         * The format for the `filters` argument is the same as for {@link Portal.open_file}.
-         *
-         * The format for the `choices` argument is the same as for {@link Portal.open_file}.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.save_file_finish} to get the results.
          * @param parent parent window information
@@ -2290,25 +2014,37 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        save_file(
-            parent: Parent | null,
-            title: string,
-            current_name: string | null,
-            current_folder: string | null,
-            current_file: string | null,
-            filters: GLib.Variant | null,
-            current_filter: GLib.Variant | null,
-            choices: GLib.Variant | null,
-            flags: SaveFileFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        save_file(parent: (Parent | null), title: string, current_name: (string | null), current_folder: (string | null), current_file: (string | null), filters: (GLib.Variant | null), current_filter: (GLib.Variant | null), choices: (GLib.Variant | null), flags: SaveFileFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asks the user for a location to save a file.
+         * 
+         * The format for the `filters` argument is the same as for {@link Portal.open_file}.
+         * 
+         * The format for the `choices` argument is the same as for {@link Portal.open_file}.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.save_file_finish} to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param current_name suggested filename
+         * @param current_folder suggested folder to save the file in
+         * @param current_file the current file (when saving an existing file)
+         * @param filters a {@link GLib.Variant} describing file filters
+         * @param current_filter a {@link GLib.Variant} describing the current file filter
+         * @param choices a {@link GLib.Variant} describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        save_file(parent: (Parent | null), title: string, current_name: (string | null), current_folder: (string | null), current_file: (string | null), filters: (GLib.Variant | null), current_filter: (GLib.Variant | null), choices: (GLib.Variant | null), flags: SaveFileFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Finishes the save-file request.
-         *
+         * 
          * Returns the result in the form of a {@link GLib.Variant} dictionary
          * containing the following fields:
-         *
+         * 
          * - uris `(as)`: an array of strings containing the uri of the selected file
          * - choices `a(ss)`: an array of pairs of strings, the first string being the
          *   ID of a combobox that was passed into this call, the second string
@@ -2317,16 +2053,17 @@ export namespace Xdp {
          * @returns a {@link GLib.Variant} dictionary with the results
          */
         save_file_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Asks for a folder as a location to save one or more files.
-         *
+         * 
          * The names of the files will be used as-is and appended to the selected
          * folder's path in the list of returned files. If the selected folder already
          * contains a file with one of the given names, the portal may prompt or take
          * some other action to construct a unique file name and return that instead.
-         *
+         * 
          * The format for the `choices` argument is the same as for {@link Portal.open_file}.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.save_file_finish} to get the results.
          * @param parent parent window information
@@ -2338,59 +2075,18 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        save_files(
-            parent: Parent | null,
-            title: string,
-            current_name: string | null,
-            current_folder: string | null,
-            files: GLib.Variant,
-            choices: GLib.Variant | null,
-            flags: SaveFileFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Variant>;
+        save_files(parent: (Parent | null), title: string, current_name: (string | null), current_folder: (string | null), files: GLib.Variant, choices: (GLib.Variant | null), flags: SaveFileFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
          * Asks for a folder as a location to save one or more files.
-         *
+         * 
          * The names of the files will be used as-is and appended to the selected
          * folder's path in the list of returned files. If the selected folder already
          * contains a file with one of the given names, the portal may prompt or take
          * some other action to construct a unique file name and return that instead.
-         *
+         * 
          * The format for the `choices` argument is the same as for {@link Portal.open_file}.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.save_file_finish} to get the results.
-         * @param parent parent window information
-         * @param title title for the file chooser dialog
-         * @param current_name suggested filename
-         * @param current_folder suggested folder to save the file in
-         * @param files An array of file names to be saved
-         * @param choices a {@link GLib.Variant} describing extra widgets
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        save_files(
-            parent: Parent | null,
-            title: string,
-            current_name: string | null,
-            current_folder: string | null,
-            files: GLib.Variant,
-            choices: GLib.Variant | null,
-            flags: SaveFileFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asks for a folder as a location to save one or more files.
-         *
-         * The names of the files will be used as-is and appended to the selected
-         * folder's path in the list of returned files. If the selected folder already
-         * contains a file with one of the given names, the portal may prompt or take
-         * some other action to construct a unique file name and return that instead.
-         *
-         * The format for the `choices` argument is the same as for {@link Portal.open_file}.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.save_file_finish} to get the results.
          * @param parent parent window information
@@ -2403,23 +2099,38 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        save_files(
-            parent: Parent | null,
-            title: string,
-            current_name: string | null,
-            current_folder: string | null,
-            files: GLib.Variant,
-            choices: GLib.Variant | null,
-            flags: SaveFileFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        save_files(parent: (Parent | null), title: string, current_name: (string | null), current_folder: (string | null), files: GLib.Variant, choices: (GLib.Variant | null), flags: SaveFileFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asks for a folder as a location to save one or more files.
+         * 
+         * The names of the files will be used as-is and appended to the selected
+         * folder's path in the list of returned files. If the selected folder already
+         * contains a file with one of the given names, the portal may prompt or take
+         * some other action to construct a unique file name and return that instead.
+         * 
+         * The format for the `choices` argument is the same as for {@link Portal.open_file}.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.save_file_finish} to get the results.
+         * @param parent parent window information
+         * @param title title for the file chooser dialog
+         * @param current_name suggested filename
+         * @param current_folder suggested folder to save the file in
+         * @param files An array of file names to be saved
+         * @param choices a {@link GLib.Variant} describing extra widgets
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        save_files(parent: (Parent | null), title: string, current_name: (string | null), current_folder: (string | null), files: GLib.Variant, choices: (GLib.Variant | null), flags: SaveFileFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Finishes the save-files request.
-         *
+         * 
          * Returns the result in the form of a {@link GLib.Variant} dictionary
          * containing the following fields:
-         *
+         * 
          * - uris `(as)`: an array of strings containing the uri corresponding to each
          *   file passed to the save-files request, in the same order. Note that the
          *   file names may have changed, for example if a file with the same name in
@@ -2431,12 +2142,13 @@ export namespace Xdp {
          * @returns a {@link GLib.Variant} dictionary with the results
          */
         save_files_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Inhibits various session status changes.
-         *
+         * 
          * To obtain an ID that can be used to undo the inhibition, use
          * {@link Portal.session_inhibit_finish} in the callback.
-         *
+         * 
          * To remove an active inhibitor, call {@link Portal.session_uninhibit}
          * with the same ID.
          * @param parent parent window information
@@ -2444,39 +2156,14 @@ export namespace Xdp {
          * @param flags information about what to inhibit
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        session_inhibit(
-            parent: Parent | null,
-            reason: string | null,
-            flags: InhibitFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        session_inhibit(parent: (Parent | null), reason: (string | null), flags: InhibitFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
+
         /**
          * Inhibits various session status changes.
-         *
+         * 
          * To obtain an ID that can be used to undo the inhibition, use
          * {@link Portal.session_inhibit_finish} in the callback.
-         *
-         * To remove an active inhibitor, call {@link Portal.session_uninhibit}
-         * with the same ID.
-         * @param parent parent window information
-         * @param reason user-visible reason for the inhibition
-         * @param flags information about what to inhibit
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        session_inhibit(
-            parent: Parent | null,
-            reason: string | null,
-            flags: InhibitFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Inhibits various session status changes.
-         *
-         * To obtain an ID that can be used to undo the inhibition, use
-         * {@link Portal.session_inhibit_finish} in the callback.
-         *
+         * 
          * To remove an active inhibitor, call {@link Portal.session_uninhibit}
          * with the same ID.
          * @param parent parent window information
@@ -2485,127 +2172,118 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        session_inhibit(
-            parent: Parent | null,
-            reason: string | null,
-            flags: InhibitFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        session_inhibit(parent: (Parent | null), reason: (string | null), flags: InhibitFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Inhibits various session status changes.
+         * 
+         * To obtain an ID that can be used to undo the inhibition, use
+         * {@link Portal.session_inhibit_finish} in the callback.
+         * 
+         * To remove an active inhibitor, call {@link Portal.session_uninhibit}
+         * with the same ID.
+         * @param parent parent window information
+         * @param reason user-visible reason for the inhibition
+         * @param flags information about what to inhibit
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        session_inhibit(parent: (Parent | null), reason: (string | null), flags: InhibitFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+
         /**
          * Finishes the inhbit request.
-         *
+         * 
          * Returns the ID of the inhibition as a positive integer. The ID can be passed
          * to {@link Portal.session_uninhibit} to undo the inhibition.
          * @param result a {@link Gio.AsyncResult}
          * @returns the ID of the inhibition, or -1 if there was an error
          */
         session_inhibit_finish(result: Gio.AsyncResult): number;
+
         /**
          * This method should be called within one second of
          * receiving a `Xdp.Portal::session-state-changed` signal
          * with the 'Query End' state, to acknowledge that they
          * have handled the state change.
-         *
+         * 
          * Possible ways to handle the state change are either
          * to call {@link Portal.session_inhibit} to prevent the
          * session from ending, or to save your state and get
          * ready for the session to end.
          */
         session_monitor_query_end_response(): void;
+
         /**
          * Makes {@link Portal} start monitoring the login session state.
-         *
+         * 
          * When the state changes, the `Xdp.Portal::session-state-changed`
          * signal is emitted.
-         *
+         * 
          * Use {@link Portal.session_monitor_stop} to stop monitoring.
          * @param parent a XdpParent, or `NULL`
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        session_monitor_start(
-            parent: Parent | null,
-            flags: SessionMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        session_monitor_start(parent: (Parent | null), flags: SessionMonitorFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Makes {@link Portal} start monitoring the login session state.
-         *
+         * 
          * When the state changes, the `Xdp.Portal::session-state-changed`
          * signal is emitted.
-         *
-         * Use {@link Portal.session_monitor_stop} to stop monitoring.
-         * @param parent a XdpParent, or `NULL`
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        session_monitor_start(
-            parent: Parent | null,
-            flags: SessionMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Makes {@link Portal} start monitoring the login session state.
-         *
-         * When the state changes, the `Xdp.Portal::session-state-changed`
-         * signal is emitted.
-         *
+         * 
          * Use {@link Portal.session_monitor_stop} to stop monitoring.
          * @param parent a XdpParent, or `NULL`
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        session_monitor_start(
-            parent: Parent | null,
-            flags: SessionMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        session_monitor_start(parent: (Parent | null), flags: SessionMonitorFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Makes {@link Portal} start monitoring the login session state.
+         * 
+         * When the state changes, the `Xdp.Portal::session-state-changed`
+         * signal is emitted.
+         * 
+         * Use {@link Portal.session_monitor_stop} to stop monitoring.
+         * @param parent a XdpParent, or `NULL`
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        session_monitor_start(parent: (Parent | null), flags: SessionMonitorFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a session-monitor request.
-         *
+         * 
          * Returns the result in the form of boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request succeeded
          */
         session_monitor_start_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Stops session state monitoring that was started with
          * {@link Portal.session_monitor_start}.
          */
         session_monitor_stop(): void;
+
         /**
          * Removes an inhibitor that was created by a call
          * to {@link Portal.session_inhibit}.
          * @param id unique ID for an active inhibition
          */
         session_uninhibit(id: number): void;
+
         /**
          * Sets the status information of the application, for when it's running
          * in background.
          * @param status_message status message when running in background
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        set_background_status(
-            status_message: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Sets the status information of the application, for when it's running
-         * in background.
-         * @param status_message status message when running in background
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        set_background_status(
-            status_message: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        set_background_status(status_message: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Sets the status information of the application, for when it's running
          * in background.
@@ -2613,17 +2291,24 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        set_background_status(
-            status_message: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_background_status(status_message: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Sets the status information of the application, for when it's running
+         * in background.
+         * @param status_message status message when running in background
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        set_background_status(status_message: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes setting the background status of the application.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successfully set status, `false` otherwise
          */
         set_background_status_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Sets a desktop background image, given by a uri.
          * @param parent parent window information
@@ -2631,27 +2316,8 @@ export namespace Xdp {
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        set_wallpaper(
-            parent: Parent | null,
-            uri: string,
-            flags: WallpaperFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Sets a desktop background image, given by a uri.
-         * @param parent parent window information
-         * @param uri the URI to use
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        set_wallpaper(
-            parent: Parent | null,
-            uri: string,
-            flags: WallpaperFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        set_wallpaper(parent: (Parent | null), uri: string, flags: WallpaperFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Sets a desktop background image, given by a uri.
          * @param parent parent window information
@@ -2660,25 +2326,31 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        set_wallpaper(
-            parent: Parent | null,
-            uri: string,
-            flags: WallpaperFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_wallpaper(parent: (Parent | null), uri: string, flags: WallpaperFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Sets a desktop background image, given by a uri.
+         * @param parent parent window information
+         * @param uri the URI to use
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        set_wallpaper(parent: (Parent | null), uri: string, flags: WallpaperFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the open-uri request.
-         *
+         * 
          * Returns the result in the form of a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the call succeeded
          */
         set_wallpaper_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Creates a new copy of the applications sandbox, and runs
          * a process in, with the given arguments.
-         *
+         * 
          * The learn when the spawned process exits, connect to the
          * `Xdp.Portal::spawn-exited` signal.
          * @param cwd the cwd for the new process
@@ -2691,50 +2363,12 @@ export namespace Xdp {
          * @param sandbox_expose_ro paths to expose ro in the new sandbox, or `NULL`
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        spawn(
-            cwd: string,
-            argv: string[],
-            fds: number[] | null,
-            map_to: number[] | null,
-            env: string[] | null,
-            flags: SpawnFlags,
-            sandbox_expose: string[] | null,
-            sandbox_expose_ro: string[] | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        spawn(cwd: string, argv: string[], fds: (number[] | null), map_to: (number[] | null), env: (string[] | null), flags: SpawnFlags, sandbox_expose: (string[] | null), sandbox_expose_ro: (string[] | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
+
         /**
          * Creates a new copy of the applications sandbox, and runs
          * a process in, with the given arguments.
-         *
-         * The learn when the spawned process exits, connect to the
-         * `Xdp.Portal::spawn-exited` signal.
-         * @param cwd the cwd for the new process
-         * @param argv the argv for the new process
-         * @param fds an array of open fds to pass to the new process, or `NULL`
-         * @param map_to an array of integers to map the `fds` to, or `NULL`. Must be the same     length as `fds`
-         * @param env an array of KEY=VALUE environment settings, or `NULL`
-         * @param flags flags influencing the spawn operation
-         * @param sandbox_expose paths to expose rw in the new sandbox, or `NULL`
-         * @param sandbox_expose_ro paths to expose ro in the new sandbox, or `NULL`
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        spawn(
-            cwd: string,
-            argv: string[],
-            fds: number[] | null,
-            map_to: number[] | null,
-            env: string[] | null,
-            flags: SpawnFlags,
-            sandbox_expose: string[] | null,
-            sandbox_expose_ro: string[] | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Creates a new copy of the applications sandbox, and runs
-         * a process in, with the given arguments.
-         *
+         * 
          * The learn when the spawned process exits, connect to the
          * `Xdp.Portal::spawn-exited` signal.
          * @param cwd the cwd for the new process
@@ -2748,26 +2382,36 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        spawn(
-            cwd: string,
-            argv: string[],
-            fds: number[] | null,
-            map_to: number[] | null,
-            env: string[] | null,
-            flags: SpawnFlags,
-            sandbox_expose: string[] | null,
-            sandbox_expose_ro: string[] | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        spawn(cwd: string, argv: string[], fds: (number[] | null), map_to: (number[] | null), env: (string[] | null), flags: SpawnFlags, sandbox_expose: (string[] | null), sandbox_expose_ro: (string[] | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Creates a new copy of the applications sandbox, and runs
+         * a process in, with the given arguments.
+         * 
+         * The learn when the spawned process exits, connect to the
+         * `Xdp.Portal::spawn-exited` signal.
+         * @param cwd the cwd for the new process
+         * @param argv the argv for the new process
+         * @param fds an array of open fds to pass to the new process, or `NULL`
+         * @param map_to an array of integers to map the `fds` to, or `NULL`. Must be the same     length as `fds`
+         * @param env an array of KEY=VALUE environment settings, or `NULL`
+         * @param flags flags influencing the spawn operation
+         * @param sandbox_expose paths to expose rw in the new sandbox, or `NULL`
+         * @param sandbox_expose_ro paths to expose ro in the new sandbox, or `NULL`
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        spawn(cwd: string, argv: string[], fds: (number[] | null), map_to: (number[] | null), env: (string[] | null), flags: SpawnFlags, sandbox_expose: (string[] | null), sandbox_expose_ro: (string[] | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+
         /**
          * Finishes the spawn request.
-         *
+         * 
          * Returns the pid of the newly spawned process.
          * @param result a {@link Gio.AsyncResult}
          * @returns the pid of the spawned process.
          */
         spawn_finish(result: Gio.AsyncResult): number;
+
         /**
          * Sends a Unix signal to a process that has been spawned
          * by {@link Portal.spawn}.
@@ -2776,39 +2420,21 @@ export namespace Xdp {
          * @param to_process_group whether to send the signal to the process     group of the process
          */
         spawn_signal(pid: number, signal: number, to_process_group: boolean): void;
+
         /**
          * Takes a screenshot.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.take_screenshot_finish} to get the results.
          * @param parent parent window information
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        take_screenshot(
-            parent: Parent | null,
-            flags: ScreenshotFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<string | null>;
+        take_screenshot(parent: (Parent | null), flags: ScreenshotFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(string | null)>;
+
         /**
          * Takes a screenshot.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Portal.take_screenshot_finish} to get the results.
-         * @param parent parent window information
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        take_screenshot(
-            parent: Parent | null,
-            flags: ScreenshotFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Takes a screenshot.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Portal.take_screenshot_finish} to get the results.
          * @param parent parent window information
@@ -2816,98 +2442,81 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        take_screenshot(
-            parent: Parent | null,
-            flags: ScreenshotFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string | null> | void;
+        take_screenshot(parent: (Parent | null), flags: ScreenshotFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Takes a screenshot.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Portal.take_screenshot_finish} to get the results.
+         * @param parent parent window information
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        take_screenshot(parent: (Parent | null), flags: ScreenshotFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(string | null)> | void);
+
         /**
          * Finishes a screenshot request.
-         *
+         * 
          * Returns the result in the form of a URI pointing to an image file.
          * @param result a {@link Gio.AsyncResult}
          * @returns URI pointing to an image file
          */
-        take_screenshot_finish(result: Gio.AsyncResult): string | null;
+        take_screenshot_finish(result: Gio.AsyncResult): (string | null);
+
         /**
          * Sends the file at `path` to the trash can.
          * @param path the path for a local file
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        trash_file(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Sends the file at `path` to the trash can.
-         * @param path the path for a local file
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        trash_file(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        trash_file(path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Sends the file at `path` to the trash can.
          * @param path the path for a local file
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        trash_file(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        trash_file(path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Sends the file at `path` to the trash can.
+         * @param path the path for a local file
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        trash_file(path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the trash-file request.
-         *
+         * 
          * Returns the result in the form of a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the call succeeded
          */
         trash_file_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Installs an available software update.
-         *
+         * 
          * This should be called in response to a `Xdp.Portal::update-available`
          * signal.
-         *
+         * 
          * During the update installation, the `Xdp.Portal::update-progress`
          * signal will be emitted to provide progress information.
          * @param parent a {@link Parent}
          * @param flags options for this call
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        update_install(
-            parent: Parent,
-            flags: UpdateInstallFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        update_install(parent: Parent, flags: UpdateInstallFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Installs an available software update.
-         *
+         * 
          * This should be called in response to a `Xdp.Portal::update-available`
          * signal.
-         *
-         * During the update installation, the `Xdp.Portal::update-progress`
-         * signal will be emitted to provide progress information.
-         * @param parent a {@link Parent}
-         * @param flags options for this call
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        update_install(
-            parent: Parent,
-            flags: UpdateInstallFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Installs an available software update.
-         *
-         * This should be called in response to a `Xdp.Portal::update-available`
-         * signal.
-         *
+         * 
          * During the update installation, the `Xdp.Portal::update-progress`
          * signal will be emitted to provide progress information.
          * @param parent a {@link Parent}
@@ -2915,17 +2524,28 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        update_install(
-            parent: Parent,
-            flags: UpdateInstallFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        update_install(parent: Parent, flags: UpdateInstallFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Installs an available software update.
+         * 
+         * This should be called in response to a `Xdp.Portal::update-available`
+         * signal.
+         * 
+         * During the update installation, the `Xdp.Portal::update-progress`
+         * signal will be emitted to provide progress information.
+         * @param parent a {@link Parent}
+         * @param flags options for this call
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        update_install(parent: Parent, flags: UpdateInstallFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an update-installation request.
-         *
+         * 
          * Returns the result in the form of boolean.
-         *
+         * 
          * Note that the update may not be completely installed
          * by the time this function is called. You need to
          * listen to the `Xdp.Portal::update-progress` signal
@@ -2934,98 +2554,93 @@ export namespace Xdp {
          * @returns `TRUE` if the update is being installed
          */
         update_install_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Makes {@link Xdp.Portal} start monitoring for available software updates.
-         *
+         * 
          * When a new update is available, the `Xdp.Portal::update-available`.
          * signal is emitted.
-         *
+         * 
          * Use {@link Portal.update_monitor_stop} to stop monitoring.
          * @param flags options for this cal..
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        update_monitor_start(
-            flags: UpdateMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        update_monitor_start(flags: UpdateMonitorFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Makes {@link Xdp.Portal} start monitoring for available software updates.
-         *
+         * 
          * When a new update is available, the `Xdp.Portal::update-available`.
          * signal is emitted.
-         *
-         * Use {@link Portal.update_monitor_stop} to stop monitoring.
-         * @param flags options for this cal..
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        update_monitor_start(
-            flags: UpdateMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Makes {@link Xdp.Portal} start monitoring for available software updates.
-         *
-         * When a new update is available, the `Xdp.Portal::update-available`.
-         * signal is emitted.
-         *
+         * 
          * Use {@link Portal.update_monitor_stop} to stop monitoring.
          * @param flags options for this cal..
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        update_monitor_start(
-            flags: UpdateMonitorFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        update_monitor_start(flags: UpdateMonitorFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Makes {@link Xdp.Portal} start monitoring for available software updates.
+         * 
+         * When a new update is available, the `Xdp.Portal::update-available`.
+         * signal is emitted.
+         * 
+         * Use {@link Portal.update_monitor_stop} to stop monitoring.
+         * @param flags options for this cal..
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        update_monitor_start(flags: UpdateMonitorFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an update-monitor request.
-         *
+         * 
          * Returns the result in the form of boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request succeeded
          */
         update_monitor_start_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Stops update monitoring that was started with
          * {@link Portal.update_monitor_start}.
          */
         update_monitor_stop(): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -3035,40 +2650,41 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -3078,8 +2694,9 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Session {
         // Signal signatures
@@ -3093,20 +2710,21 @@ export namespace Xdp {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * A representation of long-lived screencast portal interactions.
-     *
+     * 
      * The XdpSession object is used to represent portal interactions with the
      * screencast or remote desktop portals that extend over multiple portal calls.
-     *
+     * 
      * To find out what kind of session an XdpSession object represents and whether
      * it is still active, you can use {@link Session.get_session_type} and
      * {@link Session.get_session_state}.
-     *
+     * 
      * All sessions start in an initial state. They can be made active by calling
      * {@link Session.start}, and ended by calling {@link Session.close}.
      * @gir-type Class
@@ -3124,98 +2742,95 @@ export namespace Xdp {
         $signals: Session.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Closes the session.
          */
         close(): void;
+
         /**
          * Connect this XdpRemoteDesktopSession to an EIS implementation and return the fd.
          * This fd can be passed into `ei_setup_backend_fd()`. See the libei
          * documentation for details.
-         *
+         * 
          * This call must be issued before `xdp_session_start()`. If successful, all input
          * event emulation must be handled via the EIS connection and calls to
          * `xdp_session_pointer_motion()` etc. are silently ignored.
          * @returns the file descriptor to the EIS implementation
          */
         connect_to_eis(): number;
+
         /**
          * Obtains the devices that the user selected.
-         *
+         * 
          * Unless the session is active, this function returns `XDP_DEVICE_NONE`.
          * @returns the selected devices
          */
         get_devices(): DeviceType;
+
         /**
          * Retrieves the effective persist mode of `session`.
-         *
+         * 
          * May only be called after `session` is successfully started, i.e. after
          * {@link Session.start_finish}.
          * @returns the effective persist mode of `session`
          */
         get_persist_mode(): PersistMode;
+
         /**
          * Retrieves the restore token of `session`.
-         *
+         * 
          * A restore token will only be available if `XDP_PERSIST_MODE_TRANSIENT`
          * or `XDP_PERSIST_MODE_PERSISTENT` was passed when creating the screencast
          * session.
-         *
+         * 
          * Remote desktop sessions cannot be restored.
-         *
+         * 
          * May only be called after `session` is successfully started, i.e. after
          * {@link Session.start_finish}.
          * @returns the restore token of `session`
          */
-        get_restore_token(): string | null;
+        get_restore_token(): (string | null);
+
         /**
          * Obtains information about the state of the session that is represented
          * by `session`.
          * @returns the state of `session`
          */
         get_session_state(): SessionState;
+
         /**
          * Obtains information about the type of session that is represented
          * by `session`.
          * @returns the type of `session`
          */
         get_session_type(): SessionType;
+
         /**
          * Obtains the streams that the user selected.
-         *
+         * 
          * The information in the returned {@link GLib.Variant} has the format
          * `a(ua{sv})`. Each item in the array is describing a stream. The first member
          * is the pipewire node ID, the second is a dictionary of stream properties,
          * including:
-         *
+         * 
          * - position, `(ii)`: a tuple consisting of the position `(x, y)` in the compositor
          *     coordinate space. Note that the position may not be equivalent to a
          *     position in a pixel coordinate space. Only available for monitor streams.
@@ -3223,14 +2838,15 @@ export namespace Xdp {
          *     of the stream as it is displayed in the compositor coordinate space.
          *     Note that this size may not be equivalent to a size in a pixel coordinate
          *     space. The size may differ from the size of the stream.
-         *
+         * 
          * Unless the session is active, this function returns `NULL`.
          * @returns the selected streams
          */
         get_streams(): GLib.Variant;
+
         /**
          * Changes the state of the key to `state`.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_KEYBOARD` access.
          * @param keysym whether to interpret `key` as a keysym instead of a keycode
@@ -3238,21 +2854,23 @@ export namespace Xdp {
          * @param state the new state
          */
         keyboard_key(keysym: boolean, key: number, state: KeyState): void;
+
         /**
          * Opens a file descriptor to the pipewire remote where the screencast
          * streams are available.
-         *
+         * 
          * The file descriptor should be used to create a pw_remote object, by using
          * `pw_remote_connect_fd()`. Only the screencast stream nodes will be available
          * from this pipewire node.
          * @returns the file descriptor
          */
         open_pipewire_remote(): number;
+
         /**
          * The axis movement from a smooth scroll device, such as a touchpad.
          * When applicable, the size of the motion delta should be equivalent to
          * the motion vector of a pointer motion done using the same advice.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_POINTER` access.
          * @param finish whether this is the last in a series of related events
@@ -3260,37 +2878,41 @@ export namespace Xdp {
          * @param dy relative axis movement on the Y axis
          */
         pointer_axis(finish: boolean, dx: number, dy: number): void;
+
         /**
          * The axis movement from a discrete scroll device.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_POINTER` access.
          * @param axis the axis to change
          * @param steps number of steps scrolled
          */
         pointer_axis_discrete(axis: DiscreteAxis, steps: number): void;
+
         /**
          * Changes the state of the button to `state`.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_POINTER` access.
          * @param button the button
          * @param state the new state
          */
         pointer_button(button: number, state: ButtonState): void;
+
         /**
          * Moves the pointer from its current position.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_POINTER` access.
          * @param dx relative horizontal movement
          * @param dy relative vertical movement
          */
         pointer_motion(dx: number, dy: number): void;
+
         /**
          * Moves the pointer to a new position in the given streams logical
          * coordinate space.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_POINTER` access.
          * @param stream the node ID of the pipewire stream the position is relative to
@@ -3298,55 +2920,52 @@ export namespace Xdp {
          * @param y new Y position
          */
         pointer_position(stream: number, x: number, y: number): void;
+
         /**
          * Starts the session.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Session.start_finish} to get the results.
          * @param parent parent window information
          * @param cancellable optional {@link Gio.Cancellable}
          */
-        start(parent: Parent | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        start(parent: (Parent | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts the session.
-         *
-         * When the request is done, `callback` will be called. You can then
-         * call {@link Session.start_finish} to get the results.
-         * @param parent parent window information
-         * @param cancellable optional {@link Gio.Cancellable}
-         * @param callback a callback to call when the request is done
-         */
-        start(
-            parent: Parent | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts the session.
-         *
+         * 
          * When the request is done, `callback` will be called. You can then
          * call {@link Session.start_finish} to get the results.
          * @param parent parent window information
          * @param cancellable optional {@link Gio.Cancellable}
          * @param callback a callback to call when the request is done
          */
-        start(
-            parent: Parent | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        start(parent: (Parent | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts the session.
+         * 
+         * When the request is done, `callback` will be called. You can then
+         * call {@link Session.start_finish} to get the results.
+         * @param parent parent window information
+         * @param cancellable optional {@link Gio.Cancellable}
+         * @param callback a callback to call when the request is done
+         */
+        start(parent: (Parent | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the session-start request.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the session was started successfully.
          */
         start_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Notify about a new touch down event.
-         *
+         * 
          * The `(x, y)` position represents the new touch point position in the streams
          * logical coordinate space.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_TOUCHSCREEN` access.
          * @param stream the node ID of the pipewire stream the position is relative to
@@ -3355,12 +2974,13 @@ export namespace Xdp {
          * @param y new Y position
          */
         touch_down(stream: number, slot: number, x: number, y: number): void;
+
         /**
          * Notify about a new touch motion event.
-         *
+         * 
          * The `(x, y)` position represents where the touch point position in the
          * streams logical coordinate space moved.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_TOUCHSCREEN` access.
          * @param stream the node ID of the pipewire stream the position is relative to
@@ -3369,9 +2989,10 @@ export namespace Xdp {
          * @param y new Y position
          */
         touch_position(stream: number, slot: number, x: number, y: number): void;
+
         /**
          * Notify about a new touch up event.
-         *
+         * 
          * May only be called on a remote desktop session
          * with `XDP_DEVICE_TOUCHSCREEN` access.
          * @param slot touch slot that changed
@@ -3379,13 +3000,14 @@ export namespace Xdp {
         touch_up(slot: number): void;
     }
 
+
     /**
      * Parent window abstraction.
-     *
+     * 
      * The {@link Parent} struct provides an abstract way to represent
      * a window, without introducing a dependency on a toolkit
      * library.
-     *
+     * 
      * An XdpParent implementation for GTK is included in the
      * `portal-gtk3.h` and `portal-gtk4.h` header files, in the form of inline functions.
      * To create a XdpParent for a GTK window, use
@@ -3396,31 +3018,35 @@ export namespace Xdp {
         static $gtype: GObject.GType<Parent>;
 
         // Methods
-
         /**
          * Copies `source` into a new {@link Parent}.
          * @returns an {@link Parent} that is a copy of `source`
          */
         copy(): Parent;
+
         /**
          * Frees `parent`.
          */
         free(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PortalClass = typeof Portal;
+
     /**
      * @gir-type Alias
      */
     type SessionClass = typeof Session;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

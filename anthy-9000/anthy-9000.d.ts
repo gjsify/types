@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,125 +15,160 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Anthy {
+
     /**
      * Anthy-9000
      */
 
+
     const COMPILED_ENCODING: number;
+
     const EUC_JP_ENCODING: number;
+
     const NTH_HALFKANA_CANDIDATE: number;
+
     const NTH_HIRAGANA_CANDIDATE: number;
+
     const NTH_KATAKANA_CANDIDATE: number;
+
     const NTH_UNCONVERTED_CANDIDATE: number;
+
     const RECONVERT_ALWAYS: number;
+
     const RECONVERT_AUTO: number;
+
     const RECONVERT_DISABLE: number;
+
     const UTF8_ENCODING: number;
+
     /**
-     * @param arg0
-     * @param arg1
+     * @param arg0 
+     * @param arg1 
      */
     function commit_prediction(arg0: anthy_context_t, arg1: number): number;
+
     /**
-     * @param arg0
-     * @param arg1
-     * @param arg2
+     * @param arg0 
+     * @param arg1 
+     * @param arg2 
      */
     function commit_segment(arg0: anthy_context_t, arg1: number, arg2: number): number;
+
     /**
-     * @param arg0
-     * @param arg1
+     * @param arg0 
+     * @param arg1 
      */
     function conf_override(arg0: string, arg1: string): void;
+
     /**
-     * @param ac
-     * @param encoding
+     * @param ac 
+     * @param encoding 
      */
     function context_set_encoding(ac: anthy_context_t, encoding: number): number;
+
     /**
-     * @param arg0
-     * @param arg1
-     * @param arg2
-     * @param arg3
+     * @param arg0 
+     * @param arg1 
+     * @param arg2 
+     * @param arg3 
      */
     function get_prediction(arg0: anthy_context_t, arg1: number, arg2: string, arg3: number): number;
+
     /**
-     * @param arg0
-     * @param arg1
+     * @param arg0 
+     * @param arg1 
      */
-    function get_prediction_stat(arg0: anthy_context_t, arg1: any | null): number;
+    function get_prediction_stat(arg0: anthy_context_t, arg1: (any | null)): number;
+
     /**
-     * @param arg0
-     * @param arg1
-     * @param arg2
-     * @param arg3
-     * @param arg4
+     * @param arg0 
+     * @param arg1 
+     * @param arg2 
+     * @param arg3 
+     * @param arg4 
      */
     function get_segment(arg0: anthy_context_t, arg1: number, arg2: number, arg3: string, arg4: number): number;
+
     /**
-     * @param arg0
-     * @param arg1
-     * @param arg2
+     * @param arg0 
+     * @param arg1 
+     * @param arg2 
      */
-    function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2: any | null): number;
+    function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2: (any | null)): number;
+
     /**
-     * @param arg0
-     * @param arg1
+     * @param arg0 
+     * @param arg1 
      */
-    function get_stat(arg0: anthy_context_t, arg1: any | null): number;
+    function get_stat(arg0: anthy_context_t, arg1: (any | null)): number;
+
     function get_version_string(): string;
+
     function init(): number;
+
     /**
-     * @param arg0
+     * @param arg0 
      */
     function print_context(arg0: anthy_context_t): void;
+
     function quit(): void;
+
     /**
-     * @param arg0
+     * @param arg0 
      */
     function release_context(arg0: anthy_context_t): void;
+
     /**
-     * @param arg0
+     * @param arg0 
      */
     function reset_context(arg0: anthy_context_t): void;
+
     /**
-     * @param arg0
-     * @param arg1
-     * @param arg2
+     * @param arg0 
+     * @param arg1 
+     * @param arg2 
      */
     function resize_segment(arg0: anthy_context_t, arg1: number, arg2: number): void;
+
     /**
-     * @param arg0
+     * @param arg0 
      */
     function set_personality(arg0: string): number;
+
     /**
-     * @param arg0
-     * @param arg1
+     * @param arg0 
+     * @param arg1 
      */
     function set_prediction_string(arg0: anthy_context_t, arg1: string): number;
+
     /**
-     * @param ac
-     * @param mode
+     * @param ac 
+     * @param mode 
      */
     function set_reconversion_mode(ac: anthy_context_t, mode: number): number;
+
     /**
-     * @param arg0
-     * @param arg1
+     * @param arg0 
+     * @param arg1 
      */
     function set_string(arg0: anthy_context_t, arg1: string): number;
+
     /**
      * @gir-type Callback
      */
     interface logger {
         (level: number, arg1: string): void;
     }
+
     namespace GContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
 
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
+        }
     }
 
     /**
@@ -152,36 +188,26 @@ export namespace Anthy {
         $signals: GContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): GContext;
+        static ["new"](): GContext;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Set Anthy log level.
          * @param level Log level
@@ -189,45 +215,51 @@ export namespace Anthy {
         static set_logger(level: number): void;
 
         // Methods
-
         /**
          * Commit a prediction string with `ntg_seg` .
          * @param nth_seg Nth segment
          */
         commit_prediction(nth_seg: number): number;
+
         /**
          * Commit a string with `ntg_seg` and `nth_lookup`.
          * @param nth_seg Nth segment
          * @param nth_lookup Nth lookup
          */
         commit_segment(nth_seg: number, nth_lookup: number): number;
+
         /**
          * Set a personal dictionary.
          * @param dict_name a Dictionary name
          */
         do_set_personality(dict_name: string): number;
+
         /**
          * The number of the candidates
-         * @param nth_seg
+         * @param nth_seg 
          * @returns The number of the candidates
          */
         get_nr_candidates(nth_seg: number): number;
+
         /**
          * The number of the converted segments in the current prediction string.
          * @returns The number of the converted segments in the current        prediction string.
          */
         get_nr_predictions(): number;
+
         /**
          * The number of the converted segments
          * @returns The number of the converted segments
          */
         get_nr_segments(): number;
+
         /**
          * A newly assigned string with `ntg_seg` .
          * @param nth_seg Nth segment
          * @returns A newly assigned string.
          */
         get_prediction(nth_seg: number): string;
+
         /**
          * A newly assigned string with `ntg_seg` and `nth_lookup` .
          * @param nth_seg Nth segment
@@ -235,26 +267,31 @@ export namespace Anthy {
          * @returns A newly assigned string.
          */
         get_segment(nth_seg: number, nth_lookup: number): string;
+
         /**
          * Initialize the personal dictionaries.
          */
         init_personality(): void;
+
         /**
          * Resize the nth segment.
          * @param nth nth segment
          * @param resize size
          */
         resize_segment(nth: number, resize: number): void;
+
         /**
          * Set an encoding.
          * @param encoding An encoding
          */
         set_encoding(encoding: number): number;
+
         /**
          * Set a prediction string.
          * @param string A prediction string
          */
         set_prediction_string(string: string): number;
+
         /**
          * Set a conversion string.
          * @param string A conversion string
@@ -262,16 +299,19 @@ export namespace Anthy {
         set_string(string: string): number;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GContextClass = typeof GContext;
+
     /**
      * @gir-type Struct
      */
     abstract class GContextPrivate {
         static $gtype: GObject.GType<GContextPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -280,6 +320,7 @@ export namespace Anthy {
         static $gtype: GObject.GType<anthy_context_t>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -287,17 +328,15 @@ export namespace Anthy {
         static $gtype: GObject.GType<anthy_conv_stat>;
 
         // Fields
-
         nr_segment: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                nr_segment: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            nr_segment: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -306,17 +345,15 @@ export namespace Anthy {
         static $gtype: GObject.GType<anthy_prediction_stat>;
 
         // Fields
-
         nr_prediction: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                nr_prediction: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            nr_prediction: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -325,25 +362,25 @@ export namespace Anthy {
         static $gtype: GObject.GType<anthy_segment_stat>;
 
         // Fields
-
         nr_candidate: number;
+
         seg_len: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                nr_candidate: number;
-                seg_len: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            nr_candidate: number;
+            seg_len: number;
+        }>);
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

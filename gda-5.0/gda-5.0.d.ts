@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,9 +16,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Gda {
+
     /**
      * Gda-5.0
      */
+
 
     /**
      * @gir-type Enum
@@ -25,6 +28,7 @@ export namespace Gda {
     enum BatchError {
         BATCH_CONFLICTING_PARAMETER_ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -35,6 +39,7 @@ export namespace Gda {
         PROVIDER_NOT_FOUND_ERROR,
         PROVIDER_CREATION_ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -54,6 +59,7 @@ export namespace Gda {
         META_DATA_CONTEXT_ERROR,
         UNSUPPORTED_ASYNC_EXEC_ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -80,6 +86,7 @@ export namespace Gda {
         UNKNOWN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -89,6 +96,7 @@ export namespace Gda {
         ERROR,
         COMMAND,
     }
+
 
     /**
      * Used in `gda_connection_supports_feature()` and `gda_server_provider_supports_feature()` to test if a connection
@@ -174,6 +182,7 @@ export namespace Gda {
         LAST,
     }
 
+
     /**
      * Used with `gda_connection_get_meta_store_data()` to describe what meta data to extract from
      * a connection's associated {@link Gda.MetaStore}.
@@ -206,6 +215,7 @@ export namespace Gda {
         INDEXES,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -216,6 +226,7 @@ export namespace Gda {
         USER_CANCELLED_ERROR,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -223,23 +234,32 @@ export namespace Gda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static ROW_OUT_OF_RANGE_ERROR: number;
+
         static COLUMN_OUT_OF_RANGE_ERROR: number;
+
         static VALUES_LIST_ERROR: number;
+
         static VALUE_TYPE_ERROR: number;
+
         static ROW_NOT_FOUND_ERROR: number;
+
         static ACCESS_ERROR: number;
+
         static FEATURE_NON_SUPPORTED_ERROR: number;
+
         static FILE_EXIST_ERROR: number;
+
         static XML_FORMAT_ERROR: number;
+
         static TRUNCATED_ERROR: number;
+
         static OTHER_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -249,6 +269,7 @@ export namespace Gda {
         END_BATCH_UPDATE,
         REFRESH,
     }
+
 
     /**
      * Format to use when exporting a data model, see `gda_data_model_export_to_string()` and `gda_data_model_export_to_file()`
@@ -269,12 +290,14 @@ export namespace Gda {
         TEXT_TABLE,
     }
 
+
     /**
      * @gir-type Enum
      */
     enum DataModelIterError {
         DATA_MODEL_ITER_COLUMN_OUT_OF_RANGE_ERROR,
     }
+
 
     /**
      * Possible operations for the data fields.
@@ -288,6 +311,7 @@ export namespace Gda {
         SUM,
     }
 
+
     /**
      * Possible {@link Gda.DataPivot} related errors.
      * @gir-type Enum
@@ -300,6 +324,7 @@ export namespace Gda {
         OVERFLOW_ERROR,
     }
 
+
     /**
      * Define types of field to be used when defining a {@link Gda.DataPivot} analysis.
      * @gir-type Enum
@@ -308,6 +333,7 @@ export namespace Gda {
         ROW,
         COLUMN,
     }
+
 
     /**
      * @gir-type Enum
@@ -319,6 +345,7 @@ export namespace Gda {
         READ_ONLY_ROW,
         FILTER_ERROR,
     }
+
 
     /**
      * Defines what criteria `gda_data_select_compute_modification_statements_ext()` uses
@@ -336,6 +363,7 @@ export namespace Gda {
         ALL_COLUMNS,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -348,6 +376,7 @@ export namespace Gda {
         SAFETY_LOCKED_ERROR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -357,6 +386,7 @@ export namespace Gda {
         MODIFY_ROW,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -365,6 +395,7 @@ export namespace Gda {
         VALUE_TYPE_ERROR,
         VALUE_NULL_ERROR,
     }
+
 
     /**
      * Defines the search scope of an LDAP search command, relative to the base object.
@@ -385,6 +416,7 @@ export namespace Gda {
         SUBTREE,
     }
 
+
     /**
      * Type of database object which can be handled as a {@link Gda.MetaDbObject}
      * @gir-type Enum
@@ -403,6 +435,7 @@ export namespace Gda {
          */
         VIEW,
     }
+
 
     /**
      * Defines the filtering policy of a foreign key when invoked on an UPDATE
@@ -440,6 +473,7 @@ export namespace Gda {
         SET_DEFAULT,
     }
 
+
     /**
      * Types of sorting
      * @gir-type Enum
@@ -455,6 +489,7 @@ export namespace Gda {
         DEPENDENCIES,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -463,6 +498,7 @@ export namespace Gda {
         REMOVE,
         MODIFY,
     }
+
 
     /**
      * @gir-type Enum
@@ -482,6 +518,7 @@ export namespace Gda {
         TRANSACTION_ALREADY_STARTED_ERROR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -492,6 +529,7 @@ export namespace Gda {
         XML_ERROR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -501,6 +539,7 @@ export namespace Gda {
         XML_ERROR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -509,6 +548,7 @@ export namespace Gda {
         REQUIRED,
         UNKNOWN,
     }
+
 
     /**
      * @gir-type Enum
@@ -522,6 +562,7 @@ export namespace Gda {
         DATA_MODEL_COLUMN,
         UNKNOWN,
     }
+
 
     /**
      * @gir-type Enum
@@ -546,6 +587,7 @@ export namespace Gda {
         LAST,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -566,6 +608,7 @@ export namespace Gda {
         FILE_NOT_FOUND_ERROR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -577,6 +620,7 @@ export namespace Gda {
         IMPLEMENTATION_ERROR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -585,6 +629,7 @@ export namespace Gda {
         MISUSE_ERROR,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -592,16 +637,18 @@ export namespace Gda {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static STRUCTURE_CONTENTS_ERROR: number;
+
         static MALFORMED_IDENTIFIER_ERROR: number;
+
         static MISSING_IDENTIFIER_ERROR: number;
+
         static VALIDATION_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -643,6 +690,7 @@ export namespace Gda {
         GLOB,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -651,6 +699,7 @@ export namespace Gda {
         OVERFLOW_ERROR,
         EMPTY_SQL_ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -663,6 +712,7 @@ export namespace Gda {
         POSTGRESQL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -670,6 +720,7 @@ export namespace Gda {
         PARSE,
         DELIMIT,
     }
+
 
     /**
      * @gir-type Enum
@@ -683,6 +734,7 @@ export namespace Gda {
         FULL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -694,6 +746,7 @@ export namespace Gda {
         EXCEPT,
         EXCEPT_ALL,
     }
+
 
     /**
      * Known types of statements
@@ -754,6 +807,7 @@ export namespace Gda {
         NONE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -766,6 +820,7 @@ export namespace Gda {
         PARAM_TYPE_ERROR,
         PARAM_ERROR,
     }
+
 
     /**
      * Defines the kind of notification which can be obtained when reading from te {@link GLib.IOChannel}
@@ -783,12 +838,14 @@ export namespace Gda {
         SIGNAL,
     }
 
+
     /**
      * @gir-type Enum
      */
     enum ThreadWrapperError {
         THREAD_WRAPPER_UNKNOWN_ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -801,6 +858,7 @@ export namespace Gda {
         SERIALIZABLE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -810,6 +868,7 @@ export namespace Gda {
         SUB_TRANSACTION,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -818,12 +877,14 @@ export namespace Gda {
         FAILED,
     }
 
+
     /**
      * @gir-type Enum
      */
     enum TreeError {
         TREE_UNKNOWN_ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -832,12 +893,14 @@ export namespace Gda {
         TREE_MANAGER_UNKNOWN_ERROR,
     }
 
+
     /**
      * @gir-type Enum
      */
     enum TreeNodeError {
         TREE_NODE_UNKNOWN_ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -848,66 +911,83 @@ export namespace Gda {
         CONNECTION_BRANCH_LENGTH_ERROR,
     }
 
+
     /**
      * The corresponding attribute specifies if the object it refers to is auto incremented (value has a G_TYPE_BOOLEAN type).
      */
     const ATTRIBUTE_AUTO_INCREMENT: string;
+
     /**
      * The corresponding attribute is the description of the object it refers to (value has a G_TYPE_STRING type).
      */
     const ATTRIBUTE_DESCRIPTION: string;
+
     /**
      * The corresponding attribute specifies if the object it refers to has its value to default (value has a G_TYPE_BOOLEAN type).
      */
     const ATTRIBUTE_IS_DEFAULT: string;
+
     /**
      * The corresponding attribute is the name of the object it refers to (value has a G_TYPE_STRING type).
      */
     const ATTRIBUTE_NAME: string;
+
     /**
      * The corresponding attribute is the number of significant digits of the object it refers to (value has a G_TYPE_INT type).
      */
     const ATTRIBUTE_NUMERIC_PRECISION: string;
+
     /**
      * The corresponding attribute is the number of significant digits to the right of the decimal point of the object it refers to (value has a G_TYPE_INT type).
      */
     const ATTRIBUTE_NUMERIC_SCALE: string;
+
     /**
      * This attribute, if `true` specifies that a tree node may or may not have any children nodes (value has a G_TYPE_BOOLEAN type).
      */
     const ATTRIBUTE_TREE_NODE_UNKNOWN_CHILDREN: string;
+
     const EXTRA_AUTO_INCREMENT: string;
+
     const SQLSTATE_GENERAL_ERROR: string;
+
     const SQLSTATE_NO_ERROR: string;
+
     const TIMEZONE_INVALID: number;
+
     /**
      * Does the opposite of `gda_text_to_alphanum()`, in the same string
      * @param text a string
      * @returns `text` if conversion succeeded or `null` if an error occurred
      */
     function alphanum_to_text(text: string): string;
+
     /**
      * Creates a new {@link Gda.Binary} structure from an existing one.
      * @param boxed source to get a copy from.
      * @returns a newly allocated {@link Gda.Binary} which contains a copy of information in `boxed`. Free-function: gda_binary_free
      */
-    function binary_copy(boxed: any | null): any | null;
+    function binary_copy(boxed: (any | null)): (any | null);
+
     /**
      * Deallocates all memory associated to the given {@link Gda.Binary}.
      * @param boxed {@link Gda.Binary} to free.
      */
-    function binary_free(boxed: any | null): void;
+    function binary_free(boxed: (any | null)): void;
+
     /**
      * Creates a new {@link Gda.Blob} structure from an existing one.
      * @param boxed source to get a copy from.
      * @returns a newly allocated {@link Gda.Blob} which contains a copy of information in `boxed`. Free-function: gda_blob_free
      */
-    function blob_copy(boxed: any | null): any | null;
+    function blob_copy(boxed: (any | null)): (any | null);
+
     /**
      * Deallocates all memory associated to the given {@link Gda.Blob}.
      * @param boxed {@link Gda.Blob} to free.
      */
-    function blob_free(boxed: any | null): void;
+    function blob_free(boxed: (any | null)): void;
+
     /**
      * Creates an array of strings (terminated by a `null`) corresponding to possible completions.
      * If no completion is available, then the returned array contains just one NULL entry, and
@@ -918,7 +998,8 @@ export namespace Gda {
      * @param end ending position within `sql` of the "token" to complete
      * @returns a new array of strings, or `null` (use `g_strfreev()` to free the returned array)
      */
-    function completion_list_get(cnc: Connection, sql: string, start: number, end: number): string[] | null;
+    function completion_list_get(cnc: Connection, sql: string, start: number, end: number): (string[] | null);
+
     /**
      * Creates an INSERT, an UPDATE and a DELETE statement from a SELECT statement
      * using the database metadata available in `cnc`'s meta store. Each statements are computed only if
@@ -931,26 +1012,22 @@ export namespace Gda {
      * @param delete_stmt a place to store the created DELETE statement, or `null`
      * @returns `true` if no error occurred
      */
-    function compute_dml_statements(
-        cnc: Connection,
-        select_stmt: Statement,
-        require_pk: boolean,
-        insert_stmt: Statement | null,
-        update_stmt: Statement | null,
-        delete_stmt: Statement | null,
-    ): boolean;
+    function compute_dml_statements(cnc: Connection, select_stmt: Statement, require_pk: boolean, insert_stmt: (Statement | null), update_stmt: (Statement | null), delete_stmt: (Statement | null)): boolean;
+
     /**
      * Obtain a pointer to a {@link Gda.DataHandler} which can manage {@link GObject.Value} values of type `for_type`. The returned
      * data handler will be adapted to use the current locale information (for example dates will be formatted
      * taking into account the locale).
-     *
+     * 
      * The returned pointer is `null` if there is no default data handler available for the `for_type` data type
      * @param for_type a {@link GObject.GType} type
      * @returns a {@link Gda.DataHandler} which must not be modified or destroyed.
      * @since 4.2.3
      */
     function data_handler_get_default(for_type: GObject.GType): DataHandler;
+
     function data_model_error_quark(): GLib.Quark;
+
     /**
      * Escapes `string` to make it understandable by a DBMS. The escape method is very common and replaces any
      * occurrence of "'" with "''" and "\" with "\\"
@@ -958,6 +1035,7 @@ export namespace Gda {
      * @returns a new string
      */
     function default_escape_string(string: string): string;
+
     /**
      * Do the reverse of `gda_default_escape_string()`: transforms any "''" into "'", any
      * "\\" into "\" and any "\'" into "'".
@@ -965,11 +1043,12 @@ export namespace Gda {
      * @returns a new unescaped string, or `null` in an error was found in `string`
      */
     function default_unescape_string(string: string): string;
+
     /**
      * Extract the DSN, username and password from `string`. in `string`, the various parts are strings
      * which are expected to be encoded using an RFC 1738 compliant encoding. If they are specified,
      * the returned username and password strings are correctly decoded.
-     *
+     * 
      * `out_username` and `out_password` may be set to `null` depending on `string`'s format.
      * @param string a string in the "[&lt;username&gt;[:&lt;password&gt;]@]&lt;DSN&gt;" form
      * @param out_dsn a place to store the new string containing the &lt;DSN&gt; part
@@ -977,9 +1056,10 @@ export namespace Gda {
      * @param out_password a place to store the new string containing the &lt;password&gt; part
      */
     function dsn_split(string: string, out_dsn: string, out_username: string, out_password: string): void;
+
     /**
      * Converts a named type to ts GType type (also see the `gda_g_type_to_string()` function).
-     *
+     * 
      * This function is a wrapper around the `g_type_from_name()` function, but also recognizes
      * some type synonyms such as:
      * <itemizedlist>
@@ -1004,10 +1084,11 @@ export namespace Gda {
      * @returns the {@link GObject.GType} represented by the given `str`, or #G_TYPE_INVALID if not found
      */
     function g_type_from_string(str: string): GObject.GType;
+
     /**
      * Converts a GType to its string representation (use `gda_g_type_from_string()` for the
      * operation in the other direction).
-     *
+     * 
      * This function wraps `g_type_name()` but for common types it provides an easier to
      * understand and remember name. For Example the G_TYPE_STRING is converted to "string"
      * whereas `g_type_name()` converts it to "gchararray".
@@ -1015,14 +1096,17 @@ export namespace Gda {
      * @returns the GDA's string representing the given {@link GObject.GType} or the name returned by `g_type_name`.
      */
     function g_type_to_string(type: GObject.GType): string;
+
     /**
-     * @param boxed
+     * @param boxed 
      */
-    function geometricpoint_copy(boxed: any | null): any | null;
+    function geometricpoint_copy(boxed: (any | null)): (any | null);
+
     /**
-     * @param boxed
+     * @param boxed 
      */
-    function geometricpoint_free(boxed: any | null): void;
+    function geometricpoint_free(boxed: (any | null)): void;
+
     /**
      * Find the path to the application identified by `app_name`. For example if the application
      * is "gda-sql", then calling this function will return
@@ -1032,6 +1116,7 @@ export namespace Gda {
      * @returns the path as a new string, or `null` if the application cannot be found
      */
     function get_application_exec_path(app_name: string): string;
+
     /**
      * Does the same as strcmp(`id1`, `id2`), but handles the case where id1 and/or id2 are enclosed in double quotes.
      * can also be used in hash tables as a {@link GLib.EqualFunc}.
@@ -1040,57 +1125,68 @@ export namespace Gda {
      * @returns `true` if `id1` and `id2` are equal.
      */
     function identifier_equal(id1: string, id2: string): boolean;
+
     /**
      * computes a hash string from `id`, to be used in hash tables as a {@link GLib.HashFunc}
      * @param id an identifier string
      * @returns a new hash
      */
     function identifier_hash(id: string): number;
+
     /**
      * Initializes the GDA library, must be called prior to any Libgda usage.
-     *
+     * 
      * Please note that if you call `setlocale()` to modify the current locale, you should also
      * call `gda_locale_changed()` before using Libgda again.
      */
     function init(): void;
+
     /**
      * Call this function whenever the `setlocale()` function has been called
      * to change the current locale; this function is first called by `gda_init()` so you
      * don't need to call it if you have set the locale before calling `gda_init()`.
-     *
+     * 
      * Failing to call this function after having changed the current locale may result
      * in Libgda reverting to the previous set locale.
      * @since 4.2.3
      */
     function locale_changed(): void;
+
     /**
      * Disables GDA logs.
      */
     function log_disable(): void;
+
     /**
      * Enables GDA logs.
      */
     function log_enable(): void;
+
     /**
      * @returns whether GDA logs are enabled (`true` or `false`).
      */
     function log_is_enabled(): boolean;
+
     /**
-     * @param mutex
+     * @param mutex 
      */
     function mutex_free(mutex: Mutex): void;
+
     /**
-     * @param mutex
+     * @param mutex 
      */
     function mutex_lock(mutex: Mutex): void;
+
     /**
-     * @param mutex
+     * @param mutex 
      */
     function mutex_trylock(mutex: Mutex): boolean;
+
     /**
-     * @param mutex
+     * @param mutex 
      */
     function mutex_unlock(mutex: Mutex): void;
+
     /**
      * This function is similar to `gda_parse_iso8601_date()` (with `first` being `G_DATE_YEAR`, `second` being `G_DATE_MONTH`,
      * `third` being `G_DATE_DAY` and `sep` being '-') but allows one to specify the expected date format.
@@ -1103,14 +1199,8 @@ export namespace Gda {
      * @returns `true` if `value` has been sucessfuly parsed as a valid date (see `g_date_valid()`).
      * @since 5.2
      */
-    function parse_formatted_date(
-        gdate: GLib.Date,
-        value: string,
-        first: GLib.DateDMY,
-        second: GLib.DateDMY,
-        third: GLib.DateDMY,
-        sep: number,
-    ): boolean;
+    function parse_formatted_date(gdate: GLib.Date, value: string, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): boolean;
+
     /**
      * @param timegda a pointer to a {@link Gda.Time} structure which will be filled
      * @param value a string
@@ -1119,6 +1209,7 @@ export namespace Gda {
      * @since 5.2
      */
     function parse_formatted_time(timegda: Time, value: string, sep: number): boolean;
+
     /**
      * This function is similar to `gda_parse_iso8601_timestamp()` (with `first` being `G_DATE_YEAR`, `second` being `G_DATE_MONTH`,
      * `third` being `G_DATE_DAY` and `sep` being '-') but allows one to specify the expected date format.
@@ -1131,17 +1222,11 @@ export namespace Gda {
      * @returns `true` if `value` has been sucessfuly parsed as a valid date (see `g_date_valid()`).
      * @since 5.2
      */
-    function parse_formatted_timestamp(
-        timestamp: Timestamp,
-        value: string,
-        first: GLib.DateDMY,
-        second: GLib.DateDMY,
-        third: GLib.DateDMY,
-        sep: number,
-    ): boolean;
+    function parse_formatted_timestamp(timestamp: Timestamp, value: string, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): boolean;
+
     /**
      * Extracts date parts from `value`, and sets `gdate`'s contents
-     *
+     * 
      * Accepted date format is "YYYY-MM-DD" (more or less than 4 digits for years and
      * less than 2 digits for month and day are accepted). Years must be in the 1-65535 range,
      * a limitation imposed by {@link GLib.Date}.
@@ -1150,42 +1235,45 @@ export namespace Gda {
      * @returns `true` if `value` has been sucessfuly parsed as a valid date (see `g_date_valid()`).
      */
     function parse_iso8601_date(gdate: GLib.Date, value: string): boolean;
+
     /**
      * Extracts time parts from `value`, and sets `timegda`'s contents
-     *
+     * 
      * Accepted date format is "HH:MM:SS[.ms][TZ]" where TZ is +hour or -hour
      * @param timegda a pointer to a {@link Gda.Time} structure which will be filled
      * @param value a string
      * @returns `true` if no error occurred
      */
     function parse_iso8601_time(timegda: Time, value: string): boolean;
+
     /**
      * Extracts date and time parts from `value`, and sets `timestamp`'s contents
-     *
+     * 
      * Accepted date format is "YYYY-MM-DD HH:MM:SS[.ms][TZ]" where TZ is +hour or -hour
      * @param timestamp a pointer to a `GdaTimeStamp` structure which will be filled
      * @param value a string
      * @returns `true` if `value` has been sucessfuly parsed as a valid timestamp (see `g_date_valid()`)
      */
     function parse_iso8601_timestamp(timestamp: Timestamp, value: string): boolean;
+
     /**
      * Modifies `stmt` to take into account any parameter which might be `null`: if `stmt` contains the
      * equivalent of "xxx = &lt;parameter definition&gt;" and if that parameter is in `params` and
      * its value is of type GDA_TYPE_NUL, then that part is replaced with "xxx IS NULL". It also
      * handles the "xxx IS NOT NULL" transformation.
-     *
+     * 
      * For example the following SELECT:
      * <programlisting>SELECT * FROM data WHERE id = ##id::int::null AND name = ##name::string</programlisting>
      * in case the "id" parameter is set to NULL, is converted to:
      * <programlisting>SELECT * FROM data WHERE id IS NULL AND name = ##name::string</programlisting>
-     *
+     * 
      * if `out_stmt` is not `null`, then it will contain:
      * <itemizedlist>
      *   <listitem><para>the modified statement if some modifications were required and no error occured (the function returns `true`)</para></listitem>
      *   <listitem><para>`null` if no modification to `stmt` were required and no erro occurred (the function returns `false`)</para></listitem>
      *   <listitem><para>`null` if an error occured (the function returns `true`)</para></listitem>
      * </itemizedlist>
-     *
+     * 
      * This function is used by provider's implementations to make sure one can use parameters with
      * NULL values in statements without having to rewrite statements, as database usually don't
      * consider that "xxx = NULL" is the same as "xxx IS NULL" when using parameters.
@@ -1195,22 +1283,24 @@ export namespace Gda {
      * @returns `true` if `stmt` needs to be transformed to handle NULL parameters, and `false` otherwise
      * @since 4.2.9
      */
-    function rewrite_statement_for_null_parameters(stmt: Statement, params: Set, out_stmt: Statement | null): boolean;
+    function rewrite_statement_for_null_parameters(stmt: Statement, params: Set, out_stmt: (Statement | null)): boolean;
+
     /**
      * Decodes `string` using the RFC 1738 recommendations: the
      * <constant>&lt;&gt;&quot;#%{}|\^~[]&apos;`;/?:@=&amp;</constant> and space characters are replaced by
      * <constant>&quot;%%ab&quot;</constant> where
      * <constant>ab</constant> is the hexadecimal number corresponding to the character.
-     *
+     * 
      * `string` should respect the RFC 1738 encoding. If this is not the case (for example if there
      * is a "%2z" because 2z is not an hexadecimal value), then the part with the problem
      * is not decoded, and the function returns FALSE.
-     *
+     * 
      * `string` is decoded in place, no new string gets created.
      * @param string a string to decode
      * @returns `true` if no error occurred.
      */
     function rfc1738_decode(string: string): boolean;
+
     /**
      * Encodes `string` using the RFC 1738 recommendations: the
      * <constant>&lt;&gt;&quot;#%{}|\^~[]&apos;`;/?:@=&amp;</constant> and space characters are replaced by
@@ -1220,6 +1310,7 @@ export namespace Gda {
      * @returns a new string
      */
     function rfc1738_encode(string: string): string;
+
     /**
      * Creates a new {@link Gda.Statement}, selecting the same data as `stmt`, but which always returns an
      * empty (no row) data model. This is use dy database providers' implementations.
@@ -1227,7 +1318,9 @@ export namespace Gda {
      * @returns a new {@link Gda.Statement}
      */
     function select_alter_select_for_empty(stmt: Statement): Statement;
+
     function sql_error_quark(): GLib.Quark;
+
     /**
      * Use this function for any SQL identifier to make sure that:
      * <itemizedlist>
@@ -1243,13 +1336,13 @@ export namespace Gda {
      *     </para>
      *   </listitem>
      * </itemizedlist>
-     *
+     * 
      * The `force_quotes` allow some control of how to interpret `id`: if `false`, then `id` will be left
      * unchanged most of the time (except for example if it's a reserved keyword), otherwise
      * if `force_quotes` is `true`, then the returned string will most probably have quotes around it
      * to request that the database keep the case sensitiveness (but again, this may vary depending
      * on the database being accessed through `cnc`).
-     *
+     * 
      * For example, the following table gives the result of this function depending on the arguments
      * when `cnc` is `null` (and `prov` is also `null`):
      * <table frame="all">
@@ -1340,7 +1433,7 @@ export namespace Gda {
      *    </tbody>
      *  </tgroup>
      * </table>
-     *
+     * 
      * Here are a few examples of when and how to use this function:
      * <itemizedlist>
      *   <listitem>
@@ -1388,69 +1481,70 @@ export namespace Gda {
      *     </para>
      *   </listitem>
      * </itemizedlist>
-     *
-     *
+     * 
+     * 
      * Note that `id` must not be a composed SQL identifier (such as "mytable.mycolumn" which should be
      * treated as the "mytable" and "mycolumn" SQL identifiers). If unsure, use `gda_sql_identifier_split()`.
-     *
+     * 
      * Also note that if `cnc` is `null`, then it's possible to pass an non `null` `prov` to have a result specific
      * to `prov`.
-     *
+     * 
      * For more information, see the <link linkend="gen:sql_identifiers">SQL identifiers and abstraction</link> and
      * <link linkend="information_schema:sql_identifiers">SQL identifiers in meta data</link> sections.
      * @param id an SQL identifier
      * @param cnc a {@link Gda.Connection} object, or `null`
      * @param prov a {@link Gda.ServerProvider} object, or `null` `for_meta_store` set to `true` if the returned string will be used in a {@link Gda.MetaStore}
-     * @param meta_store_convention
+     * @param meta_store_convention 
      * @param force_quotes set to `true` to force the returned string to be quoted
      * @returns the representation of `id` ready to be used in SQL statement, as a new string,          or `null` if `id` is in a wrong format
      * @since 4.0.3
      */
-    function sql_identifier_quote(
-        id: string,
-        cnc: Connection | null,
-        prov: ServerProvider | null,
-        meta_store_convention: boolean,
-        force_quotes: boolean,
-    ): string;
+    function sql_identifier_quote(id: string, cnc: (Connection | null), prov: (ServerProvider | null), meta_store_convention: boolean, force_quotes: boolean): string;
+
     /**
      * Splits `id` into an array of it sub parts. `id`'s format has to be "&lt;part&gt;[.&lt;part&gt;[...]]" where
      * each part is either a text surrounded by double quotes which can contain upper and lower cases or
      * an SQL identifier in lower case.
-     *
+     * 
      * For example the <![CDATA["test.\"ATable\""]]> string will result in the array: <![CDATA[{"test", "\"ATable\"", NULL}]]>
      * @param id an SQL identifier
      * @returns a new `null`-terminated array of strings, or NULL (use `g_strfreev()` to free the returned array)
      */
-    function sql_identifier_split(id: string): string[] | null;
+    function sql_identifier_split(id: string): (string[] | null);
+
     /**
-     * @param op
+     * @param op 
      */
     function sql_operation_operator_from_string(op: string): SqlOperatorType;
+
     /**
-     * @param op
+     * @param op 
      */
     function sql_operation_operator_to_string(op: SqlOperatorType): string;
+
     /**
-     * @param type
+     * @param type 
      */
     function sql_select_join_type_to_string(type: SqlSelectJoinType): string;
+
     /**
      * Performs the reverse of `gda_binary_to_string()` (note that for any "\xyz" succession
      * of 4 characters where "xyz" represents a valid octal value, the resulting read value will
      * be modulo 256).
-     *
+     * 
      * I `str` is `null`, then an empty (i.e. where the `data` part is `null`) {@link Gda.Binary} is created and returned.
      * @param str a string to convert, or `null`
      * @returns a new {@link Gda.Binary} if no error were found in `str`, or `null` otherwise
      */
-    function string_to_binary(str: string | null): Binary;
+    function string_to_binary(str: (string | null)): Binary;
+
     /**
      * Performs the reverse of `gda_blob_to_string()`.
      * @param str a string to convert
      * @returns a new #gdaBlob if no error were found in `str`, or NULL otherwise
      */
     function string_to_blob(str: string): Blob;
+
     /**
      * The "encoding" consists in replacing non
      * alphanumeric character with the string "__gdaXX" where XX is the hex. representation
@@ -1459,22 +1553,27 @@ export namespace Gda {
      * @returns a new string
      */
     function text_to_alphanum(text: string): string;
+
     /**
-     * @param boxed
+     * @param boxed 
      */
-    function time_copy(boxed: any | null): any | null;
+    function time_copy(boxed: (any | null)): (any | null);
+
     /**
-     * @param boxed
+     * @param boxed 
      */
-    function time_free(boxed: any | null): void;
+    function time_free(boxed: (any | null)): void;
+
     /**
-     * @param boxed
+     * @param boxed 
      */
-    function timestamp_copy(boxed: any | null): any | null;
+    function timestamp_copy(boxed: (any | null)): (any | null);
+
     /**
-     * @param boxed
+     * @param boxed 
      */
-    function timestamp_free(boxed: any | null): void;
+    function timestamp_free(boxed: (any | null)): void;
+
     /**
      * Check the column types of a GdaDataModel.
      * @param model a {@link Gda.DataModel} object
@@ -1483,9 +1582,10 @@ export namespace Gda {
      * @since 4.2.6
      */
     function utility_check_data_model(model: DataModel, types: GObject.GType[]): boolean;
+
     /**
      * Dump the data in a {@link Gda.DataModel} into a xmlNodePtr (as used in libxml).
-     *
+     * 
      * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
      * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
      * to access data in `model` previously to calling this method, and this iterator will be moved (point to
@@ -1497,13 +1597,8 @@ export namespace Gda {
      * @param use_col_ids set to `true` to add column ID information
      * @returns `true` if no error occurred
      */
-    function utility_data_model_dump_data_to_xml(
-        model: DataModel,
-        parent: libxml2.NodePtr,
-        cols: number[] | null,
-        rows: number[] | null,
-        use_col_ids: boolean,
-    ): boolean;
+    function utility_data_model_dump_data_to_xml(model: DataModel, parent: libxml2.NodePtr, cols: (number[] | null), rows: (number[] | null), use_col_ids: boolean): boolean;
+
     /**
      * Finds the description of a field into Metadata from a {@link Gda.DataModel}.
      * @param model a {@link Gda.DataSelect} data model
@@ -1511,6 +1606,7 @@ export namespace Gda {
      * @returns The field's description, or NULL if description is not set
      */
     function utility_data_model_find_column_description(model: DataSelect, field_name: string): string;
+
     /**
      * Note: this method may set the "source" custom string property
      * @param holder a {@link Gda.Holder}
@@ -1519,6 +1615,7 @@ export namespace Gda {
      * @returns `true` if no error occurred
      */
     function utility_holder_load_attributes(holder: Holder, node: libxml2.NodePtr, sources: DataModel[]): boolean;
+
     /**
      * Compares two values of the same type, with the exception that a value of any type can be
      * compared to a GDA_TYPE_NULL value, specifically:
@@ -1532,11 +1629,12 @@ export namespace Gda {
      * @param value2 the other {@link GObject.Value} to be compared to `value1` (not `null`)
      * @returns if both values have the same type, returns 0 if both contain the same value, an integer less than 0 if `value1` is less than `value2` or an integer greater than 0 if `value1` is greater than `value2`.
      */
-    function value_compare(value1: GObject.Value | any, value2: GObject.Value | any): number;
+    function value_compare(value1: (GObject.Value | any), value2: (GObject.Value | any)): number;
+
     /**
      * Tells if two values are equal or not, by comparing memory representations. Unlike `gda_value_compare()`,
      * the returned value is boolean, and gives no idea about ordering.
-     *
+     * 
      * The two values must be of the same type, with the exception that a value of any type can be
      * compared to a GDA_TYPE_NULL value, specifically:
      * <itemizedlist>
@@ -1549,105 +1647,96 @@ export namespace Gda {
      * @param value2 the other {@link GObject.Value} to be compared to `value1`.
      * @returns a non 0 value if `value1` and `value2` differ, and 0 if they are equal
      */
-    function value_differ(value1: GObject.Value | any, value2: GObject.Value | any): number;
+    function value_differ(value1: (GObject.Value | any), value2: (GObject.Value | any)): number;
+
     /**
      * Converts a GValue to its string representation which is a human readable value. Note that the
      * returned string does not take into account the current locale of the user (on the contrary to the
      * {@link Gda.DataHandler} objects). Using this function should be limited to debugging and values serialization
      * purposes.
-     *
+     * 
      * Output is in the "C" locale for numbers, and dates are converted in a YYYY-MM-DD format.
      * @param value a {@link GObject.Value}.
      * @returns a new string, or `null` if the conversion cannot be done. Free the value with a `g_free()` when you've finished using it.
      */
-    function value_stringify(value: GObject.Value | any): string;
+    function value_stringify(value: (GObject.Value | any)): string;
+
     /**
      * @gir-type Callback
      */
     interface AttributesManagerFunc {
-        (att_name: string, value: unknown, data: any | null): void;
+        (att_name: string, value: unknown, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface AttributesManagerSignal<A = GObject.Object> {
-        (obj: A, att_name: string, value: unknown, data: any | null): void;
+        (obj: A, att_name: string, value: unknown, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ServerProviderAsyncCallback {
-        (
-            provider: ServerProvider,
-            cnc: Connection,
-            task_id: number,
-            result_status: boolean,
-            error: GLib.Error,
-            data: any | null,
-        ): void;
+        (provider: ServerProvider, cnc: Connection, task_id: number, result_status: boolean, error: GLib.Error, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ServerProviderExecCallback<A = GObject.Object> {
-        (
-            provider: ServerProvider,
-            cnc: Connection,
-            task_id: number,
-            result_obj: A,
-            error: GLib.Error,
-            data: any | null,
-        ): void;
+        (provider: ServerProvider, cnc: Connection, task_id: number, result_obj: A, error: GLib.Error, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface SqlRenderingValue {
         (value: unknown, context: SqlRenderingContext): string;
     }
+
     /**
      * @gir-type Callback
      */
     interface SqlReservedKeywordsFunc {
         (word: string): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface ThreadWrapperCallback {
-        (
-            wrapper: ThreadWrapper,
-            instance: any | null,
-            signame: string,
-            n_param_values: number,
-            param_values: unknown,
-            gda_reserved: any | null,
-            data: any | null,
-        ): void;
+        (wrapper: ThreadWrapper, instance: (any | null), signame: string, n_param_values: number, param_values: unknown, gda_reserved: (any | null), data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ThreadWrapperFunc {
-        (arg: any | null): any | null;
+        (arg: (any | null)): (any | null);
     }
+
     /**
      * @gir-type Callback
      */
     interface ThreadWrapperVoidFunc {
-        (arg: any | null): void;
+        (arg: (any | null)): void;
     }
+
     /**
      * @gir-type Alias
      */
-    type Default = object | null;
+    type Default = (object | null);
+
     /**
      * @gir-type Alias
      */
-    type Null = object | null;
+    type Null = (object | null);
+
     /**
      * Specifies some aspects of a connection when opening it.
-     *
+     * 
      * Additional information about the GDA_CONNECTION_OPTIONS_SQL_IDENTIFIERS_CASE_SENSITIVE flag:
      * <itemizedlist>
      *   <listitem><para>For example without this flag, if the table
@@ -1660,7 +1749,7 @@ export namespace Gda {
      *   <listitem><para>Libgda will not apply this rule when parsing SQL code, the SQL code being parsed
      *       has to be conform to the database it will be used with</para></listitem>
      * </itemizedlist>
-     *
+     * 
      * Additional information about the GDA_CONNECTION_OPTIONS_THREAD_SAFE and GDA_CONNECTION_OPTIONS_THREAD_ISOLATED flags:
      * The GDA_CONNECTION_OPTIONS_THREAD_SAFE flag specifies that it has to be able to use the returned connection object from
      * several threads at once (locking is ensured by the {@link Gda.Connection} itself). Depending on the database provider's
@@ -1668,15 +1757,15 @@ export namespace Gda {
      * and in this case a specific thread is started and used as the unique thread which will manipulate the actual connection,
      * while a "wrapper connection" is actually returned and used by the caller (that wrapper connection passes method calls
      * from the calling thread to the actual connection's specific thread, and gets the results back).
-     *
+     * 
      * The GDA_CONNECTION_OPTIONS_THREAD_ISOLATED forces using a specific thread and a "wrapper connection" even if the
      * "normal" connection would itself be thread safe; this is useful for example to be sure the asynchronous API can
      * always be used (see `gda_connection_async_statement_execute()`).
-     *
+     * 
      * Having a specific thread and a "wrapper connection" definitely has an impact on the performances (because it involves
      * messages passing between threads for every method call), so using the
      * GDA_CONNECTION_OPTIONS_THREAD_SAFE or GDA_CONNECTION_OPTIONS_THREAD_ISOLATED flags should be carefully considered.
-     *
+     * 
      * Note about the `GDA_CONNECTION_OPTIONS_AUTO_META_DATA` flag:
      * <itemizedlist>
      *  <listitem><para>Every time a DDL statement is successfully executed, the associated meta data, if
@@ -1721,6 +1810,7 @@ export namespace Gda {
         AUTO_META_DATA,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -1735,12 +1825,14 @@ export namespace Gda {
         WRITE,
     }
 
+
     /**
      * @gir-type Flags
      */
     enum MetaGraphInfo {
         META_GRAPH_COLUMNS,
     }
+
 
     /**
      * Controls which features are computed about database objects.
@@ -1765,6 +1857,7 @@ export namespace Gda {
         ALL,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -1777,6 +1870,7 @@ export namespace Gda {
         FKEY_FLAG,
         PKEY_AUTOINC_FLAG,
     }
+
 
     /**
      * Specifies how SQL identifiers are represented by a specific database
@@ -1792,6 +1886,7 @@ export namespace Gda {
          */
         UPPER_CASE,
     }
+
 
     /**
      * These flags specify how the {@link Gda.DataModel} returned when executing a {@link Gda.Statement} will be used
@@ -1823,6 +1918,7 @@ export namespace Gda {
          */
         OFFLINE,
     }
+
 
     /**
      * Specifies rendering options
@@ -1867,6 +1963,7 @@ export namespace Gda {
         TIMEZONE_TO_GMT,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -1884,6 +1981,7 @@ export namespace Gda {
         UNUSED,
     }
 
+
     namespace Batch {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -1896,8 +1994,9 @@ export namespace Gda {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1916,83 +2015,75 @@ export namespace Gda {
         $signals: Batch.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Batch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Batch;
+        static ["new"](): Batch;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Batch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Batch.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Batch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Batch.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Batch.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Batch.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Batch.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Batch.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Batch.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Batch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Batch.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Batch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param changed_stmt
+         * @param changed_stmt 
          * @virtual
          */
         vfunc_changed(changed_stmt: Statement): void;
 
         // Methods
-
         /**
          * Add `stmt` to the list of statements managed by `batch`. A {@link Gda.Statement} object can be
          * added multiple times to a {@link Gda.Batch} object.
          * @param stmt a statement to add to `batch`'s statements list
          */
         add_statement(stmt: Statement): void;
+
         /**
          * Copy constructor
          * @returns a the new copy of `orig`
          */
         copy(): Batch;
+
         /**
          * Get a new {@link Gda.Set} object which groups all the execution parameters
          * which `batch` needs for all the statements it includes.
          * This new object is returned though `out_params`.
-         *
+         * 
          * Note that if `batch` does not need any parameter, then `out_params` is set to `null`.
          * @returns TRUE if no error occurred.
          */
         get_parameters(): [boolean, Set | null];
+
         /**
          * Get a list of the {@link Gda.Statement} objects contained in `batch`
          * @returns a list of {@link Gda.Statement} which should not be modified.
          */
         get_statements(): Statement[];
+
         /**
          * Removes `stmt` from the list of statements managed by `batch`. If `stmt` is present several
          * times in `batch`'s statements' list, then only the first one is removed.
          * @param stmt a statement to remove from `batch`'s statements list
          */
         remove_statement(stmt: Statement): void;
+
         /**
          * Creates a string representing the contents of `batch`.
          * @returns a string containing the serialized version of `batch`
@@ -2000,13 +2091,16 @@ export namespace Gda {
         serialize(): string;
     }
 
+
     namespace BlobOp {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2025,42 +2119,32 @@ export namespace Gda {
         $signals: BlobOp.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<BlobOp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BlobOp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlobOp.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BlobOp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BlobOp.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BlobOp.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BlobOp.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BlobOp.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BlobOp.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BlobOp.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BlobOp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BlobOp.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BlobOp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
-        vfunc_get_length(): bigint | number;
+        vfunc_get_length(): (bigint | number);
+
         /**
          * Reads a chunk of bytes from the BLOB accessible through `op` into `blob`.
          * @param blob a {@link Gda.Blob} to read data to
@@ -2068,18 +2152,20 @@ export namespace Gda {
          * @param size maximum number of bytes to read.
          * @virtual
          */
-        vfunc_read(blob: Blob, offset: number, size: number): bigint | number;
+        vfunc_read(blob: Blob, offset: number, size: number): (bigint | number);
+
         /**
          * Writes a chunk of bytes from a `blob` to the BLOB accessible through `op`, `blob` is unchanged after
          * this call.
-         *
+         * 
          * If `blob` has an associated {@link Gda.BlobOp} (ie. if `blob`->op is not `null`) then the data to be written
          * using `op` is the data fetched using `blob`->op.
          * @param blob a {@link Gda.Blob} which contains the data to write
          * @param offset offset to write from the start of the blob (starts at 0)
          * @virtual
          */
-        vfunc_write(blob: Blob, offset: number): bigint | number;
+        vfunc_write(blob: Blob, offset: number): (bigint | number);
+
         /**
          * Writes the whole contents of `blob` into the blob manipulated by `op`. If necessary the resulting
          * blob is truncated from its previous length.
@@ -2089,11 +2175,11 @@ export namespace Gda {
         vfunc_write_all(blob: Blob): boolean;
 
         // Methods
-
         /**
          * @returns the length of the blob in bytes. In case of error, -1 is returned and the provider should have added an error (a {@link Gda.ConnectionEvent}) to the connection.
          */
         get_length(): number;
+
         /**
          * Reads a chunk of bytes from the BLOB accessible through `op` into `blob`.
          * @param blob a {@link Gda.Blob} to read data to
@@ -2101,24 +2187,27 @@ export namespace Gda {
          * @param size maximum number of bytes to read.
          * @returns the number of bytes actually read. In case of error, -1 is returned and the provider should have added an error to the connection.
          */
-        read(blob: Blob, offset: bigint | number, size: bigint | number): number;
+        read(blob: Blob, offset: (bigint | number), size: (bigint | number)): number;
+
         /**
          * Reads the whole contents of the blob manipulated by `op` into `blob`
          * @param blob a {@link Gda.Blob} to read data to
          * @returns TRUE if `blob`->data contains the whole BLOB manipulated by `op`
          */
         read_all(blob: Blob): boolean;
+
         /**
          * Writes a chunk of bytes from a `blob` to the BLOB accessible through `op`, `blob` is unchanged after
          * this call.
-         *
+         * 
          * If `blob` has an associated {@link Gda.BlobOp} (ie. if `blob`->op is not `null`) then the data to be written
          * using `op` is the data fetched using `blob`->op.
          * @param blob a {@link Gda.Blob} which contains the data to write
          * @param offset offset to write from the start of the blob (starts at 0)
          * @returns the number of bytes written. In case of error, -1 is returned and the provider should have added an error to the connection.
          */
-        write(blob: Blob, offset: bigint | number): number;
+        write(blob: Blob, offset: (bigint | number)): number;
+
         /**
          * Writes the whole contents of `blob` into the blob manipulated by `op`. If necessary the resulting
          * blob is truncated from its previous length.
@@ -2128,6 +2217,7 @@ export namespace Gda {
         write_all(blob: Blob): boolean;
     }
 
+
     namespace Column {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -2136,18 +2226,17 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            'g-type-changed': (arg0: GObject.GType, arg1: GObject.GType) => void;
+            "g-type-changed": (arg0: GObject.GType, arg1: GObject.GType) => void;
             /**
              * Gets emitted whenever `column`'s name has been changed
              * @signal
              * @run-last
              */
-            'name-changed': (arg0: string) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "name-changed": (arg0: string) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: string;
         }
@@ -2160,7 +2249,6 @@ export namespace Gda {
         static $gtype: GObject.GType<Column>;
 
         // Properties
-
         get id(): string;
         set id(val: string);
 
@@ -2174,123 +2262,123 @@ export namespace Gda {
         $signals: Column.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Column.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Column;
+        static ["new"](): Column;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Column.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Column.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Column.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Column.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Column.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Column.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Column.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param old_type
-         * @param new_type
+         * @param old_type 
+         * @param new_type 
          * @virtual
          */
         vfunc_g_type_changed(old_type: GObject.GType, new_type: GObject.GType): void;
+
         /**
-         * @param old_name
+         * @param old_name 
          * @virtual
          */
         vfunc_name_changed(old_name: string): void;
 
         // Methods
-
         /**
          * Creates a new {@link Gda.Column} object from an existing one.
          * @returns a newly allocated {@link Gda.Column} with a copy of the data in `column`.
          */
         copy(): Column;
+
         /**
          * Gets the 'allow null' flag of the given column.
          * @returns whether the given column allows null values or not (`true` or `false`).
          */
         get_allow_null(): boolean;
+
         /**
          * Get the value associated to a named attribute.
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names, see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `column`
          */
         get_attribute(attribute: string): unknown;
+
         /**
          * @returns whether the given column is an auto incremented one (`true` or `false`).
          */
         get_auto_increment(): boolean;
+
         /**
          * @returns the database type of `column`.
          */
         get_dbms_type(): string;
+
         /**
          * @returns `column`'s default value, as a {@link GObject.Value} object, or `null` if column does not have a default value
          */
-        get_default_value(): GObject.Value | null;
+        get_default_value(): (GObject.Value | null);
+
         /**
          * @returns the column's description, in any
          */
         get_description(): string;
+
         /**
          * @returns the type of `column`.
          */
         get_g_type(): GObject.GType;
+
         /**
          * @returns the name of `column`.
          */
         get_name(): string;
+
         /**
          * @returns the position of the column refer to in the containing data model.
          */
         get_position(): number;
+
         /**
          * Sets the 'allow null' flag of the given column.
          * @param allow whether the given column should allows null values or not.
          */
         set_allow_null(allow: boolean): void;
+
         /**
          * Set the value associated to a named attribute. The `attribute` string is 'stolen' by this method, and
          * the memory it uses will be freed using the `destroy` function when no longer needed (if `destroy` is `null`,
          * then the string will not be freed at all).
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names,
          * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
-         *
+         * 
          * If there is already an attribute named `attribute` set, then its value is replaced with the new value (`value` is
          * copied), except if `value` is `null`, in which case the attribute is removed.
-         *
+         * 
          * For example one would use it as:
-         *
+         * 
          * <code>
          * gda_column_set_attribute (holder, g_strdup (my_attribute), g_free, my_value);
          * gda_column_set_attribute (holder, GDA_ATTRIBUTE_NAME, NULL, my_value);
          * </code>
-         *
+         * 
          * Note: this method does not modify in any way the contents of the data model for which `column` is a column (nor
          * does it modify the table definition of the tables used by a SELECT statement is the model was created from a
          * SELECT statement).
@@ -2298,37 +2386,44 @@ export namespace Gda {
          * @param value a {@link GObject.Value}, or `null`
          * @param destroy a function to be called when `attribute` is not needed anymore, or `null`
          */
-        set_attribute(attribute: string, value: GObject.Value | null, destroy: GLib.DestroyNotify | null): void;
+        set_attribute(attribute: string, value: (GObject.Value | null), destroy: (GLib.DestroyNotify | null)): void;
+
         /**
          * Sets the auto increment flag for the given column.
          * @param is_auto auto increment status.
          */
         set_auto_increment(is_auto: boolean): void;
+
         /**
          * Defines `column`'s database type
          * @param dbms_type a string
          */
         set_dbms_type(dbms_type: string): void;
+
         /**
          * Sets `column`'s default {@link GObject.Value}.
          * @param default_value default {@link GObject.Value} for the column
          */
-        set_default_value(default_value: GObject.Value | null): void;
+        set_default_value(default_value: (GObject.Value | null)): void;
+
         /**
          * Sets the column's description
          * @param title title name.
          */
         set_description(title: string): void;
+
         /**
          * Sets the type of `column` to `type`.
          * @param type the new type of `column`.
          */
         set_g_type(type: GObject.GType): void;
+
         /**
          * Sets the name of `column` to `name`.
          * @param name the new name of `column`.
          */
         set_name(name: string): void;
+
         /**
          * Sets the position of the column refer to in the containing
          * data model.
@@ -2336,6 +2431,7 @@ export namespace Gda {
          */
         set_position(position: number): void;
     }
+
 
     namespace Config {
         // Signal signatures
@@ -2345,31 +2441,30 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'dsn-added': (arg0: any | null) => void;
+            "dsn-added": (arg0: (any | null)) => void;
             /**
              * Gets emitted whenever a DSN's definition has been changed
              * @signal
              * @run-first
              */
-            'dsn-changed': (arg0: any | null) => void;
+            "dsn-changed": (arg0: (any | null)) => void;
             /**
              * Gets emitted whenever a DSN has been removed
              * @signal
              * @run-first
              */
-            'dsn-removed': (arg0: any | null) => void;
+            "dsn-removed": (arg0: (any | null)) => void;
             /**
              * Gets emitted whenever a DSN is about to be removed
              * @signal
              * @run-first
              */
-            'dsn-to-be-removed': (arg0: any | null) => void;
-            'notify::system-filename': (pspec: GObject.ParamSpec) => void;
-            'notify::user-filename': (pspec: GObject.ParamSpec) => void;
+            "dsn-to-be-removed": (arg0: (any | null)) => void;
+            "notify::system-filename": (pspec: GObject.ParamSpec) => void;
+            "notify::user-filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             system_filename: string;
             systemFilename: string;
@@ -2385,22 +2480,24 @@ export namespace Gda {
         static $gtype: GObject.GType<Config>;
 
         // Properties
-
         /**
          * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
          */
         get system_filename(): string;
         set system_filename(val: string);
+
         /**
          * File to use for system-wide DSN list. When changed, the whole list of DSN will be reloaded.
          */
         get systemFilename(): string;
         set systemFilename(val: string);
+
         /**
          * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
          */
         get user_filename(): string;
         set user_filename(val: string);
+
         /**
          * File to use for per-user DSN list. When changed, the whole list of DSN will be reloaded.
          */
@@ -2417,103 +2514,103 @@ export namespace Gda {
         $signals: Config.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Tells if the global (system) configuration can be modified (considering
          * system permissions and settings)
          */
         static can_modify_system_config(): boolean;
+
         /**
          * Add or update a DSN from the definition in `info`.
-         *
+         * 
          * This method may fail with a `GDA_CONFIG_ERROR` domain error (see the {@link Gda.ConfigError} error codes).
          * @param info a pointer to a filled GdaDsnInfo structure
          */
         static define_dsn(info: DsnInfo): boolean;
+
         /**
          * Tells if the data source identified as `dsn_name` needs any authentication. If a &lt;username&gt;
          * and optionally a &lt;password&gt; are specified, they are ignored.
          * @param dsn_name the name of a DSN, in the "[&lt;username&gt;[:&lt;password&gt;]@]&lt;DSN&gt;" format
          */
         static dsn_needs_authentication(dsn_name: string): boolean;
+
         static error_quark(): GLib.Quark;
+
         /**
          * Get a pointer to the global (unique) {@link Gda.Config} object. This functions increments
          * the reference count of the object, so you need to call `g_object_unref()` on it once finished.
          */
         static get(): Config;
+
         /**
          * Get information about the DSN named `dsn_name`.
-         *
+         * 
          * `dsn_name`'s format is "[&lt;username&gt;[:&lt;password&gt;]@]&lt;DSN&gt;" (if &lt;username&gt;
          * and optionally &lt;password&gt; are provided, they are ignored). Also see the `gda_dsn_split()` utility
          * function.
          * @param dsn_name the name of the DSN to look for
          */
         static get_dsn_info(dsn_name: string): DsnInfo;
+
         /**
          * Get a pointer to a read-only {@link Gda.DsnInfo} at the `index` position
          * @param index an index
          */
         static get_dsn_info_at_index(index: number): DsnInfo;
+
         /**
          * Get the index (starting at 0) of the DSN named `dsn_name`
          * @param dsn_name a DSN
          */
         static get_dsn_info_index(dsn_name: string): number;
+
         /**
          * Get the number of defined DSN
          */
         static get_nb_dsn(): number;
+
         /**
          * Get a pointer to the session-wide {@link Gda.ServerProvider} for the
          * provider named `provider_name`. The caller must not call `g_object_unref()` on the
          * returned object.
-         *
+         * 
          * This method may fail with a `GDA_CONFIG_ERROR` domain error (see the {@link Gda.ConfigError} error codes).
          * @param provider_name a database provider
          */
         static get_provider(provider_name: string): ServerProvider;
+
         /**
          * Get some information about the a database provider (adapter) named
          * @param provider_name a database provider
          */
         static get_provider_info(provider_name: string): ProviderInfo;
+
         /**
          * Get a {@link Gda.DataModel} representing all the configured DSN, and keeping itself up to date with
          * the changes in the declared DSN.
-         *
+         * 
          * The returned data model is composed of the following columns:
          * <itemizedlist>
          *  <listitem><para>DSN name</para></listitem>
@@ -2524,9 +2621,10 @@ export namespace Gda {
          * </itemizedlist>
          */
         static list_dsn(): DataModel;
+
         /**
          * Get a {@link Gda.DataModel} representing all the installed database providers.
-         *
+         * 
          * The returned data model is composed of the following columns:
          * <itemizedlist>
          *  <listitem><para>Provider name</para></listitem>
@@ -2537,37 +2635,41 @@ export namespace Gda {
          * </itemizedlist>
          */
         static list_providers(): DataModel;
+
         /**
          * Remove the DSN named `dsn_name`.
-         *
+         * 
          * This method may fail with a `GDA_CONFIG_ERROR` domain error (see the {@link Gda.ConfigError} error codes).
          * @param dsn_name the name of the DSN to remove
          */
         static remove_dsn(dsn_name: string): boolean;
 
         // Virtual methods
-
         /**
-         * @param new_dsn
+         * @param new_dsn 
          * @virtual
          */
         vfunc_dsn_added(new_dsn: DsnInfo): void;
+
         /**
-         * @param dsn
+         * @param dsn 
          * @virtual
          */
         vfunc_dsn_changed(dsn: DsnInfo): void;
+
         /**
-         * @param old_dsn
+         * @param old_dsn 
          * @virtual
          */
         vfunc_dsn_removed(old_dsn: DsnInfo): void;
+
         /**
-         * @param old_dsn
+         * @param old_dsn 
          * @virtual
          */
         vfunc_dsn_to_be_removed(old_dsn: DsnInfo): void;
     }
+
 
     namespace Connection {
         // Signal signatures
@@ -2577,25 +2679,25 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            'conn-closed': () => void;
+            "conn-closed": () => void;
             /**
              * Gets emitted when the connection has been opened to the database
              * @signal
              * @run-first
              */
-            'conn-opened': () => void;
+            "conn-opened": () => void;
             /**
              * Gets emitted when the connection to the database is about to be closed
              * @signal
              * @run-first
              */
-            'conn-to-close': () => void;
+            "conn-to-close": () => void;
             /**
              * Gets emitted when the DSN used by `cnc` has been changed
              * @signal
              * @run-last
              */
-            'dsn-changed': () => void;
+            "dsn-changed": () => void;
             /**
              * Gets emitted whenever a connection event occurs. Check the nature of `event` to
              * see if it's an error or a simple notification
@@ -2609,22 +2711,21 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            'transaction-status-changed': () => void;
-            'notify::auth-string': (pspec: GObject.ParamSpec) => void;
-            'notify::cnc-string': (pspec: GObject.ParamSpec) => void;
-            'notify::dsn': (pspec: GObject.ParamSpec) => void;
-            'notify::events-history-size': (pspec: GObject.ParamSpec) => void;
-            'notify::execution-slowdown': (pspec: GObject.ParamSpec) => void;
-            'notify::execution-timer': (pspec: GObject.ParamSpec) => void;
-            'notify::is-wrapper': (pspec: GObject.ParamSpec) => void;
-            'notify::meta-store': (pspec: GObject.ParamSpec) => void;
-            'notify::monitor-wrapped-in-mainloop': (pspec: GObject.ParamSpec) => void;
-            'notify::provider': (pspec: GObject.ParamSpec) => void;
-            'notify::thread-owner': (pspec: GObject.ParamSpec) => void;
+            "transaction-status-changed": () => void;
+            "notify::auth-string": (pspec: GObject.ParamSpec) => void;
+            "notify::cnc-string": (pspec: GObject.ParamSpec) => void;
+            "notify::dsn": (pspec: GObject.ParamSpec) => void;
+            "notify::events-history-size": (pspec: GObject.ParamSpec) => void;
+            "notify::execution-slowdown": (pspec: GObject.ParamSpec) => void;
+            "notify::execution-timer": (pspec: GObject.ParamSpec) => void;
+            "notify::is-wrapper": (pspec: GObject.ParamSpec) => void;
+            "notify::meta-store": (pspec: GObject.ParamSpec) => void;
+            "notify::monitor-wrapped-in-mainloop": (pspec: GObject.ParamSpec) => void;
+            "notify::provider": (pspec: GObject.ParamSpec) => void;
+            "notify::thread-owner": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
             auth_string: string;
             authString: string;
@@ -2656,17 +2757,21 @@ export namespace Gda {
         static $gtype: GObject.GType<Connection>;
 
         // Properties
-
         get auth_string(): string;
         set auth_string(val: string);
+
         get authString(): string;
         set authString(val: string);
+
         get cnc_string(): string;
         set cnc_string(val: string);
+
         get cncString(): string;
         set cncString(val: string);
+
         get dsn(): string;
         set dsn(val: string);
+
         /**
          * Defines the number of {@link Gda.ConnectionEvent} objects kept in memory which can
          * be fetched using `gda_connection_get_events()`.
@@ -2674,6 +2779,7 @@ export namespace Gda {
          */
         get events_history_size(): number;
         set events_history_size(val: number);
+
         /**
          * Defines the number of {@link Gda.ConnectionEvent} objects kept in memory which can
          * be fetched using `gda_connection_get_events()`.
@@ -2681,6 +2787,7 @@ export namespace Gda {
          */
         get eventsHistorySize(): number;
         set eventsHistorySize(val: number);
+
         /**
          * Artificially slows down the execution of queries. This property can be used to
          * debug some problems. If non zero, this value is the number of microseconds waited before actually
@@ -2689,6 +2796,7 @@ export namespace Gda {
          */
         get execution_slowdown(): number;
         set execution_slowdown(val: number);
+
         /**
          * Artificially slows down the execution of queries. This property can be used to
          * debug some problems. If non zero, this value is the number of microseconds waited before actually
@@ -2697,66 +2805,77 @@ export namespace Gda {
          */
         get executionSlowdown(): number;
         set executionSlowdown(val: number);
+
         /**
          * Computes execution times for each statement executed.
          * @since 4.2.9
          */
         get execution_timer(): boolean;
         set execution_timer(val: boolean);
+
         /**
          * Computes execution times for each statement executed.
          * @since 4.2.9
          */
         get executionTimer(): boolean;
         set executionTimer(val: boolean);
+
         /**
          * This property, if set to `true`, specifies that the connection is not a real connection, but rather
          * a {@link Gda.Connection} object which "proxies" all the calls to another connection which executes in a sub
          * thread.
-         *
+         * 
          * Note: this property is used internally by Libgda and should not be directly used by any programs. Setting
          * this property has no effect, reading it is supported, though.
          * @since 4.2
          */
         get is_wrapper(): boolean;
         set is_wrapper(val: boolean);
+
         /**
          * This property, if set to `true`, specifies that the connection is not a real connection, but rather
          * a {@link Gda.Connection} object which "proxies" all the calls to another connection which executes in a sub
          * thread.
-         *
+         * 
          * Note: this property is used internally by Libgda and should not be directly used by any programs. Setting
          * this property has no effect, reading it is supported, though.
          * @since 4.2
          */
         get isWrapper(): boolean;
         set isWrapper(val: boolean);
+
         get meta_store(): MetaStore;
         set meta_store(val: MetaStore);
+
         get metaStore(): MetaStore;
         set metaStore(val: MetaStore);
+
         /**
          * Useful only when there is a mainloop and when the connection acts as a thread wrapper around another connection,
          * it sets up a timeout to handle signals coming from the wrapped connection.
-         *
+         * 
          * If the connection is not a thread wrapper, then this property has no effect.
          * @since 4.2
          */
         get monitor_wrapped_in_mainloop(): boolean;
         set monitor_wrapped_in_mainloop(val: boolean);
+
         /**
          * Useful only when there is a mainloop and when the connection acts as a thread wrapper around another connection,
          * it sets up a timeout to handle signals coming from the wrapped connection.
-         *
+         * 
          * If the connection is not a thread wrapper, then this property has no effect.
          * @since 4.2
          */
         get monitorWrappedInMainloop(): boolean;
         set monitorWrappedInMainloop(val: boolean);
+
         get provider(): ServerProvider;
         set provider(val: ServerProvider);
+
         get thread_owner(): any;
         set thread_owner(val: any);
+
         get threadOwner(): any;
         set threadOwner(val: any);
 
@@ -2770,75 +2889,61 @@ export namespace Gda {
         $signals: Connection.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_from_dsn(dsn: string, auth_string: string | null, options: ConnectionOptions): Connection;
+        static new_from_dsn(dsn: string, auth_string: (string | null), options: ConnectionOptions): Connection;
 
-        static new_from_string(
-            provider_name: string | null,
-            cnc_string: string,
-            auth_string: string | null,
-            options: ConnectionOptions,
-        ): Connection;
+        static new_from_string(provider_name: (string | null), cnc_string: string, auth_string: (string | null), options: ConnectionOptions): Connection;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
+
         /**
          * This function is the way of opening database connections with libgda, using a pre-defined data source (DSN),
          * see `gda_config_define_dsn()` for more information about how to define a DSN. If you don't want to define
          * a DSN, it is possible to use `gda_connection_open_from_string()` instead of this method.
-         *
+         * 
          * The `dsn` string must have the following format: "[&lt;username&gt;[:&lt;password&gt;]@]&lt;DSN&gt;"
          * (if &lt;username&gt; and/or &lt;password&gt; are provided, and `auth_string` is `null`, then these username
          * and passwords will be used). Note that if provided, &lt;username&gt; and &lt;password&gt;
          * must be encoded as per RFC 1738, see `gda_rfc1738_encode()` for more information.
-         *
+         * 
          * The `auth_string` can contain the authentication information for the server
          * to accept the connection. It is a string containing semi-colon seperated named value, usually
          * like "USERNAME=...;PASSWORD=..." where the ... are replaced by actual values. Note that each
          * name and value must be encoded as per RFC 1738, see `gda_rfc1738_encode()` for more information.
-         *
+         * 
          * The actual named parameters required depend on the provider being used, and that list is available
          * as the <parameter>auth_params</parameter> member of the {@link Gda.ProviderInfo} structure for each installed
          * provider (use `gda_config_get_provider_info()` to get it). Also one can use the "gda-sql-5.0 -L" command to
          * list the possible named parameters.
-         *
+         * 
          * This method may fail with a GDA_CONNECTION_ERROR domain error (see the {@link Gda.ConnectionError} error codes)
          * or a `GDA_CONFIG_ERROR` domain error (see the {@link Gda.ConfigError} error codes).
          * @param dsn data source name.
          * @param auth_string authentication string, or `null`
          * @param options options for the connection (see {@link Gda.ConnectionOptions}).
          */
-        static open_from_dsn(dsn: string, auth_string: string | null, options: ConnectionOptions): Connection;
+        static open_from_dsn(dsn: string, auth_string: (string | null), options: ConnectionOptions): Connection;
+
         /**
          * Opens a connection given a provider ID and a connection string. This
          * allows applications to open connections without having to create
@@ -2846,35 +2951,35 @@ export namespace Gda {
          * similar to PostgreSQL and MySQL connection strings. It is a semicolumn-separated
          * series of &lt;key&gt;=&lt;value&gt; pairs, where each key and value are encoded as per RFC 1738,
          * see `gda_rfc1738_encode()` for more information.
-         *
+         * 
          * The possible keys depend on the provider, the "gda-sql-5.0 -L" command
          * can be used to list the actual keys for each installed database provider.
-         *
+         * 
          * For example the connection string to open an SQLite connection to a database
          * file named "my_data.db" in the current directory would be <constant>"DB_DIR=.;DB_NAME=my_data"</constant>.
-         *
+         * 
          * The `cnc_string` string must have the following format:
          * "[&lt;provider&gt;://][&lt;username&gt;[:&lt;password&gt;]@]&lt;connection_params&gt;"
          * (if &lt;username&gt; and/or &lt;password&gt; are provided, and `auth_string` is `null`, then these username
          * and passwords will be used, and if &lt;provider&gt; is provided and `provider_name` is `null` then this
          * provider will be used). Note that if provided, &lt;username&gt;, &lt;password&gt; and  &lt;provider&gt;
          * must be encoded as per RFC 1738, see `gda_rfc1738_encode()` for more information.
-         *
+         * 
          * The `auth_string` must contain the authentication information for the server
          * to accept the connection. It is a string containing semi-colon seperated named values, usually
          * like "USERNAME=...;PASSWORD=..." where the ... are replaced by actual values. Note that each
          * name and value must be encoded as per RFC 1738, see `gda_rfc1738_encode()` for more information.
-         *
+         * 
          * The actual named parameters required depend on the provider being used, and that list is available
          * as the <parameter>auth_params</parameter> member of the {@link Gda.ProviderInfo} structure for each installed
          * provider (use `gda_config_get_provider_info()` to get it). Similarly to the format of the connection
          * string, use the "gda-sql-5.0 -L" command to list the possible named parameters.
-         *
+         * 
          * Additionally, it is possible to have the connection string
          * respect the "&lt;provider_name&gt;://&lt;real cnc string&gt;" format, in which case the provider name
          * and the real connection string will be extracted from that string (note that if `provider_name`
          * is not `null` then it will still be used as the provider ID).\
-         *
+         * 
          * This method may fail with a GDA_CONNECTION_ERROR domain error (see the {@link Gda.ConnectionError} error codes)
          * or a `GDA_CONFIG_ERROR` domain error (see the {@link Gda.ConfigError} error codes).
          * @param provider_name provider ID to connect to, or `null`
@@ -2882,12 +2987,8 @@ export namespace Gda {
          * @param auth_string authentication string, or `null`
          * @param options options for the connection (see {@link Gda.ConnectionOptions}).
          */
-        static open_from_string(
-            provider_name: string | null,
-            cnc_string: string,
-            auth_string: string | null,
-            options: ConnectionOptions,
-        ): Connection;
+        static open_from_string(provider_name: (string | null), cnc_string: string, auth_string: (string | null), options: ConnectionOptions): Connection;
+
         /**
          * Opens an SQLite connection even if the SQLite provider is not installed,
          * to be used by database providers which need a temporary database to store
@@ -2896,13 +2997,14 @@ export namespace Gda {
          * @param filename the database file name
          * @param auto_unlink if `true`, then the database file will be removed afterwards
          */
-        static open_sqlite(directory: string | null, filename: string, auto_unlink: boolean): Connection;
+        static open_sqlite(directory: (string | null), filename: string, auto_unlink: boolean): Connection;
+
         /**
          * Extract the provider, connection parameters, username and password from `string`.
          * in `string`, the various parts are strings
          * which are expected to be encoded using an RFC 1738 compliant encoding. If they are specified,
          * the returned provider, username and password strings are correctly decoded.
-         *
+         * 
          * For example all the following connection strings:
          * <programlisting><![CDATA[
          * PostgreSQL://meme:pass@DB_NAME=mydb;HOST=server
@@ -2915,7 +3017,7 @@ export namespace Gda {
          * PostgreSQL://PASSWORD=pass;USERNAME=meme;DB_NAME=mydb;HOST=server
          * PostgreSQL://:pass@USERNAME=meme;DB_NAME=mydb;HOST=server
          * PostgreSQL://:pass@DB_NAME=mydb;HOST=server;USERNAME=meme]]></programlisting>
-         *
+         * 
          * will return the following new strings (double quotes added here to delimit strings):
          * <programlisting><![CDATA[
          * out_cnc_params: "DB_NAME=mydb;HOST=server"
@@ -2928,74 +3030,74 @@ export namespace Gda {
          * @param out_username a place to store the new string containing the &lt;username&gt; part
          * @param out_password a place to store the new string containing the &lt;password&gt; part, or `null`
          */
-        static string_split(
-            string: string,
-            out_cnc_params: string,
-            out_provider: string,
-            out_username: string,
-            out_password: string | null,
-        ): void;
+        static string_split(string: string, out_cnc_params: string, out_provider: string, out_username: string, out_password: (string | null)): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_conn_closed(): void;
+
         /**
          * @virtual
          */
         vfunc_conn_opened(): void;
+
         /**
          * @virtual
          */
         vfunc_conn_to_close(): void;
+
         /**
          * @virtual
          */
         vfunc_dsn_changed(): void;
+
         /**
-         * @param error
+         * @param error 
          * @virtual
          */
         vfunc_error(error: ConnectionEvent): void;
+
         /**
          * @virtual
          */
         vfunc_transaction_status_changed(): void;
 
         // Methods
-
         /**
          * Adds an event to the given connection. This function is usually
          * called by providers, to inform clients of events that happened
          * during some operation.
-         *
+         * 
          * As soon as a provider (or a client, it does not matter) calls this
          * function with an `event` object which is an error,
          * the connection object emits the "error" signal, to which clients can connect to be
          * informed of events.
-         *
+         * 
          * WARNING: the reference to the `event` object is stolen by this function!
          * @param event is stored internally, so you don't need to unref it.
          */
         add_event(event: ConnectionEvent): void;
+
         /**
          * Declares that `prepared_stmt` is a prepared statement object associated to `gda_stmt` within the connection
          * (meaning the connection increments the reference counter of `prepared_stmt`).
-         *
+         * 
          * If `gda_stmt` changes or is destroyed, the the association will be lost and the connection will lose the
          * reference it has on `prepared_stmt`.
          * @param gda_stmt a {@link Gda.Statement} object
          * @param prepared_stmt a prepared statement object (as a {@link Gda.PStmt} object, or more likely a descendant)
          */
         add_prepared_statement(gda_stmt: Statement, prepared_stmt: PStmt): void;
+
         /**
          * Adds a SAVEPOINT named `name`.
          * @param name name of the savepoint to add
          * @returns TRUE if no error occurred
          */
-        add_savepoint(name: string | null): boolean;
+        add_savepoint(name: (string | null)): boolean;
+
         /**
          * Requests that a task be cancelled. This operation may of may not have any effect
          * depending on the task's status, even if it returns `true`. If it returns `false`,
@@ -3004,11 +3106,12 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         async_cancel(task_id: number): boolean;
+
         /**
          * Use this method to obtain the result of the execution of a statement which has been executed asynchronously by
          * calling `gda_connection_async_statement_execute()`. This function is non locking and will return `null` (and no
          * error will be set) if the statement has not been executed yet.
-         *
+         * 
          * If the statement has been executed, this method returns the same value as `gda_connection_statement_execute()`
          * would have if the statement had been
          * executed synchronously.
@@ -3016,23 +3119,24 @@ export namespace Gda {
          * @returns a {@link GObject.Object}, or `null` if an error occurred
          */
         async_fetch_result<T = GObject.Object>(task_id: number): [T, Set | null];
+
         /**
          * This method is similar to `gda_connection_statement_execute()` but is asynchronous as it method returns
          * immediately with a task ID. It's up to the caller to use `gda_connection_async_fetch_result()` regularly to check
          * if the statement's execution is finished.
-         *
+         * 
          * It is possible to call the method several times to request several statements to be executed asynchronously, the
          * statements will be executed in the order in which they were requested.
-         *
+         * 
          * The parameters, if present, are copied and can be discarded or modified before the statement is actually executed.
          * The `stmt` object is not copied but simply referenced (for performance reasons), and if it is modified before
          * it is actually executed, then its execution will not occur. It is however safe to call `g_object_unref()` on it if
          * it's not needed anymore.
-         *
+         * 
          * The execution failure of any statement has no impact on the execution of other statements except for example if
          * the connection has a transaction started and the failure invalidates the transaction (as decided by the database
          * server).
-         *
+         * 
          * Note that for asynchronous calls to succeed, it is gererally necessary to specify the
          * {@link Gda.ConnectionOptions.THREAD_ISOLATED} flag when opening the connection to be sure it is opened in a separate thread
          * in which asynchronous calls are made (failing to use this flag make the asynchronous call dependant on the database
@@ -3044,18 +3148,13 @@ export namespace Gda {
          * @param need_last_insert_row TRUE if the values of the last interted row must be computed
          * @returns a task ID, or 0 if an error occurred (not an error regarding `stmt` itself as its execution has not yet started but any other error)
          */
-        async_statement_execute(
-            stmt: Statement,
-            params: Set | null,
-            model_usage: StatementModelUsage,
-            col_types: GObject.GType[] | null,
-            need_last_insert_row: boolean,
-        ): number;
+        async_statement_execute(stmt: Statement, params: (Set | null), model_usage: StatementModelUsage, col_types: (GObject.GType[] | null), need_last_insert_row: boolean): number;
+
         /**
          * Executes all the statements contained in `batch` (in the order in which they were added to `batch`), and
          * returns a list of {@link GObject.Object} objects, at most one {@link GObject.Object} for each statement; see `gda_connection_statement_execute()`
          * for details about the returned objects.
-         *
+         * 
          * If one of the statement fails, then none of the subsequent statement will be executed, and the method returns
          * the list of {@link GObject.Object} created by the correct execution of the previous statements. If a transaction is required,
          * then it should be started before calling this method.
@@ -3064,11 +3163,12 @@ export namespace Gda {
          * @param model_usage specifies how the returned data model(s) will be used, as a {@link Gda.StatementModelUsage} enum
          * @returns a new list of {@link GObject.Object} objects
          */
-        batch_execute(batch: Batch, params: Set | null, model_usage: StatementModelUsage): GObject.Object[];
+        batch_execute(batch: Batch, params: (Set | null), model_usage: StatementModelUsage): GObject.Object[];
+
         /**
          * Starts a transaction on the data source, identified by the
          * `name` parameter.
-         *
+         * 
          * Before starting a transaction, you can check whether the underlying
          * provider does support transactions or not by using the
          * `gda_connection_supports_feature()` function.
@@ -3076,28 +3176,33 @@ export namespace Gda {
          * @param level the requested transaction level ({@link Gda.TransactionIsolation.UNKNOWN} if not specified)
          * @returns `true` if the transaction was started successfully, `false` otherwise.
          */
-        begin_transaction(name: string | null, level: TransactionIsolation): boolean;
+        begin_transaction(name: (string | null), level: TransactionIsolation): boolean;
+
         /**
          * This function lets you clear the list of {@link Gda.ConnectionEvent}'s of the
          * given connection.
          */
         clear_events_list(): void;
+
         /**
          * Closes the connection to the underlying data source, but first emits the
          * "conn-to-close" signal.
          */
         close(): void;
+
         /**
          * Closes the connection to the underlying data source, without emiting any warning signal.
          */
         close_no_warning(): void;
+
         /**
          * Commits the given transaction to the backend database. You need to call
          * `gda_connection_begin_transaction()` first.
          * @param name the name of the transation to commit, or `null`
          * @returns `true` if the transaction was finished successfully, `false` otherwise.
          */
-        commit_transaction(name: string | null): boolean;
+        commit_transaction(name: (string | null)): boolean;
+
         /**
          * Creates a new {@link Gda.ServerOperation} object which can be modified in order
          * to perform the type type of action. It is a wrapper around the `gda_server_provider_create_operation()`
@@ -3106,7 +3211,8 @@ export namespace Gda {
          * @param options an optional list of parameters
          * @returns a new {@link Gda.ServerOperation} object, or `null` in the connection's provider does not support the `type` type of operation or if an error occurred
          */
-        create_operation(type: ServerOperationType, options: Set | null): ServerOperation;
+        create_operation(type: ServerOperationType, options: (Set | null)): ServerOperation;
+
         /**
          * Creates a new parser object able to parse the SQL dialect understood by `cnc`.
          * If the {@link Gda.ServerProvider} object internally used by `cnc` does not have its own parser,
@@ -3115,33 +3221,33 @@ export namespace Gda {
          * @returns a new {@link Gda.SqlParser} object, or `null`
          */
         create_parser(): SqlParser;
+
         /**
          * Removes any prepared statement associated to `gda_stmt` in `cnc`: this undoes what
          * `gda_connection_add_prepared_statement()` does.
          * @param gda_stmt a {@link Gda.Statement} object
          */
         del_prepared_statement(gda_stmt: Statement): void;
+
         /**
          * This is a convenience function, which creates a DELETE statement and executes it using the values
          * provided. It internally relies on variables which makes it immune to SQL injection problems.
-         *
+         * 
          * The equivalent SQL command is: DELETE FROM &lt;table&gt; WHERE &lt;condition_column_name&gt; = &lt;condition_value&gt;.
          * @param table the table's name with the row's values to be updated
          * @param condition_column_name the name of the column to used in the WHERE condition clause
          * @param condition_value the `condition_column_type`'s GType
          * @returns TRUE if no error occurred, FALSE otherwise
          */
-        delete_row_from_table(
-            table: string,
-            condition_column_name: string,
-            condition_value: GObject.Value | any,
-        ): boolean;
+        delete_row_from_table(table: string, condition_column_name: string, condition_value: (GObject.Value | any)): boolean;
+
         /**
          * Delete the SAVEPOINT named `name` when not used anymore.
          * @param name name of the savepoint to delete
          * @returns TRUE if no error occurred
          */
-        delete_savepoint(name: string | null): boolean;
+        delete_savepoint(name: (string | null)): boolean;
+
         /**
          * This is a convenience function to execute a SQL command over the opened connection. For the
          * returned value, see `gda_connection_statement_execute_non_select()`'s documentation.
@@ -3149,48 +3255,56 @@ export namespace Gda {
          * @returns the number of rows affected or -1, or -2
          */
         execute_non_select_command(sql: string): number;
+
         /**
          * Execute a SQL SELECT command over an opened connection.
          * @param sql a query statement that must begin with "SELECT"
          * @returns a new {@link Gda.DataModel} if successful, `null` otherwise
          */
         execute_select_command(sql: string): DataModel;
+
         /**
          * Gets the user name used to open this connection.
          * @returns the user name.
          */
         get_authentication(): string;
+
         /**
          * Gets the connection string used to open this connection.
-         *
+         * 
          * The connection string is the string sent over to the underlying
          * database provider, which describes the parameters to be used
          * to open a connection on the underlying data source.
          * @returns the connection string used when opening the connection.
          */
         get_cnc_string(): string;
+
         /**
          * This function allows you to determine the actual format for the date values.
          * @returns `true` if no error occurred
          */
         get_date_format(): [boolean, GLib.DateDMY | null, GLib.DateDMY | null, GLib.DateDMY | null, string];
+
         /**
          * @returns the data source name the connection object is connected to.
          */
         get_dsn(): string;
+
         /**
          * Retrieves a list of the last errors occurred during the connection. The returned list is
          * chronologically ordered such as that the most recent event is the {@link Gda.ConnectionEvent} of the first node.
-         *
+         * 
          * Warning: the `cnc` object may change the list if connection events occur
          * @returns a {@link GLib.List} of {@link Gda.ConnectionEvent} objects (the list should not be modified)
          */
         get_events(): ConnectionEvent[];
+
         /**
          * Get or initializes the {@link Gda.MetaStore} associated to `cnc`
          * @returns a {@link Gda.MetaStore} object
          */
         get_meta_store(): MetaStore;
+
         /**
          * see `gda_connection_get_meta_store_data`
          * @param meta_type describes which data to get.
@@ -3198,11 +3312,13 @@ export namespace Gda {
          * @returns a {@link Gda.DataModel} containing the data required. The caller is responsible for freeing the returned model using `g_object_unref()`.
          */
         get_meta_store_data_v(meta_type: ConnectionMetaType, filters: Holder[]): DataModel;
+
         /**
          * Gets the {@link Gda.ConnectionOptions} used to open this connection.
          * @returns the connection options.
          */
         get_options(): ConnectionOptions;
+
         /**
          * Retrieves a pointer to an object representing a prepared statement for `gda_stmt` within `cnc`. The
          * association must have been done using `gda_connection_add_prepared_statement()`.
@@ -3210,30 +3326,34 @@ export namespace Gda {
          * @returns the prepared statement, or `null` if no association exists
          */
         get_prepared_statement(gda_stmt: Statement): PStmt;
+
         /**
          * Gets a pointer to the {@link Gda.ServerProvider} object used to access the database
          * @returns the {@link Gda.ServerProvider} (NEVER NULL)
          */
         get_provider(): ServerProvider;
+
         /**
          * Gets the name (identifier) of the database provider used by `cnc`
          * @returns a non modifiable string
          */
         get_provider_name(): string;
+
         /**
          * Get the status of `cnc` regarding transactions. The returned object should not be modified
          * or destroyed; however it may be modified or destroyed by the connection itself.
-         *
+         * 
          * If `null` is returned, then no transaction has been associated with `cnc`
          * @returns a {@link Gda.TransactionStatus} object, or `null`
          */
         get_transaction_status(): TransactionStatus;
+
         /**
          * `col_names` and `values` must have length (&gt;= 1).
-         *
+         * 
          * This is a convenience function, which creates an INSERT statement and executes it using the values
          * provided. It internally relies on variables which makes it immune to SQL injection problems.
-         *
+         * 
          * The equivalent SQL command is: INSERT INTO &lt;table&gt; (&lt;column_name&gt; [,...]) VALUES (&lt;column_name&gt; = &lt;new_value&gt; [,...]).
          * @param table table's name to insert into
          * @param col_names a list of column names (as const gchar *)
@@ -3241,22 +3361,26 @@ export namespace Gda {
          * @returns TRUE if no error occurred, FALSE otherwise
          */
         insert_row_into_table_v(table: string, col_names: string[], values: (GObject.Value | any)[]): boolean;
+
         /**
          * Checks whether a connection is open or not.
          * @returns `true` if the connection is open, `false` if it's not.
          */
         is_opened(): boolean;
+
         /**
          * Tries to open the connection.
          * @returns TRUE if the connection is opened, and FALSE otherwise.
          */
         open(): boolean;
+
         /**
          * This function helps to parse a SQL string which uses parameters and store them at `params`.
          * @param sql an SQL command to parse, not `null`
          * @returns a {@link Gda.Statement} representing the SQL command, or `null` if an error occurred
          */
         parse_sql_string(sql: string): [Statement, Set | null];
+
         /**
          * Performs the operation described by `op` (which should have been created using
          * `gda_connection_create_operation()`). It is a wrapper around the `gda_server_provider_perform_operation()`
@@ -3265,6 +3389,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         perform_operation(op: ServerOperation): boolean;
+
         /**
          * Use this method to get a pointer to the next available connection event which can then be customized
          * and taken into account using `gda_connection_add_event()`.
@@ -3272,11 +3397,12 @@ export namespace Gda {
          * @returns a pointer to the next available connection event, or `null` if event should be ignored
          */
         point_available_event(type: ConnectionEventType): ConnectionEvent;
+
         /**
          * Use this method to get a correctly quoted (if necessary) SQL identifier which can be used
          * in SQL statements, from `id`. If `id` is already correctly quoted for `cnc`, then a copy of `id`
          * may be returned.
-         *
+         * 
          * This method may add double quotes (or other characters) around `id`:
          * <itemizedlist>
          *  <listitem><para>if `id` is a reserved SQL keyword (such as SELECT, INSERT, ...)</para></listitem>
@@ -3285,17 +3411,18 @@ export namespace Gda {
          *            connection, and specifically the <link linkend="GDA-CONNECTION-OPTIONS-SQL-IDENTIFIERS-CASE-SENSITIVE:CAPS">
          *            GDA_CONNECTION_OPTIONS_SQL_IDENTIFIERS_CASE_SENSITIVE</link> option.</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * One can safely pass an already quoted `id` to this method, either with quoting characters allowed by `cnc` or using the
          * double quote (") character.
          * @param id an SQL identifier
          * @returns a new string, to free with `g_free()` once not needed anymore
          */
         quote_sql_identifier(id: string): string;
+
         /**
          * Executes the statement upon which `rstmt` is built. Note that as several statements can actually be executed by this
          * method, it is recommended to be within a transaction.
-         *
+         * 
          * If `error` is not `null` and `stop_on_error` is `false`, then it may contain the last error which occurred.
          * @param rstmt a {@link Gda.RepetitiveStatement} object
          * @param model_usage specifies how the returned data model will be used as a {@link Gda.StatementModelUsage} enum
@@ -3303,18 +3430,15 @@ export namespace Gda {
          * @param stop_on_error set to TRUE if the method has to stop on the first error.
          * @returns a new list of {@link GObject.Object} pointers (see `gda_connection_statement_execute()` for more information about what they represent), one for each actual execution of the statement upon which `rstmt` is built. If `stop_on_error` is `false`, then the list may contain some `null` pointers which refer to statements which failed to execute.
          */
-        repetitive_statement_execute(
-            rstmt: RepetitiveStatement,
-            model_usage: StatementModelUsage,
-            col_types: GObject.GType[] | null,
-            stop_on_error: boolean,
-        ): GObject.Object[];
+        repetitive_statement_execute(rstmt: RepetitiveStatement, model_usage: StatementModelUsage, col_types: (GObject.GType[] | null), stop_on_error: boolean): GObject.Object[];
+
         /**
          * Rollback all the modifications made after the SAVEPOINT named `name`.
          * @param name name of the savepoint to rollback to
          * @returns TRUE if no error occurred
          */
-        rollback_savepoint(name: string | null): boolean;
+        rollback_savepoint(name: (string | null)): boolean;
+
         /**
          * Rollbacks the given transaction. This means that all changes
          * made to the underlying data source since the last call to
@@ -3323,10 +3447,11 @@ export namespace Gda {
          * @param name the name of the transation to commit, or `null`
          * @returns `true` if the operation was successful, `false` otherwise.
          */
-        rollback_transaction(name: string | null): boolean;
+        rollback_transaction(name: (string | null)): boolean;
+
         /**
          * Executes `stmt`.
-         *
+         * 
          * As `stmt` can, by design (and if not abused), contain only one SQL statement, the
          * return object will either be:
          * <itemizedlist>
@@ -3341,7 +3466,7 @@ export namespace Gda {
          *          <listitem><para>a (GObject) {@link Gda.Holder} named "EVENT" which contains a {@link Gda.ConnectionEvent}</para></listitem>
          *        </itemizedlist></para></listitem>
          * </itemizedlist>
-         *
+         * 
          * If `last_insert_row` is not `null` and `stmt` is an INSERT statement, then it will contain (if the
          * provider used by `cnc` supports it) a new {@link Gda.Set} object composed of value holders named "+&lt;column number&gt;"
          * starting at column 0 which contain the actual inserted values. For example if a table is composed of an 'id' column
@@ -3351,32 +3476,32 @@ export namespace Gda {
          *   <listitem><para>one with the '+0' ID which may for example contain 1 (note that its "name" property should be "id")</para></listitem>
          *   <listitem><para>one with the '+1' ID which will contain 'joe' (note that its "name" property should be "name")</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * This method may fail with a `GDA_SERVER_PROVIDER_ERROR` domain error (see the {@link Gda.ServerProviderError} error codes).
-         *
+         * 
          * Note1: If `stmt` is a SELECT statement which has some parameters and  if `params` is `null`, then the statement can't
          * be executed and this method will return `null`.
-         *
+         * 
          * Note2: If `stmt` is a SELECT statement which has some parameters and  if `params` is not `null` but contains some
          * invalid parameters, then the statement can't be executed and this method will return `null`, unless the
          * `model_usage` has the GDA_STATEMENT_MODEL_ALLOW_NOPARAM flag.
-         *
+         * 
          * Note3: If `stmt` is a SELECT statement which has some parameters and  if `params` is not `null` but contains some
          * invalid parameters and if `model_usage` has the GDA_STATEMENT_MODEL_ALLOW_NOPARAM flag, then the returned
          * data model will contain no row but will have all the correct columns (even though some of the columns might
          * report as GDA_TYPE_NULL). In this case, if (after this method call) any of `params`' parameters change
          * then the resulting data model will re-run itself, see the GdaDataSelect's
          * <link linkend="GdaDataSelect--auto-reset">auto-reset</link> property for more information.
-         *
+         * 
          * Note4: if `model_usage` does not contain the GDA_STATEMENT_MODEL_RANDOM_ACCESS or
          * GDA_STATEMENT_MODEL_CURSOR_FORWARD flags, then the default will be to return a random access data model
-         *
+         * 
          * Note5: If `stmt` is a SELECT statement which returns blob values (of type `GDA_TYPE_BLOB`), then an implicit
          * transaction will have been started by the database provider, and it's up to the caller to close the transaction
          * (which will then be locked) once all the blob ressources have been
          * liberated (when the returned data model is destroyed). See the section about
          * <link linkend="gen:blobs">Binary large objects (BLOBs)</link> for more information.
-         *
+         * 
          * Also see the <link linkend="limitations">provider's limitations</link>, and the
          * <link linkend="data-select">Advanced GdaDataSelect usage</link> sections.
          * @param stmt a {@link Gda.Statement} object
@@ -3384,53 +3509,52 @@ export namespace Gda {
          * @param model_usage in the case where `stmt` is a SELECT statement, specifies how the returned data model will be used
          * @returns a {@link GObject.Object}, or `null` if an error occurred
          */
-        statement_execute<T = GObject.Object>(
-            stmt: Statement,
-            params: Set | null,
-            model_usage: StatementModelUsage,
-        ): [T, Set | null];
+        statement_execute<T = GObject.Object>(stmt: Statement, params: (Set | null), model_usage: StatementModelUsage): [T, Set | null];
+
         /**
          * Executes a non-selection statement on the given connection.
-         *
+         * 
          * This function returns the number of rows affected by the execution of `stmt`, or -1
          * if an error occurred, or -2 if the connection's provider does not return the number of rows affected.
-         *
+         * 
          * This function is just a convenience function around the `gda_connection_statement_execute()`
          * function.
          * See the documentation of the `gda_connection_statement_execute()` for information
          * about the `params` list of parameters.
-         *
+         * 
          * See `gda_connection_statement_execute()` form more information about `last_insert_row`.
          * @param stmt a {@link Gda.Statement} object.
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_statement_get_parameters()`), or `null`
          * @returns the number of rows affected (&gt;=0) or -1 or -2
          */
-        statement_execute_non_select(stmt: Statement, params: Set | null): [number, Set | null];
+        statement_execute_non_select(stmt: Statement, params: (Set | null)): [number, Set | null];
+
         /**
          * Executes a selection command on the given connection.
-         *
+         * 
          * This function returns a {@link Gda.DataModel} resulting from the SELECT statement, or `null`
          * if an error occurred.
-         *
+         * 
          * This function is just a convenience function around the `gda_connection_statement_execute()`
          * function.
-         *
+         * 
          * See the documentation of the `gda_connection_statement_execute()` for information
          * about the `params` list of parameters.
          * @param stmt a {@link Gda.Statement} object.
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_statement_get_parameters()`), or `null`
          * @returns a {@link Gda.DataModel} containing the data returned by the data source, or `null` if an error occurred
          */
-        statement_execute_select(stmt: Statement, params: Set | null): DataModel;
+        statement_execute_select(stmt: Statement, params: (Set | null)): DataModel;
+
         /**
          * Executes a selection command on the given connection.
-         *
+         * 
          * This function returns a {@link Gda.DataModel} resulting from the SELECT statement, or `null`
          * if an error occurred.
-         *
+         * 
          * This function is just a convenience function around the `gda_connection_statement_execute()`
          * function.
-         *
+         * 
          * See the documentation of the `gda_connection_statement_execute()` for information
          * about the `params` list of parameters.
          * @param stmt a {@link Gda.Statement} object.
@@ -3439,19 +3563,15 @@ export namespace Gda {
          * @param col_types an array of GType to request each returned {@link Gda.DataModel}'s column's GType, terminated with the G_TYPE_NONE value. Any value left to 0 will make the database provider determine the real GType. `col_types` can also be `null` if no column type is specified.
          * @returns a {@link Gda.DataModel} containing the data returned by the data source, or `null` if an error occurred
          */
-        statement_execute_select_full(
-            stmt: Statement,
-            params: Set | null,
-            model_usage: StatementModelUsage,
-            col_types: GObject.GType[] | null,
-        ): DataModel;
+        statement_execute_select_full(stmt: Statement, params: (Set | null), model_usage: StatementModelUsage, col_types: (GObject.GType[] | null)): DataModel;
+
         /**
          * Ask the database accessed through the `cnc` connection to prepare the usage of `stmt`. This is only useful
          * if `stmt` will be used more than once (however some database providers may always prepare statements
          * before executing them).
-         *
+         * 
          * This function is also useful to make sure `stmt` is fully understood by the database before actually executing it.
-         *
+         * 
          * Note however that it is also possible that `gda_connection_statement_prepare()` fails when
          * `gda_connection_statement_execute()` does not fail (this will usually be the case with statements such as
          * <![CDATA["SELECT * FROM ##tablename::string"]]> because database usually don't allow variables to be used in place of a
@@ -3460,6 +3580,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred.
          */
         statement_prepare(stmt: Statement): boolean;
+
         /**
          * Renders `stmt` as an SQL statement, adapted to the SQL dialect used by `cnc`
          * @param stmt a {@link Gda.Statement} object
@@ -3467,29 +3588,31 @@ export namespace Gda {
          * @param flags SQL rendering flags, as {@link Gda.StatementSqlFlag} OR'ed values
          * @returns a new string, or `null` if an error occurred
          */
-        statement_to_sql(stmt: Statement, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
+        statement_to_sql(stmt: Statement, params: (Set | null), flags: StatementSqlFlag): [string, Holder[] | null];
+
         /**
          * Asks the underlying provider for if a specific feature is supported.
          * @param feature feature to ask for.
          * @returns `true` if the provider supports it, `false` if not.
          */
         supports_feature(feature: ConnectionFeature): boolean;
+
         /**
          * Updates `cnc`'s associated {@link Gda.MetaStore}. If `context` is not `null`, then only the parts described by
          * `context` will be updated, and if it is `null`, then the complete meta store will be updated. Detailed
          * explanations follow:
-         *
+         * 
          * In order to keep the meta store's contents in a consistent state, the update process involves updating
          * the contents of all the tables related to one where the contents change. For example the "_columns"
          * table (which lists all the columns of a table) depends on the "_tables" table (which lists all the tables
          * in a schema), so if a row is added, removed or modified in the "_tables", then the "_columns" table's contents
          * needs to be updated as well regarding that row.
-         *
+         * 
          * If `context` is `null`, then the update process will simply overwrite any data that was present in all the
          * meta store's tables with new (up to date) data even if nothing has changed, without having to build the
          * tables' dependency tree. This is the recommended way of proceeding when dealing with a meta store which
          * might be outdated.
-         *
+         * 
          * On the other hand, if `context` is not `null`, then a tree of the dependencies has to be built (depending on
          * `context`) and only some parts of the meta store are updated following that dependencies tree. Specifying a
          * context may be useful for example in the following situations:
@@ -3500,30 +3623,31 @@ export namespace Gda {
          *   <listitem><para>One is only interested in the list of views, and may request that only the information
          *                   about views may be updated</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * When `context` is not `null`, and contains specified SQL identifiers (for example the "table_name" of the "_tables"
          * table), then each SQL identifier has to match the convention the {@link Gda.MetaStore} has adopted regarding
          * case sensitivity, using `gda_connection_quote_sql_identifier()` or `gda_meta_store_sql_identifier_quote()`.
-         *
+         * 
          * see the <link linkend="information_schema:sql_identifiers">
          * meta data section about SQL identifiers</link> for more information, and the documentation about the
          * `gda_sql_identifier_quote()` function which will be most useful.
-         *
+         * 
          * Note however that usually <emphasis>more</emphasis> information will be updated than strictly requested by
          * the `context` argument.
-         *
+         * 
          * For more information, see the <link linkend="information_schema">Database structure</link> section, and
          * the <link linkend="howto-meta2">Update the meta data about a table</link> howto.
          * @param context description of which part of `cnc`'s associated {@link Gda.MetaStore} should be updated, or `null`
          * @returns TRUE if no error occurred
          */
-        update_meta_store(context: MetaContext | null): boolean;
+        update_meta_store(context: (MetaContext | null)): boolean;
+
         /**
          * `col_names` and `values` must have length (&gt;= 1).
-         *
+         * 
          * This is a convenience function, which creates an UPDATE statement and executes it using the values
          * provided. It internally relies on variables which makes it immune to SQL injection problems.
-         *
+         * 
          * The equivalent SQL command is: UPDATE &lt;table&gt; SET &lt;column_name&gt; = &lt;new_value&gt; [,...] WHERE &lt;condition_column_name&gt; = &lt;condition_value&gt;.
          * @param table the table's name with the row's values to be updated
          * @param condition_column_name the name of the column to used in the WHERE condition clause
@@ -3532,69 +3656,70 @@ export namespace Gda {
          * @param values a list of values (as {@link GObject.Value})
          * @returns TRUE if no error occurred, FALSE otherwise
          */
-        update_row_in_table_v(
-            table: string,
-            condition_column_name: string,
-            condition_value: GObject.Value | any,
-            col_names: string[],
-            values: (GObject.Value | any)[],
-        ): boolean;
+        update_row_in_table_v(table: string, condition_column_name: string, condition_value: (GObject.Value | any), col_names: string[], values: (GObject.Value | any)[]): boolean;
+
         /**
          * Produces a fully quoted and escaped string from a GValue
          * @param from {@link GObject.Value} to convert from
          * @returns escaped and quoted value or NULL if not supported.
          */
-        value_to_sql_string(from: GObject.Value | any): string;
+        value_to_sql_string(from: (GObject.Value | any)): string;
+
         /**
          * Locks `lockable`. If it is already locked by another thread, the current thread will block until it is unlocked
          * by the other thread.
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
-         *
+         * 
          * Note: unlike `g_mutex_lock()`, this method recursive, which means a thread can lock `lockable` several times
          * (and has to unlock it as many times to actually unlock it).
          */
         lock(): void;
+
         /**
          * Tries to lock `lockable`. If it is already locked by another thread, then it immediately returns FALSE, otherwise
          * it locks `lockable`.
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
-         *
+         * 
          * Note: unlike `g_mutex_lock()`, this method recursive, which means a thread can lock `lockable` several times
          * (and has to unlock it as many times to actually unlock it).
          * @returns TRUE if the object has successfully been locked.
          */
         trylock(): boolean;
+
         /**
          * Unlocks `lockable`. This method should not be called if the current does not already holds a lock on `lockable` (having
          * used `gda_lockable_lock()` or `gda_lockable_trylock()`).
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
          */
         unlock(): void;
+
         /**
          * @virtual
          */
         vfunc_i_lock(): void;
+
         /**
          * @virtual
          */
         vfunc_i_trylock(): boolean;
+
         /**
          * @virtual
          */
         vfunc_i_unlock(): void;
     }
 
+
     namespace ConnectionEvent {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::type': (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             type: number;
         }
@@ -3607,7 +3732,6 @@ export namespace Gda {
         static $gtype: GObject.GType<ConnectionEvent>;
 
         // Properties
-
         get type(): number;
         set type(val: number);
 
@@ -3621,62 +3745,56 @@ export namespace Gda {
         $signals: ConnectionEvent.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<ConnectionEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ConnectionEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionEvent.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ConnectionEvent.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionEvent.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ConnectionEvent.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ConnectionEvent.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ConnectionEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ConnectionEvent.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ConnectionEvent.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ConnectionEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ConnectionEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ConnectionEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns `event`'s code (the code is specific to the provider being used)
          */
         get_code(): number;
+
         /**
          * Get the description of the event. Note that is `event`'s type is GDA_CONNECTION_EVENT_COMMAND,
          * the the description is the SQL of the command.
          * @returns `event`'s description.
          */
         get_description(): string;
+
         /**
          * Get `event`'s severity (from a simple notice to a fatal event)
          * @returns the event type
          */
         get_event_type(): ConnectionEventType;
+
         /**
          * Retrieve the code associated to `event`.
          * @returns the {@link Gda.ConnectionEventCode} event's code
          */
         get_gda_code(): ConnectionEventCode;
+
         /**
          * @returns `event`'s source.
          */
         get_source(): string;
+
         /**
          * Get the SQLSTATE value of `event`. Even though the SQLSTATE values are specified by ANSI SQL and ODBC,
          * consult each DBMS for the possible values. However, the "00000" (success) value means that there is no error,
@@ -3684,57 +3802,63 @@ export namespace Gda {
          * @returns `event`'s SQL state.
          */
         get_sqlstate(): string;
+
         /**
          * Sets `event`'s code: the code is specific to the provider being used.
          * If you want to have a common understanding of the event codes, use
          * `gda_connection_event_get_gda_code()` instead.
-         *
+         * 
          * This function should not be called directly
          * @param code a code.
          */
-        set_code(code: bigint | number): void;
+        set_code(code: (bigint | number)): void;
+
         /**
          * Sets `event`'s `description`. This function should not be called directly.
          * @param description a description, or `null` (to unset current description if any)
          */
-        set_description(description: string | null): void;
+        set_description(description: (string | null)): void;
+
         /**
          * Sets `event`'s severity (from a simple notice to a fatal event)
          * This function should not be called directly.
          * @param type the severity of the event
          */
         set_event_type(type: ConnectionEventType): void;
+
         /**
          * Sets `event`'s gda code: that code is standardized by the libgda
          * library. If you want to specify the corresponding provider specific code,
          * use `gda_connection_event_get_code()` or `gda_connection_event_get_sqlstate()` instead.
-         *
+         * 
          * This function should not be called directly
          * @param code a code
          */
         set_gda_code(code: ConnectionEventCode): void;
+
         /**
          * Sets `event`'s `source`; this function should not be called directly
          * @param source a source.
          */
         set_source(source: string): void;
+
         /**
          * Changes the SQLSTATE code of `event`, this function should not be called directly
-         *
+         * 
          * Sets `event`'s SQL state.
          * @param sqlstate SQL state.
          */
         set_sqlstate(sqlstate: string): void;
     }
 
+
     namespace DataAccessWrapper {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::model': (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
             model: DataModel;
         }
@@ -3747,7 +3871,6 @@ export namespace Gda {
         static $gtype: GObject.GType<DataAccessWrapper>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -3763,128 +3886,122 @@ export namespace Gda {
         $signals: DataAccessWrapper.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DataAccessWrapper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataAccessWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataAccessWrapper.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataAccessWrapper.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataAccessWrapper.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataAccessWrapper.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataAccessWrapper.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataAccessWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataAccessWrapper.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataAccessWrapper.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataAccessWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataAccessWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataAccessWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new {@link Gda.DataModel} object which buffers the rows of `model`. This object is useful
          * only if `model` can only be accessed using cursor based method.
          * @param model a {@link Gda.DataModel}
          */
-        static ['new'](model: DataModel): DataModel;
+        static ["new"](model: DataModel): DataModel;
 
         // Methods
-
         /**
          * `wrapper` will report as many columns as `mapping_size`, and for each value at position 'i' in `mapping`,
          * `wrapper` will report the 'i'th column, mapped to the wrapped data model column at position mapping[i].
          * For example if mapping is {3, 4, 0}, then `wrapper` will report 3 columns, respectively mapped to the 4th,
          * 5th and 1st columns of the wrapped data model (as column numbers start at 0).
-         *
+         * 
          * If `mapping` is `null`, then no mapping is done and `wrapper`'s columns will be the same as the wrapped
          * data model.
-         *
+         * 
          * If a column in `mapping` does not exist in the wrapped data model, then it is simply ignored (no error
          * reported).
-         *
+         * 
          * Please note that if `wrapper` has already been used and if the wrapped data model offers a cursor forward
          * access mode, then this method will return `false` and no action will be done.
-         *
+         * 
          * If the mapping is applied, then any existing iterator will be invalid, and `wrapper` is reset as if it
          * had just been created.
          * @param mapping an array of `gint` which represents the mapping between `wrapper`'s columns and the columns of the wrapped data model
          * @returns `true` if the mapping actually changed
          */
-        set_mapping(mapping: number[] | null): boolean;
+        set_mapping(mapping: (number[] | null)): boolean;
+
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -3893,21 +4010,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -3918,12 +4037,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -3934,12 +4054,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -3962,12 +4083,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -3977,23 +4098,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -4001,18 +4117,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -4023,22 +4142,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -4047,38 +4170,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -4087,44 +4215,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -4132,11 +4257,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -4149,7 +4275,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -4157,14 +4283,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -4172,74 +4295,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -4247,20 +4381,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -4268,71 +4405,78 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
+
         /**
          * @virtual
          */
         vfunc_access_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @virtual
          */
         vfunc_i_append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -4341,33 +4485,37 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @virtual
          */
-        vfunc_i_describe_column(col: number): Column | null;
+        vfunc_i_describe_column(col: number): (Column | null);
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
         vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
          */
         vfunc_i_get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -4378,6 +4526,7 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -4386,48 +4535,53 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
+
         /**
          * @virtual
          */
         vfunc_i_get_n_columns(): number;
+
         /**
          * @virtual
          */
         vfunc_i_get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          * @virtual
          */
         vfunc_i_get_notify(): boolean;
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @virtual
          */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+        vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -4435,18 +4589,21 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -4455,15 +4612,17 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @virtual
          */
         vfunc_i_remove_row(row: number): boolean;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
@@ -4471,16 +4630,18 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -4489,46 +4650,51 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          * @virtual
          */
         vfunc_row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          * @virtual
          */
         vfunc_row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
@@ -4537,6 +4703,7 @@ export namespace Gda {
         vfunc_row_updated(row: number): void;
     }
 
+
     namespace DataComparator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -4544,13 +4711,12 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            'diff-computed': (arg0: any | null) => boolean | void;
-            'notify::new-model': (pspec: GObject.ParamSpec) => void;
-            'notify::old-model': (pspec: GObject.ParamSpec) => void;
+            "diff-computed": (arg0: (any | null)) => (boolean | void);
+            "notify::new-model": (pspec: GObject.ParamSpec) => void;
+            "notify::old-model": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             new_model: DataModel;
             newModel: DataModel;
@@ -4566,13 +4732,15 @@ export namespace Gda {
         static $gtype: GObject.GType<DataComparator>;
 
         // Properties
-
         get new_model(): DataModel;
         set new_model(val: DataModel);
+
         get newModel(): DataModel;
         set newModel(val: DataModel);
+
         get old_model(): DataModel;
         set old_model(val: DataModel);
+
         get oldModel(): DataModel;
         set oldModel(val: DataModel);
 
@@ -4586,72 +4754,62 @@ export namespace Gda {
         $signals: DataComparator.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DataComparator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](old_model: DataModel, new_model: DataModel): DataComparator;
+        static ["new"](old_model: DataModel, new_model: DataModel): DataComparator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataComparator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataComparator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataComparator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataComparator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataComparator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataComparator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataComparator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataComparator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataComparator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataComparator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataComparator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataComparator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param diff
+         * @param diff 
          * @virtual
          */
         vfunc_diff_computed(diff: Diff): boolean;
 
         // Methods
-
         /**
          * Actually computes the differences between the data models for which `comp` is defined.
-         *
+         * 
          * For each difference computed, stored in a {@link Gda.Diff} structure, the "diff-computed" signal is emitted.
          * If one connects to this signal and returns FALSE in the signal handler, then computing differences will be
          * stopped and an error will be returned.
          * @returns TRUE if all the differences have been successfully computed, and FALSE if an error occurred
          */
         compute_diff(): boolean;
+
         /**
          * Get a pointer to the {@link Gda.Diff} structure representing the difference which number is `pos`
          * @param pos the requested difference number (starting at 0)
          * @returns a pointer to a {@link Gda.Diff}, or `null` if `pos` is invalid
          */
         get_diff(pos: number): Diff;
+
         /**
          * Get the number of differences as computed by the last time `gda_data_comparator_compute_diff()` was called.
          * @returns the number of computed differences
          */
         get_n_diffs(): number;
+
         /**
          * Defines the columns which will be used as a key when searching data. This is not mandatory but
          * will speed things up as less data will be processed.
@@ -4660,15 +4818,15 @@ export namespace Gda {
         set_key_columns(col_numbers: number[]): void;
     }
 
+
     namespace DataModelArray {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::n-columns': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
+            "notify::n-columns": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
             n_columns: number;
             nColumns: number;
@@ -4684,13 +4842,15 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelArray>;
 
         // Properties
-
         get n_columns(): number;
         set n_columns(val: number);
+
         get nColumns(): number;
         set nColumns(val: number);
+
         get read_only(): boolean;
         set read_only(val: boolean);
+
         get readOnly(): boolean;
         set readOnly(val: boolean);
 
@@ -4704,125 +4864,121 @@ export namespace Gda {
         $signals: DataModelArray.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DataModelArray.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataModelArray.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelArray.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataModelArray.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelArray.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataModelArray.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelArray.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataModelArray.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelArray.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataModelArray.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataModelArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataModelArray.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataModelArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new {@link Gda.DataModel} object without initializing the column
          * types. Using `gda_data_model_array_new_with_g_types()` is usually better.
          * @param cols number of columns for rows in this data model.
          */
-        static ['new'](cols: number): DataModel;
+        static ["new"](cols: number): DataModel;
 
         // Methods
-
         /**
          * Frees all the rows in `model`.
          */
         clear(): void;
+
         /**
          * Get a pointer to a row in `model`
          * @param row row number (starting from 0)
          * @returns the {@link Gda.Row}, or `null` if an error occurred
          */
         get_row(row: number): Row;
+
         /**
          * Sets the number of columns for rows inserted in this model.
          * `cols` must be greated than or equal to 0.
-         *
+         * 
          * Also clears `model`'s contents.
          * @param cols number of columns for rows this data model should use.
          */
         set_n_columns(cols: number): void;
+
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -4831,21 +4987,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -4856,12 +5014,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -4872,12 +5031,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -4900,12 +5060,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -4915,23 +5075,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -4939,18 +5094,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -4961,22 +5119,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -4985,38 +5147,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -5025,44 +5192,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -5070,11 +5234,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -5087,7 +5252,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -5095,14 +5260,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -5110,74 +5272,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -5185,20 +5358,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -5206,71 +5382,78 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
+
         /**
          * @virtual
          */
         vfunc_access_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @virtual
          */
         vfunc_i_append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -5279,33 +5462,37 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @virtual
          */
-        vfunc_i_describe_column(col: number): Column | null;
+        vfunc_i_describe_column(col: number): (Column | null);
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
         vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
          */
         vfunc_i_get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -5316,6 +5503,7 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -5324,48 +5512,53 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
+
         /**
          * @virtual
          */
         vfunc_i_get_n_columns(): number;
+
         /**
          * @virtual
          */
         vfunc_i_get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          * @virtual
          */
         vfunc_i_get_notify(): boolean;
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @virtual
          */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+        vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -5373,18 +5566,21 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -5393,15 +5589,17 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @virtual
          */
         vfunc_i_remove_row(row: number): boolean;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
@@ -5409,16 +5607,18 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -5427,46 +5627,51 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          * @virtual
          */
         vfunc_row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          * @virtual
          */
         vfunc_row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
@@ -5475,14 +5680,14 @@ export namespace Gda {
         vfunc_row_updated(row: number): void;
     }
 
+
     namespace DataModelDir {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::basedir': (pspec: GObject.ParamSpec) => void;
+            "notify::basedir": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
             basedir: string;
         }
@@ -5495,7 +5700,6 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelDir>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -5511,115 +5715,110 @@ export namespace Gda {
         $signals: DataModelDir.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DataModelDir.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataModelDir.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelDir.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataModelDir.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelDir.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataModelDir.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelDir.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataModelDir.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelDir.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataModelDir.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataModelDir.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataModelDir.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataModelDir.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new {@link Gda.DataModel} object to list all the files starting from `basedir`
          * @param basedir a directory
          */
-        static ['new'](basedir: string): DataModel;
+        static ["new"](basedir: string): DataModel;
 
         // Methods
-
         /**
          * Reset the list of errors which have occurred while using `model`
          */
         clean_errors(): void;
+
         /**
          * Get the list of errors which have occurred while using `model`
          * @returns a read-only list of {@link GLib.Error} pointers, or `null` if no error has occurred
          */
         get_errors(): GLib.Error[];
+
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -5628,21 +5827,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -5653,12 +5854,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -5669,12 +5871,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -5697,12 +5900,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -5712,23 +5915,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -5736,18 +5934,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -5758,22 +5959,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -5782,38 +5987,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -5822,44 +6032,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -5867,11 +6074,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -5884,7 +6092,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -5892,14 +6100,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -5907,74 +6112,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -5982,20 +6198,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -6003,71 +6222,78 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
+
         /**
          * @virtual
          */
         vfunc_access_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @virtual
          */
         vfunc_i_append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -6076,33 +6302,37 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @virtual
          */
-        vfunc_i_describe_column(col: number): Column | null;
+        vfunc_i_describe_column(col: number): (Column | null);
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
         vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
          */
         vfunc_i_get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -6113,6 +6343,7 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -6121,48 +6352,53 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
+
         /**
          * @virtual
          */
         vfunc_i_get_n_columns(): number;
+
         /**
          * @virtual
          */
         vfunc_i_get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          * @virtual
          */
         vfunc_i_get_notify(): boolean;
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @virtual
          */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+        vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -6170,18 +6406,21 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -6190,15 +6429,17 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @virtual
          */
         vfunc_i_remove_row(row: number): boolean;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
@@ -6206,16 +6447,18 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -6224,46 +6467,51 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          * @virtual
          */
         vfunc_row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          * @virtual
          */
         vfunc_row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
@@ -6272,19 +6520,19 @@ export namespace Gda {
         vfunc_row_updated(row: number): void;
     }
 
+
     namespace DataModelImport {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data-string': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::options': (pspec: GObject.ParamSpec) => void;
-            'notify::random-access': (pspec: GObject.ParamSpec) => void;
-            'notify::strict': (pspec: GObject.ParamSpec) => void;
-            'notify::xml-node': (pspec: GObject.ParamSpec) => void;
+            "notify::data-string": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::options": (pspec: GObject.ParamSpec) => void;
+            "notify::random-access": (pspec: GObject.ParamSpec) => void;
+            "notify::strict": (pspec: GObject.ParamSpec) => void;
+            "notify::xml-node": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
             data_string: string;
             dataString: string;
@@ -6305,39 +6553,44 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelImport>;
 
         // Properties
-
         /**
          * Data to import, as a string.
          * @construct-only
          */
         get data_string(): string;
+
         /**
          * Data to import, as a string.
          * @construct-only
          */
         get dataString(): string;
+
         /**
          * Name of the file to import.
          * @construct-only
          */
         get filename(): string;
+
         /**
          * Data model options.
          * @construct-only
          */
         get options(): Set;
+
         /**
          * Defines if the data model will be accessed randomly or through a cursor. If set to `false`,
          * access will have to be done using a cursor.
          * @construct-only
          */
         get random_access(): boolean;
+
         /**
          * Defines if the data model will be accessed randomly or through a cursor. If set to `false`,
          * access will have to be done using a cursor.
          * @construct-only
          */
         get randomAccess(): boolean;
+
         /**
          * Defines the behaviour in case the imported data contains recoverable errors (usually too
          * many or too few data per row). If set to `true`, an error will be reported and the import
@@ -6346,11 +6599,13 @@ export namespace Gda {
          */
         get strict(): boolean;
         set strict(val: boolean);
+
         /**
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          * @construct-only
          */
         get xml_node(): any;
+
         /**
          * Data to import, as a pointer to an XML node (a #xmlNodePtr).
          * @construct-only
@@ -6367,41 +6622,30 @@ export namespace Gda {
         $signals: DataModelImport.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DataModelImport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataModelImport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelImport.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataModelImport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelImport.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataModelImport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelImport.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataModelImport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelImport.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataModelImport.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataModelImport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataModelImport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataModelImport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new {@link Gda.DataModel} object which contains the data stored within the `filename` file.
-         *
+         * 
          * The options are the following ones:
          * <itemizedlist>
          *   <listitem><para>For the CSV format:
@@ -6415,23 +6659,25 @@ export namespace Gda {
          *   </para></listitem>
          *   <listitem><para>Other formats: no option</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Note: after the creation, please use `gda_data_model_import_get_errors()` to check any error.
          * @param filename the file to import data from
          * @param random_access TRUE if random access will be required
          * @param options importing options
          */
-        static new_file(filename: string, random_access: boolean, options: Set | null): DataModel;
+        static new_file(filename: string, random_access: boolean, options: (Set | null)): DataModel;
+
         /**
          * Creates a new {@link Gda.DataModel} object which contains the data stored in the `data` string.
-         *
+         * 
          * Important note: the `data` string is not copied for memory efficiency reasons and should not
          * therefore be altered in any way as long as the returned data model exists.
          * @param data a string containing the data to import
          * @param random_access TRUE if random access will be required
          * @param options importing options, see `gda_data_model_import_new_file()` for more information
          */
-        static new_mem(data: string, random_access: boolean, options: Set | null): DataModel;
+        static new_mem(data: string, random_access: boolean, options: (Set | null)): DataModel;
+
         /**
          * Creates a new {@link Gda.DataModel} and loads the data in `node`. The resulting data model
          * can be accessed in a random way.
@@ -6440,77 +6686,83 @@ export namespace Gda {
         static new_xml_node(node: libxml2.NodePtr): DataModel;
 
         // Methods
-
         /**
          * Clears the history of errors `model` has to report
          */
         clean_errors(): void;
+
         /**
          * Get the list of errors which `model` has to report. The returned list is a list of
          * {@link GLib.Error} structures, and must not be modified
          * @returns the list of errors (which must not be modified), or `null`
          */
         get_errors(): GLib.Error[];
+
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -6519,21 +6771,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -6544,12 +6798,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -6560,12 +6815,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -6588,12 +6844,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -6603,23 +6859,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -6627,18 +6878,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -6649,22 +6903,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -6673,38 +6931,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -6713,44 +6976,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -6758,11 +7018,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -6775,7 +7036,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -6783,14 +7044,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -6798,74 +7056,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -6873,20 +7142,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -6894,71 +7166,78 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
+
         /**
          * @virtual
          */
         vfunc_access_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @virtual
          */
         vfunc_i_append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -6967,33 +7246,37 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @virtual
          */
-        vfunc_i_describe_column(col: number): Column | null;
+        vfunc_i_describe_column(col: number): (Column | null);
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
         vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
          */
         vfunc_i_get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -7004,6 +7287,7 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -7012,48 +7296,53 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
+
         /**
          * @virtual
          */
         vfunc_i_get_n_columns(): number;
+
         /**
          * @virtual
          */
         vfunc_i_get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          * @virtual
          */
         vfunc_i_get_notify(): boolean;
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @virtual
          */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+        vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -7061,18 +7350,21 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -7081,15 +7373,17 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @virtual
          */
         vfunc_i_remove_row(row: number): boolean;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
@@ -7097,16 +7391,18 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -7115,46 +7411,51 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          * @virtual
          */
         vfunc_row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          * @virtual
          */
         vfunc_row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
@@ -7162,6 +7463,7 @@ export namespace Gda {
          */
         vfunc_row_updated(row: number): void;
     }
+
 
     namespace DataModelIter {
         // Signal signatures
@@ -7172,26 +7474,25 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'end-of-data': () => void;
+            "end-of-data": () => void;
             /**
              * Gets emitted when the row `iter` is currently pointing has changed
              * @signal
              * @run-first
              */
-            'row-changed': (arg0: number) => void;
-            'notify::current-row': (pspec: GObject.ParamSpec) => void;
-            'notify::data-model': (pspec: GObject.ParamSpec) => void;
-            'notify::forced-model': (pspec: GObject.ParamSpec) => void;
-            'notify::update-model': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::holders': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::validate-changes': (pspec: GObject.ParamSpec) => void;
+            "row-changed": (arg0: number) => void;
+            "notify::current-row": (pspec: GObject.ParamSpec) => void;
+            "notify::data-model": (pspec: GObject.ParamSpec) => void;
+            "notify::forced-model": (pspec: GObject.ParamSpec) => void;
+            "notify::update-model": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::holders": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::validate-changes": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Set.ConstructorProps {
             current_row: number;
             currentRow: number;
@@ -7211,21 +7512,27 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelIter>;
 
         // Properties
-
         get current_row(): number;
         set current_row(val: number);
+
         get currentRow(): number;
         set currentRow(val: number);
+
         get data_model(): DataModel;
         set data_model(val: DataModel);
+
         get dataModel(): DataModel;
         set dataModel(val: DataModel);
+
         get forced_model(): DataModel;
         set forced_model(val: DataModel);
+
         get forcedModel(): DataModel;
         set forcedModel(val: DataModel);
+
         get update_model(): boolean;
         set update_model(val: boolean);
+
         get updateModel(): boolean;
         set updateModel(val: boolean);
 
@@ -7239,54 +7546,42 @@ export namespace Gda {
         $signals: DataModelIter.SignalSignatures;
 
         // Fields
-
         object: Set;
 
         // Constructors
-
         constructor(properties?: Partial<DataModelIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataModelIter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelIter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataModelIter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelIter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataModelIter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelIter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataModelIter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelIter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataModelIter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataModelIter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataModelIter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataModelIter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_end_of_data(): void;
+
         /**
-         * @param row
+         * @param row 
          * @virtual
          */
         vfunc_row_changed(row: number): void;
 
         // Methods
-
         /**
          * Get the column number in the {@link Gda.DataModel} for which `iter` is an iterator as
          * represented by the `param` parameter
@@ -7294,6 +7589,7 @@ export namespace Gda {
          * @returns the column number, or `param` is not valid
          */
         get_column_for_param(param: Holder): number;
+
         /**
          * Fetch a pointer to the {@link Gda.Holder} object which is synchronized with data at
          * column `col`
@@ -7301,29 +7597,34 @@ export namespace Gda {
          * @returns the {@link Gda.Holder}, or `null` if an error occurred
          */
         get_holder_for_field(col: number): Holder;
+
         /**
          * Get the row which `iter` represents in the data model
          * @returns the row number, or -1 if `iter` is invalid
          */
         get_row(): number;
+
         /**
          * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
          * @param col the requested column
          * @returns the {@link GObject.Value}, or `null` if the value could not be fetched
          */
-        get_value_at(col: number): GObject.Value | null;
+        get_value_at(col: number): (GObject.Value | null);
+
         /**
          * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
          * @param col the requested column
          * @returns the {@link GObject.Value}, or `null` if the value could not be fetched
          */
-        get_value_at_e(col: number): GObject.Value | null;
+        get_value_at_e(col: number): (GObject.Value | null);
+
         /**
          * Get the value stored at the column `field_name` in `iter`
          * @param field_name the requested column name
          * @returns the {@link GObject.Value}, or `null`
          */
-        get_value_for_field(field_name: string): GObject.Value | null;
+        get_value_for_field(field_name: string): (GObject.Value | null);
+
         /**
          * Declare all the parameters in `iter` invalid, without modifying the
          * {@link Gda.DataModel} `iter` is for or changing the row it represents. This method
@@ -7331,55 +7632,59 @@ export namespace Gda {
          * it is also necessary to set the "current-row" property to -1.
          */
         invalidate_contents(): void;
+
         /**
          * Tells if `iter` is a valid iterator (if it actually corresponds to a valid row in the model)
          * @returns TRUE if `iter` is valid
          */
         is_valid(): boolean;
+
         /**
          * Moves `iter` one row further than where it already is
          * (synchronizes the values of the parameters in `iter` with the values at the new row).
-         *
+         * 
          * If the iterator was on the data model's last row, then it can't be moved forward
          * anymore, and the returned value is `false`; note also that the "current-row" property
          * is set to -1 (which means that `gda_data_model_iter_is_valid()` would return `false`)
-         *
+         * 
          * This function can return `false` if it was not allowed to be moved (as it emits the
          * "validate-set" signal before being moved).
-         *
+         * 
          * When this function returns `true`, then `iter` has actually been moved to the next row,
          * but some values may not have been read correctly in the row, in which case the
          * correcsponding {@link Gda.Holder} will be left invalid.
          * @returns `true` if the iterator is now at the next row
          */
         move_next(): boolean;
+
         /**
          * Moves `iter` one row before where it already is (synchronizes the values of the parameters in `iter`
          * with the values at the new row).
-         *
+         * 
          * If the iterator was on the data model's first row, then it can't be moved backwards
          * anymore, and the returned value is `false`; note also that the "current-row" property
          * is set to -1 (which means that `gda_data_model_iter_is_valid()` would return `false`).
-         *
+         * 
          * This function can return `false` if it was not allowed to be moved (as it emits the
          * "validate-set" signal before being moved).
-         *
+         * 
          * When this function returns `true`, then `iter` has actually been moved to the next row,
          * but some values may not have been read correctly in the row, in which case the
          * correcsponding {@link Gda.Holder} will be left invalid.
          * @returns `true` if the iterator is now at the previous row
          */
         move_prev(): boolean;
+
         /**
          * Synchronizes the values of the parameters in `iter` with the values at the `row` row.
-         *
+         * 
          * If `row` is not a valid row, then the returned value is `false`, and the "current-row"
          * property is set to -1 (which means that `gda_data_model_iter_is_valid()` would return `false`),
          * with the exception that if `row` is -1, then the returned value is `true`.
-         *
+         * 
          * This function can return `false` if it was not allowed to be moved (as it emits the
          * "validate-set" signal before being moved).
-         *
+         * 
          * When this function returns `true`, then `iter` has actually been moved to the next row,
          * but some values may not have been read correctly in the row, in which case the
          * correcsponding {@link Gda.Holder} will be left invalid.
@@ -7387,27 +7692,28 @@ export namespace Gda {
          * @returns `true` if no error occurred
          */
         move_to_row(row: number): boolean;
+
         /**
          * Sets a value in `iter`, at the column specified by `col`
          * @param col the column number
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if no error occurred
          */
-        set_value_at(col: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, value: (GObject.Value | any)): boolean;
     }
+
 
     namespace DataModelLdap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::attributes': (pspec: GObject.ParamSpec) => void;
-            'notify::base': (pspec: GObject.ParamSpec) => void;
-            'notify::cnc': (pspec: GObject.ParamSpec) => void;
-            'notify::filter': (pspec: GObject.ParamSpec) => void;
-            'notify::scope': (pspec: GObject.ParamSpec) => void;
+            "notify::attributes": (pspec: GObject.ParamSpec) => void;
+            "notify::base": (pspec: GObject.ParamSpec) => void;
+            "notify::cnc": (pspec: GObject.ParamSpec) => void;
+            "notify::filter": (pspec: GObject.ParamSpec) => void;
+            "notify::scope": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
             attributes: string;
             base: string;
@@ -7424,23 +7730,26 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelLdap>;
 
         // Properties
-
         /**
          * @construct-only
          */
         set attributes(val: string);
+
         /**
          * @construct-only
          */
         get base(): string;
+
         /**
          * @construct-only
          */
         get cnc(): Connection;
+
         /**
          * @construct-only
          */
         get filter(): string;
+
         /**
          * @construct-only
          */
@@ -7456,76 +7765,60 @@ export namespace Gda {
         $signals: DataModelLdap.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DataModelLdap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_with_config(
-            cnc: Connection,
-            base_dn: string | null,
-            filter: string | null,
-            attributes: string | null,
-            scope: LdapSearchScope,
-        ): DataModelLdap;
+        static new_with_config(cnc: Connection, base_dn: (string | null), filter: (string | null), attributes: (string | null), scope: LdapSearchScope): DataModelLdap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataModelLdap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelLdap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataModelLdap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelLdap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataModelLdap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataModelLdap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataModelLdap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataModelLdap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataModelLdap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataModelLdap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataModelLdap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataModelLdap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Computes the {@link Gda.Column} of the data model which would be created using `attributes` when calling
          * `gda_data_model_ldap_new()`.
          * @param cnc a {@link Gda.Connection}
          * @param attributes a string describing which LDAP attributes to retreive, or `null`
          */
-        static compute_columns(cnc: Connection, attributes: string | null): Column[];
+        static compute_columns(cnc: Connection, attributes: (string | null)): Column[];
+
         /**
          * Creates a new {@link Gda.DataModel} object to extract some LDAP contents. The returned data model will
          * contain one row for each LDAP entry returned by the search, and will
          * always return the DN (Distinguished Name) of the LDAP entry as first column. Other atttibutes
          * may be mapped to other columns, see the `attributes` argument.
-         *
+         * 
          * Note that the actual LDAP search command is not executed until necessary (when using the returned
          * data model).
-         *
+         * 
          * The `base_dn` is the point in the LDAP's DIT (Directory Information Tree) from where the search will
          * occur, for example "dc=gda,dc=org". A `null` value indicates that the starting point for the
          * search will be the one specified when opening the LDAP connection.
-         *
+         * 
          * The `filter` argument is a valid LDAP filter string, for example "(uidNumber=1001)". If `null`, then
          * a default search filter of "(objectClass=*)" will be used.
-         *
+         * 
          * `attributes` specifies which LDAP attributes the search must return. It is a comma separated list
          * of attribute names, for example "uidNumber, mail, uid, jpegPhoto" (spaces between attribute names
          * are ignored). If `null`, then no attribute will be fetched. See `gda_ldap_connection_declare_table()`
          * for more information about this argument.
-         *
+         * 
          * `scope` is the scope of search specified when the LDAP search is actually executed.
-         *
+         * 
          * In case of multi valued attributes, an error will be returned when trying to read the attribute:
          * `gda_data_model_iter_get_value_at()` will return `null` when using an iterator.
          * @param cnc an LDAP opened connection (must be a balid `GdaLdapConnection`)
@@ -7534,73 +7827,73 @@ export namespace Gda {
          * @param attributes the list (CSV format) of attributes to fetch, each in the format &lt;attname&gt;[::&lt;GType&gt;]
          * @param scope the search scope
          */
-        static ['new'](
-            cnc: Connection,
-            base_dn: string | null,
-            filter: string | null,
-            attributes: string | null,
-            scope: LdapSearchScope,
-        ): DataModel;
+        static ["new"](cnc: Connection, base_dn: (string | null), filter: (string | null), attributes: (string | null), scope: LdapSearchScope): DataModel;
+
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -7609,21 +7902,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -7634,12 +7929,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -7650,12 +7946,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -7678,12 +7975,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -7693,23 +7990,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -7717,18 +8009,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -7739,22 +8034,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -7763,38 +8062,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -7803,44 +8107,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -7848,11 +8149,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -7865,7 +8167,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -7873,14 +8175,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -7888,74 +8187,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -7963,20 +8273,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -7984,71 +8297,78 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
+
         /**
          * @virtual
          */
         vfunc_access_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @virtual
          */
         vfunc_i_append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -8057,33 +8377,37 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @virtual
          */
-        vfunc_i_describe_column(col: number): Column | null;
+        vfunc_i_describe_column(col: number): (Column | null);
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
         vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
          */
         vfunc_i_get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -8094,6 +8418,7 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -8102,48 +8427,53 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
+
         /**
          * @virtual
          */
         vfunc_i_get_n_columns(): number;
+
         /**
          * @virtual
          */
         vfunc_i_get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          * @virtual
          */
         vfunc_i_get_notify(): boolean;
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @virtual
          */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+        vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -8151,18 +8481,21 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -8171,15 +8504,17 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @virtual
          */
         vfunc_i_remove_row(row: number): boolean;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
@@ -8187,16 +8522,18 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -8205,46 +8542,51 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          * @virtual
          */
         vfunc_row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          * @virtual
          */
         vfunc_row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
@@ -8253,14 +8595,14 @@ export namespace Gda {
         vfunc_row_updated(row: number): void;
     }
 
+
     namespace DataPivot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::model': (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
             model: DataModel;
         }
@@ -8273,7 +8615,6 @@ export namespace Gda {
         static $gtype: GObject.GType<DataPivot>;
 
         // Properties
-
         get model(): DataModel;
         set model(val: DataModel);
 
@@ -8287,47 +8628,36 @@ export namespace Gda {
         $signals: DataPivot.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DataPivot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataPivot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataPivot.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataPivot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataPivot.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataPivot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataPivot.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataPivot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataPivot.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataPivot.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataPivot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataPivot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataPivot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
+
         /**
          * Creates a new {@link Gda.DataModel} which will contain analysed data from `model`.
          * @param model a {@link Gda.DataModel} to analyse data from, or `null`
          */
-        static ['new'](model: DataModel | null): DataModel;
+        static ["new"](model: (DataModel | null)): DataModel;
 
         // Methods
-
         /**
          * Specifies that `field` has to be included in the analysis.
          * `field` is a field specification with the following accepted syntaxes:
@@ -8340,7 +8670,7 @@ export namespace Gda {
          * nb BETWEEN 5 AND 10</programlisting>
          * </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * It is also possible to specify several fields to be added, while separating them by a comma (in effect
          * still forming a valid SQL syntax).
          * @param aggregate_type the type of aggregate operation to perform
@@ -8348,7 +8678,8 @@ export namespace Gda {
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
          */
-        add_data(aggregate_type: DataPivotAggregate, field: string, alias: string | null): boolean;
+        add_data(aggregate_type: DataPivotAggregate, field: string, alias: (string | null)): boolean;
+
         /**
          * Specifies that `field` has to be included in the analysis.
          * `field` is a field specification with the following accepted syntaxes:
@@ -8361,7 +8692,7 @@ export namespace Gda {
          * nb BETWEEN 5 AND 10</programlisting>
          * </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * It is also possible to specify several fields to be added, while separating them by a comma (in effect
          * still forming a valid SQL syntax).
          * @param field_type the type of field to add
@@ -8369,72 +8700,79 @@ export namespace Gda {
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
          */
-        add_field(field_type: DataPivotFieldType, field: string, alias: string | null): boolean;
+        add_field(field_type: DataPivotFieldType, field: string, alias: (string | null)): boolean;
+
         /**
          * Acutally populates `pivot` by analysing the data from the provided data model.
          * @returns `true` if no error occurred.
          */
         populate(): boolean;
+
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -8443,21 +8781,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -8468,12 +8808,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -8484,12 +8825,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -8512,12 +8854,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -8527,23 +8869,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -8551,18 +8888,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -8573,22 +8913,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -8597,38 +8941,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -8637,44 +8986,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -8682,11 +9028,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -8699,7 +9046,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -8707,14 +9054,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -8722,74 +9066,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -8797,20 +9152,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -8818,71 +9176,78 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
+
         /**
          * @virtual
          */
         vfunc_access_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @virtual
          */
         vfunc_i_append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -8891,33 +9256,37 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @virtual
          */
-        vfunc_i_describe_column(col: number): Column | null;
+        vfunc_i_describe_column(col: number): (Column | null);
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
         vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
          */
         vfunc_i_get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -8928,6 +9297,7 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -8936,48 +9306,53 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
+
         /**
          * @virtual
          */
         vfunc_i_get_n_columns(): number;
+
         /**
          * @virtual
          */
         vfunc_i_get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          * @virtual
          */
         vfunc_i_get_notify(): boolean;
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @virtual
          */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+        vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -8985,18 +9360,21 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -9005,15 +9383,17 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @virtual
          */
         vfunc_i_remove_row(row: number): boolean;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
@@ -9021,16 +9401,18 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -9039,46 +9421,51 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          * @virtual
          */
         vfunc_row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          * @virtual
          */
         vfunc_row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
@@ -9086,6 +9473,7 @@ export namespace Gda {
          */
         vfunc_row_updated(row: number): void;
     }
+
 
     namespace DataProxy {
         // Signal signatures
@@ -9095,48 +9483,47 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'filter-changed': () => void;
+            "filter-changed": () => void;
             /**
              * Gets emitted when `proxy` has committed a row change to the proxied data model.
              * @signal
              * @run-first
              */
-            'row-changes-applied': (arg0: number, arg1: number) => void;
+            "row-changes-applied": (arg0: number, arg1: number) => void;
             /**
              * Gets emitted whenever a row has been marked to be deleted, or has been unmarked to be deleted
              * @signal
              * @run-first
              */
-            'row-delete-changed': (arg0: number, arg1: boolean) => void;
+            "row-delete-changed": (arg0: number, arg1: boolean) => void;
             /**
              * Gets emitted whenever `proxy`'s sample size has been changed. `sample_start` and `sample_end` are
              * in reference to the proxied data model.
              * @signal
              * @run-first
              */
-            'sample-changed': (arg0: number, arg1: number) => void;
+            "sample-changed": (arg0: number, arg1: number) => void;
             /**
              * Gets emitted whenever `proxy`'s sample size has been changed
              * @signal
              * @run-first
              */
-            'sample-size-changed': (arg0: number) => void;
+            "sample-size-changed": (arg0: number) => void;
             /**
              * Gets emitted when `proxy` is about to commit a row change to the proxied data model. If any
              * callback returns a non `null` value, then the change commit fails with the returned {@link GLib.Error}
              * @signal
              * @run-last
              */
-            'validate-row-changes': (arg0: number, arg1: number) => GLib.Error;
-            'notify::cache-changes': (pspec: GObject.ParamSpec) => void;
-            'notify::defer-sync': (pspec: GObject.ParamSpec) => void;
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::prepend-null-entry': (pspec: GObject.ParamSpec) => void;
-            'notify::sample-size': (pspec: GObject.ParamSpec) => void;
+            "validate-row-changes": (arg0: number, arg1: number) => GLib.Error;
+            "notify::cache-changes": (pspec: GObject.ParamSpec) => void;
+            "notify::defer-sync": (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::prepend-null-entry": (pspec: GObject.ParamSpec) => void;
+            "notify::sample-size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
             cache_changes: boolean;
             cacheChanges: boolean;
@@ -9157,12 +9544,11 @@ export namespace Gda {
         static $gtype: GObject.GType<DataProxy>;
 
         // Properties
-
         /**
          * Defines how changes kept in the data proxy are handled when the proxied data model
          * is changed (using the "model" property). The default is to silently discard all the
          * changes, but if this property is set to `true`, then the changes are cached.
-         *
+         * 
          * If set to `true`, each cached change will be re-applied to a newly set proxied data model if
          * the change's number of columns match the proxied data model's number of columns and based on:
          * <itemizedlist>
@@ -9173,11 +9559,12 @@ export namespace Gda {
          */
         get cache_changes(): boolean;
         set cache_changes(val: boolean);
+
         /**
          * Defines how changes kept in the data proxy are handled when the proxied data model
          * is changed (using the "model" property). The default is to silently discard all the
          * changes, but if this property is set to `true`, then the changes are cached.
-         *
+         * 
          * If set to `true`, each cached change will be re-applied to a newly set proxied data model if
          * the change's number of columns match the proxied data model's number of columns and based on:
          * <itemizedlist>
@@ -9188,18 +9575,25 @@ export namespace Gda {
          */
         get cacheChanges(): boolean;
         set cacheChanges(val: boolean);
+
         get defer_sync(): boolean;
         set defer_sync(val: boolean);
+
         get deferSync(): boolean;
         set deferSync(val: boolean);
+
         get model(): DataModel;
         set model(val: DataModel);
+
         get prepend_null_entry(): boolean;
         set prepend_null_entry(val: boolean);
+
         get prependNullEntry(): boolean;
         set prependNullEntry(val: boolean);
+
         get sample_size(): number;
         set sample_size(val: number);
+
         get sampleSize(): number;
         set sampleSize(val: number);
 
@@ -9213,82 +9607,74 @@ export namespace Gda {
         $signals: DataProxy.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<DataProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](model: DataModel): DataProxy;
+        static ["new"](model: DataModel): DataProxy;
 
         static new_with_data_model(model: DataModel): DataProxy;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataProxy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataProxy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataProxy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataProxy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataProxy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_filter_changed(): void;
+
         /**
-         * @param row
-         * @param proxied_row
+         * @param row 
+         * @param proxied_row 
          * @virtual
          */
         vfunc_row_changes_applied(row: number, proxied_row: number): void;
+
         /**
-         * @param row
-         * @param to_be_deleted
+         * @param row 
+         * @param to_be_deleted 
          * @virtual
          */
         vfunc_row_delete_changed(row: number, to_be_deleted: boolean): void;
+
         /**
-         * @param sample_start
-         * @param sample_end
+         * @param sample_start 
+         * @param sample_end 
          * @virtual
          */
         vfunc_sample_changed(sample_start: number, sample_end: number): void;
+
         /**
-         * @param sample_size
+         * @param sample_size 
          * @virtual
          */
         vfunc_sample_size_changed(sample_size: number): void;
+
         /**
-         * @param row
-         * @param proxied_row
+         * @param row 
+         * @param proxied_row 
          * @virtual
          */
         vfunc_validate_row_changes(row: number, proxied_row: number): GLib.Error;
 
         // Methods
-
         /**
          * Alters the attributes of the value stored at (proxy_row, col) in `proxy`. the `alter_flags`
          * can only contain the GDA_VALUE_ATTR_IS_NULL, GDA_VALUE_ATTR_IS_DEFAULT and GDA_VALUE_ATTR_IS_UNCHANGED
@@ -9298,6 +9684,7 @@ export namespace Gda {
          * @param alter_flags flags to alter the attributes
          */
         alter_value_attributes(proxy_row: number, col: number, alter_flags: ValueAttribute): void;
+
         /**
          * Apply all the changes stored in the proxy to the proxied data model. The changes are done row
          * after row, and if an error
@@ -9305,12 +9692,14 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         apply_all_changes(): boolean;
+
         /**
          * Commits the modified data in the proxy back into the {@link Gda.DataModel}.
          * @param proxy_row the row number to commit
          * @returns TRUE if no error occurred.
          */
         apply_row_changes(proxy_row: number): boolean;
+
         /**
          * Cancel all the changes stored in the proxy (the `proxy` will be reset to its state
          * as it was just after creation). Note that if there are some cached changes (i.e. not applied
@@ -9319,6 +9708,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         cancel_all_changes(): boolean;
+
         /**
          * Resets data at the corresponding row and column. If `proxy_row` corresponds to a new row, then
          * that new row is deleted from `proxy`.
@@ -9326,16 +9716,19 @@ export namespace Gda {
          * @param col the column to cancel changes, or less than 0 to cancel any change on the `row` row
          */
         cancel_row_changes(proxy_row: number, col: number): void;
+
         /**
          * Marks the row `proxy_row` to be deleted
          * @param proxy_row A proxy row number
          */
-        ['delete'](proxy_row: number): void;
+        ["delete"](proxy_row: number): void;
+
         /**
          * Get the current filter expression used by `proxy`.
          * @returns the current filter expression or `null` if no filter has been set
          */
         get_filter_expr(): string;
+
         /**
          * Get the total number of filtered rows in `proxy` if a filter has been applied. As new rows
          * (rows added to the proxy and not yet added to the proxied data model) and rows to remove
@@ -9344,54 +9737,64 @@ export namespace Gda {
          * @returns the number of filtered rows in `proxy`, or -1 if no filter has been applied
          */
         get_filtered_n_rows(): number;
+
         /**
          * Get the number of rows which have been modified in the proxy (the sum of rows existing in
          * the proxied data model which have been modified, and new rows).
          * @returns the number of modified rows
          */
         get_n_modified_rows(): number;
+
         /**
          * Get the number of rows which have been added to `proxy` and which are not part of
          * the proxied data model.
          * @returns the number of new rows
          */
         get_n_new_rows(): number;
+
         /**
          * Fetch the {@link Gda.DataModel} which `proxy` does proxy
          * @returns the proxied data model
          */
         get_proxied_model(): DataModel;
+
         /**
          * Get the number of columns in the proxied data model
          * @returns the number of columns, or -1 if an error occurred
          */
         get_proxied_model_n_cols(): number;
+
         /**
          * Get the number of rows in the proxied data model
          * @returns the number of rows, or -1 if the number of rows is not known
          */
         get_proxied_model_n_rows(): number;
+
         /**
          * Get the `proxy`'s proxied model row corresponding to `proxy_row`
          * @param proxy_row A proxy row number
          * @returns the proxied model's row, or -1 if `proxy` row which only exists `proxy`
          */
         get_proxied_model_row(proxy_row: number): number;
+
         /**
          * Get the number of the last row to be available in `proxy` (in reference to the proxied data model)
          * @returns the number of the last proxied model's row.
          */
         get_sample_end(): number;
+
         /**
          * Get the size of each chunk of data displayed at a time.
          * @returns the chunk (or sample) size, or 0 if chunking is disabled.
          */
         get_sample_size(): number;
+
         /**
          * Get the number of the first row to be available in `proxy` (in reference to the proxied data model)
          * @returns the number of the first proxied model's row.
          */
         get_sample_start(): number;
+
         /**
          * Get the attributes of the value stored at (proxy_row, col) in `proxy`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags
@@ -9400,6 +9803,7 @@ export namespace Gda {
          * @returns a {@link Gda.ValueAttribute} with the value's attributes at given position
          */
         get_value_attributes(proxy_row: number, col: number): ValueAttribute;
+
         /**
          * Retrieve a whole list of values from the `proxy` data model. This function
          * calls `gda_data_proxy_get_value()`
@@ -9409,27 +9813,32 @@ export namespace Gda {
          * @returns a new list of values (the list must be freed, not the values), or `null` if an error occurred
          */
         get_values(proxy_row: number, cols_index: number[]): unknown[];
+
         /**
          * Tells if `proxy` contains any modifications not applied to the proxied data model.
          * @returns TRUE if there are some modifications in `proxy`
          */
         has_changed(): boolean;
+
         /**
          * @returns TRUE if the proxied data model is itself read-only
          */
         is_read_only(): boolean;
+
         /**
          * Tells if the row number `proxy_row` has changed
          * @param proxy_row A proxy row number
          * @returns TRUE if the row has changed
          */
         row_has_changed(proxy_row: number): boolean;
+
         /**
          * Tells if the row number `proxy_row` is marked to be deleted.
          * @param proxy_row A proxy row number
          * @returns TRUE if the row is marked to be deleted
          */
         row_is_deleted(proxy_row: number): boolean;
+
         /**
          * Tells if the row number `proxy_row` is a row which has been inserted in `proxy`
          * (and is thus not in the proxied data model).
@@ -9437,113 +9846,124 @@ export namespace Gda {
          * @returns TRUE if the row is an inserted row
          */
         row_is_inserted(proxy_row: number): boolean;
+
         /**
          * Sets a filter among the rows presented by `proxy`. The filter is defined by a filter expression
          * which can be any SQL valid expression using `proxy`'s columns. For instance if `proxy` has the "id" and
          * "name" columns, then a filter can be "length(name) < 5" to filter only the rows where the length of the
          * name is strictly inferior to 5, or "id >= 1000 and id < 2000 order by name limit 50" to filter only the rows where the id
          * is between 1000 and 2000, ordered by name and limited to 50 rows.
-         *
+         * 
          * Note about column names: real column names can be used (double quoted if necessary), but columns can also be named
          * "_&lt;column number&gt;" with column numbers starting at 1.
-         *
+         * 
          * Note that any previous filter expression is replaced with the new `filter_expr` if no error occurs
          * (if an error occurs, then any previous filter is left unchanged).
          * @param filter_expr an SQL based expression which will filter the contents of `proxy`, or `null` to remove any previous filter
          * @returns TRUE if no error occurred
          */
-        set_filter_expr(filter_expr: string | null): boolean;
+        set_filter_expr(filter_expr: (string | null)): boolean;
+
         /**
          * Orders by the `col` column
          * @param col the column number to order from
          * @returns TRUE if no error occurred
          */
         set_ordering_column(col: number): boolean;
+
         /**
          * Sets the size of each chunk of data to display: the maximum number of rows which
          * can be "displayed" at a time (the maximum number of rows which `proxy` pretends to have).
          * The default value is arbitrary 300 as it is big enough to
          * be able to display quite a lot of data, but small enough to avoid too much data
          * displayed at the same time.
-         *
+         * 
          * Note: the rows which have been added but not yet committed will always be displayed
          * regardless of the current chunk of data, and the modified rows which are not visible
          * when the displayed chunk of data changes are still held as modified rows.
-         *
+         * 
          * To remove the chunking of the data to display, simply pass `sample_size` the %0 value.
          * @param sample_size the requested size of a chunk, or 0
          */
         set_sample_size(sample_size: number): void;
+
         /**
          * Sets the number of the first row to be available in `proxy` (in reference to the proxied data model)
          * @param sample_start the number of the first row to be displayed
          */
         set_sample_start(sample_start: number): void;
+
         /**
          * Remove the "to be deleted" mark at the row `proxy_row`, if it existed.
          * @param proxy_row A proxy row number
          */
         undelete(proxy_row: number): void;
+
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -9552,21 +9972,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -9577,12 +9999,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -9593,12 +10016,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -9621,12 +10045,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -9636,23 +10060,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -9660,18 +10079,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -9682,22 +10104,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -9706,38 +10132,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -9746,44 +10177,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -9791,11 +10219,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -9808,7 +10237,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -9816,14 +10245,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -9831,74 +10257,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -9906,20 +10343,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -9927,71 +10367,78 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
+
         /**
          * @virtual
          */
         vfunc_access_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @virtual
          */
         vfunc_i_append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -10000,33 +10447,37 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @virtual
          */
-        vfunc_i_describe_column(col: number): Column | null;
+        vfunc_i_describe_column(col: number): (Column | null);
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
         vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
          */
         vfunc_i_get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -10037,6 +10488,7 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -10045,48 +10497,53 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
+
         /**
          * @virtual
          */
         vfunc_i_get_n_columns(): number;
+
         /**
          * @virtual
          */
         vfunc_i_get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          * @virtual
          */
         vfunc_i_get_notify(): boolean;
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @virtual
          */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+        vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -10094,18 +10551,21 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -10114,15 +10574,17 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @virtual
          */
         vfunc_i_remove_row(row: number): boolean;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
@@ -10130,16 +10592,18 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -10148,46 +10612,51 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          * @virtual
          */
         vfunc_row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          * @virtual
          */
         vfunc_row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
@@ -10196,24 +10665,24 @@ export namespace Gda {
         vfunc_row_updated(row: number): void;
     }
 
+
     namespace DataSelect {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::auto-reset': (pspec: GObject.ParamSpec) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::delete-stmt': (pspec: GObject.ParamSpec) => void;
-            'notify::exec-params': (pspec: GObject.ParamSpec) => void;
-            'notify::execution-delay': (pspec: GObject.ParamSpec) => void;
-            'notify::insert-stmt': (pspec: GObject.ParamSpec) => void;
-            'notify::model-usage': (pspec: GObject.ParamSpec) => void;
-            'notify::prepared-stmt': (pspec: GObject.ParamSpec) => void;
-            'notify::select-stmt': (pspec: GObject.ParamSpec) => void;
-            'notify::store-all-rows': (pspec: GObject.ParamSpec) => void;
-            'notify::update-stmt': (pspec: GObject.ParamSpec) => void;
+            "notify::auto-reset": (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::delete-stmt": (pspec: GObject.ParamSpec) => void;
+            "notify::exec-params": (pspec: GObject.ParamSpec) => void;
+            "notify::execution-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::insert-stmt": (pspec: GObject.ParamSpec) => void;
+            "notify::model-usage": (pspec: GObject.ParamSpec) => void;
+            "notify::prepared-stmt": (pspec: GObject.ParamSpec) => void;
+            "notify::select-stmt": (pspec: GObject.ParamSpec) => void;
+            "notify::store-all-rows": (pspec: GObject.ParamSpec) => void;
+            "notify::update-stmt": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
             auto_reset: boolean;
             autoReset: boolean;
@@ -10246,69 +10715,88 @@ export namespace Gda {
         static $gtype: GObject.GType<DataSelect>;
 
         // Properties
-
         get auto_reset(): boolean;
         set auto_reset(val: boolean);
+
         get autoReset(): boolean;
         set autoReset(val: boolean);
+
         /**
          * @construct-only
          */
         get connection(): Connection;
+
         get delete_stmt(): Statement;
         set delete_stmt(val: Statement);
+
         get deleteStmt(): Statement;
         set deleteStmt(val: Statement);
+
         /**
          * @construct-only
          */
         get exec_params(): Set;
+
         /**
          * @construct-only
          */
         get execParams(): Set;
+
         /**
          * This property stores the execution delay which has been necessary to obtain the data
          * @since 4.2.9
          */
         get execution_delay(): number;
         set execution_delay(val: number);
+
         /**
          * This property stores the execution delay which has been necessary to obtain the data
          * @since 4.2.9
          */
         get executionDelay(): number;
         set executionDelay(val: number);
+
         get insert_stmt(): Statement;
         set insert_stmt(val: Statement);
+
         get insertStmt(): Statement;
         set insertStmt(val: Statement);
+
         /**
          * @construct-only
          */
         get model_usage(): number;
+
         /**
          * @construct-only
          */
         get modelUsage(): number;
+
         get prepared_stmt(): PStmt;
         set prepared_stmt(val: PStmt);
+
         get preparedStmt(): PStmt;
         set preparedStmt(val: PStmt);
+
         /**
          * @read-only
          */
         get select_stmt(): Statement;
+
         /**
          * @read-only
          */
         get selectStmt(): Statement;
+
         get store_all_rows(): boolean;
         set store_all_rows(val: boolean);
+
         get storeAllRows(): boolean;
         set storeAllRows(val: boolean);
+
         get update_stmt(): Statement;
         set update_stmt(val: Statement);
+
         get updateStmt(): Statement;
         set updateStmt(val: Statement);
 
@@ -10322,95 +10810,92 @@ export namespace Gda {
         $signals: DataSelect.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
+
         prep_stmt: PStmt;
+
         nb_stored_rows: number;
+
         advertized_nrows: number;
 
         // Constructors
-
         constructor(properties?: Partial<DataSelect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSelect.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataSelect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSelect.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataSelect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSelect.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSelect.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataSelect.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataSelect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param prow
-         * @param rownum
+         * @param prow 
+         * @param rownum 
          * @virtual
          */
         vfunc_fetch_at(prow: Row, rownum: number): boolean;
+
         /**
          * @virtual
          */
         vfunc_fetch_nb_rows(): number;
+
         /**
-         * @param prow
-         * @param rownum
+         * @param prow 
+         * @param rownum 
          * @virtual
          */
         vfunc_fetch_next(prow: Row, rownum: number): boolean;
+
         /**
-         * @param prow
-         * @param rownum
+         * @param prow 
+         * @param rownum 
          * @virtual
          */
         vfunc_fetch_prev(prow: Row, rownum: number): boolean;
+
         /**
-         * @param prow
-         * @param rownum
+         * @param prow 
+         * @param rownum 
          * @virtual
          */
         vfunc_fetch_random(prow: Row, rownum: number): boolean;
+
         /**
          * @virtual
          */
         vfunc_store_all(): boolean;
 
         // Methods
-
         /**
          * Computes correct attributes for each of `model`'s columns, which includes the "NOT NULL" attribute, the
          * default value, the precision and scale for numeric values.
          * @returns TRUE if no error occurred
          */
         compute_columns_attributes(): boolean;
+
         /**
          * Makes `model` try to compute INSERT, UPDATE and DELETE statements to be used when modifying `model`'s contents.
          * Note: any modification statement set using `gda_data_select_set_modification_statement()` will first be unset
-         *
+         * 
          * This function is similar to calling `gda_data_select_compute_modification_statements_ext()` with
          * `cond_type` set to {@link Gda.DataSelectConditionType.PK}
          * @returns `true` if no error occurred. If `false` is returned, then some modification statement may still have been computed
          */
         compute_modification_statements(): boolean;
+
         /**
          * Makes `model` try to compute INSERT, UPDATE and DELETE statements to be used when modifying `model`'s contents.
          * Note: any modification statement set using `gda_data_select_set_modification_statement()` will first be unset
@@ -10418,35 +10903,38 @@ export namespace Gda {
          * @returns `true` if no error occurred. If `false` is returned, then some modification statement may still have been computed
          */
         compute_modification_statements_ext(cond_type: DataSelectConditionType): boolean;
+
         /**
          * Offers the same features as `gda_data_select_set_row_selection_condition()` but the expression
          * is computed from the meta data associated to the connection being used when `model` was created.
-         *
+         * 
          * NOTE1: make sure the meta data associated to the connection is up to date before using this
          * method, see `gda_connection_update_meta_store()`.
-         *
+         * 
          * NOTE2: if the SELECT statement from which `model` has been created uses more than one table, or
          * if the table used does not have any primary key, then this method will fail
          * @returns TRUE if no error occurred.
          */
         compute_row_selection_condition(): boolean;
+
         /**
          * Get a pointer to the {@link Gda.Connection} object which was used when `model` was created
          * (and which may be used internally by `model`).
          * @returns a pointer to the {@link Gda.Connection}, or `null`
          */
         get_connection(): Connection;
+
         /**
          * Use this method to make sure all the data contained in the data model are stored on the client
          * side (and that no subsquent call to the server will be necessary to access that data), at the cost of
          * a higher memory consumption.
-         *
+         * 
          * This method is useful in the following situations:
          * <itemizedlist>
          *   <listitem><para>You need to disconnect from the server and continue to use the data in the data model</para></listitem>
          *   <listitem><para>You need to make sure the data in the data model can be used even though the connection to the server may be used for other purposes (for example executing other queries)</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Note that this method will fail if:
          * <itemizedlist>
          *   <listitem><para>the data model contains any blobs (because blobs reading requires acces to the server);
@@ -10456,16 +10944,18 @@ export namespace Gda {
          * @returns `true` if no error occurred
          */
         prepare_for_offline(): boolean;
+
         /**
          * Requests that `model` be re-run to have an updated result. If an error occurs,
          * then `model` will not be changed.
          * @returns `true` if no error occurred
          */
         rerun(): boolean;
+
         /**
          * Informs `model` that it should allow modifications to the data in some columns and some rows
          * using `mod_stmt` to propagate those modifications into the database.
-         *
+         * 
          * If `mod_stmt` is:
          * <itemizedlist>
          *  <listitem><para>an UPDATE statement, then all the rows in `model` will be writable</para></listitem>
@@ -10473,19 +10963,19 @@ export namespace Gda {
          *  <listitem><para>in INSERT statement, then it will be possible to add some rows to `model`</para></listitem>
          *  <listitem><para>any other statement, then this method will return an error</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * This method can be called several times to specify different types of modification statements.
-         *
+         * 
          * Each modification statement will be executed when one or more values are modified in the data model;
          * each statement should then include variables which will be set to either the old value or the
          * new value of a column at the specified modified row (but can also contain other variables). Each variable
          * named as "+&lt;number&gt;" will be mapped to the new value of the number'th column (starting at 0), and
          * each variable named as "-&lt;number&gt;" will be mapped to the old value of the number'th column.
-         *
+         * 
          * Examples of the SQL equivalent of each statement are (for example if "mytable" has the "id" field as
          * primary key, and if that field is auto incremented and if the data model is the result of
          * executing "<![CDATA[SELECT * from mytable]]>").
-         *
+         * 
          * <itemizedlist>
          *  <listitem><para>"<![CDATA[INSERT INTO mytable (name) VALUES (##+1::string)]]>": the column ID can not be set
          *   for new rows</para></listitem>
@@ -10493,19 +10983,19 @@ export namespace Gda {
          *  <listitem><para>"<![CDATA[UPDATE mytable SET name=##+1::string WHERE id=##-0::int]]>": the column ID cannot be
          *   modified</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Also see the `gda_data_select_set_row_selection_condition_sql()` for more information about the WHERE
          * part of the UPDATE and DELETE statement types.
-         *
+         * 
          * If `mod_stmt` is an UPDATE or DELETE statement then it should have a WHERE part which identifies
          * a unique row in `model` (please note that this property can't be checked but may result
          * in `model` behaving in an unpredictable way).
-         *
+         * 
          * NOTE1: However, if the `gda_data_select_set_row_selection_condition()`
          * or `gda_data_select_set_row_selection_condition_sql()` have been successfully be called before, the WHERE
          * part of `mod_stmt` <emphasis>WILL</emphasis> be modified to use the row selection condition specified through one of
          * these methods (please not that it is then possible to avoid specifying a WHERE part in `mod_stmt` then).
-         *
+         * 
          * NOTE2: if `gda_data_select_set_row_selection_condition()`
          * or `gda_data_select_set_row_selection_condition_sql()` have not yet been successfully be called before, then
          * the WHERE part of `mod_stmt` will be used as if one of these functions had been called.
@@ -10513,23 +11003,25 @@ export namespace Gda {
          * @returns `true` if no error occurred.
          */
         set_modification_statement(mod_stmt: Statement): boolean;
+
         /**
          * Offers the same feature as `gda_data_select_set_modification_statement()` but using an SQL statement.
          * @param sql an SQL text
          * @returns TRUE if no error occurred.
          */
         set_modification_statement_sql(sql: string): boolean;
+
         /**
          * Specifies the SQL condition corresponding to the WHERE part of a SELECT statement which would
          * return only 1 row (the expression of the primary key).
-         *
+         * 
          * For example for a table created as <![CDATA["CREATE TABLE mytable (part1 int NOT NULL, part2 string NOT NULL,
          * name string, PRIMARY KEY (part1, part2))"]]>, and if `pmodel` corresponds to the execution of the
          * <![CDATA["SELECT name, part1, part2 FROM mytable"]]>, then the sensible value for `sql_where` would be
          * <![CDATA["part1 = ##-1::int AND part2 = ##-2::string"]]> because the values of the 'part1' field are located
          * in `pmodel`'s column number 1 and the values of the 'part2' field are located
          * in `pmodel`'s column number 2 and the primary key is composed of (part1, part2).
-         *
+         * 
          * For more information about the syntax of the parameters (named <![CDATA["##-1::int"]]> for example), see the
          * <link linkend="GdaSqlParser.description">GdaSqlParser</link> documentation, and
          * `gda_data_select_set_modification_statement()`.
@@ -10537,66 +11029,72 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         set_row_selection_condition_sql(sql_where: string): boolean;
+
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -10605,21 +11103,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -10630,12 +11130,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -10646,12 +11147,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -10674,12 +11176,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -10689,23 +11191,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -10713,18 +11210,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -10735,22 +11235,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -10759,38 +11263,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -10799,44 +11308,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -10844,11 +11350,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -10861,7 +11368,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -10869,14 +11376,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -10884,74 +11388,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -10959,20 +11474,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -10980,71 +11498,78 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
+
         /**
          * @virtual
          */
         vfunc_access_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @virtual
          */
         vfunc_i_append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @virtual
          */
-        vfunc_i_append_values(values: GObject.Value[] | null): number;
+        vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -11053,33 +11578,37 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @virtual
          */
-        vfunc_i_describe_column(col: number): Column | null;
+        vfunc_i_describe_column(col: number): (Column | null);
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @virtual
          */
         vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @virtual
          */
         vfunc_i_get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -11090,6 +11619,7 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -11098,48 +11628,53 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
+
         /**
          * @virtual
          */
         vfunc_i_get_n_columns(): number;
+
         /**
          * @virtual
          */
         vfunc_i_get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          * @virtual
          */
         vfunc_i_get_notify(): boolean;
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @virtual
          */
-        vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+        vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -11147,18 +11682,21 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
@@ -11167,15 +11705,17 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @virtual
          */
         vfunc_i_remove_row(row: number): boolean;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
@@ -11183,16 +11723,18 @@ export namespace Gda {
          * @param hint_value an optional value to specify the hint, or `null`
          * @virtual
          */
-        vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -11201,46 +11743,51 @@ export namespace Gda {
          * @virtual
          */
         vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @virtual
          */
-        vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+        vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          * @virtual
          */
         vfunc_row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          * @virtual
          */
         vfunc_row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
@@ -11249,13 +11796,16 @@ export namespace Gda {
         vfunc_row_updated(row: number): void;
     }
 
+
     namespace HandlerBin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
+        }
     }
 
     /**
@@ -11274,88 +11824,83 @@ export namespace Gda {
         $signals: HandlerBin.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<HandlerBin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HandlerBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerBin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HandlerBin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerBin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HandlerBin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerBin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HandlerBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerBin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HandlerBin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HandlerBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HandlerBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HandlerBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a data handler for binary values
          */
-        static ['new'](): DataHandler;
+        static ["new"](): DataHandler;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @returns `true` if the gda type can be handled
          */
         accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @returns the description
          */
         get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @returns the new {@link GObject.Value}, or `null` if no such value can be created.
          */
-        get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value: GObject.Value | null): string;
+        get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value: GObject.Value | null): string;
+        get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -11363,68 +11908,75 @@ export namespace Gda {
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        get_value_from_sql(sql: (string | null), type: GObject.GType): unknown;
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        get_value_from_str(str: (string | null), type: GObject.GType): unknown;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @virtual
          */
         vfunc_accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @virtual
          */
         vfunc_get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @virtual
          */
-        vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        vfunc_get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -11432,31 +11984,35 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_sql(sql: (string | null), type: GObject.GType): (GObject.Value | any);
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_str(str: (string | null), type: GObject.GType): (GObject.Value | any);
     }
+
 
     namespace HandlerBoolean {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
+        }
     }
 
     /**
@@ -11475,88 +12031,83 @@ export namespace Gda {
         $signals: HandlerBoolean.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<HandlerBoolean.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HandlerBoolean.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerBoolean.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HandlerBoolean.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerBoolean.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HandlerBoolean.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerBoolean.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HandlerBoolean.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerBoolean.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HandlerBoolean.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HandlerBoolean.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HandlerBoolean.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HandlerBoolean.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a data handler for booleans
          */
-        static ['new'](): DataHandler;
+        static ["new"](): DataHandler;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @returns `true` if the gda type can be handled
          */
         accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @returns the description
          */
         get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @returns the new {@link GObject.Value}, or `null` if no such value can be created.
          */
-        get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value: GObject.Value | null): string;
+        get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value: GObject.Value | null): string;
+        get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -11564,68 +12115,75 @@ export namespace Gda {
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        get_value_from_sql(sql: (string | null), type: GObject.GType): unknown;
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        get_value_from_str(str: (string | null), type: GObject.GType): unknown;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @virtual
          */
         vfunc_accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @virtual
          */
         vfunc_get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @virtual
          */
-        vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        vfunc_get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -11633,31 +12191,35 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_sql(sql: (string | null), type: GObject.GType): (GObject.Value | any);
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_str(str: (string | null), type: GObject.GType): (GObject.Value | any);
     }
+
 
     namespace HandlerNumerical {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
+        }
     }
 
     /**
@@ -11676,88 +12238,83 @@ export namespace Gda {
         $signals: HandlerNumerical.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<HandlerNumerical.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HandlerNumerical.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerNumerical.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HandlerNumerical.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerNumerical.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HandlerNumerical.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerNumerical.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HandlerNumerical.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerNumerical.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HandlerNumerical.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HandlerNumerical.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HandlerNumerical.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HandlerNumerical.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a data handler for numerical values
          */
-        static ['new'](): DataHandler;
+        static ["new"](): DataHandler;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @returns `true` if the gda type can be handled
          */
         accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @returns the description
          */
         get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @returns the new {@link GObject.Value}, or `null` if no such value can be created.
          */
-        get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value: GObject.Value | null): string;
+        get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value: GObject.Value | null): string;
+        get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -11765,68 +12322,75 @@ export namespace Gda {
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        get_value_from_sql(sql: (string | null), type: GObject.GType): unknown;
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        get_value_from_str(str: (string | null), type: GObject.GType): unknown;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @virtual
          */
         vfunc_accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @virtual
          */
         vfunc_get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @virtual
          */
-        vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        vfunc_get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -11834,31 +12398,35 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_sql(sql: (string | null), type: GObject.GType): (GObject.Value | any);
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_str(str: (string | null), type: GObject.GType): (GObject.Value | any);
     }
+
 
     namespace HandlerString {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
+        }
     }
 
     /**
@@ -11877,95 +12445,91 @@ export namespace Gda {
         $signals: HandlerString.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<HandlerString.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HandlerString.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerString.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HandlerString.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerString.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HandlerString.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerString.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HandlerString.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerString.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HandlerString.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HandlerString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HandlerString.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HandlerString.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a data handler for strings
          */
-        static ['new'](): DataHandler;
+        static ["new"](): DataHandler;
+
         /**
          * Creates a data handler for strings, which will use some specific methods implemented
          * by the `prov` object (possibly also `cnc`).
          * @param prov a {@link Gda.ServerProvider} object
          * @param cnc a {@link Gda.Connection} object, or `null`
          */
-        static new_with_provider(prov: ServerProvider, cnc: Connection | null): DataHandler;
+        static new_with_provider(prov: ServerProvider, cnc: (Connection | null)): DataHandler;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @returns `true` if the gda type can be handled
          */
         accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @returns the description
          */
         get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @returns the new {@link GObject.Value}, or `null` if no such value can be created.
          */
-        get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value: GObject.Value | null): string;
+        get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value: GObject.Value | null): string;
+        get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -11973,68 +12537,75 @@ export namespace Gda {
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        get_value_from_sql(sql: (string | null), type: GObject.GType): unknown;
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        get_value_from_str(str: (string | null), type: GObject.GType): unknown;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @virtual
          */
         vfunc_accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @virtual
          */
         vfunc_get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @virtual
          */
-        vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        vfunc_get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -12042,31 +12613,35 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_sql(sql: (string | null), type: GObject.GType): (GObject.Value | any);
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_str(str: (string | null), type: GObject.GType): (GObject.Value | any);
     }
+
 
     namespace HandlerTime {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
+        }
     }
 
     /**
@@ -12085,42 +12660,32 @@ export namespace Gda {
         $signals: HandlerTime.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<HandlerTime.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HandlerTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerTime.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HandlerTime.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerTime.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HandlerTime.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerTime.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HandlerTime.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerTime.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HandlerTime.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HandlerTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HandlerTime.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HandlerTime.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a data handler for time values
          */
-        static ['new'](): DataHandler;
+        static ["new"](): DataHandler;
+
         /**
          * Creates a data handler for time values, but using the default C locale
          * instead of the current user locale.
@@ -12128,7 +12693,6 @@ export namespace Gda {
         static new_no_locale(): DataHandler;
 
         // Methods
-
         /**
          * Get a string representing the locale-dependent way to enter a date/time/datetime, using
          * a syntax suitable for the `GdauiFormatEntry` widget
@@ -12136,16 +12700,18 @@ export namespace Gda {
          * @returns a new string
          */
         get_format(type: GObject.GType): string;
+
         /**
          * @param value a {@link GObject.Value} value
          * @returns a new string representing `value` without taking the current locale into account (i.e. in the "C" locale)
          */
-        get_no_locale_str_from_value(value: GObject.Value | any): string;
+        get_no_locale_str_from_value(value: (GObject.Value | any)): string;
+
         /**
          * Specifies the SQL output style of the `dh` data handler. The general format is "FIRSTsSECsTHIRD"
          * where FIRST, SEC and THIRD are specified by `first`, `sec` and `trird` and 's' is the separator,
          * specified by `separator`.
-         *
+         * 
          * The default implementation is `first`=G_DATE_MONTH, `sec`=G_DATE_DAY and `third`=G_DATE_YEAR
          * (the year is rendered on 4 digits) and the separator is '-'
          * @param first what comes first in the date representation
@@ -12154,19 +12720,14 @@ export namespace Gda {
          * @param separator separator character used between year, month and day
          * @param twodigits_years TRUE if year part of date must be rendered on 2 digits
          */
-        set_sql_spec(
-            first: GLib.DateDMY,
-            sec: GLib.DateDMY,
-            third: GLib.DateDMY,
-            separator: number,
-            twodigits_years: boolean,
-        ): void;
+        set_sql_spec(first: GLib.DateDMY, sec: GLib.DateDMY, third: GLib.DateDMY, separator: number, twodigits_years: boolean): void;
+
         /**
          * Specifies the human readable output style of the `dh` data handler.
          * The general format is "FIRSTsSECsTHIRD"
          * where FIRST, SEC and THIRD are specified by `first`, `sec` and `trird` and 's' is the separator,
          * specified by `separator`.
-         *
+         * 
          * The default implementation depends on the current locale, except if `dh` was created
          * using `gda_handler_time_new_no_locale()`.
          * @param first what comes first in the date representation
@@ -12175,59 +12736,59 @@ export namespace Gda {
          * @param separator separator character used between year, month and day
          * @param twodigits_years TRUE if year part of date must be rendered on 2 digits
          */
-        set_str_spec(
-            first: GLib.DateDMY,
-            sec: GLib.DateDMY,
-            third: GLib.DateDMY,
-            separator: number,
-            twodigits_years: boolean,
-        ): void;
+        set_str_spec(first: GLib.DateDMY, sec: GLib.DateDMY, third: GLib.DateDMY, separator: number, twodigits_years: boolean): void;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @returns `true` if the gda type can be handled
          */
         accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @returns the description
          */
         get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @returns the new {@link GObject.Value}, or `null` if no such value can be created.
          */
-        get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value: GObject.Value | null): string;
+        get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value: GObject.Value | null): string;
+        get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -12235,68 +12796,75 @@ export namespace Gda {
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        get_value_from_sql(sql: (string | null), type: GObject.GType): unknown;
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        get_value_from_str(str: (string | null), type: GObject.GType): unknown;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @virtual
          */
         vfunc_accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @virtual
          */
         vfunc_get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @virtual
          */
-        vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        vfunc_get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -12304,31 +12872,35 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_sql(sql: (string | null), type: GObject.GType): (GObject.Value | any);
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_str(str: (string | null), type: GObject.GType): (GObject.Value | any);
     }
+
 
     namespace HandlerType {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
+        }
     }
 
     /**
@@ -12347,88 +12919,83 @@ export namespace Gda {
         $signals: HandlerType.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<HandlerType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HandlerType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerType.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HandlerType.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerType.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HandlerType.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HandlerType.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HandlerType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HandlerType.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HandlerType.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HandlerType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HandlerType.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HandlerType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a data handler for Gda types
          */
-        static ['new'](): DataHandler;
+        static ["new"](): DataHandler;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @returns `true` if the gda type can be handled
          */
         accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @returns the description
          */
         get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @returns the new {@link GObject.Value}, or `null` if no such value can be created.
          */
-        get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value: GObject.Value | null): string;
+        get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value: GObject.Value | null): string;
+        get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -12436,68 +13003,75 @@ export namespace Gda {
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        get_value_from_sql(sql: (string | null), type: GObject.GType): unknown;
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        get_value_from_str(str: (string | null), type: GObject.GType): unknown;
+
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @virtual
          */
         vfunc_accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @virtual
          */
         vfunc_get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @virtual
          */
-        vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        vfunc_get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_sql_from_value(value: GObject.Value | null): string;
+        vfunc_get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @virtual
          */
-        vfunc_get_str_from_value(value: GObject.Value | null): string;
+        vfunc_get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -12505,23 +13079,25 @@ export namespace Gda {
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_sql(sql: (string | null), type: GObject.GType): (GObject.Value | any);
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @virtual
          */
-        vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
+        vfunc_get_value_from_str(str: (string | null), type: GObject.GType): (GObject.Value | any);
     }
+
 
     namespace Holder {
         // Signal signatures
@@ -12531,7 +13107,7 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'attribute-changed': (arg0: string, arg1: unknown) => void;
+            "attribute-changed": (arg0: string, arg1: unknown) => void;
             /**
              * Gets emitted when `holder`'s value has changed
              * @signal
@@ -12543,28 +13119,27 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'source-changed': () => void;
+            "source-changed": () => void;
             /**
              * Gets emitted when `holder` is going to change its value. One can connect to
              * this signal to control which values `holder` can have (for example to implement some business rules)
              * @signal
              * @run-last
              */
-            'validate-change': (arg0: unknown) => GLib.Error;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::full-bind': (pspec: GObject.ParamSpec) => void;
-            'notify::g-type': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::not-null': (pspec: GObject.ParamSpec) => void;
-            'notify::simple-bind': (pspec: GObject.ParamSpec) => void;
-            'notify::source-column': (pspec: GObject.ParamSpec) => void;
-            'notify::source-model': (pspec: GObject.ParamSpec) => void;
-            'notify::validate-changes': (pspec: GObject.ParamSpec) => void;
+            "validate-change": (arg0: unknown) => GLib.Error;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::full-bind": (pspec: GObject.ParamSpec) => void;
+            "notify::g-type": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::not-null": (pspec: GObject.ParamSpec) => void;
+            "notify::simple-bind": (pspec: GObject.ParamSpec) => void;
+            "notify::source-column": (pspec: GObject.ParamSpec) => void;
+            "notify::source-model": (pspec: GObject.ParamSpec) => void;
+            "notify::validate-changes": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
             description: string;
             full_bind: Holder;
@@ -12593,37 +13168,51 @@ export namespace Gda {
         static $gtype: GObject.GType<Holder>;
 
         // Properties
-
         get description(): string;
         set description(val: string);
+
         get full_bind(): Holder;
         set full_bind(val: Holder);
+
         get fullBind(): Holder;
         set fullBind(val: Holder);
+
         get g_type(): GObject.GType;
         set g_type(val: GObject.GType);
+
         get gType(): GObject.GType;
         set gType(val: GObject.GType);
+
         get id(): string;
         set id(val: string);
+
         get name(): string;
         set name(val: string);
+
         get not_null(): boolean;
         set not_null(val: boolean);
+
         get notNull(): boolean;
         set notNull(val: boolean);
+
         get simple_bind(): Holder;
         set simple_bind(val: Holder);
+
         get simpleBind(): Holder;
         set simpleBind(val: Holder);
+
         get source_column(): number;
         set source_column(val: number);
+
         get sourceColumn(): number;
         set sourceColumn(val: number);
+
         get source_model(): DataModel;
         set source_model(val: DataModel);
+
         get sourceModel(): DataModel;
         set sourceModel(val: DataModel);
+
         /**
          * Defines if the "validate-change" signal gets emitted when
          * the holder's value changes.
@@ -12631,6 +13220,7 @@ export namespace Gda {
          */
         get validate_changes(): boolean;
         set validate_changes(val: boolean);
+
         /**
          * Defines if the "validate-change" signal gets emitted when
          * the holder's value changes.
@@ -12649,215 +13239,224 @@ export namespace Gda {
         $signals: Holder.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Holder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](type: GObject.GType): Holder;
+        static ["new"](type: GObject.GType): Holder;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Holder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Holder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Holder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Holder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Holder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Holder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Holder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Holder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Holder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Holder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Holder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Holder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param att_name
-         * @param att_value
+         * @param att_name 
+         * @param att_value 
          * @virtual
          */
         vfunc_att_changed(att_name: string, att_value: unknown): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_source_changed(): void;
+
         /**
-         * @param new_value
+         * @param new_value 
          * @virtual
          */
         vfunc_validate_change(new_value: unknown): GLib.Error;
 
         // Methods
-
         /**
          * Copy constructor.
-         *
+         * 
          * Note1: if `orig` is set with a static value (see `gda_holder_take_static_value()`)
          * its copy will have a fresh new allocated GValue, so that user should free it when done.
          * @returns a new {@link Gda.Holder} object
          */
         copy(): Holder;
+
         /**
          * Forces a holder to be invalid; to set it valid again, a new value must be assigned
          * to it using `gda_holder_set_value()` or `gda_holder_take_value()`.
-         *
+         * 
          * `holder`'s value is set to `null`.
          */
         force_invalid(): void;
+
         /**
          * Forces a holder to be invalid; to set it valid again, a new value must be assigned
          * to it using `gda_holder_set_value()` or `gda_holder_take_value()`.
-         *
+         * 
          * `holder`'s value is set to `null`.
          * @param error a {@link GLib.Error} explaining why `holder` is declared invalid, or `null`
          */
-        force_invalid_e(error: GLib.Error | null): void;
+        force_invalid_e(error: (GLib.Error | null)): void;
+
         /**
          * Get an "encoded" version of `holder`'s name. The "encoding" consists in replacing non
          * alphanumeric character with the string "__gdaXX" where XX is the hex. representation
          * of the non alphanumeric char.
-         *
+         * 
          * This method is just a wrapper around the `gda_text_to_alphanum()` function.
          * @returns a new string
          */
         get_alphanum_id(): string;
+
         /**
          * Get the value associated to a named attribute.
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names, see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `holder`
          */
         get_attribute(attribute: string): unknown;
+
         /**
          * Get the holder which makes `holder` change its value when the holder's value is changed.
          * @returns the {@link Gda.Holder} or `null`
          */
         get_bind(): Holder;
+
         /**
          * Get the default value held into the holder. WARNING: the default value does not need to be of
          * the same type as the one required by `holder`.
          * @returns the default value
          */
         get_default_value(): unknown;
+
         get_g_type(): GObject.GType;
+
         /**
          * Get the ID of `holder`. The ID can be set using `holder`'s "id" property
          * @returns the ID (don't modify the string).
          */
         get_id(): string;
+
         /**
          * Get wether the holder can be NULL or not
          * @returns TRUE if the holder cannot be NULL
          */
         get_not_null(): boolean;
+
         /**
          * If `gda_holder_set_source_model()` has been used to provide a hint that `holder`'s value
          * should be among the values contained in a column of a data model, then this method
          * returns which data model, and if `col` is not `null`, then it is set to the restricting column
          * as well.
-         *
+         * 
          * Otherwise, this method returns `null`, and if `col` is not `null`, then it is set to 0.
          * @param col a place to store the column in the model sourcing the holder, or `null`
          * @returns a pointer to a {@link Gda.DataModel}, or `null`
          */
         get_source_model(col: number): DataModel;
+
         /**
          * Get the value held into the holder. If `holder` is set to use its default value
          * and that default value is not of the same type as `holder`, then `null` is returned.
-         *
+         * 
          * If `holder` is set to NULL, then the returned value is a #GDA_TYPE_NULL GValue.
-         *
+         * 
          * If `holder` is invalid, then the returned value is `null`.
          * @returns the value, or `null`
          */
-        get_value(): GObject.Value | null;
+        get_value(): (GObject.Value | null);
+
         /**
          * Same functionality as `gda_holder_get_value()` except that it returns the value as a string
          * (the conversion is done using `dh` if not `null`, or the default data handler otherwise).
          * @param dh a {@link Gda.DataHandler} to use, or `null`
          * @returns the value, or `null`
          */
-        get_value_str(dh: DataHandler | null): string;
+        get_value_str(dh: (DataHandler | null)): string;
+
         /**
          * Get the validity of `holder` (that is, of the value held by `holder`)
          * @returns TRUE if `holder`'s value can safely be used
          */
         is_valid(): boolean;
+
         /**
          * Get the validity of `holder` (that is, of the value held by `holder`)
          * @returns TRUE if `holder`'s value can safely be used
          */
         is_valid_e(): boolean;
+
         /**
          * Set the value associated to a named attribute. The `attribute` string is 'stolen' by this method, and
          * the memory it uses will be freed using the `destroy` function when no longer needed (if `destroy` is `null`,
          * then the string will not be freed at all).
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names,
          * see <link linkend="libgda-5.0-Attributes-manager.synopsis">this section</link>.
-         *
+         * 
          * For example one would use it as:
-         *
+         * 
          * <code>gda_holder_set_attribute (holder, g_strdup (my_attribute), my_value, g_free);</code>
          * <code>gda_holder_set_attribute (holder, GDA_ATTRIBUTE_NAME, my_value, NULL);</code>
-         *
+         * 
          * If there is already an attribute named `attribute` set, then its value is replaced with the new value (`value` is
          * copied), except if `value` is `null`, in which case the attribute is removed.
          * @param attribute attribute name
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_attribute(attribute: string, value: GObject.Value | any): void;
+        set_attribute(attribute: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `holder` to change when `bind_to` changes (and does not make `bind_to` change when `holder` changes).
          * For the operation to succeed, the GType of `holder` and `bind_to` must be the same, with the exception that
          * any of them can have a `GDA_TYPE_NULL` type (in this situation, the GType of the two {@link Gda.Holder} objects
          * involved is set to match the other when any of them sets its type to something different than GDA_TYPE_NULL).
-         *
+         * 
          * If `bind_to` is `null`, then `holder` will not be bound anymore.
          * @param bind_to a {@link Gda.Holder} or `null`
          * @returns TRUE if no error occurred
          */
         set_bind(bind_to: Holder): boolean;
+
         /**
          * Sets the default value within the holder. If `value` is `null` then `holder` won't have a
          * default value anymore. To set a default value to `null`, then pass a {@link GObject.Value} created using
          * `gda_value_new_null()`.
-         *
+         * 
          * NOTE: the default value does not need to be of the same type as the one required by `holder`.
          * @param value a value to set the holder's default value, or `null`
          */
-        set_default_value(value: GObject.Value | any): void;
+        set_default_value(value: (GObject.Value | any)): void;
+
         /**
          * Sets if the holder can have a NULL value. If `not_null` is TRUE, then that won't be allowed
          * @param not_null TRUE if `holder` should not accept `null` values
          */
         set_not_null(not_null: boolean): void;
+
         /**
          * Sets an hint that `holder`'s values should be restricted among the values
          * contained in the `col` column of the `model` data model. Note that this is just a hint,
          * meaning this policy is not enforced by `holder`'s implementation.
-         *
+         * 
          * If `model` is `null`, then the effect is to cancel ant previous call to `gda_holder_set_source_model()`
          * where `model` was not `null`.
          * @param model a {@link Gda.DataModel} object or `null`
@@ -12865,33 +13464,35 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         set_source_model(model: DataModel, col: number): boolean;
+
         /**
          * Sets the value within the holder. If `holder` is an alias for another
          * holder, then the value is also set for that other holder.
-         *
+         * 
          * On success, the action of any call to `gda_holder_force_invalid()` is cancelled
          * as soon as this method is called (even if `holder`'s value does not actually change)
-         *
+         * 
          * If the value is not different from the one already contained within `holder`,
          * then `holder` is not changed and no signal is emitted.
-         *
+         * 
          * Note1: the `value` argument is treated the same way if it is `null` or if it is a #GDA_TYPE_NULL value
-         *
+         * 
          * Note2: if `holder` can't accept the `value` value, then this method returns FALSE, and `holder` will be left
          * in an invalid state.
-         *
+         * 
          * Note3: before the change is accepted by `holder`, the "validate-change" signal will be emitted (the value
          * of which can prevent the change from happening) which can be connected to to have a greater control
          * of which values `holder` can have, or implement some business rules.
          * @param value a value to set the holder to, or `null`
          * @returns TRUE if value has been set
          */
-        set_value(value: GObject.Value | null): boolean;
+        set_value(value: (GObject.Value | null)): boolean;
+
         /**
          * Same functionality as `gda_holder_set_value()` except that it uses a string representation
          * of the value to set, which will be converted into a GValue first (using default data handler if
          * `dh` is `null`).
-         *
+         * 
          * Note1: if `value` is `null` or is the "NULL" string, then `holder`'s value is set to `null`.
          * Note2: if `holder` can't accept the `value` value, then this method returns FALSE, and `holder` will be left
          * in an invalid state.
@@ -12900,24 +13501,26 @@ export namespace Gda {
          * @returns TRUE if value has been set
          */
         set_value_str(dh: DataHandler, value: string): boolean;
+
         /**
          * Set `holder`'s value to its default value.
          * @returns TRUE if `holder` has got a default value
          */
         set_value_to_default(): boolean;
+
         /**
          * Sets the const value within the holder. If `holder` is an alias for another
          * holder, then the value is also set for that other holder.
-         *
+         * 
          * The value will not be freed, and user should take care of it, either for its
          * freeing or for its correct value at the moment of query.
-         *
+         * 
          * If the value is not different from the one already contained within `holder`,
          * then `holder` is not changed and no signal is emitted.
-         *
+         * 
          * Note1: if `holder` can't accept the `value` value, then this method returns NULL, and `holder` will be left
          * in an invalid state.
-         *
+         * 
          * Note2: before the change is accepted by `holder`, the "validate-change" signal will be emitted (the value
          * of which can prevent the change from happening) which can be connected to to have a greater control
          * of which values `holder` can have, or implement some business rules.
@@ -12925,77 +13528,86 @@ export namespace Gda {
          * @param value_changed a boolean set with TRUE if the value changes, FALSE elsewhere.
          * @returns NULL if an error occurred or if the previous GValue was NULL itself. It returns the static GValue user set previously, so that he can free it.
          */
-        take_static_value(value: GObject.Value | any, value_changed: boolean): unknown;
+        take_static_value(value: (GObject.Value | any), value_changed: boolean): unknown;
+
         /**
          * Sets the value within the holder. If `holder` is an alias for another
          * holder, then the value is also set for that other holder.
-         *
+         * 
          * On success, the action of any call to `gda_holder_force_invalid()` is cancelled
          * as soon as this method is called (even if `holder`'s value does not actually change).
-         *
+         * 
          * If the value is not different from the one already contained within `holder`,
          * then `holder` is not changed and no signal is emitted.
-         *
+         * 
          * Note1: if `holder` can't accept the `value` value, then this method returns FALSE, and `holder` will be left
          * in an invalid state.
-         *
+         * 
          * Note2: before the change is accepted by `holder`, the "validate-change" signal will be emitted (the value
          * of which can prevent the change from happening) which can be connected to to have a greater control
          * of which values `holder` can have, or implement some business rules.
-         *
+         * 
          * Note3: if user previously set this holder with gda_holder_take_static_value () the GValue
          * stored internally will be forgiven and replaced by the `value`. User should then
          * take care of the 'old' static GValue.
          * @param value a value to set the holder to
          * @returns TRUE if value has been set
          */
-        take_value(value: GObject.Value | any): boolean;
+        take_value(value: (GObject.Value | any)): boolean;
+
         /**
          * Tells if `holder`'s current value is the default one.
          * @returns TRUE if `holder` `holder`'s current value is the default one
          */
         value_is_default(): boolean;
+
         /**
          * Locks `lockable`. If it is already locked by another thread, the current thread will block until it is unlocked
          * by the other thread.
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
-         *
+         * 
          * Note: unlike `g_mutex_lock()`, this method recursive, which means a thread can lock `lockable` several times
          * (and has to unlock it as many times to actually unlock it).
          */
         lock(): void;
+
         /**
          * Tries to lock `lockable`. If it is already locked by another thread, then it immediately returns FALSE, otherwise
          * it locks `lockable`.
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
-         *
+         * 
          * Note: unlike `g_mutex_lock()`, this method recursive, which means a thread can lock `lockable` several times
          * (and has to unlock it as many times to actually unlock it).
          * @returns TRUE if the object has successfully been locked.
          */
         trylock(): boolean;
+
         /**
          * Unlocks `lockable`. This method should not be called if the current does not already holds a lock on `lockable` (having
          * used `gda_lockable_lock()` or `gda_lockable_trylock()`).
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
          */
         unlock(): void;
+
         /**
          * @virtual
          */
         vfunc_i_lock(): void;
+
         /**
          * @virtual
          */
         vfunc_i_trylock(): boolean;
+
         /**
          * @virtual
          */
         vfunc_i_unlock(): void;
     }
+
 
     namespace MetaStore {
         // Signal signatures
@@ -13005,14 +13617,14 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'meta-changed': (arg0: MetaStoreChange[]) => void;
+            "meta-changed": (arg0: MetaStoreChange[]) => void;
             /**
              * This signal is emitted when the `store`'s contents have been reset completely and when
              * no detailed changes are available
              * @signal
              * @run-first
              */
-            'meta-reset': () => void;
+            "meta-reset": () => void;
             /**
              * This signal is emitted when the contents of a table should be updated (data to update or insert only;
              * deleting data is done automatically). This signal is used for internal purposes by the {@link Gda.Connection}
@@ -13020,15 +13632,14 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            'suggest-update': (arg0: MetaContext) => GLib.Error;
-            'notify::catalog': (pspec: GObject.ParamSpec) => void;
-            'notify::cnc': (pspec: GObject.ParamSpec) => void;
-            'notify::cnc-string': (pspec: GObject.ParamSpec) => void;
-            'notify::schema': (pspec: GObject.ParamSpec) => void;
+            "suggest-update": (arg0: MetaContext) => GLib.Error;
+            "notify::catalog": (pspec: GObject.ParamSpec) => void;
+            "notify::cnc": (pspec: GObject.ParamSpec) => void;
+            "notify::cnc-string": (pspec: GObject.ParamSpec) => void;
+            "notify::schema": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             catalog: string;
             cnc: Connection;
@@ -13045,23 +13656,26 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaStore>;
 
         // Properties
-
         /**
          * @construct-only
          */
         set catalog(val: string);
+
         /**
          * @construct-only
          */
         get cnc(): Connection;
+
         /**
          * @construct-only
          */
         set cnc_string(val: string);
+
         /**
          * @construct-only
          */
         set cncString(val: string);
+
         /**
          * @construct-only
          */
@@ -13077,47 +13691,37 @@ export namespace Gda {
         $signals: MetaStore.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<MetaStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc_string: string | null): MetaStore;
+        static ["new"](cnc_string: (string | null)): MetaStore;
 
         static new_with_file(file_name: string): MetaStore;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MetaStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetaStore.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MetaStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetaStore.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MetaStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetaStore.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MetaStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetaStore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MetaStore.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MetaStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MetaStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetaStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
+
         /**
          * Use this method to get a correctly quoted (if necessary) SQL identifier which can be used
          * to retrieve or filter information in a {@link Gda.MetaStore} which stores meta data about `cnc`.
-         *
+         * 
          * The returned SQL identifier can be used in conjunction with `gda_connection_update_meta_store()`,
          * `gda_connection_get_meta_store_data()`, `gda_connection_get_meta_store_data_v()` and
          * `gda_meta_store_extract()`.
@@ -13127,44 +13731,44 @@ export namespace Gda {
         static sql_identifier_quote(id: string, cnc: Connection): string;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_meta_reset(): void;
+
         /**
-         * @param suggest
+         * @param suggest 
          * @virtual
          */
         vfunc_suggest_update(suggest: MetaContext): GLib.Error;
 
         // Methods
-
         /**
          * Creates a new {@link Gda.DataModelArray} data model which can be used, after being correctly filled,
          * with the gda_meta_store_modify*() methods.*
-         *
+         * 
          * To be used by provider's implementation
          * @param table_name the name of a table present in `store`
          * @returns a new {@link Gda.DataModel}
          */
         create_modify_data_model(table_name: string): DataModel;
+
         /**
          * Defines a new declared foreign key into `store`. If another declared foreign key is already defined
          * between the two tables and with the same name, then it is first removed.
-         *
+         * 
          * This method begins a transaction if possible (ie. none is already started), and if it can't,
          * then if there is an error, the job may be partially done.
-         *
+         * 
          * A check is always performed to make sure all the database objects actually
          * exist and returns an error if not. The check is performed using `mstruct` if it's not `null` (in
          * this case only the tables already represented in `mstruct` will be considered, in other words: `mstruct`
          * will not be modified), and using an internal {@link Gda.MetaStruct} is `null`.
-         *
+         * 
          * The `catalog`, `schema`, `table`, `ref_catalog`, `ref_schema` and `ref_table` must follow the SQL
          * identifiers naming convention, see the <link linkend="gen:sql_identifiers">SQL identifiers</link>
          * section. The same convention needs to be respected for the strings in `conames` and `ref_colnames`.
-         *
+         * 
          * If `catalog` is not `null`, then `schema` must also be not `null` (the same restriction applies to
          * `ref_catalog` and `ref_schema`).
          * @param mstruct a {@link Gda.MetaStruct}, or `null`
@@ -13179,23 +13783,13 @@ export namespace Gda {
          * @param ref_colnames an array of column names from the referenced table
          * @returns `true` if no error occurred
          */
-        declare_foreign_key(
-            mstruct: MetaStruct | null,
-            fk_name: string,
-            catalog: string | null,
-            schema: string | null,
-            table: string,
-            ref_catalog: string | null,
-            ref_schema: string | null,
-            ref_table: string,
-            colnames: string[],
-            ref_colnames: string[],
-        ): boolean;
+        declare_foreign_key(mstruct: (MetaStruct | null), fk_name: string, catalog: (string | null), schema: (string | null), table: string, ref_catalog: (string | null), ref_schema: (string | null), ref_table: string, colnames: string[], ref_colnames: string[]): boolean;
+
         /**
          * Extracts some data stored in `store` using a custom SELECT query. If the `select_sql` filter involves
          * SQL identifiers (such as table or column names), then the values should have been adapted using
          * `gda_meta_store_sql_identifier_quote()`.
-         *
+         * 
          * For more information about
          * SQL identifiers are represented in `store`, see the
          * <link linkend="information_schema:sql_identifiers">meta data section about SQL identifiers</link>.
@@ -13203,36 +13797,40 @@ export namespace Gda {
          * @param vars a hash table with all variables names as keys and GValue* as value, representing values for all the variables mentioned in `select_sql`. If there is no variable then this part can be omitted.
          * @returns a new {@link Gda.DataModel}, or `null` if an error occurred
          */
-        extract(select_sql: string, vars: GLib.HashTable<string, GObject.Value> | null): DataModel;
+        extract(select_sql: string, vars: (GLib.HashTable<string, GObject.Value> | null)): DataModel;
+
         /**
          * The {@link Gda.MetaStore} object maintains a list of (name,value) attributes (attributes names starting with a '_'
          * character are for internal use only and cannot be altered). This method and the `gda_meta_store_set_attribute_value()`
          * method allows the user to add, set or remove attributes specific to their usage.
-         *
+         * 
          * This method allows to get the value of a attribute stored in `store`. The returned attribute value is
          * placed at `att_value`, the caller is responsible for free that string.
-         *
+         * 
          * If there is no attribute named `att_name` then `att_value` is set to `null`
          * and `error` will contain the GDA_META_STORE_ATTRIBUTE_NOT_FOUND_ERROR error code, and FALSE is returned.
          * @param att_name name of the attribute to get
          * @returns TRUE if no error occurred
          */
         get_attribute_value(att_name: string): [boolean, string];
+
         /**
          * Get a pointer to the {@link Gda.Connection} object internally used by `store` to store
          * its contents.
-         *
+         * 
          * The returned connection can be used to access some other data than the one managed by `store`
          * itself. The returned object is not owned by the caller (if you need to keep it, then use `g_object_ref()`).
          * Do not close the connection.
          * @returns a {@link Gda.Connection}, or `null`
          */
         get_internal_connection(): Connection;
+
         /**
          * Get `store`'s internal schema's version
          * @returns the version (incremented each time the schema changes, backward compatible)
          */
         get_version(): number;
+
         /**
          * Propagates an update to `store`, the update's contents is represented by `new_data`, this function is
          * primarily reserved to database providers.
@@ -13243,13 +13841,8 @@ export namespace Gda {
          * @param values values
          * @returns `true` if no error occurred
          */
-        modify(
-            table_name: string,
-            new_data: DataModel | null,
-            condition: string | null,
-            value_names: string[],
-            values: (GObject.Value | any)[],
-        ): boolean;
+        modify(table_name: string, new_data: (DataModel | null), condition: (string | null), value_names: string[], values: (GObject.Value | any)[]): boolean;
+
         /**
          * Propagates an update to `store`, the update's contents is represented by `new_data`, this function is
          * primarily reserved to database providers.
@@ -13257,30 +13850,31 @@ export namespace Gda {
          * @param new_data a {@link Gda.DataModel} containing the new data to set in `table_name`, or `null` (treated as a data model with no row at all)
          * @returns TRUE if no error occurred
          */
-        modify_with_context(context: MetaContext, new_data: DataModel | null): boolean;
+        modify_with_context(context: MetaContext, new_data: (DataModel | null)): boolean;
+
         /**
          * The internal database used by `store` can be 'augmented' with some user-defined database objects
          * (such as tables or views). This method allows one to add a new database object.
-         *
+         * 
          * If the internal database already contains the object, then:
          * <itemizedlist>
          *   <listitem><para>if the object is equal to the provided description then TRUE is returned</para></listitem>
          *   <listitem><para>if the object exists but differs from the provided description, then FALSE is returned,
          *      with the GDA_META_STORE_SCHEMA_OBJECT_CONFLICT_ERROR error code</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * The `xml_description` defines the table of view's definition, for example:
          * <programlisting><![CDATA[<table name="mytable">
          *     <column name="id" pkey="TRUE"/>
          *     <column name="value"/>
          * </table>]]></programlisting>
-         *
+         * 
          * The partial DTD for this XML description of the object to add is the following (the top node must be
          * a &lt;table&gt; or a &lt;view&gt;):
          * <programlisting><![CDATA[<!ELEMENT table (column*,check*,fkey*,unique*)>
          * <!ATTLIST table
          *           name NMTOKEN `REQUIRED`>
-         *
+         * 
          * <!ELEMENT column EMPTY>
          * <!ATTLIST column
          *           name NMTOKEN `REQUIRED`
@@ -13288,30 +13882,31 @@ export namespace Gda {
          *           pkey (TRUE|FALSE) `IMPLIED`
          *           autoinc (TRUE|FALSE) `IMPLIED`
          *           nullok (TRUE|FALSE) `IMPLIED`>
-         *
+         * 
          * <!ELEMENT check (`PCDATA`)>
-         *
+         * 
          * <!ELEMENT fkey (part+)>
          * <!ATTLIST fkey
          *           ref_table NMTOKEN `REQUIRED`>
-         *
+         * 
          * <!ELEMENT part EMPTY>
          * <!ATTLIST part
          *           column NMTOKEN `IMPLIED`
          *           ref_column NMTOKEN `IMPLIED`>
-         *
+         * 
          * <!ELEMENT unique (column)>
-         *
+         * 
          * <!ELEMENT view (definition)>
          * <!ATTLIST view
          *           name NMTOKEN `REQUIRED`
          *           descr CDATA `IMPLIED`>
-         *
+         * 
          * <!ELEMENT definition (`PCDATA`)>]]></programlisting>
          * @param xml_description an XML description of the table or view to add to `store`
          * @returns TRUE if the new object has successfully been added
          */
         schema_add_custom_object(xml_description: string): boolean;
+
         /**
          * Get an ordered list of the tables `store` knows about. The tables are ordered in a way that tables dependencies
          * are respected: if table B has a foreign key on table A, then table A will be listed before table B in the returned
@@ -13319,6 +13914,7 @@ export namespace Gda {
          * @returns a new list of tables names (as gchar*), the list must be freed when no longer needed, but the strings present in the list must not be modified.
          */
         schema_get_all_tables(): string[];
+
         /**
          * Get an ordered list of the tables `store` knows about on which the `table_name` table depends (recursively).
          * The tables are ordered in a way that tables dependencies
@@ -13328,17 +13924,20 @@ export namespace Gda {
          * @returns a new list of tables names (as gchar*), the list must be freed when no longer needed, but the strings present in the list must not be modified.
          */
         schema_get_depend_tables(table_name: string): string[];
+
         /**
          * Creates a new {@link Gda.MetaStruct} object representing `store`'s internal database structure.
          * @returns a new {@link Gda.MetaStruct} object, or `null` if an error occurred
          */
         schema_get_structure(): MetaStruct;
+
         /**
          * Removes the custom database object named `obj_name`.
          * @param obj_name name of the custom object to remove
          * @returns TRUE if the custom object has successfully been removed
          */
         schema_remove_custom_object(obj_name: string): boolean;
+
         /**
          * Set the value of the attribute named `att_name` to `att_value`; see `gda_meta_store_get_attribute_value()` for
          * more information.
@@ -13346,32 +13945,35 @@ export namespace Gda {
          * @param att_value value of the attribute to set, or `null` to unset the attribute
          * @returns TRUE if no error occurred
          */
-        set_attribute_value(att_name: string, att_value: string | null): boolean;
+        set_attribute_value(att_name: string, att_value: (string | null)): boolean;
+
         /**
          * Specifies how `store` must handle SQL identifiers it has to store. This method is mainly used by
          * database providers.
          * @param style a style
          */
         set_identifiers_style(style: SqlIdentifierStyle): void;
+
         /**
          * Specifies a function which `store` will use to determine if a keyword is an SQL reserved
          * keyword or not.
-         *
+         * 
          * This method is mainly used by database providers.
          * @param func a {@link Gda.SqlReservedKeywordsFunc} function, or `null`
          */
-        set_reserved_keywords_func(func: SqlReservedKeywordsFunc | null): void;
+        set_reserved_keywords_func(func: (SqlReservedKeywordsFunc | null)): void;
+
         /**
          * Removes a declared foreign key from `store`.
-         *
+         * 
          * This method begins a transaction if possible (ie. none is already started), and if it can't, then if there
          * is an error, the job may be partially done.
-         *
+         * 
          * A check is always performed to make sure all the database objects actually
          * exist and returns an error if not. The check is performed using `mstruct` if it's not `null` (in
          * this case only the tables already represented in `mstruct` will be considered, in other words: `mstruct`
          * will not be modified), and using an internal {@link Gda.MetaStruct} is `null`.
-         *
+         * 
          * See `gda_meta_store_declare_foreign_key()` for more information anout the `catalog`, `schema`, `name`,
          * `ref_catalog`, `ref_schema` and `ref_name` arguments.
          * @param mstruct a {@link Gda.MetaStruct}, or `null`
@@ -13384,27 +13986,18 @@ export namespace Gda {
          * @param ref_table the name of the referenced table
          * @returns `true` if no error occurred
          */
-        undeclare_foreign_key(
-            mstruct: MetaStruct | null,
-            fk_name: string,
-            catalog: string | null,
-            schema: string | null,
-            table: string,
-            ref_catalog: string | null,
-            ref_schema: string | null,
-            ref_table: string,
-        ): boolean;
+        undeclare_foreign_key(mstruct: (MetaStruct | null), fk_name: string, catalog: (string | null), schema: (string | null), table: string, ref_catalog: (string | null), ref_schema: (string | null), ref_table: string): boolean;
     }
+
 
     namespace MetaStruct {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::features': (pspec: GObject.ParamSpec) => void;
-            'notify::meta-store': (pspec: GObject.ParamSpec) => void;
+            "notify::features": (pspec: GObject.ParamSpec) => void;
+            "notify::meta-store": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             features: number;
             meta_store: MetaStore;
@@ -13419,15 +14012,16 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaStruct>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get features(): number;
+
         /**
          * @construct-only
          */
         get meta_store(): MetaStore;
+
         /**
          * @construct-only
          */
@@ -13443,62 +14037,50 @@ export namespace Gda {
         $signals: MetaStruct.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<MetaStruct.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](store: MetaStore, features: MetaStructFeature): MetaStruct;
+        static ["new"](store: MetaStore, features: MetaStructFeature): MetaStruct;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MetaStruct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetaStruct.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MetaStruct.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetaStruct.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MetaStruct.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetaStruct.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MetaStruct.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetaStruct.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MetaStruct.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MetaStruct.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MetaStruct.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetaStruct.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Creates a new {@link Gda.MetaDbObject} structure in `mstruct` to represent the database object (of type `type`)
          * which can be uniquely identified as `catalog`.`schema`.`name`.
-         *
+         * 
          * If `catalog` is not `null`, then `schema` should not be `null`.
-         *
+         * 
          * If both `catalog` and `schema` are `null`, then the database object will be the one which is
          * "visible" by default (that is which can be accessed only by its short `name` name).
-         *
+         * 
          * If `catalog` is `null` and `schema` is not `null`, then the database object will be the one which
          * can be accessed by its `schema`.`name` name.
-         *
+         * 
          * Important note: `catalog`, `schema` and `name` will be used using the following convention:
          * <itemizedlist>
          *   <listitem><para>be surrounded by double quotes for a case sensitive search</para></listitem>
          *   <listitem><para>otherwise for case insensitive search</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * For more information, see the <link linkend="information_schema:sql_identifiers">
          * meta data section about SQL identifiers</link>.
          * @param type the type of object to add (which can be GDA_META_DB_UNKNOWN)
@@ -13507,67 +14089,69 @@ export namespace Gda {
          * @param name the object's name (as a G_TYPE_STRING GValue), not `null`
          * @returns the {@link Gda.MetaDbObject} corresponding to the database object if no error occurred, or `null`
          */
-        complement(
-            type: MetaDbObjectType,
-            catalog: GObject.Value | null,
-            schema: GObject.Value | null,
-            name: GObject.Value | any,
-        ): MetaDbObject;
+        complement(type: MetaDbObjectType, catalog: (GObject.Value | null), schema: (GObject.Value | null), name: (GObject.Value | any)): MetaDbObject;
+
         /**
          * This method is similar to `gda_meta_struct_complement()` and `gda_meta_struct_complement_default()`
          * but creates {@link Gda.MetaDbObject} for all the database object.
-         *
+         * 
          * Please refer to `gda_meta_struct_complement()` form more information.
          * @returns TRUE if no error occurred
          */
         complement_all(): boolean;
+
         /**
          * This method is similar to `gda_meta_struct_complement()` and `gda_meta_struct_complement_all()`
          * but creates {@link Gda.MetaDbObject} for all the
          * database object which are usable using only their short name (that is which do not need to be prefixed by
          * the schema in which they are to be used).
-         *
+         * 
          * Please refer to `gda_meta_struct_complement()` form more information.
          * @returns TRUE if no error occurred
          */
         complement_default(): boolean;
+
         /**
          * This method is similar to `gda_meta_struct_complement()` but creates {@link Gda.MetaDbObject} for all the dependencies
          * of `dbo`.
-         *
+         * 
          * Please refer to `gda_meta_struct_complement()` form more information.
          * @param dbo a {@link Gda.MetaDbObject} part of `mstruct`
          * @returns TRUE if no error occurred
          */
         complement_depend(dbo: MetaDbObject): boolean;
+
         /**
          * This method is similar to `gda_meta_struct_complement()` but creates {@link Gda.MetaDbObject} for all the
          * database object which are in the `schema` schema (and in the `catalog` catalog).
          * If `catalog` is `null`, then any catalog will be used, and
          * if `schema` is `null` then any schema will be used (if `schema` is `null` then catalog must also be `null`).
-         *
+         * 
          * Please refer to `gda_meta_struct_complement()` form more information.
          * @param catalog name of a catalog, or `null`
          * @param schema name of a schema, or `null`
          * @returns TRUE if no error occurred
          */
-        complement_schema(catalog: GObject.Value | null, schema: GObject.Value | null): boolean;
+        complement_schema(catalog: (GObject.Value | null), schema: (GObject.Value | null)): boolean;
+
         /**
          * Creates a new graph (in the GraphViz syntax) representation of `mstruct`.
          * @param info informs what kind of information to show in the resulting graph
          * @returns a new string, or `null` if an error occurred.
          */
         dump_as_graph(info: MetaGraphInfo): string;
+
         /**
          * Get a list of all the {@link Gda.MetaDbObject} structures representing database objects in `mstruct`. Note that
          * no {@link Gda.MetaDbObject} structure must not be modified.
          * @returns a new {@link GLib.SList} list of pointers to {@link Gda.MetaDbObject} structures which must be destroyed after usage using `g_slist_free()`. The individual {@link Gda.MetaDbObject} must not be modified.
          */
         get_all_db_objects(): MetaDbObject[];
+
         /**
          * Tries to locate the {@link Gda.MetaDbObject} structure representing the database object named after
          * `catalog`, `schema` and `name`.
-         *
+         * 
          * If one or both of `catalog` and `schema` are `null`, and more than one database object matches the name, then
          * the return value is also `null`.
          * @param catalog the catalog the object belongs to (as a G_TYPE_STRING GValue), or `null`
@@ -13575,11 +14159,8 @@ export namespace Gda {
          * @param name the object's name (as a G_TYPE_STRING GValue), not `null`
          * @returns the {@link Gda.MetaDbObject} or `null` if not found
          */
-        get_db_object(
-            catalog: GObject.Value | null,
-            schema: GObject.Value | null,
-            name: GObject.Value | any,
-        ): MetaDbObject;
+        get_db_object(catalog: (GObject.Value | null), schema: (GObject.Value | null), name: (GObject.Value | any)): MetaDbObject;
+
         /**
          * Loads an XML description into `mstruct`. This method is still experimental and no description
          * the XML file structure is given, and no guarantee that it will remain as it is given.
@@ -13588,7 +14169,8 @@ export namespace Gda {
          * @param xml_spec_file the specifications as the name of an XML file
          * @returns TRUE if no error has occurred
          */
-        load_from_xml_file(catalog: string | null, schema: string | null, xml_spec_file: string): boolean;
+        load_from_xml_file(catalog: (string | null), schema: (string | null), xml_spec_file: string): boolean;
+
         /**
          * Reorders the list of database objects within `mstruct` in a way specified by `sort_type`.
          * @param sort_type the kind of sorting requested
@@ -13597,13 +14179,16 @@ export namespace Gda {
         sort_db_objects(sort_type: MetaSortType): boolean;
     }
 
+
     namespace PStmt {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -13622,71 +14207,67 @@ export namespace Gda {
         $signals: PStmt.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
+
         sql: string;
+
         param_ids: string[];
+
         ncols: number;
+
         types: GObject.GType;
+
         tmpl_columns: Column[];
 
         // Constructors
-
         constructor(properties?: Partial<PStmt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PStmt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PStmt.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PStmt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PStmt.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PStmt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PStmt.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PStmt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PStmt.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PStmt.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PStmt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PStmt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PStmt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Copies `src`'s data to `dest`
          * @param dest a {@link Gda.PStmt} object
          */
         copy_contents(dest: PStmt): void;
+
         /**
          * Get a pointer to the {@link Gda.Statement} which led to the creation of this prepared statement.
-         *
+         * 
          * Note: if that statement has been modified since the creation of `pstmt`, then this method
          * will return `null`
          * @returns the {@link Gda.Statement}
          */
         get_gda_statement(): Statement;
+
         /**
          * Informs `pstmt` that it corresponds to the preparation of the `stmt` statement
          * @param stmt a {@link Gda.Statement} object, or `null`
          */
-        set_gda_statement(stmt: Statement | null): void;
+        set_gda_statement(stmt: (Statement | null)): void;
     }
+
 
     namespace RepetitiveStatement {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::statement': (pspec: GObject.ParamSpec) => void;
+            "notify::statement": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             statement: Statement;
         }
@@ -13699,7 +14280,6 @@ export namespace Gda {
         static $gtype: GObject.GType<RepetitiveStatement>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -13715,41 +14295,29 @@ export namespace Gda {
         $signals: RepetitiveStatement.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RepetitiveStatement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](stmt: Statement): RepetitiveStatement;
+        static ["new"](stmt: Statement): RepetitiveStatement;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RepetitiveStatement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepetitiveStatement.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RepetitiveStatement.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RepetitiveStatement.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RepetitiveStatement.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RepetitiveStatement.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RepetitiveStatement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepetitiveStatement.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RepetitiveStatement.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RepetitiveStatement.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof RepetitiveStatement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepetitiveStatement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Specifies that `rstmt` be executed one time with the values contained in `values`.
-         *
+         * 
          * A new {@link Gda.Set} to be used as the `values` argument can be obtained using
          * `gda_repetitive_statement_get_template_set()`.
          * @param values a {@link Gda.Set} object with the values to be used
@@ -13757,15 +14325,17 @@ export namespace Gda {
          * @returns a new {@link Gda.RepetitiveStatement} object
          */
         append_set(values: Set, make_copy: boolean): boolean;
+
         /**
          * Get all the values sets which will have been added using `gda_repetitive_statement_append_set()`.
          * @returns a new {@link GLib.SList} of {@link Gda.Set} objects (free with `g_slist_free()`).
          */
         get_all_sets(): Set[];
+
         /**
          * Gets a new {@link Gda.Set} object with the parameters used by the template statement in the
          * `rstmt` object.
-         *
+         * 
          * Use this object with `gda_repetitive_statement_append_set()`.
          * @param set a place to store the returned template set
          * @returns `true` on success, `false` on error
@@ -13773,14 +14343,14 @@ export namespace Gda {
         get_template_set(set: Set): boolean;
     }
 
+
     namespace Row {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::nb-values': (pspec: GObject.ParamSpec) => void;
+            "notify::nb-values": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             nb_values: number;
             nbValues: number;
@@ -13794,11 +14364,11 @@ export namespace Gda {
         static $gtype: GObject.GType<Row>;
 
         // Properties
-
         /**
          * @write-only
          */
         set nb_values(val: number);
+
         /**
          * @write-only
          */
@@ -13814,66 +14384,59 @@ export namespace Gda {
         $signals: Row.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Row.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](count: number): Row;
+        static ["new"](count: number): Row;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Row.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Row.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Row.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Row.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Row.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Row.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Row.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Row.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Row.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Row.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Row.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Row.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the number of columns that the `row` has.
          */
         get_length(): number;
+
         /**
          * Gets a pointer to a {@link GObject.Value} stored in a {@link Gda.Row}.
-         *
+         * 
          * This is a pointer to the internal array of values. Don't try to free
          * or modify it (modifying is reserved to database provider's implementations).
          * @param num field index.
          * @returns a pointer to the {@link GObject.Value} in the position `num` of `row`.
          */
-        get_value(num: number): GObject.Value | null;
+        get_value(num: number): (GObject.Value | null);
+
         /**
          * Marks `value` as being invalid. This method is mainly used by database
          * providers' implementations to report any error while reading a value from the database.
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          */
-        invalidate_value(value: GObject.Value | any): void;
+        invalidate_value(value: (GObject.Value | any)): void;
+
         /**
          * Marks `value` as being invalid. This method is mainly used by database
          * providers' implementations to report any error while reading a value from the database.
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @param error the error which lead to the invalidation
          */
-        invalidate_value_e(value: GObject.Value | any, error: GLib.Error | null): void;
+        invalidate_value_e(value: (GObject.Value | any), error: (GLib.Error | null)): void;
+
         /**
          * Tells if `value` has been marked as being invalid by `gda_row_invalidate_value()`.
          * This method is mainly used by database
@@ -13881,7 +14444,8 @@ export namespace Gda {
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @returns `true` if `value` is valid
          */
-        value_is_valid(value: GObject.Value | any): boolean;
+        value_is_valid(value: (GObject.Value | any)): boolean;
+
         /**
          * Tells if `value` has been marked as being invalid by `gda_row_invalidate_value()`.
          * This method is mainly used by database
@@ -13889,8 +14453,9 @@ export namespace Gda {
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @returns `true` if `value` is valid
          */
-        value_is_valid_e(value: GObject.Value | any): boolean;
+        value_is_valid_e(value: (GObject.Value | any)): boolean;
     }
+
 
     namespace ServerOperation {
         // Signal signatures
@@ -13900,21 +14465,20 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'sequence-item-added': (arg0: string, arg1: number) => void;
+            "sequence-item-added": (arg0: string, arg1: number) => void;
             /**
              * Gets emitted whenever a sequence item is about to be removed
              * @signal
              * @run-first
              */
-            'sequence-item-remove': (arg0: string, arg1: number) => void;
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::op-type': (pspec: GObject.ParamSpec) => void;
-            'notify::provider': (pspec: GObject.ParamSpec) => void;
-            'notify::spec-filename': (pspec: GObject.ParamSpec) => void;
+            "sequence-item-remove": (arg0: string, arg1: number) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::op-type": (pspec: GObject.ParamSpec) => void;
+            "notify::provider": (pspec: GObject.ParamSpec) => void;
+            "notify::spec-filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             connection: Connection;
             op_type: number;
@@ -13932,27 +14496,31 @@ export namespace Gda {
         static $gtype: GObject.GType<ServerOperation>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get connection(): Connection;
+
         /**
          * @construct-only
          */
         get op_type(): number;
+
         /**
          * @construct-only
          */
         get opType(): number;
+
         /**
          * @construct-only
          */
         get provider(): ServerProvider;
+
         /**
          * @construct-only
          */
         set spec_filename(val: string);
+
         /**
          * @construct-only
          */
@@ -13968,75 +14536,69 @@ export namespace Gda {
         $signals: ServerOperation.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<ServerOperation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](op_type: ServerOperationType, xml_file: string): ServerOperation;
+        static ["new"](op_type: ServerOperationType, xml_file: string): ServerOperation;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ServerOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerOperation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ServerOperation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ServerOperation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ServerOperation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ServerOperation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ServerOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerOperation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ServerOperation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ServerOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ServerOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
+
         /**
          * Get a string version of `type`
          * @param type a {@link Gda.ServerOperationType} value
          */
         static op_type_to_string(type: ServerOperationType): string;
+
         /**
          * Creates a new {@link Gda.ServerOperation} object which contains the specifications required
          * to create a database. Once these specifications provided, use
          * `gda_server_operation_perform_create_database()` to perform the database creation.
-         *
+         * 
          * If `db_name` is left `null`, then the name of the database to create will have to be set in the
          * returned {@link Gda.ServerOperation} using `gda_server_operation_set_value_at()`.
          * @param provider the database provider to use
          * @param db_name the name of the database to create, or `null`
          */
-        static prepare_create_database(provider: string, db_name: string | null): ServerOperation | null;
+        static prepare_create_database(provider: string, db_name: (string | null)): (ServerOperation | null);
+
         /**
          * Creates a new {@link Gda.ServerOperation} object which contains the specifications required
          * to drop a database. Once these specifications provided, use
          * `gda_server_operation_perform_drop_database()` to perform the database creation.
-         *
+         * 
          * If `db_name` is left `null`, then the name of the database to drop will have to be set in the
          * returned {@link Gda.ServerOperation} using `gda_server_operation_set_value_at()`.
          * @param provider the database provider to use
          * @param db_name the name of the database to drop, or `null`
          */
-        static prepare_drop_database(provider: string, db_name: string | null): ServerOperation | null;
+        static prepare_drop_database(provider: string, db_name: (string | null)): (ServerOperation | null);
+
         /**
          * This is just a convenient function to create a {@link Gda.ServerOperation} to drop a
          * table in an opened connection.
          * @param cnc an opened connection
          * @param table_name name of the table to drop
          */
-        static prepare_drop_table(cnc: Connection, table_name: string): ServerOperation | null;
+        static prepare_drop_table(cnc: Connection, table_name: string): (ServerOperation | null);
+
         /**
          * Performs the reverse of `gda_server_operation_op_type_to_string()`
          * @param str a string
@@ -14044,61 +14606,67 @@ export namespace Gda {
         static string_to_op_type(str: string): ServerOperationType;
 
         // Virtual methods
-
         /**
-         * @param seq_path
-         * @param item_index
+         * @param seq_path 
+         * @param item_index 
          * @virtual
          */
         vfunc_seq_item_added(seq_path: string, item_index: number): void;
+
         /**
-         * @param seq_path
-         * @param item_index
+         * @param seq_path 
+         * @param item_index 
          * @virtual
          */
         vfunc_seq_item_remove(seq_path: string, item_index: number): void;
 
         // Methods
-
         /**
          * @param seq_path the path to the sequence to which an item must be added (like "/SEQ_NAME" for instance)
          * @returns the index of the new entry in the sequence (like 5 for example if a 6th item has          been added to the sequence.
          */
         add_item_to_sequence(seq_path: string): number;
+
         /**
          * @param item_path the path to the sequence's item to remove (like "/SEQ_NAME/5" for instance)
          * @returns TRUE if the specified node has been removed from the sequence
          */
         del_item_from_sequence(item_path: string): boolean;
+
         /**
          * Get the complete path to the parent of the node defined by `path`
          * @param path a complete path to a node (starting with "/")
          * @returns a new string or `null` if the node does not have any parent or does not exist.
          */
         get_node_parent(path: string): string;
+
         /**
          * Get the last part of `path`
          * @param path a complete path to a node (starting with "/")
          * @returns a new string, or `null` if an error occurred
          */
         get_node_path_portion(path: string): string;
+
         /**
          * Convenience function to get the type of a node.
          * @param path a complete path to a node (starting with "/")
          * @param status a place to store the status of the node, or `null`
          * @returns the type of node, or GDA_SERVER_OPERATION_NODE_UNKNOWN if the node was not found
          */
-        get_node_type(path: string, status: ServerOperationNodeStatus | null): ServerOperationNodeType;
+        get_node_type(path: string, status: (ServerOperationNodeStatus | null)): ServerOperationNodeType;
+
         /**
          * Get the type of operation `op` is for
          * @returns a {@link Gda.ServerOperationType} enum
          */
         get_op_type(): ServerOperationType;
+
         /**
          * Get an array of strings containing the paths of nodes situated at the root of `op`.
          * @returns a new array, which must be freed with `g_strfreev()`.
          */
         get_root_nodes(): string[];
+
         /**
          * Fetch the contents of a sequence. `path` can describe either a sequence (for example "/SEQNAME") or an item in a sequence
          * (for example "/SEQNAME/3")
@@ -14106,26 +14674,31 @@ export namespace Gda {
          * @returns a array of strings containing the complete paths of the nodes contained at `path` (free with `g_strfreev()`)
          */
         get_sequence_item_names(path: string): string[];
+
         /**
          * @param path a complete path to a sequence node (starting with "/")
          * @returns the maximum number of items in the sequence at `path`, or 0 if `path` is not a sequence node
          */
         get_sequence_max_size(path: string): number;
+
         /**
          * @param path a complete path to a sequence node (starting with "/")
          * @returns the minimum number of items in the sequence at `path`, or 0 if `path` is not a sequence node
          */
         get_sequence_min_size(path: string): number;
+
         /**
          * @param path a complete path to a sequence node (starting with "/")
          * @returns the name of the sequence at `path`
          */
         get_sequence_name(path: string): string;
+
         /**
          * @param path a complete path to a sequence node (starting with "/")
          * @returns the number of items in the sequence at `path`, or 0 if `path` is not a sequence node
          */
         get_sequence_size(path: string): number;
+
         /**
          * This method is similar to `gda_server_operation_get_value_at()`, but for SQL identifiers: a new string
          * is returned instead of a {@link GObject.Value}. Also the returned string is assumed to represents an SQL identifier
@@ -14136,22 +14709,25 @@ export namespace Gda {
          * @param path a complete path to a node (starting with "/")
          * @returns a new string, or `null` if the value is undefined or if the `path` is not defined or `path` does not hold any value, or if the value held is not a string (in that last case a warning is shown).
          */
-        get_sql_identifier_at(cnc: Connection | null, prov: ServerProvider | null, path: string): string;
+        get_sql_identifier_at(cnc: (Connection | null), prov: (ServerProvider | null), path: string): string;
+
         /**
          * Get the value for the node at the `path` path
          * @param path a complete path to a node (starting with "/")
          * @returns a constant {@link GObject.Value} if a value has been defined, or `null` if the value is undefined or if the `path` is not defined or `path` does not hold any value.
          */
-        get_value_at(path: string): GObject.Value | null;
+        get_value_at(path: string): (GObject.Value | null);
+
         /**
          * Tells if all the required values in `op` have been defined.
-         *
+         * 
          * if `xml_file` is not `null`, the validity of `op` is tested against that specification,
          * and not against the current `op`'s specification.
          * @param xml_file an XML specification file (see `gda_server_operation_new()`) or `null`
          * @returns `true` if `op` is valid
          */
-        is_valid(xml_file: string | null): boolean;
+        is_valid(xml_file: (string | null)): boolean;
+
         /**
          * Loads the contents of `node` into `op`. The XML tree passed through the `node`
          * argument must correspond to an XML tree saved using `gda_server_operation_save_data_to_xml()`.
@@ -14159,13 +14735,15 @@ export namespace Gda {
          * @returns `true` if no error occurred
          */
         load_data_from_xml(node: libxml2.NodePtr): boolean;
+
         /**
          * Creates a new database using the specifications in `op`. `op` can be obtained using
          * `gda_server_provider_create_operation()`, or `gda_server_operation_prepare_create_database()`.
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_create_database()`
          * @returns TRUE if no error occurred and the database has been created, FALSE otherwise
          */
-        perform_create_database(provider: string | null): boolean;
+        perform_create_database(provider: (string | null)): boolean;
+
         /**
          * Performs a prepared {@link Gda.ServerOperation} to create a table. This could perform
          * an operation created by `gda_server_operation_prepare_create_table` or any other using the
@@ -14173,27 +14751,30 @@ export namespace Gda {
          * @returns TRUE if the table was created; FALSE and set `error` otherwise
          */
         perform_create_table(): boolean;
+
         /**
          * Destroys an existing database using the specifications in `op`. `op` can be obtained using
          * `gda_server_provider_create_operation()`, or `gda_server_operation_prepare_drop_database()`.
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_drop_database()`
          * @returns TRUE if no error occurred and the database has been destroyed
          */
-        perform_drop_database(provider: string | null): boolean;
+        perform_drop_database(provider: (string | null)): boolean;
+
         /**
          * This is just a convenient function to perform a drop a table operation.
          * @returns TRUE if the table was dropped
          */
         perform_drop_table(): boolean;
+
         /**
          * Set the value for the node at the path formed using `path_format` and the ... ellipse (the rules are the same as
          * for `g_strdup_printf()`).
-         *
+         * 
          * Note that trying to set a value for a path which is not used by the current
          * provider, such as "/TABLE_OPTIONS_P/TABLE_ENGINE" for a PostgreSQL connection (this option is only supported for MySQL),
          * will <emphasis>not</emphasis> generate
          * any error; this allows one to give values to a superset of the parameters and thus use the same code for several providers.
-         *
+         * 
          * Here are the possible formats of `path_format`:
          * <itemizedlist>
          *  <listitem><para>If the path corresponds to a {@link Gda.Holder}, then the parameter is set to <![CDATA["`value`"]]></para></listitem>
@@ -14219,16 +14800,19 @@ export namespace Gda {
          * @param path a complete path to a node (starting with "/")
          * @returns `true` if no error occurred
          */
-        set_value_at(value: string | null, path: string): boolean;
+        set_value_at(value: (string | null), path: string): boolean;
     }
+
 
     namespace ServerProvider {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -14247,39 +14831,29 @@ export namespace Gda {
         $signals: ServerProvider.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<ServerProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ServerProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerProvider.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ServerProvider.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ServerProvider.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ServerProvider.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ServerProvider.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ServerProvider.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ServerProvider.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ServerProvider.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ServerProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ServerProvider.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ServerProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
+
         /**
          * Loads and returns the contents of `filename`, which is searched in several places
          * This function should only be used by database provider's
@@ -14291,37 +14865,41 @@ export namespace Gda {
         static load_file_contents(inst_dir: string, data_dir: string, filename: string): string;
 
         // Virtual methods
-
         /**
-         * @param cnc
-         * @param name
+         * @param cnc 
+         * @param name 
          * @virtual
          */
         vfunc_add_savepoint(cnc: Connection, name: string): boolean;
+
         /**
-         * @param cnc
-         * @param name
-         * @param level
+         * @param cnc 
+         * @param name 
+         * @param level 
          * @virtual
          */
         vfunc_begin_transaction(cnc: Connection, name: string, level: TransactionIsolation): boolean;
+
         /**
-         * @param cnc
-         * @param task_id
+         * @param cnc 
+         * @param task_id 
          * @virtual
          */
         vfunc_cancel(cnc: Connection, task_id: number): boolean;
+
         /**
-         * @param cnc
+         * @param cnc 
          * @virtual
          */
         vfunc_close_connection(cnc: Connection): boolean;
+
         /**
-         * @param cnc
-         * @param name
+         * @param cnc 
+         * @param name 
          * @virtual
          */
         vfunc_commit_transaction(cnc: Connection, name: string): boolean;
+
         /**
          * Creates a new {@link Gda.ServerOperation} object which can be modified in order to perform the `type` type of
          * action. The `options` can contain:
@@ -14334,27 +14912,26 @@ export namespace Gda {
          * @param options a list of parameters or `null`
          * @virtual
          */
-        vfunc_create_operation(
-            cnc: Connection | null,
-            type: ServerOperationType,
-            options: Set | null,
-        ): ServerOperation | null;
+        vfunc_create_operation(cnc: (Connection | null), type: ServerOperationType, options: (Set | null)): (ServerOperation | null);
+
         /**
          * Creates a new {@link Gda.SqlParser} object which is adapted to `provider` (and possibly depending on
          * `cnc` for the actual database version).
-         *
+         * 
          * If `prov` does not have its own parser, then `null` is returned, and a general SQL parser can be obtained
          * using `gda_sql_parser_new()`.
          * @param cnc a {@link Gda.Connection}, or `null`
          * @virtual
          */
-        vfunc_create_parser(cnc: Connection | null): SqlParser;
+        vfunc_create_parser(cnc: (Connection | null)): SqlParser;
+
         /**
-         * @param cnc
-         * @param name
+         * @param cnc 
+         * @param name 
          * @virtual
          */
         vfunc_delete_savepoint(cnc: Connection, name: string): boolean;
+
         /**
          * Escapes `str` for use within an SQL command (to avoid SQL injection attacks). Note that the returned value still needs
          * to be enclosed in single quotes before being used in an SQL statement.
@@ -14362,88 +14939,102 @@ export namespace Gda {
          * @param str a string to escape
          * @virtual
          */
-        vfunc_escape_string(cnc: Connection | null, str: string): string;
+        vfunc_escape_string(cnc: (Connection | null), str: string): string;
+
         /**
-         * @param cnc
+         * @param cnc 
          * @virtual
          */
         vfunc_get_database(cnc: Connection): string;
+
         /**
-         * @param cnc
-         * @param g_type
+         * @param cnc 
+         * @param g_type 
          * @virtual
          */
         vfunc_get_def_dbms_type(cnc: Connection, g_type: GObject.GType): string;
+
         /**
          * Get the name (identifier) of the provider
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Get the version of the database to which the connection is opened.
          * @param cnc a {@link Gda.Connection} object
          * @virtual
          */
         vfunc_get_server_version(cnc: Connection): string;
+
         /**
          * Get the version of the provider.
          * @virtual
          */
         vfunc_get_version(): string;
+
         /**
-         * @param cnc
+         * @param cnc 
          * @virtual
          */
         vfunc_handle_async(cnc: Connection): boolean;
+
         /**
-         * @param cnc
-         * @param id
-         * @param for_meta_store
-         * @param force_quotes
+         * @param cnc 
+         * @param id 
+         * @param for_meta_store 
+         * @param force_quotes 
          * @virtual
          */
         vfunc_identifier_quote(cnc: Connection, id: string, for_meta_store: boolean, force_quotes: boolean): string;
+
         /**
-         * @param cnc
+         * @param cnc 
          * @virtual
          */
         vfunc_is_busy(cnc: Connection): boolean;
+
         /**
          * Creates an SQL statement (possibly using some specific extensions of the DBMS) corresponding to the
          * `op` operation. Note that the returned string may actually contain more than one SQL statement.
-         *
+         * 
          * This function's purpose is mainly informative to get the actual SQL code which would be executed to perform
          * the operation; to actually perform the operation, use `gda_server_provider_perform_operation()`.
          * @param cnc a {@link Gda.Connection} object which will be used to render the action, or `null`
          * @param op a {@link Gda.ServerOperation} object
          * @virtual
          */
-        vfunc_render_operation(cnc: Connection | null, op: ServerOperation): string | null;
+        vfunc_render_operation(cnc: (Connection | null), op: ServerOperation): (string | null);
+
         /**
-         * @param cnc
-         * @param name
+         * @param cnc 
+         * @param name 
          * @virtual
          */
         vfunc_rollback_savepoint(cnc: Connection, name: string): boolean;
+
         /**
-         * @param cnc
-         * @param name
+         * @param cnc 
+         * @param name 
          * @virtual
          */
         vfunc_rollback_transaction(cnc: Connection, name: string): boolean;
+
         /**
-         * @param cnc
-         * @param stmt
+         * @param cnc 
+         * @param stmt 
          * @virtual
          */
         vfunc_statement_prepare(cnc: Connection, stmt: Statement): boolean;
+
         /**
          * Tests if a feature is supported
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @param feature {@link Gda.ConnectionFeature} feature to test
          * @virtual
          */
-        vfunc_supports_feature(cnc: Connection | null, feature: ConnectionFeature): boolean;
+        vfunc_supports_feature(cnc: (Connection | null), feature: ConnectionFeature): boolean;
+
         /**
          * Tells if `provider` supports the `type` of operation on the `cnc` connection, using the
          * (optional) `options` parameters.
@@ -14452,17 +15043,17 @@ export namespace Gda {
          * @param options a list of named parameters, or `null`
          * @virtual
          */
-        vfunc_supports_operation(cnc: Connection | null, type: ServerOperationType, options: Set | null): boolean;
+        vfunc_supports_operation(cnc: (Connection | null), type: ServerOperationType, options: (Set | null)): boolean;
+
         /**
          * Unescapes `str` for use within an SQL command. This is the exact opposite of `gda_server_provider_escape_string()`.
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @param str a string to escape
          * @virtual
          */
-        vfunc_unescape_string(cnc: Connection | null, str: string): string;
+        vfunc_unescape_string(cnc: (Connection | null), str: string): string;
 
         // Methods
-
         /**
          * Creates a new {@link Gda.ServerOperation} object which can be modified in order to perform the `type` type of
          * action. The `options` can contain:
@@ -14475,21 +15066,19 @@ export namespace Gda {
          * @param options a list of parameters or `null`
          * @returns a new {@link Gda.ServerOperation} object, or `null` in the provider does not support the `type` type of operation or if an error occurred
          */
-        create_operation(
-            cnc: Connection | null,
-            type: ServerOperationType,
-            options: Set | null,
-        ): ServerOperation | null;
+        create_operation(cnc: (Connection | null), type: ServerOperationType, options: (Set | null)): (ServerOperation | null);
+
         /**
          * Creates a new {@link Gda.SqlParser} object which is adapted to `provider` (and possibly depending on
          * `cnc` for the actual database version).
-         *
+         * 
          * If `prov` does not have its own parser, then `null` is returned, and a general SQL parser can be obtained
          * using `gda_sql_parser_new()`.
          * @param cnc a {@link Gda.Connection}, or `null`
          * @returns a new {@link Gda.SqlParser} object, or `null`.
          */
-        create_parser(cnc: Connection | null): SqlParser;
+        create_parser(cnc: (Connection | null)): SqlParser;
+
         /**
          * Escapes `str` for use within an SQL command (to avoid SQL injection attacks). Note that the returned value still needs
          * to be enclosed in single quotes before being used in an SQL statement.
@@ -14497,7 +15086,8 @@ export namespace Gda {
          * @param str a string to escape
          * @returns a new string suitable to use in SQL statements
          */
-        escape_string(cnc: Connection | null, str: string): string;
+        escape_string(cnc: (Connection | null), str: string): string;
+
         /**
          * Finds the location of a `filename`. This function should only be used by database provider's
          * implementations
@@ -14506,15 +15096,17 @@ export namespace Gda {
          * @returns the complete path to `filename`, or `null` if not found
          */
         find_file(inst_dir: string, filename: string): string;
+
         /**
          * Find a {@link Gda.DataHandler} object to manipulate data of type `for_type`.
-         *
+         * 
          * Note: this function is currently very poorly implemented by database providers.
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @param for_type a DBMS type definition
          * @returns a {@link Gda.DataHandler}, or `null` if the provider does not know about the `for_type` type
          */
-        get_data_handler_dbms(cnc: Connection | null, for_type: string): DataHandler;
+        get_data_handler_dbms(cnc: (Connection | null), for_type: string): DataHandler;
+
         /**
          * Provides the implementation when the default Libgda's data handlers must be used
          * @param cnc a {@link Gda.Connection} object, or `null`
@@ -14522,17 +15114,19 @@ export namespace Gda {
          * @param dbms_type a DBMS type definition
          * @returns a {@link Gda.DataHandler}, or `null`
          */
-        get_data_handler_default(cnc: Connection | null, type: GObject.GType, dbms_type: string): DataHandler;
+        get_data_handler_default(cnc: (Connection | null), type: GObject.GType, dbms_type: string): DataHandler;
+
         /**
          * Find a {@link Gda.DataHandler} object to manipulate data of type `for_type`. The returned object must not be modified.
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @param for_type a {@link GObject.GType}
          * @returns a {@link Gda.DataHandler}, or `null` if the provider does not support the requested `for_type` data type
          */
-        get_data_handler_g_type(cnc: Connection | null, for_type: GObject.GType): DataHandler;
+        get_data_handler_g_type(cnc: (Connection | null), for_type: GObject.GType): DataHandler;
+
         /**
          * Get the name of the most common data type which has `type` type.
-         *
+         * 
          * The returned value may be `null` either if the provider does not implement that method, or if
          * there is no DBMS data type which could contain data of the `g_type` type (for example `null` may be
          * returned if a DBMS has integers only up to 4 bytes and a #G_TYPE_INT64 is requested).
@@ -14540,30 +15134,35 @@ export namespace Gda {
          * @param type a {@link GObject.GType} value type
          * @returns the name of the DBMS type, or `null`
          */
-        get_default_dbms_type(cnc: Connection | null, type: GObject.GType): string | null;
+        get_default_dbms_type(cnc: (Connection | null), type: GObject.GType): (string | null);
+
         /**
          * Get the name (identifier) of the provider
          * @returns a string containing the provider's name
          */
         get_name(): string;
+
         /**
          * Get the version of the database to which the connection is opened.
          * @param cnc a {@link Gda.Connection} object
          * @returns a (read only) string, or `null` if an error occurred
          */
         get_server_version(cnc: Connection): string;
+
         /**
          * Get the version of the provider.
          * @returns a string containing the version identification.
          */
         get_version(): string;
+
         /**
-         * @param dh
-         * @param cnc
-         * @param g_type
-         * @param dbms_type
+         * @param dh 
+         * @param cnc 
+         * @param g_type 
+         * @param dbms_type 
          */
         handler_declare(dh: DataHandler, cnc: Connection, g_type: GObject.GType, dbms_type: string): void;
+
         /**
          * Reserved to database provider's implementations: get the {@link Gda.DataHandler} associated to `prov`
          * for connection `cnc`. You probably want to use `gda_server_provider_get_data_handler_g_type()`.
@@ -14572,7 +15171,8 @@ export namespace Gda {
          * @param dbms_type a database type
          * @returns the requested {@link Gda.DataHandler}, or `null` if none found
          */
-        handler_find(cnc: Connection | null, g_type: GObject.GType, dbms_type: string | null): DataHandler;
+        handler_find(cnc: (Connection | null), g_type: GObject.GType, dbms_type: (string | null)): DataHandler;
+
         /**
          * This is a factory method to get a unique instance of a {@link Gda.SqlParser} object
          * for each {@link Gda.ServerProvider} object
@@ -14580,6 +15180,7 @@ export namespace Gda {
          * @returns a {@link Gda.SqlParser}
          */
         internal_get_parser(): SqlParser;
+
         /**
          * Performs the operation described by `op`. Note that `op` is not destroyed by this method
          * and can be reused.
@@ -14587,37 +15188,40 @@ export namespace Gda {
          * @param op a {@link Gda.ServerOperation} object
          * @returns `true` if no error occurred
          */
-        perform_operation(cnc: Connection | null, op: ServerOperation): boolean;
+        perform_operation(cnc: (Connection | null), op: ServerOperation): boolean;
+
         /**
          * Performs the operation described by `op`, using the SQL from the rendering of the operation
          * @param cnc a {@link Gda.Connection} object which will be used to perform an action, or `null`
          * @param op a {@link Gda.ServerOperation} object
          * @returns `true` if no error occurred
          */
-        perform_operation_default(cnc: Connection | null, op: ServerOperation): boolean;
+        perform_operation_default(cnc: (Connection | null), op: ServerOperation): boolean;
+
         /**
          * Creates an SQL statement (possibly using some specific extensions of the DBMS) corresponding to the
          * `op` operation. Note that the returned string may actually contain more than one SQL statement.
-         *
+         * 
          * This function's purpose is mainly informative to get the actual SQL code which would be executed to perform
          * the operation; to actually perform the operation, use `gda_server_provider_perform_operation()`.
          * @param cnc a {@link Gda.Connection} object which will be used to render the action, or `null`
          * @param op a {@link Gda.ServerOperation} object
          * @returns a new string, or `null` if an error occurred or operation cannot be rendered as SQL.
          */
-        render_operation(cnc: Connection | null, op: ServerOperation): string | null;
+        render_operation(cnc: (Connection | null), op: ServerOperation): (string | null);
+
         /**
          * Use `provider` to create a new {@link GObject.Value} from a single string representation.
-         *
+         * 
          * The `preferred_type` can optionally ask `provider` to return a {@link GObject.Value} of the requested type
          * (but if such a value can't be created from `string`, then `null` is returned);
          * pass #G_TYPE_INVALID if any returned type is acceptable.
-         *
+         * 
          * The returned value is either a new {@link GObject.Value} or `null` in the following cases:
          * - `string` cannot be converted to `preferred_type` type
          * - the provider does not handle `preferred_type`
          * - the provider could not make a {@link GObject.Value} from `string`
-         *
+         * 
          * If `dbms_type` is not `null`, then if will contain a constant string representing
          * the database type used for the conversion if the conversion was successfull, or `null`
          * otherwise.
@@ -14627,19 +15231,16 @@ export namespace Gda {
          * @param dbms_type place to get the actual database type used if the conversion succeeded, or `null`
          * @returns a new {@link GObject.Value}, or `null`
          */
-        string_to_value(
-            cnc: Connection | null,
-            string: string,
-            preferred_type: GObject.GType,
-            dbms_type: string | null,
-        ): unknown;
+        string_to_value(cnc: (Connection | null), string: string, preferred_type: GObject.GType, dbms_type: (string | null)): unknown;
+
         /**
          * Tests if a feature is supported
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @param feature {@link Gda.ConnectionFeature} feature to test
          * @returns `true` if `feature` is supported
          */
-        supports_feature(cnc: Connection | null, feature: ConnectionFeature): boolean;
+        supports_feature(cnc: (Connection | null), feature: ConnectionFeature): boolean;
+
         /**
          * Tells if `provider` supports the `type` of operation on the `cnc` connection, using the
          * (optional) `options` parameters.
@@ -14648,22 +15249,25 @@ export namespace Gda {
          * @param options a list of named parameters, or `null`
          * @returns `true` if the operation is supported
          */
-        supports_operation(cnc: Connection | null, type: ServerOperationType, options: Set | null): boolean;
+        supports_operation(cnc: (Connection | null), type: ServerOperationType, options: (Set | null)): boolean;
+
         /**
          * Unescapes `str` for use within an SQL command. This is the exact opposite of `gda_server_provider_escape_string()`.
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @param str a string to escape
          * @returns a new string
          */
-        unescape_string(cnc: Connection | null, str: string): string;
+        unescape_string(cnc: (Connection | null), str: string): string;
+
         /**
          * Produces a fully quoted and escaped string from a GValue
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @param from {@link GObject.Value} to convert from
          * @returns escaped and quoted value or NULL if not supported.
          */
-        value_to_sql_string(cnc: Connection | null, from: GObject.Value | any): string;
+        value_to_sql_string(cnc: (Connection | null), from: (GObject.Value | any)): string;
     }
+
 
     namespace Set {
         // Signal signatures
@@ -14673,12 +15277,12 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            'holder-attr-changed': (arg0: Holder, arg1: string, arg2: unknown) => void;
+            "holder-attr-changed": (arg0: Holder, arg1: string, arg2: unknown) => void;
             /**
              * @signal
              * @run-first
              */
-            'holder-changed': (arg0: Holder) => void;
+            "holder-changed": (arg0: Holder) => void;
             /**
              * Gets emitted when `holder` in `set` has its type finally set, in case
              * it was #GDA_TYPE_NULL
@@ -14686,43 +15290,42 @@ export namespace Gda {
              * @since 4.2
              * @run-first
              */
-            'holder-type-set': (arg0: Holder) => void;
+            "holder-type-set": (arg0: Holder) => void;
             /**
              * Gets emitted when `set`'s public data ({@link Gda.SetNode}, {@link Gda.SetGroup} or {@link Gda.SetSource} values) have changed
              * @signal
              * @run-first
              */
-            'public-data-changed': () => void;
+            "public-data-changed": () => void;
             /**
              * Gets emitted when the data model in `source` has changed
              * @signal
              * @since 4.2
              * @run-first
              */
-            'source-model-changed': (arg0: any | null) => void;
+            "source-model-changed": (arg0: (any | null)) => void;
             /**
              * Gets emitted when a {@link Gda.Holder}'s in `set` is going to change its value. One can connect to
              * this signal to control which values `holder` can have (for example to implement some business rules)
              * @signal
              * @run-last
              */
-            'validate-holder-change': (arg0: Holder, arg1: unknown) => GLib.Error;
+            "validate-holder-change": (arg0: Holder, arg1: unknown) => GLib.Error;
             /**
              * Gets emitted when `gda_set_is_valid()` is called, use
              * this signal to control which combination of values `set`'s holder can have (for example to implement some business rules)
              * @signal
              * @run-last
              */
-            'validate-set': () => GLib.Error;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::holders': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::validate-changes': (pspec: GObject.ParamSpec) => void;
+            "validate-set": () => GLib.Error;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::holders": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::validate-changes": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             description: string;
             holders: any;
@@ -14740,17 +15343,20 @@ export namespace Gda {
         static $gtype: GObject.GType<Set>;
 
         // Properties
-
         get description(): string;
         set description(val: string);
+
         /**
          * @construct-only
          */
         set holders(val: any);
+
         get id(): string;
         set id(val: string);
+
         get name(): string;
         set name(val: string);
+
         /**
          * Defines if the "validate-set" signal gets emitted when
          * any holder in the data set changes. This property also affects the
@@ -14759,6 +15365,7 @@ export namespace Gda {
          */
         get validate_changes(): boolean;
         set validate_changes(val: boolean);
+
         /**
          * Defines if the "validate-set" signal gets emitted when
          * any holder in the data set changes. This property also affects the
@@ -14778,19 +15385,20 @@ export namespace Gda {
         $signals: Set.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
+
         nodes_list: SetNode[];
+
         sources_list: SetSource[];
+
         groups_list: SetGroup[];
 
         // Constructors
-
         constructor(properties?: Partial<Set.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](holders: Holder[]): Set;
+        static ["new"](holders: Holder[]): Set;
 
         static new_from_spec_node(xml_spec: libxml2.NodePtr): Set;
 
@@ -14799,74 +15407,69 @@ export namespace Gda {
         static new_read_only(holders: Holder[]): Set;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Set.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Set.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Set.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Set.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Set.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Set.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Set.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Set.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Set.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Set.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Set.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param holder
-         * @param attr_name
-         * @param attr_value
+         * @param holder 
+         * @param attr_name 
+         * @param attr_value 
          * @virtual
          */
         vfunc_holder_attr_changed(holder: Holder, attr_name: string, attr_value: unknown): void;
+
         /**
-         * @param holder
+         * @param holder 
          * @virtual
          */
         vfunc_holder_changed(holder: Holder): void;
+
         /**
-         * @param holder
+         * @param holder 
          * @virtual
          */
         vfunc_holder_type_set(holder: Holder): void;
+
         /**
          * @virtual
          */
         vfunc_public_data_changed(): void;
+
         /**
-         * @param source
+         * @param source 
          * @virtual
          */
         vfunc_source_model_changed(source: SetSource): void;
+
         /**
-         * @param holder
-         * @param new_value
+         * @param holder 
+         * @param new_value 
          * @virtual
          */
         vfunc_validate_holder_change(holder: Holder, new_value: unknown): GLib.Error;
+
         /**
          * @virtual
          */
         vfunc_validate_set(): GLib.Error;
 
         // Methods
-
         /**
          * Adds `holder` to the list of holders managed within `set`.
-         *
+         * 
          * NOTE: if `set` already has a {@link Gda.Holder} with the same ID as `holder`, then `holder`
          * will not be added to the set (even if `holder`'s type or value is not the same as the
          * one already in `set`).
@@ -14874,11 +15477,13 @@ export namespace Gda {
          * @returns TRUE if `holder` has been added to `set` (and FALSE if it has not been added because there is another {@link Gda.Holder} with the same ID)
          */
         add_holder(holder: Holder): boolean;
+
         /**
          * Creates a new {@link Gda.Set} object, copy of `set`
          * @returns a new {@link Gda.Set} object
          */
         copy(): Set;
+
         /**
          * Finds a {@link Gda.SetGroup} which lists a  {@link Gda.SetNode} containing `holder`,
          * don't modify the returned structure.
@@ -14886,30 +15491,35 @@ export namespace Gda {
          * @returns the requested {@link Gda.SetGroup} or `null`
          */
         get_group(holder: Holder): SetGroup;
+
         /**
          * Finds a {@link Gda.Holder} using its ID
          * @param holder_id the ID of the requested value holder
          * @returns the requested {@link Gda.Holder} or `null`
          */
         get_holder(holder_id: string): Holder;
+
         /**
          * Get the value of the {@link Gda.Holder} which ID is `holder_id`
          * @param holder_id the ID of the holder to set the value
          * @returns the requested GValue, or `null` (see `gda_holder_get_value()`)
          */
-        get_holder_value(holder_id: string): GObject.Value | null;
+        get_holder_value(holder_id: string): (GObject.Value | null);
+
         /**
          * Finds a {@link Gda.SetNode} holding information for `holder`, don't modify the returned structure
          * @param holder a {@link Gda.Holder} object
          * @returns the requested {@link Gda.SetNode} or `null`
          */
         get_node(holder: Holder): SetNode;
+
         /**
          * Finds a {@link Gda.Holder} using its position
          * @param pos the position of the requested {@link Gda.Holder}, starting at %0
          * @returns the requested {@link Gda.Holder} or `null`
          */
         get_nth_holder(pos: number): Holder;
+
         /**
          * Finds a {@link Gda.SetSource} which contains the {@link Gda.DataModel} restricting the possible values of
          * `holder`, don't modify the returned structure.
@@ -14917,6 +15527,7 @@ export namespace Gda {
          * @returns the requested {@link Gda.SetSource} or `null`
          */
         get_source(holder: Holder): SetSource;
+
         /**
          * Finds the {@link Gda.SetSource} structure used in `set` for which `model` is a
          * the data model (the returned structure should not be modified).
@@ -14924,6 +15535,7 @@ export namespace Gda {
          * @returns the requested {@link Gda.SetSource} pointer or `null`.
          */
         get_source_for_model(model: DataModel): SetSource;
+
         /**
          * This method tells if all `set`'s {@link Gda.Holder} objects are valid, and if
          * they represent a valid combination of values, as defined by rules
@@ -14933,6 +15545,7 @@ export namespace Gda {
          * @returns TRUE if the set is valid
          */
         is_valid(): boolean;
+
         /**
          * Add to `set` all the holders of `set_to_merge`.
          * Note1: only the {@link Gda.Holder} of `set_to_merge` for which no holder in `set` has the same ID are merged
@@ -14940,15 +15553,17 @@ export namespace Gda {
          * @param set_to_merge a {@link Gda.Set} object
          */
         merge_with_set(set_to_merge: Set): void;
+
         /**
          * Removes a {@link Gda.Holder} from the list of holders managed by `set`
          * @param holder the {@link Gda.Holder} to remove from `set`
          */
         remove_holder(holder: Holder): void;
+
         /**
          * Replaces `source`->data_model with `model`, which must have the same
          * characteristics as `source`->data_model (same column types)
-         *
+         * 
          * Also for each {@link Gda.Holder} for which `source`->data_model is a source model,
          * this method calls `gda_holder_set_source_model()` with `model` to replace
          * the source by the new model
@@ -14958,9 +15573,11 @@ export namespace Gda {
         replace_source_model(source: SetSource, model: DataModel): void;
     }
 
+
     namespace Short {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -14970,38 +15587,32 @@ export namespace Gda {
         static $gtype: GObject.GType<Short>;
 
         // Constructors
-
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Short.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Short.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Short.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Short.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Short.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Short.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Short.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Short.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Short.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Short.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Short.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Short.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace SqlBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -15020,44 +15631,32 @@ export namespace Gda {
         $signals: SqlBuilder.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<SqlBuilder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](stmt_type: SqlStatementType): SqlBuilder;
+        static ["new"](stmt_type: SqlStatementType): SqlBuilder;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SqlBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SqlBuilder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SqlBuilder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SqlBuilder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SqlBuilder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SqlBuilder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SqlBuilder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SqlBuilder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SqlBuilder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SqlBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SqlBuilder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SqlBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Creates a new CASE ... WHEN ... THEN ... ELSE ... END expression. The WHEN expression and the THEN
          * expression IDs are taken from the `when_array` and `then_array` at the same index, for each index inferior to
@@ -15068,12 +15667,8 @@ export namespace Gda {
          * @param then_array an array containing each THEN expression ID, having at least `args_size` elements
          * @returns the ID of the new expression, or %0 if there was an error
          */
-        add_case(
-            test_expr: SqlBuilderId,
-            else_expr: SqlBuilderId,
-            when_array: SqlBuilderId[],
-            then_array: SqlBuilderId[],
-        ): SqlBuilderId;
+        add_case(test_expr: SqlBuilderId, else_expr: SqlBuilderId, when_array: SqlBuilderId[], then_array: SqlBuilderId[]): SqlBuilderId;
+
         /**
          * Builds a new expression which represents a condition (or operation).
          * @param op type of condition
@@ -15083,9 +15678,10 @@ export namespace Gda {
          * @returns the ID of the new expression, or %0 if there was an error
          */
         add_cond(op: SqlOperatorType, op1: SqlBuilderId, op2: SqlBuilderId, op3: SqlBuilderId): SqlBuilderId;
+
         /**
          * Builds a new expression which represents a condition (or operation).
-         *
+         * 
          * As a side case, if `ops_ids_size` is 1,
          * then `op` is ignored, and the returned ID represents `op_ids`[0] (this avoids any problem for example
          * when `op` is GDA_SQL_OPERATOR_TYPE_AND and there is in fact only one operand).
@@ -15094,11 +15690,12 @@ export namespace Gda {
          * @returns the ID of the new expression, or %0 if there was an error
          */
         add_cond_v(op: SqlOperatorType, op_ids: SqlBuilderId[]): SqlBuilderId;
+
         /**
          * Defines an expression in `builder` which may be reused to build other parts of a statement.
-         *
+         * 
          * The new expression will contain the value passed as the `value` argument.
-         *
+         * 
          * If `value`'s type is a string then it is possible to customize how the value has to be interpreted by passing a
          * specific {@link Gda.DataHandler} object as `dh`. This feature is very rarely used and the `dh` argument should generally
          * be `null`.
@@ -15106,30 +15703,33 @@ export namespace Gda {
          * @param value value to set the expression to, or `null` or a GDA_TYPE_NULL value to represent an SQL NULL
          * @returns the ID of the new expression, or %0 if there was an error
          */
-        add_expr_value(dh: DataHandler | null, value: GObject.Value | null): SqlBuilderId;
+        add_expr_value(dh: (DataHandler | null), value: (GObject.Value | null)): SqlBuilderId;
+
         /**
          * Defines an expression representing a field in `builder`,
          * which may be reused to build other parts of a statement,
          * for instance as a parameter to `gda_sql_builder_add_cond()` or
          * `gda_sql_builder_add_field_value_id()`.
-         *
+         * 
          * Calling this with a `null` `table_name` is equivalent to calling `gda_sql_builder_add_id()`.
-         *
+         * 
          * For SELECT queries, see `gda_sql_builder_select_add_field()`.
          * @param field_name a field name
          * @param table_name a table name, or `null`
          * @returns the ID of the new expression, or %0 if there was an error
          */
-        add_field_id(field_name: string, table_name: string | null): SqlBuilderId;
+        add_field_id(field_name: string, table_name: (string | null)): SqlBuilderId;
+
         /**
          * Valid only for: INSERT, UPDATE statements.
-         *
+         * 
          * Specifies that the field represented by `field_name` will be set to the value identified
          * by `value`
          * @param field_name a field name
          * @param value value to set the field to, or `null` or a GDA_TYPE_NULL value to represent an SQL NULL
          */
-        add_field_value_as_gvalue(field_name: string, value: GObject.Value | null): void;
+        add_field_value_as_gvalue(field_name: string, value: (GObject.Value | null)): void;
+
         /**
          * Valid only for: INSERT, UPDATE, SELECT statements
          * <itemizedlist>
@@ -15143,12 +15743,13 @@ export namespace Gda {
          *    If `field_id` represents a sub SELECT (obtained using `gda_sql_builder_add_sub_select()`), then
          *    this method call defines the sub SELECT from which values to insert are taken.</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * See also `gda_sql_builder_add_field_value()` and `gda_sql_builder_add_field_value_as_gvalue()`.
          * @param field_id the ID of the field's name or definition
          * @param value_id the ID of the value to set the field to, or %0
          */
         add_field_value_id(field_id: SqlBuilderId, value_id: SqlBuilderId): void;
+
         /**
          * Builds a new expression which represents a function applied to some arguments
          * @param func_name the functions's name
@@ -15156,41 +15757,43 @@ export namespace Gda {
          * @returns the ID of the new expression, or %0 if there was an error
          */
         add_function(func_name: string, args: SqlBuilderId[]): SqlBuilderId;
+
         /**
          * Defines an expression representing an identifier in `builder`,
          * which may be reused to build other parts of a statement,
          * for instance as a parameter to `gda_sql_builder_add_cond()` or
          * `gda_sql_builder_add_field_value_id()`.
-         *
+         * 
          * The new expression will contain the `str` literal.
          * For example:
          * <programlisting>
          * gda_sql_builder_add_id (b, "name")
          * gda_sql_builder_add_id (b, "date")
          * </programlisting>
-         *
+         * 
          * will be rendered as SQL as:
          * <programlisting>
          * name
          * "date"
          * </programlisting>
-         *
+         * 
          * because "date" is an SQL reserved keyword.
-         *
+         * 
          * For fields, see `gda_sql_builder_add_field_id()`.
          * @param str a string
          * @returns the ID of the new expression, or %0 if there was an error
          */
         add_id(str: string): SqlBuilderId;
+
         /**
          * Defines a parameter in `builder` which may be reused to build other parts of a statement.
-         *
+         * 
          * The new expression will contain the `string` literal.
          * For example:
          * <programlisting>
          * gda_sql_builder_add_param (b, "age", G_TYPE_INT, FALSE)
          * </programlisting>
-         *
+         * 
          * will be rendered as SQL as:
          * <programlisting><![CDATA[
          * ##age::int
@@ -15202,21 +15805,25 @@ export namespace Gda {
          * @returns the ID of the new expression, or %0 if there was an error
          */
         add_param(param_name: string, type: GObject.GType, nullok: boolean): SqlBuilderId;
+
         /**
          * Add a sub select to a COMPOUND statement
          * @param subselect a {@link Gda.SqlBuilder}, which has to be a SELECT or compound SELECT. This will be copied.
          */
         compound_add_sub_select_from_builder(subselect: SqlBuilder): void;
+
         /**
          * Changes the type of compound which `builder` is making, for a COMPOUND statement
          * @param compound_type a type of compound
          */
         compound_set_type(compound_type: SqlStatementCompoundType): void;
+
         /**
          * Creates a new {@link Gda.Statement} statement from `builder`'s contents.
          * @returns a new {@link Gda.Statement} object, or `null` if an error occurred
          */
         get_statement(): Statement;
+
         /**
          * Imports the an expression located in `query` into `builder`.
          * @param query a {@link Gda.SqlBuilder} object to get expression from
@@ -15224,6 +15831,7 @@ export namespace Gda {
          * @returns the ID of the new expression, or %0 if there was an error
          */
         import_expression_from_builder(query: SqlBuilder, expr_id: SqlBuilderId): SqlBuilderId;
+
         /**
          * Alter a join in a SELECT statement to make its condition use equal field
          * values in the fields named `field_name` in both tables, via the USING keyword.
@@ -15231,25 +15839,28 @@ export namespace Gda {
          * @param field_name the name of the field to use in the join condition (not `null`)
          */
         join_add_field(join_id: SqlBuilderId, field_name: string): void;
+
         /**
          * Valid only for: SELECT statements.
-         *
+         * 
          * Add a selected selected item to the SELECT statement.
-         *
+         * 
          * For non-SELECT statements, see `gda_sql_builder_add_field_id()`.
          * @param field_name a field name
          * @param table_name a table name, or `null`
          * @param alias an alias (eg. for the "AS" clause), or `null`
          * @returns the ID of the added field, or %0 if there was an error
          */
-        select_add_field(field_name: string, table_name: string | null, alias: string | null): SqlBuilderId;
+        select_add_field(field_name: string, table_name: (string | null), alias: (string | null)): SqlBuilderId;
+
         /**
          * Adds a new target to a SELECT statement
          * @param table_name the name of the target table
          * @param alias the alias to give to the target, or `null`
          * @returns the ID of the new target, or %0 if there was an error
          */
-        select_add_target(table_name: string, alias: string | null): SqlBuilderId;
+        select_add_target(table_name: string, alias: (string | null)): SqlBuilderId;
+
         /**
          * Adds a new target to a SELECT statement. If there already exists a target representing
          * the same table and the same alias (or with the same absence of alias) then the same target
@@ -15258,25 +15869,28 @@ export namespace Gda {
          * @param alias the alias to give to the target, or `null`
          * @returns the ID of the new (or existing) target, or %0 if there was an error
          */
-        select_add_target_id(table_id: SqlBuilderId, alias: string | null): SqlBuilderId;
+        select_add_target_id(table_id: SqlBuilderId, alias: (string | null)): SqlBuilderId;
+
         /**
          * Valid only for: SELECT statements
-         *
+         * 
          * Adds the `expr_id` expression to the GROUP BY clause's expressions list
          * @param expr_id the ID of the expression to set use in the GROUP BY clause, or 0 to unset any previous GROUP BY clause
          */
         select_group_by(expr_id: SqlBuilderId): void;
+
         /**
          * Adds a new ORDER BY expression to a SELECT statement.
          * @param expr_id the ID of the expression to use during sorting (not %0)
          * @param asc `true` for an ascending sorting
          * @param collation_name name of the collation to use when sorting, or `null`
          */
-        select_order_by(expr_id: SqlBuilderId, asc: boolean, collation_name: string | null): void;
+        select_order_by(expr_id: SqlBuilderId, asc: boolean, collation_name: (string | null)): void;
+
         /**
          * Defines (if `distinct` is `true`) or removes (if `distinct` is `false`) a DISTINCT clause
          * for a SELECT statement.
-         *
+         * 
          * If `distinct` is `true`, then the ID of an expression can be specified as the `expr_id` argument:
          * if not %0, this is the expression used to apply the DISTINCT clause on (the resuting SQL
          * will then usually be "... DISTINCT ON &lt;expression&gt;...").
@@ -15284,52 +15898,56 @@ export namespace Gda {
          * @param expr_id the ID of the DISTINCT ON expression, or %0 if no expression is to be used. It is ignored           if `distinct` is `false`.
          */
         select_set_distinct(distinct: boolean, expr_id: SqlBuilderId): void;
+
         /**
          * Valid only for: SELECT statements
-         *
+         * 
          * Sets the HAVING condition of the statement
          * @param cond_id the ID of the expression to set as HAVING condition, or 0 to unset any previous HAVING condition
          */
         select_set_having(cond_id: SqlBuilderId): void;
+
         /**
          * If `limit_count_expr_id` is not %0, defines the maximum number of rows in the {@link Gda.DataModel}
          * resulting from the execution of the built statement. In this case, the offset from which the
          * rows must be collected can be defined by the `limit_offset_expr_id` expression if not %0 (note that
          * this feature may not be supported by all the database providers).
-         *
+         * 
          * If `limit_count_expr_id` is %0, then removes any LIMIT which may have been imposed by a previous
          * call to this method.
          * @param limit_count_expr_id the ID of the LIMIT expression, or %0
          * @param limit_offset_expr_id the ID of the OFFSET expression, or %0
          */
         select_set_limit(limit_count_expr_id: SqlBuilderId, limit_offset_expr_id: SqlBuilderId): void;
+
         /**
          * Valid only for: INSERT, UPDATE, DELETE statements
-         *
+         * 
          * Sets the name of the table on which the built statement operates.
          * @param table_name a table name
          */
         set_table(table_name: string): void;
+
         /**
          * Valid only for: UPDATE, DELETE, SELECT statements
-         *
+         * 
          * Sets the WHERE condition of the statement
          * @param cond_id the ID of the expression to set as WHERE condition, or 0 to unset any previous WHERE condition
          */
         set_where(cond_id: SqlBuilderId): void;
     }
 
+
     namespace SqlParser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::column-error': (pspec: GObject.ParamSpec) => void;
-            'notify::line-error': (pspec: GObject.ParamSpec) => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::tokenizer-flavour': (pspec: GObject.ParamSpec) => void;
+            "notify::column-error": (pspec: GObject.ParamSpec) => void;
+            "notify::line-error": (pspec: GObject.ParamSpec) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::tokenizer-flavour": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
             column_error: number;
             columnError: number;
@@ -15348,27 +15966,32 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlParser>;
 
         // Properties
-
         /**
          * @read-only
          */
         get column_error(): number;
+
         /**
          * @read-only
          */
         get columnError(): number;
+
         /**
          * @read-only
          */
         get line_error(): number;
+
         /**
          * @read-only
          */
         get lineError(): number;
+
         get mode(): number;
         set mode(val: number);
+
         get tokenizer_flavour(): number;
         set tokenizer_flavour(val: number);
+
         get tokenizerFlavour(): number;
         set tokenizerFlavour(val: number);
 
@@ -15382,126 +16005,125 @@ export namespace Gda {
         $signals: SqlParser.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<SqlParser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SqlParser;
+        static ["new"](): SqlParser;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SqlParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SqlParser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SqlParser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SqlParser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SqlParser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SqlParser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SqlParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SqlParser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SqlParser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SqlParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SqlParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SqlParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Parse `filename`'s contents and creates a {@link Gda.Batch} object which contains all the
          *  {@link Gda.Statement} objects created while parsing (one object per SQL statement).
-         *
+         * 
          * `filename`'s contents are parsed and {@link Gda.Statement} objects are created as long as no error is found. If an error is found
          * at some point, then the parsing stops, `error` may be set and `null` is returned
-         *
+         * 
          * if `sql` is `null`, then the returned {@link Gda.Batch} object will contain no statement.
          * @param filename name of the file to parse
          * @returns a new {@link Gda.Batch} object, or `null` if an error occurred
          */
-        parse_file_as_batch(filename: string): Batch | null;
+        parse_file_as_batch(filename: string): (Batch | null);
+
         /**
          * Parses `sql` and creates a {@link Gda.Statement} statement from the first SQL statement contained in `sql`: if `sql`
          * contains more than one statement, then the remaining part of the string is not parsed at all, and `remain` (if
          * not `null`) will point at the first non parsed character.
-         *
+         * 
          * To include variables in the `sql` string, see the
          * <link linkend="GdaSqlParser.description">GdaSqlParser's object description</link>.
          * @param sql the SQL string to parse
          * @returns a new {@link Gda.Statement} object, or `null` if an error occurred
          */
-        parse_string(sql: string): [Statement | null, string];
+        parse_string(sql: string): [(Statement | null), string];
+
         /**
          * Parse `sql` and creates a {@link Gda.Batch} object which contains all the {@link Gda.Statement} objects created while parsing (one object
          * per SQL statement). Empty statements (composed of spaces only) do not appear in the resulting object.
-         *
+         * 
          * `sql` is parsed and {@link Gda.Statement} objects are created as long as no error is found in `sql`. If an error is found
          * at some point, then the parsing stops and `remain` may contain a non `null` pointer, `error` may be set, and `null`
          * is returned.
-         *
+         * 
          * if `sql` is `null`, then the returned {@link Gda.Batch} object will contain no statement.
-         *
+         * 
          * To include variables in the `sql` string, see the
          * <link linkend="GdaSqlParser.description">GdaSqlParser's object description</link>.
          * @param sql the SQL string to parse
          * @returns a new {@link Gda.Batch} object, or `null` if an error occurred
          */
-        parse_string_as_batch(sql: string): [Batch | null, string];
+        parse_string_as_batch(sql: string): [(Batch | null), string];
+
         set_overflow_error(): void;
+
         set_syntax_error(): void;
+
         /**
          * Locks `lockable`. If it is already locked by another thread, the current thread will block until it is unlocked
          * by the other thread.
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
-         *
+         * 
          * Note: unlike `g_mutex_lock()`, this method recursive, which means a thread can lock `lockable` several times
          * (and has to unlock it as many times to actually unlock it).
          */
         lock(): void;
+
         /**
          * Tries to lock `lockable`. If it is already locked by another thread, then it immediately returns FALSE, otherwise
          * it locks `lockable`.
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
-         *
+         * 
          * Note: unlike `g_mutex_lock()`, this method recursive, which means a thread can lock `lockable` several times
          * (and has to unlock it as many times to actually unlock it).
          * @returns TRUE if the object has successfully been locked.
          */
         trylock(): boolean;
+
         /**
          * Unlocks `lockable`. This method should not be called if the current does not already holds a lock on `lockable` (having
          * used `gda_lockable_lock()` or `gda_lockable_trylock()`).
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
          */
         unlock(): void;
+
         /**
          * @virtual
          */
         vfunc_i_lock(): void;
+
         /**
          * @virtual
          */
         vfunc_i_trylock(): boolean;
+
         /**
          * @virtual
          */
         vfunc_i_unlock(): void;
     }
+
 
     namespace Statement {
         // Signal signatures
@@ -15519,11 +16141,10 @@ export namespace Gda {
              * @run-first
              */
             reset: () => void;
-            'notify::structure': (pspec: GObject.ParamSpec) => void;
+            "notify::structure": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             structure: any;
         }
@@ -15536,7 +16157,6 @@ export namespace Gda {
         static $gtype: GObject.GType<Statement>;
 
         // Properties
-
         get structure(): any;
         set structure(val: any);
 
@@ -15550,98 +16170,92 @@ export namespace Gda {
         $signals: Statement.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Statement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Statement;
+        static ["new"](): Statement;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Statement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statement.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Statement.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Statement.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Statement.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Statement.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Statement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statement.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Statement.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Statement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Statement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param cnc
-         * @param checked
+         * @param cnc 
+         * @param checked 
          * @virtual
          */
         vfunc_checked(cnc: Connection, checked: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_reset(): void;
 
         // Methods
-
         /**
          * Checks that `stmt`'s structure is correct.
          * @returns TRUE if `stmt`'s structure is correct
          */
         check_structure(): boolean;
+
         /**
          * If `cnc` is not `null` then checks that every object (table, field, function) used in `stmt`
          * actually exists in `cnc`'s database
-         *
+         * 
          * If `cnc` is `null`, then cleans anything related to `cnc` in `stmt`.
-         *
+         * 
          * See `gda_sql_statement_check_validity()` for more information.
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @returns TRUE if every object actually exists in `cnc`'s database
          */
-        check_validity(cnc: Connection | null): boolean;
+        check_validity(cnc: (Connection | null)): boolean;
+
         /**
          * Copy constructor
          * @returns a the new copy of `orig`
          */
         copy(): Statement;
+
         /**
          * Get a new {@link Gda.Set} object which groups all the execution parameters
          * which `stmt` needs. This new object is returned though `out_params`.
-         *
+         * 
          * Note that if `stmt` does not need any parameter, then `out_params` is set to `null`.
          * @returns TRUE if no error occurred.
          */
         get_parameters(): [boolean, Set | null];
+
         /**
          * Get the type of statement held by `stmt`. It returns GDA_SQL_STATEMENT_NONE if
          * `stmt` does not hold any statement
          * @returns the statement type
          */
         get_statement_type(): SqlStatementType;
+
         /**
          * Tells if `stmt` is composed only of spaces (that is it has no real SQL code), and is completely
          * useless as such.
          * @returns TRUE if executing `stmt` does nothing
          */
         is_useless(): boolean;
+
         /**
          * "Normalizes" some parts of `stmt`, see `gda_sql_statement_normalize()` for more
          * information.
@@ -15649,14 +16263,16 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         normalize(cnc: Connection): boolean;
+
         /**
          * Creates a string representing the contents of `stmt`.
          * @returns a string containing the serialized version of `stmt`
          */
         serialize(): string;
+
         /**
          * Renders `stmt` as an SQL statement, with some control on how it is rendered.
-         *
+         * 
          * If `cnc` is not `null`, then the rendered SQL will better be suited to be used by `cnc` (in particular
          * it may include some SQL tweaks and/or proprietary extensions specific to the database engine used by `cnc`):
          * in this case the result is similar to calling `gda_connection_statement_to_sql()`.
@@ -15665,7 +16281,8 @@ export namespace Gda {
          * @param flags a set of flags to control the rendering
          * @returns a new string if no error occurred
          */
-        to_sql_extended(cnc: Connection | null, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
+        to_sql_extended(cnc: (Connection | null), params: (Set | null), flags: StatementSqlFlag): [string, Holder[] | null];
+
         /**
          * Renders `stmt` to its SQL representation, using `context` to specify how each part of `stmt` must
          * be rendered. This function is mainly used by database provider's implementations which require
@@ -15677,13 +16294,16 @@ export namespace Gda {
         to_sql_real(context: SqlRenderingContext): string;
     }
 
+
     namespace ThreadWrapper {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -15702,44 +16322,32 @@ export namespace Gda {
         $signals: ThreadWrapper.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<ThreadWrapper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ThreadWrapper;
+        static ["new"](): ThreadWrapper;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ThreadWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreadWrapper.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ThreadWrapper.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThreadWrapper.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ThreadWrapper.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThreadWrapper.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ThreadWrapper.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThreadWrapper.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ThreadWrapper.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ThreadWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ThreadWrapper.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThreadWrapper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Cancels a job not yet executed. This may fail for the following reasons:
          * <itemizedlist>
@@ -15751,6 +16359,7 @@ export namespace Gda {
          * @returns `true` if the job has been cancelled, or `false` in any other case.
          */
         cancel(id: number): boolean;
+
         /**
          * Connects a callback function to a signal for a particular object. The difference with `g_signal_connect()` and
          * similar functions are:
@@ -15762,12 +16371,12 @@ export namespace Gda {
          *    `gda_thread_wrapper_iterate()` to get the notification</para></listitem>
          *  <listitem><para>if `private_job` and `private_thread` control in which case the signal is propagated.</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Also note that signal handling is done asynchronously: when emitted in the worker thread, it
          * will be "queued" to be processed in the user thread when it has the chance (when `gda_thread_wrapper_iterate()`
          * is called directly or indirectly). The side effect is that the callback function is usually
          * called long after the object emitting the signal has finished emitting it.
-         *
+         * 
          * To disconnect a signal handler, don't use any of the g_signal_handler_*() functions but the
          * `gda_thread_wrapper_disconnect()` method.
          * @param instance the instance to connect to
@@ -15777,65 +16386,64 @@ export namespace Gda {
          * @param callback a {@link Gda.ThreadWrapperCallback} function
          * @returns the handler ID
          */
-        connect_raw(
-            instance: any | null,
-            sig_name: string,
-            private_thread: boolean,
-            private_job: boolean,
-            callback: ThreadWrapperCallback,
-        ): number;
+        connect_raw(instance: (any | null), sig_name: string, private_thread: boolean, private_job: boolean, callback: ThreadWrapperCallback): number;
+
         /**
          * Disconnects the emission of a signal, does the opposite of `gda_thread_wrapper_connect_raw()`.
-         *
+         * 
          * As soon as this method returns, the callback function set when `gda_thread_wrapper_connect_raw()`
          * was called will not be called anymore (even if the object has emitted the signal in the worker
          * thread and this signal has not been handled in the user thread).
          * @param id a handler ID, as returned by `gda_thread_wrapper_connect_raw()`
          */
-        disconnect(id: bigint | number): void;
+        disconnect(id: (bigint | number)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.disconnect
+    // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
+
         /**
          * Make `wrapper` execute the `func` function with the `arg` argument (along with a {@link GLib.Error} which is not `error`)
          * in the sub thread managed by `wrapper`. To execute a function which does not return anything,
          * use `gda_thread_wrapper_execute_void()`.
-         *
+         * 
          * This method returns immediately, and the caller then needs to use `gda_thread_wrapper_fetch_result()` to
          * check if the execution has finished and get the result.
-         *
+         * 
          * Once `func`'s execution is finished, if `arg` is not `null`, the `arg_destroy_func` destruction function is called
          * on `arg`. This call occurs in the thread calling `gda_thread_wrapper_fetch_result()`.
-         *
+         * 
          * If an error occurred in this function, then the `arg_destroy_func` function is not called to free `arg`.
          * @param func the function to execute, not `null`
          * @param arg argument to pass to `func`, or `null`
          * @param arg_destroy_func function to be called when the execution has finished, to destroy `arg`, or `null`
          * @returns the job ID, or 0 if an error occurred
          */
-        execute(func: ThreadWrapperFunc, arg: any | null, arg_destroy_func: GLib.DestroyNotify | null): number;
+        execute(func: ThreadWrapperFunc, arg: (any | null), arg_destroy_func: (GLib.DestroyNotify | null)): number;
+
         /**
          * Make `wrapper` execute the `func` function with the `arg` argument (along with a {@link GLib.Error} which is not `error`)
          * in the sub thread managed by `wrapper`. To execute a function which returns some pointer,
          * use `gda_thread_wrapper_execute()`.
-         *
+         * 
          * This method returns immediately. Calling `gda_thread_wrapper_fetch_result()` is not necessary as `func`
          * does not return any result. However, it may be necessary to call `gda_thread_wrapper_iterate()` to give `wrapper` a
          * chance to execute the `arg_destroy_func` function if not `null` (note that `gda_thread_wrapper_iterate()` is
          * called by `gda_thread_wrapper_fetch_result()` itself).
-         *
+         * 
          * Once `func`'s execution is finished, if `arg` is not `null`, the `arg_destroy_func` destruction function is called
          * on `arg`. This call occurs in the thread calling `gda_thread_wrapper_fetch_result()`.
-         *
+         * 
          * If an error occurred in this function, then the `arg_destroy_func` function is not called to free `arg`.
          * @param func the function to execute, not `null`
          * @param arg argument to pass to `func`
          * @param arg_destroy_func function to be called when the execution has finished, to destroy `arg`, or `null`
          * @returns the job ID, or 0 if an error occurred
          */
-        execute_void(func: ThreadWrapperVoidFunc, arg: any | null, arg_destroy_func: GLib.DestroyNotify | null): number;
+        execute_void(func: ThreadWrapperVoidFunc, arg: (any | null), arg_destroy_func: (GLib.DestroyNotify | null)): number;
+
         /**
          * Use this method to check if the execution of a function is finished. The function's execution must have
          * been requested using `gda_thread_wrapper_execute()`.
@@ -15843,70 +16451,78 @@ export namespace Gda {
          * @param exp_id ID of the job for which a result is expected
          * @returns the pointer returned by the execution, or `null` if no result is available
          */
-        fetch_result(may_lock: boolean, exp_id: number): any | null;
+        fetch_result(may_lock: boolean, exp_id: number): (any | null);
+
         /**
          * Allow `wrapper` to notify when an execution job is finished, by making its exec ID
          * readable through a new {@link GLib.IOChannel}. This function is useful when the notification needs
          * to be included into a main loop. This also notifies that signals (emitted by objects in
          * `wrapper`'s internal thread) are available.
-         *
+         * 
          * The returned {@link GLib.IOChannel} will have something to read everytime an execution job is finished
          * for an execution job submitted from the calling thread. The user whould read {@link Gda.ThreadNotification}
          * structures from the channel and analyse its contents to call `gda_thread_wrapper_iterate()`
          * or `gda_thread_wrapper_fetch_result()`.
-         *
+         * 
          * Note1: the new communication channel will only be operational for jobs submitted after this
          * function returns, and for signals which have been connected after this function returns. A safe
          * practice is to call this function before the `wrapper` object has been used.
-         *
+         * 
          * Note2: this function will return the same {@link GLib.IOChannel} everytime it's called from the same thread.
-         *
+         * 
          * Note3: if the usage of the returned {@link GLib.IOChannel} reveals an error, then `g_io_channel_shutdown()` and
          * `g_io_channel_unref()` should be called on the {@link GLib.IOChannel} to let `wrapper` know it should not use
          * that object anymore.
          * @returns a new {@link GLib.IOChannel}, or `null` if it could not be created
          */
         get_io_channel(): GLib.IOChannel;
+
         /**
          * Use this method to query the number of functions which have been queued to be executed
          * but which have not yet been executed.
          * @returns the number of jobs not yet executed
          */
         get_waiting_size(): number;
+
         /**
          * This method gives `wrapper` a chance to check if some functions to be executed have finished
          * <emphasis>for the calling thread</emphasis>. In this case it handles the execution result and
          * makes it ready to be processed using `gda_thread_wrapper_fetch_result()`.
-         *
+         * 
          * This method also allows `wrapper` to handle signals which may have been emitted by objects
          * while in the worker thread, and call the callback function specified when `gda_thread_wrapper_connect_raw()`
          * was used.
-         *
+         * 
          * If `may_block` is `true`, then it will block untill there is one finished execution
          * (functions returning void and signals are ignored regarding this argument).
          * @param may_block whether the call may block
          */
         iterate(may_block: boolean): void;
+
         /**
          * Requests that the signal which ID is `id` (which has been obtained using `gda_thread_wrapper_connect_raw()`)
          * be treated by the calling thread instead of by the thread in which `gda_thread_wrapper_connect_raw()`
          * was called.
          * @param id a signal ID
          */
-        steal_signal(id: bigint | number): void;
+        steal_signal(id: (bigint | number)): void;
+
         /**
          * Does the opposite of `gda_thread_wrapper_get_io_channel()`
          */
         unset_io_channel(): void;
     }
 
+
     namespace TransactionStatus {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -15925,62 +16541,58 @@ export namespace Gda {
         $signals: TransactionStatus.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
+
         name: string;
+
         isolation_level: TransactionIsolation;
+
         state: TransactionStatusState;
+
         events: TransactionStatusEvent[];
 
         // Constructors
-
         constructor(properties?: Partial<TransactionStatus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): TransactionStatus;
+        static ["new"](name: string): TransactionStatus;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TransactionStatus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransactionStatus.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TransactionStatus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TransactionStatus.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TransactionStatus.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TransactionStatus.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TransactionStatus.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TransactionStatus.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TransactionStatus.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TransactionStatus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TransactionStatus.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TransactionStatus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param str
-         * @param destev
+         * @param str 
+         * @param destev 
          */
-        find(str: string, destev: TransactionStatusEvent): TransactionStatus | null;
+        find(str: string, destev: TransactionStatusEvent): (TransactionStatus | null);
+
         /**
          * Find a pointer to the "current" _unnamed_ transaction, which is the last
          * transaction if there are several nested transactions
-         * @param destev
-         * @param unnamed_only
+         * @param destev 
+         * @param unnamed_only 
          */
-        find_current(destev: TransactionStatusEvent, unnamed_only: boolean): TransactionStatus | null;
+        find_current(destev: TransactionStatusEvent, unnamed_only: boolean): (TransactionStatus | null);
+
         /**
-         * @param event
-         * @param free_after
+         * @param event 
+         * @param free_after 
          */
         free_events(event: TransactionStatusEvent, free_after: boolean): void;
     }
+
 
     namespace Tree {
         // Signal signatures
@@ -15991,14 +16603,14 @@ export namespace Gda {
              * @since 4.2
              * @run-last
              */
-            'node-changed': (arg0: TreeNode) => void;
+            "node-changed": (arg0: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been removed from `tree`
              * @signal
              * @since 4.2
              * @run-last
              */
-            'node-deleted': (arg0: string) => void;
+            "node-deleted": (arg0: string) => void;
             /**
              * Gets emitted when a `node` has has a child when it did not have any or when it
              * does not have a ny children anymore when it had some
@@ -16006,19 +16618,18 @@ export namespace Gda {
              * @since 4.2
              * @run-last
              */
-            'node-has-child-toggled': (arg0: TreeNode) => void;
+            "node-has-child-toggled": (arg0: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been inserted in `tree`
              * @signal
              * @since 4.2
              * @run-last
              */
-            'node-inserted': (arg0: TreeNode) => void;
-            'notify::is-list': (pspec: GObject.ParamSpec) => void;
+            "node-inserted": (arg0: TreeNode) => void;
+            "notify::is-list": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             is_list: boolean;
             isList: boolean;
@@ -16032,12 +16643,12 @@ export namespace Gda {
         static $gtype: GObject.GType<Tree>;
 
         // Properties
-
         /**
          * Tells if the GdaTree is a list or a tree.
          * @read-only
          */
         get is_list(): boolean;
+
         /**
          * Tells if the GdaTree is a list or a tree.
          * @read-only
@@ -16054,130 +16665,130 @@ export namespace Gda {
         $signals: Tree.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Tree;
+        static ["new"](): Tree;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Tree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Tree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Tree.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param node
+         * @param node 
          * @virtual
          */
         vfunc_node_changed(node: TreeNode): void;
+
         /**
-         * @param node_path
+         * @param node_path 
          * @virtual
          */
         vfunc_node_deleted(node_path: string): void;
+
         /**
-         * @param node
+         * @param node 
          * @virtual
          */
         vfunc_node_has_child_toggled(node: TreeNode): void;
+
         /**
-         * @param node
+         * @param node 
          * @virtual
          */
         vfunc_node_inserted(node: TreeNode): void;
 
         // Methods
-
         /**
          * Sets `manager` as a top {@link Gda.TreeManager} object, which will be responsible for creating top level nodes in `tree`.
          * @param manager a {@link Gda.TreeManager} object
          */
         add_manager(manager: TreeManager): void;
+
         /**
          * Removes any node in `tree`
          */
         clean(): void;
+
         /**
          * Dumps the contents of `tree` to `stream`, using a hierarchical view.
          * @param node a {@link Gda.TreeNode} to start the dump from, or `null` for a full dump
          * @param stream a stream to send the dump to, or `null` for STDOUT
          */
-        dump(node: TreeNode | null, stream: any | null): void;
+        dump(node: (TreeNode | null), stream: (any | null)): void;
+
         /**
          * Locates a {@link Gda.TreeNode} using the `tree_path` path.
          * @param tree_path full path to the required nodes (if `use_names` is `true`, then it must start with '/')
          * @param use_names if `true`, then `tree_path` will be interpreted as a unix style path, and if `false`,             then `tree_path` will be interpreted similarly to the `GtkTreePath`'s string representation.
          * @returns the requested {@link Gda.TreeNode} pointer, or `null` if not found
          */
-        get_node(tree_path: string, use_names: boolean): TreeNode | null;
+        get_node(tree_path: string, use_names: boolean): (TreeNode | null);
+
         /**
          * Get the {@link Gda.TreeManager} which created `node` in `tree`
          * @param node a {@link Gda.TreeNode} present in `tree`
          * @returns the {@link Gda.TreeManager}, or `null` if `node` is not present in `tree`
          */
         get_node_manager(node: TreeNode): TreeManager;
+
         /**
          * Get the path associated to `node` in `tree`.
          * @param node a {@link Gda.TreeNode} node in `tree`
          * @returns a new string, or `null` if `node` is not in `tree`
          */
         get_node_path(node: TreeNode): string;
+
         /**
          * The returned list is a list of all the {@link Gda.TreeNode} nodes <emphasis>below</emphasis> the node
          * at the specified path.
-         *
+         * 
          * As a corner case if `tree_path` is `null`, then the returned list contains all the top level nodes.
          * @param tree_path full path to the required nodes (if `use_names` is `true`, then it must start with '/'), or `null`
          * @param use_names if `true`, then `tree_path` will be interpreted as a unix style path, and if `false`,             then `tree_path` will be interpreted similarly to the `GtkTreePath`'s string representation.
          * @returns a new list of {@link Gda.TreeNode} pointers, free it with `g_slist_free()`
          */
-        get_nodes_in_path(tree_path: string | null, use_names: boolean): TreeNode[];
+        get_nodes_in_path(tree_path: (string | null), use_names: boolean): TreeNode[];
+
         /**
          * Sets an attribute to `tree`, which will be accessible to any node in it.
          * @param attribute attribute name
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_attribute(attribute: string, value: GObject.Value | any): void;
+        set_attribute(attribute: string, value: (GObject.Value | any)): void;
+
         /**
          * Requests that `tree` be populated with nodes. If an error occurs, then `tree`'s contents is left
          * unchanged, and otherwise `tree`'s previous contents is completely replaced by the new one.
          * @returns TRUE if no error occurred.
          */
         update_all(): boolean;
+
         /**
          * Update the children of `node` in `tree` (not recursively, to update recursively, use
          * `gda_tree_update_part()`). If `node` is `null` then the top level nodes are updated.
          * @param node a {@link Gda.TreeNode} node in `tree`, or `null`
          * @returns TRUE if no error occurred.
          */
-        update_children(node: TreeNode | null): boolean;
+        update_children(node: (TreeNode | null)): boolean;
+
         /**
          * Requests that `tree` be populated with nodes, starting from `node`
          * @param node a {@link Gda.TreeNode} node in `tree`
@@ -16186,15 +16797,15 @@ export namespace Gda {
         update_part(node: TreeNode): boolean;
     }
 
+
     namespace TreeManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::func': (pspec: GObject.ParamSpec) => void;
-            'notify::recursive': (pspec: GObject.ParamSpec) => void;
+            "notify::func": (pspec: GObject.ParamSpec) => void;
+            "notify::recursive": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             func: any;
             recursive: boolean;
@@ -16208,18 +16819,18 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeManager>;
 
         // Properties
-
         /**
          * This property specifies the function which needs to be called when the list of {@link Gda.TreeNode} nodes
          * managed has to be updated
          */
         get func(): any;
         set func(val: any);
+
         /**
          * This property specifies if, when initially creating nodes or updating the list of nodes,
          * the tree manager shoud also request that each node it has created or updated also
          * initially create or update their children.
-         *
+         * 
          * This property can typically set to FALSE if the process of creating children nodes is lenghty
          * and needs to be postponed while an event occurs.
          */
@@ -16236,73 +16847,64 @@ export namespace Gda {
         $signals: TreeManager.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<TreeManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Adds a sub manager to `manager`. Use this method to create the skeleton structure
          * of a {@link Gda.Tree}. Note that a single {@link Gda.TreeManager} can be used by several {@link Gda.Tree} objects
          * or several times in the same {@link Gda.Tree}'s structure.
-         *
+         * 
          * Please note that it's possible for `mgr` and `sub` to be the same object, but beware of the possible
          * infinite recursive behaviour in this case when creating children nodes
          * (depending on the actual implementation of the {@link Gda.TreeManager}).
          * @param sub a {@link Gda.TreeManager} object to add
          */
         add_manager(sub: TreeManager): void;
+
         /**
          * Requests that for any new node managed (eg. created) by `manager`, a new attribute will be set. This allows
          * one to customize the attributes of new nodes created by an existing {@link Gda.TreeManager}.
-         *
+         * 
          * As a side effect, if `value` is `null`, then the corresponding attribute, if it was set, is unset.
          * @param attribute an attribute name
          * @param value the attribute's value, or `null`
          */
-        add_new_node_attribute(attribute: string, value: GObject.Value | null): void;
+        add_new_node_attribute(attribute: string, value: (GObject.Value | null)): void;
+
         /**
          * Requests that `manager` creates a new {@link Gda.TreeNode}. The new node is not in any
          * way linked to `manager` yet, consider this method as a {@link Gda.TreeNode} factory.
-         *
+         * 
          * This method is usually used when implementing a `GdaTreeManagerNodesFunc` function (to create nodes),
          * or when subclassing the {@link Gda.TreeManager}.
          * @param parent the parent the new node may have, or `null`
          * @param name name given to the new node, or `null`
          * @returns a new {@link Gda.TreeNode}
          */
-        create_node(parent: TreeNode | null, name: string | null): TreeNode;
+        create_node(parent: (TreeNode | null), name: (string | null)): TreeNode;
+
         /**
          * Get the list of sub managers which have already been added using `gda_tree_manager_add_manager()`
          * @returns a list of `GdaTreeMenager` which should not be modified.
@@ -16310,19 +16912,19 @@ export namespace Gda {
         get_managers(): TreeManager[];
     }
 
+
     namespace TreeMgrColumns {
         // Signal signatures
         interface SignalSignatures extends TreeManager.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::meta-store': (pspec: GObject.ParamSpec) => void;
-            'notify::schema': (pspec: GObject.ParamSpec) => void;
-            'notify::table-name': (pspec: GObject.ParamSpec) => void;
-            'notify::func': (pspec: GObject.ParamSpec) => void;
-            'notify::recursive': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::meta-store": (pspec: GObject.ParamSpec) => void;
+            "notify::schema": (pspec: GObject.ParamSpec) => void;
+            "notify::table-name": (pspec: GObject.ParamSpec) => void;
+            "notify::func": (pspec: GObject.ParamSpec) => void;
+            "notify::recursive": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TreeManager.ConstructorProps {
             connection: Connection;
             meta_store: MetaStore;
@@ -16340,13 +16942,13 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrColumns>;
 
         // Properties
-
         /**
          * Defines the {@link Gda.Connection} to display information for. Necessary upon construction unless
          * the {@link Gda.TreeMgrColumns.meta_store} property is specified instead.
          * @construct-only
          */
         get connection(): Connection;
+
         /**
          * Defines the {@link Gda.MetaStore} to extract information from. Necessary upon construction unless
          * the {@link Gda.TreeMgrColumns.connection} property is specified instead. This property has
@@ -16355,6 +16957,7 @@ export namespace Gda {
          * @construct-only
          */
         get meta_store(): MetaStore;
+
         /**
          * Defines the {@link Gda.MetaStore} to extract information from. Necessary upon construction unless
          * the {@link Gda.TreeMgrColumns.connection} property is specified instead. This property has
@@ -16363,16 +16966,19 @@ export namespace Gda {
          * @construct-only
          */
         get metaStore(): MetaStore;
+
         /**
          * If no set, then the table name will be fetched from the parent node using the "schema" attribute
          * @construct-only
          */
         set schema(val: string);
+
         /**
          * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
          * @construct-only
          */
         set table_name(val: string);
+
         /**
          * If no set, then the table name will be fetched from the parent node using the "table_name" attribute
          * @construct-only
@@ -16389,49 +16995,39 @@ export namespace Gda {
         $signals: TreeMgrColumns.SignalSignatures;
 
         // Fields
-
         object: TreeManager;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMgrColumns.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection, schema: string, table_name: string): TreeMgrColumns;
+        static ["new"](cnc: Connection, schema: string, table_name: string): TreeMgrColumns;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMgrColumns.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrColumns.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMgrColumns.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrColumns.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMgrColumns.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrColumns.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMgrColumns.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrColumns.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMgrColumns.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMgrColumns.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMgrColumns.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMgrColumns.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeMgrLabel {
         // Signal signatures
         interface SignalSignatures extends TreeManager.SignalSignatures {
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::func': (pspec: GObject.ParamSpec) => void;
-            'notify::recursive': (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::func": (pspec: GObject.ParamSpec) => void;
+            "notify::recursive": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TreeManager.ConstructorProps {
             label: string;
         }
@@ -16444,7 +17040,6 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrLabel>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -16460,49 +17055,39 @@ export namespace Gda {
         $signals: TreeMgrLabel.SignalSignatures;
 
         // Fields
-
         object: TreeManager;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMgrLabel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](label: string): TreeMgrLabel;
+        static ["new"](label: string): TreeMgrLabel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMgrLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrLabel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMgrLabel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrLabel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMgrLabel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrLabel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMgrLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrLabel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMgrLabel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMgrLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMgrLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMgrLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeMgrLdap {
         // Signal signatures
         interface SignalSignatures extends TreeManager.SignalSignatures {
-            'notify::dn': (pspec: GObject.ParamSpec) => void;
-            'notify::func': (pspec: GObject.ParamSpec) => void;
-            'notify::recursive': (pspec: GObject.ParamSpec) => void;
+            "notify::dn": (pspec: GObject.ParamSpec) => void;
+            "notify::func": (pspec: GObject.ParamSpec) => void;
+            "notify::recursive": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TreeManager.ConstructorProps {
             dn: string;
         }
@@ -16515,7 +17100,6 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrLdap>;
 
         // Properties
-
         /**
          * Defines the Distinguised Name of the LDAP entry to list children from
          * @construct-only
@@ -16532,50 +17116,40 @@ export namespace Gda {
         $signals: TreeMgrLdap.SignalSignatures;
 
         // Fields
-
         object: TreeManager;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMgrLdap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection, dn: string | null): TreeMgrLdap;
+        static ["new"](cnc: Connection, dn: (string | null)): TreeMgrLdap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMgrLdap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrLdap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMgrLdap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrLdap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMgrLdap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrLdap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMgrLdap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrLdap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMgrLdap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMgrLdap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMgrLdap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMgrLdap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeMgrSchemas {
         // Signal signatures
         interface SignalSignatures extends TreeManager.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::meta-store': (pspec: GObject.ParamSpec) => void;
-            'notify::func': (pspec: GObject.ParamSpec) => void;
-            'notify::recursive': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::meta-store": (pspec: GObject.ParamSpec) => void;
+            "notify::func": (pspec: GObject.ParamSpec) => void;
+            "notify::recursive": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TreeManager.ConstructorProps {
             connection: Connection;
             meta_store: MetaStore;
@@ -16590,13 +17164,13 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrSchemas>;
 
         // Properties
-
         /**
          * Defines the {@link Gda.Connection} to display information for. Necessary upon construction unless
          * the `GdaTreeMgrSchema:meta-store` property is specified instead.
          * @construct-only
          */
         get connection(): Connection;
+
         /**
          * Defines the {@link Gda.MetaStore} to extract information from. Necessary upon construction unless
          * the `GdaTreeMgrSchema:connection` property is specified instead. This property has
@@ -16605,6 +17179,7 @@ export namespace Gda {
          * @construct-only
          */
         get meta_store(): MetaStore;
+
         /**
          * Defines the {@link Gda.MetaStore} to extract information from. Necessary upon construction unless
          * the `GdaTreeMgrSchema:connection` property is specified instead. This property has
@@ -16624,51 +17199,41 @@ export namespace Gda {
         $signals: TreeMgrSchemas.SignalSignatures;
 
         // Fields
-
         object: TreeManager;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMgrSchemas.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection): TreeMgrSchemas;
+        static ["new"](cnc: Connection): TreeMgrSchemas;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMgrSchemas.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrSchemas.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMgrSchemas.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrSchemas.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMgrSchemas.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrSchemas.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMgrSchemas.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrSchemas.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMgrSchemas.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMgrSchemas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMgrSchemas.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMgrSchemas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeMgrSelect {
         // Signal signatures
         interface SignalSignatures extends TreeManager.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::params': (pspec: GObject.ParamSpec) => void;
-            'notify::statement': (pspec: GObject.ParamSpec) => void;
-            'notify::func': (pspec: GObject.ParamSpec) => void;
-            'notify::recursive': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::params": (pspec: GObject.ParamSpec) => void;
+            "notify::statement": (pspec: GObject.ParamSpec) => void;
+            "notify::func": (pspec: GObject.ParamSpec) => void;
+            "notify::recursive": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TreeManager.ConstructorProps {
             connection: Connection;
             params: Set;
@@ -16683,15 +17248,16 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrSelect>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get connection(): Connection;
+
         /**
          * @construct-only
          */
         get params(): Set;
+
         /**
          * @construct-only
          */
@@ -16707,51 +17273,41 @@ export namespace Gda {
         $signals: TreeMgrSelect.SignalSignatures;
 
         // Fields
-
         object: TreeManager;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMgrSelect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection, stmt: Statement, params: Set): TreeMgrSelect;
+        static ["new"](cnc: Connection, stmt: Statement, params: Set): TreeMgrSelect;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMgrSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrSelect.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMgrSelect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrSelect.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMgrSelect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrSelect.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMgrSelect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrSelect.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMgrSelect.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMgrSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMgrSelect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMgrSelect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeMgrTables {
         // Signal signatures
         interface SignalSignatures extends TreeManager.SignalSignatures {
-            'notify::connection': (pspec: GObject.ParamSpec) => void;
-            'notify::meta-store': (pspec: GObject.ParamSpec) => void;
-            'notify::schema': (pspec: GObject.ParamSpec) => void;
-            'notify::func': (pspec: GObject.ParamSpec) => void;
-            'notify::recursive': (pspec: GObject.ParamSpec) => void;
+            "notify::connection": (pspec: GObject.ParamSpec) => void;
+            "notify::meta-store": (pspec: GObject.ParamSpec) => void;
+            "notify::schema": (pspec: GObject.ParamSpec) => void;
+            "notify::func": (pspec: GObject.ParamSpec) => void;
+            "notify::recursive": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TreeManager.ConstructorProps {
             connection: Connection;
             meta_store: MetaStore;
@@ -16767,13 +17323,13 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrTables>;
 
         // Properties
-
         /**
          * Defines the {@link Gda.Connection} to display information for. Necessary upon construction unless
          * the {@link Gda.TreeMgrTables.meta_store} property is specified instead.
          * @construct-only
          */
         get connection(): Connection;
+
         /**
          * Defines the {@link Gda.MetaStore} to extract information from. Necessary upon construction unless
          * the {@link Gda.TreeMgrTables.connection} property is specified instead. This property has
@@ -16782,6 +17338,7 @@ export namespace Gda {
          * @construct-only
          */
         get meta_store(): MetaStore;
+
         /**
          * Defines the {@link Gda.MetaStore} to extract information from. Necessary upon construction unless
          * the {@link Gda.TreeMgrTables.connection} property is specified instead. This property has
@@ -16790,6 +17347,7 @@ export namespace Gda {
          * @construct-only
          */
         get metaStore(): MetaStore;
+
         /**
          * If no set, then the table name will be fetched from the parent node using the "schema" attribute. If not
          * found that way, then the list of visible tables (tables which can be identified without having to specify
@@ -16808,38 +17366,29 @@ export namespace Gda {
         $signals: TreeMgrTables.SignalSignatures;
 
         // Fields
-
         object: TreeManager;
 
         // Constructors
-
         constructor(properties?: Partial<TreeMgrTables.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](cnc: Connection, schema: string | null): TreeMgrTables;
+        static ["new"](cnc: Connection, schema: (string | null)): TreeMgrTables;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeMgrTables.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrTables.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeMgrTables.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrTables.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeMgrTables.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeMgrTables.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeMgrTables.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeMgrTables.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeMgrTables.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeMgrTables.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeMgrTables.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeMgrTables.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TreeNode {
         // Signal signatures
@@ -16850,14 +17399,14 @@ export namespace Gda {
              * @since 4.2
              * @run-last
              */
-            'node-changed': (arg0: TreeNode) => void;
+            "node-changed": (arg0: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been removed
              * @signal
              * @since 4.2
              * @run-last
              */
-            'node-deleted': (arg0: string) => void;
+            "node-deleted": (arg0: string) => void;
             /**
              * Gets emitted when a `node` has has a child when it did not have any or when it
              * does not have a ny children anymore when it had some
@@ -16865,19 +17414,18 @@ export namespace Gda {
              * @since 4.2
              * @run-last
              */
-            'node-has-child-toggled': (arg0: TreeNode) => void;
+            "node-has-child-toggled": (arg0: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been inserted
              * @signal
              * @since 4.2
              * @run-last
              */
-            'node-inserted': (arg0: TreeNode) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "node-inserted": (arg0: TreeNode) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
         }
@@ -16890,7 +17438,6 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeNode>;
 
         // Properties
-
         get name(): string;
         set name(val: string);
 
@@ -16904,148 +17451,148 @@ export namespace Gda {
         $signals: TreeNode.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<TreeNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string | null): TreeNode;
+        static ["new"](name: (string | null)): TreeNode;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TreeNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeNode.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TreeNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeNode.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TreeNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TreeNode.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TreeNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TreeNode.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TreeNode.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TreeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TreeNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TreeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param prefix
-         * @param in_string
+         * @param prefix 
+         * @param in_string 
          * @virtual
          */
         vfunc_dump_children(prefix: string, in_string: GLib.String): void;
+
         /**
          * @virtual
          */
         vfunc_dump_header(): string;
+
         /**
-         * @param node
+         * @param node 
          * @virtual
          */
         vfunc_node_changed(node: TreeNode): void;
+
         /**
-         * @param relative_path
+         * @param relative_path 
          * @virtual
          */
         vfunc_node_deleted(relative_path: string): void;
+
         /**
-         * @param node
+         * @param node 
          * @virtual
          */
         vfunc_node_has_child_toggled(node: TreeNode): void;
+
         /**
-         * @param node
+         * @param node 
          * @virtual
          */
         vfunc_node_inserted(node: TreeNode): void;
 
         // Methods
-
         /**
          * Get the value associated to the attribute named `attribute` for `node`. If the attribute is not set,
          * then `node`'s parents is queries (recursively up to the top level node).
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names,
          * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `node`
          */
         fetch_attribute(attribute: string): unknown;
+
         /**
          * Get the {@link Gda.TreeNode} child of `node` at position `index` (starting at 0).
          * @param index a index
          * @returns the {@link Gda.TreeNode}, or `null` if not found
          */
         get_child_index(index: number): TreeNode;
+
         /**
          * Get the {@link Gda.TreeNode} child of `node` which has the #GDA_ATTRIBUTE_NAME set to `name`
          * @param name requested node's name
          * @returns the {@link Gda.TreeNode}, or `null` if not found
          */
         get_child_name(name: string): TreeNode;
+
         /**
          * Get a list of all `node`'s children, free it with `g_slist_free()` after usage
          * @returns a new {@link GLib.SList} of {@link Gda.TreeNode} objects, or `null` if `node` does not have any child
          */
         get_children(): TreeNode[];
+
         /**
          * Get the value associated to the attribute named `attribute` for `node`. The difference with `gda_tree_node_fetch_attribute()`
          * is that `gda_tree_node_fetch_attribute()` will also query `node`'s parents (recursively up to the top level node) if
          * the attribute is not set for `node`.
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names,
          * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `node`
          */
         get_node_attribute(attribute: string): unknown;
+
         /**
          * Get the {@link Gda.TreeNode} parent of `node` in the {@link Gda.Tree} node belongs to. If `node` is at the top level,
          * then this method return `null`.
          * @returns the parent {@link Gda.TreeNode}
          */
         get_parent(): TreeNode;
+
         /**
          * Set the value associated to a named attribute. The `attribute` string is used AS IT IS by this method (eg.
          * no copy of it is made), and
          * the memory it uses will be freed using the `destroy` function when no longer needed (if `destroy` is `null`,
          * then the string will not be freed at all).
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names,
          * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
-         *
+         * 
          * For example one would use it as:
-         *
+         * 
          * <code>
          * gda_tree_node_set_node_attribute (node, g_strdup (my_attribute), my_value, g_free);
          * gda_tree_node_set_node_attribute (node, GDA_ATTRIBUTE_NAME, my_value, NULL);
          * </code>
-         *
+         * 
          * If there is already an attribute named `attribute` set, then its value is replaced with the new value (`value` is
          * copied), except if `value` is `null`, in which case the attribute is removed.
          * @param attribute attribute name
          * @param value a {@link GObject.Value}, or `null`
          */
-        set_node_attribute(attribute: string, value: GObject.Value | null): void;
+        set_node_attribute(attribute: string, value: (GObject.Value | null)): void;
     }
+
 
     namespace UShort {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -17055,40 +17602,31 @@ export namespace Gda {
         static $gtype: GObject.GType<UShort>;
 
         // Constructors
-
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UShort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UShort.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UShort.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UShort.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UShort.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UShort.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UShort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UShort.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UShort.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UShort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UShort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UShort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace XaTransaction {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::format-id': (pspec: GObject.ParamSpec) => void;
-            'notify::transaction-id': (pspec: GObject.ParamSpec) => void;
+            "notify::format-id": (pspec: GObject.ParamSpec) => void;
+            "notify::transaction-id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             format_id: number;
             formatId: number;
@@ -17104,19 +17642,21 @@ export namespace Gda {
         static $gtype: GObject.GType<XaTransaction>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get format_id(): number;
+
         /**
          * @construct-only
          */
         get formatId(): number;
+
         /**
          * @construct-only
          */
         get transaction_id(): string;
+
         /**
          * @construct-only
          */
@@ -17132,44 +17672,32 @@ export namespace Gda {
         $signals: XaTransaction.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<XaTransaction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](format: number, global_transaction_id: string): XaTransaction;
+        static ["new"](format: number, global_transaction_id: string): XaTransaction;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XaTransaction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XaTransaction.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XaTransaction.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XaTransaction.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XaTransaction.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XaTransaction.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XaTransaction.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XaTransaction.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XaTransaction.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XaTransaction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof XaTransaction.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XaTransaction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Begins a distributed transaction (managed by `xa_trans`). Please note that this phase may fail
          * for some connections if a (normal) transaction is already started (this depends on the database
@@ -17178,6 +17706,7 @@ export namespace Gda {
          * @returns TRUE if no error occurred
          */
         begin(): boolean;
+
         /**
          * Commits a distributed transaction (managed by `xa_trans`). The commit is composed of two phases:
          * <itemizedlist>
@@ -17185,13 +17714,14 @@ export namespace Gda {
          *     permanent place (to be able to complete the commit should a problem occur afterwards)</para></listitem>
          *   <listitem><para>a COMMIT phase where the transaction data is actually written to the database</para></listitem>
          * </itemizedlist>
-         *
+         * 
          * If the PREPARE phase fails for any of the connection registered with `xa_trans`, then the distributed commit
          * fails and FALSE is returned. During the COMMIT phase, some commit may actually fail but the transaction can
          * still be completed because the PREPARE phase succeeded (through the recover method).
          * @returns TRUE if no error occurred (there may be some connections to recover, though)
          */
         commit(): [boolean, Connection[] | null];
+
         /**
          * Tries to commit the data prepared but which failed to commit (see `gda_xa_transaction_commit()`). This
          * method allows one to terminate a distributed transaction which succeeded but for which some
@@ -17199,9 +17729,10 @@ export namespace Gda {
          * @returns `true` if all the data which was still uncommitted has been committed
          */
         commit_recovered(): [boolean, Connection[] | null];
+
         /**
          * Registers `cnc` to be used by `xa_trans` to create a distributed transaction.
-         *
+         * 
          * Note: any {@link Gda.Connection} object can only be registered with at most one {@link Gda.XaTransaction} object; also
          * some connections may not be registered at all with a {@link Gda.XaTransaction} object because the database
          * provider being used does not support it.
@@ -17210,11 +17741,13 @@ export namespace Gda {
          * @returns `true` if no error occurred
          */
         register_connection(cnc: Connection, branch: string): boolean;
+
         /**
          * Cancels a distributed transaction (managed by `xa_trans`).
          * @returns `true` if no error occurred
          */
         rollback(): boolean;
+
         /**
          * Unregisters `cnc` to be used by `xa_trans` to create a distributed transaction. This is
          * the opposite of `gda_xa_transaction_register_connection()`.
@@ -17223,16 +17756,19 @@ export namespace Gda {
         unregister_connection(cnc: Connection): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BatchClass = typeof Batch;
+
     /**
      * @gir-type Struct
      */
     abstract class BatchPrivate {
         static $gtype: GObject.GType<BatchPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -17241,34 +17777,33 @@ export namespace Gda {
         static $gtype: GObject.GType<Binary>;
 
         // Fields
-
         data: Uint8Array;
+
         binary_length: number;
 
         // Static methods
-
         /**
          * Creates a new {@link Gda.Binary} structure from an existing one.
          * @param boxed source to get a copy from.
          */
-        static copy(boxed: any | null): any | null;
+        static copy(boxed: (any | null)): (any | null);
+
         /**
          * Deallocates all memory associated to the given {@link Gda.Binary}.
          * @param boxed {@link Gda.Binary} to free.
          */
-        static free(boxed: any | null): void;
+        static free(boxed: (any | null)): void;
 
         // Methods
-
         /**
          * Converts all the non printable characters of bin->data into the "\xyz" representation
          * where "xyz" is the octal representation of the byte, and the '\' (backslash) character
          * is converted to "\\". Printable characters (defined by `g_ascii_isprint()`) as well as newline
          * character are not converted.
-         *
+         * 
          * Note that the backslash and newline characters are considered as printable characters and
          * will not be represented by the "\xyz" representation.
-         *
+         * 
          * Use this function to get a representation as much readable by humans as possible of a binary
          * chunk. Note that this function is internally called when transforming a binary value to
          * a string for example when using `g_value_transform()` or `gda_value_stringify()`.
@@ -17277,6 +17812,7 @@ export namespace Gda {
          */
         to_string(maxlen: number): string;
     }
+
 
     /**
      * Represents some binary data, accessed through a {@link Gda.BlobOp} object.
@@ -17288,29 +17824,28 @@ export namespace Gda {
         static $gtype: GObject.GType<Blob>;
 
         // Fields
-
         op: BlobOp;
 
         // Static methods
-
         /**
          * Creates a new {@link Gda.Blob} structure from an existing one.
          * @param boxed source to get a copy from.
          */
-        static copy(boxed: any | null): any | null;
+        static copy(boxed: (any | null)): (any | null);
+
         /**
          * Deallocates all memory associated to the given {@link Gda.Blob}.
          * @param boxed {@link Gda.Blob} to free.
          */
-        static free(boxed: any | null): void;
+        static free(boxed: (any | null)): void;
 
         // Methods
-
         /**
          * correctly assigns `op` to `blob`
          * @param op a {@link Gda.BlobOp} object, or `null`
          */
-        set_op(op: BlobOp | null): void;
+        set_op(op: (BlobOp | null)): void;
+
         /**
          * Converts all the non printable characters of blob->data into the \xxx representation
          * where xxx is the octal representation of the byte, and the '\' (backslash) character
@@ -17321,14 +17856,17 @@ export namespace Gda {
         to_string(maxlen: number): string;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BlobOpClass = typeof BlobOp;
+
     /**
      * @gir-type Alias
      */
     type ColumnClass = typeof Column;
+
     /**
      * @gir-type Struct
      */
@@ -17336,10 +17874,12 @@ export namespace Gda {
         static $gtype: GObject.GType<ColumnPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigClass = typeof Config;
+
     /**
      * @gir-type Struct
      */
@@ -17347,20 +17887,24 @@ export namespace Gda {
         static $gtype: GObject.GType<ConfigPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionClass = typeof Connection;
+
     /**
      * @gir-type Alias
      */
     type ConnectionEventClass = typeof ConnectionEvent;
+
     /**
      * @gir-type Struct
      */
     abstract class ConnectionEventPrivate {
         static $gtype: GObject.GType<ConnectionEventPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -17369,10 +17913,12 @@ export namespace Gda {
         static $gtype: GObject.GType<ConnectionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataAccessWrapperClass = typeof DataAccessWrapper;
+
     /**
      * @gir-type Struct
      */
@@ -17380,10 +17926,12 @@ export namespace Gda {
         static $gtype: GObject.GType<DataAccessWrapperPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataComparatorClass = typeof DataComparator;
+
     /**
      * @gir-type Struct
      */
@@ -17391,14 +17939,17 @@ export namespace Gda {
         static $gtype: GObject.GType<DataComparatorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataHandlerIface = typeof DataHandler;
+
     /**
      * @gir-type Alias
      */
     type DataModelArrayClass = typeof DataModelArray;
+
     /**
      * @gir-type Struct
      */
@@ -17406,10 +17957,12 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelArrayPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataModelDirClass = typeof DataModelDir;
+
     /**
      * @gir-type Struct
      */
@@ -17417,14 +17970,17 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelDirPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataModelIface = typeof DataModel;
+
     /**
      * @gir-type Alias
      */
     type DataModelImportClass = typeof DataModelImport;
+
     /**
      * @gir-type Struct
      */
@@ -17432,10 +17988,12 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelImportPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataModelIterClass = typeof DataModelIter;
+
     /**
      * @gir-type Struct
      */
@@ -17443,10 +18001,12 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelIterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataModelLdapClass = typeof DataModelLdap;
+
     /**
      * @gir-type Struct
      */
@@ -17454,10 +18014,12 @@ export namespace Gda {
         static $gtype: GObject.GType<DataModelLdapPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataPivotClass = typeof DataPivot;
+
     /**
      * @gir-type Struct
      */
@@ -17465,10 +18027,12 @@ export namespace Gda {
         static $gtype: GObject.GType<DataPivotPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataProxyClass = typeof DataProxy;
+
     /**
      * @gir-type Struct
      */
@@ -17476,16 +18040,19 @@ export namespace Gda {
         static $gtype: GObject.GType<DataProxyPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataSelectClass = typeof DataSelect;
+
     /**
      * @gir-type Struct
      */
     abstract class DataSelectPrivate {
         static $gtype: GObject.GType<DataSelectPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -17494,11 +18061,13 @@ export namespace Gda {
         static $gtype: GObject.GType<Diff>;
 
         // Fields
-
         type: DiffType;
+
         old_row: number;
+
         new_row: number;
     }
+
 
     /**
      * This structure defines the properties of a named data source (DSN).
@@ -17508,41 +18077,44 @@ export namespace Gda {
         static $gtype: GObject.GType<DsnInfo>;
 
         // Fields
-
         name: string;
+
         provider: string;
+
         description: string;
+
         cnc_string: string;
+
         auth_string: string;
+
         is_system: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                name: string;
-                provider: string;
-                description: string;
-                cnc_string: string;
-                auth_string: string;
-                is_system: boolean;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            name: string;
+            provider: string;
+            description: string;
+            cnc_string: string;
+            auth_string: string;
+            is_system: boolean;
+        }>);
 
-        static ['new'](): DsnInfo;
+        static ["new"](): DsnInfo;
 
         // Methods
-
         /**
          * Copy constructor.
          * @returns a new {@link Gda.DsnInfo}
          */
         copy(): DsnInfo;
+
         /**
          * Frees any resources taken by `dsn` struct. If `dsn` is `null`, then nothing happens.
          */
         free(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -17551,35 +18123,35 @@ export namespace Gda {
         static $gtype: GObject.GType<GeometricPoint>;
 
         // Fields
-
         x: number;
+
         y: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+        }>);
 
         // Static methods
+        /**
+         * @param boxed 
+         */
+        static copy(boxed: (any | null)): (any | null);
 
         /**
-         * @param boxed
+         * @param boxed 
          */
-        static copy(boxed: any | null): any | null;
-        /**
-         * @param boxed
-         */
-        static free(boxed: any | null): void;
+        static free(boxed: (any | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type HandlerBinClass = typeof HandlerBin;
+
     /**
      * @gir-type Struct
      */
@@ -17587,10 +18159,12 @@ export namespace Gda {
         static $gtype: GObject.GType<HandlerBinPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HandlerBooleanClass = typeof HandlerBoolean;
+
     /**
      * @gir-type Struct
      */
@@ -17598,10 +18172,12 @@ export namespace Gda {
         static $gtype: GObject.GType<HandlerBooleanPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HandlerNumericalClass = typeof HandlerNumerical;
+
     /**
      * @gir-type Struct
      */
@@ -17609,10 +18185,12 @@ export namespace Gda {
         static $gtype: GObject.GType<HandlerNumericalPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HandlerStringClass = typeof HandlerString;
+
     /**
      * @gir-type Struct
      */
@@ -17620,10 +18198,12 @@ export namespace Gda {
         static $gtype: GObject.GType<HandlerStringPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HandlerTimeClass = typeof HandlerTime;
+
     /**
      * @gir-type Struct
      */
@@ -17631,10 +18211,12 @@ export namespace Gda {
         static $gtype: GObject.GType<HandlerTimePriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HandlerTypeClass = typeof HandlerType;
+
     /**
      * @gir-type Struct
      */
@@ -17642,10 +18224,12 @@ export namespace Gda {
         static $gtype: GObject.GType<HandlerTypePriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HolderClass = typeof Holder;
+
     /**
      * @gir-type Struct
      */
@@ -17653,21 +18237,23 @@ export namespace Gda {
         static $gtype: GObject.GType<HolderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LockableIface = typeof Lockable;
+
     /**
      * The <structname>GdaMetaContext</structname> represents a meta data modification
      * context: the <emphasis>how</emphasis> when used with `gda_meta_store_modify_with_context()`,
      * and the <emphasis>what</emphasis> when used with `gda_connection_update_meta_store()`.
-     *
+     * 
      * To create a new {@link Gda.MetaContext} use `gda_meta_context_new`.
-     *
+     * 
      * To add a new column/value pair use `gda_meta_context_add_column`.
-     *
+     * 
      * To free a {@link Gda.MetaContext}, created by `gda_meta_context_new`, use `gda_attributes_manager_free`.
-     *
+     * 
      * Since 5.2, you must consider this struct as opaque. Any access to its internal must use public API.
      * Don't try to use `gda_meta_context_free` on a struct that was created manually.
      * @gir-type Struct
@@ -17676,64 +18262,65 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaContext>;
 
         // Fields
-
         table_name: string;
+
         size: number;
+
         column_names: string[];
+
         column_values: unknown[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                table_name: string;
-                size: number;
-                column_names: string[];
-                column_values: unknown[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            table_name: string;
+            size: number;
+            column_names: string[];
+            column_values: unknown[];
+        }>);
 
-        static ['new'](): MetaContext;
+        static ["new"](): MetaContext;
 
         // Methods
-
         /**
          * Copy constructor.
          * @returns a new {@link Gda.MetaContext}
          */
         copy(): MetaContext;
+
         /**
          * Frees any resources taken by `ctx` struct. If `ctx` is `null`, then nothing happens.
          */
         free(): void;
+
         /**
          * Get table's name to used in the context.
          * @returns A string with the table's name used in the context.
          */
         get_table(): string;
+
         /**
          * Sets a new column/value pair to the given context `ctx`. Column, must be a column in the given table's
          * name setted by `gda_meta_context_set_table` () (a table in the <link linkend="information_schema">database
          * schema</link>). If the given `column` already exists it's value is overwrited.
-         *
+         * 
          * Column's name and value is copied and destroyed when `gda_meta_context_free` is called.
          * @param column the column's name
          * @param value the column's value
          * @param cnc a {@link Gda.Connection} to be used when identifier are normalized, or NULL
          */
-        set_column(column: string, value: GObject.Value | any, cnc: Connection | null): void;
+        set_column(column: string, value: (GObject.Value | any), cnc: (Connection | null)): void;
+
         /**
          * Set columns to use in the context. The {@link GLib.HashTable} use column's name as key and a {@link GObject.Value} as value,
          * to represent its value.
-         *
+         * 
          * `columns` incements its reference counting. Is recommended to use `gda_meta_context_free` in order to free them.
          * @param columns a {@link GLib.HashTable} with the table's columns' name and their values to use in context.
          * @param cnc a {@link Gda.Connection} to used to normalize identifiers quoting, or NULL
          */
-        set_columns(
-            columns: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-            cnc: Connection | null,
-        ): void;
+        set_columns(columns: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>), cnc: (Connection | null)): void;
+
         /**
          * Set table's name to use in the context. The table is one of <link linkend="information_schema">database
          * schema</link> used to store meta information about the database. Use "_tables" to update meta information
@@ -17743,10 +18330,11 @@ export namespace Gda {
         set_table(table: string): void;
     }
 
+
     /**
      * Struture to hold information about each database object (tables, views, ...),
      * its contents must not be modified.
-     *
+     * 
      * Note: `obj_catalog`, `obj_schema`, `obj_name`, `obj_short_name` and `obj_full_name` respect the
      * <link linkend="information_schema:sql_identifiers">SQL identifiers</link> convention used in
      * {@link Gda.MetaStore} objects. Before using these SQL identifiers, you should check the
@@ -17758,17 +18346,25 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaDbObject>;
 
         // Fields
-
         obj_type: MetaDbObjectType;
+
         outdated: boolean;
+
         obj_catalog: string;
+
         obj_schema: string;
+
         obj_name: string;
+
         obj_short_name: string;
+
         obj_full_name: string;
+
         obj_owner: string;
+
         depend_list: MetaDbObject[];
     }
+
 
     /**
      * @gir-type Struct
@@ -17777,21 +18373,24 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaStoreChange>;
 
         // Fields
-
         c_type: MetaStoreChangeType;
+
         table_name: string;
     }
+
 
     /**
      * @gir-type Alias
      */
     type MetaStoreClass = typeof MetaStore;
+
     /**
      * @gir-type Struct
      */
     abstract class MetaStoreClassPrivate {
         static $gtype: GObject.GType<MetaStoreClassPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -17800,10 +18399,12 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaStorePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MetaStructClass = typeof MetaStruct;
+
     /**
      * @gir-type Struct
      */
@@ -17811,10 +18412,11 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaStructPrivate>;
     }
 
+
     /**
      * This structure specifies a {@link Gda.MetaDbObject} to represent a table's specific attributes,
      * its contents must not be modified.
-     *
+     * 
      * Note that in some cases, the columns cannot be determined for views, and in this case the
      * `columns` will be `null` (this can be the case for example with SQLite where a view
      * uses a function which is not natively provided by SQLite.
@@ -17824,13 +18426,17 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaTable>;
 
         // Fields
-
         columns: MetaTableColumn[];
+
         pk_cols_array: number;
+
         pk_cols_nb: number;
+
         reverse_fk_list: MetaTableForeignKey[];
+
         fk_list: MetaTableForeignKey[];
     }
+
 
     /**
      * This structure represents a table of view's column, its contents must not be modified.
@@ -17840,44 +18446,50 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaTableColumn>;
 
         // Fields
-
         column_name: string;
+
         column_type: string;
+
         gtype: GObject.GType;
+
         pkey: boolean;
+
         nullok: boolean;
+
         default_value: string;
 
         // Methods
-
         /**
          * Calls `func` for each attribute set to tcol
          * @param func a {@link Gda.AttributesManagerFunc} function
          */
         foreach_attribute(func: AttributesManagerFunc): void;
+
         /**
          * Get the value associated to a named attribute.
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names, see <link linkend="libgda-5.0-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `column`
          */
         get_attribute(attribute: string): unknown;
+
         /**
          * Set the value associated to a named attribute.
-         *
+         * 
          * Attributes can have any name, but Libgda proposes some default names, see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * If there is already an attribute named `attribute` set, then its value is replaced with the new `value`,
          * except if `value` is `null`, in which case the attribute is removed.
-         *
+         * 
          * Warning: `attribute` is not copied, if it needs to be freed when not used anymore, then `destroy` should point to
          * the functions which will free it (typically `g_free()`). If `attribute` does not need to be freed, then `destroy` can be `null`.
          * @param attribute attribute name as a static string
          * @param value a {@link GObject.Value}, or `null`
          * @param destroy function called when `attribute` has to be freed, or `null`
          */
-        set_attribute(attribute: string, value: GObject.Value | null, destroy: GLib.DestroyNotify | null): void;
+        set_attribute(attribute: string, value: (GObject.Value | null), destroy: (GLib.DestroyNotify | null)): void;
     }
+
 
     /**
      * This structure represents a foreign key constraint, its contents must not be modified.
@@ -17887,14 +18499,19 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaTableForeignKey>;
 
         // Fields
-
         cols_nb: number;
+
         fk_cols_array: number;
+
         fk_names_array: string;
+
         ref_pk_cols_array: number;
+
         ref_pk_names_array: string;
+
         fk_name: string;
     }
+
 
     /**
      * This structure specifies a {@link Gda.MetaDbObject} to represent a view's specific attributes,
@@ -17905,14 +18522,15 @@ export namespace Gda {
         static $gtype: GObject.GType<MetaView>;
 
         // Fields
-
         view_def: string;
+
         is_updatable: boolean;
     }
 
+
     /**
      * Holds numbers represented as strings.
-     *
+     * 
      * This struct must be considered as opaque. Any access to its members must use its
      * accessors added since version 5.0.2.
      * @gir-type Struct
@@ -17921,85 +18539,95 @@ export namespace Gda {
         static $gtype: GObject.GType<Numeric>;
 
         // Fields
-
         number: string;
+
         precision: number;
+
         width: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                number: string;
-                precision: number;
-                width: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            number: string;
+            precision: number;
+            width: number;
+        }>);
 
-        static ['new'](): Numeric;
+        static ["new"](): Numeric;
 
         // Methods
-
         /**
          * Creates a new {@link Gda.Numeric} structure from an existing one.
          * @returns a newly allocated {@link Gda.Numeric} which contains a copy of information in `boxed`. Free-function: gda_numeric_free
          */
         copy(): Numeric;
+
         /**
          * Deallocates all memory associated to the given `boxed`
          */
         free(): void;
+
         /**
          * @returns a `gdouble` representation of `numeric`
          */
         get_double(): number;
+
         /**
          * Gets the precision of a {@link Gda.Numeric}.
          * @returns an integer with the precision of a {@link Gda.Numeric}.
          */
         get_precision(): number;
+
         /**
          * Get the string representation of `numeric`, in the C locale format (dot as a fraction separator).
          * @returns a new string representing the stored valued in `numeric`
          */
-        get_string(): string | null;
+        get_string(): (string | null);
+
         /**
          * Gets the width of a {@link Gda.Numeric}. (Not yet implemented).
          * @returns an integer with the width of a {@link Gda.Numeric}. (Not jet implemented).
          */
         get_width(): number;
+
         /**
          * Sets `numeric` using a `gdouble` represented by `number`.
          * @param number a `gdouble`
          */
         set_double(number: number): void;
+
         /**
          * Sets `numeric` with a number represented by `str`, in the C locale format (dot as a fraction separator).
          * @param str a string representing a number, in the C locale format
          */
         set_from_string(str: string): void;
+
         /**
          * Sets the precision of a {@link Gda.Numeric}.
          * @param precision a `glong`
          */
-        set_precision(precision: bigint | number): void;
+        set_precision(precision: (bigint | number)): void;
+
         /**
          * Sets the width of a {@link Gda.Numeric}. (Not yet implemented).
          * @param width a `glong`
          */
-        set_width(width: bigint | number): void;
+        set_width(width: (bigint | number)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type PStmtClass = typeof PStmt;
+
     /**
      * @gir-type Struct
      */
     abstract class PStmtPrivate {
         static $gtype: GObject.GType<PStmtPrivate>;
     }
+
 
     /**
      * This structure holds the information associated to a database provider as discovered by Libgda.
@@ -18009,13 +18637,17 @@ export namespace Gda {
         static $gtype: GObject.GType<ProviderInfo>;
 
         // Fields
-
         id: string;
+
         location: string;
+
         description: string;
+
         dsn_params: Set;
+
         auth_params: Set;
     }
+
 
     /**
      * @gir-type Struct
@@ -18025,14 +18657,15 @@ export namespace Gda {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): QuarkList;
+        }>);
+
+        static ["new"](): QuarkList;
 
         static new_from_string(string: string): QuarkList;
 
         // Methods
-
         /**
          * `string` must be a semi-colon separated list of "&lt;key&gt;=&lt;value&gt;" strings (for example
          * "DB_NAME=notes;USERNAME=alfred"). Each key and value must respect the RFC 1738 recommendations: the
@@ -18041,7 +18674,7 @@ export namespace Gda {
          * <constant>ab</constant> is the hexadecimal number corresponding to the character (for example the
          * "DB_NAME=notes;USERNAME=al%%20fred" string will specify a username as "al fred"). If this formalism
          * is not respected, then some unexpected results may occur.
-         *
+         * 
          * Adds new key->value pairs from the given `string`. If `cleanup` is
          * set to `true`, the previous contents will be discarded before adding
          * the new pairs.
@@ -18049,15 +18682,18 @@ export namespace Gda {
          * @param cleanup whether to cleanup the previous content or not.
          */
         add_from_string(string: string, cleanup: boolean): void;
+
         /**
          * Removes all strings in the given {@link Gda.QuarkList}.
          */
         clear(): void;
+
         /**
          * Creates a new {@link Gda.QuarkList} from an existing one.
          * @returns a newly allocated {@link Gda.QuarkList} with a copy of the data in `qlist`.
          */
         copy(): QuarkList;
+
         /**
          * Searches for the value identified by `name` in the given {@link Gda.QuarkList}. For protected values
          * (authentification data), don't forget to call `gda_quark_list_protect_values()` when you
@@ -18066,21 +18702,25 @@ export namespace Gda {
          * @returns the value associated with the given key if found, or `null` if not found.
          */
         find(name: string): string;
+
         /**
          * Calls the given function for each of the key/value pairs in `qlist`. The function is passed the key and value
          * of each pair, and the given user_data parameter. `qlist` may not be modified while iterating over it.
          * @param func the function to call for each key/value pair
          */
         foreach(func: GLib.HFunc): void;
+
         /**
          * Releases all memory occupied by the given {@link Gda.QuarkList}.
          */
         free(): void;
+
         /**
          * Call this function to get rid of the clear version of the value associated to
          * `name`.
          */
         protect_values(): void;
+
         /**
          * Removes an entry from the {@link Gda.QuarkList}, given its name.
          * @param name an entry name.
@@ -18088,14 +18728,17 @@ export namespace Gda {
         remove(name: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RepetitiveStatementClass = typeof RepetitiveStatement;
+
     /**
      * @gir-type Alias
      */
     type RowClass = typeof Row;
+
     /**
      * @gir-type Struct
      */
@@ -18103,10 +18746,12 @@ export namespace Gda {
         static $gtype: GObject.GType<RowPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ServerOperationClass = typeof ServerOperation;
+
     /**
      * @gir-type Struct
      */
@@ -18114,15 +18759,21 @@ export namespace Gda {
         static $gtype: GObject.GType<ServerOperationNode>;
 
         // Fields
-
         type: ServerOperationNodeType;
+
         status: ServerOperationNodeStatus;
+
         plist: Set;
+
         model: DataModel;
+
         column: Column;
+
         param: Holder;
+
         priv: any;
     }
+
 
     /**
      * @gir-type Struct
@@ -18131,10 +18782,12 @@ export namespace Gda {
         static $gtype: GObject.GType<ServerOperationPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ServerProviderClass = typeof ServerProvider;
+
     /**
      * @gir-type Struct
      */
@@ -18142,11 +18795,13 @@ export namespace Gda {
         static $gtype: GObject.GType<ServerProviderHandlerInfo>;
 
         // Fields
-
         cnc: Connection;
+
         g_type: GObject.GType;
+
         dbms_type: string;
     }
+
 
     /**
      * @gir-type Struct
@@ -18154,6 +18809,7 @@ export namespace Gda {
     abstract class ServerProviderInfo {
         static $gtype: GObject.GType<ServerProviderInfo>;
     }
+
 
     /**
      * These methods must be implemented by providers to update a connection's associated metadata (in a
@@ -18165,6 +18821,7 @@ export namespace Gda {
         static $gtype: GObject.GType<ServerProviderMeta>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -18172,9 +18829,9 @@ export namespace Gda {
         static $gtype: GObject.GType<ServerProviderPrivate>;
 
         // Fields
-
         parser: SqlParser;
     }
+
 
     /**
      * @gir-type Struct
@@ -18183,10 +18840,12 @@ export namespace Gda {
         static $gtype: GObject.GType<ServerProviderXa>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SetClass = typeof Set;
+
     /**
      * Since 5.2, you must consider this struct as opaque. Any access to its internal must use public API.
      * Don't try to use `gda_set_group_free` on a struct that was created manually.
@@ -18196,54 +18855,59 @@ export namespace Gda {
         static $gtype: GObject.GType<SetGroup>;
 
         // Fields
-
         nodes: SetNode[];
 
         // Constructors
-
         constructor(node: SetNode);
 
-        static ['new'](node: SetNode): SetGroup;
+        static ["new"](node: SetNode): SetGroup;
 
         // Methods
-
         /**
          * @param node a {@link Gda.SetNode} to set
          */
         add_node(node: SetNode): void;
+
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetGroup}
          */
         copy(): SetGroup;
+
         /**
          * Frees any resources taken by `sg` struct. If `sg` is `null`, then nothing happens.
          */
         free(): void;
+
         /**
          * @returns number of nodes in `sg`.
          */
         get_n_nodes(): number;
+
         /**
          * This method always return first {@link Gda.SetNode} in `sg`.
          * @returns first {@link Gda.SetNode} in `sg`.
          */
         get_node(): SetNode;
+
         /**
          * Returns a {@link GLib.SList} with the {@link Gda.SetNode} grouped by `sg`. You must use
          * `g_slist_free` on returned list.
          * @returns a {@link GLib.SList} with all nodes in `sg`.
          */
         get_nodes(): SetNode[];
+
         /**
          * @returns a {@link Gda.SetSource}. If `null` then `sg` contains just one element.
          */
         get_source(): SetSource;
+
         /**
          * @param source a {@link Gda.SetSource} to set
          */
         set_source(source: SetSource): void;
     }
+
 
     /**
      * Since 5.2, you must consider this struct as opaque. Any access to its internal must use public API.
@@ -18254,59 +18918,66 @@ export namespace Gda {
         static $gtype: GObject.GType<SetNode>;
 
         // Fields
-
         holder: Holder;
+
         source_model: DataModel;
+
         source_column: number;
 
         // Constructors
-
         constructor(holder: Holder);
 
-        static ['new'](holder: Holder): SetNode;
+        static ["new"](holder: Holder): SetNode;
 
         // Methods
-
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetNode}
          */
         copy(): SetNode;
+
         /**
          * Frees any resources taken by `node` struct. If `node` is `null`, then nothing happens.
          */
         free(): void;
+
         /**
          * @returns the {@link Gda.DataModel} used by `node`
          */
         get_data_model(): DataModel;
+
         /**
          * @returns the {@link Gda.Holder} used by `node`
          */
         get_holder(): Holder;
+
         /**
          * @returns the number of column referenced in a given {@link Gda.DataModel}. If negative no column is referenced or no {@link Gda.DataModel} is used by `node`.
          */
         get_source_column(): number;
+
         /**
          * Set a {@link Gda.DataModel} to be used by `node`. `model` increment its reference
          * counting when set. Internally referenced column number is set to first column
          * in `model`.
          * @param model a {@link Gda.DataModel} to be used by `node`
          */
-        set_data_model(model: DataModel | null): void;
+        set_data_model(model: (DataModel | null)): void;
+
         /**
          * Set a {@link Gda.Holder} to `node`.
-         * @param holder
+         * @param holder 
          */
         set_holder(holder: Holder): void;
+
         /**
          * Set column number in the {@link Gda.DataModel} used `node`. If no {@link Gda.DataModel} is set
          * then column is set to invalid (-1);
-         * @param column
+         * @param column 
          */
         set_source_column(column: number): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -18314,6 +18985,7 @@ export namespace Gda {
     abstract class SetPrivate {
         static $gtype: GObject.GType<SetPrivate>;
     }
+
 
     /**
      * Since 5.2, you must consider this struct as opaque. Any access to its internal must use public API.
@@ -18324,44 +18996,48 @@ export namespace Gda {
         static $gtype: GObject.GType<SetSource>;
 
         // Fields
-
         data_model: DataModel;
+
         nodes: SetNode[];
 
         // Constructors
-
         constructor(model: DataModel);
 
-        static ['new'](model: DataModel): SetSource;
+        static ["new"](model: DataModel): SetSource;
 
         // Methods
-
         /**
          * Set a {@link Gda.DataModel}
          * @param node a {@link Gda.SetNode} to add
          */
         add_node(node: SetNode): void;
+
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetSource}
          */
         copy(): SetSource;
+
         /**
          * Frees any resources taken by `s` struct. If `s` is `null`, then nothing happens.
          */
         free(): void;
+
         /**
          * @returns a {@link Gda.DataModel} used by `s`
          */
         get_data_model(): DataModel;
+
         /**
          * @returns number of nodes in `sg`.
          */
         get_n_nodes(): number;
+
         /**
          * @returns a list of {@link Gda.SetNode} structs
          */
         get_nodes(): SetNode[];
+
         /**
          * Set a {@link Gda.DataModel}
          * @param model a {@link Gda.DataModel}
@@ -18369,10 +19045,12 @@ export namespace Gda {
         set_data_model(model: DataModel): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SqlBuilderClass = typeof SqlBuilder;
+
     /**
      * @gir-type Struct
      */
@@ -18380,10 +19058,12 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlBuilderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SqlParserClass = typeof SqlParser;
+
     /**
      * @gir-type Struct
      */
@@ -18391,9 +19071,9 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlParserIface>;
 
         // Fields
-
         parser: SqlParser;
     }
+
 
     /**
      * @gir-type Struct
@@ -18401,6 +19081,7 @@ export namespace Gda {
     abstract class SqlParserPrivate {
         static $gtype: GObject.GType<SqlParserPrivate>;
     }
+
 
     /**
      * Specifies the context in which a {@link Gda.SqlStatement} is being converted to SQL.
@@ -18410,14 +19091,19 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlRenderingContext>;
 
         // Fields
-
         flags: StatementSqlFlag;
+
         params: Set;
+
         params_used: Holder[];
+
         provider: ServerProvider;
+
         cnc: Connection;
+
         render_value: SqlRenderingValue;
     }
+
 
     /**
      * @gir-type Struct
@@ -18426,16 +19112,17 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlStatement>;
 
         // Methods
-
         /**
-         * @param type
+         * @param type 
          */
         compound_set_type(type: SqlStatementCompoundType): void;
+
         /**
-         * @param s
+         * @param s 
          */
         compound_take_stmt(s: SqlStatement): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -18444,12 +19131,14 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlStatementDelete>;
     }
 
+
     /**
      * @gir-type Struct
      */
     abstract class SqlStatementInsert {
         static $gtype: GObject.GType<SqlStatementInsert>;
     }
+
 
     /**
      * @gir-type Struct
@@ -18458,12 +19147,14 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlStatementSelect>;
     }
 
+
     /**
      * @gir-type Struct
      */
     abstract class SqlStatementTransaction {
         static $gtype: GObject.GType<SqlStatementTransaction>;
     }
+
 
     /**
      * @gir-type Struct
@@ -18472,6 +19163,7 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlStatementUnknown>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -18479,16 +19171,19 @@ export namespace Gda {
         static $gtype: GObject.GType<SqlStatementUpdate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StatementClass = typeof Statement;
+
     /**
      * @gir-type Struct
      */
     abstract class StatementPrivate {
         static $gtype: GObject.GType<StatementPrivate>;
     }
+
 
     /**
      * A notification to be read through the {@link GLib.IOChannel} which is returned by `gda_thread_wrapper_get_io_channel()`,
@@ -18519,12 +19214,12 @@ export namespace Gda {
      *   if (condition & (G_IO_ERR | G_IO_HUP | G_IO_NVAL))
      *             goto onerror;
      *   return TRUE; // keep callback
-     *
+     * 
      * onerror:
      *   g_io_channel_shutdown (bcnc->priv->ioc, FALSE, NULL);
      *   return FALSE; // removed callback
      * }
-     *
+     * 
      * {
      * [...]
      *     GIOChannel *ioc;
@@ -18544,21 +19239,24 @@ export namespace Gda {
         static $gtype: GObject.GType<ThreadNotification>;
 
         // Fields
-
         type: ThreadNotificationType;
+
         job_id: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ThreadWrapperClass = typeof ThreadWrapper;
+
     /**
      * @gir-type Struct
      */
     abstract class ThreadWrapperPrivate {
         static $gtype: GObject.GType<ThreadWrapperPrivate>;
     }
+
 
     /**
      * Represents a time information.
@@ -18568,40 +19266,44 @@ export namespace Gda {
         static $gtype: GObject.GType<Time>;
 
         // Fields
-
         hour: number;
+
         minute: number;
+
         second: number;
+
         fraction: number;
+
         timezone: number;
 
         // Static methods
+        /**
+         * @param boxed 
+         */
+        static copy(boxed: (any | null)): (any | null);
 
         /**
-         * @param boxed
+         * @param boxed 
          */
-        static copy(boxed: any | null): any | null;
-        /**
-         * @param boxed
-         */
-        static free(boxed: any | null): void;
+        static free(boxed: (any | null)): void;
 
         // Methods
-
         /**
          * Changes `time`'s timezone (for example to convert from GMT to another time zone).
          * If `time`'s current timezone is unset (i.e. equal to `GDA_TIMEZONE_INVALID`), then this function simply sets
          * `time`'s timezone attribute; Otherwise, it adds or removes hours, minutes or seconds to reflect the time in the new timezone.
-         *
+         * 
          * Note: the resulting will always be a valid time.
          * @param ntz a new timezone to use, in seconds added to GMT
          */
-        change_timezone(ntz: bigint | number): void;
+        change_timezone(ntz: (bigint | number)): void;
+
         /**
          * @returns `TRUE` if {@link Gda.Time} is valid; `false` otherwise.
          */
         valid(): boolean;
     }
+
 
     /**
      * Represents an instant (a time stamp)
@@ -18611,46 +19313,54 @@ export namespace Gda {
         static $gtype: GObject.GType<Timestamp>;
 
         // Fields
-
         year: number;
+
         month: number;
+
         day: number;
+
         hour: number;
+
         minute: number;
+
         second: number;
+
         fraction: number;
+
         timezone: number;
 
         // Static methods
+        /**
+         * @param boxed 
+         */
+        static copy(boxed: (any | null)): (any | null);
 
         /**
-         * @param boxed
+         * @param boxed 
          */
-        static copy(boxed: any | null): any | null;
-        /**
-         * @param boxed
-         */
-        static free(boxed: any | null): void;
+        static free(boxed: (any | null)): void;
 
         // Methods
-
         /**
          * This function is similar to `gda_time_change_timezone()` but operates on time stamps.
-         *
+         * 
          * Note: the resulting will always be a valid time.
          * @param ntz a new timezone to use, in seconds added to GMT
          */
-        change_timezone(ntz: bigint | number): void;
+        change_timezone(ntz: (bigint | number)): void;
+
         /**
          * @returns `TRUE` if {@link Gda.Timestamp} is valid; `false` otherwise.
          */
         valid(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TransactionStatusClass = typeof TransactionStatus;
+
     /**
      * @gir-type Struct
      */
@@ -18658,20 +19368,24 @@ export namespace Gda {
         static $gtype: GObject.GType<TransactionStatusEvent>;
 
         // Fields
-
         trans: TransactionStatus;
+
         type: TransactionStatusEventType;
+
         conn_event: ConnectionEvent;
     }
+
 
     /**
      * @gir-type Alias
      */
     type TreeClass = typeof Tree;
+
     /**
      * @gir-type Alias
      */
     type TreeManagerClass = typeof TreeManager;
+
     /**
      * @gir-type Struct
      */
@@ -18679,10 +19393,12 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeManagerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMgrColumnsClass = typeof TreeMgrColumns;
+
     /**
      * @gir-type Struct
      */
@@ -18690,10 +19406,12 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrColumnsPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMgrLabelClass = typeof TreeMgrLabel;
+
     /**
      * @gir-type Struct
      */
@@ -18701,10 +19419,12 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrLabelPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMgrLdapClass = typeof TreeMgrLdap;
+
     /**
      * @gir-type Struct
      */
@@ -18712,10 +19432,12 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrLdapPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMgrSchemasClass = typeof TreeMgrSchemas;
+
     /**
      * @gir-type Struct
      */
@@ -18723,10 +19445,12 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrSchemasPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMgrSelectClass = typeof TreeMgrSelect;
+
     /**
      * @gir-type Struct
      */
@@ -18734,10 +19458,12 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrSelectPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeMgrTablesClass = typeof TreeMgrTables;
+
     /**
      * @gir-type Struct
      */
@@ -18745,16 +19471,19 @@ export namespace Gda {
         static $gtype: GObject.GType<TreeMgrTablesPriv>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TreeNodeClass = typeof TreeNode;
+
     /**
      * @gir-type Struct
      */
     abstract class TreeNodePrivate {
         static $gtype: GObject.GType<TreeNodePrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -18763,10 +19492,12 @@ export namespace Gda {
         static $gtype: GObject.GType<TreePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type XaTransactionClass = typeof XaTransaction;
+
     /**
      * @gir-type Struct
      */
@@ -18774,25 +19505,24 @@ export namespace Gda {
         static $gtype: GObject.GType<XaTransactionId>;
 
         // Fields
-
         format: number;
+
         gtrid_length: number;
+
         bqual_length: number;
+
         data: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                format: number;
-                gtrid_length: number;
-                bqual_length: number;
-                data: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            format: number;
+            gtrid_length: number;
+            bqual_length: number;
+            data: number[];
+        }>);
 
         // Methods
-
         /**
          * Creates a string representation of `xid`, in the format &lt;gtrid&gt;,&lt;bqual&gt;,&lt;formatID&gt; the
          * &lt;gtrid&gt; and &lt;bqual&gt; strings contain alphanumeric characters, and non alphanumeric characters
@@ -18802,6 +19532,7 @@ export namespace Gda {
         to_string(): string;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -18809,60 +19540,66 @@ export namespace Gda {
         static $gtype: GObject.GType<XaTransactionPrivate>;
     }
 
+
     namespace DataHandler {
         /**
          * Interface for implementing DataHandler.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
              * @param type a {@link GObject.GType}
              * @virtual
              */
             vfunc_accepts_g_type(type: GObject.GType): boolean;
+
             /**
              * Get a short description of the GdaDataHandler
              * @virtual
              */
             vfunc_get_descr(): string;
+
             /**
              * Creates a new GValue which holds a sane initial value to be used if no value is specifically
              * provided. For example for a simple string, this would return a new value containing the "" string.
              * @param type a {@link GObject.GType}
              * @virtual
              */
-            vfunc_get_sane_init_value(type: GObject.GType): GObject.Value | null;
+            vfunc_get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
             /**
              * Creates a new string which is an SQL representation of the given value, the returned string
              * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
              * the returned string will be correctly quoted. Note however that it is a better practice
              * to use variables in statements instead of value literals, see
              * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-             *
+             * 
              * If the value is NULL or is of type GDA_TYPE_NULL,
              * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
              * @param value the value to be converted to a string, or `null`
              * @virtual
              */
-            vfunc_get_sql_from_value(value: GObject.Value | null): string;
+            vfunc_get_sql_from_value(value: (GObject.Value | null)): string;
+
             /**
              * Creates a new string which is a "user friendly" representation of the given value
              * (in the user's locale, specially for the dates). If the value is
              * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-             *
+             * 
              * Note: the returned value will be in the current locale representation.
              * @param value the value to be converted to a string, or `null`
              * @virtual
              */
-            vfunc_get_str_from_value(value: GObject.Value | null): string;
+            vfunc_get_str_from_value(value: (GObject.Value | null)): string;
+
             /**
              * Creates a new GValue which represents the SQL value given as argument. This is
              * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
              * is used to determine the real data type requested for the returned value.
-             *
+             * 
              * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
              * if the `sql` string does not correspond to a valid SQL string for the requested type, then
              * the `null` is returned.
@@ -18870,95 +19607,102 @@ export namespace Gda {
              * @param type a GType
              * @virtual
              */
-            vfunc_get_value_from_sql(sql: string | null, type: GObject.GType): GObject.Value | any;
+            vfunc_get_value_from_sql(sql: (string | null), type: GObject.GType): (GObject.Value | any);
+
             /**
              * Creates a new GValue which represents the `str` value given as argument. This is
              * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
              * is used to determine the real data type requested for the returned value.
-             *
+             * 
              * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
              * if the `str` string does not correspond to a valid string for the requested type, then
              * `null` is returned.
-             *
+             * 
              * Note: the `str` string must be in the current locale representation
              * @param str a string or `null`
              * @param type a GType
              * @virtual
              */
-            vfunc_get_value_from_str(str: string | null, type: GObject.GType): GObject.Value | any;
+            vfunc_get_value_from_str(str: (string | null), type: GObject.GType): (GObject.Value | any);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DataHandlerNamespace {
         $gtype: GObject.GType<DataHandler>;
         prototype: DataHandler;
-
         /**
-         * Obtain a pointer to a {@link Gda.DataHandler} which can manage {@link GObject.Value} values of type `for_type`. The returned
-         * data handler will be adapted to use the current locale information (for example dates will be formatted
-         * taking into account the locale).
-         *
-         * The returned pointer is `null` if there is no default data handler available for the `for_type` data type
-         * @param for_type a {@link GObject.GType} type
-         */
+        * Obtain a pointer to a {@link Gda.DataHandler} which can manage {@link GObject.Value} values of type `for_type`. The returned
+        * data handler will be adapted to use the current locale information (for example dates will be formatted
+        * taking into account the locale).
+        * 
+        * The returned pointer is `null` if there is no default data handler available for the `for_type` data type
+        * @param for_type a {@link GObject.GType} type
+        */
         get_default(for_type: GObject.GType): DataHandler;
     }
     /**
      * @gir-type Interface
      */
     interface DataHandler extends GObject.Object, DataHandler.Interface {
-        // Methods
 
+        // Methods
         /**
          * Checks wether the GdaDataHandler is able to handle the gda type given as argument.
          * @param type a {@link GObject.GType}
          * @returns `true` if the gda type can be handled
          */
         accepts_g_type(type: GObject.GType): boolean;
+
         /**
          * Get a short description of the GdaDataHandler
          * @returns the description
          */
         get_descr(): string;
+
         /**
          * Creates a new GValue which holds a sane initial value to be used if no value is specifically
          * provided. For example for a simple string, this would return a new value containing the "" string.
          * @param type a {@link GObject.GType}
          * @returns the new {@link GObject.Value}, or `null` if no such value can be created.
          */
-        get_sane_init_value(type: GObject.GType): GObject.Value | null;
+        get_sane_init_value(type: GObject.GType): (GObject.Value | null);
+
         /**
          * Creates a new string which is an SQL representation of the given value, the returned string
          * can be used directly in an SQL statement. For example if `value` is a G_TYPE_STRING, then
          * the returned string will be correctly quoted. Note however that it is a better practice
          * to use variables in statements instead of value literals, see
          * the <link linkend="GdaSqlParser.description">GdaSqlParser</link> for more information.
-         *
+         * 
          * If the value is NULL or is of type GDA_TYPE_NULL,
          * or is a G_TYPE_STRING and `g_value_get_string()` returns `null`, the returned string is "NULL".
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_sql_from_value(value: GObject.Value | null): string;
+        get_sql_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new string which is a "user friendly" representation of the given value
          * (in the user's locale, specially for the dates). If the value is
          * NULL or is of type GDA_TYPE_NULL, the returned string is a copy of "" (empty string).
-         *
+         * 
          * Note: the returned value will be in the current locale representation.
          * @param value the value to be converted to a string, or `null`
          * @returns the new string, or `null` if an error occurred
          */
-        get_str_from_value(value: GObject.Value | null): string;
+        get_str_from_value(value: (GObject.Value | null)): string;
+
         /**
          * Creates a new GValue which represents the SQL value given as argument. This is
          * the opposite of the function `gda_data_handler_get_sql_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `sql` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `sql` string does not correspond to a valid SQL string for the requested type, then
          * the `null` is returned.
@@ -18966,23 +19710,25 @@ export namespace Gda {
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_sql(sql: string | null, type: GObject.GType): unknown;
+        get_value_from_sql(sql: (string | null), type: GObject.GType): unknown;
+
         /**
          * Creates a new GValue which represents the `str` value given as argument. This is
          * the opposite of the function `gda_data_handler_get_str_from_value()`. The type argument
          * is used to determine the real data type requested for the returned value.
-         *
+         * 
          * If the `str` string is `null`, then the returned GValue is of type GDA_TYPE_NULL;
          * if the `str` string does not correspond to a valid string for the requested type, then
          * `null` is returned.
-         *
+         * 
          * Note: the `str` string must be in the current locale representation
          * @param str a string or `null`
          * @param type a GType
          * @returns the new {@link GObject.Value} or `null` on error
          */
-        get_value_from_str(str: string | null, type: GObject.GType): unknown;
+        get_value_from_str(str: (string | null), type: GObject.GType): unknown;
     }
+
 
     export const DataHandler: DataHandlerNamespace & {
         new (): DataHandler; // This allows `obj instanceof DataHandler`
@@ -18994,54 +19740,58 @@ export namespace Gda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_access_changed(): void;
+
             /**
              * @virtual
              */
             vfunc_changed(): void;
+
             /**
              * Appends a row to the data model (the new row will possibly have NULL values for all columns,
              * or some other values depending on the data model implementation)
-             *
+             * 
              * Upon errors -1 will be returned and `error` will be assigned a
              * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
              * @virtual
              */
             vfunc_i_append_row(): number;
+
             /**
              * Appends a row to the given data model. If any value in `values` is actually `null`, then
              * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-             *
+             * 
              * Upon errors -1 will be returned and `error` will be assigned a
              * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
              * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
              * @virtual
              */
-            vfunc_i_append_values(values: GObject.Value[] | null): number;
+            vfunc_i_append_values(values: (GObject.Value[] | null)): number;
+
             /**
              * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
              * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
              * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
              * the data model from being destroyed).
-             *
+             * 
              * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
              * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
              * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
              * with a cursor access mode specified), then this method will always return the same iterator.
-             *
+             * 
              * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-             *
+             * 
              * For models which can be accessed
              * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
              * and for models which are accessible sequentially only then use
              * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
              * supported).
-             *
+             * 
              * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
              * has twice the number of columns of the proxied data model), this method will create an iterator
              * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -19050,33 +19800,37 @@ export namespace Gda {
              * @virtual
              */
             vfunc_i_create_iter(): DataModelIter;
+
             /**
              * Queries the underlying data model implementation for a description
              * of a given column. That description is returned in the form of
              * a {@link Gda.Column} structure, which contains all the information
              * about the given column in the data model.
-             *
+             * 
              * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
              * and should not be destroyed; any modification will affect the whole data model.
              * @param col column number.
              * @virtual
              */
-            vfunc_i_describe_column(col: number): Column | null;
+            vfunc_i_describe_column(col: number): (Column | null);
+
             /**
              * Returns the first row where all the values in `values` at the columns identified at
              * `cols_index` match. If the row can't be identified, then returns -1;
-             *
+             * 
              * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
              * @param values a list of {@link GObject.Value} values (no `null` is allowed)
              * @param cols_index an array of `gint` containing the column number to match each value of `values`
              * @virtual
              */
             vfunc_i_find_row(values: unknown[], cols_index: number[]): number;
+
             /**
              * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
              * @virtual
              */
             vfunc_i_get_access_flags(): DataModelAccessFlags;
+
             /**
              * Get the attributes of the value stored at (row, col) in `model`, which
              * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -19087,6 +19841,7 @@ export namespace Gda {
              * @virtual
              */
             vfunc_i_get_attributes_at(col: number, row: number): ValueAttribute;
+
             /**
              * Get the global data model exception(s) that occurred when using `model`.
              * This is useful for example for the LDAP related
@@ -19095,48 +19850,53 @@ export namespace Gda {
              * @virtual
              */
             vfunc_i_get_exceptions(): GLib.Error[];
+
             /**
              * @virtual
              */
             vfunc_i_get_n_columns(): number;
+
             /**
              * @virtual
              */
             vfunc_i_get_n_rows(): number;
+
             /**
              * Returns the status of notifications changes on the given data model.
              * @virtual
              */
             vfunc_i_get_notify(): boolean;
+
             /**
              * Retrieves the data stored in the given position (identified by
              * the `col` and `row` parameters) on a data model.
-             *
+             * 
              * Upon errors `null` will be returned and `error` will be assigned a
              * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-             *
+             * 
              * This is the main function for accessing data in a model which allows random access to its data.
              * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
              * `gda_data_model_create_iter()`.
-             *
+             * 
              * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
              * occur if you do so).
-             *
+             * 
              * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
              * which means if you want to keep the value, a copy must be made, however it will remain valid
              * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
              * of the same row.
-             *
+             * 
              * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
              * `gda_data_model_set_values()` methods.
-             *
+             * 
              * Upon errors `null` will be returned and `error` will be assigned a
              * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
              * @param col a valid column number.
              * @param row a valid row number.
              * @virtual
              */
-            vfunc_i_get_value_at(col: number, row: number): GObject.Value | null;
+            vfunc_i_get_value_at(col: number, row: number): (GObject.Value | null);
+
             /**
              * Moves `iter` to the row number given by `row`.
              * @param iter a {@link Gda.DataModelIter} object.
@@ -19144,18 +19904,21 @@ export namespace Gda {
              * @virtual
              */
             vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
+
             /**
              * Moves `iter` to the next row in `model`.
              * @param iter a {@link Gda.DataModelIter} object.
              * @virtual
              */
             vfunc_i_iter_next(iter: DataModelIter): boolean;
+
             /**
              * Moves `iter` to the next row in `model`.
              * @param iter a {@link Gda.DataModelIter} object.
              * @virtual
              */
             vfunc_i_iter_prev(iter: DataModelIter): boolean;
+
             /**
              * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
              * @param iter a {@link Gda.DataModelIter} object.
@@ -19164,15 +19927,17 @@ export namespace Gda {
              * @virtual
              */
             vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
+
             /**
              * Removes a row from the data model.
-             *
+             * 
              * Upon errors FALSE will be returned and `error` will be assigned a
              * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
              * @param row the row number to be removed.
              * @virtual
              */
             vfunc_i_remove_row(row: number): boolean;
+
             /**
              * Sends a hint to the data model. The hint may or may not be handled by the data
              * model, depending on its implementation
@@ -19180,16 +19945,18 @@ export namespace Gda {
              * @param hint_value an optional value to specify the hint, or `null`
              * @virtual
              */
-            vfunc_i_send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+            vfunc_i_send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
             /**
              * Enable or disable notifications changes on the given data model.
              * @param do_notify_changes Set to TRUE if you require notifications.
              * @virtual
              */
             vfunc_i_set_notify(do_notify_changes: boolean): void;
+
             /**
              * Modifies a value in `model`, at (`col`, `row`).
-             *
+             * 
              * Upon errors FALSE will be returned and `error` will be assigned a
              * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
              * @param col column number.
@@ -19198,46 +19965,51 @@ export namespace Gda {
              * @virtual
              */
             vfunc_i_set_value_at(col: number, row: number, value: unknown): boolean;
+
             /**
              * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
              * by setting several values at once.
-             *
+             * 
              * If any value in `values` is actually `null`, then the value in the corresponding column is left
              * unchanged.
-             *
+             *  
              * Upon errors FALSE will be returned and `error` will be assigned a
              * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
              * @param row row number.
              * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
              * @virtual
              */
-            vfunc_i_set_values(row: number, values: GObject.Value[] | null): boolean;
+            vfunc_i_set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
             /**
              * Emits the 'reset' and 'changed' signal on `model`.
              * @virtual
              */
             vfunc_reset(): void;
+
             /**
              * Emits the 'row_inserted' and 'changed' signals on `model`.
-             *
+             * 
              * This method should only be used by {@link Gda.DataModel} implementations to
              * signal that a row has been inserted.
              * @param row row number.
              * @virtual
              */
             vfunc_row_inserted(row: number): void;
+
             /**
              * Emits the 'row_removed' and 'changed' signal on `model`.
-             *
+             * 
              * This method should only be used by {@link Gda.DataModel} implementations to
              * signal that a row has been removed
              * @param row row number.
              * @virtual
              */
             vfunc_row_removed(row: number): void;
+
             /**
              * Emits the 'row_updated' and 'changed' signals on `model`.
-             *
+             * 
              * This method should only be used by {@link Gda.DataModel} implementations to
              * signal that a row has been updated.
              * @param row row number.
@@ -19246,83 +20018,89 @@ export namespace Gda {
             vfunc_row_updated(row: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DataModelNamespace {
         $gtype: GObject.GType<DataModel>;
         prototype: DataModel;
-
         error_quark(): GLib.Quark;
     }
     /**
      * @gir-type Interface
      */
     interface DataModel extends GObject.Object, DataModel.Interface {
-        // Methods
 
+        // Methods
         /**
          * Adds the data from an XML node to the given data model (see the DTD for that node
          * in the $prefix/share/libgda/dtd/libgda-array.dtd file).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
+
         /**
          * Appends a row to the data model (the new row will possibly have NULL values for all columns,
          * or some other values depending on the data model implementation)
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
          */
         append_row(): number;
+
         /**
          * Appends a row to the given data model. If any value in `values` is actually `null`, then
          * it is considered as a default value. If `values` is `null` then all values are set to their default value.
-         *
+         * 
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
          */
-        append_values(values: GObject.Value[] | null): number;
+        append_values(values: (GObject.Value[] | null)): number;
+
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model(): DataModelArray | null;
+        array_copy_model(): (DataModelArray | null);
+
         /**
          * Like `gda_data_model_array_copy_model()`, makes a copy of `src`, but copies only some
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          */
-        array_copy_model_ext(cols: number[]): DataModelArray | null;
+        array_copy_model_ext(cols: number[]): (DataModelArray | null);
+
         /**
          * Creates a new iterator object {@link Gda.DataModelIter} object which can be used to iterate through
          * rows in `model`. The new {@link Gda.DataModelIter} does not hold any reference to `model` (ie. if `model`
          * is destroyed at some point, the new iterator will become useless but in any case it will not prevent
          * the data model from being destroyed).
-         *
+         * 
          * Depending on the data model's implementation, a new {@link Gda.DataModelIter} object may be created,
          * or a reference to an already existing {@link Gda.DataModelIter} may be returned. For example if `model` only
          * supports being accessed using a forward moving cursor (say a the result of a SELECT executed by SQLite
          * with a cursor access mode specified), then this method will always return the same iterator.
-         *
+         * 
          * If a new {@link Gda.DataModelIter} is created, then the row it represents is undefined.
-         *
+         * 
          * For models which can be accessed
          * randomly, any row can be set using `gda_data_model_iter_move_to_row()`,
          * and for models which are accessible sequentially only then use
          * `gda_data_model_iter_move_next()` (and `gda_data_model_iter_move_prev()` if
          * supported).
-         *
+         * 
          * Note: for the {@link Gda.DataProxy} data model (which proxies any {@link Gda.DataModel} for modifications and
          * has twice the number of columns of the proxied data model), this method will create an iterator
          * in which only the columns of the proxied data model appear. If you need to have a {@link Gda.DataModelIter}
@@ -19331,21 +20109,23 @@ export namespace Gda {
          * @returns a {@link Gda.DataModelIter} object, or `null` if an error occurred
          */
         create_iter(): DataModelIter;
+
         /**
          * Queries the underlying data model implementation for a description
          * of a given column. That description is returned in the form of
          * a {@link Gda.Column} structure, which contains all the information
          * about the given column in the data model.
-         *
+         * 
          * WARNING: the returned {@link Gda.Column} object belongs to the `model` model and
          * and should not be destroyed; any modification will affect the whole data model.
          * @param col column number.
          * @returns the description of the column.
          */
-        describe_column(col: number): Column | null;
+        describe_column(col: number): (Column | null);
+
         /**
          * Dumps a textual representation of the `model` to the `to_stream` stream
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -19356,12 +20136,13 @@ export namespace Gda {
          * </itemizedlist>
          * @param to_stream where to dump the data model
          */
-        dump(to_stream: any | null): void;
+        dump(to_stream: (any | null)): void;
+
         /**
          * Dumps a textual representation of the `model` into a new string. The main differences with `gda_data_model_export_to_string()` are that
          * the formatting options are passed using environment variables, and that the data is dumped regardless of the user locale (e.g. dates
          * are not formatted according to the locale).
-         *
+         * 
          * The following environment variables can affect the resulting output:
          * <itemizedlist>
          *   <listitem><para>GDA_DATA_MODEL_DUMP_ROW_NUMBERS: if set, the first column of the output will contain row numbers</para></listitem>
@@ -19372,12 +20153,13 @@ export namespace Gda {
          * @returns a new string.
          */
         dump_as_string(): string;
+
         /**
          * Exports data contained in `model` to the `file` file; the format is specified using the `format` argument. Note that
          * the date format used is the one used by the connection from which the data model has been made (as the result of a
          * SELECT statement), or, for other kinds of data models, the default format (refer to `gda_data_handler_get_default()`) unless
          * the "cnc" property has been set and points to a {@link Gda.Connection} to use that connection's date format.
-         *
+         * 
          * Specifically, the parameters in the `options` list can be:
          * <itemizedlist>
          *   <listitem><para>"SEPARATOR": a string value of which the first character is used as a separator in case of CSV export
@@ -19400,12 +20182,12 @@ export namespace Gda {
          *   <listitem><para>"MAX_WIDTH": an integer value which, if greater than 0, makes all the lines truncated to have at most that number of characters, if the export format is {@link Gda.DataModelIOFormat.TEXT_TABLE}
          *             </para></listitem>
          * </itemizedlist>
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * Upon errors `false` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param format the format in which to export data
@@ -19415,23 +20197,18 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        export_to_file(
-            format: DataModelIOFormat,
-            file: string,
-            cols: number[] | null,
-            rows: number[] | null,
-            options: Set,
-        ): boolean;
+        export_to_file(format: DataModelIOFormat, file: string, cols: (number[] | null), rows: (number[] | null), options: Set): boolean;
+
         /**
          * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
          * `gda_data_model_export_to_file()` documentation for more information about the `options` argument (except for the
          * "OVERWRITE" option).
-         *
+         * 
          * Warning: this function uses a {@link Gda.DataModelIter} iterator, and if `model` does not offer a random access
          * (check using `gda_data_model_get_access_flags()`), the iterator will be the same as normally used
          * to access data in `model` previously to calling this method, and this iterator will be moved (point to
          * another row).
-         *
+         * 
          * See also `gda_data_model_dump_as_string()`;
          * @param format the format in which to export data
          * @param cols an array containing which columns of `model` will be exported, or `null` for all columns
@@ -19439,18 +20216,21 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns a new string, use `g_free()` when no longer needed
          */
-        export_to_string(format: DataModelIOFormat, cols: number[] | null, rows: number[] | null, options: Set): string;
+        export_to_string(format: DataModelIOFormat, cols: (number[] | null), rows: (number[] | null), options: Set): string;
+
         /**
          * Disables notifications of changes on the given data model. To
          * re-enable notifications again, you should call the
          * `gda_data_model_thaw` function.
          */
         freeze(): void;
+
         /**
          * Get the attributes of `model` such as how to access the data it contains if it's modifiable, etc.
          * @returns an ORed value of {@link Gda.DataModelAccessFlags} flags
          */
         get_access_flags(): DataModelAccessFlags;
+
         /**
          * Get the attributes of the value stored at (row, col) in `model`, which
          * is an ORed value of {@link Gda.ValueAttribute} flags. As a special case, if
@@ -19461,22 +20241,26 @@ export namespace Gda {
          * @returns the attributes as an ORed value of {@link Gda.ValueAttribute}
          */
         get_attributes_at(col: number, row: number): ValueAttribute;
+
         /**
          * Get the index of the first column named `name` in `model`.
          * @param name a column name
          * @returns the column index, or -1 if no column named `name` was found
          */
         get_column_index(name: string): number;
+
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
          */
         get_column_name(col: number): string;
+
         /**
          * @param col column number.
          * @returns the title for the given column in a data model object.
          */
         get_column_title(col: number): string;
+
         /**
          * Get the global data model exception(s) that occurred when using `model`.
          * This is useful for example for the LDAP related
@@ -19485,38 +20269,43 @@ export namespace Gda {
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
          */
         get_exceptions(): GLib.Error[];
+
         /**
          * @returns the number of columns in the given data model, or -1 if unknown.
          */
         get_n_columns(): number;
+
         /**
          * @returns the number of rows in the given data model, or -1 if the number of rows is not known
          */
         get_n_rows(): number;
+
         /**
          * Returns the status of notifications changes on the given data model.
          */
         get_notify(): boolean;
+
         /**
          * Returns the first row where all the values in `values` at the columns identified at
          * `cols_index` match. If the row can't be identified, then returns -1;
-         *
+         * 
          * NOTE: the `cols_index` array MUST contain a column index for each value in `values`
          * @param values a list of {@link GObject.Value} values (no `null` is allowed)
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns the requested row number, of -1 if not found
          */
         get_row_from_values(values: (GObject.Value | any)[], cols_index: number[]): number;
+
         /**
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This method is similar to `gda_data_model_get_value_at()`, except that it also allows one to specify the expected
          * {@link GObject.GType} of the value to get: if the data model returned a {@link GObject.Value} of a type different than the expected one, then
          * this method returns `null` and an error code.
-         *
+         * 
          * Note: the same limitations and usage instructions apply as for `gda_data_model_get_value_at()`.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
@@ -19525,44 +20314,41 @@ export namespace Gda {
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
          */
-        get_typed_value_at(
-            col: number,
-            row: number,
-            expected_type: GObject.GType,
-            nullok: boolean,
-        ): GObject.Value | null;
+        get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): (GObject.Value | null);
+
         /**
          * Retrieves the data stored in the given position (identified by
          * the `col` and `row` parameters) on a data model.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
-         *
+         * 
          * This is the main function for accessing data in a model which allows random access to its data.
          * To access data in a data model using a cursor, use a {@link Gda.DataModelIter} object, obtained using
          * `gda_data_model_create_iter()`.
-         *
+         * 
          * Note1: the returned {@link GObject.Value} must not be modified directly (unexpected behaviours may
          * occur if you do so).
-         *
+         * 
          * Note2: the returned value may become invalid as soon as any Libgda part is executed again,
          * which means if you want to keep the value, a copy must be made, however it will remain valid
          * as long as the only Libgda usage is calling `gda_data_model_get_value_at()` for different values
          * of the same row.
-         *
+         * 
          * If you want to modify a value stored in a {@link Gda.DataModel}, use the `gda_data_model_set_value_at()` or
          * `gda_data_model_set_values()` methods.
-         *
+         * 
          * Upon errors `null` will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
          */
-        get_value_at(col: number, row: number): GObject.Value | null;
+        get_value_at(col: number, row: number): (GObject.Value | null);
+
         /**
          * Imports data contained in the `file` file into `model`; the format is detected.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param file the filename to import from
@@ -19570,11 +20356,12 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred
          */
-        import_from_file(file: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_file(file: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
          * orrurs.
-         *
+         * 
          * The `cols_trans` is a hash table for which keys are `to` columns numbers and the values are
          * the corresponding column numbers in the `from` data model. To set the values of a column in `to` to NULL,
          * create an entry in the hash table with a negative value. For example:
@@ -19587,7 +20374,7 @@ export namespace Gda {
          * gda_data_model_import_from_model (...);
          * g_hash_table_free (hash);
          * ]]></programlisting>
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param from the source {@link Gda.DataModel}
@@ -19595,14 +20382,11 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
          */
-        import_from_model(
-            from: DataModel,
-            overwrite: boolean,
-            cols_trans: GLib.HashTable<number, number> | null,
-        ): boolean;
+        import_from_model(from: DataModel, overwrite: boolean, cols_trans: (GLib.HashTable<number, number> | null)): boolean;
+
         /**
          * Loads the data from `string` into `model`.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param string the string to import data from
@@ -19610,74 +20394,85 @@ export namespace Gda {
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
          */
-        import_from_string(string: string, cols_trans: GLib.HashTable<number, number> | null, options: Set): boolean;
+        import_from_string(string: string, cols_trans: (GLib.HashTable<number, number> | null), options: Set): boolean;
+
         /**
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_next(iter: DataModelIter): boolean;
+
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          */
         iter_prev(iter: DataModelIter): boolean;
+
         /**
          * Set `value` to the given `column` and row pointed by `iter` in the given `model`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
          */
-        iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
+        iter_set_value(iter: DataModelIter, col: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Removes a row from the data model.
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
          */
         remove_row(row: number): boolean;
+
         /**
          * Emits the 'reset' and 'changed' signal on `model`.
          */
         reset(): void;
+
         /**
          * Emits the 'row_inserted' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been inserted.
          * @param row row number.
          */
         row_inserted(row: number): void;
+
         /**
          * Emits the 'row_removed' and 'changed' signal on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been removed
          * @param row row number.
          */
         row_removed(row: number): void;
+
         /**
          * Emits the 'row_updated' and 'changed' signals on `model`.
-         *
+         * 
          * This method should only be used by {@link Gda.DataModel} implementations to
          * signal that a row has been updated.
          * @param row row number.
          */
         row_updated(row: number): void;
+
         /**
          * Sends a hint to the data model. The hint may or may not be handled by the data
          * model, depending on its implementation
          * @param hint a hint to send to the model
          * @param hint_value an optional value to specify the hint, or `null`
          */
-        send_hint(hint: DataModelHint, hint_value: GObject.Value | null): void;
+        send_hint(hint: DataModelHint, hint_value: (GObject.Value | null)): void;
+
         /**
          * Sets the `name` of the given `col` in `model`, and if its title is not set, also sets the
          * title to `name`.
@@ -19685,20 +20480,23 @@ export namespace Gda {
          * @param name name for the given column.
          */
         set_column_name(col: number, name: string): void;
+
         /**
          * Sets the `title` of the given `col` in `model`.
          * @param col column number
          * @param title title for the given column.
          */
         set_column_title(col: number, title: string): void;
+
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
          */
         set_notify(do_notify_changes: boolean): void;
+
         /**
          * Modifies a value in `model`, at (`col`, `row`).
-         *
+         * 
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param col column number.
@@ -19706,26 +20504,29 @@ export namespace Gda {
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
          */
-        set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
+        set_value_at(col: number, row: number, value: (GObject.Value | any)): boolean;
+
         /**
          * In a similar way to `gda_data_model_set_value_at()`, this method modifies a data model's contents
          * by setting several values at once.
-         *
+         * 
          * If any value in `values` is actually `null`, then the value in the corresponding column is left
          * unchanged.
-         *
+         *  
          * Upon errors FALSE will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
          */
-        set_values(row: number, values: GObject.Value[] | null): boolean;
+        set_values(row: number, values: (GObject.Value[] | null)): boolean;
+
         /**
          * Re-enables notifications of changes on the given data model.
          */
         thaw(): void;
     }
+
 
     export const DataModel: DataModelNamespace & {
         new (): DataModel; // This allows `obj instanceof DataModel`
@@ -19737,25 +20538,29 @@ export namespace Gda {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_i_lock(): void;
+
             /**
              * @virtual
              */
             vfunc_i_trylock(): boolean;
+
             /**
              * @virtual
              */
             vfunc_i_unlock(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface LockableNamespace {
@@ -19766,37 +20571,40 @@ export namespace Gda {
      * @gir-type Interface
      */
     interface Lockable extends GObject.Object, Lockable.Interface {
-        // Methods
 
+        // Methods
         /**
          * Locks `lockable`. If it is already locked by another thread, the current thread will block until it is unlocked
          * by the other thread.
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
-         *
+         * 
          * Note: unlike `g_mutex_lock()`, this method recursive, which means a thread can lock `lockable` several times
          * (and has to unlock it as many times to actually unlock it).
          */
         lock(): void;
+
         /**
          * Tries to lock `lockable`. If it is already locked by another thread, then it immediately returns FALSE, otherwise
          * it locks `lockable`.
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
-         *
+         * 
          * Note: unlike `g_mutex_lock()`, this method recursive, which means a thread can lock `lockable` several times
          * (and has to unlock it as many times to actually unlock it).
          * @returns TRUE if the object has successfully been locked.
          */
         trylock(): boolean;
+
         /**
          * Unlocks `lockable`. This method should not be called if the current does not already holds a lock on `lockable` (having
          * used `gda_lockable_lock()` or `gda_lockable_trylock()`).
-         *
+         * 
          * This function can be used even if `g_thread_init()` has not yet been called, and, in that case, will do nothing.
          */
         unlock(): void;
     }
+
 
     export const Lockable: LockableNamespace & {
         new (): Lockable; // This allows `obj instanceof Lockable`
@@ -19806,19 +20614,23 @@ export namespace Gda {
      * @gir-type Alias
      */
     type Mutex = GLib.RecMutex;
+
     /**
      * @gir-type Alias
      */
     type SqlBuilderId = number;
+
     /**
      * @gir-type Alias
      */
     type SqlErrorType = SqlError;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

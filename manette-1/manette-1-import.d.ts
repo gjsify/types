@@ -1,3 +1,4 @@
+
 import type Manette1 from '@girs/manette-1';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

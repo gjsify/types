@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,9 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type DBusGLib from '@girs/dbusglib-1.0';
 
 export namespace NetworkManager {
+
     /**
      * NetworkManager-1.0
      */
+
 
     /**
      * Indicates the 802.11 mode an access point or device is currently in.
@@ -47,6 +50,7 @@ export namespace NetworkManager {
          */
         AP,
     }
+
 
     /**
      * {@link NetworkManager.ActiveConnectionState} values indicate the state of a connection to a
@@ -79,6 +83,7 @@ export namespace NetworkManager {
         DEACTIVATED,
     }
 
+
     /**
      * Describes errors that may result from operations involving a {@link NetworkManager.Connection}.
      * @gir-type Struct
@@ -87,17 +92,18 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the {@link NetworkManager.Connection} object
          *   did not contain the required {@link NetworkManager.SettingConnection} object, which must be
          *   present for all connections
          */
         static CONNECTIONSETTINGNOTFOUND: number;
+
         /**
          * the 'type' property of the
          *   'connection' setting did not point to a valid connection base type; ie
@@ -105,11 +111,13 @@ export namespace NetworkManager {
          *   {@link NetworkManager.SettingWireless}.
          */
         static CONNECTIONTYPEINVALID: number;
+
         /**
          * the {@link NetworkManager.Connection} object
          *   did not contain the specified {@link NetworkManager.Setting} object
          */
         static SETTINGNOTFOUND: number;
+
         /**
          * the {@link NetworkManager.Connection} object contains
          *   a conflicting setting object
@@ -117,16 +125,15 @@ export namespace NetworkManager {
         static INVALIDSETTING: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.Connection} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -157,6 +164,7 @@ export namespace NetworkManager {
          */
         FULL,
     }
+
 
     /**
      * @gir-type Enum
@@ -237,6 +245,7 @@ export namespace NetworkManager {
          */
         FAILED,
     }
+
 
     /**
      * Device state change reason codes
@@ -498,6 +507,7 @@ export namespace NetworkManager {
         LAST,
     }
 
+
     /**
      * {@link NetworkManager.DeviceType} values indicate the type of hardware represented by
      * an `NMDevice`.
@@ -591,6 +601,7 @@ export namespace NetworkManager {
         VETH,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -624,6 +635,7 @@ export namespace NetworkManager {
         PKCS12,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -655,6 +667,7 @@ export namespace NetworkManager {
         PATH,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -662,15 +675,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -678,16 +692,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.Setting8021x} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -696,15 +709,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -712,16 +726,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingAdsl} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -730,20 +743,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the connection
          * did not contain a required type setting, ie for DUN connections the connection
@@ -752,16 +767,15 @@ export namespace NetworkManager {
         static TYPESETTINGNOTFOUND: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingBluetooth} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -770,23 +784,26 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the option was invalid
          */
         static INVALIDOPTION: number;
+
         /**
          * the option was missing
          * required
@@ -794,16 +811,15 @@ export namespace NetworkManager {
         static MISSINGOPTION: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingBond} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -812,15 +828,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -828,16 +845,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingBridge} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -846,15 +862,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and
          * is required
@@ -862,16 +879,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingBridgePort} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -880,20 +896,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the required {@link NetworkManager.SettingSerial}
          * is missing in the connection
@@ -901,16 +919,15 @@ export namespace NetworkManager {
         static MISSINGSERIALSETTING: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingCdma} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -977,6 +994,7 @@ export namespace NetworkManager {
         DIFF_RESULT_NO_DEFAULT,
     }
 
+
     /**
      * Describes errors that may result from operations involving a
      * {@link NetworkManager.SettingConnection}.
@@ -986,27 +1004,30 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property's value is
          *   invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * a required property is not
          *   present
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the {@link NetworkManager.Setting} object
          *   referenced by the setting name contained in the
          *   {@link NetworkManager.SettingConnection.type} property was not present in the {@link NetworkManager.Connection}
          */
         static TYPESETTINGNOTFOUND: number;
+
         /**
          * ip configuration is not
          *   allowed to be present.
@@ -1014,16 +1035,15 @@ export namespace NetworkManager {
         static IPCONFIGNOTALLOWED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingConnection} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1032,15 +1052,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -1048,16 +1069,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingDcb} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1090,6 +1110,7 @@ export namespace NetworkManager {
          */
         WILLING,
     }
+
 
     /**
      * @gir-type Enum
@@ -1127,6 +1148,7 @@ export namespace NetworkManager {
         IN_B_DEFAULT,
     }
 
+
     /**
      * Describes errors that may result from operations involving a {@link NetworkManager.Setting}.
      * @gir-type Struct
@@ -1135,21 +1157,23 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * a property required by the operation
          *   was not found; for example, an attempt to update an invalid secret
          */
         static PROPERTYNOTFOUND: number;
+
         /**
          * an operation which requires a secret
          *   was attempted on a non-secret property
          */
         static PROPERTYNOTSECRET: number;
+
         /**
          * the operation requires a property
          *   of a specific type, or the value couldn't be transformed to the same type
@@ -1158,16 +1182,15 @@ export namespace NetworkManager {
         static PROPERTYTYPEMISMATCH: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.Setting} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1176,15 +1199,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and
          * is required
@@ -1192,16 +1216,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingGeneric} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1210,20 +1233,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the required {@link NetworkManager.SettingSerial}
          * is missing in the connection
@@ -1231,16 +1256,15 @@ export namespace NetworkManager {
         static MISSINGSERIALSETTING: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingGsm} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1318,6 +1342,7 @@ export namespace NetworkManager {
         U2600,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1365,8 +1390,9 @@ export namespace NetworkManager {
          * only 4G/LTE type
          * technologies may be used
          */
-        '4G',
+        "4G",
     }
+
 
     /**
      * @gir-type Enum
@@ -1395,6 +1421,7 @@ export namespace NetworkManager {
         ONLY_SECRETS,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -1402,20 +1429,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the property's value is
          * not valid with the given IP4 method
@@ -1423,16 +1452,15 @@ export namespace NetworkManager {
         static NOTALLOWEDFORMETHOD: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingIP4Config} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1441,20 +1469,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the property's value is
          * not valid with the given IPv6 method
@@ -1462,16 +1492,15 @@ export namespace NetworkManager {
         static NOTALLOWEDFORMETHOD: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingIP6Config} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1506,6 +1535,7 @@ export namespace NetworkManager {
         PREFER_TEMP_ADDR,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -1513,15 +1543,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -1529,16 +1560,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingInfiniband} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1547,15 +1577,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -1563,13 +1594,12 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1578,20 +1608,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * requiring MPPE is not compatible
          * with other setting configuration parameters
@@ -1599,16 +1631,15 @@ export namespace NetworkManager {
         static REQUIREMPPENOTALLOWED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingPPP} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1617,20 +1648,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the connection
          * did not contain a required PPP setting for PPP related options
@@ -1638,16 +1671,15 @@ export namespace NetworkManager {
         static MISSINGPPPSETTING: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingPPPOE} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1688,6 +1720,7 @@ export namespace NetworkManager {
         NOT_REQUIRED,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -1695,20 +1728,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * one of the properties of the
          * setting requires the connection to contain an {@link NetworkManager.SettingPPP} setting
@@ -1716,16 +1751,15 @@ export namespace NetworkManager {
         static MISSINGPPPSETTING: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingSerial} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1734,15 +1768,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -1750,16 +1785,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingTeam} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1768,15 +1802,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and
          * is required
@@ -1784,16 +1819,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingTeamPort} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1802,20 +1836,22 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWN: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          *   required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * the VLAN parent was specified
          *   inconsistently
@@ -1823,16 +1859,15 @@ export namespace NetworkManager {
         static INVALIDPARENT: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingVlan} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1841,15 +1876,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -1857,16 +1893,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingVPN} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1875,15 +1910,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -1891,16 +1927,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingWimax} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1909,15 +1944,16 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
@@ -1925,16 +1961,15 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingWired} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1943,25 +1978,28 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was missing and is
          * required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * property values require
          * the presence of an {@link NetworkManager.SettingWirelessSecurity} object in the connection
          */
         static MISSINGSECURITYSETTING: number;
+
         /**
          * the property channel was
          * set to a value that requires the {@link NetworkManager.SettingWireless.band} property to be set
@@ -1969,16 +2007,15 @@ export namespace NetworkManager {
         static CHANNELREQUIRESBAND: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingWireless} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Struct
@@ -1987,35 +2024,40 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * unknown or unclassified error
          */
         static UNKNOWNERROR: number;
+
         /**
          * the property was invalid
          */
         static INVALIDPROPERTY: number;
+
         /**
          * the property was
          * missing and is required
          */
         static MISSINGPROPERTY: number;
+
         /**
          * a property contained
          * a value that requires the connection to contain a {@link NetworkManager.Setting8021x} setting
          */
         static MISSING8021XSETTING: number;
+
         /**
          * LEAP authentication
          * was specified but key management was not set to "8021x"
          */
         static LEAPREQUIRES8021X: number;
+
         /**
          * LEAP authentication
          * was specified but no LEAP username was given
          */
         static LEAPREQUIRESUSERNAME: number;
+
         /**
          * Shared Key
          * authentication was specified but the setting did not specify WEP as the
@@ -2024,16 +2066,15 @@ export namespace NetworkManager {
         static SHAREDKEYREQUIRESWEP: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Registers an error quark for {@link NetworkManager.SettingWired} if necessary.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * {@link NetworkManager.State} values indicate the current overall networking state.
@@ -2073,6 +2114,7 @@ export namespace NetworkManager {
          */
         CONNECTED_GLOBAL,
     }
+
 
     /**
      * @gir-type Enum
@@ -2128,6 +2170,7 @@ export namespace NetworkManager {
         WPA2_ENTERPRISE,
     }
 
+
     /**
      * VPN connection states
      * @gir-type Enum
@@ -2170,6 +2213,7 @@ export namespace NetworkManager {
          */
         DISCONNECTED,
     }
+
 
     /**
      * VPN connection state reasons
@@ -2238,6 +2282,7 @@ export namespace NetworkManager {
         CONNECTION_REMOVED,
     }
 
+
     /**
      * VPN plugin failure reasons
      * @gir-type Enum
@@ -2257,6 +2302,7 @@ export namespace NetworkManager {
          */
         BAD_IP_CONFIG,
     }
+
 
     /**
      * VPN daemon states
@@ -2293,6 +2339,7 @@ export namespace NetworkManager {
         STOPPED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -2328,6 +2375,7 @@ export namespace NetworkManager {
         MVRP,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -2350,6 +2398,7 @@ export namespace NetworkManager {
          */
         EGRESS_MAP,
     }
+
 
     /**
      * @gir-type Enum
@@ -2395,250 +2444,446 @@ export namespace NetworkManager {
         LAST,
     }
 
+
     const CONNECTION_CHANGED: string;
+
     const CONNECTION_NORMALIZE_PARAM_IP6_CONFIG_METHOD: string;
+
     const CONNECTION_PATH: string;
+
     const CONNECTION_SECRETS_CLEARED: string;
+
     const CONNECTION_SECRETS_UPDATED: string;
+
     const DBUS_IFACE_SETTINGS: string;
+
     const DBUS_IFACE_SETTINGS_CONNECTION: string;
+
     const DBUS_IFACE_SETTINGS_CONNECTION_SECRETS: string;
+
     const DBUS_INTERFACE: string;
+
     const DBUS_INTERFACE_VPN: string;
+
     const DBUS_INTERFACE_VPN_CONNECTION: string;
+
     const DBUS_INVALID_VPN_CONNECTION: string;
+
     const DBUS_NO_ACTIVE_VPN_CONNECTION: string;
+
     const DBUS_NO_VPN_CONNECTIONS: string;
+
     const DBUS_PATH: string;
+
     const DBUS_PATH_AGENT_MANAGER: string;
+
     const DBUS_PATH_SECRET_AGENT: string;
+
     const DBUS_PATH_SETTINGS: string;
+
     const DBUS_PATH_SETTINGS_CONNECTION: string;
+
     const DBUS_PATH_VPN: string;
+
     const DBUS_PATH_VPN_CONNECTION: string;
+
     const DBUS_SERVICE: string;
+
     const DBUS_VPN_ALREADY_STARTED: string;
+
     const DBUS_VPN_ALREADY_STOPPED: string;
+
     const DBUS_VPN_BAD_ARGUMENTS: string;
+
     const DBUS_VPN_ERROR_PREFIX: string;
+
     const DBUS_VPN_INTERACTIVE_NOT_SUPPORTED: string;
+
     const DBUS_VPN_SIGNAL_CONNECT_FAILED: string;
+
     const DBUS_VPN_SIGNAL_IP4_CONFIG: string;
+
     const DBUS_VPN_SIGNAL_IP_CONFIG_BAD: string;
+
     const DBUS_VPN_SIGNAL_LAUNCH_FAILED: string;
+
     const DBUS_VPN_SIGNAL_LOGIN_BANNER: string;
+
     const DBUS_VPN_SIGNAL_LOGIN_FAILED: string;
+
     const DBUS_VPN_SIGNAL_STATE_CHANGE: string;
+
     const DBUS_VPN_SIGNAL_VPN_CONFIG_BAD: string;
+
     const DBUS_VPN_STARTING_IN_PROGRESS: string;
+
     const DBUS_VPN_STOPPING_IN_PROGRESS: string;
+
     const DBUS_VPN_WRONG_STATE: string;
+
     /**
      * Evaluates to the major version number of NetworkManager which this source
      * is compiled against.
      */
     const MAJOR_VERSION: number;
+
     /**
      * Evaluates to the micro version number of NetworkManager which this source
      * compiled against.
      */
     const MICRO_VERSION: number;
+
     /**
      * Evaluates to the minor version number of NetworkManager which this source
      * is compiled against.
      */
     const MINOR_VERSION: number;
+
     const SETTING_802_1X_ALTSUBJECT_MATCHES: string;
+
     const SETTING_802_1X_ANONYMOUS_IDENTITY: string;
+
     const SETTING_802_1X_CA_CERT: string;
+
     const SETTING_802_1X_CA_PATH: string;
+
     const SETTING_802_1X_CLIENT_CERT: string;
+
     const SETTING_802_1X_EAP: string;
+
     const SETTING_802_1X_IDENTITY: string;
+
     const SETTING_802_1X_PAC_FILE: string;
+
     const SETTING_802_1X_PASSWORD: string;
+
     const SETTING_802_1X_PASSWORD_FLAGS: string;
+
     const SETTING_802_1X_PASSWORD_RAW: string;
+
     const SETTING_802_1X_PASSWORD_RAW_FLAGS: string;
+
     const SETTING_802_1X_PHASE1_FAST_PROVISIONING: string;
+
     const SETTING_802_1X_PHASE1_PEAPLABEL: string;
+
     const SETTING_802_1X_PHASE1_PEAPVER: string;
+
     const SETTING_802_1X_PHASE2_ALTSUBJECT_MATCHES: string;
+
     const SETTING_802_1X_PHASE2_AUTH: string;
+
     const SETTING_802_1X_PHASE2_AUTHEAP: string;
+
     const SETTING_802_1X_PHASE2_CA_CERT: string;
+
     const SETTING_802_1X_PHASE2_CA_PATH: string;
+
     const SETTING_802_1X_PHASE2_CLIENT_CERT: string;
+
     const SETTING_802_1X_PHASE2_PRIVATE_KEY: string;
+
     const SETTING_802_1X_PHASE2_PRIVATE_KEY_PASSWORD: string;
+
     const SETTING_802_1X_PHASE2_PRIVATE_KEY_PASSWORD_FLAGS: string;
+
     const SETTING_802_1X_PHASE2_SUBJECT_MATCH: string;
+
     const SETTING_802_1X_PIN: string;
+
     const SETTING_802_1X_PIN_FLAGS: string;
+
     const SETTING_802_1X_PRIVATE_KEY: string;
+
     const SETTING_802_1X_PRIVATE_KEY_PASSWORD: string;
+
     const SETTING_802_1X_PRIVATE_KEY_PASSWORD_FLAGS: string;
+
     const SETTING_802_1X_SETTING_NAME: string;
+
     const SETTING_802_1X_SUBJECT_MATCH: string;
+
     const SETTING_802_1X_SYSTEM_CA_CERTS: string;
+
     const SETTING_ADSL_ENCAPSULATION: string;
+
     const SETTING_ADSL_ENCAPSULATION_LLC: string;
+
     const SETTING_ADSL_ENCAPSULATION_VCMUX: string;
+
     const SETTING_ADSL_PASSWORD: string;
+
     const SETTING_ADSL_PASSWORD_FLAGS: string;
+
     const SETTING_ADSL_PROTOCOL: string;
+
     const SETTING_ADSL_PROTOCOL_IPOATM: string;
+
     const SETTING_ADSL_PROTOCOL_PPPOA: string;
+
     const SETTING_ADSL_PROTOCOL_PPPOE: string;
+
     const SETTING_ADSL_SETTING_NAME: string;
+
     const SETTING_ADSL_USERNAME: string;
+
     const SETTING_ADSL_VCI: string;
+
     const SETTING_ADSL_VPI: string;
+
     const SETTING_BLUETOOTH_BDADDR: string;
+
     const SETTING_BLUETOOTH_SETTING_NAME: string;
+
     const SETTING_BLUETOOTH_TYPE: string;
+
     /**
      * Connection type describing a connection to devices that support the Bluetooth
      * DUN profile.
      */
     const SETTING_BLUETOOTH_TYPE_DUN: string;
+
     /**
      * Connection type describing a connection to devices that support the Bluetooth
      * NAP (Network Access Point) protocol, which accepts connections via PANU.
      */
     const SETTING_BLUETOOTH_TYPE_PANU: string;
+
     const SETTING_BOND_INTERFACE_NAME: string;
+
     const SETTING_BOND_OPTIONS: string;
+
     const SETTING_BOND_OPTION_AD_SELECT: string;
+
     const SETTING_BOND_OPTION_ARP_INTERVAL: string;
+
     const SETTING_BOND_OPTION_ARP_IP_TARGET: string;
+
     const SETTING_BOND_OPTION_ARP_VALIDATE: string;
+
     const SETTING_BOND_OPTION_DOWNDELAY: string;
+
     const SETTING_BOND_OPTION_FAIL_OVER_MAC: string;
+
     const SETTING_BOND_OPTION_LACP_RATE: string;
+
     const SETTING_BOND_OPTION_MIIMON: string;
+
     const SETTING_BOND_OPTION_MODE: string;
+
     const SETTING_BOND_OPTION_PRIMARY: string;
+
     const SETTING_BOND_OPTION_PRIMARY_RESELECT: string;
+
     const SETTING_BOND_OPTION_RESEND_IGMP: string;
+
     const SETTING_BOND_OPTION_UPDELAY: string;
+
     const SETTING_BOND_OPTION_USE_CARRIER: string;
+
     const SETTING_BOND_OPTION_XMIT_HASH_POLICY: string;
+
     const SETTING_BOND_SETTING_NAME: string;
+
     const SETTING_BRIDGE_AGEING_TIME: string;
+
     const SETTING_BRIDGE_FORWARD_DELAY: string;
+
     const SETTING_BRIDGE_HELLO_TIME: string;
+
     const SETTING_BRIDGE_INTERFACE_NAME: string;
+
     const SETTING_BRIDGE_MAC_ADDRESS: string;
+
     const SETTING_BRIDGE_MAX_AGE: string;
+
     const SETTING_BRIDGE_PORT_HAIRPIN_MODE: string;
+
     const SETTING_BRIDGE_PORT_PATH_COST: string;
+
     const SETTING_BRIDGE_PORT_PRIORITY: string;
+
     const SETTING_BRIDGE_PORT_SETTING_NAME: string;
+
     const SETTING_BRIDGE_PRIORITY: string;
+
     const SETTING_BRIDGE_SETTING_NAME: string;
+
     const SETTING_BRIDGE_STP: string;
+
     const SETTING_CDMA_NUMBER: string;
+
     const SETTING_CDMA_PASSWORD: string;
+
     const SETTING_CDMA_PASSWORD_FLAGS: string;
+
     const SETTING_CDMA_SETTING_NAME: string;
+
     const SETTING_CDMA_USERNAME: string;
+
     const SETTING_CONNECTION_AUTOCONNECT: string;
+
     const SETTING_CONNECTION_GATEWAY_PING_TIMEOUT: string;
+
     const SETTING_CONNECTION_ID: string;
+
     const SETTING_CONNECTION_INTERFACE_NAME: string;
+
     const SETTING_CONNECTION_MASTER: string;
+
     const SETTING_CONNECTION_PERMISSIONS: string;
+
     const SETTING_CONNECTION_READ_ONLY: string;
+
     const SETTING_CONNECTION_SECONDARIES: string;
+
     const SETTING_CONNECTION_SETTING_NAME: string;
+
     const SETTING_CONNECTION_SLAVE_TYPE: string;
+
     const SETTING_CONNECTION_TIMESTAMP: string;
+
     const SETTING_CONNECTION_TYPE: string;
+
     const SETTING_CONNECTION_UUID: string;
+
     const SETTING_CONNECTION_ZONE: string;
+
     const SETTING_DCB_APP_FCOE_FLAGS: string;
+
     const SETTING_DCB_APP_FCOE_MODE: string;
+
     const SETTING_DCB_APP_FCOE_PRIORITY: string;
+
     const SETTING_DCB_APP_FIP_FLAGS: string;
+
     const SETTING_DCB_APP_FIP_PRIORITY: string;
+
     const SETTING_DCB_APP_ISCSI_FLAGS: string;
+
     const SETTING_DCB_APP_ISCSI_PRIORITY: string;
+
     /**
      * Indicates that the FCoE controller should use "fabric" mode (default)
      * @since 0.9.10
      */
     const SETTING_DCB_FCOE_MODE_FABRIC: string;
+
     /**
      * Indicates that the FCoE controller should use "VN2VN" mode.
      * @since 0.9.10
      */
     const SETTING_DCB_FCOE_MODE_VN2VN: string;
+
     const SETTING_DCB_PRIORITY_BANDWIDTH: string;
+
     const SETTING_DCB_PRIORITY_FLOW_CONTROL: string;
+
     const SETTING_DCB_PRIORITY_FLOW_CONTROL_FLAGS: string;
+
     const SETTING_DCB_PRIORITY_GROUP_BANDWIDTH: string;
+
     const SETTING_DCB_PRIORITY_GROUP_FLAGS: string;
+
     const SETTING_DCB_PRIORITY_GROUP_ID: string;
+
     const SETTING_DCB_PRIORITY_STRICT_BANDWIDTH: string;
+
     const SETTING_DCB_PRIORITY_TRAFFIC_CLASS: string;
+
     const SETTING_DCB_SETTING_NAME: string;
+
     const SETTING_GENERIC_SETTING_NAME: string;
+
     const SETTING_GSM_ALLOWED_BANDS: string;
+
     const SETTING_GSM_APN: string;
+
     /**
      * #NM_SETTING_GSM_BANDS_MAX macro indicate the maximal value that can be used
      * as the allowed frequency bands ({@link NetworkManager.SettingGsm.allowed_bands} property).
      * @deprecated since 0.9.10: No longer used.
      */
     const SETTING_GSM_BANDS_MAX: number;
+
     const SETTING_GSM_HOME_ONLY: string;
+
     const SETTING_GSM_NETWORK_ID: string;
+
     const SETTING_GSM_NETWORK_TYPE: string;
+
     const SETTING_GSM_NUMBER: string;
+
     const SETTING_GSM_PASSWORD: string;
+
     const SETTING_GSM_PASSWORD_FLAGS: string;
+
     const SETTING_GSM_PIN: string;
+
     const SETTING_GSM_PIN_FLAGS: string;
+
     const SETTING_GSM_SETTING_NAME: string;
+
     const SETTING_GSM_USERNAME: string;
+
     const SETTING_INFINIBAND_MAC_ADDRESS: string;
+
     const SETTING_INFINIBAND_MTU: string;
+
     const SETTING_INFINIBAND_PARENT: string;
+
     const SETTING_INFINIBAND_P_KEY: string;
+
     const SETTING_INFINIBAND_SETTING_NAME: string;
+
     const SETTING_INFINIBAND_TRANSPORT_MODE: string;
+
     const SETTING_IP4_CONFIG_ADDRESSES: string;
+
     const SETTING_IP4_CONFIG_DHCP_CLIENT_ID: string;
+
     const SETTING_IP4_CONFIG_DHCP_HOSTNAME: string;
+
     const SETTING_IP4_CONFIG_DHCP_SEND_HOSTNAME: string;
+
     const SETTING_IP4_CONFIG_DHCP_TIMEOUT: string;
+
     const SETTING_IP4_CONFIG_DNS: string;
+
     const SETTING_IP4_CONFIG_DNS_SEARCH: string;
+
     const SETTING_IP4_CONFIG_IGNORE_AUTO_DNS: string;
+
     const SETTING_IP4_CONFIG_IGNORE_AUTO_ROUTES: string;
+
     const SETTING_IP4_CONFIG_MAY_FAIL: string;
+
     const SETTING_IP4_CONFIG_METHOD: string;
+
     /**
      * IPv4 configuration should be automatically determined via a method appropriate
      * for the hardware interface, ie DHCP or PPP or some other device-specific
      * manner.
      */
     const SETTING_IP4_CONFIG_METHOD_AUTO: string;
+
     /**
      * This connection does not use or require IPv4 address and it should be disabled.
      */
     const SETTING_IP4_CONFIG_METHOD_DISABLED: string;
+
     /**
      * IPv4 configuration should be automatically configured for link-local-only
      * operation.
      */
     const SETTING_IP4_CONFIG_METHOD_LINK_LOCAL: string;
+
     /**
      * All necessary IPv4 configuration (addresses, prefix, DNS, etc) is specified
      * in the setting's properties.
      */
     const SETTING_IP4_CONFIG_METHOD_MANUAL: string;
+
     /**
      * This connection specifies configuration that allows other computers to
      * connect through it to the default network (usually the Internet).  The
@@ -2648,45 +2893,64 @@ export namespace NetworkManager {
      * through that interface to the default network.
      */
     const SETTING_IP4_CONFIG_METHOD_SHARED: string;
+
     const SETTING_IP4_CONFIG_NEVER_DEFAULT: string;
+
     const SETTING_IP4_CONFIG_ROUTES: string;
+
     const SETTING_IP4_CONFIG_ROUTE_METRIC: string;
+
     const SETTING_IP4_CONFIG_SETTING_NAME: string;
+
     const SETTING_IP6_CONFIG_ADDRESSES: string;
+
     const SETTING_IP6_CONFIG_DHCP_HOSTNAME: string;
+
     const SETTING_IP6_CONFIG_DNS: string;
+
     const SETTING_IP6_CONFIG_DNS_SEARCH: string;
+
     const SETTING_IP6_CONFIG_IGNORE_AUTO_DNS: string;
+
     const SETTING_IP6_CONFIG_IGNORE_AUTO_ROUTES: string;
+
     const SETTING_IP6_CONFIG_IP6_PRIVACY: string;
+
     const SETTING_IP6_CONFIG_MAY_FAIL: string;
+
     const SETTING_IP6_CONFIG_METHOD: string;
+
     /**
      * IPv6 configuration should be automatically determined via a method appropriate
      * for the hardware interface, ie router advertisements, DHCP, or PPP or some
      * other device-specific manner.
      */
     const SETTING_IP6_CONFIG_METHOD_AUTO: string;
+
     /**
      * IPv6 configuration should be automatically determined via DHCPv6 only and
      * router advertisements should be ignored.
      */
     const SETTING_IP6_CONFIG_METHOD_DHCP: string;
+
     /**
      * IPv6 is not required or is handled by some other mechanism, and NetworkManager
      * should not configure IPv6 for this connection.
      */
     const SETTING_IP6_CONFIG_METHOD_IGNORE: string;
+
     /**
      * IPv6 configuration should be automatically configured for link-local-only
      * operation.
      */
     const SETTING_IP6_CONFIG_METHOD_LINK_LOCAL: string;
+
     /**
      * All necessary IPv6 configuration (addresses, prefix, DNS, etc) is specified
      * in the setting's properties.
      */
     const SETTING_IP6_CONFIG_METHOD_MANUAL: string;
+
     /**
      * This connection specifies configuration that allows other computers to
      * connect through it to the default network (usually the Internet).  The
@@ -2697,310 +2961,484 @@ export namespace NetworkManager {
      * supported for IPv6)
      */
     const SETTING_IP6_CONFIG_METHOD_SHARED: string;
+
     const SETTING_IP6_CONFIG_NEVER_DEFAULT: string;
+
     const SETTING_IP6_CONFIG_ROUTES: string;
+
     const SETTING_IP6_CONFIG_ROUTE_METRIC: string;
+
     const SETTING_IP6_CONFIG_SETTING_NAME: string;
+
     const SETTING_NAME: string;
+
     const SETTING_OLPC_MESH_CHANNEL: string;
+
     const SETTING_OLPC_MESH_DHCP_ANYCAST_ADDRESS: string;
+
     const SETTING_OLPC_MESH_SETTING_NAME: string;
+
     const SETTING_OLPC_MESH_SSID: string;
+
     const SETTING_PARAM_FUZZY_IGNORE: number;
+
     const SETTING_PARAM_REQUIRED: number;
+
     const SETTING_PARAM_SECRET: number;
+
     const SETTING_PARAM_SERIALIZE: number;
+
     const SETTING_PPPOE_PASSWORD: string;
+
     const SETTING_PPPOE_PASSWORD_FLAGS: string;
+
     const SETTING_PPPOE_SERVICE: string;
+
     const SETTING_PPPOE_SETTING_NAME: string;
+
     const SETTING_PPPOE_USERNAME: string;
+
     const SETTING_PPP_BAUD: string;
+
     const SETTING_PPP_CRTSCTS: string;
+
     const SETTING_PPP_LCP_ECHO_FAILURE: string;
+
     const SETTING_PPP_LCP_ECHO_INTERVAL: string;
+
     const SETTING_PPP_MPPE_STATEFUL: string;
+
     const SETTING_PPP_MRU: string;
+
     const SETTING_PPP_MTU: string;
+
     const SETTING_PPP_NOAUTH: string;
+
     const SETTING_PPP_NOBSDCOMP: string;
+
     const SETTING_PPP_NODEFLATE: string;
+
     const SETTING_PPP_NO_VJ_COMP: string;
+
     const SETTING_PPP_REFUSE_CHAP: string;
+
     const SETTING_PPP_REFUSE_EAP: string;
+
     const SETTING_PPP_REFUSE_MSCHAP: string;
+
     const SETTING_PPP_REFUSE_MSCHAPV2: string;
+
     const SETTING_PPP_REFUSE_PAP: string;
+
     const SETTING_PPP_REQUIRE_MPPE: string;
+
     const SETTING_PPP_REQUIRE_MPPE_128: string;
+
     const SETTING_PPP_SETTING_NAME: string;
+
     const SETTING_SERIAL_BAUD: string;
+
     const SETTING_SERIAL_BITS: string;
+
     const SETTING_SERIAL_PARITY: string;
+
     const SETTING_SERIAL_SEND_DELAY: string;
+
     const SETTING_SERIAL_SETTING_NAME: string;
+
     const SETTING_SERIAL_STOPBITS: string;
+
     const SETTING_TEAM_CONFIG: string;
+
     const SETTING_TEAM_INTERFACE_NAME: string;
+
     const SETTING_TEAM_PORT_CONFIG: string;
+
     const SETTING_TEAM_PORT_SETTING_NAME: string;
+
     const SETTING_TEAM_SETTING_NAME: string;
+
     const SETTING_VLAN_EGRESS_PRIORITY_MAP: string;
+
     const SETTING_VLAN_FLAGS: string;
+
     const SETTING_VLAN_ID: string;
+
     const SETTING_VLAN_INGRESS_PRIORITY_MAP: string;
+
     const SETTING_VLAN_INTERFACE_NAME: string;
+
     const SETTING_VLAN_PARENT: string;
+
     const SETTING_VLAN_SETTING_NAME: string;
+
     const SETTING_VPN_DATA: string;
+
     const SETTING_VPN_PERSISTENT: string;
+
     const SETTING_VPN_SECRETS: string;
+
     const SETTING_VPN_SERVICE_TYPE: string;
+
     const SETTING_VPN_SETTING_NAME: string;
+
     const SETTING_VPN_USER_NAME: string;
+
     const SETTING_WIMAX_MAC_ADDRESS: string;
+
     const SETTING_WIMAX_NETWORK_NAME: string;
+
     const SETTING_WIMAX_SETTING_NAME: string;
+
     const SETTING_WIRED_AUTO_NEGOTIATE: string;
+
     const SETTING_WIRED_CLONED_MAC_ADDRESS: string;
+
     const SETTING_WIRED_DUPLEX: string;
+
     const SETTING_WIRED_MAC_ADDRESS: string;
+
     const SETTING_WIRED_MAC_ADDRESS_BLACKLIST: string;
+
     const SETTING_WIRED_MTU: string;
+
     const SETTING_WIRED_PORT: string;
+
     const SETTING_WIRED_S390_NETTYPE: string;
+
     const SETTING_WIRED_S390_OPTIONS: string;
+
     const SETTING_WIRED_S390_SUBCHANNELS: string;
+
     const SETTING_WIRED_SETTING_NAME: string;
+
     const SETTING_WIRED_SPEED: string;
+
     const SETTING_WIRELESS_BAND: string;
+
     const SETTING_WIRELESS_BSSID: string;
+
     const SETTING_WIRELESS_CHANNEL: string;
+
     const SETTING_WIRELESS_CLONED_MAC_ADDRESS: string;
+
     const SETTING_WIRELESS_HIDDEN: string;
+
     const SETTING_WIRELESS_MAC_ADDRESS: string;
+
     const SETTING_WIRELESS_MAC_ADDRESS_BLACKLIST: string;
+
     const SETTING_WIRELESS_MODE: string;
+
     /**
      * Indicates Ad-Hoc mode where no access point is expected to be present.
      */
     const SETTING_WIRELESS_MODE_ADHOC: string;
+
     /**
      * Indicates AP/master mode where the wireless device is started as an access
      * point/hotspot.
      * @since 0.9.8
      */
     const SETTING_WIRELESS_MODE_AP: string;
+
     /**
      * Indicates infrastructure mode where an access point is expected to be present
      * for this connection.
      */
     const SETTING_WIRELESS_MODE_INFRA: string;
+
     const SETTING_WIRELESS_MTU: string;
+
     const SETTING_WIRELESS_POWERSAVE: string;
+
     const SETTING_WIRELESS_RATE: string;
+
     const SETTING_WIRELESS_SEC: string;
+
     const SETTING_WIRELESS_SECURITY_AUTH_ALG: string;
+
     const SETTING_WIRELESS_SECURITY_GROUP: string;
+
     const SETTING_WIRELESS_SECURITY_KEY_MGMT: string;
+
     const SETTING_WIRELESS_SECURITY_LEAP_PASSWORD: string;
+
     const SETTING_WIRELESS_SECURITY_LEAP_PASSWORD_FLAGS: string;
+
     const SETTING_WIRELESS_SECURITY_LEAP_USERNAME: string;
+
     const SETTING_WIRELESS_SECURITY_PAIRWISE: string;
+
     const SETTING_WIRELESS_SECURITY_PROTO: string;
+
     const SETTING_WIRELESS_SECURITY_PSK: string;
+
     const SETTING_WIRELESS_SECURITY_PSK_FLAGS: string;
+
     const SETTING_WIRELESS_SECURITY_SETTING_NAME: string;
+
     const SETTING_WIRELESS_SECURITY_WEP_KEY0: string;
+
     const SETTING_WIRELESS_SECURITY_WEP_KEY1: string;
+
     const SETTING_WIRELESS_SECURITY_WEP_KEY2: string;
+
     const SETTING_WIRELESS_SECURITY_WEP_KEY3: string;
+
     const SETTING_WIRELESS_SECURITY_WEP_KEY_FLAGS: string;
+
     const SETTING_WIRELESS_SECURITY_WEP_KEY_TYPE: string;
+
     const SETTING_WIRELESS_SECURITY_WEP_TX_KEYIDX: string;
+
     const SETTING_WIRELESS_SEEN_BSSIDS: string;
+
     const SETTING_WIRELESS_SETTING_NAME: string;
+
     const SETTING_WIRELESS_SSID: string;
+
     const SETTING_WIRELESS_TX_POWER: string;
+
     /**
      * The maximum length of hardware addresses handled by NetworkManager itself,
      * `nm_utils_hwaddr_len()`, and `nm_utils_hwaddr_aton()`.
      */
     const UTILS_HWADDR_LEN_MAX: number;
+
     const VLAN_FLAGS_ALL: number;
+
     const VPN_DBUS_PLUGIN_INTERFACE: string;
+
     const VPN_DBUS_PLUGIN_PATH: string;
+
     const VPN_PLUGIN_CAN_PERSIST: string;
+
     const VPN_PLUGIN_CONFIG_BANNER: string;
+
     const VPN_PLUGIN_CONFIG_EXT_GATEWAY: string;
+
     const VPN_PLUGIN_CONFIG_HAS_IP4: string;
+
     const VPN_PLUGIN_CONFIG_HAS_IP6: string;
+
     const VPN_PLUGIN_CONFIG_MTU: string;
+
     const VPN_PLUGIN_CONFIG_TUNDEV: string;
+
     const VPN_PLUGIN_IP4_CONFIG_ADDRESS: string;
+
     const VPN_PLUGIN_IP4_CONFIG_DNS: string;
+
     const VPN_PLUGIN_IP4_CONFIG_DOMAIN: string;
+
     const VPN_PLUGIN_IP4_CONFIG_DOMAINS: string;
+
     const VPN_PLUGIN_IP4_CONFIG_INT_GATEWAY: string;
+
     const VPN_PLUGIN_IP4_CONFIG_MSS: string;
+
     const VPN_PLUGIN_IP4_CONFIG_NBNS: string;
+
     const VPN_PLUGIN_IP4_CONFIG_NEVER_DEFAULT: string;
+
     const VPN_PLUGIN_IP4_CONFIG_PREFIX: string;
+
     const VPN_PLUGIN_IP4_CONFIG_PTP: string;
+
     const VPN_PLUGIN_IP4_CONFIG_ROUTES: string;
+
     const VPN_PLUGIN_IP6_CONFIG_ADDRESS: string;
+
     const VPN_PLUGIN_IP6_CONFIG_DNS: string;
+
     const VPN_PLUGIN_IP6_CONFIG_DOMAIN: string;
+
     const VPN_PLUGIN_IP6_CONFIG_DOMAINS: string;
+
     const VPN_PLUGIN_IP6_CONFIG_INT_GATEWAY: string;
+
     const VPN_PLUGIN_IP6_CONFIG_MSS: string;
+
     const VPN_PLUGIN_IP6_CONFIG_NEVER_DEFAULT: string;
+
     const VPN_PLUGIN_IP6_CONFIG_PREFIX: string;
+
     const VPN_PLUGIN_IP6_CONFIG_PTP: string;
+
     const VPN_PLUGIN_IP6_CONFIG_ROUTES: string;
+
     /**
      * Registers an error quark for {@link NetworkManager.Connection} if necessary.
      * @returns the error quark used for {@link NetworkManager.Connection} errors.
      */
     function connection_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.Setting8021x} if necessary.
      * @returns the error quark used for {@link NetworkManager.Setting8021x} errors.
      */
     function setting_802_1x_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingAdsl} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingAdsl} errors.
      */
     function setting_adsl_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingBluetooth} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingBluetooth} errors.
      */
     function setting_bluetooth_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingBond} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingBond} errors.
      */
     function setting_bond_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingBridge} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingBridge} errors.
      * @since 0.9.8
      */
     function setting_bridge_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingBridgePort} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingBridgePort} errors.
      * @since 0.9.8
      */
     function setting_bridge_port_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingCdma} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingCdma} errors.
      */
     function setting_cdma_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingConnection} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingConnection} errors.
      */
     function setting_connection_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingDcb} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingDcb} errors.
      * @since 0.9.10
      */
     function setting_dcb_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.Setting} if necessary.
      * @returns the error quark used for NMSetting errors.
      */
     function setting_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingGeneric} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingGeneric} errors.
      * @since 0.9.10
      */
     function setting_generic_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingGsm} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingGsm} errors.
      */
     function setting_gsm_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingInfiniband} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingInfiniband} errors.
      */
     function setting_infiniband_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingIP4Config} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingIP4Config} errors.
      */
     function setting_ip4_config_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingIP6Config} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingIP6Config} errors.
      */
     function setting_ip6_config_error_quark(): GLib.Quark;
+
     function setting_olpc_mesh_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingPPP} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingPPP} errors.
      */
     function setting_ppp_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingPPPOE} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingPPPOE} errors.
      */
     function setting_pppoe_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingSerial} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingSerial} errors.
      */
     function setting_serial_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingTeam} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingTeam} errors.
      * @since 0.9.10
      */
     function setting_team_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingTeamPort} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingTeamPort} errors.
      * @since 0.9.10
      */
     function setting_team_port_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingVlan} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingVlan} errors.
      */
     function setting_vlan_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingVPN} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingVPN} errors.
      */
     function setting_vpn_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingWimax} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingWimax} errors.
      * @deprecated since 1.2: WiMAX is no longer supported.
      */
     function setting_wimax_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingWired} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingWired} errors.
      */
     function setting_wired_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingWireless} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingWireless} errors.
      */
     function setting_wireless_error_quark(): GLib.Quark;
+
     /**
      * Registers an error quark for {@link NetworkManager.SettingWired} if necessary.
      * @returns the error quark used for {@link NetworkManager.SettingWired} errors.
      */
     function setting_wireless_security_error_quark(): GLib.Quark;
+
     /**
      * Given a set of device capabilities, and a desired security type to check
      * against, determines whether the combination of device capabilities and
@@ -3011,6 +3449,7 @@ export namespace NetworkManager {
      * @since 0.9.8
      */
     function utils_ap_mode_security_valid(type: UtilsSecurityType, wifi_caps: DeviceWifiCapabilities): boolean;
+
     /**
      * Converts a byte-array `bytes` into a hexadecimal string.
      * If `final_len` is greater than -1, the returned string is terminated at
@@ -3022,17 +3461,18 @@ export namespace NetworkManager {
      * @since 0.9.10
      */
     function utils_bin2hexstr(bytes: string, len: number, final_len: number): string;
+
     /**
      * Determines if a connection of type `virtual_type` can (in the
      * general case) work with connections of type `other_type`.
-     *
+     * 
      * If `virtual_type` is `NM_TYPE_SETTING_VLAN`, then this checks if
      * `other_type` is a valid type for the parent of a VLAN.
-     *
+     * 
      * If `virtual_type` is a "master" type (eg, `NM_TYPE_SETTING_BRIDGE`),
      * then this checks if `other_type` is a valid type for a slave of that
      * master.
-     *
+     * 
      * Note that even if this returns `true` it is not guaranteed that
      * <emphasis>every</emphasis> connection of type `other_type` is
      * compatible with `virtual_type`; it may depend on the exact
@@ -3044,11 +3484,13 @@ export namespace NetworkManager {
      * @since 0.9.10
      */
     function utils_check_virtual_device_compatibility(virtual_type: GObject.GType, other_type: GObject.GType): boolean;
+
     /**
      * No-op. Although this function still exists for ABI compatibility reasons, it
      * does not have any effect, and does not ever need to be called.
      */
     function utils_deinit(): void;
+
     /**
      * This function does a quick printable character conversion of the SSID, simply
      * replacing embedded NULLs and non-printable characters with the hexadecimal
@@ -3059,12 +3501,14 @@ export namespace NetworkManager {
      * @returns pointer to the escaped SSID, which uses an internal static buffer and will be overwritten by subsequent calls to this function
      */
     function utils_escape_ssid(ssid: number, len: number): string;
+
     /**
      * Utility function to find out if the `filename` is in PKCS#<!-- -->12 format.
      * @param filename name of the file to test
      * @returns `true` if the file is PKCS#<!-- -->12, `false` if it is not
      */
     function utils_file_is_pkcs12(filename: string): boolean;
+
     /**
      * Searches for a `progname` file in a list of search `paths`.
      * @param progname the helper program name, like "iptables"   Must be a non-empty string, without path separator (/).
@@ -3074,21 +3518,15 @@ export namespace NetworkManager {
      * @param predicate if given, pass the file name to this function   for additional checks. This check is performed after the check for   `file_test_flags`. You cannot omit both `file_test_flags` and `predicate`.
      * @returns the full path to the helper, if found, or `null` if not found.   The returned string is not owned by the caller, but later   invocations of the function might overwrite it.
      */
-    function utils_file_search_in_paths(
-        progname: string,
-        try_first: string | null,
-        paths: string | null,
-        file_test_flags: GLib.FileTest,
-        predicate: UtilsFileSearchInPathsPredicate,
-    ): string;
+    function utils_file_search_in_paths(progname: string, try_first: (string | null), paths: (string | null), file_test_flags: GLib.FileTest, predicate: UtilsFileSearchInPathsPredicate): string;
+
     /**
      * Utility function to duplicate a hash table of `GValues`.
      * @param hash a {@link GLib.HashTable} mapping string:GValue
      * @returns a newly allocated duplicated {@link GLib.HashTable}, caller must free the returned hash with `g_hash_table_unref()` or `g_hash_table_destroy()`
      */
-    function utils_gvalue_hash_dup(
-        hash: { [key: string]: any } | GLib.HashTable<any, any>,
-    ): GLib.HashTable<string, GObject.Value>;
+    function utils_gvalue_hash_dup(hash: ({ [key: string]: any } | GLib.HashTable<any, any>)): GLib.HashTable<string, GObject.Value>;
+
     /**
      * Converts a hex string (2 characters) into its byte representation.
      * @param hex a string representing a hex byte
@@ -3096,6 +3534,7 @@ export namespace NetworkManager {
      * @since 0.9.10
      */
     function utils_hex2byte(hex: string): number;
+
     /**
      * Converts a hexadecimal string `hex` into a byte-array. The returned array
      * length is `len`/2.
@@ -3104,7 +3543,8 @@ export namespace NetworkManager {
      * @returns a array of bytes, or `null` on error
      * @since 0.9.10
      */
-    function utils_hexstr2bin(hex: string, len: bigint | number): string;
+    function utils_hexstr2bin(hex: string, len: (bigint | number)): string;
+
     /**
      * Parses `asc` and converts it to binary form in a {@link GLib.ByteArray}. See
      * `nm_utils_hwaddr_aton()` if you don't want a {@link GLib.ByteArray}.
@@ -3113,11 +3553,12 @@ export namespace NetworkManager {
      * @returns a new {@link GLib.ByteArray}, or `null` if `asc` couldn't be parsed
      */
     function utils_hwaddr_atoba(asc: string, type: number): Uint8Array;
+
     /**
      * Parses `asc` and converts it to binary form in `buffer`. See
      * `nm_utils_hwaddr_atoba()` if you'd rather have the result in a
      * {@link GLib.ByteArray}.
-     *
+     * 
      * See also `nm_utils_hwaddr_aton_len()`, which takes an output length
      * instead of a type.
      * @param asc the ASCII representation of a hardware address
@@ -3125,7 +3566,8 @@ export namespace NetworkManager {
      * @param buffer buffer to store the result into
      * @returns `buffer`, or `null` if `asc` couldn't be parsed
      */
-    function utils_hwaddr_aton(asc: string, type: number, buffer: any | null): number;
+    function utils_hwaddr_aton(asc: string, type: number, buffer: (any | null)): number;
+
     /**
      * Parses `asc` and converts it to binary form in `buffer`.
      * Bytes in `asc` can be sepatared by colons (:), or hyphens (-), but not mixed.
@@ -3135,23 +3577,26 @@ export namespace NetworkManager {
      * @returns `buffer`, or `null` if `asc` couldn't be parsed   or would be shorter or longer than `length`.
      * @since 0.9.10
      */
-    function utils_hwaddr_aton_len(asc: string, buffer: any | null, length: bigint | number): number;
+    function utils_hwaddr_aton_len(asc: string, buffer: (any | null), length: (bigint | number)): number;
+
     /**
      * Returns the length in octets of a hardware address of type `type`.
      * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
      * @returns the positive length, or -1 if the type is unknown/unsupported.
      */
     function utils_hwaddr_len(type: number): number;
+
     /**
      * Converts `addr` to textual form.
-     *
+     * 
      * See also `nm_utils_hwaddr_ntoa_len()`, which takes a length instead of
      * a type.
      * @param addr a binary hardware address
      * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
      * @returns the textual form of `addr`
      */
-    function utils_hwaddr_ntoa(addr: any | null, type: number): string;
+    function utils_hwaddr_ntoa(addr: (any | null), type: number): string;
+
     /**
      * Converts `addr` to textual form.
      * @param addr a binary hardware address
@@ -3159,7 +3604,8 @@ export namespace NetworkManager {
      * @returns the textual form of `addr`
      * @since 0.9.10
      */
-    function utils_hwaddr_ntoa_len(addr: any | null, length: bigint | number): string;
+    function utils_hwaddr_ntoa_len(addr: (any | null), length: (bigint | number)): string;
+
     /**
      * Returns the type (either <literal>ARPHRD_ETHER</literal> or
      * <literal>ARPHRD_INFINIBAND</literal>) of the raw address given its length.
@@ -3168,6 +3614,7 @@ export namespace NetworkManager {
      * @deprecated This could not be extended to cover other types, since there is not a one-to-one mapping between types and lengths. This was mostly only used to get a type to pass to `nm_utils_hwaddr_ntoa()` or `nm_utils_hwaddr_aton()` when you only had a length; but you can just use `nm_utils_hwaddr_ntoa_len()` or `nm_utils_hwaddr_aton_len()` now instead.
      */
     function utils_hwaddr_type(len: number): number;
+
     /**
      * Parses `asc` to see if it is a valid hardware address of some type.
      * @param asc the ASCII representation of a hardware address
@@ -3175,6 +3622,7 @@ export namespace NetworkManager {
      * @since 0.9.10
      */
     function utils_hwaddr_valid(asc: string): boolean;
+
     /**
      * This function is a 1:1 copy of the kernel's interface validation
      * function in net/core/dev.c.
@@ -3183,12 +3631,14 @@ export namespace NetworkManager {
      * @since 0.9.8
      */
     function utils_iface_valid_name(name: string): boolean;
+
     /**
      * Initializes libnm-util; should be called when starting any program that
      * uses libnm-util.  This function can be called more than once.
      * @returns `true` if the initialization was successful, `false` on failure.
      */
     function utils_init(): boolean;
+
     /**
      * Utility function to convert a {@link GLib.PtrArray} of `GArrays` of #guint32s representing
      * a list of NetworkManager IPv4 addresses (which is a tuple of address, gateway,
@@ -3198,7 +3648,8 @@ export namespace NetworkManager {
      * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GArrays` of #guint32s
      * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP4Address} objects
      */
-    function utils_ip4_addresses_from_gvalue(value: GObject.Value | any): IP4Address[];
+    function utils_ip4_addresses_from_gvalue(value: (GObject.Value | any)): IP4Address[];
+
     /**
      * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP4Address} objects into a
      * {@link GLib.PtrArray} of `GArrays` of #guint32s representing a list of NetworkManager IPv4
@@ -3208,7 +3659,8 @@ export namespace NetworkManager {
      * @param list a list of {@link NetworkManager.IP4Address} objects
      * @param value a pointer to a {@link GObject.Value} into which to place the converted addresses, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
-    function utils_ip4_addresses_to_gvalue(list: IP4Address[], value: GObject.Value | any): void;
+    function utils_ip4_addresses_to_gvalue(list: IP4Address[], value: (GObject.Value | any)): void;
+
     /**
      * When the Internet was originally set up, various ranges of IP addresses were
      * segmented into three network classes: A, B, and C.  This function will return
@@ -3218,16 +3670,19 @@ export namespace NetworkManager {
      * @returns the default class prefix for the given IP
      */
     function utils_ip4_get_default_prefix(ip: number): number;
+
     /**
      * @param netmask an IPv4 netmask in network byte order
      * @returns the CIDR prefix represented by the netmask
      */
     function utils_ip4_netmask_to_prefix(netmask: number): number;
+
     /**
      * @param prefix a CIDR prefix
      * @returns the netmask represented by the prefix, in network byte order
      */
     function utils_ip4_prefix_to_netmask(prefix: number): number;
+
     /**
      * Utility function to convert a {@link GLib.PtrArray} of `GArrays` of #guint32s representing
      * a list of NetworkManager IPv4 routes (which is a tuple of route, next hop,
@@ -3237,7 +3692,8 @@ export namespace NetworkManager {
      * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GArrays` of #guint32s
      * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP4Route} objects
      */
-    function utils_ip4_routes_from_gvalue(value: GObject.Value | any): IP4Route[];
+    function utils_ip4_routes_from_gvalue(value: (GObject.Value | any)): IP4Route[];
+
     /**
      * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP4Route} objects into a
      * {@link GLib.PtrArray} of `GArrays` of #guint32s representing a list of NetworkManager IPv4
@@ -3247,7 +3703,8 @@ export namespace NetworkManager {
      * @param list a list of {@link NetworkManager.IP4Route} objects
      * @param value a pointer to a {@link GObject.Value} into which to place the converted routes, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
-    function utils_ip4_routes_to_gvalue(list: IP4Route[], value: GObject.Value | any): void;
+    function utils_ip4_routes_to_gvalue(list: IP4Route[], value: (GObject.Value | any)): void;
+
     /**
      * Utility function to convert a {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of guchars) and `guint32`
      * representing a list of NetworkManager IPv6 addresses (which is a tuple of address,
@@ -3257,7 +3714,8 @@ export namespace NetworkManager {
      * @param value gvalue containing a GPtrArray of GValueArrays of (GArray of guchars) and `guint32`
      * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP6Address} objects
      */
-    function utils_ip6_addresses_from_gvalue(value: GObject.Value | any): IP6Address[];
+    function utils_ip6_addresses_from_gvalue(value: (GObject.Value | any)): IP6Address[];
+
     /**
      * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP6Address} objects into a
      * {@link GLib.PtrArray} of `GValueArrays` representing a list of NetworkManager IPv6 addresses
@@ -3267,7 +3725,8 @@ export namespace NetworkManager {
      * @param list a list of {@link NetworkManager.IP6Address} objects
      * @param value a pointer to a {@link GObject.Value} into which to place the converted addresses, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
-    function utils_ip6_addresses_to_gvalue(list: IP6Address[], value: GObject.Value | any): void;
+    function utils_ip6_addresses_to_gvalue(list: IP6Address[], value: (GObject.Value | any)): void;
+
     /**
      * Utility function {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of #guchars), `guint32`,
      * ({@link GLib.Array} of #guchars), and `guint32` representing a list of NetworkManager IPv6
@@ -3277,7 +3736,8 @@ export namespace NetworkManager {
      * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of #guchars), `guint32`, ({@link GLib.Array} of #guchars), and `guint32`
      * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP6Route} objects
      */
-    function utils_ip6_routes_from_gvalue(value: GObject.Value | any): IP6Route[];
+    function utils_ip6_routes_from_gvalue(value: (GObject.Value | any)): IP6Route[];
+
     /**
      * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP6Route} objects into a {@link GLib.PtrArray} of
      * `GValueArrays` of ({@link GLib.Array} of #guchars), `guint32`, ({@link GLib.Array} of #guchars), and `guint32`
@@ -3287,7 +3747,8 @@ export namespace NetworkManager {
      * @param list a list of {@link NetworkManager.IP6Route} objects
      * @param value a pointer to a {@link GObject.Value} into which to place the converted routes, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
-    function utils_ip6_routes_to_gvalue(list: IP6Route[], value: GObject.Value | any): void;
+    function utils_ip6_routes_to_gvalue(list: IP6Route[], value: (GObject.Value | any)): void;
+
     /**
      * Different manufacturers use different mechanisms for not broadcasting the
      * AP's SSID.  This function attempts to detect blank/empty SSIDs using a
@@ -3297,6 +3758,7 @@ export namespace NetworkManager {
      * @returns `true` if the SSID is "empty", `false` if it is not
      */
     function utils_is_empty_ssid(ssid: number, len: number): boolean;
+
     /**
      * Checks if `str` is a UUID
      * @param str a string that might be a UUID
@@ -3304,6 +3766,7 @@ export namespace NetworkManager {
      * @since 0.9.8
      */
     function utils_is_uuid(str: string): boolean;
+
     /**
      * Encrypts the given RSA private key data with the given password (or generates
      * a password if no password was given) and converts the data to PEM format
@@ -3312,7 +3775,8 @@ export namespace NetworkManager {
      * @param in_password existing password to use, if any
      * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
      */
-    function utils_rsa_key_encrypt(data: Uint8Array | string, in_password: string | null): [Uint8Array, string];
+    function utils_rsa_key_encrypt(data: (Uint8Array | string), in_password: (string | null)): [Uint8Array, string];
+
     /**
      * Encrypts the given RSA private key data with the given password (or generates
      * a password if no password was given) and converts the data to PEM format
@@ -3321,7 +3785,8 @@ export namespace NetworkManager {
      * @param in_password existing password to use, if any
      * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
      */
-    function utils_rsa_key_encrypt_aes(data: Uint8Array | string, in_password: string | null): [Uint8Array, string];
+    function utils_rsa_key_encrypt_aes(data: (Uint8Array | string), in_password: (string | null)): [Uint8Array, string];
+
     /**
      * Earlier versions of the Linux kernel added a NULL byte to the end of the
      * SSID to enable easy printing of the SSID on the console or in a terminal,
@@ -3334,16 +3799,13 @@ export namespace NetworkManager {
      * @param ignore_trailing_null `true` to ignore one trailing NULL byte
      * @returns `true` if the SSIDs are the same, `false` if they are not
      */
-    function utils_same_ssid(
-        ssid1: Uint8Array | string,
-        ssid2: Uint8Array | string,
-        ignore_trailing_null: boolean,
-    ): boolean;
+    function utils_same_ssid(ssid1: (Uint8Array | string), ssid2: (Uint8Array | string), ignore_trailing_null: boolean): boolean;
+
     /**
      * Given a set of device capabilities, and a desired security type to check
      * against, determines whether the combination of device, desired security
      * type, and AP capabilities intersect.
-     *
+     * 
      * NOTE: this function cannot handle checking security for AP/Hotspot mode;
      * use `nm_utils_ap_mode_security_valid()` instead.
      * @param type the security type to check AP flags and device capabilities against, e.g. #NMU_SEC_STATIC_WEP
@@ -3355,15 +3817,8 @@ export namespace NetworkManager {
      * @param ap_rsn bitfield of AP capabilities derived from the AP's RSN/WPA2 beacon, e.g. (#NM_802_11_AP_SEC_PAIR_CCMP | #NM_802_11_AP_SEC_PAIR_TKIP)
      * @returns `true` if the device capabilities and AP capabilities intersect and are compatible with the desired `type`, `false` if they are not
      */
-    function utils_security_valid(
-        type: UtilsSecurityType,
-        wifi_caps: DeviceWifiCapabilities,
-        have_ap: boolean,
-        adhoc: boolean,
-        ap_flags: __80211ApFlags,
-        ap_wpa: __80211ApSecurityFlags,
-        ap_rsn: __80211ApSecurityFlags,
-    ): boolean;
+    function utils_security_valid(type: UtilsSecurityType, wifi_caps: DeviceWifiCapabilities, have_ap: boolean, adhoc: boolean, ap_flags: __80211ApFlags, ap_wpa: __80211ApSecurityFlags, ap_rsn: __80211ApSecurityFlags): boolean;
+
     /**
      * Wi-Fi SSIDs are byte arrays, they are _not_ strings.  Thus, an SSID may
      * contain embedded NULLs and other unprintable characters.  Often it is
@@ -3371,10 +3826,10 @@ export namespace NetworkManager {
      * _only_ use of this function.  Do not use this function for any persistent
      * storage of the SSID, since the printable SSID returned from this function
      * cannot be converted back into the real SSID of the access point.
-     *
+     * 
      * This function does almost everything humanly possible to convert the input
      * into a printable UTF-8 string, using roughly the following procedure:
-     *
+     * 
      * 1) if the input data is already UTF-8 safe, no conversion is performed
      * 2) attempts to get the current system language from the LANG environment
      *    variable, and depending on the language, uses a table of alternative
@@ -3384,23 +3839,26 @@ export namespace NetworkManager {
      * 3) If the system language was unable to be determined, falls back to the
      *    ISO-8859-1 encoding, then to the Windows-1251 encoding.
      * 4) If step 3 fails, replaces non-UTF-8 characters with '?'.
-     *
+     * 
      * Again, this function should be used for debugging and display purposes
      * _only_.
      * @param ssid a byte array containing the SSID data
      * @returns an allocated string containing a UTF-8 representation of the SSID, which must be freed by the caller using `g_free()`. Returns `null` on errors.
      */
-    function utils_ssid_to_utf8(ssid: Uint8Array | string): string;
+    function utils_ssid_to_utf8(ssid: (Uint8Array | string)): string;
+
     /**
      * @returns a newly allocated UUID suitable for use as the {@link NetworkManager.SettingConnection} object's {@link NetworkManager.SettingConnection.id}: property.  Should be freed with `g_free()`
      */
     function utils_uuid_generate(): string;
+
     /**
      * For a given `s`, this function will always return the same UUID.
      * @param s a string to use as the seed for the UUID
      * @returns a newly allocated UUID suitable for use as the {@link NetworkManager.SettingConnection} object's {@link NetworkManager.SettingConnection.id}: property
      */
     function utils_uuid_generate_from_string(s: string): string;
+
     /**
      * Checks if `key` is a valid WEP key
      * @param key a string that might be a WEP key
@@ -3409,6 +3867,7 @@ export namespace NetworkManager {
      * @since 0.9.8
      */
     function utils_wep_key_valid(key: string, wep_type: WepKeyType): boolean;
+
     /**
      * Utility function to translate a Wi-Fi channel to its corresponding frequency.
      * @param channel channel
@@ -3416,6 +3875,7 @@ export namespace NetworkManager {
      * @returns the frequency represented by the channel of the band,          or -1 when the freq is invalid, or 0 when the band          is invalid
      */
     function utils_wifi_channel_to_freq(channel: number, band: string): number;
+
     /**
      * Utility function to find out next/previous Wi-Fi channel for a channel.
      * @param channel current channel
@@ -3424,12 +3884,14 @@ export namespace NetworkManager {
      * @returns the next channel in the specified direction or 0
      */
     function utils_wifi_find_next_channel(channel: number, direction: number, band: string): number;
+
     /**
      * Utility function to translate a Wi-Fi frequency to its corresponding channel.
      * @param freq frequency
      * @returns the channel represented by the frequency or 0
      */
     function utils_wifi_freq_to_channel(freq: number): number;
+
     /**
      * Utility function to verify Wi-Fi channel validity.
      * @param channel channel
@@ -3437,6 +3899,7 @@ export namespace NetworkManager {
      * @returns `true` or `false`
      */
     function utils_wifi_is_channel_valid(channel: number, band: string): boolean;
+
     /**
      * Checks if `psk` is a valid WPA PSK
      * @param psk a string that might be a WPA PSK
@@ -3444,30 +3907,35 @@ export namespace NetworkManager {
      * @since 0.9.8
      */
     function utils_wpa_psk_valid(psk: string): boolean;
+
     /**
      * @gir-type Callback
      */
     interface SettingClearSecretsWithFlagsFn {
         (setting: Setting, secret: string, flags: SettingSecretFlags): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface SettingValueIterFn {
         (setting: Setting, key: string, value: unknown, flags: GObject.ParamFlags): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface UtilsFileSearchInPathsPredicate {
         (filename: string): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface VPNIterFunc {
         (key: string, value: string): void;
     }
+
     /**
      * 802.11 access point flags.
      * @gir-type Flags
@@ -3483,6 +3951,7 @@ export namespace NetworkManager {
          */
         PRIVACY,
     }
+
 
     /**
      * 802.11 access point security and authentication flags.  These flags describe
@@ -3544,6 +4013,7 @@ export namespace NetworkManager {
         KEY_MGMT_802_1X,
     }
 
+
     /**
      * {@link NetworkManager.BluetoothCapabilities} values indicate the usable capabilities of a
      * Bluetooth device.
@@ -3563,6 +4033,7 @@ export namespace NetworkManager {
          */
         NAP,
     }
+
 
     /**
      * General device capability flags.
@@ -3586,6 +4057,7 @@ export namespace NetworkManager {
          */
         IS_SOFTWARE,
     }
+
 
     /**
      * {@link NetworkManager.DeviceModemCapabilities} values indicate the generic radio access
@@ -3619,6 +4091,7 @@ export namespace NetworkManager {
          */
         LTE,
     }
+
 
     /**
      * 802.11 specific device encryption and authentication capabilities.
@@ -3675,6 +4148,7 @@ export namespace NetworkManager {
         FREQ_5GHZ,
     }
 
+
     namespace Connection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -3693,19 +4167,18 @@ export namespace NetworkManager {
              * @signal
              * @run-first
              */
-            'secrets-cleared': () => void;
+            "secrets-cleared": () => void;
             /**
              * The ::secrets-updated signal is emitted when the secrets of a setting
              * have been changed.
              * @signal
              * @run-first
              */
-            'secrets-updated': (arg0: string) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
+            "secrets-updated": (arg0: string) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             path: string;
         }
@@ -3720,7 +4193,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<Connection>;
 
         // Properties
-
         /**
          * The connection's D-Bus path, used only by the calling process as a record
          * of the D-Bus path of the connection as provided by a settings service.
@@ -3738,48 +4210,40 @@ export namespace NetworkManager {
         $signals: Connection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Connection;
+        static ["new"](): Connection;
 
-        static new_from_hash(hash: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): Connection;
+        static new_from_hash(hash: ({ [key: string]: any } | GLib.HashTable<string, GLib.HashTable>)): Connection;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Create a new {@link NetworkManager.Setting} object of the desired type, given a setting name.
          * @param name a setting name
          */
         static create_setting(name: string): Setting;
+
         /**
          * Returns the {@link GObject.GType} of the setting's class for a given setting name.
          * @param name a setting name
          */
         static lookup_setting_type(name: string): GObject.GType;
+
         /**
          * Returns the {@link GObject.GType} of the setting's class for a given setting error quark.
          * Useful for figuring out which setting a returned error is for.
@@ -3788,15 +4252,13 @@ export namespace NetworkManager {
         static lookup_setting_type_by_quark(error_quark: GLib.Quark): GObject.GType;
 
         // Virtual methods
-
         /**
-         * @param setting
+         * @param setting 
          * @virtual
          */
         vfunc_secrets_updated(setting: string): void;
 
         // Methods
-
         /**
          * Adds a {@link NetworkManager.Setting} to the connection, replacing any previous {@link NetworkManager.Setting} of the
          * same name which has previously been added to the {@link NetworkManager.Connection}.  The
@@ -3805,16 +4267,19 @@ export namespace NetworkManager {
          * @param setting the {@link NetworkManager.Setting} to add to the connection object
          */
         add_setting(setting: Setting): void;
+
         /**
          * Clears and frees any secrets that may be stored in the connection, to avoid
          * keeping secret data in memory when not needed.
          */
         clear_secrets(): void;
+
         /**
          * Clears and frees secrets determined by `func`.
          * @param func function to be called to determine whether a     specific secret should be cleared or not
          */
         clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void;
+
         /**
          * Compares two {@link NetworkManager.Connection} objects for similarity, with comparison behavior
          * modified by a set of flags.  See `nm_setting_compare()` for a description of
@@ -3824,6 +4289,7 @@ export namespace NetworkManager {
          * @returns `true` if the comparison succeeds, `false` if it does not
          */
         compare(b: Connection, flags: SettingCompareFlags): boolean;
+
         /**
          * Compares two {@link NetworkManager.Connection} objects for similarity, with comparison behavior
          * modified by a set of flags.  See `nm_setting_compare()` for a description of
@@ -3835,53 +4301,57 @@ export namespace NetworkManager {
          * @param out_settings if the connections differ, on return a hash table mapping setting names to second-level GHashTable (utf8 to guint32), which contains the key names that differ mapped to one or more of %NMSettingDiffResult as a bitfield
          * @returns `true` if the connections contain the same values, `false` if they do not
          */
-        diff(
-            b: Connection,
-            flags: SettingCompareFlags,
-            out_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>,
-        ): boolean;
+        diff(b: Connection, flags: SettingCompareFlags, out_settings: ({ [key: string]: any } | GLib.HashTable<string, GLib.HashTable>)): boolean;
+
         /**
          * Print the connection to stdout.  For debugging purposes ONLY, should NOT
          * be used for serialization of the connection or machine-parsed in any way. The
          * output format is not guaranteed to be stable and may change at any time.
          */
         dump(): void;
+
         /**
          * Duplicates a {@link NetworkManager.Connection}.
          * @returns a new {@link NetworkManager.Connection} containing the same settings and properties as the source {@link NetworkManager.Connection}
          */
         duplicate(): Connection;
+
         /**
          * Iterates over the properties of each {@link NetworkManager.Setting} object in the {@link NetworkManager.Connection},
          * calling the supplied user function for each property.
          * @param func user-supplied function called for each setting's property
          */
         for_each_setting_value(func: SettingValueIterFn): void;
+
         /**
          * A shortcut to return the type from the connection's {@link NetworkManager.SettingConnection}.
          * @returns the type from the connection's 'connection' setting
          */
         get_connection_type(): string;
+
         /**
          * A shortcut to return the ID from the connection's {@link NetworkManager.SettingConnection}.
          * @returns the ID from the connection's 'connection' setting
          */
         get_id(): string;
+
         /**
          * Returns the interface name as stored in NMSettingConnection:interface_name.
          * If the connection contains no NMSettingConnection, it will return `null`.
-         *
+         * 
          * For hardware devices and software devices created outside of NetworkManager,
          * this name is used to match the device. for software devices created by
          * NetworkManager, this is the name of the created interface.
          * @returns Name of the kernel interface or `null`
          */
         get_interface_name(): string;
+
         /**
          * Returns the connection's D-Bus path.
          * @returns the D-Bus path of the connection, previously set by a call to `nm_connection_set_path()`.
          */
         get_path(): string;
+
         /**
          * Gets the {@link NetworkManager.Setting} with the given {@link GObject.GType}, if one has been previously added
          * to the {@link NetworkManager.Connection}.
@@ -3889,36 +4359,43 @@ export namespace NetworkManager {
          * @returns the {@link NetworkManager.Setting}, or `null` if no setting of that type was previously added to the {@link NetworkManager.Connection}
          */
         get_setting(setting_type: GObject.GType): Setting;
+
         /**
          * A shortcut to return any {@link NetworkManager.Setting8021x} the connection might contain.
          * @returns an {@link NetworkManager.Setting8021x} if the connection contains one, otherwise `null`
          */
         get_setting_802_1x(): Setting8021x;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingAdsl} the connection might contain.
          * @returns an {@link NetworkManager.SettingAdsl} if the connection contains one, otherwise `null`
          */
         get_setting_adsl(): SettingAdsl;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingBluetooth} the connection might contain.
          * @returns an {@link NetworkManager.SettingBluetooth} if the connection contains one, otherwise `null`
          */
         get_setting_bluetooth(): SettingBluetooth;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingBond} the connection might contain.
          * @returns an {@link NetworkManager.SettingBond} if the connection contains one, otherwise `null`
          */
         get_setting_bond(): SettingBond;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingBridge} the connection might contain.
          * @returns an {@link NetworkManager.SettingBridge} if the connection contains one, otherwise `null`
          */
         get_setting_bridge(): SettingBridge;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingBridgePort} the connection might contain.
          * @returns an {@link NetworkManager.SettingBridgePort} if the connection contains one, otherwise `null`
          */
         get_setting_bridge_port(): SettingBridgePort;
+
         /**
          * Gets the {@link NetworkManager.Setting} with the given name, if one has been previously added
          * the {@link NetworkManager.Connection}.
@@ -3926,111 +4403,133 @@ export namespace NetworkManager {
          * @returns the {@link NetworkManager.Setting}, or `null` if no setting with that name was previously added to the {@link NetworkManager.Connection}
          */
         get_setting_by_name(name: string): Setting;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingCdma} the connection might contain.
          * @returns an {@link NetworkManager.SettingCdma} if the connection contains one, otherwise `null`
          */
         get_setting_cdma(): SettingCdma;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingConnection} the connection might contain.
          * @returns an {@link NetworkManager.SettingConnection} if the connection contains one, otherwise `null`
          */
         get_setting_connection(): SettingConnection;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingDcb} the connection might contain.
          * @returns an {@link NetworkManager.SettingDcb} if the connection contains one, otherwise NULL
          */
         get_setting_dcb(): SettingDcb;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingGeneric} the connection might contain.
          * @returns an {@link NetworkManager.SettingGeneric} if the connection contains one, otherwise NULL
          */
         get_setting_generic(): SettingGeneric;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingGsm} the connection might contain.
          * @returns an {@link NetworkManager.SettingGsm} if the connection contains one, otherwise `null`
          */
         get_setting_gsm(): SettingGsm;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingInfiniband} the connection might contain.
          * @returns an {@link NetworkManager.SettingInfiniband} if the connection contains one, otherwise `null`
          */
         get_setting_infiniband(): SettingInfiniband;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingIP4Config} the connection might contain.
          * @returns an {@link NetworkManager.SettingIP4Config} if the connection contains one, otherwise `null`
          */
         get_setting_ip4_config(): SettingIP4Config;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingIP6Config} the connection might contain.
          * @returns an {@link NetworkManager.SettingIP6Config} if the connection contains one, otherwise `null`
          */
         get_setting_ip6_config(): SettingIP6Config;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingOlpcMesh} the connection might contain.
          * @returns an {@link NetworkManager.SettingOlpcMesh} if the connection contains one, otherwise `null`
          */
         get_setting_olpc_mesh(): SettingOlpcMesh;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingPPP} the connection might contain.
          * @returns an {@link NetworkManager.SettingPPP} if the connection contains one, otherwise `null`
          */
         get_setting_ppp(): SettingPPP;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingPPPOE} the connection might contain.
          * @returns an {@link NetworkManager.SettingPPPOE} if the connection contains one, otherwise `null`
          */
         get_setting_pppoe(): SettingPPPOE;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingSerial} the connection might contain.
          * @returns an {@link NetworkManager.SettingSerial} if the connection contains one, otherwise `null`
          */
         get_setting_serial(): SettingSerial;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingTeam} the connection might contain.
          * @returns an {@link NetworkManager.SettingTeam} if the connection contains one, otherwise `null`
          */
         get_setting_team(): SettingTeam;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingTeamPort} the connection might contain.
          * @returns an {@link NetworkManager.SettingTeamPort} if the connection contains one, otherwise `null`
          */
         get_setting_team_port(): SettingTeamPort;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingVlan} the connection might contain.
          * @returns an {@link NetworkManager.SettingVlan} if the connection contains one, otherwise `null`
          */
         get_setting_vlan(): SettingVlan;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingVPN} the connection might contain.
          * @returns an {@link NetworkManager.SettingVPN} if the connection contains one, otherwise `null`
          */
         get_setting_vpn(): SettingVPN;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingWimax} the connection might contain.
          * @returns an {@link NetworkManager.SettingWimax} if the connection contains one, otherwise `null`
          */
         get_setting_wimax(): SettingWimax;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingWired} the connection might contain.
          * @returns an {@link NetworkManager.SettingWired} if the connection contains one, otherwise `null`
          */
         get_setting_wired(): SettingWired;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingWireless} the connection might contain.
          * @returns an {@link NetworkManager.SettingWireless} if the connection contains one, otherwise `null`
          */
         get_setting_wireless(): SettingWireless;
+
         /**
          * A shortcut to return any {@link NetworkManager.SettingWirelessSecurity} the connection might contain.
          * @returns an {@link NetworkManager.SettingWirelessSecurity} if the connection contains one, otherwise `null`
          */
         get_setting_wireless_security(): SettingWirelessSecurity;
+
         /**
          * A shortcut to return the UUID from the connection's {@link NetworkManager.SettingConnection}.
          * @returns the UUID from the connection's 'connection' setting
          */
         get_uuid(): string;
+
         /**
          * Returns the name that `nm_device_disambiguate_names()` would
          * return for the virtual device that would be created for `connection`.
@@ -4038,6 +4537,7 @@ export namespace NetworkManager {
          * @returns the name of `connection`'s device,   or `null` if `connection` is not a virtual connection type
          */
         get_virtual_device_description(): string;
+
         /**
          * Returns the name of the virtual kernel interface which the connection
          * needs to use if specified in the settings. This function abstracts all
@@ -4046,6 +4546,7 @@ export namespace NetworkManager {
          * @returns Name of the kernel interface or `null`
          */
         get_virtual_iface_name(): string;
+
         /**
          * A convenience function to check if the given `connection` is a particular
          * type (ie wired, Wi-Fi, ppp, etc). Checks the {@link NetworkManager.SettingConnection.type}
@@ -4054,6 +4555,7 @@ export namespace NetworkManager {
          * @returns `true` if the connection is of the given `type`, `false` if not
          */
         is_type(type: string): boolean;
+
         /**
          * Returns the name of the first setting object in the connection which would
          * need secrets to make a successful connection.  The returned hints are only
@@ -4063,11 +4565,12 @@ export namespace NetworkManager {
          * @returns the setting name of the {@link NetworkManager.Setting} object which has invalid or   missing secrets
          */
         need_secrets(): [string, string[] | null];
+
         /**
          * Does some basic normalization and fixup of well known inconsistencies
          * and deprecated fields. If the connection was modified in any way,
          * the output parameter `modified` is set `true`.
-         *
+         * 
          * Finally the connection will be verified and `true` returns if the connection
          * is valid. As this function only performs some specific normalization steps
          * it cannot repair all connections. If the connection has errors that
@@ -4075,18 +4578,21 @@ export namespace NetworkManager {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by `g_str_hash()` and `g_str_equal()` functions. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          */
-        normalize(parameters: GLib.HashTable<string, any> | null): [boolean, boolean];
+        normalize(parameters: (GLib.HashTable<string, any> | null)): [boolean, boolean];
+
         /**
          * Removes the {@link NetworkManager.Setting} with the given {@link GObject.GType} from the {@link NetworkManager.Connection}.  This
          * operation dereferences the {@link NetworkManager.Setting} object.
          * @param setting_type the {@link GObject.GType} of the setting object to remove
          */
         remove_setting(setting_type: GObject.GType): void;
+
         /**
          * @param new_settings a {@link GLib.HashTable} of settings
          * @returns `true` if the settings were valid and added to the connection, `false` if they were not
          */
-        replace_settings(new_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): boolean;
+        replace_settings(new_settings: ({ [key: string]: any } | GLib.HashTable<string, GLib.HashTable>)): boolean;
+
         /**
          * Deep-copies the settings of `new_conenction` and replaces the settings of `connection`
          * with the copied settings.
@@ -4094,6 +4600,7 @@ export namespace NetworkManager {
          * @returns `true` if the settings were valid after replacing the connection, `false` if they were not. Regardless of whether `true` or `false` is returned, the connection is successfully replaced. `false` only means, that the connection does not verify at the end of the operation.
          */
         replace_settings_from_connection(new_connection: Connection): boolean;
+
         /**
          * Sets the D-Bus path of the connection.  This property is not serialized, and
          * is only for the reference of the caller.  Sets the {@link NetworkManager.Connection.path}
@@ -4101,6 +4608,7 @@ export namespace NetworkManager {
          * @param path the D-Bus path of the connection as given by the settings service which provides the connection
          */
         set_path(path: string): void;
+
         /**
          * Converts the {@link NetworkManager.Connection} into a {@link GLib.HashTable} describing the connection,
          * suitable for marshalling over D-Bus or serializing.  The hash table mapping
@@ -4112,6 +4620,7 @@ export namespace NetworkManager {
          * @returns a new {@link GLib.HashTable} describing the connection, its settings, and each setting's properties.  The caller owns the hash table and must unref the hash table with `g_hash_table_unref()` when it is no longer needed.
          */
         to_hash(flags: SettingHashFlags): GLib.HashTable<string, GLib.HashTable>;
+
         /**
          * Update the specified setting's secrets, given a hash table of secrets
          * intended for that setting (deserialized from D-Bus for example).  Will also
@@ -4123,10 +4632,8 @@ export namespace NetworkManager {
          * @param secrets a {@link GLib.HashTable} mapping string:{@link GObject.Value} of setting property names and secrets of the given `setting_name`
          * @returns `true` if the secrets were successfully updated, `false` if the update failed (tried to update secrets for a setting that doesn't exist, etc)
          */
-        update_secrets(
-            setting_name: string,
-            secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-        ): boolean;
+        update_secrets(setting_name: string, secrets: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): boolean;
+
         /**
          * Validates the connection and all its settings.  Each setting's properties
          * have allowed values, and some values are dependent on other values.  For
@@ -4142,14 +4649,14 @@ export namespace NetworkManager {
         verify(): boolean;
     }
 
+
     namespace Setting {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
         }
@@ -4164,7 +4671,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<Setting>;
 
         // Properties
-
         /**
          * The setting's name, which uniquely identifies the setting within the
          * connection.  Each setting type has a name unique to that type, for
@@ -4183,59 +4689,49 @@ export namespace NetworkManager {
         $signals: Setting.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Setting.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_from_hash(
-            setting_type: GObject.GType,
-            hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-        ): Setting;
+        static new_from_hash(setting_type: GObject.GType, hash: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): Setting;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Setting.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Setting.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Setting.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Setting.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Setting.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Setting.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Setting.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Setting.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param other
-         * @param prop_spec
-         * @param flags
+         * @param other 
+         * @param prop_spec 
+         * @param flags 
          * @virtual
          */
         vfunc_compare_property(other: Setting, prop_spec: GObject.ParamSpec, flags: SettingCompareFlags): boolean;
+
         /**
-         * @param secret_name
-         * @param verify_secret
-         * @param out_flags
+         * @param secret_name 
+         * @param verify_secret 
+         * @param out_flags 
          * @virtual
          */
         vfunc_get_secret_flags(secret_name: string, verify_secret: boolean, out_flags: SettingSecretFlags): boolean;
+
         /**
          * Returns the name of the virtual kernel interface which the connection
          * needs to use if specified in the settings.
          * @virtual
          */
         vfunc_get_virtual_iface_name(): string;
+
         /**
          * Returns an array of property names for each secret which may be required
          * to make a successful connection.  The returned hints are only intended as a
@@ -4244,33 +4740,36 @@ export namespace NetworkManager {
          * @virtual
          */
         vfunc_need_secrets(): string[];
+
         /**
-         * @param secret_name
-         * @param verify_secret
-         * @param flags
+         * @param secret_name 
+         * @param verify_secret 
+         * @param flags 
          * @virtual
          */
         vfunc_set_secret_flags(secret_name: string, verify_secret: boolean, flags: SettingSecretFlags): boolean;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          * @virtual
          */
         vfunc_update_one_secret(key: string, value: unknown): number;
 
         // Methods
-
         /**
          * Resets and clears any secrets in the setting.  Secrets should be added to the
          * setting only when needed, and cleared immediately after use to prevent
          * leakage of information.
          */
         clear_secrets(): void;
+
         /**
          * Clears and frees secrets determined by `func`.
          * @param func function to be called to determine whether a     specific secret should be cleared or not
          */
         clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void;
+
         /**
          * Compares two {@link NetworkManager.Setting} objects for similarity, with comparison behavior
          * modified by a set of flags.  See the documentation for {@link NetworkManager.SettingCompareFlags}
@@ -4280,6 +4779,7 @@ export namespace NetworkManager {
          * @returns `true` if the comparison succeeds, `false` if it does not
          */
         compare(b: Setting, flags: SettingCompareFlags): boolean;
+
         /**
          * Compares two {@link NetworkManager.Setting} objects for similarity, with comparison behavior
          * modified by a set of flags.  See the documentation for {@link NetworkManager.SettingCompareFlags}
@@ -4292,28 +4792,27 @@ export namespace NetworkManager {
          * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
          * @returns `true` if the settings contain the same values, `false` if they do not
          */
-        diff(
-            b: Setting,
-            flags: SettingCompareFlags,
-            invert_results: boolean,
-            results: { [key: string]: any } | GLib.HashTable<string, number>,
-        ): [boolean, GLib.HashTable<string, number>];
+        diff(b: Setting, flags: SettingCompareFlags, invert_results: boolean, results: ({ [key: string]: any } | GLib.HashTable<string, number>)): [boolean, GLib.HashTable<string, number>];
+
         /**
          * Duplicates a {@link NetworkManager.Setting}.
          * @returns a new {@link NetworkManager.Setting} containing the same properties and values as the source {@link NetworkManager.Setting}
          */
         duplicate(): Setting;
+
         /**
          * Iterates over each property of the {@link NetworkManager.Setting} object, calling the supplied
          * user function for each property.
          * @param func user-supplied function called for each property of the setting
          */
         enumerate_values(func: SettingValueIterFn): void;
+
         /**
          * Returns the type name of the {@link NetworkManager.Setting} object
          * @returns a string containing the type name of the {@link NetworkManager.Setting} object, like 'ppp' or 'wireless' or 'wired'.
          */
         get_name(): string;
+
         /**
          * For a given secret, retrieves the {@link NetworkManager.SettingSecretFlags} describing how to
          * handle that secret.
@@ -4322,12 +4821,14 @@ export namespace NetworkManager {
          * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
          */
         get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean;
+
         /**
          * Returns the name of the virtual kernel interface which the connection
          * needs to use if specified in the settings.
          * @returns Name of the virtual interface or `null` if the setting does not support this feature
          */
         get_virtual_iface_name(): string;
+
         /**
          * Returns an array of property names for each secret which may be required
          * to make a successful connection.  The returned hints are only intended as a
@@ -4336,6 +4837,7 @@ export namespace NetworkManager {
          * @returns a {@link GLib.PtrArray} containing the property names of secrets of the {@link NetworkManager.Setting} which may be required; the caller owns the array and must free it with `g_ptr_array_free()`, but must not free the elements.
          */
         need_secrets(): string[];
+
         /**
          * For a given secret, stores the {@link NetworkManager.SettingSecretFlags} describing how to
          * handle that secret.
@@ -4344,6 +4846,7 @@ export namespace NetworkManager {
          * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
          */
         set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean;
+
         /**
          * Converts the {@link NetworkManager.Setting} into a {@link GLib.HashTable} mapping each setting property
          * name to a GValue describing that property, suitable for marshalling over
@@ -4352,6 +4855,7 @@ export namespace NetworkManager {
          * @returns a new {@link GLib.HashTable} describing the setting's properties
          */
         to_hash(flags: SettingHashFlags): GLib.HashTable<string, GObject.Value>;
+
         /**
          * Convert the setting into a string.  For debugging purposes ONLY, should NOT
          * be used for serialization of the setting, or machine-parsed in any way. The
@@ -4359,13 +4863,15 @@ export namespace NetworkManager {
          * @returns an allocated string containing a textual representation of the setting's properties and values (including secrets!), which the caller should free with `g_free()`
          */
         to_string(): string;
+
         /**
          * Update the setting's secrets, given a hash table of secrets intended for that
          * setting (deserialized from D-Bus for example).
          * @param secrets a {@link GLib.HashTable} mapping string to {@link GObject.Value} of setting property names and secrets
          * @returns `true` if the secrets were successfully updated, `false` on failure to update one or more of the secrets.
          */
-        update_secrets(secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): boolean;
+        update_secrets(secrets: ({ [key: string]: any } | GLib.HashTable<string, GObject.Value>)): boolean;
+
         /**
          * Validates the setting.  Each setting's properties have allowed values, and
          * some are dependent on other values (hence the need for `all_settings`).  The
@@ -4377,36 +4883,36 @@ export namespace NetworkManager {
         verify(all_settings: Setting[]): boolean;
     }
 
+
     namespace Setting8021x {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::anonymous-identity': (pspec: GObject.ParamSpec) => void;
-            'notify::ca-path': (pspec: GObject.ParamSpec) => void;
-            'notify::identity': (pspec: GObject.ParamSpec) => void;
-            'notify::pac-file': (pspec: GObject.ParamSpec) => void;
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::password-raw-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::phase1-fast-provisioning': (pspec: GObject.ParamSpec) => void;
-            'notify::phase1-peaplabel': (pspec: GObject.ParamSpec) => void;
-            'notify::phase1-peapver': (pspec: GObject.ParamSpec) => void;
-            'notify::phase2-auth': (pspec: GObject.ParamSpec) => void;
-            'notify::phase2-autheap': (pspec: GObject.ParamSpec) => void;
-            'notify::phase2-ca-path': (pspec: GObject.ParamSpec) => void;
-            'notify::phase2-private-key-password': (pspec: GObject.ParamSpec) => void;
-            'notify::phase2-private-key-password-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::phase2-subject-match': (pspec: GObject.ParamSpec) => void;
-            'notify::pin': (pspec: GObject.ParamSpec) => void;
-            'notify::pin-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::private-key-password': (pspec: GObject.ParamSpec) => void;
-            'notify::private-key-password-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::subject-match': (pspec: GObject.ParamSpec) => void;
-            'notify::system-ca-certs': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::anonymous-identity": (pspec: GObject.ParamSpec) => void;
+            "notify::ca-path": (pspec: GObject.ParamSpec) => void;
+            "notify::identity": (pspec: GObject.ParamSpec) => void;
+            "notify::pac-file": (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::password-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::password-raw-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::phase1-fast-provisioning": (pspec: GObject.ParamSpec) => void;
+            "notify::phase1-peaplabel": (pspec: GObject.ParamSpec) => void;
+            "notify::phase1-peapver": (pspec: GObject.ParamSpec) => void;
+            "notify::phase2-auth": (pspec: GObject.ParamSpec) => void;
+            "notify::phase2-autheap": (pspec: GObject.ParamSpec) => void;
+            "notify::phase2-ca-path": (pspec: GObject.ParamSpec) => void;
+            "notify::phase2-private-key-password": (pspec: GObject.ParamSpec) => void;
+            "notify::phase2-private-key-password-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::phase2-subject-match": (pspec: GObject.ParamSpec) => void;
+            "notify::pin": (pspec: GObject.ParamSpec) => void;
+            "notify::pin-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::private-key-password": (pspec: GObject.ParamSpec) => void;
+            "notify::private-key-password-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::subject-match": (pspec: GObject.ParamSpec) => void;
+            "notify::system-ca-certs": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             anonymous_identity: string;
             anonymousIdentity: string;
@@ -4459,7 +4965,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<Setting8021x>;
 
         // Properties
-
         /**
          * Anonymous identity string for EAP authentication methods.  Used as the
          * unencrypted identity with EAP types that support different tunneled
@@ -4467,6 +4972,7 @@ export namespace NetworkManager {
          */
         get anonymous_identity(): string;
         set anonymous_identity(val: string);
+
         /**
          * Anonymous identity string for EAP authentication methods.  Used as the
          * unencrypted identity with EAP types that support different tunneled
@@ -4474,6 +4980,7 @@ export namespace NetworkManager {
          */
         get anonymousIdentity(): string;
         set anonymousIdentity(val: string);
+
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
          * certificates to be added to the verification chain in addition to the
@@ -4481,6 +4988,7 @@ export namespace NetworkManager {
          */
         get ca_path(): string;
         set ca_path(val: string);
+
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
          * certificates to be added to the verification chain in addition to the
@@ -4488,22 +4996,26 @@ export namespace NetworkManager {
          */
         get caPath(): string;
         set caPath(val: string);
+
         /**
          * Identity string for EAP authentication methods.  Often the user's user or
          * login name.
          */
         get identity(): string;
         set identity(val: string);
+
         /**
          * UTF-8 encoded file path containing PAC for EAP-FAST.
          */
         get pac_file(): string;
         set pac_file(val: string);
+
         /**
          * UTF-8 encoded file path containing PAC for EAP-FAST.
          */
         get pacFile(): string;
         set pacFile(val: string);
+
         /**
          * UTF-8 encoded password used for EAP authentication methods. If both the
          * {@link NetworkManager.Setting8021x.password} property and the {@link NetworkManager.Setting8021x.password_raw}
@@ -4511,26 +5023,31 @@ export namespace NetworkManager {
          */
         get password(): string;
         set password(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.Setting8021x.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.Setting8021x.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.Setting8021x.password_raw} property.
          */
         get password_raw_flags(): number;
         set password_raw_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.Setting8021x.password_raw} property.
          */
         get passwordRawFlags(): number;
         set passwordRawFlags(val: number);
+
         /**
          * Enables or disables in-line provisioning of EAP-FAST credentials when
          * FAST is specified as the EAP method in the {@link NetworkManager.Setting8021x.eap} property.
@@ -4541,6 +5058,7 @@ export namespace NetworkManager {
          */
         get phase1_fast_provisioning(): string;
         set phase1_fast_provisioning(val: string);
+
         /**
          * Enables or disables in-line provisioning of EAP-FAST credentials when
          * FAST is specified as the EAP method in the {@link NetworkManager.Setting8021x.eap} property.
@@ -4551,6 +5069,7 @@ export namespace NetworkManager {
          */
         get phase1FastProvisioning(): string;
         set phase1FastProvisioning(val: string);
+
         /**
          * Forces use of the new PEAP label during key derivation.  Some RADIUS
          * servers may require forcing the new PEAP label to interoperate with
@@ -4559,6 +5078,7 @@ export namespace NetworkManager {
          */
         get phase1_peaplabel(): string;
         set phase1_peaplabel(val: string);
+
         /**
          * Forces use of the new PEAP label during key derivation.  Some RADIUS
          * servers may require forcing the new PEAP label to interoperate with
@@ -4567,6 +5087,7 @@ export namespace NetworkManager {
          */
         get phase1Peaplabel(): string;
         set phase1Peaplabel(val: string);
+
         /**
          * Forces which PEAP version is used when PEAP is set as the EAP method in
          * the {@link NetworkManager.Setting8021x.eap} property.  When unset, the version reported by
@@ -4577,6 +5098,7 @@ export namespace NetworkManager {
          */
         get phase1_peapver(): string;
         set phase1_peapver(val: string);
+
         /**
          * Forces which PEAP version is used when PEAP is set as the EAP method in
          * the {@link NetworkManager.Setting8021x.eap} property.  When unset, the version reported by
@@ -4587,6 +5109,7 @@ export namespace NetworkManager {
          */
         get phase1Peapver(): string;
         set phase1Peapver(val: string);
+
         /**
          * Specifies the allowed "phase 2" inner non-EAP authentication methods when
          * an EAP method that uses an inner TLS tunnel is specified in the
@@ -4597,6 +5120,7 @@ export namespace NetworkManager {
          */
         get phase2_auth(): string;
         set phase2_auth(val: string);
+
         /**
          * Specifies the allowed "phase 2" inner non-EAP authentication methods when
          * an EAP method that uses an inner TLS tunnel is specified in the
@@ -4607,6 +5131,7 @@ export namespace NetworkManager {
          */
         get phase2Auth(): string;
         set phase2Auth(val: string);
+
         /**
          * Specifies the allowed "phase 2" inner EAP-based authentication methods
          * when an EAP method that uses an inner TLS tunnel is specified in the
@@ -4617,6 +5142,7 @@ export namespace NetworkManager {
          */
         get phase2_autheap(): string;
         set phase2_autheap(val: string);
+
         /**
          * Specifies the allowed "phase 2" inner EAP-based authentication methods
          * when an EAP method that uses an inner TLS tunnel is specified in the
@@ -4627,6 +5153,7 @@ export namespace NetworkManager {
          */
         get phase2Autheap(): string;
         set phase2Autheap(val: string);
+
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
          * certificates to be added to the verification chain in addition to the
@@ -4634,6 +5161,7 @@ export namespace NetworkManager {
          */
         get phase2_ca_path(): string;
         set phase2_ca_path(val: string);
+
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
          * certificates to be added to the verification chain in addition to the
@@ -4641,6 +5169,7 @@ export namespace NetworkManager {
          */
         get phase2CaPath(): string;
         set phase2CaPath(val: string);
+
         /**
          * The password used to decrypt the "phase 2" private key specified in the
          * {@link NetworkManager.Setting8021x.phase2_private_key} property when the private key either
@@ -4651,6 +5180,7 @@ export namespace NetworkManager {
          */
         get phase2_private_key_password(): string;
         set phase2_private_key_password(val: string);
+
         /**
          * The password used to decrypt the "phase 2" private key specified in the
          * {@link NetworkManager.Setting8021x.phase2_private_key} property when the private key either
@@ -4661,18 +5191,21 @@ export namespace NetworkManager {
          */
         get phase2PrivateKeyPassword(): string;
         set phase2PrivateKeyPassword(val: string);
+
         /**
          * Flags indicating how to handle the
          * {@link NetworkManager.Setting8021x.phase2_private_key_password} property.
          */
         get phase2_private_key_password_flags(): number;
         set phase2_private_key_password_flags(val: number);
+
         /**
          * Flags indicating how to handle the
          * {@link NetworkManager.Setting8021x.phase2_private_key_password} property.
          */
         get phase2PrivateKeyPasswordFlags(): number;
         set phase2PrivateKeyPasswordFlags(val: number);
+
         /**
          * Substring to be matched against the subject of the certificate presented
          * by the authentication server during the inner "phase 2"
@@ -4681,6 +5214,7 @@ export namespace NetworkManager {
          */
         get phase2_subject_match(): string;
         set phase2_subject_match(val: string);
+
         /**
          * Substring to be matched against the subject of the certificate presented
          * by the authentication server during the inner "phase 2"
@@ -4689,21 +5223,25 @@ export namespace NetworkManager {
          */
         get phase2SubjectMatch(): string;
         set phase2SubjectMatch(val: string);
+
         /**
          * PIN used for EAP authentication methods.
          */
         get pin(): string;
         set pin(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.Setting8021x.pin} property.
          */
         get pin_flags(): number;
         set pin_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.Setting8021x.pin} property.
          */
         get pinFlags(): number;
         set pinFlags(val: number);
+
         /**
          * The password used to decrypt the private key specified in the
          * {@link NetworkManager.Setting8021x.private_key} property when the private key either uses the
@@ -4714,6 +5252,7 @@ export namespace NetworkManager {
          */
         get private_key_password(): string;
         set private_key_password(val: string);
+
         /**
          * The password used to decrypt the private key specified in the
          * {@link NetworkManager.Setting8021x.private_key} property when the private key either uses the
@@ -4724,18 +5263,21 @@ export namespace NetworkManager {
          */
         get privateKeyPassword(): string;
         set privateKeyPassword(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.Setting8021x.private_key_password}
          * property.
          */
         get private_key_password_flags(): number;
         set private_key_password_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.Setting8021x.private_key_password}
          * property.
          */
         get privateKeyPasswordFlags(): number;
         set privateKeyPasswordFlags(val: number);
+
         /**
          * Substring to be matched against the subject of the certificate presented
          * by the authentication server. When unset, no verification of the
@@ -4743,6 +5285,7 @@ export namespace NetworkManager {
          */
         get subject_match(): string;
         set subject_match(val: string);
+
         /**
          * Substring to be matched against the subject of the certificate presented
          * by the authentication server. When unset, no verification of the
@@ -4750,6 +5293,7 @@ export namespace NetworkManager {
          */
         get subjectMatch(): string;
         set subjectMatch(val: string);
+
         /**
          * When `true`, overrides the {@link NetworkManager.Setting8021x.ca_path} and
          * {@link NetworkManager.Setting8021x.phase2_ca_path} properties using the system CA directory
@@ -4760,6 +5304,7 @@ export namespace NetworkManager {
          */
         get system_ca_certs(): boolean;
         set system_ca_certs(val: boolean);
+
         /**
          * When `true`, overrides the {@link NetworkManager.Setting8021x.ca_path} and
          * {@link NetworkManager.Setting8021x.phase2_ca_path} properties using the system CA directory
@@ -4781,36 +5326,26 @@ export namespace NetworkManager {
         $signals: Setting8021x.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Setting8021x.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Setting8021x;
+        static ["new"](): Setting8021x;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Setting8021x.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Setting8021x.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Setting8021x.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Setting8021x.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Setting8021x.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Setting8021x.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Setting8021x.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Setting8021x.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds an allowed alternate subject name match.  Until at least one
          * match is added, the altSubjectName of the remote authentication
@@ -4819,6 +5354,7 @@ export namespace NetworkManager {
          * @returns `true` if the alternative subject name match was  successfully added, `false` if it was already allowed.
          */
         add_altsubject_match(altsubject_match: string): boolean;
+
         /**
          * Adds an allowed EAP method.  The setting is not valid until at least one
          * EAP method has been added.  See {@link NetworkManager.Setting8021x.eap} property for a list of
@@ -4827,6 +5363,7 @@ export namespace NetworkManager {
          * @returns `true` if the EAP method was successfully added, `false` if it was  not a valid method or if it was already allowed.
          */
         add_eap_method(eap: string): boolean;
+
         /**
          * Adds an allowed alternate subject name match for "phase 2".  Until
          * at least one match is added, the altSubjectName of the "phase 2"
@@ -4835,24 +5372,29 @@ export namespace NetworkManager {
          * @returns `true` if the "phase 2" alternative subject name match was  successfully added, `false` if it was already allowed.
          */
         add_phase2_altsubject_match(phase2_altsubject_match: string): boolean;
+
         /**
          * Clears all altSubjectName matches.
          */
         clear_altsubject_matches(): void;
+
         /**
          * Clears all allowed EAP methods.
          */
         clear_eap_methods(): void;
+
         /**
          * Clears all "phase 2" altSubjectName matches.
          */
         clear_phase2_altsubject_matches(): void;
+
         /**
          * Returns the altSubjectName match at index `i`.
          * @param i the zero-based index of the array of altSubjectName matches
          * @returns the altSubjectName match at index `i`
          */
         get_altsubject_match(i: number): string;
+
         /**
          * Returns the anonymous identifier used by some EAP methods (like TTLS) to
          * authenticate the user in the outer unencrypted "phase 1" authentication.  The
@@ -4861,6 +5403,7 @@ export namespace NetworkManager {
          * @returns the anonymous identifier
          */
         get_anonymous_identity(): string;
+
         /**
          * Returns the CA certificate blob if the CA certificate is stored using the
          * {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme.  Not all EAP methods use a
@@ -4871,6 +5414,7 @@ export namespace NetworkManager {
          * @returns the CA certificate data
          */
         get_ca_cert_blob(): Uint8Array;
+
         /**
          * Returns the CA certificate path if the CA certificate is stored using the
          * {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.  Not all EAP methods use a
@@ -4881,6 +5425,7 @@ export namespace NetworkManager {
          * @returns path to the CA certificate file
          */
         get_ca_cert_path(): string;
+
         /**
          * Returns the scheme used to store the CA certificate.  If the returned scheme
          * is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use `nm_setting_802_1x_get_ca_cert_blob()`;
@@ -4888,6 +5433,7 @@ export namespace NetworkManager {
          * @returns scheme used to store the CA certificate (blob or path)
          */
         get_ca_cert_scheme(): Setting8021xCKScheme;
+
         /**
          * Returns the path of the CA certificate directory if previously set.  Systems
          * will often have a directory that contains multiple individual CA certificates
@@ -4897,6 +5443,7 @@ export namespace NetworkManager {
          * @returns the CA certificate directory path
          */
         get_ca_path(): string;
+
         /**
          * Client certificates are used to identify the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -4904,6 +5451,7 @@ export namespace NetworkManager {
          * @returns the client certificate data
          */
         get_client_cert_blob(): Uint8Array;
+
         /**
          * Client certificates are used to identify the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -4911,6 +5459,7 @@ export namespace NetworkManager {
          * @returns path to the client certificate file
          */
         get_client_cert_path(): string;
+
         /**
          * Returns the scheme used to store the client certificate.  If the returned scheme
          * is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use `nm_setting_802_1x_get_client_cert_blob()`;
@@ -4918,24 +5467,28 @@ export namespace NetworkManager {
          * @returns scheme used to store the client certificate (blob or path)
          */
         get_client_cert_scheme(): Setting8021xCKScheme;
+
         /**
          * Returns the name of the allowed EAP method at index `i`.
          * @param i the index of the EAP method name to return
          * @returns the name of the allowed EAP method at index `i`
          */
         get_eap_method(i: number): string;
+
         /**
          * Returns the identifier used by some EAP methods (like TLS) to
          * authenticate the user.  Often this is a username or login name.
          * @returns the user identifier
          */
         get_identity(): string;
+
         /**
          * Returns the number of entries in the
          * {@link NetworkManager.Setting8021x.altsubject_matches} property of this setting.
          * @returns the number of altsubject-matches entries.
          */
         get_num_altsubject_matches(): number;
+
         /**
          * Returns the number of eap methods allowed for use when connecting to the
          * network.  Generally only one EAP method is used.  Use the functions
@@ -4945,59 +5498,72 @@ export namespace NetworkManager {
          * @returns the number of allowed EAP methods
          */
         get_num_eap_methods(): number;
+
         /**
          * Returns the number of entries in the
          * {@link NetworkManager.Setting8021x.phase2_altsubject_matches} property of this setting.
          * @returns the number of phase2-altsubject-matches entries.
          */
         get_num_phase2_altsubject_matches(): number;
+
         /**
          * Returns the file containing PAC credentials used by EAP-FAST method.
          * @returns the PAC file
          */
         get_pac_file(): string;
+
         /**
          * @returns the password used by the authentication method, if any, as specified   by the {@link NetworkManager.Setting8021x.password} property
          */
         get_password(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.Setting8021x.password}
          */
         get_password_flags(): SettingSecretFlags;
+
         /**
          * @returns the password used by the authentication method as a UTF-8-encoded array of bytes, as specified by the {@link NetworkManager.Setting8021x.password_raw} property
          */
         get_password_raw(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the   {@link NetworkManager.Setting8021x.password_raw}
          */
         get_password_raw_flags(): SettingSecretFlags;
+
         /**
          * @returns whether "phase 1" PEAP fast provisioning should be used, as specified  by the {@link NetworkManager.Setting8021x.phase1_fast_provisioning} property.  See the  wpa_supplicant documentation for more details.
          */
         get_phase1_fast_provisioning(): string;
+
         /**
          * @returns whether the "phase 1" PEAP label is new-style or old-style, to be  used when authenticating with EAP-PEAP, as contained in the  {@link NetworkManager.Setting8021x.phase1_peaplabel} property.  Valid values are `null` (unset),  "0" (use old-style label), and "1" (use new-style label).  See the  wpa_supplicant documentation for more details.
          */
         get_phase1_peaplabel(): string;
+
         /**
          * @returns the "phase 1" PEAP version to be used when authenticating with  EAP-PEAP as contained in the {@link NetworkManager.Setting8021x.phase1_peapver} property.  Valid  values are `null` (unset), "0" (PEAP version 0), and "1" (PEAP version 1).
          */
         get_phase1_peapver(): string;
+
         /**
          * Returns the "phase 2" altSubjectName match at index `i`.
          * @param i the zero-based index of the array of "phase 2" altSubjectName matches
          * @returns the "phase 2" altSubjectName match at index `i`
          */
         get_phase2_altsubject_match(i: number): string;
+
         /**
          * @returns the "phase 2" non-EAP (ex MD5) allowed authentication method as   specified by the {@link NetworkManager.Setting8021x.phase2_auth} property.
          */
         get_phase2_auth(): string;
+
         /**
          * @returns the "phase 2" EAP-based (ex TLS) allowed authentication method as   specified by the {@link NetworkManager.Setting8021x.phase2_autheap} property.
          */
         get_phase2_autheap(): string;
+
         /**
          * Returns the "phase 2" CA certificate blob if the CA certificate is stored
          * using the {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme.  Not all EAP methods use
@@ -5008,6 +5574,7 @@ export namespace NetworkManager {
          * @returns the "phase 2" CA certificate data
          */
         get_phase2_ca_cert_blob(): Uint8Array;
+
         /**
          * Returns the "phase 2" CA certificate path if the CA certificate is stored
          * using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.  Not all EAP methods use
@@ -5018,6 +5585,7 @@ export namespace NetworkManager {
          * @returns path to the "phase 2" CA certificate file
          */
         get_phase2_ca_cert_path(): string;
+
         /**
          * Returns the scheme used to store the "phase 2" CA certificate.  If the
          * returned scheme is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use
@@ -5026,6 +5594,7 @@ export namespace NetworkManager {
          * @returns scheme used to store the "phase 2" CA certificate (blob or path)
          */
         get_phase2_ca_cert_scheme(): Setting8021xCKScheme;
+
         /**
          * Returns the path of the "phase 2" CA certificate directory if previously set.
          * Systems will often have a directory that contains multiple individual CA
@@ -5035,6 +5604,7 @@ export namespace NetworkManager {
          * @returns the "phase 2" CA certificate directory path
          */
         get_phase2_ca_path(): string;
+
         /**
          * Client certificates are used to identify the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -5042,6 +5612,7 @@ export namespace NetworkManager {
          * @returns the "phase 2" client certificate data
          */
         get_phase2_client_cert_blob(): Uint8Array;
+
         /**
          * Client certificates are used to identify the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -5049,6 +5620,7 @@ export namespace NetworkManager {
          * @returns path to the "phase 2" client certificate file
          */
         get_phase2_client_cert_path(): string;
+
         /**
          * Returns the scheme used to store the "phase 2" client certificate.  If the
          * returned scheme is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use
@@ -5058,29 +5630,34 @@ export namespace NetworkManager {
          * @returns scheme used to store the "phase 2" client certificate (blob or path)
          */
         get_phase2_client_cert_scheme(): Setting8021xCKScheme;
+
         /**
          * Private keys are used to authenticate the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
          * authentication method.
-         *
+         * 
          * WARNING: the phase2 private key property is not a "secret" property, and thus
          * unencrypted private key data may be readable by unprivileged users.  Private
          * keys should always be encrypted with a private key password.
          * @returns the "phase 2" private key data
          */
         get_phase2_private_key_blob(): Uint8Array;
+
         /**
          * @returns the data format of the "phase 2" private key data stored in the   {@link NetworkManager.Setting8021x.phase2_private_key} property
          */
         get_phase2_private_key_format(): Setting8021xCKFormat;
+
         /**
          * @returns the private key password used to decrypt the private key if  previously set with `nm_setting_802_1x_set_phase2_private_key()` or the  {@link NetworkManager.Setting8021x.phase2_private_key_password} property.
          */
         get_phase2_private_key_password(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.Setting8021x.phase2_private_key_password}
          */
         get_phase2_private_key_password_flags(): SettingSecretFlags;
+
         /**
          * Private keys are used to authenticate the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -5088,6 +5665,7 @@ export namespace NetworkManager {
          * @returns path to the "phase 2" private key file
          */
         get_phase2_private_key_path(): string;
+
         /**
          * Returns the scheme used to store the "phase 2" private key.  If the returned
          * scheme is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use
@@ -5097,41 +5675,49 @@ export namespace NetworkManager {
          * @returns scheme used to store the "phase 2" private key (blob or path)
          */
         get_phase2_private_key_scheme(): Setting8021xCKScheme;
+
         /**
          * @returns the {@link NetworkManager.Setting8021x.phase2_subject_match} property. This is the substring to be matched against the subject of the "phase 2" authentication server certificate, or `null` no subject verification is to be performed.
          */
         get_phase2_subject_match(): string;
+
         /**
          * @returns the PIN used by the authentication method, if any, as specified   by the {@link NetworkManager.Setting8021x.pin} property
          */
         get_pin(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.Setting8021x.pin}
          */
         get_pin_flags(): SettingSecretFlags;
+
         /**
          * Private keys are used to authenticate the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
          * authentication method.
-         *
+         * 
          * WARNING: the private key property is not a "secret" property, and thus
          * unencrypted private key data may be readable by unprivileged users.  Private
          * keys should always be encrypted with a private key password.
          * @returns the private key data
          */
         get_private_key_blob(): Uint8Array;
+
         /**
          * @returns the data format of the private key data stored in the   {@link NetworkManager.Setting8021x.private_key} property
          */
         get_private_key_format(): Setting8021xCKFormat;
+
         /**
          * @returns the private key password used to decrypt the private key if  previously set with `nm_setting_802_1x_set_private_key()`, or the  {@link NetworkManager.Setting8021x.private_key_password} property.
          */
         get_private_key_password(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.Setting8021x.private_key_password}
          */
         get_private_key_password_flags(): SettingSecretFlags;
+
         /**
          * Private keys are used to authenticate the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -5139,6 +5725,7 @@ export namespace NetworkManager {
          * @returns path to the private key file
          */
         get_private_key_path(): string;
+
         /**
          * Returns the scheme used to store the private key.  If the returned scheme is
          * {@link NetworkManager.Setting8021xCKScheme.BLOB}, use
@@ -5148,10 +5735,12 @@ export namespace NetworkManager {
          * @returns scheme used to store the private key (blob or path)
          */
         get_private_key_scheme(): Setting8021xCKScheme;
+
         /**
          * @returns the {@link NetworkManager.Setting8021x.subject_match} property. This is the substring to be matched against the subject of the authentication server certificate, or `null` no subject verification is to be performed.
          */
         get_subject_match(): string;
+
         /**
          * Sets the {@link NetworkManager.Setting8021x.system_ca_certs} property. The
          * {@link NetworkManager.Setting8021x.ca_path} and {@link NetworkManager.Setting8021x.phase2_ca_path}
@@ -5162,39 +5751,46 @@ export namespace NetworkManager {
          * @returns `true` if a system CA certificate path should be used, `false` if not
          */
         get_system_ca_certs(): boolean;
+
         /**
          * Removes the allowed altSubjectName at the specified index.
          * @param i the index of the altSubjectName match to remove
          */
         remove_altsubject_match(i: number): void;
+
         /**
          * Removes the allowed altSubjectName `altsubject_match`.
          * @param altsubject_match the altSubjectName to remove
          * @returns `true` if the alternative subject name match was found and removed,          `false` if it was not.
          */
         remove_altsubject_match_by_value(altsubject_match: string): boolean;
+
         /**
          * Removes the allowed EAP method at the specified index.
          * @param i the index of the EAP method to remove
          */
         remove_eap_method(i: number): void;
+
         /**
          * Removes the allowed EAP method `method`.
          * @param eap the name of the EAP method to remove
          * @returns `true` if the EAP method was founs and removed, `false` if it was not.
          */
         remove_eap_method_by_value(eap: string): boolean;
+
         /**
          * Removes the allowed "phase 2" altSubjectName at the specified index.
          * @param i the index of the "phase 2" altSubjectName match to remove
          */
         remove_phase2_altsubject_match(i: number): void;
+
         /**
          * Removes the allowed "phase 2" altSubjectName `phase2_altsubject_match`.
          * @param phase2_altsubject_match the "phase 2" altSubjectName to remove
          * @returns `true` if the alternative subject name match for "phase 2" was found and removed,          `false` if it was not.
          */
         remove_phase2_altsubject_match_by_value(phase2_altsubject_match: string): boolean;
+
         /**
          * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.ca_cert} property
          * with the raw certificate data if using the {@link NetworkManager.Setting8021xCKScheme.BLOB}
@@ -5206,12 +5802,13 @@ export namespace NetworkManager {
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_ca_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
+
         /**
          * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.client_cert}
          * property with the raw certificate data if using the
          * {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the certificate
          * file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
-         *
+         * 
          * Client certificates are used to identify the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
          * authentication method.
@@ -5221,6 +5818,7 @@ export namespace NetworkManager {
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_client_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
+
         /**
          * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.phase2_ca_cert}
          * property with the raw certificate data if using the
@@ -5232,12 +5830,13 @@ export namespace NetworkManager {
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_phase2_ca_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
+
         /**
          * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.phase2_client_cert}
          * property with the raw certificate data if using the
          * {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the certificate
          * file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
-         *
+         * 
          * Client certificates are used to identify the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
          * authentication method.
@@ -5246,21 +5845,18 @@ export namespace NetworkManager {
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_phase2_client_cert(
-            cert_path: string,
-            scheme: Setting8021xCKScheme,
-            out_format: Setting8021xCKFormat,
-        ): boolean;
+        set_phase2_client_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
+
         /**
          * Private keys are used to authenticate the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
          * authentication method.
-         *
+         * 
          * This function reads a private key from disk and sets the
          * {@link NetworkManager.Setting8021x.phase2_private_key} property with the private key file data if
          * using the {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the
          * private key file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
-         *
+         * 
          * If `password` is given, this function attempts to decrypt the private key to
          * verify that `password` is correct, and if it is, updates the
          * {@link NetworkManager.Setting8021x.phase2_private_key_password} property with the given
@@ -5268,7 +5864,7 @@ export namespace NetworkManager {
          * set, and no internal data is changed.  If no `password` is given, the private
          * key is assumed to be valid, no decryption is performed, and the password may
          * be set at a later time.
-         *
+         * 
          * WARNING: the "phase2" private key property is not a "secret" property, and
          * thus unencrypted private key data using the BLOB scheme may be readable by
          * unprivileged users.  Private keys should always be encrypted with a private
@@ -5279,22 +5875,18 @@ export namespace NetworkManager {
          * @param out_format on successful return, the type of the private key added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_phase2_private_key(
-            key_path: string,
-            password: string,
-            scheme: Setting8021xCKScheme,
-            out_format: Setting8021xCKFormat,
-        ): boolean;
+        set_phase2_private_key(key_path: string, password: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
+
         /**
          * Private keys are used to authenticate the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
          * authentication method.
-         *
+         * 
          * This function reads a private key from disk and sets the
          * {@link NetworkManager.Setting8021x.private_key} property with the private key file data if using
          * the {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the private
          * key file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
-         *
+         * 
          * If `password` is given, this function attempts to decrypt the private key to
          * verify that `password` is correct, and if it is, updates the
          * {@link NetworkManager.Setting8021x.private_key_password} property with the given `password`.  If
@@ -5302,7 +5894,7 @@ export namespace NetworkManager {
          * internal data is changed.  If no `password` is given, the private key is
          * assumed to be valid, no decryption is performed, and the password may be set
          * at a later time.
-         *
+         * 
          * WARNING: the private key property is not a "secret" property, and thus
          * unencrypted private key data using the BLOB scheme may be readable by
          * unprivileged users.  Private keys should always be encrypted with a private
@@ -5313,29 +5905,24 @@ export namespace NetworkManager {
          * @param out_format on successful return, the type of the private key added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
-        set_private_key(
-            key_path: string,
-            password: string,
-            scheme: Setting8021xCKScheme,
-            out_format: Setting8021xCKFormat,
-        ): boolean;
+        set_private_key(key_path: string, password: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
     }
+
 
     namespace SettingAdsl {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::encapsulation': (pspec: GObject.ParamSpec) => void;
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::protocol': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::vci': (pspec: GObject.ParamSpec) => void;
-            'notify::vpi': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::encapsulation": (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::password-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::protocol": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::vci": (pspec: GObject.ParamSpec) => void;
+            "notify::vpi": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             encapsulation: string;
             password: string;
@@ -5355,42 +5942,48 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingAdsl>;
 
         // Properties
-
         /**
          * Encapsulation of ADSL connection.  Can be "vcmux" or "llc".
          */
         get encapsulation(): string;
         set encapsulation(val: string);
+
         /**
          * Password used to authenticate with the ADSL service.
          */
         get password(): string;
         set password(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingAdsl.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingAdsl.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
+
         /**
          * ADSL connection protocol.  Can be "pppoa", "pppoe" or "ipoatm".
          */
         get protocol(): string;
         set protocol(val: string);
+
         /**
          * Username used to authenticate with the ADSL service.
          */
         get username(): string;
         set username(val: string);
+
         /**
          * VCI of ADSL connection
          */
         get vci(): number;
         set vci(val: number);
+
         /**
          * VPI of ADSL connection
          */
@@ -5407,75 +6000,71 @@ export namespace NetworkManager {
         $signals: SettingAdsl.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingAdsl.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingAdsl;
+        static ["new"](): SettingAdsl;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingAdsl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingAdsl.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingAdsl.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingAdsl.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingAdsl.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingAdsl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingAdsl.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingAdsl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingAdsl.encapsulation} property of the setting
          */
         get_encapsulation(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingAdsl.password} property of the setting
          */
         get_password(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingAdsl.password}
          */
         get_password_flags(): SettingSecretFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingAdsl.protocol} property of the setting
          */
         get_protocol(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingAdsl.username} property of the setting
          */
         get_username(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingAdsl.vci} property of the setting
          */
         get_vci(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingAdsl.vpi} property of the setting
          */
         get_vpi(): number;
     }
 
+
     namespace SettingBluetooth {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             type: string;
         }
@@ -5488,7 +6077,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingBluetooth>;
 
         // Properties
-
         /**
          * Either "dun" for Dial-Up Networking connections or "panu" for Personal
          * Area Networking connections to devices supporting the NAP profile.
@@ -5506,42 +6094,33 @@ export namespace NetworkManager {
         $signals: SettingBluetooth.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingBluetooth.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingBluetooth;
+        static ["new"](): SettingBluetooth;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingBluetooth.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingBluetooth.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingBluetooth.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingBluetooth.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingBluetooth.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingBluetooth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingBluetooth.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingBluetooth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the Bluetooth address of the remote device which this setting
          * describes a connection to.
          * @returns the Bluetooth address
          */
         get_bdaddr(): Uint8Array;
+
         /**
          * Returns the connection method for communicating with the remote device (i.e.
          * either DUN to a DUN-capable device or PANU to a NAP-capable device).
@@ -5550,15 +6129,15 @@ export namespace NetworkManager {
         get_connection_type(): string;
     }
 
+
     namespace SettingBond {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             interface_name: string;
             interfaceName: string;
@@ -5572,12 +6151,12 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingBond>;
 
         // Properties
-
         /**
          * The name of the virtual in-kernel bonding network interface
          */
         get interface_name(): string;
         set interface_name(val: string);
+
         /**
          * The name of the virtual in-kernel bonding network interface
          */
@@ -5594,36 +6173,26 @@ export namespace NetworkManager {
         $signals: SettingBond.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingBond.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingBond;
+        static ["new"](): SettingBond;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingBond.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingBond.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingBond.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingBond.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingBond.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingBond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingBond.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingBond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Checks whether `name` is a valid bond option and `value` is a valid value for
          * the `name`. If `value` is `null`, the function only validates the option name.
@@ -5633,13 +6202,12 @@ export namespace NetworkManager {
         static validate_option(name: string, value: string): boolean;
 
         // Methods
-
         /**
          * Add an option to the table.  The option is compared to an internal list
          * of allowed options.  Option names may contain only alphanumeric characters
          * (ie [a-zA-Z0-9]).  Adding a new name replaces any existing name/value pair
          * that may already exist.
-         *
+         * 
          * The order of how to set several options is relevant because there are options
          * that conflict with each other.
          * @param name name for the option
@@ -5647,10 +6215,12 @@ export namespace NetworkManager {
          * @returns `true` if the option was valid and was added to the internal option list, `false` if it was not.
          */
         add_option(name: string, value: string): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingBond.interface_name} property of the setting
          */
         get_interface_name(): string;
+
         /**
          * Returns the number of options that should be set for this bond when it
          * is activated. This can be used to retrieve each option individually
@@ -5658,6 +6228,7 @@ export namespace NetworkManager {
          * @returns the number of bonding options
          */
         get_num_options(): number;
+
         /**
          * Given an index, return the value of the bonding option at that index.  Indexes
          * are *not* guaranteed to be static across modifications to options done by
@@ -5668,6 +6239,7 @@ export namespace NetworkManager {
          * @returns `true` on success if the index was valid and an option was found, `false` if the index was invalid (ie, greater than the number of options currently held by the setting)
          */
         get_option(idx: number): [boolean, string, string];
+
         /**
          * Returns the value associated with the bonding option specified by
          * `name`, if it exists.
@@ -5675,16 +6247,19 @@ export namespace NetworkManager {
          * @returns the value, or `null` if the key/value pair was never added to the setting; the value is owned by the setting and must not be modified
          */
         get_option_by_name(name: string): string;
+
         /**
          * @param name the name of the option
          * @returns the value of the bond option if not overridden by an entry in   the {@link NetworkManager.SettingBond.options} property.
          */
         get_option_default(name: string): string;
+
         /**
          * Returns a list of valid bond options.
          * @returns a `null`-terminated array of strings of valid bond options.
          */
         get_valid_options(): string[];
+
         /**
          * Remove the bonding option referenced by `name` from the internal option
          * list.
@@ -5694,21 +6269,21 @@ export namespace NetworkManager {
         remove_option(name: string): boolean;
     }
 
+
     namespace SettingBridge {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::ageing-time': (pspec: GObject.ParamSpec) => void;
-            'notify::forward-delay': (pspec: GObject.ParamSpec) => void;
-            'notify::hello-time': (pspec: GObject.ParamSpec) => void;
-            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::max-age': (pspec: GObject.ParamSpec) => void;
-            'notify::priority': (pspec: GObject.ParamSpec) => void;
-            'notify::stp': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::ageing-time": (pspec: GObject.ParamSpec) => void;
+            "notify::forward-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::hello-time": (pspec: GObject.ParamSpec) => void;
+            "notify::interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::max-age": (pspec: GObject.ParamSpec) => void;
+            "notify::priority": (pspec: GObject.ParamSpec) => void;
+            "notify::stp": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             ageing_time: number;
             ageingTime: number;
@@ -5732,67 +6307,76 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingBridge>;
 
         // Properties
-
         /**
          * The Ethernet MAC address aging time, in seconds.
          * @since 0.9.8
          */
         get ageing_time(): number;
         set ageing_time(val: number);
+
         /**
          * The Ethernet MAC address aging time, in seconds.
          * @since 0.9.8
          */
         get ageingTime(): number;
         set ageingTime(val: number);
+
         /**
          * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
          * @since 0.9.8
          */
         get forward_delay(): number;
         set forward_delay(val: number);
+
         /**
          * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
          * @since 0.9.8
          */
         get forwardDelay(): number;
         set forwardDelay(val: number);
+
         /**
          * The Spanning Tree Protocol (STP) hello time, in seconds.
          * @since 0.9.8
          */
         get hello_time(): number;
         set hello_time(val: number);
+
         /**
          * The Spanning Tree Protocol (STP) hello time, in seconds.
          * @since 0.9.8
          */
         get helloTime(): number;
         set helloTime(val: number);
+
         /**
          * The name of the virtual in-kernel bridging network interface
          * @since 0.9.8
          */
         get interface_name(): string;
         set interface_name(val: string);
+
         /**
          * The name of the virtual in-kernel bridging network interface
          * @since 0.9.8
          */
         get interfaceName(): string;
         set interfaceName(val: string);
+
         /**
          * The Spanning Tree Protocol (STP) maximum message age, in seconds.
          * @since 0.9.8
          */
         get max_age(): number;
         set max_age(val: number);
+
         /**
          * The Spanning Tree Protocol (STP) maximum message age, in seconds.
          * @since 0.9.8
          */
         get maxAge(): number;
         set maxAge(val: number);
+
         /**
          * Sets the Spanning Tree Protocol (STP) priority for this bridge.  Lower
          * values are "better"; the lowest priority bridge will be elected the root
@@ -5801,6 +6385,7 @@ export namespace NetworkManager {
          */
         get priority(): number;
         set priority(val: number);
+
         /**
          * Controls whether Spanning Tree Protocol (STP) is enabled for this bridge.
          * @since 0.9.8
@@ -5818,81 +6403,78 @@ export namespace NetworkManager {
         $signals: SettingBridge.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingBridge.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingBridge;
+        static ["new"](): SettingBridge;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingBridge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingBridge.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingBridge.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingBridge.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingBridge.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingBridge.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingBridge.ageing_time} property of the setting
          */
         get_ageing_time(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingBridge.forward_delay} property of the setting
          */
         get_forward_delay(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingBridge.hello_time} property of the setting
          */
         get_hello_time(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingBridge.interface_name} property of the setting
          */
         get_interface_name(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingBridge.mac_address} property of the setting
          */
         get_mac_address(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingBridge.max_age} property of the setting
          */
         get_max_age(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingBridge.priority} property of the setting
          */
         get_priority(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingBridge.stp} property of the setting
          */
         get_stp(): boolean;
     }
 
+
     namespace SettingBridgePort {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::hairpin-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::path-cost': (pspec: GObject.ParamSpec) => void;
-            'notify::priority': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::hairpin-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::path-cost": (pspec: GObject.ParamSpec) => void;
+            "notify::priority": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             hairpin_mode: boolean;
             hairpinMode: boolean;
@@ -5909,7 +6491,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingBridgePort>;
 
         // Properties
-
         /**
          * Enables or disables "hairpin mode" for the port, which allows frames to
          * be sent back out through the port the frame was received on.
@@ -5917,6 +6498,7 @@ export namespace NetworkManager {
          */
         get hairpin_mode(): boolean;
         set hairpin_mode(val: boolean);
+
         /**
          * Enables or disables "hairpin mode" for the port, which allows frames to
          * be sent back out through the port the frame was received on.
@@ -5924,6 +6506,7 @@ export namespace NetworkManager {
          */
         get hairpinMode(): boolean;
         set hairpinMode(val: boolean);
+
         /**
          * The Spanning Tree Protocol (STP) port cost for destinations via this
          * port.
@@ -5931,6 +6514,7 @@ export namespace NetworkManager {
          */
         get path_cost(): number;
         set path_cost(val: number);
+
         /**
          * The Spanning Tree Protocol (STP) port cost for destinations via this
          * port.
@@ -5938,6 +6522,7 @@ export namespace NetworkManager {
          */
         get pathCost(): number;
         set pathCost(val: number);
+
         /**
          * The Spanning Tree Protocol (STP) priority of this bridge port.
          * @since 0.9.8
@@ -5955,62 +6540,54 @@ export namespace NetworkManager {
         $signals: SettingBridgePort.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingBridgePort.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingBridgePort;
+        static ["new"](): SettingBridgePort;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingBridgePort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingBridgePort.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingBridgePort.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingBridgePort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingBridgePort.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingBridgePort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingBridgePort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingBridgePort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingBridgePort.hairpin_mode} property of the setting
          */
         get_hairpin_mode(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingBridgePort.path_cost} property of the setting
          */
         get_path_cost(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingBridgePort.priority} property of the setting
          */
         get_priority(): number;
     }
 
+
     namespace SettingCdma {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::number': (pspec: GObject.ParamSpec) => void;
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::number": (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::password-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             number: string;
             password: string;
@@ -6027,7 +6604,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingCdma>;
 
         // Properties
-
         /**
          * The number to dial to establish the connection to the CDMA-based mobile
          * broadband network, if any.  If not specified, the default number (#777)
@@ -6035,6 +6611,7 @@ export namespace NetworkManager {
          */
         get number(): string;
         set number(val: string);
+
         /**
          * The password used to authenticate with the network, if required.  Many
          * providers do not require a password, or accept any password.  But if a
@@ -6042,16 +6619,19 @@ export namespace NetworkManager {
          */
         get password(): string;
         set password(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingCdma.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingCdma.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
+
         /**
          * The username used to authenticate with the network, if required.  Many
          * providers do not require a username, or accept any username.  But if a
@@ -6070,73 +6650,66 @@ export namespace NetworkManager {
         $signals: SettingCdma.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingCdma.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingCdma;
+        static ["new"](): SettingCdma;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingCdma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingCdma.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingCdma.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingCdma.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingCdma.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingCdma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingCdma.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingCdma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingCdma.number} property of the setting
          */
         get_number(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingCdma.password} property of the setting
          */
         get_password(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingCdma.password}
          */
         get_password_flags(): SettingSecretFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingCdma.username} property of the setting
          */
         get_username(): string;
     }
 
+
     namespace SettingConnection {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::autoconnect': (pspec: GObject.ParamSpec) => void;
-            'notify::gateway-ping-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::master': (pspec: GObject.ParamSpec) => void;
-            'notify::read-only': (pspec: GObject.ParamSpec) => void;
-            'notify::slave-type': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::uuid': (pspec: GObject.ParamSpec) => void;
-            'notify::zone': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::autoconnect": (pspec: GObject.ParamSpec) => void;
+            "notify::gateway-ping-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::master": (pspec: GObject.ParamSpec) => void;
+            "notify::read-only": (pspec: GObject.ParamSpec) => void;
+            "notify::slave-type": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::uuid": (pspec: GObject.ParamSpec) => void;
+            "notify::zone": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             autoconnect: boolean;
             gateway_ping_timeout: number;
@@ -6149,7 +6722,7 @@ export namespace NetworkManager {
             readOnly: boolean;
             slave_type: string;
             slaveType: string;
-            timestamp: bigint | number;
+            timestamp: (bigint | number);
             type: string;
             uuid: string;
             zone: string;
@@ -6165,7 +6738,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingConnection>;
 
         // Properties
-
         /**
          * Whether or not the connection should be automatically connected by
          * NetworkManager when the resources for the connection are available.
@@ -6174,6 +6746,7 @@ export namespace NetworkManager {
          */
         get autoconnect(): boolean;
         set autoconnect(val: boolean);
+
         /**
          * If greater than zero, delay success of IP addressing until either the
          * timeout is reached, or an IP gateway replies to a ping.
@@ -6181,6 +6754,7 @@ export namespace NetworkManager {
          */
         get gateway_ping_timeout(): number;
         set gateway_ping_timeout(val: number);
+
         /**
          * If greater than zero, delay success of IP addressing until either the
          * timeout is reached, or an IP gateway replies to a ping.
@@ -6188,19 +6762,21 @@ export namespace NetworkManager {
          */
         get gatewayPingTimeout(): number;
         set gatewayPingTimeout(val: number);
+
         /**
          * A human readable unique identifier for the connection, like "Work Wi-Fi"
          * or "T-Mobile 3G".
          */
         get id(): string;
         set id(val: string);
+
         /**
          * The name of the network interface this connection is bound to. If not
          * set, then the connection can be attached to any interface of the
          * appropriate type (subject to restrictions imposed by other settings).
-         *
+         * 
          * For software devices this specifies the name of the created device.
-         *
+         * 
          * For connection types where interface names cannot easily be made
          * persistent (e.g. mobile broadband or USB Ethernet), this property should
          * not be used. Setting this property restricts the interfaces a connection
@@ -6210,13 +6786,14 @@ export namespace NetworkManager {
          */
         get interface_name(): string;
         set interface_name(val: string);
+
         /**
          * The name of the network interface this connection is bound to. If not
          * set, then the connection can be attached to any interface of the
          * appropriate type (subject to restrictions imposed by other settings).
-         *
+         * 
          * For software devices this specifies the name of the created device.
-         *
+         * 
          * For connection types where interface names cannot easily be made
          * persistent (e.g. mobile broadband or USB Ethernet), this property should
          * not be used. Setting this property restricts the interfaces a connection
@@ -6226,11 +6803,13 @@ export namespace NetworkManager {
          */
         get interfaceName(): string;
         set interfaceName(val: string);
+
         /**
          * Interface name of the master device or UUID of the master connection.
          */
         get master(): string;
         set master(val: string);
+
         /**
          * `false` if the connection can be modified using the provided settings
          * service's D-Bus interface with the right privileges, or `true` if the
@@ -6238,6 +6817,7 @@ export namespace NetworkManager {
          */
         get read_only(): boolean;
         set read_only(val: boolean);
+
         /**
          * `false` if the connection can be modified using the provided settings
          * service's D-Bus interface with the right privileges, or `true` if the
@@ -6245,6 +6825,7 @@ export namespace NetworkManager {
          */
         get readOnly(): boolean;
         set readOnly(val: boolean);
+
         /**
          * Setting name of the device type of this slave's master connection (eg,
          * `NM_SETTING_BOND_SETTING_NAME`), or `null` if this connection is not a
@@ -6252,6 +6833,7 @@ export namespace NetworkManager {
          */
         get slave_type(): string;
         set slave_type(val: string);
+
         /**
          * Setting name of the device type of this slave's master connection (eg,
          * `NM_SETTING_BOND_SETTING_NAME`), or `null` if this connection is not a
@@ -6259,17 +6841,19 @@ export namespace NetworkManager {
          */
         get slaveType(): string;
         set slaveType(val: string);
+
         /**
          * The time, in seconds since the Unix Epoch, that the connection was last
          * _successfully_ fully activated.
-         *
+         * 
          * NetworkManager updates the connection timestamp periodically when the
          * connection is active to ensure that an active connection has the latest
          * timestamp. The property is only meant for reading (changes to this
          * property will not be preserved).
          */
         get timestamp(): number;
-        set timestamp(val: bigint | number);
+        set timestamp(val: (bigint | number));
+
         /**
          * Base type of the connection. For hardware-dependent connections, should
          * contain the setting name of the hardware-type specific setting (ie,
@@ -6279,6 +6863,7 @@ export namespace NetworkManager {
          */
         get type(): string;
         set type(val: string);
+
         /**
          * A universally unique identifier for the connection, for example generated
          * with libuuid.  It should be assigned when the connection is created, and
@@ -6287,7 +6872,7 @@ export namespace NetworkManager {
          * {@link NetworkManager.SettingConnection.id} property or {@link NetworkManager.SettingIP4Config} changes, but
          * might need to be re-created when the Wi-Fi SSID, mobile broadband network
          * provider, or {@link NetworkManager.SettingConnection.type} property changes.
-         *
+         * 
          * The UUID must be in the format "2815492f-7e56-435e-b2e9-246bd7cdc664"
          * (ie, contains only hexadecimal characters and "-").  A suitable UUID may
          * be generated by `nm_utils_uuid_generate()` or
@@ -6295,6 +6880,7 @@ export namespace NetworkManager {
          */
         get uuid(): string;
         set uuid(val: string);
+
         /**
          * The trust level of a the connection.  Free form case-insensitive string
          * (for example "Home", "Work", "Public").  `null` or unspecified zone means
@@ -6314,36 +6900,26 @@ export namespace NetworkManager {
         $signals: SettingConnection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingConnection;
+        static ["new"](): SettingConnection;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingConnection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingConnection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingConnection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingConnection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingConnection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a permission to the connection's permission list.  At this time, only
          * the "user" permission type is supported, and `pitem` must be a username. See
@@ -6353,52 +6929,62 @@ export namespace NetworkManager {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was unique and was successfully added to the list, `false` if `ptype` or `pitem` was invalid or it the permission was already present in the list
          */
-        add_permission(ptype: string, pitem: string, detail: string | null): boolean;
+        add_permission(ptype: string, pitem: string, detail: (string | null)): boolean;
+
         /**
          * Adds a new secondary connection UUID to the setting.
          * @param sec_uuid the secondary connection UUID to add
          * @returns `true` if the secondary connection UUID was added; `false` if the UUID was already present
          */
         add_secondary(sec_uuid: string): boolean;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.autoconnect} property of the connection.
          * @returns the connection's autoconnect behavior
          */
         get_autoconnect(): boolean;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.type} property of the connection.
          * @returns the connection type
          */
         get_connection_type(): string;
+
         /**
          * @returns the value contained in the {@link NetworkManager.SettingConnection.gateway_ping_timeout} property.
          */
         get_gateway_ping_timeout(): number;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.id} property of the connection.
          * @returns the connection ID
          */
         get_id(): string;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.interface_name} property of the connection.
          * @returns the connection's interface name
          */
         get_interface_name(): string;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.master} property of the connection.
          * @returns interface name of the master device or UUID of the master connection.
          */
         get_master(): string;
+
         /**
          * Returns the number of entries in the {@link NetworkManager.SettingConnection.permissions}
          * property of this setting.
          * @returns the number of permissions entries
          */
         get_num_permissions(): number;
+
         /**
          * @returns the number of configured secondary connection UUIDs
          */
         get_num_secondaries(): number;
+
         /**
          * Retrieve one of the entries of the {@link NetworkManager.SettingConnection.permissions} property
          * of this setting.
@@ -6409,52 +6995,62 @@ export namespace NetworkManager {
          * @returns `true` if a permission was returned, `false` if `idx` was invalid
          */
         get_permission(idx: number, out_ptype: string, out_pitem: string, out_detail: string): boolean;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.read_only} property of the connection.
          * @returns `true` if the connection is read-only, `false` if it is not
          */
         get_read_only(): boolean;
+
         /**
          * @param idx the zero-based index of the secondary connection UUID entry
          * @returns the secondary connection UUID at index `idx`
          */
         get_secondary(idx: number): string;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.slave_type} property of the connection.
          * @returns the type of slave this connection is, if any
          */
         get_slave_type(): string;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.timestamp} property of the connection.
          * @returns the connection's timestamp
          */
         get_timestamp(): number;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.uuid} property of the connection.
          * @returns the connection UUID
          */
         get_uuid(): string;
+
         /**
          * Returns the {@link NetworkManager.SettingConnection.zone} property of the connection.
          * @returns the trust level of a connection
          */
         get_zone(): string;
+
         /**
          * @param type the setting name (ie #NM_SETTING_BOND_SETTING_NAME) to be matched against `setting`'s slave type
          * @returns `true` if connection is of the given slave `type`
          */
         is_slave_type(type: string): boolean;
+
         /**
          * Checks whether the given username is allowed to view/access this connection.
          * @param uname the user name to check permissions for
          * @returns `true` if the requested user is allowed to view this connection, `false` if the given user is not allowed to view this connection
          */
         permissions_user_allowed(uname: string): boolean;
+
         /**
          * Removes the permission at index `idx` from the connection.
          * @param idx the zero-based index of the permission to remove
          */
         remove_permission(idx: number): void;
+
         /**
          * Removes the permission from the connection.
          * At this time, only the "user" permission type is supported, and `pitem` must
@@ -6464,12 +7060,14 @@ export namespace NetworkManager {
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was found and removed; `false` if it was not.
          */
-        remove_permission_by_value(ptype: string, pitem: string, detail: string | null): boolean;
+        remove_permission_by_value(ptype: string, pitem: string, detail: (string | null)): boolean;
+
         /**
          * Removes the secondary coonnection UUID at index `idx`.
          * @param idx index number of the secondary connection UUID
          */
         remove_secondary(idx: number): void;
+
         /**
          * Removes the secondary coonnection UUID `sec_uuid`.
          * @param sec_uuid the secondary connection UUID to remove
@@ -6478,23 +7076,23 @@ export namespace NetworkManager {
         remove_secondary_by_value(sec_uuid: string): boolean;
     }
 
+
     namespace SettingDcb {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::app-fcoe-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::app-fcoe-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-fcoe-priority': (pspec: GObject.ParamSpec) => void;
-            'notify::app-fip-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::app-fip-priority': (pspec: GObject.ParamSpec) => void;
-            'notify::app-iscsi-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::app-iscsi-priority': (pspec: GObject.ParamSpec) => void;
-            'notify::priority-flow-control-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::priority-group-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::app-fcoe-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::app-fcoe-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-fcoe-priority": (pspec: GObject.ParamSpec) => void;
+            "notify::app-fip-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::app-fip-priority": (pspec: GObject.ParamSpec) => void;
+            "notify::app-iscsi-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::app-iscsi-priority": (pspec: GObject.ParamSpec) => void;
+            "notify::priority-flow-control-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::priority-group-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             app_fcoe_flags: number;
             appFcoeFlags: number;
@@ -6524,7 +7122,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingDcb>;
 
         // Properties
-
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB FCoE application.  Flags may
          * be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6533,6 +7130,7 @@ export namespace NetworkManager {
          */
         get app_fcoe_flags(): number;
         set app_fcoe_flags(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB FCoE application.  Flags may
          * be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6541,6 +7139,7 @@ export namespace NetworkManager {
          */
         get appFcoeFlags(): number;
         set appFcoeFlags(val: number);
+
         /**
          * The FCoE controller mode; either `NM_SETTING_DCB_FCOE_MODE_FABRIC`
          * (default) or `NM_SETTING_DCB_FCOE_MODE_VN2VN`.
@@ -6548,6 +7147,7 @@ export namespace NetworkManager {
          */
         get app_fcoe_mode(): string;
         set app_fcoe_mode(val: string);
+
         /**
          * The FCoE controller mode; either `NM_SETTING_DCB_FCOE_MODE_FABRIC`
          * (default) or `NM_SETTING_DCB_FCOE_MODE_VN2VN`.
@@ -6555,6 +7155,7 @@ export namespace NetworkManager {
          */
         get appFcoeMode(): string;
         set appFcoeMode(val: string);
+
         /**
          * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
          * default priority.  Only used when the {@link NetworkManager.SettingDcb.app_fcoe_flags}
@@ -6563,6 +7164,7 @@ export namespace NetworkManager {
          */
         get app_fcoe_priority(): number;
         set app_fcoe_priority(val: number);
+
         /**
          * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
          * default priority.  Only used when the {@link NetworkManager.SettingDcb.app_fcoe_flags}
@@ -6571,6 +7173,7 @@ export namespace NetworkManager {
          */
         get appFcoePriority(): number;
         set appFcoePriority(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB FIP application.  Flags may
          * be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6579,6 +7182,7 @@ export namespace NetworkManager {
          */
         get app_fip_flags(): number;
         set app_fip_flags(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB FIP application.  Flags may
          * be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6587,6 +7191,7 @@ export namespace NetworkManager {
          */
         get appFipFlags(): number;
         set appFipFlags(val: number);
+
         /**
          * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
          * default priority.  Only used when the {@link NetworkManager.SettingDcb.app_fip_flags}
@@ -6595,6 +7200,7 @@ export namespace NetworkManager {
          */
         get app_fip_priority(): number;
         set app_fip_priority(val: number);
+
         /**
          * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
          * default priority.  Only used when the {@link NetworkManager.SettingDcb.app_fip_flags}
@@ -6603,6 +7209,7 @@ export namespace NetworkManager {
          */
         get appFipPriority(): number;
         set appFipPriority(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB iSCSI application.  Flags
          * may be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6611,6 +7218,7 @@ export namespace NetworkManager {
          */
         get app_iscsi_flags(): number;
         set app_iscsi_flags(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB iSCSI application.  Flags
          * may be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6619,6 +7227,7 @@ export namespace NetworkManager {
          */
         get appIscsiFlags(): number;
         set appIscsiFlags(val: number);
+
         /**
          * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
          * for default priority. Only used when the {@link NetworkManager.SettingDcb.app_iscsi_flags}
@@ -6627,6 +7236,7 @@ export namespace NetworkManager {
          */
         get app_iscsi_priority(): number;
         set app_iscsi_priority(val: number);
+
         /**
          * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
          * for default priority. Only used when the {@link NetworkManager.SettingDcb.app_iscsi_flags}
@@ -6635,6 +7245,7 @@ export namespace NetworkManager {
          */
         get appIscsiPriority(): number;
         set appIscsiPriority(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for DCB Priority Flow Control (PFC).
          * Flags may be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6643,6 +7254,7 @@ export namespace NetworkManager {
          */
         get priority_flow_control_flags(): number;
         set priority_flow_control_flags(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for DCB Priority Flow Control (PFC).
          * Flags may be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6651,6 +7263,7 @@ export namespace NetworkManager {
          */
         get priorityFlowControlFlags(): number;
         set priorityFlowControlFlags(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for DCB Priority Groups.  Flags may be
          * any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6659,6 +7272,7 @@ export namespace NetworkManager {
          */
         get priority_group_flags(): number;
         set priority_group_flags(val: number);
+
         /**
          * Specifies the {@link NetworkManager.SettingDcbFlags} for DCB Priority Groups.  Flags may be
          * any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
@@ -6678,102 +7292,107 @@ export namespace NetworkManager {
         $signals: SettingDcb.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingDcb.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingDcb;
+        static ["new"](): SettingDcb;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingDcb.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingDcb.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingDcb.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingDcb.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingDcb.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingDcb.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingDcb.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingDcb.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fcoe_flags} property of the setting
          */
         get_app_fcoe_flags(): SettingDcbFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fcoe_mode} property of the setting
          */
         get_app_fcoe_mode(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fcoe_priority} property of the setting
          */
         get_app_fcoe_priority(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fip_flags} property of the setting
          */
         get_app_fip_flags(): SettingDcbFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fip_priority} property of the setting
          */
         get_app_fip_priority(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_iscsi_flags} property of the setting
          */
         get_app_iscsi_flags(): SettingDcbFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_iscsi_priority} property of the setting
          */
         get_app_iscsi_priority(): number;
+
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve the group bandwidth percentage for
          * @returns the allowed bandwidth percentage of `user_priority` in its priority group. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          */
         get_priority_bandwidth(user_priority: number): number;
+
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve flow control for
          * @returns `true` if flow control is enabled for the given `user_priority`, `false` if not enabled
          */
         get_priority_flow_control(user_priority: number): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingDcb.priority_flow_control_flags} property of the setting
          */
         get_priority_flow_control_flags(): SettingDcbFlags;
+
         /**
          * @param group_id the priority group (0 - 7) to retrieve the bandwidth percentage for
          * @returns the bandwidth percentage assigned to `group_id`.  These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          */
         get_priority_group_bandwidth(group_id: number): number;
+
         /**
          * @returns the {@link NetworkManager.SettingDcb.priority_group_flags} property of the setting
          */
         get_priority_group_flags(): SettingDcbFlags;
+
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve the group ID for
          * @returns the group number `user_priority` is assigned to.  These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          */
         get_priority_group_id(user_priority: number): number;
+
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve strict bandwidth for
          * @returns `true` if `user_priority` may use all of the bandwidth allocated to its assigned group, or `false` if not. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          */
         get_priority_strict_bandwidth(user_priority: number): boolean;
+
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve the traffic class for
          * @returns the traffic class assigned to `user_priority`. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          */
         get_priority_traffic_class(user_priority: number): number;
+
         /**
          * These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
@@ -6781,6 +7400,7 @@ export namespace NetworkManager {
          * @param bandwidth_percent the bandwidth percentage (0 - 100) that `user_priority` is allowed to use within its priority group
          */
         set_priority_bandwidth(user_priority: number, bandwidth_percent: number): void;
+
         /**
          * These values are only valid when {@link NetworkManager.SettingDcb.priority_flow_control} includes
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
@@ -6788,6 +7408,7 @@ export namespace NetworkManager {
          * @param enabled `true` to enable flow control for this priority, `false` to disable it
          */
         set_priority_flow_control(user_priority: number, enabled: boolean): void;
+
         /**
          * These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
@@ -6795,6 +7416,7 @@ export namespace NetworkManager {
          * @param bandwidth_percent the bandwidth percentage (0 - 100) to assign to `group_id` to
          */
         set_priority_group_bandwidth(group_id: number, bandwidth_percent: number): void;
+
         /**
          * These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
@@ -6802,6 +7424,7 @@ export namespace NetworkManager {
          * @param group_id the group (0 - 7) to assign `user_priority` to, or 15 for the unrestricted group.
          */
         set_priority_group_id(user_priority: number, group_id: number): void;
+
         /**
          * These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
@@ -6809,22 +7432,25 @@ export namespace NetworkManager {
          * @param strict `true` to allow `user_priority` to use all the bandwidth allocated to its priority group, or `false` if not
          */
         set_priority_strict_bandwidth(user_priority: number, strict: boolean): void;
+
         /**
-         * @param user_priority
-         * @param traffic_class
+         * @param user_priority 
+         * @param traffic_class 
          */
         set_priority_traffic_class(user_priority: number, traffic_class: number): void;
     }
 
+
     namespace SettingGeneric {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Setting.ConstructorProps {
 
-        interface ConstructorProps extends Setting.ConstructorProps {}
+        }
     }
 
     /**
@@ -6843,54 +7469,45 @@ export namespace NetworkManager {
         $signals: SettingGeneric.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingGeneric.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingGeneric;
+        static ["new"](): SettingGeneric;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingGeneric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingGeneric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingGeneric.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingGeneric.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingGeneric.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingGeneric.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace SettingGsm {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::allowed-bands': (pspec: GObject.ParamSpec) => void;
-            'notify::apn': (pspec: GObject.ParamSpec) => void;
-            'notify::home-only': (pspec: GObject.ParamSpec) => void;
-            'notify::network-id': (pspec: GObject.ParamSpec) => void;
-            'notify::network-type': (pspec: GObject.ParamSpec) => void;
-            'notify::number': (pspec: GObject.ParamSpec) => void;
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::pin': (pspec: GObject.ParamSpec) => void;
-            'notify::pin-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::allowed-bands": (pspec: GObject.ParamSpec) => void;
+            "notify::apn": (pspec: GObject.ParamSpec) => void;
+            "notify::home-only": (pspec: GObject.ParamSpec) => void;
+            "notify::network-id": (pspec: GObject.ParamSpec) => void;
+            "notify::network-type": (pspec: GObject.ParamSpec) => void;
+            "notify::number": (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::password-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::pin": (pspec: GObject.ParamSpec) => void;
+            "notify::pin-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             allowed_bands: number;
             allowedBands: number;
@@ -6919,7 +7536,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingGsm>;
 
         // Properties
-
         /**
          * Bitfield of allowed frequency bands.  Note that not all devices allow
          * frequency band control.  Permitted values are those specified by
@@ -6928,6 +7544,7 @@ export namespace NetworkManager {
          */
         get allowed_bands(): number;
         set allowed_bands(val: number);
+
         /**
          * Bitfield of allowed frequency bands.  Note that not all devices allow
          * frequency band control.  Permitted values are those specified by
@@ -6936,6 +7553,7 @@ export namespace NetworkManager {
          */
         get allowedBands(): number;
         set allowedBands(val: number);
+
         /**
          * The GPRS Access Point Name specifying the APN used when establishing a
          * data session with the GSM-based network.  The APN often determines how
@@ -6947,18 +7565,21 @@ export namespace NetworkManager {
          */
         get apn(): string;
         set apn(val: string);
+
         /**
          * When `true`, only connections to the home network will be allowed.
          * Connections to roaming networks will not be made.
          */
         get home_only(): boolean;
         set home_only(val: boolean);
+
         /**
          * When `true`, only connections to the home network will be allowed.
          * Connections to roaming networks will not be made.
          */
         get homeOnly(): boolean;
         set homeOnly(val: boolean);
+
         /**
          * The Network ID (GSM LAI format, ie MCC-MNC) to force specific network
          * registration.  If the Network ID is specified, NetworkManager will
@@ -6968,6 +7589,7 @@ export namespace NetworkManager {
          */
         get network_id(): string;
         set network_id(val: string);
+
         /**
          * The Network ID (GSM LAI format, ie MCC-MNC) to force specific network
          * registration.  If the Network ID is specified, NetworkManager will
@@ -6977,6 +7599,7 @@ export namespace NetworkManager {
          */
         get networkId(): string;
         set networkId(val: string);
+
         /**
          * Network preference to force the device to only use specific network
          * technologies. The permitted values are {@link NetworkManager.SettingGsmNetworkType.ANY},
@@ -6991,6 +7614,7 @@ export namespace NetworkManager {
          */
         get network_type(): number;
         set network_type(val: number);
+
         /**
          * Network preference to force the device to only use specific network
          * technologies. The permitted values are {@link NetworkManager.SettingGsmNetworkType.ANY},
@@ -7005,6 +7629,7 @@ export namespace NetworkManager {
          */
         get networkType(): number;
         set networkType(val: number);
+
         /**
          * Number to dial when establishing a PPP data session with the GSM-based
          * mobile broadband network.  Many modems do not require PPP for connections
@@ -7013,6 +7638,7 @@ export namespace NetworkManager {
          */
         get number(): string;
         set number(val: string);
+
         /**
          * The password used to authenticate with the network, if required.  Many
          * providers do not require a password, or accept any password.  But if a
@@ -7020,16 +7646,19 @@ export namespace NetworkManager {
          */
         get password(): string;
         set password(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingGsm.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingGsm.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
+
         /**
          * If the SIM is locked with a PIN it must be unlocked before any other
          * operations are requested.  Specify the PIN here to allow operation of the
@@ -7037,16 +7666,19 @@ export namespace NetworkManager {
          */
         get pin(): string;
         set pin(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingGsm.pin} property.
          */
         get pin_flags(): number;
         set pin_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingGsm.pin} property.
          */
         get pinFlags(): number;
         set pinFlags(val: number);
+
         /**
          * The username used to authenticate with the network, if required.  Many
          * providers do not require a username, or accept any username.  But if a
@@ -7065,100 +7697,100 @@ export namespace NetworkManager {
         $signals: SettingGsm.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingGsm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingGsm;
+        static ["new"](): SettingGsm;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingGsm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingGsm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingGsm.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingGsm.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingGsm.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingGsm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingGsm.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingGsm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingGsm.allowed_bands} property of the setting
          */
         get_allowed_bands(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingGsm.apn} property of the setting
          */
         get_apn(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingGsm.home_only} property of the setting
          */
         get_home_only(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingGsm.network_id} property of the setting
          */
         get_network_id(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingGsm.network_type} property of the setting
          */
         get_network_type(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingGsm.number} property of the setting
          */
         get_number(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingGsm.password} property of the setting
          */
         get_password(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingGsm.password}
          */
         get_password_flags(): SettingSecretFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingGsm.pin} property of the setting
          */
         get_pin(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingGsm.pin}
          */
         get_pin_flags(): SettingSecretFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingGsm.username} property of the setting
          */
         get_username(): string;
     }
 
+
     namespace SettingIP4Config {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::dhcp-client-id': (pspec: GObject.ParamSpec) => void;
-            'notify::dhcp-hostname': (pspec: GObject.ParamSpec) => void;
-            'notify::dhcp-send-hostname': (pspec: GObject.ParamSpec) => void;
-            'notify::dhcp-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::ignore-auto-dns': (pspec: GObject.ParamSpec) => void;
-            'notify::ignore-auto-routes': (pspec: GObject.ParamSpec) => void;
-            'notify::may-fail': (pspec: GObject.ParamSpec) => void;
-            'notify::method': (pspec: GObject.ParamSpec) => void;
-            'notify::never-default': (pspec: GObject.ParamSpec) => void;
-            'notify::route-metric': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::dhcp-client-id": (pspec: GObject.ParamSpec) => void;
+            "notify::dhcp-hostname": (pspec: GObject.ParamSpec) => void;
+            "notify::dhcp-send-hostname": (pspec: GObject.ParamSpec) => void;
+            "notify::dhcp-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::ignore-auto-dns": (pspec: GObject.ParamSpec) => void;
+            "notify::ignore-auto-routes": (pspec: GObject.ParamSpec) => void;
+            "notify::may-fail": (pspec: GObject.ParamSpec) => void;
+            "notify::method": (pspec: GObject.ParamSpec) => void;
+            "notify::never-default": (pspec: GObject.ParamSpec) => void;
+            "notify::route-metric": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             dhcp_client_id: string;
             dhcpClientId: string;
@@ -7177,8 +7809,8 @@ export namespace NetworkManager {
             method: string;
             never_default: boolean;
             neverDefault: boolean;
-            route_metric: bigint | number;
-            routeMetric: bigint | number;
+            route_metric: (bigint | number);
+            routeMetric: (bigint | number);
         }
     }
 
@@ -7189,31 +7821,34 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingIP4Config>;
 
         // Properties
-
         /**
          * A string sent to the DHCP server to identify the local machine which the
          * DHCP server may use to customize the DHCP lease and options.
          */
         get dhcp_client_id(): string;
         set dhcp_client_id(val: string);
+
         /**
          * A string sent to the DHCP server to identify the local machine which the
          * DHCP server may use to customize the DHCP lease and options.
          */
         get dhcpClientId(): string;
         set dhcpClientId(val: string);
+
         /**
          * If the {@link NetworkManager.SettingIP4Config.dhcp_send_hostname} property is `true`, then the
          * specified name will be sent to the DHCP server when acquiring a lease.
          */
         get dhcp_hostname(): string;
         set dhcp_hostname(val: string);
+
         /**
          * If the {@link NetworkManager.SettingIP4Config.dhcp_send_hostname} property is `true`, then the
          * specified name will be sent to the DHCP server when acquiring a lease.
          */
         get dhcpHostname(): string;
         set dhcpHostname(val: string);
+
         /**
          * If `true`, a hostname is sent to the DHCP server when acquiring a lease.
          * Some DHCP servers use this hostname to update DNS databases, essentially
@@ -7223,6 +7858,7 @@ export namespace NetworkManager {
          */
         get dhcp_send_hostname(): boolean;
         set dhcp_send_hostname(val: boolean);
+
         /**
          * If `true`, a hostname is sent to the DHCP server when acquiring a lease.
          * Some DHCP servers use this hostname to update DNS databases, essentially
@@ -7232,18 +7868,21 @@ export namespace NetworkManager {
          */
         get dhcpSendHostname(): boolean;
         set dhcpSendHostname(val: boolean);
+
         /**
          * Number of seconds after which the unfinished DHCP transaction fails
          * or zero for default.
          */
         get dhcp_timeout(): number;
         set dhcp_timeout(val: number);
+
         /**
          * Number of seconds after which the unfinished DHCP transaction fails
          * or zero for default.
          */
         get dhcpTimeout(): number;
         set dhcpTimeout(val: number);
+
         /**
          * When the method is set to "auto" and this property to `true`,
          * automatically configured nameservers and search domains are ignored and
@@ -7253,6 +7892,7 @@ export namespace NetworkManager {
          */
         get ignore_auto_dns(): boolean;
         set ignore_auto_dns(val: boolean);
+
         /**
          * When the method is set to "auto" and this property to `true`,
          * automatically configured nameservers and search domains are ignored and
@@ -7262,6 +7902,7 @@ export namespace NetworkManager {
          */
         get ignoreAutoDns(): boolean;
         set ignoreAutoDns(val: boolean);
+
         /**
          * When the method is set to "auto" and this property to `true`,
          * automatically configured routes are ignored and only routes specified in
@@ -7269,6 +7910,7 @@ export namespace NetworkManager {
          */
         get ignore_auto_routes(): boolean;
         set ignore_auto_routes(val: boolean);
+
         /**
          * When the method is set to "auto" and this property to `true`,
          * automatically configured routes are ignored and only routes specified in
@@ -7276,6 +7918,7 @@ export namespace NetworkManager {
          */
         get ignoreAutoRoutes(): boolean;
         set ignoreAutoRoutes(val: boolean);
+
         /**
          * If `true`, allow overall network configuration to proceed even if IPv4
          * configuration times out.  Note that at least one IP configuration must
@@ -7286,6 +7929,7 @@ export namespace NetworkManager {
          */
         get may_fail(): boolean;
         set may_fail(val: boolean);
+
         /**
          * If `true`, allow overall network configuration to proceed even if IPv4
          * configuration times out.  Note that at least one IP configuration must
@@ -7296,6 +7940,7 @@ export namespace NetworkManager {
          */
         get mayFail(): boolean;
         set mayFail(val: boolean);
+
         /**
          * IPv4 configuration method.  If "auto" is specified then the appropriate
          * automatic method (DHCP, PPP, etc) is used for the interface and most
@@ -7312,18 +7957,21 @@ export namespace NetworkManager {
          */
         get method(): string;
         set method(val: string);
+
         /**
          * If `true`, this connection will never be the default IPv4 connection,
          * meaning it will never be assigned the default route by NetworkManager.
          */
         get never_default(): boolean;
         set never_default(val: boolean);
+
         /**
          * If `true`, this connection will never be the default IPv4 connection,
          * meaning it will never be assigned the default route by NetworkManager.
          */
         get neverDefault(): boolean;
         set neverDefault(val: boolean);
+
         /**
          * The default metric for routes that don't explicitly specify a metric.
          * The default value -1 means that the metric is chosen automatically
@@ -7336,7 +7984,8 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get route_metric(): number;
-        set route_metric(val: bigint | number);
+        set route_metric(val: (bigint | number));
+
         /**
          * The default metric for routes that don't explicitly specify a metric.
          * The default value -1 means that the metric is chosen automatically
@@ -7349,7 +7998,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get routeMetric(): number;
-        set routeMetric(val: bigint | number);
+        set routeMetric(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -7361,36 +8010,26 @@ export namespace NetworkManager {
         $signals: SettingIP4Config.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingIP4Config.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingIP4Config;
+        static ["new"](): SettingIP4Config;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingIP4Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingIP4Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingIP4Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingIP4Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingIP4Config.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingIP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingIP4Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingIP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new IPv4 address and associated information to the setting.  The
          * given address is duplicated internally and is not changed by this function.
@@ -7398,18 +8037,21 @@ export namespace NetworkManager {
          * @returns `true` if the address was added; `false` if the address was already known.
          */
         add_address(address: IP4Address): boolean;
+
         /**
          * Adds a new DNS server to the setting.
          * @param dns the IPv4 address (network byte order) of the DNS server to add
          * @returns `true` if the DNS server was added; `false` if the server was already known
          */
         add_dns(dns: number): boolean;
+
         /**
          * Adds a new DNS search domain to the setting.
          * @param dns_search the search domain to add
          * @returns `true` if the DNS search domain was added; `false` if the search domain was already known
          */
         add_dns_search(dns_search: string): boolean;
+
         /**
          * Adds a new IPv4 route and associated information to the setting.  The
          * given route is duplicated internally and is not changed by this function.
@@ -7417,154 +8059,184 @@ export namespace NetworkManager {
          * @returns `true` if the route was added; `false` if the route was already known.
          */
         add_route(route: IP4Route): boolean;
+
         /**
          * Removes all configured addresses.
          */
         clear_addresses(): void;
+
         /**
          * Removes all configured DNS servers.
          */
         clear_dns(): void;
+
         /**
          * Removes all configured DNS search domains.
          */
         clear_dns_searches(): void;
+
         /**
          * Removes all configured routes.
          */
         clear_routes(): void;
+
         /**
          * @param i index number of the address to return
          * @returns the address at index `i`
          */
         get_address(i: number): IP4Address;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.dhcp_client_id}
          * property.
          * @returns the configured Client ID to send to the DHCP server when requesting addresses via DHCP.
          */
         get_dhcp_client_id(): string;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.dhcp_hostname}
          * property.
          * @returns the configured hostname to send to the DHCP server
          */
         get_dhcp_hostname(): string;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.dhcp_send_hostname}
          * property.
          * @returns `true` if NetworkManager should send the machine hostname to the DHCP server when requesting addresses to allow the server to automatically update DNS information for this machine.
          */
         get_dhcp_send_hostname(): boolean;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.dhcp_timeout}
          * property.
          * @returns The number of seconds after which unfinished DHCP transaction fails or zero for "default".
          */
         get_dhcp_timeout(): number;
+
         /**
          * @param i index number of the DNS server to return
          * @returns the IPv4 address (network byte order) of the DNS server at index `i`
          */
         get_dns(i: number): number;
+
         /**
          * @param i index number of the DNS search domain to return
          * @returns the DNS search domain at index `i`
          */
         get_dns_search(i: number): string;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.ignore_auto_dns}
          * property.
          * @returns `true` if automatically configured (ie via DHCP) DNS information should be ignored.
          */
         get_ignore_auto_dns(): boolean;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.ignore_auto_routes}
          * property.
          * @returns `true` if automatically configured (ie via DHCP) routes should be ignored.
          */
         get_ignore_auto_routes(): boolean;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.may_fail}
          * property.
          * @returns `true` if this connection doesn't require IPv4 addressing to complete for the connection to succeed.
          */
         get_may_fail(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingIP4Config.method} property of the setting
          */
         get_method(): string;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.never_default}
          * property.
          * @returns `true` if this connection should never be the default connection for IPv4 addressing
          */
         get_never_default(): boolean;
+
         /**
          * @returns the number of configured addresses
          */
         get_num_addresses(): number;
+
         /**
          * @returns the number of configured DNS servers
          */
         get_num_dns(): number;
+
         /**
          * @returns the number of configured DNS search domains
          */
         get_num_dns_searches(): number;
+
         /**
          * @returns the number of configured routes
          */
         get_num_routes(): number;
+
         /**
          * @param i index number of the route to return
          * @returns the route at index `i`
          */
         get_route(i: number): IP4Route;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.route_metric}
          * property.
          * @returns the route metric that is used for IPv4 routes that don't explicitly specify a metric. See {@link NetworkManager.SettingIP4Config.route_metric} for more details.
          */
         get_route_metric(): number;
+
         /**
          * Removes the address at index `i`.
          * @param i index number of the address to remove
          */
         remove_address(i: number): void;
+
         /**
          * Removes the address `address`.
          * @param address the IP address to remove
          * @returns `true` if the address was found and removed; `false` if it was not.
          */
         remove_address_by_value(address: IP4Address): boolean;
+
         /**
          * Removes the DNS server at index `i`.
          * @param i index number of the DNS server to remove
          */
         remove_dns(i: number): void;
+
         /**
          * Removes the DNS server `dns`.
          * @param dns the DNS server to remove
          * @returns `true` if the DNS server was found and removed; `false` if it was not. domain was already known
          */
         remove_dns_by_value(dns: number): boolean;
+
         /**
          * Removes the DNS search domain at index `i`.
          * @param i index number of the DNS search domain
          */
         remove_dns_search(i: number): void;
+
         /**
          * Removes the DNS search domain `dns_search`.
          * @param dns_search the search domain to remove
          * @returns `true` if the DNS search domain was found and removed; `false` if it was not. Since 0.9.10
          */
         remove_dns_search_by_value(dns_search: string): boolean;
+
         /**
          * Removes the route at index `i`.
          * @param i index number of the route
          */
         remove_route(i: number): void;
+
         /**
          * Removes the route `route`.
          * @param route the route to remove
@@ -7573,22 +8245,22 @@ export namespace NetworkManager {
         remove_route_by_value(route: IP4Route): boolean;
     }
 
+
     namespace SettingIP6Config {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::dhcp-hostname': (pspec: GObject.ParamSpec) => void;
-            'notify::ignore-auto-dns': (pspec: GObject.ParamSpec) => void;
-            'notify::ignore-auto-routes': (pspec: GObject.ParamSpec) => void;
-            'notify::ip6-privacy': (pspec: GObject.ParamSpec) => void;
-            'notify::may-fail': (pspec: GObject.ParamSpec) => void;
-            'notify::method': (pspec: GObject.ParamSpec) => void;
-            'notify::never-default': (pspec: GObject.ParamSpec) => void;
-            'notify::route-metric': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::dhcp-hostname": (pspec: GObject.ParamSpec) => void;
+            "notify::ignore-auto-dns": (pspec: GObject.ParamSpec) => void;
+            "notify::ignore-auto-routes": (pspec: GObject.ParamSpec) => void;
+            "notify::ip6-privacy": (pspec: GObject.ParamSpec) => void;
+            "notify::may-fail": (pspec: GObject.ParamSpec) => void;
+            "notify::method": (pspec: GObject.ParamSpec) => void;
+            "notify::never-default": (pspec: GObject.ParamSpec) => void;
+            "notify::route-metric": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             dhcp_hostname: string;
             dhcpHostname: string;
@@ -7603,8 +8275,8 @@ export namespace NetworkManager {
             method: string;
             never_default: boolean;
             neverDefault: boolean;
-            route_metric: bigint | number;
-            routeMetric: bigint | number;
+            route_metric: (bigint | number);
+            routeMetric: (bigint | number);
         }
     }
 
@@ -7615,7 +8287,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingIP6Config>;
 
         // Properties
-
         /**
          * The specified name will be sent to the DHCP server when acquiring a
          * lease.
@@ -7623,6 +8294,7 @@ export namespace NetworkManager {
          */
         get dhcp_hostname(): string;
         set dhcp_hostname(val: string);
+
         /**
          * The specified name will be sent to the DHCP server when acquiring a
          * lease.
@@ -7630,6 +8302,7 @@ export namespace NetworkManager {
          */
         get dhcpHostname(): string;
         set dhcpHostname(val: string);
+
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
          * `true`, automatically configured nameservers and search domains are
@@ -7639,6 +8312,7 @@ export namespace NetworkManager {
          */
         get ignore_auto_dns(): boolean;
         set ignore_auto_dns(val: boolean);
+
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
          * `true`, automatically configured nameservers and search domains are
@@ -7648,6 +8322,7 @@ export namespace NetworkManager {
          */
         get ignoreAutoDns(): boolean;
         set ignoreAutoDns(val: boolean);
+
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
          * `true`, automatically configured routes are ignored and only routes
@@ -7655,6 +8330,7 @@ export namespace NetworkManager {
          */
         get ignore_auto_routes(): boolean;
         set ignore_auto_routes(val: boolean);
+
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
          * `true`, automatically configured routes are ignored and only routes
@@ -7662,6 +8338,7 @@ export namespace NetworkManager {
          */
         get ignoreAutoRoutes(): boolean;
         set ignoreAutoRoutes(val: boolean);
+
         /**
          * Configure IPv6 Privacy Extensions for SLAAC, described in RFC4941.  If
          * enabled, it makes the kernel generate a temporary IPv6 address in
@@ -7673,6 +8350,7 @@ export namespace NetworkManager {
          */
         get ip6_privacy(): number;
         set ip6_privacy(val: number);
+
         /**
          * Configure IPv6 Privacy Extensions for SLAAC, described in RFC4941.  If
          * enabled, it makes the kernel generate a temporary IPv6 address in
@@ -7684,6 +8362,7 @@ export namespace NetworkManager {
          */
         get ip6Privacy(): number;
         set ip6Privacy(val: number);
+
         /**
          * If `true`, allow overall network configuration to proceed even if IPv6
          * configuration times out.  Note that at least one IP configuration must
@@ -7694,6 +8373,7 @@ export namespace NetworkManager {
          */
         get may_fail(): boolean;
         set may_fail(val: boolean);
+
         /**
          * If `true`, allow overall network configuration to proceed even if IPv6
          * configuration times out.  Note that at least one IP configuration must
@@ -7704,6 +8384,7 @@ export namespace NetworkManager {
          */
         get mayFail(): boolean;
         set mayFail(val: boolean);
+
         /**
          * IPv6 configuration method.  If "auto" is specified then the appropriate
          * automatic method (PPP, router advertisement, etc) is used for the device
@@ -7718,6 +8399,7 @@ export namespace NetworkManager {
          */
         get method(): string;
         set method(val: string);
+
         /**
          * If `true`, this connection will never be the default IPv6 connection,
          * meaning it will never be assigned the default IPv6 route by
@@ -7725,6 +8407,7 @@ export namespace NetworkManager {
          */
         get never_default(): boolean;
         set never_default(val: boolean);
+
         /**
          * If `true`, this connection will never be the default IPv6 connection,
          * meaning it will never be assigned the default IPv6 route by
@@ -7732,6 +8415,7 @@ export namespace NetworkManager {
          */
         get neverDefault(): boolean;
         set neverDefault(val: boolean);
+
         /**
          * The default metric for routes that don't explicitly specify a metric.
          * The default value -1 means that the metric is chosen automatically
@@ -7744,7 +8428,8 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get route_metric(): number;
-        set route_metric(val: bigint | number);
+        set route_metric(val: (bigint | number));
+
         /**
          * The default metric for routes that don't explicitly specify a metric.
          * The default value -1 means that the metric is chosen automatically
@@ -7757,7 +8442,7 @@ export namespace NetworkManager {
          * @since 1.0
          */
         get routeMetric(): number;
-        set routeMetric(val: bigint | number);
+        set routeMetric(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -7769,36 +8454,26 @@ export namespace NetworkManager {
         $signals: SettingIP6Config.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingIP6Config.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingIP6Config;
+        static ["new"](): SettingIP6Config;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingIP6Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingIP6Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingIP6Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingIP6Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingIP6Config.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingIP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingIP6Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingIP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new IPv6 address and associated information to the setting.  The
          * given address is duplicated internally and is not changed by this function.
@@ -7806,18 +8481,21 @@ export namespace NetworkManager {
          * @returns `true` if the address was added; `false` if the address was already known.
          */
         add_address(address: IP6Address): boolean;
+
         /**
          * Adds a new DNS server to the setting.
          * @param dns the IPv6 address of the DNS server to add
          * @returns `true` if the DNS server was added; `false` if the server was already known
          */
-        add_dns(dns: any | null): boolean;
+        add_dns(dns: (any | null)): boolean;
+
         /**
          * Adds a new DNS search domain to the setting.
          * @param dns_search the search domain to add
          * @returns `true` if the DNS search domain was added; `false` if the search domain was already known
          */
         add_dns_search(dns_search: string): boolean;
+
         /**
          * Adds a new IPv6 route and associated information to the setting.  The
          * given route is duplicated internally and is not changed by this function.
@@ -7825,142 +8503,170 @@ export namespace NetworkManager {
          * @returns `true` if the route was added; `false` if the route was already known.
          */
         add_route(route: IP6Route): boolean;
+
         /**
          * Removes all configured addresses.
          */
         clear_addresses(): void;
+
         /**
          * Removes all configured DNS servers.
          */
         clear_dns(): void;
+
         /**
          * Removes all configured DNS search domains.
          */
         clear_dns_searches(): void;
+
         /**
          * Removes all configured routes.
          */
         clear_routes(): void;
+
         /**
          * @param i index number of the address to return
          * @returns the address at index `i`
          */
         get_address(i: number): IP6Address;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.dhcp_hostname}
          * property.
          * @returns the configured hostname to send to the DHCP server
          */
         get_dhcp_hostname(): string;
+
         /**
          * @param i index number of the DNS server to return
          * @returns the IPv6 address of the DNS server at index `i`
          */
-        get_dns(i: number): any | null;
+        get_dns(i: number): (any | null);
+
         /**
          * @param i index number of the DNS search domain to return
          * @returns the DNS search domain at index `i`
          */
         get_dns_search(i: number): string;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.ignore_auto_dns}
          * property.
          * @returns `true` if automatically configured (ie via DHCP or router advertisements) DNS information should be ignored.
          */
         get_ignore_auto_dns(): boolean;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.ignore_auto_routes}
          * property.
          * @returns `true` if automatically configured (ie via DHCP) routes should be ignored.
          */
         get_ignore_auto_routes(): boolean;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.ip6_privacy}
          * property.
          * @returns IPv6 Privacy Extensions configuration value ({@link NetworkManager.SettingIP6ConfigPrivacy}).
          */
         get_ip6_privacy(): SettingIP6ConfigPrivacy;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.may_fail}
          * property.
          * @returns `true` if this connection doesn't require IPv6 addressing to complete for the connection to succeed.
          */
         get_may_fail(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingIP6Config.method} property of the setting
          */
         get_method(): string;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.never_default}
          * property.
          * @returns `true` if this connection should never be the default connection for IPv6 addressing
          */
         get_never_default(): boolean;
+
         /**
          * @returns the number of configured addresses
          */
         get_num_addresses(): number;
+
         /**
          * @returns the number of configured DNS servers
          */
         get_num_dns(): number;
+
         /**
          * @returns the number of configured DNS search domains
          */
         get_num_dns_searches(): number;
+
         /**
          * @returns the number of configured routes
          */
         get_num_routes(): number;
+
         /**
          * @param i index number of the route to return
          * @returns the route at index `i`
          */
         get_route(i: number): IP6Route;
+
         /**
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.route_metric}
          * property.
          * @returns the route metric that is used for IPv6 routes that don't explicitly specify a metric. See {@link NetworkManager.SettingIP6Config.route_metric} for more details.
          */
         get_route_metric(): number;
+
         /**
          * Removes the address at index `i`.
          * @param i index number of the address to remove
          */
         remove_address(i: number): void;
+
         /**
          * Removes the address `address`.
          * @param address the address to remove
          * @returns `true` if the address was found and removed; `false` if it was not.
          */
         remove_address_by_value(address: IP6Address): boolean;
+
         /**
          * Removes the DNS server at index `i`.
          * @param i index number of the DNS server to remove
          */
         remove_dns(i: number): void;
+
         /**
          * Removes the DNS server at index `i`.
          * @param dns the IPv6 address of the DNS server to remove
          * @returns `true` if the DNS server was found and removed; `false` if it was not.
          */
-        remove_dns_by_value(dns: any | null): boolean;
+        remove_dns_by_value(dns: (any | null)): boolean;
+
         /**
          * Removes the DNS search domain at index `i`.
          * @param i index number of the DNS search domain
          */
         remove_dns_search(i: number): void;
+
         /**
          * Removes the DNS search domain `dns_search`.
          * @param dns_search the search domain to remove
          * @returns `true` if the DNS search domain was found and removed; `false` if it was not. Since 0.9.10
          */
         remove_dns_search_by_value(dns_search: string): boolean;
+
         /**
          * Removes the route at index `i`.
          * @param i index number of the route
          */
         remove_route(i: number): void;
+
         /**
          * Removes the route `route`.
          * @param route the route to remove
@@ -7969,18 +8675,18 @@ export namespace NetworkManager {
         remove_route_by_value(route: IP6Route): boolean;
     }
 
+
     namespace SettingInfiniband {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::mtu': (pspec: GObject.ParamSpec) => void;
-            'notify::p-key': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::transport-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::mtu": (pspec: GObject.ParamSpec) => void;
+            "notify::p-key": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::transport-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             mtu: number;
             p_key: number;
@@ -7998,13 +8704,13 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingInfiniband>;
 
         // Properties
-
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple frames.
          */
         get mtu(): number;
         set mtu(val: number);
+
         /**
          * The InfiniBand P_Key to use for this device. A value of -1 means to use
          * the default P_Key (aka "the P_Key at index 0").  Otherwise it is a 16-bit
@@ -8013,6 +8719,7 @@ export namespace NetworkManager {
          */
         get p_key(): number;
         set p_key(val: number);
+
         /**
          * The InfiniBand P_Key to use for this device. A value of -1 means to use
          * the default P_Key (aka "the P_Key at index 0").  Otherwise it is a 16-bit
@@ -8021,6 +8728,7 @@ export namespace NetworkManager {
          */
         get pKey(): number;
         set pKey(val: number);
+
         /**
          * The interface name of the parent device of this device. Normally `null`,
          * but if the {@link NetworkManager.SettingInfiniband.p_key} property is set, then you must
@@ -8029,12 +8737,14 @@ export namespace NetworkManager {
          */
         get parent(): string;
         set parent(val: string);
+
         /**
          * The IP-over-InfiniBand transport mode. Either "datagram" or
          * "connected".
          */
         get transport_mode(): string;
         set transport_mode(val: string);
+
         /**
          * The IP-over-InfiniBand transport mode. Either "datagram" or
          * "connected".
@@ -8052,44 +8762,36 @@ export namespace NetworkManager {
         $signals: SettingInfiniband.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingInfiniband.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingInfiniband;
+        static ["new"](): SettingInfiniband;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingInfiniband.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingInfiniband.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingInfiniband.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingInfiniband.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingInfiniband.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingInfiniband.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingInfiniband.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingInfiniband.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingInfiniband.mac_address} property of the setting
          */
         get_mac_address(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingInfiniband.mtu} property of the setting
          */
         get_mtu(): number;
+
         /**
          * Returns the P_Key to use for this device. A value of -1 means to
          * use the default P_Key (aka "the P_Key at index 0"). Otherwise it is
@@ -8097,11 +8799,13 @@ export namespace NetworkManager {
          * @returns the IPoIB P_Key
          */
         get_p_key(): number;
+
         /**
          * Returns the parent interface name for this device, if set.
          * @returns the parent interface name
          */
         get_parent(): string;
+
         /**
          * Returns the transport mode for this device. Either 'datagram' or
          * 'connected'.
@@ -8110,15 +8814,15 @@ export namespace NetworkManager {
         get_transport_mode(): string;
     }
 
+
     namespace SettingOlpcMesh {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::channel': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::channel": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             channel: number;
         }
@@ -8131,7 +8835,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingOlpcMesh>;
 
         // Properties
-
         /**
          * Channel on which the mesh network to join is located.
          */
@@ -8148,68 +8851,60 @@ export namespace NetworkManager {
         $signals: SettingOlpcMesh.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingOlpcMesh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingOlpcMesh;
+        static ["new"](): SettingOlpcMesh;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingOlpcMesh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingOlpcMesh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingOlpcMesh.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingOlpcMesh.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingOlpcMesh.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingOlpcMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingOlpcMesh.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingOlpcMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_channel(): number;
+
         get_dhcp_anycast_address(): Uint8Array;
+
         get_ssid(): Uint8Array;
     }
+
 
     namespace SettingPPP {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::baud': (pspec: GObject.ParamSpec) => void;
-            'notify::crtscts': (pspec: GObject.ParamSpec) => void;
-            'notify::lcp-echo-failure': (pspec: GObject.ParamSpec) => void;
-            'notify::lcp-echo-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::mppe-stateful': (pspec: GObject.ParamSpec) => void;
-            'notify::mru': (pspec: GObject.ParamSpec) => void;
-            'notify::mtu': (pspec: GObject.ParamSpec) => void;
-            'notify::no-vj-comp': (pspec: GObject.ParamSpec) => void;
-            'notify::noauth': (pspec: GObject.ParamSpec) => void;
-            'notify::nobsdcomp': (pspec: GObject.ParamSpec) => void;
-            'notify::nodeflate': (pspec: GObject.ParamSpec) => void;
-            'notify::refuse-chap': (pspec: GObject.ParamSpec) => void;
-            'notify::refuse-eap': (pspec: GObject.ParamSpec) => void;
-            'notify::refuse-mschap': (pspec: GObject.ParamSpec) => void;
-            'notify::refuse-mschapv2': (pspec: GObject.ParamSpec) => void;
-            'notify::refuse-pap': (pspec: GObject.ParamSpec) => void;
-            'notify::require-mppe': (pspec: GObject.ParamSpec) => void;
-            'notify::require-mppe-128': (pspec: GObject.ParamSpec) => void;
-            'notify::require-mppe128': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::baud": (pspec: GObject.ParamSpec) => void;
+            "notify::crtscts": (pspec: GObject.ParamSpec) => void;
+            "notify::lcp-echo-failure": (pspec: GObject.ParamSpec) => void;
+            "notify::lcp-echo-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::mppe-stateful": (pspec: GObject.ParamSpec) => void;
+            "notify::mru": (pspec: GObject.ParamSpec) => void;
+            "notify::mtu": (pspec: GObject.ParamSpec) => void;
+            "notify::no-vj-comp": (pspec: GObject.ParamSpec) => void;
+            "notify::noauth": (pspec: GObject.ParamSpec) => void;
+            "notify::nobsdcomp": (pspec: GObject.ParamSpec) => void;
+            "notify::nodeflate": (pspec: GObject.ParamSpec) => void;
+            "notify::refuse-chap": (pspec: GObject.ParamSpec) => void;
+            "notify::refuse-eap": (pspec: GObject.ParamSpec) => void;
+            "notify::refuse-mschap": (pspec: GObject.ParamSpec) => void;
+            "notify::refuse-mschapv2": (pspec: GObject.ParamSpec) => void;
+            "notify::refuse-pap": (pspec: GObject.ParamSpec) => void;
+            "notify::require-mppe": (pspec: GObject.ParamSpec) => void;
+            "notify::require-mppe-128": (pspec: GObject.ParamSpec) => void;
+            "notify::require-mppe128": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             baud: number;
             crtscts: boolean;
@@ -8250,7 +8945,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingPPP>;
 
         // Properties
-
         /**
          * If non-zero, instruct pppd to set the serial port to the specified
          * baudrate.  This value should normally be left as 0 to automatically
@@ -8258,6 +8952,7 @@ export namespace NetworkManager {
          */
         get baud(): number;
         set baud(val: number);
+
         /**
          * If `true`, specify that pppd should set the serial port to use hardware
          * flow control with RTS and CTS signals.  This value should normally be set
@@ -8265,6 +8960,7 @@ export namespace NetworkManager {
          */
         get crtscts(): boolean;
         set crtscts(val: boolean);
+
         /**
          * If non-zero, instruct pppd to presume the connection to the peer has
          * failed if the specified number of LCP echo-requests go unanswered by the
@@ -8273,6 +8969,7 @@ export namespace NetworkManager {
          */
         get lcp_echo_failure(): number;
         set lcp_echo_failure(val: number);
+
         /**
          * If non-zero, instruct pppd to presume the connection to the peer has
          * failed if the specified number of LCP echo-requests go unanswered by the
@@ -8281,6 +8978,7 @@ export namespace NetworkManager {
          */
         get lcpEchoFailure(): number;
         set lcpEchoFailure(val: number);
+
         /**
          * If non-zero, instruct pppd to send an LCP echo-request frame to the peer
          * every n seconds (where n is the specified value).  Note that some PPP
@@ -8289,6 +8987,7 @@ export namespace NetworkManager {
          */
         get lcp_echo_interval(): number;
         set lcp_echo_interval(val: number);
+
         /**
          * If non-zero, instruct pppd to send an LCP echo-request frame to the peer
          * every n seconds (where n is the specified value).  Note that some PPP
@@ -8297,18 +8996,21 @@ export namespace NetworkManager {
          */
         get lcpEchoInterval(): number;
         set lcpEchoInterval(val: number);
+
         /**
          * If `true`, stateful MPPE is used.  See pppd documentation for more
          * information on stateful MPPE.
          */
         get mppe_stateful(): boolean;
         set mppe_stateful(val: boolean);
+
         /**
          * If `true`, stateful MPPE is used.  See pppd documentation for more
          * information on stateful MPPE.
          */
         get mppeStateful(): boolean;
         set mppeStateful(val: boolean);
+
         /**
          * If non-zero, instruct pppd to request that the peer send packets no
          * larger than the specified size.  If non-zero, the MRU should be between
@@ -8316,22 +9018,26 @@ export namespace NetworkManager {
          */
         get mru(): number;
         set mru(val: number);
+
         /**
          * If non-zero, instruct pppd to send packets no larger than the specified
          * size.
          */
         get mtu(): number;
         set mtu(val: number);
+
         /**
          * If `true`, Van Jacobsen TCP header compression will not be requested.
          */
         get no_vj_comp(): boolean;
         set no_vj_comp(val: boolean);
+
         /**
          * If `true`, Van Jacobsen TCP header compression will not be requested.
          */
         get noVjComp(): boolean;
         set noVjComp(val: boolean);
+
         /**
          * If `true`, do not require the other side (usually the PPP server) to
          * authenticate itself to the client.  If `false`, require authentication
@@ -8339,66 +9045,79 @@ export namespace NetworkManager {
          */
         get noauth(): boolean;
         set noauth(val: boolean);
+
         /**
          * If `true`, BSD compression will not be requested.
          */
         get nobsdcomp(): boolean;
         set nobsdcomp(val: boolean);
+
         /**
          * If `true`, "deflate" compression will not be requested.
          */
         get nodeflate(): boolean;
         set nodeflate(val: boolean);
+
         /**
          * If `true`, the CHAP authentication method will not be used.
          */
         get refuse_chap(): boolean;
         set refuse_chap(val: boolean);
+
         /**
          * If `true`, the CHAP authentication method will not be used.
          */
         get refuseChap(): boolean;
         set refuseChap(val: boolean);
+
         /**
          * If `true`, the EAP authentication method will not be used.
          */
         get refuse_eap(): boolean;
         set refuse_eap(val: boolean);
+
         /**
          * If `true`, the EAP authentication method will not be used.
          */
         get refuseEap(): boolean;
         set refuseEap(val: boolean);
+
         /**
          * If `true`, the MSCHAP authentication method will not be used.
          */
         get refuse_mschap(): boolean;
         set refuse_mschap(val: boolean);
+
         /**
          * If `true`, the MSCHAP authentication method will not be used.
          */
         get refuseMschap(): boolean;
         set refuseMschap(val: boolean);
+
         /**
          * If `true`, the MSCHAPv2 authentication method will not be used.
          */
         get refuse_mschapv2(): boolean;
         set refuse_mschapv2(val: boolean);
+
         /**
          * If `true`, the MSCHAPv2 authentication method will not be used.
          */
         get refuseMschapv2(): boolean;
         set refuseMschapv2(val: boolean);
+
         /**
          * If `true`, the PAP authentication method will not be used.
          */
         get refuse_pap(): boolean;
         set refuse_pap(val: boolean);
+
         /**
          * If `true`, the PAP authentication method will not be used.
          */
         get refusePap(): boolean;
         set refusePap(val: boolean);
+
         /**
          * If `true`, MPPE (Microsoft Point-to-Point Encryption) will be required for
          * the PPP session.  If either 64-bit or 128-bit MPPE is not available the
@@ -8407,6 +9126,7 @@ export namespace NetworkManager {
          */
         get require_mppe(): boolean;
         set require_mppe(val: boolean);
+
         /**
          * If `true`, MPPE (Microsoft Point-to-Point Encryption) will be required for
          * the PPP session.  If either 64-bit or 128-bit MPPE is not available the
@@ -8415,6 +9135,7 @@ export namespace NetworkManager {
          */
         get requireMppe(): boolean;
         set requireMppe(val: boolean);
+
         /**
          * If `true`, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
          * required for the PPP session, and the "require-mppe" property must also
@@ -8422,6 +9143,7 @@ export namespace NetworkManager {
          */
         get require_mppe_128(): boolean;
         set require_mppe_128(val: boolean);
+
         /**
          * If `true`, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
          * required for the PPP session, and the "require-mppe" property must also
@@ -8440,122 +9162,129 @@ export namespace NetworkManager {
         $signals: SettingPPP.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingPPP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingPPP;
+        static ["new"](): SettingPPP;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingPPP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingPPP.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingPPP.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingPPP.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingPPP.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingPPP.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingPPP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingPPP.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingPPP.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingPPP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingPPP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingPPP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingPPP.baud} property of the setting
          */
         get_baud(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.crtscts} property of the setting
          */
         get_crtscts(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.lcp_echo_failure} property of the setting
          */
         get_lcp_echo_failure(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.lcp_echo_interval} property of the setting
          */
         get_lcp_echo_interval(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.mppe_stateful} property of the setting
          */
         get_mppe_stateful(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.mru} property of the setting
          */
         get_mru(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.mtu} property of the setting
          */
         get_mtu(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.no_vj_comp} property of the setting
          */
         get_no_vj_comp(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.noauth} property of the setting
          */
         get_noauth(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.nobsdcomp} property of the setting
          */
         get_nobsdcomp(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.nodeflate} property of the setting
          */
         get_nodeflate(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.refuse_chap} property of the setting
          */
         get_refuse_chap(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.refuse_eap} property of the setting
          */
         get_refuse_eap(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.refuse_mschap} property of the setting
          */
         get_refuse_mschap(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.refuse_mschapv2} property of the setting
          */
         get_refuse_mschapv2(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.refuse_pap} property of the setting
          */
         get_refuse_pap(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.require_mppe} property of the setting
          */
         get_require_mppe(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingPPP.require_mppe_128} property of the setting
          */
         get_require_mppe_128(): boolean;
     }
 
+
     namespace SettingPPPOE {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::password-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::service': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::password-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::service": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             password: string;
             password_flags: number;
@@ -8572,22 +9301,24 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingPPPOE>;
 
         // Properties
-
         /**
          * Password used to authenticate with the PPPoE service.
          */
         get password(): string;
         set password(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingPPPOE.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingPPPOE.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
+
         /**
          * If specified, instruct PPPoE to only initiate sessions with access
          * concentrators that provide the specified service.  For most providers,
@@ -8596,6 +9327,7 @@ export namespace NetworkManager {
          */
         get service(): string;
         set service(val: string);
+
         /**
          * Username used to authenticate with the PPPoE service.
          */
@@ -8612,73 +9344,66 @@ export namespace NetworkManager {
         $signals: SettingPPPOE.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingPPPOE.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingPPPOE;
+        static ["new"](): SettingPPPOE;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingPPPOE.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingPPPOE.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingPPPOE.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingPPPOE.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingPPPOE.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingPPPOE.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingPPPOE.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingPPPOE.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingPPPOE.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingPPPOE.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingPPPOE.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingPPPOE.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingPPPOE.password} property of the setting
          */
         get_password(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingPPPOE.password}
          */
         get_password_flags(): SettingSecretFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingPPPOE.service} property of the setting
          */
         get_service(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingPPPOE.username} property of the setting
          */
         get_username(): string;
     }
 
+
     namespace SettingSerial {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::baud': (pspec: GObject.ParamSpec) => void;
-            'notify::bits': (pspec: GObject.ParamSpec) => void;
-            'notify::parity': (pspec: GObject.ParamSpec) => void;
-            'notify::send-delay': (pspec: GObject.ParamSpec) => void;
-            'notify::stopbits': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::baud": (pspec: GObject.ParamSpec) => void;
+            "notify::bits": (pspec: GObject.ParamSpec) => void;
+            "notify::parity": (pspec: GObject.ParamSpec) => void;
+            "notify::send-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::stopbits": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             baud: number;
             bits: number;
             parity: number;
-            send_delay: bigint | number;
-            sendDelay: bigint | number;
+            send_delay: (bigint | number);
+            sendDelay: (bigint | number);
             stopbits: number;
         }
     }
@@ -8690,7 +9415,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingSerial>;
 
         // Properties
-
         /**
          * Speed to use for communication over the serial port.  Note that this
          * value usually has no effect for mobile broadband modems as they generally
@@ -8698,27 +9422,32 @@ export namespace NetworkManager {
          */
         get baud(): number;
         set baud(val: number);
+
         /**
          * Byte-width of the serial communication. The 8 in "8n1" for example.
          */
         get bits(): number;
         set bits(val: number);
+
         /**
          * Parity setting of the serial port.  Either 'E' for even parity, 'o' for
          * odd parity, or 'n' for no parity.
          */
         get parity(): number;
         set parity(val: number);
+
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
          */
         get send_delay(): number;
-        set send_delay(val: bigint | number);
+        set send_delay(val: (bigint | number));
+
         /**
          * Time to delay between each byte sent to the modem, in microseconds.
          */
         get sendDelay(): number;
-        set sendDelay(val: bigint | number);
+        set sendDelay(val: (bigint | number));
+
         /**
          * Number of stop bits for communication on the serial port.  Either 1 or 2.
          * The 1 in "8n1" for example.
@@ -8736,68 +9465,62 @@ export namespace NetworkManager {
         $signals: SettingSerial.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingSerial.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingSerial;
+        static ["new"](): SettingSerial;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingSerial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingSerial.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingSerial.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingSerial.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingSerial.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingSerial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingSerial.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingSerial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingSerial.baud} property of the setting
          */
         get_baud(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingSerial.bits} property of the setting
          */
         get_bits(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingSerial.parity} property of the setting
          */
         get_parity(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingSerial.send_delay} property of the setting
          */
         get_send_delay(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingSerial.stopbits} property of the setting
          */
         get_stopbits(): number;
     }
 
+
     namespace SettingTeam {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::config': (pspec: GObject.ParamSpec) => void;
-            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
+            "notify::interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             config: string;
             interface_name: string;
@@ -8812,7 +9535,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingTeam>;
 
         // Properties
-
         /**
          * The JSON configuration for the team network interface.  The property
          * should contain raw JSON configuration data suitable for teamd, because
@@ -8821,11 +9543,13 @@ export namespace NetworkManager {
          */
         get config(): string;
         set config(val: string);
+
         /**
          * The name of the virtual in-kernel team network interface
          */
         get interface_name(): string;
         set interface_name(val: string);
+
         /**
          * The name of the virtual in-kernel team network interface
          */
@@ -8842,55 +9566,46 @@ export namespace NetworkManager {
         $signals: SettingTeam.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingTeam.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingTeam;
+        static ["new"](): SettingTeam;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingTeam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingTeam.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingTeam.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingTeam.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingTeam.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingTeam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingTeam.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingTeam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingTeam.config} property of the setting
          */
         get_config(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingTeam.interface_name} property of the setting
          */
         get_interface_name(): string;
     }
 
+
     namespace SettingTeamPort {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::config': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             config: string;
         }
@@ -8903,7 +9618,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingTeamPort>;
 
         // Properties
-
         /**
          * The JSON configuration for the team port. The property should contain raw
          * JSON configuration data suitable for teamd, because the value is passed
@@ -8923,53 +9637,43 @@ export namespace NetworkManager {
         $signals: SettingTeamPort.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingTeamPort.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingTeamPort;
+        static ["new"](): SettingTeamPort;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingTeamPort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingTeamPort.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingTeamPort.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingTeamPort.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingTeamPort.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingTeamPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingTeamPort.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingTeamPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link NetworkManager.SettingTeamPort.config} property of the setting
          */
         get_config(): string;
     }
 
+
     namespace SettingVPN {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::persistent': (pspec: GObject.ParamSpec) => void;
-            'notify::service-type': (pspec: GObject.ParamSpec) => void;
-            'notify::user-name': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::persistent": (pspec: GObject.ParamSpec) => void;
+            "notify::service-type": (pspec: GObject.ParamSpec) => void;
+            "notify::user-name": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             persistent: boolean;
             service_type: string;
@@ -8986,7 +9690,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingVPN>;
 
         // Properties
-
         /**
          * If the VPN service supports persistence, and this property is `true`,
          * the VPN will attempt to stay connected across link changes and outages,
@@ -8994,6 +9697,7 @@ export namespace NetworkManager {
          */
         get persistent(): boolean;
         set persistent(val: boolean);
+
         /**
          * D-Bus service name of the VPN plugin that this setting uses to connect to
          * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
@@ -9001,6 +9705,7 @@ export namespace NetworkManager {
          */
         get service_type(): string;
         set service_type(val: string);
+
         /**
          * D-Bus service name of the VPN plugin that this setting uses to connect to
          * its network.  i.e. org.freedesktop.NetworkManager.vpnc for the vpnc
@@ -9008,6 +9713,7 @@ export namespace NetworkManager {
          */
         get serviceType(): string;
         set serviceType(val: string);
+
         /**
          * If the VPN connection requires a user name for authentication, that name
          * should be provided here.  If the connection is available to more than one
@@ -9018,6 +9724,7 @@ export namespace NetworkManager {
          */
         get user_name(): string;
         set user_name(val: string);
+
         /**
          * If the VPN connection requires a user name for authentication, that name
          * should be provided here.  If the connection is available to more than one
@@ -9039,36 +9746,26 @@ export namespace NetworkManager {
         $signals: SettingVPN.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingVPN.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingVPN;
+        static ["new"](): SettingVPN;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingVPN.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingVPN.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingVPN.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingVPN.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingVPN.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingVPN.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingVPN.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingVPN.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingVPN.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingVPN.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingVPN.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingVPN.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Establishes a relationship between `key` and `item` internally in the
          * setting which may be retrieved later.  Should not be used to store passwords
@@ -9077,6 +9774,7 @@ export namespace NetworkManager {
          * @param item the value to be referenced by `key`
          */
         add_data_item(key: string, item: string): void;
+
         /**
          * Establishes a relationship between `key` and `secret` internally in the
          * setting which may be retrieved later.
@@ -9084,6 +9782,7 @@ export namespace NetworkManager {
          * @param secret the secret to be referenced by `key`
          */
         add_secret(key: string, secret: string): void;
+
         /**
          * Iterates all data items stored in this setting.  It is safe to add, remove,
          * and modify data items inside `func`, though any additions or removals made
@@ -9091,6 +9790,7 @@ export namespace NetworkManager {
          * @param func an user provided function
          */
         foreach_data_item(func: VPNIterFunc): void;
+
         /**
          * Iterates all secrets stored in this setting.  It is safe to add, remove,
          * and modify secrets inside `func`, though any additions or removals made during
@@ -9098,6 +9798,7 @@ export namespace NetworkManager {
          * @param func an user provided function
          */
         foreach_secret(func: VPNIterFunc): void;
+
         /**
          * Retrieves the data item of a key/value relationship previously established
          * by `nm_setting_vpn_add_data_item()`.
@@ -9105,20 +9806,24 @@ export namespace NetworkManager {
          * @returns the data item, if any
          */
         get_data_item(key: string): string;
+
         /**
          * Gets number of key/value pairs of VPN configuration data.
          * @returns the number of VPN plugin specific configuration data items
          */
         get_num_data_items(): number;
+
         /**
          * Gets number of VPN plugin specific secrets in the setting.
          * @returns the number of VPN plugin specific secrets
          */
         get_num_secrets(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingVPN.persistent} property of the setting
          */
         get_persistent(): boolean;
+
         /**
          * Retrieves the secret of a key/value relationship previously established
          * by `nm_setting_vpn_add_secret()`.
@@ -9126,16 +9831,19 @@ export namespace NetworkManager {
          * @returns the secret, if any
          */
         get_secret(key: string): string;
+
         /**
          * Returns the service name of the VPN, which identifies the specific VPN
          * plugin that should be used to connect to this VPN.
          * @returns the VPN plugin's service name
          */
         get_service_type(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingVPN.user_name} property of the setting
          */
         get_user_name(): string;
+
         /**
          * Deletes a key/value relationship previously established by
          * `nm_setting_vpn_add_data_item()`.
@@ -9143,6 +9851,7 @@ export namespace NetworkManager {
          * @returns `true` if the data item was found and removed from the internal list, `false` if it was not.
          */
         remove_data_item(key: string): boolean;
+
         /**
          * Deletes a key/value relationship previously established by
          * `nm_setting_vpn_add_secret()`.
@@ -9152,18 +9861,18 @@ export namespace NetworkManager {
         remove_secret(key: string): boolean;
     }
 
+
     namespace SettingVlan {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             flags: number;
             id: number;
@@ -9180,7 +9889,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingVlan>;
 
         // Properties
-
         /**
          * One or more flags which control the behavior and features of the VLAN
          * interface.  Flags include {@link NetworkManager.VlanFlags.REORDER_HEADERS} (reordering of
@@ -9191,12 +9899,14 @@ export namespace NetworkManager {
          */
         get flags(): number;
         set flags(val: number);
+
         /**
          * The VLAN identifier that the interface created by this connection should
          * be assigned.
          */
         get id(): number;
         set id(val: number);
+
         /**
          * If given, specifies the kernel name of the VLAN interface. If not given,
          * a default name will be constructed from the interface described by the
@@ -9206,6 +9916,7 @@ export namespace NetworkManager {
          */
         get interface_name(): string;
         set interface_name(val: string);
+
         /**
          * If given, specifies the kernel name of the VLAN interface. If not given,
          * a default name will be constructed from the interface described by the
@@ -9215,6 +9926,7 @@ export namespace NetworkManager {
          */
         get interfaceName(): string;
         set interfaceName(val: string);
+
         /**
          * If given, specifies the parent interface name or parent connection UUID
          * from which this VLAN interface should be created.  If this property is
@@ -9234,45 +9946,35 @@ export namespace NetworkManager {
         $signals: SettingVlan.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingVlan.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingVlan;
+        static ["new"](): SettingVlan;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingVlan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingVlan.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingVlan.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingVlan.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingVlan.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingVlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingVlan.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingVlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a priority mapping to the {@link NetworkManager.SettingVlan.ingress_priority_map} or
          * {@link NetworkManager.SettingVlan.egress_priority_map} properties of the setting. If `from` is
          * already in the given priority map, this function will overwrite the
          * existing entry with the new `to`.
-         *
+         * 
          * If `map` is #NM_VLAN_INGRESS_MAP then `from` is the incoming 802.1q VLAN
          * Priority Code Point (PCP) value, and `to` is the Linux SKB priority value.
-         *
+         * 
          * If `map` is #NM_VLAN_EGRESS_MAP then `from` is the Linux SKB priority value and
          * `to` is the outgoing 802.1q VLAN Priority Code Point (PCP) value.
          * @param map the type of priority map
@@ -9281,6 +9983,7 @@ export namespace NetworkManager {
          * @returns `true` if the new priority mapping was successfully added to the list, `false` if error
          */
         add_priority(map: VlanPriorityMap, from: number, to: number): boolean;
+
         /**
          * Adds a priority map entry into either the {@link NetworkManager.SettingVlan.ingress_priority_map}
          * or the {@link NetworkManager.SettingVlan.egress_priority_map} properties.  The priority map maps
@@ -9290,24 +9993,29 @@ export namespace NetworkManager {
          * @returns `true` if the entry was successfully added to the list, or it overwrote the old value, `false` if error
          */
         add_priority_str(map: VlanPriorityMap, str: string): boolean;
+
         /**
          * Clear all the entries from {@link NetworkManager.SettingVlan.ingress_priority_map} or
          * {@link NetworkManager.SettingVlan.egress_priority_map} properties.
          * @param map the type of priority map
          */
         clear_priorities(map: VlanPriorityMap): void;
+
         /**
          * @returns the {@link NetworkManager.SettingVlan.flags} property of the setting
          */
         get_flags(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingVlan.id} property of the setting
          */
         get_id(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingVlan.interface_name} property of the setting
          */
         get_interface_name(): string;
+
         /**
          * Returns the number of entries in the
          * {@link NetworkManager.SettingVlan.ingress_priority_map} or {@link NetworkManager.SettingVlan.egress_priority_map}
@@ -9316,10 +10024,12 @@ export namespace NetworkManager {
          * @returns return the number of ingress/egress priority entries, -1 if error
          */
         get_num_priorities(map: VlanPriorityMap): number;
+
         /**
          * @returns the {@link NetworkManager.SettingVlan.parent} property of the setting
          */
         get_parent(): string;
+
         /**
          * Retrieve one of the entries of the {@link NetworkManager.SettingVlan.ingress_priority_map}
          * or {@link NetworkManager.SettingVlan.egress_priority_map} properties of this setting.
@@ -9328,6 +10038,7 @@ export namespace NetworkManager {
          * @returns `true` if a priority map was returned, `false` if error
          */
         get_priority(map: VlanPriorityMap, idx: number): [boolean, number, number];
+
         /**
          * Removes the priority map at index `idx` from the
          * {@link NetworkManager.SettingVlan.ingress_priority_map} or {@link NetworkManager.SettingVlan.egress_priority_map}
@@ -9336,6 +10047,7 @@ export namespace NetworkManager {
          * @param idx the zero-based index of the priority map to remove
          */
         remove_priority(map: VlanPriorityMap, idx: number): void;
+
         /**
          * Removes the priority map `form`:`to` from the {@link NetworkManager.SettingVlan.ingress_priority_map}
          * or {@link NetworkManager.SettingVlan.egress_priority_map} (according to `map` argument)
@@ -9346,6 +10058,7 @@ export namespace NetworkManager {
          * @returns `true` if the priority mapping was found and removed; `false` if it was not.
          */
         remove_priority_by_value(map: VlanPriorityMap, from: number, to: number): boolean;
+
         /**
          * Removes the priority map `str` from the {@link NetworkManager.SettingVlan.ingress_priority_map}
          * or {@link NetworkManager.SettingVlan.egress_priority_map} (according to `map` argument)
@@ -9357,15 +10070,15 @@ export namespace NetworkManager {
         remove_priority_str_by_value(map: VlanPriorityMap, str: string): boolean;
     }
 
+
     namespace SettingWimax {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::network-name': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::network-name": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             network_name: string;
             networkName: string;
@@ -9379,7 +10092,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingWimax>;
 
         // Properties
-
         /**
          * Network Service Provider (NSP) name of the WiMAX network this connection
          * should use.
@@ -9387,6 +10099,7 @@ export namespace NetworkManager {
          */
         get network_name(): string;
         set network_name(val: string);
+
         /**
          * Network Service Provider (NSP) name of the WiMAX network this connection
          * should use.
@@ -9405,42 +10118,33 @@ export namespace NetworkManager {
         $signals: SettingWimax.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingWimax.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingWimax;
+        static ["new"](): SettingWimax;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingWimax.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingWimax.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingWimax.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingWimax.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingWimax.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingWimax.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingWimax.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingWimax.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the MAC address of a WiMAX device which this connection is locked
          * to.
          * @returns the MAC address
          */
         get_mac_address(): Uint8Array;
+
         /**
          * Returns the WiMAX NSP name (ex "Sprint" or "CLEAR") which identifies the
          * specific WiMAX network this setting describes a connection to.
@@ -9449,20 +10153,20 @@ export namespace NetworkManager {
         get_network_name(): string;
     }
 
+
     namespace SettingWired {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::auto-negotiate': (pspec: GObject.ParamSpec) => void;
-            'notify::duplex': (pspec: GObject.ParamSpec) => void;
-            'notify::mtu': (pspec: GObject.ParamSpec) => void;
-            'notify::port': (pspec: GObject.ParamSpec) => void;
-            'notify::s390-nettype': (pspec: GObject.ParamSpec) => void;
-            'notify::speed': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::auto-negotiate": (pspec: GObject.ParamSpec) => void;
+            "notify::duplex": (pspec: GObject.ParamSpec) => void;
+            "notify::mtu": (pspec: GObject.ParamSpec) => void;
+            "notify::port": (pspec: GObject.ParamSpec) => void;
+            "notify::s390-nettype": (pspec: GObject.ParamSpec) => void;
+            "notify::speed": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             auto_negotiate: boolean;
             autoNegotiate: boolean;
@@ -9482,7 +10186,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingWired>;
 
         // Properties
-
         /**
          * If `true`, allow auto-negotiation of port speed and duplex mode.  If
          * `false`, do not allow auto-negotiation, in which case the "speed" and
@@ -9490,6 +10193,7 @@ export namespace NetworkManager {
          */
         get auto_negotiate(): boolean;
         set auto_negotiate(val: boolean);
+
         /**
          * If `true`, allow auto-negotiation of port speed and duplex mode.  If
          * `false`, do not allow auto-negotiation, in which case the "speed" and
@@ -9497,18 +10201,21 @@ export namespace NetworkManager {
          */
         get autoNegotiate(): boolean;
         set autoNegotiate(val: boolean);
+
         /**
          * If specified, request that the device only use the specified duplex mode.
          * Either "half" or "full".
          */
         get duplex(): string;
         set duplex(val: string);
+
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple Ethernet frames.
          */
         get mtu(): number;
         set mtu(val: number);
+
         /**
          * Specific port type to use if the device supports multiple
          * attachment methods.  One of "tp" (Twisted Pair), "aui" (Attachment Unit
@@ -9517,18 +10224,21 @@ export namespace NetworkManager {
          */
         get port(): string;
         set port(val: string);
+
         /**
          * s390 network device type; one of "qeth", "lcs", or "ctc", representing
          * the different types of virtual network devices available on s390 systems.
          */
         get s390_nettype(): string;
         set s390_nettype(val: string);
+
         /**
          * s390 network device type; one of "qeth", "lcs", or "ctc", representing
          * the different types of virtual network devices available on s390 systems.
          */
         get s390Nettype(): string;
         set s390Nettype(val: string);
+
         /**
          * If non-zero, request that the device use only the specified speed.  In
          * Mbit/s, ie 100 == 100Mbit/s.
@@ -9546,42 +10256,33 @@ export namespace NetworkManager {
         $signals: SettingWired.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingWired.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingWired;
+        static ["new"](): SettingWired;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingWired.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingWired.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingWired.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingWired.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingWired.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingWired.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingWired.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingWired.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new MAC address to the {@link NetworkManager.SettingWired.mac_address_blacklist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
          * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
          */
         add_mac_blacklist_item(mac: string): boolean;
+
         /**
          * Add an option to the table.  The option is compared to an internal list
          * of allowed options.  Key names may contain only alphanumeric characters
@@ -9592,43 +10293,53 @@ export namespace NetworkManager {
          * @returns `true` if the option was valid and was added to the internal option list, `false` if it was not.
          */
         add_s390_option(key: string, value: string): boolean;
+
         /**
          * Removes all blacklisted MAC addresses.
          */
         clear_mac_blacklist_items(): void;
+
         /**
          * @returns the {@link NetworkManager.SettingWired.auto_negotiate} property of the setting
          */
         get_auto_negotiate(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingWired.cloned_mac_address} property of the setting
          */
         get_cloned_mac_address(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingWired.duplex} property of the setting
          */
         get_duplex(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWired.mac_address} property of the setting
          */
         get_mac_address(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingWired.mac_address_blacklist} property of the setting
          */
         get_mac_address_blacklist(): GLib.SList;
+
         /**
          * @param idx the zero-based index of the MAC address entry
          * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index `idx`
          */
         get_mac_blacklist_item(idx: number): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWired.mtu} property of the setting
          */
         get_mtu(): number;
+
         /**
          * @returns the number of blacklisted MAC addresses
          */
         get_num_mac_blacklist_items(): number;
+
         /**
          * Returns the number of s390-specific options that should be set for this
          * device when it is activated.  This can be used to retrieve each s390
@@ -9636,16 +10347,19 @@ export namespace NetworkManager {
          * @returns the number of s390-specific device options
          */
         get_num_s390_options(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingWired.port} property of the setting
          */
         get_port(): string;
+
         /**
          * Returns the s390 device type this connection should apply to.  Will be one
          * of 'qeth', 'lcs', or 'ctc'.
          * @returns the s390 device type
          */
         get_s390_nettype(): string;
+
         /**
          * Given an index, return the value of the s390 option at that index.  indexes
          * are *not* guaranteed to be static across modifications to options done by
@@ -9656,6 +10370,7 @@ export namespace NetworkManager {
          * @returns `true` on success if the index was valid and an option was found, `false` if the index was invalid (ie, greater than the number of options currently held by the setting)
          */
         get_s390_option(idx: number): [boolean, string, string];
+
         /**
          * Returns the value associated with the s390-specific option specified by
          * `key`, if it exists.
@@ -9663,6 +10378,7 @@ export namespace NetworkManager {
          * @returns the value, or `null` if the key/value pair was never added to the setting; the value is owned by the setting and must not be modified
          */
         get_s390_option_by_key(key: string): string;
+
         /**
          * Return the list of s390 subchannels that identify the device that this
          * connection is applicable to.  The connection should only be used in
@@ -9670,26 +10386,31 @@ export namespace NetworkManager {
          * @returns {@link GLib.PtrArray} of strings, each specifying one subchannel the s390 device uses to communicate to the host.
          */
         get_s390_subchannels(): string[];
+
         /**
          * @returns the {@link NetworkManager.SettingWired.speed} property of the setting
          */
         get_speed(): number;
+
         /**
          * Returns a list of valid s390 options.
          * @returns a `null`-terminated array of strings of valid s390 options.
          */
         get_valid_s390_options(): string[];
+
         /**
          * Removes the MAC address at index `idx` from the blacklist.
          * @param idx index number of the MAC address
          */
         remove_mac_blacklist_item(idx: number): void;
+
         /**
          * Removes the MAC address `mac` from the blacklist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
          * @returns `true` if the MAC address was found and removed; `false` if it was not.
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
+
         /**
          * Remove the s390-specific option referenced by `key` from the internal option
          * list.
@@ -9699,23 +10420,23 @@ export namespace NetworkManager {
         remove_s390_option(key: string): boolean;
     }
 
+
     namespace SettingWireless {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::band': (pspec: GObject.ParamSpec) => void;
-            'notify::channel': (pspec: GObject.ParamSpec) => void;
-            'notify::hidden': (pspec: GObject.ParamSpec) => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::mtu': (pspec: GObject.ParamSpec) => void;
-            'notify::powersave': (pspec: GObject.ParamSpec) => void;
-            'notify::rate': (pspec: GObject.ParamSpec) => void;
-            'notify::security': (pspec: GObject.ParamSpec) => void;
-            'notify::tx-power': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::band": (pspec: GObject.ParamSpec) => void;
+            "notify::channel": (pspec: GObject.ParamSpec) => void;
+            "notify::hidden": (pspec: GObject.ParamSpec) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::mtu": (pspec: GObject.ParamSpec) => void;
+            "notify::powersave": (pspec: GObject.ParamSpec) => void;
+            "notify::rate": (pspec: GObject.ParamSpec) => void;
+            "notify::security": (pspec: GObject.ParamSpec) => void;
+            "notify::tx-power": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             band: string;
             channel: number;
@@ -9737,7 +10458,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingWireless>;
 
         // Properties
-
         /**
          * 802.11 frequency band of the network.  One of "a" for 5GHz 802.11a or
          * "bg" for 2.4GHz 802.11.  This will lock associations to the Wi-Fi network
@@ -9748,6 +10468,7 @@ export namespace NetworkManager {
          */
         get band(): string;
         set band(val: string);
+
         /**
          * Wireless channel to use for the Wi-Fi connection.  The device will only
          * join (or create for Ad-Hoc networks) a Wi-Fi network on the specified
@@ -9756,6 +10477,7 @@ export namespace NetworkManager {
          */
         get channel(): number;
         set channel(val: number);
+
         /**
          * If `true`, indicates this network is a non-broadcasting network that hides
          * its SSID.  In this case various workarounds may take place, such as
@@ -9765,18 +10487,21 @@ export namespace NetworkManager {
          */
         get hidden(): boolean;
         set hidden(val: boolean);
+
         /**
          * Wi-Fi network mode; one of "infrastructure", "adhoc" or "ap".  If blank,
          * infrastructure is assumed.
          */
         get mode(): string;
         set mode(val: string);
+
         /**
          * If non-zero, only transmit packets of the specified size or smaller,
          * breaking larger packets up into multiple Ethernet frames.
          */
         get mtu(): number;
         set mtu(val: number);
+
         /**
          * If set to `false`, Wi-Fi power saving behavior is disabled.  If set to
          * `true`, Wi-Fi power saving behavior is enabled.  All other values are
@@ -9786,6 +10511,7 @@ export namespace NetworkManager {
          */
         get powersave(): number;
         set powersave(val: number);
+
         /**
          * If non-zero, directs the device to only use the specified bitrate for
          * communication with the access point.  Units are in Kb/s, ie 5500 = 5.5
@@ -9794,6 +10520,7 @@ export namespace NetworkManager {
          */
         get rate(): number;
         set rate(val: number);
+
         /**
          * If the wireless connection has any security restrictions, like 802.1x,
          * WEP, or WPA, set this property to
@@ -9803,6 +10530,7 @@ export namespace NetworkManager {
          */
         get security(): string;
         set security(val: string);
+
         /**
          * If non-zero, directs the device to use the specified transmit power.
          * Units are dBm.  This property is highly driver dependent and not all
@@ -9810,6 +10538,7 @@ export namespace NetworkManager {
          */
         get tx_power(): number;
         set tx_power(val: number);
+
         /**
          * If non-zero, directs the device to use the specified transmit power.
          * Units are dBm.  This property is highly driver dependent and not all
@@ -9828,42 +10557,33 @@ export namespace NetworkManager {
         $signals: SettingWireless.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingWireless.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingWireless;
+        static ["new"](): SettingWireless;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingWireless.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingWireless.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingWireless.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingWireless.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingWireless.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingWireless.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SettingWireless.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingWireless.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new MAC address to the {@link NetworkManager.SettingWireless.mac_address_blacklist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
          * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
          */
         add_mac_blacklist_item(mac: string): boolean;
+
         /**
          * Adds a new Wi-Fi AP's BSSID to the previously seen BSSID list of the setting.
          * NetworkManager now tracks previously seen BSSIDs internally so this function
@@ -9873,6 +10593,7 @@ export namespace NetworkManager {
          * @returns `true` if `bssid` was already known, `false` if not
          */
         add_seen_bssid(bssid: string): boolean;
+
         /**
          * Given a {@link NetworkManager.SettingWireless} and an optional {@link NetworkManager.SettingWirelessSecurity},
          * determine if the configuration given by the settings is compatible with
@@ -9887,96 +10608,111 @@ export namespace NetworkManager {
          * @param ap_mode the 802.11 mode of the AP, either Ad-Hoc or Infrastructure
          * @returns `true` if the given settings are compatible with the access point's security flags and mode, `false` if they are not.
          */
-        ap_security_compatible(
-            s_wireless_sec: SettingWirelessSecurity,
-            ap_flags: __80211ApFlags,
-            ap_wpa: __80211ApSecurityFlags,
-            ap_rsn: __80211ApSecurityFlags,
-            ap_mode: __80211Mode,
-        ): boolean;
+        ap_security_compatible(s_wireless_sec: SettingWirelessSecurity, ap_flags: __80211ApFlags, ap_wpa: __80211ApSecurityFlags, ap_rsn: __80211ApSecurityFlags, ap_mode: __80211Mode): boolean;
+
         /**
          * Removes all blacklisted MAC addresses.
          */
         clear_mac_blacklist_items(): void;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.band} property of the setting
          */
         get_band(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.bssid} property of the setting
          */
         get_bssid(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.channel} property of the setting
          */
         get_channel(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.cloned_mac_address} property of the setting
          */
         get_cloned_mac_address(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.hidden} property of the setting
          */
         get_hidden(): boolean;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.mac_address} property of the setting
          */
         get_mac_address(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.mac_address_blacklist} property of the setting
          */
         get_mac_address_blacklist(): GLib.SList;
+
         /**
          * @param idx the zero-based index of the MAC address entry
          * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index `idx`
          */
         get_mac_blacklist_item(idx: number): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.mode} property of the setting
          */
         get_mode(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.mtu} property of the setting
          */
         get_mtu(): number;
+
         /**
          * @returns the number of blacklisted MAC addresses
          */
         get_num_mac_blacklist_items(): number;
+
         /**
          * @returns the number of BSSIDs in the previously seen BSSID list
          */
         get_num_seen_bssids(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.powersave} property of the setting
          */
         get_powersave(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.rate} property of the setting
          */
         get_rate(): number;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.security} property of the setting
          */
         get_security(): string;
+
         /**
          * @param i index of a BSSID in the previously seen BSSID list
          * @returns the BSSID at index `i`
          */
         get_seen_bssid(i: number): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.ssid} property of the setting
          */
         get_ssid(): Uint8Array;
+
         /**
          * @returns the {@link NetworkManager.SettingWireless.tx_power} property of the setting
          */
         get_tx_power(): number;
+
         /**
          * Removes the MAC address at index `idx` from the blacklist.
          * @param idx index number of the MAC address
          */
         remove_mac_blacklist_item(idx: number): void;
+
         /**
          * Removes the MAC address `mac` from the blacklist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
@@ -9985,28 +10721,28 @@ export namespace NetworkManager {
         remove_mac_blacklist_item_by_value(mac: string): boolean;
     }
 
+
     namespace SettingWirelessSecurity {
         // Signal signatures
         interface SignalSignatures extends Setting.SignalSignatures {
-            'notify::auth-alg': (pspec: GObject.ParamSpec) => void;
-            'notify::key-mgmt': (pspec: GObject.ParamSpec) => void;
-            'notify::leap-password': (pspec: GObject.ParamSpec) => void;
-            'notify::leap-password-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::leap-username': (pspec: GObject.ParamSpec) => void;
-            'notify::psk': (pspec: GObject.ParamSpec) => void;
-            'notify::psk-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::wep-key-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::wep-key-type': (pspec: GObject.ParamSpec) => void;
-            'notify::wep-key0': (pspec: GObject.ParamSpec) => void;
-            'notify::wep-key1': (pspec: GObject.ParamSpec) => void;
-            'notify::wep-key2': (pspec: GObject.ParamSpec) => void;
-            'notify::wep-key3': (pspec: GObject.ParamSpec) => void;
-            'notify::wep-tx-keyidx': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::auth-alg": (pspec: GObject.ParamSpec) => void;
+            "notify::key-mgmt": (pspec: GObject.ParamSpec) => void;
+            "notify::leap-password": (pspec: GObject.ParamSpec) => void;
+            "notify::leap-password-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::leap-username": (pspec: GObject.ParamSpec) => void;
+            "notify::psk": (pspec: GObject.ParamSpec) => void;
+            "notify::psk-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::wep-key-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::wep-key-type": (pspec: GObject.ParamSpec) => void;
+            "notify::wep-key0": (pspec: GObject.ParamSpec) => void;
+            "notify::wep-key1": (pspec: GObject.ParamSpec) => void;
+            "notify::wep-key2": (pspec: GObject.ParamSpec) => void;
+            "notify::wep-key3": (pspec: GObject.ParamSpec) => void;
+            "notify::wep-tx-keyidx": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Setting.ConstructorProps {
             auth_alg: string;
             authAlg: string;
@@ -10045,7 +10781,6 @@ export namespace NetworkManager {
         static $gtype: GObject.GType<SettingWirelessSecurity>;
 
         // Properties
-
         /**
          * When WEP is used (ie, key-mgmt = "none" or "ieee8021x") indicate the
          * 802.11 authentication algorithm required by the AP here.  One of "open"
@@ -10055,6 +10790,7 @@ export namespace NetworkManager {
          */
         get auth_alg(): string;
         set auth_alg(val: string);
+
         /**
          * When WEP is used (ie, key-mgmt = "none" or "ieee8021x") indicate the
          * 802.11 authentication algorithm required by the AP here.  One of "open"
@@ -10064,6 +10800,7 @@ export namespace NetworkManager {
          */
         get authAlg(): string;
         set authAlg(val: string);
+
         /**
          * Key management used for the connection.  One of "none" (WEP), "ieee8021x"
          * (Dynamic WEP), "wpa-none" (Ad-Hoc WPA-PSK), "wpa-psk" (infrastructure
@@ -10072,6 +10809,7 @@ export namespace NetworkManager {
          */
         get key_mgmt(): string;
         set key_mgmt(val: string);
+
         /**
          * Key management used for the connection.  One of "none" (WEP), "ieee8021x"
          * (Dynamic WEP), "wpa-none" (Ad-Hoc WPA-PSK), "wpa-psk" (infrastructure
@@ -10080,42 +10818,49 @@ export namespace NetworkManager {
          */
         get keyMgmt(): string;
         set keyMgmt(val: string);
+
         /**
          * The login password for legacy LEAP connections (ie, key-mgmt =
          * "ieee8021x" and auth-alg = "leap").
          */
         get leap_password(): string;
         set leap_password(val: string);
+
         /**
          * The login password for legacy LEAP connections (ie, key-mgmt =
          * "ieee8021x" and auth-alg = "leap").
          */
         get leapPassword(): string;
         set leapPassword(val: string);
+
         /**
          * Flags indicating how to handle the
          * {@link NetworkManager.SettingWirelessSecurity.leap_password} property.
          */
         get leap_password_flags(): number;
         set leap_password_flags(val: number);
+
         /**
          * Flags indicating how to handle the
          * {@link NetworkManager.SettingWirelessSecurity.leap_password} property.
          */
         get leapPasswordFlags(): number;
         set leapPasswordFlags(val: number);
+
         /**
          * The login username for legacy LEAP connections (ie, key-mgmt =
          * "ieee8021x" and auth-alg = "leap").
          */
         get leap_username(): string;
         set leap_username(val: string);
+
         /**
          * The login username for legacy LEAP connections (ie, key-mgmt =
          * "ieee8021x" and auth-alg = "leap").
          */
         get leapUsername(): string;
         set leapUsername(val: string);
+
         /**
          * Pre-Shared-Key for WPA networks.  If the key is 64-characters long, it
          * must contain only hexadecimal characters and is interpreted as a
@@ -10126,18 +10871,21 @@ export namespace NetworkManager {
          */
         get psk(): string;
         set psk(val: string);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingWirelessSecurity.psk}
          * property.
          */
         get psk_flags(): number;
         set psk_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingWirelessSecurity.psk}
          * property.
          */
         get pskFlags(): number;
         set pskFlags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingWirelessSecurity.wep_key0},
          * {@link NetworkManager.SettingWirelessSecurity.wep_key1}, {@link NetworkManager.SettingWirelessSecurity.wep_key2},
@@ -10145,6 +10893,7 @@ export namespace NetworkManager {
          */
         get wep_key_flags(): number;
         set wep_key_flags(val: number);
+
         /**
          * Flags indicating how to handle the {@link NetworkManager.SettingWirelessSecurity.wep_key0},
          * {@link NetworkManager.SettingWirelessSecurity.wep_key1}, {@link NetworkManager.SettingWirelessSecurity.wep_key2},
@@ -10152,6 +10901,7 @@ export namespace NetworkManager {
          */
         get wepKeyFlags(): number;
         set wepKeyFlags(val: number);
+
         /**
          * Controls the interpretation of WEP keys.  Allowed values are
          * {@link NetworkManager.WepKeyType.KEY}, in which case the key is either a 10- or
@@ -10162,6 +10912,7 @@ export namespace NetworkManager {
          */
         get wep_key_type(): number;
         set wep_key_type(val: number);
+
         /**
          * Controls the interpretation of WEP keys.  Allowed values are
          * {@link NetworkManager.WepKeyType.KEY}, in which case the key is either a 10- or
@@ -10172,54 +10923,63 @@ export namespace NetworkManager {
          */
         get wepKeyType(): number;
         set wepKeyType(val: number);
+
         /**
          * Index 0 WEP key.  This is the WEP key used in most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
          */
         get wep_key0(): string;
         set wep_key0(val: string);
+
         /**
          * Index 0 WEP key.  This is the WEP key used in most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
          */
         get wepKey0(): string;
         set wepKey0(val: string);
+
         /**
          * Index 1 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
          */
         get wep_key1(): string;
         set wep_key1(val: string);
+
         /**
          * Index 1 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
          */
         get wepKey1(): string;
         set wepKey1(val: string);
+
         /**
          * Index 2 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
          */
         get wep_key2(): string;
         set wep_key2(val: string);
+
         /**
          * Index 2 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
          */
         get wepKey2(): string;
         set wepKey2(val: string);
+
         /**
          * Index 3 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
          */
         get wep_key3(): string;
         set wep_key3(val: string);
+
         /**
          * Index 3 WEP key.  This WEP index is not used by most networks.  See the
          * "wep-key-type" property for a description of how this key is interpreted.
          */
         get wepKey3(): string;
         set wepKey3(val: string);
+
         /**
          * When static WEP is used (ie, key-mgmt = "none") and a non-default WEP key
          * index is used by the AP, put that WEP key index here.  Valid values are 0
@@ -10228,6 +10988,7 @@ export namespace NetworkManager {
          */
         get wep_tx_keyidx(): number;
         set wep_tx_keyidx(val: number);
+
         /**
          * When static WEP is used (ie, key-mgmt = "none") and a non-default WEP key
          * index is used by the AP, put that WEP key index here.  Valid values are 0
@@ -10247,38 +11008,26 @@ export namespace NetworkManager {
         $signals: SettingWirelessSecurity.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SettingWirelessSecurity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SettingWirelessSecurity;
+        static ["new"](): SettingWirelessSecurity;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SettingWirelessSecurity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SettingWirelessSecurity.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SettingWirelessSecurity.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SettingWirelessSecurity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SettingWirelessSecurity.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SettingWirelessSecurity.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof SettingWirelessSecurity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SettingWirelessSecurity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds an encryption algorithm to the list of allowed groupwise encryption
          * algorithms.  If the list is not empty, then only access points that support
@@ -10288,6 +11037,7 @@ export namespace NetworkManager {
          * @returns `true` if the algorithm was added to the list, `false` if it was already in the list
          */
         add_group(group: string): boolean;
+
         /**
          * Adds an encryption algorithm to the list of allowed pairwise encryption
          * algorithms.  If the list is not empty, then only access points that support
@@ -10297,6 +11047,7 @@ export namespace NetworkManager {
          * @returns `true` if the algorithm was added to the list, `false` if it was already in the list
          */
         add_pairwise(pairwise: string): boolean;
+
         /**
          * Adds a Wi-Fi security protocol (one of "wpa" or "rsn") to the allowed list;
          * only protocols in this list will be used when finding and connecting to
@@ -10308,25 +11059,30 @@ export namespace NetworkManager {
          * @returns `true` if the protocol was new and was added to the allowed protocol list, or `false` if it was already in the list
          */
         add_proto(proto: string): boolean;
+
         /**
          * Removes all algorithms from the allowed list.  If there are no algorithms
          * specified then all groupwise encryption algorithms are allowed.
          */
         clear_groups(): void;
+
         /**
          * Removes all algorithms from the allowed list.  If there are no algorithms
          * specified then all pairwise encryption algorithms are allowed.
          */
         clear_pairwise(): void;
+
         /**
          * Removes all protocols from the allowed list.  If there are no protocols
          * specified then all protocols are allowed.
          */
         clear_protos(): void;
+
         /**
          * @returns the {@link NetworkManager.SettingWirelessSecurity.auth_alg} property of the setting
          */
         get_auth_alg(): string;
+
         /**
          * Returns the allowed groupwise encryption algorithm from allowed algorithm
          * list.
@@ -10334,34 +11090,42 @@ export namespace NetworkManager {
          * @returns the groupwise encryption algorithm at index `i`
          */
         get_group(i: number): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWirelessSecurity.key_mgmt} property of the setting
          */
         get_key_mgmt(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWirelessSecurity.leap_password} property of the setting
          */
         get_leap_password(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingWirelessSecurity.leap_password}
          */
         get_leap_password_flags(): SettingSecretFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingWirelessSecurity.leap_username} property of the setting
          */
         get_leap_username(): string;
+
         /**
          * @returns the number of groupwise encryption algorithms in the allowed list
          */
         get_num_groups(): number;
+
         /**
          * @returns the number of pairwise encryption algorithms in the allowed list
          */
         get_num_pairwise(): number;
+
         /**
          * @returns the number of security protocols this connection allows when connecting to secure Wi-Fi networks
          */
         get_num_protos(): number;
+
         /**
          * Returns the allowed pairwise encryption algorithm from allowed algorithm
          * list.
@@ -10369,42 +11133,51 @@ export namespace NetworkManager {
          * @returns the pairwise encryption algorithm at index `i`
          */
         get_pairwise(i: number): string;
+
         /**
          * @param i an index into the protocol list
          * @returns the protocol at index `i`
          */
         get_proto(i: number): string;
+
         /**
          * @returns the {@link NetworkManager.SettingWirelessSecurity.psk} property of the setting
          */
         get_psk(): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingWirelessSecurity.psk}
          */
         get_psk_flags(): SettingSecretFlags;
+
         /**
          * @param idx the WEP key index (0..3 inclusive)
          * @returns the WEP key at the given index
          */
         get_wep_key(idx: number): string;
+
         /**
          * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the all WEP keys
          */
         get_wep_key_flags(): SettingSecretFlags;
+
         /**
          * @returns the {@link NetworkManager.SettingWirelessSecurity.wep_key_type} property of the setting
          */
         get_wep_key_type(): WepKeyType;
+
         /**
          * @returns the {@link NetworkManager.SettingWirelessSecurity.wep_tx_keyidx} property of the setting
          */
         get_wep_tx_keyidx(): number;
+
         /**
          * Removes an encryption algorithm from the allowed groupwise encryption
          * algorithm list.
          * @param i the index of an item in the allowed groupwise encryption algorithm list
          */
         remove_group(i: number): void;
+
         /**
          * Removes an encryption algorithm from the allowed groupwise encryption
          * algorithm list.
@@ -10412,12 +11185,14 @@ export namespace NetworkManager {
          * @returns `true` if the algorithm was found and removed; `false` if it was not.
          */
         remove_group_by_value(group: string): boolean;
+
         /**
          * Removes an encryption algorithm from the allowed pairwise encryption
          * algorithm list.
          * @param i the index of an item in the allowed pairwise encryption algorithm list
          */
         remove_pairwise(i: number): void;
+
         /**
          * Removes an encryption algorithm from the allowed pairwise encryption
          * algorithm list.
@@ -10425,17 +11200,20 @@ export namespace NetworkManager {
          * @returns `true` if the encryption algorithm was found and removed; `false` if it was not.
          */
         remove_pairwise_by_value(pairwise: string): boolean;
+
         /**
          * Removes a protocol from the allowed protocol list.
          * @param i index of the protocol to remove
          */
         remove_proto(i: number): void;
+
         /**
          * Removes a protocol from the allowed protocol list.
          * @param proto the protocol to remove, one of "wpa" or "rsn"
          * @returns `true` if the protocol was found and removed; `false` if it was not.
          */
         remove_proto_by_value(proto: string): boolean;
+
         /**
          * Sets a WEP key in the given index.
          * @param idx the index of the key (0..3 inclusive)
@@ -10444,10 +11222,12 @@ export namespace NetworkManager {
         set_wep_key(idx: number, key: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConnectionClass = typeof Connection;
+
     /**
      * @gir-type Struct
      */
@@ -10456,64 +11236,75 @@ export namespace NetworkManager {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): IP4Address;
+        }>);
+
+        static ["new"](): IP4Address;
 
         // Methods
-
         /**
          * Determines if two {@link NetworkManager.IP4Address} objects contain the same values.
          * @param other the {@link NetworkManager.IP4Address} to compare `address` to.
          * @returns `true` if the objects contain the same values, `false` if they do not.
          */
         compare(other: IP4Address): boolean;
+
         /**
          * Copies a given {@link NetworkManager.IP4Address} object and returns the copy.
          * @returns the copy of the given {@link NetworkManager.IP4Address} copy
          */
         dup(): IP4Address;
+
         /**
          * Gets the IPv4 address property of this address object.
          * @returns the IPv4 address in network byte order
          */
         get_address(): number;
+
         /**
          * Gets the IPv4 default gateway property of this address object.
          * @returns the IPv4 gateway address in network byte order
          */
         get_gateway(): number;
+
         /**
          * Gets the IPv4 address prefix (ie "24" or "30" etc) property of this address
          * object.
          * @returns the IPv4 address prefix
          */
         get_prefix(): number;
+
         /**
          * Increases the reference count of the object.
          */
         ref(): void;
+
         /**
          * Sets the IPv4 address property of this object.
          * @param addr the IPv4 address in network byte order
          */
         set_address(addr: number): void;
+
         /**
          * Sets the IPv4 default gateway property of this address object.
          * @param gateway the IPv4 default gateway in network byte order
          */
         set_gateway(gateway: number): void;
+
         /**
          * Sets the IPv4 address prefix.
          * @param prefix the address prefix, a number between 1 and 32 inclusive
          */
         set_prefix(prefix: number): void;
+
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -10523,75 +11314,88 @@ export namespace NetworkManager {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): IP4Route;
+        }>);
+
+        static ["new"](): IP4Route;
 
         // Methods
-
         /**
          * Determines if two {@link NetworkManager.IP4Route} objects contain the same values.
          * @param other the {@link NetworkManager.IP4Route} to compare `route` to.
          * @returns `true` if the objects contain the same values, `false` if they do not.
          */
         compare(other: IP4Route): boolean;
+
         /**
          * Copies a given {@link NetworkManager.IP4Route} object and returns the copy.
          * @returns the copy of the given {@link NetworkManager.IP4Route} copy
          */
         dup(): IP4Route;
+
         /**
          * Gets the IPv4 destination address property of this route object.
          * @returns the IPv4 address in network byte order
          */
         get_dest(): number;
+
         /**
          * Gets the route metric property of this route object; lower values indicate
          * "better" or more preferred routes.
          * @returns the route metric
          */
         get_metric(): number;
+
         /**
          * Gets the IPv4 address of the next hop of this route.
          * @returns the IPv4 address in network byte order
          */
         get_next_hop(): number;
+
         /**
          * Gets the IPv4 prefix (ie "24" or "30" etc) of this route.
          * @returns the IPv4 prefix
          */
         get_prefix(): number;
+
         /**
          * Increases the reference count of the object.
          */
         ref(): void;
+
         /**
          * Sets the IPv4 destination address property of this route object.
          * @param dest the destination address in network byte order
          */
         set_dest(dest: number): void;
+
         /**
          * Sets the route metric property of this route object; lower values indicate
          * "better" or more preferred routes.
          * @param metric the route metric
          */
         set_metric(metric: number): void;
+
         /**
          * Sets the IPv4 address of the next hop of this route.
          * @param next_hop the IPv4 address of the next hop in network byte order
          */
         set_next_hop(next_hop: number): void;
+
         /**
          * Sets the IPv4 prefix of this route.
          * @param prefix the prefix, a number between 1 and 32 inclusive
          */
         set_prefix(prefix: number): void;
+
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -10601,63 +11405,74 @@ export namespace NetworkManager {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): IP6Address;
+        }>);
+
+        static ["new"](): IP6Address;
 
         // Methods
-
         /**
          * Determines if two {@link NetworkManager.IP6Address} objects contain the same values.
          * @param other the {@link NetworkManager.IP6Address} to compare `address` to.
          * @returns `true` if the objects contain the same values, `false` if they do not.
          */
         compare(other: IP6Address): boolean;
+
         /**
          * Copies a given {@link NetworkManager.IP6Address} object and returns the copy.
          * @returns the copy of the given {@link NetworkManager.IP6Address} copy
          */
         dup(): IP6Address;
+
         /**
          * Gets the IPv6 address property of this address object.
          * @returns the IPv6 address
          */
         get_address(): Uint8Array;
+
         /**
          * Gets the IPv6 default gateway property of this address object.
          * @returns the IPv6 gateway address
          */
         get_gateway(): Uint8Array;
+
         /**
          * Gets the IPv6 address prefix property of this address object.
          * @returns the IPv6 address prefix
          */
         get_prefix(): number;
+
         /**
          * Increases the reference count of the object.
          */
         ref(): void;
+
         /**
          * Sets the IPv6 address property of this object.
          * @param addr the IPv6 address
          */
-        set_address(addr: any | null): void;
+        set_address(addr: (any | null)): void;
+
         /**
          * Sets the IPv6 default gateway property of this address object.
          * @param gateway the IPv6 default gateway
          */
-        set_gateway(gateway: any | null): void;
+        set_gateway(gateway: (any | null)): void;
+
         /**
          * Sets the IPv6 address prefix.
          * @param prefix the address prefix, a number between 0 and 128 inclusive
          */
         set_prefix(prefix: number): void;
+
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -10667,69 +11482,81 @@ export namespace NetworkManager {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): IP6Route;
+        }>);
+
+        static ["new"](): IP6Route;
 
         // Methods
-
         /**
          * Determines if two {@link NetworkManager.IP6Route} objects contain the same values.
          * @param other the {@link NetworkManager.IP6Route} to compare `route` to.
          * @returns `true` if the objects contain the same values, `false` if they do not.
          */
         compare(other: IP6Route): boolean;
+
         /**
          * Copies a given {@link NetworkManager.IP6Route} object and returns the copy.
          * @returns the copy of the given {@link NetworkManager.IP6Route} copy
          */
         dup(): IP6Route;
+
         /**
          * Gets the IPv6 destination address property of this route object.
          * @returns the IPv6 address of destination
          */
         get_dest(): Uint8Array;
+
         /**
          * Gets the route metric property of this route object; lower values indicate
          * "better" or more preferred routes.
          * @returns the route metric
          */
         get_metric(): number;
+
         /**
          * Gets the IPv6 address of the next hop of this route.
          * @returns the IPv6 address of next hop
          */
         get_next_hop(): Uint8Array;
+
         /**
          * Gets the IPv6 prefix (ie "32" or "64" etc) of this route.
          * @returns the IPv6 prefix
          */
         get_prefix(): number;
+
         /**
          * Increases the reference count of the object.
          */
         ref(): void;
+
         /**
          * Sets the IPv6 destination address property of this route object.
          * @param dest the destination address
          */
-        set_dest(dest: any | null): void;
+        set_dest(dest: (any | null)): void;
+
         /**
          * Sets the route metric property of this route object; lower values indicate
          * "better" or more preferred routes.
          * @param metric the route metric
          */
         set_metric(metric: number): void;
+
         /**
          * Sets the IPv6 address of the next hop of this route.
          * @param next_hop the IPv6 address of the next hop
          */
-        set_next_hop(next_hop: any | null): void;
+        set_next_hop(next_hop: (any | null)): void;
+
         /**
          * Sets the IPv6 prefix of this route.
          * @param prefix the prefix, a number between 1 and 128 inclusive
          */
         set_prefix(prefix: number): void;
+
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
@@ -10737,119 +11564,148 @@ export namespace NetworkManager {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type Setting8021xClass = typeof Setting8021x;
+
     /**
      * @gir-type Alias
      */
     type SettingAdslClass = typeof SettingAdsl;
+
     /**
      * @gir-type Alias
      */
     type SettingBluetoothClass = typeof SettingBluetooth;
+
     /**
      * @gir-type Alias
      */
     type SettingBondClass = typeof SettingBond;
+
     /**
      * @gir-type Alias
      */
     type SettingBridgeClass = typeof SettingBridge;
+
     /**
      * @gir-type Alias
      */
     type SettingBridgePortClass = typeof SettingBridgePort;
+
     /**
      * @gir-type Alias
      */
     type SettingCdmaClass = typeof SettingCdma;
+
     /**
      * @gir-type Alias
      */
     type SettingClass = typeof Setting;
+
     /**
      * @gir-type Alias
      */
     type SettingConnectionClass = typeof SettingConnection;
+
     /**
      * @gir-type Alias
      */
     type SettingDcbClass = typeof SettingDcb;
+
     /**
      * @gir-type Alias
      */
     type SettingGenericClass = typeof SettingGeneric;
+
     /**
      * @gir-type Alias
      */
     type SettingGsmClass = typeof SettingGsm;
+
     /**
      * @gir-type Alias
      */
     type SettingIP4ConfigClass = typeof SettingIP4Config;
+
     /**
      * @gir-type Alias
      */
     type SettingIP6ConfigClass = typeof SettingIP6Config;
+
     /**
      * @gir-type Alias
      */
     type SettingInfinibandClass = typeof SettingInfiniband;
+
     /**
      * @gir-type Alias
      */
     type SettingOlpcMeshClass = typeof SettingOlpcMesh;
+
     /**
      * @gir-type Alias
      */
     type SettingPPPClass = typeof SettingPPP;
+
     /**
      * @gir-type Alias
      */
     type SettingPPPOEClass = typeof SettingPPPOE;
+
     /**
      * @gir-type Alias
      */
     type SettingSerialClass = typeof SettingSerial;
+
     /**
      * @gir-type Alias
      */
     type SettingTeamClass = typeof SettingTeam;
+
     /**
      * @gir-type Alias
      */
     type SettingTeamPortClass = typeof SettingTeamPort;
+
     /**
      * @gir-type Alias
      */
     type SettingVPNClass = typeof SettingVPN;
+
     /**
      * @gir-type Alias
      */
     type SettingVlanClass = typeof SettingVlan;
+
     /**
      * @gir-type Alias
      */
     type SettingWimaxClass = typeof SettingWimax;
+
     /**
      * @gir-type Alias
      */
     type SettingWiredClass = typeof SettingWired;
+
     /**
      * @gir-type Alias
      */
     type SettingWirelessClass = typeof SettingWireless;
+
     /**
      * @gir-type Alias
      */
     type SettingWirelessSecurityClass = typeof SettingWirelessSecurity;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

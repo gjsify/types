@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Wp {
+
     /**
      * Wp-0.5
      */
+
 
     /**
      * @gir-type Enum
@@ -36,6 +39,7 @@ export namespace Wp {
         PW_PROPERTY,
         G_PROPERTY,
     }
+
 
     /**
      * @gir-type Enum
@@ -57,6 +61,7 @@ export namespace Wp {
         IS_ABSENT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -71,6 +76,7 @@ export namespace Wp {
         INPUT,
         OUTPUT,
     }
+
 
     /**
      * @gir-type Enum
@@ -88,6 +94,7 @@ export namespace Wp {
         OPERATION_FAILED,
         SERVICE_UNAVAILABLE,
     }
+
 
     /**
      * @gir-type Enum
@@ -109,6 +116,7 @@ export namespace Wp {
         ACTIVE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -126,6 +134,7 @@ export namespace Wp {
         IDLE,
         RUNNING,
     }
+
 
     /**
      * @gir-type Enum
@@ -147,6 +156,7 @@ export namespace Wp {
         OBJECT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -162,6 +172,7 @@ export namespace Wp {
         CONFIGURING,
         CONFIGURED,
     }
+
 
     /**
      * @gir-type Enum
@@ -179,23 +190,31 @@ export namespace Wp {
         CUSTOM_START,
     }
 
+
     const ITERATOR_METHODS_VERSION: number;
+
     /**
      * A custom GLib log level for trace messages (extension of GLogLevelFlags).
      */
     const LOG_LEVEL_TRACE: number;
+
     /**
      * Special value that can be used to activate all the supported features in any given object.
      */
     const OBJECT_FEATURES_ALL: ObjectFeatures;
+
     const OBJECT_FORMAT: string;
+
     const SETTINGS_PERSISTENT_METADATA_NAME_PREFIX: string;
+
     const SETTINGS_SCHEMA_METADATA_NAME_PREFIX: string;
+
     const SPA_TYPE_INVALID: number;
+
     /**
      * Searches for `filename` in the hierarchy of directories specified by the `flags` parameter.
-     *
-     *
+     * 
+     * 
      * Returns the highest priority file found in the hierarchy of directories specified by the `flags` parameter. The `subdir` parameter is the name of the subdirectory to search in, inside the specified directories. If `subdir` is NULL, the base path of each directory is used.
      * The `filename` parameter is the name of the file to search for. If the file is found, its full path is returned. If the file is not found, NULL is returned. The file is considered found if it is a regular file.
      * If the `filename` is an absolute path, it is tested for existence and returned as is, ignoring the lookup directories in `flags` as well as the `subdir` parameter.
@@ -205,11 +224,12 @@ export namespace Wp {
      * @returns A newly allocated string with the absolute, canonicalized file path, or NULL if the file was not found.
      * @since 0.5.0
      */
-    function base_dirs_find_file(flags: BaseDirsFlags, subdir: string | null, filename: string): string | null;
+    function base_dirs_find_file(flags: BaseDirsFlags, subdir: (string | null), filename: string): (string | null);
+
     /**
      * Creates an iterator to iterate over all files that match `suffix` within the `subdir` of the directories specified in `flags`.
-     *
-     *
+     * 
+     * 
      * The `subdir` parameter is the name of the subdirectory to search in, inside the directories specified by `flags`. If `subdir` is NULL, the base path of each directory is used. If `subdir` is an absolute path, files are only looked up in that directory and the directories in `flags` are ignored.
      * The `suffix` parameter is the filename suffix to match. If `suffix` is NULL, all files are matched.
      * The iterator will iterate over the absolute paths of all the files files found, in the order of priority of the directories, starting from the lowest priority directory (e.g. /usr/share/wireplumber) and ending with the highest priority directory (e.g. $XDG_CONFIG_HOME/wireplumber). Files within each directory are also sorted by filename.
@@ -219,32 +239,37 @@ export namespace Wp {
      * @returns a new iterator iterating over strings which are absolute & canonicalized paths to the files found
      * @since 0.5.0
      */
-    function base_dirs_new_files_iterator(flags: BaseDirsFlags, subdir: string | null, suffix: string | null): Iterator;
+    function base_dirs_new_files_iterator(flags: BaseDirsFlags, subdir: (string | null), suffix: (string | null)): Iterator;
+
     function domain_library_quark(): GLib.Quark;
+
     /**
      * Gets the WirePlumber library API version.
      * @returns WirePlumber library API version
      * @since 0.4.12
      */
     function get_library_api_version(): string;
+
     /**
      * Gets the WirePlumber library version.
      * @returns WirePlumber library version
      * @since 0.4.12
      */
     function get_library_version(): string;
+
     /**
      * Initializes WirePlumber and PipeWire underneath.
-     *
-     *
+     * 
+     * 
      * `flags` can modify which parts are initialized, in cases where you want to handle part of this initialization externally.
      * @param flags initialization flags
      */
     function init(flags: InitFlags): void;
+
     /**
      * Matches the given properties against a set of rules described in JSON and calls the given callback to perform actions on a successful match.
-     *
-     *
+     * 
+     * 
      * The given JSON should be an array of objects, where each object has a "matches" and an "actions" property. The "matches" value should also be an array of objects, where each object is a set of properties to match. Inside such an object, all properties must match to consider a successful match. However, if multiple objects are provided, only one object needs to match.
      * The "actions" value should be an object where the key is the action name and the value can be any valid JSON. Both the action name and the value are passed as-is on the `callback`.
      * @param json a JSON array containing rules in the described format
@@ -253,6 +278,7 @@ export namespace Wp {
      * @returns FALSE if an error occurred, TRUE otherwise
      */
     function json_utils_match_rules(json: SpaJson, match_props: Properties, callback: RuleMatchCallback): boolean;
+
     /**
      * Matches the given properties against a set of rules described in JSON and updates the properties if the rule actions include the "update-props" action.
      * @param json a JSON array containing rules in the format accepted by `wp_json_utils_match_rules()`
@@ -260,10 +286,11 @@ export namespace Wp {
      * @returns the number of properties that were updated
      */
     function json_utils_match_rules_update_properties(json: SpaJson, props: Properties): number;
+
     /**
      * Merges two JSON containers (objects or arrays) into one.
-     *
-     *
+     * 
+     * 
      * If both `a` and `b` are objects, the result will be a new object containing all properties from both `a` and `b`. If a property exists in both `a` and `b`, the values are recursively merged. If a property exists in both `a` and `b` and the property name starts with the "override." prefix in either of those, the value from the key with the prefix is used.
      * If both `a` and `b` are arrays, the result will be a new array containing all elements from both `a` and `b`.
      * If `a` and `b` are not of the same type, NULL is returned.
@@ -272,62 +299,64 @@ export namespace Wp {
      * @returns a new JSON container containing the merged contents of `a` and `b` or NULL if `a` and `b` are not of the same type
      */
     function json_utils_merge_containers(a: SpaJson, b: SpaJson): SpaJson;
+
     /**
-     * @param log_level
+     * @param log_level 
      */
     function log_set_level(log_level: string): boolean;
+
     /**
      * WirePlumber's GLogWriterFunc.
-     *
-     *
+     * 
+     * 
      * This is installed automatically when you call `wp_init()` with WP_INIT_SET_GLIB_LOG set in the flags
-     * @param log_level
-     * @param fields
-     * @param n_fields
-     * @param user_data
+     * @param log_level 
+     * @param fields 
+     * @param n_fields 
+     * @param user_data 
      */
-    function log_writer_default(
-        log_level: GLib.LogLevelFlags,
-        fields: GLib.LogField,
-        n_fields: bigint | number,
-        user_data: any | null,
-    ): GLib.LogWriterOutput;
+    function log_writer_default(log_level: GLib.LogLevelFlags, fields: GLib.LogField, n_fields: (bigint | number), user_data: (any | null)): GLib.LogWriterOutput;
+
     /**
      * Gets the process information of a given PID.
      * @param pid the PID to get the process information from
      * @returns (transfer full): the process information of the given PID
      */
     function proc_utils_get_proc_info(pid: never): ProcInfo;
+
     /**
      * Registers an additional WpSpaIdTable in the spa type system.
-     *
-     *
+     * 
+     * 
      * This is useful to add custom enumeration types.
      * Note that both `name` and `values` must be statically allocated, or otherwise guaranteed to be kept in memory until `wp_spa_dynamic_type_deinit()` is called. No memory copy is done by this function.
      * @param name the name of the id table
      * @param values an array of spa_type_info that contains the values of the table
      * @returns the new table
      */
-    function spa_dynamic_id_table_register(name: string, values: any | null): SpaIdTable;
+    function spa_dynamic_id_table_register(name: string, values: (any | null)): SpaIdTable;
+
     /**
      * Deinitializes the spa type registry.
-     *
-     *
+     * 
+     * 
      * You do not need to ever call this, unless you want to free memory at the end of the execution of a test, so that it doesn't show as leaked in the memory profiler.
      */
     function spa_dynamic_type_deinit(): void;
+
     /**
      * Initializes the spa dynamic type registry.
-     *
-     *
+     * 
+     * 
      * This allows registering new spa types at runtime. The spa type system still works if this function is not called.
      * Normally called by `wp_init()` when WP_INIT_SPA_TYPES is passed in its flags.
      */
     function spa_dynamic_type_init(): void;
+
     /**
      * Registers an additional type in the spa type system.
-     *
-     *
+     * 
+     * 
      * This is useful to add a custom pod object type.
      * Note that both `name` and `values` must be statically allocated, or otherwise guaranteed to be kept in memory until `wp_spa_dynamic_type_deinit()` is called. No memory copy is done by this function.
      * @param name the name of the type
@@ -335,65 +364,74 @@ export namespace Wp {
      * @param values an array of spa_type_info that contains the values of the type, used only for Object types
      * @returns the new type
      */
-    function spa_dynamic_type_register(name: string, parent: SpaType, values: any | null): SpaType;
+    function spa_dynamic_type_register(name: string, parent: SpaType, values: (any | null)): SpaType;
+
     /**
      * Finds a value in an SPA Id table.
      * @param table the id table
      * @param value a numeric value that is contained in the table
      * @returns the WpSpaIdValue associated with `value`, or NULL
      */
-    function spa_id_table_find_value(table: SpaIdTable, value: number): SpaIdValue | null;
+    function spa_id_table_find_value(table: SpaIdTable, value: number): (SpaIdValue | null);
+
     /**
      * Finds a named value in an SPA Id table.
      * @param table the id table
      * @param name the full name of a value that is contained in the table
      * @returns the WpSpaIdValue associated with `name`, or NULL
      */
-    function spa_id_table_find_value_from_name(table: SpaIdTable, name: string): SpaIdValue | null;
+    function spa_id_table_find_value_from_name(table: SpaIdTable, name: string): (SpaIdValue | null);
+
     /**
      * Finds a short named value in an SPA Id table.
      * @param table the id table
      * @param short_name the short name of a value that is contained in the table
      * @returns the WpSpaIdValue associated with `short_name`, or NULL
      */
-    function spa_id_table_find_value_from_short_name(table: SpaIdTable, short_name: string): SpaIdValue | null;
+    function spa_id_table_find_value_from_short_name(table: SpaIdTable, short_name: string): (SpaIdValue | null);
+
     /**
      * Finds a WpSpaIdTable given its name.
-     *
-     *
+     * 
+     * 
      * This name can either be the full type name of an object type, or the name of an enum (which is (!!) a type). For example, "Spa:Pod:Object:Param:Format" and "Spa:Enum:ParamId" are both valid table names.
      * @param name the full name of an id table
      * @returns the associated table, or NULL
      */
-    function spa_id_table_from_name(name: string): SpaIdTable | null;
+    function spa_id_table_from_name(name: string): (SpaIdTable | null);
+
     function spa_id_table_get_type(): GObject.GType;
+
     /**
      * This function returns an iterator that allows you to iterate through the values associated with this table.
-     *
-     *
+     * 
+     * 
      * The items in the iterator are of type WpSpaIdValue.
      * @param table the id table
      * @returns a WpIterator that iterates over WpSpaIdValue items
      */
     function spa_id_table_new_iterator(table: SpaIdTable): Iterator;
+
     /**
      * If the value type of `id` is SPA_TYPE_Array, this function returns the type that is allowed to be contained inside the array.
-     *
-     *
+     * 
+     * 
      * When the returned type is (or is derived from) SPA_TYPE_Id or SPA_TYPE_Object, `table` is set to point to the WpSpaIdTable that contains the possible Id values / object fields.
      * @param id an id value
      * @returns the type that is allowed in the array, if `id` represents an object field that takes an array as value
      */
     function spa_id_value_array_get_item_type(id: SpaIdValue): [SpaType, SpaIdTable | null];
+
     /**
      * Looks up an id value (enum, flag or object field) directly from its full name.
-     *
-     *
+     * 
+     * 
      * For instance, "Spa:Enum:Direction:Input" will resolve to the id value that represents "Input" in the "Spa:Enum:Direction" enum.
      * @param name the full name of an id value
      * @returns the id value for `name`, or NULL if no such id value was found
      */
     function spa_id_value_from_name(name: string): SpaIdValue;
+
     /**
      * Looks up an id value given its container `table_name` and its numeric representation, `id`.
      * @param table_name the name of the WpSpaIdTable to look up the value in
@@ -401,6 +439,7 @@ export namespace Wp {
      * @returns the id value or NULL if it was not found
      */
     function spa_id_value_from_number(table_name: string, id: number): SpaIdValue;
+
     /**
      * Looks up an id value given its container `table_name` and its `short_name`.
      * @param table_name the name of the WpSpaIdTable to look up the value in
@@ -408,64 +447,75 @@ export namespace Wp {
      * @returns the id value or NULL if it was not found
      */
     function spa_id_value_from_short_name(table_name: string, short_name: string): SpaIdValue;
+
     function spa_id_value_get_type(): GObject.GType;
+
     /**
      * Returns the value type associated with this WpSpaIdValue.
-     *
-     *
+     * 
+     * 
      * This information is useful when `id` represents an object field, which can take a value of an arbitrary type.
      * When the returned type is (or is derived from) SPA_TYPE_Id or SPA_TYPE_Object, `table` is set to point to the WpSpaIdTable that contains the possible Id values / object fields.
      * @param id an id value
      * @returns the value type associated with `id`
      */
     function spa_id_value_get_value_type(id: SpaIdValue): [SpaType, SpaIdTable | null];
+
     /**
      * Gets the name of an id value.
      * @param id an id value
      * @returns the full name of this id value
      */
     function spa_id_value_name(id: SpaIdValue): string;
+
     /**
      * Gets the numeric value of an id value.
      * @param id an id value
      * @returns the numeric representation of this id value
      */
     function spa_id_value_number(id: SpaIdValue): number;
+
     /**
      * Gets the short name of an id value.
      * @param id an id value
      * @returns the short name of this id value
      */
     function spa_id_value_short_name(id: SpaIdValue): string;
+
     /**
      * Gets WirePlumber's instance of spa_log.
      * @returns WirePlumber's instance of spa_log, which can be used to redirect PipeWire's log messages to the currently installed GLogWriterFunc. This is installed automatically when you call `wp_init()` with WP_INIT_SET_PW_LOG set in the flags
      */
-    function spa_log_get_instance(): any | null;
+    function spa_log_get_instance(): (any | null);
+
     /**
      * @gir-type Callback
      */
     interface IteratorFoldFunc {
-        (item: unknown, ret: unknown, data: any | null): boolean;
+        (item: unknown, ret: unknown, data: (any | null)): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface IteratorForeachFunc {
-        (item: unknown, data: any | null): void;
+        (item: unknown, data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface RuleMatchCallback {
-        (data: any | null, action: string, value: SpaJson): boolean;
+        (data: (any | null), action: string, value: SpaJson): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface SettingsChangedCallback {
         (obj: Settings, setting: string, value: SpaJson): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -494,6 +544,7 @@ export namespace Wp {
         MODULE,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -508,6 +559,7 @@ export namespace Wp {
         CONNECTED,
         COMPONENTS,
     }
+
 
     /**
      * @gir-type Flags
@@ -526,6 +578,7 @@ export namespace Wp {
         SET_GLIB_LOG,
         ALL,
     }
+
 
     /**
      * @gir-type Flags
@@ -546,6 +599,7 @@ export namespace Wp {
         ALL,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -560,6 +614,7 @@ export namespace Wp {
         NONE,
         CHECK_ALL,
     }
+
 
     /**
      * @gir-type Flags
@@ -577,6 +632,7 @@ export namespace Wp {
         FLAG_INITIALIZED,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -590,6 +646,7 @@ export namespace Wp {
     enum MetadataFeatures {
         DATA,
     }
+
 
     /**
      * @gir-type Flags
@@ -605,6 +662,7 @@ export namespace Wp {
         PORTS,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -618,6 +676,7 @@ export namespace Wp {
     enum PluginFeatures {
         ENABLED,
     }
+
 
     /**
      * @gir-type Flags
@@ -641,6 +700,7 @@ export namespace Wp {
         PIPEWIRE_OBJECT_FEATURES_ALL,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -656,6 +716,7 @@ export namespace Wp {
         EXPORTED,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -669,6 +730,7 @@ export namespace Wp {
     enum SettingsFeatures {
         LOADED,
     }
+
 
     /**
      * @gir-type Flags
@@ -684,19 +746,19 @@ export namespace Wp {
         ENABLED,
     }
 
+
     namespace AsyncEventHook {
         // Signal signatures
         interface SignalSignatures extends InterestEventHook.SignalSignatures {
-            'notify::execute-step': (pspec: GObject.ParamSpec) => void;
-            'notify::get-next-step': (pspec: GObject.ParamSpec) => void;
-            'notify::dispatcher': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::runs-after-hooks': (pspec: GObject.ParamSpec) => void;
-            'notify::runs-before-hooks': (pspec: GObject.ParamSpec) => void;
+            "notify::execute-step": (pspec: GObject.ParamSpec) => void;
+            "notify::get-next-step": (pspec: GObject.ParamSpec) => void;
+            "notify::dispatcher": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::runs-after-hooks": (pspec: GObject.ParamSpec) => void;
+            "notify::runs-before-hooks": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends InterestEventHook.ConstructorProps {
             execute_step: GObject.Closure;
             executeStep: GObject.Closure;
@@ -713,19 +775,21 @@ export namespace Wp {
         static $gtype: GObject.GType<AsyncEventHook>;
 
         // Properties
-
         /**
          * @construct-only
          */
         set execute_step(val: GObject.Closure);
+
         /**
          * @construct-only
          */
         set executeStep(val: GObject.Closure);
+
         /**
          * @construct-only
          */
         set get_next_step(val: GObject.Closure);
+
         /**
          * @construct-only
          */
@@ -741,61 +805,48 @@ export namespace Wp {
         $signals: AsyncEventHook.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AsyncEventHook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            name: string,
-            before: string,
-            after: string,
-            get_next_step: GObject.Closure,
-            execute_step: GObject.Closure,
-        ): AsyncEventHook;
+        static ["new"](name: string, before: string, after: string, get_next_step: GObject.Closure, execute_step: GObject.Closure): AsyncEventHook;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AsyncEventHook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncEventHook.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AsyncEventHook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AsyncEventHook.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AsyncEventHook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AsyncEventHook.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AsyncEventHook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncEventHook.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AsyncEventHook.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AsyncEventHook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AsyncEventHook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncEventHook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
-            'notify::native-info': (pspec: GObject.ParamSpec) => void;
-            'notify::param-info': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
+            "notify::native-info": (pspec: GObject.ParamSpec) => void;
+            "notify::param-info": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
 
-        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
+        }
     }
 
     /**
@@ -815,34 +866,24 @@ export namespace Wp {
         $signals: Client.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Send an error to the client.
          * @param id the global id to report the error on
@@ -850,156 +891,160 @@ export namespace Wp {
          * @param message the error message string
          */
         send_error(id: number, res: number, message: string): void;
+
         /**
          * Updates the properties of `self`.
-         *
-         *
+         * 
+         * 
          * This requires W and X permissions on the client.
          * @param updates updates to apply to the properties of `self`; this does not need to include properties that have not changed
          */
         update_properties(updates: Properties): void;
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any | null;
+        get native_info(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any | null;
+        get nativeInfo(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant | null;
+        get param_info(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant | null;
+        get paramInfo(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
         get properties(): Properties;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Iterator | null>;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+
         /**
          * Enumerate object parameters.
-         *
-         *
-         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
-         * @param id the parameter id to enumerate or NULL for all parameters
-         * @param filter a param filter or NULL
-         * @param cancellable a cancellable for the async operation
-         * @param callback a callback to call with the result
-         */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Iterator | null> | void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Enumerate object parameters.
+         * 
+         * 
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): any | null;
+        get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): GLib.Variant | null;
+        get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
          */
         get_properties(): Properties;
+
         /**
          * Returns the value of a single pipewire property.
-         *
-         *
+         * 
+         * 
          * This is the same as getting the whole properties structure with `wp_pipewire_object_get_properties()` and accessing a single property with `wp_properties_get()`, but saves one call and having to clean up the WpProperties reference count afterwards.
          * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): string | null;
+        get_property(key: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Iterates over the object's PipeWire properties.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns an iterator that iterates over the pipewire properties of this object. Use `wp_properties_iterator_item_get_key()` and `wp_properties_iterator_item_get_value()` to parse the items returned by this iterator.
          */
         new_properties_iterator(): Iterator;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -1008,10 +1053,11 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if setting the param failed
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
@@ -1019,59 +1065,60 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): any | null;
+        vfunc_get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): GLib.Variant | null;
+        vfunc_get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
         vfunc_get_properties(): Properties;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -1082,15 +1129,15 @@ export namespace Wp {
         vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
 
+
     namespace Conf {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             properties: Properties;
@@ -1105,12 +1152,12 @@ export namespace Wp {
         static $gtype: GObject.GType<Conf>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * @construct-only
          */
@@ -1126,68 +1173,64 @@ export namespace Wp {
         $signals: Conf.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Conf.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, properties: Properties | null): Conf;
+        static ["new"](name: string, properties: (Properties | null)): Conf;
 
-        static new_open(name: string, properties: Properties | null): Conf;
+        static new_open(name: string, properties: (Properties | null)): Conf;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Conf.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Conf.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Conf.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Conf.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Conf.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Conf.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Conf.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Conf.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Conf.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Conf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Conf.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Conf.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Closes the configuration file and its fragments.
          */
         close(): void;
+
         /**
          * Gets the name of the configuration file.
          * @returns the name of the configuration file
          */
         get_name(): string;
+
         /**
          * This method will get the JSON value of a specific section from the configuration. If the same section is defined in multiple locations, the sections with the same name will be either merged in case of arrays and objects, or overridden in case of boolean, int, double and strings.
          * @param section the section name
          * @returns the JSON value of the section or NULL if the section does not exist
          */
-        get_section(section: string): SpaJson | null;
+        get_section(section: string): (SpaJson | null);
+
         /**
          * Tests if the configuration files are open.
          * @returns TRUE if the configuration files are open, FALSE otherwise
          */
         is_open(): boolean;
+
         /**
          * Opens the configuration file and its fragments and keeps them mapped in memory for further access.
          * @returns TRUE on success, FALSE on error
          */
         open(): boolean;
+
         /**
          * Parses standard pw_context sections from `conf`.
          * @param context the associated pw_context
          */
-        parse_pw_context_sections(context: any | null): void;
+        parse_pw_context_sections(context: (any | null)): void;
+
         /**
          * Updates the given properties with the values of a specific section from the configuration.
          * @param section the section name
@@ -1196,6 +1239,7 @@ export namespace Wp {
          */
         section_update_props(section: string, props: Properties): number;
     }
+
 
     namespace Core {
         // Signal signatures
@@ -1210,28 +1254,27 @@ export namespace Wp {
              * @run-last
              */
             disconnected: () => void;
-            'notify::conf': (pspec: GObject.ParamSpec) => void;
-            'notify::g-main-context': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-context': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-core': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "notify::conf": (pspec: GObject.ParamSpec) => void;
+            "notify::g-main-context": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-context": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-core": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Object.ConstructorProps {
-            conf: Conf | null;
-            g_main_context: GLib.MainContext | null;
-            gMainContext: GLib.MainContext | null;
+            conf: (Conf | null);
+            g_main_context: (GLib.MainContext | null);
+            gMainContext: (GLib.MainContext | null);
             properties: Properties;
-            pw_context: any | null;
-            pwContext: any | null;
-            pw_core: any | null;
-            pwCore: any | null;
+            pw_context: (any | null);
+            pwContext: (any | null);
+            pw_core: (any | null);
+            pwCore: (any | null);
         }
     }
 
@@ -1243,7 +1286,7 @@ export namespace Wp {
      *  - it glues the PipeWire library's event loop system with GMainLoop
      *  - it maintains a list of registered objects, which other classes use to keep objects loaded permanently into memory
      *  - it watches the PipeWire registry and keeps track of remote and local objects that appear in the registry, making them accessible through the WpObjectManager API.
-     *
+     * 
      * The core is also responsible for loading components, which are defined in the main configuration file. Components are loaded when WP_CORE_FEATURE_COMPONENTS is activated.
      * The main configuration file needs to be created and opened before the core is created, using the WpConf API. It is then passed to the core as an argument in the constructor.
      * If a configuration file is not provided, the core will let the underlying pw_context load its own configuration, based on the rules that apply to all pipewire clients (e.g. it respects the PIPEWIRE_CONFIG_NAME environment variable and loads "client.conf" as a last resort).
@@ -1254,39 +1297,45 @@ export namespace Wp {
         static $gtype: GObject.GType<Core>;
 
         // Properties
+        /**
+         * @construct-only
+         */
+        get conf(): (Conf | null);
 
         /**
          * @construct-only
          */
-        get conf(): Conf | null;
+        get g_main_context(): (GLib.MainContext | null);
+
         /**
          * @construct-only
          */
-        get g_main_context(): GLib.MainContext | null;
-        /**
-         * @construct-only
-         */
-        get gMainContext(): GLib.MainContext | null;
+        get gMainContext(): (GLib.MainContext | null);
+
         /**
          * @construct-only
          */
         get properties(): Properties;
+
         /**
          * @construct-only
          */
-        get pw_context(): any | null;
+        get pw_context(): (any | null);
+
         /**
          * @construct-only
          */
-        get pwContext(): any | null;
+        get pwContext(): (any | null);
+
         /**
          * @read-only
          */
-        get pw_core(): any | null;
+        get pw_core(): (any | null);
+
         /**
          * @read-only
          */
-        get pwCore(): any | null;
+        get pwCore(): (any | null);
 
         /**
          * Compile-time signal type information.
@@ -1298,182 +1347,196 @@ export namespace Wp {
         $signals: Core.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Core.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](context: GLib.MainContext | null, conf: Conf | null, properties: Properties | null): Core;
+        static ["new"](context: (GLib.MainContext | null), conf: (Conf | null), properties: (Properties | null)): Core;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Core.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Clones a core with the same context as `self`.
          * @returns the clone WpCore
          */
         clone(): Core;
+
         /**
          * Connects this core to the PipeWire server.
-         *
-         *
+         * 
+         * 
          * When connection succeeds, the WpCore "connected" signal is emitted.
          * @returns TRUE if the core is effectively connected or FALSE if connection failed
          */
         connect(): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Connects this core to the PipeWire server on the given socket.
-         *
-         *
+         * 
+         * 
          * When connection succeeds, the WpCore "connected" signal is emitted.
          * @param fd the connected socket to use, the socket will be closed automatically on disconnect or error
          * @returns TRUE if the core is effectively connected or FALSE if connection failed
          */
         connect_fd(fd: number): boolean;
+
         /**
          * Disconnects this core from the PipeWire server.
-         *
-         *
+         * 
+         * 
          * This also effectively destroys all WpCore objects that were created through the registry, destroys the pw_core and finally emits the WpCore "disconnected" signal.
          */
         disconnect(): void;
+
         /**
          * Finds a registered object.
          * @param func a function that takes the object being searched as the first argument and `data` as the second. it should return TRUE if the object is found or FALSE otherwise
          * @returns the registered object or NULL if not found
          */
         find_object<T = GObject.Object>(func: GLib.EqualFunc): T;
+
         /**
          * Gets the main configuration file of the core.
          * @returns the main configuration file
          */
-        get_conf(): Conf | null;
+        get_conf(): (Conf | null);
+
         /**
          * Returns the special WpCore that is used to maintain a secondary connection to PipeWire, for exporting objects.
-         *
-         *
+         * 
+         * 
          * The export core is enabled by loading the built-in "export-core" component.
          * @returns the export WpCore
          */
         get_export_core(): Core;
+
         /**
          * Gets the GMainContext of the core.
          * @returns the GMainContext that is in use by this core for events
          */
-        get_g_main_context(): GLib.MainContext | null;
+        get_g_main_context(): (GLib.MainContext | null);
+
         /**
          * Gets the bound id of the client object that is created as a result of this core being connected to the PipeWire daemon.
          * @returns the bound id of this client
          */
         get_own_bound_id(): number;
+
         /**
          * Gets the properties of the core.
          * @returns the properties of `self`
          */
         get_properties(): Properties;
+
         /**
          * Gets the internal PipeWire context of the core.
          * @returns the internal pw_context object
          */
-        get_pw_context(): any | null;
+        get_pw_context(): (any | null);
+
         /**
          * Gets the internal PipeWire core of the core.
          * @returns the internal pw_core object, or NULL if the core is not connected to PipeWire
          */
-        get_pw_core(): any | null;
+        get_pw_core(): (any | null);
+
         /**
          * Gets the cookie of the core's connected PipeWire instance.
          * @returns The cookie of the PipeWire instance that `self` is connected to. The cookie is a unique random number for identifying an instance of PipeWire
          */
         get_remote_cookie(): number;
+
         /**
          * Gets the host name of the core's connected PipeWire instance.
          * @returns The name of the host where the PipeWire instance that `self` is connected to is running on
          */
         get_remote_host_name(): string;
+
         /**
          * Gets the name of the core's connected PipeWire instance.
          * @returns The name of the PipeWire instance that `self` is connected to
          */
         get_remote_name(): string;
+
         /**
          * Gets the properties of the core's connected PipeWire instance.
          * @returns the properties of the PipeWire instance that `self` is connected to
          */
         get_remote_properties(): Properties;
+
         /**
          * Gets the user name of the core's connected PipeWire instance.
          * @returns The name of the user that started the PipeWire instance that `self` is connected to
          */
         get_remote_user_name(): string;
+
         /**
          * Gets the version of the core's connected PipeWire instance.
          * @returns The version of the PipeWire instance that `self` is connected to
          */
         get_remote_version(): string;
+
         /**
          * Gets the virtual machine type of the core.
          * @returns a comma separated string with all the virtual machine types that this core matches, or NULL if the core is not running in a virtual machine.
          */
-        get_vm_type(): string | null;
+        get_vm_type(): (string | null);
+
         /**
          * Adds an idle callback to be called in the same GMainContext as the one used by this core.
-         *
-         *
+         * 
+         * 
          * This is essentially the same as `g_idle_add_full()`, but it adds the created GSource on the GMainContext used by this core instead of the default context.
          * @param _function the function to call
          * @param destroy a function to destroy `data`
          */
-        idle_add(_function: GLib.SourceFunc, destroy: GLib.DestroyNotify | null): GLib.Source | null;
+        idle_add(_function: GLib.SourceFunc, destroy: (GLib.DestroyNotify | null)): GLib.Source | null;
+
         /**
          * Adds an idle callback to be called in the same GMainContext as the one used by this core.
-         *
-         *
+         * 
+         * 
          * This is the same as `wp_core_idle_add()`, but it allows you to specify a GClosure instead of a C callback.
          * @param closure the closure to invoke
          */
         idle_add_closure(closure: GObject.Closure): GLib.Source | null;
+
         /**
          * Installs the object manager on this core, activating its internal management engine.
-         *
-         *
+         * 
+         * 
          * This will immediately emit signals about objects added on `om` if objects that the `om` is interested in were in existence already.
          * @param om a WpObjectManager
          */
         install_object_manager(om: ObjectManager): void;
+
         /**
          * Checks if the core is connected to PipeWire.
          * @returns TRUE if the core is connected to PipeWire, FALSE otherwise
          */
         is_connected(): boolean;
+
         /**
          * Loads the specified `component` on `self`.
-         *
-         *
+         * 
+         * 
          * The `type` will determine which component loader to use. The following types are built-in and will always work without a component loader:
          *  - "module" - Loads a WirePlumber module
          *  - "array" - Loads multiple components interpreting the `args` as a JSON array with component definitions, as they would appear in the configuration file. When this type is used, `component` is ignored and can be NULL
@@ -1483,39 +1546,12 @@ export namespace Wp {
          * @param provides the name of the feature that this component will provide if it loads successfully; this can be queried later with `wp_core_test_feature()`
          * @param cancellable optional GCancellable
          */
-        load_component(
-            component: string | null,
-            type: string,
-            args: SpaJson | null,
-            provides: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        load_component(component: (string | null), type: string, args: (SpaJson | null), provides: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Loads the specified `component` on `self`.
-         *
-         *
-         * The `type` will determine which component loader to use. The following types are built-in and will always work without a component loader:
-         *  - "module" - Loads a WirePlumber module
-         *  - "array" - Loads multiple components interpreting the `args` as a JSON array with component definitions, as they would appear in the configuration file. When this type is used, `component` is ignored and can be NULL
-         * @param component the module name or file name
-         * @param type the type of the component
-         * @param args additional arguments for the component, expected to be a JSON object
-         * @param provides the name of the feature that this component will provide if it loads successfully; this can be queried later with `wp_core_test_feature()`
-         * @param cancellable optional GCancellable
-         * @param callback the callback to call when the operation is done
-         */
-        load_component(
-            component: string | null,
-            type: string,
-            args: SpaJson | null,
-            provides: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Loads the specified `component` on `self`.
-         *
-         *
+         * 
+         * 
          * The `type` will determine which component loader to use. The following types are built-in and will always work without a component loader:
          *  - "module" - Loads a WirePlumber module
          *  - "array" - Loads multiple components interpreting the `args` as a JSON array with component definitions, as they would appear in the configuration file. When this type is used, `component` is ignored and can be NULL
@@ -1526,145 +1562,161 @@ export namespace Wp {
          * @param cancellable optional GCancellable
          * @param callback the callback to call when the operation is done
          */
-        load_component(
-            component: string | null,
-            type: string,
-            args: SpaJson | null,
-            provides: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        load_component(component: (string | null), type: string, args: (SpaJson | null), provides: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Loads the specified `component` on `self`.
+         * 
+         * 
+         * The `type` will determine which component loader to use. The following types are built-in and will always work without a component loader:
+         *  - "module" - Loads a WirePlumber module
+         *  - "array" - Loads multiple components interpreting the `args` as a JSON array with component definitions, as they would appear in the configuration file. When this type is used, `component` is ignored and can be NULL
+         * @param component the module name or file name
+         * @param type the type of the component
+         * @param args additional arguments for the component, expected to be a JSON object
+         * @param provides the name of the feature that this component will provide if it loads successfully; this can be queried later with `wp_core_test_feature()`
+         * @param cancellable optional GCancellable
+         * @param callback the callback to call when the operation is done
+         */
+        load_component(component: (string | null), type: string, args: (SpaJson | null), provides: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the operation started by `wp_core_load_component()`. This is meant to be called in the callback that was passed to that method.
          * @param res the async result
          * @returns TRUE if the requested component was loaded, FALSE otherwise
          */
         load_component_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Registers `obj` with the core, making it appear on WpObjectManager instances as well.
-         *
-         *
+         * 
+         * 
          * The core will also maintain a ref to that object until it is removed.
          * @param obj the object to register
          */
         register_object(obj: GObject.Object): void;
+
         /**
          * Detaches and unrefs the specified object from this core.
          * @param obj a pointer to the object to remove
          */
         remove_object(obj: GObject.Object): void;
+
         /**
          * Asks the PipeWire server to call the `callback` via an event.
-         *
-         *
+         * 
+         * 
          * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
          * In both success and error cases, `callback` is always called. Use `wp_core_sync_finish()` from within the `callback` to determine whether the operation completed successfully or if an error occurred.
          * @param cancellable a GCancellable to cancel the operation
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        sync(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asks the PipeWire server to call the `callback` via an event.
-         *
-         *
-         * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
-         * In both success and error cases, `callback` is always called. Use `wp_core_sync_finish()` from within the `callback` to determine whether the operation completed successfully or if an error occurred.
-         * @param cancellable a GCancellable to cancel the operation
-         * @param callback a function to call when the operation is done
-         * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
-         */
-        sync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Asks the PipeWire server to call the `callback` via an event.
-         *
-         *
+         * 
+         * 
          * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
          * In both success and error cases, `callback` is always called. Use `wp_core_sync_finish()` from within the `callback` to determine whether the operation completed successfully or if an error occurred.
          * @param cancellable a GCancellable to cancel the operation
          * @param callback a function to call when the operation is done
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        sync(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asks the PipeWire server to call the `callback` via an event.
+         * 
+         * 
+         * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
+         * In both success and error cases, `callback` is always called. Use `wp_core_sync_finish()` from within the `callback` to determine whether the operation completed successfully or if an error occurred.
+         * @param cancellable a GCancellable to cancel the operation
+         * @param callback a function to call when the operation is done
+         * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
+         */
+        sync(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Asks the PipeWire server to invoke the `closure` via an event.
-         *
-         *
+         * 
+         * 
          * Since methods are handled in-order and events are delivered in-order, this can be used as a barrier to ensure all previous methods and the resulting events have been handled.
          * In both success and error cases, `closure` is always invoked. Use `wp_core_sync_finish()` from within the `closure` to determine whether the operation completed successfully or if an error occurred.
          * @param cancellable a GCancellable to cancel the operation
          * @param closure a closure to invoke when the operation is done
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
          */
-        sync_closure(cancellable: Gio.Cancellable | null, closure: GObject.Closure): boolean;
+        sync_closure(cancellable: (Gio.Cancellable | null), closure: GObject.Closure): boolean;
+
         /**
          * This function is meant to be called from within the callback of `wp_core_sync()` in order to determine the success or failure of the operation.
          * @param res a GAsyncResult
          * @returns TRUE if the operation succeeded, FALSE otherwise
          */
         sync_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Test if a global feature is provided.
          * @param feature the feature name
          * @returns TRUE if the feature is provided, FALSE otherwise
          */
         test_feature(feature: string): boolean;
+
         /**
          * Adds a timeout callback to be called at regular intervals in the same GMainContext as the one used by this core.
-         *
-         *
+         * 
+         * 
          * The function is called repeatedly until it returns FALSE, at which point the timeout is automatically destroyed and the function will not be called again. The first call to the function will be at the end of the first interval.
          * This is essentially the same as `g_timeout_add_full()`, but it adds the created GSource on the GMainContext used by this core instead of the default context.
          * @param timeout_ms the timeout in milliseconds
          * @param _function the function to call
          * @param destroy a function to destroy `data`
          */
-        timeout_add(
-            timeout_ms: number,
-            _function: GLib.SourceFunc,
-            destroy: GLib.DestroyNotify | null,
-        ): GLib.Source | null;
+        timeout_add(timeout_ms: number, _function: GLib.SourceFunc, destroy: (GLib.DestroyNotify | null)): GLib.Source | null;
+
         /**
          * Adds a timeout callback to be called at regular intervals in the same GMainContext as the one used by this core.
-         *
-         *
+         * 
+         * 
          * This is the same as `wp_core_timeout_add()`, but it allows you to specify a GClosure instead of a C callback.
          * @param timeout_ms the timeout in milliseconds
          * @param closure the closure to invoke
          */
         timeout_add_closure(timeout_ms: number, closure: GObject.Closure): GLib.Source | null;
+
         /**
          * Updates the properties of `self` on the connection, making them appear on the client object that represents this connection.
-         *
-         *
+         * 
+         * 
          * If `self` is not connected yet, these properties are stored and passed to `pw_context_connect()` when connecting.
          * @param updates updates to apply to the properties of `self`; this does not need to include properties that have not changed
          */
         update_properties(updates: Properties): void;
     }
 
+
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
-            'notify::native-info': (pspec: GObject.ParamSpec) => void;
-            'notify::param-info': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
+            "notify::native-info": (pspec: GObject.ParamSpec) => void;
+            "notify::param-info": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
 
-        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
+        }
     }
 
     /**
@@ -1685,175 +1737,169 @@ export namespace Wp {
         $signals: Device.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Device;
+        static new_from_factory(core: Core, factory_name: string, properties: (Properties | null)): Device;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Device.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any | null;
+        get native_info(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any | null;
+        get nativeInfo(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant | null;
+        get param_info(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant | null;
+        get paramInfo(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
         get properties(): Properties;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Iterator | null>;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+
         /**
          * Enumerate object parameters.
-         *
-         *
-         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
-         * @param id the parameter id to enumerate or NULL for all parameters
-         * @param filter a param filter or NULL
-         * @param cancellable a cancellable for the async operation
-         * @param callback a callback to call with the result
-         */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Iterator | null> | void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Enumerate object parameters.
+         * 
+         * 
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): any | null;
+        get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): GLib.Variant | null;
+        get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
          */
         get_properties(): Properties;
+
         /**
          * Returns the value of a single pipewire property.
-         *
-         *
+         * 
+         * 
          * This is the same as getting the whole properties structure with `wp_pipewire_object_get_properties()` and accessing a single property with `wp_properties_get()`, but saves one call and having to clean up the WpProperties reference count afterwards.
          * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): string | null;
+        get_property(key: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Iterates over the object's PipeWire properties.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns an iterator that iterates over the pipewire properties of this object. Use `wp_properties_iterator_item_get_key()` and `wp_properties_iterator_item_get_value()` to parse the items returned by this iterator.
          */
         new_properties_iterator(): Iterator;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -1862,10 +1908,11 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if setting the param failed
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
@@ -1873,59 +1920,60 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): any | null;
+        vfunc_get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): GLib.Variant | null;
+        vfunc_get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
         vfunc_get_properties(): Properties;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -1936,13 +1984,16 @@ export namespace Wp {
         vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
 
+
     namespace EventDispatcher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1962,66 +2013,59 @@ export namespace Wp {
         $signals: EventDispatcher.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<EventDispatcher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EventDispatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventDispatcher.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EventDispatcher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EventDispatcher.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EventDispatcher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EventDispatcher.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EventDispatcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventDispatcher.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EventDispatcher.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EventDispatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EventDispatcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventDispatcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Returns the event dispatcher instance that is associated with the given core.
-         *
-         *
+         * 
+         * 
          * This method will also create the instance and register it with the core, if it had not been created before.
          * @param core the core
          */
         static get_instance(core: Core): EventDispatcher;
 
         // Methods
-
         /**
          * Returns an iterator to iterate over the registered hooks for a particular event type.
          * @param event_type the event type
          * @returns a new iterator
          */
         new_hooks_for_event_type_iterator(event_type: string): Iterator;
+
         /**
          * Returns an iterator to iterate over all the registered hooks.
          * @returns a new iterator
          */
         new_hooks_iterator(): Iterator;
+
         /**
          * Pushes a new event onto the event stack for dispatching only if there are any hooks are available for it.
          * @param event the new event
          */
         push_event(event: Event): void;
+
         /**
          * Registers an event hook.
          * @param hook the hook to register
          */
         register_hook(hook: EventHook): void;
+
         /**
          * Unregisters an event hook.
          * @param hook the hook to unregister
@@ -2029,19 +2073,19 @@ export namespace Wp {
         unregister_hook(hook: EventHook): void;
     }
 
+
     namespace EventHook {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dispatcher': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::runs-after-hooks': (pspec: GObject.ParamSpec) => void;
-            'notify::runs-before-hooks': (pspec: GObject.ParamSpec) => void;
+            "notify::dispatcher": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::runs-after-hooks": (pspec: GObject.ParamSpec) => void;
+            "notify::runs-before-hooks": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            dispatcher: EventDispatcher | null;
+            dispatcher: (EventDispatcher | null);
             name: string;
             runs_after_hooks: string[];
             runsAfterHooks: string[];
@@ -2058,27 +2102,31 @@ export namespace Wp {
         static $gtype: GObject.GType<EventHook>;
 
         // Properties
-
         /**
          * @read-only
          */
-        get dispatcher(): EventDispatcher | null;
+        get dispatcher(): (EventDispatcher | null);
+
         /**
          * @construct-only
          */
         get name(): string;
+
         /**
          * @construct-only
          */
         get runs_after_hooks(): string[];
+
         /**
          * @construct-only
          */
         get runsAfterHooks(): string[];
+
         /**
          * @construct-only
          */
         get runs_before_hooks(): string[];
+
         /**
          * @construct-only
          */
@@ -2094,45 +2142,37 @@ export namespace Wp {
         $signals: EventHook.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<EventHook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EventHook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventHook.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EventHook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EventHook.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EventHook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EventHook.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EventHook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventHook.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EventHook.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EventHook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EventHook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventHook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Finishes the async operation that was started by `wp_event_hook_run()`.
          * @param res the async operation result
          * @virtual
          */
         vfunc_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Gets all the matching event types for this hook if any.
          * @virtual
          */
-        vfunc_get_matching_event_types(): string[] | null;
+        vfunc_get_matching_event_types(): (string[] | null);
+
         /**
          * Runs the hook on the given event.
          * @param event the event that triggered the hook
@@ -2140,11 +2180,8 @@ export namespace Wp {
          * @param callback a callback to fire after execution of the hook has completed
          * @virtual
          */
-        vfunc_run(
-            event: Event,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_run(event: Event, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Checks if the hook should be executed for a given event.
          * @param event the event
@@ -2153,40 +2190,45 @@ export namespace Wp {
         vfunc_runs_for_event(event: Event): boolean;
 
         // Methods
-
         /**
          * Finishes the async operation that was started by `wp_event_hook_run()`.
          * @param res the async operation result
          * @returns FALSE if there was an error, TRUE otherwise
          */
         finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Gets all the matching event types for this hook if any.
          * @returns the matching event types for this hook if any.
          */
-        get_matching_event_types(): string[] | null;
+        get_matching_event_types(): (string[] | null);
+
         /**
          * Returns the name of the hook.
          * @returns the event hook name
          */
         get_name(): string;
+
         /**
          * Returns the names of the hooks that should run before this hook, or in other words, this hook should run after them.
          * @returns a NULL-terminated array of hook names
          */
         get_runs_after_hooks(): string[];
+
         /**
          * Returns the names of the hooks that should run after this hook, or in other words, this hook should run before them.
          * @returns a NULL-terminated array of hook names
          */
         get_runs_before_hooks(): string[];
+
         /**
          * Runs the hook on the given event.
          * @param event the event that triggered the hook
          * @param cancellable a GCancellable to cancel the async operation
          * @param callback a callback to fire after execution of the hook has completed
          */
-        run(event: Event, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        run(event: Event, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Checks if the hook should be executed for a given event.
          * @param event the event
@@ -2195,26 +2237,28 @@ export namespace Wp {
         runs_for_event(event: Event): boolean;
     }
 
+
     namespace Factory {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
-            'notify::native-info': (pspec: GObject.ParamSpec) => void;
-            'notify::param-info': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
+            "notify::native-info": (pspec: GObject.ParamSpec) => void;
+            "notify::param-info": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
 
-        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
+        }
     }
 
     /**
@@ -2236,173 +2280,167 @@ export namespace Wp {
         $signals: Factory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Factory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Factory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Factory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Factory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Factory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Factory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Factory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Factory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Factory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any | null;
+        get native_info(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any | null;
+        get nativeInfo(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant | null;
+        get param_info(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant | null;
+        get paramInfo(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
         get properties(): Properties;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Iterator | null>;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+
         /**
          * Enumerate object parameters.
-         *
-         *
-         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
-         * @param id the parameter id to enumerate or NULL for all parameters
-         * @param filter a param filter or NULL
-         * @param cancellable a cancellable for the async operation
-         * @param callback a callback to call with the result
-         */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Iterator | null> | void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Enumerate object parameters.
+         * 
+         * 
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): any | null;
+        get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): GLib.Variant | null;
+        get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
          */
         get_properties(): Properties;
+
         /**
          * Returns the value of a single pipewire property.
-         *
-         *
+         * 
+         * 
          * This is the same as getting the whole properties structure with `wp_pipewire_object_get_properties()` and accessing a single property with `wp_properties_get()`, but saves one call and having to clean up the WpProperties reference count afterwards.
          * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): string | null;
+        get_property(key: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Iterates over the object's PipeWire properties.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns an iterator that iterates over the pipewire properties of this object. Use `wp_properties_iterator_item_get_key()` and `wp_properties_iterator_item_get_value()` to parse the items returned by this iterator.
          */
         new_properties_iterator(): Iterator;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -2411,10 +2449,11 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if setting the param failed
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
@@ -2422,59 +2461,60 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): any | null;
+        vfunc_get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): GLib.Variant | null;
+        vfunc_get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
         vfunc_get_properties(): Properties;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -2485,15 +2525,17 @@ export namespace Wp {
         vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
 
+
     namespace FeatureActivationTransition {
         // Signal signatures
         interface SignalSignatures extends Transition.SignalSignatures {
-            'notify::completed': (pspec: GObject.ParamSpec) => void;
+            "notify::completed": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Transition.ConstructorProps, Gio.AsyncResult.ConstructorProps {
 
-        interface ConstructorProps extends Transition.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
+        }
     }
 
     /**
@@ -2513,63 +2555,55 @@ export namespace Wp {
         $signals: FeatureActivationTransition.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FeatureActivationTransition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FeatureActivationTransition.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeatureActivationTransition.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FeatureActivationTransition.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FeatureActivationTransition.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FeatureActivationTransition.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FeatureActivationTransition.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FeatureActivationTransition.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FeatureActivationTransition.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FeatureActivationTransition.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FeatureActivationTransition.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof FeatureActivationTransition.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FeatureActivationTransition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the features requested to be activated in this transition.
          * @returns the features that were requested to be activated in this transition; this contains the features as they were passed in `wp_object_activate()` and therefore it may contain unsupported or already active features
          */
         get_requested_features(): ObjectFeatures;
+
         /**
          * Gets the source object from a {@link Gio.AsyncResult}.
          * @returns a new reference to the source    object for the `res`, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
+
         /**
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @returns the user data for `res`.
          */
-        get_user_data(): any | null;
+        get_user_data(): (any | null);
+
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
-        is_tagged(source_tag: any | null): boolean;
+        is_tagged(source_tag: (any | null)): boolean;
+
         /**
          * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
          * {@link Gio.SimpleAsyncResult.propagate_error}. Otherwise it returns
          * `FALSE`.
-         *
+         * 
          * This can be used for legacy error handling in async `*_finish()`
          * wrapper functions that traditionally handled {@link Gio.SimpleAsyncResult}
          * error returns themselves rather than calling into the virtual method.
@@ -2579,41 +2613,47 @@ export namespace Wp {
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
+
         /**
          * Gets the source object from a {@link Gio.AsyncResult}.
          * @virtual
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
+
         /**
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_get_user_data(): any | null;
+        vfunc_get_user_data(): (any | null);
+
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag: any | null): boolean;
+        vfunc_is_tagged(source_tag: (any | null)): boolean;
+
         /**
          * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
          * @returns the data if found,          or `null` if no such data exists.
          */
-        get_data(key: string): any | null;
+        get_data(key: string): (any | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Wp.Transition.get_data
         get_data(...args: never[]): any;
+
         /**
          * Each object carries around a table of associations from
          * strings to pointers.  This function lets you set an association.
-         *
+         * 
          * If the object already had an association with that name,
          * the old association will be destroyed.
-         *
+         * 
          * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
@@ -2621,30 +2661,31 @@ export namespace Wp {
          * @param key name of the key
          * @param data data to associate with that key
          */
-        set_data(key: string, data: any | null): void;
+        set_data(key: string, data: (any | null)): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Wp.Transition.set_data
         set_data(...args: never[]): any;
     }
 
+
     namespace GlobalProxy {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Proxy.ConstructorProps {
             factory_name: string;
             factoryName: string;
@@ -2662,23 +2703,26 @@ export namespace Wp {
         static $gtype: GObject.GType<GlobalProxy>;
 
         // Properties
-
         /**
          * @construct-only
          */
         set factory_name(val: string);
+
         /**
          * @construct-only
          */
         set factoryName(val: string);
+
         /**
          * @construct-only
          */
         get global_properties(): Properties;
+
         /**
          * @construct-only
          */
         get globalProperties(): Properties;
+
         /**
          * @read-only
          * @default 0
@@ -2695,81 +2739,74 @@ export namespace Wp {
         $signals: GlobalProxy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GlobalProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GlobalProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GlobalProxy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GlobalProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GlobalProxy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GlobalProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GlobalProxy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GlobalProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GlobalProxy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GlobalProxy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GlobalProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GlobalProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GlobalProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Binds to the global and creates the underlying pw_proxy.
-         *
-         *
+         * 
+         * 
          * This is mostly meant to be called internally. It will create the pw_proxy and will activate the WP_PROXY_FEATURE_BOUND feature.
          * This may only be called if there is no pw_proxy associated with this object yet.
          * @returns TRUE on success, FALSE if there is no global to bind to
          */
         bind(): boolean;
+
         /**
          * Gets the global properties of a pipewire global.
          * @returns the global (immutable) properties of this pipewire object
          */
         get_global_properties(): Properties;
+
         /**
          * Gets the permissions of a pipewire global.
          * @returns the permissions that wireplumber has on this object
          */
         get_permissions(): number;
+
         /**
          * Requests the PipeWire server to destroy the object represented by this proxy.
-         *
-         *
+         * 
+         * 
          * If the server allows it, the object will be destroyed and the WpProxy's pw-proxy-destroyed signal will be emitted. If the server does not allow it, nothing will happen.
          * This is mostly useful for destroying WpLink objects.
          */
         request_destroy(): void;
     }
 
+
     namespace ImplMetadata {
         // Signal signatures
         interface SignalSignatures extends Metadata.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Metadata.ConstructorProps {
             name: string;
             properties: Properties;
@@ -2785,11 +2822,11 @@ export namespace Wp {
         static $gtype: GObject.GType<ImplMetadata>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get name(): string;
+
         /**
          * @construct-only
          */
@@ -2805,51 +2842,42 @@ export namespace Wp {
         $signals: ImplMetadata.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImplMetadata.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](core: Core): ImplMetadata;
+        static ["new"](core: Core): ImplMetadata;
 
-        static new_full(core: Core, name: string | null, properties: Properties | null): ImplMetadata;
+        static new_full(core: Core, name: (string | null), properties: (Properties | null)): ImplMetadata;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImplMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImplMetadata.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImplMetadata.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImplMetadata.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImplMetadata.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImplMetadata.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImplMetadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImplMetadata.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImplMetadata.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImplMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImplMetadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImplMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ImplModule {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::arguments': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-impl-module': (pspec: GObject.ParamSpec) => void;
+            "notify::arguments": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-impl-module": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            arguments: string;
+            "arguments": string;
             core: any;
             name: string;
             properties: Properties;
@@ -2867,27 +2895,31 @@ export namespace Wp {
         static $gtype: GObject.GType<ImplModule>;
 
         // Properties
+        /**
+         * @construct-only
+         * @default null
+         */
+        get "arguments"(): string;
+
+        /**
+         * @construct-only
+         */
+        get core(): any;
 
         /**
          * @construct-only
          * @default null
          */
-        get arguments(): string;
-        /**
-         * @construct-only
-         */
-        get core(): any;
-        /**
-         * @construct-only
-         * @default null
-         */
         get name(): string;
+
         get properties(): Properties;
         set properties(val: Properties);
+
         /**
          * @read-only
          */
         get pw_impl_module(): any;
+
         /**
          * @read-only
          */
@@ -2903,34 +2935,24 @@ export namespace Wp {
         $signals: ImplModule.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImplModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImplModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImplModule.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImplModule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImplModule.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImplModule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImplModule.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImplModule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImplModule.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImplModule.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImplModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImplModule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImplModule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Loads a PipeWire module into the WirePlumber process.
          * @param core The WirePlumber core
@@ -2938,31 +2960,26 @@ export namespace Wp {
          * @param _arguments arguments to be passed to the module
          * @param properties additional properties to be provided to the module
          */
-        static load(
-            core: Core,
-            name: string,
-            _arguments: string | null,
-            properties: Properties | null,
-        ): ImplModule | null;
+        static load(core: Core, name: string, _arguments: (string | null), properties: (Properties | null)): (ImplModule | null);
     }
+
 
     namespace ImplNode {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
-            'notify::pw-impl-node': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
-            'notify::native-info': (pspec: GObject.ParamSpec) => void;
-            'notify::param-info': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
+            "notify::pw-impl-node": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
+            "notify::native-info": (pspec: GObject.ParamSpec) => void;
+            "notify::param-info": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Proxy.ConstructorProps, PipewireObject.ConstructorProps {
             pw_impl_node: any;
             pwImplNode: any;
@@ -2977,11 +2994,11 @@ export namespace Wp {
         static $gtype: GObject.GType<ImplNode>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get pw_impl_node(): any;
+
         /**
          * @construct-only
          */
@@ -2997,177 +3014,171 @@ export namespace Wp {
         $signals: ImplNode.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImplNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_from_pw_factory(core: Core, factory_name: string, properties: Properties | null): ImplNode;
+        static new_from_pw_factory(core: Core, factory_name: string, properties: (Properties | null)): ImplNode;
 
-        static new_wrap(core: Core, node: any | null): ImplNode;
+        static new_wrap(core: Core, node: (any | null)): ImplNode;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImplNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImplNode.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImplNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImplNode.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImplNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImplNode.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImplNode.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImplNode.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImplNode.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImplNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImplNode.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImplNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any | null;
+        get native_info(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any | null;
+        get nativeInfo(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant | null;
+        get param_info(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant | null;
+        get paramInfo(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
         get properties(): Properties;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Iterator | null>;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+
         /**
          * Enumerate object parameters.
-         *
-         *
-         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
-         * @param id the parameter id to enumerate or NULL for all parameters
-         * @param filter a param filter or NULL
-         * @param cancellable a cancellable for the async operation
-         * @param callback a callback to call with the result
-         */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Iterator | null> | void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Enumerate object parameters.
+         * 
+         * 
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): any | null;
+        get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): GLib.Variant | null;
+        get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
          */
         get_properties(): Properties;
+
         /**
          * Returns the value of a single pipewire property.
-         *
-         *
+         * 
+         * 
          * This is the same as getting the whole properties structure with `wp_pipewire_object_get_properties()` and accessing a single property with `wp_properties_get()`, but saves one call and having to clean up the WpProperties reference count afterwards.
          * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): string | null;
+        get_property(key: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Iterates over the object's PipeWire properties.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns an iterator that iterates over the pipewire properties of this object. Use `wp_properties_iterator_item_get_key()` and `wp_properties_iterator_item_get_value()` to parse the items returned by this iterator.
          */
         new_properties_iterator(): Iterator;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -3176,10 +3187,11 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if setting the param failed
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
@@ -3187,59 +3199,60 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): any | null;
+        vfunc_get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): GLib.Variant | null;
+        vfunc_get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
         vfunc_get_properties(): Properties;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -3250,18 +3263,20 @@ export namespace Wp {
         vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
 
+
     namespace InterestEventHook {
         // Signal signatures
         interface SignalSignatures extends EventHook.SignalSignatures {
-            'notify::dispatcher': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::runs-after-hooks': (pspec: GObject.ParamSpec) => void;
-            'notify::runs-before-hooks': (pspec: GObject.ParamSpec) => void;
+            "notify::dispatcher": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::runs-after-hooks": (pspec: GObject.ParamSpec) => void;
+            "notify::runs-before-hooks": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends EventHook.ConstructorProps {
 
-        interface ConstructorProps extends EventHook.ConstructorProps {}
+        }
     }
 
     /**
@@ -3281,39 +3296,30 @@ export namespace Wp {
         $signals: InterestEventHook.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InterestEventHook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InterestEventHook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InterestEventHook.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InterestEventHook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InterestEventHook.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InterestEventHook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InterestEventHook.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InterestEventHook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InterestEventHook.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InterestEventHook.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InterestEventHook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InterestEventHook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InterestEventHook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param interest
+         * @param interest 
          */
         add_interest_full(interest: ObjectInterest): void;
     }
+
 
     namespace Link {
         // Signal signatures
@@ -3322,24 +3328,23 @@ export namespace Wp {
              * @signal
              * @run-last
              */
-            'state-changed': (arg0: LinkState, arg1: LinkState) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
-            'notify::native-info': (pspec: GObject.ParamSpec) => void;
-            'notify::param-info': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
+            "state-changed": (arg0: LinkState, arg1: LinkState) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
+            "notify::native-info": (pspec: GObject.ParamSpec) => void;
+            "notify::param-info": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
             state: LinkState;
         }
@@ -3354,7 +3359,6 @@ export namespace Wp {
         static $gtype: GObject.GType<Link>;
 
         // Properties
-
         /**
          * @read-only
          * @default Wp.LinkState.INIT
@@ -3371,190 +3375,184 @@ export namespace Wp {
         $signals: Link.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Link.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Link;
+        static new_from_factory(core: Core, factory_name: string, properties: (Properties | null)): Link;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Link.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Link.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Link.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Link.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Link.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Link.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the ids of the objects that are linked by this link.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          */
         get_linked_object_ids(): [number, number, number, number];
+
         /**
          * Gets the current state of the link.
          * @returns the current state of the link
          */
         get_state(): [LinkState, string];
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any | null;
+        get native_info(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any | null;
+        get nativeInfo(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant | null;
+        get param_info(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant | null;
+        get paramInfo(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
         get properties(): Properties;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Iterator | null>;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+
         /**
          * Enumerate object parameters.
-         *
-         *
-         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
-         * @param id the parameter id to enumerate or NULL for all parameters
-         * @param filter a param filter or NULL
-         * @param cancellable a cancellable for the async operation
-         * @param callback a callback to call with the result
-         */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Iterator | null> | void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Enumerate object parameters.
+         * 
+         * 
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): any | null;
+        get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): GLib.Variant | null;
+        get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
          */
         get_properties(): Properties;
+
         /**
          * Returns the value of a single pipewire property.
-         *
-         *
+         * 
+         * 
          * This is the same as getting the whole properties structure with `wp_pipewire_object_get_properties()` and accessing a single property with `wp_properties_get()`, but saves one call and having to clean up the WpProperties reference count afterwards.
          * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): string | null;
+        get_property(key: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Iterates over the object's PipeWire properties.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns an iterator that iterates over the pipewire properties of this object. Use `wp_properties_iterator_item_get_key()` and `wp_properties_iterator_item_get_value()` to parse the items returned by this iterator.
          */
         new_properties_iterator(): Iterator;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -3563,10 +3561,11 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if setting the param failed
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
@@ -3574,59 +3573,60 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): any | null;
+        vfunc_get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): GLib.Variant | null;
+        vfunc_get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
         vfunc_get_properties(): Properties;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -3637,6 +3637,7 @@ export namespace Wp {
         vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
 
+
     namespace Metadata {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
@@ -3645,20 +3646,21 @@ export namespace Wp {
              * @run-last
              */
             changed: (arg0: number, arg1: string, arg2: string, arg3: string) => void;
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GlobalProxy.ConstructorProps {
 
-        interface ConstructorProps extends GlobalProxy.ConstructorProps {}
+        }
     }
 
     /**
@@ -3679,38 +3681,29 @@ export namespace Wp {
         $signals: Metadata.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Metadata.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Metadata.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Metadata.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Metadata.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Metadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Clears permanently all stored metadata.
          */
         clear(): void;
+
         /**
          * Finds the metadata value given its `subject` and `key`.
          * @param subject the metadata subject id
@@ -3718,16 +3711,18 @@ export namespace Wp {
          * @returns the metadata string value, or NULL if not found.
          */
         find(subject: number, key: string): [string, string];
+
         /**
          * Iterates over metadata items that matches the given `subject`.
-         *
-         *
+         * 
+         * 
          * If no constraints are specified, the returned iterator iterates over all the stored metadata.
          * Note that this method works on cached metadata. When you change metadata with `wp_metadata_set()`, this cache will be updated on the next round-trip with the pipewire server.
          * @param subject the metadata subject id, or -1 (PW_ID_ANY)
          * @returns an iterator that iterates over the found metadata. The type of the iterator item is WpMetadataItem.
          */
         new_iterator(subject: number): Iterator;
+
         /**
          * Sets the metadata associated with the given `subject` and `key`. Use NULL as a value to unset the given `key` and use NULL in both `key` and `value` to remove all metadata associated with the given `subject`.
          * @param subject the subject id for which this metadata property is being set
@@ -3735,13 +3730,15 @@ export namespace Wp {
          * @param type the type of the value; NULL is synonymous to "string"
          * @param value the value to set, or NULL to unset the given `key`
          */
-        set(subject: number, key: string | null, type: string | null, value: string | null): void;
+        set(subject: number, key: (string | null), type: (string | null), value: (string | null)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
     }
+
 
     namespace Node {
         // Signal signatures
@@ -3750,33 +3747,32 @@ export namespace Wp {
              * @signal
              * @run-last
              */
-            'ports-changed': () => void;
+            "ports-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'state-changed': (arg0: NodeState, arg1: NodeState) => void;
-            'notify::max-input-ports': (pspec: GObject.ParamSpec) => void;
-            'notify::max-output-ports': (pspec: GObject.ParamSpec) => void;
-            'notify::n-input-ports': (pspec: GObject.ParamSpec) => void;
-            'notify::n-output-ports': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
-            'notify::native-info': (pspec: GObject.ParamSpec) => void;
-            'notify::param-info': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
+            "state-changed": (arg0: NodeState, arg1: NodeState) => void;
+            "notify::max-input-ports": (pspec: GObject.ParamSpec) => void;
+            "notify::max-output-ports": (pspec: GObject.ParamSpec) => void;
+            "notify::n-input-ports": (pspec: GObject.ParamSpec) => void;
+            "notify::n-output-ports": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
+            "notify::native-info": (pspec: GObject.ParamSpec) => void;
+            "notify::param-info": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
             max_input_ports: number;
             maxInputPorts: number;
@@ -3799,47 +3795,54 @@ export namespace Wp {
         static $gtype: GObject.GType<Node>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get max_input_ports(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get maxInputPorts(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get max_output_ports(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get maxOutputPorts(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get n_input_ports(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get nInputPorts(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get n_output_ports(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get nOutputPorts(): number;
+
         /**
          * @read-only
          * @default Wp.NodeState.CREATING
@@ -3856,242 +3859,242 @@ export namespace Wp {
         $signals: Node.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_from_factory(core: Core, factory_name: string, properties: Properties | null): Node;
+        static new_from_factory(core: Core, factory_name: string, properties: (Properties | null)): Node;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Node.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Node.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Node.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the number of input ports of this node.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the number of input ports of this node, as reported by the node info
          */
         get_n_input_ports(): [number, number];
+
         /**
          * Gets the number of output ports of this node.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the number of output ports of this node, as reported by the node info
          */
         get_n_output_ports(): [number, number];
+
         /**
          * Gets the number of ports of this node.
-         *
-         *
+         * 
+         * 
          * Note that this number may not add up to `wp_node_get_n_input_ports()` + `wp_node_get_n_output_ports()` because it is discovered by looking at the number of available ports in the registry, however ports may appear there with a delay or may not appear at all if this client does not have permission to read them
          * Requires WP_NODE_FEATURE_PORTS
          * @returns the number of ports of this node.
          */
         get_n_ports(): number;
+
         /**
          * Gets the current state of the node.
          * @returns the current state of the node
          */
         get_state(): [NodeState, string];
+
         /**
          * Retrieves the first port that matches the `interest`.
-         *
-         *
+         * 
+         * 
          * Requires WP_NODE_FEATURE_PORTS
          * @param interest the interest
          * @returns the first port that matches the `interest`, or NULL if there is no such port
          */
-        lookup_port_full(interest: ObjectInterest): Port | null;
+        lookup_port_full(interest: ObjectInterest): (Port | null);
+
         /**
          * Gets a new iterator that iterates over all the ports that belong to this node and match the `interest`.
-         *
-         *
+         * 
+         * 
          * Requires WP_NODE_FEATURE_PORTS
          * @param interest the interest
          * @returns a WpIterator that iterates over WpPort objects
          */
         new_ports_filtered_iterator_full(interest: ObjectInterest): Iterator;
+
         /**
          * Gets a new iterator that iterates over all the ports that belong to this node.
-         *
-         *
+         * 
+         * 
          * Requires WP_NODE_FEATURE_PORTS
          * @returns a WpIterator that iterates over WpPort objects
          */
         new_ports_iterator(): Iterator;
+
         /**
          * Sends a command to a node.
-         *
-         *
+         * 
+         * 
          * Valid commands are the short string reprepsentations of enum spa_node_command. For example, "Suspend" or "Flush" are valid commands
          * @param command the command
          */
         send_command(command: string): void;
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any | null;
+        get native_info(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any | null;
+        get nativeInfo(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant | null;
+        get param_info(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant | null;
+        get paramInfo(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
         get properties(): Properties;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Iterator | null>;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+
         /**
          * Enumerate object parameters.
-         *
-         *
-         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
-         * @param id the parameter id to enumerate or NULL for all parameters
-         * @param filter a param filter or NULL
-         * @param cancellable a cancellable for the async operation
-         * @param callback a callback to call with the result
-         */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Iterator | null> | void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Enumerate object parameters.
+         * 
+         * 
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): any | null;
+        get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): GLib.Variant | null;
+        get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
          */
         get_properties(): Properties;
+
         /**
          * Returns the value of a single pipewire property.
-         *
-         *
+         * 
+         * 
          * This is the same as getting the whole properties structure with `wp_pipewire_object_get_properties()` and accessing a single property with `wp_properties_get()`, but saves one call and having to clean up the WpProperties reference count afterwards.
          * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): string | null;
+        get_property(key: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Iterates over the object's PipeWire properties.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns an iterator that iterates over the pipewire properties of this object. Use `wp_properties_iterator_item_get_key()` and `wp_properties_iterator_item_get_value()` to parse the items returned by this iterator.
          */
         new_properties_iterator(): Iterator;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -4100,10 +4103,11 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if setting the param failed
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
@@ -4111,59 +4115,60 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): any | null;
+        vfunc_get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): GLib.Variant | null;
+        vfunc_get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
         vfunc_get_properties(): Properties;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -4174,17 +4179,17 @@ export namespace Wp {
         vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
 
+
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             active_features: number;
             activeFeatures: number;
@@ -4203,31 +4208,35 @@ export namespace Wp {
         static $gtype: GObject.GType<Object>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get active_features(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get activeFeatures(): number;
+
         /**
          * @construct-only
          */
         get core(): Core;
+
         /**
          * @read-only
          * @default 0
          */
         get id(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get supported_features(): number;
+
         /**
          * @read-only
          * @default 0
@@ -4244,65 +4253,50 @@ export namespace Wp {
         $signals: Object.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
+        /**
+         * @param transition 
+         * @param step 
+         * @param missing 
+         * @virtual
+         */
+        vfunc_activate_execute_step(transition: FeatureActivationTransition, step: number, missing: ObjectFeatures): void;
 
         /**
-         * @param transition
-         * @param step
-         * @param missing
+         * @param transition 
+         * @param step 
+         * @param missing 
          * @virtual
          */
-        vfunc_activate_execute_step(
-            transition: FeatureActivationTransition,
-            step: number,
-            missing: ObjectFeatures,
-        ): void;
-        /**
-         * @param transition
-         * @param step
-         * @param missing
-         * @virtual
-         */
-        vfunc_activate_get_next_step(
-            transition: FeatureActivationTransition,
-            step: number,
-            missing: ObjectFeatures,
-        ): number;
+        vfunc_activate_get_next_step(transition: FeatureActivationTransition, step: number, missing: ObjectFeatures): number;
+
         /**
          * Deactivates the given `features`, leaving the object in the state it was before they were enabled.
-         *
-         *
+         * 
+         * 
          * This is seldom needed to call manually, but it can be used to save resources if some features are no longer needed.
          * @param features the features to deactivate
          * @virtual
          */
         vfunc_deactivate(features: ObjectFeatures): void;
+
         /**
          * Gets the supported features of this object.
          * @virtual
@@ -4310,103 +4304,107 @@ export namespace Wp {
         vfunc_get_supported_features(): ObjectFeatures;
 
         // Methods
-
         /**
          * Aborts the current object activation by returning a transition error if any transitions are pending.
-         *
-         *
+         * 
+         * 
          * This is usually used to stop any pending activation if an error happened.
          * @param msg the message used in the transition error
          */
         abort_activation(msg: string): void;
+
         /**
          * Callback version of `wp_object_activate_closure()`.
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          */
-        activate(features: ObjectFeatures, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Callback version of `wp_object_activate_closure()`.
-         * @param features the features to enable
-         * @param cancellable a cancellable for the async operation
-         * @param callback a function to call when activation is complete
-         */
-        activate(
-            features: ObjectFeatures,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        activate(features: ObjectFeatures, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Callback version of `wp_object_activate_closure()`.
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          * @param callback a function to call when activation is complete
          */
-        activate(
-            features: ObjectFeatures,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        activate(features: ObjectFeatures, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Callback version of `wp_object_activate_closure()`.
+         * @param features the features to enable
+         * @param cancellable a cancellable for the async operation
+         * @param callback a function to call when activation is complete
+         */
+        activate(features: ObjectFeatures, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Activates the requested `features` and invokes `closure` when this is done. `features` may contain unsupported or already active features. The operation will filter them and activate only ones that are supported and inactive.
-         *
-         *
+         * 
+         * 
          * If multiple calls to this method is done, the operations will be executed one after the other to ensure features only get activated once.
          * `closure` may be invoked in sync while this method is being called, if there are no features to activate.
          * @param features the features to enable
          * @param cancellable a cancellable for the async operation
          * @param closure the closure to use when activation is completed
          */
-        activate_closure(features: ObjectFeatures, cancellable: Gio.Cancellable | null, closure: GObject.Closure): void;
+        activate_closure(features: ObjectFeatures, cancellable: (Gio.Cancellable | null), closure: GObject.Closure): void;
+
         /**
          * Finishes the async operation that was started with `wp_object_activate()`.
          * @param res the async operation result
          * @returns TRUE if the requested features were activated, FALSE if there was an error
          */
         activate_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Deactivates the given `features`, leaving the object in the state it was before they were enabled.
-         *
-         *
+         * 
+         * 
          * This is seldom needed to call manually, but it can be used to save resources if some features are no longer needed.
          * @param features the features to deactivate
          */
         deactivate(features: ObjectFeatures): void;
+
         /**
          * Gets the active features of this object.
          * @returns A bitset containing the active features of this object
          */
         get_active_features(): ObjectFeatures;
+
         /**
          * Gets the core associated with this object.
          * @returns the core associated with this object
          */
         get_core(): Core;
+
         /**
          * Gets the unique wireplumber Id of this object.
          */
         get_id(): number;
+
         /**
          * Gets the supported features of this object.
          * @returns A bitset containing the supported features of this object; note that supported features may change at runtime
          */
         get_supported_features(): ObjectFeatures;
+
         /**
          * Checks if the given features are active on this object.
          * @param features the features to check
          * @returns TRUE if all the given features are active on this object
          */
         test_active_features(features: ObjectFeatures): boolean;
+
         /**
          * Checks if the given features are supported on this object.
          * @param features the features to check
          * @returns TRUE if all the given features are supported on this object
          */
         test_supported_features(features: ObjectFeatures): boolean;
+
         /**
          * Allows subclasses to update the currently active features.
-         *
-         *
+         * 
+         * 
          * `activated` should contain new features and `deactivated` should contain features that were just deactivated. Calling this method also advances the activation transitions.
          * Private method to be called by subclasses only.
          * @param activated the features that were activated, or 0
@@ -4414,6 +4412,7 @@ export namespace Wp {
          */
         update_features(activated: ObjectFeatures, deactivated: ObjectFeatures): void;
     }
+
 
     namespace ObjectManager {
         // Signal signatures
@@ -4427,22 +4426,21 @@ export namespace Wp {
              * @signal
              * @run-first
              */
-            'object-added': (arg0: GObject.Object) => void;
+            "object-added": (arg0: GObject.Object) => void;
             /**
              * @signal
              * @run-first
              */
-            'object-removed': (arg0: GObject.Object) => void;
+            "object-removed": (arg0: GObject.Object) => void;
             /**
              * @signal
              * @run-first
              */
-            'objects-changed': () => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
+            "objects-changed": () => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             core: Core;
         }
@@ -4455,7 +4453,7 @@ export namespace Wp {
      *  - remote PipeWire global objects that are created by calling a remote factory through the WirePlumber API; these are very similar to other global objects but it should be noted that the same WpGlobalProxy instance that created them appears in the WpObjectManager (as soon as its WP_PROXY_FEATURE_BOUND is enabled)
      *  - local PipeWire objects that are being exported to PipeWire (WpImplMetadata, WpImplNode, etc); these appear in the WpObjectManager as soon as they are exported (so, when their WP_PROXY_FEATURE_BOUND is enabled)
      *  - WirePlumber-specific objects, such as plugins, factories and session items
-     *
+     * 
      * To start an object manager, you first need to declare interest in a certain kind of object by calling `wp_object_manager_add_interest()` and then install it on the WpCore with `wp_core_install_object_manager()`.
      * Upon installing a WpObjectManager on a WpCore, any pre-existing objects that match the interests of this WpObjectManager will immediately become available to get through `wp_object_manager_new_iterator()` and the WpObjectManager object-added signal will be emitted for all of them. However, note that if these objects need to be prepared (to activate some features on them), the emission of object-added will be delayed. To know when it is safe to access the initial set of objects, wait until the installed signal has been emitted. That signal is emitted asynchronously after all the initial objects have been prepared.
      * @gir-type Class
@@ -4464,7 +4462,6 @@ export namespace Wp {
         static $gtype: GObject.GType<ObjectManager>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -4480,78 +4477,74 @@ export namespace Wp {
         $signals: ObjectManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ObjectManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ObjectManager;
+        static ["new"](): ObjectManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ObjectManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ObjectManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ObjectManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ObjectManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ObjectManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ObjectManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ObjectManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ObjectManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ObjectManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ObjectManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ObjectManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Declares interest in a certain kind of object.
-         *
-         *
+         * 
+         * 
          * Interest consists of a GType that the object must be an ancestor of (g_type_is_a() must match) and optionally, a set of additional constraints on certain properties of the object. Refer to WpObjectInterest for more details.
          * @param interest the interest
          */
         add_interest_full(interest: ObjectInterest): void;
+
         /**
          * Gets the number of objects managed by the object manager.
          * @returns the number of objects managed by this WpObjectManager
          */
         get_n_objects(): number;
+
         /**
          * Checks if an object manager is installed.
          * @returns TRUE if the object manager is installed (i.e. the WpObjectManager installed signal has been emitted), FALSE otherwise
          */
         is_installed(): boolean;
+
         /**
          * Searches for an object that matches the specified `interest` and returns it, if found.
-         *
-         *
+         * 
+         * 
          * If more than one objects match, only the first one is returned. To find multiple objects that match certain criteria, `wp_object_manager_new_filtered_iterator()` is more suitable.
          * @param interest the interest
          * @returns the first managed object that matches the lookup interest, or NULL if no object matches
          */
         lookup_full<T = GObject.Object>(interest: ObjectInterest): T;
+
         /**
          * Iterates through all the objects managed by this object manager that match the specified `interest`.
          * @param interest the interest
          * @returns a WpIterator that iterates over all the matching objects of this object manager
          */
         new_filtered_iterator_full(interest: ObjectInterest): Iterator;
+
         /**
          * Iterates through all the objects managed by this object manager.
          * @returns a WpIterator that iterates over all the managed objects of this object manager
          */
         new_iterator(): Iterator;
+
         /**
          * Requests the object manager to automatically prepare the `wanted_features` on any managed object that is of the specified `object_type`.
-         *
-         *
+         * 
+         * 
          * These features will always be prepared before the object appears on the object manager.
          * @param object_type the WpProxy descendant type
          * @param wanted_features the features to enable on this kind of object
@@ -4559,18 +4552,18 @@ export namespace Wp {
         request_object_features(object_type: GObject.GType, wanted_features: ObjectFeatures): void;
     }
 
+
     namespace Plugin {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Object.ConstructorProps {
             name: string;
         }
@@ -4586,7 +4579,6 @@ export namespace Wp {
         static $gtype: GObject.GType<Plugin>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
@@ -4603,55 +4595,44 @@ export namespace Wp {
         $signals: Plugin.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Looks up a plugin.
          * @param core the core
          * @param plugin_name the lookup name
          */
-        static find(core: Core, plugin_name: string): Plugin | null;
+        static find(core: Core, plugin_name: string): (Plugin | null);
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_disable(): void;
+
         /**
-         * @param transition
+         * @param transition 
          * @virtual
          */
         vfunc_enable(transition: Transition): void;
 
         // Methods
-
         /**
          * Retrieves the name of a plugin.
          * @returns the name of this plugin
@@ -4659,26 +4640,28 @@ export namespace Wp {
         get_name(): string;
     }
 
+
     namespace Port {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
-            'notify::factory-name': (pspec: GObject.ParamSpec) => void;
-            'notify::global-properties': (pspec: GObject.ParamSpec) => void;
-            'notify::permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
-            'notify::native-info': (pspec: GObject.ParamSpec) => void;
-            'notify::param-info': (pspec: GObject.ParamSpec) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
+            "notify::factory-name": (pspec: GObject.ParamSpec) => void;
+            "notify::global-properties": (pspec: GObject.ParamSpec) => void;
+            "notify::permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
+            "notify::native-info": (pspec: GObject.ParamSpec) => void;
+            "notify::param-info": (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
 
-        interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
+        }
     }
 
     /**
@@ -4699,184 +4682,177 @@ export namespace Wp {
         $signals: Port.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Port.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Port.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Port.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Port.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Port.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Port.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Port.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Port.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Port.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Port.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Port.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Port.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Port.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the current direction of the port.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the current direction of the port
          */
         get_direction(): Direction;
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get native_info(): any | null;
+        get native_info(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get nativeInfo(): any | null;
+        get nativeInfo(): (any | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get param_info(): GLib.Variant | null;
+        get param_info(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
-        get paramInfo(): GLib.Variant | null;
+        get paramInfo(): (GLib.Variant | null);
+
         /**
          * @read-only
-         * @category Inherited from Wp.PipewireObject
+          * @category Inherited from Wp.PipewireObject
          */
         get properties(): Properties;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Iterator | null>;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
+
         /**
          * Enumerate object parameters.
-         *
-         *
-         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
-         * @param id the parameter id to enumerate or NULL for all parameters
-         * @param filter a param filter or NULL
-         * @param cancellable a cancellable for the async operation
-         * @param callback a callback to call with the result
-         */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Iterator | null> | void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Enumerate object parameters.
+         * 
+         * 
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         * @param callback a callback to call with the result
+         */
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): any | null;
+        get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): GLib.Variant | null;
+        get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
          */
         get_properties(): Properties;
+
         /**
          * Returns the value of a single pipewire property.
-         *
-         *
+         * 
+         * 
          * This is the same as getting the whole properties structure with `wp_pipewire_object_get_properties()` and accessing a single property with `wp_properties_get()`, but saves one call and having to clean up the WpProperties reference count afterwards.
          * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): string | null;
+        get_property(key: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Iterates over the object's PipeWire properties.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns an iterator that iterates over the pipewire properties of this object. Use `wp_properties_iterator_item_get_key()` and `wp_properties_iterator_item_get_value()` to parse the items returned by this iterator.
          */
         new_properties_iterator(): Iterator;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -4885,10 +4861,11 @@ export namespace Wp {
          * @returns TRUE on success, FALSE if setting the param failed
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
@@ -4896,59 +4873,60 @@ export namespace Wp {
          * @param callback a callback to call with the result
          * @virtual
          */
-        vfunc_enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @virtual
          */
-        vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @virtual
          */
-        vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_native_info(): any | null;
+        vfunc_get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
-        vfunc_get_param_info(): GLib.Variant | null;
+        vfunc_get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @virtual
          */
         vfunc_get_properties(): Properties;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -4958,6 +4936,7 @@ export namespace Wp {
          */
         vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
     }
+
 
     namespace Proxy {
         // Signal signatures
@@ -4976,27 +4955,26 @@ export namespace Wp {
              * @signal
              * @run-first
              */
-            'pw-proxy-created': (arg0: any | null) => void;
+            "pw-proxy-created": (arg0: (any | null)) => void;
             /**
              * @signal
              * @run-first
              */
-            'pw-proxy-destroyed': () => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "pw-proxy-destroyed": () => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Object.ConstructorProps {
             bound_id: number;
             boundId: number;
-            pw_proxy: any | null;
-            pwProxy: any | null;
+            pw_proxy: (any | null);
+            pwProxy: (any | null);
         }
     }
 
@@ -5009,25 +4987,27 @@ export namespace Wp {
         static $gtype: GObject.GType<Proxy>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get bound_id(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get boundId(): number;
+
         /**
          * @read-only
          */
-        get pw_proxy(): any | null;
+        get pw_proxy(): (any | null);
+
         /**
          * @read-only
          */
-        get pwProxy(): any | null;
+        get pwProxy(): (any | null);
 
         /**
          * Compile-time signal type information.
@@ -5039,99 +5019,94 @@ export namespace Wp {
         $signals: Proxy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Proxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Proxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Proxy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_bound(id: number): void;
+
         /**
-         * @param seq
-         * @param res
-         * @param message
+         * @param seq 
+         * @param res 
+         * @param message 
          * @virtual
          */
         vfunc_error(seq: number, res: number, message: string): void;
+
         /**
-         * @param proxy
+         * @param proxy 
          * @virtual
          */
-        vfunc_pw_proxy_created(proxy: any | null): void;
+        vfunc_pw_proxy_created(proxy: (any | null)): void;
+
         /**
          * @virtual
          */
         vfunc_pw_proxy_destroyed(): void;
 
         // Methods
-
         /**
          * Returns the proxy bound id.
-         *
-         *
+         * 
+         * 
          * The bound id is the id that this object has on the PipeWire registry (a.k.a. the global id). The object must have the WP_PROXY_FEATURE_BOUND feature before this method can be called.
          * Requires WP_PROXY_FEATURE_BOUND
          * @returns the bound id of this object
          */
         get_bound_id(): number;
+
         /**
          * Gets the interface type of the proxied object.
          * @returns the PipeWire type of the interface that is being proxied
          */
         get_interface_type(): [string, number];
+
         /**
          * Gets the pw_proxy wrapped by this proxy object.
          * @returns a pointer to the underlying pw_proxy object
          */
-        get_pw_proxy(): any | null;
+        get_pw_proxy(): (any | null);
+
         /**
          * Private method to be used by subclasses to set the pw_proxy pointer when it is available.
-         *
-         *
+         * 
+         * 
          * This can be called only if there is no pw_proxy already set. Takes ownership of `proxy`.
-         * @param proxy
+         * @param proxy 
          */
-        set_pw_proxy(proxy: any | null): void;
+        set_pw_proxy(proxy: (any | null)): void;
     }
+
 
     namespace SessionItem {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Object.ConstructorProps {
             properties: Properties;
         }
@@ -5146,7 +5121,6 @@ export namespace Wp {
         static $gtype: GObject.GType<SessionItem>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -5162,168 +5136,173 @@ export namespace Wp {
         $signals: SessionItem.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SessionItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SessionItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SessionItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SessionItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SessionItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SessionItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SessionItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SessionItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SessionItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SessionItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Helper callback for sub-classes that defers and unexports the session item.
-         *
-         *
+         * 
+         * 
          * Only meant to be used when the pipewire proxy destroyed signal is triggered.
          * @param proxy the proxy that was destroyed by the server
          * @param item the associated session item
          */
         static handle_proxy_destroyed(proxy: Proxy, item: SessionItem): void;
+
         /**
          * Finds the factory associated with the given `name` from the `core` and uses it to construct a new WpSessionItem.
          * @param core the WpCore
          * @param factory_name the name of the factory to be used for constructing the object
          */
-        static make(core: Core, factory_name: string): SessionItem | null;
+        static make(core: Core, factory_name: string): (SessionItem | null);
 
         // Virtual methods
-
         /**
          * Configures the session item with a set of properties.
          * @param props the properties used to configure the item
          * @virtual
          */
         vfunc_configure(props: Properties): boolean;
+
         /**
          * @virtual
          */
         vfunc_disable_active(): void;
+
         /**
          * @virtual
          */
         vfunc_disable_exported(): void;
+
         /**
-         * @param transition
+         * @param transition 
          * @virtual
          */
         vfunc_enable_active(transition: Transition): void;
+
         /**
-         * @param transition
+         * @param transition 
          * @virtual
          */
         vfunc_enable_exported(transition: Transition): void;
+
         /**
-         * @param proxy_type
+         * @param proxy_type 
          * @virtual
          */
-        vfunc_get_associated_proxy(proxy_type: GObject.GType): any | null;
+        vfunc_get_associated_proxy(proxy_type: GObject.GType): (any | null);
+
         /**
          * Resets the session item.
-         *
-         *
+         * 
+         * 
          * This essentially removes the configuration and deactivates all active features.
          * @virtual
          */
         vfunc_reset(): void;
 
         // Methods
-
         /**
          * Configures the session item with a set of properties.
          * @param props the properties used to configure the item
          * @returns TRUE on success, FALSE if the item could not be configured
          */
         configure(props: Properties): boolean;
+
         /**
          * An associated proxy is a WpProxy subclass instance that is somehow related to this item.
          * @param proxy_type a WpProxy subclass GType
          * @returns the associated proxy of the specified `proxy_type`, or NULL if there is no association to such a proxy
          */
-        get_associated_proxy(proxy_type: GObject.GType): Proxy | null;
+        get_associated_proxy(proxy_type: GObject.GType): (Proxy | null);
+
         /**
          * Gets the bound id of a proxy associated with the session item.
          * @param proxy_type a WpProxy subclass GType
          * @returns the bound id of the associated proxy of the specified `proxy_type`, or SPA_ID_INVALID if there is no association to such a proxy
          */
         get_associated_proxy_id(proxy_type: GObject.GType): number;
+
         /**
          * Gets the properties of a session item.
          * @returns the item's properties.
          */
         get_properties(): Properties;
+
         /**
          * Looks up a named session item property value for a given key.
          * @param key the property key
          * @returns the item property value for the given key.
          */
         get_property(key: string): string;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_property
+    // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Checks if the session item is configured.
          * @returns TRUE if the item is configured, FALSE otherwise
          */
         is_configured(): boolean;
+
         /**
          * Registers the session item to its associated core.
          */
         register(): void;
+
         /**
          * Removes the session item from its associated core.
          */
         remove(): void;
+
         /**
          * Resets the session item.
-         *
-         *
+         * 
+         * 
          * This essentially removes the configuration and deactivates all active features.
          */
         reset(): void;
+
         /**
          * Sets the item's properties.
-         *
-         *
+         * 
+         * 
          * This should only be done by sub-classes after the configuration has been done.
          * @param props the new properties to set
          */
         set_properties(props: Properties): void;
     }
 
+
     namespace Settings {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
-            'notify::metadata-name': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "notify::metadata-name": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Object.ConstructorProps {
             metadata_name: string;
             metadataName: string;
@@ -5339,12 +5318,12 @@ export namespace Wp {
         static $gtype: GObject.GType<Settings>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get metadata_name(): string;
+
         /**
          * @construct-only
          * @default null
@@ -5361,98 +5340,97 @@ export namespace Wp {
         $signals: Settings.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](core: Core, metadata_name: string | null): Settings;
+        static ["new"](core: Core, metadata_name: (string | null)): Settings;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Finds a registered WpSettings object by its metadata name.
          * @param core the WpCore
          * @param metadata_name the name of the metadata object that the settings object is associated with; NULL returns the first settings object that is found
          */
-        static find(core: Core, metadata_name: string | null): Settings | null;
+        static find(core: Core, metadata_name: (string | null)): (Settings | null);
 
         // Methods
-
         /**
          * Deletes a saved setting to not make it persistent after reboot.
          * @param name the name of the saved setting to be deleted
          * @returns TRUE if the setting could be deleted, FALSE otherwise
          */
-        ['delete'](name: string): boolean;
+        ["delete"](name: string): boolean;
+
         /**
          * Deletes all saved setting to not make them persistent after reboot.
          */
         delete_all(): void;
+
         /**
          * Gets the WpSpaJson value of a setting.
          * @param name the name of the setting
          * @returns The WpSpaJson value of the setting, or NULL if the setting does not exist
          */
-        get(name: string): SpaJson | null;
+        get(name: string): (SpaJson | null);
+
         /**
          * Gets the WpSpaJson saved value of a setting.
          * @param name the name of the setting
          * @returns The WpSpaJson saved value of the setting, or NULL if the setting does not exist
          */
-        get_saved(name: string): SpaJson | null;
+        get_saved(name: string): (SpaJson | null);
+
         /**
          * Gets the specification of a setting.
          * @param name the name of the setting
          * @returns the specification of the setting
          */
-        get_spec(name: string): SettingsSpec | null;
+        get_spec(name: string): (SettingsSpec | null);
+
         /**
          * Iterates over settings.
          * @returns an iterator that iterates over the settings.
          */
         new_iterator(): Iterator;
+
         /**
          * Resets the setting to its default value.
          * @param name the name of the setting to reset
          * @returns TRUE if the setting could be reset, FALSE otherwise
          */
         reset(name: string): boolean;
+
         /**
          * Resets all the settings to their default value.
          */
         reset_all(): void;
+
         /**
          * Saves a setting to make it persistent after reboot.
          * @param name the name of the setting to be saved
          * @returns TRUE if the setting could be saved, FALSE otherwise
          */
         save(name: string): boolean;
+
         /**
          * Saves all the settings to make them persistent after reboot.
          */
         save_all(): void;
+
         /**
          * Sets a new setting value.
          * @param name the name of the setting
@@ -5460,11 +5438,13 @@ export namespace Wp {
          * @returns TRUE if the setting could be set, FALSE otherwise
          */
         set(name: string, value: SpaJson): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
          * Subscribes callback for a given setting pattern(a glob-style pattern matched using g_pattern_match_simple), this allows clients to look for any changes made in settings through metadata.
          * @param pattern name of the pattern to match the settings with
@@ -5472,29 +5452,31 @@ export namespace Wp {
          * @returns the subscription ID (always greater than 0 for successful subscriptions)
          */
         subscribe(pattern: string, callback: SettingsChangedCallback): number;
+
         /**
          * Subscribes callback for a given setting pattern(a glob-style pattern matched using g_pattern_match_simple), this allows clients to look for any changes made in settings through metadata.
          * @param pattern name of the pattern to match the settings with
          * @param closure a GAsyncReadyCallback wrapped in a GClosure
          * @returns the subscription ID (always greater than 0 for success)
          */
-        subscribe_closure(pattern: string, closure: GObject.Closure | null): number;
+        subscribe_closure(pattern: string, closure: (GObject.Closure | null)): number;
+
         /**
          * Unsubscribes callback for a given subscription_id.
          * @param subscription_id identifies the callback
          * @returns TRUE if success, FALSE otherwise
          */
-        unsubscribe(subscription_id: bigint | number): boolean;
+        unsubscribe(subscription_id: (bigint | number)): boolean;
     }
+
 
     namespace SiFactory {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
         }
@@ -5503,25 +5485,24 @@ export namespace Wp {
     /**
      * A factory for session items.
      * The most simple way to register a new item implementation would be:
-     *
+     * 
      * ```c
      *   wp_si_factory_register (core,
      *      wp_si_factory_new_simple (
      * ```
-     *
+     * 
      * And the most simple way to construct an item from a registered factory:
-     *
+     * 
      * ```c
      *   item = wp_session_item_make (core,
      * ```
-     *
+     * 
      * @gir-type Class
      */
     abstract class SiFactory extends GObject.Object {
         static $gtype: GObject.GType<SiFactory>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -5537,7 +5518,6 @@ export namespace Wp {
         $signals: SiFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SiFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -5545,37 +5525,27 @@ export namespace Wp {
         static new_simple(factory_name: string, si_type: GObject.GType): SiFactory;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SiFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SiFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SiFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SiFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SiFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SiFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SiFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SiFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SiFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SiFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SiFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SiFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Looks up a factory matching a name.
          * @param core the core
          * @param factory_name the lookup name
          */
-        static find(core: Core, factory_name: string): SiFactory | null;
+        static find(core: Core, factory_name: string): (SiFactory | null);
 
         // Virtual methods
-
         /**
          * Creates a new instance of the session item that is constructed by this factory.
          * @param core the core
@@ -5584,13 +5554,13 @@ export namespace Wp {
         vfunc_construct(core: Core): SessionItem;
 
         // Methods
-
         /**
          * Creates a new instance of the session item that is constructed by this factory.
          * @param core the core
          * @returns a new session item instance
          */
         construct(core: Core): SessionItem;
+
         /**
          * Gets the name of the factory.
          * @returns the factory name
@@ -5598,18 +5568,18 @@ export namespace Wp {
         get_name(): string;
     }
 
+
     namespace SimpleEventHook {
         // Signal signatures
         interface SignalSignatures extends InterestEventHook.SignalSignatures {
-            'notify::closure': (pspec: GObject.ParamSpec) => void;
-            'notify::dispatcher': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::runs-after-hooks': (pspec: GObject.ParamSpec) => void;
-            'notify::runs-before-hooks': (pspec: GObject.ParamSpec) => void;
+            "notify::closure": (pspec: GObject.ParamSpec) => void;
+            "notify::dispatcher": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::runs-after-hooks": (pspec: GObject.ParamSpec) => void;
+            "notify::runs-before-hooks": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends InterestEventHook.ConstructorProps {
             closure: GObject.Closure;
         }
@@ -5623,7 +5593,6 @@ export namespace Wp {
         static $gtype: GObject.GType<SimpleEventHook>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -5639,34 +5608,26 @@ export namespace Wp {
         $signals: SimpleEventHook.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SimpleEventHook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, before: string, after: string, closure: GObject.Closure): SimpleEventHook;
+        static ["new"](name: string, before: string, after: string, closure: GObject.Closure): SimpleEventHook;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SimpleEventHook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleEventHook.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SimpleEventHook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleEventHook.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SimpleEventHook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleEventHook.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SimpleEventHook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleEventHook.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SimpleEventHook.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SimpleEventHook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SimpleEventHook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleEventHook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace SpaDevice {
         // Signal signatures
@@ -5675,24 +5636,23 @@ export namespace Wp {
              * @signal
              * @run-first
              */
-            'create-object': (arg0: number, arg1: string, arg2: string, arg3: Properties) => void;
+            "create-object": (arg0: number, arg1: string, arg2: string, arg3: Properties) => void;
             /**
              * @signal
              * @run-first
              */
-            'object-removed': (arg0: number) => void;
-            'notify::properties': (pspec: GObject.ParamSpec) => void;
-            'notify::spa-device-handle': (pspec: GObject.ParamSpec) => void;
-            'notify::bound-id': (pspec: GObject.ParamSpec) => void;
-            'notify::pw-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::active-features': (pspec: GObject.ParamSpec) => void;
-            'notify::core': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-features': (pspec: GObject.ParamSpec) => void;
+            "object-removed": (arg0: number) => void;
+            "notify::properties": (pspec: GObject.ParamSpec) => void;
+            "notify::spa-device-handle": (pspec: GObject.ParamSpec) => void;
+            "notify::bound-id": (pspec: GObject.ParamSpec) => void;
+            "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::active-features": (pspec: GObject.ParamSpec) => void;
+            "notify::core": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-features": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Proxy.ConstructorProps {
             properties: Properties;
             spa_device_handle: any;
@@ -5710,15 +5670,16 @@ export namespace Wp {
         static $gtype: GObject.GType<SpaDevice>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get properties(): Properties;
+
         /**
          * @construct-only
          */
         get spa_device_handle(): any;
+
         /**
          * @construct-only
          */
@@ -5734,74 +5695,70 @@ export namespace Wp {
         $signals: SpaDevice.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SpaDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_from_spa_factory(core: Core, factory_name: string, properties: Properties | null): SpaDevice;
+        static new_from_spa_factory(core: Core, factory_name: string, properties: (Properties | null)): SpaDevice;
 
-        static new_wrap(core: Core, spa_device_handle: any | null, properties: Properties | null): SpaDevice;
+        static new_wrap(core: Core, spa_device_handle: (any | null), properties: (Properties | null)): SpaDevice;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SpaDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpaDevice.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SpaDevice.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SpaDevice.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SpaDevice.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SpaDevice.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SpaDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpaDevice.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SpaDevice.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SpaDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SpaDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpaDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets one of the objects managed by this device.
          * @param id the (device-internal) id of the object to get
          * @returns the managed object associated with `id`
          */
         get_managed_object<T = GObject.Object>(id: number): T;
+
         /**
          * Gets the properties of this device.
          * @returns the device properties
          */
         get_properties(): Properties;
+
         /**
          * Iterates through all the objects managed by this device.
          * @returns a WpIterator that iterates over all the objects managed by this device
          */
         new_managed_object_iterator(): Iterator;
+
         /**
          * Marks a managed object id pending.
-         *
-         *
+         * 
+         * 
          * When an object id is pending, Props from received ObjectConfig events for the id are saved. When wp_spa_device_store_managed_object later sets an object for the id, the saved Props are immediately set on the object and pending status is cleared.
          * If an object is already set for the id, this has no effect.
          * @param id the (device-internal) id of the object
          */
         set_managed_pending(id: number): void;
+
         /**
          * Stores or removes a managed object into/from a device.
          * @param id the (device-internal) id of the object
          * @param object the object to store or NULL to remove the managed object associated with `id`
          */
-        store_managed_object(id: number, object: GObject.Object | null): void;
+        store_managed_object(id: number, object: (GObject.Object | null)): void;
     }
+
 
     namespace SpaType {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -5811,32 +5768,22 @@ export namespace Wp {
         static $gtype: GObject.GType<SpaType>;
 
         // Constructors
-
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SpaType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpaType.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SpaType.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SpaType.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SpaType.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SpaType.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SpaType.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpaType.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SpaType.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SpaType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SpaType.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpaType.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Looks up the type id from a given type name.
          * @param name the name to look up
@@ -5844,40 +5791,45 @@ export namespace Wp {
         static from_name(name: string): SpaType;
 
         // Methods
-
         /**
          * Gets the table with the values that can be stored in the special "id" field of an object of the given `type`.
-         *
-         *
+         * 
+         * 
          * Object pods (see WpSpaPod) always have a special "id" field along with other fields that can be defined. This "id" field can only store values of a specific SPA_TYPE_Id type. This function returns the table that contains the possible values for that field.
          * @returns the table with the values that can be stored in the special "id" field of an object of the given `type`
          */
         get_object_id_values_table(): SpaIdTable;
+
         /**
          * Gets the values table of an SPA type.
          * @returns the associated WpSpaIdTable that contains possible values or object fields for this type, or NULL
          */
         get_values_table(): SpaIdTable;
+
         /**
          * Checks if an SPA type is a fundamental type.
          * @returns TRUE if the `type` has no parent, FALSE otherwise
          */
         is_fundamental(): boolean;
+
         /**
          * Checks if an SPA type is an Id type.
          * @returns TRUE if the `type` is a SPA_TYPE_Id, FALSE otherwise
          */
         is_id(): boolean;
+
         /**
          * Checks if an SPA type is an Object type.
          * @returns TRUE if the `type` is a SPA_TYPE_Object, FALSE otherwise
          */
         is_object(): boolean;
+
         /**
          * Gets the name of an SPA type.
          * @returns the complete name of the given `type` or NULL if `type` is invalid
          */
         name(): string;
+
         /**
          * Gets the parent type of an SPA type.
          * @returns the direct parent type of the given `type`; if the type is fundamental (i.e. has no parent), the returned type is the same as `type`
@@ -5885,15 +5837,15 @@ export namespace Wp {
         parent(): SpaType;
     }
 
+
     namespace State {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::timeout': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::timeout": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             timeout: number;
@@ -5908,12 +5860,12 @@ export namespace Wp {
         static $gtype: GObject.GType<State>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * @default 1000
          */
@@ -5930,68 +5882,63 @@ export namespace Wp {
         $signals: State.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<State.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): State;
+        static ["new"](name: string): State;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof State.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, State.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof State.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, State.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof State.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, State.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof State.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, State.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof State.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<State.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof State.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<State.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Clears the state removing its file.
          */
         clear(): void;
+
         /**
          * Gets the location of a state object.
          * @returns the location of this state
          */
         get_location(): string;
+
         /**
          * Gets the name of a state object.
          * @returns the name of this state
          */
         get_name(): string;
+
         /**
          * Loads the state data from the file system.
-         *
-         *
+         * 
+         * 
          * This function will never fail. If it cannot load the state, for any reason, it will simply return an empty WpProperties, behaving as if there was no previous state stored.
          * @returns a new WpProperties containing the state data
          */
         load(): Properties;
+
         /**
          * Saves new properties in the state, overwriting all previous data.
          * @param props the properties to save
          * @returns TRUE if the properties could be saved, FALSE otherwise
          */
         save(props: Properties): boolean;
+
         /**
          * Saves new properties in the state, overwriting all previous data, after a timeout.
-         *
-         *
+         * 
+         * 
          * This is similar to `wp_state_save()` but it will save the state after a timeout has elapsed. If the state is saved again before the timeout elapses, the timeout is reset.
          * This function is useful to avoid saving the state too often. When called consecutively, it will save the state only once. Every time it is called, it will cancel the previous timer and start a new one, resulting in timing out only after the last call.
          * @param core the core, used to add the timeout callback to the main loop
@@ -6000,14 +5947,14 @@ export namespace Wp {
         save_after_timeout(core: Core, props: Properties): void;
     }
 
+
     namespace Transition {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::completed': (pspec: GObject.ParamSpec) => void;
+            "notify::completed": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {
             completed: boolean;
         }
@@ -6023,7 +5970,6 @@ export namespace Wp {
         static $gtype: GObject.GType<Transition>;
 
         // Properties
-
         /**
          * @read-only
          * @default false
@@ -6040,76 +5986,55 @@ export namespace Wp {
         $signals: Transition.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Transition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            type: GObject.GType,
-            source_object: GObject.Object | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback | null,
-        ): Transition;
+        static ["new"](type: GObject.GType, source_object: (GObject.Object | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback | null)): Transition;
 
-        static new_closure(
-            type: GObject.GType,
-            source_object: GObject.Object | null,
-            cancellable: Gio.Cancellable | null,
-            closure: GObject.Closure | null,
-        ): Transition;
+        static new_closure(type: GObject.GType, source_object: (GObject.Object | null), cancellable: (Gio.Cancellable | null), closure: (GObject.Closure | null)): Transition;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Transition.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transition.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Transition.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Transition.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Transition.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Transition.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Transition.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transition.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Transition.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Transition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Transition.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transition.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Returns the final return status of the transition and its error, if there was one.
-         *
-         *
+         * 
+         * 
          * This is meant to be called from within the GAsyncReadyCallback that was specified in `wp_transition_new()`.
          * @param res a transition, as a GAsyncResult
          */
         static finish(res: Gio.AsyncResult): boolean;
 
         // Virtual methods
-
         /**
-         * @param step
+         * @param step 
          * @virtual
          */
         vfunc_execute_step(step: number): void;
+
         /**
-         * @param step
+         * @param step 
          * @virtual
          */
         vfunc_get_next_step(step: number): number;
 
         // Methods
-
         /**
          * Advances the transition to the next step.
-         *
-         *
+         * 
+         * 
          * This initially calls _WpTransitionClass::get_next_step() in order to determine what the next step is. If _WpTransitionClass::get_next_step() returns a step different than the previous one, it calls _WpTransitionClass::execute_step() to execute it.
          * The very first time that _WpTransitionClass::get_next_step() is called, its `step` parameter equals WP_TRANSITION_STEP_NONE.
          * When _WpTransitionClass::get_next_step() returns WP_TRANSITION_STEP_NONE this function completes the transition, calling the transition's callback and then unref-ing the transition.
@@ -6117,84 +6042,96 @@ export namespace Wp {
          * In error conditions, _WpTransitionClass::execute_step() is called once with `step` being WP_TRANSITION_STEP_ERROR, allowing the implementation to rollback any changes or cancel underlying jobs, if necessary.
          */
         advance(): void;
+
         /**
          * Checks if the transition completed.
          * @returns TRUE if the transition has completed (with or without an error), FALSE otherwise
          */
         get_completed(): boolean;
+
         /**
          * Gets `self` 's data.
-         *
-         *
+         * 
+         * 
          * See `wp_transition_set_data()`.
          * @returns the transition's data
          */
-        get_data(): any | null;
+        get_data(): (any | null);
+
         /**
          * Gets the source object from the transition.
-         *
-         *
+         * 
+         * 
          * Like `g_async_result_get_source_object()`, but does not ref the object.
          * @returns the source object
          */
         get_source_object<T = GObject.Object>(): T;
+
         /**
          * Gets `self` 's source tag.
-         *
-         *
+         * 
+         * 
          * See `wp_transition_set_source_tag()`.
          * @returns the transition's source tag
          */
-        get_source_tag(): any | null;
+        get_source_tag(): (any | null);
+
         /**
          * Checks if the transition completed with an error.
          * @returns TRUE if the transition completed with an error, FALSE otherwise
          */
         had_error(): boolean;
+
         /**
          * Checks if `self` has the given `tag` (generally a function pointer indicating the function `self` was created by).
          * @param tag a tag
          * @returns TRUE if `self` has the indicated `tag` , FALSE if not.
          */
-        is_tagged(tag: any | null): boolean;
+        is_tagged(tag: (any | null)): boolean;
+
         /**
          * Completes the transition with an error.
-         *
-         *
+         * 
+         * 
          * This can be called anytime from within any virtual function or an async job handler.
          * In most cases this will also unref the transition, so it is not safe to access it after this function has been called.
          * @param error a GError
          */
         return_error(error: GLib.Error): void;
+
         /**
          * Sets `self` 's data (freeing the existing data, if any). This can be an arbitrary user structure that holds data associated with this transition.
          * @param data transition-specific user data
          * @param data_destroy GDestroyNotify for `data`
          */
-        set_data(data: any | null, data_destroy: GLib.DestroyNotify | null): void;
+        set_data(data: (any | null), data_destroy: (GLib.DestroyNotify | null)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set_data
+    // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
+
         /**
          * Sets `self` 's source tag.
-         *
-         *
+         * 
+         * 
          * You can use this to tag a transition's return value with a particular pointer (usually a pointer to the function doing the tagging) and then later check it using `wp_transition_get_source_tag()` (or `g_async_result_is_tagged()`) in the transition's "finish" function, to figure out if the response came from a particular place.
          * @param tag an opaque pointer indicating the source of this transition
          */
-        set_source_tag(tag: any | null): void;
+        set_source_tag(tag: (any | null)): void;
+
         /**
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @returns the user data for `res`.
          */
-        get_user_data(): any | null;
+        get_user_data(): (any | null);
+
         /**
          * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
          * {@link Gio.SimpleAsyncResult.propagate_error}. Otherwise it returns
          * `FALSE`.
-         *
+         * 
          * This can be used for legacy error handling in async `*_finish()`
          * wrapper functions that traditionally handled {@link Gio.SimpleAsyncResult}
          * error returns themselves rather than calling into the virtual method.
@@ -6204,49 +6141,59 @@ export namespace Wp {
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
+
         /**
          * Gets the source object from a {@link Gio.AsyncResult}.
          * @virtual
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
+
         /**
          * Gets the user data from a {@link Gio.AsyncResult}.
          * @virtual
          */
-        vfunc_get_user_data(): any | null;
+        vfunc_get_user_data(): (any | null);
+
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
          * @virtual
          */
-        vfunc_is_tagged(source_tag: any | null): boolean;
+        vfunc_is_tagged(source_tag: (any | null)): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AsyncEventHookClass = typeof AsyncEventHook;
+
     /**
      * @gir-type Alias
      */
     type ClientClass = typeof Client;
+
     /**
      * @gir-type Alias
      */
     type ComponentLoaderInterface = typeof ComponentLoader;
+
     /**
      * @gir-type Alias
      */
     type ConfClass = typeof Conf;
+
     /**
      * @gir-type Alias
      */
     type CoreClass = typeof Core;
+
     /**
      * @gir-type Alias
      */
     type DeviceClass = typeof Device;
+
     /**
      * WpEvent describes an event, an event is an entity which can be pushed on to event stack and the event dispatcher is going to pick and dispatch it.
      * @gir-type Struct
@@ -6255,105 +6202,108 @@ export namespace Wp {
         static $gtype: GObject.GType<Event>;
 
         // Constructors
+        constructor(type: string, priority: number, properties: (Properties | null), source: GObject.Object, subject: (GObject.Object | null));
 
-        constructor(
-            type: string,
-            priority: number,
-            properties: Properties | null,
-            source: GObject.Object,
-            subject: GObject.Object | null,
-        );
-
-        static ['new'](
-            type: string,
-            priority: number,
-            properties: Properties | null,
-            source: GObject.Object,
-            subject: GObject.Object | null,
-        ): Event;
+        static ["new"](type: string, priority: number, properties: (Properties | null), source: GObject.Object, subject: (GObject.Object | null)): Event;
 
         // Methods
-
         /**
          * Collects all the hooks registered in the `dispatcher` that run for this `event`.
          * @param dispatcher the event dispatcher
          * @returns TRUE if at least one hook has been collected, FALSE if no hooks run for this event or an error occurred
          */
         collect_hooks(dispatcher: EventDispatcher): boolean;
+
         /**
          * Returns the internal GCancellable that is used to track whether this event has been stopped by `wp_event_stop_processing()`.
          * @returns the cancellable
          */
         get_cancellable(): Gio.Cancellable;
+
         /**
          * Gets the data that was previously associated with `key` by `wp_event_set_data()`.
          * @param key the key
          * @returns the data associated with `key` or `null`
          */
-        get_data(key: string): GObject.Value | null;
+        get_data(key: string): (GObject.Value | null);
+
         /**
          * Gets the name of the event.
          * @returns the event name
          */
         get_name(): string;
+
         /**
          * Gets the priority of the event.
          * @returns the event priority
          */
         get_priority(): number;
+
         /**
          * Gets the properties of the Event.
          * @returns the properties of the event
          */
         get_properties(): Properties;
+
         /**
          * Gets the Source Object of the Event.
          * @returns the source of the event
          */
         get_source<T = GObject.Object>(): T;
+
         /**
          * Gets the Subject Object of the Event.
          * @returns the subject of the event
          */
         get_subject<T = GObject.Object>(): T;
+
         /**
          * Returns an iterator that iterates over all the hooks that were collected by `wp_event_collect_hooks()`.
          * @returns the new iterator
          */
         new_hooks_iterator(): Iterator;
+
         ref(): Event;
+
         /**
          * Stores `data` on the event, associated with the specified `key`.
-         *
-         *
+         * 
+         * 
          * This can be used to exchange arbitrary data between hooks that run for this event.
          * @param key the key to associate `data` with
          * @param data the data element, or `null` to remove any previous data associated with this `key`
          */
-        set_data(key: string, data: GObject.Value | null): void;
+        set_data(key: string, data: (GObject.Value | null)): void;
+
         /**
          * Stops processing of this event; any further hooks will not be executed from this moment onwards and the event will be discarded from the stack.
          */
         stop_processing(): void;
+
         unref(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type EventDispatcherClass = typeof EventDispatcher;
+
     /**
      * @gir-type Alias
      */
     type EventHookClass = typeof EventHook;
+
     /**
      * @gir-type Alias
      */
     type FactoryClass = typeof Factory;
+
     /**
      * @gir-type Alias
      */
     type FeatureActivationTransitionClass = typeof FeatureActivationTransition;
+
     /**
      * @gir-type Struct
      */
@@ -6361,26 +6311,32 @@ export namespace Wp {
         static $gtype: GObject.GType<Global>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GlobalProxyClass = typeof GlobalProxy;
+
     /**
      * @gir-type Alias
      */
     type ImplMetadataClass = typeof ImplMetadata;
+
     /**
      * @gir-type Alias
      */
     type ImplModuleClass = typeof ImplModule;
+
     /**
      * @gir-type Alias
      */
     type ImplNodeClass = typeof ImplNode;
+
     /**
      * @gir-type Alias
      */
     type InterestEventHookClass = typeof InterestEventHook;
+
     /**
      * A generic iterator API
      * @gir-type Struct
@@ -6389,53 +6345,58 @@ export namespace Wp {
         static $gtype: GObject.GType<Iterator>;
 
         // Constructors
+        constructor(methods: IteratorMethods, user_size: (bigint | number));
 
-        constructor(methods: IteratorMethods, user_size: bigint | number);
-
-        static ['new'](methods: IteratorMethods, user_size: bigint | number): Iterator;
+        static ["new"](methods: IteratorMethods, user_size: (bigint | number)): Iterator;
 
         // Methods
-
         /**
          * Fold a function over the items of the iterator.
          * @param func the fold function
          * @param ret the accumulator data
          * @returns TRUE if all the items were processed, FALSE otherwise.
          */
-        fold(func: IteratorFoldFunc, ret: GObject.Value | any): [boolean, unknown];
+        fold(func: IteratorFoldFunc, ret: (GObject.Value | any)): [boolean, unknown];
+
         /**
          * Iterates over all items of the iterator calling a function.
          * @param func the foreach function
          * @returns TRUE if all the items were processed, FALSE otherwise.
          */
         foreach(func: IteratorForeachFunc): boolean;
+
         /**
          * Gets the implementation-specific storage of an iterator.
-         *
-         *
+         * 
+         * 
          * this only for use by implementations of WpIterator
          * @returns a pointer to the implementation-specific storage area
          */
-        get_user_data(): any | null;
+        get_user_data(): (any | null);
+
         /**
          * Gets the next item of the iterator.
          * @returns TRUE if next iterator was obtained, FALSE when the iterator has no more items to iterate through.
          */
         next(): [boolean, unknown];
+
         /**
          * Increases the reference count of an iterator.
          * @returns `self` with an additional reference count on it
          */
         ref(): Iterator;
+
         /**
          * Resets the iterator so we can iterate again from the beginning.
          */
         reset(): void;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -6444,22 +6405,21 @@ export namespace Wp {
         static $gtype: GObject.GType<IteratorMethods>;
 
         // Fields
-
         version: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                version: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            version: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type LinkClass = typeof Link;
+
     /**
      * A structure representing a log topic.
      * @gir-type Struct
@@ -6468,37 +6428,40 @@ export namespace Wp {
         static $gtype: GObject.GType<LogTopic>;
 
         // Fields
-
         topic_name: string;
+
         flags: LogTopicFlags;
 
         // Methods
-
         /**
          * Initializes a log topic. Internal function, don't use it directly.
          */
         init(): void;
+
         /**
          * Registers a log topic.
-         *
-         *
+         * 
+         * 
          * The log topic must be unregistered using wp_log_topic_unregister before its lifetime ends.
          * This function is threadsafe.
          */
         register(): void;
+
         /**
          * Unregisters a log topic.
-         *
-         *
+         * 
+         * 
          * This function is threadsafe.
          */
         unregister(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MetadataClass = typeof Metadata;
+
     /**
      * WpMetadataItem holds the subject, key, type and value of a metadata entry.
      * @gir-type Struct
@@ -6507,46 +6470,53 @@ export namespace Wp {
         static $gtype: GObject.GType<MetadataItem>;
 
         // Methods
-
         /**
          * Gets the key from a metadata item.
          * @returns the metadata key of the `item`
          */
         get_key(): string;
+
         /**
          * Gets the subject from a metadata item.
          * @returns the metadata subject of the `item`
          */
         get_subject(): number;
+
         /**
          * Gets the value from a metadata item.
          * @returns the metadata value of the `item`
          */
         get_value(): string;
+
         /**
          * Gets the value type from a metadata item.
          * @returns the metadata value type of the `item`
          */
         get_value_type(): string;
+
         /**
          * Increases the reference count of a metadata item object.
          * @returns `self` with an additional reference count on it
          */
         ref(): MetadataItem;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NodeClass = typeof Node;
+
     /**
      * @gir-type Alias
      */
     type ObjectClass = typeof Object;
+
     /**
      * An object interest is a helper that is used in WpObjectManager to declare interest in certain kinds of objects.
      * An interest is defined by a GType and a set of constraints on the object's properties. An object "matches" the interest if it is of the specified GType (either the same type or a descendant of it) and all the constraints are satisfied.
@@ -6556,67 +6526,68 @@ export namespace Wp {
         static $gtype: GObject.GType<ObjectInterest>;
 
         // Constructors
-
         constructor(gtype: GObject.GType, ___: any[]);
 
         static new_type(gtype: GObject.GType): ObjectInterest;
 
         // Methods
-
         /**
          * Adds a constraint to this interest. Constraints consist of a `type`, a `subject`, a `verb` and, depending on the `verb`, a `value`.
-         *
-         *
+         * 
+         * 
          * Constraints are almost like a spoken language sentence that declare a condition that must be true in order to consider that an object can match this interest. For instance, a constraint can be "pipewire property
          * 'object.id' equals 10". This would be translated to:
-         *
+         * 
          * ```c
          *   wp_object_interest_add_constraint (i,
          *      WP_CONSTRAINT_TYPE_PW_PROPERTY, "object.id",
          *      WP_CONSTRAINT_VERB_EQUALS, g_variant_new_int (10));
          * ```
-         *
+         * 
          * Some verbs require a `value` and some others do not. For those that do, the `value` must be of a specific type:
          *  - WP_CONSTRAINT_VERB_EQUALS: `value` can be a string, a (u)int32, a (u)int64, a double or a boolean. The `subject` value must equal this value for the constraint to be satisfied
          *  - WP_CONSTRAINT_VERB_IN_LIST: `value` must be a tuple that contains any number of items of the same type; the items can be string, (u)int32, (u)int64 or double. These items make a list that the `subject`'s value will be checked against. If any of the items equals the `subject` value, the constraint is satisfied
          *  - WP_CONSTRAINT_VERB_IN_RANGE: `value` must be a tuple that contains exactly 2 numbers of the same type ((u)int32, (u)int64 or double), meaning the minimum and maximum (inclusive) of the range. If the `subject` value is a number within this range, the constraint is satisfied
          *  - WP_CONSTRAINT_VERB_MATCHES: `value` must be a string that defines a pattern usable with GPatternSpec If the `subject` value matches this pattern, the constraint is satisfied
-         *
+         * 
          * In case the type of the `subject` value is not the same type as the one requested by the type of the `value`, the `subject` value is converted. For GObject properties, this conversion is done using `g_value_transform()`, so limitations of this function apply. In the case of PipeWire properties, which are `always` strings, conversion is done as follows:
          *  - to boolean: "true" or "1" means TRUE, "false" or "0" means FALSE
          *  - to int / uint / int64 / uint64: One of the `strtol()` family of functions is used to convert, using base 10
          *  - to double: `strtod()` is used
-         *
+         * 
          * This method does not fail if invalid arguments are given. However, `wp_object_interest_validate()` should be called after adding all the constraints on an interest in order to catch errors.
          * @param type the constraint type
          * @param subject the subject that the constraint applies to
          * @param verb the operation that is performed to check the constraint
          * @param value the value to check for
          */
-        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value: GLib.Variant | null): void;
+        add_constraint(type: ConstraintType, subject: string, verb: ConstraintVerb, value: (GLib.Variant | null)): void;
+
         /**
          * Finds all the defined constraint values for a subject in `self`.
-         *
-         *
+         * 
+         * 
          * A defined constraint value is the value of a constraint with the 'equal' or 'in-list' verb, because the full value must be defined with those verbs. This can be useful for cases where we want to enumerate interests that are interested in specific subjects.
          * @param type the constraint type
          * @param subject the subject that the constraint applies to
          * @returns the defined constraint values for this object interest.
          */
-        find_defined_constraint_values(type: ConstraintType, subject: string): GLib.Variant[] | null;
+        find_defined_constraint_values(type: ConstraintType, subject: string): (GLib.Variant[] | null);
+
         /**
          * Checks if the specified `object` matches the type and all the constraints that are described in `self`.
-         *
-         *
+         * 
+         * 
          * If `self` is configured to match GObject subclasses, this is equivalent to wp_object_interest_matches_full (self, G_OBJECT_TYPE (object), object, NULL, NULL) and if it is configured to match WpProperties, this is equivalent to wp_object_interest_matches_full (self, self->gtype, NULL, (WpProperties *) object, NULL);
          * @param object the target object to check for a match
          * @returns TRUE if the object matches, FALSE otherwise
          */
-        matches(object: any | null): boolean;
+        matches(object: (any | null)): boolean;
+
         /**
          * A low-level version of `wp_object_interest_matches()`.
-         *
-         *
+         * 
+         * 
          * In this version, the object's type is directly given in `object_type` and is not inferred from the `object`. `object` is only used to check for constraints against GObject properties.
          * `pw_props` and `pw_global_props` are used to check constraints against PipeWire object properties and global properties, respectively.
          * `object`, `pw_props` and `pw_global_props` may be NULL, but in case there are any constraints that require them, the match will fail. As a special case, if `object` is not NULL and is a subclass of WpProxy, then `pw_props` and `pw_global_props`, if required, will be internally retrieved from `object` by calling `wp_pipewire_object_get_properties()` and `wp_global_proxy_get_global_properties()` respectively.
@@ -6628,48 +6599,50 @@ export namespace Wp {
          * @param pw_global_props the properties to be used for checking constraints of type WP_CONSTRAINT_TYPE_PW_GLOBAL_PROPERTY
          * @returns flags that indicate which components of the interest match. WP_INTEREST_MATCH_ALL indicates a fully successful match; any other combination indicates a failure on the component(s) that do not appear on the flag set
          */
-        matches_full(
-            flags: InterestMatchFlags,
-            object_type: GObject.GType,
-            object: GObject.Object | null,
-            pw_props: Properties | null,
-            pw_global_props: Properties | null,
-        ): InterestMatch;
+        matches_full(flags: InterestMatchFlags, object_type: GObject.GType, object: (GObject.Object | null), pw_props: (Properties | null), pw_global_props: (Properties | null)): InterestMatch;
+
         /**
          * Increases the reference count of an object interest.
          * @returns `self` with an additional reference count on it
          */
         ref(): ObjectInterest;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
+
         /**
          * Validates the interest, ensuring that the interest GType is a valid object and that all the constraints have been expressed properly.
-         *
-         *
+         * 
+         * 
          * This is called internally when `self` is first used to find a match, so it is not necessary to call it explicitly
          * @returns TRUE if the interest is valid and can be used in a match, FALSE otherwise
          */
         validate(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ObjectManagerClass = typeof ObjectManager;
+
     /**
      * @gir-type Alias
      */
     type PipewireObjectInterface = typeof PipewireObject;
+
     /**
      * @gir-type Alias
      */
     type PluginClass = typeof Plugin;
+
     /**
      * @gir-type Alias
      */
     type PortClass = typeof Port;
+
     /**
      * WpProcInfo holds information of a process.
      * @gir-type Struct
@@ -6678,43 +6651,49 @@ export namespace Wp {
         static $gtype: GObject.GType<ProcInfo>;
 
         // Methods
-
         /**
          * Gets the indexed arg of a process information object.
          * @param index the index of the arg
          * @returns the indexed arg of the process information object
          */
         get_arg(index: number): string;
+
         /**
          * Gets the systemd cgroup of a process information object.
          * @returns the systemd cgroup of the process information object
          */
         get_cgroup(): string;
+
         /**
          * Gets the number of args of a process information object.
          * @returns the number of args of the process information object
          */
         get_n_args(): number;
+
         /**
          * Gets the parent PID of a process information object.
          * @returns the parent PID of the process information object
          */
         get_parent_pid(): never;
+
         /**
          * Gets the PID of a process information object.
          * @returns the PID of the process information object
          */
         get_pid(): never;
+
         /**
          * Increases the reference count of a process information object.
          * @returns `self` with an additional reference count on it
          */
         ref(): ProcInfo;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
+
 
     /**
      * WpProperties is a data structure that contains string key-value pairs, which are used to send/receive/attach arbitrary properties to PipeWire objects.
@@ -6729,11 +6708,13 @@ export namespace Wp {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static new_copy(props: any | null): Properties;
+        }>);
 
-        static new_copy_dict(dict: any | null): Properties;
+        static new_copy(props: (any | null)): Properties;
+
+        static new_copy_dict(dict: (any | null)): Properties;
 
         static new_empty(): Properties;
 
@@ -6741,32 +6722,33 @@ export namespace Wp {
 
         static new_string(str: string): Properties;
 
-        static new_take(props: any | null): Properties;
+        static new_take(props: (any | null)): Properties;
 
-        static new_wrap(props: any | null): Properties;
+        static new_wrap(props: (any | null)): Properties;
 
-        static new_wrap_dict(dict: any | null): Properties;
+        static new_wrap_dict(dict: (any | null)): Properties;
 
         // Methods
-
         /**
          * Adds new properties in `self`, using the given `props` as a source.
-         *
-         *
+         * 
+         * 
          * Properties (keys) from `props` that are already contained in `self` are not modified, unlike what happens with `wp_properties_update()`. Properties in `self` that are not contained in `props` are left untouched.
          * @param props a properties set that contains properties to add
          * @returns the number of properties that were changed
          */
         add(props: Properties): number;
+
         /**
          * Adds new properties in `self`, using the given `dict` as a source.
-         *
-         *
+         * 
+         * 
          * Properties (keys) from `dict` that are already contained in `self` are not modified, unlike what happens with `wp_properties_update_from_dict()`. Properties in `self` that are not contained in `dict` are left untouched.
          * @param dict a spa_dict that contains properties to add
          * @returns the number of properties that were changed
          */
-        add_from_dict(dict: any | null): number;
+        add_from_dict(dict: (any | null)): number;
+
         /**
          * The same as `wp_properties_add_keys()`, using a NULL-terminated array for specifying the keys to add.
          * @param props a properties set that contains properties to add
@@ -6774,113 +6756,130 @@ export namespace Wp {
          * @returns the number of properties that were changed
          */
         add_keys_array(props: Properties, keys: string[]): number;
+
         /**
          * Constructs and returns a new WpProperties object that contains a copy of all the properties contained in `other`.
          * @returns the newly constructed properties set
          */
         copy(): Properties;
+
         /**
          * Ensures that the given properties set is uniquely owned.
-         *
-         *
+         * 
+         * 
          * "Uniquely owned" means that:
          *  - its reference count is 1
          *  - it is not wrapping a native spa_dict or pw_properties object
-         *
+         * 
          * If `self` is not uniquely owned already, then it is unrefed and a copy of it is returned instead. You should always consider `self` as unsafe to use after this call and you should use the returned object instead.
          * @returns the uniquely owned properties object
          */
         ensure_unique_owner(): Properties;
+
         /**
          * Looks up a given property value from a key.
          * @param key a property key
          * @returns the value of the property identified with `key`, or NULL if this property is not contained in `self`
          */
-        get(key: string): string | null;
+        get(key: string): (string | null);
+
         /**
          * Gets the number of properties contained in this object.
          * @returns the number of properties contained in this object
          */
         get_count(): number;
+
         /**
          * Checks if all property values contained in `other` are matching with the values in `self`.
-         *
-         *
+         * 
+         * 
          * If a property is contained in `other` and not in `self`, the result is not matched. If a property is contained in both sets, then the value of the property in `other` is interpreted as a glob-style pattern (using `g_pattern_match_simple()`) and the value in `self` is checked to see if it matches with this pattern.
          * @param other a set of properties to match
          * @returns TRUE if all matches were successful, FALSE if at least one property value did not match
          */
         matches(other: Properties): boolean;
+
         /**
          * Iterates through all the properties in the properties object.
          * @returns an iterator that iterates over the properties. The items in the iterator are of type WpPropertiesItem. Use `wp_properties_item_get_key()` and `wp_properties_item_get_value()` to retrieve their contents.
          */
         new_iterator(): Iterator;
+
         /**
          * Gets the dictionary wrapped by a properties object.
          * @returns the internal properties set as a struct spa_dict *
          */
-        peek_dict(): any | null;
+        peek_dict(): (any | null);
+
         ref(): Properties;
+
         /**
          * Sets the given property `key` - `value` pair on `self`.
-         *
-         *
+         * 
+         * 
          * If the property already existed, the value is overwritten with the new one.
          * If the `value` is NULL, then the specified property is removed from `self`
          * @param key a property key
          * @param value a property value
          * @returns 1 if the property was changed. 0 if nothing was changed because the property already existed with the same value or because the key to remove did not exist.
          */
-        set(key: string, value: string | null): number;
+        set(key: string, value: (string | null)): number;
+
         /**
          * Sorts the keys in alphabetical order.
          */
         sort(): void;
+
         /**
          * Gets a copy of the properties object as a struct pw_properties.
          * @returns a copy of the properties in `self` as a struct pw_properties
          */
-        to_pw_properties(): any | null;
+        to_pw_properties(): (any | null);
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
+
         /**
          * Similar to `wp_properties_to_pw_properties()`, but this method avoids making a copy of the properties by returning the struct pw_properties that is stored internally and then freeing the WpProperties wrapper.
-         *
-         *
+         * 
+         * 
          * If `self` is not uniquely owned (see `wp_properties_ensure_unique_owner()`), then this method does make a copy and is the same as `wp_properties_to_pw_properties()`, performance-wise.
          * @returns the properties in `self` as a struct pw_properties
          */
-        unref_and_take_pw_properties(): any | null;
+        unref_and_take_pw_properties(): (any | null);
+
         /**
          * Updates (adds new or modifies existing) properties in `self`, using the given `props` as a source.
-         *
-         *
+         * 
+         * 
          * Any properties that are not contained in `props` are left untouched.
          * @param props a properties set that contains properties to update
          * @returns the number of properties that were changed
          */
         update(props: Properties): number;
+
         /**
          * Updates (adds new or modifies existing) properties in `self`, using the given `dict` as a source.
-         *
-         *
+         * 
+         * 
          * Any properties that are not contained in `dict` are left untouched.
          * @param dict a spa_dict that contains properties to update
          * @returns the number of properties that were changed
          */
-        update_from_dict(dict: any | null): number;
+        update_from_dict(dict: (any | null)): number;
+
         /**
          * Updates (adds new or modifies existing) properties in `self`, using the given `json` as a source.
-         *
-         *
+         * 
+         * 
          * Any properties that are not contained in `json` are left untouched.
          * @param json a JSON object that contains properties to update
          * @returns the number of properties that were changed
          */
         update_from_json(json: SpaJson): number;
+
         /**
          * The same as `wp_properties_update_keys()`, using a NULL-terminated array for specifying the keys to update.
          * @param props a properties set that contains properties to update
@@ -6890,6 +6889,7 @@ export namespace Wp {
         update_keys_array(props: Properties, keys: string[]): number;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -6897,40 +6897,46 @@ export namespace Wp {
         static $gtype: GObject.GType<PropertiesItem>;
 
         // Methods
-
         /**
          * Gets the key from a properties item.
          * @returns the property key of the `item`
          */
         get_key(): string;
+
         /**
          * Gets the value from a properties item.
          * @returns the property value of the `item`
          */
         get_value(): string;
+
         /**
          * Increases the reference count of a properties item object.
          * @returns `self` with an additional reference count on it
          */
         ref(): PropertiesItem;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ProxyClass = typeof Proxy;
+
     /**
      * @gir-type Alias
      */
     type SessionItemClass = typeof SessionItem;
+
     /**
      * @gir-type Alias
      */
     type SettingsClass = typeof Settings;
+
     /**
      * WpSettingsItem holds the key and value of a setting
      * @gir-type Struct
@@ -6939,27 +6945,30 @@ export namespace Wp {
         static $gtype: GObject.GType<SettingsItem>;
 
         // Methods
-
         /**
          * Gets the key from a settings item.
          * @returns the settings key of the `item`
          */
         get_key(): string;
+
         /**
          * Gets the value from a settings item.
          * @returns the settings value of the `item`
          */
         get_value(): SpaJson;
+
         /**
          * Increases the reference count of a settings item object.
          * @returns `self` with an additional reference count on it
          */
         ref(): SettingsItem;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
+
 
     /**
      * WpSettingSpec holds the specification of a setting.
@@ -6969,82 +6978,97 @@ export namespace Wp {
         static $gtype: GObject.GType<SettingsSpec>;
 
         // Methods
-
         /**
          * Checks whether a value is compatible with the spec or not.
          * @param value the value to check
          * @returns TRUE if the value is compatible with the spec, FALSE otherwise
          */
         check_value(value: SpaJson): boolean;
+
         /**
          * Gets the default value of a settings spec.
          * @returns the default value of the settings spec
          */
         get_default_value(): SpaJson;
+
         /**
          * Gets the description of a settings spec.
          * @returns the description of the settings spec
          */
         get_description(): string;
+
         /**
          * Gets the maximum value of a settings spec.
          * @returns the maximum value of the settings spec, or NULL if the spec type is not WP_SETTINGS_SPEC_TYPE_INT or WP_SETTINGS_SPEC_TYPE_FLOAT
          */
-        get_max_value(): SpaJson | null;
+        get_max_value(): (SpaJson | null);
+
         /**
          * Gets the minimum value of a settings spec.
          * @returns the minimum value of the settings spec, or NULL if the spec type is not WP_SETTINGS_SPEC_TYPE_INT or WP_SETTINGS_SPEC_TYPE_FLOAT
          */
-        get_min_value(): SpaJson | null;
+        get_min_value(): (SpaJson | null);
+
         /**
          * Gets the human-readable name of a settings spec.
          * @returns the human-readable name of the settings spec, or NULL if none
          */
-        get_name(): string | null;
+        get_name(): (string | null);
+
         /**
          * Gets the type of a settings spec.
          * @returns the type of the settings spec
          */
         get_value_type(): SettingsSpecType;
+
         /**
          * Increases the reference count of a settings spec object.
          * @returns `self` with an additional reference count on it
          */
         ref(): SettingsSpec;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SiAcquisitionInterface = typeof SiAcquisition;
+
     /**
      * @gir-type Alias
      */
     type SiAdapterInterface = typeof SiAdapter;
+
     /**
      * @gir-type Alias
      */
     type SiFactoryClass = typeof SiFactory;
+
     /**
      * @gir-type Alias
      */
     type SiLinkInterface = typeof SiLink;
+
     /**
      * @gir-type Alias
      */
     type SiLinkableInterface = typeof SiLinkable;
+
     /**
      * @gir-type Alias
      */
     type SimpleEventHookClass = typeof SimpleEventHook;
+
     /**
      * @gir-type Alias
      */
     type SpaDeviceClass = typeof SpaDevice;
+
     /**
      * @gir-type Struct
      * @since 0.4.8
@@ -7054,7 +7078,9 @@ export namespace Wp {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
 
         static new_boolean(value: boolean): SpaJson;
 
@@ -7062,7 +7088,7 @@ export namespace Wp {
 
         static new_from_string(json_str: string): SpaJson;
 
-        static new_from_stringn(json_str: string, len: bigint | number): SpaJson;
+        static new_from_stringn(json_str: string, len: (bigint | number)): SpaJson;
 
         static new_int(value: number): SpaJson;
 
@@ -7070,124 +7096,145 @@ export namespace Wp {
 
         static new_string(value: string): SpaJson;
 
-        static new_wrap(json: any | null): SpaJson;
+        static new_wrap(json: (any | null)): SpaJson;
 
         static new_wrap_string(json_str: string): SpaJson;
 
-        static new_wrap_stringn(json_str: string, len: bigint | number): SpaJson;
+        static new_wrap_stringn(json_str: string, len: (bigint | number)): SpaJson;
 
         // Methods
-
         /**
          * Copies a spa json object.
          * @returns The newly copied spa json
          */
         copy(): SpaJson;
+
         /**
          * If `self` is not uniquely owned already, then it is unrefed and a copy of it is returned instead. You should always consider `self` as unsafe to use after this call and you should use the returned object instead.
          * @returns the uniquely owned spa json object which may or may not be the same as `self`.
          */
         ensure_unique_owner(): SpaJson;
+
         /**
          * Returns the json data.
          * @returns a const pointer to the json data
          */
         get_data(): string;
+
         /**
          * Returns the json data size.
          * @returns the json data size
          */
         get_size(): number;
+
         /**
          * Converts a WpSpaJson pointer to a struct spa_json one, for use with native pipewire & spa functions. The returned pointer is owned by WpSpaJson and may not be modified or freed.
          * @returns a const pointer to the underlying spa_json structure
          */
-        get_spa_json(): any | null;
+        get_spa_json(): (any | null);
+
         /**
          * Checks whether the spa json is of type array or not.
          * @returns TRUE if it is of type array, FALSE otherwise
          */
         is_array(): boolean;
+
         /**
          * Checks whether the spa json is of type boolean or not.
          * @returns TRUE if it is of type boolean, FALSE otherwise
          */
         is_boolean(): boolean;
+
         /**
          * Checks whether the spa json is of type container or not.
          * @returns TRUE if it is of type container, FALSE otherwise
          */
         is_container(): boolean;
+
         /**
          * Checks whether the spa json is of type float or not.
          * @returns TRUE if it is of type float, FALSE otherwise
          */
         is_float(): boolean;
+
         /**
          * Checks whether the spa json is of type int or not.
          * @returns TRUE if it is of type int, FALSE otherwise
          */
         is_int(): boolean;
+
         /**
          * Checks whether the spa json is of type null or not.
          * @returns TRUE if it is of type null, FALSE otherwise
          */
         is_null(): boolean;
+
         /**
          * Checks whether the spa json is of type object or not.
          * @returns TRUE if it is of type object, FALSE otherwise
          */
         is_object(): boolean;
+
         /**
          * Checks whether the spa json is of type string or not.
          * @returns TRUE if it is of type string, FALSE otherwise
          */
         is_string(): boolean;
+
         /**
          * Checks if the json is the unique owner of its data or not.
          * @returns TRUE if the json owns the data, FALSE otherwise.
          */
         is_unique_owner(): boolean;
+
         /**
          * Creates a new iterator for a spa json object.
          * @returns the new spa json iterator
          */
         new_iterator(): Iterator;
+
         /**
          * Parses the boolean value of a spa json object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         parse_boolean(): [boolean, boolean];
+
         /**
          * Parses the float value of a spa json object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         parse_float(): [boolean, number];
+
         /**
          * Parses the int value of a spa json object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         parse_int(): [boolean, number];
+
         /**
          * Parses the string value of a spa json object.
          * @returns The newly allocated parsed string
          */
         parse_string(): string;
+
         /**
          * Increases the reference count of a spa json object.
          * @returns `self` with an additional reference count on it
          */
         ref(): SpaJson;
+
         /**
          * Returns a newly allocated json string with length matching the size.
          * @returns the json string with length matching the size
          */
         to_string(): string;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -7198,74 +7245,87 @@ export namespace Wp {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
 
         static new_array(): SpaJsonBuilder;
 
         static new_object(): SpaJsonBuilder;
 
         // Methods
-
         /**
          * Adds a boolean value into the builder.
          * @param value the boolean value
          */
         add_boolean(value: boolean): void;
+
         /**
          * Adds a float value into the builder.
          * @param value the float value
          */
         add_float(value: number): void;
+
         /**
          * Adds a json string into the builder.
          * @param json_str the json string
          */
         add_from_string(json_str: string): void;
+
         /**
          * Adds a json string with specific length into the builder.
          * @param json_str the json string
          * @param len the specific length of the json string
          */
-        add_from_stringn(json_str: string, len: bigint | number): void;
+        add_from_stringn(json_str: string, len: (bigint | number)): void;
+
         /**
          * Adds a int value into the builder.
          * @param value the int value
          */
         add_int(value: number): void;
+
         /**
          * Adds a json value into the builder.
          * @param json the json value
          */
         add_json(json: SpaJson): void;
+
         /**
          * Adds a null value into the builder.
          */
         add_null(): void;
+
         /**
          * Adds a property into the builder.
          * @param key the name of the property
          */
         add_property(key: string): void;
+
         /**
          * Adds a string value into the builder.
          * @param value the string value
          */
         add_string(value: string): void;
+
         /**
          * Ends the builder process and returns the constructed spa json object.
          * @returns the constructed spa json object
          */
         end(): SpaJson;
+
         /**
          * Increases the reference count of a spa json builder.
          * @returns `self` with an additional reference count on it
          */
         ref(): SpaJsonBuilder;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -7275,7 +7335,6 @@ export namespace Wp {
         static $gtype: GObject.GType<SpaJsonParser>;
 
         // Constructors
-
         constructor(json: SpaJson);
 
         static new_array(json: SpaJson): SpaJsonParser;
@@ -7285,51 +7344,59 @@ export namespace Wp {
         static new_undefined(json: SpaJson): SpaJsonParser;
 
         // Methods
-
         end(): void;
+
         /**
          * Gets the boolean value from a spa json parser.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_boolean(): [boolean, boolean];
+
         /**
          * Gets the float value from a spa json parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_float(): [boolean, number];
+
         /**
          * Gets the int value from a spa json parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_int(): [boolean, number];
+
         /**
          * Gets the spa json value from a spa json parser object.
-         *
-         *
+         * 
+         * 
          * the returned spa json object references the original data instead of copying it, therefore the original data must be valid for the entire life-cycle of the returned object
          * @returns The spa json value or NULL if it could not be obtained
          */
         get_json(): SpaJson;
+
         /**
          * Gets the null value from a spa json parser.
          * @returns TRUE if the null value is present, FALSE otherwise
          */
         get_null(): boolean;
+
         /**
          * Gets the string value from a spa json parser object.
          * @returns The newly allocated parsed string
          */
         get_string(): string;
+
         /**
          * Increases the reference count of a spa json parser.
          * @returns `self` with an additional reference count on it
          */
         ref(): SpaJsonParser;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -7339,15 +7406,17 @@ export namespace Wp {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
 
         static new_boolean(value: boolean): SpaPod;
 
-        static new_bytes(value: any | null, len: number): SpaPod;
+        static new_bytes(value: (any | null), len: number): SpaPod;
 
         static new_double(value: number): SpaPod;
 
-        static new_fd(value: bigint | number): SpaPod;
+        static new_fd(value: (bigint | number)): SpaPod;
 
         static new_float(value: number): SpaPod;
 
@@ -7357,284 +7426,334 @@ export namespace Wp {
 
         static new_int(value: number): SpaPod;
 
-        static new_long(value: bigint | number): SpaPod;
+        static new_long(value: (bigint | number)): SpaPod;
 
         static new_none(): SpaPod;
 
-        static new_pointer(type_name: string, value: any | null): SpaPod;
+        static new_pointer(type_name: string, value: (any | null)): SpaPod;
 
         static new_rectangle(width: number, height: number): SpaPod;
 
         static new_string(value: string): SpaPod;
 
-        static new_wrap(pod: any | null): SpaPod;
+        static new_wrap(pod: (any | null)): SpaPod;
 
-        static new_wrap_const(pod: any | null): SpaPod;
+        static new_wrap_const(pod: (any | null)): SpaPod;
 
         // Methods
-
         /**
          * Copies a spa pod object.
          * @returns The newly copied spa pod
          */
         copy(): SpaPod;
+
         /**
          * If `self` is not uniquely owned already, then it is unrefed and a copy of it is returned instead. You should always consider `self` as unsafe to use after this call and you should use the returned object instead.
          * @returns the uniquely owned spa pod object which may or may not be the same as `self`.
          */
         ensure_unique_owner(): SpaPod;
+
         /**
          * Checks whether two spa pod objects have the same value or not.
          * @param pod the pod with the value to be compared with
          * @returns TRUE if both spa pod objects have the same values, FALSE othewrise.
          */
         equal(pod: SpaPod): boolean;
+
         /**
-         * @param filter
+         * @param filter 
          */
         filter(filter: SpaPod): SpaPod;
+
         /**
          * Fixates choices in an object pod so that they only have one value.
          * @returns TRUE if the pod was an object and it went through the fixation procedure, FALSE otherwise
          */
         fixate(): boolean;
+
         /**
          * Gets the child of a spa pod array object.
          * @returns the child of the spa pod array object
          */
         get_array_child(): SpaPod;
+
         /**
          * Gets the boolean value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_boolean(): [boolean, boolean];
+
         /**
          * Gets the bytes value and its len of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_bytes(): [boolean, any, number];
+
         /**
          * Gets the child of a spa pod choice object.
          * @returns the child of the spa pod choice object
          */
         get_choice_child(): SpaPod;
+
         /**
          * If the pod is a Choice, this gets the choice type (Range, Step, Enum, ...).
          * @returns the choice type of the choice pod
          */
         get_choice_type(): SpaIdValue;
+
         /**
          * Gets the offset, type name and spa pod value of a spa pod control.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_control(): [boolean, number, string, SpaPod | null];
+
         /**
          * Gets the double value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_double(): [boolean, number];
+
         /**
          * Gets the Fd value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_fd(): [boolean, number];
+
         /**
          * Gets the float value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_float(): [boolean, number];
+
         /**
          * Gets the fractions's numerator and denominator value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_fraction(): [boolean, number, number];
+
         /**
          * Gets the Id value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_id(): [boolean, number];
+
         /**
          * Gets the int value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_int(): [boolean, number];
+
         /**
          * Gets the long value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_long(): [boolean, number];
+
         /**
          * Gets the pointer value and its type name of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_pointer(): [boolean, any];
+
         /**
          * Gets the name, flags and spa pod value of a spa pod property.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_property(): [boolean, string, SpaPod | null];
+
         /**
          * Gets the rectangle's width and height value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_rectangle(): [boolean, number, number];
+
         /**
          * Converts a WpSpaPod pointer to a struct spa_pod one, for use with native pipewire & spa functions. The returned pointer is owned by WpSpaPod and may not be modified or freed.
          * @returns a const pointer to the underlying spa_pod structure
          */
-        get_spa_pod(): any | null;
+        get_spa_pod(): (any | null);
+
         /**
          * Gets the SPA type of the spa pod.
-         *
-         *
+         * 
+         * 
          * If the pod is an object or pointer, this will return the derived object/pointer type directly. If the pod is an object property or a control, this will return the type of the contained value.
          * @returns the type of the spa pod
          */
         get_spa_type(): SpaType;
+
         /**
          * Gets the string value of a spa pod object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_string(): [boolean, string];
+
         /**
          * Checks whether the spa pod is of type array or not.
          * @returns TRUE if it is of type array, FALSE otherwise
          */
         is_array(): boolean;
+
         /**
          * Checks whether the spa pod is of type boolean or not.
          * @returns TRUE if it is of type boolean, FALSE otherwise
          */
         is_boolean(): boolean;
+
         /**
          * Checks whether the spa pod is of type bytes or not.
          * @returns TRUE if it is of type bytes, FALSE otherwise
          */
         is_bytes(): boolean;
+
         /**
          * Checks whether the spa pod is of type choice or not.
          * @returns TRUE if it is of type choice, FALSE otherwise
          */
         is_choice(): boolean;
+
         /**
          * Checks whether the spa pod is of type control or not.
          * @returns TRUE if it is of type control, FALSE otherwise
          */
         is_control(): boolean;
+
         /**
          * Checks whether the spa pod is of type double or not.
          * @returns TRUE if it is of type double, FALSE otherwise
          */
         is_double(): boolean;
+
         /**
          * Checks whether the spa pod is of type Fd or not.
          * @returns TRUE if it is of type Fd, FALSE otherwise
          */
         is_fd(): boolean;
+
         /**
          * Checks whether the spa pod is of type float or not.
          * @returns TRUE if it is of type float, FALSE otherwise
          */
         is_float(): boolean;
+
         /**
          * Checks whether the spa pod is of type fraction or not.
          * @returns TRUE if it is of type fraction, FALSE otherwise
          */
         is_fraction(): boolean;
+
         /**
          * Checks whether the spa pod is of type Id or not.
          * @returns TRUE if it is of type Id, FALSE otherwise
          */
         is_id(): boolean;
+
         /**
          * Checks whether the spa pod is of type int or not.
          * @returns TRUE if it is of type int, FALSE otherwise
          */
         is_int(): boolean;
+
         /**
          * Checks whether the spa pod is of type long or not.
          * @returns TRUE if it is of type long, FALSE otherwise
          */
         is_long(): boolean;
+
         /**
          * Checks whether the spa pod is of type none or not.
          * @returns TRUE if it is of type none, FALSE otherwise
          */
         is_none(): boolean;
+
         /**
          * Checks whether the spa pod is of type object or not.
          * @returns TRUE if it is of type object, FALSE otherwise
          */
         is_object(): boolean;
+
         /**
          * Checks whether the spa pod is of type pointer or not.
          * @returns TRUE if it is of type pointer, FALSE otherwise
          */
         is_pointer(): boolean;
+
         /**
          * Checks whether the spa pod is of type property or not.
          * @returns TRUE if it is of type property, FALSE otherwise
          */
         is_property(): boolean;
+
         /**
          * Checks whether the spa pod is of type rectangle or not.
          * @returns TRUE if it is of type rectangle, FALSE otherwise
          */
         is_rectangle(): boolean;
+
         /**
          * Checks whether the spa pod is of type sequence or not.
          * @returns TRUE if it is of type sequence, FALSE otherwise
          */
         is_sequence(): boolean;
+
         /**
          * Checks whether the spa pod is of type string or not.
          * @returns TRUE if it is of type string, FALSE otherwise
          */
         is_string(): boolean;
+
         /**
          * Checks whether the spa pod is of type struct or not.
          * @returns TRUE if it is of type struct, FALSE otherwise
          */
         is_struct(): boolean;
+
         /**
          * Checks if the pod is the unique owner of its data or not.
          * @returns TRUE if the pod owns the data, FALSE otherwise.
          */
         is_unique_owner(): boolean;
+
         /**
          * Creates a new iterator for a spa pod object.
          * @returns the new spa pod iterator
          */
         new_iterator(): Iterator;
+
         /**
          * Increases the reference count of a spa pod object.
          * @returns `self` with an additional reference count on it
          */
         ref(): SpaPod;
+
         /**
          * Sets a boolean value in the spa pod object.
          * @param value the boolean value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
         set_boolean(value: boolean): boolean;
+
         /**
          * Sets a double value in the spa pod object.
          * @param value the double value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
         set_double(value: number): boolean;
+
         /**
          * Sets a Fd value in the spa pod object.
          * @param value the Fd value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_fd(value: bigint | number): boolean;
+        set_fd(value: (bigint | number)): boolean;
+
         /**
          * Sets a float value in the spa pod object.
          * @param value the float value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
         set_float(value: number): boolean;
+
         /**
          * Sets the numerator and denominator values of a fraction in the spa pod object.
          * @param num the numerator value of the fraction
@@ -7642,37 +7761,43 @@ export namespace Wp {
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
         set_fraction(num: number, denom: number): boolean;
+
         /**
          * Sets an Id value in the spa pod object.
          * @param value the Id value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
         set_id(value: number): boolean;
+
         /**
          * Sets an int value in the spa pod object.
          * @param value the int value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
         set_int(value: number): boolean;
+
         /**
          * Sets a long value in the spa pod object.
          * @param value the long value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_long(value: bigint | number): boolean;
+        set_long(value: (bigint | number)): boolean;
+
         /**
          * Sets the value of a spa pod object in the current spa pod object. The spa pod objects must be of the same value.
          * @param pod the pod with the value to be set
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
         set_pod(pod: SpaPod): boolean;
+
         /**
          * Sets a pointer value with its type name in the spa pod object.
          * @param type_name the name of the type of the pointer
          * @param value the pointer value
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
-        set_pointer(type_name: string, value: any | null): boolean;
+        set_pointer(type_name: string, value: (any | null)): boolean;
+
         /**
          * Sets the width and height values of a rectangle in the spa pod object.
          * @param width the width value of the rectangle
@@ -7680,11 +7805,13 @@ export namespace Wp {
          * @returns TRUE if the value could be set, FALSE othewrise.
          */
         set_rectangle(width: number, height: number): boolean;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -7694,7 +7821,9 @@ export namespace Wp {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
 
         static new_array(): SpaPodBuilder;
 
@@ -7707,111 +7836,130 @@ export namespace Wp {
         static new_struct(): SpaPodBuilder;
 
         // Methods
-
         /**
          * Adds a boolean value into the builder.
          * @param value the boolean value
          */
         add_boolean(value: boolean): void;
+
         /**
          * Adds a bytes value with its length into the builder.
          * @param value the bytes value
          * @param len the length of the bytes value
          */
-        add_bytes(value: any | null, len: number): void;
+        add_bytes(value: (any | null), len: number): void;
+
         /**
          * Adds a control into the builder.
          * @param offset the offset of the control
          * @param ctl_type the type name of the control
          */
         add_control(offset: number, ctl_type: string): void;
+
         /**
          * Adds a double value into the builder.
          * @param value the double value
          */
         add_double(value: number): void;
+
         /**
          * Adds a Fd value into the builder.
          * @param value the Fd value
          */
-        add_fd(value: bigint | number): void;
+        add_fd(value: (bigint | number)): void;
+
         /**
          * Adds a float value into the builder.
          * @param value the float value
          */
         add_float(value: number): void;
+
         /**
          * Adds the numerator and denominator values of a fraction into the builder.
          * @param num the numerator value of the fraction
          * @param denom the denominator value of the fraction
          */
         add_fraction(num: number, denom: number): void;
+
         /**
          * Adds a Id value into the builder.
          * @param value the Id value
          */
         add_id(value: number): void;
+
         /**
          * Adds a int value into the builder.
          * @param value the int value
          */
         add_int(value: number): void;
+
         /**
          * Adds a long value into the builder.
          * @param value the long value
          */
-        add_long(value: bigint | number): void;
+        add_long(value: (bigint | number)): void;
+
         /**
          * Adds a none value into the builder.
          */
         add_none(): void;
+
         /**
          * Adds a pod value into the builder.
          * @param pod the pod value
          */
         add_pod(pod: SpaPod): void;
+
         /**
          * Adds a pointer value with its type name into the builder.
          * @param type_name the type name that the pointer points to
          * @param value the pointer value
          */
-        add_pointer(type_name: string, value: any | null): void;
+        add_pointer(type_name: string, value: (any | null)): void;
+
         /**
          * Adds a property into the builder.
          * @param key the name of the property
          */
         add_property(key: string): void;
+
         /**
          * Adds a property into the builder.
          * @param id the id of the property
          */
         add_property_id(id: number): void;
+
         /**
          * Adds the width and height values of a rectangle into the builder.
          * @param width the width value of the rectangle
          * @param height the height value of the rectangle
          */
         add_rectangle(width: number, height: number): void;
+
         /**
          * Adds a string value into the builder.
          * @param value the string value
          */
         add_string(value: string): void;
+
         /**
          * Ends the builder process and returns the constructed spa pod object.
          * @returns the constructed spa pod object
          */
         end(): SpaPod;
+
         /**
          * Increases the reference count of a spa pod builder.
          * @returns `self` with an additional reference count on it
          */
         ref(): SpaPodBuilder;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -7820,7 +7968,6 @@ export namespace Wp {
         static $gtype: GObject.GType<SpaPodParser>;
 
         // Constructors
-
         constructor(pod: SpaPod, id_name: string);
 
         static new_object(pod: SpaPod, id_name: string): SpaPodParser;
@@ -7828,130 +7975,143 @@ export namespace Wp {
         static new_struct(pod: SpaPod): SpaPodParser;
 
         // Methods
-
         /**
          * Ends the parser process.
          */
         end(): void;
+
         /**
          * Gets the boolean value from a spa pod parser.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_boolean(): [boolean, boolean];
+
         /**
          * Gets the bytes value and its length from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_bytes(): [boolean, any, number];
+
         /**
          * Gets the double value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_double(): [boolean, number];
+
         /**
          * Gets the Fd value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_fd(): [boolean, number];
+
         /**
          * Gets the float value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_float(): [boolean, number];
+
         /**
          * Gets the fractions's numerator and denominator value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_fraction(): [boolean, number, number];
+
         /**
          * Gets the Id value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_id(): [boolean, number];
+
         /**
          * Gets the int value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_int(): [boolean, number];
+
         /**
          * Gets the long value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_long(): [boolean, number];
+
         /**
          * Gets the spa pod value from a spa pod parser object.
          * @returns The spa pod value or NULL if it could not be obtained
          */
         get_pod(): SpaPod;
+
         /**
          * Gets the pointer value and its type name from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_pointer(): [boolean, any];
+
         /**
          * Gets the rectangle's width and height value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_rectangle(): [boolean, number, number];
+
         /**
          * Gets the string value from a spa pod parser object.
          * @returns TRUE if the value was obtained, FALSE otherwise
          */
         get_string(): [boolean, string];
+
         /**
          * Increases the reference count of a spa pod parser.
          * @returns `self` with an additional reference count on it
          */
         ref(): SpaPodParser;
+
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
          */
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StateClass = typeof State;
+
     /**
      * @gir-type Alias
      */
     type TransitionClass = typeof Transition;
+
     namespace ComponentLoader {
         /**
          * Interface for implementing ComponentLoader.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param core
-             * @param component
-             * @param type
-             * @param args
-             * @param cancellable
-             * @param callback
+             * @param core 
+             * @param component 
+             * @param type 
+             * @param args 
+             * @param cancellable 
+             * @param callback 
              * @virtual
              */
-            vfunc_load(
-                core: Core,
-                component: string,
-                type: string,
-                args: SpaJson,
-                cancellable: Gio.Cancellable | null,
-                callback: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_load(core: Core, component: string, type: string, args: SpaJson, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param type
+             * @param type 
              * @virtual
              */
             vfunc_supports_type(type: string): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ComponentLoaderNamespace {
@@ -7963,11 +8123,13 @@ export namespace Wp {
      * Components can be:
      *  - WirePlumber modules (libraries that provide WpPlugin and WpSiFactory objects)
      *  - Scripts (ex. lua scripts)
-     *
+     * 
      * The WirePlumber library provides built-in support for loading WirePlumber modules, without a component loader. For other kinds of components, a component loader is meant to be provided in by some WirePlumber module. For Lua scripts specifically, a component loader is provided by the lua scripting module.
      * @gir-type Interface
      */
-    interface ComponentLoader extends GObject.Object, ComponentLoader.Interface {}
+    interface ComponentLoader extends GObject.Object, ComponentLoader.Interface {
+    }
+
 
     export const ComponentLoader: ComponentLoaderNamespace & {
         new (): ComponentLoader; // This allows `obj instanceof ComponentLoader`
@@ -7979,12 +8141,12 @@ export namespace Wp {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Enumerate object parameters.
-             *
-             *
+             * 
+             * 
              * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
              * @param id the parameter id to enumerate or NULL for all parameters
              * @param filter a param filter or NULL
@@ -7992,59 +8154,60 @@ export namespace Wp {
              * @param callback a callback to call with the result
              * @virtual
              */
-            vfunc_enum_params(
-                id: string | null,
-                filter: SpaPod | null,
-                cancellable: Gio.Cancellable | null,
-                callback: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
              * Finishes an asynchronous parameter enumeration operation.
              * @param res the async result
              * @virtual
              */
-            vfunc_enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+            vfunc_enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
             /**
              * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-             *
-             *
+             * 
+             * 
              * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
              * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
              * @param id the parameter id to enumerate
              * @param filter a param filter or NULL
              * @virtual
              */
-            vfunc_enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+            vfunc_enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
             /**
              * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-             *
-             *
+             * 
+             * 
              * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
              * @virtual
              */
-            vfunc_get_native_info(): any | null;
+            vfunc_get_native_info(): (any | null);
+
             /**
              * Returns the available parameters of this pipewire object.
-             *
-             *
+             * 
+             * 
              * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
              *  - r: the param is readable (SPA_PARAM_INFO_READ)
              *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-             *
+             * 
              * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
              * Params that are writable can be set with `wp_pipewire_object_set_param()`
              * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
              * @virtual
              */
-            vfunc_get_param_info(): GLib.Variant | null;
+            vfunc_get_param_info(): (GLib.Variant | null);
+
             /**
              * Retrieves the PipeWire properties of this object.
-             *
-             *
+             * 
+             * 
              * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
              * @virtual
              */
             vfunc_get_properties(): Properties;
+
             /**
              * Sets a parameter on the object.
              * @param id the parameter id to set
@@ -8055,13 +8218,13 @@ export namespace Wp {
             vfunc_set_param(id: string, flags: number, param: SpaPod): boolean;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Proxy.ConstructorProps {
-            native_info: any | null;
-            nativeInfo: any | null;
-            param_info: GLib.Variant | null;
-            paramInfo: GLib.Variant | null;
+            native_info: (any | null);
+            nativeInfo: (any | null);
+            param_info: (GLib.Variant | null);
+            paramInfo: (GLib.Variant | null);
             properties: Properties;
         }
     }
@@ -8076,148 +8239,148 @@ export namespace Wp {
      * @gir-type Interface
      */
     interface PipewireObject extends Proxy, PipewireObject.Interface {
+
         // Properties
+        /**
+         * @read-only
+         */
+        get native_info(): (any | null);
 
         /**
          * @read-only
          */
-        get native_info(): any | null;
+        get nativeInfo(): (any | null);
+
         /**
          * @read-only
          */
-        get nativeInfo(): any | null;
+        get param_info(): (GLib.Variant | null);
+
         /**
          * @read-only
          */
-        get param_info(): GLib.Variant | null;
-        /**
-         * @read-only
-         */
-        get paramInfo(): GLib.Variant | null;
+        get paramInfo(): (GLib.Variant | null);
+
         /**
          * @read-only
          */
         get properties(): Properties;
 
         // Methods
+        /**
+         * Enumerate object parameters.
+         * 
+         * 
+         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
+         * @param id the parameter id to enumerate or NULL for all parameters
+         * @param filter a param filter or NULL
+         * @param cancellable a cancellable for the async operation
+         */
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(Iterator | null)>;
 
         /**
          * Enumerate object parameters.
-         *
-         *
-         * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
-         * @param id the parameter id to enumerate or NULL for all parameters
-         * @param filter a param filter or NULL
-         * @param cancellable a cancellable for the async operation
-         */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Iterator | null>;
-        /**
-         * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Enumerate object parameters.
-         *
-         *
+         * 
+         * 
          * This will asynchronously return the result, or an error, by calling the given `callback`. The result is going to be a WpIterator containing WpSpaPod objects, which can be retrieved with `wp_pipewire_object_enum_params_finish()`.
          * @param id the parameter id to enumerate or NULL for all parameters
          * @param filter a param filter or NULL
          * @param cancellable a cancellable for the async operation
          * @param callback a callback to call with the result
          */
-        enum_params(
-            id: string | null,
-            filter: SpaPod | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Iterator | null> | void;
+        enum_params(id: (string | null), filter: (SpaPod | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Iterator | null)> | void);
+
         /**
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
          */
-        enum_params_finish(res: Gio.AsyncResult): Iterator | null;
+        enum_params_finish(res: Gio.AsyncResult): (Iterator | null);
+
         /**
          * This method can be used to retrieve object parameters in a synchronous way (in contrast with `wp_pipewire_object_enum_params()`, which is async).
-         *
-         *
+         * 
+         * 
          * The WP_PIPEWIRE_OBJECT_FEATURE_PARAM_<something> feature that corresponds to the specified `id` must have been activated earlier. These features enable monitoring and caching of params underneath, so that they are always available for retrieval with this method.
          * Note, however, that cached params may be out-of-date if they have changed very recently on the remote object and the caching mechanism hasn't been able to update them yet, so if you really need up-to-date information you should only rely on `wp_pipewire_object_enum_params()` instead.
          * @param id the parameter id to enumerate
          * @param filter a param filter or NULL
          * @returns an iterator to iterate over cached parameters, or NULL if parameters for this `id` are not cached; the items in the iterator are WpSpaPod
          */
-        enum_params_sync(id: string, filter: SpaPod | null): Iterator | null;
+        enum_params_sync(id: string, filter: (SpaPod | null)): (Iterator | null);
+
         /**
          * Retrieves the native info structure of this object (pw_node_info, pw_port_info, etc...).
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the native pipewire info structure of this object
          */
-        get_native_info(): any | null;
+        get_native_info(): (any | null);
+
         /**
          * Returns the available parameters of this pipewire object.
-         *
-         *
+         * 
+         * 
          * The return value is a GVariant of type a{ss}, where the key of each map entry is a spa param type id (the same ids that you can pass in `wp_pipewire_object_enum_params()`) and the value is a string that can contain the following letters, each of them representing a flag:
          *  - r: the param is readable (SPA_PARAM_INFO_READ)
          *  - w: the param is writable (SPA_PARAM_INFO_WRITE)
-         *
+         * 
          * For params that are readable, you can query them with `wp_pipewire_object_enum_params()`
          * Params that are writable can be set with `wp_pipewire_object_set_param()`
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns a variant of type a{ss} or NULL if the object does not support params at all
          */
-        get_param_info(): GLib.Variant | null;
+        get_param_info(): (GLib.Variant | null);
+
         /**
          * Retrieves the PipeWire properties of this object.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns the pipewire properties of this object; normally these are the properties that are part of the info structure
          */
         get_properties(): Properties;
+
         /**
          * Returns the value of a single pipewire property.
-         *
-         *
+         * 
+         * 
          * This is the same as getting the whole properties structure with `wp_pipewire_object_get_properties()` and accessing a single property with `wp_properties_get()`, but saves one call and having to clean up the WpProperties reference count afterwards.
          * The value is owned by the proxy, but it is guaranteed to stay alive until execution returns back to the event loop.
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @param key the property name
          * @returns the value of the pipewire property `key` or NULL if the property doesn't exist
          */
-        get_property(key: string): string | null;
+        get_property(key: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_property
+    // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Iterates over the object's PipeWire properties.
-         *
-         *
+         * 
+         * 
          * Requires WP_PIPEWIRE_OBJECT_FEATURE_INFO
          * @returns an iterator that iterates over the pipewire properties of this object. Use `wp_properties_iterator_item_get_key()` and `wp_properties_iterator_item_get_value()` to parse the items returned by this iterator.
          */
         new_properties_iterator(): Iterator;
+
         /**
          * Sets a parameter on the object.
          * @param id the parameter id to set
@@ -8227,6 +8390,7 @@ export namespace Wp {
          */
         set_param(id: string, flags: number, param: SpaPod): boolean;
     }
+
 
     export const PipewireObject: PipewireObjectNamespace & {
         new (): PipewireObject; // This allows `obj instanceof PipewireObject`
@@ -8238,12 +8402,12 @@ export namespace Wp {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Acquires the `item` for linking by `acquisitor`.
-             *
-             *
+             * 
+             * 
              * When a link is not allowed by policy, this operation should return an error.
              * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
              * @param acquisitor the link that is trying to acquire a port info item
@@ -8251,13 +8415,15 @@ export namespace Wp {
              * @param callback the callback to call when the operation is done
              * @virtual
              */
-            vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_acquire(acquisitor: SiLink, item: SiLinkable, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
              * Finishes the operation started by `wp_si_acquisition_acquire()`. This is meant to be called in the callback that was passed to that method.
              * @param res the async result
              * @virtual
              */
             vfunc_acquire_finish(res: Gio.AsyncResult): boolean;
+
             /**
              * Releases the `item`, which means that it is being unlinked.
              * @param acquisitor the link that had previously acquired the item
@@ -8267,9 +8433,11 @@ export namespace Wp {
             vfunc_release(acquisitor: SiLink, item: SiLinkable): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends SessionItem.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends SessionItem.ConstructorProps {
+
+        }
     }
 
     export interface SiAcquisitionNamespace {
@@ -8282,50 +8450,50 @@ export namespace Wp {
      * @gir-type Interface
      */
     interface SiAcquisition extends SessionItem, SiAcquisition.Interface {
-        // Methods
 
+        // Methods
         /**
          * Acquires the `item` for linking by `acquisitor`.
-         *
-         *
+         * 
+         * 
          * When a link is not allowed by policy, this operation should return an error.
          * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
          * @param acquisitor the link that is trying to acquire a port info item
          * @param item the item that is being acquired
          */
         acquire(acquisitor: SiLink, item: SiLinkable): globalThis.Promise<boolean>;
+
         /**
          * Acquires the `item` for linking by `acquisitor`.
-         *
-         *
+         * 
+         * 
          * When a link is not allowed by policy, this operation should return an error.
          * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
          * @param acquisitor the link that is trying to acquire a port info item
          * @param item the item that is being acquired
          * @param callback the callback to call when the operation is done
          */
-        acquire(acquisitor: SiLink, item: SiLinkable, callback: Gio.AsyncReadyCallback<this> | null): void;
+        acquire(acquisitor: SiLink, item: SiLinkable, callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Acquires the `item` for linking by `acquisitor`.
-         *
-         *
+         * 
+         * 
          * When a link is not allowed by policy, this operation should return an error.
          * When a link needs to be delayed for a short amount of time (ex. to apply a fade out effect on another item), this operation should finish with a delay. It is safe to assume that after this operation completes, the item will be linked immediately.
          * @param acquisitor the link that is trying to acquire a port info item
          * @param item the item that is being acquired
          * @param callback the callback to call when the operation is done
          */
-        acquire(
-            acquisitor: SiLink,
-            item: SiLinkable,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        acquire(acquisitor: SiLink, item: SiLinkable, callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the operation started by `wp_si_acquisition_acquire()`. This is meant to be called in the callback that was passed to that method.
          * @param res the async result
          * @returns TRUE on success, FALSE if there was an error
          */
         acquire_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Releases the `item`, which means that it is being unlinked.
          * @param acquisitor the link that had previously acquired the item
@@ -8333,6 +8501,7 @@ export namespace Wp {
          */
         release(acquisitor: SiLink, item: SiLinkable): void;
     }
+
 
     export const SiAcquisition: SiAcquisitionNamespace & {
         new (): SiAcquisition; // This allows `obj instanceof SiAcquisition`
@@ -8344,33 +8513,32 @@ export namespace Wp {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the format used to configure the adapter session item's ports.
              * @virtual
              */
             vfunc_get_ports_format(): [SpaPod, string];
+
             /**
              * Gets the ports state.
              * @virtual
              */
             vfunc_get_ports_state(): SiAdapterPortsState;
+
             /**
              * Sets the format and configures the adapter session item ports using the given format.
-             *
-             *
+             * 
+             * 
              * The result of the operation can be checked using the `wp_si_adapter_set_ports_format_finish()` API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
              * @param format the format to be set
              * @param mode the mode
              * @param callback the callback to call when the operation is done
              * @virtual
              */
-            vfunc_set_ports_format(
-                format: SpaPod | null,
-                mode: string | null,
-                callback: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_set_ports_format(format: (SpaPod | null), mode: (string | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
              * Finishes the operation started by `wp_si_adapter_set_format()`. This is meant to be called in the callback that was passed to that method.
              * @param res the async result
@@ -8379,9 +8547,11 @@ export namespace Wp {
             vfunc_set_ports_format_finish(res: Gio.AsyncResult): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends SessionItem.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends SessionItem.ConstructorProps {
+
+        }
     }
 
     export interface SiAdapterNamespace {
@@ -8393,55 +8563,52 @@ export namespace Wp {
      * @gir-type Interface
      */
     interface SiAdapter extends SessionItem, SiAdapter.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the format used to configure the adapter session item's ports.
          * @returns The format used to configure the ports of the adapter session item. Some items automatically choose a format when being activated, others never set a format on activation and the user needs to manually set it externally with `wp_si_adapter_set_ports_format()`.
          */
         get_ports_format(): [SpaPod, string];
+
         /**
          * Gets the ports state.
          * @returns The state of the ports
          */
         get_ports_state(): SiAdapterPortsState;
+
         /**
          * Sets the format and configures the adapter session item ports using the given format.
-         *
-         *
+         * 
+         * 
          * The result of the operation can be checked using the `wp_si_adapter_set_ports_format_finish()` API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
          * @param format the format to be set
          * @param mode the mode
          */
-        set_ports_format(format: SpaPod | null, mode: string | null): globalThis.Promise<boolean>;
+        set_ports_format(format: (SpaPod | null), mode: (string | null)): globalThis.Promise<boolean>;
+
         /**
          * Sets the format and configures the adapter session item ports using the given format.
-         *
-         *
-         * The result of the operation can be checked using the `wp_si_adapter_set_ports_format_finish()` API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
-         * @param format the format to be set
-         * @param mode the mode
-         * @param callback the callback to call when the operation is done
-         */
-        set_ports_format(
-            format: SpaPod | null,
-            mode: string | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Sets the format and configures the adapter session item ports using the given format.
-         *
-         *
+         * 
+         * 
          * The result of the operation can be checked using the `wp_si_adapter_set_ports_format_finish()` API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
          * @param format the format to be set
          * @param mode the mode
          * @param callback the callback to call when the operation is done
          */
-        set_ports_format(
-            format: SpaPod | null,
-            mode: string | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_ports_format(format: (SpaPod | null), mode: (string | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Sets the format and configures the adapter session item ports using the given format.
+         * 
+         * 
+         * The result of the operation can be checked using the `wp_si_adapter_set_ports_format_finish()` API. If format is NULL, the adapter will be configured with the default format. If mode is NULL, the adapter will use "dsp" mode.
+         * @param format the format to be set
+         * @param mode the mode
+         * @param callback the callback to call when the operation is done
+         */
+        set_ports_format(format: (SpaPod | null), mode: (string | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the operation started by `wp_si_adapter_set_format()`. This is meant to be called in the callback that was passed to that method.
          * @param res the async result
@@ -8449,6 +8616,7 @@ export namespace Wp {
          */
         set_ports_format_finish(res: Gio.AsyncResult): boolean;
     }
+
 
     export const SiAdapter: SiAdapterNamespace & {
         new (): SiAdapter; // This allows `obj instanceof SiAdapter`
@@ -8460,23 +8628,26 @@ export namespace Wp {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the input item linked by the link.
              * @virtual
              */
             vfunc_get_in_item(): SiLinkable;
+
             /**
              * Gets the output item linked by the link.
              * @virtual
              */
             vfunc_get_out_item(): SiLinkable;
+
             /**
              * Gets the properties of the link.
              * @virtual
              */
-            vfunc_get_properties(): Properties | null;
+            vfunc_get_properties(): (Properties | null);
+
             /**
              * This should return information that is used for registering the link, as a GVariant of type a{ss} that contains additional properties to be added to the list of global properties.
              * @virtual
@@ -8484,9 +8655,11 @@ export namespace Wp {
             vfunc_get_registration_info(): GLib.Variant;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends SessionItem.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends SessionItem.ConstructorProps {
+
+        }
     }
 
     export interface SiLinkNamespace {
@@ -8498,34 +8671,39 @@ export namespace Wp {
      * @gir-type Interface
      */
     interface SiLink extends SessionItem, SiLink.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the input item linked by the link.
          * @returns the input item that is linked by this link
          */
         get_in_item(): SiLinkable;
+
         /**
          * Gets the output item linked by the link.
          * @returns the output item that is linked by this link
          */
         get_out_item(): SiLinkable;
+
         /**
          * Gets the properties of the link.
          * @returns the properties of the link
          */
-        get_properties(): Properties | null;
+        get_properties(): (Properties | null);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Wp.SessionItem.get_properties
+    // Conflicted with Wp.SessionItem.get_properties
         get_properties(...args: never[]): any;
+
         /**
          * This should return information that is used for registering the link, as a GVariant of type a{ss} that contains additional properties to be added to the list of global properties.
          * @returns registration info for the link
          */
         get_registration_info(): GLib.Variant;
     }
+
 
     export const SiLink: SiLinkNamespace & {
         new (): SiLink; // This allows `obj instanceof SiLink`
@@ -8537,39 +8715,42 @@ export namespace Wp {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the acquisition interface associated with the item.
              * @virtual
              */
-            vfunc_get_acquisition(): SiAcquisition | null;
+            vfunc_get_acquisition(): (SiAcquisition | null);
+
             /**
              * This method returns a variant of type "a(uuu)", where each tuple in the array contains the following information:
-             *
-             *
-             *
+             * 
+             * 
+             * 
              *  - u: (guint32) node id
              *  - u: (guint32) port id (the port must belong on the node specified above)
              *  - u: (guint32) the audio channel (enum spa_audio_channel) that this port makes available, or 0 for non-audio content
-             *
+             * 
              * The order in which ports appear in this array is important when no channel information is available. The link implementation should link the ports in the order they appear. This is normally a good enough substitute for channel matching.
              * The `context` argument can be used to get different sets of ports from the item. The following well-known contexts are defined:
              *  - NULL: get the standard ports to be linked
              *  - "monitor": get the monitor ports
              *  - "control": get the control port
              *  - "reverse": get the reverse direction ports, if this item controls a filter node, which would have ports on both directions
-             *
+             * 
              * Contexts other than NULL may only be used internally to ease the implementation of more complex item relationships. For example, a WpSessionItem that is in control of an input (sink) adapter node may implement WpSiLinkable where the NULL context will return the standard input ports and the "monitor" context will return the adapter's monitor ports. When linking this item to another item, the NULL context will always be used, but the item may internally spawn a secondary WpSessionItem that implements the "monitor" item. That secondary item may implement WpSiLinkable, chaining calls to the WpSiLinkable of the original item using the "monitor" context. This way, the monitor WpSessionItem does not need to share control of the underlying node; it only proxies calls to satisfy the API.
              * @param context an optional context for the ports
              * @virtual
              */
-            vfunc_get_ports(context: string | null): GLib.Variant;
+            vfunc_get_ports(context: (string | null)): GLib.Variant;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends SessionItem.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends SessionItem.ConstructorProps {
+
+        }
     }
 
     export interface SiLinkableNamespace {
@@ -8581,35 +8762,37 @@ export namespace Wp {
      * @gir-type Interface
      */
     interface SiLinkable extends SessionItem, SiLinkable.Interface {
-        // Methods
 
+        // Methods
         /**
          * Gets the acquisition interface associated with the item.
          * @returns the acquisition interface associated with this item, or NULL if this item does not require acquiring items before linking them
          */
-        get_acquisition(): SiAcquisition | null;
+        get_acquisition(): (SiAcquisition | null);
+
         /**
          * This method returns a variant of type "a(uuu)", where each tuple in the array contains the following information:
-         *
-         *
-         *
+         * 
+         * 
+         * 
          *  - u: (guint32) node id
          *  - u: (guint32) port id (the port must belong on the node specified above)
          *  - u: (guint32) the audio channel (enum spa_audio_channel) that this port makes available, or 0 for non-audio content
-         *
+         * 
          * The order in which ports appear in this array is important when no channel information is available. The link implementation should link the ports in the order they appear. This is normally a good enough substitute for channel matching.
          * The `context` argument can be used to get different sets of ports from the item. The following well-known contexts are defined:
          *  - NULL: get the standard ports to be linked
          *  - "monitor": get the monitor ports
          *  - "control": get the control port
          *  - "reverse": get the reverse direction ports, if this item controls a filter node, which would have ports on both directions
-         *
+         * 
          * Contexts other than NULL may only be used internally to ease the implementation of more complex item relationships. For example, a WpSessionItem that is in control of an input (sink) adapter node may implement WpSiLinkable where the NULL context will return the standard input ports and the "monitor" context will return the adapter's monitor ports. When linking this item to another item, the NULL context will always be used, but the item may internally spawn a secondary WpSessionItem that implements the "monitor" item. That secondary item may implement WpSiLinkable, chaining calls to the WpSiLinkable of the original item using the "monitor" context. This way, the monitor WpSessionItem does not need to share control of the underlying node; it only proxies calls to satisfy the API.
          * @param context an optional context for the ports
          * @returns a GVariant containing information about the ports of this item
          */
-        get_ports(context: string | null): GLib.Variant;
+        get_ports(context: (string | null)): GLib.Variant;
     }
+
 
     export const SiLinkable: SiLinkableNamespace & {
         new (): SiLinkable; // This allows `obj instanceof SiLinkable`
@@ -8619,19 +8802,23 @@ export namespace Wp {
      * @gir-type Alias
      */
     type ObjectFeatures = number;
+
     /**
      * @gir-type Alias
      */
     type SpaIdTable = any;
+
     /**
      * @gir-type Alias
      */
     type SpaIdValue = any;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

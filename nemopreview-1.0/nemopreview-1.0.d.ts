@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -39,9 +40,11 @@ import type PangoCairo from '@girs/pangocairo-1.0';
 import type Cogl from '@girs/cogl-1.0';
 
 export namespace NemoPreview {
+
     /**
      * NemoPreview-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -61,24 +64,27 @@ export namespace NemoPreview {
         ERROR,
     }
 
+
     /**
-     * @param xid
+     * @param xid 
      * @returns a {@link Gdk.Window}
      */
     function create_foreign_window(xid: number): Gdk.Window;
+
     /**
      * @returns a {@link Clutter.Actor}
      */
     function create_rounded_background(): Clutter.Actor;
+
     function query_supported_document_types(): string[];
+
     namespace CoverArtFetcher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cover': (pspec: GObject.ParamSpec) => void;
+            "notify::cover": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             cover: GdkPixbuf.Pixbuf;
         }
@@ -91,7 +97,6 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<CoverArtFetcher>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -107,49 +112,40 @@ export namespace NemoPreview {
         $signals: CoverArtFetcher.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CoverArtFetcher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](taglist: Gst.TagList): CoverArtFetcher;
+        static ["new"](taglist: Gst.TagList): CoverArtFetcher;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CoverArtFetcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoverArtFetcher.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CoverArtFetcher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoverArtFetcher.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CoverArtFetcher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoverArtFetcher.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CoverArtFetcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoverArtFetcher.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CoverArtFetcher.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CoverArtFetcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CoverArtFetcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoverArtFetcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace FileLoader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::content-type': (pspec: GObject.ParamSpec) => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::file-type': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::time': (pspec: GObject.ParamSpec) => void;
+            "notify::content-type": (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::file-type": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::time": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             content_type: string;
             contentType: string;
@@ -170,43 +166,50 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<FileLoader>;
 
         // Properties
-
         /**
          * @read-only
          * @default null
          */
         get content_type(): string;
+
         /**
          * @read-only
          * @default null
          */
         get contentType(): string;
+
         get file(): Gio.File;
         set file(val: Gio.File);
+
         /**
          * @read-only
          * @default Gio.FileType.UNKNOWN
          */
         get file_type(): Gio.FileType;
+
         /**
          * @read-only
          * @default Gio.FileType.UNKNOWN
          */
         get fileType(): Gio.FileType;
+
         /**
          * @read-only
          */
         get icon(): GdkPixbuf.Pixbuf;
+
         /**
          * @read-only
          * @default null
          */
         get name(): string;
+
         /**
          * @read-only
          * @default null
          */
         get size(): string;
+
         /**
          * @read-only
          * @default null
@@ -223,45 +226,43 @@ export namespace NemoPreview {
         $signals: FileLoader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FileLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](file: Gio.File): FileLoader;
+        static ["new"](file: Gio.File): FileLoader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileLoader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_content_type_string(): string;
+
         get_date_string(): string;
+
         get_display_name(): string;
+
         get_file_type(): Gio.FileType;
+
         get_icon(): GdkPixbuf.Pixbuf;
+
         get_loading(): boolean;
+
         get_size_string(): string;
+
         stop(): void;
     }
+
 
     namespace FontWidget {
         // Signal signatures
@@ -276,55 +277,50 @@ export namespace NemoPreview {
              * @run-first
              */
             loaded: () => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.DrawingArea.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             uri: string;
         }
     }
@@ -336,7 +332,6 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<FontWidget>;
 
         // Properties
-
         /**
          * @default null
          */
@@ -353,51 +348,41 @@ export namespace NemoPreview {
         $signals: FontWidget.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FontWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](uri: string): FontWidget;
-        // Conflicted with Gtk.DrawingArea.new
+        static ["new"](uri: string): FontWidget;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.DrawingArea.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FontWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FontWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FontWidget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FontWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FontWidget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FontWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontWidget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FontWidget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FontWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FontWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_uri(): string;
     }
+
 
     namespace PdfLoader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::document': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            "notify::document": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             document: XreaderDocument.Document;
             uri: string;
@@ -411,11 +396,11 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<PdfLoader>;
 
         // Properties
-
         /**
          * @read-only
          */
         get document(): XreaderDocument.Document;
+
         /**
          * @default null
          */
@@ -432,52 +417,43 @@ export namespace NemoPreview {
         $signals: PdfLoader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PdfLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](uri: string): PdfLoader;
+        static ["new"](uri: string): PdfLoader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PdfLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PdfLoader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PdfLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PdfLoader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PdfLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PdfLoader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PdfLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PdfLoader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PdfLoader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PdfLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PdfLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PdfLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         cleanup_document(): void;
+
         get_max_page_size(): [number, number];
     }
+
 
     namespace SoundPlayer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::duration': (pspec: GObject.ParamSpec) => void;
-            'notify::playing': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            "notify::duration": (pspec: GObject.ParamSpec) => void;
+            "notify::playing": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             duration: number;
             playing: boolean;
@@ -494,27 +470,30 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<SoundPlayer>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get duration(): number;
+
         /**
          * @default false
          */
         get playing(): boolean;
         set playing(val: boolean);
+
         /**
          * @default 0
          */
         get progress(): number;
         set progress(val: number);
+
         /**
          * @read-only
          * @default NemoPreview.SoundPlayerState.UNKNOWN
          */
         get state(): SoundPlayerState;
+
         /**
          * @default null
          */
@@ -531,32 +510,24 @@ export namespace NemoPreview {
         $signals: SoundPlayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SoundPlayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SoundPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SoundPlayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SoundPlayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SoundPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SoundPlayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SoundPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SoundPlayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SoundPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace TextLoader {
         // Signal signatures
@@ -566,11 +537,10 @@ export namespace NemoPreview {
              * @run-first
              */
             loaded: (arg0: GtkSource.Buffer) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             uri: string;
         }
@@ -583,7 +553,6 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<TextLoader>;
 
         // Properties
-
         /**
          * @default null
          */
@@ -600,39 +569,32 @@ export namespace NemoPreview {
         $signals: TextLoader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TextLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](uri: string): TextLoader;
+        static ["new"](uri: string): TextLoader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TextLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextLoader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TextLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TextLoader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TextLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TextLoader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TextLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextLoader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TextLoader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TextLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TextLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type CoverArtFetcherClass = typeof CoverArtFetcher;
+
     /**
      * @gir-type Struct
      */
@@ -640,10 +602,12 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<CoverArtFetcherPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FileLoaderClass = typeof FileLoader;
+
     /**
      * @gir-type Struct
      */
@@ -651,10 +615,12 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<FileLoaderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FontWidgetClass = typeof FontWidget;
+
     /**
      * @gir-type Struct
      */
@@ -662,10 +628,12 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<FontWidgetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PdfLoaderClass = typeof PdfLoader;
+
     /**
      * @gir-type Struct
      */
@@ -673,10 +641,12 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<PdfLoaderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SoundPlayerClass = typeof SoundPlayer;
+
     /**
      * @gir-type Struct
      */
@@ -684,10 +654,12 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<SoundPlayerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TextLoaderClass = typeof TextLoader;
+
     /**
      * @gir-type Struct
      */
@@ -695,11 +667,13 @@ export namespace NemoPreview {
         static $gtype: GObject.GType<TextLoaderPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

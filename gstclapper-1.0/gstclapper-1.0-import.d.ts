@@ -1,3 +1,4 @@
+
 import type GstClapper10 from '@girs/gstclapper-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,9 +14,11 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace GDesktopEnums {
+
     /**
      * GDesktopEnums-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -32,6 +35,7 @@ export namespace GDesktopEnums {
         SLATE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -40,6 +44,7 @@ export namespace GDesktopEnums {
         VERTICAL,
         HORIZONTAL,
     }
+
 
     /**
      * @gir-type Enum
@@ -54,13 +59,15 @@ export namespace GDesktopEnums {
         SPANNED,
     }
 
+
     /**
      * @gir-type Enum
      */
     enum ClockFormat {
-        '24H',
-        '12H',
+        "24H",
+        "12H",
     }
+
 
     /**
      * @gir-type Enum
@@ -71,6 +78,7 @@ export namespace GDesktopEnums {
         PREFER_LIGHT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -79,6 +87,7 @@ export namespace GDesktopEnums {
         DISABLED,
         DISABLED_ON_EXTERNAL_MOUSE,
     }
+
 
     /**
      * @gir-type Enum
@@ -89,6 +98,7 @@ export namespace GDesktopEnums {
         MOUSE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -96,6 +106,7 @@ export namespace GDesktopEnums {
         SMART,
         STRICT,
     }
+
 
     /**
      * @gir-type Enum
@@ -105,6 +116,7 @@ export namespace GDesktopEnums {
         GRAYSCALE,
         RGBA,
     }
+
 
     /**
      * @gir-type Enum
@@ -116,6 +128,7 @@ export namespace GDesktopEnums {
         FULL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -123,6 +136,7 @@ export namespace GDesktopEnums {
         AUTOMATIC,
         MANUAL,
     }
+
 
     /**
      * @gir-type Enum
@@ -135,6 +149,7 @@ export namespace GDesktopEnums {
         VBGR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -146,6 +161,7 @@ export namespace GDesktopEnums {
         EXACT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -155,6 +171,7 @@ export namespace GDesktopEnums {
         PROPORTIONAL,
         PUSH,
     }
+
 
     /**
      * @gir-type Enum
@@ -166,6 +183,7 @@ export namespace GDesktopEnums {
         PUSH,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -175,6 +193,7 @@ export namespace GDesktopEnums {
         PROPORTIONAL,
         PUSH,
     }
+
 
     /**
      * @gir-type Enum
@@ -188,6 +207,7 @@ export namespace GDesktopEnums {
         RIGHT_HALF,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -198,6 +218,7 @@ export namespace GDesktopEnums {
         DOWN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -205,6 +226,7 @@ export namespace GDesktopEnums {
         WINDOW,
         GESTURE,
     }
+
 
     /**
      * @gir-type Enum
@@ -216,6 +238,7 @@ export namespace GDesktopEnums {
         KEYBINDING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -224,6 +247,7 @@ export namespace GDesktopEnums {
         FLAT,
         ADAPTIVE,
     }
+
 
     /**
      * @gir-type Enum
@@ -234,6 +258,7 @@ export namespace GDesktopEnums {
         ON_BUTTON_DOWN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -243,6 +268,7 @@ export namespace GDesktopEnums {
         AUTO,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -251,6 +277,7 @@ export namespace GDesktopEnums {
         RANDOM,
         SINGLE,
     }
+
 
     /**
      * @gir-type Enum
@@ -265,6 +292,7 @@ export namespace GDesktopEnums {
         KEYBINDING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -272,6 +300,7 @@ export namespace GDesktopEnums {
         ABSOLUTE,
         RELATIVE,
     }
+
 
     /**
      * @gir-type Enum
@@ -287,6 +316,7 @@ export namespace GDesktopEnums {
         MENU,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -294,6 +324,7 @@ export namespace GDesktopEnums {
         SMALL,
         LARGE,
     }
+
 
     /**
      * @gir-type Enum
@@ -305,6 +336,7 @@ export namespace GDesktopEnums {
         TEXT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -315,6 +347,7 @@ export namespace GDesktopEnums {
         FINGERS,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -323,6 +356,7 @@ export namespace GDesktopEnums {
         LEFT,
         MOUSE,
     }
+
 
     /**
      * @gir-type Enum
@@ -333,6 +367,7 @@ export namespace GDesktopEnums {
         LMR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -340,6 +375,7 @@ export namespace GDesktopEnums {
         LOCKSCREEN,
         ALWAYS,
     }
+
 
     /**
      * @gir-type Enum
@@ -349,11 +385,13 @@ export namespace GDesktopEnums {
         FRAME_FLASH,
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

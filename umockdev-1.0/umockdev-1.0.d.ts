@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace UMockdev {
+
     /**
      * UMockdev-1.0
      */
+
 
     /**
      * @gir-type Struct
@@ -25,23 +28,26 @@ export namespace UMockdev {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static PARSE: number;
+
         static VALUE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
 
+
     function in_mock_environment(): boolean;
+
     namespace Testbed {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -60,197 +66,215 @@ export namespace UMockdev {
         $signals: Testbed.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Testbed.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Testbed;
+        static ["new"](): Testbed;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Testbed.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Testbed.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Testbed.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Testbed.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Testbed.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Testbed.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Testbed.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Testbed.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Testbed.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Testbed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Testbed.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Testbed.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_root_dir(): string;
+
         get_sys_dir(): string;
+
         /**
-         * @param devpath
-         * @param name
-         * @param value
+         * @param devpath 
+         * @param name 
+         * @param value 
          */
         set_attribute(devpath: string, name: string, value: string): void;
+
         /**
-         * @param devpath
-         * @param name
-         * @param value
+         * @param devpath 
+         * @param name 
+         * @param value 
          */
-        set_attribute_binary(devpath: string, name: string, value: Uint8Array | string): void;
+        set_attribute_binary(devpath: string, name: string, value: (Uint8Array | string)): void;
+
         /**
-         * @param devpath
-         * @param name
-         * @param value
+         * @param devpath 
+         * @param name 
+         * @param value 
          */
         set_attribute_int(devpath: string, name: string, value: number): void;
+
         /**
-         * @param devpath
-         * @param name
-         * @param value
+         * @param devpath 
+         * @param name 
+         * @param value 
          */
         set_attribute_hex(devpath: string, name: string, value: number): void;
+
         /**
-         * @param devpath
-         * @param name
-         * @param value
+         * @param devpath 
+         * @param name 
+         * @param value 
          */
         set_attribute_link(devpath: string, name: string, value: string): void;
+
         /**
-         * @param devpath
-         * @param name
+         * @param devpath 
+         * @param name 
          */
-        get_property(devpath: string, name: string): string | null;
+        get_property(devpath: string, name: string): (string | null);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_property
+    // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
-         * @param devpath
-         * @param name
-         * @param value
+         * @param devpath 
+         * @param name 
+         * @param value 
          */
         set_property(devpath: string, name: string, value: string): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set_property
+    // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
+
         /**
-         * @param devpath
-         * @param name
-         * @param value
+         * @param devpath 
+         * @param name 
+         * @param value 
          */
         set_property_int(devpath: string, name: string, value: number): void;
+
         /**
-         * @param devpath
-         * @param name
-         * @param value
+         * @param devpath 
+         * @param name 
+         * @param value 
          */
         set_property_hex(devpath: string, name: string, value: number): void;
+
         /**
-         * @param subsystem
-         * @param name
-         * @param parent
-         * @param attributes
-         * @param properties
+         * @param subsystem 
+         * @param name 
+         * @param parent 
+         * @param attributes 
+         * @param properties 
          */
-        add_devicev(
-            subsystem: string,
-            name: string,
-            parent: string | null,
-            attributes: string[],
-            properties: string[],
-        ): string | null;
+        add_devicev(subsystem: string, name: string, parent: (string | null), attributes: string[], properties: string[]): (string | null);
+
         /**
-         * @param syspath
+         * @param syspath 
          */
         remove_device(syspath: string): void;
+
         /**
-         * @param data
+         * @param data 
          */
         add_from_string(data: string): boolean;
+
         /**
-         * @param path
+         * @param path 
          */
         add_from_file(path: string): boolean;
+
         /**
-         * @param devpath
-         * @param action
+         * @param devpath 
+         * @param action 
          */
         uevent(devpath: string, action: string): void;
+
         /**
-         * @param dev
-         * @param handler
+         * @param dev 
+         * @param handler 
          */
         attach_ioctl(dev: string, handler: IoctlBase): boolean;
+
         /**
-         * @param dev
+         * @param dev 
          */
         detach_ioctl(dev: string): boolean;
+
         /**
-         * @param dev
-         * @param recordfile
+         * @param dev 
+         * @param recordfile 
          */
-        load_ioctl(dev: string | null, recordfile: string): boolean;
+        load_ioctl(dev: (string | null), recordfile: string): boolean;
+
         /**
-         * @param sysfs
-         * @param recordfile
+         * @param sysfs 
+         * @param recordfile 
          */
         load_pcap(sysfs: string, recordfile: string): boolean;
+
         /**
-         * @param dev
-         * @param recordfile
+         * @param dev 
+         * @param recordfile 
          */
-        load_script(dev: string | null, recordfile: string): boolean;
+        load_script(dev: (string | null), recordfile: string): boolean;
+
         /**
-         * @param dev
-         * @param script
+         * @param dev 
+         * @param script 
          */
-        load_script_from_string(dev: string | null, script: string): boolean;
+        load_script_from_string(dev: (string | null), script: string): boolean;
+
         /**
-         * @param dev
+         * @param dev 
          */
         wait_script(dev: string): boolean;
+
         /**
-         * @param path
-         * @param type
-         * @param recordfile
+         * @param path 
+         * @param type 
+         * @param recordfile 
          */
         load_socket_script(path: string, type: number, recordfile: string): boolean;
+
         /**
-         * @param dev
-         * @param eventsfile
+         * @param dev 
+         * @param eventsfile 
          */
-        load_evemu_events(dev: string | null, eventsfile: string): boolean;
+        load_evemu_events(dev: (string | null), eventsfile: string): boolean;
+
         /**
-         * @param dev
-         * @param events
+         * @param dev 
+         * @param events 
          */
-        load_evemu_events_from_string(dev: string | null, events: string): boolean;
+        load_evemu_events_from_string(dev: (string | null), events: string): boolean;
+
         disable(): void;
+
         enable(): void;
+
         clear(): void;
+
         /**
-         * @param devnode
+         * @param devnode 
          */
         get_dev_fd(devnode: string): number;
     }
 
+
     namespace IoctlData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -269,75 +293,72 @@ export namespace UMockdev {
         $signals: IoctlData.SignalSignatures;
 
         // Fields
-
         data: Uint8Array;
+
         data_length1: number;
+
         client_addr: number;
 
         // Constructors
-
         constructor(properties?: Partial<IoctlData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof IoctlData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlData.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof IoctlData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IoctlData.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof IoctlData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IoctlData.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof IoctlData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlData.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof IoctlData.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<IoctlData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof IoctlData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        compat_ref(): (IoctlData | null);
 
-        compat_ref(): IoctlData | null;
         compat_unref(): void;
+
         /**
-         * @param offset
-         * @param len
+         * @param offset 
+         * @param len 
          */
-        resolve(offset: bigint | number, len: bigint | number): IoctlData | null;
+        resolve(offset: (bigint | number), len: (bigint | number)): (IoctlData | null);
+
         /**
-         * @param offset
-         * @param child
+         * @param offset 
+         * @param child 
          */
-        set_ptr(offset: bigint | number, child: IoctlData): boolean;
+        set_ptr(offset: (bigint | number), child: IoctlData): boolean;
+
         reload(): boolean;
+
         /**
-         * @param offset
-         * @param new_data
+         * @param offset 
+         * @param new_data 
          */
-        update(offset: bigint | number, new_data: Uint8Array | string): void;
+        update(offset: (bigint | number), new_data: (Uint8Array | string)): void;
+
         retrieve(): Uint8Array;
     }
+
 
     namespace IoctlClient {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::devnode': (pspec: GObject.ParamSpec) => void;
-            'notify::request': (pspec: GObject.ParamSpec) => void;
-            'notify::arg': (pspec: GObject.ParamSpec) => void;
-            'notify::connected': (pspec: GObject.ParamSpec) => void;
+            "notify::devnode": (pspec: GObject.ParamSpec) => void;
+            "notify::request": (pspec: GObject.ParamSpec) => void;
+            "notify::arg": (pspec: GObject.ParamSpec) => void;
+            "notify::connected": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             devnode: string;
-            request: bigint | number;
+            request: (bigint | number);
             arg: IoctlData;
             connected: boolean;
         }
@@ -350,19 +371,21 @@ export namespace UMockdev {
         static $gtype: GObject.GType<IoctlClient>;
 
         // Properties
-
         /**
          * @read-only
          */
         get devnode(): string;
+
         /**
          * @read-only
          */
         get request(): number;
+
         /**
          * @read-only
          */
         get arg(): IoctlData;
+
         /**
          * @read-only
          */
@@ -378,46 +401,43 @@ export namespace UMockdev {
         $signals: IoctlClient.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<IoctlClient.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof IoctlClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlClient.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof IoctlClient.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IoctlClient.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof IoctlClient.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IoctlClient.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof IoctlClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlClient.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof IoctlClient.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<IoctlClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof IoctlClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_devnode(): string;
+
         get_request(): number;
+
         get_arg(): IoctlData;
+
         get_connected(): boolean;
+
         execute(): [number, number];
+
         /**
-         * @param res
-         * @param errno_
+         * @param res 
+         * @param errno_ 
          */
-        complete(res: bigint | number, errno_: number): void;
+        complete(res: (bigint | number), errno_: number): void;
+
         abort(): void;
     }
+
 
     namespace IoctlBase {
         // Signal signatures
@@ -425,16 +445,17 @@ export namespace UMockdev {
             /**
              * @signal
              */
-            'client-connected': (arg0: IoctlClient) => void;
+            "client-connected": (arg0: IoctlClient) => void;
             /**
              * @signal
              */
-            'client-vanished': (arg0: IoctlClient) => void;
+            "client-vanished": (arg0: IoctlClient) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -453,82 +474,79 @@ export namespace UMockdev {
         $signals: IoctlBase.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<IoctlBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): IoctlBase;
+        static ["new"](): IoctlBase;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof IoctlBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlBase.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof IoctlBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IoctlBase.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof IoctlBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IoctlBase.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof IoctlBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IoctlBase.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof IoctlBase.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<IoctlBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof IoctlBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IoctlBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param client
+         * @param client 
          * @virtual
          */
         vfunc_handle_ioctl(client: IoctlClient): boolean;
+
         /**
-         * @param client
+         * @param client 
          * @virtual
          */
         vfunc_handle_read(client: IoctlClient): boolean;
+
         /**
-         * @param client
+         * @param client 
          * @virtual
          */
         vfunc_handle_write(client: IoctlClient): boolean;
+
         /**
-         * @param client
+         * @param client 
          * @virtual
          */
         vfunc_client_connected(client: IoctlClient): void;
+
         /**
-         * @param client
+         * @param client 
          * @virtual
          */
         vfunc_client_vanished(client: IoctlClient): void;
 
         // Methods
-
         /**
-         * @param client
+         * @param client 
          */
         handle_ioctl(client: IoctlClient): boolean;
+
         /**
-         * @param client
+         * @param client 
          */
         handle_read(client: IoctlClient): boolean;
+
         /**
-         * @param client
+         * @param client 
          */
         handle_write(client: IoctlClient): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type TestbedClass = typeof Testbed;
+
     /**
      * @gir-type Struct
      */
@@ -536,10 +554,12 @@ export namespace UMockdev {
         static $gtype: GObject.GType<TestbedPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IoctlDataClass = typeof IoctlData;
+
     /**
      * @gir-type Struct
      */
@@ -547,10 +567,12 @@ export namespace UMockdev {
         static $gtype: GObject.GType<IoctlDataPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IoctlClientClass = typeof IoctlClient;
+
     /**
      * @gir-type Struct
      */
@@ -558,10 +580,12 @@ export namespace UMockdev {
         static $gtype: GObject.GType<IoctlClientPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IoctlBaseClass = typeof IoctlBase;
+
     /**
      * @gir-type Struct
      */
@@ -569,11 +593,13 @@ export namespace UMockdev {
         static $gtype: GObject.GType<IoctlBasePrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

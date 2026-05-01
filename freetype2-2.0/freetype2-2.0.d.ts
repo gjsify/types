@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,9 +14,11 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace freetype2 {
+
     /**
      * freetype2-2.0
      */
+
 
     /**
      * @gir-type Struct
@@ -24,12 +27,14 @@ export namespace freetype2 {
         static $gtype: GObject.GType<Bitmap>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class Face {
         static $gtype: GObject.GType<Face>;
     }
+
 
     /**
      * @gir-type Struct
@@ -38,15 +43,18 @@ export namespace freetype2 {
         static $gtype: GObject.GType<Library>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type Int32 = number;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

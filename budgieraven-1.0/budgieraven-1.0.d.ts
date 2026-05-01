@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -27,9 +28,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace BudgieRaven {
+
     /**
      * BudgieRaven-1.0
      */
+
 
     namespace RavenWidget {
         // Signal signatures
@@ -38,55 +41,55 @@ export namespace BudgieRaven {
              * @signal
              * @run-last
              */
-            'raven-expanded': (arg0: boolean) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "raven-expanded": (arg0: boolean) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -105,67 +108,62 @@ export namespace BudgieRaven {
         $signals: RavenWidget.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RavenWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): RavenWidget;
+        static ["new"](): RavenWidget;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RavenWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RavenWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RavenWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RavenWidget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RavenWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RavenWidget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RavenWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RavenWidget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RavenWidget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RavenWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RavenWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RavenWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_build_settings_ui(): Gtk.Widget;
 
         // Methods
-
         /**
          * @returns The settings UI to be presented in Budgie Desktop Settings for this widget instance
          */
         build_settings_ui(): Gtk.Widget;
+
         /**
          * @returns The settings object for this widget instance
          */
         get_instance_settings(): Gio.Settings;
+
         get_uuid(): string;
+
         /**
-         * @param uuid
-         * @param instance_settings
+         * @param uuid 
+         * @param instance_settings 
          */
         initialize(uuid: string, instance_settings: Gio.Settings): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RavenPluginIface = typeof RavenPlugin;
+
     /**
      * @gir-type Alias
      */
     type RavenWidgetClass = typeof RavenWidget;
+
     /**
      * @gir-type Struct
      */
@@ -173,11 +171,13 @@ export namespace BudgieRaven {
         static $gtype: GObject.GType<RavenWidgetPrivate>;
 
         // Fields
-
         initialized: boolean;
+
         uuid: string;
+
         instance_settings: Gio.Settings;
     }
+
 
     namespace RavenPlugin {
         /**
@@ -185,23 +185,26 @@ export namespace BudgieRaven {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @param uuid UUID for this new instance
              * @param settings Settings for this new instance
              * @virtual
              */
-            vfunc_new_widget_instance(uuid: string, settings: Gio.Settings | null): RavenWidget;
+            vfunc_new_widget_instance(uuid: string, settings: (Gio.Settings | null)): RavenWidget;
+
             /**
              * @virtual
              */
             vfunc_supports_settings(): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface RavenPluginNamespace {
@@ -212,19 +215,21 @@ export namespace BudgieRaven {
      * @gir-type Interface
      */
     interface RavenPlugin extends GObject.Object, RavenPlugin.Interface {
-        // Methods
 
+        // Methods
         /**
          * @param uuid UUID for this new instance
          * @param settings Settings for this new instance
          * @returns A newly initialized Raven widget
          */
-        new_widget_instance(uuid: string, settings: Gio.Settings | null): RavenWidget;
+        new_widget_instance(uuid: string, settings: (Gio.Settings | null)): RavenWidget;
+
         /**
          * @returns Whether this plugin supports per-instance settings
          */
         supports_settings(): boolean;
     }
+
 
     export const RavenPlugin: RavenPluginNamespace & {
         new (): RavenPlugin; // This allows `obj instanceof RavenPlugin`
@@ -235,6 +240,7 @@ export namespace BudgieRaven {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

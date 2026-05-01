@@ -1,3 +1,4 @@
+
 import type Nemo30 from '@girs/nemo-3.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

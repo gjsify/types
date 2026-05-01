@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace SugarGestures {
+
     /**
      * SugarGestures-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -46,6 +49,7 @@ export namespace SugarGestures {
         NOT_RECOGNIZED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -63,6 +67,7 @@ export namespace SugarGestures {
         DOWN,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -77,6 +82,7 @@ export namespace SugarGestures {
         NONE,
         EXCLUSIVE,
     }
+
 
     /**
      * @gir-type Flags
@@ -94,6 +100,7 @@ export namespace SugarGestures {
         UP,
         DOWN,
     }
+
 
     namespace EventController {
         // Signal signatures
@@ -113,12 +120,11 @@ export namespace SugarGestures {
              * @run-last
              */
             updated: () => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::widget': (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             state: EventControllerState;
             widget: Gtk.Widget;
@@ -132,12 +138,12 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<EventController>;
 
         // Properties
-
         /**
          * @read-only
          * @default SugarGestures.EventControllerState.NONE
          */
         get state(): EventControllerState;
+
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
 
@@ -151,78 +157,77 @@ export namespace SugarGestures {
         $signals: EventController.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<EventController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EventController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EventController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EventController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EventController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EventController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EventController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EventController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EventController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EventController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_began(): void;
+
         /**
          * @virtual
          */
         vfunc_ended(): void;
+
         /**
          * @virtual
          */
         vfunc_get_state(): EventControllerState;
+
         /**
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_handle_event(event: Gdk.Event): boolean;
+
         /**
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * @virtual
          */
         vfunc_updated(): void;
 
         // Methods
-
         /**
-         * @param widget
-         * @param flags
+         * @param widget 
+         * @param flags 
          */
         attach(widget: Gtk.Widget, flags: EventControllerFlags): boolean;
+
         /**
-         * @param widget
+         * @param widget 
          */
         detach(widget: Gtk.Widget): boolean;
+
         get_state(): EventControllerState;
+
         /**
-         * @param event
+         * @param event 
          */
         handle_event(event: Gdk.Event): boolean;
+
         reset(): boolean;
     }
+
 
     namespace LongPressController {
         // Signal signatures
@@ -232,14 +237,13 @@ export namespace SugarGestures {
              * @run-last
              */
             pressed: (arg0: number, arg1: number) => void;
-            'notify::threshold': (pspec: GObject.ParamSpec) => void;
-            'notify::trigger-delay': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::widget': (pspec: GObject.ParamSpec) => void;
+            "notify::threshold": (pspec: GObject.ParamSpec) => void;
+            "notify::trigger-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends EventController.ConstructorProps {
             threshold: number;
             trigger_delay: number;
@@ -254,17 +258,18 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<LongPressController>;
 
         // Properties
-
         /**
          * @default 32
          */
         get threshold(): number;
         set threshold(val: number);
+
         /**
          * @default 600
          */
         get trigger_delay(): number;
         set trigger_delay(val: number);
+
         /**
          * @default 600
          */
@@ -281,45 +286,34 @@ export namespace SugarGestures {
         $signals: LongPressController.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LongPressController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): LongPressController;
+        static ["new"](): LongPressController;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LongPressController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LongPressController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LongPressController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LongPressController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LongPressController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LongPressController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LongPressController.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof LongPressController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LongPressController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param x
-         * @param y
+         * @param x 
+         * @param y 
          * @virtual
          */
         vfunc_pressed(x: number, y: number): void;
     }
+
 
     namespace RotateController {
         // Signal signatures
@@ -328,16 +322,17 @@ export namespace SugarGestures {
              * @signal
              * @run-first
              */
-            'angle-changed': (arg0: number, arg1: number) => void;
-            'notify::max-touches': (pspec: GObject.ParamSpec) => void;
-            'notify::min-touches': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::widget': (pspec: GObject.ParamSpec) => void;
+            "angle-changed": (arg0: number, arg1: number) => void;
+            "notify::max-touches": (pspec: GObject.ParamSpec) => void;
+            "notify::min-touches": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends TouchController.ConstructorProps {
 
-        interface ConstructorProps extends TouchController.ConstructorProps {}
+        }
     }
 
     /**
@@ -356,49 +351,37 @@ export namespace SugarGestures {
         $signals: RotateController.SignalSignatures;
 
         // Fields
-
         priv: RotateControllerPrivate;
 
         // Constructors
-
         constructor(properties?: Partial<RotateController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): RotateController;
+        static ["new"](): RotateController;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RotateController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RotateController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RotateController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RotateController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RotateController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RotateController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RotateController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RotateController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RotateController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param angle
-         * @param delta
+         * @param angle 
+         * @param delta 
          * @virtual
          */
         vfunc_angle_changed(angle: number, delta: number): void;
 
         // Methods
-
         /**
          * If `controller` is on state {@link SugarGestures.EventControllerState.RECOGNIZED},
          * this function returns `true` and fills in `delta` with the angle difference
@@ -408,6 +391,7 @@ export namespace SugarGestures {
         get_angle_delta(): [boolean, number];
     }
 
+
     namespace SwipeController {
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
@@ -415,14 +399,13 @@ export namespace SugarGestures {
              * @signal
              * @run-first
              */
-            'swipe-ended': (arg0: SwipeDirection) => void;
-            'notify::directions': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::widget': (pspec: GObject.ParamSpec) => void;
+            "swipe-ended": (arg0: SwipeDirection) => void;
+            "notify::directions": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends EventController.ConstructorProps {
             directions: SwipeDirectionFlags;
         }
@@ -435,7 +418,6 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<SwipeController>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 0
@@ -452,54 +434,44 @@ export namespace SugarGestures {
         $signals: SwipeController.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SwipeController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](directions: SwipeDirectionFlags): SwipeController;
+        static ["new"](directions: SwipeDirectionFlags): SwipeController;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SwipeController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SwipeController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SwipeController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SwipeController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SwipeController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SwipeController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SwipeController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SwipeController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SwipeController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param direction
+         * @param direction 
          * @virtual
          */
         vfunc_swipe_ended(direction: SwipeDirection): void;
     }
 
+
     namespace TouchController {
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
-            'notify::max-touches': (pspec: GObject.ParamSpec) => void;
-            'notify::min-touches': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::widget': (pspec: GObject.ParamSpec) => void;
+            "notify::max-touches": (pspec: GObject.ParamSpec) => void;
+            "notify::min-touches": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends EventController.ConstructorProps {
             max_touches: number;
             maxTouches: number;
@@ -515,22 +487,24 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<TouchController>;
 
         // Properties
-
         /**
          * @default 1
          */
         get max_touches(): number;
         set max_touches(val: number);
+
         /**
          * @default 1
          */
         get maxTouches(): number;
         set maxTouches(val: number);
+
         /**
          * @default 1
          */
         get min_touches(): number;
         set min_touches(val: number);
+
         /**
          * @default 1
          */
@@ -547,40 +521,31 @@ export namespace SugarGestures {
         $signals: TouchController.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TouchController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TouchController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TouchController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TouchController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TouchController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TouchController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TouchController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TouchController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TouchController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TouchController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * If a gesture is ongoing, this function returns the center of
          * the bounding box containing all ongoing touches.
          * @returns `true` if a gesture is in progress
          */
         get_center(): [boolean, number, number];
+
         /**
          * If `sequence` is operating on `controller`, this function returns `true` and
          * fills in `x` and `y` with the latest coordinates for that `sequence`.
@@ -588,17 +553,20 @@ export namespace SugarGestures {
          * @returns `true` if `sequence` operates on `controller`
          */
         get_coords(sequence: Gdk.EventSequence): [boolean, number, number];
+
         /**
          * Returns the number of touches currently operating on `controller`
          * @returns The number of touches
          */
         get_num_touches(): number;
+
         /**
          * Returns the touch sequences currently operating on `controller`
          * @returns The list of sequences
          */
         get_sequences(): Gdk.EventSequence[];
     }
+
 
     namespace ZoomController {
         // Signal signatures
@@ -607,16 +575,17 @@ export namespace SugarGestures {
              * @signal
              * @run-first
              */
-            'scale-changed': (arg0: number) => void;
-            'notify::max-touches': (pspec: GObject.ParamSpec) => void;
-            'notify::min-touches': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::widget': (pspec: GObject.ParamSpec) => void;
+            "scale-changed": (arg0: number) => void;
+            "notify::max-touches": (pspec: GObject.ParamSpec) => void;
+            "notify::min-touches": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends TouchController.ConstructorProps {
 
-        interface ConstructorProps extends TouchController.ConstructorProps {}
+        }
     }
 
     /**
@@ -635,48 +604,36 @@ export namespace SugarGestures {
         $signals: ZoomController.SignalSignatures;
 
         // Fields
-
         priv: ZoomControllerPrivate;
 
         // Constructors
-
         constructor(properties?: Partial<ZoomController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ZoomController;
+        static ["new"](): ZoomController;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ZoomController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ZoomController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ZoomController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ZoomController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ZoomController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ZoomController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ZoomController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ZoomController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ZoomController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param scale
+         * @param scale 
          * @virtual
          */
         vfunc_scale_changed(scale: number): void;
 
         // Methods
-
         /**
          * If `controller` is on state {@link SugarGestures.EventControllerState.RECOGNIZED},
          * this function returns `true` and fills in `scale` with the zooming
@@ -687,10 +644,12 @@ export namespace SugarGestures {
         get_scale_delta(): [boolean, number];
     }
 
+
     /**
      * @gir-type Alias
      */
     type EventControllerClass = typeof EventController;
+
     /**
      * @gir-type Struct
      */
@@ -698,14 +657,15 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<EventControllerPrivate>;
 
         // Fields
-
         widget: Gtk.Widget;
     }
+
 
     /**
      * @gir-type Alias
      */
     type LongPressControllerClass = typeof LongPressController;
+
     /**
      * @gir-type Struct
      */
@@ -713,24 +673,35 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<LongPressControllerPrivate>;
 
         // Fields
-
         device: Gdk.Device;
+
         start_time: number;
+
         x: number;
+
         y: number;
+
         root_x: number;
+
         root_y: number;
+
         timeout_id: number;
+
         threshold: number;
+
         delay: number;
+
         cancelled: number;
+
         triggered: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RotateControllerClass = typeof RotateController;
+
     /**
      * @gir-type Struct
      */
@@ -738,22 +709,21 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<RotateControllerPrivate>;
 
         // Fields
-
         initial_angle: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                initial_angle: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            initial_angle: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type SwipeControllerClass = typeof SwipeController;
+
     /**
      * @gir-type Struct
      */
@@ -761,18 +731,23 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<SwipeControllerPrivate>;
 
         // Fields
-
         device: Gdk.Device;
+
         event_data: any[];
+
         swiping: number;
+
         swiped: number;
+
         directions: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type TouchControllerClass = typeof TouchController;
+
     /**
      * @gir-type Struct
      */
@@ -780,15 +755,17 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<TouchControllerPrivate>;
 
         // Fields
-
         min_touches: number;
+
         max_touches: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ZoomControllerClass = typeof ZoomController;
+
     /**
      * @gir-type Struct
      */
@@ -796,23 +773,22 @@ export namespace SugarGestures {
         static $gtype: GObject.GType<ZoomControllerPrivate>;
 
         // Fields
-
         initial_distance: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                initial_distance: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            initial_distance: number;
+        }>);
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,9 +14,11 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace win32 {
+
     /**
      * win32-1.0
      */
+
 
     /**
      * @gir-type Struct
@@ -24,27 +27,33 @@ export namespace win32 {
         static $gtype: GObject.GType<MSG>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HWND = number;
+
     /**
      * @gir-type Alias
      */
-    type HICON = bigint | number;
+    type HICON = (bigint | number);
+
     /**
      * @gir-type Alias
      */
-    type HCURSOR = bigint | number;
+    type HCURSOR = (bigint | number);
+
     /**
      * @gir-type Alias
      */
-    type HGDIOBJ = bigint | number;
+    type HGDIOBJ = (bigint | number);
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

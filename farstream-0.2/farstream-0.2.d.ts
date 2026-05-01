@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Farstream {
+
     /**
      * Farstream-0.2
      */
+
 
     /**
      * @gir-type Enum
@@ -54,6 +57,7 @@ export namespace Farstream {
         MULTICAST,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -80,6 +84,7 @@ export namespace Farstream {
         RTCP,
     }
 
+
     /**
      * An enum that represents the different DTMF event that can be sent to a
      * {@link Farstream.Session}. The values corresponds those those defined in RFC 4733
@@ -91,24 +96,39 @@ export namespace Farstream {
         static $gtype: GObject.GType<DTMFEvent>;
 
         // Static fields
+        static "0": number;
 
-        static '0': number;
-        static '1': number;
-        static '2': number;
-        static '3': number;
-        static '4': number;
-        static '5': number;
-        static '6': number;
-        static '7': number;
-        static '8': number;
-        static '9': number;
+        static "1": number;
+
+        static "2": number;
+
+        static "3": number;
+
+        static "4": number;
+
+        static "5": number;
+
+        static "6": number;
+
+        static "7": number;
+
+        static "8": number;
+
+        static "9": number;
+
         static STAR: number;
+
         static POUND: number;
+
         static A: number;
+
         static B: number;
+
         static C: number;
+
         static D: number;
     }
+
 
     /**
      * @gir-type Enum
@@ -133,6 +153,7 @@ export namespace Farstream {
         SOUND,
     }
 
+
     /**
      * This is the enum of error numbers that will come either on the "error"
      * signal, from the Gst Bus or for error in the FS_ERROR domain in GErrors
@@ -142,39 +163,44 @@ export namespace Farstream {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Error constructing some of the sub-elements, this
          * probably denotes an error in the installation of the gstreamer elements.
          * It is a fatal error.
          */
         static CONSTRUCTION: number;
+
         /**
          * An internal error happened in Farstream, it may be in
          * an inconsistent state. The object from which this error comes should be
          * discarded.
          */
         static INTERNAL: number;
+
         /**
          * Invalid arguments to the function, this
          * is a programming error and should not be reported to the user
          */
         static INVALID_ARGUMENTS: number;
+
         /**
          * A network related error, this should probably be
          *  reported to the user.
          */
         static NETWORK: number;
+
         /**
          * The optional functionality is not implemented by
          * this plugin.
          */
         static NOT_IMPLEMENTED: number;
+
         /**
          * The codec negotiation has failed, this means
          * that there are no common codecs between the local and remote codecs.
          */
         static NEGOTIATION_FAILED: number;
+
         /**
          * Data is received on an unknown codec, this most
          * likely denotes an error on the remote side, the buffers will be ignored.
@@ -182,36 +208,40 @@ export namespace Farstream {
          * media received).
          */
         static UNKNOWN_CODEC: number;
+
         /**
          * There are no codecs detected for that media type.
          */
         static NO_CODECS: number;
+
         /**
          * All of the codecs have been disabled by the
          * codec preferences, one should try less strict codec preferences.
          */
         static NO_CODECS_LEFT: number;
+
         /**
          * Could not connect to the to remote party.
          */
         static CONNECTION_FAILED: number;
+
         /**
          * The object has been disposed.
          */
         static DISPOSED: number;
+
         /**
          * The object already exists
          */
         static ALREADY_EXISTS: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -242,6 +272,7 @@ export namespace Farstream {
          */
         LAST,
     }
+
 
     /**
      * @gir-type Enum
@@ -281,6 +312,7 @@ export namespace Farstream {
          */
         TCP_SO,
     }
+
 
     /**
      * @gir-type Enum
@@ -323,79 +355,90 @@ export namespace Farstream {
         READY,
     }
 
+
     /**
      * A format that can be used in printf like format strings to format a FsCodec
      */
     const CODEC_FORMAT: string;
+
     /**
      * If the id of a {@link Farstream.Codec} is #FS_CODEC_ID_ANY, then it will be replaced
      * with a dynamic payload type at runtime
      */
     const CODEC_ID_ANY: number;
+
     /**
      * If the id of a {@link Farstream.Codec} is #FS_CODEC_ID_DISABLE, then this codec will
      * not be used
      */
     const CODEC_ID_DISABLE: number;
+
     /**
      * A format that can be used in printf like format strings to format a
      * FsRtpHeaderExtension
      */
     const RTP_HEADER_EXTENSION_FORMAT: string;
+
     /**
      * Copies a GList of {@link Farstream.Candidate} and its contents
      * @param candidate_list A GList of {@link Farstream.Candidate}
      * @returns a new GList of {@link Farstream.Candidate}
      */
     function candidate_list_copy(candidate_list: Codec[]): Codec[];
+
     /**
      * Verifies if two glist of fscodecs are identical
      * @param list1 a {@link GLib.List} of {@link Farstream.Codec}
      * @param list2 a {@link GLib.List} of {@link Farstream.Codec}
      * @returns `true` if they are identical, `false` otherwise
      */
-    function codec_list_are_equal(list1: Codec[] | null, list2: Codec[] | null): boolean;
+    function codec_list_are_equal(list1: (Codec[] | null), list2: (Codec[] | null)): boolean;
+
     /**
      * Copies a list of {@link Farstream.Codec} structures.
      * @param codec_list a GList of {@link Farstream.Codec} to copy
      * @returns The new list.
      */
     function codec_list_copy(codec_list: Codec[]): Codec[];
+
     /**
      * Reads the content of a {@link GLib.KeyFile} of the following format into
      * a {@link GLib.List} of {@link Farstream.Codec} structures.
-     *
-     *
+     * 
+     * 
      * Example:
-     *
+     * 
      * ```
      * [audio/codec1]
      * clock-rate=8000
-     *
+     * 
      * [audio/codec1:1]
      * clock-rate=16000
-     *
+     * 
      * [audio/codec2]
      * one_param=QCIF
      * another_param=WOW
-     *
+     * 
      * [video/codec3]
      * wierd_param=42
      * feedback:nack/pli=1
      * feedback:tfrc=
      * ```
-     *
+     * 
      * @param filename Name of the {@link GLib.KeyFile} to read the codecs parameters from
      * @returns The {@link GLib.List} of {@link Farstream.Codec} or `null` if the keyfile was empty or an error occured.
      */
     function codec_list_from_keyfile(filename: string): Codec[];
+
     function error_quark(): GLib.Quark;
+
     /**
      * Gives a user-printable string representing the media type
      * @param media_type A media type
      * @returns a static string representing the media type
      */
     function media_type_to_string(media_type: MediaType): string;
+
     /**
      * Parses a "farstream-farstream" message and checks if it matches
      * the `object` parameters.
@@ -404,19 +447,21 @@ export namespace Farstream {
      * @returns `true` if the message matches the object and is valid.
      */
     function parse_error(object: GObject.Object, message: Gst.Message): [boolean, Error, string];
+
     /**
      * Does a deep copy of a {@link GLib.List} of {@link Farstream.RtpHeaderExtension}
      * @param extensions a {@link GLib.List} of {@link Farstream.RtpHeaderExtension}
      * @returns a new {@link GLib.List} of {@link Farstream.RtpHeaderExtension}
      */
     function rtp_header_extension_list_copy(extensions: RtpHeaderExtension[]): RtpHeaderExtension[];
+
     /**
      * Reads the content of a {@link GLib.KeyFile} of the following format into a
      * {@link GLib.List} of {@link Farstream.RtpHeaderExtension} structures.
-     *
+     * 
      * The groups have a format "rtp-hdrext:audio:XXX" or
      * "rtp-hdrext:video:XXX" where XXX is a unique string (per media type).
-     *
+     * 
      * The valid keys are:
      * <itemizedlist>
      *  <listitem>id: a int between in the 1-255 and 4096-4351 ranges</listitem>
@@ -425,25 +470,26 @@ export namespace Farstream {
      *      Extension, possible values are "send", "receive", "none" or "both".
      *      Defaults to "both"</listitem>
      * </itemizedlist>
-     *
+     * 
      * Example:
-     *
+     * 
      * ```
      * [rtp-hdrext:audio:a]
      * id=1
      * uri=urn:ietf:params:rtp-hdrext:toffset
-     *
+     * 
      * [rtp-hdrext:audio:abc]
      * id=3
      * uri=urn:ietf:params:rtp-hdrext:ntp-64
      * direction=receive
      * ```
-     *
+     * 
      * @param filename Name of the {@link GLib.KeyFile} to read the RTP Header Extensions from
      * @param media_type The media type for which to get header extensions
      * @returns a {@link GLib.List} of {@link Farstream.RtpHeaderExtension} that must be freed with `fs_rtp_header_extension_list_destroy()`
      */
     function rtp_header_extension_list_from_keyfile(filename: string, media_type: MediaType): RtpHeaderExtension[];
+
     /**
      * These default codec preferences should work with the elements that are
      * available in the main GStreamer element repositories.
@@ -452,6 +498,7 @@ export namespace Farstream {
      * @returns The default codec preferences for this plugin. This {@link GLib.List} should be freed with `fs_codec_list_destroy()`
      */
     function utils_get_default_codec_preferences(element: Gst.Element): Codec[];
+
     /**
      * These default rtp header extension preferences should work with the elements
      * that are available in the main GStreamer element repositories.
@@ -461,35 +508,41 @@ export namespace Farstream {
      * @returns The default rtp header extension preferences for this plugin, this {@link GLib.List} should be freed with `fs_codec_list_destroy()`
      */
     function utils_get_default_rtp_header_extension_preferences(element: Gst.Element, media_type: MediaType): Codec[];
+
     /**
      * This allows setting the bitrate on all elements that have a "bitrate"
      * property without having to know the type or of the unit used by that element.
-     *
+     * 
      * This will be obsolete in 0.11 (when all elements use bit/sec for the
      * "bitrate" property.
      * @param element The {@link Gst.Element}
      * @param bitrate The bitrate in bits/sec
      */
-    function utils_set_bitrate(element: Gst.Element, bitrate: bigint | number): void;
+    function utils_set_bitrate(element: Gst.Element, bitrate: (bigint | number)): void;
+
     /**
      * This is for the bindings benefit. Works around the limitations of GObject
      * introspection.
      * @param value a {@link GObject.Value} of type #FS_TYPE_CANDIDATE_LIST
      * @param candidates A {@link GLib.List} of {@link Farstream.Candidate}
      */
-    function value_set_candidate_list(value: GObject.Value | any, candidates: Candidate[] | null): void;
+    function value_set_candidate_list(value: (GObject.Value | any), candidates: (Candidate[] | null)): void;
+
     /**
      * @gir-type Alias
      */
-    type CandidateList = object | null;
+    type CandidateList = (object | null);
+
     /**
      * @gir-type Alias
      */
-    type CodecGList = object | null;
+    type CodecGList = (object | null);
+
     /**
      * @gir-type Alias
      */
-    type RtpHeaderExtensionGList = object | null;
+    type RtpHeaderExtensionGList = (object | null);
+
     /**
      * @gir-type Flags
      */
@@ -520,18 +573,20 @@ export namespace Farstream {
         BOTH,
     }
 
+
     namespace Conference {
         // Signal signatures
         interface SignalSignatures extends Gst.Bin.SignalSignatures {
-            'notify::async-handling': (pspec: GObject.ParamSpec) => void;
-            'notify::message-forward': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::async-handling": (pspec: GObject.ParamSpec) => void;
+            "notify::message-forward": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {
 
-        interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
+        }
     }
 
     /**
@@ -551,39 +606,30 @@ export namespace Farstream {
         $signals: Conference.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Conference.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Conference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Conference.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Conference.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Conference.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Conference.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Conference.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Conference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Conference.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Conference.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Create a new Farstream Participant for the type of the given conference.
          * @virtual
          */
         vfunc_new_participant(): Participant;
+
         /**
          * Create a new Farstream session for the given conference.
          * @param media_type {@link Farstream.MediaType} of the new session
@@ -592,39 +638,43 @@ export namespace Farstream {
         vfunc_new_session(media_type: MediaType): Session;
 
         // Methods
-
         /**
          * Create a new Farstream Participant for the type of the given conference.
          * @returns the new {@link Farstream.Participant} that has been created. The {@link Farstream.Participant} is owned by the user and he must unref it when he is done with it.
          */
         new_participant(): Participant;
+
         /**
          * Create a new Farstream session for the given conference.
          * @param media_type {@link Farstream.MediaType} of the new session
          * @returns the new {@link Farstream.Session} that has been created. The {@link Farstream.Session} must be unref'd by the user when closing the session.
          */
         new_session(media_type: MediaType): Session;
+
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
          * @param child the newly added child
          * @param name the name of the new child
          */
         child_added(child: GObject.Object, name: string): void;
+
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_removed | Gst.ChildProxy::child-removed} signal.
          * @param child the removed child
          * @param name the name of the old child
          */
         child_removed(child: GObject.Object, name: string): void;
+
         /**
          * Fetches a child by its number.
          * @param index the child's position in the child list
          * @returns the child object or `null` if     not found (index too high).
          */
         get_child_by_index<T = GObject.Object>(index: number): T;
+
         /**
          * Looks up a child element by the given name.
-         *
+         * 
          * This virtual method has a default implementation that uses {@link Gst.Object}
          * together with `gst_object_get_name()`. If the interface is to be used with
          * `GObjects`, this methods needs to be overridden.
@@ -632,9 +682,10 @@ export namespace Farstream {
          * @returns the child object or `null` if     not found.
          */
         get_child_by_name<T = GObject.Object>(name: string): T;
+
         /**
          * Looks up a child element by the given full-path name.
-         *
+         * 
          * Similar to `gst_child_proxy_get_child_by_name()`, this method
          * searches and returns a child given a name. The difference is that
          * this method allows a hierarchical path in the form of
@@ -645,34 +696,40 @@ export namespace Farstream {
          * @returns the child object or `null` if     not found.
          */
         get_child_by_name_recurse<T = GObject.Object>(name: string): T;
+
         /**
          * Gets the number of child objects this parent contains.
          * @returns the number of child objects
          */
         get_children_count(): number;
+
         /**
          * Gets a single property using the GstChildProxy mechanism.
          * You are responsible for freeing it by calling `g_value_unset()`
          * @param name name of the property
          */
         get_property(name: string): unknown;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Looks up which object and {@link GObject.ParamSpec} would be effected by the given `name`.
          * @param name name of the property to look up
          * @returns `true` if `target` and `pspec` could be found. `false` otherwise. In that case the values for `pspec` and `target` are not modified. Unref `target` after usage. For plain {@link GObject.Object} `target` is the same as `object`.
          */
         lookup(name: string): [boolean, GObject.Object | null, GObject.ParamSpec | null];
+
         /**
          * Sets a single property using the GstChildProxy mechanism.
          * @param name name of the property to set
          * @param value new {@link GObject.Value} for the property
          */
-        set_property(name: string, value: GObject.Value | any): void;
+        set_property(name: string, value: (GObject.Value | any)): void;
+
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_added | Gst.ChildProxy::child-added} signal.
          * @param child the newly added child
@@ -680,6 +737,7 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_child_added(child: GObject.Object, name: string): void;
+
         /**
          * Emits the {@link Gst.ChildProxy.SignalSignatures.child_removed | Gst.ChildProxy::child-removed} signal.
          * @param child the removed child
@@ -687,15 +745,17 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_child_removed(child: GObject.Object, name: string): void;
+
         /**
          * Fetches a child by its number.
          * @param index the child's position in the child list
          * @virtual
          */
         vfunc_get_child_by_index<T = GObject.Object>(index: number): T;
+
         /**
          * Looks up a child element by the given name.
-         *
+         * 
          * This virtual method has a default implementation that uses {@link Gst.Object}
          * together with `gst_object_get_name()`. If the interface is to be used with
          * `GObjects`, this methods needs to be overridden.
@@ -703,14 +763,16 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_get_child_by_name<T = GObject.Object>(name: string): T;
+
         /**
          * Gets the number of child objects this parent contains.
          * @virtual
          */
         vfunc_get_children_count(): number;
+
         /**
          * Increases the reference count of `object`.
-         *
+         * 
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
          * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
@@ -718,15 +780,17 @@ export namespace Farstream {
          * @returns the same `object`
          */
         ref(): GObject.Object;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
+
         /**
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
+         * 
          * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
          * pointer to `null` rather than retain a dangling pointer to a potentially
@@ -734,6 +798,7 @@ export namespace Farstream {
          */
         unref(): void;
     }
+
 
     namespace ElementAddedNotifier {
         // Signal signatures
@@ -747,12 +812,13 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            'element-added': (arg0: Gst.Bin, arg1: Gst.Element) => void;
+            "element-added": (arg0: Gst.Bin, arg1: Gst.Element) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -772,38 +838,26 @@ export namespace Farstream {
         $signals: ElementAddedNotifier.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ElementAddedNotifier.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ElementAddedNotifier;
+        static ["new"](): ElementAddedNotifier;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ElementAddedNotifier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ElementAddedNotifier.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ElementAddedNotifier.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ElementAddedNotifier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ElementAddedNotifier.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ElementAddedNotifier.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ElementAddedNotifier.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ElementAddedNotifier.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ElementAddedNotifier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add a {@link Gst.Bin} to on which the {@link Farstream.ElementAddedNotifier.SignalSignatures.element_added | Farstream.ElementAddedNotifier::element-added} signal
          * will be called on every element and sub-element present and added in the
@@ -811,22 +865,25 @@ export namespace Farstream {
          * @param bin A {@link Gst.Bin} to watch to added elements
          */
         add(bin: Gst.Bin): void;
+
         /**
          * Stop watching the passed bin and its subbins.
          * @param bin A {@link Gst.Bin} to stop watching
          * @returns `true` if the {@link Gst.Bin} was being watched, `false` otherwise
          */
         remove(bin: Gst.Bin): boolean;
+
         /**
          * Same as first calling `fs_utils_get_default_element_properties()` and using
          * the result with
          * `fs_element_added_notifier_set_properties_from_keyfile()` .
-         *
+         * 
          * This is binding friendly (since GKeyFile doesn't have a boxed type).
          * @param element Element for which to set the default codec   preferences
          * @returns The id of the signal connection, this can be used to disconnect this property setter using `g_signal_handler_disconnect()`.
          */
         set_default_properties(element: Gst.Element): number;
+
         /**
          * Same as `fs_element_added_notifier_set_properties_from_keyfile()` but using
          * the name of the file to load instead of the {@link GLib.KeyFile} directly.
@@ -834,6 +891,7 @@ export namespace Farstream {
          * @returns `true` if the file was successfully loaded, `false` otherwise
          */
         set_properties_from_file(filename: string): boolean;
+
         /**
          * Using a {@link GLib.KeyFile} where the groups are the element's type or name
          * and the key=value are the property and its value, this function
@@ -847,13 +905,16 @@ export namespace Farstream {
         set_properties_from_keyfile(keyfile: GLib.KeyFile): number;
     }
 
+
     namespace Participant {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -873,40 +934,34 @@ export namespace Farstream {
         $signals: Participant.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Participant.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Participant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Participant.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Participant.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Participant.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Participant.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Participant.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Participant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Participant.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Participant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
 
-        interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
+        }
     }
 
     /**
@@ -926,39 +981,30 @@ export namespace Farstream {
         $signals: Plugin.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the list of all available plugins of a certain type
          * @param type_suffix Get list of plugins with this type suffix
          */
         static list_available(type_suffix: string): string[];
+
         /**
          * Calls the `complete_interface_info` function from the
          * {@link GObject.TypePluginClass} of `plugin`. There should be no need to use this
@@ -967,11 +1013,8 @@ export namespace Farstream {
          * @param interface_type the {@link GObject.GType} of the interface whose info is completed
          * @param info the {@link GObject.InterfaceInfo} to fill in
          */
-        complete_interface_info(
-            instance_type: GObject.GType,
-            interface_type: GObject.GType,
-            info: GObject.InterfaceInfo,
-        ): void;
+        complete_interface_info(instance_type: GObject.GType, interface_type: GObject.GType, info: GObject.InterfaceInfo): void;
+
         /**
          * Calls the `complete_type_info` function from the {@link GObject.TypePluginClass} of `plugin`.
          * There should be no need to use this function outside of the GObject
@@ -981,24 +1024,28 @@ export namespace Farstream {
          * @param value_table the {@link GObject.TypeValueTable} to fill in
          */
         complete_type_info(g_type: GObject.GType, info: GObject.TypeInfo, value_table: GObject.TypeValueTable): void;
+
         /**
          * Calls the `unuse_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         unuse(): void;
+
         /**
          * Calls the `use_plugin` function from the {@link GObject.TypePluginClass} of
          * `plugin`.  There should be no need to use this function outside of
          * the GObject type system itself.
          */
         use(): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with GObject.TypeModule.use
         use(...args: never[]): any;
     }
+
 
     namespace Session {
         // Signal signatures
@@ -1010,22 +1057,21 @@ export namespace Farstream {
              * @run-last
              */
             error: (arg0: GObject.Object, arg1: Error, arg2: string) => void;
-            'notify::allowed-sink-caps': (pspec: GObject.ParamSpec) => void;
-            'notify::allowed-src-caps': (pspec: GObject.ParamSpec) => void;
-            'notify::codec-preferences': (pspec: GObject.ParamSpec) => void;
-            'notify::codecs': (pspec: GObject.ParamSpec) => void;
-            'notify::codecs-without-config': (pspec: GObject.ParamSpec) => void;
-            'notify::conference': (pspec: GObject.ParamSpec) => void;
-            'notify::current-send-codec': (pspec: GObject.ParamSpec) => void;
-            'notify::encryption-parameters': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::media-type': (pspec: GObject.ParamSpec) => void;
-            'notify::sink-pad': (pspec: GObject.ParamSpec) => void;
-            'notify::tos': (pspec: GObject.ParamSpec) => void;
+            "notify::allowed-sink-caps": (pspec: GObject.ParamSpec) => void;
+            "notify::allowed-src-caps": (pspec: GObject.ParamSpec) => void;
+            "notify::codec-preferences": (pspec: GObject.ParamSpec) => void;
+            "notify::codecs": (pspec: GObject.ParamSpec) => void;
+            "notify::codecs-without-config": (pspec: GObject.ParamSpec) => void;
+            "notify::conference": (pspec: GObject.ParamSpec) => void;
+            "notify::current-send-codec": (pspec: GObject.ParamSpec) => void;
+            "notify::encryption-parameters": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::media-type": (pspec: GObject.ParamSpec) => void;
+            "notify::sink-pad": (pspec: GObject.ParamSpec) => void;
+            "notify::tos": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             allowed_sink_caps: Gst.Caps;
             allowedSinkCaps: Gst.Caps;
@@ -1058,7 +1104,6 @@ export namespace Farstream {
         static $gtype: GObject.GType<Session>;
 
         // Properties
-
         /**
          * These are the {@link Gst.Caps} that can be fed into the session,
          * they are used to filter the codecs to only those that can
@@ -1066,6 +1111,7 @@ export namespace Farstream {
          * @read-only
          */
         get allowed_sink_caps(): Gst.Caps;
+
         /**
          * These are the {@link Gst.Caps} that can be fed into the session,
          * they are used to filter the codecs to only those that can
@@ -1073,6 +1119,7 @@ export namespace Farstream {
          * @read-only
          */
         get allowedSinkCaps(): Gst.Caps;
+
         /**
          * These are the {@link Gst.Caps} that the session can produce,
          * they are used to filter the codecs to only those that can
@@ -1080,6 +1127,7 @@ export namespace Farstream {
          * @read-only
          */
         get allowed_src_caps(): Gst.Caps;
+
         /**
          * These are the {@link Gst.Caps} that the session can produce,
          * they are used to filter the codecs to only those that can
@@ -1087,13 +1135,14 @@ export namespace Farstream {
          * @read-only
          */
         get allowedSrcCaps(): Gst.Caps;
+
         /**
          * This is the current preferences list for the local codecs. It is
          * set by the user to specify the codec options and priorities. The user may
          * change its value with `fs_session_set_codec_preferences()` at any time
          * during a session. It is a {@link GLib.List} of {@link Farstream.Codec}.
          * The user must free this codec list using `fs_codec_list_destroy()` when done.
-         *
+         * 
          * The payload type may be a valid dynamic PT (96-127), `FS_CODEC_ID_DISABLE`
          * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
@@ -1101,13 +1150,14 @@ export namespace Farstream {
          * @read-only
          */
         get codec_preferences(): Codec[];
+
         /**
          * This is the current preferences list for the local codecs. It is
          * set by the user to specify the codec options and priorities. The user may
          * change its value with `fs_session_set_codec_preferences()` at any time
          * during a session. It is a {@link GLib.List} of {@link Farstream.Codec}.
          * The user must free this codec list using `fs_codec_list_destroy()` when done.
-         *
+         * 
          * The payload type may be a valid dynamic PT (96-127), `FS_CODEC_ID_DISABLE`
          * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
@@ -1115,27 +1165,29 @@ export namespace Farstream {
          * @read-only
          */
         get codecPreferences(): Codec[];
+
         /**
          * This is the list of codecs used for this session. It will include the
          * codecs and payload type used to receive media on this session. It will
          * also include any configuration parameter that must be transmitted reliably
          * for the other end to decode the content.
-         *
+         * 
          * It may change when the codec preferences are set, when codecs are set
          * on a {@link Farstream.Stream} in this session, when a {@link Farstream.Stream} is destroyed or
          * asynchronously when new config data is discovered.
-         *
+         * 
          * If any configuration parameter needs to be discovered, this property
          * will be `null` until they have been discovered. One can always get
          * the codecs from {@link Farstream.Session.codecs_without_config}.
          * The "farstream-codecs-changed" message will be emitted whenever the value
          * of this property changes.
-         *
+         * 
          * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
          * `fs_codec_list_destroy()` when done.
          * @read-only
          */
         get codecs(): Codec[];
+
         /**
          * This is the same list of codecs as {@link Farstream.Session.codecs} without
          * the configuration information that describes the data sent. It is suitable
@@ -1143,19 +1195,20 @@ export namespace Farstream {
          * If one is using codecs such as Theora, Vorbis or H.264 that require
          * such information to be transmitted, the configuration data should be
          * included in the stream and retransmitted regularly.
-         *
+         * 
          * It may change when the codec preferences are set, when codecs are set
          * on a {@link Farstream.Stream} in this session, when a {@link Farstream.Stream} is destroyed or
          * asynchronously when new config data is discovered.
-         *
+         * 
          * The "farstream-codecs-changed" message will be emitted whenever the value
          * of this property changes.
-         *
+         * 
          * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
          * `fs_codec_list_destroy()` when done.
          * @read-only
          */
         get codecs_without_config(): Codec[];
+
         /**
          * This is the same list of codecs as {@link Farstream.Session.codecs} without
          * the configuration information that describes the data sent. It is suitable
@@ -1163,25 +1216,27 @@ export namespace Farstream {
          * If one is using codecs such as Theora, Vorbis or H.264 that require
          * such information to be transmitted, the configuration data should be
          * included in the stream and retransmitted regularly.
-         *
+         * 
          * It may change when the codec preferences are set, when codecs are set
          * on a {@link Farstream.Stream} in this session, when a {@link Farstream.Stream} is destroyed or
          * asynchronously when new config data is discovered.
-         *
+         * 
          * The "farstream-codecs-changed" message will be emitted whenever the value
          * of this property changes.
-         *
+         * 
          * It is a {@link GLib.List} of {@link Farstream.Codec}. User must free this codec list using
          * `fs_codec_list_destroy()` when done.
          * @read-only
          */
         get codecsWithoutConfig(): Codec[];
+
         /**
          * The {@link Farstream.Conference} parent of this session. This property is a
          * construct param and is read-only.
          * @construct-only
          */
         get conference(): Conference;
+
         /**
          * Indicates the currently active send codec. A user can change the active
          * send codec by calling `fs_session_set_send_codec()`. The send codec could
@@ -1192,6 +1247,7 @@ export namespace Farstream {
          * @read-only
          */
         get current_send_codec(): Codec;
+
         /**
          * Indicates the currently active send codec. A user can change the active
          * send codec by calling `fs_session_set_send_codec()`. The send codec could
@@ -1202,46 +1258,54 @@ export namespace Farstream {
          * @read-only
          */
         get currentSendCodec(): Codec;
+
         /**
          * Retrieves previously set encryption parameters
          * @read-only
          */
         get encryption_parameters(): Gst.Structure;
+
         /**
          * Retrieves previously set encryption parameters
          * @read-only
          */
         get encryptionParameters(): Gst.Structure;
+
         /**
          * The ID of the session, the first number of the pads linked to this session
          * will be this id
          * @construct-only
          */
         get id(): number;
+
         /**
          * The media-type of the session. This is either Audio, Video or both.
          * This is a constructor parameter that cannot be changed.
          * @construct-only
          */
         get media_type(): MediaType;
+
         /**
          * The media-type of the session. This is either Audio, Video or both.
          * This is a constructor parameter that cannot be changed.
          * @construct-only
          */
         get mediaType(): MediaType;
+
         /**
          * The Gstreamer sink pad that must be used to send media data on this
          * session. User must unref this GstPad when done with it.
          * @read-only
          */
         get sink_pad(): Gst.Pad;
+
         /**
          * The Gstreamer sink pad that must be used to send media data on this
          * session. User must unref this GstPad when done with it.
          * @read-only
          */
         get sinkPad(): Gst.Pad;
+
         /**
          * Sets the IP ToS field (and if possible the IPv6 TCLASS field
          */
@@ -1258,34 +1322,24 @@ export namespace Farstream {
         $signals: Session.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Some codec updates need to be reliably transmitted to the other side
          * because they contain important parameters required to decode the media.
@@ -1294,7 +1348,8 @@ export namespace Farstream {
          * @param new_codecs Codecs recently retrieved from the {@link Farstream.Session.codecs} property
          * @virtual
          */
-        vfunc_codecs_need_resend(old_codecs: Codec[] | null, new_codecs: Codec[] | null): Codec[];
+        vfunc_codecs_need_resend(old_codecs: (Codec[] | null), new_codecs: (Codec[] | null)): Codec[];
+
         /**
          * Returns the GType of the stream transmitter, bindings can use it
          * to validate/convert the parameters passed to `fs_session_new_stream()`.
@@ -1302,11 +1357,13 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_get_stream_transmitter_type(transmitter: string): GObject.GType;
+
         /**
          * Get the list of all available transmitters for this session.
          * @virtual
          */
         vfunc_list_transmitters(): string[];
+
         /**
          * This function creates a stream for the given participant into the active session.
          * @param participant {@link Farstream.Participant} of a participant for the new stream
@@ -1314,24 +1371,26 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_new_stream(participant: Participant, direction: StreamDirection): Stream;
+
         /**
          * Sets the allowed caps for the sink and source pads for this {@link Farstream.Session}.
          * Only codecs that can take the input specified by the `sink_caps` and
          * can produce output as specified by the `src_caps` will be produced
          * in the {@link Farstream.Session.codecs} property and so only those will be negotiated.
-         *
+         * 
          * If `null` is passed to either `src_caps` or `sink_caps`, it is not changed.
-         *
+         * 
          * The default is "video/x-raw" for a video stream, "audio/x-raw" for an audio
          * stream and "ANY" for an application stream.
-         *
+         * 
          * The values can be retrived using the {@link Farstream.Session.allowed_src_caps} and
          * {@link Farstream.Session.allowed_sink_caps} properties.
          * @param sink_caps Caps for the sink pad or `null`
          * @param src_caps Caps for the src pad or `null`
          * @virtual
          */
-        vfunc_set_allowed_caps(sink_caps: Gst.Caps | null, src_caps: Gst.Caps | null): boolean;
+        vfunc_set_allowed_caps(sink_caps: (Gst.Caps | null), src_caps: (Gst.Caps | null)): boolean;
+
         /**
          * Set the list of desired codec preferences. The user may
          * change this value during an ongoing session. Note that doing this can cause
@@ -1339,25 +1398,27 @@ export namespace Farstream {
          * the new codecs and renegotiate them with the peers. It is a {@link GLib.List}
          * of {@link Farstream.Codec}. The changes are immediately effective.
          * The function does not take ownership of the list.
-         *
+         * 
          * The payload type may be a valid dynamic PT (96-127), `FS_CODEC_ID_DISABLE`
          * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
          * dynamically assigned payload type.
-         *
+         * 
          * If the list of specifications would invalidate all codecs, an error will
          * be returned.
          * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the   desired configuration
          * @virtual
          */
-        vfunc_set_codec_preferences(codec_preferences: Codec[] | null): boolean;
+        vfunc_set_codec_preferences(codec_preferences: (Codec[] | null)): boolean;
+
         /**
          * Sets encryption parameters. The exact parameters depend on the type of
          * plugin being used.
          * @param parameters a {@link Gst.Structure} containing the   encryption  parameters or `null` to disable encryption
          * @virtual
          */
-        vfunc_set_encryption_parameters(parameters: Gst.Structure | null): boolean;
+        vfunc_set_encryption_parameters(parameters: (Gst.Structure | null)): boolean;
+
         /**
          * This function will set the currently being sent codec for all streams in this
          * session. The given {@link Farstream.Codec} must be taken directly from the #codecs
@@ -1368,11 +1429,12 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_set_send_codec(send_codec: Codec): boolean;
+
         /**
          * This function will start sending a telephony event (such as a DTMF
          * tone) on the {@link Farstream.Session}. You have to call the function
          * `fs_session_stop_telephony_event()` to stop it.
-         *
+         * 
          * If this function returns `true`, a "farstream-telephony-event-started" will
          * always be emitted when the event is actually played out.
          * @param event A `FsStreamDTMFEvent` or another number defined at http://www.iana.org/assignments/audio-telephone-event-registry
@@ -1380,13 +1442,14 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_start_telephony_event(event: number, volume: number): boolean;
+
         /**
          * This function will stop sending a telephony event started by
          * `fs_session_start_telephony_event()`. If the event was being sent
          * for less than 50ms, it will be sent for 50ms minimum. If the
          * duration was a positive and the event is not over, it will cut it
          * short.
-         *
+         * 
          * If this function returns `true`, a "farstream-telephony-event-stopped" will
          * always be emitted when the event is actually stopped.
          * @virtual
@@ -1394,7 +1457,6 @@ export namespace Farstream {
         vfunc_stop_telephony_event(): boolean;
 
         // Methods
-
         /**
          * Some codec updates need to be reliably transmitted to the other side
          * because they contain important parameters required to decode the media.
@@ -1403,17 +1465,19 @@ export namespace Farstream {
          * @param new_codecs Codecs recently retrieved from the {@link Farstream.Session.codecs} property
          * @returns A new {@link GLib.List} of  {@link Farstream.Codec} that need to be resent or `null` if there are none. This  list must be freed with `fs_codec_list_destroy()`.
          */
-        codecs_need_resend(old_codecs: Codec[] | null, new_codecs: Codec[] | null): Codec[];
+        codecs_need_resend(old_codecs: (Codec[] | null), new_codecs: (Codec[] | null)): Codec[];
+
         /**
          * This will cause the session to remove all links to other objects and to
          * remove itself from the {@link Farstream.Conference}, it will also destroy all {@link Farstream.Stream}
          * inside this {@link Farstream.Session} Once a {@link Farstream.Session} has been destroyed, it
          * can not be used anymore.
-         *
+         * 
          * It is strongly recommended to call this function from the main thread because
          * releasing the application's reference to a session.
          */
         destroy(): void;
+
         /**
          * This function emit the "error" signal on a {@link Farstream.Session}, it should only be
          * called by subclasses.
@@ -1421,6 +1485,7 @@ export namespace Farstream {
          * @param error_msg Error message
          */
         emit_error(error_no: number, error_msg: string): void;
+
         /**
          * Returns the GType of the stream transmitter, bindings can use it
          * to validate/convert the parameters passed to `fs_session_new_stream()`.
@@ -1428,11 +1493,13 @@ export namespace Farstream {
          * @returns The {@link GObject.GType} of the stream transmitter
          */
         get_stream_transmitter_type(transmitter: string): GObject.GType;
+
         /**
          * Get the list of all available transmitters for this session.
          * @returns a newly-allocagted `null` terminated array of named of transmitters or `null` if no transmitter is needed for this type of session. It should be freed with `g_strfreev()`.
          */
         list_transmitters(): string[];
+
         /**
          * This function creates a stream for the given participant into the active session.
          * @param participant {@link Farstream.Participant} of a participant for the new stream
@@ -1440,6 +1507,7 @@ export namespace Farstream {
          * @returns the new {@link Farstream.Stream} that has been created. User must unref the {@link Farstream.Stream} when the stream is ended. If an error occured, returns NULL.
          */
         new_stream(participant: Participant, direction: StreamDirection): Stream;
+
         /**
          * Parses a "farstream-codecs-changed" message and checks if it matches
          * the `session` parameters.
@@ -1447,6 +1515,7 @@ export namespace Farstream {
          * @returns `true` if the message matches the session and is valid.
          */
         parse_codecs_changed(message: Gst.Message): boolean;
+
         /**
          * Parses a "farstream-send-codec-changed" message and checks if it matches
          * the `session` parameters.
@@ -1454,6 +1523,7 @@ export namespace Farstream {
          * @returns `true` if the message matches the session and is valid.
          */
         parse_send_codec_changed(message: Gst.Message): [boolean, Codec, Codec[]];
+
         /**
          * Parses a "farstream-telephony-event-started" message and checks if it matches
          * the `session` parameters.
@@ -1461,6 +1531,7 @@ export namespace Farstream {
          * @returns `true` if the message matches the session and is valid.
          */
         parse_telephony_event_started(message: Gst.Message): [boolean, DTMFMethod, DTMFEvent, number];
+
         /**
          * Parses a "farstream-telephony-event-stopped" message and checks if it matches
          * the `session` parameters.
@@ -1468,24 +1539,26 @@ export namespace Farstream {
          * @returns `true` if the message matches the session and is valid.
          */
         parse_telephony_event_stopped(message: Gst.Message): [boolean, DTMFMethod];
+
         /**
          * Sets the allowed caps for the sink and source pads for this {@link Farstream.Session}.
          * Only codecs that can take the input specified by the `sink_caps` and
          * can produce output as specified by the `src_caps` will be produced
          * in the {@link Farstream.Session.codecs} property and so only those will be negotiated.
-         *
+         * 
          * If `null` is passed to either `src_caps` or `sink_caps`, it is not changed.
-         *
+         * 
          * The default is "video/x-raw" for a video stream, "audio/x-raw" for an audio
          * stream and "ANY" for an application stream.
-         *
+         * 
          * The values can be retrived using the {@link Farstream.Session.allowed_src_caps} and
          * {@link Farstream.Session.allowed_sink_caps} properties.
          * @param sink_caps Caps for the sink pad or `null`
          * @param src_caps Caps for the src pad or `null`
          * @returns `true` if the new filter caps were acceptable.
          */
-        set_allowed_caps(sink_caps: Gst.Caps | null, src_caps: Gst.Caps | null): boolean;
+        set_allowed_caps(sink_caps: (Gst.Caps | null), src_caps: (Gst.Caps | null)): boolean;
+
         /**
          * Set the list of desired codec preferences. The user may
          * change this value during an ongoing session. Note that doing this can cause
@@ -1493,25 +1566,27 @@ export namespace Farstream {
          * the new codecs and renegotiate them with the peers. It is a {@link GLib.List}
          * of {@link Farstream.Codec}. The changes are immediately effective.
          * The function does not take ownership of the list.
-         *
+         * 
          * The payload type may be a valid dynamic PT (96-127), `FS_CODEC_ID_DISABLE`
          * or `FS_CODEC_ID_ANY`. If the encoding name is "reserve-pt", then the
          * payload type of the codec will be "reserved" and not be used by any
          * dynamically assigned payload type.
-         *
+         * 
          * If the list of specifications would invalidate all codecs, an error will
          * be returned.
          * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the   desired configuration
          * @returns `true` on success, `false` on error.
          */
-        set_codec_preferences(codec_preferences: Codec[] | null): boolean;
+        set_codec_preferences(codec_preferences: (Codec[] | null)): boolean;
+
         /**
          * Sets encryption parameters. The exact parameters depend on the type of
          * plugin being used.
          * @param parameters a {@link Gst.Structure} containing the   encryption  parameters or `null` to disable encryption
          * @returns `true` if the encryption parameters could be set, `false` otherwise
          */
-        set_encryption_parameters(parameters: Gst.Structure | null): boolean;
+        set_encryption_parameters(parameters: (Gst.Structure | null)): boolean;
+
         /**
          * This function will set the currently being sent codec for all streams in this
          * session. The given {@link Farstream.Codec} must be taken directly from the #codecs
@@ -1522,11 +1597,12 @@ export namespace Farstream {
          * @returns `false` if the send codec couldn't be set.
          */
         set_send_codec(send_codec: Codec): boolean;
+
         /**
          * This function will start sending a telephony event (such as a DTMF
          * tone) on the {@link Farstream.Session}. You have to call the function
          * `fs_session_stop_telephony_event()` to stop it.
-         *
+         * 
          * If this function returns `true`, a "farstream-telephony-event-started" will
          * always be emitted when the event is actually played out.
          * @param event A `FsStreamDTMFEvent` or another number defined at http://www.iana.org/assignments/audio-telephone-event-registry
@@ -1534,19 +1610,21 @@ export namespace Farstream {
          * @returns `true` if sucessful, it can return `false` if the {@link Farstream.Stream} does not support this telephony event.
          */
         start_telephony_event(event: number, volume: number): boolean;
+
         /**
          * This function will stop sending a telephony event started by
          * `fs_session_start_telephony_event()`. If the event was being sent
          * for less than 50ms, it will be sent for 50ms minimum. If the
          * duration was a positive and the event is not over, it will cut it
          * short.
-         *
+         * 
          * If this function returns `true`, a "farstream-telephony-event-stopped" will
          * always be emitted when the event is actually stopped.
          * @returns `true` if sucessful, it can return `false` if the {@link Farstream.Session} does not support telephony events or if no telephony event is being sent
          */
         stop_telephony_event(): boolean;
     }
+
 
     namespace Stream {
         // Signal signatures
@@ -1563,24 +1641,23 @@ export namespace Farstream {
              * each codec that is received. The user must ref the {@link Gst.Pad} if he wants to
              * keep it. The user should not modify the {@link Farstream.Codec} and must copy it if he
              * wants to use it outside the callback scope.
-             *
+             * 
              * This signal is not emitted on the main thread, but on GStreamer's streaming
              * thread!
              * @signal
              * @run-last
              */
-            'src-pad-added': (arg0: Gst.Pad, arg1: Codec) => void;
-            'notify::current-recv-codecs': (pspec: GObject.ParamSpec) => void;
-            'notify::decryption-parameters': (pspec: GObject.ParamSpec) => void;
-            'notify::direction': (pspec: GObject.ParamSpec) => void;
-            'notify::negotiated-codecs': (pspec: GObject.ParamSpec) => void;
-            'notify::participant': (pspec: GObject.ParamSpec) => void;
-            'notify::remote-codecs': (pspec: GObject.ParamSpec) => void;
-            'notify::session': (pspec: GObject.ParamSpec) => void;
+            "src-pad-added": (arg0: Gst.Pad, arg1: Codec) => void;
+            "notify::current-recv-codecs": (pspec: GObject.ParamSpec) => void;
+            "notify::decryption-parameters": (pspec: GObject.ParamSpec) => void;
+            "notify::direction": (pspec: GObject.ParamSpec) => void;
+            "notify::negotiated-codecs": (pspec: GObject.ParamSpec) => void;
+            "notify::participant": (pspec: GObject.ParamSpec) => void;
+            "notify::remote-codecs": (pspec: GObject.ParamSpec) => void;
+            "notify::session": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             current_recv_codecs: Codec[];
             currentRecvCodecs: Codec[];
@@ -1604,7 +1681,6 @@ export namespace Farstream {
         static $gtype: GObject.GType<Stream>;
 
         // Properties
-
         /**
          * This is the list of codecs that have been received by this stream.
          * The user must free the list if `fs_codec_list_destroy()`.
@@ -1617,6 +1693,7 @@ export namespace Farstream {
          * @read-only
          */
         get current_recv_codecs(): Codec[];
+
         /**
          * This is the list of codecs that have been received by this stream.
          * The user must free the list if `fs_codec_list_destroy()`.
@@ -1629,16 +1706,19 @@ export namespace Farstream {
          * @read-only
          */
         get currentRecvCodecs(): Codec[];
+
         /**
          * Retrieves previously set decryption parameters
          * @read-only
          */
         get decryption_parameters(): Gst.Structure;
+
         /**
          * Retrieves previously set decryption parameters
          * @read-only
          */
         get decryptionParameters(): Gst.Structure;
+
         /**
          * The direction of the stream. This property is set initially as a parameter
          * to the `fs_session_new_stream()` function. It can be changed later if
@@ -1646,6 +1726,7 @@ export namespace Farstream {
          */
         get direction(): StreamDirection;
         set direction(val: StreamDirection);
+
         /**
          * This is the list of negotiatied codecs, it is the same list as the list
          * of {@link Farstream.Codec} from the parent {@link Farstream.Session}, except that the codec config data
@@ -1655,6 +1736,7 @@ export namespace Farstream {
          * @read-only
          */
         get negotiated_codecs(): Codec[];
+
         /**
          * This is the list of negotiatied codecs, it is the same list as the list
          * of {@link Farstream.Codec} from the parent {@link Farstream.Session}, except that the codec config data
@@ -1664,12 +1746,14 @@ export namespace Farstream {
          * @read-only
          */
         get negotiatedCodecs(): Codec[];
+
         /**
          * The {@link Farstream.Participant} for this stream. This property is a construct param and
          * is read-only construction.
          * @construct-only
          */
         get participant(): Participant;
+
         /**
          * This is the list of remote codecs for this stream. They must be set by the
          * user as soon as they are known using `fs_stream_set_remote_codecs()`
@@ -1677,6 +1761,7 @@ export namespace Farstream {
          * @read-only
          */
         get remote_codecs(): Codec[];
+
         /**
          * This is the list of remote codecs for this stream. They must be set by the
          * user as soon as they are known using `fs_stream_set_remote_codecs()`
@@ -1684,6 +1769,7 @@ export namespace Farstream {
          * @read-only
          */
         get remoteCodecs(): Codec[];
+
         /**
          * The {@link Farstream.Session} for this stream. This property is a construct param and
          * is read-only construction.
@@ -1701,45 +1787,35 @@ export namespace Farstream {
         $signals: Stream.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Stream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Stream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stream.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Stream.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * This function is used to add data identifiers that allow the
          * plugin to recognize packets that are meant for id. For example, in RTP,
          * one would set the SSRCs that are expected.
-         *
+         * 
          * Depending on the protocol, one may be able to add more than one ID
          * to a stream (in RTP you can have multiple SSRCs in a stream).
          * If a protocol supports only one id, adding a new one will overwrite it.
          * If an ID was already set on a stream, adding it to another stream will
          * override the previdous decision.
-         *
+         * 
          * For most protocols, calling this function is optional as the incoming data
          * can be matched with a stream by its source IP address. This is mostly useful
          * if one is using multicast or is behind a muxer server.
@@ -1747,6 +1823,7 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_add_id(id: number): void;
+
         /**
          * This function adds remote candidates. Any new candidates are
          * added to the list. The candidates will be used to establish a connection
@@ -1756,6 +1833,7 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_add_remote_candidates(candidates: Candidate[]): boolean;
+
         /**
          * This function forces data to be sent immediately to the selected remote
          * candidate, by-passing any connectivity checks. There should be at most
@@ -1764,6 +1842,7 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_force_remote_candidates(remote_candidates: Candidate[]): boolean;
+
         /**
          * Sets decryption parameters. The exact parameters depend on the type of
          * plugin being used.
@@ -1771,6 +1850,7 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_set_decryption_parameters(parameters: Gst.Structure): boolean;
+
         /**
          * This function will set the list of remote codecs for this stream. If
          * the given remote codecs couldn't be negotiated with the list of local
@@ -1781,37 +1861,38 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_set_remote_codecs(remote_codecs: Codec[]): boolean;
+
         /**
          * Set the transmitter to use for this stream. This function will only succeed
          * once.
-         *
+         * 
          * The parameters correspond to the varios GObject properties of the
          * selected stream transmitter.
          * @param transmitter Name of the type of transmitter to use for this stream
          * @param stream_transmitter_parameters an array of n_parameters {@link GObject.Parameter} struct that will be passed   to the newly-create {@link Farstream.StreamTransmitter}
          * @virtual
          */
-        vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null): boolean;
+        vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters: (GObject.Parameter[] | null)): boolean;
 
         // Methods
-
         /**
          * This function is used to add data identifiers that allow the
          * plugin to recognize packets that are meant for id. For example, in RTP,
          * one would set the SSRCs that are expected.
-         *
+         * 
          * Depending on the protocol, one may be able to add more than one ID
          * to a stream (in RTP you can have multiple SSRCs in a stream).
          * If a protocol supports only one id, adding a new one will overwrite it.
          * If an ID was already set on a stream, adding it to another stream will
          * override the previdous decision.
-         *
+         * 
          * For most protocols, calling this function is optional as the incoming data
          * can be matched with a stream by its source IP address. This is mostly useful
          * if one is using multicast or is behind a muxer server.
          * @param id The id to add to the stream
          */
         add_id(id: number): void;
+
         /**
          * This function adds remote candidates. Any new candidates are
          * added to the list. The candidates will be used to establish a connection
@@ -1821,15 +1902,17 @@ export namespace Farstream {
          * @returns TRUE if the candidate was valid, FALSE otherwise
          */
         add_remote_candidates(candidates: Candidate[]): boolean;
+
         /**
          * This will cause the stream to remove all links to other objects and to
          * remove itself from the {@link Farstream.Session}. Once a {@link Farstream.Stream} has been destroyed, it
          * can not be used anymore.
-         *
+         * 
          * It is strongly recommended to call this function from the main thread because
          * releasing the application's reference to a stream.
          */
         destroy(): void;
+
         /**
          * This function emits the {@link Farstream.Stream.SignalSignatures.error | Farstream.Stream::error}" signal, it should only be
          * called by subclasses.
@@ -1837,6 +1920,7 @@ export namespace Farstream {
          * @param error_msg Error message to be displayed to user
          */
         emit_error(error_no: number, error_msg: string): void;
+
         /**
          * Emits the {@link Farstream.Stream.SignalSignatures.src_pad_added | Farstream.Stream::src-pad-added}" signal, it should only be
          * called by subclasses.
@@ -1844,6 +1928,7 @@ export namespace Farstream {
          * @param codec The {@link Farstream.Codec} for this pad
          */
         emit_src_pad_added(pad: Gst.Pad, codec: Codec): void;
+
         /**
          * This function forces data to be sent immediately to the selected remote
          * candidate, by-passing any connectivity checks. There should be at most
@@ -1852,6 +1937,7 @@ export namespace Farstream {
          * @returns `true` if the candidates could be forced, `false` otherwise
          */
         force_remote_candidates(remote_candidates: Candidate[]): boolean;
+
         /**
          * Creates a {@link Gst.Iterator} that can be used to iterate the src pads of this
          * stream. These are the pads that were announced by {@link Farstream.Stream.src_pad_added}
@@ -1859,6 +1945,7 @@ export namespace Farstream {
          * @returns The {@link Gst.Iterator}
          */
         iterate_src_pads(): Gst.Iterator;
+
         /**
          * Parses a "farstream-component-state-changed" message and checks if it matches
          * the `stream` parameters.
@@ -1866,6 +1953,7 @@ export namespace Farstream {
          * @returns `true` if the message matches the stream and is valid.
          */
         parse_component_state_changed(message: Gst.Message): [boolean, number, StreamState];
+
         /**
          * Parses a "farstream-local-candidates-prepared" message and checks if it matches
          * the `stream` parameters.
@@ -1873,6 +1961,7 @@ export namespace Farstream {
          * @returns `true` if the message matches the stream and is valid.
          */
         parse_local_candidates_prepared(message: Gst.Message): boolean;
+
         /**
          * Parses a "farstream-new-active-candidate-pair" message and checks
          * if it matches the `stream` parameters.
@@ -1880,6 +1969,7 @@ export namespace Farstream {
          * @returns `true` if the message matches the stream and is valid.
          */
         parse_new_active_candidate_pair(message: Gst.Message): [boolean, Candidate, Candidate];
+
         /**
          * Parses a "farstream-new-local-candidate" message and checks if it matches
          * the `stream` parameters.
@@ -1887,6 +1977,7 @@ export namespace Farstream {
          * @returns `true` if the message matches the stream and is valid.
          */
         parse_new_local_candidate(message: Gst.Message): [boolean, Candidate];
+
         /**
          * Parses a "farstream-recv-codecs-changed" message and checks if it matches
          * the `stream` parameters.
@@ -1894,6 +1985,7 @@ export namespace Farstream {
          * @returns `true` if the message matches the stream and is valid.
          */
         parse_recv_codecs_changed(message: Gst.Message): [boolean, Codec[]];
+
         /**
          * Sets decryption parameters. The exact parameters depend on the type of
          * plugin being used.
@@ -1901,6 +1993,7 @@ export namespace Farstream {
          * @returns `true` if the decryption parameters could be set, `false` otherwise
          */
         set_decryption_parameters(parameters: Gst.Structure): boolean;
+
         /**
          * This function will set the list of remote codecs for this stream. If
          * the given remote codecs couldn't be negotiated with the list of local
@@ -1911,35 +2004,35 @@ export namespace Farstream {
          * @returns `false` if the remote codecs couldn't be set.
          */
         set_remote_codecs(remote_codecs: Codec[]): boolean;
+
         /**
          * Set the transmitter to use for this stream. This function will only succeed
          * once.
-         *
+         * 
          * The parameters correspond to the varios GObject properties of the
          * selected stream transmitter.
          * @param transmitter Name of the type of transmitter to use for this stream
          * @param stream_transmitter_parameters an array of n_parameters {@link GObject.Parameter} struct that will be passed   to the newly-create {@link Farstream.StreamTransmitter}
          * @returns `true` if the transmitter could be set, `false` otherwise
          */
-        set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null): boolean;
+        set_transmitter(transmitter: string, stream_transmitter_parameters: (GObject.Parameter[] | null)): boolean;
+
         /**
          * Set the transmitter to use for this stream. This function will only succeed
          * once.
-         *
+         * 
          * The parameters correspond to the varios GObject properties of the
          * selected stream transmitter.
-         *
+         * 
          * This is the same as `fs_stream_set_transmitter()` except that the parameters
          * are passed in a {@link GLib.HashTable} to make it more friendly to GObject introspection
          * @param transmitter Name of the type of transmitter to use for this stream
          * @param stream_transmitter_parameters A {@link GLib.HashTable} of string->GValue containing the parameters.
          * @returns `true` if the transmitter could be set, `false` otherwise
          */
-        set_transmitter_ht(
-            transmitter: string,
-            stream_transmitter_parameters: GLib.HashTable<string, GObject.Value> | null,
-        ): boolean;
+        set_transmitter_ht(transmitter: string, stream_transmitter_parameters: (GLib.HashTable<string, GObject.Value> | null)): boolean;
     }
+
 
     namespace StreamTransmitter {
         // Signal signatures
@@ -1956,14 +2049,14 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            'known-source-packet-received': (arg0: number, arg1: any) => void;
+            "known-source-packet-received": (arg0: number, arg1: any) => void;
             /**
              * This signal is emitted when all local candidates have been
              * prepared, an ICE implementation would send its SDP offer or answer.
              * @signal
              * @run-last
              */
-            'local-candidates-prepared': () => void;
+            "local-candidates-prepared": () => void;
             /**
              * This signal is emitted when there is a new active chandidate pair that has
              * been established. This is specially useful for ICE where the active
@@ -1973,27 +2066,26 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            'new-active-candidate-pair': (arg0: Candidate, arg1: Candidate) => void;
+            "new-active-candidate-pair": (arg0: Candidate, arg1: Candidate) => void;
             /**
              * This signal is emitted when a new local candidate is discovered.
              * @signal
              * @run-last
              */
-            'new-local-candidate': (arg0: Candidate) => void;
+            "new-local-candidate": (arg0: Candidate) => void;
             /**
              * This signal is emitted when the ICE state (or equivalent) of the component
              * changes
              * @signal
              * @run-last
              */
-            'state-changed': (arg0: number, arg1: StreamState) => void;
-            'notify::associate-on-source': (pspec: GObject.ParamSpec) => void;
-            'notify::preferred-local-candidates': (pspec: GObject.ParamSpec) => void;
-            'notify::sending': (pspec: GObject.ParamSpec) => void;
+            "state-changed": (arg0: number, arg1: StreamState) => void;
+            "notify::associate-on-source": (pspec: GObject.ParamSpec) => void;
+            "notify::preferred-local-candidates": (pspec: GObject.ParamSpec) => void;
+            "notify::sending": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             associate_on_source: boolean;
             associateOnSource: boolean;
@@ -2011,27 +2103,30 @@ export namespace Farstream {
         static $gtype: GObject.GType<StreamTransmitter>;
 
         // Properties
-
         /**
          * This tells the stream transmitter to associate incoming data with this
          * based on the source without looking at the content if possible.
          * @construct-only
          */
         get associate_on_source(): boolean;
+
         /**
          * This tells the stream transmitter to associate incoming data with this
          * based on the source without looking at the content if possible.
          * @construct-only
          */
         get associateOnSource(): boolean;
+
         /**
          * @construct-only
          */
         get preferred_local_candidates(): CandidateList;
+
         /**
          * @construct-only
          */
         get preferredLocalCandidates(): CandidateList;
+
         /**
          * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          */
@@ -2048,40 +2143,31 @@ export namespace Farstream {
         $signals: StreamTransmitter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StreamTransmitter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StreamTransmitter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StreamTransmitter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StreamTransmitter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StreamTransmitter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StreamTransmitter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StreamTransmitter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StreamTransmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StreamTransmitter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StreamTransmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * This function is used to add remote candidates to the transmitter
          * @param candidates a {@link GLib.List} of the remote candidates
          * @virtual
          */
         vfunc_add_remote_candidates(candidates: Candidate[]): boolean;
+
         /**
          * This function forces data to be sent immediately to the selected remote
          * candidate, by-passing any connectivity checks. There should be at most
@@ -2090,6 +2176,7 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_force_remote_candidates(remote_candidates: Candidate[]): boolean;
+
         /**
          * This function tells the transmitter to start gathering local candidates,
          * signals for new candidates and newly active candidates can be emitted
@@ -2097,6 +2184,7 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_gather_local_candidates(): boolean;
+
         /**
          * This functions stops the {@link Farstream.StreamTransmitter}, it must be called before
          * the last reference is dropped.
@@ -2105,13 +2193,13 @@ export namespace Farstream {
         vfunc_stop(): void;
 
         // Methods
-
         /**
          * This function is used to add remote candidates to the transmitter
          * @param candidates a {@link GLib.List} of the remote candidates
          * @returns TRUE of the candidate could be added, FALSE if it couldnt   (and the {@link GLib.Error} will be set)
          */
         add_remote_candidates(candidates: Candidate[]): boolean;
+
         /**
          * This function emit the "error" signal on a {@link Farstream.StreamTransmitter}, it should
          * only be called by subclasses.
@@ -2119,6 +2207,7 @@ export namespace Farstream {
          * @param error_msg Error message (for the programmer)
          */
         emit_error(error_no: number, error_msg: string): void;
+
         /**
          * This function forces data to be sent immediately to the selected remote
          * candidate, by-passing any connectivity checks. There should be at most
@@ -2127,6 +2216,7 @@ export namespace Farstream {
          * @returns `true` if the candidates could be forced, `false` otherwise
          */
         force_remote_candidates(remote_candidates: Candidate[]): boolean;
+
         /**
          * This function tells the transmitter to start gathering local candidates,
          * signals for new candidates and newly active candidates can be emitted
@@ -2134,12 +2224,14 @@ export namespace Farstream {
          * @returns `true` if it succeeds (or is not implemented), `false` otherwise
          */
         gather_local_candidates(): boolean;
+
         /**
          * This functions stops the {@link Farstream.StreamTransmitter}, it must be called before
          * the last reference is dropped.
          */
         stop(): void;
     }
+
 
     namespace Transmitter {
         // Signal signatures
@@ -2150,15 +2242,14 @@ export namespace Farstream {
              * @run-last
              */
             error: (arg0: Error, arg1: string) => void;
-            'notify::components': (pspec: GObject.ParamSpec) => void;
-            'notify::do-timestamp': (pspec: GObject.ParamSpec) => void;
-            'notify::gst-sink': (pspec: GObject.ParamSpec) => void;
-            'notify::gst-src': (pspec: GObject.ParamSpec) => void;
-            'notify::tos': (pspec: GObject.ParamSpec) => void;
+            "notify::components": (pspec: GObject.ParamSpec) => void;
+            "notify::do-timestamp": (pspec: GObject.ParamSpec) => void;
+            "notify::gst-sink": (pspec: GObject.ParamSpec) => void;
+            "notify::gst-src": (pspec: GObject.ParamSpec) => void;
+            "notify::tos": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             components: number;
             do_timestamp: boolean;
@@ -2179,24 +2270,26 @@ export namespace Farstream {
         static $gtype: GObject.GType<Transmitter>;
 
         // Properties
-
         /**
          * The number of components to create
          * @construct-only
          */
         get components(): number;
+
         /**
          * Apply current stream time to buffers or provide buffers without
          * timestamps. Must be set before creating a stream transmitter.
          */
         get do_timestamp(): boolean;
         set do_timestamp(val: boolean);
+
         /**
          * Apply current stream time to buffers or provide buffers without
          * timestamps. Must be set before creating a stream transmitter.
          */
         get doTimestamp(): boolean;
         set doTimestamp(val: boolean);
+
         /**
          * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          * These element's sink must have async=FALSE
@@ -2207,6 +2300,7 @@ export namespace Farstream {
          * @read-only
          */
         get gst_sink(): Gst.Element;
+
         /**
          * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          * These element's sink must have async=FALSE
@@ -2217,6 +2311,7 @@ export namespace Farstream {
          * @read-only
          */
         get gstSink(): Gst.Element;
+
         /**
          * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          * This element MUST provide a source pad named "src_%u" per component.
@@ -2226,6 +2321,7 @@ export namespace Farstream {
          * @read-only
          */
         get gst_src(): Gst.Element;
+
         /**
          * A network source {@link Gst.Element} to be used by the {@link Farstream.Session}
          * This element MUST provide a source pad named "src_%u" per component.
@@ -2235,6 +2331,7 @@ export namespace Farstream {
          * @read-only
          */
         get gstSrc(): Gst.Element;
+
         /**
          * Sets the IP ToS field (and if possible the IPv6 TCLASS field
          */
@@ -2251,43 +2348,32 @@ export namespace Farstream {
         $signals: Transmitter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Transmitter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](type: string, components: number, tos: number): Transmitter;
+        static ["new"](type: string, components: number, tos: number): Transmitter;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Transmitter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Transmitter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Transmitter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Transmitter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transmitter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Transmitter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Transmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Transmitter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transmitter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get the list of all available transmitters
          */
         static list_available(): string[];
 
         // Virtual methods
-
         /**
          * This function returns the GObject type for the stream transmitter.
          * This is meant for bindings that need to introspect the type of arguments
@@ -2295,6 +2381,7 @@ export namespace Farstream {
          * @virtual
          */
         vfunc_get_stream_transmitter_type(): GObject.GType;
+
         /**
          * This function will create a new {@link Farstream.StreamTransmitter} element for a
          * specific participant for this {@link Farstream.Transmitter}
@@ -2303,14 +2390,9 @@ export namespace Farstream {
          * @param parameters an array of {@link GObject.Parameter}
          * @virtual
          */
-        vfunc_new_stream_transmitter(
-            participant: Participant,
-            n_parameters: number,
-            parameters: GObject.Parameter,
-        ): StreamTransmitter;
+        vfunc_new_stream_transmitter(participant: Participant, n_parameters: number, parameters: GObject.Parameter): StreamTransmitter;
 
         // Methods
-
         /**
          * This function emit the "error" signal on a {@link Farstream.Transmitter}, it should
          * only be called by subclasses.
@@ -2318,6 +2400,7 @@ export namespace Farstream {
          * @param error_msg Error message to be displayed to user
          */
         emit_error(error_no: number, error_msg: string): void;
+
         /**
          * This function returns the GObject type for the stream transmitter.
          * This is meant for bindings that need to introspect the type of arguments
@@ -2325,6 +2408,7 @@ export namespace Farstream {
          * @returns the {@link GObject.GType}
          */
         get_stream_transmitter_type(): GObject.GType;
+
         /**
          * This function will create a new {@link Farstream.StreamTransmitter} element for a
          * specific participant for this {@link Farstream.Transmitter}
@@ -2333,12 +2417,9 @@ export namespace Farstream {
          * @param parameters an array of {@link GObject.Parameter}
          * @returns a new {@link Farstream.StreamTransmitter}, or NULL if there is an  error
          */
-        new_stream_transmitter(
-            participant: Participant,
-            n_parameters: number,
-            parameters: GObject.Parameter,
-        ): StreamTransmitter;
+        new_stream_transmitter(participant: Participant, n_parameters: number, parameters: GObject.Parameter): StreamTransmitter;
     }
+
 
     /**
      * Struct to hold information about ICE-19 compliant candidates
@@ -2348,67 +2429,50 @@ export namespace Farstream {
         static $gtype: GObject.GType<Candidate>;
 
         // Fields
-
         foundation: string;
+
         component_id: number;
+
         ip: string;
+
         port: number;
+
         base_ip: string;
+
         base_port: number;
+
         proto: NetworkProtocol;
+
         priority: number;
+
         type: CandidateType;
+
         username: string;
+
         password: string;
+
         ttl: number;
 
         // Constructors
+        constructor(foundation: string, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: (string | null), port: number);
 
-        constructor(
-            foundation: string,
-            component_id: number,
-            type: CandidateType,
-            proto: NetworkProtocol,
-            ip: string | null,
-            port: number,
-        );
+        static ["new"](foundation: string, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: (string | null), port: number): Candidate;
 
-        static ['new'](
-            foundation: string,
-            component_id: number,
-            type: CandidateType,
-            proto: NetworkProtocol,
-            ip: string | null,
-            port: number,
-        ): Candidate;
-
-        static new_full(
-            foundation: string,
-            component_id: number,
-            ip: string | null,
-            port: number,
-            base_ip: string | null,
-            base_port: number,
-            proto: NetworkProtocol,
-            priority: number,
-            type: CandidateType,
-            username: string | null,
-            password: string | null,
-            ttl: number,
-        ): Candidate;
+        static new_full(foundation: string, component_id: number, ip: (string | null), port: number, base_ip: (string | null), base_port: number, proto: NetworkProtocol, priority: number, type: CandidateType, username: (string | null), password: (string | null), ttl: number): Candidate;
 
         // Methods
-
         /**
          * Copies a {@link Farstream.Candidate} and its contents.
          * @returns a new {@link Farstream.Candidate}
          */
         copy(): Candidate;
+
         /**
          * Frees a {@link Farstream.Candidate} and all its contents
          */
         destroy(): void;
     }
+
 
     /**
      * This structure reprensents one codec that can be offered or received
@@ -2418,24 +2482,28 @@ export namespace Farstream {
         static $gtype: GObject.GType<Codec>;
 
         // Fields
-
         id: number;
+
         encoding_name: string;
+
         media_type: MediaType;
+
         clock_rate: number;
+
         channels: number;
+
         minimum_reporting_interval: number;
+
         optional_params: CodecParameter[];
+
         feedback_params: FeedbackParameter[];
 
         // Constructors
-
         constructor(id: number, encoding_name: string, media_type: MediaType, clock_rate: number);
 
-        static ['new'](id: number, encoding_name: string, media_type: MediaType, clock_rate: number): Codec;
+        static ["new"](id: number, encoding_name: string, media_type: MediaType, clock_rate: number): Codec;
 
         // Methods
-
         /**
          * This function adds an new feedback parameter to a {@link Farstream.Codec}
          * @param type The type of the feedback parameter
@@ -2443,12 +2511,14 @@ export namespace Farstream {
          * @param extra_params The extra_params of the feeback parameter
          */
         add_feedback_parameter(type: string, subtype: string, extra_params: string): void;
+
         /**
          * This function adds an new optional parameter to a {@link Farstream.Codec}
          * @param name The name of the optional parameter
          * @param value The extra_params of the optional parameter
          */
         add_optional_parameter(name: string, value: string): void;
+
         /**
          * Compare two codecs, it will declare two codecs to be identical even
          * if their optional parameters are in a different order. `null` encoding names
@@ -2457,15 +2527,18 @@ export namespace Farstream {
          * @returns `true` of the codecs are identical, `false` otherwise
          */
         are_equal(codec2: Codec): boolean;
+
         /**
          * Copies a {@link Farstream.Codec} structure.
          * @returns a copy of the codec
          */
         copy(): Codec;
+
         /**
          * Deletes a {@link Farstream.Codec} structure and all its data. Is a no-op on `null` codec
          */
         destroy(): void;
+
         /**
          * Finds the {@link Farstream.FeedbackParameter} in the {@link Farstream.Codec} that has the requested
          * subtype, type and extra_params. One of which must be non-NULL;
@@ -2474,11 +2547,8 @@ export namespace Farstream {
          * @param extra_params The extra_params of the parameter to search for or `null` for any extra_params
          * @returns the {@link Farstream.FeedbackParameter} from the {@link Farstream.Codec} or `null`
          */
-        get_feedback_parameter(
-            type: string | null,
-            subtype: string | null,
-            extra_params: string | null,
-        ): FeedbackParameter;
+        get_feedback_parameter(type: (string | null), subtype: (string | null), extra_params: (string | null)): FeedbackParameter;
+
         /**
          * Finds the {@link Farstream.CodecParameter} in the {@link Farstream.Codec} that has the requested name
          * and, if not `null`, the requested value
@@ -2486,27 +2556,31 @@ export namespace Farstream {
          * @param value The value of the parameter to search for or `null` for any value
          * @returns the {@link Farstream.CodecParameter} from the {@link Farstream.Codec} or `null`
          */
-        get_optional_parameter(name: string, value: string | null): CodecParameter;
+        get_optional_parameter(name: string, value: (string | null)): CodecParameter;
+
         /**
          * Removes an optional parameter from a codec.
-         *
+         * 
          * NULL param will do nothing.
          * @param item a pointer to the {@link GLib.List} element to remove that contains a {@link Farstream.FeedbackParameter}
          */
         remove_feedback_parameter(item: FeedbackParameter[]): void;
+
         /**
          * Removes an optional parameter from a codec.
-         *
+         * 
          * NULL param will do nothing.
          * @param param a pointer to the {@link Farstream.CodecParameter} to remove
          */
         remove_optional_parameter(param: CodecParameter): void;
+
         /**
          * Returns a newly-allocated string representing the codec
          * @returns the newly-allocated string
          */
         to_string(): string;
     }
+
 
     /**
      * Used to store arbitary parameters for a codec
@@ -2516,46 +2590,48 @@ export namespace Farstream {
         static $gtype: GObject.GType<CodecParameter>;
 
         // Fields
-
         name: string;
+
         value: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                name: string;
-                value: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            name: string;
+            value: string;
+        }>);
 
         // Methods
-
         /**
          * Makes a copy of a {@link Farstream.CodecParameter}
          * @returns a newly allocated {@link Farstream.CodecParameter}
          */
         copy(): CodecParameter;
+
         /**
          * Frees a {@link Farstream.CodecParameter}
          */
         free(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConferenceClass = typeof Conference;
+
     /**
      * @gir-type Alias
      */
     type ElementAddedNotifierClass = typeof ElementAddedNotifier;
+
     /**
      * @gir-type Struct
      */
     abstract class ElementAddedNotifierPrivate {
         static $gtype: GObject.GType<ElementAddedNotifierPrivate>;
     }
+
 
     /**
      * Use to store feedback parameters
@@ -2565,38 +2641,39 @@ export namespace Farstream {
         static $gtype: GObject.GType<FeedbackParameter>;
 
         // Fields
-
         type: string;
+
         subtype: string;
+
         extra_params: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                type: string;
-                subtype: string;
-                extra_params: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            type: string;
+            subtype: string;
+            extra_params: string;
+        }>);
 
         // Methods
-
         /**
          * Makes a copy of a {@link Farstream.FeedbackParameter}
          * @returns a newly allocated {@link Farstream.FeedbackParameter}
          */
         copy(): FeedbackParameter;
+
         /**
          * Frees a {@link Farstream.FeedbackParameter}
          */
         free(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ParticipantClass = typeof Participant;
+
     /**
      * @gir-type Struct
      */
@@ -2604,16 +2681,19 @@ export namespace Farstream {
         static $gtype: GObject.GType<ParticipantPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PluginClass = typeof Plugin;
+
     /**
      * @gir-type Struct
      */
     abstract class PluginPrivate {
         static $gtype: GObject.GType<PluginPrivate>;
     }
+
 
     /**
      * Defines a RTP header extension with its negotiated identifier, direction
@@ -2624,40 +2704,43 @@ export namespace Farstream {
         static $gtype: GObject.GType<RtpHeaderExtension>;
 
         // Fields
-
         id: number;
+
         direction: StreamDirection;
+
         uri: string;
 
         // Constructors
-
         constructor(id: number, direction: StreamDirection, uri: string);
 
-        static ['new'](id: number, direction: StreamDirection, uri: string): RtpHeaderExtension;
+        static ["new"](id: number, direction: StreamDirection, uri: string): RtpHeaderExtension;
 
         // Methods
-
         /**
          * Compares two {@link Farstream.RtpHeaderExtension} structures
          * @param extension2 The second {@link Farstream.RtpHeaderExtension}
          * @returns `true` if they are identical, `false` otherwise
          */
         are_equal(extension2: RtpHeaderExtension): boolean;
+
         /**
          * Copies a {@link Farstream.RtpHeaderExtension}
          * @returns a new {@link Farstream.RtpHeaderExtension}
          */
         copy(): RtpHeaderExtension;
+
         /**
          * Frees the passed {@link Farstream.RtpHeaderExtension}
          */
         destroy(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SessionClass = typeof Session;
+
     /**
      * @gir-type Struct
      */
@@ -2665,10 +2748,12 @@ export namespace Farstream {
         static $gtype: GObject.GType<SessionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StreamClass = typeof Stream;
+
     /**
      * @gir-type Struct
      */
@@ -2676,10 +2761,12 @@ export namespace Farstream {
         static $gtype: GObject.GType<StreamPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StreamTransmitterClass = typeof StreamTransmitter;
+
     /**
      * @gir-type Struct
      */
@@ -2687,10 +2774,12 @@ export namespace Farstream {
         static $gtype: GObject.GType<StreamTransmitterPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TransmitterClass = typeof Transmitter;
+
     /**
      * @gir-type Struct
      */
@@ -2698,11 +2787,13 @@ export namespace Farstream {
         static $gtype: GObject.GType<TransmitterPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

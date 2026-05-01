@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Gsf {
+
     /**
      * Gsf-1
      */
+
 
     /**
      * @gir-type Enum
@@ -51,6 +54,7 @@ export namespace Gsf {
         UNKNOWN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -77,6 +81,7 @@ export namespace Gsf {
         ENHANCED_METAFILE,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -84,20 +89,20 @@ export namespace Gsf {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Memory allocation failed
          */
         static OUT_OF_MEMORY: number;
+
         /**
          * Invalid data encountered (e.g. not enough data)
          */
         static INVALID_DATA: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -125,6 +130,7 @@ export namespace Gsf {
         ALWAYS,
     }
 
+
     /**
      * Controls the handling of character data within a parser node.
      * @gir-type Enum
@@ -145,8 +151,9 @@ export namespace Gsf {
         /**
          * node is second or later occurrence
          */
-        '2ND',
+        "2ND",
     }
+
 
     /**
      * @gir-type Enum
@@ -165,48 +172,57 @@ export namespace Gsf {
         IMPLODED_BETTER,
     }
 
+
     /**
      * (Integer) Count of bytes in the document.
      */
     const META_NAME_BYTE_COUNT: string;
+
     /**
      * (Unsigned Integer) Identifier representing the case-sensitiveness.
      * <note>of what ?? why is it an integer ??</note>
      */
     const META_NAME_CASE_SENSITIVE: string;
+
     /**
      * (String) Category of the document. <note>example???</note>
      */
     const META_NAME_CATEGORY: string;
+
     /**
      * (Integer) Count of cells in the spread-sheet document, if appropriate.
      */
     const META_NAME_CELL_COUNT: string;
+
     /**
      * (Integer) Count of characters in the document.
-     *
+     * 
      * TODO See how to sync this with ODF's document-statistic
      */
     const META_NAME_CHARACTER_COUNT: string;
+
     /**
      * (UnsignedShort) The MS codepage to encode strings for metadata
      * 1.14.0	Clarified that this is unique from _NAME_CODEPAGE in msole
      */
     const META_NAME_CODEPAGE: string;
+
     /**
      * (String) Name of the company/organization that the "CREATOR" entity is
      * associated with.
-     *
+     * 
      * 1.14.1	Moved from "gsf:company" to "dc:publisher".
      */
     const META_NAME_COMPANY: string;
+
     /**
      * (String) An entity primarily responsible for making the content of the
      * resource typically a person, organization, or service.
-     *
+     * 
      * 1.14.0	Moved from "gsf" to "dc".
      */
     const META_NAME_CREATOR: string;
+
     /**
      * (Date as ISO String) A date associated with an event in the life cycle of
      * the resource (creation/publication date).
@@ -214,180 +230,217 @@ export namespace Gsf {
      * by OpenDocument and Gnumeric.
      */
     const META_NAME_DATE_CREATED: string;
+
     /**
      * (GsfTimestamp) The last time this document was saved.
-     *
+     * 
      * 1.14.0	Moved from dc:date-modified to dc:date.
      */
     const META_NAME_DATE_MODIFIED: string;
+
     /**
      * (String) An account of the content of the resource.
      */
     const META_NAME_DESCRIPTION: string;
+
     /**
      * (None) Reserved name (PID) for Dictionary
      */
     const META_NAME_DICTIONARY: string;
+
     /**
      * (Vector of strings) Names of the 'interesting' parts of the document.  In
      * spreadsheets this is a list of the sheet names, and the named expressions.
      * From MSOLE
      */
     const META_NAME_DOCUMENT_PARTS: string;
+
     /**
      * (Date as ISO String) The total-time taken until the last modification.
      * Moved from "gsf" to "meta". This way can be used correctly by OpenDocument
      * and Gnumeric.
      */
     const META_NAME_EDITING_DURATION: string;
+
     /**
      * (String) The application that generated this document. AbiWord, Gnumeric,
      * etc...
-     *
+     * 
      * 1.14.0 Moved from "gsf" to "meta".
      */
     const META_NAME_GENERATOR: string;
+
     /**
      * (Vector of string value pairs stored in alternating elements) Store the
      * counts of objects in the document as names 'worksheet' and count '4'
      * From MSOLE
      */
     const META_NAME_HEADING_PAIRS: string;
+
     /**
      * (Integer) Count of hidden-slides in the presentation document.
      */
     const META_NAME_HIDDEN_SLIDE_COUNT: string;
+
     /**
      * (Integer) Count of images in the document, if appropriate.
      */
     const META_NAME_IMAGE_COUNT: string;
+
     /**
      * (String) Specifies the name of the person who created the document
      * initially.
      * 1.14.0 Moved from "gsf" to "meta".
      */
     const META_NAME_INITIAL_CREATOR: string;
+
     /**
      * (String) Searchable, indexable keywords. Similar to PDF keywords or HTML's
      * meta block.
      */
     const META_NAME_KEYWORD: string;
+
     /**
      * (GsfDocPropVector of String) Searchable, indexable keywords. Similar to PDF
      * keywords or HTML's meta block.
      */
     const META_NAME_KEYWORDS: string;
+
     /**
      * (String) The locale language of the intellectual content of the resource
      * 	(basically xx_YY form for us).
      * 1.14.0	Clarified that this is unique from _NAME_CODEPAGE in msole
      */
     const META_NAME_LANGUAGE: string;
+
     /**
      * (GSF_META_NAME_HEADING_PAIRS) The last time this document was printed.
-     *
+     * 
      * 1.14.0	Moved from "gsf" to "dc".
      * 1.14.1	Moved back to "gsf" from "dc".
      */
     const META_NAME_LAST_PRINTED: string;
+
     /**
      * (String) The entity that made the last change to the document, typically a
      * person, organization, or service.
      */
     const META_NAME_LAST_SAVED_BY: string;
+
     /**
      * (Integer) Count of liness in the document.
      */
     const META_NAME_LINE_COUNT: string;
+
     /**
      * (Boolean) ???????
      */
     const META_NAME_LINKS_DIRTY: string;
+
     /**
      * (Unsigned Integer) Identifier representing the default system locale.
      */
     const META_NAME_LOCALE_SYSTEM_DEFAULT: string;
+
     /**
      * (String) Name of the manager of "CREATOR" entity.
      */
     const META_NAME_MANAGER: string;
+
     /**
      * (Integer) Count of "multi-media" clips in the document.
      */
     const META_NAME_MM_CLIP_COUNT: string;
+
     /**
      * (Unknown) User-defined name
      */
     const META_NAME_MSOLE_UNKNOWN_17: string;
+
     /**
      * (Unknown) User-defined name
      */
     const META_NAME_MSOLE_UNKNOWN_18: string;
+
     /**
      * (Boolean) User-defined name
      */
     const META_NAME_MSOLE_UNKNOWN_19: string;
+
     /**
      * (Unknown) User-defined name
      */
     const META_NAME_MSOLE_UNKNOWN_20: string;
+
     /**
      * (Unknown) User-defined name
      */
     const META_NAME_MSOLE_UNKNOWN_21: string;
+
     /**
      * (Boolean) User-defined name
      */
     const META_NAME_MSOLE_UNKNOWN_22: string;
+
     /**
      * (i4) User-defined name
      */
     const META_NAME_MSOLE_UNKNOWN_23: string;
+
     /**
      * (Integer) Count of "notes" in the document.
      */
     const META_NAME_NOTE_COUNT: string;
+
     /**
      * (Integer) Count of objects (OLE and other graphics) in the document, if
      * appropriate.
      */
     const META_NAME_OBJECT_COUNT: string;
+
     /**
      * (Integer) Count of pages in the document, if appropriate.
      */
     const META_NAME_PAGE_COUNT: string;
+
     /**
      * (Integer) Count of paragraphs in the document, if appropriate.
      */
     const META_NAME_PARAGRAPH_COUNT: string;
+
     /**
      * (String) Type of presentation, like "On-screen Show", "SlideView" etc.
      */
     const META_NAME_PRESENTATION_FORMAT: string;
+
     /**
      * (String) Specifies the name of the last person who printed the document.
-     *
+     * 
      * 1.14.0	Moved from "gsf" to "meta".
      */
     const META_NAME_PRINTED_BY: string;
+
     /**
      * (GsfTimestamp) Specifies the date and time when the document was last
      * printed.
      */
     const META_NAME_PRINT_DATE: string;
+
     /**
      * (Integer) Count of revision on the document, if appropriate.
      * Moved from gsf:revision-count to meta:editing-cycles. This way can be used
      * correctly by OpenDocument and Gnumeric.
      */
     const META_NAME_REVISION_COUNT: string;
+
     /**
      * (Boolean) ?????
      */
     const META_NAME_SCALE: string;
+
     /**
      * (Integer) Level of security.
-     *
+     * 
      * <informaltable frame="none" role="params">
      * <tgroup cols="2">
      * <thead>
@@ -402,49 +455,59 @@ export namespace Gsf {
      * </tbody></tgroup></informaltable>
      */
     const META_NAME_SECURITY: string;
+
     /**
      * (Integer) Count of slides in the presentation document.
      */
     const META_NAME_SLIDE_COUNT: string;
+
     /**
      * (Integer) Count of pages in the document, if appropriate.
      */
     const META_NAME_SPREADSHEET_COUNT: string;
+
     /**
      * (String) The topic of the content of the resource,
      * <emphasis>typically</emphasis> including keywords.
      */
     const META_NAME_SUBJECT: string;
+
     /**
      * (Integer) Count of tables in the document, if appropriate.
      */
     const META_NAME_TABLE_COUNT: string;
+
     /**
      * (String) The template file that is been used to generate this document.
-     *
+     * 
      * 1.14.0 Moved from "gsf" to "meta"
      */
     const META_NAME_TEMPLATE: string;
+
     /**
      * (GsfClipData) Thumbnail data of the document, typically a
      * preview image of the document.
      */
     const META_NAME_THUMBNAIL: string;
+
     /**
      * (String) A formal name given to the resource.
      */
     const META_NAME_TITLE: string;
+
     /**
      * (Integer) Count of words in the document.
      */
     const META_NAME_WORD_COUNT: string;
+
     /**
      * Decodes a chunk of base64 encoded data from `data` back into `data`.
      * @param data data stream
      * @param len max length of data to decode
      * @returns the number of bytes converted
      */
-    function base64_decode_simple(data: Uint8Array | string, len: bigint | number): number;
+    function base64_decode_simple(data: (Uint8Array | string), len: (bigint | number)): number;
+
     /**
      * Decodes a chunk of base64 encoded data
      * @param _in input stream
@@ -454,13 +517,8 @@ export namespace Gsf {
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes converted
      */
-    function base64_decode_step(
-        _in: Uint8Array | string,
-        len: bigint | number,
-        out: Uint8Array | string,
-        state: number,
-        save: number,
-    ): [number, number, number];
+    function base64_decode_step(_in: (Uint8Array | string), len: (bigint | number), out: (Uint8Array | string), state: number, save: number): [number, number, number];
+
     /**
      * This funcion should be called to when finished encoding everything, to
      * flush off the last little bit.
@@ -471,20 +529,16 @@ export namespace Gsf {
      * @param save leftover bits that have not yet been decoded
      * @returns a count of the number of bytes in the final block.
      */
-    function base64_encode_close(
-        _in: Uint8Array | string,
-        break_lines: boolean,
-        out: Uint8Array | string,
-        state: number,
-        save: number,
-    ): [number, number, number];
+    function base64_encode_close(_in: (Uint8Array | string), break_lines: boolean, out: (Uint8Array | string), state: number, save: number): [number, number, number];
+
     /**
      * Encodes data from `data` back into `data` using base64 encoding.
      * @param data data stream
      * @param len max length of data to encode
      * @returns the number of bytes encoded
      */
-    function base64_encode_simple(data: Uint8Array | string, len: bigint | number): number;
+    function base64_encode_simple(data: (Uint8Array | string), len: (bigint | number)): number;
+
     /**
      * Performs an 'encode step', only encodes blocks of 3 characters from `in` into
      * the output `out` at a time, saves left-over state in `state` and `save`
@@ -497,27 +551,24 @@ export namespace Gsf {
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes encoded
      */
-    function base64_encode_step(
-        _in: Uint8Array | string,
-        len: bigint | number,
-        break_lines: boolean,
-        out: Uint8Array | string,
-        state: number,
-        save: number,
-    ): [number, number, number];
+    function base64_encode_step(_in: (Uint8Array | string), len: (bigint | number), break_lines: boolean, out: (Uint8Array | string), state: number, save: number): [number, number, number];
+
     /**
-     * @param flag
+     * @param flag 
      */
     function debug_flag(flag: string): boolean;
+
     /**
      * A debugging utility to dump the content of `meta` via g_print
      * @param meta {@link Gsf.DocMetaData}
      */
     function doc_meta_dump(meta: DocMetaData): void;
+
     /**
      * @returns the {@link GLib.Quark} used to identify libgsf errors in {@link GLib.Error} structures. 	Specific error codes come from the {@link Gsf.Error} enumeration.
      */
     function error_quark(): GLib.Quark;
+
     /**
      * Extracts the extension from the end of a filename (the part after the final
      * '.' in the filename).
@@ -525,6 +576,7 @@ export namespace Gsf {
      * @returns A pointer to the extension part of the filename, or a pointer to the end of the string if the filename does not have an extension.
      */
     function extension_pointer(path: string): string;
+
     /**
      * A utility wrapper to make sure filenames are valid utf8.
      * Caller must g_free the result.
@@ -533,60 +585,71 @@ export namespace Gsf {
      * @returns `filename` using utf-8 encoding for display
      */
     function filename_to_utf8(filename: string, quoted: boolean): string;
+
     /**
      * Initializes the GSF library
      */
     function init(): void;
+
     /**
      * Initializes the GSF library and associates it with a type module `mod`.
      * @param module {@link GObject.TypeModule}.
      */
     function init_dynamic(module: GObject.TypeModule): void;
+
     /**
      * Interpret binary data as a double in little endian order.
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_double(p: any | null): number;
+    function le_get_double(p: (any | null)): number;
+
     /**
      * Interpret binary data as a float in little endian order.
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_float(p: any | null): number;
+    function le_get_float(p: (any | null)): number;
+
     /**
      * Interpret binary data as a guint64 (8 byte unsigned integer type) in little
      * endian order.
      * @param p pointer to storage
      * @returns interpreted data
      */
-    function le_get_guint64(p: any | null): number;
+    function le_get_guint64(p: (any | null)): number;
+
     /**
      * Store a value of type double in memory in little endian order
      * @param p pointer to storage
      * @param d double to be stored
      */
-    function le_set_double(p: any | null, d: number): void;
+    function le_set_double(p: (any | null), d: number): void;
+
     /**
      * Store a value of type float in memory in little endian order.
      * @param p pointer to storage
      * @param f float to be stored
      */
-    function le_set_float(p: any | null, f: number): void;
+    function le_set_float(p: (any | null), f: number): void;
+
     /**
      * Dump `len` bytes from the memory location given by `ptr`.
      * @param ptr memory area to be dumped.
      * @param len how many bytes will be dumped.
      */
-    function mem_dump(ptr: number, len: bigint | number): void;
+    function mem_dump(ptr: number, len: (bigint | number)): void;
+
     /**
-     * @param codepage
+     * @param codepage 
      */
     function msole_codepage_to_lid(codepage: number): number;
+
     /**
      * @returns our best guess at the applicable windows code page based on an 	environment variable or the current locale.
      */
     function msole_iconv_win_codepage(): number;
+
     /**
      * Decompresses an LZ compressed stream.
      * @param input stream to read from
@@ -594,76 +657,89 @@ export namespace Gsf {
      * @returns A GByteArray that the caller is responsible for freeing
      */
     function msole_inflate(input: Input, offset: gsf_off_t): Uint8Array;
+
     /**
      * @param lid numerical language id
      * @returns the xx_YY style string (can be just xx or xxx) for the given LID.  If the LID is not found, is set to 0x0400, or is set to 0x0000, will return "-none-"
      */
     function msole_language_for_lid(lid: number): string;
+
     /**
      * @param lang Language id, i.e., locale name.
      * @returns the LID (Language Identifier) for the input language. 	If lang is `null`, return 0x0400 ("-none-"), and not 0x0000 ("no proofing")
      */
-    function msole_lid_for_language(lang: string | null): number;
+    function msole_lid_for_language(lang: (string | null)): number;
+
     /**
      * @param lid numerical language id
      * @returns our best guess at the codepage for the given language id
      */
     function msole_lid_to_codepage(lid: number): number;
+
     /**
      * @param lid numerical language id
      * @returns the Iconv codepage string for the given LID.
      */
     function msole_lid_to_codepage_str(lid: number): string;
+
     /**
      * @returns the used ODF namespace
      * @since 1.14.24
      */
     function odf_get_ns(): XMLInNS;
+
     /**
      * Gives the ODF version used by libgsf when writing Open Document files.
      * @returns the ODF version: 102.
      * @since 1.14.24
      */
     function odf_get_version(): number;
+
     /**
      * Gives the ODF version used by libgsf when writing Open Document files.
      * @returns the ODF version as a string: "1.2".
      * @since 1.14.24
      */
     function odf_get_version_string(): string;
+
     function open_pkg_error_id(): number;
+
     /**
      * New in 1.14.9
-     *
+     * 
      * Walks each relationship associated with `opkg` and calls `func` with `user_data`.
      * @param opkg {@link Gsf.Input}
      * @param func {@link Gsf.OpenPkgIter}
      */
     function open_pkg_foreach_rel(opkg: Input, func: OpenPkgIter): void;
+
     /**
      * @param opkg {@link Gsf.Input}
      * @param rel {@link Gsf.OpenPkgRel}
      * @returns a new {@link Gsf.Input} which the called needs to unref, or `null` and sets `err`
      */
     function open_pkg_open_rel(opkg: Input, rel: OpenPkgRel): Input;
+
     /**
      * New in 1.14.7
-     *
+     * 
      * Open `opkg`'s relation `id`
      * @param opkg {@link Gsf.Input}
      * @param id target id
      * @returns A new GsfInput or `null`, and sets `err` if possible.
      */
     function open_pkg_open_rel_by_id(opkg: Input, id: string): Input;
+
     /**
      * New in 1.14.9
-     *
+     * 
      * Open one of `opkg`'s relationships with type=`type`.
      * @param opkg {@link Gsf.Input}
      * @param type target type
      * @returns A new GsfInput or `null`, and sets `err` if possible.
      */
     function open_pkg_open_rel_by_type(opkg: Input, type: string): Input;
+
     /**
      * Convenience function to parse a related part.
      * @param xin {@link Gsf.XMLIn}
@@ -673,44 +749,52 @@ export namespace Gsf {
      * @returns `null` on success or a {@link GLib.Error} on failure.
      */
     function open_pkg_parse_rel_by_id(xin: XMLIn, id: string, dtd: XMLInNode, ns: XMLInNS): GLib.Error;
+
     /**
-     * @param name
-     * @param params
+     * @param name 
+     * @param params 
      */
     function property_settings_find(name: string, params: GObject.Parameter[]): GObject.Parameter;
+
     /**
-     * @param params
+     * @param params 
      */
     function property_settings_free(params: GObject.Parameter[]): void;
+
     /**
      * De-intializes the GSF library
      * Currently does nothing.
      */
     function shutdown(): void;
+
     /**
      * De-intializes the GSF library from a type module.
      * Currently does nothing.
      * @param module currently unused
      */
     function shutdown_dynamic(module: GObject.TypeModule): void;
+
     /**
      * This function returns the array of values inside {@link Gsf.DocPropVector}.
      * No additional references are created.
      * @param value A GValue of type {@link Gsf.DocPropVector}.
      * @returns A {@link GLib.Array} of {@link GObject.Value}
      */
-    function value_get_docprop_array(value: GObject.Value | any): GObject.Value[] | null;
+    function value_get_docprop_array(value: (GObject.Value | any)): (GObject.Value[] | null);
+
     /**
-     * @param value
+     * @param value 
      */
-    function value_get_docprop_varray(value: GObject.Value | any): GObject.ValueArray;
+    function value_get_docprop_varray(value: (GObject.Value | any)): GObject.ValueArray;
+
     /**
      * This function returns a pointer to the GsfDocPropVector structure in `value`.
      * No additional references are created.
      * @param value A GValue of type {@link Gsf.DocPropVector}.
      * @returns A pointer to the {@link Gsf.DocPropVector} structure in `value`
      */
-    function value_get_docprop_vector(value: GObject.Value | any): DocPropVector;
+    function value_get_docprop_vector(value: (GObject.Value | any)): DocPropVector;
+
     /**
      * Decompresses VBA stream.
      * @param input stream to read from
@@ -720,6 +804,7 @@ export namespace Gsf {
      * @returns A pointer to guint8 array
      */
     function vba_inflate(input: Input, offset: gsf_off_t, size: number, add_null_terminator: boolean): number;
+
     /**
      * Dumps the document `cur` into `output`.
      * @param output {@link Gsf.Output}
@@ -728,7 +813,8 @@ export namespace Gsf {
      * @param format `true` to reformat the output.
      * @returns status from xmlSaveFormatFileTo.
      */
-    function xmlDocFormatDump(output: Output, cur: libxml2.Doc, encoding: string | null, format: boolean): number;
+    function xmlDocFormatDump(output: Output, cur: libxml2.Doc, encoding: (string | null), format: boolean): number;
+
     /**
      * Try to parse `str` as a value of type `t` into `res`.
      * @param res Result value
@@ -736,53 +822,52 @@ export namespace Gsf {
      * @param str Value string
      * @returns True when parsing of `str` as a value of type `t` was succesfull; false otherwise.
      */
-    function xml_gvalue_from_str(res: GObject.Value | any, t: GObject.GType, str: string): boolean;
+    function xml_gvalue_from_str(res: (GObject.Value | any), t: GObject.GType, str: string): boolean;
+
     /**
      * @param input {@link Gsf.Input}
      * @param func {@link Gsf.XMLProbeFunc}
      * @returns TRUE on success.
      */
     function xml_probe(input: Input, func: XMLProbeFunc): boolean;
+
     /**
      * @gir-type Callback
      */
     interface OpenPkgIter {
         (opkg: Input, rel: OpenPkgRel): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface XMLInExtDtor {
-        (xin: XMLIn, old_state: any | null): void;
+        (xin: XMLIn, old_state: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface XMLInUnknownFunc {
         (xin: XMLIn, elem: libxml2.Char, attrs: libxml2.Char): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface XMLProbeFunc {
-        (
-            name: libxml2.Char,
-            prefix: libxml2.Char,
-            URI: libxml2.Char,
-            nb_namespaces: number,
-            namespaces: libxml2.Char,
-            nb_attributes: number,
-            nb_defaulted: number,
-            attributes: libxml2.Char,
-        ): boolean;
+        (name: libxml2.Char, prefix: libxml2.Char, URI: libxml2.Char, nb_namespaces: number, namespaces: libxml2.Char, nb_attributes: number, nb_defaulted: number, attributes: libxml2.Char): boolean;
     }
+
     namespace Blob {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -801,45 +886,35 @@ export namespace Gsf {
         $signals: Blob.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Blob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](data_to_copy: Uint8Array | string): Blob;
+        static ["new"](data_to_copy: (Uint8Array | string)): Blob;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Blob.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Blob.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Blob.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Blob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Blob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Queries the size in bytes of the data stored in the blob.
          * @returns Size in bytes, or 0 if the data is `null`.
          */
         get_size(): number;
+
         /**
          * Queries a pointer to the data stored in the blob.  This does not
          * copy the data for you; it returns a pointer to the actual buffer
@@ -847,16 +922,19 @@ export namespace Gsf {
          * on your own.
          * @returns Pointer to the data stored in the blob, or `null` if the size of the data is zero.
          */
-        peek_data(): any | null;
+        peek_data(): (any | null);
     }
+
 
     namespace ClipData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -875,57 +953,49 @@ export namespace Gsf {
         $signals: ClipData.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<ClipData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](format: ClipFormat, data_blob: Blob): ClipData;
+        static ["new"](format: ClipFormat, data_blob: Blob): ClipData;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ClipData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClipData.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ClipData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ClipData.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ClipData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ClipData.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ClipData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClipData.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ClipData.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ClipData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ClipData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClipData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Queries the data blob that actually stores a {@link Gsf.ClipData}'s binary data.
          * @returns A new reference to the {@link Gsf.Blob} that stores this `clip_data`'s binary data.  You must use `g_object_unref()` to dispose of that data blob when you are done with it.
          */
         get_data_blob(): Blob;
+
         /**
          * Queries the clipboard data format of a {@link Gsf.ClipData}.  The format refers to the data
          * blob inside the `clip_data`; use `gsf_clip_data_get_data_blob()` to get that data blob.
          * @returns The format in which the {@link Gsf.ClipData}'s data blob is stored.
          */
         get_format(): ClipFormat;
+
         /**
          * Queries the Windows clipboard data format for a {@link Gsf.ClipData}.  The `clip_data` must
          * have been created with #GSF_CLIP_FORMAT_WINDOWS_CLIPBOARD.
          * @returns A {@link Gsf.ClipFormatWindows} value. Possible errors: #GSF_ERROR_INVALID_DATA if the data blob in the `clip_data` is smaller than it should be; in this case GSF_CLIP_FORMAT_WINDOWS_ERROR will be returned.
          */
         get_windows_clipboard_format(): ClipFormatWindows;
+
         /**
          * Queries a pointer directly to the clipboard data of a {@link Gsf.ClipData}.  The
          * resulting pointer is not necessarily the same data pointer that was passed to
@@ -936,16 +1006,19 @@ export namespace Gsf {
          * @param ret_size Location to return the size of the returned data buffer.
          * @returns Pointer to the real clipboard data.  The size in bytes of this buffer is returned in the `ret_size` argument.
          */
-        peek_real_data(ret_size: bigint | number): any | null;
+        peek_real_data(ret_size: (bigint | number)): (any | null);
     }
+
 
     namespace DocMetaData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -966,58 +1039,52 @@ export namespace Gsf {
         $signals: DocMetaData.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DocMetaData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DocMetaData;
+        static ["new"](): DocMetaData;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DocMetaData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocMetaData.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DocMetaData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DocMetaData.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DocMetaData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DocMetaData.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DocMetaData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocMetaData.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DocMetaData.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DocMetaData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DocMetaData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocMetaData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Iterate through each (key, value) pair in this collection
          * @param func the function called once for each element in the collection
          */
         foreach(func: GLib.HFunc): void;
+
         /**
          * Take ownership of `name` and `value` and insert a property into `meta`.
          * If a property exists with `name`, it is replaced (The link is lost)
          * @param name the id.
          * @param value {@link GObject.Value}
          */
-        insert(name: string, value: GObject.Value | any): void;
+        insert(name: string, value: (GObject.Value | any)): void;
+
         /**
-         * @param name
+         * @param name 
          * @returns the property with `name` in `meta`.  The caller can modify the property value and link but not the name.
          */
-        lookup(name: string): DocProp | null;
+        lookup(name: string): (DocProp | null);
+
         /**
          * Extend `xin` so that it can parse a subtree in OpenDoc metadata format
          * @param doc {@link Gsf.XMLInDoc}
          */
         odf_subtree(doc: XMLIn): void;
+
         /**
          * Read a stream formated as a set of MS OLE properties from `in` and store the
          * results in `accum`.
@@ -1025,6 +1092,7 @@ export namespace Gsf {
          * @returns A {@link GLib.Error} if there was an error.
          */
         read_from_msole(_in: Input): GLib.Error;
+
         /**
          * Read an OpenDocument metadata stream from `input` and store the properties
          * into `md`.  Overwrite any existing properties with the same id.
@@ -1032,31 +1100,37 @@ export namespace Gsf {
          * @returns a {@link GLib.Error} if there is a problem.
          */
         read_from_odf(input: Input): GLib.Error;
+
         /**
          * If `name` does not exist in the collection, do nothing. If `name` does exist,
          * remove it and its value from the collection
          * @param name the non-null string name of the property
          */
         remove(name: string): void;
+
         /**
          * @returns the number of items in this collection
          */
         size(): number;
+
         /**
-         * @param name
+         * @param name 
          * @returns the property with `name` in `meta`.
          */
-        steal(name: string): DocProp | null;
+        steal(name: string): (DocProp | null);
+
         /**
          * @param prop {@link Gsf.DocProp}
          */
         store(prop: DocProp): void;
+
         /**
          * @param out {@link Gsf.Output}
          * @param doc_not_component a kludge to differentiate DocumentSummary from Summary
          * @returns `true` on success;
          */
         write_to_msole(out: Output, doc_not_component: boolean): boolean;
+
         /**
          * @param output a pointer to a {@link Gsf.Output}.
          * @returns `true` if no error occured.
@@ -1064,13 +1138,16 @@ export namespace Gsf {
         write_to_odf(output: XMLOut): boolean;
     }
 
+
     namespace DocPropVector {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1089,65 +1166,58 @@ export namespace Gsf {
         $signals: DocPropVector.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DocPropVector.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DocPropVector;
+        static ["new"](): DocPropVector;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DocPropVector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocPropVector.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DocPropVector.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DocPropVector.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DocPropVector.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DocPropVector.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DocPropVector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DocPropVector.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DocPropVector.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DocPropVector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DocPropVector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DocPropVector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Insert a copy of `value` as the last element of `vector`.
          * @param value The GValue to add to `vector`
          */
-        append(value: GObject.Value | any): void;
+        append(value: (GObject.Value | any)): void;
+
         /**
          * This function returns a string which represents all the GValues in `vector`.
          * The caller is responsible for freeing the result.
-         *
+         * 
          * Returns (transfer full): a string of comma-separated values
          */
         as_string(): string;
     }
 
+
     namespace Infile {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Input.ConstructorProps {
 
-        interface ConstructorProps extends Input.ConstructorProps {}
+        }
     }
 
     /**
@@ -1167,46 +1237,36 @@ export namespace Gsf {
         $signals: Infile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Infile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Infile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Infile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Infile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Infile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Infile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Infile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Infile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Infile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Infile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Infile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Infile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Infile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @param i zero-based index of child to find.
          * @virtual
          */
-        vfunc_name_by_index(i: number): string | null;
+        vfunc_name_by_index(i: number): (string | null);
+
         /**
          * @virtual
          */
         vfunc_num_children(): number;
 
         // Methods
-
         /**
          * This function finds a child that is several directory levels down
          * the tree.  If, for example, the names "foo", "bar", and "baz" are
@@ -1214,54 +1274,60 @@ export namespace Gsf {
          * root infile, then locates "bar" within that directory, and finally
          * locates "baz" within that and returns the "baz" child.  In other
          * words, this function finds the "foo/bar/baz" child.
-         *
+         * 
          * New in 1.14.9.
          * @param names A `null` terminated array of names (e.g. from g_strsplit)
          * @returns a newly created child which must be unrefed.
          */
         child_by_aname(names: string[]): Input;
+
         /**
          * TODO : For 2.0 api will change to include a {@link GLib.Error}.
          * @param i target index
          * @returns a newly created child which must be unrefed.
          */
         child_by_index(i: number): Input;
+
         /**
          * The function returns a named child of the given infile.  This only
          * works for an immediate child.  If you need to go several levels
          * down use gsf_infile_child_by_aname, for example.
-         *
+         * 
          * TODO : For 2.0 api will change to include a {@link GLib.Error}.
          * @param name target name
          * @returns a newly created child which must be unrefed.
          */
         child_by_name(name: string): Input;
+
         /**
          * @param i zero-based index of child to find.
          * @returns the utf8 encoded name of the `i`-th child
          */
-        name_by_index(i: number): string | null;
+        name_by_index(i: number): (string | null);
+
         /**
          * @returns the number of children the storage has, or -1 if the storage can not 	have children.
          */
         num_children(): number;
     }
 
+
     namespace InfileMSOle {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Infile.ConstructorProps {
 
-        interface ConstructorProps extends Infile.ConstructorProps {}
+        }
     }
 
     /**
@@ -1280,36 +1346,26 @@ export namespace Gsf {
         $signals: InfileMSOle.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InfileMSOle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: Input): InfileMSOle;
+        static ["new"](source: Input): InfileMSOle;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InfileMSOle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileMSOle.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InfileMSOle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileMSOle.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InfileMSOle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileMSOle.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InfileMSOle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileMSOle.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InfileMSOle.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InfileMSOle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InfileMSOle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfileMSOle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieves the 16 byte indentifier (often a GUID in MS Windows apps)
          * stored within the directory associated with `ole` and stores it in `res`.
@@ -1319,21 +1375,23 @@ export namespace Gsf {
         get_class_id(res: number): boolean;
     }
 
+
     namespace InfileMSVBA {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Infile.ConstructorProps {
 
-        interface ConstructorProps extends Infile.ConstructorProps {}
+        }
     }
 
     /**
@@ -1352,63 +1410,56 @@ export namespace Gsf {
         $signals: InfileMSVBA.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InfileMSVBA.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: Infile): InfileMSVBA;
+        static ["new"](source: Infile): InfileMSVBA;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InfileMSVBA.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileMSVBA.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InfileMSVBA.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileMSVBA.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InfileMSVBA.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileMSVBA.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InfileMSVBA.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileMSVBA.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InfileMSVBA.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InfileMSVBA.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InfileMSVBA.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfileMSVBA.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * a collection of names and source code.
          * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
-        get_modules(): GLib.HashTable<string, any> | null;
+        get_modules(): (GLib.HashTable<string, any> | null);
+
         /**
          * A collection of names and source code which the caller is responsible for destroying.
          * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
-        steal_modules(): GLib.HashTable<string, any> | null;
+        steal_modules(): (GLib.HashTable<string, any> | null);
     }
+
 
     namespace InfileStdio {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Infile.ConstructorProps {
 
-        interface ConstructorProps extends Infile.ConstructorProps {}
+        }
     }
 
     /**
@@ -1427,50 +1478,41 @@ export namespace Gsf {
         $signals: InfileStdio.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InfileStdio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](root: string): InfileStdio;
+        static ["new"](root: string): InfileStdio;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InfileStdio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileStdio.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InfileStdio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileStdio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InfileStdio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileStdio.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InfileStdio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileStdio.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InfileStdio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InfileStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InfileStdio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfileStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InfileTar {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Infile.ConstructorProps {
             source: Input;
         }
@@ -1483,7 +1525,6 @@ export namespace Gsf {
         static $gtype: GObject.GType<InfileTar>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -1499,53 +1540,44 @@ export namespace Gsf {
         $signals: InfileTar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InfileTar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: Input): InfileTar;
+        static ["new"](source: Input): InfileTar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InfileTar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileTar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InfileTar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileTar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InfileTar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileTar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InfileTar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileTar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InfileTar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InfileTar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InfileTar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfileTar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InfileZip {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::compression-level': (pspec: GObject.ParamSpec) => void;
-            'notify::internal-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::zip64': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::compression-level": (pspec: GObject.ParamSpec) => void;
+            "notify::internal-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::zip64": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Infile.ConstructorProps {
             compression_level: number;
             compressionLevel: number;
@@ -1563,31 +1595,35 @@ export namespace Gsf {
         static $gtype: GObject.GType<InfileZip>;
 
         // Properties
-
         /**
          * Controls the level of compression used for new members.
          * @read-only
          * @default 0
          */
         get compression_level(): number;
+
         /**
          * Controls the level of compression used for new members.
          * @read-only
          * @default 0
          */
         get compressionLevel(): number;
+
         /**
          * @construct-only
          */
         set internal_parent(val: InfileZip);
+
         /**
          * @construct-only
          */
         set internalParent(val: InfileZip);
+
         /**
          * @construct-only
          */
         get source(): Input;
+
         /**
          * @read-only
          * @default false
@@ -1604,57 +1640,48 @@ export namespace Gsf {
         $signals: InfileZip.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InfileZip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: Input): InfileZip;
+        static ["new"](source: Input): InfileZip;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InfileZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileZip.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InfileZip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileZip.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InfileZip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfileZip.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InfileZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfileZip.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InfileZip.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InfileZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InfileZip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfileZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Input {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             container: Infile;
             eof: boolean;
             modtime: GLib.DateTime;
             name: string;
-            position: bigint | number;
-            remaining: bigint | number;
-            size: bigint | number;
+            position: (bigint | number);
+            remaining: (bigint | number);
+            size: (bigint | number);
         }
     }
 
@@ -1666,18 +1693,19 @@ export namespace Gsf {
         static $gtype: GObject.GType<Input>;
 
         // Properties
-
         /**
          * The container, optionally `null`, in which this input lives.
          * @read-only
          */
         get container(): Infile;
+
         /**
          * `true` if the end of the file has been reached.
          * @read-only
          * @default false
          */
         get eof(): boolean;
+
         /**
          * The time the input was last updated.  This represents the
          * timestamp from the originating file or `GsfInfile` member.
@@ -1685,23 +1713,27 @@ export namespace Gsf {
          * @read-only
          */
         get modtime(): GLib.DateTime;
+
         /**
          * @read-only
          * @default null
          */
         get name(): string;
+
         /**
          * The current position in the input.
          * @read-only
          * @default 0
          */
         get position(): number;
+
         /**
          * The number of bytes remaining in the file.
          * @read-only
          * @default 0
          */
         get remaining(): number;
+
         /**
          * The total number of bytes in the file.
          * @read-only
@@ -1719,12 +1751,11 @@ export namespace Gsf {
         $signals: Input.SignalSignatures;
 
         // Fields
-
         g_object: GObject.Object;
+
         cur_offset: gsf_off_t;
 
         // Constructors
-
         constructor(properties?: Partial<Input.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -1732,48 +1763,40 @@ export namespace Gsf {
         static mmap_new(filename: string): Input;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Input.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Input.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Input.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Input.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Input.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Input.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Input.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Input.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_id(): GLib.Quark;
 
         // Virtual methods
-
         /**
          * Duplicates `input` leaving the new one at the same offset.
          * @virtual
          */
-        vfunc_Dup(): Input | null;
+        vfunc_Dup(): (Input | null);
+
         /**
          * UNIMPLEMENTED BY ANY BACKEND
          * 	and it is probably unnecessary.   gsf_input_get_container provides
          * 	enough power to do what is necessary.
-         *
+         * 
          * Attempts to open a 'sibling' of `input`.  The caller is responsible for
          * managing the resulting object.
          * @param name name.
          * @virtual
          */
         vfunc_OpenSibling(name: string): Input;
+
         /**
          * Move the current location in the input stream.
          * @param offset target offset
@@ -1783,7 +1806,6 @@ export namespace Gsf {
         vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
 
         // Methods
-
         /**
          * Copy the contents from `input` to `output` from their respective
          * current positions. So if you want to be sure to copy *everything*,
@@ -1793,32 +1815,38 @@ export namespace Gsf {
          * @returns `true` on success
          */
         copy(output: Output): boolean;
+
         /**
          * Dumps `input`'s contents to STDOUT, optionally in hex format.
          * @param dump_as_hex If `true`, dump in hexidecmal format
          */
         dump(dump_as_hex: boolean): void;
+
         /**
          * Duplicates `input` leaving the new one at the same offset.
          * @returns the duplicate
          */
-        dup(): Input | null;
+        dup(): (Input | null);
+
         /**
          * A utility routine that attempts to find the VBA file withint a stream.
          * @returns a GsfInfile
          */
-        find_vba(): InfileMSVBA | null;
+        find_vba(): (InfileMSVBA | null);
+
         /**
          * @returns A {@link GLib.DateTime} representing when the input was last modified, or `null` if not known.
          */
         get_modtime(): GLib.DateTime;
+
         /**
          * Read `num_bytes`.  Does not change the current position if there
          * is an error.  Will only read if the entire amount can be read.
          * @param num_bytes number of bytes to read
          * @returns the data read.
          */
-        read(num_bytes: bigint | number): Uint8Array;
+        read(num_bytes: (bigint | number)): Uint8Array;
+
         /**
          * Move the current location in the input stream.
          * @param offset target offset
@@ -1826,59 +1854,69 @@ export namespace Gsf {
          * @returns `true` on error.
          */
         seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
+
         /**
          * Emulate forward seeks by reading.
          * @param pos absolute position to seek to
          * @returns `true` if the emulation failed.
          */
         seek_emulate(pos: gsf_off_t): boolean;
+
         /**
-         * @param container
+         * @param container 
          * @returns `true` if the assignment was ok.
          */
-        set_container(container: Infile | null): boolean;
+        set_container(container: (Infile | null)): boolean;
+
         /**
          * protected.
          * @param modtime the new modification time.
          * @returns `true` if the assignment was ok.
          */
-        set_modtime(modtime: GLib.DateTime | null): boolean;
+        set_modtime(modtime: (GLib.DateTime | null)): boolean;
+
         /**
-         * @param st
+         * @param st 
          */
-        set_modtime_from_stat(st: any | null): boolean;
+        set_modtime_from_stat(st: (any | null)): boolean;
+
         /**
          * protected.
          * @param name the new name of the stream
          * @returns `true` if the assignment was ok.
          */
-        set_name(name: string | null): boolean;
+        set_name(name: (string | null)): boolean;
+
         /**
          * protected.
          * @param filename the (fs-sys encoded) filename
          * @returns `true` if the assignment was ok.
          */
         set_name_from_filename(filename: string): boolean;
+
         /**
          * @param size the size of the stream
          * @returns `true` if the assignment was ok.
          */
         set_size(size: gsf_off_t): boolean;
+
         /**
          * UNIMPLEMENTED BY ANY BACKEND
          * 	and it is probably unnecessary.   gsf_input_get_container provides
          * 	enough power to do what is necessary.
-         *
+         * 
          * Attempts to open a 'sibling' of `input`.  The caller is responsible for
          * managing the resulting object.
          * @param name name.
          * @returns A related {@link Gsf.Input}
          */
         sibling(name: string): Input;
+
         /**
          * @returns the current offset in the file.
          */
         tell(): gsf_off_t;
+
         /**
          * This functions takes ownership of the incoming reference and yields a
          * new one as its output.
@@ -1887,28 +1925,28 @@ export namespace Gsf {
         uncompress(): Input;
     }
 
+
     namespace InputGZip {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::raw': (pspec: GObject.ParamSpec) => void;
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::uncompressed-size': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::raw": (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::uncompressed-size": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Input.ConstructorProps {
             raw: boolean;
             source: Input;
-            uncompressed_size: bigint | number;
-            uncompressedSize: bigint | number;
+            uncompressed_size: (bigint | number);
+            uncompressedSize: (bigint | number);
         }
     }
 
@@ -1919,21 +1957,23 @@ export namespace Gsf {
         static $gtype: GObject.GType<InputGZip>;
 
         // Properties
-
         /**
          * @construct-only
          * @default false
          */
         get raw(): boolean;
+
         /**
          * @construct-only
          */
         get source(): Input;
+
         /**
          * @construct-only
          * @default -1
          */
         get uncompressed_size(): number;
+
         /**
          * @construct-only
          * @default -1
@@ -1950,50 +1990,43 @@ export namespace Gsf {
         $signals: InputGZip.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputGZip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: Input): InputGZip;
+        static ["new"](source: Input): InputGZip;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputGZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputGZip.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputGZip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputGZip.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputGZip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputGZip.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputGZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputGZip.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputGZip.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputGZip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InputGio {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Input.ConstructorProps {
 
-        interface ConstructorProps extends Input.ConstructorProps {}
+        }
     }
 
     /**
@@ -2012,55 +2045,46 @@ export namespace Gsf {
         $signals: InputGio.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputGio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](file: Gio.File): InputGio;
+        static ["new"](file: Gio.File): InputGio;
 
         static new_for_path(path: string): InputGio;
 
         static new_for_uri(uri: string): InputGio;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputGio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputGio.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputGio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputGio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputGio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputGio.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputGio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputGio.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputGio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputGio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputGio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputGio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InputHTTP {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::content-type': (pspec: GObject.ParamSpec) => void;
-            'notify::url': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::content-type": (pspec: GObject.ParamSpec) => void;
+            "notify::url": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Input.ConstructorProps {
             content_type: string;
             contentType: string;
@@ -2075,17 +2099,18 @@ export namespace Gsf {
         static $gtype: GObject.GType<InputHTTP>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get content_type(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get contentType(): string;
+
         /**
          * @construct-only
          * @default null
@@ -2102,61 +2127,54 @@ export namespace Gsf {
         $signals: InputHTTP.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputHTTP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](url: string): InputHTTP;
+        static ["new"](url: string): InputHTTP;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputHTTP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputHTTP.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputHTTP.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputHTTP.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputHTTP.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputHTTP.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputHTTP.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputHTTP.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputHTTP.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputHTTP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputHTTP.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputHTTP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns an allocated string containing the Content-Type field of the HTTP response.
          */
         get_content_type(): string;
+
         /**
          * @returns an allocated string containing the URL used for input.
          */
         get_url(): string;
     }
 
+
     namespace InputMemory {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Input.ConstructorProps {
 
-        interface ConstructorProps extends Input.ConstructorProps {}
+        }
     }
 
     /**
@@ -2175,56 +2193,49 @@ export namespace Gsf {
         $signals: InputMemory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputMemory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](buf: Uint8Array | string, needs_free: boolean): InputMemory;
+        static ["new"](buf: (Uint8Array | string), needs_free: boolean): InputMemory;
 
-        static new_clone(buf: Uint8Array | string): InputMemory;
+        static new_clone(buf: (Uint8Array | string)): InputMemory;
 
         static new_from_bzip(source: Input): InputMemory;
 
         static new_from_iochannel(channel: GLib.IOChannel): InputMemory;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputMemory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputMemory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputMemory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputMemory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputMemory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputMemory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputMemory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputMemory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InputProxy {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Input.ConstructorProps {
 
-        interface ConstructorProps extends Input.ConstructorProps {}
+        }
     }
 
     /**
@@ -2243,52 +2254,45 @@ export namespace Gsf {
         $signals: InputProxy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: Input): InputProxy;
+        static ["new"](source: Input): InputProxy;
 
         static new_section(source: Input, offset: gsf_off_t, size: gsf_off_t): InputProxy;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputProxy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputProxy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputProxy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputProxy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputProxy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InputStdio {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Input.ConstructorProps {
 
-        interface ConstructorProps extends Input.ConstructorProps {}
+        }
     }
 
     /**
@@ -2307,52 +2311,45 @@ export namespace Gsf {
         $signals: InputStdio.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputStdio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string): InputStdio;
+        static ["new"](filename: string): InputStdio;
 
-        static new_FILE(filename: string, file: any | null, keep_open: boolean): InputStdio;
+        static new_FILE(filename: string, file: (any | null), keep_open: boolean): InputStdio;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputStdio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputStdio.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputStdio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputStdio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputStdio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputStdio.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputStdio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputStdio.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputStdio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputStdio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace InputTextline {
         // Signal signatures
         interface SignalSignatures extends Input.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Input.ConstructorProps {
 
-        interface ConstructorProps extends Input.ConstructorProps {}
+        }
     }
 
     /**
@@ -2371,35 +2368,33 @@ export namespace Gsf {
         $signals: InputTextline.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputTextline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source: Input): InputTextline;
+        static ["new"](source: Input): InputTextline;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputTextline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputTextline.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputTextline.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputTextline.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputTextline.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputTextline.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputTextline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputTextline.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputTextline.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputTextline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputTextline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputTextline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * A utility routine to read things line by line from the underlying source.
+         * Trailing newlines and carriage returns are stripped, and the resultant buffer
+         * can be edited.
+         * @returns the string read, or `null` on eof.
+         */
+        ascii_gets(): (Uint8Array | null);
 
         /**
          * A utility routine to read things line by line from the underlying source.
@@ -2407,26 +2402,19 @@ export namespace Gsf {
          * can be edited.
          * @returns the string read, or `null` on eof.
          */
-        ascii_gets(): Uint8Array | null;
-        /**
-         * A utility routine to read things line by line from the underlying source.
-         * Trailing newlines and carriage returns are stripped, and the resultant buffer
-         * can be edited.
-         * @returns the string read, or `null` on eof.
-         */
-        utf8_gets(): Uint8Array | null;
+        utf8_gets(): (Uint8Array | null);
     }
+
 
     namespace ODFOut {
         // Signal signatures
         interface SignalSignatures extends XMLOut.SignalSignatures {
-            'notify::odf-version': (pspec: GObject.ParamSpec) => void;
-            'notify::pretty-print': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            "notify::odf-version": (pspec: GObject.ParamSpec) => void;
+            "notify::pretty-print": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends XMLOut.ConstructorProps {
             odf_version: number;
             odfVersion: number;
@@ -2440,12 +2428,12 @@ export namespace Gsf {
         static $gtype: GObject.GType<ODFOut>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 100
          */
         get odf_version(): number;
+
         /**
          * @construct-only
          * @default 100
@@ -2462,57 +2450,50 @@ export namespace Gsf {
         $signals: ODFOut.SignalSignatures;
 
         // Fields
-
         base: XMLOut;
+
         priv: any;
 
         // Constructors
-
         constructor(properties?: Partial<ODFOut.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ODFOut.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ODFOut.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ODFOut.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ODFOut.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ODFOut.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ODFOut.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ODFOut.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ODFOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ODFOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ODFOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_version(): number;
+
         get_version_string(): string;
     }
+
 
     namespace Outfile {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Output.ConstructorProps {
 
-        interface ConstructorProps extends Output.ConstructorProps {}
+        }
     }
 
     /**
@@ -2532,40 +2513,31 @@ export namespace Gsf {
         $signals: Outfile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Outfile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Outfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Outfile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Outfile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Outfile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Outfile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Outfile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Outfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Outfile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Outfile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Outfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Outfile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Outfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @param name The name of the new child to create
          * @param is_dir `true` to create a directory, `false` to create a plain file
          * @returns a newly created child
          */
         new_child(name: string, is_dir: boolean): Output;
+
         /**
          * A convenience wrapper to create a child in `dir` of `content_type` then create
          * a `type` relation to `parent`
@@ -2578,22 +2550,22 @@ export namespace Gsf {
         open_pkg_add_rel(name: string, content_type: string, parent: Outfile, type: string): Output;
     }
 
+
     namespace OutfileMSOle {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
-            'notify::big-block-size': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
-            'notify::small-block-size': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::big-block-size": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
+            "notify::small-block-size": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Outfile.ConstructorProps {
             big_block_size: number;
             bigBlockSize: number;
@@ -2610,26 +2582,29 @@ export namespace Gsf {
         static $gtype: GObject.GType<OutfileMSOle>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 512
          */
         get big_block_size(): number;
+
         /**
          * @construct-only
          * @default 512
          */
         get bigBlockSize(): number;
+
         /**
          * @construct-only
          */
         get sink(): Output;
+
         /**
          * @construct-only
          * @default 64
          */
         get small_block_size(): number;
+
         /**
          * @construct-only
          * @default 64
@@ -2646,62 +2621,52 @@ export namespace Gsf {
         $signals: OutfileMSOle.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutfileMSOle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sink: Output): OutfileMSOle;
+        static ["new"](sink: Output): OutfileMSOle;
 
         static new_full(sink: Output, bb_size: number, sb_size: number): OutfileMSOle;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutfileMSOle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutfileMSOle.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutfileMSOle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutfileMSOle.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutfileMSOle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutfileMSOle.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutfileMSOle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutfileMSOle.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutfileMSOle.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutfileMSOle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutfileMSOle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutfileMSOle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Write `clsid` to the directory associated with `ole`.
          * @param clsid Identifier (often a GUID in MS Windows apps)
          * @returns `true` on success.
          */
-        set_class_id(clsid: Uint8Array | string): boolean;
+        set_class_id(clsid: (Uint8Array | string)): boolean;
     }
+
 
     namespace OutfileOpenPkg {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
-            'notify::content-type': (pspec: GObject.ParamSpec) => void;
-            'notify::is-dir': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::content-type": (pspec: GObject.ParamSpec) => void;
+            "notify::is-dir": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Outfile.ConstructorProps {
             content_type: string;
             contentType: string;
@@ -2718,25 +2683,28 @@ export namespace Gsf {
         static $gtype: GObject.GType<OutfileOpenPkg>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get content_type(): string;
+
         /**
          * @construct-only
          */
         get contentType(): string;
+
         /**
          * @construct-only
          * @default false
          */
         get is_dir(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get isDir(): boolean;
+
         /**
          * @construct-only
          */
@@ -2752,36 +2720,26 @@ export namespace Gsf {
         $signals: OutfileOpenPkg.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutfileOpenPkg.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sink: Outfile): OutfileOpenPkg;
+        static ["new"](sink: Outfile): OutfileOpenPkg;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutfileOpenPkg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutfileOpenPkg.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutfileOpenPkg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutfileOpenPkg.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutfileOpenPkg.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutfileOpenPkg.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutfileOpenPkg.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutfileOpenPkg.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutfileOpenPkg.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutfileOpenPkg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutfileOpenPkg.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutfileOpenPkg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add an external relation to `parent`.
          * @param target target type
@@ -2789,6 +2747,7 @@ export namespace Gsf {
          * @returns The id of the relation.  The string is managed by the parent and should not be changed or freed by the caller.
          */
         add_extern_rel(target: string, content_type: string): string;
+
         /**
          * Create a relationship between `child` and `parent` of `type`.
          * @param parent {@link Gsf.OutfileOpenPkg}
@@ -2796,10 +2755,12 @@ export namespace Gsf {
          * @returns the relID which the caller does not own 	but will live as long as `parent`.
          */
         relate(parent: OutfileOpenPkg, type: string): string;
+
         /**
-         * @param content_type
+         * @param content_type 
          */
         set_content_type(content_type: string): void;
+
         /**
          * Assigns a GsfOutput (`sink`) to store the package into.
          * @param sink {@link Gsf.Output}
@@ -2807,20 +2768,22 @@ export namespace Gsf {
         set_sink(sink: Output): void;
     }
 
+
     namespace OutfileStdio {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Outfile.ConstructorProps {
 
-        interface ConstructorProps extends Outfile.ConstructorProps {}
+        }
     }
 
     /**
@@ -2839,53 +2802,44 @@ export namespace Gsf {
         $signals: OutfileStdio.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutfileStdio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](root: string): OutfileStdio;
+        static ["new"](root: string): OutfileStdio;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutfileStdio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutfileStdio.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutfileStdio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutfileStdio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutfileStdio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutfileStdio.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutfileStdio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutfileStdio.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutfileStdio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutfileStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutfileStdio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutfileStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace OutfileZip {
         // Signal signatures
         interface SignalSignatures extends Outfile.SignalSignatures {
-            'notify::compression-level': (pspec: GObject.ParamSpec) => void;
-            'notify::deflate-level': (pspec: GObject.ParamSpec) => void;
-            'notify::entry-name': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
-            'notify::zip64': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::compression-level": (pspec: GObject.ParamSpec) => void;
+            "notify::deflate-level": (pspec: GObject.ParamSpec) => void;
+            "notify::entry-name": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
+            "notify::zip64": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Outfile.ConstructorProps {
             compression_level: number;
             compressionLevel: number;
@@ -2905,41 +2859,47 @@ export namespace Gsf {
         static $gtype: GObject.GType<OutfileZip>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 8
          */
         get compression_level(): number;
+
         /**
          * @construct-only
          * @default 8
          */
         get compressionLevel(): number;
+
         /**
          * @construct-only
          * @default -1
          */
         get deflate_level(): number;
+
         /**
          * @construct-only
          * @default -1
          */
         get deflateLevel(): number;
+
         /**
          * @construct-only
          * @default null
          */
         get entry_name(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get entryName(): string;
+
         /**
          * @construct-only
          */
         get sink(): Output;
+
         /**
          * @construct-only
          * @default -1
@@ -2956,63 +2916,53 @@ export namespace Gsf {
         $signals: OutfileZip.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutfileZip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sink: Output): OutfileZip;
+        static ["new"](sink: Output): OutfileZip;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutfileZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutfileZip.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutfileZip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutfileZip.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutfileZip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutfileZip.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutfileZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutfileZip.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutfileZip.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutfileZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutfileZip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutfileZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param method
+         * @param method 
          */
         set_compression_method(method: ZipCompressionMethod): boolean;
     }
 
+
     namespace Output {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             container: Outfile;
             is_closed: boolean;
             isClosed: boolean;
-            modtime: GLib.DateTime | null;
+            modtime: (GLib.DateTime | null);
             name: string;
-            position: bigint | number;
-            size: bigint | number;
+            position: (bigint | number);
+            size: (bigint | number);
         }
     }
 
@@ -3024,24 +2974,26 @@ export namespace Gsf {
         static $gtype: GObject.GType<Output>;
 
         // Properties
-
         /**
          * The container, optionally `null`, in which this output lives.
          */
         get container(): Outfile;
         set container(val: Outfile);
+
         /**
          * `true` if the output has been closed.
          * @read-only
          * @default false
          */
         get is_closed(): boolean;
+
         /**
          * `true` if the output has been closed.
          * @read-only
          * @default false
          */
         get isClosed(): boolean;
+
         /**
          * The time the output was last updated.  This must be set on object
          * construction and represents the timestamp to put on the resulting
@@ -3049,18 +3001,21 @@ export namespace Gsf {
          * do anything with this property.
          * @construct-only
          */
-        get modtime(): GLib.DateTime | null;
+        get modtime(): (GLib.DateTime | null);
+
         /**
          * @default null
          */
         get name(): string;
         set name(val: string);
+
         /**
          * The current position in the output.
          * @read-only
          * @default 0
          */
         get position(): number;
+
         /**
          * The current file size.
          * @read-only
@@ -3078,63 +3033,60 @@ export namespace Gsf {
         $signals: Output.SignalSignatures;
 
         // Fields
-
         g_object: GObject.Object;
+
         cur_size: gsf_off_t;
+
         cur_offset: gsf_off_t;
+
         wrapped_by: GObject.Object;
+
         err: GLib.Error;
+
         printf_buf: string;
+
         printf_buf_size: number;
 
         // Constructors
-
         constructor(properties?: Partial<Output.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Output.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Output.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Output.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Output.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Output.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Output.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Output.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Output.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Output.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Output.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Output.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Output.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_id(): GLib.Quark;
+
         /**
-         * @param wrapper
-         * @param wrapee
+         * @param wrapper 
+         * @param wrapee 
          */
         static unwrap(wrapper: GObject.Object, wrapee: Output): boolean;
+
         /**
-         * @param wrapper
-         * @param wrapee
+         * @param wrapper 
+         * @param wrapee 
          */
         static wrap(wrapper: GObject.Object, wrapee: Output): boolean;
 
         // Virtual methods
-
         /**
          * Close a stream.
          * @virtual
          */
         vfunc_Close(): boolean;
+
         /**
          * Reposition in output stream `output`. `whence` specifies what the offset is
          * relative to: the beginning of the stream ({@link GLib.SeekType.SET}), current position in
@@ -3147,6 +3099,7 @@ export namespace Gsf {
          * @virtual
          */
         vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
+
         /**
          * Write `num_bytes` of `data` to `output`.
          * @param data Data to write.
@@ -3155,26 +3108,29 @@ export namespace Gsf {
         vfunc_Write(data: Uint8Array): boolean;
 
         // Methods
-
         /**
          * Close a stream.
          * @returns `false` on error
          */
         close(): boolean;
+
         /**
          * @returns the last error logged on the output
          */
-        error(): GLib.Error | null;
+        error(): (GLib.Error | null);
+
         /**
          * @returns A {@link GLib.DateTime} representing when the output was last modified
          */
-        get_modtime(): GLib.DateTime | null;
+        get_modtime(): (GLib.DateTime | null);
+
         /**
          * Like fputs, this assumes that the line already ends with a newline
          * @param line Nul terminated string to write
          * @returns `true` if successful, `false` if not
          */
         puts(line: string): boolean;
+
         /**
          * Reposition in output stream `output`. `whence` specifies what the offset is
          * relative to: the beginning of the stream ({@link GLib.SeekType.SET}), current position in
@@ -3187,32 +3143,37 @@ export namespace Gsf {
          * @returns `false` on error.
          */
         seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
+
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>
          * @param container {@link Gsf.Outfile}
          * @returns `true` if the assignment was ok.
          */
-        set_container(container: Outfile | null): boolean;
+        set_container(container: (Outfile | null)): boolean;
+
         /**
          * @param modtime the new modification time.
          * @returns `true` if the assignment was ok.
          */
-        set_modtime(modtime: GLib.DateTime | null): boolean;
+        set_modtime(modtime: (GLib.DateTime | null)): boolean;
+
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>
          * @param name the new name
          * @returns `true` if the assignment was ok.
          */
-        set_name(name: string | null): boolean;
+        set_name(name: (string | null)): boolean;
+
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>
          * @param filename the (fs-sys encoded) filename
          * @returns `true` if the assignment was ok.
          */
-        set_name_from_filename(filename: string | null): boolean;
+        set_name_from_filename(filename: (string | null)): boolean;
+
         /**
          * Tell the current position in `output`, similar to
          * <citerefentry><refentrytitle>ftell</refentrytitle>
@@ -3220,28 +3181,31 @@ export namespace Gsf {
          * @returns the current position in the file
          */
         tell(): gsf_off_t;
+
         /**
          * Write `num_bytes` of `data` to `output`.
          * @param data Data to write.
          * @returns `false` on error.
          */
-        write(data: Uint8Array | string): boolean;
+        write(data: (Uint8Array | string)): boolean;
     }
+
 
     namespace OutputBzip {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Output.ConstructorProps {
 
-        interface ConstructorProps extends Output.ConstructorProps {}
+        }
     }
 
     /**
@@ -3260,55 +3224,46 @@ export namespace Gsf {
         $signals: OutputBzip.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutputBzip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sink: Output): OutputBzip;
+        static ["new"](sink: Output): OutputBzip;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputBzip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputBzip.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputBzip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputBzip.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputBzip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputBzip.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputBzip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputBzip.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputBzip.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputBzip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputBzip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputBzip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace OutputCsv {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::eol': (pspec: GObject.ParamSpec) => void;
-            'notify::quote': (pspec: GObject.ParamSpec) => void;
-            'notify::quoting-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::quoting-on-whitespace': (pspec: GObject.ParamSpec) => void;
-            'notify::quoting-triggers': (pspec: GObject.ParamSpec) => void;
-            'notify::separator': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::eol": (pspec: GObject.ParamSpec) => void;
+            "notify::quote": (pspec: GObject.ParamSpec) => void;
+            "notify::quoting-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::quoting-on-whitespace": (pspec: GObject.ParamSpec) => void;
+            "notify::quoting-triggers": (pspec: GObject.ParamSpec) => void;
+            "notify::separator": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Output.ConstructorProps {
             eol: string;
             quote: string;
@@ -3330,52 +3285,60 @@ export namespace Gsf {
         static $gtype: GObject.GType<OutputCsv>;
 
         // Properties
-
         /**
          * @default \n
          */
         get eol(): string;
         set eol(val: string);
+
         /**
          * @default \"
          */
         get quote(): string;
         set quote(val: string);
+
         /**
          * @default Gsf.OutputCsvQuotingMode.NEVER
          */
         get quoting_mode(): OutputCsvQuotingMode;
         set quoting_mode(val: OutputCsvQuotingMode);
+
         /**
          * @default Gsf.OutputCsvQuotingMode.NEVER
          */
         get quotingMode(): OutputCsvQuotingMode;
         set quotingMode(val: OutputCsvQuotingMode);
+
         /**
          * @default true
          */
         get quoting_on_whitespace(): boolean;
         set quoting_on_whitespace(val: boolean);
+
         /**
          * @default true
          */
         get quotingOnWhitespace(): boolean;
         set quotingOnWhitespace(val: boolean);
+
         /**
          * @default null
          */
         get quoting_triggers(): string;
         set quoting_triggers(val: string);
+
         /**
          * @default null
          */
         get quotingTriggers(): string;
         set quotingTriggers(val: string);
+
         /**
          * @default ,
          */
         get separator(): string;
         set separator(val: string);
+
         get sink(): Output;
         set sink(val: Output);
 
@@ -3389,66 +3352,60 @@ export namespace Gsf {
         $signals: OutputCsv.SignalSignatures;
 
         // Fields
-
         output: Output;
+
         quote_len: number;
+
         eol_len: number;
+
         separator_len: number;
+
         fields_on_line: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<OutputCsv.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputCsv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputCsv.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputCsv.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputCsv.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputCsv.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputCsv.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputCsv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputCsv.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputCsv.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputCsv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputCsv.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputCsv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         write_eol(): boolean;
+
         /**
-         * @param field
-         * @param len
+         * @param field 
+         * @param len 
          */
-        write_field(field: string, len: bigint | number): boolean;
+        write_field(field: string, len: (bigint | number)): boolean;
     }
+
 
     namespace OutputGZip {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::deflate-level': (pspec: GObject.ParamSpec) => void;
-            'notify::raw': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::deflate-level": (pspec: GObject.ParamSpec) => void;
+            "notify::raw": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Output.ConstructorProps {
             deflate_level: number;
             deflateLevel: number;
@@ -3464,22 +3421,24 @@ export namespace Gsf {
         static $gtype: GObject.GType<OutputGZip>;
 
         // Properties
-
         /**
          * @default -1
          */
         get deflate_level(): number;
         set deflate_level(val: number);
+
         /**
          * @default -1
          */
         get deflateLevel(): number;
         set deflateLevel(val: number);
+
         /**
          * @construct-only
          * @default false
          */
         get raw(): boolean;
+
         /**
          * @construct-only
          */
@@ -3495,49 +3454,42 @@ export namespace Gsf {
         $signals: OutputGZip.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutputGZip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sink: Output): OutputGZip;
+        static ["new"](sink: Output): OutputGZip;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputGZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputGZip.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputGZip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputGZip.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputGZip.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputGZip.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputGZip.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputGZip.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputGZip.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputGZip.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace OutputGio {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Output.ConstructorProps {
 
-        interface ConstructorProps extends Output.ConstructorProps {}
+        }
     }
 
     /**
@@ -3556,53 +3508,46 @@ export namespace Gsf {
         $signals: OutputGio.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutputGio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](file: Gio.File): OutputGio;
+        static ["new"](file: Gio.File): OutputGio;
 
         static new_for_path(path: string): OutputGio;
 
         static new_for_uri(uri: string): OutputGio;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputGio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputGio.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputGio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputGio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputGio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputGio.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputGio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputGio.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputGio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputGio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputGio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputGio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace OutputIOChannel {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Output.ConstructorProps {
 
-        interface ConstructorProps extends Output.ConstructorProps {}
+        }
     }
 
     /**
@@ -3621,52 +3566,43 @@ export namespace Gsf {
         $signals: OutputIOChannel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutputIOChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](channel: GLib.IOChannel): OutputIOChannel;
+        static ["new"](channel: GLib.IOChannel): OutputIOChannel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputIOChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputIOChannel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputIOChannel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputIOChannel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputIOChannel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputIOChannel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputIOChannel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputIOChannel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputIOChannel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputIOChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputIOChannel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputIOChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace OutputIconv {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::fallback': (pspec: GObject.ParamSpec) => void;
-            'notify::input-charset': (pspec: GObject.ParamSpec) => void;
-            'notify::output-charset': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::fallback": (pspec: GObject.ParamSpec) => void;
+            "notify::input-charset": (pspec: GObject.ParamSpec) => void;
+            "notify::output-charset": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Output.ConstructorProps {
             fallback: string;
             input_charset: string;
@@ -3684,7 +3620,6 @@ export namespace Gsf {
         static $gtype: GObject.GType<OutputIconv>;
 
         // Properties
-
         /**
          * Either NULL or a UTF-8 string (representable in the target encoding)
          * to convert and output in place of characters that cannot be represented
@@ -3693,26 +3628,31 @@ export namespace Gsf {
          */
         get fallback(): string;
         set fallback(val: string);
+
         /**
          * @construct-only
          * @default UTF-8
          */
         get input_charset(): string;
+
         /**
          * @construct-only
          * @default UTF-8
          */
         get inputCharset(): string;
+
         /**
          * @construct-only
          * @default UTF-8
          */
         get output_charset(): string;
+
         /**
          * @construct-only
          * @default UTF-8
          */
         get outputCharset(): string;
+
         /**
          * @construct-only
          */
@@ -3728,49 +3668,42 @@ export namespace Gsf {
         $signals: OutputIconv.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutputIconv.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sink: Output, dst: string, src: string): OutputIconv;
+        static ["new"](sink: Output, dst: string, src: string): OutputIconv;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputIconv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputIconv.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputIconv.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputIconv.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputIconv.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputIconv.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputIconv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputIconv.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputIconv.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputIconv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputIconv.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputIconv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace OutputMemory {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Output.ConstructorProps {
 
-        interface ConstructorProps extends Output.ConstructorProps {}
+        }
     }
 
     /**
@@ -3789,60 +3722,53 @@ export namespace Gsf {
         $signals: OutputMemory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutputMemory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): OutputMemory;
+        static ["new"](): OutputMemory;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputMemory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputMemory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputMemory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputMemory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputMemory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputMemory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputMemory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputMemory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns The data that has been written to `mem`
          */
-        get_bytes(): Uint8Array | null;
+        get_bytes(): (Uint8Array | null);
+
         /**
          * @returns The data that has been written to `mem`. The caller takes ownership and the buffer belonging to `mem` is set to `null`.
          */
-        steal_bytes(): Uint8Array | null;
+        steal_bytes(): (Uint8Array | null);
     }
+
 
     namespace OutputStdio {
         // Signal signatures
         interface SignalSignatures extends Output.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::is-closed': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::is-closed": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Output.ConstructorProps {
 
-        interface ConstructorProps extends Output.ConstructorProps {}
+        }
     }
 
     /**
@@ -3861,42 +3787,36 @@ export namespace Gsf {
         $signals: OutputStdio.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OutputStdio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string): OutputStdio;
+        static ["new"](filename: string): OutputStdio;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OutputStdio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputStdio.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OutputStdio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputStdio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OutputStdio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OutputStdio.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OutputStdio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OutputStdio.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OutputStdio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OutputStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OutputStdio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OutputStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace SharedMemory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3915,60 +3835,56 @@ export namespace Gsf {
         $signals: SharedMemory.SignalSignatures;
 
         // Fields
-
         g_object: GObject.Object;
+
         buf: any;
+
         size: gsf_off_t;
+
         needs_free: boolean;
+
         needs_unmap: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<SharedMemory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static mmapped_new(buf: any | null, size: gsf_off_t): SharedMemory;
+        static mmapped_new(buf: (any | null), size: gsf_off_t): SharedMemory;
 
-        static ['new'](buf: any | null, size: gsf_off_t, needs_free: boolean): SharedMemory;
+        static ["new"](buf: (any | null), size: gsf_off_t, needs_free: boolean): SharedMemory;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SharedMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SharedMemory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SharedMemory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SharedMemory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SharedMemory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SharedMemory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SharedMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SharedMemory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SharedMemory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SharedMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SharedMemory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SharedMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace StructuredBlob {
         // Signal signatures
         interface SignalSignatures extends Infile.SignalSignatures {
-            'notify::container': (pspec: GObject.ParamSpec) => void;
-            'notify::eof': (pspec: GObject.ParamSpec) => void;
-            'notify::modtime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
+            "notify::container": (pspec: GObject.ParamSpec) => void;
+            "notify::eof": (pspec: GObject.ParamSpec) => void;
+            "notify::modtime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Infile.ConstructorProps {
 
-        interface ConstructorProps extends Infile.ConstructorProps {}
+        }
     }
 
     /**
@@ -3987,34 +3903,24 @@ export namespace Gsf {
         $signals: StructuredBlob.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StructuredBlob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StructuredBlob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StructuredBlob.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StructuredBlob.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StructuredBlob.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StructuredBlob.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StructuredBlob.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StructuredBlob.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StructuredBlob.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StructuredBlob.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StructuredBlob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StructuredBlob.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StructuredBlob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Create a tree of binary blobs with unknown content from a {@link Gsf.Input} or
          * {@link Gsf.Infile} and store it in a newly created {@link Gsf.StructuredBlob}.
@@ -4023,7 +3929,6 @@ export namespace Gsf {
         static read(input: Input): StructuredBlob;
 
         // Methods
-
         /**
          * Dumps structured blob `blob` onto the `container`.  Will fail if the output is
          * not an Outfile and blob has multiple streams.
@@ -4033,15 +3938,15 @@ export namespace Gsf {
         write(container: Outfile): boolean;
     }
 
+
     namespace XMLOut {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::pretty-print': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            "notify::pretty-print": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             pretty_print: boolean;
             prettyPrint: boolean;
@@ -4056,17 +3961,18 @@ export namespace Gsf {
         static $gtype: GObject.GType<XMLOut>;
 
         // Properties
-
         /**
          * @default true
          */
         get pretty_print(): boolean;
         set pretty_print(val: boolean);
+
         /**
          * @default true
          */
         get prettyPrint(): boolean;
         set prettyPrint(val: boolean);
+
         /**
          * @construct-only
          */
@@ -4082,55 +3988,48 @@ export namespace Gsf {
         $signals: XMLOut.SignalSignatures;
 
         // Fields
-
         base: GObject.Object;
+
         output: Output;
+
         priv: any;
 
         // Constructors
-
         constructor(properties?: Partial<XMLOut.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](output: Output): XMLOut;
+        static ["new"](output: Output): XMLOut;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLOut.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XMLOut.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XMLOut.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XMLOut.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XMLOut.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XMLOut.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XMLOut.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XMLOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof XMLOut.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XMLOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Dump `len` bytes in `data` into the content of node `id` using base64
          * @param id tag id, or `null` for node content
          * @param data Data to be written
          */
-        add_base64(id: string | null, data: Uint8Array | string): void;
+        add_base64(id: (string | null), data: (Uint8Array | string)): void;
+
         /**
          * dump boolean value `val` to an attribute named `id` or as the nodes content
          * Use '1' or '0' to simplify import
          * @param id tag id, or `null` for node content
          * @param val a boolean
          */
-        add_bool(id: string | null, val: boolean): void;
+        add_bool(id: (string | null), val: boolean): void;
+
         /**
          * dump Color `r`.`g`.`b` to an attribute named `id` or as the nodes content
          * @param id tag id, or `null` for node content
@@ -4138,7 +4037,8 @@ export namespace Gsf {
          * @param g Green value
          * @param b Blue value
          */
-        add_color(id: string | null, r: number, g: number, b: number): void;
+        add_color(id: (string | null), r: number, g: number, b: number): void;
+
         /**
          * dump `val_utf8` to an attribute named `id` or as the nodes content escaping
          * characters as necessary.  If `val_utf8` is `null` do nothing (no warning, no
@@ -4146,7 +4046,8 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val_utf8 a utf8 encoded string
          */
-        add_cstr(id: string | null, val_utf8: string | null): void;
+        add_cstr(id: (string | null), val_utf8: (string | null)): void;
+
         /**
          * dump `val_utf8` to an attribute named `id` without checking to see if
          * the content needs escaping.  A useful performance enhancement when
@@ -4155,14 +4056,16 @@ export namespace Gsf {
          * @param id tag id, or `null` for node content
          * @param val_utf8 a utf8 encoded string to export
          */
-        add_cstr_unchecked(id: string | null, val_utf8: string | null): void;
+        add_cstr_unchecked(id: (string | null), val_utf8: (string | null)): void;
+
         /**
          * Output the name of value `val` of enumeration type `etype`.
          * @param id tag id, or `null` for node content
          * @param etype {@link GObject.GType}
          * @param val enum element number
          */
-        add_enum(id: string | null, etype: GObject.GType, val: number): void;
+        add_enum(id: (string | null), etype: GObject.GType, val: number): void;
+
         /**
          * dump float value `val` to an attribute named `id` or as the nodes
          * content with precision `precision`.  The number will be formattted
@@ -4171,57 +4074,67 @@ export namespace Gsf {
          * @param val the value
          * @param precision the number of significant digits to use, -1 meaning "enough".
          */
-        add_float(id: string | null, val: number, precision: number): void;
+        add_float(id: (string | null), val: number, precision: number): void;
+
         /**
          * Output the value of `val` as a string.  Does NOT store any type information
          * with the string, just thevalue.
          * @param id tag id, or `null` for node content
          * @param val {@link GObject.Value}
          */
-        add_gvalue(id: string | null, val: GObject.Value | any): void;
+        add_gvalue(id: (string | null), val: (GObject.Value | any)): void;
+
         /**
          * dump integer value `val` to an attribute named `id` or as the nodes content
          * @param id tag id, or `null` for node content
          * @param val the value
          */
-        add_int(id: string | null, val: number): void;
+        add_int(id: (string | null), val: number): void;
+
         /**
          * dump unsigned integer value `val` to an attribute named `id` or as the nodes
          * content
          * @param id tag id, or `null` for node content
          * @param val the value
          */
-        add_uint(id: string | null, val: number): void;
+        add_uint(id: (string | null), val: number): void;
+
         /**
          * Closes/ends an XML element.
          * @returns the element that has been closed.
          */
         end_element(): string;
+
         /**
          * Get the {@link Gsf.Output} we are writing to..
          * @returns {@link Gsf.Input}
          */
-        get_output(): Output | null;
+        get_output(): (Output | null);
+
         /**
          * @returns the current state of the pretty-print flag.  Note, that gsf_xml_out_set_pretty_print will return the same value.
          */
         get_pretty_print(): boolean;
+
         /**
          * Store some optional &lt;!DOCTYPE .. &gt; content
          * @param type the document type declaration
          */
         set_doc_type(type: string): void;
+
         /**
          * @param pp new state of pretty-print flag.
          * @returns the previous state of the pretty-print flag.
          */
         set_pretty_print(pp: boolean): boolean;
+
         /**
          * Convenience routine to output a simple `id` element with content `content`.
          * @param id Element name
          * @param content Content of the element
          */
         simple_element(id: string, content: string): void;
+
         /**
          * Convenience routine to output an element `id` with float value `val` using
          * `precision` significant digits.
@@ -4230,12 +4143,14 @@ export namespace Gsf {
          * @param precision the number of significant digits to use, -1 meaning "enough".
          */
         simple_float_element(id: string, val: number, precision: number): void;
+
         /**
          * Convenience routine to output an element `id` with integer value `val`.
          * @param id Element name
          * @param val Element value
          */
         simple_int_element(id: string, val: number): void;
+
         /**
          * Output a start element `id`, if necessary preceeded by an XML declaration.
          * @param id Element name
@@ -4243,10 +4158,12 @@ export namespace Gsf {
         start_element(id: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BlobClass = typeof Blob;
+
     /**
      * @gir-type Struct
      */
@@ -4254,16 +4171,19 @@ export namespace Gsf {
         static $gtype: GObject.GType<BlobPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ClipDataClass = typeof ClipData;
+
     /**
      * @gir-type Struct
      */
     abstract class ClipDataPrivate {
         static $gtype: GObject.GType<ClipDataPrivate>;
     }
+
 
     /**
      * Class representing a properties of a document.
@@ -4273,59 +4193,67 @@ export namespace Gsf {
         static $gtype: GObject.GType<DocProp>;
 
         // Constructors
-
         constructor(name: string);
 
-        static ['new'](name: string): DocProp;
+        static ["new"](name: string): DocProp;
 
         // Methods
-
         /**
          * A debugging utility to dump `prop` as text via g_print
          * New in 1.14.2
          */
         dump(): void;
+
         /**
          * Release the given property.
          */
         free(): void;
+
         /**
          * @returns the current link descriptor of `prop`.
          */
-        get_link(): string | null;
+        get_link(): (string | null);
+
         /**
          * @returns the name of the property
          */
         get_name(): string;
+
         /**
          * @returns the value of the property, the caller should not modify the result.
          */
         get_val(): unknown;
+
         /**
          * Sets `prop`'s link to `link`
          * @param link a link.
          */
-        set_link(link: string | null): void;
+        set_link(link: (string | null)): void;
+
         /**
          * Assigns `val` to `prop`, and unsets and frees the current value.
          * @param val {@link GObject.Value}
          */
-        set_val(val: GObject.Value | any): void;
+        set_val(val: (GObject.Value | any)): void;
+
         /**
          * @param val {@link GObject.Value}
          * @returns the current value of `prop`, and replaces 	it with `val`.
          */
-        swap_val(val: GObject.Value | any): unknown;
+        swap_val(val: (GObject.Value | any)): unknown;
     }
+
 
     /**
      * @gir-type Alias
      */
     type InfileClass = typeof Infile;
+
     /**
      * @gir-type Alias
      */
     type InputClass = typeof Input;
+
     /**
      * @gir-type Struct
      */
@@ -4333,24 +4261,25 @@ export namespace Gsf {
         static $gtype: GObject.GType<MSOleSortingKey>;
 
         // Constructors
-
         constructor(name: string);
 
-        static ['new'](name: string): MSOleSortingKey;
+        static ["new"](name: string): MSOleSortingKey;
 
         // Methods
-
         /**
-         * @param b
+         * @param b 
          */
         cmp(b: MSOleSortingKey): number;
+
         free(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ODFOutClass = typeof ODFOut;
+
     /**
      * @gir-type Struct
      */
@@ -4358,20 +4287,22 @@ export namespace Gsf {
         static $gtype: GObject.GType<OpenPkgRel>;
 
         // Methods
-
         /**
          * @returns The target of `rel`.
          */
         get_target(): string;
+
         /**
          * @returns The type of `rel`.
          */
         get_type(): string;
+
         /**
          * @returns `true` if `rel` has mode 'External'
          */
         is_extern(): boolean;
     }
+
 
     /**
      * @gir-type Struct
@@ -4380,22 +4311,27 @@ export namespace Gsf {
         static $gtype: GObject.GType<OpenPkgRels>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type OutfileClass = typeof Outfile;
+
     /**
      * @gir-type Alias
      */
     type OutputClass = typeof Output;
+
     /**
      * @gir-type Alias
      */
     type OutputCsvClass = typeof OutputCsv;
+
     /**
      * @gir-type Alias
      */
     type OutputIconvClass = typeof OutputIconv;
+
     /**
      * A point in time.
      * @gir-type Struct
@@ -4404,63 +4340,69 @@ export namespace Gsf {
         static $gtype: GObject.GType<Timestamp>;
 
         // Fields
-
         date: GLib.Date;
+
         seconds: number;
+
         timet: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                date: GLib.Date;
-                seconds: number;
-                time_zone: GLib.String;
-                timet: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            date: GLib.Date;
+            seconds: number;
+            time_zone: GLib.String;
+            timet: number;
+        }>);
 
-        static ['new'](): Timestamp;
+        static ["new"](): Timestamp;
 
         // Methods
-
         /**
          * Produce a string representation (ISO 8601 format) of `stamp`.
          * @returns a string representation of `stamp`. When `stamp` is invalid, the representation is "&lt;invalid&gt;".
          */
         as_string(): string;
+
         /**
          * Copies a timestamp.
          * @returns a separate copy of `stamp`.
          */
         copy(): Timestamp;
+
         /**
          * Compare timestamps `a` and `b`.
          * @param b another timestamp
          * @returns true if `a` and `b` represent the same point in time; false otherwise.
          */
         equal(b: Timestamp): boolean;
+
         /**
          * Releases the memory in use for `stamp` (if any).
          */
         free(): void;
+
         hash(): number;
+
         /**
          * Parser for time stamps.  Requires a ISO 8601 formatted string.
          * @param spec The string to parse
          * @returns `true` on success
          */
         load_from_string(spec: string): number;
+
         /**
-         * @param t
+         * @param t 
          */
-        set_time(t: bigint | number): void;
+        set_time(t: (bigint | number)): void;
+
         /**
          * Calls g_value_set_box (value, stamp);
          * @param value {@link GObject.Value}
          */
-        to_value(value: GObject.Value | any): void;
+        to_value(value: (GObject.Value | any)): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -4469,6 +4411,7 @@ export namespace Gsf {
         static $gtype: GObject.GType<XMLBlob>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -4476,23 +4419,23 @@ export namespace Gsf {
         static $gtype: GObject.GType<XMLIn>;
 
         // Fields
-
         user_state: any;
 
         // Methods
-
         /**
          * According to `state` is `str` in the namespace `ns_id` ?
          * @param str string to check
          * @param ns_id the namespace id
          * @returns a pointer to `str` after the namespace if successful, otherwise `null`.
          */
-        check_ns(str: string, ns_id: number): string | null;
+        check_ns(str: string, ns_id: number): (string | null);
+
         /**
          * (New in 1.14.2)
          * @returns (but does not reference) the stream being parsed.
          */
         get_input(): Input;
+
         /**
          * Checks to see if `str` is the same as `ns_id`::`name` with either an explicit
          * namespace or the current default namespace.
@@ -4502,6 +4445,7 @@ export namespace Gsf {
          * @returns `true` if `str` == `ns_id`:`name` according to `state`.
          */
         namecmp(str: string, ns_id: number, name: string): boolean;
+
         /**
          * Take the first node from `doc` as the current node and call its start handler.
          * @param doc {@link Gsf.XMLInDoc}
@@ -4509,16 +4453,18 @@ export namespace Gsf {
          * @param dtor {@link Gsf.XMLInExtDtor}
          * @param attrs array of xmlChar const *
          */
-        push_state(doc: XMLInDoc, new_state: any | null, dtor: XMLInExtDtor, attrs: string[]): void;
+        push_state(doc: XMLInDoc, new_state: (any | null), dtor: XMLInExtDtor, attrs: string[]): void;
+
         /**
          * (New in 1.14.33)
-         *
+         * 
          * This provides a means to silently ignore unknown tags in contexts where
          * they are expected.
          * @param silent whether to be silent about unknown tags
          */
         set_silent_unknowns(silent: boolean): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -4527,22 +4473,22 @@ export namespace Gsf {
         static $gtype: GObject.GType<XMLInDoc>;
 
         // Constructors
-
         constructor(nodes: XMLInNode[], ns: XMLInNS[]);
 
-        static ['new'](nodes: XMLInNode[], ns: XMLInNS[]): XMLInDoc;
+        static ["new"](nodes: XMLInNode[], ns: XMLInNS[]): XMLInDoc;
 
         // Methods
-
         /**
          * Adds additional nodes to the structure of `doc`
          * @param nodes `null` terminated array of {@link Gsf.XMLInNode}
          */
         add_nodes(nodes: XMLInNode[]): void;
+
         /**
          * Free up resources
          */
         free(): void;
+
         /**
          * Read an xml document from `input` and parse based on the the descriptor in
          * `doc`
@@ -4550,13 +4496,15 @@ export namespace Gsf {
          * @param user_state arbitrary content stored in the parser
          * @returns `false` on error
          */
-        parse(input: Input, user_state: any | null): boolean;
+        parse(input: Input, user_state: (any | null)): boolean;
+
         /**
          * Call the function `handler` when an unexpected child node is found
          * @param handler The function to call
          */
         set_unknown_handler(handler: XMLInUnknownFunc): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -4565,19 +4513,18 @@ export namespace Gsf {
         static $gtype: GObject.GType<XMLInNS>;
 
         // Fields
-
         uri: string;
+
         ns_id: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                uri: string;
-                ns_id: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            uri: string;
+            ns_id: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -4586,34 +4533,43 @@ export namespace Gsf {
         static $gtype: GObject.GType<XMLInNode>;
 
         // Fields
-
         id: string;
+
         ns_id: number;
+
         name: string;
+
         parent_id: string;
+
         has_content: XMLContent;
+
         check_children_for_ns: number;
+
         share_children_with_parent: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type XMLOutClass = typeof XMLOut;
+
     /**
      * Data type to represent offsets (positions) within a data stream.
-     *
+     * 
      * FIXME:
      * gsf_off_t is really supposed to be the widest type off_t can be configured
      * to on the platform
      * @gir-type Alias
      */
-    type gsf_off_t = bigint | number;
+    type gsf_off_t = (bigint | number);
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

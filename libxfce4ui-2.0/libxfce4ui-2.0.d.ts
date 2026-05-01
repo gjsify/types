@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,9 +27,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Libxfce4ui {
+
     /**
      * Libxfce4ui-2.0
      */
+
 
     /**
      * List of item types which are supported by the {@link Libxfce4ui.GtkActionEntry}.
@@ -53,6 +56,7 @@ export namespace Libxfce4ui {
          */
         RADIO_MENU_ITEM,
     }
+
 
     /**
      * Some sample priority values for use with `xfce_sm_client_set_priority()`.
@@ -89,6 +93,7 @@ export namespace Libxfce4ui {
         LOWEST,
     }
 
+
     /**
      * An enumeration describing how the session manager should restart
      * the application.
@@ -107,6 +112,7 @@ export namespace Libxfce4ui {
          */
         IMMEDIATELY,
     }
+
 
     /**
      * Hints to the session manager what kind of shutdown the session manager
@@ -132,6 +138,7 @@ export namespace Libxfce4ui {
         REBOOT,
     }
 
+
     /**
      * Error codes returned by XfceSmCLient functions.
      * @gir-type Enum
@@ -147,26 +154,29 @@ export namespace Libxfce4ui {
         INVALID_CLIENT,
     }
 
+
     /**
      * This allows you to easily create mixed buttons in a dialog.
      * param1 is used for the stock_id, param2 for the label and
      * param3 for the response_id. See also `xfce_gtk_button_new_mixed()`.
      */
     const BUTTON_TYPE_MIXED: string;
+
     /**
      * Creates a button with the {@link GdkPixbuf.Pixbuf} as button icon.
      * param1 is the {@link GdkPixbuf.Pixbuf}, param2 for the label and
      * param3 for the response_id.
      */
     const BUTTON_TYPE_PIXBUF: string;
+
     /**
      * Runs a dialog to ask the user whether they want to close the whole window,
      * close the current tab, or cancel.
-     *
+     * 
      * If `num_tabs` is non-negative, the message to the user will state that there
      * are `num_tabs` open tabs. If `num_tabs` is negative, then the message to the
      * user will state simply that there are "multiple open tabs".
-     *
+     * 
      * If `show_confirm_box` is `true` a checkbox is added to the dialog to allow
      * the user to set whether they wish to see this dialog in future. The initial
      * state of the checkbox is determined by the value stored at `confirm_box_checked`
@@ -180,19 +190,15 @@ export namespace Libxfce4ui {
      * @returns #GTK_RESPONSE_CANCEL if cancelled, #GTK_RESPONSE_YES if the user wants to close the window, #GTK_RESPONSE_CLOSE if the user wants to close the tab, and #GTK_RESPONSE_NONE for an error.
      * @since 4.16
      */
-    function dialog_confirm_close_tabs(
-        parent: Gtk.Window | null,
-        num_tabs: number,
-        show_confirm_box: boolean,
-        confirm_box_checked: boolean | null,
-    ): number;
+    function dialog_confirm_close_tabs(parent: (Gtk.Window | null), num_tabs: number, show_confirm_box: boolean, confirm_box_checked: (boolean | null)): number;
+
     /**
      * Asks the user to visit the online documentation. If confirmed, it will open
      * the webbrowser and redirect the user to the correct location.
-     *
+     * 
      * Appart from the `component`, `page` and `offset` the following information
      * is also send to the server: user language and the `xfce_version_string()`.
-     *
+     * 
      * See also: `xfce_dialog_show_help_with_version()`.
      * @param parent transient parent of the dialog, or `null`.
      * @param component name of the component opening the help page or `null`. If the              value is `null` the target will be the main page of the              documentation website.
@@ -200,20 +206,16 @@ export namespace Libxfce4ui {
      * @param offset anchor offset in `page` or `null`.
      * @since 4.10
      */
-    function dialog_show_help(
-        parent: Gtk.Window | null,
-        component: string | null,
-        page: string | null,
-        offset: string | null,
-    ): void;
+    function dialog_show_help(parent: (Gtk.Window | null), component: (string | null), page: (string | null), offset: (string | null)): void;
+
     /**
      * Asks the user to visit the online documentation. If confirmed, it will open
      * the webbrowser and redirect the user to the correct location.
-     *
+     * 
      * Apart from the `component`, `page` and `offset` the following information
      * is also sent to the server: user language and the `xfce_version_string()`
      * or `version` if set.
-     *
+     * 
      * See also: `xfce_dialog_show_help()`.
      * @param parent transient parent of the dialog, or `null`.
      * @param component name of the component opening the help page or `null`. If the              value is `null` the target will be the main page of the              documentation website.
@@ -222,13 +224,8 @@ export namespace Libxfce4ui {
      * @param version alternative version, or `null` to use `xfce_version_string()`.
      * @since 4.12
      */
-    function dialog_show_help_with_version(
-        parent: Gtk.Window | null,
-        component: string | null,
-        page: string | null,
-        offset: string | null,
-        version: string | null,
-    ): void;
+    function dialog_show_help_with_version(parent: (Gtk.Window | null), component: (string | null), page: (string | null), offset: (string | null), version: (string | null)): void;
+
     /**
      * Similar to gdk_seat_grab but tries to grab the seat five times with 100ms
      * between each attempt.
@@ -239,12 +236,8 @@ export namespace Libxfce4ui {
      * @returns `true` on success, `false` otherwise.
      * @since 4.18
      */
-    function gdk_device_grab(
-        seat: Gdk.Seat,
-        window: Gdk.Window,
-        capabilities: Gdk.SeatCapabilities,
-        cursor: Gdk.Cursor | null,
-    ): boolean;
+    function gdk_device_grab(seat: Gdk.Seat, window: Gdk.Window, capabilities: Gdk.SeatCapabilities, cursor: (Gdk.Cursor | null)): boolean;
+
     /**
      * Returns the currently active {@link Gdk.Screen}, that is, the screen which
      * currently contains the pointer. If no active screen was found, the
@@ -252,6 +245,7 @@ export namespace Libxfce4ui {
      * @returns the currently active {@link Gdk.Screen}.
      */
     function gdk_screen_get_active(): [Gdk.Screen, number];
+
     /**
      * Returns the width and height of the default {@link Gdk.Screen}.
      * This is a replacement for gdk_screen_width/gdk_screen_height.
@@ -259,6 +253,7 @@ export namespace Libxfce4ui {
      * @since 4.14
      */
     function gdk_screen_get_geometry(): Gdk.Rectangle;
+
     /**
      * This function will first look for a desktop file of `name` and if successful
      * use the value of the "Icon" property to return a {@link Gio.Icon}.
@@ -270,6 +265,7 @@ export namespace Libxfce4ui {
      * @since 4.16
      */
     function gicon_from_name(name: string): Gio.Icon;
+
     /**
      * This method will connect each accel_path from the {@link Libxfce4ui.GtkActionEntry} in action_entries
      * to its related callback. If the accelerator is pressed, the related callback will be called.
@@ -279,12 +275,8 @@ export namespace Libxfce4ui {
      * @param callback_data data which should be passed to the callback of each {@link Libxfce4ui.GtkActionEntry}
      * @since 4.16
      */
-    function gtk_accel_group_connect_action_entries(
-        accel_group: Gtk.AccelGroup,
-        action_entries: GtkActionEntry,
-        n_action_entries: number,
-        callback_data: any | null,
-    ): void;
+    function gtk_accel_group_connect_action_entries(accel_group: Gtk.AccelGroup, action_entries: GtkActionEntry, n_action_entries: number, callback_data: (any | null)): void;
+
     /**
      * This method will disconnect each accel_path from the {@link Libxfce4ui.GtkActionEntry} in action_entries.
      * @param accel_group the {@link Gtk.AccelGroup} to connect to
@@ -292,11 +284,8 @@ export namespace Libxfce4ui {
      * @param n_action_entries size of the action_entries array
      * @since 4.16
      */
-    function gtk_accel_group_disconnect_action_entries(
-        accel_group: Gtk.AccelGroup,
-        action_entries: GtkActionEntry,
-        n_action_entries: number,
-    ): void;
+    function gtk_accel_group_disconnect_action_entries(accel_group: Gtk.AccelGroup, action_entries: GtkActionEntry, n_action_entries: number): void;
+
     /**
      * Adds the default key of each ActionEntry to the accel_map, if no key was defined for the related accel_path so far.
      * @param action_entries array of action_entries to be added
@@ -304,10 +293,11 @@ export namespace Libxfce4ui {
      * @since 4.16
      */
     function gtk_accel_map_add_entries(action_entries: GtkActionEntry, n_action_entries: number): void;
+
     /**
      * Creates a new {@link Gtk.Button} containing a mnemonic label and a stock icon.
      * The `stock_id` could be something like #GTK_STOCK_OK or #GTK_STOCK_APPLY.
-     *
+     * 
      * When the `stock_id` is `null` a normal mnemonic button will be created,
      * when `label` is `null` a stock button will be created. This behaviour
      * is added for `xfce_message_dialog_new()`.
@@ -315,7 +305,8 @@ export namespace Libxfce4ui {
      * @param label the text of the button, with an underscore                        in front of the mnemonic character.
      * @returns the newly created {@link Gtk.Button} widget.
      */
-    function gtk_button_new_mixed(stock_id: string | null, label: string | null): Gtk.Widget;
+    function gtk_button_new_mixed(stock_id: (string | null), label: (string | null)): Gtk.Widget;
+
     /**
      * Convenience method to create a {@link Gtk.CheckMenuItem} and preconfigure it with the passed parameters.
      * @param label_text Label to use for the {@link Gtk.CheckMenuItem}
@@ -328,15 +319,8 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.CheckMenuItem}.
      * @since 4.16
      */
-    function gtk_check_menu_item_new(
-        label_text: string,
-        tooltip_text: string | null,
-        accel_path: string | null,
-        callback: GObject.Callback | null,
-        callback_param: GObject.Object | null,
-        active: boolean,
-        menu_to_append_item: Gtk.MenuShell | null,
-    ): Gtk.Widget;
+    function gtk_check_menu_item_new(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), active: boolean, menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+
     /**
      * Activates the callback function of the {@link Libxfce4ui.GtkActionEntry} that corresponds to `accel_path`. If no such action
      * exists in `entries`, then nothing happens.
@@ -346,24 +330,21 @@ export namespace Libxfce4ui {
      * @param entry_count the number of entries in `entries`
      * @returns a boolean that is TRUE if the action was found, otherwise it is FALSE
      */
-    function gtk_execute_tab_accel(
-        accel_path: string,
-        data: any | null,
-        entries: GtkActionEntry,
-        entry_count: bigint | number,
-    ): boolean;
+    function gtk_execute_tab_accel(accel_path: string, data: (any | null), entries: GtkActionEntry, entry_count: (bigint | number)): boolean;
+
     /**
      * Creates an Xfce-styled frame. The frame is a {@link Gtk.Frame}, without
      * outline and an optional bolded text label.  The contents of the
      * frame are indented on the left.
      * The return value is the {@link Gtk.Frame} itself.  The `container_return` is
      * a {@link Gtk.Alignment} widget to which children of the frame should be added.
-     *
+     * 
      * See also: `xfce_gtk_frame_box_new_with_content()`.
      * @param label the text to use as the label of the frame.
      * @returns the newly created {@link Gtk.Frame} widget.
      */
     function gtk_frame_box_new(label: string): [Gtk.Widget, Gtk.Widget | null];
+
     /**
      * Creates a widget with `xfce_gtk_frame_box_new()` and adds the
      * `content` {@link Gtk.Widget} to the frame.
@@ -372,6 +353,7 @@ export namespace Libxfce4ui {
      * @returns the newly created {@link Gtk.Frame} widget.
      */
     function gtk_frame_box_new_with_content(label: string, content: Gtk.Widget): Gtk.Widget;
+
     /**
      * Convenience method to find a specific action_entry from an array of action_entries
      * @param action_entries array of action_entries to be searched
@@ -380,11 +362,8 @@ export namespace Libxfce4ui {
      * @returns The matching {@link Libxfce4ui.GtkActionEntry} or NULL if not found
      * @since 4.16
      */
-    function gtk_get_action_entry_by_id(
-        action_entries: GtkActionEntry,
-        n_action_entries: number,
-        id: number,
-    ): GtkActionEntry | null;
+    function gtk_get_action_entry_by_id(action_entries: GtkActionEntry, n_action_entries: number, id: number): (GtkActionEntry | null);
+
     /**
      * The Tab key is used to navigate the interface by GTK+ so we need to handle shortcuts with the Tab accelerator manually.
      * Tab sometimes becomes ISO_Left_Tab (e.g. in Ctrl+Shift+Tab) so check both here.
@@ -395,13 +374,8 @@ export namespace Libxfce4ui {
      * @param entry_count the number of entries in `entries`
      * @returns a boolean that is GDK_EVENT_STOP (TRUE) if the event was handled, otherwise it is GDK_EVENT_PROPAGATE (FALSE)
      */
-    function gtk_handle_tab_accels(
-        key_event: Gdk.EventKey,
-        accel_group: Gtk.AccelGroup,
-        data: any | null,
-        entries: GtkActionEntry,
-        entry_count: bigint | number,
-    ): boolean;
+    function gtk_handle_tab_accels(key_event: Gdk.EventKey, accel_group: Gtk.AccelGroup, data: (any | null), entries: GtkActionEntry, entry_count: (bigint | number)): boolean;
+
     /**
      * Convenience method to create a deprecated {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.
      * In order to prevent G_GNUC_BEGIN_IGNORE_DEPRECATIONS in all xfce projects, this method can be used
@@ -415,15 +389,8 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.ImageMenuItem}.
      * @since 4.16
      */
-    function gtk_image_menu_item_new(
-        label_text: string,
-        tooltip_text: string | null,
-        accel_path: string | null,
-        callback: GObject.Callback | null,
-        callback_param: GObject.Object | null,
-        image: Gtk.Widget | null,
-        menu_to_append_item: Gtk.MenuShell | null,
-    ): Gtk.Widget;
+    function gtk_image_menu_item_new(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), image: (Gtk.Widget | null), menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+
     /**
      * Convenience method to create a {@link Gtk.ImageMenuItem} and preconfigure it with the passed parameters.
      * @param label_text Label to use for the {@link Gtk.ImageMenuItem}
@@ -436,15 +403,8 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.ImageMenuItem}.
      * @since 4.16
      */
-    function gtk_image_menu_item_new_from_icon_name(
-        label_text: string,
-        tooltip_text: string | null,
-        accel_path: string | null,
-        callback: GObject.Callback | null,
-        callback_param: GObject.Object | null,
-        icon_name: string | null,
-        menu_to_append_item: Gtk.MenuShell | null,
-    ): Gtk.Widget;
+    function gtk_image_menu_item_new_from_icon_name(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), icon_name: (string | null), menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+
     /**
      * Sets the `ATK_RELATION_LABEL_FOR` relation on `label` for `widget`, which means
      * accessiblity tools will identify `label` as descriptive item for the specified
@@ -453,12 +413,14 @@ export namespace Libxfce4ui {
      * @param widget a {@link Gtk.Widget}.
      */
     function gtk_label_set_a11y_relation(label: Gtk.Label, widget: Gtk.Widget): void;
+
     /**
      * Convenience method do add separators, used to prevent code duplication
      * @param menu {@link Gtk.MenuShell} on which the separator should be appended
      * @since 4.16
      */
     function gtk_menu_append_separator(menu: Gtk.MenuShell): void;
+
     /**
      * Convenience method do add separators, used to prevent code duplication
      * @param menu {@link Gtk.MenuShell} on which the separator should be appended
@@ -466,6 +428,7 @@ export namespace Libxfce4ui {
      * @deprecated since 4.19.1: Use `xfce_gtk_menu_append_separator()` instead.
      */
     function gtk_menu_append_seperator(menu: Gtk.MenuShell): void;
+
     /**
      * Convenience method to create a {@link Libxfce4ui.GtkMenuItem} and preconfigure it with the passed parameters.
      * @param label_text Label to use for the {@link Libxfce4ui.GtkMenuItem}
@@ -477,14 +440,8 @@ export namespace Libxfce4ui {
      * @returns A new {@link Libxfce4ui.GtkMenuItem}.
      * @since 4.16
      */
-    function gtk_menu_item_new(
-        label_text: string,
-        tooltip_text: string | null,
-        accel_path: string | null,
-        callback: GObject.Callback | null,
-        callback_param: GObject.Object | null,
-        menu_to_append_item: Gtk.MenuShell | null,
-    ): Gtk.Widget;
+    function gtk_menu_item_new(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+
     /**
      * Method to create a menu item from the passed action entry
      * @param action_entry Label to use for the {@link Gtk.CheckMenuItem}
@@ -493,36 +450,34 @@ export namespace Libxfce4ui {
      * @returns A new {@link Libxfce4ui.GtkMenuItem} or NULL
      * @since 4.16
      */
-    function gtk_menu_item_new_from_action_entry(
-        action_entry: GtkActionEntry,
-        callback_param: GObject.Object | null,
-        menu_to_append_item: Gtk.MenuShell | null,
-    ): Gtk.Widget | null;
+    function gtk_menu_item_new_from_action_entry(action_entry: GtkActionEntry, callback_param: (GObject.Object | null), menu_to_append_item: (Gtk.MenuShell | null)): (Gtk.Widget | null);
+
     /**
      * Use the passed accel_path show the related {@link Gtk.AccelLabel} with the correct accelerator on the item.
      * @param menu_item {@link Libxfce4ui.GtkMenuItem} on which the accel label is to set
      * @param accel_path Unique path, used to identify the accelerator, or NULL to show no accelerator
      * @since 4.16
      */
-    function gtk_menu_item_set_accel_label(menu_item: Gtk.MenuItem, accel_path: string | null): void;
+    function gtk_menu_item_set_accel_label(menu_item: Gtk.MenuItem, accel_path: (string | null)): void;
+
     /**
      * Attempts to pop up a {@link Gtk.Menu} for a short duration. Unlike the original
      * `gtk_menu_popup()`, this function will verify that the menu has been mapped
      * or will keep trying for up to 250ms. It will also return a value indicating
      * whether the menu was eventually mapped or not. Following is an excerpt from
      * the GTK+ Documentation on {@link Gtk.Menu}.
-     *
+     * 
      * Displays a menu and makes it available for selection.
-     *
+     * 
      * Applications can use this function to display context-sensitive menus, and will
      * typically supply `null` for the `parent_menu_shell`, `parent_menu_item`, `func` and
      * `data` parameters. The default menu positioning function will position the menu
      * at the current mouse cursor position.
-     *
+     * 
      * The `button` parameter should be the mouse button pressed to initiate the menu
      * popup. If the menu popup was initiated by something other than a mouse button
      * press, such as a mouse button release or a keypress, button should be 0.
-     *
+     * 
      * The `activate_time` parameter is used to conflict-resolve initiation of concurrent
      * requests for mouse/keyboard grab requests. To function properly, this needs to
      * be the timestamp of the user event (such as a mouse click or key press) that
@@ -537,14 +492,8 @@ export namespace Libxfce4ui {
      * @returns `true` if the menu could be mapped, `false` otherwise.
      * @since 4.14
      */
-    function gtk_menu_popup_until_mapped(
-        menu: Gtk.Menu,
-        parent_menu_shell: Gtk.Widget | null,
-        parent_menu_item: Gtk.Widget | null,
-        func: Gtk.MenuPositionFunc | null,
-        button: number,
-        activate_time: number,
-    ): boolean;
+    function gtk_menu_popup_until_mapped(menu: Gtk.Menu, parent_menu_shell: (Gtk.Widget | null), parent_menu_item: (Gtk.Widget | null), func: (Gtk.MenuPositionFunc | null), button: number, activate_time: number): boolean;
+
     /**
      * Convenience method to create a {@link Gtk.CheckMenuItem} and preconfigure it with the passed parameters.
      * In order to simplify usage, a {@link Gtk.CheckMenuItem} is created and drawn as radio-item
@@ -558,15 +507,8 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.CheckMenuItem}.
      * @since 4.16
      */
-    function gtk_radio_menu_item_new(
-        label_text: string,
-        tooltip_text: string | null,
-        accel_path: string | null,
-        callback: GObject.Callback | null,
-        callback_param: GObject.Object | null,
-        active: boolean,
-        menu_to_append_item: Gtk.MenuShell | null,
-    ): Gtk.Widget;
+    function gtk_radio_menu_item_new(label_text: string, tooltip_text: (string | null), accel_path: (string | null), callback: (GObject.Callback | null), callback_param: (GObject.Object | null), active: boolean, menu_to_append_item: (Gtk.MenuShell | null)): Gtk.Widget;
+
     /**
      * Method to create a toggle menu item from the passed action entry
      * @param action_entry Label to use for the {@link Gtk.CheckMenuItem}
@@ -576,12 +518,8 @@ export namespace Libxfce4ui {
      * @returns A new {@link Libxfce4ui.GtkMenuItem} or NULL
      * @since 4.16
      */
-    function gtk_toggle_menu_item_new_from_action_entry(
-        action_entry: GtkActionEntry,
-        callback_param: GObject.Object | null,
-        active: boolean,
-        menu_to_append_item: Gtk.MenuShell | null,
-    ): Gtk.Widget | null;
+    function gtk_toggle_menu_item_new_from_action_entry(action_entry: GtkActionEntry, callback_param: (GObject.Object | null), active: boolean, menu_to_append_item: (Gtk.MenuShell | null)): (Gtk.Widget | null);
+
     /**
      * Method to create a toolbar toggle-button from the passed action entry.
      * @param action_entry Label to use for the {@link Gtk.ToggleToolButton}
@@ -591,12 +529,8 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.ToggleToolButton}
      * @since 4.17.6
      */
-    function gtk_toggle_tool_button_new_from_action_entry(
-        action_entry: GtkActionEntry,
-        callback_param: GObject.Object | null,
-        active: boolean,
-        toolbar_to_append_item: Gtk.Toolbar,
-    ): Gtk.Widget;
+    function gtk_toggle_tool_button_new_from_action_entry(action_entry: GtkActionEntry, callback_param: (GObject.Object | null), active: boolean, toolbar_to_append_item: Gtk.Toolbar): Gtk.Widget;
+
     /**
      * Method to create a toolbar button from the passed action entry.
      * @param action_entry Label to use for the {@link Gtk.ToolButton}
@@ -605,11 +539,8 @@ export namespace Libxfce4ui {
      * @returns A new {@link Gtk.ToolButton}
      * @since 4.16
      */
-    function gtk_tool_button_new_from_action_entry(
-        action_entry: GtkActionEntry,
-        callback_param: GObject.Object | null,
-        toolbar_to_append_item: Gtk.Toolbar,
-    ): Gtk.Widget;
+    function gtk_tool_button_new_from_action_entry(action_entry: GtkActionEntry, callback_param: (GObject.Object | null), toolbar_to_append_item: Gtk.Toolbar): Gtk.Widget;
+
     /**
      * Convenience method to translate the label text and tooltip text of an array of action_entries
      * @param action_entries array of action_entries to be translated
@@ -617,18 +548,20 @@ export namespace Libxfce4ui {
      * @since 4.16
      */
     function gtk_translate_action_entries(action_entries: GtkActionEntry, n_action_entries: number): void;
+
     /**
      * Determines the screen that contains the pointer and centers the
      * `window` on it. If it failes to determine the current pointer position,
      * `window` is centered on the default screen.
-     *
+     * 
      * This function only works properly if you call it before realizing the
      * window and you haven't set a fixed window position using `gtk_window_move()`.
-     *
+     * 
      * See also: `xfce_gdk_screen_get_active()`.
      * @param window the {@link Gtk.Window} to center.
      */
     function gtk_window_center_on_active_screen(window: Gtk.Window): void;
+
     /**
      * This function can be called to determine if a {@link Gdk.Window} is using client-side decorations
      * which is indicated by the _GTK_FRAME_EXTENTS X11 atom. It furthermore sets a pointer
@@ -639,12 +572,14 @@ export namespace Libxfce4ui {
      * @since 4.16
      */
     function has_gtk_frame_extents(window: Gdk.Window, extents: Gtk.Border): boolean;
+
     /**
      * @param desktop_id Name of the desktop file.
      * @returns `null` on error, else the string value of the "Icon" property.
      * @since 4.16
      */
     function icon_name_from_desktop_id(desktop_id: string): string;
+
     /**
      * Like `gdk_spawn_on_screen()` (GDK 2), but also supports startup notification
      * (if Libxfce4ui was built with startup notification support).
@@ -660,17 +595,8 @@ export namespace Libxfce4ui {
      * @returns `true` on success, `false` if `error` is set.
      * @since 4.16
      */
-    function spawn(
-        screen: Gdk.Screen | null,
-        working_directory: string | null,
-        argv: string,
-        envp: string | null,
-        flags: GLib.SpawnFlags,
-        startup_notify: boolean,
-        startup_timestamp: number,
-        startup_icon_name: string | null,
-        child_process: boolean,
-    ): boolean;
+    function spawn(screen: (Gdk.Screen | null), working_directory: (string | null), argv: string, envp: (string | null), flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: (string | null), child_process: boolean): boolean;
+
     /**
      * Executes the given `command_line` and returns `true` if the
      * command terminated successfully. Else, the `error` is set
@@ -683,13 +609,8 @@ export namespace Libxfce4ui {
      * @returns `true` if the `command_line` was executed          successfully, `false` if `error` is set.
      * @since 4.16
      */
-    function spawn_command_line(
-        screen: Gdk.Screen | null,
-        command_line: string,
-        in_terminal: boolean,
-        startup_notify: boolean,
-        child_process: boolean,
-    ): boolean;
+    function spawn_command_line(screen: (Gdk.Screen | null), command_line: string, in_terminal: boolean, startup_notify: boolean, child_process: boolean): boolean;
+
     /**
      * Executes the given `command_line` and returns `true` if the
      * command terminated successfully. Else, the `error` is set
@@ -701,12 +622,8 @@ export namespace Libxfce4ui {
      * @returns `true` if the `command_line` was executed          successfully, `false` if `error` is set.
      * @deprecated since 4.16: Use `xfce_spawn_command_line` instead.
      */
-    function spawn_command_line_on_screen(
-        screen: Gdk.Screen | null,
-        command_line: string,
-        in_terminal: boolean,
-        startup_notify: boolean,
-    ): boolean;
+    function spawn_command_line_on_screen(screen: (Gdk.Screen | null), command_line: string, in_terminal: boolean, startup_notify: boolean): boolean;
+
     /**
      * Like `gdk_spawn_on_screen()` (GDK 2), but also supports startup notification
      * (if Libxfce4ui was built with startup notification support).
@@ -721,22 +638,14 @@ export namespace Libxfce4ui {
      * @returns `true` on success, `false` if `error` is set.
      * @deprecated since 4.16: Use `xfce_spawn` instead.
      */
-    function spawn_on_screen(
-        screen: Gdk.Screen | null,
-        working_directory: string | null,
-        argv: string,
-        envp: string | null,
-        flags: GLib.SpawnFlags,
-        startup_notify: boolean,
-        startup_timestamp: number,
-        startup_icon_name: string | null,
-    ): boolean;
+    function spawn_on_screen(screen: (Gdk.Screen | null), working_directory: (string | null), argv: string, envp: (string | null), flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: (string | null)): boolean;
+
     /**
      * Like `xfce_spawn_on_screen()`, but allows to attach a closure to watch the
      * child's exit status. This because only one `g_child_watch_add()` is allowed on
      * Unix (per PID) and this is already internally needed for a proper
      * startup notification implementation.
-     *
+     * 
      * <example>
      * <title>Spawning with a child watch</title>
      * <programlisting>
@@ -746,12 +655,12 @@ export namespace Libxfce4ui {
      * {
      *   g_message ("Child exit status is %d", status);
      * }
-     *
+     * 
      * static void
      * spawn_something (void)
      * {
      *   GClosure *child_watch;
-     *
+     * 
      *   child_watch = g_cclosure_new_swap (G_CALLBACK (child_watch_callback),
      *                                      object, NULL);
      *   xfce_spawn_on_screen_with_child_watch (...,
@@ -771,17 +680,8 @@ export namespace Libxfce4ui {
      * @param child_watch_closure closure that is triggered when the child exists                        or `null`.
      * @returns `true` on success, `false` if `error` is set.
      */
-    function spawn_on_screen_with_child_watch(
-        screen: Gdk.Screen | null,
-        working_directory: string | null,
-        argv: string,
-        envp: string | null,
-        flags: GLib.SpawnFlags,
-        startup_notify: boolean,
-        startup_timestamp: number,
-        startup_icon_name: string | null,
-        child_watch_closure: GObject.Closure | null,
-    ): boolean;
+    function spawn_on_screen_with_child_watch(screen: (Gdk.Screen | null), working_directory: (string | null), argv: string, envp: (string | null), flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: (string | null), child_watch_closure: (GObject.Closure | null)): boolean;
+
     /**
      * Moves a widget from one GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
@@ -791,13 +691,16 @@ export namespace Libxfce4ui {
      * @since 4.14
      */
     function widget_reparent(widget: Gtk.Widget, new_parent: Gtk.Widget): boolean;
+
     namespace ClipboardManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -816,34 +719,26 @@ export namespace Libxfce4ui {
         $signals: ClipboardManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ClipboardManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](replace: boolean): ClipboardManager;
+        static ["new"](replace: boolean): ClipboardManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ClipboardManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ClipboardManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ClipboardManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ClipboardManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClipboardManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ClipboardManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ClipboardManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ClipboardManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClipboardManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace FilenameInput {
         // Signal signatures
@@ -856,7 +751,7 @@ export namespace Libxfce4ui {
              * @since 4.16
              * @run-last
              */
-            'text-invalid': () => void;
+            "text-invalid": () => void;
             /**
              * Signals that the current text is a valid filename. This signal is
              * emitted whenever the user changes the text and the result is a valid
@@ -865,65 +760,59 @@ export namespace Libxfce4ui {
              * @since 4.16
              * @run-last
              */
-            'text-valid': () => void;
-            'notify::max-text-length': (pspec: GObject.ParamSpec) => void;
-            'notify::original-filename': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "text-valid": () => void;
+            "notify::max-text-length": (pspec: GObject.ParamSpec) => void;
+            "notify::original-filename": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             max_text_length: number;
             maxTextLength: number;
             original_filename: string;
@@ -939,7 +828,6 @@ export namespace Libxfce4ui {
         static $gtype: GObject.GType<FilenameInput>;
 
         // Properties
-
         /**
          * The maximum permitted length of a filename. A value of -1
          * indicates no maximum length.
@@ -948,6 +836,7 @@ export namespace Libxfce4ui {
          * @default -1
          */
         set max_text_length(val: number);
+
         /**
          * The maximum permitted length of a filename. A value of -1
          * indicates no maximum length.
@@ -956,6 +845,7 @@ export namespace Libxfce4ui {
          * @default -1
          */
         set maxTextLength(val: number);
+
         /**
          * The original name of the file, to be used as the initial text
          * displayed in the GtkEntry. A NULL value indicates no original
@@ -965,6 +855,7 @@ export namespace Libxfce4ui {
          * @default null
          */
         set original_filename(val: string);
+
         /**
          * The original name of the file, to be used as the initial text
          * displayed in the GtkEntry. A NULL value indicates no original
@@ -985,34 +876,24 @@ export namespace Libxfce4ui {
         $signals: FilenameInput.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FilenameInput.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FilenameInput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilenameInput.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FilenameInput.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FilenameInput.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FilenameInput.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FilenameInput.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FilenameInput.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FilenameInput.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FilenameInput.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FilenameInput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FilenameInput.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FilenameInput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * A convenience function to be connected as a callback for the  "text-invalid" signal
          * (for example, using g_connect_swapped) for the simple case where the desired effect
@@ -1020,6 +901,7 @@ export namespace Libxfce4ui {
          * @param widget a {@link Gtk.Widget}
          */
         static desensitise_widget(widget: Gtk.Widget): void;
+
         /**
          * A convenience function to be connected as a callback for the  "text-valid" signal
          * (for example, using g_connect_swapped) for the simple case where the desired effect
@@ -1029,7 +911,6 @@ export namespace Libxfce4ui {
         static sensitise_widget(widget: Gtk.Widget): void;
 
         // Methods
-
         /**
          * Forces a check of the current input text even when it has not changed.
          * This is useful to force the appropriate signal to be sent to indicate
@@ -1038,35 +919,41 @@ export namespace Libxfce4ui {
          * when they are first created.
          */
         check(): void;
+
         /**
          * Gets the {@link Gtk.Entry} associated to filename_input
          * @returns A {@link Gtk.Entry}
          */
         get_entry(): Gtk.Entry;
+
         /**
          * Gets the current text of the widget.
          * @returns the string representing the current text
          */
         get_text(): string;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
+
 
     namespace SMClient {
         // Signal signatures
@@ -1089,14 +976,14 @@ export namespace Libxfce4ui {
              * @signal
              * @run-last
              */
-            'quit-cancelled': () => void;
+            "quit-cancelled": () => void;
             /**
              * Signals the client that the session manager will soon want the
              * application to quit, perhaps as a part of ending the session
              * (but this should not be assumed).  The application can take
              * this opportunity to prompt the user to save any unsaved work
              * to disk.
-             *
+             * 
              * This signal also expects a return value from the handler.  If the
              * application wishes to cancel the quit request (perhaps because the
              * user selected "Cancel" in prompts to save unsaved work), it should
@@ -1105,24 +992,24 @@ export namespace Libxfce4ui {
              * @signal
              * @run-last
              */
-            'quit-requested': () => boolean | void;
+            "quit-requested": () => (boolean | void);
             /**
              * Signals the client that it should save a copy of its current state
              * such that it could be restarted later in exactly the same state as
              * it is at the time of signal emission.
-             *
+             * 
              * If the state is simple enough to be encoded in the application's
              * command line, `xfce_sm_client_set_restart_command()` can be used
              * to set that command line.  For more complex state data,
              * `xfce_sm_client_get_state_file()` should be used.
-             *
+             * 
              * The application should attempt to save its state as quickly as
              * possible, and MUST NOT interact with the user as a part of saving
              * state.
              * @signal
              * @run-last
              */
-            'save-state': () => void;
+            "save-state": () => void;
             /**
              * Allows the application to save extra state information after all
              * other applications in the session have had a chance to save their
@@ -1132,19 +1019,18 @@ export namespace Libxfce4ui {
              * @signal
              * @run-last
              */
-            'save-state-extended': () => void;
-            'notify::argc': (pspec: GObject.ParamSpec) => void;
-            'notify::argv': (pspec: GObject.ParamSpec) => void;
-            'notify::client-id': (pspec: GObject.ParamSpec) => void;
-            'notify::current-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::desktop-file': (pspec: GObject.ParamSpec) => void;
-            'notify::priority': (pspec: GObject.ParamSpec) => void;
-            'notify::restart-command': (pspec: GObject.ParamSpec) => void;
-            'notify::resumed': (pspec: GObject.ParamSpec) => void;
+            "save-state-extended": () => void;
+            "notify::argc": (pspec: GObject.ParamSpec) => void;
+            "notify::argv": (pspec: GObject.ParamSpec) => void;
+            "notify::client-id": (pspec: GObject.ParamSpec) => void;
+            "notify::current-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::desktop-file": (pspec: GObject.ParamSpec) => void;
+            "notify::priority": (pspec: GObject.ParamSpec) => void;
+            "notify::restart-command": (pspec: GObject.ParamSpec) => void;
+            "notify::resumed": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             argc: number;
             argv: string[];
@@ -1169,55 +1055,65 @@ export namespace Libxfce4ui {
         static $gtype: GObject.GType<SMClient>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 0
          */
         set argc(val: number);
+
         /**
          * @construct-only
          */
         set argv(val: string[]);
+
         /**
          * @construct-only
          * @default null
          */
         get client_id(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get clientId(): string;
+
         /**
          * @default null
          */
         get current_directory(): string;
         set current_directory(val: string);
+
         /**
          * @default null
          */
         get currentDirectory(): string;
         set currentDirectory(val: string);
+
         /**
          * @default null
          */
         get desktop_file(): string;
         set desktop_file(val: string);
+
         /**
          * @default null
          */
         get desktopFile(): string;
         set desktopFile(val: string);
+
         /**
          * @default 50
          */
         get priority(): number;
         set priority(val: number);
+
         get restart_command(): string[];
         set restart_command(val: string[]);
+
         get restartCommand(): string[];
         set restartCommand(val: string[]);
+
         /**
          * @read-only
          * @default false
@@ -1234,74 +1130,53 @@ export namespace Libxfce4ui {
         $signals: SMClient.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SMClient.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         static get(): SMClient;
 
-        static get_full(
-            restart_style: SMClientRestartStyle,
-            priority: number,
-            resumed_client_id: string,
-            current_directory: string,
-            restart_command: string,
-            desktop_file: string,
-        ): SMClient;
+        static get_full(restart_style: SMClientRestartStyle, priority: number, resumed_client_id: string, current_directory: string, restart_command: string, desktop_file: string): SMClient;
 
-        static get_with_argv(
-            argc: number,
-            argv: string,
-            restart_style: SMClientRestartStyle,
-            priority: number,
-        ): SMClient;
+        static get_with_argv(argc: number, argv: string, restart_style: SMClientRestartStyle, priority: number): SMClient;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SMClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SMClient.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SMClient.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SMClient.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SMClient.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SMClient.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SMClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SMClient.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SMClient.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SMClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SMClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SMClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the XfceSmClient Error Quark.
          */
         static error_quark(): GLib.Quark;
+
         /**
          * Constructs a {@link GLib.OptionGroup} suitable for use with Glib's
          * command-line option parser.
-         *
+         * 
          * This function is a bit sneaky in that it will make a copy of
          * the program's argc and argv <emphasis>before</emphasis> GTK+ etc.
          * has a chance to mess around with it, so {@link Libxfce4ui.SMClient} can later
          * construct an accurate restart command.  Instead of calling
          * `gtk_init()` or `gtk_init_with_args()`, instead you'd do something
          * like:
-         *
+         * 
          * <informalexample><programlisting>
          * GOptionContext *context = g_option_context_new("");
          * g_option_context_add_group(context, gtk_get_option_group(TRUE));
          * g_option_context_add_group(context, xfce_sm_client_get_option_group(argc, argv);
          * g_option_context_parse(context, &argc, &argv, NULL);
          * </programlisting></informalexample>
-         *
+         * 
          * Error checking is omitted here for brevity, and of course you could
          * add your app's own options with `g_option_context_add_main_entries()`
          * or similar.
@@ -1311,19 +1186,20 @@ export namespace Libxfce4ui {
         static get_option_group(argc: number, argv: string): GLib.OptionGroup;
 
         // Methods
-
         /**
          * Attempts to connect to the session manager.
          * @returns `true` on success, `false` otherwise.  If an error          occurs, `error` will be set.
          */
         connect(): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
         connect(...args: never[]): any;
+
         /**
          * Disconnects the application from the session manager.
-         *
+         * 
          * <note><para>
          * This may not remove the application from the saved
          * session (if any) if the user later does not choose to save
@@ -1331,12 +1207,13 @@ export namespace Libxfce4ui {
          * </para></note>
          */
         disconnect(): void;
+
         /**
          * Retrieves the session client's unique ID.  This ID can
          * be used to construct a filename used to restore the
          * application's state.  Note that this value is only
          * guaranteed to be valid if connected to the session manager.
-         *
+         * 
          * <note><para>
          * Instead of constructing a state filename, it is
          * recommended to use `xfce_sm_client_get_state_file()`.
@@ -1344,57 +1221,64 @@ export namespace Libxfce4ui {
          * @returns an opaque object-owned string
          */
         get_client_id(): string;
+
         /**
          * Retrieves the session client's working directory.  See
          * `xfce_sm_client_set_current_directory()` for more information.
          * @returns an object-owned string
          */
         get_current_directory(): string;
+
         /**
          * Retrieves the session client's restart priority.  See
          * `xfce_sm_client_set_priority()` for more information.
          * @returns a value from #G_MININT8 to #G_MAXINT8
          */
         get_priority(): number;
+
         /**
          * Retrieves the session client's restart command.  See
          * `xfce_sm_client_set_restart_command()` for more information.
          * @returns an object-owned string vector
          */
         get_restart_command(): string[];
+
         /**
          * Retrieves the session client's restart style.  See
          * `xfce_sm_client_set_restart_style()` for more information.
          * @returns a value from the {@link Libxfce4ui.SMClientRestartStyle} enum
          */
         get_restart_style(): SMClientRestartStyle;
+
         /**
          * Constructs a filename that can be used to restore or save
          * state information.
-         *
+         * 
          * When saving state, ote that this file may already exist (and
          * may have been used for saving previous state for the
          * application), so the application should first remove or empty
          * the file if it requires a fresh state file.
-         *
+         * 
          * On the next application start, this function can be used to
          * check to see if there is any previous saved state, and, if so,
          * the state can be restored from the file.
-         *
+         * 
          * This function will use a standard location and naming scheme
          * and handle state cleanup (setting of the discard command) for you.
-         *
+         * 
          * Before calling this function, the application must have a
          * valid client ID (see `xfce_sm_client_get_client_id()`).
          * @returns a file name string, owned by the object or `null` if          the session client is disabled.
          */
         get_state_file(): string;
+
         /**
          * Determines whether or not the application has connected to the
          * session manager.
          * @returns `true` if connected to the session manager, `false` otherwise
          */
         is_connected(): boolean;
+
         /**
          * Determines whether the application was resumed from a previous
          * session, or if the application has been started fresh with no
@@ -1402,12 +1286,13 @@ export namespace Libxfce4ui {
          * @returns `true` if resumed from a previous session, `false` otherwise
          */
         is_resumed(): boolean;
+
         /**
          * Sends a request to the session manager to end the session.
          * Depending on `hint`, the session manager may prompt for a
          * certain action (log out, halt, reboot, etc.) or may take the
          * requested action without user intervention.
-         *
+         * 
          * <note><para>
          * The session manager may or may not support all requested
          * actions, and is also free to ignore the requested action.
@@ -1415,6 +1300,7 @@ export namespace Libxfce4ui {
          * @param shutdown_hint The type of shutdown requested
          */
         request_shutdown(shutdown_hint: SMClientShutdownHint): void;
+
         /**
          * Sets the startup working directory of `sm_client` to
          * `current_directory`.  If unset, defaults to the user's
@@ -1422,6 +1308,7 @@ export namespace Libxfce4ui {
          * @param current_directory A valid path name
          */
         set_current_directory(current_directory: string): void;
+
         /**
          * Sets the application's .desktop file.  In addition to informing
          * the session manager of the .desktop file so it can present localized
@@ -1430,7 +1317,7 @@ export namespace Libxfce4ui {
          * `gtk_window_set_default_icon_name()` (or
          * `gtk_window_set_default_icon_from_file()`) if the Name and Icon
          * keys are present, respectively.
-         *
+         * 
          * If a relative path to the file is provided, this function will search
          * the standard application directories as specified by the
          * <ulink type="http" url="http://standards.freedesktop.org/menu-spec/latest/">XDG
@@ -1438,6 +1325,7 @@ export namespace Libxfce4ui {
          * @param desktop_file The path to the application's .desktop file
          */
         set_desktop_file(desktop_file: string): void;
+
         /**
          * Sets the startup priority for `sm_client` to `priority`.  Note
          * that the default priority for applications is 50; lower values
@@ -1445,17 +1333,19 @@ export namespace Libxfce4ui {
          * @param priority A 8-bit signed priority value
          */
         set_priority(priority: number): void;
+
         /**
          * Sets the application's "restart" command, which is used to restart
          * the application and restore any saved state from the previous
          * run.
-         *
+         * 
          * If unset, defaults to the command used to start this instance
          * of the application, with session management related arguments
          * added (if not already present).
          * @param restart_command An argument vector
          */
         set_restart_command(restart_command: string): void;
+
         /**
          * Sets the restart style hint to `restart_style`.
          * @param restart_style An {@link Libxfce4ui.SMClientRestartStyle} value
@@ -1463,16 +1353,16 @@ export namespace Libxfce4ui {
         set_restart_style(restart_style: SMClientRestartStyle): void;
     }
 
+
     namespace Screensaver {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::heartbeat-command': (pspec: GObject.ParamSpec) => void;
-            'notify::lock-command': (pspec: GObject.ParamSpec) => void;
-            'notify::lock-on-sleep': (pspec: GObject.ParamSpec) => void;
+            "notify::heartbeat-command": (pspec: GObject.ParamSpec) => void;
+            "notify::lock-command": (pspec: GObject.ParamSpec) => void;
+            "notify::lock-on-sleep": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             heartbeat_command: string;
             heartbeatCommand: string;
@@ -1490,32 +1380,36 @@ export namespace Libxfce4ui {
         static $gtype: GObject.GType<Screensaver>;
 
         // Properties
-
         /**
          * @default null
          */
         get heartbeat_command(): string;
         set heartbeat_command(val: string);
+
         /**
          * @default null
          */
         get heartbeatCommand(): string;
         set heartbeatCommand(val: string);
+
         /**
          * @default null
          */
         get lock_command(): string;
         set lock_command(val: string);
+
         /**
          * @default null
          */
         get lockCommand(): string;
         set lockCommand(val: string);
+
         /**
          * @default false
          */
         get lock_on_sleep(): boolean;
         set lock_on_sleep(val: boolean);
+
         /**
          * @default false
          */
@@ -1532,46 +1426,37 @@ export namespace Libxfce4ui {
         $signals: Screensaver.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Screensaver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Screensaver;
+        static ["new"](): Screensaver;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Screensaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Screensaver.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Screensaver.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Screensaver.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Screensaver.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Screensaver.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Screensaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Screensaver.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Screensaver.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Screensaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Screensaver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Screensaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Calling this function with `inhibit` as `true` will prevent the user's
          * screensaver from activating. This is useful when the user is watching
          * a movie or giving a presentation.
-         *
+         * 
          * Calling this function with `inhibit` as `false` will remove any current
          * screensaver inhibit the {@link Libxfce4ui.Screensaver} object has.
          * @param inhibit whether to inhibit the screensaver from activating
          */
         inhibit(inhibit: boolean): void;
+
         /**
          * Attempts to lock the screen, either with one of the screensaver
          * D-Bus proxies, the Xfconf lock command, or one of the
@@ -1581,92 +1466,91 @@ export namespace Libxfce4ui {
         lock(): boolean;
     }
 
+
     namespace TitledDialog {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::subtitle': (pspec: GObject.ParamSpec) => void;
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             subtitle: string;
         }
     }
@@ -1679,7 +1563,6 @@ export namespace Libxfce4ui {
         static $gtype: GObject.GType<TitledDialog>;
 
         // Properties
-
         /**
          * The subtitle displayed below the main dialog title.
          * @default null
@@ -1697,48 +1580,39 @@ export namespace Libxfce4ui {
         $signals: TitledDialog.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TitledDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): TitledDialog;
+        static ["new"](): TitledDialog;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TitledDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TitledDialog.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TitledDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TitledDialog.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TitledDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TitledDialog.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TitledDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TitledDialog.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TitledDialog.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TitledDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TitledDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TitledDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * This function is a replacement for `gtk_dialog_add_action_widget`.
-         *
+         * 
          * Children with #GTK_RESPONSE_HELP will be added to the secondary group of children
          * (see `gtk_button_box_set_child_secondary` for reference).
          * @param child an activatable widget.
          * @param response_id response ID for `child`.
          */
         add_action_widget(child: Gtk.Widget, response_id: number): void;
+
         /**
          * This function is a replacement for `gtk_dialog_add_button`.
-         *
+         * 
          * Buttons with #GTK_RESPONSE_HELP will be added to the secondary group of children
          * (see `gtk_button_box_set_child_secondary` for reference).
          * @param button_text text of button.
@@ -1746,10 +1620,12 @@ export namespace Libxfce4ui {
          * @returns the GtkButton widget that was added.
          */
         add_button(button_text: string, response_id: number): Gtk.Widget;
+
         /**
          * This function is a no-op since 4.19.3.
          */
         create_action_area(): void;
+
         /**
          * Returns the subtitle of the `titled_dialog`, or `null`
          * if no subtitle is displayed in the `titled_dialog`.
@@ -1757,16 +1633,18 @@ export namespace Libxfce4ui {
          * @returns the subtitle of `titled_dialog`, or `null`.
          */
         get_subtitle(): string;
+
         /**
          * Sets the last widget in the dialog’s action area with the given `response_id`
          * as the default widget for the dialog. Pressing “Enter” normally activates
          * the default widget.
-         *
+         * 
          * This function is a replacement for `gtk_dialog_set_default_response`, which does
          * not work with {@link Libxfce4ui.TitledDialog}.
          * @param response_id a response ID
          */
         set_default_response(response_id: number): void;
+
         /**
          * Sets the subtitle displayed by `titled_dialog` to `subtitle`; if
          * `subtitle` is `null` no subtitle will be displayed by the `titled_dialog`.
@@ -1775,17 +1653,20 @@ export namespace Libxfce4ui {
          * shown at the top of dialog.
          * @param subtitle the new subtitle for the `titled_dialog`, or `null`.
          */
-        set_subtitle(subtitle: string | null): void;
+        set_subtitle(subtitle: (string | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ClipboardManagerClass = typeof ClipboardManager;
+
     /**
      * @gir-type Alias
      */
     type FilenameInputClass = typeof FilenameInput;
+
     /**
      * Replacement for the deprecated {@link Libxfce4ui.GtkActionEntry}.
      * The idea is to provide a fixed list of `XfceGtkActionEntrys`:
@@ -1799,25 +1680,34 @@ export namespace Libxfce4ui {
         static $gtype: GObject.GType<GtkActionEntry>;
 
         // Fields
-
         id: number;
+
         accel_path: string;
+
         default_accelerator: string;
+
         menu_item_type: GtkMenuItem;
+
         menu_item_label_text: string;
+
         menu_item_tooltip_text: string;
+
         menu_item_icon_name: string;
+
         callback: GObject.Callback;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ScreensaverClass = typeof Screensaver;
+
     /**
      * @gir-type Alias
      */
     type TitledDialogClass = typeof TitledDialog;
+
     /**
      * @gir-type Struct
      */
@@ -1825,15 +1715,18 @@ export namespace Libxfce4ui {
         static $gtype: GObject.GType<TitledDialogPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ScreenSaver = Screensaver;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

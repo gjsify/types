@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -15,9 +16,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Grl {
+
     /**
      * Grl-0.1
      */
+
 
     /**
      * These constants identify all the available core errors
@@ -45,6 +48,7 @@ export namespace Grl {
         OPERATION_CANCELLED,
     }
 
+
     /**
      * Grilo log levels. Defines the level of verbosity selected in Grilo.
      * @gir-type Enum
@@ -59,6 +63,7 @@ export namespace Grl {
         LAST,
     }
 
+
     /**
      * GrlMedia serialize type
      * @gir-type Enum
@@ -68,6 +73,7 @@ export namespace Grl {
         PARTIAL,
         FULL,
     }
+
 
     /**
      * @gir-type Enum
@@ -86,11 +92,12 @@ export namespace Grl {
         REMOVED,
     }
 
+
     /**
      * Module priority ranks. Defines the order in which the resolver
      * (or similar rank-picking mechanisms) will choose this plugin
      * over an alternative one with the same function.
-     *
+     * 
      * These constants serve as a rough guidance for defining the rank
      * of a GrlPluginInfo. Any value is valid, including values bigger
      * than GRL_PLUGIN_RANK_HIGHEST.
@@ -104,41 +111,65 @@ export namespace Grl {
         HIGHEST,
     }
 
+
     const CONFIG_KEY_APIKEY: string;
+
     const CONFIG_KEY_APIKEY_BLOB: string;
+
     const CONFIG_KEY_APISECRET: string;
+
     const CONFIG_KEY_APITOKEN: string;
+
     const CONFIG_KEY_PASSWORD: string;
+
     const CONFIG_KEY_PLUGIN: string;
+
     const CONFIG_KEY_SOURCE: string;
+
     const CONFIG_KEY_USERNAME: string;
+
     const KEYID_FORMAT: string;
+
     const MEDIA_PLUGIN_AUTHOR: string;
+
     const MEDIA_PLUGIN_DESCRIPTION: string;
+
     const MEDIA_PLUGIN_LICENSE: string;
+
     const MEDIA_PLUGIN_NAME: string;
+
     const MEDIA_PLUGIN_SITE: string;
+
     const MEDIA_PLUGIN_VERSION: string;
+
     const METADATA_KEY_CHILDCOUNT_UNKNOWN: number;
+
     const PADDING: number;
+
     const PADDING_SMALL: number;
+
     const PLUGIN_LIST_VAR: string;
+
     const PLUGIN_PATH_VAR: string;
+
     const PLUGIN_RANKS_VAR: string;
+
     const SOURCE_REMAINING_UNKNOWN: number;
+
     /**
      * Initializes the Grilo library
      * @param argv list of arguments
      * @since 0.1.6
      */
-    function init(argv: string[] | null): string[] | null;
+    function init(argv: (string[] | null)): string[] | null;
+
     /**
      * Configure a set of log domains. The default configuration is to display
      * warning and error messages only for all the log domains.
-     *
+     * 
      * The configuration string follows the following grammar:
-     *
-     *
+     * 
+     * 
      * ```
      * config-list: config | config ',' config-list
      * config: domain ':' level
@@ -147,8 +178,8 @@ export namespace Grl {
      * named-level: "none" | "error" | "warning" | "message" | "info" | "debug"
      * num-level: [0-5]
      * ```
-     *
-     *
+     * 
+     * 
      * examples:
      * <itemizedlist>
      * <listitem><para>"*:*": maximum verbosity for all the log domains</para>
@@ -158,7 +189,7 @@ export namespace Grl {
      * info, message warning and error messages for the media-source and
      * metadata-source log domains</para></listitem>
      * </itemizedlist>
-     *
+     * 
      * <note>It's possible to override the log configuration at runtime by
      * defining the GRL_DEBUG environment variable to a configuration string
      * as described above</note>
@@ -166,22 +197,17 @@ export namespace Grl {
      * @since 0.1.7
      */
     function log_configure(config: string): void;
+
     /**
-     * @param closure
-     * @param return_value
-     * @param n_param_values
-     * @param param_values
-     * @param invocation_hint
-     * @param marshal_data
+     * @param closure 
+     * @param return_value 
+     * @param n_param_values 
+     * @param param_values 
+     * @param invocation_hint 
+     * @param marshal_data 
      */
-    function marshal_VOID__BOXED_ENUM_BOOLEAN(
-        closure: GObject.Closure,
-        return_value: GObject.Value | any,
-        n_param_values: number,
-        param_values: GObject.Value | any,
-        invocation_hint: any,
-        marshal_data: any,
-    ): void;
+    function marshal_VOID__BOXED_ENUM_BOOLEAN(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: any, marshal_data: any): void;
+
     /**
      * Retrieves the description associated with the key
      * @param key key to look up
@@ -189,6 +215,7 @@ export namespace Grl {
      * @since 0.1.6
      */
     function metadata_key_get_desc(key: GObject.ParamSpec): string;
+
     /**
      * Retrieves the name associated with the key
      * @param key key to look up
@@ -196,10 +223,12 @@ export namespace Grl {
      * @since 0.1.6
      */
     function metadata_key_get_name(key: GObject.ParamSpec): string;
+
     /**
-     * @param registry
+     * @param registry 
      */
     function metadata_key_setup_system_keys(registry: PluginRegistry): void;
+
     /**
      * Cancel a running multiple search by issuing a cancel operation on each
      * source involved involved in the operation.
@@ -207,11 +236,12 @@ export namespace Grl {
      * @since 0.1.6
      */
     function multiple_cancel(search_id: number): void;
+
     /**
      * Goes though all available media sources until it finds one capable of
      * constructing a GrlMedia object representing the media resource exposed
      * by `uri`.
-     *
+     * 
      * This method is asynchronous.
      * @param uri A URI that can be used to identify a media resource
      * @param keys List of metadata keys we want to obtain.
@@ -219,18 +249,14 @@ export namespace Grl {
      * @param callback the user defined callback
      * @since 0.1.7
      */
-    function multiple_get_media_from_uri(
-        uri: string,
-        keys: KeyID[],
-        flags: MetadataResolutionFlags,
-        callback: MediaSourceMetadataCb,
-    ): void;
+    function multiple_get_media_from_uri(uri: string, keys: KeyID[], flags: MetadataResolutionFlags, callback: MediaSourceMetadataCb): void;
+
     /**
      * Search for `text` in all the sources specified in `sources`.
-     *
+     * 
      * If `text` is `NULL` then NULL-text searchs will be used for each searchable
      * plugin (see `grl_media_source_search` for more details).
-     *
+     * 
      * This method is asynchronous.
      * @param sources a {@link GLib.List} of {@link Grl.MediaSource}<!-- -->s to search from (`null` for all searchable sources)
      * @param text the text to search for
@@ -241,17 +267,11 @@ export namespace Grl {
      * @returns the operation identifier
      * @since 0.1.6
      */
-    function multiple_search(
-        sources: MediaSource[],
-        text: string,
-        keys: GObject.ParamSpec[],
-        count: number,
-        flags: MetadataResolutionFlags,
-        callback: MediaSourceResultCb,
-    ): number;
+    function multiple_search(sources: MediaSource[], text: string, keys: GObject.ParamSpec[], count: number, flags: MetadataResolutionFlags, callback: MediaSourceResultCb): number;
+
     /**
      * Search for `text` in all the sources specified in `sources`.
-     *
+     * 
      * This method is synchronous.
      * @param sources a {@link GLib.List} of {@link Grl.MediaSource}<!-- -->s where to search from (`null` for all available sources with search capability)
      * @param text the text to search for
@@ -261,19 +281,15 @@ export namespace Grl {
      * @returns a list with {@link Grl.Media} elements
      * @since 0.1.6
      */
-    function multiple_search_sync(
-        sources: MediaSource[],
-        text: string,
-        keys: GObject.ParamSpec[],
-        count: number,
-        flags: MetadataResolutionFlags,
-    ): Media[];
+    function multiple_search_sync(sources: MediaSource[], text: string, keys: GObject.ParamSpec[], count: number, flags: MetadataResolutionFlags): Media[];
+
     /**
      * Cancel an operation.
      * @param operation_id the identifier of a running operation
      * @since 0.1.16
      */
     function operation_cancel(operation_id: number): void;
+
     /**
      * Obtains the previously attached data
      * @param operation_id the identifier of a running operation
@@ -281,6 +297,7 @@ export namespace Grl {
      * @since 0.1.16
      */
     function operation_get_data(operation_id: number): any;
+
     /**
      * Attach a pointer to the specific operation.
      * @param operation_id the identifier of a running operation
@@ -288,17 +305,18 @@ export namespace Grl {
      * @since 0.1.16
      */
     function operation_set_data(operation_id: number, user_data: any): void;
+
     /**
      * Grilo browsing implements a paging mechanism through `skip` and `count` values.
-     *
+     * 
      * But there are some services (like Jamendo or Flickr) where paging is done
      * through a page number and page size: user request all elements in a page,
      * specifying in most cases what is the page size.
-     *
+     * 
      * This function is a helper for this task, computing from `skip` and `count` what
      * is the optimal value of page size (limited by `max_page_size`), which page
      * should the user request, and where requested data start inside the page.
-     *
+     * 
      * By optimal we mean that it computes those values so only one page is required
      * to satisfy the data, using the smallest page size. If user is limiting page
      * size, then more requests to services might be needed. But still page size
@@ -311,50 +329,50 @@ export namespace Grl {
      * @param internal_offset in the `page_number`, offset where first element can be found (starting at 0)
      * @since 0.1.6
      */
-    function paging_translate(
-        skip: number,
-        count: number,
-        max_page_size: number,
-        page_size: number,
-        page_number: number,
-        internal_offset: number,
-    ): void;
+    function paging_translate(skip: number, count: number, max_page_size: number, page_size: number, page_number: number, internal_offset: number): void;
+
     /**
      * @gir-type Callback
      */
     interface MediaSourceMetadataCb {
         (source: MediaSource, operation_id: number, media: Media, error: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface MediaSourceRemoveCb {
         (source: MediaSource, media: Media, error: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface MediaSourceResultCb {
         (source: MediaSource, operation_id: number, media: Media, remaining: number, error: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface MediaSourceStoreCb {
         (source: MediaSource, parent: MediaBox, media: Media, error: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface MetadataSourceResolveCb {
         (source: MetadataSource, operation_id: number, media: Media, error: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface MetadataSourceSetMetadataCb {
         (source: MetadataSource, media: Media, failed_keys: GObject.ParamSpec[], error: number): void;
     }
+
     /**
      * GrlMetadata resolution flags
      * @gir-type Flags
@@ -366,6 +384,7 @@ export namespace Grl {
         FAST_ONLY,
     }
 
+
     /**
      * Flags for metadata writing operations.
      * @gir-type Flags
@@ -374,6 +393,7 @@ export namespace Grl {
         NORMAL,
         FULL,
     }
+
 
     /**
      * Bitwise flags which reflect the kind of operations that a
@@ -395,13 +415,16 @@ export namespace Grl {
         NOTIFY_CHANGE,
     }
 
+
     namespace Config {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -420,164 +443,181 @@ export namespace Grl {
         $signals: Config.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](plugin: string, source: string): Config;
+        static ["new"](plugin: string, source: string): Config;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Config.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the webservice API key
          */
         get_api_key(): string;
+
         /**
          * @param size pointer to size of data
          * @returns the binary API key, size will reflect the size of the buffer
          */
-        get_api_key_blob(size: bigint | number): number;
+        get_api_key_blob(size: (bigint | number)): number;
+
         /**
          * @returns the webservice API passphrase
          */
         get_api_secret(): string;
+
         /**
          * @returns the webservice API token
          */
         get_api_token(): string;
+
         /**
-         * @param param
-         * @param size
+         * @param param 
+         * @param size 
          */
-        get_binary(param: string, size: bigint | number): number;
+        get_binary(param: string, size: (bigint | number)): number;
+
         /**
-         * @param param
+         * @param param 
          */
         get_boolean(param: string): boolean;
+
         /**
-         * @param param
+         * @param param 
          */
         get_float(param: string): number;
+
         /**
-         * @param param
+         * @param param 
          */
         get_int(param: string): number;
+
         /**
          * @returns the password
          */
         get_password(): string;
+
         /**
          * @returns the plugin id
          */
         get_plugin(): string;
+
         /**
-         * @param param
+         * @param param 
          */
         get_string(param: string): string;
+
         /**
          * @returns the username
          */
         get_username(): string;
+
         /**
          * otherwise.
          * @param param the param
          * @returns TRUE if `params` has a defined value within `config`, FALSE
          */
         has_param(param: string): boolean;
+
         /**
-         * @param param
-         * @param value
+         * @param param 
+         * @param value 
          */
-        set(param: string, value: GObject.Value | any): void;
+        set(param: string, value: (GObject.Value | any)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
          * Set the webservice API key in the configuration
          * @param key the API key
          */
         set_api_key(key: string): void;
+
         /**
          * Set the binary API key in the configuration
          * @param blob the binary API key blob
          * @param size the size of the blob
          */
-        set_api_key_blob(blob: number, size: bigint | number): void;
+        set_api_key_blob(blob: number, size: (bigint | number)): void;
+
         /**
          * Set the webservice passphrase in the configuration
          * @param secret the webservice passphrase
          */
         set_api_secret(secret: string): void;
+
         /**
          * Set the webservice API token in the configuration
          * @param token the API token
          */
         set_api_token(token: string): void;
+
         /**
-         * @param param
-         * @param blob
-         * @param size
+         * @param param 
+         * @param blob 
+         * @param size 
          */
-        set_binary(param: string, blob: number, size: bigint | number): void;
+        set_binary(param: string, blob: number, size: (bigint | number)): void;
+
         /**
-         * @param param
-         * @param value
+         * @param param 
+         * @param value 
          */
         set_boolean(param: string, value: boolean): void;
+
         /**
-         * @param param
-         * @param value
+         * @param param 
+         * @param value 
          */
         set_float(param: string, value: number): void;
+
         /**
-         * @param param
-         * @param value
+         * @param param 
+         * @param value 
          */
         set_int(param: string, value: number): void;
+
         /**
          * Set the password in the configuration
          * @param password the password
          */
         set_password(password: string): void;
+
         /**
          * Set the plugin key in the configuration
          * @param plugin the plugin id
          */
         set_plugin(plugin: string): void;
+
         /**
          * Set the plugin key in the configuration
          * @param source the source id
          */
         set_source(source: string): void;
+
         /**
-         * @param param
-         * @param value
+         * @param param 
+         * @param value 
          */
         set_string(param: string, value: string): void;
+
         /**
          * Set the username in the configuration
          * @param username the username
@@ -585,14 +625,14 @@ export namespace Grl {
         set_username(username: string): void;
     }
 
+
     namespace Data {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::overwrite': (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             overwrite: boolean;
         }
@@ -605,7 +645,6 @@ export namespace Grl {
         static $gtype: GObject.GType<Data>;
 
         // Properties
-
         get overwrite(): boolean;
         set overwrite(val: boolean);
 
@@ -619,116 +658,117 @@ export namespace Grl {
         $signals: Data.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Data.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Data;
+        static ["new"](): Data;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Data.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Data.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Data.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Data.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Data.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Data.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Data.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Data.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Data.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Data.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Data.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Data.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new `key` to `data`, with no value. If key already exists, it does
          * nothing.
          * @param key key to add
          */
         add(key: GObject.ParamSpec): void;
+
         /**
          * Appends a new binary value for `key` in `data`.
          * @param key key to append
          * @param buf the buffer containing the new value
          * @param size size of buffer
          */
-        add_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
+        add_binary(key: GObject.ParamSpec, buf: number, size: (bigint | number)): void;
+
         /**
          * Appends a new float value for `key` in `data`.
          * @param key key to append
          * @param floatvalue the new value
          */
         add_float(key: GObject.ParamSpec, floatvalue: number): void;
+
         /**
          * Appends a new int value for `key` in `data`.
          * @param key key to append
          * @param intvalue the new value
          */
         add_int(key: GObject.ParamSpec, intvalue: number): void;
+
         /**
          * Adds a new set of values into `data`.
-         *
+         * 
          * All keys in `prop` must be related among them.
-         *
+         * 
          * `data` will take the ownership of `relkeys`, so do not modify it.
          * @param relkeys a set of related properties with their values
          */
         add_related_keys(relkeys: RelatedKeys): void;
+
         /**
          * Appends a new string value for `key` in `data`.
          * @param key key to append
          * @param strvalue the new value
          */
         add_string(key: GObject.ParamSpec, strvalue: string): void;
+
         /**
          * Makes a deep copy of `data` and all its contents.
          * @returns a new {@link Grl.Data}. Free it with `g_object_unref`.
          */
         dup(): Data;
+
         /**
          * Get the first value from `data` associated with `key`.
-         *
+         * 
          * freed by user.
          * @param key key to look up.
          * @returns a {@link GObject.Value}. This value should not be modified nor
          */
         get(key: GObject.ParamSpec): unknown;
+
         /**
          * Returns all non-`null` values for `key` from `data`. This ignores related keys.
-         *
+         * 
          * values. Do not change or free the values. Free the list with `g_list_free`.
          * @param key a metadata key
          * @returns a {@link GLib.List} with
          */
         get_all_single_related_keys(key: KeyID): unknown[];
+
         /**
          * Returns all non-`null` values for `key` from `data`. `key` must have been
          * registered as a string-type key. This ignores related keys.
-         *
+         * 
          * not change or free the strings. Free the list with `g_list_free`.
          * @param key a metadata key
          * @returns a {@link GLib.List} with values. Do
          */
         get_all_single_related_keys_string(key: KeyID): string[];
+
         /**
          * Returns the first binary value associated with `key` from `data`. If `key` has
          * no first value, or value is not a gfloat, or `key` is not in data, then `null`
          * is returned.
-         *
+         * 
          * successful `size` will be set the to the buffer size.
          * @param key key to use
          * @returns buffer location associated with the `key`, or `null` in other case. If
          */
         get_binary(key: GObject.ParamSpec): [number, number];
+
         /**
          * Returns the first float value associated with `key` from `data`. If `key` has no
          * first value, or value is not a gfloat, or `key` is not in data, then 0 is
@@ -737,6 +777,7 @@ export namespace Grl {
          * @returns float value associated with `key`, or 0 in other case.
          */
         get_float(key: GObject.ParamSpec): number;
+
         /**
          * Returns the first int value associated with `key` from `data`. If `key` has no
          * first value, or value is not a gint, or `key` is not in data, then 0 is
@@ -745,23 +786,26 @@ export namespace Grl {
          * @returns int value associated with `key`, or 0 in other case.
          */
         get_int(key: GObject.ParamSpec): number;
+
         /**
          * Returns a list with keys contained in `data`.
-         *
+         * 
          * keys. The content of the list should not be modified or freed. Use
          * `g_list_free()` when done using the list.
          * @returns an array with the
          */
         get_keys(): GObject.ParamSpec[];
+
         /**
          * Checks if old values are replaced when calling `grl_data_set`.
          * @returns `true` if values will be overwritten.
          */
         get_overwrite(): boolean;
+
         /**
          * Returns a set containing the values for `key` and related keys at position
          * `index` from `data`.
-         *
+         * 
          * If user changes any of the values in the related keys, the changes will
          * become permanent.
          * @param key a metadata key
@@ -769,66 +813,74 @@ export namespace Grl {
          * @returns a {@link Grl.RelatedKeys}. Do not free it.
          */
         get_related_keys(key: KeyID, index: number): RelatedKeys;
+
         /**
          * Returns all non-`null` values for `key` from `data`. This ignores related keys.
-         *
+         * 
          * values. Do not change or free the values. Free the list with `g_list_free`.
          * @param key a metadata key
          * @returns a {@link GLib.List} with
          */
         get_single_values_for_key(key: KeyID): unknown[];
+
         /**
          * Returns all non-`null` values for `key` from `data`. `key` must have been
          * registered as a string-type key. This ignores related keys.
-         *
+         * 
          * not change or free the strings. Free the list with `g_list_free`.
          * @param key a metadata key
          * @returns a {@link GLib.List} with values. Do
          */
         get_single_values_for_key_string(key: KeyID): string[];
+
         /**
          * Returns the first string value associated with `key` from `data`. If `key` has
          * no first value, or value is not string, or `key` is not in `data`, then `null`
          * is returned.
-         *
+         * 
          * not change nor free the value.
          * @param key key to use
          * @returns string associated with `key`, or `null` in other case. Caller should
          */
         get_string(key: GObject.ParamSpec): string;
+
         /**
          * Checks if `key` is in `data`.
          * @param key key to search
          * @returns `true` if `key` is in `data`, `false` in other case.
          */
         has_key(key: GObject.ParamSpec): boolean;
+
         /**
          * Checks if the `key` has a first value in `data`.
          * @param key key to search
          * @returns `true` if key has a value.
          */
         key_is_known(key: GObject.ParamSpec): boolean;
+
         /**
          * Returns how many values `key` or related keys have in `data`: if `key` has no
          * value, but a related key has, then it is counted as positive.
-         *
+         * 
          * As example, let's think in three related keys, K1, K2 and K3, and then thinks
          * we have added several values for those keys, as:
-         *
+         * 
          * (V10, V20, V30),, (V11, NULL, V31), (V12, NULL, V32)
-         *
+         * 
          * Therefore, when invoking grl_data_length (data, K2) it will return 3:
          * considering K2 and the related keys (K1 and K3), there are 3 values.
          * @param key a metadata key
          * @returns number of values
          */
         length(key: KeyID): number;
+
         /**
          * Removes the first value for `key` from `data`. If there are other keys related
          * to `key` their values will also be removed from `data`.
          * @param key key to remove
          */
         remove(key: GObject.ParamSpec): void;
+
         /**
          * Removes the value at position `index` for `key` from `data`. If there are other
          * keys related to `key`, their values at position `index` will also be removed
@@ -837,22 +889,25 @@ export namespace Grl {
          * @param index index of key to be removed, starting at 0
          */
         remove_nth(key: KeyID, index: number): void;
+
         /**
          * Sets the first value associated with `key` in `data`. If key already has a
          * value old value is freed and the new one is set.
-         *
+         * 
          * Also, checks that `value` is compliant with `key` specification, modifying it
          * accordingly. For instance, if `key` requires a number between 0 and 10, but
          * `value` is outside this range, it will be adapted accordingly.
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: GObject.ParamSpec, value: GObject.Value | any): void;
+        set(key: GObject.ParamSpec, value: (GObject.Value | any)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
          * Sets the first binary value associated with `key` in `data`. If `key` already
          * has a first value old value is replaced by the new one.
@@ -860,7 +915,8 @@ export namespace Grl {
          * @param buf buffer holding the data
          * @param size size of the buffer
          */
-        set_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
+        set_binary(key: GObject.ParamSpec, buf: number, size: (bigint | number)): void;
+
         /**
          * Sets the first float value associated with `key` in `data`. If `key` already has
          * a first value old value is replaced by the new one.
@@ -868,6 +924,7 @@ export namespace Grl {
          * @param floatvalue the new value
          */
         set_float(key: GObject.ParamSpec, floatvalue: number): void;
+
         /**
          * Sets the first int value associated with `key` in `data`. If `key` already has a
          * first value old value is replaced by the new one.
@@ -875,24 +932,27 @@ export namespace Grl {
          * @param intvalue the new value
          */
         set_int(key: GObject.ParamSpec, intvalue: number): void;
+
         /**
          * This controls if `grl_data_set` will overwrite the current value of a property
          * with the new one.
-         *
+         * 
          * Set it to `true` so old values are overwritten, or `false` in other case
          * (default is `false`).
          * @param overwrite if data can be overwritten
          */
         set_overwrite(overwrite: boolean): void;
+
         /**
          * Updates the values at position `index` in `data` with values in `relkeys`.
-         *
+         * 
          * `data` will take ownership of `relkeys`, so do not free it after invoking this
          * function.
          * @param relkeys a set of related keys
          * @param index position to be updated, starting at 0
          */
         set_related_keys(relkeys: RelatedKeys, index: number): void;
+
         /**
          * Sets the first string value associated with `key` in `data`. If `key` already
          * has a value old value is freed and the new one is set.
@@ -902,15 +962,17 @@ export namespace Grl {
         set_string(key: GObject.ParamSpec, strvalue: string): void;
     }
 
+
     namespace Media {
         // Signal signatures
         interface SignalSignatures extends Data.SignalSignatures {
-            'notify::overwrite': (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Data.ConstructorProps {
 
-        interface ConstructorProps extends Data.ConstructorProps {}
+        }
     }
 
     /**
@@ -929,36 +991,26 @@ export namespace Grl {
         $signals: Media.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Media;
+        static ["new"](): Media;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Unserializes a GrlMedia.
          * @param serial a serialized media
@@ -966,285 +1018,342 @@ export namespace Grl {
         static unserialize(serial: string): Media;
 
         // Methods
-
         /**
          * Adds a new author to `media`.
          * @param author an author for `media`
          */
         add_author(author: string): void;
+
         /**
          * Adds a new external player to `media`.
          * @param player an external player for `media`
          */
         add_external_player(player: string): void;
+
         /**
          * Adds a new external url to `media`.
          * @param url an external url for `media`
          */
         add_external_url(url: string): void;
+
         /**
          * Adds a new thumbnail to `media`.
          * @param thumbnail a thumbnail for `media`
          */
         add_thumbnail(thumbnail: string): void;
+
         /**
          * Adds a new thumbnail to `media`.
          * @param thumbnail a buffer containing the thumbnail for `media`
          * @param size size of buffer
          */
-        add_thumbnail_binary(thumbnail: number, size: bigint | number): void;
+        add_thumbnail_binary(thumbnail: number, size: (bigint | number)): void;
+
         /**
          * Adds a new media's URL with its mime-type.
          * @param url a media's URL
          * @param mime th `url` mime type
          */
         add_url_data(url: string, mime: string): void;
+
         /**
          * @returns the media's author
          */
         get_author(): string;
+
         /**
          * @param index element to retrieve
          * @returns the n-th media's author.
          */
         get_author_nth(index: number): string;
+
         /**
          * @returns the media's certificate
          */
         get_certificate(): string;
+
         /**
          * @returns date when media was created
          */
         get_creation_date(): string;
+
         /**
          * @returns the media's date (TBD)
          */
         get_date(): string;
+
         /**
          * @returns the media's description
          */
         get_description(): string;
+
         /**
          * @returns the media's duration
          */
         get_duration(): number;
+
         /**
          * where the user play the media.
          * @returns URL of an external location
          */
         get_external_url(): string;
+
         /**
          * @param index element to retrieve
          * @returns the n-th media's external location where the user can play it.
          */
         get_external_url_nth(index: number): string;
+
         /**
          * @returns the media's identifier
          */
         get_id(): string;
+
         /**
          * @returns the media's last played time
          */
         get_last_played(): string;
+
         /**
          * @returns the media's last_played position (in seconds)
          */
         get_last_position(): number;
+
         /**
          * @returns the license the media is under
          */
         get_license(): string;
+
         /**
          * @returns the media's mime-type
          */
         get_mime(): string;
+
         /**
          * @returns the media's play count
          */
         get_play_count(): number;
+
         /**
          * object for this media
          * @returns URL of an external player
          */
         get_player(): string;
+
         /**
          * @param index element to retrieve
          * @returns the n-th media's external player object.
          */
         get_player_nth(index: number): string;
+
         /**
          * @returns the media's rating
          */
         get_rating(): number;
+
         /**
          * @returns the media's site
          */
         get_site(): string;
+
         /**
          * @returns the media's source
          */
         get_source(): string;
+
         /**
          * @returns the studio the media is from
          */
         get_studio(): string;
+
         /**
          * @returns the media's thumbnail URL
          */
         get_thumbnail(): string;
+
         /**
          * @param size pointer to storing the thumbnail buffer size
          * @returns the media's thumbnail data and set size to the thumbnail buffer size
          */
-        get_thumbnail_binary(size: bigint | number): number;
+        get_thumbnail_binary(size: (bigint | number)): number;
+
         /**
          * buffer size.
          * @param size pointer to store the thumbnail buffer size
          * @param index element to retrieve
          * @returns the n-th media's thumbnail binary and sets size to the thumbnail
          */
-        get_thumbnail_binary_nth(size: bigint | number, index: number): number;
+        get_thumbnail_binary_nth(size: (bigint | number), index: number): number;
+
         /**
          * @param index element to retrieve
          * @returns the n-th media's thumbnail.
          */
         get_thumbnail_nth(index: number): string;
+
         /**
          * @returns the media's title
          */
         get_title(): string;
+
         /**
          * @returns the media's URL
          */
         get_url(): string;
+
         /**
          * @returns the media's URL and its mime-type.
          */
         get_url_data(): [string, string];
+
         /**
          * @param index element to retrieve
          * @returns the n-th media's URL and its mime-type.
          */
         get_url_data_nth(index: number): [string, string];
+
         /**
          * Serializes a GrlMedia into a string. It does a basic serialization.
-         *
+         * 
          * See `grl_media_serialize_extended()` to get more serialization approaches.
          * @returns serialized media
          */
         serialize(): string;
+
         /**
          * Set the media's author
          * @param author the media's author
          */
         set_author(author: string): void;
+
         /**
          * Set the media certificate
          * @param certificate The rating certificate of the media
          */
         set_certificate(certificate: string): void;
+
         /**
          * Set the creation_date of the media
          * @param creation_date date when media was created
          */
         set_creation_date(creation_date: string): void;
+
         /**
          * Set the media's date (TBD)
          * @param date the date
          */
         set_date(date: string): void;
+
         /**
          * Set the media's description
          * @param description the description
          */
         set_description(description: string): void;
+
         /**
          * Set the media's duration
          * @param duration the duration
          */
         set_duration(duration: number): void;
+
         /**
          * Set the location of a player for the media (usually a flash player)
          * @param player location of an external player for this media
          */
         set_external_player(player: string): void;
+
         /**
          * Set an external location where users can play the media
          * @param url external location where this media can be played.
          */
         set_external_url(url: string): void;
+
         /**
          * Set the media identifier
          * @param id the identifier of the media
          */
         set_id(id: string): void;
+
         /**
          * Set the media last played date
          * @param last_played date when the media was last played
          */
         set_last_played(last_played: string): void;
+
         /**
          * Set the media last played position
          * @param last_position second at which the media playback was interrupted
          */
         set_last_position(last_position: number): void;
+
         /**
          * Set the media license
          * @param license The license of the media
          */
         set_license(license: string): void;
+
         /**
          * Set the media's mime-type
          * @param mime the mime type
          */
         set_mime(mime: string): void;
+
         /**
          * Set the media play count
          * @param play_count the play count
          */
         set_play_count(play_count: number): void;
+
         /**
          * This method receives a rating and its scale and normalizes it
          * @param rating a rating value
          * @param max maximum rating value
          */
         set_rating(rating: number, max: number): void;
+
         /**
          * Set the media's site
          * @param site the site
          */
         set_site(site: string): void;
+
         /**
          * Set the media's source
          * @param source the source
          */
         set_source(source: string): void;
+
         /**
          * Set the media studio
          * @param studio The studio the media is from
          */
         set_studio(studio: string): void;
+
         /**
          * Set the media's thumbnail URL
          * @param thumbnail the thumbnail URL
          */
         set_thumbnail(thumbnail: string): void;
+
         /**
          * Set the media's binary thumbnail
          * @param thumbnail thumbnail buffer
          * @param size thumbnail buffer size
          */
-        set_thumbnail_binary(thumbnail: number, size: bigint | number): void;
+        set_thumbnail_binary(thumbnail: number, size: (bigint | number)): void;
+
         /**
          * Set the media's title
          * @param title the title
          */
         set_title(title: string): void;
+
         /**
          * Set the media's URL
          * @param url the media's URL
          */
         set_url(url: string): void;
+
         /**
          * Set the media's URL and its mime-type.
          * @param url the media's URL
@@ -1253,15 +1362,17 @@ export namespace Grl {
         set_url_data(url: string, mime: string): void;
     }
 
+
     namespace MediaAudio {
         // Signal signatures
         interface SignalSignatures extends Media.SignalSignatures {
-            'notify::overwrite': (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Media.ConstructorProps {
 
-        interface ConstructorProps extends Media.ConstructorProps {}
+        }
     }
 
     /**
@@ -1280,51 +1391,44 @@ export namespace Grl {
         $signals: MediaAudio.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaAudio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MediaAudio;
+        static ["new"](): MediaAudio;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaAudio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaAudio.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaAudio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaAudio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaAudio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaAudio.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaAudio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaAudio.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaAudio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaAudio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaAudio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaAudio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new artist to `audio`.
          * @param artist an audio's artist
          */
         add_artist(artist: string): void;
+
         /**
          * Adds a new genre to `audio`.
          * @param genre an audio's genre
          */
         add_genre(genre: string): void;
+
         /**
          * Adds a new lyrics to `audio`.
          * @param lyrics an audio's lyrics
          */
         add_lyrics(lyrics: string): void;
+
         /**
          * Sets all the keys related with the URL of a media resource and adds it to
          * `audio` (useful for resources with more than one URL).
@@ -1333,100 +1437,121 @@ export namespace Grl {
          * @param bitrate the `url` bitrate, or -1 to ignore
          */
         add_url_data(url: string, mime: string, bitrate: number): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.add_url_data
+    // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
+
         /**
          * @returns the album of the audio
          */
         get_album(): string;
+
         /**
          * @returns the artist of the audio
          */
         get_artist(): string;
+
         /**
          * @param index element to retrieve, starting at 0
          * @returns the n-th artist of the audio
          */
         get_artist_nth(index: number): string;
+
         /**
          * @returns the bitrate of the audio
          */
         get_bitrate(): number;
+
         /**
          * @returns the genre of the audio
          */
         get_genre(): string;
+
         /**
          * @param index element to retrieve, starting at 0
          * @returns the n-th genre of the audio
          */
         get_genre_nth(index: number): string;
+
         /**
          * @returns the lyrics of the audio
          */
         get_lyrics(): string;
+
         /**
          * @param index element to retrieve, starting at 0
          * @returns the n-th lyrics of the audio
          */
         get_lyrics_nth(index: number): string;
+
         /**
          * @returns the track number of the audio
          */
         get_track_number(): number;
+
         /**
          * @returns all the keys related with the URL of an audio resource in one go.
          */
         get_url_data(): [string, string, number];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.get_url_data
+    // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
+
         /**
          * in one go.
          * @param index element to retrieve, starting at 0
          * @returns all the keys related with the URL number `index` of an audio resource
          */
         get_url_data_nth(index: number): [string, string, number];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.get_url_data_nth
+    // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
+
         /**
          * Set the album of the audio
          * @param album the audio's album
          */
         set_album(album: string): void;
+
         /**
          * Set the artist of the audio
          * @param artist the audio's artist
          */
         set_artist(artist: string): void;
+
         /**
          * Set the bitrate of the audio
          * @param bitrate the audio's bitrate
          */
         set_bitrate(bitrate: number): void;
+
         /**
          * Set the genre of the audio
          * @param genre the audio's genre
          */
         set_genre(genre: string): void;
+
         /**
          * Set the lyrics of the audio
          * @param lyrics the audio's lyrics
          */
         set_lyrics(lyrics: string): void;
+
         /**
          * Set the track number of the audio
          * @param track_number the audio's track number
          */
         set_track_number(track_number: number): void;
+
         /**
          * Sets all the keys related with the URL of an audio resource in one go.
          * @param url the audio's url
@@ -1434,22 +1559,25 @@ export namespace Grl {
          * @param bitrate the `url` bitrate, or -1 to ignore
          */
         set_url_data(url: string, mime: string, bitrate: number): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.set_url_data
+    // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
     }
+
 
     namespace MediaBox {
         // Signal signatures
         interface SignalSignatures extends Media.SignalSignatures {
-            'notify::overwrite': (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Media.ConstructorProps {
 
-        interface ConstructorProps extends Media.ConstructorProps {}
+        }
     }
 
     /**
@@ -1468,43 +1596,34 @@ export namespace Grl {
         $signals: MediaBox.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaBox.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MediaBox;
+        static ["new"](): MediaBox;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaBox.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaBox.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaBox.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaBox.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaBox.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaBox.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaBox.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Number of children of this box.
-         *
+         * 
          * unknown.
          * @returns number of children, or #GRL_METADATA_KEY_CHILDCOUNT_UNKNOWN if
          */
         get_childcount(): number;
+
         /**
          * Sets the number of children of this box. Use
          * #GRL_METADATA_KEY_CHILDCOUNT_UNKNOWN if it is unknown.
@@ -1513,15 +1632,17 @@ export namespace Grl {
         set_childcount(childcount: number): void;
     }
 
+
     namespace MediaImage {
         // Signal signatures
         interface SignalSignatures extends Media.SignalSignatures {
-            'notify::overwrite': (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Media.ConstructorProps {
 
-        interface ConstructorProps extends Media.ConstructorProps {}
+        }
     }
 
     /**
@@ -1540,36 +1661,26 @@ export namespace Grl {
         $signals: MediaImage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MediaImage;
+        static ["new"](): MediaImage;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaImage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaImage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaImage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaImage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaImage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets all the keys related with the URL of a media resource and adds it to
          * `image` (useful for resources with more than one URL).
@@ -1579,48 +1690,58 @@ export namespace Grl {
          * @param height image height, or -1 to ignore
          */
         add_url_data(url: string, mime: string, width: number, height: number): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.add_url_data
+    // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
+
         /**
          * @returns model of camera used to take picture
          */
         get_camera_model(): string;
+
         /**
          * @returns picture's exposure time
          */
         get_exposure_time(): number;
+
         /**
          * See
          * http://library.gnome.org/devel/ontology/unstable/nmm-classes.html#nmm-Flash
          * @returns whether the flash was used
          */
         get_flash_used(): string;
+
         /**
          * @returns the height of the image
          */
         get_height(): number;
+
         /**
          * @returns picture's iso speed
          */
         get_iso_speed(): number;
+
         /**
          * @returns degrees clockwise orientation of the picture
          */
         get_orientation(): number;
+
         /**
          * @param width the width, or `null` to ignore
          * @param height the height, or `null` to ignore
          * @returns all the keys related with the URL of an image resource in one go.
          */
         get_url_data(width: number, height: number): [string, string];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.get_url_data
+    // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
+
         /**
          * in one go.
          * @param index element to retrieve
@@ -1629,46 +1750,56 @@ export namespace Grl {
          * @returns all the keys related with the URL number `index` of an image resource
          */
         get_url_data_nth(index: number, width: number, height: number): [string, string];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.get_url_data_nth
+    // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
+
         /**
          * @returns the width of the image
          */
         get_width(): number;
+
         /**
-         * @param camera_model
+         * @param camera_model 
          */
         set_camera_model(camera_model: string): void;
+
         /**
-         * @param exposure_time
+         * @param exposure_time 
          */
         set_exposure_time(exposure_time: number): void;
+
         /**
-         * @param flash_used
+         * @param flash_used 
          */
         set_flash_used(flash_used: string): void;
+
         /**
          * Set the height of the image
          * @param height the image's height
          */
         set_height(height: number): void;
+
         /**
-         * @param iso_speed
+         * @param iso_speed 
          */
         set_iso_speed(iso_speed: number): void;
+
         /**
-         * @param orientation
+         * @param orientation 
          */
         set_orientation(orientation: number): void;
+
         /**
          * Set the size of the image
          * @param width the image's width
          * @param height the image's height
          */
         set_size(width: number, height: number): void;
+
         /**
          * Sets all the keys related with the URL of an image resource in one go.
          * @param url the image's url
@@ -1677,11 +1808,13 @@ export namespace Grl {
          * @param height image height, or -1 to ignore
          */
         set_url_data(url: string, mime: string, width: number, height: number): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.set_url_data
+    // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
+
         /**
          * Set the width of the image
          * @param width the image's width
@@ -1689,13 +1822,16 @@ export namespace Grl {
         set_width(width: number): void;
     }
 
+
     namespace MediaPlugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1714,99 +1850,101 @@ export namespace Grl {
         $signals: MediaPlugin.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaPlugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaPlugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPlugin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaPlugin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaPlugin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaPlugin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaPlugin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaPlugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPlugin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaPlugin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaPlugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaPlugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaPlugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the author of the plugin
          * @returns the author of the `plugin`
          */
         get_author(): string;
+
         /**
          * Get the description of the plugin
          * @returns the description of the `plugin`
          */
         get_description(): string;
+
         /**
          * Get the filename containing the plugin
          * @returns the filename containing `plugin`
          */
         get_filename(): string;
+
         /**
          * Get the id of the plugin
          * @returns the id of the `plugin`
          */
         get_id(): string;
+
         /**
          * Get the information of the `plugin` that is associated with the given key
          * @param key a key representing information about this plugin
          * @returns the information assigned to the given `key` or NULL if there is no such information
          */
         get_info(key: string): string;
+
         /**
          * Returns a list of keys that can be queried to retrieve information about the
          * plugin.
-         *
+         * 
          * a {@link GLib.List} of strings containing the keys. The content of the list is
          * owned by the plugin and should not be modified or freed. Use `g_list_free()`
          * when done using the list.
          */
         get_info_keys(): string[];
+
         /**
          * Get the license of the plugin
          * @returns the license of the `plugin`
          */
         get_license(): string;
+
         /**
          * Get the name of the plugin
          * @returns the name of the `plugin`
          */
         get_name(): string;
+
         /**
          * Get the {@link Grl.PluginRank} of the plugin
          * @returns the rank of the plugin
          */
         get_rank(): number;
+
         /**
          * Get the site of the plugin
          * @returns the site of the `plugin`
          */
         get_site(): string;
+
         /**
          * Get the version of the plugin
          * @returns the version of the `plugin`
          */
         get_version(): string;
+
         /**
-         * @param info
+         * @param info 
          */
         set_plugin_info(info: PluginInfo): void;
     }
+
 
     namespace MediaSource {
         // Signal signatures
@@ -1815,14 +1953,14 @@ export namespace Grl {
              * Signals that the content in the source has changed. `changed_medias` is the
              * list of elements that have changed. Usually these medias are of type
              * {@link Grl.MediaBox}, meaning that the content of that box has changed.
-             *
+             * 
              * If `location_unknown` is `TRUE` it means the source cannot establish where the
              * change happened: could be either in the box, in any child, or in any other
              * descendant of the box in the hierarchy.
-             *
+             * 
              * Both `change_type` and `location_unknown` are applied to all elements in the
              * list.
-             *
+             * 
              * For the cases where the source can only signal that a change happened, but
              * not where, it would use a list with the the root box (`NULL` id) and set
              * location_unknown as `TRUE`.
@@ -1831,15 +1969,14 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            'content-changed': (arg0: any[], arg1: MediaSourceChangeType, arg2: boolean) => void;
-            'notify::auto-split-threshold': (pspec: GObject.ParamSpec) => void;
-            'notify::source-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::source-id': (pspec: GObject.ParamSpec) => void;
-            'notify::source-name': (pspec: GObject.ParamSpec) => void;
+            "content-changed": (arg0: any[], arg1: MediaSourceChangeType, arg2: boolean) => void;
+            "notify::auto-split-threshold": (pspec: GObject.ParamSpec) => void;
+            "notify::source-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::source-id": (pspec: GObject.ParamSpec) => void;
+            "notify::source-name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends MetadataSource.ConstructorProps {
             auto_split_threshold: number;
             autoSplitThreshold: number;
@@ -1853,13 +1990,13 @@ export namespace Grl {
         static $gtype: GObject.GType<MediaSource>;
 
         // Properties
-
         /**
          * Transparently split queries with count requests
          * bigger than a certain threshold into smaller queries.
          */
         get auto_split_threshold(): number;
         set auto_split_threshold(val: number);
+
         /**
          * Transparently split queries with count requests
          * bigger than a certain threshold into smaller queries.
@@ -1877,45 +2014,36 @@ export namespace Grl {
         $signals: MediaSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param bs
+         * @param bs 
          * @virtual
          */
         vfunc_browse(bs: MediaSourceBrowseSpec): void;
+
         /**
          * Cancel a running method.
-         *
+         * 
          * The derived class must implement the cancel vmethod in order to honour the
          * request correctly. Otherwise, the operation will not be interrupted.
-         *
+         * 
          * In all cases, if this function is called on an ongoing operation, the
          * corresponding callback will be called with the
          * `GRL_CORE_ERROR_OPERATION_CANCELLED` error set, and no more action will be
@@ -1924,16 +2052,19 @@ export namespace Grl {
          * @virtual
          */
         vfunc_cancel(operation_id: number): void;
+
         /**
-         * @param mfss
+         * @param mfss 
          * @virtual
          */
         vfunc_media_from_uri(mfss: MediaSourceMediaFromUriSpec): void;
+
         /**
-         * @param ms
+         * @param ms 
          * @virtual
          */
         vfunc_metadata(ms: MediaSourceMetadataSpec): void;
+
         /**
          * Starts emitting ::content-changed signals when `source` discovers changes in
          * the content. This instructs `source` to setup the machinery needed to be aware
@@ -1941,6 +2072,7 @@ export namespace Grl {
          * @virtual
          */
         vfunc_notify_change_start(): boolean;
+
         /**
          * This will drop emission of ::content-changed signals from `source`. When this
          * is done `source` should stop the machinery required for it to track changes in
@@ -1948,31 +2080,36 @@ export namespace Grl {
          * @virtual
          */
         vfunc_notify_change_stop(): boolean;
+
         /**
-         * @param qs
+         * @param qs 
          * @virtual
          */
         vfunc_query(qs: MediaSourceQuerySpec): void;
+
         /**
-         * @param ss
+         * @param ss 
          * @virtual
          */
         vfunc_remove(ss: MediaSourceRemoveSpec): void;
+
         /**
-         * @param ss
+         * @param ss 
          * @virtual
          */
         vfunc_search(ss: MediaSourceSearchSpec): void;
+
         /**
-         * @param ss
+         * @param ss 
          * @virtual
          */
         vfunc_store(ss: MediaSourceStoreSpec): void;
+
         /**
          * Tests whether `source` can instantiate a {@link Grl.Media} object representing
          * the media resource exposed at `uri`.
-         *
-         *
+         * 
+         * 
          * This method is synchronous.
          * @param uri A URI that can be used to identify a media resource
          * @virtual
@@ -1980,10 +2117,9 @@ export namespace Grl {
         vfunc_test_media_from_uri(uri: string): boolean;
 
         // Methods
-
         /**
          * Browse from `skip`, a `count` number of media elements through an available list.
-         *
+         * 
          * This method is asynchronous.
          * @param container a container of data transfer objects
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
@@ -1993,20 +2129,14 @@ export namespace Grl {
          * @param callback the user defined callback
          * @returns the operation identifier
          */
-        browse(
-            container: Media,
-            keys: GObject.ParamSpec[],
-            skip: number,
-            count: number,
-            flags: MetadataResolutionFlags,
-            callback: MediaSourceResultCb,
-        ): number;
+        browse(container: Media, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags, callback: MediaSourceResultCb): number;
+
         /**
          * Browse from `skip`, a `count` number of media elements through an available
          * list.
-         *
+         * 
          * This method is synchronous.
-         *
+         * 
          * elements. After use `g_object_unref()` every element and `g_list_free()` the
          * list.
          * @param container a container of data transfer objects
@@ -2016,19 +2146,14 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a {@link GLib.List} with {@link Grl.Media}
          */
-        browse_sync(
-            container: Media,
-            keys: GObject.ParamSpec[],
-            skip: number,
-            count: number,
-            flags: MetadataResolutionFlags,
-        ): Media[];
+        browse_sync(container: Media, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[];
+
         /**
          * Cancel a running method.
-         *
+         * 
          * The derived class must implement the cancel vmethod in order to honour the
          * request correctly. Otherwise, the operation will not be interrupted.
-         *
+         * 
          * In all cases, if this function is called on an ongoing operation, the
          * corresponding callback will be called with the
          * `GRL_CORE_ERROR_OPERATION_CANCELLED` error set, and no more action will be
@@ -2036,19 +2161,21 @@ export namespace Grl {
          * @param operation_id the identifier of the running operation, as returned by the function that started it
          */
         cancel(operation_id: number): void;
+
         /**
          * TBD
          * @returns the assigned threshold
          */
         get_auto_split_threshold(): number;
+
         /**
          * Creates an instance of {@link Grl.Media} representing the media resource
          * exposed at `uri`.
-         *
+         * 
          * It is recommended to call `grl_media_source_test_media_from_uri()` before
          * invoking this to check whether the target source can theoretically do the
          * resolution.
-         *
+         * 
          * This method is asynchronous.
          * @param uri A URI that can be used to identify a media resource
          * @param keys A list of keys to resolve
@@ -2056,20 +2183,16 @@ export namespace Grl {
          * @param callback the user defined callback
          * @returns the operation identifier
          */
-        get_media_from_uri(
-            uri: string,
-            keys: KeyID[],
-            flags: MetadataResolutionFlags,
-            callback: MediaSourceMetadataCb,
-        ): number;
+        get_media_from_uri(uri: string, keys: KeyID[], flags: MetadataResolutionFlags, callback: MediaSourceMetadataCb): number;
+
         /**
          * Creates an instance of {@link Grl.Media} representing the media resource
          * exposed at `uri`.
-         *
+         * 
          * It is recommended to call `grl_media_source_test_media_from_uri()` before
          * invoking this to check whether the target source can theoretically do the
          * resolution.
-         *
+         * 
          * This method is synchronous.
          * @param uri A URI that can be used to identify a media resource
          * @param keys A list of keys to resolve
@@ -2077,16 +2200,18 @@ export namespace Grl {
          * @returns a filled {@link Grl.Media}
          */
         get_media_from_uri_sync(uri: string, keys: KeyID[], flags: MetadataResolutionFlags): Media;
+
         /**
          * Obtains the previously attached data
          * @param operation_id the identifier of a running operation
          * @returns The previously attached data.
          */
         get_operation_data(operation_id: number): any;
+
         /**
          * This method is intended to fetch the requested keys of metadata of
          * a given `media` to the media source.
-         *
+         * 
          * This method is asynchronous.
          * @param media a data transfer object
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
@@ -2094,16 +2219,12 @@ export namespace Grl {
          * @param callback the user defined callback
          * @returns the operation identifier
          */
-        metadata(
-            media: Media,
-            keys: GObject.ParamSpec[],
-            flags: MetadataResolutionFlags,
-            callback: MediaSourceMetadataCb,
-        ): number;
+        metadata(media: Media, keys: GObject.ParamSpec[], flags: MetadataResolutionFlags, callback: MediaSourceMetadataCb): number;
+
         /**
          * This method is intended to fetch the requested keys of metadata of
          * a given `media` to the media source.
-         *
+         * 
          * This method is synchronous.
          * @param media a data transfer object
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
@@ -2111,12 +2232,13 @@ export namespace Grl {
          * @returns a filled {@link Grl.Media}
          */
         metadata_sync(media: Media, keys: GObject.ParamSpec[], flags: MetadataResolutionFlags): Media;
+
         /**
          * Emits "content-changed" signal to notify subscribers that a change ocurred
          * in `source`.
-         *
+         * 
          * See `grl_media_source_notify_change_list`() function.
-         *
+         * 
          * <note>
          * <para>
          * This function is intended to be used only by plugins.
@@ -2127,16 +2249,17 @@ export namespace Grl {
          * @param location_unknown if change has happened in `media` or any descendant
          */
         notify_change(media: Media, change_type: MediaSourceChangeType, location_unknown: boolean): void;
+
         /**
          * Emits "content-changed" signal to notify subscribers that a change ocurred
          * in `source`.
-         *
+         * 
          * The function will take ownership of `changed` medias and it should not be
          * manipulated in any way by the caller after invoking this function. If that is
          * needed, the caller must ref the array in advance.
-         *
+         * 
          * See GrlMediaSource::content-changed signal.
-         *
+         * 
          * <note>
          * <para>
          * This function is intended to be used only by plugins.
@@ -2146,11 +2269,8 @@ export namespace Grl {
          * @param change_type the type of change
          * @param location_unknown if change has happpened in `media` or any descendant
          */
-        notify_change_list(
-            changed_medias: Media[],
-            change_type: MediaSourceChangeType,
-            location_unknown: boolean,
-        ): void;
+        notify_change_list(changed_medias: Media[], change_type: MediaSourceChangeType, location_unknown: boolean): void;
+
         /**
          * Starts emitting ::content-changed signals when `source` discovers changes in
          * the content. This instructs `source` to setup the machinery needed to be aware
@@ -2158,6 +2278,7 @@ export namespace Grl {
          * @returns `TRUE` if initialization has succeed.
          */
         notify_change_start(): boolean;
+
         /**
          * This will drop emission of ::content-changed signals from `source`. When this
          * is done `source` should stop the machinery required for it to track changes in
@@ -2165,14 +2286,15 @@ export namespace Grl {
          * @returns `TRUE` if stop has succeed.
          */
         notify_change_stop(): boolean;
+
         /**
          * Execute a specialized query (specific for each provider) on a media
          * repository.
-         *
+         * 
          * It is different from `grl_media_source_search()` semantically, because
          * the query implies a carefully crafted string, rather than a simple
          * string to search.
-         *
+         * 
          * This method is asynchronous.
          * @param query the query to process
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
@@ -2182,20 +2304,14 @@ export namespace Grl {
          * @param callback the user defined callback
          * @returns the operation identifier
          */
-        query(
-            query: string,
-            keys: GObject.ParamSpec[],
-            skip: number,
-            count: number,
-            flags: MetadataResolutionFlags,
-            callback: MediaSourceResultCb,
-        ): number;
+        query(query: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags, callback: MediaSourceResultCb): number;
+
         /**
          * Execute a specialized query (specific for each provider) on a media
          * repository.
-         *
+         * 
          * This method is synchronous.
-         *
+         * 
          * elements. After use `g_object_unref()` every element and `g_list_free()` the
          * list.
          * @param query the query to process
@@ -2205,37 +2321,34 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a {@link GLib.List} with {@link Grl.Media}
          */
-        query_sync(
-            query: string,
-            keys: GObject.ParamSpec[],
-            skip: number,
-            count: number,
-            flags: MetadataResolutionFlags,
-        ): Media[];
+        query_sync(query: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[];
+
         /**
          * Remove a `media` from the `source` repository.
-         *
+         * 
          * This method is asynchronous.
          * @param media a data transfer object
          * @param callback the user defined callback
          */
         remove(media: Media, callback: MediaSourceRemoveCb): void;
+
         /**
          * Remove a `media` from the `source` repository.
-         *
+         * 
          * This method is synchronous.
          * @param media a data transfer object
          */
         remove_sync(media: Media): void;
+
         /**
          * Search for the `text` string in a media source for data identified with
          * that string.
-         *
+         * 
          * If `text` is `NULL` then no text filter will be applied, and thus, no media
          * items from `source` will be filtered. If `source` does not support NULL-text
          * search operations it should notiy the client by setting
          * `GRL_CORE_ERROR_SEARCH_NULL_UNSUPPORTED` in `callback`'s error parameter.
-         *
+         * 
          * This method is asynchronous.
          * @param text the text to search
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
@@ -2245,25 +2358,19 @@ export namespace Grl {
          * @param callback the user defined callback
          * @returns the operation identifier
          */
-        search(
-            text: string,
-            keys: GObject.ParamSpec[],
-            skip: number,
-            count: number,
-            flags: MetadataResolutionFlags,
-            callback: MediaSourceResultCb,
-        ): number;
+        search(text: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags, callback: MediaSourceResultCb): number;
+
         /**
          * Search for the `text` string in a media source for data identified with
          * that string.
-         *
+         * 
          * If `text` is `NULL` then no text filter will be applied, and thus, no media
          * items from `source` will be filtered. If `source` does not support NULL-text
          * search operations it should notiy the client by setting
          * `GRL_CORE_ERROR_SEARCH_NULL_UNSUPPORTED` in the error parameter.
-         *
+         * 
          * This method is synchronous.
-         *
+         * 
          * elements. After use `g_object_unref()` every element and `g_list_free()` the
          * list.
          * @param text the text to search
@@ -2273,46 +2380,45 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a {@link GLib.List} with {@link Grl.Media}
          */
-        search_sync(
-            text: string,
-            keys: GObject.ParamSpec[],
-            skip: number,
-            count: number,
-            flags: MetadataResolutionFlags,
-        ): Media[];
+        search_sync(text: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[];
+
         /**
          * TBD
          * @param threshold the threshold to request
          */
         set_auto_split_threshold(threshold: number): void;
+
         /**
          * Attach a pointer to the specific operation.
          * @param operation_id the identifier of a running operation
          * @param data the data to attach
          */
         set_operation_data(operation_id: number, data: any): void;
+
         /**
          * Store the `media` into the `parent` container
-         *
+         * 
          * This method is asynchronous.
          * @param parent a parent to store the data transfer objects
          * @param media a data transfer object
          * @param callback the user defined callback
          */
         store(parent: MediaBox, media: Media, callback: MediaSourceStoreCb): void;
+
         /**
          * Store the `media` into the `parent` container.
-         *
+         * 
          * This method is synchronous.
          * @param parent a {@link Grl.MediaBox} to store the data transfer objects
          * @param media a {@link Grl.Media} data transfer object
          */
         store_sync(parent: MediaBox, media: Media): void;
+
         /**
          * Tests whether `source` can instantiate a {@link Grl.Media} object representing
          * the media resource exposed at `uri`.
-         *
-         *
+         * 
+         * 
          * This method is synchronous.
          * @param uri A URI that can be used to identify a media resource
          * @returns `true` if it can, `false` otherwise.
@@ -2320,15 +2426,17 @@ export namespace Grl {
         test_media_from_uri(uri: string): boolean;
     }
 
+
     namespace MediaVideo {
         // Signal signatures
         interface SignalSignatures extends Media.SignalSignatures {
-            'notify::overwrite': (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Media.ConstructorProps {
 
-        interface ConstructorProps extends Media.ConstructorProps {}
+        }
     }
 
     /**
@@ -2347,36 +2455,26 @@ export namespace Grl {
         $signals: MediaVideo.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaVideo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MediaVideo;
+        static ["new"](): MediaVideo;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaVideo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaVideo.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaVideo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaVideo.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaVideo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaVideo.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaVideo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaVideo.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaVideo.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaVideo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaVideo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaVideo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets all the keys related with the URL of a media resource and adds it to
          * `video` (useful for resources with more than one URL).
@@ -2387,31 +2485,38 @@ export namespace Grl {
          * @param height video height, or -1 to ignore
          */
         add_url_data(url: string, mime: string, framerate: number, width: number, height: number): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.add_url_data
+    // Conflicted with Grl.Media.add_url_data
         add_url_data(...args: never[]): any;
+
         /**
          * @returns the episode number of the video
          */
         get_episode(): number;
+
         /**
          * @returns the framerate of the video
          */
         get_framerate(): number;
+
         /**
          * @returns the height of the video
          */
         get_height(): number;
+
         /**
          * @returns the season number of the video
          */
         get_season(): number;
+
         /**
          * @returns the show title of the video
          */
         get_show(): string;
+
         /**
          * @param framerate the url framerate, or `null` to ignore
          * @param width the url width, or `null` to ignore
@@ -2419,11 +2524,13 @@ export namespace Grl {
          * @returns all the keys related with the URL of a video resource in one go.
          */
         get_url_data(framerate: number, width: number, height: number): [string, string];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.get_url_data
+    // Conflicted with Grl.Media.get_url_data
         get_url_data(...args: never[]): any;
+
         /**
          * in one go.
          * @param index element to retrieve
@@ -2433,46 +2540,55 @@ export namespace Grl {
          * @returns all the keys related with the URL number `index` of a video resource
          */
         get_url_data_nth(index: number, framerate: number, width: number, height: number): [string, string];
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.get_url_data_nth
+    // Conflicted with Grl.Media.get_url_data_nth
         get_url_data_nth(...args: never[]): any;
+
         /**
          * @returns the width of the video
          */
         get_width(): number;
+
         /**
          * Sets the episode number of the video
          * @param episode the video's episode
          */
         set_episode(episode: number): void;
+
         /**
          * Set the framerate of the video
          * @param framerate the video's framerate
          */
         set_framerate(framerate: number): void;
+
         /**
          * Set the height of the video
          * @param height the video's height
          */
         set_height(height: number): void;
+
         /**
          * Sets the season number of the video
          * @param season the video's season
          */
         set_season(season: number): void;
+
         /**
          * Sets the show title of the video
          * @param show the video's show name
          */
         set_show(show: string): void;
+
         /**
          * Set the width and the height of the video
          * @param width the video's width
          * @param height the video's height
          */
         set_size(width: number, height: number): void;
+
         /**
          * Sets all the keys related with the URL of a video resource in one go.
          * @param url the video's url
@@ -2482,11 +2598,13 @@ export namespace Grl {
          * @param height video height, or -1 to ignore
          */
         set_url_data(url: string, mime: string, framerate: number, width: number, height: number): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Grl.Media.set_url_data
+    // Conflicted with Grl.Media.set_url_data
         set_url_data(...args: never[]): any;
+
         /**
          * Set the width of the video
          * @param width the video's width
@@ -2494,16 +2612,16 @@ export namespace Grl {
         set_width(width: number): void;
     }
 
+
     namespace MetadataSource {
         // Signal signatures
         interface SignalSignatures extends MediaPlugin.SignalSignatures {
-            'notify::source-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::source-id': (pspec: GObject.ParamSpec) => void;
-            'notify::source-name': (pspec: GObject.ParamSpec) => void;
+            "notify::source-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::source-id": (pspec: GObject.ParamSpec) => void;
+            "notify::source-name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends MediaPlugin.ConstructorProps {
             source_desc: string;
             sourceDesc: string;
@@ -2521,32 +2639,36 @@ export namespace Grl {
         static $gtype: GObject.GType<MetadataSource>;
 
         // Properties
-
         /**
          * A description of the source
          */
         get source_desc(): string;
         set source_desc(val: string);
+
         /**
          * A description of the source
          */
         get sourceDesc(): string;
         set sourceDesc(val: string);
+
         /**
          * The identifier of the source.
          */
         get source_id(): string;
         set source_id(val: string);
+
         /**
          * The identifier of the source.
          */
         get sourceId(): string;
         set sourceId(val: string);
+
         /**
          * The name of the source.
          */
         get source_name(): string;
         set source_name(val: string);
+
         /**
          * The name of the source.
          */
@@ -2563,40 +2685,30 @@ export namespace Grl {
         $signals: MetadataSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MetadataSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MetadataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetadataSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MetadataSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetadataSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MetadataSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetadataSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MetadataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetadataSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MetadataSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MetadataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MetadataSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetadataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Cancel a running method.
-         *
+         * 
          * The derived class must implement the cancel vmethod in order to honour the
          * request correctly. Otherwise, the operation will not be interrupted.
-         *
+         * 
          * In all cases, if this function is called on an ongoing operation, the
          * corresponding callback will be called with the
          * `GRL_CORE_ERROR_OPERATION_CANCELLED` error set, and no more action will be
@@ -2605,42 +2717,47 @@ export namespace Grl {
          * @virtual
          */
         vfunc_cancel(operation_id: number): void;
+
         /**
          * Get the list of {@link Grl.KeyID} which are needed a priori, in order to fetch
          * and store the requested `key_id`
-         *
+         * 
          * a {@link GLib.List} with the keys, or `NULL` if it can not resolve `key_id`
          * @param key_id the requested metadata key
          * @virtual
          */
         vfunc_key_depends(key_id: GObject.ParamSpec): GObject.ParamSpec[];
+
         /**
          * Checks whether `key_id` may be resolved with `source` for `media`, so that the
          * caller can avoid calling `grl_metadata_source_resolve()` if it can be known in
          * advance it will fail.
-         *
+         * 
          * If the resolution is known to be impossible because more keys are needed in
          * `media`, and `missing_keys` is not `NULL`, it is populated with the list of
          * GrlKeyID that would be needed.
-         *
+         * 
          * This function is synchronous and should not block.
-         *
+         * 
          * `media`, `FALSE` otherwise.
          * @param media a media on which we want more metadata
          * @param key_id the key corresponding to a metadata we might want
          * @virtual
          */
         vfunc_may_resolve(media: Media, key_id: KeyID): [boolean, KeyID[]];
+
         /**
-         * @param rs
+         * @param rs 
          * @virtual
          */
         vfunc_resolve(rs: MetadataSourceResolveSpec): void;
+
         /**
-         * @param sms
+         * @param sms 
          * @virtual
          */
         vfunc_set_metadata(sms: MetadataSourceSetMetadataSpec): void;
+
         /**
          * Similar to `grl_metadata_source_supported_keys()`, but this keys
          * are marked as slow because of the amount of traffic/processing needed
@@ -2648,34 +2765,36 @@ export namespace Grl {
          * @virtual
          */
         vfunc_slow_keys(): GObject.ParamSpec[];
+
         /**
          * Get a list of {@link Grl.KeyID}, which describe a metadata types that this
          * source can fetch and store.
          * @virtual
          */
         vfunc_supported_keys(): GObject.ParamSpec[];
+
         /**
          * @virtual
          */
         vfunc_supported_operations(): SupportedOps;
+
         /**
          * Similar to `grl_metadata_source_supported_keys()`, but these keys
          * are marked as writable, meaning the source allows the client
          * to provide new values for these keys that will be stored permanently.
-         *
+         * 
          * a {@link GLib.List} with the keys
          * @virtual
          */
         vfunc_writable_keys(): GObject.ParamSpec[];
 
         // Methods
-
         /**
          * Cancel a running method.
-         *
+         * 
          * The derived class must implement the cancel vmethod in order to honour the
          * request correctly. Otherwise, the operation will not be interrupted.
-         *
+         * 
          * In all cases, if this function is called on an ongoing operation, the
          * corresponding callback will be called with the
          * `GRL_CORE_ERROR_OPERATION_CANCELLED` error set, and no more action will be
@@ -2683,115 +2802,121 @@ export namespace Grl {
          * @param operation_id the identifier of the running operation, as returned by the function that started it
          */
         cancel(operation_id: number): void;
+
         /**
          * This function does the opposite of other filter functions: removes the slow
          * keys from `keys`. If `return_filtered` is `true` the removed slow keys are
          * returned in a new list.
-         *
+         * 
          * `return_filtered` is `true` will return the list of slow keys; otherwise
          * `null`
          * @param keys the list of keys to filter out
          * @param return_filtered if `true` the return value shall be a new list with the slow keys
          * @returns if
          */
-        filter_slow(
-            keys: GObject.ParamSpec[] | null,
-            return_filtered: boolean,
-        ): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+        filter_slow(keys: (GObject.ParamSpec[] | null), return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+
         /**
          * Compares the received `keys` list with the supported key list by the
          * metadata `source`, and deletes those keys which are not supported.
-         *
+         * 
          * if `return_filtered` is `true` will return the list of removed keys;
          * otherwise `null`
          * @param keys the list of keys to filter out
          * @param return_filtered if `true` the return value shall be a new list with the unsupported keys
          */
-        filter_supported(
-            keys: GObject.ParamSpec[] | null,
-            return_filtered: boolean,
-        ): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+        filter_supported(keys: (GObject.ParamSpec[] | null), return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+
         /**
          * Similar to `grl_metadata_source_filter_supported()` but applied to
          * the writable keys in `grl_metadata_source_writable_keys()`.
-         *
+         * 
          * Filter the `keys` list keeping only those keys that are writtable in
          * `source`. If `return_filtered` is `true` then the removed keys are returned in a
          * new list.
-         *
+         * 
          * if `return_filtered` is `true` will return the list of non-writtable keys;
          * otherwise `null`
          * @param keys the list of keys to filter out
          * @param return_filtered if `true` the return value shall be a new list with the non-writable keys
          */
-        filter_writable(
-            keys: GObject.ParamSpec[] | null,
-            return_filtered: boolean,
-        ): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+        filter_writable(keys: (GObject.ParamSpec[] | null), return_filtered: boolean): [GObject.ParamSpec[], GObject.ParamSpec[] | null];
+
         gen_operation_id(): number;
+
         /**
          * @returns the description of the `source`
          */
         get_description(): string;
+
         /**
          * @returns the ID of the `source`
          */
         get_id(): string;
+
         /**
          * @returns the name of the `source`
          */
         get_name(): string;
+
         /**
          * Obtains the previously attached data
          * @param operation_id the identifier of a running operation
          * @returns The previously attached data.
          */
         get_operation_data(operation_id: number): any;
+
         /**
          * Get the list of {@link Grl.KeyID} which are needed a priori, in order to fetch
          * and store the requested `key_id`
-         *
+         * 
          * a {@link GLib.List} with the keys, or `NULL` if it can not resolve `key_id`
          * @param key_id the requested metadata key
          */
         key_depends(key_id: GObject.ParamSpec): GObject.ParamSpec[];
+
         /**
          * Checks whether `key_id` may be resolved with `source` for `media`, so that the
          * caller can avoid calling `grl_metadata_source_resolve()` if it can be known in
          * advance it will fail.
-         *
+         * 
          * If the resolution is known to be impossible because more keys are needed in
          * `media`, and `missing_keys` is not `NULL`, it is populated with the list of
          * GrlKeyID that would be needed.
-         *
+         * 
          * This function is synchronous and should not block.
-         *
+         * 
          * `media`, `FALSE` otherwise.
          * @param media a media on which we want more metadata
          * @param key_id the key corresponding to a metadata we might want
          * @returns `TRUE` if there's a possibility that `source` resolves `key_id` for
          */
         may_resolve(media: Media, key_id: KeyID): [boolean, KeyID[]];
+
         /**
-         * @param operation_id
+         * @param operation_id 
          */
         operation_is_cancelled(operation_id: number): boolean;
+
         /**
-         * @param operation_id
+         * @param operation_id 
          */
         operation_is_completed(operation_id: number): boolean;
+
         /**
-         * @param operation_id
+         * @param operation_id 
          */
         operation_is_finished(operation_id: number): boolean;
+
         /**
-         * @param operation_id
+         * @param operation_id 
          */
         operation_is_ongoing(operation_id: number): boolean;
+
         /**
          * This is the main method of the {@link Grl.MetadataSource} class. It will fetch the
          * metadata of the requested keys.
-         *
+         * 
          * This function is asynchronous.
          * @param keys the {@link GLib.List} of {@link Grl.KeyID} to retrieve
          * @param media Transfer object where all the metadata is stored.
@@ -2799,16 +2924,12 @@ export namespace Grl {
          * @param callback the callback to execute when the `media` metadata is filled up
          * @returns the operation identifier
          */
-        resolve(
-            keys: GObject.ParamSpec[],
-            media: Media,
-            flags: MetadataResolutionFlags,
-            callback: MetadataSourceResolveCb,
-        ): number;
+        resolve(keys: GObject.ParamSpec[], media: Media, flags: MetadataResolutionFlags, callback: MetadataSourceResolveCb): number;
+
         /**
          * This is the main method of the {@link Grl.MetadataSource} class. It will fetch the
          * metadata of the requested keys.
-         *
+         * 
          * This function is synchronous.
          * @param keys the {@link GLib.List} of {@link Grl.KeyID} to retrieve
          * @param media Transfer object where all the metadata is stored
@@ -2816,60 +2937,63 @@ export namespace Grl {
          * @returns the updated {@link Grl.Media}
          */
         resolve_sync(keys: GObject.ParamSpec[], media: Media, flags: MetadataResolutionFlags): Media;
+
         /**
          * This is the main method of the {@link Grl.MetadataSource} class. It will
          * get the values for `keys` from `media` and store it permanently. After
          * calling this method, future queries that return this media object
          * shall return this new values for the selected keys.
-         *
+         * 
          * This function is asynchronous and uses the Glib's main loop.
          * @param media the {@link Grl.Media} object that we want to operate on.
          * @param keys a list of {@link Grl.KeyID} whose values we want to change.
          * @param flags Flags to configure specific behaviors of the operation.
          * @param callback the callback to execute when the operation is finished.
          */
-        set_metadata(
-            media: Media,
-            keys: GObject.ParamSpec[],
-            flags: MetadataWritingFlags,
-            callback: MetadataSourceSetMetadataCb,
-        ): void;
+        set_metadata(media: Media, keys: GObject.ParamSpec[], flags: MetadataWritingFlags, callback: MetadataSourceSetMetadataCb): void;
+
         /**
          * This is the main method of the {@link Grl.MetadataSource} class. It will
          * get the value for `key` from `media` and store it permanently. After
          * calling this method, future queries that return this media object
          * shall return this new value for the selected key.
-         *
+         * 
          * This function is synchronous.
-         *
+         * 
          * a {@link GLib.List} of keys that could not be updated, or `NULL`
          * @param media the {@link Grl.Media} object that we want to operate on
          * @param keys a list of {@link Grl.KeyID} whose values we want to change
          * @param flags Flags to configure specific behaviors of the operation.
          */
         set_metadata_sync(media: Media, keys: GObject.ParamSpec[], flags: MetadataWritingFlags): GObject.ParamSpec[];
+
         /**
-         * @param operation_id
+         * @param operation_id 
          */
         set_operation_cancelled(operation_id: number): void;
+
         /**
-         * @param operation_id
+         * @param operation_id 
          */
         set_operation_completed(operation_id: number): void;
+
         /**
          * Attach a pointer to the specific operation.
          * @param operation_id the identifier of a running operation
          * @param data the data to attach
          */
         set_operation_data(operation_id: number, data: any): void;
+
         /**
-         * @param operation_id
+         * @param operation_id 
          */
         set_operation_finished(operation_id: number): void;
+
         /**
-         * @param operation_id
+         * @param operation_id 
          */
         set_operation_ongoing(operation_id: number): void;
+
         /**
          * Similar to `grl_metadata_source_supported_keys()`, but this keys
          * are marked as slow because of the amount of traffic/processing needed
@@ -2877,28 +3001,32 @@ export namespace Grl {
          * @returns a {@link GLib.List} with the keys
          */
         slow_keys(): GObject.ParamSpec[];
+
         /**
          * Get a list of {@link Grl.KeyID}, which describe a metadata types that this
          * source can fetch and store.
          * @returns a {@link GLib.List} with the keys
          */
         supported_keys(): GObject.ParamSpec[];
+
         /**
          * By default the derived objects of {@link Grl.MetadataSource} can only resolve.
-         *
+         * 
          * the source
          * @returns a bitwise mangle with the supported operations by
          */
         supported_operations(): number;
+
         /**
          * Similar to `grl_metadata_source_supported_keys()`, but these keys
          * are marked as writable, meaning the source allows the client
          * to provide new values for these keys that will be stored permanently.
-         *
+         * 
          * a {@link GLib.List} with the keys
          */
         writable_keys(): GObject.ParamSpec[];
     }
+
 
     namespace PluginRegistry {
         // Signal signatures
@@ -2909,19 +3037,20 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            'source-added': (arg0: MediaPlugin) => void;
+            "source-added": (arg0: MediaPlugin) => void;
             /**
              * Signals that a plugin has been removed from the registry.
              * @signal
              * @action
              * @run-first
              */
-            'source-removed': (arg0: MediaPlugin) => void;
+            "source-removed": (arg0: MediaPlugin) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2940,87 +3069,81 @@ export namespace Grl {
         $signals: PluginRegistry.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PluginRegistry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PluginRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginRegistry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PluginRegistry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PluginRegistry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PluginRegistry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PluginRegistry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PluginRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PluginRegistry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PluginRegistry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PluginRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PluginRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PluginRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * As the registry is designed to work as a singleton, this
          * method is in charge of creating the only instance or
          * returned it if it is already in memory.
-         *
-         *
+         * 
+         * 
          * It is NOT MT-safe
          */
         static get_default(): PluginRegistry;
 
         // Methods
-
         /**
          * Add a configuration for a plugin/source.
          * @param config a configuration set
          */
         add_config(config: Config): boolean;
+
         /**
          * Load plugin configurations from a .ini-like config file.
          * @param config_file a key-value file containing the configuration
          * @returns `true` on success
          */
         add_config_from_file(config_file: string): boolean;
+
         /**
          * Set this path as part of default paths to load plugins.
          * @param path a path with plugins
          */
         add_directory(path: string): void;
+
         /**
          * Returns a list with all registered keys in system.
-         *
+         * 
          * with all the available {@link Grl.KeyID}<!-- -->s. The content of the list should
          * not be modified or freed. Use `g_list_free()` when done using the list.
          * @returns a {@link GLib.List}
          */
         get_metadata_keys(): GObject.ParamSpec[];
+
         /**
          * This function will return all the available sources in the `registry`.
-         *
+         * 
          * If `ranked` is `true`, the source list will be ordered by rank.
-         *
+         * 
          * available `GrlMediaPlugins`<!-- -->s. The content of the list should not be
          * modified or freed. Use `g_list_free()` when done using the list.
          * @param ranked whether the returned list shall be returned ordered by rank
          * @returns a {@link GLib.List} of
          */
         get_sources(ranked: boolean): MediaPlugin[];
+
         /**
          * Give an array of all the available sources in the `registry` capable of
          * perform the operations requested in `ops`.
-         *
+         * 
          * If `ranked` is `true`, the source list will be ordered by rank.
-         *
+         * 
          * available `GrlMediaPlugins`<!-- -->s. The content of the list should not be
          * modified or freed. Use `g_list_free()` when done using the list.
          * @param ops a bitwise mangle of the requested operations.
@@ -3028,26 +3151,29 @@ export namespace Grl {
          * @returns a {@link GLib.List} of
          */
         get_sources_by_operations(ops: SupportedOps, ranked: boolean): MediaPlugin[];
+
         /**
          * Loads a module from shared object file stored in `path`
          * @param library_filename the path to the so file
          * @returns `true` if the module is loaded correctly
          */
         load(library_filename: string): boolean;
+
         /**
          * Load all the modules available in the default directory path.
-         *
+         * 
          * The default directory path can be changed through the environment
          * variable `GRL_PLUGIN_PATH` and it can contain several paths separated
          * by ":"
-         *
+         * 
          * `true`% otherwise.
          * @returns `false`% is all the configured plugin paths are invalid,
          */
         load_all(): boolean;
+
         /**
          * Loads plugin identified by `plugin_id`.
-         *
+         * 
          * This requires the XML plugin information file to define a "module" key with
          * the name of the module that provides the plugin or the absolute path of the
          * actual module file.
@@ -3055,6 +3181,7 @@ export namespace Grl {
          * @returns `true` if the plugin is loaded correctly
          */
         load_by_id(plugin_id: string): boolean;
+
         /**
          * Loads a set of modules from directory in `path` which contains
          * a group shared object files.
@@ -3062,50 +3189,56 @@ export namespace Grl {
          * @returns `true` if the directory is valid.
          */
         load_directory(path: string): boolean;
+
         /**
          * Look up for the metadata key with name `key_name`.
          * @param key_name the key name
          * @returns The metadata key, or `NULL` if not found
          */
         lookup_metadata_key(key_name: string): GObject.ParamSpec;
+
         /**
          * Look up the list of keys that have a relation with `key`.
-         *
+         * 
          * `key` is included in that list.
-         *
+         * 
          * related keys, or `NULL` if key is invalid.
          * @param key a metadata key
          * @returns a {@link GLib.List} of
          */
         lookup_metadata_key_relation(key: KeyID): GObject.ParamSpec[];
+
         /**
          * This function will search and retrieve a source given its identifier.
          * @param source_id the id of a source
          * @returns The source found.
          */
         lookup_source(source_id: string): MediaPlugin;
+
         /**
          * Registers a metadata key
-         *
+         * 
          * or `NULL` on error.
          * @param key The key to register
          * @returns The {@link Grl.KeyID} registered
          */
         register_metadata_key(key: GObject.ParamSpec): GObject.ParamSpec;
+
         /**
          * Creates a relation between `key1` and `key2`, meaning that the values of both
          * keys are somehow related.
-         *
+         * 
          * One example of a relation would be the one between the URI of a media
          * resource and its mime-type: they are both tied together and one does not make
          * sense without the other.
-         *
+         * 
          * Relations between keys allow the framework to provide all the data that is
          * somehow related when any of the related keys are requested.
          * @param key1 key involved in relationship
          * @param key2 key involved in relationship
          */
         register_metadata_key_relation(key1: KeyID, key2: KeyID): void;
+
         /**
          * Register a `source` in the `registry` with the given `plugin` information
          * @param plugin the descriptor of the plugin which owns the source
@@ -3113,14 +3246,16 @@ export namespace Grl {
          * @returns `true` if success, `false`% otherwise.
          */
         register_source(plugin: PluginInfo, source: MediaPlugin): boolean;
+
         /**
          * Restrict the plugins that application sees to this list.
-         *
+         * 
          * Other plugins will not be available for the application, unless it uses
          * directly `grl_plugin_registry_load`() function.
          * @param plugins a `NULL`-terminated array of plugins identifiers
          */
         restrict_plugins(plugins: string): void;
+
         /**
          * Unload from memory a module identified by `plugin_id`. This means call the
          * module's deinit function.
@@ -3128,6 +3263,7 @@ export namespace Grl {
          * @returns `true`% on success.
          */
         unload(plugin_id: string): boolean;
+
         /**
          * Removes the `source` from the `registry` hash table
          * @param source the source to unregister
@@ -3136,13 +3272,16 @@ export namespace Grl {
         unregister_source(source: MediaPlugin): boolean;
     }
 
+
     namespace RelatedKeys {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3161,67 +3300,61 @@ export namespace Grl {
         $signals: RelatedKeys.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RelatedKeys.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): RelatedKeys;
+        static ["new"](): RelatedKeys;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RelatedKeys.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RelatedKeys.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RelatedKeys.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RelatedKeys.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RelatedKeys.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RelatedKeys.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RelatedKeys.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RelatedKeys.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RelatedKeys.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RelatedKeys.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RelatedKeys.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RelatedKeys.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new `key` to `relkeys`, with no value. If `key` already exists, it does
          * nothing.
          * @param key key to add
          */
         add(key: GObject.ParamSpec): void;
+
         /**
          * Makes a deep copy of `relkeys` and its contents.
-         *
+         * 
          * Free it with `g_object_unref`.
          * @returns a new {@link Grl.RelatedKeys}.
          */
         dup(): RelatedKeys;
+
         /**
          * Get the value associated with `key` from `relkeys`. If it does not contain any
          * value, `null` will be returned.
-         *
+         * 
          * freed by user.
          * @param key key to look up.
          * @returns a {@link GObject.Value}. This value should not be modified nor
          */
         get(key: GObject.ParamSpec): unknown;
+
         /**
          * Returns the value associated with `key` from `relkeys`. If `key` has no value,
          * or value is not a binary, or `key` is not in `relkeys`, then 0 is returned.
-         *
+         * 
          * successful `size` will be set to the buffer size.
          * @param key key to use
          * @returns buffer location associated with `key`, or `null` in other case. If
          */
         get_binary(key: GObject.ParamSpec): [number, number];
+
         /**
          * Returns the value associated with `key` from `relkeys`. If `key` has no value,
          * or value is not a gfloat, or `key` is not in `relkeys`, then 0 is returned.
@@ -3229,6 +3362,7 @@ export namespace Grl {
          * @returns float value associated with `key`, or 0 in other case.
          */
         get_float(key: GObject.ParamSpec): number;
+
         /**
          * Returns the value associated with `key` from `relkeys`. If `key` has no value,
          * or value is not a gint, or `key` is not in `relkeys`, then 0 is returned.
@@ -3236,51 +3370,58 @@ export namespace Grl {
          * @returns int value associated with `key`, or 0 in other case.
          */
         get_int(key: GObject.ParamSpec): number;
+
         /**
          * Returns a list with keys contained in `relkeys`.
-         *
+         * 
          * the keys. The content of the list should not be modified or freed. Use
          * `g_list_free()` when done using the list.
          * @returns a list with
          */
         get_keys(): GObject.ParamSpec[];
+
         /**
          * Returns the value associated with `key` from `relkeys`. If `key` has no value,
          * or value is not string, or `key` is not in `relkeys`, then `null` is returned.
-         *
+         * 
          * not change nor free the value.
          * @param key key to use
          * @returns string associated with `key`, or `null` in other case. Caller should
          */
         get_string(key: GObject.ParamSpec): string;
+
         /**
          * Checks if `key` is in `relkeys`.
          * @param key key to search
          * @returns `true` if `key` is in `relkeys`, `false` in other case.
          */
         has_key(key: GObject.ParamSpec): boolean;
+
         /**
          * Checks if `key` has a value in `relkeys`.
          * @param key key to search
          * @returns `true` if `key` has a value.
          */
         key_is_known(key: GObject.ParamSpec): boolean;
+
         /**
          * Sets the value associated with `key` into `relkeys`. Old value is freed and
          * the new one is set.
-         *
+         * 
          * Also, checks that `value` is compliant with `key` specification, modifying it
          * accordingly. For instance, if `key` requires a number between 0 and 10, but
          * value is outside this range, it will be adapted accordingly.
          * @param key key to change or add
          * @param value the new value
          */
-        set(key: GObject.ParamSpec, value: GObject.Value | any): void;
+        set(key: GObject.ParamSpec, value: (GObject.Value | any)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as a binary-type key. Old value is replaced by the new one.
@@ -3288,7 +3429,8 @@ export namespace Grl {
          * @param buf buffer holding the relkeys
          * @param size size of the buffer
          */
-        set_binary(key: GObject.ParamSpec, buf: number, size: bigint | number): void;
+        set_binary(key: GObject.ParamSpec, buf: number, size: (bigint | number)): void;
+
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as a float-type key. Old value is replaced by the new one.
@@ -3296,6 +3438,7 @@ export namespace Grl {
          * @param floatvalue the new value
          */
         set_float(key: GObject.ParamSpec, floatvalue: number): void;
+
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as an int-type key. Old value is replaced by the new one.
@@ -3303,6 +3446,7 @@ export namespace Grl {
          * @param intvalue the new value
          */
         set_int(key: GObject.ParamSpec, intvalue: number): void;
+
         /**
          * Sets the value associated with `key` into `relkeys`. `key` must have been
          * registered as a strying-type key. Old value is freed and the new one is set.
@@ -3312,10 +3456,12 @@ export namespace Grl {
         set_string(key: GObject.ParamSpec, strvalue: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConfigClass = typeof Config;
+
     /**
      * @gir-type Struct
      */
@@ -3323,16 +3469,19 @@ export namespace Grl {
         static $gtype: GObject.GType<ConfigPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DataClass = typeof Data;
+
     /**
      * @gir-type Struct
      */
     abstract class DataPrivate {
         static $gtype: GObject.GType<DataPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -3341,36 +3490,42 @@ export namespace Grl {
         static $gtype: GObject.GType<LogDomain>;
 
         // Methods
-
         free(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type MediaAudioClass = typeof MediaAudio;
+
     /**
      * @gir-type Alias
      */
     type MediaBoxClass = typeof MediaBox;
+
     /**
      * @gir-type Alias
      */
     type MediaClass = typeof Media;
+
     /**
      * @gir-type Alias
      */
     type MediaImageClass = typeof MediaImage;
+
     /**
      * @gir-type Alias
      */
     type MediaPluginClass = typeof MediaPlugin;
+
     /**
      * @gir-type Struct
      */
     abstract class MediaPluginPrivate {
         static $gtype: GObject.GType<MediaPluginPrivate>;
     }
+
 
     /**
      * Data transport structure used internally by the plugins which support
@@ -3381,22 +3536,31 @@ export namespace Grl {
         static $gtype: GObject.GType<MediaSourceBrowseSpec>;
 
         // Fields
-
         source: MediaSource;
+
         browse_id: number;
+
         container: Media;
+
         keys: any[];
+
         skip: number;
+
         count: number;
+
         flags: MetadataResolutionFlags;
+
         callback: MediaSourceResultCb;
+
         user_data: any;
     }
+
 
     /**
      * @gir-type Alias
      */
     type MediaSourceClass = typeof MediaSource;
+
     /**
      * Data transport structure used internally by the plugins which support
      * media_from_uri vmethod.
@@ -3406,15 +3570,21 @@ export namespace Grl {
         static $gtype: GObject.GType<MediaSourceMediaFromUriSpec>;
 
         // Fields
-
         source: MediaSource;
+
         media_from_uri_id: number;
+
         uri: string;
+
         keys: any[];
+
         flags: MetadataResolutionFlags;
+
         callback: MediaSourceMetadataCb;
+
         user_data: any;
     }
+
 
     /**
      * Data transport structure used internally by the plugins which support
@@ -3425,15 +3595,21 @@ export namespace Grl {
         static $gtype: GObject.GType<MediaSourceMetadataSpec>;
 
         // Fields
-
         source: MediaSource;
+
         metadata_id: number;
+
         media: Media;
+
         keys: any[];
+
         flags: MetadataResolutionFlags;
+
         callback: MediaSourceMetadataCb;
+
         user_data: any;
     }
+
 
     /**
      * @gir-type Struct
@@ -3441,6 +3617,7 @@ export namespace Grl {
     abstract class MediaSourcePrivate {
         static $gtype: GObject.GType<MediaSourcePrivate>;
     }
+
 
     /**
      * Data transport structure used internally by the plugins which support
@@ -3451,17 +3628,25 @@ export namespace Grl {
         static $gtype: GObject.GType<MediaSourceQuerySpec>;
 
         // Fields
-
         source: MediaSource;
+
         query_id: number;
+
         query: string;
+
         keys: any[];
+
         skip: number;
+
         count: number;
+
         flags: MetadataResolutionFlags;
+
         callback: MediaSourceResultCb;
+
         user_data: any;
     }
+
 
     /**
      * Data transport structure used internally by the plugins which support
@@ -3472,13 +3657,17 @@ export namespace Grl {
         static $gtype: GObject.GType<MediaSourceRemoveSpec>;
 
         // Fields
-
         source: MediaSource;
+
         media_id: string;
+
         media: Media;
+
         callback: MediaSourceRemoveCb;
+
         user_data: any;
     }
+
 
     /**
      * Data transport structure used internally by the plugins which support
@@ -3489,17 +3678,25 @@ export namespace Grl {
         static $gtype: GObject.GType<MediaSourceSearchSpec>;
 
         // Fields
-
         source: MediaSource;
+
         search_id: number;
+
         text: string;
+
         keys: any[];
+
         skip: number;
+
         count: number;
+
         flags: MetadataResolutionFlags;
+
         callback: MediaSourceResultCb;
+
         user_data: any;
     }
+
 
     /**
      * Data transport structure used internally by the plugins which support
@@ -3510,27 +3707,33 @@ export namespace Grl {
         static $gtype: GObject.GType<MediaSourceStoreSpec>;
 
         // Fields
-
         source: MediaSource;
+
         media: Media;
+
         callback: MediaSourceStoreCb;
+
         user_data: any;
     }
+
 
     /**
      * @gir-type Alias
      */
     type MediaVideoClass = typeof MediaVideo;
+
     /**
      * @gir-type Alias
      */
     type MetadataSourceClass = typeof MetadataSource;
+
     /**
      * @gir-type Struct
      */
     abstract class MetadataSourcePrivate {
         static $gtype: GObject.GType<MetadataSourcePrivate>;
     }
+
 
     /**
      * Represents the closure used by the derived objects to fetch, store and
@@ -3541,15 +3744,21 @@ export namespace Grl {
         static $gtype: GObject.GType<MetadataSourceResolveSpec>;
 
         // Fields
-
         source: MetadataSource;
+
         resolve_id: number;
+
         keys: any[];
+
         media: Media;
+
         flags: MetadataResolutionFlags;
+
         callback: MetadataSourceResolveCb;
+
         user_data: any;
     }
+
 
     /**
      * Represents the closure used by the derived objects to operate.
@@ -3559,15 +3768,21 @@ export namespace Grl {
         static $gtype: GObject.GType<MetadataSourceSetMetadataSpec>;
 
         // Fields
-
         source: MetadataSource;
+
         media: Media;
+
         keys: any[];
+
         flags: MetadataWritingFlags;
+
         callback: MetadataSourceSetMetadataCb;
+
         user_data: any;
+
         failed_keys: any[];
     }
+
 
     /**
      * @gir-type Struct
@@ -3576,9 +3791,9 @@ export namespace Grl {
         static $gtype: GObject.GType<PluginDescriptor>;
 
         // Fields
-
         plugin_id: string;
     }
+
 
     /**
      * This structure stores the information related to a module
@@ -3588,16 +3803,19 @@ export namespace Grl {
         static $gtype: GObject.GType<PluginInfo>;
 
         // Fields
-
         id: string;
+
         filename: string;
+
         rank: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type PluginRegistryClass = typeof PluginRegistry;
+
     /**
      * @gir-type Struct
      */
@@ -3605,10 +3823,12 @@ export namespace Grl {
         static $gtype: GObject.GType<PluginRegistryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RelatedKeysClass = typeof RelatedKeys;
+
     /**
      * @gir-type Struct
      */
@@ -3616,15 +3836,18 @@ export namespace Grl {
         static $gtype: GObject.GType<RelatedKeysPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type KeyID = any;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

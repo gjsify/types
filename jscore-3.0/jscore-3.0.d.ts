@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,24 +14,30 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace JSCore {
+
     /**
      * JSCore-3.0
      */
 
+
     function EvaluateScript(): void;
+
     /**
      * @gir-type Alias
      */
     type GlobalContextRef = unknown;
+
     /**
      * @gir-type Alias
      */
     type ObjectRef = unknown;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

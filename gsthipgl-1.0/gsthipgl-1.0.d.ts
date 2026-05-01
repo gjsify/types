@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -20,15 +21,18 @@ import type GstHip from '@girs/gsthip-1.0';
 import type GstGL from '@girs/gstgl-1.0';
 
 export namespace GstHipGL {
+
     /**
      * GstHipGL-1.0
      */
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 import type GXml020 from '@girs/gxml-0.20';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

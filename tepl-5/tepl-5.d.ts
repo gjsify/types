@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -27,9 +28,11 @@ import type Atk from '@girs/atk-1.0';
 import type Amtk from '@girs/amtk-5';
 
 export namespace Tepl {
+
     /**
      * Tepl-5
      */
+
 
     /**
      * @gir-type Enum
@@ -58,6 +61,7 @@ export namespace Tepl {
         CR_LF,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -85,28 +89,31 @@ export namespace Tepl {
         MULTIPLE_LINES,
     }
 
+
     /**
      * Free the resources allocated by Tepl. For example it unrefs the singleton
      * objects.
-     *
+     * 
      * This function also calls `amtk_finalize()` and `gtk_source_finalize()`.
-     *
+     * 
      * It is not mandatory to call this function, it's just to be friendlier to
      * memory debugging tools. This function is meant to be called at the end of
      * `main()`. It can be called several times.
      * @since 3.0
      */
     function finalize(): void;
+
     /**
      * Initializes the Tepl library (e.g. for the internationalization).
-     *
+     * 
      * This function can be called several times, but is meant to be called at the
      * beginning of `main()`, before any other Tepl function call.
-     *
+     * 
      * This function also calls `amtk_init()` and `gtk_source_init()`.
      * @since 3.0
      */
     function init(): void;
+
     /**
      * When a {@link Gio.IOErrorEnum.CANT_CREATE_BACKUP} error occurs while saving `location`,
      * offer two possible actions:
@@ -118,6 +125,7 @@ export namespace Tepl {
      * @since 5.0
      */
     function io_error_info_bar_cant_create_backup(location: Gio.File, error: GLib.Error): InfoBar;
+
     /**
      * Creates a warning about `location` having changed on disk. The possible
      * actions:
@@ -130,6 +138,7 @@ export namespace Tepl {
      * @since 5.0
      */
     function io_error_info_bar_externally_modified(location: Gio.File, document_modified: boolean): InfoBar;
+
     /**
      * Creates a warning about `location` being already open in another window,
      * offering two possible actions:
@@ -140,6 +149,7 @@ export namespace Tepl {
      * @since 5.0
      */
     function io_error_info_bar_file_already_open(location: Gio.File): InfoBar;
+
     /**
      * For file saving, creates a warning about invalid characters that can corrupt
      * the file. Possible actions:
@@ -150,10 +160,11 @@ export namespace Tepl {
      * @since 5.0
      */
     function io_error_info_bar_invalid_characters(location: Gio.File): InfoBar;
+
     /**
      * Gets the indentation, as a string, of the line at `iter`. `iter` can be
      * anywhere in the line.
-     *
+     * 
      * Possible use-case: to implement an action that inserts some text in a
      * {@link Gtk.TextBuffer}. If the text to insert spans multiple lines, it is usually
      * desired to keep the same indentation level.
@@ -162,6 +173,7 @@ export namespace Tepl {
      * @since 2.0
      */
     function iter_get_line_indentation(iter: Gtk.TextIter): string;
+
     /**
      * Appends {@link Gtk.MenuItem}'s to `menu_shell` for the following {@link Gio.Action}'s:
      * - `"win.tepl-cut"`
@@ -169,7 +181,7 @@ export namespace Tepl {
      * - `"win.tepl-paste"`
      * - `"win.tepl-delete"`
      * - `"win.tepl-select-all"`
-     *
+     * 
      * See the [list of GActions implemented in
      * TeplApplicationWindow][tepl-application-window-gactions]. This function
      * correctly uses the {@link Amtk.FactoryFlags.IGNORE_ACCELS_FOR_APP} flag to create the
@@ -178,10 +190,11 @@ export namespace Tepl {
      * @since 3.0
      */
     function menu_shell_append_edit_actions(menu_shell: Gtk.MenuShell): void;
+
     /**
      * This function will generate CSS suitable for the GTK CSS engine based on the
      * properties of the {@link Pango.FontDescription}.
-     *
+     * 
      * The returned string contains only the CSS declarations, it is not a complete
      * CSS rule set. So the selector and curly braces are not present. Each
      * declaration, including the last one, ends with a semicolon.
@@ -190,14 +203,15 @@ export namespace Tepl {
      * @since 5.2
      */
     function pango_font_description_to_css(desc: Pango.FontDescription): string;
+
     /**
      * A {@link GObject.BindingTransformFunc} to transform between these two {@link GObject.Value} types:
      * - A {@link GObject.Value} of type `gboolean`.
      * - A {@link GObject.Value} of type {@link GLib.Variant}, with the {@link GLib.Variant} of type boolean.
-     *
+     * 
      * For convenience, this function works in both directions (hence the “smart”),
      * it introspects the types of `from_value` and `to_value`.
-     *
+     * 
      * Note that if `from_value` and `to_value` are of the same {@link GObject.Value} type, this
      * function won't work and you shouldn't use a custom {@link GObject.BindingTransformFunc} in
      * the first place.
@@ -208,17 +222,14 @@ export namespace Tepl {
      * @returns `true` if the transformation was successful, and `false` otherwise.
      * @since 5.0
      */
-    function utils_binding_transform_func_smart_bool(
-        binding: GObject.Binding,
-        from_value: GObject.Value | any,
-        to_value: GObject.Value | any,
-        user_data: any | null,
-    ): boolean;
+    function utils_binding_transform_func_smart_bool(binding: GObject.Binding, from_value: (GObject.Value | any), to_value: (GObject.Value | any), user_data: (any | null)): boolean;
+
     /**
      * @returns a new close button (a {@link Gtk.Button}).
      * @since 5.0
      */
     function utils_create_close_button(): Gtk.Widget;
+
     /**
      * Synchronously creates parent directories of `file`, so that `file` can be
      * saved.
@@ -227,7 +238,8 @@ export namespace Tepl {
      * @returns whether the directories are correctly created. `false` is returned on error.
      * @since 5.0
      */
-    function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+    function utils_create_parent_directories(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Parse and break an uri apart in its individual components like the uri
      * scheme, user info, host, port and path. The return value pointer can be
@@ -238,6 +250,7 @@ export namespace Tepl {
      * @since 5.0
      */
     function utils_decode_uri(uri: string): [boolean, string, string, string, string, string];
+
     /**
      * The asynchronous version of `g_file_query_exists()`. When the operation is
      * finished, `callback` will be called. You can then call
@@ -246,24 +259,7 @@ export namespace Tepl {
      * @param cancellable a {@link Gio.Cancellable}.
      * @since 5.0
      */
-    function utils_file_query_exists_async(
-        file: Gio.File,
-        cancellable: Gio.Cancellable | null,
-    ): globalThis.Promise<boolean>;
-    /**
-     * The asynchronous version of `g_file_query_exists()`. When the operation is
-     * finished, `callback` will be called. You can then call
-     * `tepl_utils_file_query_exists_finish()` to get the result of the operation.
-     * @param file a {@link Gio.File}.
-     * @param cancellable a {@link Gio.Cancellable}.
-     * @param callback the callback to call when the operation is finished.
-     * @since 5.0
-     */
-    function utils_file_query_exists_async(
-        file: Gio.File,
-        cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<Gio.File> | null,
-    ): void;
+    function utils_file_query_exists_async(file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
     /**
      * The asynchronous version of `g_file_query_exists()`. When the operation is
      * finished, `callback` will be called. You can then call
@@ -273,11 +269,18 @@ export namespace Tepl {
      * @param callback the callback to call when the operation is finished.
      * @since 5.0
      */
-    function utils_file_query_exists_async(
-        file: Gio.File,
-        cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<Gio.File> | null,
-    ): globalThis.Promise<boolean> | void;
+    function utils_file_query_exists_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
+    /**
+     * The asynchronous version of `g_file_query_exists()`. When the operation is
+     * finished, `callback` will be called. You can then call
+     * `tepl_utils_file_query_exists_finish()` to get the result of the operation.
+     * @param file a {@link Gio.File}.
+     * @param cancellable a {@link Gio.Cancellable}.
+     * @param callback the callback to call when the operation is finished.
+     * @since 5.0
+     */
+    function utils_file_query_exists_async(file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<boolean> | void);
+
     /**
      * Finishes the operation started with `tepl_utils_file_query_exists_async()`.
      * There is no output {@link GLib.Error} parameter, so you should check if the operation
@@ -288,6 +291,7 @@ export namespace Tepl {
      * @since 5.0
      */
     function utils_file_query_exists_finish(file: Gio.File, result: Gio.AsyncResult): boolean;
+
     /**
      * Examples:
      * - "file.pdf" returns ".pdf".
@@ -300,6 +304,7 @@ export namespace Tepl {
      * @since 4.4
      */
     function utils_get_file_extension(filename: string): string;
+
     /**
      * Returns `filename` without its extension. With the “extension” having the same
      * definition as in `tepl_utils_get_file_extension()`; in other words it returns
@@ -309,12 +314,14 @@ export namespace Tepl {
      * @since 4.4
      */
     function utils_get_file_shortname(filename: string): string;
+
     /**
      * Removes all rows of `list_box`, to obtain an empty {@link Gtk.ListBox}.
      * @param list_box a {@link Gtk.ListBox}.
      * @since 5.2
      */
     function utils_list_box_clear(list_box: Gtk.ListBox): void;
+
     /**
      * Gets an array of all the {@link Gtk.ListBoxRow} childen of `list_box` for which
      * `filter_func` returns `true`. The elements in the array are sorted by
@@ -324,14 +331,12 @@ export namespace Tepl {
      * @returns a `null`-terminated array of {@link Gtk.ListBoxRow} objects, or `null`. Free with   `g_free()` when no longer needed.
      * @since 5.2
      */
-    function utils_list_box_get_filtered_children(
-        list_box: Gtk.ListBox,
-        filter_func: Gtk.ListBoxFilterFunc,
-    ): [Gtk.ListBoxRow[] | null, number];
+    function utils_list_box_get_filtered_children(list_box: Gtk.ListBox, filter_func: Gtk.ListBoxFilterFunc): [(Gtk.ListBoxRow[] | null), number];
+
     /**
      * This function has the same semantics as `gtk_list_box_get_row_at_index()`, but
      * it takes into account only the rows for which `filter_func` returns `true`.
-     *
+     * 
      * As an example, if `index` is 0, it returns the first {@link Gtk.ListBoxRow} for which
      * `filter_func` returns `true`.
      * @param list_box a {@link Gtk.ListBox}.
@@ -340,14 +345,11 @@ export namespace Tepl {
      * @returns the child {@link Gtk.ListBoxRow} or `null`.
      * @since 5.2
      */
-    function utils_list_box_get_row_at_index_with_filter(
-        list_box: Gtk.ListBox,
-        index: number,
-        filter_func: Gtk.ListBoxFilterFunc,
-    ): Gtk.ListBoxRow | null;
+    function utils_list_box_get_row_at_index_with_filter(list_box: Gtk.ListBox, index: number, filter_func: Gtk.ListBoxFilterFunc): (Gtk.ListBoxRow | null);
+
     /**
      * Scrolls to a specific {@link Gtk.ListBoxRow}.
-     *
+     * 
      * Before using this function, `tepl_utils_list_box_setup_scrolling()` must have
      * been called.
      * @param list_box a {@link Gtk.ListBox}.
@@ -355,21 +357,23 @@ export namespace Tepl {
      * @since 5.2
      */
     function utils_list_box_scroll_to_row(list_box: Gtk.ListBox, row: Gtk.ListBoxRow): void;
+
     /**
      * Calls `tepl_utils_list_box_scroll_to_row()` on the row returned by
      * `gtk_list_box_get_selected_row()`. This function assumes that there is either
      * zero or one selected row.
-     *
+     * 
      * Before using this function, `tepl_utils_list_box_setup_scrolling()` must have
      * been called.
      * @param list_box a {@link Gtk.ListBox}.
      * @since 5.2
      */
     function utils_list_box_scroll_to_selected_row(list_box: Gtk.ListBox): void;
+
     /**
      * Setup vertical scrolling between `list_box` and `scrolled_window`, to be able
      * to use `tepl_utils_list_box_scroll_to_row()` afterwards.
-     *
+     * 
      * This function is intended to be called only once per {@link Gtk.ListBox}, when
      * initializing the `list_box` and `scrolled_window` widgets.
      * @param list_box a {@link Gtk.ListBox}.
@@ -377,29 +381,31 @@ export namespace Tepl {
      * @since 5.2
      */
     function utils_list_box_setup_scrolling(list_box: Gtk.ListBox, scrolled_window: Gtk.ScrolledWindow): void;
+
     /**
      * The same as `g_markup_escape_text()`, but with an implementation that fully
      * supports round-trip integrity. I.e. when {@link GLib.MarkupParser} or any other XML
      * parser will decode/unescape the string, the exact same string as `src` will be
      * brought back. As long as `src` is a valid UTF-8 string.
-     *
+     * 
      * The other difference with `g_markup_escape_text()` is that the `length`
      * parameter is not present for `tepl_utils_markup_escape_text()`.
-     *
+     * 
      * # `g_markup_escape_text()` doesn't fully support round-trip integrity
-     *
+     * 
      * In fact, `g_markup_escape_text()` doesn't escape the tabstop, newline and
      * carriage return characters. And the {@link GLib.MarkupParser} correctly processes
      * whitespace and line endings according to the [XML rules for normalization of
      * line endings and attribute values](https://www.w3.org/TR/xml/`AVNormalize`).
-     *
+     * 
      * For example `"\t"` (a tab) after a round-trip through `g_markup_escape_text()`
      * and {@link GLib.MarkupParser} becomes a simple space.
      * @param src a nul-terminated UTF-8 string.
      * @returns a newly allocated string with the escaped text, or `null` if `src` is not a valid UTF-8 string. Free with `g_free()` when no longer needed.
      * @since 5.0
      */
-    function utils_markup_escape_text(src: string): string | null;
+    function utils_markup_escape_text(src: string): (string | null);
+
     /**
      * Replaces the home directory with a tilde, if the home directory is present in
      * the `filename`.
@@ -408,6 +414,7 @@ export namespace Tepl {
      * @since 4.4
      */
     function utils_replace_home_dir_with_tilde(filename: string): string;
+
     /**
      * Like `tepl_utils_str_middle_truncate()` but the “…” character is at the end.
      * @param str a UTF-8 string.
@@ -416,6 +423,7 @@ export namespace Tepl {
      * @since 4.4
      */
     function utils_str_end_truncate(str: string, truncate_length: number): string;
+
     /**
      * If `str` is longer than `truncate_length`, then this function returns `str`
      * truncated in the middle with a “…” character. Otherwise it just returns a
@@ -426,15 +434,16 @@ export namespace Tepl {
      * @since 4.4
      */
     function utils_str_middle_truncate(str: string, truncate_length: number): string;
+
     /**
      * Replaces all occurences of `search` by `replacement`.
-     *
+     * 
      * The function does only one pass, for example:
-     *
+     * 
      * ```
      * tepl_utils_str_replace ("aaaa", "aa", "a");
      * ```
-     *
+     * 
      * returns "aa", not "a".
      * @param string a string
      * @param search the search string
@@ -443,6 +452,7 @@ export namespace Tepl {
      * @since 4.4
      */
     function utils_str_replace(string: string, search: string, replacement: string): string;
+
     /**
      * @gir-type Flags
      */
@@ -466,6 +476,7 @@ export namespace Tepl {
         CREATE_BACKUP,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -475,7 +486,7 @@ export namespace Tepl {
 
     /**
      * The folding state at a certain line in the {@link Gtk.TextBuffer}.
-     *
+     * 
      * Since {@link Tepl.GutterRendererFolds} has a flat view of the folding tree, some
      * states can be combined; for example, {@link Tepl.GutterRendererFoldsState.END}
      * and {@link Tepl.GutterRendererFoldsState.CONTINUE}.
@@ -507,13 +518,16 @@ export namespace Tepl {
         END,
     }
 
+
     namespace AbstractFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -532,55 +546,46 @@ export namespace Tepl {
         $signals: AbstractFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AbstractFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AbstractFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AbstractFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AbstractFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AbstractFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AbstractFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AbstractFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AbstractFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AbstractFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AbstractFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AbstractFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the {@link Tepl.AbstractFactory} singleton instance.
-         *
+         * 
          * If `tepl_abstract_factory_set_singleton()` has not been called, the singleton
          * is created with a {@link Tepl.AbstractFactory} instance.
          */
         static get_singleton(): AbstractFactory;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_create_file(): File;
+
         /**
          * Creates a main {@link Gtk.ApplicationWindow} in the sense of
          * `tepl_application_window_is_main_window()`.
          * @param app a {@link Gtk.Application}.
          * @virtual
          */
-        vfunc_create_main_window(app: Gtk.Application): Gtk.ApplicationWindow | null;
+        vfunc_create_main_window(app: Gtk.Application): (Gtk.ApplicationWindow | null);
+
         /**
          * Creates a new {@link Gio.File} that is then intended to be used as an argument to
          * `tepl_metadata_manager_load_from_disk()` and
@@ -588,31 +593,34 @@ export namespace Tepl {
          * object, it doesn't call any {@link Tepl.MetadataManager} function.
          * @virtual
          */
-        vfunc_create_metadata_manager_file(): Gio.File | null;
+        vfunc_create_metadata_manager_file(): (Gio.File | null);
+
         /**
          * @virtual
          */
         vfunc_create_tab(): Tab;
+
         /**
          * Creates a new tab label for `tab`, suitable for `gtk_notebook_set_tab_label()`.
          * @param tab a {@link Tepl.Tab}.
          * @virtual
          */
-        vfunc_create_tab_label(tab: Tab): Gtk.Widget | null;
+        vfunc_create_tab_label(tab: Tab): (Gtk.Widget | null);
 
         // Methods
-
         /**
          * @returns a new {@link Tepl.File}.
          */
         create_file(): File;
+
         /**
          * Creates a main {@link Gtk.ApplicationWindow} in the sense of
          * `tepl_application_window_is_main_window()`.
          * @param app a {@link Gtk.Application}.
          * @returns a new main application window, or `null` if the vfunc is not implemented.
          */
-        create_main_window(app: Gtk.Application): Gtk.ApplicationWindow | null;
+        create_main_window(app: Gtk.Application): (Gtk.ApplicationWindow | null);
+
         /**
          * Creates a new {@link Gio.File} that is then intended to be used as an argument to
          * `tepl_metadata_manager_load_from_disk()` and
@@ -620,37 +628,40 @@ export namespace Tepl {
          * object, it doesn't call any {@link Tepl.MetadataManager} function.
          * @returns a new {@link Gio.File}, or `null` if the vfunc is not implemented.
          */
-        create_metadata_manager_file(): Gio.File | null;
+        create_metadata_manager_file(): (Gio.File | null);
+
         /**
          * @returns a new {@link Tepl.Tab}.
          */
         create_tab(): Tab;
+
         /**
          * Creates a new tab label for `tab`, suitable for `gtk_notebook_set_tab_label()`.
          * @param tab a {@link Tepl.Tab}.
          * @returns a new {@link Gtk.Widget}, or `null` for the default tab label (“page N” with {@link Gtk.Notebook}).
          */
-        create_tab_label(tab: Tab): Gtk.Widget | null;
+        create_tab_label(tab: Tab): (Gtk.Widget | null);
+
         /**
          * Sets the {@link Tepl.AbstractFactory} singleton. This should be called early in
          * `main()`, for example just after calling `tepl_init()`.
-         *
+         * 
          * This function must be called only once, before the first call to
          * `tepl_abstract_factory_get_singleton()`.
-         *
+         * 
          * Tepl takes ownership of the `factory` reference.
          */
         set_singleton(): void;
     }
 
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application': (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             application: Gtk.Application;
         }
@@ -663,7 +674,6 @@ export namespace Tepl {
         static $gtype: GObject.GType<Application>;
 
         // Properties
-
         /**
          * The {@link Gtk.Application}.
          * @since 2.0
@@ -681,40 +691,31 @@ export namespace Tepl {
         $signals: Application.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Convenience function that calls `g_application_get_default()` followed by
          * `tepl_application_get_from_gtk_application()`. The object returned by
          * `g_application_get_default()` must be a {@link Gtk.Application}.
          */
         static get_default(): Application;
+
         /**
          * Returns the {@link Tepl.Application} of `gtk_app`. The returned object is guaranteed
          * to be the same for the lifetime of `gtk_app`.
@@ -723,13 +724,13 @@ export namespace Tepl {
         static get_from_gtk_application(gtk_app: Gtk.Application): Application;
 
         // Methods
-
         /**
          * Like `gtk_application_get_active_window()`, but returns the main window in the
          * sense of `tepl_application_window_is_main_window()`.
          * @returns the active main {@link Gtk.ApplicationWindow}, or `null`.
          */
-        get_active_main_window(): Gtk.ApplicationWindow | null;
+        get_active_main_window(): (Gtk.ApplicationWindow | null);
+
         /**
          * Returns an initially empty {@link Amtk.ActionInfoStore} reserved for the
          * application-specific actions. Libraries should not add {@link Amtk.ActionInfo}'s to
@@ -738,10 +739,12 @@ export namespace Tepl {
          * @returns the {@link Amtk.ActionInfoStore} reserved for the application.
          */
         get_app_action_info_store(): Amtk.ActionInfoStore;
+
         /**
          * @returns the {@link Gtk.Application} of `tepl_app`.
          */
         get_application(): Gtk.Application;
+
         /**
          * The returned {@link Amtk.ActionInfoStore} contains {@link Amtk.ActionInfo}'s for all the
          * {@link Gio.Action}'s listed in the [class description of
@@ -750,35 +753,39 @@ export namespace Tepl {
          * @returns the {@link Amtk.ActionInfoStore} of the Tepl library.
          */
         get_tepl_action_info_store(): Amtk.ActionInfoStore;
+
         /**
          * Connects a generic function handler for the {@link Gio.Application.SignalSignatures.activate | Gio.Application::activate} signal.
-         *
+         * 
          * If no main windows exist, it creates one with
          * `tepl_abstract_factory_create_main_window()`. If a main window already exists,
          * it calls `gtk_window_present()` on the most recently focused window of the
          * application.
          */
         handle_activate(): void;
+
         /**
          * This function:
          * - Connects to the {@link Gio.Application.SignalSignatures.startup | Gio.Application::startup} signal to call
          *   `tepl_metadata_manager_load_from_disk()`.
          * - Connects to the {@link Gio.Application.SignalSignatures.shutdown | Gio.Application::shutdown} signal to call
          *   `tepl_metadata_manager_save_to_disk()` with `trim` set to `true`.
-         *
+         * 
          * It gets the {@link Gio.File} by calling
          * `tepl_abstract_factory_create_metadata_manager_file()`.
          */
         handle_metadata(): void;
+
         /**
          * Connects a generic function handler for the {@link Gio.Application.SignalSignatures.open | Gio.Application::open} signal.
-         *
+         * 
          * It calls `tepl_application_window_open_file()` for each {@link Gio.File} to open, on the
          * active main window as returned by `tepl_application_get_active_main_window()`.
          * If the active main window is `null`, it creates one with
          * `tepl_abstract_factory_create_main_window()`.
          */
         handle_open(): void;
+
         /**
          * Calls `g_application_open()` with a single file and an empty hint.
          * @param file a {@link Gio.File}.
@@ -786,18 +793,18 @@ export namespace Tepl {
         open_simple(file: Gio.File): void;
     }
 
+
     namespace ApplicationWindow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::application-window': (pspec: GObject.ParamSpec) => void;
-            'notify::handle-title': (pspec: GObject.ParamSpec) => void;
-            'notify::active-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::active-tab': (pspec: GObject.ParamSpec) => void;
-            'notify::active-view': (pspec: GObject.ParamSpec) => void;
+            "notify::application-window": (pspec: GObject.ParamSpec) => void;
+            "notify::handle-title": (pspec: GObject.ParamSpec) => void;
+            "notify::active-buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::active-tab": (pspec: GObject.ParamSpec) => void;
+            "notify::active-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, TabGroup.ConstructorProps {
             application_window: Gtk.ApplicationWindow;
             applicationWindow: Gtk.ApplicationWindow;
@@ -813,47 +820,49 @@ export namespace Tepl {
         static $gtype: GObject.GType<ApplicationWindow>;
 
         // Properties
-
         /**
          * The {@link Gtk.ApplicationWindow}.
          * @since 2.0
          * @construct-only
          */
         get application_window(): Gtk.ApplicationWindow;
+
         /**
          * The {@link Gtk.ApplicationWindow}.
          * @since 2.0
          * @construct-only
          */
         get applicationWindow(): Gtk.ApplicationWindow;
+
         /**
          * Whether to handle the {@link Gtk.Window.title}. The title is probably not
          * appropriate if a {@link Gtk.HeaderBar} is used, the title is meant to be used
          * only for applications with a traditional UI.
-         *
+         * 
          * If `true`, the title will contain:
          * - the {@link Tepl.Buffer.tepl_full_title} of the active buffer.
          * - if the active view is not {@link Gtk.TextView.editable}, the
          *   `"[Read-Only]"` string.
          * - the application name as returned by `g_get_application_name()`.
-         *
+         * 
          * If the active view is `null`, the title contains only the application
          * name.
          * @since 4.0
          */
         get handle_title(): boolean;
         set handle_title(val: boolean);
+
         /**
          * Whether to handle the {@link Gtk.Window.title}. The title is probably not
          * appropriate if a {@link Gtk.HeaderBar} is used, the title is meant to be used
          * only for applications with a traditional UI.
-         *
+         * 
          * If `true`, the title will contain:
          * - the {@link Tepl.Buffer.tepl_full_title} of the active buffer.
          * - if the active view is not {@link Gtk.TextView.editable}, the
          *   `"[Read-Only]"` string.
          * - the application name as returned by `g_get_application_name()`.
-         *
+         * 
          * If the active view is `null`, the title contains only the application
          * name.
          * @since 4.0
@@ -871,44 +880,35 @@ export namespace Tepl {
         $signals: ApplicationWindow.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ApplicationWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ApplicationWindow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ApplicationWindow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ApplicationWindow.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Returns the {@link Tepl.ApplicationWindow} of `gtk_window`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_window`.
          * @param gtk_window a {@link Gtk.ApplicationWindow}.
          */
         static get_from_gtk_application_window(gtk_window: Gtk.ApplicationWindow): ApplicationWindow;
+
         /**
          * Returns `true` iff `gtk_window` has an associated {@link Tepl.TabGroup} (i.e. if
          * `tepl_application_window_set_tab_group()` has been called).
-         *
+         * 
          * This function takes a {@link Gtk.ApplicationWindow} parameter to avoid creating the
          * {@link Tepl.ApplicationWindow} object if it hasn't been created.
          * @param gtk_window a {@link Gtk.ApplicationWindow}.
@@ -916,28 +916,30 @@ export namespace Tepl {
         static is_main_window(gtk_window: Gtk.ApplicationWindow): boolean;
 
         // Methods
-
         /**
          * @returns the {@link Gtk.ApplicationWindow} of `tepl_window`.
          */
         get_application_window(): Gtk.ApplicationWindow;
+
         /**
          * @returns the value of the {@link Tepl.ApplicationWindow.handle_title} property.
          */
         get_handle_title(): boolean;
+
         /**
          * Gets the {@link Gtk.WindowGroup} in which `tepl_window` resides.
-         *
+         * 
          * You should call this function only on main windows, to add secondary windows
          * to the {@link Gtk.WindowGroup}.
          * @returns the {@link Gtk.WindowGroup}.
          */
         get_window_group(): Gtk.WindowGroup;
+
         /**
          * Opens a file in `tepl_window`. If the active tab is untouched (see
          * `tepl_buffer_is_untouched()`), then the file is loaded in that tab. Otherwise a
          * new tab is created.
-         *
+         * 
          * This function is asynchronous, the file loading is done with the
          * `tepl_tab_load_file()` function. There is no way to know when the file loading
          * is finished.
@@ -945,91 +947,105 @@ export namespace Tepl {
          * @param jump_to whether to set the tab where the file is loaded as the active tab.
          */
         open_file(location: Gio.File, jump_to: boolean): void;
+
         /**
          * Sets the {@link Tepl.ApplicationWindow.handle_title} property.
          * @param handle_title the new value.
          */
         set_handle_title(handle_title: boolean): void;
+
         /**
          * Sets the {@link Tepl.TabGroup} of `tepl_window`. This function can be called only
          * once, it is not possible to change the {@link Tepl.TabGroup} afterwards (this
          * restriction may be lifted in the future if there is a compelling use-case).
-         *
+         * 
          * {@link Tepl.ApplicationWindow} implements the {@link Tepl.TabGroup} interface by delegating
          * the requests to `tab_group`.
          * @param tab_group a {@link Tepl.TabGroup}.
          */
         set_tab_group(tab_group: TabGroup): void;
+
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer | null;
+        get active_buffer(): (Buffer | null);
+
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
+
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab | null;
-        set active_tab(val: Tab | null);
+        get active_tab(): (Tab | null);
+        set active_tab(val: (Tab | null));
+
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeTab(): Tab;
         set activeTab(val: Tab);
+
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View | null;
+        get active_view(): (View | null);
+
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
+
         /**
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
          * @param jump_to whether to set `tab` as the active tab after appending it.
          */
         append_tab(tab: Tab, jump_to: boolean): void;
+
         /**
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): Buffer | null;
+        get_active_buffer(): (Buffer | null);
+
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): Tab | null;
+        get_active_tab(): (Tab | null);
+
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): View | null;
+        get_active_view(): (View | null);
+
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
          */
         get_buffers(): Buffer[];
+
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
-         *
+         * 
          * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
@@ -1037,28 +1053,33 @@ export namespace Tepl {
          * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
          */
         get_tabs(): Tab[];
+
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
          */
         get_views(): View[];
+
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
          */
         set_active_tab(tab: Tab): void;
+
         /**
-         * @param tab
+         * @param tab 
          * @virtual
          */
         vfunc_append_tab_vfunc(tab: Tab): void;
+
         /**
          * @virtual
          */
-        vfunc_get_active_tab(): Tab | null;
+        vfunc_get_active_tab(): (Tab | null);
+
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
-         *
+         * 
          * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
@@ -1066,6 +1087,7 @@ export namespace Tepl {
          * @virtual
          */
         vfunc_get_tabs(): Tab[];
+
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
@@ -1074,42 +1096,42 @@ export namespace Tepl {
         vfunc_set_active_tab(tab: Tab): void;
     }
 
+
     namespace Buffer {
         // Signal signatures
         interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
             /**
              * The ::tepl-cursor-moved signal is emitted when the insert mark is
              * moved explicitely or when the buffer changes (insert/delete).
-             *
+             * 
              * A typical use-case for this signal is to update the cursor position
              * in a statusbar.
              * @signal
              * @since 2.0
              * @run-first
              */
-            'tepl-cursor-moved': () => void;
-            'notify::tepl-full-title': (pspec: GObject.ParamSpec) => void;
-            'notify::tepl-short-title': (pspec: GObject.ParamSpec) => void;
-            'notify::tepl-style-scheme-id': (pspec: GObject.ParamSpec) => void;
-            'notify::can-redo': (pspec: GObject.ParamSpec) => void;
-            'notify::can-undo': (pspec: GObject.ParamSpec) => void;
-            'notify::highlight-matching-brackets': (pspec: GObject.ParamSpec) => void;
-            'notify::highlight-syntax': (pspec: GObject.ParamSpec) => void;
-            'notify::implicit-trailing-newline': (pspec: GObject.ParamSpec) => void;
-            'notify::language': (pspec: GObject.ParamSpec) => void;
-            'notify::max-undo-levels': (pspec: GObject.ParamSpec) => void;
-            'notify::style-scheme': (pspec: GObject.ParamSpec) => void;
-            'notify::undo-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::copy-target-list': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor-position': (pspec: GObject.ParamSpec) => void;
-            'notify::has-selection': (pspec: GObject.ParamSpec) => void;
-            'notify::paste-target-list': (pspec: GObject.ParamSpec) => void;
-            'notify::tag-table': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
+            "tepl-cursor-moved": () => void;
+            "notify::tepl-full-title": (pspec: GObject.ParamSpec) => void;
+            "notify::tepl-short-title": (pspec: GObject.ParamSpec) => void;
+            "notify::tepl-style-scheme-id": (pspec: GObject.ParamSpec) => void;
+            "notify::can-redo": (pspec: GObject.ParamSpec) => void;
+            "notify::can-undo": (pspec: GObject.ParamSpec) => void;
+            "notify::highlight-matching-brackets": (pspec: GObject.ParamSpec) => void;
+            "notify::highlight-syntax": (pspec: GObject.ParamSpec) => void;
+            "notify::implicit-trailing-newline": (pspec: GObject.ParamSpec) => void;
+            "notify::language": (pspec: GObject.ParamSpec) => void;
+            "notify::max-undo-levels": (pspec: GObject.ParamSpec) => void;
+            "notify::style-scheme": (pspec: GObject.ParamSpec) => void;
+            "notify::undo-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::copy-target-list": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
+            "notify::has-selection": (pspec: GObject.ParamSpec) => void;
+            "notify::paste-target-list": (pspec: GObject.ParamSpec) => void;
+            "notify::tag-table": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
             tepl_full_title: string;
             teplFullTitle: string;
@@ -1127,45 +1149,49 @@ export namespace Tepl {
         static $gtype: GObject.GType<Buffer>;
 
         // Properties
-
         /**
          * The full title. See `tepl_buffer_get_full_title()`.
          * @since 3.0
          * @read-only
          */
         get tepl_full_title(): string;
+
         /**
          * The full title. See `tepl_buffer_get_full_title()`.
          * @since 3.0
          * @read-only
          */
         get teplFullTitle(): string;
+
         /**
          * The short title. See `tepl_buffer_get_short_title()`.
          * @since 3.0
          * @read-only
          */
         get tepl_short_title(): string;
+
         /**
          * The short title. See `tepl_buffer_get_short_title()`.
          * @since 3.0
          * @read-only
          */
         get teplShortTitle(): string;
+
         /**
          * The {@link GtkSource.Buffer.style_scheme} ID, as a string. This property is
          * useful for binding it to a {@link Gio.Settings} key.
-         *
+         * 
          * When the {@link GtkSource.Buffer.style_scheme} is `null`,
          * {@link Tepl.Buffer.tepl_style_scheme_id} contains the empty string.
          * @since 2.0
          */
         get tepl_style_scheme_id(): string;
         set tepl_style_scheme_id(val: string);
+
         /**
          * The {@link GtkSource.Buffer.style_scheme} ID, as a string. This property is
          * useful for binding it to a {@link Gio.Settings} key.
-         *
+         * 
          * When the {@link GtkSource.Buffer.style_scheme} is `null`,
          * {@link Tepl.Buffer.tepl_style_scheme_id} contains the empty string.
          * @since 2.0
@@ -1183,51 +1209,41 @@ export namespace Tepl {
         $signals: Buffer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Buffer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Buffer;
+        static ["new"](): Buffer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Buffer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Buffer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Buffer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_tepl_cursor_moved(): void;
 
         // Methods
-
         /**
          * Returns the {@link Tepl.File} of `buffer`. The returned object is guaranteed to be the
          * same for the lifetime of `buffer`.
-         *
+         * 
          * {@link Tepl.Buffer} creates the {@link Tepl.File} with `tepl_abstract_factory_create_file()`.
          * @returns the associated {@link Tepl.File}.
          */
         get_file(): File;
+
         /**
          * Returns a title suitable for a {@link Gtk.Window} title. It contains (in that order):
          * - the {@link Tepl.Buffer.tepl_short_title};
@@ -1236,16 +1252,19 @@ export namespace Tepl {
          * @returns the `buffer` full title. Free the return value with `g_free()` when no longer needed.
          */
         get_full_title(): string;
+
         /**
          * Returns the {@link Tepl.Metadata} of `buffer`. The returned object is guaranteed to be
          * the same for the lifetime of `buffer`.
          * @returns the associated {@link Tepl.Metadata}.
          */
         get_metadata(): Metadata;
+
         /**
          * @returns the current {@link Tepl.SelectionType}.
          */
         get_selection_type(): SelectionType;
+
         /**
          * Returns a title suitable for a tab label. It contains (in that order):
          * - '*' if the buffer is modified;
@@ -1253,35 +1272,40 @@ export namespace Tepl {
          * @returns the `buffer` short title. Free the return value with `g_free()` when no longer needed.
          */
         get_short_title(): string;
+
         /**
          * @returns the {@link Tepl.Buffer.tepl_style_scheme_id}. Free with `g_free()`.
          */
         get_style_scheme_id(): string;
+
         /**
          * Returns whether `buffer` is untouched.
-         *
+         * 
          * This function is for example useful to know if we can re-use this buffer to
          * load a file, instead of opening a new tab or window.
-         *
+         * 
          * For this function to return `true`, the `buffer` must be empty, non-modified,
          * the undo/redo {@link GtkSource.Buffer} history must be empty, and the
          * {@link Tepl.File.location} must be `null`.
          * @returns `true` if `buffer` has not been touched, `false` otherwise.
          */
         is_untouched(): boolean;
+
         /**
          * Calls `tepl_metadata_manager_copy_from()` for {@link Tepl.File.location} (if not `null`)
          * to the associated {@link Tepl.Metadata} of `buffer`.
          */
         load_metadata_from_metadata_manager(): void;
+
         /**
          * Calls `tepl_metadata_manager_merge_into()` for {@link Tepl.File.location} (if not
          * `null`) from the associated {@link Tepl.Metadata} of `buffer`.
          */
         save_metadata_into_metadata_manager(): void;
+
         /**
          * Sets the {@link Tepl.Buffer.tepl_style_scheme_id} property.
-         *
+         * 
          * The {@link GtkSource.StyleScheme} is taken from the default
          * {@link GtkSource.StyleSchemeManager} as returned by
          * `gtk_source_style_scheme_manager_get_default()`.
@@ -1290,16 +1314,16 @@ export namespace Tepl {
         set_style_scheme_id(style_scheme_id: string): void;
     }
 
+
     namespace File {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::location': (pspec: GObject.ParamSpec) => void;
-            'notify::newline-type': (pspec: GObject.ParamSpec) => void;
-            'notify::short-name': (pspec: GObject.ParamSpec) => void;
+            "notify::location": (pspec: GObject.ParamSpec) => void;
+            "notify::newline-type": (pspec: GObject.ParamSpec) => void;
+            "notify::short-name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             location: Gio.File;
             newline_type: NewlineType;
@@ -1316,31 +1340,34 @@ export namespace Tepl {
         static $gtype: GObject.GType<File>;
 
         // Properties
-
         /**
          * The location.
          * @since 1.0
          */
         get location(): Gio.File;
         set location(val: Gio.File);
+
         /**
          * The line ending type.
          * @since 1.0
          * @read-only
          */
         get newline_type(): NewlineType;
+
         /**
          * The line ending type.
          * @since 1.0
          * @read-only
          */
         get newlineType(): NewlineType;
+
         /**
          * The file short name. See `tepl_file_get_short_name()`.
          * @since 1.0
          * @read-only
          */
         get short_name(): string;
+
         /**
          * The file short name. See `tepl_file_get_short_name()`.
          * @since 1.0
@@ -1358,36 +1385,26 @@ export namespace Tepl {
         $signals: File.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<File.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): File;
+        static ["new"](): File;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof File.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof File.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, File.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof File.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Calls either `gtk_native_dialog_set_modal()` or `gtk_window_set_modal()`
          * depending on the `chooser` type.
@@ -1395,13 +1412,15 @@ export namespace Tepl {
          * @param modal the new value.
          */
         static chooser_set_modal(chooser: Gtk.FileChooser, modal: boolean): void;
+
         /**
          * Sets or unsets a parent {@link Gtk.Window} for the `chooser` dialog. It calls the
          * right functions depending on the type of `chooser`.
          * @param chooser a {@link Gtk.FileChooser}.
          * @param parent a {@link Gtk.Window}, or `null`.
          */
-        static chooser_set_parent(chooser: Gtk.FileChooser, parent: Gtk.Window | null): void;
+        static chooser_set_parent(chooser: Gtk.FileChooser, parent: (Gtk.Window | null)): void;
+
         /**
          * Calls `gtk_native_dialog_show()` or `gtk_window_present()` depending on the type
          * of `chooser`.
@@ -1410,20 +1429,22 @@ export namespace Tepl {
         static chooser_show(chooser: Gtk.FileChooser): void;
 
         // Methods
-
         /**
          * If the {@link Tepl.File.location} isn't `null`, adds its URI to the default
          * {@link Gtk.RecentManager} with `gtk_recent_manager_add_item()`.
          */
         add_uri_to_recent_manager(): void;
+
         /**
          * @returns the {@link Gio.File}.
          */
         get_location(): Gio.File;
+
         /**
          * @returns the newline type.
          */
         get_newline_type(): NewlineType;
+
         /**
          * Gets the `file` short name. If the {@link Tepl.File.location} isn't `null`,
          * returns its display-name (see #G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME).
@@ -1433,27 +1454,28 @@ export namespace Tepl {
          * @returns the `file` short name. Free with `g_free()` when no longer needed.
          */
         get_short_name(): string;
+
         /**
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
          */
-        set_location(location: Gio.File | null): void;
+        set_location(location: (Gio.File | null)): void;
     }
+
 
     namespace FileLoader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::location': (pspec: GObject.ParamSpec) => void;
+            "notify::buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::location": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Buffer | null;
-            file: File | null;
-            location: Gio.File | null;
+            buffer: (Buffer | null);
+            file: (File | null);
+            location: (Gio.File | null);
         }
     }
 
@@ -1464,28 +1486,29 @@ export namespace Tepl {
         static $gtype: GObject.GType<FileLoader>;
 
         // Properties
-
         /**
          * The {@link Tepl.Buffer} to load the content into. The {@link Tepl.FileLoader} object
          * has a weak reference to the buffer.
          * @since 1.0
          * @construct-only
          */
-        get buffer(): Buffer | null;
+        get buffer(): (Buffer | null);
+
         /**
          * The {@link Tepl.File}. The {@link Tepl.FileLoader} object has a weak
          * reference to the file.
          * @since 1.0
          * @construct-only
          */
-        get file(): File | null;
+        get file(): (File | null);
+
         /**
          * The {@link Gio.File} to load. By default the location is taken from the
          * {@link Tepl.File} at construction time.
          * @since 1.0
          * @construct-only
          */
-        get location(): Gio.File | null;
+        get location(): (Gio.File | null);
 
         /**
          * Compile-time signal type information.
@@ -1497,82 +1520,70 @@ export namespace Tepl {
         $signals: FileLoader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FileLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](buffer: Buffer, file: File): FileLoader;
+        static ["new"](buffer: Buffer, file: File): FileLoader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileLoader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link Tepl.Buffer} to load the content into.
          */
-        get_buffer(): Buffer | null;
+        get_buffer(): (Buffer | null);
+
         /**
          * @returns the {@link Tepl.File}.
          */
-        get_file(): File | null;
+        get_file(): (File | null);
+
         /**
          * @returns the {@link Gio.File} to load.
          */
-        get_location(): Gio.File | null;
+        get_location(): (Gio.File | null);
+
         /**
          * Loads asynchronously the file content into the {@link Tepl.Buffer}.
-         *
+         * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Loads asynchronously the file content into the {@link Tepl.Buffer}.
-         *
-         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
-         */
-        load_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Loads asynchronously the file content into the {@link Tepl.Buffer}.
-         *
+         * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        load_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Loads asynchronously the file content into the {@link Tepl.Buffer}.
+         * 
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         */
+        load_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a file loading started with `tepl_file_loader_load_async()`.
          * @param result a {@link Gio.AsyncResult}.
@@ -1581,18 +1592,18 @@ export namespace Tepl {
         load_finish(result: Gio.AsyncResult): boolean;
     }
 
+
     namespace FileSaver {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::location': (pspec: GObject.ParamSpec) => void;
-            'notify::newline-type': (pspec: GObject.ParamSpec) => void;
+            "notify::buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::location": (pspec: GObject.ParamSpec) => void;
+            "notify::newline-type": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             buffer: Buffer;
             file: File;
@@ -1610,7 +1621,6 @@ export namespace Tepl {
         static $gtype: GObject.GType<FileSaver>;
 
         // Properties
-
         /**
          * The {@link Tepl.Buffer} to save. The {@link Tepl.FileSaver} object has a weak
          * reference to the buffer.
@@ -1618,6 +1628,7 @@ export namespace Tepl {
          * @construct-only
          */
         get buffer(): Buffer;
+
         /**
          * The {@link Tepl.File}. The {@link Tepl.FileSaver} object has a weak reference to the
          * file.
@@ -1625,12 +1636,14 @@ export namespace Tepl {
          * @construct-only
          */
         get file(): File;
+
         /**
          * File saving flags.
          * @since 1.0
          */
         get flags(): FileSaverFlags;
         set flags(val: FileSaverFlags);
+
         /**
          * The {@link Gio.File} where to save the buffer. By default the location is taken
          * from the {@link Tepl.File} at construction time.
@@ -1638,12 +1651,14 @@ export namespace Tepl {
          * @construct-only
          */
         get location(): Gio.File;
+
         /**
          * The newline type.
          * @since 1.0
          */
         get newline_type(): NewlineType;
         set newline_type(val: NewlineType);
+
         /**
          * The newline type.
          * @since 1.0
@@ -1661,81 +1676,64 @@ export namespace Tepl {
         $signals: FileSaver.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<FileSaver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](buffer: Buffer, file: File): FileSaver;
+        static ["new"](buffer: Buffer, file: File): FileSaver;
 
         static new_with_target(buffer: Buffer, file: File, target_location: Gio.File): FileSaver;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileSaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileSaver.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileSaver.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileSaver.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileSaver.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileSaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileSaver.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileSaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the {@link Tepl.Buffer} to save.
          */
         get_buffer(): Buffer;
+
         /**
          * @returns the {@link Tepl.File}.
          */
         get_file(): File;
+
         /**
          * @returns the flags.
          */
         get_flags(): FileSaverFlags;
+
         /**
          * @returns the {@link Gio.File} where to save the buffer to.
          */
         get_location(): Gio.File;
+
         /**
          * @returns the newline type.
          */
         get_newline_type(): NewlineType;
+
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
          * documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
-         * documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
-         */
-        save_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        save_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
          * documentation to know how to use this function.
@@ -1743,27 +1741,35 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
+         * documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         */
+        save_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a file saving started with `tepl_file_saver_save_async()`.
-         *
+         * 
          * If the file has been saved successfully, the following {@link Tepl.File}
          * properties will be updated: the location and the newline type.
-         *
+         * 
          * `gtk_text_buffer_set_modified()` is called with `false` if the file has been
          * saved successfully.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
          */
         save_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * @param flags the new flags.
          */
         set_flags(flags: FileSaverFlags): void;
+
         /**
          * Sets the newline type. By default the newline type is taken from the
          * {@link Tepl.File}.
@@ -1772,17 +1778,17 @@ export namespace Tepl {
         set_newline_type(newline_type: NewlineType): void;
     }
 
+
     namespace FoldRegion {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::folded': (pspec: GObject.ParamSpec) => void;
+            "notify::buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::folded": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            buffer: Gtk.TextBuffer | null;
+            buffer: (Gtk.TextBuffer | null);
             folded: boolean;
         }
     }
@@ -1794,14 +1800,14 @@ export namespace Tepl {
         static $gtype: GObject.GType<FoldRegion>;
 
         // Properties
-
         /**
          * The {@link Gtk.TextBuffer} where the fold region is applied. The
          * {@link Tepl.FoldRegion} object has a weak reference to the buffer.
          * @since 1.0
          * @construct-only
          */
-        get buffer(): Gtk.TextBuffer | null;
+        get buffer(): (Gtk.TextBuffer | null);
+
         /**
          * Whether the {@link Tepl.FoldRegion} is folded or not.
          * @since 1.0
@@ -1819,55 +1825,49 @@ export namespace Tepl {
         $signals: FoldRegion.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FoldRegion.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](buffer: Gtk.TextBuffer, start: Gtk.TextIter, end: Gtk.TextIter): FoldRegion;
+        static ["new"](buffer: Gtk.TextBuffer, start: Gtk.TextIter, end: Gtk.TextIter): FoldRegion;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FoldRegion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FoldRegion.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FoldRegion.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FoldRegion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FoldRegion.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FoldRegion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FoldRegion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FoldRegion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Obtains iterators pointing to the start and end of the {@link Tepl.FoldRegion}.
          * @returns `true` on success, `false` otherwise.
          */
         get_bounds(): [boolean, Gtk.TextIter, Gtk.TextIter];
+
         /**
          * @returns the {@link Gtk.TextBuffer} where the fold region   is applied.
          */
-        get_buffer(): Gtk.TextBuffer | null;
+        get_buffer(): (Gtk.TextBuffer | null);
+
         /**
          * @returns whether the {@link Tepl.FoldRegion} is folded.
          */
         get_folded(): boolean;
+
         /**
          * Sets the start and end of the {@link Tepl.FoldRegion}.
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
          */
         set_bounds(start: Gtk.TextIter, end: Gtk.TextIter): void;
+
         /**
          * Folds or unfolds the region.
          * @param folded the new value.
@@ -1875,67 +1875,64 @@ export namespace Tepl {
         set_folded(folded: boolean): void;
     }
 
+
     namespace GotoLineBar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
@@ -1954,61 +1951,55 @@ export namespace Tepl {
         $signals: GotoLineBar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GotoLineBar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): GotoLineBar;
+        static ["new"](): GotoLineBar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GotoLineBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GotoLineBar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GotoLineBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GotoLineBar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GotoLineBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GotoLineBar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GotoLineBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GotoLineBar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GotoLineBar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GotoLineBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GotoLineBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GotoLineBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Calls `gtk_widget_grab_focus()` to the {@link Gtk.SearchEntry} of `bar`.
          */
         grab_focus_to_entry(): void;
+
         /**
          * Sets the {@link Tepl.View}. `tepl_view_goto_line()` will be called on `view` when the
          * user types a line number in the {@link Gtk.SearchEntry} of `bar`.
-         *
+         * 
          * Only one {@link Tepl.View} can be associated per {@link Tepl.GotoLineBar}.
          * @param view a {@link Tepl.View}.
          */
         set_view(view: View): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -2016,25 +2007,27 @@ export namespace Tepl {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     namespace GutterRendererFolds {
         // Signal signatures
         interface SignalSignatures extends GtkSource.GutterRenderer.SignalSignatures {
-            'notify::alignment-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::background-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::background-set': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::view': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::window-type': (pspec: GObject.ParamSpec) => void;
-            'notify::xalign': (pspec: GObject.ParamSpec) => void;
-            'notify::xpad': (pspec: GObject.ParamSpec) => void;
-            'notify::yalign': (pspec: GObject.ParamSpec) => void;
-            'notify::ypad': (pspec: GObject.ParamSpec) => void;
+            "notify::alignment-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::background-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::background-set": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::view": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::window-type": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::xpad": (pspec: GObject.ParamSpec) => void;
+            "notify::yalign": (pspec: GObject.ParamSpec) => void;
+            "notify::ypad": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {
 
-        interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
+        }
     }
 
     /**
@@ -2053,41 +2046,29 @@ export namespace Tepl {
         $signals: GutterRendererFolds.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GutterRendererFolds.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): GutterRendererFolds;
+        static ["new"](): GutterRendererFolds;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GutterRendererFolds.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GutterRendererFolds.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GutterRendererFolds.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GutterRendererFolds.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof GutterRendererFolds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GutterRendererFolds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets the folding state of the next cell to be drawn.
-         *
+         * 
          * This function is intended to be called from a subclass' draw method before
          * chaining-up to its parent's draw method.
          * @param state a {@link Tepl.GutterRendererFoldsState}.
@@ -2095,67 +2076,64 @@ export namespace Tepl {
         set_state(state: GutterRendererFoldsState): void;
     }
 
+
     namespace InfoBar {
         // Signal signatures
         interface SignalSignatures extends Gtk.InfoBar.SignalSignatures {
-            'notify::message-type': (pspec: GObject.ParamSpec) => void;
-            'notify::revealed': (pspec: GObject.ParamSpec) => void;
-            'notify::show-close-button': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::message-type": (pspec: GObject.ParamSpec) => void;
+            "notify::revealed": (pspec: GObject.ParamSpec) => void;
+            "notify::show-close-button": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.InfoBar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.InfoBar.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
@@ -2174,38 +2152,28 @@ export namespace Tepl {
         $signals: InfoBar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InfoBar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): InfoBar;
+        static ["new"](): InfoBar;
 
-        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar;
+        static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: (string | null)): InfoBar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InfoBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InfoBar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InfoBar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InfoBar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Utility function to create a {@link Gtk.Label} suitable for a {@link Gtk.InfoBar}. The
          * wrapping and alignment is configured. The label is also set as selectable,
@@ -2214,16 +2182,16 @@ export namespace Tepl {
         static create_label(): Gtk.Label;
 
         // Methods
-
         /**
          * Calls `gtk_info_bar_set_show_close_button()`, and additionnally closes the
          * `info_bar` when the {@link Gtk.InfoBar.SignalSignatures.response | Gtk.InfoBar::response} signal is received with the
          * `response_id` {@link Gtk.ResponseType.CLOSE}.
          */
         add_close_button(): void;
+
         /**
          * Adds `content` to `info_bar`.
-         *
+         * 
          * {@link Tepl.InfoBar} has an internal container, to be able to add the icon and add
          * primary or secondary messages. The internal container is added to the content
          * area, as returned by `gtk_info_bar_get_content_area()`. So if you use a
@@ -2232,29 +2200,33 @@ export namespace Tepl {
          * @param content a {@link Gtk.Widget}.
          */
         add_content_widget(content: Gtk.Widget): void;
+
         /**
          * Adds an icon on the left, determined by the message type. So before calling
          * this function, `gtk_info_bar_set_message_type()` must have been called.
-         *
+         * 
          * The icon is not updated when the message type changes. Another {@link Tepl.InfoBar}
          * must be created in that case.
          */
         add_icon(): void;
+
         /**
          * Adds a primary message.
          * @param primary_msg a primary message.
          */
         add_primary_message(primary_msg: string): void;
+
         /**
          * Adds a secondary message.
          * @param secondary_msg a secondary message.
          */
         add_secondary_message(secondary_msg: string): void;
+
         /**
          * Sets the desired orientation (horizontal or vertical) for the action area as
          * returned by `gtk_info_bar_get_action_area()`. The action area is where the
          * buttons are placed.
-         *
+         * 
          * The default value for a {@link Tepl.InfoBar} is {@link Gtk.Orientation.VERTICAL}. The reason
          * is because with a small {@link Gtk.Window}, if 3 or more buttons are shown
          * horizontally, there is not enough space for the text. And it can be worse
@@ -2266,95 +2238,92 @@ export namespace Tepl {
         set_buttons_orientation(buttons_orientation: Gtk.Orientation): void;
     }
 
+
     namespace LanguageChooserDialog {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, LanguageChooser.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                LanguageChooser.ConstructorProps {}
+        }
     }
 
     /**
@@ -2373,127 +2342,112 @@ export namespace Tepl {
         $signals: LanguageChooserDialog.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LanguageChooserDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](parent: Gtk.Window | null): LanguageChooserDialog;
-        // Conflicted with Gtk.Dialog.new
+        static ["new"](parent: (Gtk.Window | null)): LanguageChooserDialog;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Dialog.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserDialog.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LanguageChooserDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LanguageChooserDialog.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LanguageChooserDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LanguageChooserDialog.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserDialog.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LanguageChooserDialog.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LanguageChooserDialog.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof LanguageChooserDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language: GtkSource.Language | null): void;
+        select_language(language: (GtkSource.Language | null)): void;
+
         /**
-         * @param language
+         * @param language 
          * @virtual
          */
         vfunc_language_activated(language: GtkSource.Language): void;
+
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          * @virtual
          */
-        vfunc_select_language(language: GtkSource.Language | null): void;
+        vfunc_select_language(language: (GtkSource.Language | null)): void;
     }
+
 
     namespace LanguageChooserWidget {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps, LanguageChooser.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps,
-                LanguageChooser.ConstructorProps {}
+        }
     }
 
     /**
      * @gir-type Class
      */
-    class LanguageChooserWidget
-        extends Gtk.Grid
-        implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, LanguageChooser
-    {
+    class LanguageChooserWidget extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, LanguageChooser {
         static $gtype: GObject.GType<LanguageChooserWidget>;
 
         /**
@@ -2506,78 +2460,76 @@ export namespace Tepl {
         $signals: LanguageChooserWidget.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LanguageChooserWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): LanguageChooserWidget;
+        static ["new"](): LanguageChooserWidget;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LanguageChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LanguageChooserWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LanguageChooserWidget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LanguageChooserWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LanguageChooserWidget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LanguageChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LanguageChooserWidget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LanguageChooserWidget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LanguageChooserWidget.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof LanguageChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LanguageChooserWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
         set_orientation(orientation: Gtk.Orientation): void;
+
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language: GtkSource.Language | null): void;
+        select_language(language: (GtkSource.Language | null)): void;
+
         /**
-         * @param language
+         * @param language 
          * @virtual
          */
         vfunc_language_activated(language: GtkSource.Language): void;
+
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          * @virtual
          */
-        vfunc_select_language(language: GtkSource.Language | null): void;
+        vfunc_select_language(language: (GtkSource.Language | null)): void;
     }
+
 
     namespace Metadata {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2596,69 +2548,64 @@ export namespace Tepl {
         $signals: Metadata.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Metadata.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Metadata;
+        static ["new"](): Metadata;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Metadata.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Metadata.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Metadata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Metadata.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Metadata.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Metadata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Metadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the value of a metadata stored in the `metadata` object memory.
-         *
+         * 
          * `key` must follow [the requirements explained in the class
          * description][tepl-metadata-keys-requirements].
          * @param key a key.
          * @returns the associated value (a UTF-8 string), or `null`. Free with `g_free()` when no longer needed.
          */
-        get(key: string): string | null;
+        get(key: string): (string | null);
+
         /**
          * Sets or unsets `key`. This function just stores the new metadata value in the
          * `metadata` object memory.
-         *
+         * 
          * `key` must follow [the requirements explained in the class
          * description][tepl-metadata-keys-requirements].
          * @param key a key.
          * @param value a nul-terminated UTF-8 string, or `null` to unset the key.
          */
-        set(key: string, value: string | null): void;
+        set(key: string, value: (string | null)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
     }
 
+
     namespace MetadataManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2677,67 +2624,58 @@ export namespace Tepl {
         $signals: MetadataManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MetadataManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MetadataManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetadataManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MetadataManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetadataManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MetadataManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MetadataManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MetadataManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MetadataManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MetadataManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MetadataManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MetadataManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MetadataManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static get_singleton(): MetadataManager;
 
         // Methods
-
         /**
          * Copies the metadata stored in `from_manager` for `for_location` into
          * `to_metadata`.
-         *
+         * 
          * If `to_metadata` already contains a key that is also present in `from_manager`,
          * the value in `to_metadata` is overwritten.
-         *
+         * 
          * If `to_metadata` already contains a key that is not present in `from_manager`,
          * the key/value pair is kept in `to_metadata`, it is not erased.
          * @param for_location a {@link Gio.File}.
          * @param to_metadata a {@link Tepl.Metadata}.
          */
         copy_from(for_location: Gio.File, to_metadata: Metadata): void;
+
         /**
          * Loads synchronously all the metadata from `from_file` into `manager`.
-         *
+         * 
          * A good moment to call this function is on application startup, see the
          * {@link Gio.Application.SignalSignatures.startup | Gio.Application::startup} signal.
          * @param from_file the {@link Gio.File} to load metadata from.
          * @returns whether the operation was successful.
          */
         load_from_disk(from_file: Gio.File): boolean;
+
         /**
          * Merges the metadata from `from_metadata` into `into_manager` for `for_location`.
-         *
+         * 
          * If a key from `from_metadata` has been set to `null`, the key/value pair is
          * removed from `into_manager`. In other words that key/value pair will not be
          * saved at all when calling `tepl_metadata_manager_save_to_disk()`.
-         *
+         * 
          * If `into_manager` already contains a key that is not present in
          * `from_metadata`, the key/value pair is kept in `into_manager`, it is not
          * erased.
@@ -2745,10 +2683,11 @@ export namespace Tepl {
          * @param from_metadata a {@link Tepl.Metadata}.
          */
         merge_into(for_location: Gio.File, from_metadata: Metadata): void;
+
         /**
          * Saves synchronously all the metadata from `manager` to `to_file`. The parent
          * directories of `to_file` are created if needed.
-         *
+         * 
          * A good moment to call this function is on application shutdown, see the
          * {@link Gio.Application.SignalSignatures.shutdown | Gio.Application::shutdown} signal.
          * @param to_file the {@link Gio.File} to save metadata to.
@@ -2756,14 +2695,15 @@ export namespace Tepl {
          * @returns whether the operation was successful.
          */
         save_to_disk(to_file: Gio.File, trim: boolean): boolean;
+
         /**
          * The purpose of having a maximum size is to avoid that the file on disk grows
          * indefinitely.
-         *
+         * 
          * `max_number_of_locations` is the maximum number of {@link Gio.File} locations for which
          * metadata are kept. This function discards the least recently accessed
          * metadata if needed.
-         *
+         * 
          * If `max_number_of_locations` is -1, a default internal value is used that
          * should fit most applications' needs.
          * @param max_number_of_locations the maximum size, or -1 for the default value.
@@ -2771,71 +2711,68 @@ export namespace Tepl {
         trim(max_number_of_locations: number): void;
     }
 
+
     namespace Notebook {
         // Signal signatures
         interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
-            'notify::enable-popup': (pspec: GObject.ParamSpec) => void;
-            'notify::group-name': (pspec: GObject.ParamSpec) => void;
-            'notify::page': (pspec: GObject.ParamSpec) => void;
-            'notify::scrollable': (pspec: GObject.ParamSpec) => void;
-            'notify::show-border': (pspec: GObject.ParamSpec) => void;
-            'notify::show-tabs': (pspec: GObject.ParamSpec) => void;
-            'notify::tab-pos': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::active-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::active-tab': (pspec: GObject.ParamSpec) => void;
-            'notify::active-view': (pspec: GObject.ParamSpec) => void;
+            "notify::enable-popup": (pspec: GObject.ParamSpec) => void;
+            "notify::group-name": (pspec: GObject.ParamSpec) => void;
+            "notify::page": (pspec: GObject.ParamSpec) => void;
+            "notify::scrollable": (pspec: GObject.ParamSpec) => void;
+            "notify::show-border": (pspec: GObject.ParamSpec) => void;
+            "notify::show-tabs": (pspec: GObject.ParamSpec) => void;
+            "notify::tab-pos": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::active-buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::active-tab": (pspec: GObject.ParamSpec) => void;
+            "notify::active-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Notebook.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, TabGroup.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Notebook.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                TabGroup.ConstructorProps {}
+        }
     }
 
     /**
@@ -2854,103 +2791,106 @@ export namespace Tepl {
         $signals: Notebook.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Notebook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Notebook;
+        static ["new"](): Notebook;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Notebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Notebook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Notebook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Notebook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Notebook.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Notebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Notebook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Notebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer | null;
+        get active_buffer(): (Buffer | null);
+
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
+
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab | null;
-        set active_tab(val: Tab | null);
+        get active_tab(): (Tab | null);
+        set active_tab(val: (Tab | null));
+
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeTab(): Tab;
         set activeTab(val: Tab);
+
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View | null;
+        get active_view(): (View | null);
+
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
+
         /**
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
          * @param jump_to whether to set `tab` as the active tab after appending it.
          */
         append_tab(tab: Tab, jump_to: boolean): void;
+
         /**
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): Buffer | null;
+        get_active_buffer(): (Buffer | null);
+
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): Tab | null;
+        get_active_tab(): (Tab | null);
+
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): View | null;
+        get_active_view(): (View | null);
+
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
          */
         get_buffers(): Buffer[];
+
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
-         *
+         * 
          * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
@@ -2958,28 +2898,33 @@ export namespace Tepl {
          * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
          */
         get_tabs(): Tab[];
+
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
          */
         get_views(): View[];
+
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
          */
         set_active_tab(tab: Tab): void;
+
         /**
-         * @param tab
+         * @param tab 
          * @virtual
          */
         vfunc_append_tab_vfunc(tab: Tab): void;
+
         /**
          * @virtual
          */
-        vfunc_get_active_tab(): Tab | null;
+        vfunc_get_active_tab(): (Tab | null);
+
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
-         *
+         * 
          * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
@@ -2987,6 +2932,7 @@ export namespace Tepl {
          * @virtual
          */
         vfunc_get_tabs(): Tab[];
+
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
@@ -2995,67 +2941,64 @@ export namespace Tepl {
         vfunc_set_active_tab(tab: Tab): void;
     }
 
+
     namespace Panel {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
@@ -3074,38 +3017,28 @@ export namespace Tepl {
         $signals: Panel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Panel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Panel;
+        static ["new"](): Panel;
 
         static new_for_left_side_panel(): Panel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Panel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Panel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Panel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Panel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Panel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Panel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Panel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Panel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Panel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Panel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Panel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Panel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * The equivalent of `gtk_stack_add_titled()`, with an optional `icon_name` to set
          * the “icon-name” {@link Gtk.Stack} child property.
@@ -3114,19 +3047,21 @@ export namespace Tepl {
          * @param title a human-readable title for `component`.
          * @param icon_name the icon name for `component`, or `null`.
          */
-        add_component(component: Gtk.Widget, name: string, title: string, icon_name: string | null): void;
+        add_component(component: Gtk.Widget, name: string, title: string, icon_name: (string | null)): void;
+
         /**
          * @returns the {@link Gtk.Stack} widget of `panel` (a direct child {@link Gtk.Widget} of `panel`).
          */
         get_stack(): Gtk.Stack;
+
         /**
          * Provides a {@link Gio.Settings} key for saving and restoring the
          * {@link Gtk.Stack.visible_child_name} property of the {@link Gtk.Stack} belonging to `panel`.
-         *
+         * 
          * This function just stores `settings` and `setting_key` for further use by
          * `tepl_panel_restore_state_from_gsettings()` and
          * `tepl_panel_save_state_to_gsettings()`.
-         *
+         * 
          * Note that only one `settings`/`setting_key` pair is stored by `panel` for
          * further use, if you call this function twice on the same `panel`, the second
          * call overrides the first one.
@@ -3134,30 +3069,35 @@ export namespace Tepl {
          * @param setting_key a {@link Gio.Settings} key of type string.
          */
         provide_active_component_gsetting(settings: Gio.Settings, setting_key: string): void;
+
         /**
          * Restores the state of `panel` according to the provided {@link Gio.Settings}.
-         *
+         * 
          * This function must be called when all components have been added to the
          * {@link Gtk.Stack} of `panel`.
          */
         restore_state_from_gsettings(): void;
+
         /**
          * Saves the current state of `panel` to the provided {@link Gio.Settings}.
          */
         save_state_to_gsettings(): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -3165,67 +3105,64 @@ export namespace Tepl {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     namespace SpaceDrawerPrefs {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
@@ -3244,36 +3181,26 @@ export namespace Tepl {
         $signals: SpaceDrawerPrefs.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SpaceDrawerPrefs.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SpaceDrawerPrefs;
+        static ["new"](): SpaceDrawerPrefs;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SpaceDrawerPrefs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpaceDrawerPrefs.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SpaceDrawerPrefs.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SpaceDrawerPrefs.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SpaceDrawerPrefs.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SpaceDrawerPrefs.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SpaceDrawerPrefs.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SpaceDrawerPrefs.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SpaceDrawerPrefs.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SpaceDrawerPrefs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SpaceDrawerPrefs.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SpaceDrawerPrefs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the {@link GtkSource.SpaceDrawer} associated with `prefs`. The returned object is
          * guaranteed to be the same for the lifetime of `prefs`. Each
@@ -3281,19 +3208,22 @@ export namespace Tepl {
          * @returns the {@link GtkSource.SpaceDrawer} associated with `prefs`.
          */
         get_space_drawer(): GtkSource.SpaceDrawer;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -3301,64 +3231,61 @@ export namespace Tepl {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     namespace Statusbar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Statusbar.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Statusbar.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
@@ -3377,56 +3304,48 @@ export namespace Tepl {
         $signals: Statusbar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Statusbar;
+        static ["new"](): Statusbar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Statusbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Statusbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Statusbar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Statusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * The reverse action of `tepl_statusbar_show_cursor_position()`. This function
          * hides the text used to show the line and column numbers.
          */
         hide_cursor_position(): void;
+
         /**
          * Calls `tepl_statusbar_show_cursor_position()` and
          * `tepl_statusbar_hide_cursor_position()` according to the
          * {@link Tepl.TabGroup.active_view} of `tab_group`, and the
          * {@link Tepl.Buffer.SignalSignatures.tepl_cursor_moved | Tepl.Buffer::tepl-cursor-moved} signal.
-         *
+         * 
          * For the column number it uses the `gtk_source_view_get_visual_column()`
          * function.
-         *
+         * 
          * This function can be called only once, it is not possible to change the
          * {@link Tepl.TabGroup} afterwards (this restriction may be lifted in the future if
          * there is a compelling use-case).
          * @param tab_group a {@link Tepl.TabGroup}.
          */
         set_tab_group(tab_group: TabGroup): void;
+
         /**
          * Shows the line and column numbers on the right side of the `statusbar`. (So
          * messages added with `gtk_statusbar_push()` are still visible after calling this
@@ -3437,63 +3356,58 @@ export namespace Tepl {
         show_cursor_position(line: number, column: number): void;
     }
 
+
     namespace StyleSchemeChooserWidget {
         // Signal signatures
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
-            'notify::tepl-style-scheme-id': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::style-scheme': (pspec: GObject.ParamSpec) => void;
+            "notify::tepl-style-scheme-id": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::style-scheme": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Bin.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                GtkSource.StyleSchemeChooser.ConstructorProps {
+        interface ConstructorProps extends Gtk.Bin.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, GtkSource.StyleSchemeChooser.ConstructorProps {
             tepl_style_scheme_id: string;
             teplStyleSchemeId: string;
         }
@@ -3502,28 +3416,25 @@ export namespace Tepl {
     /**
      * @gir-type Class
      */
-    class StyleSchemeChooserWidget
-        extends Gtk.Bin
-        implements Atk.ImplementorIface, Gtk.Buildable, GtkSource.StyleSchemeChooser
-    {
+    class StyleSchemeChooserWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, GtkSource.StyleSchemeChooser {
         static $gtype: GObject.GType<StyleSchemeChooserWidget>;
 
         // Properties
-
         /**
          * The {@link GtkSource.StyleSchemeChooser.style_scheme} ID, as a string. This
          * property is useful for binding it to a {@link Gio.Settings} key.
-         *
+         * 
          * When the {@link GtkSource.StyleSchemeChooser.style_scheme} is `null`, this
          * property contains the empty string.
          * @since 5.0
          */
         get tepl_style_scheme_id(): string;
         set tepl_style_scheme_id(val: string);
+
         /**
          * The {@link GtkSource.StyleSchemeChooser.style_scheme} ID, as a string. This
          * property is useful for binding it to a {@link Gio.Settings} key.
-         *
+         * 
          * When the {@link GtkSource.StyleSchemeChooser.style_scheme} is `null`, this
          * property contains the empty string.
          * @since 5.0
@@ -3541,84 +3452,79 @@ export namespace Tepl {
         $signals: StyleSchemeChooserWidget.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StyleSchemeChooserWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): StyleSchemeChooserWidget;
+        static ["new"](): StyleSchemeChooserWidget;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StyleSchemeChooserWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StyleSchemeChooserWidget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StyleSchemeChooserWidget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StyleSchemeChooserWidget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StyleSchemeChooserWidget.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StyleSchemeChooserWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the value of the {@link Tepl.StyleSchemeChooserWidget.tepl_style_scheme_id} property. Free with `g_free()` when no longer needed.
          */
         get_style_scheme_id(): string;
+
         /**
          * Sets the {@link Tepl.StyleSchemeChooserWidget.tepl_style_scheme_id} property.
-         *
+         * 
          * The {@link GtkSource.StyleScheme} is taken from the default
          * {@link GtkSource.StyleSchemeManager} as returned by
          * `gtk_source_style_scheme_manager_get_default()`.
          * @param style_scheme_id the new value.
          */
         set_style_scheme_id(style_scheme_id: string): void;
+
         /**
          * The :style-scheme property contains the currently selected style
          * scheme. The property can be set to change
          * the current selection programmatically.
          * @since 3.16
-         * @category Inherited from GtkSource.StyleSchemeChooser
+          * @category Inherited from GtkSource.StyleSchemeChooser
          */
         get style_scheme(): GtkSource.StyleScheme;
         set style_scheme(val: GtkSource.StyleScheme);
+
         /**
          * The :style-scheme property contains the currently selected style
          * scheme. The property can be set to change
          * the current selection programmatically.
          * @since 3.16
-         * @category Inherited from GtkSource.StyleSchemeChooser
+          * @category Inherited from GtkSource.StyleSchemeChooser
          */
         get styleScheme(): GtkSource.StyleScheme;
         set styleScheme(val: GtkSource.StyleScheme);
+
         /**
          * Gets the currently-selected scheme.
          * @returns the currently-selected scheme.
          */
         get_style_scheme(): GtkSource.StyleScheme;
+
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
          */
         set_style_scheme(scheme: GtkSource.StyleScheme): void;
+
         /**
          * Gets the currently-selected scheme.
          * @virtual
          */
         vfunc_get_style_scheme(): GtkSource.StyleScheme;
+
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
@@ -3627,19 +3533,20 @@ export namespace Tepl {
         vfunc_set_style_scheme(scheme: GtkSource.StyleScheme): void;
     }
 
+
     namespace Tab {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
             /**
              * The ::close-request signal is emitted when there is a request to
              * close the {@link Tepl.Tab}, for example if the user clicks on a close button.
-             *
+             * 
              * The default object method handler does the following:
              * - If the buffer is not modified (according to
              *   `gtk_text_buffer_get_modified()`), close the tab.
              * - Else, show a message dialog to propose to save the file before
              *   closing.
-             *
+             * 
              * To override the default object method handler, either override the
              * virtual function in a {@link Tepl.Tab} subclass or connect to the signal and
              * call `g_signal_stop_emission_by_name()`.
@@ -3647,70 +3554,63 @@ export namespace Tepl {
              * @since 3.0
              * @run-last
              */
-            'close-request': () => void;
-            'notify::view': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
-            'notify::active-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::active-tab': (pspec: GObject.ParamSpec) => void;
-            'notify::active-view': (pspec: GObject.ParamSpec) => void;
+            "close-request": () => void;
+            "notify::view": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
+            "notify::active-buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::active-tab": (pspec: GObject.ParamSpec) => void;
+            "notify::active-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps,
-                TabGroup.ConstructorProps {
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps, TabGroup.ConstructorProps {
             view: View;
         }
     }
@@ -3722,7 +3622,6 @@ export namespace Tepl {
         static $gtype: GObject.GType<Tab>;
 
         // Properties
-
         /**
          * The {@link Tepl.View} contained in the tab. When this property is set, the
          * ::pack_view virtual function is called.
@@ -3741,73 +3640,67 @@ export namespace Tepl {
         $signals: Tab.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Tab;
+        static ["new"](): Tab;
 
         static new_with_view(view: View): Tab;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Tab.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Tab.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Tab.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_close_request(): void;
+
         /**
-         * @param goto_line_bar
+         * @param goto_line_bar 
          * @virtual
          */
         vfunc_pack_goto_line_bar(goto_line_bar: GotoLineBar): void;
+
         /**
-         * @param info_bar
+         * @param info_bar 
          * @virtual
          */
         vfunc_pack_info_bar(info_bar: Gtk.InfoBar): void;
+
         /**
-         * @param view
+         * @param view 
          * @virtual
          */
         vfunc_pack_view(view: View): void;
 
         // Methods
-
         /**
          * Attaches `info_bar` to `tab`.
-         *
+         * 
          * This function calls the ::pack_info_bar virtual function.
          * @param info_bar a {@link Gtk.InfoBar}.
          */
         add_info_bar(info_bar: Gtk.InfoBar): void;
+
         /**
          * A convenience function that calls `gtk_text_view_get_buffer()` on the
          * {@link Tepl.Tab.view} associated with the `tab`.
          * @returns the {@link Tepl.Buffer} of the {@link Tepl.Tab.view}.
          */
         get_buffer(): Buffer;
+
         /**
          * Gets the {@link Tepl.GotoLineBar} widget belonging to `tab`. The {@link Tepl.GotoLineBar} must
          * not be destroyed by the application, the purpose of this function is to
@@ -3815,181 +3708,208 @@ export namespace Tepl {
          * @returns the {@link Tepl.GotoLineBar} widget belonging to `tab`.
          */
         get_goto_line_bar(): GotoLineBar;
+
         /**
          * @returns the {@link Tepl.View} contained in `tab`.
          */
         get_view(): View;
+
         /**
          * Unconditionally loads a file in `tab`, regardless if there are unsaved changes
          * in the {@link Gtk.TextBuffer}. The previous buffer content is lost.
-         *
+         * 
          * This function is asynchronous, there is no way to know when the file loading
          * is finished.
          * @param location a {@link Gio.File}.
          */
         load_file(location: Gio.File): void;
+
         /**
          * Shows a {@link Gtk.FileChooser} to save the `tab` to a different location, creates an
          * appropriate {@link Tepl.FileSaver} and asynchronously runs it.
-         *
+         * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          */
         save_as_async(): globalThis.Promise<boolean>;
+
         /**
          * Shows a {@link Gtk.FileChooser} to save the `tab` to a different location, creates an
          * appropriate {@link Tepl.FileSaver} and asynchronously runs it.
-         *
+         * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_as_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        save_as_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Shows a {@link Gtk.FileChooser} to save the `tab` to a different location, creates an
          * appropriate {@link Tepl.FileSaver} and asynchronously runs it.
-         *
+         * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        save_as_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * The same as `tepl_tab_save_as_async()`, but without callback.
-         *
+         * 
          * This function is useful when you don't need to know:
          * - when the operation is finished;
          * - and whether the operation ran successfully.
          */
         save_as_async_simple(): void;
+
         /**
          * Finishes a tab saving started with `tepl_tab_save_as_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the tab was saved successfully.
          */
         save_as_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Saves asynchronously the content of the `tab`. The {@link Tepl.File.location} must not
          * be `null`.
-         *
+         * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          */
         save_async(): globalThis.Promise<boolean>;
+
         /**
          * Saves asynchronously the content of the `tab`. The {@link Tepl.File.location} must not
          * be `null`.
-         *
+         * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(callback: Gio.AsyncReadyCallback<this> | null): void;
+        save_async(callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Saves asynchronously the content of the `tab`. The {@link Tepl.File.location} must not
          * be `null`.
-         *
+         * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
-        save_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        save_async(callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * The same as `tepl_tab_save_async()`, but without callback.
-         *
+         * 
          * This function is useful when you don't need to know:
          * - when the operation is finished;
          * - and whether the operation ran successfully.
          */
         save_async_simple(): void;
+
         /**
          * Finishes a tab saving started with `tepl_tab_save_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the tab was saved successfully.
          */
         save_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_buffer(): Buffer | null;
+        get active_buffer(): (Buffer | null);
+
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
+
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_tab(): Tab | null;
-        set active_tab(val: Tab | null);
+        get active_tab(): (Tab | null);
+        set active_tab(val: (Tab | null));
+
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeTab(): Tab;
         set activeTab(val: Tab);
+
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
-        get active_view(): View | null;
+        get active_view(): (View | null);
+
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
-         * @category Inherited from Tepl.TabGroup
+          * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
         set_orientation(orientation: Gtk.Orientation): void;
+
         /**
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
          * @param jump_to whether to set `tab` as the active tab after appending it.
          */
         append_tab(tab: Tab, jump_to: boolean): void;
+
         /**
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): Buffer | null;
+        get_active_buffer(): (Buffer | null);
+
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): Tab | null;
+        get_active_tab(): (Tab | null);
+
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): View | null;
+        get_active_view(): (View | null);
+
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
          */
         get_buffers(): Buffer[];
+
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
-         *
+         * 
          * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
@@ -3997,28 +3917,33 @@ export namespace Tepl {
          * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
          */
         get_tabs(): Tab[];
+
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
          */
         get_views(): View[];
+
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
          */
         set_active_tab(tab: Tab): void;
+
         /**
-         * @param tab
+         * @param tab 
          * @virtual
          */
         vfunc_append_tab_vfunc(tab: Tab): void;
+
         /**
          * @virtual
          */
-        vfunc_get_active_tab(): Tab | null;
+        vfunc_get_active_tab(): (Tab | null);
+
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
-         *
+         * 
          * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
@@ -4026,6 +3951,7 @@ export namespace Tepl {
          * @virtual
          */
         vfunc_get_tabs(): Tab[];
+
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
@@ -4034,69 +3960,64 @@ export namespace Tepl {
         vfunc_set_active_tab(tab: Tab): void;
     }
 
+
     namespace TabLabel {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
-            'notify::tab': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::tab": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Grid.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
-            tab: Tab | null;
+        interface ConstructorProps extends Gtk.Grid.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
+            tab: (Tab | null);
         }
     }
 
@@ -4107,14 +4028,13 @@ export namespace Tepl {
         static $gtype: GObject.GType<TabLabel>;
 
         // Properties
-
         /**
          * The associated {@link Tepl.Tab}. {@link Tepl.TabLabel} has a weak reference to the
          * {@link Tepl.Tab}.
          * @since 3.0
          * @construct-only
          */
-        get tab(): Tab | null;
+        get tab(): (Tab | null);
 
         /**
          * Compile-time signal type information.
@@ -4126,69 +4046,62 @@ export namespace Tepl {
         $signals: TabLabel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TabLabel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](tab: Tab): TabLabel;
-        // Conflicted with Gtk.Grid.new
+        static ["new"](tab: Tab): TabLabel;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Grid.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TabLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TabLabel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TabLabel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TabLabel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TabLabel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TabLabel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TabLabel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TabLabel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TabLabel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TabLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TabLabel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TabLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_get_tooltip_markup(): string;
 
         // Methods
-
         /**
          * @returns the {@link Tepl.TabLabel.tab}.
          */
-        get_tab(): Tab | null;
+        get_tab(): (Tab | null);
+
         /**
          * Asks {@link Tepl.TabLabel} to update its tooltip. The ::get_tooltip_markup virtual
          * function is called and the result is set with
          * `gtk_widget_set_tooltip_markup()`.
          */
         update_tooltip(): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -4196,97 +4109,94 @@ export namespace Tepl {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     namespace View {
         // Signal signatures
         interface SignalSignatures extends GtkSource.View.SignalSignatures {
-            'notify::auto-indent': (pspec: GObject.ParamSpec) => void;
-            'notify::background-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::completion': (pspec: GObject.ParamSpec) => void;
-            'notify::highlight-current-line': (pspec: GObject.ParamSpec) => void;
-            'notify::indent-on-tab': (pspec: GObject.ParamSpec) => void;
-            'notify::indent-width': (pspec: GObject.ParamSpec) => void;
-            'notify::insert-spaces-instead-of-tabs': (pspec: GObject.ParamSpec) => void;
-            'notify::right-margin-position': (pspec: GObject.ParamSpec) => void;
-            'notify::show-line-marks': (pspec: GObject.ParamSpec) => void;
-            'notify::show-line-numbers': (pspec: GObject.ParamSpec) => void;
-            'notify::show-right-margin': (pspec: GObject.ParamSpec) => void;
-            'notify::smart-backspace': (pspec: GObject.ParamSpec) => void;
-            'notify::smart-home-end': (pspec: GObject.ParamSpec) => void;
-            'notify::space-drawer': (pspec: GObject.ParamSpec) => void;
-            'notify::tab-width': (pspec: GObject.ParamSpec) => void;
-            'notify::accepts-tab': (pspec: GObject.ParamSpec) => void;
-            'notify::bottom-margin': (pspec: GObject.ParamSpec) => void;
-            'notify::buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::editable': (pspec: GObject.ParamSpec) => void;
-            'notify::im-module': (pspec: GObject.ParamSpec) => void;
-            'notify::indent': (pspec: GObject.ParamSpec) => void;
-            'notify::input-hints': (pspec: GObject.ParamSpec) => void;
-            'notify::input-purpose': (pspec: GObject.ParamSpec) => void;
-            'notify::justification': (pspec: GObject.ParamSpec) => void;
-            'notify::left-margin': (pspec: GObject.ParamSpec) => void;
-            'notify::monospace': (pspec: GObject.ParamSpec) => void;
-            'notify::overwrite': (pspec: GObject.ParamSpec) => void;
-            'notify::pixels-above-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::pixels-below-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::pixels-inside-wrap': (pspec: GObject.ParamSpec) => void;
-            'notify::populate-all': (pspec: GObject.ParamSpec) => void;
-            'notify::right-margin': (pspec: GObject.ParamSpec) => void;
-            'notify::tabs': (pspec: GObject.ParamSpec) => void;
-            'notify::top-margin': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::auto-indent": (pspec: GObject.ParamSpec) => void;
+            "notify::background-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::completion": (pspec: GObject.ParamSpec) => void;
+            "notify::highlight-current-line": (pspec: GObject.ParamSpec) => void;
+            "notify::indent-on-tab": (pspec: GObject.ParamSpec) => void;
+            "notify::indent-width": (pspec: GObject.ParamSpec) => void;
+            "notify::insert-spaces-instead-of-tabs": (pspec: GObject.ParamSpec) => void;
+            "notify::right-margin-position": (pspec: GObject.ParamSpec) => void;
+            "notify::show-line-marks": (pspec: GObject.ParamSpec) => void;
+            "notify::show-line-numbers": (pspec: GObject.ParamSpec) => void;
+            "notify::show-right-margin": (pspec: GObject.ParamSpec) => void;
+            "notify::smart-backspace": (pspec: GObject.ParamSpec) => void;
+            "notify::smart-home-end": (pspec: GObject.ParamSpec) => void;
+            "notify::space-drawer": (pspec: GObject.ParamSpec) => void;
+            "notify::tab-width": (pspec: GObject.ParamSpec) => void;
+            "notify::accepts-tab": (pspec: GObject.ParamSpec) => void;
+            "notify::bottom-margin": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::editable": (pspec: GObject.ParamSpec) => void;
+            "notify::im-module": (pspec: GObject.ParamSpec) => void;
+            "notify::indent": (pspec: GObject.ParamSpec) => void;
+            "notify::input-hints": (pspec: GObject.ParamSpec) => void;
+            "notify::input-purpose": (pspec: GObject.ParamSpec) => void;
+            "notify::justification": (pspec: GObject.ParamSpec) => void;
+            "notify::left-margin": (pspec: GObject.ParamSpec) => void;
+            "notify::monospace": (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite": (pspec: GObject.ParamSpec) => void;
+            "notify::pixels-above-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::pixels-below-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::pixels-inside-wrap": (pspec: GObject.ParamSpec) => void;
+            "notify::populate-all": (pspec: GObject.ParamSpec) => void;
+            "notify::right-margin": (pspec: GObject.ParamSpec) => void;
+            "notify::tabs": (pspec: GObject.ParamSpec) => void;
+            "notify::top-margin": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GtkSource.View.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                GtkSource.View.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Scrollable.ConstructorProps {}
+        }
     }
 
     /**
@@ -4305,51 +4215,44 @@ export namespace Tepl {
         $signals: View.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): View;
+        static ["new"](): View;
 
         static new_with_buffer(buffer: GtkSource.Buffer): View;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof View.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof View.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof View.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Copies the clipboard.
          */
         copy_clipboard(): void;
+
         /**
          * Cuts the clipboard and then scrolls to the cursor position.
          */
         cut_clipboard(): void;
+
         /**
          * Deletes the text currently selected in the {@link Gtk.TextBuffer} associated
          * to the view and then scrolls to the cursor position.
          */
         delete_selection(): void;
+
         /**
          * Places the cursor at the position returned by
          * `gtk_text_buffer_get_iter_at_line()`, and scrolls to that position.
@@ -4357,6 +4260,7 @@ export namespace Tepl {
          * @returns `true` if the cursor has been moved exactly to `line`, `false` if that   line didn't exist.
          */
         goto_line(line: number): boolean;
+
         /**
          * Places the cursor at the position returned by
          * `gtk_text_buffer_get_iter_at_line_offset()`, and scrolls to that position.
@@ -4365,22 +4269,26 @@ export namespace Tepl {
          * @returns `true` if the cursor has been moved exactly to `line` and   `line_offset`, `false` if that position didn't exist.
          */
         goto_line_offset(line: number, line_offset: number): boolean;
+
         /**
          * Pastes the clipboard and then scrolls to the cursor position.
          */
         paste_clipboard(): void;
+
         /**
          * Scrolls the `view` to the cursor position.
          */
         scroll_to_cursor(): void;
+
         /**
          * Selects all the text.
          */
         select_all(): void;
+
         /**
          * Selects the lines between `start_line` and `end_line` included, counting from
          * zero. And then scrolls to the cursor.
-         *
+         * 
          * Possible use-case: line numbers coming from a compilation output, to go to
          * the place where a warning or error occurred.
          * @param start_line start of the region to select.
@@ -4389,14 +4297,17 @@ export namespace Tepl {
         select_lines(start_line: number, end_line: number): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AbstractFactoryClass = typeof AbstractFactory;
+
     /**
      * @gir-type Alias
      */
     type ApplicationClass = typeof Application;
+
     /**
      * @gir-type Struct
      */
@@ -4404,10 +4315,12 @@ export namespace Tepl {
         static $gtype: GObject.GType<ApplicationPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ApplicationWindowClass = typeof ApplicationWindow;
+
     /**
      * @gir-type Struct
      */
@@ -4415,24 +4328,29 @@ export namespace Tepl {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BufferClass = typeof Buffer;
+
     /**
      * @gir-type Alias
      */
     type FileClass = typeof File;
+
     /**
      * @gir-type Alias
      */
     type FileLoaderClass = typeof FileLoader;
+
     /**
      * @gir-type Struct
      */
     abstract class FileLoaderPrivate {
         static $gtype: GObject.GType<FileLoaderPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -4441,10 +4359,12 @@ export namespace Tepl {
         static $gtype: GObject.GType<FilePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FileSaverClass = typeof FileSaver;
+
     /**
      * @gir-type Struct
      */
@@ -4452,14 +4372,17 @@ export namespace Tepl {
         static $gtype: GObject.GType<FileSaverPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FoldRegionClass = typeof FoldRegion;
+
     /**
      * @gir-type Alias
      */
     type GotoLineBarClass = typeof GotoLineBar;
+
     /**
      * @gir-type Struct
      */
@@ -4467,18 +4390,22 @@ export namespace Tepl {
         static $gtype: GObject.GType<GotoLineBarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GutterRendererFoldsClass = typeof GutterRendererFolds;
+
     /**
      * @gir-type Alias
      */
     type InfoBarClass = typeof InfoBar;
+
     /**
      * @gir-type Alias
      */
     type LanguageChooserDialogClass = typeof LanguageChooserDialog;
+
     /**
      * @gir-type Struct
      */
@@ -4486,14 +4413,17 @@ export namespace Tepl {
         static $gtype: GObject.GType<LanguageChooserDialogPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LanguageChooserInterface = typeof LanguageChooser;
+
     /**
      * @gir-type Alias
      */
     type LanguageChooserWidgetClass = typeof LanguageChooserWidget;
+
     /**
      * @gir-type Struct
      */
@@ -4501,20 +4431,24 @@ export namespace Tepl {
         static $gtype: GObject.GType<LanguageChooserWidgetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MetadataClass = typeof Metadata;
+
     /**
      * @gir-type Alias
      */
     type MetadataManagerClass = typeof MetadataManager;
+
     /**
      * @gir-type Struct
      */
     abstract class MetadataManagerPrivate {
         static $gtype: GObject.GType<MetadataManagerPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -4523,10 +4457,12 @@ export namespace Tepl {
         static $gtype: GObject.GType<MetadataPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NotebookClass = typeof Notebook;
+
     /**
      * @gir-type Struct
      */
@@ -4534,10 +4470,12 @@ export namespace Tepl {
         static $gtype: GObject.GType<NotebookPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PanelClass = typeof Panel;
+
     /**
      * @gir-type Struct
      */
@@ -4545,10 +4483,12 @@ export namespace Tepl {
         static $gtype: GObject.GType<PanelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SpaceDrawerPrefsClass = typeof SpaceDrawerPrefs;
+
     /**
      * @gir-type Struct
      */
@@ -4556,10 +4496,12 @@ export namespace Tepl {
         static $gtype: GObject.GType<SpaceDrawerPrefsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StatusbarClass = typeof Statusbar;
+
     /**
      * @gir-type Struct
      */
@@ -4567,10 +4509,12 @@ export namespace Tepl {
         static $gtype: GObject.GType<StatusbarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StyleSchemeChooserWidgetClass = typeof StyleSchemeChooserWidget;
+
     /**
      * @gir-type Struct
      */
@@ -4578,24 +4522,29 @@ export namespace Tepl {
         static $gtype: GObject.GType<StyleSchemeChooserWidgetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TabClass = typeof Tab;
+
     /**
      * @gir-type Alias
      */
     type TabGroupInterface = typeof TabGroup;
+
     /**
      * @gir-type Alias
      */
     type TabLabelClass = typeof TabLabel;
+
     /**
      * @gir-type Struct
      */
     abstract class TabLabelPrivate {
         static $gtype: GObject.GType<TabLabelPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -4604,34 +4553,39 @@ export namespace Tepl {
         static $gtype: GObject.GType<TabPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ViewClass = typeof View;
+
     namespace LanguageChooser {
         /**
          * Interface for implementing LanguageChooser.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param language
+             * @param language 
              * @virtual
              */
             vfunc_language_activated(language: GtkSource.Language): void;
+
             /**
              * Selects `language` in the list of available languages.
              * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
              * @virtual
              */
-            vfunc_select_language(language: GtkSource.Language | null): void;
+            vfunc_select_language(language: (GtkSource.Language | null)): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface LanguageChooserNamespace {
@@ -4642,14 +4596,15 @@ export namespace Tepl {
      * @gir-type Interface
      */
     interface LanguageChooser extends GObject.Object, LanguageChooser.Interface {
-        // Methods
 
+        // Methods
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
          */
-        select_language(language: GtkSource.Language | null): void;
+        select_language(language: (GtkSource.Language | null)): void;
     }
+
 
     export const LanguageChooser: LanguageChooserNamespace & {
         new (): LanguageChooser; // This allows `obj instanceof LanguageChooser`
@@ -4661,20 +4616,22 @@ export namespace Tepl {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param tab
+             * @param tab 
              * @virtual
              */
             vfunc_append_tab_vfunc(tab: Tab): void;
+
             /**
              * @virtual
              */
-            vfunc_get_active_tab(): Tab | null;
+            vfunc_get_active_tab(): (Tab | null);
+
             /**
              * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
-             *
+             * 
              * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
              * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
              * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
@@ -4682,6 +4639,7 @@ export namespace Tepl {
              * @virtual
              */
             vfunc_get_tabs(): Tab[];
+
             /**
              * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
              * @param tab a {@link Tepl.Tab} part of `tab_group`.
@@ -4690,14 +4648,14 @@ export namespace Tepl {
             vfunc_set_active_tab(tab: Tab): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            active_buffer: Buffer | null;
+            active_buffer: (Buffer | null);
             activeBuffer: Buffer;
-            active_tab: Tab | null;
+            active_tab: (Tab | null);
             activeTab: Tab;
-            active_view: View | null;
+            active_view: (View | null);
             activeView: View;
         }
     }
@@ -4710,38 +4668,43 @@ export namespace Tepl {
      * @gir-type Interface
      */
     interface TabGroup extends GObject.Object, TabGroup.Interface {
+
         // Properties
+        /**
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
+         */
+        get active_buffer(): (Buffer | null);
 
         /**
          * The {@link Tepl.Buffer} of the active tab.
          * @since 3.0
          * @read-only
          */
-        get active_buffer(): Buffer | null;
-        /**
-         * The {@link Tepl.Buffer} of the active tab.
-         * @since 3.0
-         * @read-only
-         */
         get activeBuffer(): Buffer;
+
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          */
-        get active_tab(): Tab | null;
-        set active_tab(val: Tab | null);
+        get active_tab(): (Tab | null);
+        set active_tab(val: (Tab | null));
+
         /**
          * The {@link Tepl.Tab} currently shown.
          * @since 3.0
          */
         get activeTab(): Tab;
         set activeTab(val: Tab);
+
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
          * @read-only
          */
-        get active_view(): View | null;
+        get active_view(): (View | null);
+
         /**
          * The {@link Tepl.View} of the active tab.
          * @since 3.0
@@ -4750,35 +4713,39 @@ export namespace Tepl {
         get activeView(): View;
 
         // Methods
-
         /**
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
          * @param jump_to whether to set `tab` as the active tab after appending it.
          */
         append_tab(tab: Tab, jump_to: boolean): void;
+
         /**
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
          */
-        get_active_buffer(): Buffer | null;
+        get_active_buffer(): (Buffer | null);
+
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
          */
-        get_active_tab(): Tab | null;
+        get_active_tab(): (Tab | null);
+
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
          */
-        get_active_view(): View | null;
+        get_active_view(): (View | null);
+
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
          */
         get_buffers(): Buffer[];
+
         /**
          * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
-         *
+         * 
          * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
@@ -4786,17 +4753,20 @@ export namespace Tepl {
          * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
          */
         get_tabs(): Tab[];
+
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
          */
         get_views(): View[];
+
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
          */
         set_active_tab(tab: Tab): void;
     }
+
 
     export const TabGroup: TabGroupNamespace & {
         new (): TabGroup; // This allows `obj instanceof TabGroup`
@@ -4807,6 +4777,7 @@ export namespace Tepl {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

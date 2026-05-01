@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Libxfce4util {
+
     /**
      * Libxfce4util-1.0
      */
+
 
     /**
      * The license text to return from `xfce_get_license_text()`.
@@ -38,6 +41,7 @@ export namespace Libxfce4util {
          */
         LGPL,
     }
+
 
     /**
      * @gir-type Enum
@@ -65,8 +69,11 @@ export namespace Libxfce4util {
         THEMES,
     }
 
+
     const LOCALE_FULL_MATCH: number;
+
     const LOCALE_NO_MATCH: number;
+
     /**
      * An alias of `xfce_g_string_append_quoted()`.
      * @param string A {@link GLib.String}.
@@ -74,10 +81,11 @@ export namespace Libxfce4util {
      * @deprecated since 4.17: Renamed to `xfce_g_string_append_quoted()`
      */
     function append_quoted(string: GLib.String, unquoted: string): void;
+
     /**
      * Creates the shared thumbnail path for the file that corresponds to the given `uri`
      * and `size`. No checks are made regarding the existence of the thumbnail.
-     *
+     * 
      * It is the duty of the caller to free the returned string.
      * @param uri the uri of the file whose shared thumbnail we want to find.
      * @param size the thumbnail size (e.g. normal, large).
@@ -85,6 +93,7 @@ export namespace Libxfce4util {
      * @since 4.17.1
      */
     function create_shared_thumbnail_path(uri: string, size: string): string;
+
     /**
      * Expands field codes in `command` according to Freedesktop.org Desktop Entry Specification.
      * @param command Input string (command to expand) or `null`.
@@ -95,14 +104,8 @@ export namespace Libxfce4util {
      * @param requires_terminal Input boolean.
      * @returns `null` on error, else the string, which should be freed using `g_free()` when               no longer needed.
      */
-    function expand_desktop_entry_field_codes(
-        command: string,
-        uri_list: string[],
-        icon: string,
-        name: string,
-        uri: string,
-        requires_terminal: boolean,
-    ): string;
+    function expand_desktop_entry_field_codes(command: string, uri_list: string[], icon: string, name: string, uri: string, requires_terminal: boolean): string;
+
     /**
      * Expands shell like environment variables and tilde (~/ and ~user/ are both supported)
      * in `command`.
@@ -112,6 +115,7 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function expand_variables(command: string, envp: string): string;
+
     /**
      * Generates an SHA-256 hash of the `file`.
      * @param file a {@link Gio.File}.
@@ -119,12 +123,13 @@ export namespace Libxfce4util {
      * @returns Checksum of the `file`. If file read fails, returns `null`. Free with `g_free()`.
      * @since 4.17
      */
-    function g_file_create_checksum(file: Gio.File, cancellable: Gio.Cancellable | null): string | null;
+    function g_file_create_checksum(file: Gio.File, cancellable: (Gio.Cancellable | null)): (string | null);
+
     /**
      * Compares the checksum stored in safety flag
      * with the actual file. If it matches, it
      * is considered safe.
-     *
+     * 
      * Read the documentation of
      * `xfce_g_file_set_trusted()` for details.
      * @param file a {@link Gio.File}.
@@ -132,7 +137,8 @@ export namespace Libxfce4util {
      * @returns `true` if safety flag is verified or not supported. `false` otherwise.
      * @since 4.17
      */
-    function g_file_is_trusted(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+    function g_file_is_trusted(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Checks if GVFS-metadata is available for
      * the `file` provided.
@@ -141,9 +147,10 @@ export namespace Libxfce4util {
      * @since 4.17
      */
     function g_file_metadata_is_supported(file: Gio.File): boolean;
+
     /**
      * Sets the "safety flag" on if `is_trusted`.
-     *
+     * 
      * Safety flag is a new concept introduced in
      * XFCE 4.17. It is basically an additional
      * execution flag stored in GVFS-metadata.
@@ -151,7 +158,7 @@ export namespace Libxfce4util {
      * to assume that this flag did not come from
      * foreign location (for example, by downloading
      * an tar archive) and is set by user.
-     *
+     * 
      * The checksum of the file is stored, and
      * would be considered "on" only if checksum
      * matches with the file on execution.
@@ -161,7 +168,8 @@ export namespace Libxfce4util {
      * @returns `true` on success, `false` on error.
      * @since 4.17
      */
-    function g_file_set_trusted(file: Gio.File, is_trusted: boolean, cancellable: Gio.Cancellable | null): boolean;
+    function g_file_set_trusted(file: Gio.File, is_trusted: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Quotes a string `unquoted` and appends to an existing
      * {@link GLib.String} `string`. The shell will interpret the quoted string
@@ -172,6 +180,7 @@ export namespace Libxfce4util {
      * @since 4.17
      */
     function g_string_append_quoted(string: GLib.String, unquoted: string): void;
+
     /**
      * Similar to `xfce_get_file_localized()`, but works on directory instead of
      * a file.
@@ -179,6 +188,7 @@ export namespace Libxfce4util {
      * @returns path of the localized directory name or copy of `directory` if               no such directory exists. Returned string should be freed using               `g_free()`.
      */
     function get_dir_localized(directory: string): string;
+
     /**
      * Similar to `xfce_get_file_localized_r`, but works on directory instead
      * of regular file.
@@ -187,7 +197,8 @@ export namespace Libxfce4util {
      * @param directory name of directory to check for localized variant of.
      * @returns pointer to `buffer` or `null` on error.
      */
-    function get_dir_localized_r(buffer: string, length: bigint | number, directory: string): string;
+    function get_dir_localized_r(buffer: string, length: (bigint | number), directory: string): string;
+
     /**
      * Checks if theres a version of `filename` which is localized to the current
      * locale. This is done by appending the full locale name to `filename`, separated
@@ -199,6 +210,7 @@ export namespace Libxfce4util {
      * @returns path of the localized file or copy of `filename` if no such               file exists. Returned string should be freed using `g_free()`.
      */
     function get_file_localized(filename: string): string;
+
     /**
      * Similar in functionality to `xfce_get_file_localized()`, but stores the
      * result in `buffer` instead of allocating a new buffer.
@@ -207,18 +219,20 @@ export namespace Libxfce4util {
      * @param filename name of a file to look for a localized version.
      * @returns pointer to `buffer` or `null` on error.
      */
-    function get_file_localized_r(buffer: string, length: bigint | number, filename: string): string;
+    function get_file_localized_r(buffer: string, length: (bigint | number), filename: string): string;
+
     /**
      * Similar to `g_get_home_dir()` in functionality but will never return NULL.
      * While `g_get_home_dir()` may return NULL under certain circumstances, this
      * function is garantied to never ever return NULL, but always return a
      * valid character pointer with the absolute path to the user's home directory.
-     *
+     * 
      * The returned string is owned by libxfce4util and must not be freed by
      * the caller.
      * @returns the path to the current user's home directory.
      */
     function get_homedir(): string;
+
     /**
      * Returns the text of the software license specified in the
      * `license_type` translated to the current language. If no
@@ -228,14 +242,15 @@ export namespace Libxfce4util {
      * @returns the license text for `license_type`.
      */
     function get_license_text(license_type: LicenseTextType): string;
+
     /**
      * `paths` is a ':'-separated list of pathnames, with:
-     *
+     * 
      * - ``F``: the `filename`
      * - ``L``: the language string, as returned by `setlocale(LC_MESSAGES, NULL)`
      * - `%l`: the language component of the language string
      * - ``N``: application name
-     *
+     * 
      * Example paths: `/usr/local/lib/`L`/`F`:/usr/local/share/`N`/%l/`F``
      * @param dst destination buffer.
      * @param size size of `dst` in bytes.
@@ -243,13 +258,8 @@ export namespace Libxfce4util {
      * @param filename the filename
      * @param test test
      */
-    function get_path_localized(
-        dst: string,
-        size: bigint | number,
-        paths: string,
-        filename: string,
-        test: GLib.FileTest,
-    ): string;
+    function get_path_localized(dst: string, size: (bigint | number), paths: string, filename: string, test: GLib.FileTest): string;
+
     /**
      * Safe way to retrieve the path to the user's ".xfce4" directory. The path
      * to the current user's ".xfce4" directory is either taken from the
@@ -257,12 +267,13 @@ export namespace Libxfce4util {
      * concatenating the path to the user's home directory and the ".xfce4".
      * That says, it will, by default, return the path "$HOME/.xfce4", where
      * $HOME is replaced with the absolute path to the user's home directory.
-     *
+     * 
      * The returned string is managed by libxfce4util and must not be freed by
      * the caller.
      * @returns the path to the current user's ".xfce4" directory.
      */
     function get_userdir(): string;
+
     /**
      * Portable way to query the hostname of the node running the process. This
      * function does not ever return `null`, but always returns a string containing
@@ -270,10 +281,11 @@ export namespace Libxfce4util {
      * @returns the current node's hostname. The string has to be freed               by the caller using `g_free()`.
      */
     function gethostname(): string;
+
     /**
      * The locale is of the general form LANG_COUNTRY.ENCODING @ MODIFIER, where
      * each of COUNTRY, ENCODING and MODIFIER can be absent.
-     *
+     * 
      * The match is done by actually removing the rightmost element one by one. This
      * is not entirely according to the freedesktop.org specification, but much easier.
      * Will probably be fixed in the future.
@@ -283,11 +295,12 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function locale_match(locale1: string, locale2: string): number;
+
     /**
      * Creates the specified directory `whole_path`, but unlike the `mkdir()`
      * function from the standard C library, if any of the parent directories
      * of the `whole_path` do not exists, they are created as well.
-     *
+     * 
      * If the directory specified by `whole_path` already exists, this function
      * performs no operation and simply returns `true`.
      * @param whole_path path to the directory to create.
@@ -295,18 +308,21 @@ export namespace Libxfce4util {
      * @returns `true` on success, else `false`.
      * @since 4.2
      */
-    function mkdirhier(whole_path: string, mode: bigint | number): boolean;
+    function mkdirhier(whole_path: string, mode: (bigint | number)): boolean;
+
     /**
      * Initializes the POSIX signal handler system.  Must be called
      * before setting any POSIX signal handlers.
      * @returns `true` on success, `false` on failure, in which case          `error` will be set.
      */
     function posix_signal_handler_init(): boolean;
+
     /**
      * Restores the default handler for `signal`.
      * @param signal A POSIX signal id number.
      */
     function posix_signal_handler_restore_handler(signal: number): void;
+
     /**
      * Sets `handler` to be called whenever `signal` is caught by the
      * application.  The `user_data` parameter will be passed as an argument
@@ -316,17 +332,19 @@ export namespace Libxfce4util {
      * @returns `true` on success, `false` otherwise, in which case          `error` will be set.
      */
     function posix_signal_handler_set_handler(signal: number, handler: PosixSignalHandler): boolean;
+
     /**
      * Frees all memory associated with the POSIX signal handling system
      * and restores all default signal handlers.
      */
     function posix_signal_handler_shutdown(): void;
+
     /**
      * If `readonly` is `true` parsing is generally faster, because only untranslated
      * entries and entries that match the current locale will be loaded. Also if
      * you pass `true` for `readonly`, `xfce_rc_config` will fail if `resource`
      * does not reference a regular file.
-     *
+     * 
      * It is no error if `readonly` is `false` and the file referenced by `resource`
      * does not exists. In this case you'll start with a fresh config, which contains
      * only the default group and no entries.
@@ -337,14 +355,15 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function rc_config_open(type: ResourceType, resource: string, readonly: boolean): Rc;
+
     /**
      * Parses the resource config file specified by `filename`.
-     *
+     * 
      * If `readonly` is `true` parsing is generally faster, because only untranslated
      * entries and entries that match the current locale will be loaded. Also if
      * you pass `true` for `readonly`, `xfce_rc_simple_open` will fail if `filename`
      * does not reference a regular file.
-     *
+     * 
      * It is no error if `readonly` is `false` and the file referenced by `filename`
      * does not exists. In this case you'll start with a fresh config, which contains
      * only the default group and no entries.
@@ -354,26 +373,28 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function rc_simple_open(filename: string, readonly: boolean): Rc;
+
     /**
      * Queries the list of possible directories for the specified `type`. The
      * first element of the list is always the save location for `type`. None
      * of the directories returned in the list are garantied to exist.
-     *
+     * 
      * This function should be rarely used. You should consider using
      * `xfce_resource_lookup()` or `xfce_resource_match()` instead.
-     *
+     * 
      * The returned list must be freed using `g_strfreev()`.
      * @param type type of the resource.
      * @returns list of possible directories for `type`.
      * @since 4.2
      */
     function resource_dirs(type: ResourceType): string[];
+
     /**
      * Looks for a resource of the specified `type` whose relative path matches
      * `filename`. `filename` can either reference a regular file, in which case
      * it must not end with a slash character ('/'), or a directory, when
      * `filename` contains a trailing slash character ('/').
-     *
+     * 
      * The caller is responsible to free the returned string using `g_free()`
      * when no longer needed.
      * @param type type of resource to lookup.
@@ -382,10 +403,11 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function resource_lookup(type: ResourceType, filename: string): string;
+
     /**
      * Similar to `xfce_resource_lookup()`, but returns all resource of the specified `type`,
      * that whose name is `filename`.
-     *
+     * 
      * The caller is responsible to free the returned string array using `g_strfreev()`
      * when no longer needed.
      * @param type type of the resource to lookup.
@@ -394,18 +416,19 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function resource_lookup_all(type: ResourceType, filename: string): string[];
+
     /**
      * Tries to find all resources with the specified `type`. The function will
      * look into all specified directories and return all filenames in these
      * directories. The returned filenames are given relative the base directories
      * specified by `type`.
-     *
+     * 
      * If `pattern` contains a trailing slash, `xfce_resource_match` looks only for
      * directories that match `pattern`, else it'll only look for regular files. In
      * case you are looking for directories, the returned entries will contain a
      * trailing slash as well, so you can easily use them with other resource
      * functions like `xfce_resource_lookup` or `xfce_resource_save_location`.
-     *
+     * 
      * Example: xfce_resource_match (XFCE_RESOURCE_CONFIG, "foo/bar*") will probably
      * return ("foo/bar", "foo/barbaz", ...).
      * @param type type of the resource to locate directories for.
@@ -415,6 +438,7 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function resource_match(type: ResourceType, pattern: string, unique: boolean): string[];
+
     /**
      * Yet to be implemented!
      * @param type type of the resource to locate directories for.
@@ -424,6 +448,7 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function resource_match_custom(type: ResourceType, unique: boolean, func: MatchFunc): string[];
+
     /**
      * Undoes the effect of the latest call to `xfce_resource_push_path()`. You
      * should take special care to call `xfce_resource_pop_path()` exactly same
@@ -433,11 +458,12 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function resource_pop_path(type: ResourceType): void;
+
     /**
      * Appends `path` to the search path list for `type`. This function was
      * written primary for use within modules in larger applications, for example
      * MCS plugins.
-     *
+     * 
      * For example, if you need to add a specific path to the search path list
      * in your MCS, you should call `xfce_resource_push_path()` prior to calling
      * one of the resource search functions and call `xfce_resource_pop_path()`
@@ -447,16 +473,17 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function resource_push_path(type: ResourceType, path: string): void;
+
     /**
      * If `relpath` contains a trailing slash ('/') character, `xfce_resource_save_location()`
      * finds the directory to save files into for the given type in the user's
      * home directory. All directories needed (including those given by
      * `relpath`) will be created on demand if `create` if `true`.
-     *
+     * 
      * If `relpath` does not end with a slash ('/') character, it is taken to be
      * the name of a file to return the save location for. All the directories
      * needed will be created on demand if `create` is `true`.
-     *
+     * 
      * Specifying `null` or the empty string for `relpath` allows you to discover
      * the base path for saving files of the specified `type`, though normally
      * you should not need this.
@@ -467,17 +494,18 @@ export namespace Libxfce4util {
      * @since 4.2
      */
     function resource_save_location(type: ResourceType, relpath: string, create: boolean): string;
+
     /**
      * Searches `str` for occurances of `pattern` and replaces each
      * such occurance with `replacement`. Returns a newly allocated
      * copy of `str` on which the given replacement were performed.
      * The caller is responsible to free the returned string using
      * `g_free()` when no longer needed.
-     *
+     * 
      * Note that `pattern` and `replacement` don't need to be of the
      * same size. If `replacement` is `null`, the pattern will be
      * removed from the string.
-     *
+     * 
      * Note for future Xfce developers: Deprecate this function when
      * `g_string_replace()` is available. (Added since Glib >= 2.68)
      * @param str the input string.
@@ -486,7 +514,8 @@ export namespace Libxfce4util {
      * @returns a newly allocated copy of `str` where all occurrences of          `pattern` are replaced with `replacement`. Or `null` if          `str` is `null`.
      * @since 4.17
      */
-    function str_replace(str: string, pattern: string, replacement: string): string | null;
+    function str_replace(str: string, pattern: string, replacement: string): (string | null);
+
     /**
      * Sets up the translations for `package`.
      * @param _package the package name.
@@ -494,6 +523,7 @@ export namespace Libxfce4util {
      * @param encoding the encoding to use the `package`<!---->s translations              or `null` to use "UTF-8".
      */
     function textdomain(_package: string, localedir: string, encoding: string): void;
+
     /**
      * Unescapes sequences in `value` according to Freedesktop.org Desktop Entry Specification.
      * @param value Value string to replace escape sequences.
@@ -501,11 +531,12 @@ export namespace Libxfce4util {
      * @since 4.18
      */
     function unescape_desktop_entry_value(value: string): string;
+
     /**
      * Removes all control characters from `str` up to `end` or up to
      * `max_len` characters (note that characters does not mean bytes with
      * UTF-8), where both `str` and `max_len` may not be given.
-     *
+     * 
      * Control characters are replaced in `str` by whitespaces, no new string
      * will be allocated. The operation is done in-place.
      * @param str target string.
@@ -514,11 +545,12 @@ export namespace Libxfce4util {
      * @returns pointer to `str` or `null` on error.
      * @since 4.2
      */
-    function utf8_remove_controls(str: string, max_len: bigint | number, end: string): string;
+    function utf8_remove_controls(str: string, max_len: (bigint | number), end: string): string;
+
     /**
      * Duplicates the `src` string up to `max_len` characters
      * (note that characters does not mean bytes with UTF-8).
-     *
+     * 
      * The caller is responsible to free the returned string
      * using `g_free()` when no longer needed.
      * @param src target string.
@@ -526,32 +558,38 @@ export namespace Libxfce4util {
      * @returns pointer to the newly allocated string.
      * @since 4.3
      */
-    function utf8_strndup(src: string, max_len: bigint | number): string;
+    function utf8_strndup(src: string, max_len: (bigint | number)): string;
+
     /**
      * Queries the version string of the installed Xfce desktop environment.
      * @returns the overall version information of the installed Xfce desktop.
      * @since 4.2
      */
     function version_string(): string;
+
     /**
      * @gir-type Callback
      */
     interface MatchFunc {
         (basedir: string, relpath: string): boolean;
     }
+
     /**
      * @gir-type Callback
      */
     interface PosixSignalHandler {
         (signal: number): void;
     }
+
     namespace Consolekit {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -570,90 +608,88 @@ export namespace Libxfce4util {
         $signals: Consolekit.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Consolekit.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Consolekit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Consolekit.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Consolekit.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Consolekit.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Consolekit.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Consolekit.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Consolekit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Consolekit.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Consolekit.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Consolekit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Consolekit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Consolekit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Create a new {@link Libxfce4util.Consolekit} instance or increase reference count.
          */
         static get(): Consolekit;
 
         // Methods
-
         /**
          * Check whether ConsoleKit can trigger and has authorization for Hibernate.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_hibernate(): [boolean, boolean, boolean];
+
         /**
          * Check whether ConsoleKit can trigger and has authorization for HybridSleep.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_hybrid_sleep(): [boolean, boolean, boolean];
+
         /**
          * Check whether ConsoleKit can trigger PowerOff.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_power_off(): [boolean, boolean, boolean];
+
         /**
          * Check whether ConsoleKit can trigger Reboot.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_reboot(): [boolean, boolean, boolean];
+
         /**
          * Check whether ConsoleKit can trigger and has authorization for Suspend.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_suspend(): [boolean, boolean, boolean];
+
         /**
          * Ask ConsoleKit to trigger Hibernate.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         hibernate(polkit_interactive: boolean): boolean;
+
         /**
          * Ask ConsoleKit to trigger HybridSleep.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         hybrid_sleep(polkit_interactive: boolean): boolean;
+
         /**
          * Ask ConsoleKit to trigger PowerOff.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         power_off(polkit_interactive: boolean): boolean;
+
         /**
          * Ask ConsoleKit to trigger Reboot.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         reboot(polkit_interactive: boolean): boolean;
+
         /**
          * Ask ConsoleKit to trigger Suspend.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
@@ -662,13 +698,16 @@ export namespace Libxfce4util {
         suspend(polkit_interactive: boolean): boolean;
     }
 
+
     namespace Kiosk {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -687,41 +726,32 @@ export namespace Libxfce4util {
         $signals: Kiosk.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Kiosk.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](module: string): Kiosk;
+        static ["new"](module: string): Kiosk;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Kiosk.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Kiosk.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Kiosk.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Kiosk.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Kiosk.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Kiosk.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Kiosk.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Kiosk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Kiosk.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Kiosk.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Frees the `kiosk` object.
          * In 4.13 and above, this is equivalent to calling g_clear_object.
          */
         free(): void;
+
         /**
          * Queries the `kiosk` object for a given capability and returns `true` if
          * the current user has the `capability`, else `false`.
@@ -731,13 +761,16 @@ export namespace Libxfce4util {
         query(capability: string): boolean;
     }
 
+
     namespace Systemd {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -756,90 +789,88 @@ export namespace Libxfce4util {
         $signals: Systemd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Systemd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Systemd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Systemd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Systemd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Systemd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Systemd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Systemd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Systemd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Systemd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Systemd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Systemd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Systemd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Systemd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Create a new {@link Libxfce4util.Systemd} instance or increase reference count.
          */
         static get(): Systemd;
 
         // Methods
-
         /**
          * Check whether systemd can trigger and has authorization for Hibernate.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_hibernate(): [boolean, boolean, boolean];
+
         /**
          * Check whether systemd can trigger and has authorization for HybridSleep.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_hybrid_sleep(): [boolean, boolean, boolean];
+
         /**
          * Check whether systemd can trigger PowerOff.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_power_off(): [boolean, boolean, boolean];
+
         /**
          * Check whether systemd can trigger Reboot.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_reboot(): [boolean, boolean, boolean];
+
         /**
          * Check whether systemd can trigger and has authorization for Suspend.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         can_suspend(): [boolean, boolean, boolean];
+
         /**
          * Ask systemd to trigger Hibernate.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         hibernate(polkit_interactive: boolean): boolean;
+
         /**
          * Ask systemd to trigger HybridSleep.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         hybrid_sleep(polkit_interactive: boolean): boolean;
+
         /**
          * Ask systemd to trigger PowerOff.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         power_off(polkit_interactive: boolean): boolean;
+
         /**
          * Ask systemd to trigger Reboot.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          */
         reboot(polkit_interactive: boolean): boolean;
+
         /**
          * Ask systemd to trigger Suspend.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
@@ -848,14 +879,17 @@ export namespace Libxfce4util {
         suspend(polkit_interactive: boolean): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ConsolekitClass = typeof Consolekit;
+
     /**
      * @gir-type Alias
      */
     type KioskClass = typeof Kiosk;
+
     /**
      * @gir-type Struct
      */
@@ -863,13 +897,12 @@ export namespace Libxfce4util {
         static $gtype: GObject.GType<Rc>;
 
         // Static methods
-
         /**
          * If `readonly` is `true` parsing is generally faster, because only untranslated
          * entries and entries that match the current locale will be loaded. Also if
          * you pass `true` for `readonly`, `xfce_rc_config` will fail if `resource`
          * does not reference a regular file.
-         *
+         * 
          * It is no error if `readonly` is `false` and the file referenced by `resource`
          * does not exists. In this case you'll start with a fresh config, which contains
          * only the default group and no entries.
@@ -878,14 +911,15 @@ export namespace Libxfce4util {
          * @param readonly whether to open `resource` readonly.
          */
         static config_open(type: ResourceType, resource: string, readonly: boolean): Rc;
+
         /**
          * Parses the resource config file specified by `filename`.
-         *
+         * 
          * If `readonly` is `true` parsing is generally faster, because only untranslated
          * entries and entries that match the current locale will be loaded. Also if
          * you pass `true` for `readonly`, `xfce_rc_simple_open` will fail if `filename`
          * does not reference a regular file.
-         *
+         * 
          * It is no error if `readonly` is `false` and the file referenced by `filename`
          * does not exists. In this case you'll start with a fresh config, which contains
          * only the default group and no entries.
@@ -895,14 +929,14 @@ export namespace Libxfce4util {
         static simple_open(filename: string, readonly: boolean): Rc;
 
         // Methods
-
         /**
          * Destructs `rc`.
-         *
+         * 
          * If `rc` was opened read-write and contains dirty (modified) entries, these
          * will be flushed to permanent storage first.
          */
         close(): void;
+
         /**
          * Similar to `xfce_rc_delete_group`, but works on an entry in the current
          * group.
@@ -910,10 +944,11 @@ export namespace Libxfce4util {
          * @param global whether to delete `key` globally.
          */
         delete_entry(key: string, global: boolean): void;
+
         /**
          * If `rc` is a simple config object and `group` exists, it is deleted. All entries
          * within `group` will be deleted. For simple config objects, `global` is ignored.
-         *
+         * 
          * If `rc` is a complex config object and `group` exists, it will be deleted will
          * all entries. If `global` is `true`, the entry will be marked as deleted globally,
          * therefore all calls to `xfce_rc_read_entry` and related functions will return
@@ -924,15 +959,17 @@ export namespace Libxfce4util {
          * @param global whether to delete the group globally.
          */
         delete_group(group: string, global: boolean): void;
+
         /**
          * Flushes all changes that currently reside only in memory back to permanent
          * storage. Dirty configuration entries are written in the most specific file
          * available.
          */
         flush(): void;
+
         /**
          * Returns the names of all entries in `group` if any.
-         *
+         * 
          * `null` is a valid input value for `group`. `xfce_rc_get_entries` will
          * then return all entries in the so called "NULL group". Though this
          * "NULL group" should only be used for backward compatibility with old
@@ -941,6 +978,7 @@ export namespace Libxfce4util {
          * @returns a NULL-terminated string array with all entries in `group`. Has to               be freed using `g_strfreev()` if no longer needed. If the specified               `group` does not exists, `null` is returned. If the `group` has no entries,               an empty string array is returned.
          */
         get_entries(group: string): string[];
+
         /**
          * Returns the name of the group in which we are searching for keys and
          * from which we are retrieving entries. If the currently active group is
@@ -948,42 +986,49 @@ export namespace Libxfce4util {
          * @returns the name of the current group.
          */
         get_group(): string;
+
         /**
          * Returns the names of all known groups in `rc`.
-         *
+         * 
          * Since the default groups (the "NULL group") name is `null`, it will not be
          * returned with this functions. But it does not matter at all, since the
          * default group is known to always exist.
          * @returns a NULL-terminated string array will the names of all groups in               `rc`. Should be freed using `g_strfreev()` when no longer needed.
          */
         get_groups(): string[];
+
         /**
          * Returns current locale used by `rc` to lookup translated entries.
          * @returns a string representing the current locale.
          */
         get_locale(): string;
+
         /**
          * Checks whether the `key` has an entry in the current group.
          * @param key the key to search for.
          * @returns `true` if the `key` is available, else `false`.
          */
         has_entry(key: string): boolean;
+
         /**
          * Returns `true` if the specified `group` is known about.
          * @param group the group to search for.
          * @returns `true` if the `group` exists.
          */
         has_group(group: string): boolean;
+
         /**
          * Checks whether `rc` has any dirty (modified) entries.
          * @returns `true` if `rc` has any dirty (modified) entries.
          */
         is_dirty(): boolean;
+
         /**
          * Returns the read-only status of `rc`.
          * @returns the read-only status.
          */
         is_readonly(): boolean;
+
         /**
          * Reads the value of an entry specified by `key` in the current group and interpret
          * it as a boolean value. Currently "on", "true" and "yes" are accepted as true,
@@ -993,6 +1038,7 @@ export namespace Libxfce4util {
          * @returns the value for this `key`.
          */
         read_bool_entry(key: string, fallback: boolean): boolean;
+
         /**
          * Reads the value of an entry specified by `key` in the current group.
          * @param key the key to search for.
@@ -1000,6 +1046,7 @@ export namespace Libxfce4util {
          * @returns the value for this `key`, or `fallback` if `key` was not found.
          */
         read_entry(key: string, fallback: string): string;
+
         /**
          * Reads the value of an entry specified by `key` in the current group. The
          * untranslated entry is returned. You normally do not need this.
@@ -1008,6 +1055,7 @@ export namespace Libxfce4util {
          * @returns the untranslated value for this `key`, or `fallback` if `key` was not               found.
          */
         read_entry_untranslated(key: string, fallback: string): string;
+
         /**
          * Reads the value of an entry specified by `key` in the current group
          * and interprets it as an integer value.
@@ -1016,10 +1064,11 @@ export namespace Libxfce4util {
          * @returns the value for this `key`.
          */
         read_int_entry(key: string, fallback: number): number;
+
         /**
          * Reads a list of strings in the entry specified by key in the current group.
          * The returned list has to be freed using `g_strfreev()` when no longer needed.
-         *
+         * 
          * This does not support delimiter escaping. If you need this feature, use
          * `g_key_file_get_string_list()` instead.
          * @param key the key to search for.
@@ -1027,49 +1076,55 @@ export namespace Libxfce4util {
          * @returns the list or NULL if the entry does not exist.
          */
         read_list_entry(key: string, delimiter: string): string[];
+
         /**
          * Mark `rc` as "clean", i.e. don't write dirty entries at destruction time. If
          * you then call `xfce_rc_write_entry` again, the dirty flag is set again and
          * dirty entries will be written at a subsequent `xfce_rc_flush` call.
          */
         rollback(): void;
+
         /**
          * Specifies the group in which keys will be read and written. Subsequent calls
          * to `xfce_rc_read_entry` and `xfce_rc_write_entry` will be applied only in the
          * active group.
-         *
+         * 
          * If `group` references a group that does not exists, it will be created for
          * you. But note, that empty groups will not be synced to permanent storage.
          * @param group the name of the new group or `null` to to switch back to the default group.
          */
         set_group(group: string): void;
+
         /**
          * Wrapper for `xfce_rc_write_entry`, that stores a boolean `value`.
          * @param key the key to write.
          * @param value the value to write.
          */
         write_bool_entry(key: string, value: boolean): void;
+
         /**
          * Writes a `key`/`value` pair. This has no effect if the resource config
          * was opened readonly, else the value will be written to permanent storage
          * on the next call to `xfce_rc_flush` or when `rc` is destroyed using
          * `xfce_rc_close`.
-         *
+         * 
          * If `rc` was opened using `xfce_rc_config_open`, the value will be
          * written to the most specific config file.
          * @param key the key to write.
          * @param value the value to write.
          */
         write_entry(key: string, value: string): void;
+
         /**
          * Wrapper for `xfce_rc_write_entry`, that stores an integer `value`.
          * @param key the key to write.
          * @param value the value to write.
          */
         write_int_entry(key: string, value: number): void;
+
         /**
          * Wrapper for `xfce_rc_write_entry`, that stores a string list `value`.
-         *
+         * 
          * This does not support delimiter escaping. If you need this feature, use
          * `g_key_file_set_string_list()` instead.
          * @param key the key to write.
@@ -1079,15 +1134,18 @@ export namespace Libxfce4util {
         write_list_entry(key: string, value: string, separator: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SystemdClass = typeof Systemd;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

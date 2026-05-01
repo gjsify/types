@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -21,29 +22,30 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
 export namespace GUPnPDLNA {
+
     /**
      * GUPnPDLNA-1.0
      */
+
 
     namespace Discoverer {
         // Signal signatures
         interface SignalSignatures extends GstPbutils.Discoverer.SignalSignatures {
             /**
              * Will be emitted when all information on a URI could be discovered.
-             *
+             * 
              * The reciever must unref `dlna` with when done using it.
              * @signal
              * @run-last
              */
             done: (arg0: Information, arg1: GLib.Error) => void;
-            'notify::extended-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::relaxed-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::use-cache': (pspec: GObject.ParamSpec) => void;
+            "notify::extended-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::relaxed-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::use-cache": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GstPbutils.Discoverer.ConstructorProps {
             extended_mode: boolean;
             extendedMode: boolean;
@@ -60,19 +62,21 @@ export namespace GUPnPDLNA {
         static $gtype: GObject.GType<Discoverer>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get extended_mode(): boolean;
+
         /**
          * @construct-only
          */
         get extendedMode(): boolean;
+
         /**
          * @construct-only
          */
         get relaxed_mode(): boolean;
+
         /**
          * @construct-only
          */
@@ -88,48 +92,37 @@ export namespace GUPnPDLNA {
         $signals: Discoverer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Discoverer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](timeout: Gst.ClockTime, relaxed_mode: boolean, extended_mode: boolean): Discoverer;
-        // Conflicted with GstPbutils.Discoverer.new
+        static ["new"](timeout: Gst.ClockTime, relaxed_mode: boolean, extended_mode: boolean): Discoverer;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with GstPbutils.Discoverer.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Discoverer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Discoverer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Discoverer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Discoverer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Discoverer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Discoverer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Discoverer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Discoverer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Discoverer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param dlna
-         * @param err
+         * @param dlna 
+         * @param err 
          * @virtual
          */
         vfunc_done(dlna: Information, err: GLib.Error): void;
 
         // Methods
-
         /**
          * Queues `uri` for metadata discovery. When discovery is completed, the
          * "discovered" signal is emitted on `discoverer`.
@@ -137,21 +130,25 @@ export namespace GUPnPDLNA {
          * @returns TRUE if `uri` was successfully queued, FALSE otherwise.
          */
         discover_uri(uri: string): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GstPbutils.Discoverer.discover_uri
+    // Conflicted with GstPbutils.Discoverer.discover_uri
         discover_uri(...args: never[]): any;
+
         /**
          * Synchronously gathers metadata for `uri`.
          * @param uri URI to gather metadata for
          * @returns a {@link GUPnPDLNA.Information} with the metadata for `uri` on success, NULL otherwise
          */
         discover_uri_sync(uri: string): Information;
+
         /**
          * @returns true if application is using extended mode and false otherwise
          */
         get_extended_mode(): boolean;
+
         /**
          * Given `name`, this finds the corresponding DLNA profile information (stored
          * as a {@link GUPnPDLNA.Profile}).
@@ -159,10 +156,12 @@ export namespace GUPnPDLNA {
          * @returns a {@link GUPnPDLNA.Profile} on success, NULL otherwise.
          */
         get_profile(name: string): Profile;
+
         /**
          * @returns true if relaxed mode is set and false otherwise
          */
         get_relaxed_mode(): boolean;
+
         /**
          * Retuns a list of the all the DLNA profiles supported by `self`.
          * @returns a {@link GLib.List} of {@link GUPnPDLNA.Profile} on success, NULL otherwise.
@@ -170,16 +169,16 @@ export namespace GUPnPDLNA {
         list_profiles(): Profile[];
     }
 
+
     namespace Information {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::mime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::mime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             info: GstPbutils.DiscovererInfo;
             mime: string;
@@ -194,15 +193,16 @@ export namespace GUPnPDLNA {
         static $gtype: GObject.GType<Information>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get info(): GstPbutils.DiscovererInfo;
+
         /**
          * @construct-only
          */
         get mime(): string;
+
         /**
          * @construct-only
          */
@@ -218,58 +218,50 @@ export namespace GUPnPDLNA {
         $signals: Information.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Information.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, mime: string, info: GstPbutils.DiscovererInfo): Information;
+        static ["new"](name: string, mime: string, info: GstPbutils.DiscovererInfo): Information;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Information.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Information.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Information.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Information.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Information.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Information.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Information.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Information.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Information.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_info(): GstPbutils.DiscovererInfo;
+
         /**
          * @returns the DLNA MIME type of the stream represented by `self`. Do not free this string.
          */
         get_mime(): string;
+
         /**
          * @returns the DLNA profile name of the stream represented by `self`. Do not free this string.
          */
         get_name(): string;
     }
 
+
     namespace Profile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::encoding-profile': (pspec: GObject.ParamSpec) => void;
-            'notify::extended': (pspec: GObject.ParamSpec) => void;
-            'notify::mime': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::encoding-profile": (pspec: GObject.ParamSpec) => void;
+            "notify::extended": (pspec: GObject.ParamSpec) => void;
+            "notify::mime": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             encoding_profile: GstPbutils.EncodingProfile;
             encodingProfile: GstPbutils.EncodingProfile;
@@ -288,23 +280,26 @@ export namespace GUPnPDLNA {
         static $gtype: GObject.GType<Profile>;
 
         // Properties
-
         /**
          * @read-only
          */
         get encoding_profile(): GstPbutils.EncodingProfile;
+
         /**
          * @read-only
          */
         get encodingProfile(): GstPbutils.EncodingProfile;
+
         /**
          * @construct-only
          */
         get extended(): boolean;
+
         /**
          * @construct-only
          */
         get mime(): string;
+
         /**
          * @construct-only
          */
@@ -320,69 +315,67 @@ export namespace GUPnPDLNA {
         $signals: Profile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Profile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Profile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Profile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Profile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Profile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Profile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Profile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Profile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns a {@link GstPbutils.EncodingProfile} object that, in a future version, can be used to transcode a given stream to match the DLNA profile represented by `self`. The receiver must unref the returned {@link GstPbutils.EncodingProfile} when done using it.
          */
         get_encoding_profile(): GstPbutils.EncodingProfile;
+
         /**
          * @returns true if application is using extended mode and false otherwise
          */
         get_extended(): boolean;
+
         /**
          * @returns the DLNA MIME type of the DLNA profile represented by `self`
          */
         get_mime(): string;
+
         /**
          * @returns the name of the DLNA profile represented by `self`
          */
         get_name(): string;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DiscovererClass = typeof Discoverer;
+
     /**
      * @gir-type Alias
      */
     type InformationClass = typeof Information;
+
     /**
      * @gir-type Alias
      */
     type ProfileClass = typeof Profile;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

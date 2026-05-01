@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace cairo {
+
     /**
      * cairo-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -70,6 +73,7 @@ export namespace cairo {
         JBIG2_GLOBAL_MISSING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -85,6 +89,7 @@ export namespace cairo {
         ALPHA,
         COLOR_ALPHA,
     }
+
 
     /**
      * @gir-type Enum
@@ -128,6 +133,7 @@ export namespace cairo {
         HSL_LUMINOSITY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -148,6 +154,7 @@ export namespace cairo {
         BEST,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -162,6 +169,7 @@ export namespace cairo {
         WINDING,
         EVEN_ODD,
     }
+
 
     /**
      * @gir-type Enum
@@ -179,6 +187,7 @@ export namespace cairo {
         SQUARE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -195,6 +204,7 @@ export namespace cairo {
         BEVEL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -208,6 +218,7 @@ export namespace cairo {
     enum TextClusterFlags {
         BACKWARD,
     }
+
 
     /**
      * @gir-type Enum
@@ -225,6 +236,7 @@ export namespace cairo {
         OBLIQUE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -239,6 +251,7 @@ export namespace cairo {
         NORMAL,
         BOLD,
     }
+
 
     /**
      * @gir-type Enum
@@ -258,6 +271,7 @@ export namespace cairo {
         VBGR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -276,6 +290,7 @@ export namespace cairo {
         FULL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -291,6 +306,7 @@ export namespace cairo {
         OFF,
         ON,
     }
+
 
     /**
      * @gir-type Enum
@@ -310,6 +326,7 @@ export namespace cairo {
         USER,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -326,6 +343,7 @@ export namespace cairo {
         CURVE_TO,
         CLOSE_PATH,
     }
+
 
     /**
      * @gir-type Enum
@@ -348,6 +366,7 @@ export namespace cairo {
         WIN32,
         INVALID,
     }
+
 
     /**
      * @gir-type Enum
@@ -387,6 +406,7 @@ export namespace cairo {
         COGL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -407,6 +427,7 @@ export namespace cairo {
         RGB30,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -426,6 +447,7 @@ export namespace cairo {
         RASTER_SOURCE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -442,6 +464,7 @@ export namespace cairo {
         REFLECT,
         PAD,
     }
+
 
     /**
      * @gir-type Enum
@@ -462,6 +485,7 @@ export namespace cairo {
         GAUSSIAN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -478,13 +502,16 @@ export namespace cairo {
         PART,
     }
 
+
     function image_surface_create(): void;
+
     /**
      * @gir-type Foreign Struct
      */
     class Context {
         static $gtype: GObject.GType<Context>;
     }
+
 
     /**
      * @gir-type Foreign Struct
@@ -493,12 +520,14 @@ export namespace cairo {
         static $gtype: GObject.GType<Device>;
     }
 
+
     /**
      * @gir-type Foreign Struct
      */
     class Surface {
         static $gtype: GObject.GType<Surface>;
     }
+
 
     /**
      * @gir-type Foreign Struct
@@ -507,12 +536,14 @@ export namespace cairo {
         static $gtype: GObject.GType<Matrix>;
     }
 
+
     /**
      * @gir-type Foreign Struct
      */
     class Pattern {
         static $gtype: GObject.GType<Pattern>;
     }
+
 
     /**
      * @gir-type Foreign Struct
@@ -521,12 +552,14 @@ export namespace cairo {
         static $gtype: GObject.GType<Region>;
     }
 
+
     /**
      * @gir-type Foreign Struct
      */
     class FontOptions {
         static $gtype: GObject.GType<FontOptions>;
     }
+
 
     /**
      * @gir-type Foreign Struct
@@ -535,12 +568,14 @@ export namespace cairo {
         static $gtype: GObject.GType<FontFace>;
     }
 
+
     /**
      * @gir-type Foreign Struct
      */
     class ScaledFont {
         static $gtype: GObject.GType<ScaledFont>;
     }
+
 
     /**
      * @gir-type Foreign Struct
@@ -549,6 +584,7 @@ export namespace cairo {
         static $gtype: GObject.GType<Path>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -556,23 +592,24 @@ export namespace cairo {
         static $gtype: GObject.GType<Rectangle>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -581,23 +618,24 @@ export namespace cairo {
         static $gtype: GObject.GType<RectangleInt>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -606,11 +644,13 @@ export namespace cairo {
         static $gtype: GObject.GType<Glyph>;
 
         // Fields
-
         index: number;
+
         x: number;
+
         y: number;
     }
+
 
     /**
      * @gir-type Struct
@@ -619,25 +659,25 @@ export namespace cairo {
         static $gtype: GObject.GType<TextCluster>;
 
         // Fields
-
         num_bytes: number;
+
         num_glyphs: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                num_bytes: number;
-                num_glyphs: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            num_bytes: number;
+            num_glyphs: number;
+        }>);
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

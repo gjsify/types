@@ -1,3 +1,4 @@
+
 import type Gtef2 from '@girs/gtef-2';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace GConf {
+
     /**
      * GConf-2.0
      */
+
 
     /**
      * @gir-type Enum
@@ -34,6 +37,7 @@ export namespace GConf {
         HANDLE_ALL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -50,6 +54,7 @@ export namespace GConf {
         PRELOAD_RECURSIVE,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -57,33 +62,47 @@ export namespace GConf {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static SUCCESS: number;
+
         static FAILED: number;
+
         static NO_SERVER: number;
+
         static NO_PERMISSION: number;
+
         static BAD_ADDRESS: number;
+
         static BAD_KEY: number;
+
         static PARSE_ERROR: number;
+
         static CORRUPT: number;
+
         static TYPE_MISMATCH: number;
+
         static IS_DIR: number;
+
         static IS_KEY: number;
+
         static OVERRIDDEN: number;
+
         static OAF_ERROR: number;
+
         static LOCAL_ENGINE: number;
+
         static LOCK_FAILED: number;
+
         static NO_WRITABLE_DATABASE: number;
+
         static IN_SHUTDOWN: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -106,22 +125,27 @@ export namespace GConf {
         PAIR,
     }
 
+
     /**
-     * @param dir
-     * @param key
+     * @param dir 
+     * @param key 
      */
     function concat_dir_and_key(dir: string, key: string): string;
+
     /**
      * Detach from the config server and release
      * all related resources
      */
     function debug_shutdown(): number;
+
     /**
-     * @param lookup_table
-     * @param enum_value
+     * @param lookup_table 
+     * @param enum_value 
      */
     function enum_to_string(lookup_table: EnumStringPair, enum_value: number): string;
+
     function error_quark(): GLib.Quark;
+
     /**
      * Escape `arbitrary_text` such that it's a valid key element (i.e. one
      * part of the key path). The escaped key won't pass `gconf_valid_key()`
@@ -133,33 +157,40 @@ export namespace GConf {
      * @returns a nul-terminated valid GConf key
      */
     function escape_key(arbitrary_text: string, len: number): string;
+
     /**
-     * @param argc
-     * @param argv
+     * @param argc 
+     * @param argv 
      */
     function init(argc: number, argv: string): boolean;
+
     function is_initialized(): boolean;
+
     /**
-     * @param above
-     * @param below
+     * @param above 
+     * @param below 
      */
     function key_is_below(above: string, below: string): boolean;
+
     /**
-     * @param app
-     * @param mod_info
+     * @param app 
+     * @param mod_info 
      */
-    function postinit(app: any | null, mod_info: any | null): void;
+    function postinit(app: (any | null), mod_info: (any | null)): void;
+
     /**
-     * @param app
-     * @param mod_info
+     * @param app 
+     * @param mod_info 
      */
-    function preinit(app: any | null, mod_info: any | null): void;
+    function preinit(app: (any | null), mod_info: (any | null)): void;
+
     /**
-     * @param lookup_table
-     * @param str
-     * @param enum_value_retloc
+     * @param lookup_table 
+     * @param str 
+     * @param enum_value_retloc 
      */
     function string_to_enum(lookup_table: EnumStringPair, str: string, enum_value_retloc: number): boolean;
+
     /**
      * Converts a string escaped with `gconf_escape_key()` back into its original
      * form.
@@ -168,46 +199,55 @@ export namespace GConf {
      * @returns the original string that was escaped to create `escaped_key`
      */
     function unescape_key(escaped_key: string, len: number): string;
+
     function unique_key(): string;
+
     /**
-     * @param key
-     * @param why_invalid
+     * @param key 
+     * @param why_invalid 
      */
     function valid_key(key: string, why_invalid: string): boolean;
+
     /**
-     * @param encoded
+     * @param encoded 
      */
     function value_decode(encoded: string): Value;
+
     /**
      * @gir-type Callback
      */
     interface ChangeSetForeachFunc {
         (cs: ChangeSet, key: string, value: Value): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ClientErrorHandlerFunc {
         (client: Client, error: GLib.Error): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ClientNotifyFunc {
         (client: Client, cnxn_id: number, entry: Entry): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ListenersForeach {
-        (location: string, cnxn_id: number, listener_data: any | null): void;
+        (location: string, cnxn_id: number, listener_data: (any | null)): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface ListenersPredicate {
-        (location: string, cnxn_id: number, listener_data: any | null): boolean;
+        (location: string, cnxn_id: number, listener_data: (any | null)): boolean;
     }
+
     /**
      * @gir-type Flags
      */
@@ -222,6 +262,7 @@ export namespace GConf {
         NAMES,
     }
 
+
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -229,22 +270,23 @@ export namespace GConf {
              * @signal
              * @run-last
              */
-            error: (arg0: any | null) => void;
+            error: (arg0: (any | null)) => void;
             /**
              * @signal
              * @run-last
              */
-            'unreturned-error': (arg0: any | null) => void;
+            "unreturned-error": (arg0: (any | null)) => void;
             /**
              * @signal
              * @run-last
              */
-            'value-changed': (arg0: string, arg1: any | null) => void;
+            "value-changed": (arg0: string, arg1: (any | null)) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -263,38 +305,27 @@ export namespace GConf {
         $signals: Client.SignalSignatures;
 
         // Fields
-
         object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Client.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new {@link GConf.Client} using the default `GConfEngine`. Normally this is the
          * engine you want. If someone else is already using the default
@@ -304,31 +335,32 @@ export namespace GConf {
         static get_default(): Client;
 
         // Virtual methods
-
         /**
-         * @param error
+         * @param error 
          * @virtual
          */
         vfunc_error(error: GLib.Error): void;
+
         /**
-         * @param error
+         * @param error 
          * @virtual
          */
         vfunc_unreturned_error(error: GLib.Error): void;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          * @virtual
          */
         vfunc_value_changed(key: string, value: Value): void;
 
         // Methods
-
         /**
-         * @param dir
-         * @param preload
+         * @param dir 
+         * @param preload 
          */
         add_dir(dir: string, preload: ClientPreloadType): void;
+
         /**
          * Lists the subdirectories in `dir`. The returned list contains
          * allocated strings. Each string is the absolute path of a
@@ -339,6 +371,7 @@ export namespace GConf {
          * @returns List of allocated subdirectory names.
          */
         all_dirs(dir: string): string[];
+
         /**
          * Lists the key-value pairs in `dir`. Does not list subdirectories; for
          * that use `gconf_client_all_dirs()`. The returned list contains {@link GConf.Entry}
@@ -351,171 +384,194 @@ export namespace GConf {
          * @returns List of {@link GConf.Entry}.
          */
         all_entries(dir: string): Entry[];
+
         /**
-         * @param keys
+         * @param keys 
          */
         change_set_from_currentv(keys: string): ChangeSet;
+
         clear_cache(): void;
+
         /**
-         * @param cs
-         * @param remove_committed
+         * @param cs 
+         * @param remove_committed 
          */
         commit_change_set(cs: ChangeSet, remove_committed: boolean): boolean;
+
         /**
-         * @param dir
+         * @param dir 
          */
         dir_exists(dir: string): boolean;
+
         /**
-         * @param error
+         * @param error 
          */
         error(error: GLib.Error): void;
+
         /**
-         * @param key
+         * @param key 
          */
         get(key: string): Value;
+
         /**
-         * @param key
+         * @param key 
          */
         get_bool(key: string): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         get_default_from_schema(key: string): Value;
+
         /**
-         * @param key
-         * @param locale
-         * @param use_schema_default
+         * @param key 
+         * @param locale 
+         * @param use_schema_default 
          */
         get_entry(key: string, locale: string, use_schema_default: boolean): Entry;
+
         /**
-         * @param key
+         * @param key 
          */
         get_float(key: string): number;
+
         /**
-         * @param key
+         * @param key 
          */
         get_int(key: string): number;
+
         /**
-         * @param key
-         * @param car_type
-         * @param cdr_type
-         * @param car_retloc
-         * @param cdr_retloc
+         * @param key 
+         * @param car_type 
+         * @param cdr_type 
+         * @param car_retloc 
+         * @param cdr_retloc 
          */
-        get_pair(
-            key: string,
-            car_type: ValueType,
-            cdr_type: ValueType,
-            car_retloc: any | null,
-            cdr_retloc: any | null,
-        ): boolean;
+        get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc: (any | null), cdr_retloc: (any | null)): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         get_string(key: string): string;
+
         /**
-         * @param key
+         * @param key 
          */
         get_without_default(key: string): Value;
+
         /**
-         * @param key
+         * @param key 
          */
         key_is_writable(key: string): boolean;
+
         /**
-         * @param key
+         * @param key 
          */
         notify(key: string): void;
+
         /**
-         * @param namespace_section
-         * @param func
-         * @param destroy_notify
+         * @param namespace_section 
+         * @param func 
+         * @param destroy_notify 
          */
         notify_add(namespace_section: string, func: ClientNotifyFunc, destroy_notify: GLib.FreeFunc): number;
+
         /**
-         * @param cnxn
+         * @param cnxn 
          */
         notify_remove(cnxn: number): void;
+
         /**
-         * @param dirname
-         * @param type
+         * @param dirname 
+         * @param type 
          */
         preload(dirname: string, type: ClientPreloadType): void;
+
         /**
-         * @param key
-         * @param flags
+         * @param key 
+         * @param flags 
          */
         recursive_unset(key: string, flags: UnsetFlags): boolean;
+
         /**
-         * @param dir
+         * @param dir 
          */
         remove_dir(dir: string): void;
+
         /**
-         * @param cs
+         * @param cs 
          */
         reverse_change_set(cs: ChangeSet): ChangeSet;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set(key: string, val: Value): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set_bool(key: string, val: boolean): boolean;
+
         /**
-         * @param mode
+         * @param mode 
          */
         set_error_handling(mode: ClientErrorHandlingMode): void;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set_float(key: string, val: number): boolean;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set_int(key: string, val: number): boolean;
+
         /**
-         * @param key
-         * @param car_type
-         * @param cdr_type
-         * @param address_of_car
-         * @param address_of_cdr
+         * @param key 
+         * @param car_type 
+         * @param cdr_type 
+         * @param address_of_car 
+         * @param address_of_cdr 
          */
-        set_pair(
-            key: string,
-            car_type: ValueType,
-            cdr_type: ValueType,
-            address_of_car: any | null,
-            address_of_cdr: any | null,
-        ): boolean;
+        set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: (any | null), address_of_cdr: (any | null)): boolean;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set_string(key: string, val: string): boolean;
+
         suggest_sync(): void;
+
         /**
-         * @param error
+         * @param error 
          */
         unreturned_error(error: GLib.Error): void;
+
         /**
-         * @param key
+         * @param key 
          */
         unset(key: string): boolean;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         value_changed(key: string, value: Value): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -525,18 +581,21 @@ export namespace GConf {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): ChangeSet;
+        }>);
+
+        static ["new"](): ChangeSet;
 
         // Methods
-
         /**
-         * @param key
-         * @param value_retloc
+         * @param key 
+         * @param value_retloc 
          */
         check_value(key: string, value_retloc: Value): boolean;
+
         clear(): void;
+
         /**
          * Iterates over a {@link GConf.ChangeSet} by calling a
          * {@link GConf.ChangeSetForeachFunc} for each change in the set. See the
@@ -546,67 +605,75 @@ export namespace GConf {
          * @param func function to call for each change in the change set.
          */
         foreach(func: ChangeSetForeachFunc): void;
+
         ref(): ChangeSet;
+
         /**
-         * @param key
+         * @param key 
          */
         remove(key: string): void;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         set(key: string, value: Value): void;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set_bool(key: string, val: boolean): void;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set_float(key: string, val: number): void;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set_int(key: string, val: number): void;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         set_nocopy(key: string, value: Value): void;
+
         /**
-         * @param key
-         * @param car_type
-         * @param cdr_type
-         * @param address_of_car
-         * @param address_of_cdr
+         * @param key 
+         * @param car_type 
+         * @param cdr_type 
+         * @param address_of_car 
+         * @param address_of_cdr 
          */
-        set_pair(
-            key: string,
-            car_type: ValueType,
-            cdr_type: ValueType,
-            address_of_car: any | null,
-            address_of_cdr: any | null,
-        ): void;
+        set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: (any | null), address_of_cdr: (any | null)): void;
+
         /**
-         * @param key
-         * @param val
+         * @param key 
+         * @param val 
          */
         set_string(key: string, val: string): void;
+
         size(): number;
+
         unref(): void;
+
         /**
-         * @param key
+         * @param key 
          */
         unset(key: string): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ClientClass = typeof Client;
+
     /**
      * @gir-type Struct
      */
@@ -614,54 +681,67 @@ export namespace GConf {
         static $gtype: GObject.GType<Entry>;
 
         // Fields
-
         key: string;
 
         // Constructors
-
         constructor(key: string, val: Value);
 
-        static ['new'](key: string, val: Value): Entry;
+        static ["new"](key: string, val: Value): Entry;
 
         static new_nocopy(key: string, val: Value): Entry;
 
         // Methods
-
         copy(): Entry;
+
         /**
-         * @param b
+         * @param b 
          */
         equal(b: Entry): boolean;
+
         free(): void;
+
         get_is_default(): boolean;
+
         get_is_writable(): boolean;
+
         get_key(): string;
+
         get_schema_name(): string;
+
         get_value(): Value;
+
         ref(): Entry;
+
         /**
-         * @param is_default
+         * @param is_default 
          */
         set_is_default(is_default: boolean): void;
+
         /**
-         * @param is_writable
+         * @param is_writable 
          */
         set_is_writable(is_writable: boolean): void;
+
         /**
-         * @param name
+         * @param name 
          */
         set_schema_name(name: string): void;
+
         /**
-         * @param val
+         * @param val 
          */
         set_value(val: Value): void;
+
         /**
-         * @param val
+         * @param val 
          */
         set_value_nocopy(val: Value): void;
+
         steal_value(): Value;
+
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -670,19 +750,18 @@ export namespace GConf {
         static $gtype: GObject.GType<EnumStringPair>;
 
         // Fields
-
         enum_value: number;
+
         str: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                enum_value: number;
-                str: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            enum_value: number;
+            str: string;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -691,38 +770,43 @@ export namespace GConf {
         static $gtype: GObject.GType<Value>;
 
         // Fields
-
         type: ValueType;
 
         // Constructors
-
         constructor(type: ValueType);
 
-        static ['new'](type: ValueType): Value;
+        static ["new"](type: ValueType): Value;
 
         static new_from_string(type: ValueType, str: string): Value;
 
         // Static methods
-
         /**
-         * @param encoded
+         * @param encoded 
          */
         static decode(encoded: string): Value;
 
         // Methods
-
         /**
-         * @param value_b
+         * @param value_b 
          */
         compare(value_b: Value): number;
+
         copy(): Value;
+
         encode(): string;
+
         free(): void;
+
         get_bool(): boolean;
+
         get_car(): Value;
+
         get_cdr(): Value;
+
         get_float(): number;
+
         get_int(): number;
+
         /**
          * Returns a {@link GLib.SList} containing {@link GConf.Value} objects. Each {@link GConf.Value} in
          * the returned list will have the type returned by
@@ -732,52 +816,66 @@ export namespace GConf {
          * @returns a {@link GLib.List}.
          */
         get_list(): Value[];
+
         get_list_type(): ValueType;
+
         get_string(): string;
+
         /**
-         * @param the_bool
+         * @param the_bool 
          */
         set_bool(the_bool: boolean): void;
+
         /**
-         * @param car
+         * @param car 
          */
         set_car(car: Value): void;
+
         /**
-         * @param car
+         * @param car 
          */
         set_car_nocopy(car: Value): void;
+
         /**
-         * @param cdr
+         * @param cdr 
          */
         set_cdr(cdr: Value): void;
+
         /**
-         * @param cdr
+         * @param cdr 
          */
         set_cdr_nocopy(cdr: Value): void;
+
         /**
-         * @param the_float
+         * @param the_float 
          */
         set_float(the_float: number): void;
+
         /**
-         * @param the_int
+         * @param the_int 
          */
         set_int(the_int: number): void;
+
         /**
-         * @param type
+         * @param type 
          */
         set_list_type(type: ValueType): void;
+
         /**
-         * @param the_str
+         * @param the_str 
          */
         set_string(the_str: string): void;
+
         to_string(): string;
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

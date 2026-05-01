@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -19,9 +20,11 @@ import type Cogl from '@girs/cogl-2.0';
 import type GL from '@girs/gl-1.0';
 
 export namespace CoglGst {
+
     /**
      * CoglGst-2.0
      */
+
 
     namespace VideoSink {
         // Signal signatures
@@ -37,7 +40,7 @@ export namespace CoglGst {
              * @since 1.16
              * @run-last
              */
-            'new-frame': () => void;
+            "new-frame": () => void;
             /**
              * The sink will emit this signal as soon as it has gathered enough
              * information from the video to configure a pipeline. If the
@@ -46,7 +49,7 @@ export namespace CoglGst {
              * will typically either be a copy of the one returned by
              * `cogl_gst_video_sink_get_pipeline()` or it can be a completely custom
              * pipeline which is setup using `cogl_gst_video_sink_setup_pipeline()`.
-             *
+             * 
              * Note that it is an error to call either of those functions before
              * this signal is emitted. The {@link CoglGst.VideoSink.SignalSignatures.new_frame | CoglGst.VideoSink::new-frame} signal
              * will only be emitted after the pipeline is ready so the application
@@ -55,27 +58,26 @@ export namespace CoglGst {
              * @since 1.16
              * @run-last
              */
-            'pipeline-ready': () => void;
-            'notify::update-priority': (pspec: GObject.ParamSpec) => void;
-            'notify::async': (pspec: GObject.ParamSpec) => void;
-            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
-            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
-            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
-            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
-            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
-            'notify::stats': (pspec: GObject.ParamSpec) => void;
-            'notify::sync': (pspec: GObject.ParamSpec) => void;
-            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
-            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "pipeline-ready": () => void;
+            "notify::update-priority": (pspec: GObject.ParamSpec) => void;
+            "notify::async": (pspec: GObject.ParamSpec) => void;
+            "notify::blocksize": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-last-sample": (pspec: GObject.ParamSpec) => void;
+            "notify::last-sample": (pspec: GObject.ParamSpec) => void;
+            "notify::max-bitrate": (pspec: GObject.ParamSpec) => void;
+            "notify::max-lateness": (pspec: GObject.ParamSpec) => void;
+            "notify::processing-deadline": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::render-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::stats": (pspec: GObject.ParamSpec) => void;
+            "notify::sync": (pspec: GObject.ParamSpec) => void;
+            "notify::throttle-time": (pspec: GObject.ParamSpec) => void;
+            "notify::ts-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps {
             update_priority: number;
             updatePriority: number;
@@ -92,9 +94,9 @@ export namespace CoglGst {
         static $gtype: GObject.GType<VideoSink>;
 
         // Properties
-
         get update_priority(): number;
         set update_priority(val: number);
+
         get updatePriority(): number;
         set updatePriority(val: number);
 
@@ -108,47 +110,37 @@ export namespace CoglGst {
         $signals: VideoSink.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VideoSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](ctx: Cogl.Context): VideoSink;
+        static ["new"](ctx: Cogl.Context): VideoSink;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VideoSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_new_frame(): void;
+
         /**
          * @virtual
          */
         vfunc_pipeline_ready(): void;
 
         // Methods
-
         /**
          * Updates the given pipeline with the textures for the current frame.
          * This can be used if the application wants to customize the
@@ -160,11 +152,12 @@ export namespace CoglGst {
          * @param pln A {@link Cogl.Pipeline}
          */
         attach_frame(pln: Cogl.Pipeline): void;
+
         /**
          * Calculates a suitable `output` rectangle that can fit inside the
          * `available` space while maintaining the aspect ratio of the current
          * video.
-         *
+         * 
          * Applications would typically use this api for "letterboxing" by
          * using this api to position a video inside a fixed screen space and
          * filling the remaining space with black borders.
@@ -172,16 +165,18 @@ export namespace CoglGst {
          * @param output The return location for the calculated output position
          */
         fit_size(available: Rectangle, output: Rectangle): Rectangle;
+
         /**
          * Returns a width-for-height aspect ratio that lets you calculate a
          * suitable width for displaying your video based on a given height by
          * multiplying your chosen height by the returned aspect ratio.
-         *
+         * 
          * This aspect ratio is calculated based on the underlying size of the
          * video buffers and the current pixel-aspect-ratio.
          * @returns a width-for-height aspect ratio
          */
         get_aspect(): number;
+
         /**
          * This can be used when doing specialised rendering of the video by
          * customizing the pipeline. {@link CoglGst.VideoSink} may use up to three
@@ -193,6 +188,7 @@ export namespace CoglGst {
          * @returns the index of the next available layer after the   sink's internal layers.
          */
         get_free_layer(): number;
+
         /**
          * Calculates a suitable output height for a specific output `width`
          * that will maintain the video's aspect ratio.
@@ -200,47 +196,51 @@ export namespace CoglGst {
          * @returns An output height for the given output `width`.
          */
         get_height_for_width(width: number): number;
+
         /**
          * Considering the real resolution of the video as well as the aspect
          * ratio of pixel data that may need to be stretched when being displayed;
          * this function calculates what the natural size of the underlying
          * video source is, and returns its height.
-         *
+         * 
          * The natural size has the correct aspect ratio for displaying the
          * video and is the minimum size where downscaling is not required.
-         *
+         * 
          * <note>This natural size is calculated assuming that the video will
          * be displayed on square pixels.</note>
          * @returns The video's natural height
          */
         get_natural_height(): number;
+
         /**
          * Considering the real resolution of the video as well as the aspect
          * ratio of pixel data that may need to be stretched when being displayed;
          * this function calculates what the natural size of the underlying
          * video source is.
-         *
+         * 
          * The natural size has the correct aspect ratio for displaying the
          * video and is the minimum size where downscaling is not required.
-         *
+         * 
          * <note>This natural size is calculated assuming that the video will
          * be displayed on square pixels.</note>
          */
         get_natural_size(): [number, number];
+
         /**
          * Considering the real resolution of the video as well as the aspect
          * ratio of pixel data that may need to be stretched when being displayed;
          * this function calculates what the natural size of the underlying
          * video source is, and returns its width.
-         *
+         * 
          * The natural size has the correct aspect ratio for displaying the
          * video and is the minimum size where downscaling is not required.
-         *
+         * 
          * <note>This natural size is calculated assuming that the video will
          * be displayed on square pixels.</note>
          * @returns The video's natural width
          */
         get_natural_width(): number;
+
         /**
          * Returns a pipeline suitable for rendering the current frame of the
          * given video sink. The pipeline will already have the textures for
@@ -248,15 +248,16 @@ export namespace CoglGst {
          * typically call this function immediately before it paints the
          * video. It can then just paint a rectangle using the returned
          * pipeline.
-         *
+         * 
          * An application is free to make a copy of this
          * pipeline and modify it for custom rendering.
-         *
+         * 
          * Note: it is considered an error to call this function before the
          * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal is emitted.
          * @returns the pipeline for rendering the   current frame
          */
         get_pipeline(): Cogl.Pipeline;
+
         /**
          * Calculates a suitable output width for a specific output `height`
          * that will maintain the video's aspect ratio.
@@ -264,11 +265,12 @@ export namespace CoglGst {
          * @returns An output width for the given output `height`.
          */
         get_width_for_height(height: number): number;
+
         /**
          * Returns whether the pipeline is ready and so
          * `cogl_gst_video_sink_get_pipeline()` and
          * `cogl_gst_video_sink_setup_pipeline()` can be called without causing error.
-         *
+         * 
          * Note: Normally an application will wait until the
          * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal is emitted instead of
          * polling the ready status with this api, but sometimes when a sink
@@ -277,6 +279,7 @@ export namespace CoglGst {
          * @returns `true` if the sink is ready, else `false`
          */
         is_ready(): Cogl.Bool;
+
         /**
          * Sets the {@link Cogl.Context} that the video sink should use for creating
          * any resources. This function would normally only be used if the
@@ -285,11 +288,13 @@ export namespace CoglGst {
          * @param ctx The {@link Cogl.Context} for the sink to use
          */
         set_context(ctx: Cogl.Context): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gst.Element.set_context
+    // Conflicted with Gst.Element.set_context
         set_context(...args: never[]): any;
+
         /**
          * By default the pipeline generated by
          * `cogl_gst_video_sink_setup_pipeline()` and
@@ -302,13 +307,14 @@ export namespace CoglGst {
          * @param default_sample Whether to add the default sampling
          */
         set_default_sample(default_sample: Cogl.Bool): void;
+
         /**
          * Sets the index of the first layer that the sink will use for its
          * rendering. This is useful if the application wants to have custom
          * layers that appear before the layers added by the sink. In that
          * case by default the sink's layers will be modulated with the result
          * of the application's layers that come before `first_layer`.
-         *
+         * 
          * Note that if this function is called then the name of the function
          * to call in the shader snippets to sample the video will also
          * change. For example, if `first_layer` is three then the function
@@ -316,19 +322,21 @@ export namespace CoglGst {
          * @param first_layer The new first layer
          */
         set_first_layer(first_layer: number): void;
+
         /**
          * Configures the given pipeline so that will be able to render the
          * video for the `sink`. This should only be used if the application
          * wants to perform some custom rendering using its own pipeline.
          * Typically an application will call this in response to the
          * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal.
-         *
+         * 
          * Note: it is considered an error to call this function before the
          * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal is emitted.
          * @param pipeline A {@link Cogl.Pipeline}
          */
         setup_pipeline(pipeline: Cogl.Pipeline): void;
     }
+
 
     /**
      * Describes a rectangle that can be used for video output.
@@ -338,28 +346,30 @@ export namespace CoglGst {
         static $gtype: GObject.GType<Rectangle>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type VideoSinkClass = typeof VideoSink;
+
     /**
      * @gir-type Struct
      */
@@ -367,11 +377,13 @@ export namespace CoglGst {
         static $gtype: GObject.GType<VideoSinkPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

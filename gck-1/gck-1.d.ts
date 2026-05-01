@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Gck {
+
     /**
      * Gck-1
      */
+
 
     /**
      * @gir-type Enum
@@ -42,6 +45,7 @@ export namespace Gck {
         SECURE_MEMORY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -52,7 +56,7 @@ export namespace Gck {
     /**
      * Various error codes. All the `CKR_XXX` error codes from PKCS#11 are also
      * relevant error codes.
-     *
+     * 
      * Note that errors are returned as {@link GLib.Error} structures. The `code`
      * member of the error then contains the raw PKCS#11 `CK_RV` result value.
      * @gir-type Enum
@@ -64,6 +68,7 @@ export namespace Gck {
          */
         PROBLEM,
     }
+
 
     /**
      * @gir-type Enum
@@ -99,76 +104,86 @@ export namespace Gck {
         NOT_FOUND,
     }
 
+
     /**
      * Used as a terminator at the end of variable argument lists.
      */
     const INVALID: number;
+
     /**
      * The major version number of the Gck library.
      */
     const MAJOR_VERSION: number;
+
     /**
      * The micro version number of the Gck library.
      */
     const MICRO_VERSION: number;
+
     /**
      * The minor version number of the Gck library.
      */
     const MINOR_VERSION: number;
+
     /**
      * The URI will match specific version of modules. To be used as a GckUriFlags argument.
      */
     const URI_FOR_MODULE_WITH_VERSION: number;
+
     /**
      * The URI will match objects on a specific token. To be used as a GckUriFlags argument.
      */
     const URI_FOR_OBJECT_ON_TOKEN: number;
+
     /**
      * The token inserted into a device with a specific module.
      */
     const URI_FOR_OBJECT_ON_TOKEN_AND_MODULE: number;
+
     /**
      * Custom PKCS#11 errors that originate from the gck library, are
      * based at this error code.
      */
     const VENDOR_CODE: number;
+
     /**
      * Unreferences a builder. If this was the last reference then the builder
      * is freed.
-     *
+     * 
      * It is an error to use this function on builders that were allocated on the
      * stack.
      * @param builder the builder
      */
-    function builder_unref(builder: any | null): void;
+    function builder_unref(builder: (any | null)): void;
+
     function error_get_quark(): GLib.Quark;
+
     function list_get_boxed_type(): GObject.GType;
+
     /**
      * Get a message for a PKCS#11 return value or error code. Do not
      * pass `CKR_OK` or other non-errors to this function.
      * @param rv The PKCS#11 return value to get a message for.
      * @returns The user readable message.
      */
-    function message_from_rv(rv: bigint | number): string;
+    function message_from_rv(rv: (bigint | number)): string;
+
     /**
      * Setup an enumerator for listing matching objects on the modules.
-     *
+     * 
      * This call will not block but will return an enumerator immediately.
-     *
+     * 
      * If the `attrs` {@link Attributes} is floating, it is consumed.
      * @param modules The modules
      * @param attrs attributes that the objects must have, or empty for all objects
      * @param session_options Options from GckSessionOptions
      * @returns A new enumerator, which should be released with `g_object_unref()`.
      */
-    function modules_enumerate_objects(
-        modules: Module[],
-        attrs: Attributes,
-        session_options: SessionOptions,
-    ): Enumerator;
+    function modules_enumerate_objects(modules: Module[], attrs: Attributes, session_options: SessionOptions): Enumerator;
+
     /**
      * Enumerate objects that match a URI.
-     *
+     * 
      * This call will not block. Use the {@link Enumerator} functions in order to
      * get at the actual objects that match.
      * @param modules The modules
@@ -177,6 +192,7 @@ export namespace Gck {
      * @returns A new {@link Gck.Enumerator}, or `null` if an error occurs.
      */
     function modules_enumerate_uri(modules: Module[], uri: string, session_options: SessionOptions): Enumerator;
+
     /**
      * Get a list of slots for across all of the modules.
      * @param modules The modules
@@ -184,35 +200,32 @@ export namespace Gck {
      * @returns A list of {@link Gck.Slot} objects, which should be freed with `gck_list_unref_free()`.
      */
     function modules_get_slots(modules: Module[], token_present: boolean): Slot[];
+
     /**
      * Load and initialize all the registered modules.
      * @param cancellable optional cancellation object
      * @returns A newly allocated list of {@link Gck.Module} objects, which should be released with `gck_list_unref_free()`.
      */
-    function modules_initialize_registered(cancellable: Gio.Cancellable | null): Module[];
+    function modules_initialize_registered(cancellable: (Gio.Cancellable | null)): Module[];
+
     /**
      * Load and initialize all the registered modules asynchronously.
      * @param cancellable optional cancellation object
      */
-    function modules_initialize_registered_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Module[]>;
-    /**
-     * Load and initialize all the registered modules asynchronously.
-     * @param cancellable optional cancellation object
-     * @param callback a callback which will be called when the operation completes
-     */
-    function modules_initialize_registered_async(
-        cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
-    ): void;
+    function modules_initialize_registered_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Module[]>;
     /**
      * Load and initialize all the registered modules asynchronously.
      * @param cancellable optional cancellation object
      * @param callback a callback which will be called when the operation completes
      */
-    function modules_initialize_registered_async(
-        cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
-    ): globalThis.Promise<Module[]> | void;
+    function modules_initialize_registered_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<(Gio.Cancellable | null)> | null)): void;
+    /**
+     * Load and initialize all the registered modules asynchronously.
+     * @param cancellable optional cancellation object
+     * @param callback a callback which will be called when the operation completes
+     */
+    function modules_initialize_registered_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<(Gio.Cancellable | null)> | null)): (globalThis.Promise<Module[]> | void);
+
     /**
      * Finishes the asynchronous operation to initialize the registered
      * PKCS#11 modules.
@@ -220,9 +233,10 @@ export namespace Gck {
      * @returns a list of newly initialized {@link Gck.Module} objects
      */
     function modules_initialize_registered_finish(result: Gio.AsyncResult): Module[];
+
     /**
      * Find an object that matches a URI.
-     *
+     * 
      * This call can block. Use {@link modules_enumerate_uri} for a non-blocking
      * version.
      * @param modules The modules
@@ -230,10 +244,11 @@ export namespace Gck {
      * @param session_options Options from GckSessionOptions
      * @returns A new {@link Gck.Object} which should be released with `g_object_unref()`, or `null` if no matching object was found.
      */
-    function modules_object_for_uri(modules: Module[], uri: string, session_options: SessionOptions): Object | null;
+    function modules_object_for_uri(modules: Module[], uri: string, session_options: SessionOptions): (Object | null);
+
     /**
      * Find objects that match a URI.
-     *
+     * 
      * This call can block. Use {@link modules_enumerate_uri} for a non-blocking
      * version.
      * @param modules The modules
@@ -242,6 +257,7 @@ export namespace Gck {
      * @returns A list of {@link Gck.Object} which should be released with `gck_list_unref_free()`, or `null` if no matching object was found.
      */
     function modules_objects_for_uri(modules: Module[], uri: string, session_options: SessionOptions): Object[];
+
     /**
      * Lookup a token that matches the URI.
      * @param modules The modules
@@ -249,6 +265,7 @@ export namespace Gck {
      * @returns A newly allocated {@link Gck.Slot} or `null` if no such token was found.
      */
     function modules_token_for_uri(modules: Module[], uri: string): Slot;
+
     /**
      * Lookup a token that matches the URI.
      * @param modules The modules
@@ -256,6 +273,7 @@ export namespace Gck {
      * @returns A list of newly allocated {@link Gck.Slot} objects. Use `gck_list_unref_free()` to release the list once you're done with it.
      */
     function modules_tokens_for_uri(modules: Module[], uri: string): Slot[];
+
     /**
      * Initialize a list of GckObject from raw PKCS#11 handles. The handles argument must contain
      * contiguous CK_OBJECT_HANDLE handles in an array.
@@ -264,11 +282,12 @@ export namespace Gck {
      * @returns The list of {@link Gck.Object}          objects. You should use `gck_list_unref_free()` when done with this          list.
      */
     function objects_from_handle_array(session: Session, object_handles: (bigint | number)[]): Object[];
+
     /**
      * Setup an enumerator for listing matching objects on the slots.
-     *
+     * 
      * If the `match` {@link Gck.Attributes} is floating, it is consumed.
-     *
+     * 
      * This call will not block but will return an enumerator immediately.
      * @param slots a list of {@link Gck.Slot} to enumerate objects on.
      * @param match attributes that the objects must match, or empty for all objects
@@ -276,6 +295,7 @@ export namespace Gck {
      * @returns a new enumerator
      */
     function slots_enumerate_objects(slots: Slot[], match: Attributes, options: SessionOptions): Enumerator;
+
     /**
      * Build a PKCS#11 URI. The various parts relevant to the flags
      * specified will be used to build the URI.
@@ -284,10 +304,12 @@ export namespace Gck {
      * @returns a newly allocated string containing a PKCS#11 URI.
      */
     function uri_build(uri_data: UriData, flags: UriFlags): string;
+
     function uri_error_get_quark(): GLib.Quark;
+
     /**
      * Parse a PKCS#11 URI for use in a given context.
-     *
+     * 
      * The result will contain the fields that are relevant for
      * the given context. See {@link Gck.UriData}  for more info.
      * Other fields will be set to `null`.
@@ -296,24 +318,28 @@ export namespace Gck {
      * @returns a newly allocated {@link Gck.UriData}; which should be          freed with `gck_uri_data_free()`
      */
     function uri_parse(string: string, flags: UriFlags): UriData;
+
     /**
      * Convert `CK_BBOOL` type memory to a boolean.
      * @param value memory to convert
      * @returns Whether the conversion was successful.
      */
-    function value_to_boolean(value: Uint8Array | string): [boolean, boolean];
+    function value_to_boolean(value: (Uint8Array | string)): [boolean, boolean];
+
     /**
      * Convert `CK_ULONG` type memory to a boolean.
      * @param value memory to convert
      * @returns Whether the conversion was successful.
      */
-    function value_to_ulong(value: Uint8Array | string): [boolean, number];
+    function value_to_ulong(value: (Uint8Array | string)): [boolean, number];
+
     /**
      * @gir-type Callback
      */
     interface Allocator {
-        (data: any | null, length: number): any | null;
+        (data: (any | null), length: number): (any | null);
     }
+
     /**
      * @gir-type Flags
      */
@@ -343,6 +369,7 @@ export namespace Gck {
          */
         AUTHENTICATE,
     }
+
 
     /**
      * @gir-type Flags
@@ -379,25 +406,25 @@ export namespace Gck {
         FOR_ANY,
     }
 
+
     namespace Enumerator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::chained': (pspec: GObject.ParamSpec) => void;
-            'notify::interaction': (pspec: GObject.ParamSpec) => void;
+            "notify::chained": (pspec: GObject.ParamSpec) => void;
+            "notify::interaction": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            chained: Enumerator | null;
-            interaction: Gio.TlsInteraction | null;
+            chained: (Enumerator | null);
+            interaction: (Gio.TlsInteraction | null);
         }
     }
 
     /**
      * Can be used to enumerate through PKCS#11 objects. It will automatically
      * create sessions as necessary.
-     *
+     * 
      * Use {@link modules_enumerate_objects} or {@link modules_enumerate_uri} to
      * create an enumerator. To get the objects, use {@link Enumerator.next} or
      * {@link Enumerator.next_async} functions.
@@ -407,20 +434,20 @@ export namespace Gck {
         static $gtype: GObject.GType<Enumerator>;
 
         // Properties
-
         /**
          * Chained enumerator, which will be enumerated when this enumerator
          * has enumerated all its objects.
          */
-        get chained(): Enumerator | null;
-        set chained(val: Enumerator | null);
+        get chained(): (Enumerator | null);
+        set chained(val: (Enumerator | null));
+
         /**
          * Interaction object used to ask the user for pins when opening
          * sessions. Used if the session_options of the enumerator have
          * {@link Gck.SessionOptions.LOGIN_USER}
          */
-        get interaction(): Gio.TlsInteraction | null;
-        set interaction(val: Gio.TlsInteraction | null);
+        get interaction(): (Gio.TlsInteraction | null);
+        set interaction(val: (Gio.TlsInteraction | null));
 
         /**
          * Compile-time signal type information.
@@ -432,60 +459,54 @@ export namespace Gck {
         $signals: Enumerator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Enumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Enumerator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Enumerator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Enumerator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Enumerator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Enumerator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Enumerator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Enumerator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Enumerator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Enumerator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Enumerator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Enumerator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Enumerator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the enumerator that will be run after all objects from this one
          * are seen.
          * @returns the chained enumerator or `null`
          */
-        get_chained(): Enumerator | null;
+        get_chained(): (Enumerator | null);
+
         /**
          * Get the interaction used when a pin is needed
          * @returns the interaction or `null`
          */
-        get_interaction(): Gio.TlsInteraction | null;
+        get_interaction(): (Gio.TlsInteraction | null);
+
         /**
          * Get the type of objects created by this enumerator. The type will always
          * either be {@link Gck.Object} or derived from it.
          * @returns the type of objects created
          */
         get_object_type(): GObject.GType;
+
         /**
          * Get the next object in the enumerator, or `null` if there are no more objects.
-         *
+         * 
          * `null` is also returned if the function fails. Use the `error` to determine
          * whether a failure occurred or not.
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns The next object, which must be released using g_object_unref, or `null`.
          */
-        next(cancellable: Gio.Cancellable | null): Object | null;
+        next(cancellable: (Gio.Cancellable | null)): (Object | null);
+
         /**
          * Get the next set of objects from the enumerator. This operation completes
          * asynchronously.The maximum number of objects can be specified with
@@ -494,21 +515,8 @@ export namespace Gck {
          * @param max_objects The maximum number of objects to get
          * @param cancellable A {@link Gio.Cancellable} or `null`
          */
-        next_async(max_objects: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Object[]>;
-        /**
-         * Get the next set of objects from the enumerator. This operation completes
-         * asynchronously.The maximum number of objects can be specified with
-         * `max_objects`. If -1 is specified, then all the remaining objects will be
-         * enumerated.
-         * @param max_objects The maximum number of objects to get
-         * @param cancellable A {@link Gio.Cancellable} or `null`
-         * @param callback Called when the result is ready
-         */
-        next_async(
-            max_objects: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        next_async(max_objects: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Object[]>;
+
         /**
          * Get the next set of objects from the enumerator. This operation completes
          * asynchronously.The maximum number of objects can be specified with
@@ -518,47 +526,59 @@ export namespace Gck {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback Called when the result is ready
          */
-        next_async(
-            max_objects: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Object[]> | void;
+        next_async(max_objects: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Get the next set of objects from the enumerator. This operation completes
+         * asynchronously.The maximum number of objects can be specified with
+         * `max_objects`. If -1 is specified, then all the remaining objects will be
+         * enumerated.
+         * @param max_objects The maximum number of objects to get
+         * @param cancellable A {@link Gio.Cancellable} or `null`
+         * @param callback Called when the result is ready
+         */
+        next_async(max_objects: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Object[]> | void);
+
         /**
          * Complete an operation to enumerate next objects.
-         *
+         * 
          * `null` is also returned if the function fails. Use the `error` to determine
          * whether a failure occurred or not.
          * @param result The result passed to the callback
          * @returns The list of objects, which should be freed with `gck_list_unref_free()`
          */
         next_finish(result: Gio.AsyncResult): Object[];
+
         /**
          * Get the next set of objects from the enumerator. The maximum number of
          * objects can be specified with `max_objects`. If -1 is specified, then all
          * the remaining objects will be returned.
-         *
+         * 
          * `null` is also returned if the function fails. Use the `error` to determine
          * whether a failure occurred or not.
          * @param max_objects The maximum amount of objects to enumerate
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns A list of objects, which should be freed using `gck_list_unref_free()`.
          */
-        next_n(max_objects: number, cancellable: Gio.Cancellable | null): Object[];
+        next_n(max_objects: number, cancellable: (Gio.Cancellable | null)): Object[];
+
         /**
          * Set a chained enumerator that will be run after all objects from this one
          * are seen.
          * @param chained the chained enumerator or `null`
          */
-        set_chained(chained: Enumerator | null): void;
+        set_chained(chained: (Enumerator | null)): void;
+
         /**
          * Set the interaction used when a pin is needed
          * @param interaction the interaction or `null`
          */
-        set_interaction(interaction: Gio.TlsInteraction | null): void;
+        set_interaction(interaction: (Gio.TlsInteraction | null)): void;
+
         /**
          * Set the type of objects to be created by this enumerator. The type must
          * always be either {@link Gck.Object} or derived from it.
-         *
+         * 
          * If `attr_types` and `attr_count` are non-NULL and non-zero respectively,
          * then the {@link Gck.ObjectCache} interface is expected to be implemented on the
          * derived class, then the enumerator will retrieve attributes for each object.
@@ -567,6 +587,7 @@ export namespace Gck {
          */
         set_object_type(object_type: GObject.GType, attr_types: (bigint | number)[]): void;
     }
+
 
     namespace Module {
         // Signal signatures
@@ -577,20 +598,19 @@ export namespace Gck {
              * @deprecated Since 3.4
              * @run-last
              */
-            'authenticate-object': (arg0: Object, arg1: string, arg2: any | null) => boolean | void;
+            "authenticate-object": (arg0: Object, arg1: string, arg2: (any | null)) => (boolean | void);
             /**
              * Use `gck_session_set_interaction()` instead of connecting to this signal.
              * @signal
              * @deprecated Since 3.4
              * @run-last
              */
-            'authenticate-slot': (arg0: Slot, arg1: string, arg2: any | null) => boolean | void;
-            'notify::functions': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
+            "authenticate-slot": (arg0: Slot, arg1: string, arg2: (any | null)) => (boolean | void);
+            "notify::functions": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             functions: any;
             path: string;
@@ -599,7 +619,7 @@ export namespace Gck {
 
     /**
      * Holds a loaded PKCS#11 module. A PKCS#11 module is a shared library.
-     *
+     * 
      * You can load and initialize a PKCS#11 module with the
      * {@link Module.initialize} call. If you already have a loaded and
      * initialized module that you'd like to use with the various Gck functions,
@@ -610,17 +630,17 @@ export namespace Gck {
         static $gtype: GObject.GType<Module>;
 
         // Properties
-
         /**
          * The raw PKCS&num;11 function list for the module.
-         *
+         * 
          * This points to a CK_FUNCTION_LIST structure.
          * @construct-only
          */
         get functions(): any;
+
         /**
          * The PKCS&num;11 module file path.
-         *
+         * 
          * This may be set to NULL if this object was created from an already
          * initialized module via the `gck_module_new()` function.
          * @construct-only
@@ -637,40 +657,31 @@ export namespace Gck {
         $signals: Module.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Module.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Module.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Module.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Module.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Module.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Module.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Module.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Module.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Load and initialize a PKCS#11 module represented by a GckModule object.
          * @param path The file system path to the PKCS#11 module to load.
          * @param cancellable optional cancellation object
          */
-        static initialize(path: string, cancellable: Gio.Cancellable | null): Module;
+        static initialize(path: string, cancellable: (Gio.Cancellable | null)): Module;
+
         /**
          * Asynchronously load and initialize a PKCS#11 module represented by a
          * {@link Module} object.
@@ -678,36 +689,32 @@ export namespace Gck {
          * @param cancellable optional cancellation object
          * @param callback a callback which will be called when the operation completes
          */
-        static initialize_async(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<Module> | null,
-        ): void;
+        static initialize_async(path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Module> | null)): void;
+
         /**
          * Finishes the asynchronous initialize operation.
          * @param result the asynchronous result
          */
-        static initialize_finish(result: Gio.AsyncResult): Module | null;
+        static initialize_finish(result: Gio.AsyncResult): (Module | null);
 
         // Virtual methods
-
         /**
-         * @param object
-         * @param label
-         * @param password
+         * @param object 
+         * @param label 
+         * @param password 
          * @virtual
          */
         vfunc_authenticate_object(object: Object, label: string, password: string): boolean;
+
         /**
-         * @param slot
-         * @param label
-         * @param password
+         * @param slot 
+         * @param label 
+         * @param password 
          * @virtual
          */
         vfunc_authenticate_slot(slot: Slot, label: string, password: string): boolean;
 
         // Methods
-
         /**
          * Checks equality of two modules. Two GckModule objects can point to the same
          * underlying PKCS#11 module.
@@ -715,31 +722,36 @@ export namespace Gck {
          * @returns `true` if module1 and module2 are equal.               `false` if either is not a GckModule.
          */
         equal(module2: Module): boolean;
+
         /**
          * Get the info about a PKCS#11 module.
          * @returns the module info; release this with `gck_module_info_free()`
          */
         get_info(): ModuleInfo;
+
         /**
          * Get the file path of this module. This may not be an absolute path, and
          * usually reflects the path passed to {@link Module.initialize}.
          * @returns The path, do not modify or free this value.
          */
         get_path(): string;
+
         /**
          * Get the GckSlot objects for a given module.
          * @param token_present Whether to limit only to slots with a token present.
          * @returns The possibly empty               list of slots. Release this with `gck_list_unref_free()`.
          */
         get_slots(token_present: boolean): Slot[];
+
         /**
          * Create a hash value for the GckModule.
-         *
+         * 
          * This function is intended for easily hashing a {@link Module} to add to
          * a {@link GLib.HashTable} or similar data structure.
          * @returns An integer that can be used as a hash value, or 0 if invalid.
          */
         hash(): number;
+
         /**
          * Check whether the PKCS#11 URI matches the module
          * @param uri the uri to match against the module
@@ -748,18 +760,18 @@ export namespace Gck {
         match(uri: UriData): boolean;
     }
 
+
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': (pspec: GObject.ParamSpec) => void;
-            'notify::module': (pspec: GObject.ParamSpec) => void;
-            'notify::session': (pspec: GObject.ParamSpec) => void;
+            "notify::handle": (pspec: GObject.ParamSpec) => void;
+            "notify::module": (pspec: GObject.ParamSpec) => void;
+            "notify::session": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            handle: bigint | number;
+            handle: (bigint | number);
             module: Module;
             session: Session;
         }
@@ -775,21 +787,22 @@ export namespace Gck {
         static $gtype: GObject.GType<Object>;
 
         // Properties
-
         /**
          * The raw PKCS11 handle for this object.
          * @construct-only
          */
         get handle(): number;
+
         /**
          * The GckModule that this object belongs to.
          * @construct-only
          */
         get module(): Module;
+
         /**
          * The PKCS11 session to make calls on when this object needs to
          * perform operations on itself.
-         *
+         * 
          * If this is NULL then a new session is opened for each operation,
          * such as `gck_object_get()`, `gck_object_set()` or `gck_object_destroy()`.
          * @construct-only
@@ -806,110 +819,93 @@ export namespace Gck {
         $signals: Object.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static from_handle(session: Session, object_handle: bigint | number): Object;
+        static from_handle(session: Session, object_handle: (bigint | number)): Object;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Object.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Lookup attributes in the cache, or retrieve them from the object if necessary.
-         *
+         * 
          * If `object` is a {@link Gck.ObjectCache} then this will lookup the attributes there
          * first if available, otherwise will read them from the object and update
          * the cache.
-         *
+         * 
          * If `object` is not a {@link Gck.ObjectCache}, then the attributes will simply be
          * read from the object.
-         *
+         * 
          * This may block, use the asynchronous version when this is not desirable
          * @param attr_types the types of attributes to update
          * @param cancellable optional cancellation object
          * @returns the attributes retrieved or `null` on failure
          */
-        cache_lookup(attr_types: (bigint | number)[], cancellable: Gio.Cancellable | null): Attributes;
+        cache_lookup(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null)): Attributes;
+
         /**
          * Lookup attributes in the cache, or retrieve them from the object if necessary.
-         *
+         * 
          * If `object` is a {@link Gck.ObjectCache} then this will lookup the attributes there
          * first if available, otherwise will read them from the object and update
          * the cache.
-         *
+         * 
          * If `object` is not a {@link Gck.ObjectCache}, then the attributes will simply be
          * read from the object.
-         *
+         * 
          * This will return immediately and complete asynchronously
          * @param attr_types the types of attributes to update
          * @param cancellable optional cancellation object
          */
-        cache_lookup_async(
-            attr_types: (bigint | number)[],
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Attributes>;
+        cache_lookup_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<Attributes>;
+
         /**
          * Lookup attributes in the cache, or retrieve them from the object if necessary.
-         *
+         * 
          * If `object` is a {@link Gck.ObjectCache} then this will lookup the attributes there
          * first if available, otherwise will read them from the object and update
          * the cache.
-         *
+         * 
          * If `object` is not a {@link Gck.ObjectCache}, then the attributes will simply be
          * read from the object.
-         *
-         * This will return immediately and complete asynchronously
-         * @param attr_types the types of attributes to update
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        cache_lookup_async(
-            attr_types: (bigint | number)[],
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Lookup attributes in the cache, or retrieve them from the object if necessary.
-         *
-         * If `object` is a {@link Gck.ObjectCache} then this will lookup the attributes there
-         * first if available, otherwise will read them from the object and update
-         * the cache.
-         *
-         * If `object` is not a {@link Gck.ObjectCache}, then the attributes will simply be
-         * read from the object.
-         *
+         * 
          * This will return immediately and complete asynchronously
          * @param attr_types the types of attributes to update
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        cache_lookup_async(
-            attr_types: (bigint | number)[],
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Attributes> | void;
+        cache_lookup_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Lookup attributes in the cache, or retrieve them from the object if necessary.
+         * 
+         * If `object` is a {@link Gck.ObjectCache} then this will lookup the attributes there
+         * first if available, otherwise will read them from the object and update
+         * the cache.
+         * 
+         * If `object` is not a {@link Gck.ObjectCache}, then the attributes will simply be
+         * read from the object.
+         * 
+         * This will return immediately and complete asynchronously
+         * @param attr_types the types of attributes to update
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        cache_lookup_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Attributes> | void);
+
         /**
          * Complete an operation to lookup attributes in the cache or retrieve them
          * from the object if necessary.
@@ -917,36 +913,38 @@ export namespace Gck {
          * @returns the attributes retrieved or `null` on failure
          */
         cache_lookup_finish(result: Gio.AsyncResult): Attributes;
+
         /**
          * Destroy a PKCS#11 object, deleting it from storage or the session.
          * This call may block for an indefinite period.
          * @param cancellable Optional cancellable object, or `null` to ignore.
          * @returns Whether the call was successful or not.
          */
-        destroy(cancellable: Gio.Cancellable | null): boolean;
+        destroy(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Destroy a PKCS#11 object, deleting it from storage or the session.
          * This call will return immediately and complete asynchronously.
          * @param cancellable Optional cancellable object, or `null` to ignore.
          */
-        destroy_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Destroy a PKCS#11 object, deleting it from storage or the session.
-         * This call will return immediately and complete asynchronously.
-         * @param cancellable Optional cancellable object, or `null` to ignore.
-         * @param callback Callback which is called when operation completes.
-         */
-        destroy_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        destroy_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Destroy a PKCS#11 object, deleting it from storage or the session.
          * This call will return immediately and complete asynchronously.
          * @param cancellable Optional cancellable object, or `null` to ignore.
          * @param callback Callback which is called when operation completes.
          */
-        destroy_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        destroy_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Destroy a PKCS#11 object, deleting it from storage or the session.
+         * This call will return immediately and complete asynchronously.
+         * @param cancellable Optional cancellable object, or `null` to ignore.
+         * @param callback Callback which is called when operation completes.
+         */
+        destroy_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the status of the operation to destroy a PKCS#11 object, begun with
          * `gck_object_destroy_async()`.
@@ -954,6 +952,7 @@ export namespace Gck {
          * @returns Whether the object was destroyed successfully or not.
          */
         destroy_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Checks equality of two objects. Two GckObject objects can point to the same
          * underlying PKCS#11 object.
@@ -961,107 +960,94 @@ export namespace Gck {
          * @returns `true` if object1 and object2 are equal.               `false` if either is not a GckObject.
          */
         equal(object2: Object): boolean;
+
         /**
          * Get the specified attributes from the object. The attributes will be cleared
          * of their current values, and new attributes will be stored. The attributes
          * should not be accessed in any way except for referencing and unreferencing
          * them until `gck_object_get_finish()` is called.
-         *
+         * 
          * This call returns immediately and completes asynchronously.
          * @param attr_types the types of the attributes to get
          * @param cancellable optional cancellation object, or `null`
          */
-        get_async(attr_types: (bigint | number)[], cancellable: Gio.Cancellable | null): globalThis.Promise<Attributes>;
+        get_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<Attributes>;
+
         /**
          * Get the specified attributes from the object. The attributes will be cleared
          * of their current values, and new attributes will be stored. The attributes
          * should not be accessed in any way except for referencing and unreferencing
          * them until `gck_object_get_finish()` is called.
-         *
-         * This call returns immediately and completes asynchronously.
-         * @param attr_types the types of the attributes to get
-         * @param cancellable optional cancellation object, or `null`
-         * @param callback A callback which is called when the operation completes.
-         */
-        get_async(
-            attr_types: (bigint | number)[],
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Get the specified attributes from the object. The attributes will be cleared
-         * of their current values, and new attributes will be stored. The attributes
-         * should not be accessed in any way except for referencing and unreferencing
-         * them until `gck_object_get_finish()` is called.
-         *
+         * 
          * This call returns immediately and completes asynchronously.
          * @param attr_types the types of the attributes to get
          * @param cancellable optional cancellation object, or `null`
          * @param callback A callback which is called when the operation completes.
          */
-        get_async(
-            attr_types: (bigint | number)[],
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Attributes> | void;
+        get_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Get the specified attributes from the object. The attributes will be cleared
+         * of their current values, and new attributes will be stored. The attributes
+         * should not be accessed in any way except for referencing and unreferencing
+         * them until `gck_object_get_finish()` is called.
+         * 
+         * This call returns immediately and completes asynchronously.
+         * @param attr_types the types of the attributes to get
+         * @param cancellable optional cancellation object, or `null`
+         * @param callback A callback which is called when the operation completes.
+         */
+        get_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Attributes> | void);
+
         /**
          * Get the data for the specified attribute from the object. For convenience
          * the returned data has a null terminator.
-         *
+         * 
          * This call may block for an indefinite period.
          * @param attr_type The attribute to get data for.
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns the resulting PKCS#11          attribute data, or `null` if an error occurred
          */
-        get_data(attr_type: bigint | number, cancellable: Gio.Cancellable | null): Uint8Array;
+        get_data(attr_type: (bigint | number), cancellable: (Gio.Cancellable | null)): Uint8Array;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_data
+    // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+
         /**
          * Get the data for the specified attribute from the object.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param attr_type The attribute to get data for.
          * @param allocator An allocator with which to allocate memory for the data, or `null` for default.
          * @param cancellable Optional cancellation object, or `null`.
          */
-        get_data_async(
-            attr_type: bigint | number,
-            allocator: Allocator,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Uint8Array>;
+        get_data_async(attr_type: (bigint | number), allocator: Allocator, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Uint8Array>;
+
         /**
          * Get the data for the specified attribute from the object.
-         *
-         * This call will return immediately and complete asynchronously.
-         * @param attr_type The attribute to get data for.
-         * @param allocator An allocator with which to allocate memory for the data, or `null` for default.
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        get_data_async(
-            attr_type: bigint | number,
-            allocator: Allocator,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Get the data for the specified attribute from the object.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param attr_type The attribute to get data for.
          * @param allocator An allocator with which to allocate memory for the data, or `null` for default.
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        get_data_async(
-            attr_type: bigint | number,
-            allocator: Allocator,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Uint8Array> | void;
+        get_data_async(attr_type: (bigint | number), allocator: Allocator, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Get the data for the specified attribute from the object.
+         * 
+         * This call will return immediately and complete asynchronously.
+         * @param attr_type The attribute to get data for.
+         * @param allocator An allocator with which to allocate memory for the data, or `null` for default.
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        get_data_async(attr_type: (bigint | number), allocator: Allocator, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Uint8Array> | void);
+
         /**
          * Get the result of an operation to get attribute data from
          * an object. For convenience the returned data has an extra null terminator,
@@ -1070,96 +1056,95 @@ export namespace Gck {
          * @returns The PKCS#11 attribute data          or `null` if an error occurred.
          */
         get_data_finish(result: Gio.AsyncResult): Uint8Array;
+
         /**
          * Get the result of a get operation and return specified attributes from
          * the object.
-         *
+         * 
          * No extra references are added to the returned attributes pointer.
          * @param result The result passed to the callback.
          * @returns The filled in attributes structure if successful or `null` if not successful.
          */
         get_finish(result: Gio.AsyncResult): Attributes;
+
         /**
          * Get the specified attributes from the object. This call may
          * block for an indefinite period.
-         *
+         * 
          * No extra references are added to the returned attributes pointer.
          * During this call you may not access the attributes in any way.
          * @param attr_types the types of the attributes to get
          * @param cancellable optional cancellation object, or `null`
          * @returns a pointer to the filled in attributes if successful,          or `null` if not
          */
-        get_full(attr_types: (bigint | number)[], cancellable: Gio.Cancellable | null): Attributes;
+        get_full(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null)): Attributes;
+
         /**
          * Get the raw PKCS#11 handle of a GckObject.
          * @returns the raw CK_OBJECT_HANDLE object handle
          */
         get_handle(): number;
+
         /**
          * Get the PKCS#11 module to which this object belongs.
          * @returns the module, which should be unreffed after use
          */
         get_module(): Module;
+
         /**
          * Get the PKCS#11 session assigned to make calls on when operating
          * on this object.
-         *
+         * 
          * This will only return a session if it was set explitly on this
          * object. By default an object will open and close sessions
          * appropriate for its calls.
          * @returns the assigned session, which must be unreffed after use
          */
         get_session(): Session;
+
         /**
          * Get an attribute template from the object. The attr_type must be for
          * an attribute which returns a template.
-         *
+         * 
          * This call may block for an indefinite period.
          * @param attr_type The template attribute type.
          * @param cancellable Optional cancellation object, or `null`.
          * @returns the resulting PKCS#11 attribute template, or `null`          if an error occurred
          */
-        get_template(attr_type: bigint | number, cancellable: Gio.Cancellable | null): Attributes;
+        get_template(attr_type: (bigint | number), cancellable: (Gio.Cancellable | null)): Attributes;
+
         /**
          * Get an attribute template from the object. The `attr_type` must be for
          * an attribute which returns a template.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param attr_type The template attribute type.
          * @param cancellable Optional cancellation object, or `null`.
          */
-        get_template_async(
-            attr_type: bigint | number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Attributes>;
+        get_template_async(attr_type: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Attributes>;
+
         /**
          * Get an attribute template from the object. The `attr_type` must be for
          * an attribute which returns a template.
-         *
-         * This call will return immediately and complete asynchronously.
-         * @param attr_type The template attribute type.
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        get_template_async(
-            attr_type: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Get an attribute template from the object. The `attr_type` must be for
-         * an attribute which returns a template.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param attr_type The template attribute type.
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        get_template_async(
-            attr_type: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Attributes> | void;
+        get_template_async(attr_type: (bigint | number), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Get an attribute template from the object. The `attr_type` must be for
+         * an attribute which returns a template.
+         * 
+         * This call will return immediately and complete asynchronously.
+         * @param attr_type The template attribute type.
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        get_template_async(attr_type: (bigint | number), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Attributes> | void);
+
         /**
          * Get the result of an operation to get attribute template from
          * an object.
@@ -1167,65 +1152,64 @@ export namespace Gck {
          * @returns the resulting PKCS#11 attribute template, or `null`          if an error occurred
          */
         get_template_finish(result: Gio.AsyncResult): Attributes;
+
         /**
          * Create a hash value for the GckObject.
-         *
+         * 
          * This function is intended for easily hashing a GckObject to add to
          * a GHashTable or similar data structure.
          * @returns An integer that can be used as a hash value, or 0 if invalid.
          */
         hash(): number;
+
         /**
          * Set PKCS#11 attributes on an object. This call may block for an indefinite period.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param attrs The attributes to set on the object.
          * @param cancellable Optional cancellable object, or `null` to ignore.
          * @returns Whether the call was successful or not.
          */
-        set(attrs: Attributes, cancellable: Gio.Cancellable | null): boolean;
+        set(attrs: Attributes, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
          * Set PKCS#11 attributes on an object. This call will return
          * immediately and completes asynchronously.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param attrs The attributes to set on the object.
          * @param cancellable Optional cancellable object, or `null` to ignore.
          */
-        set_async(attrs: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_async(attrs: Attributes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Set PKCS#11 attributes on an object. This call will return
          * immediately and completes asynchronously.
-         *
-         * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
-         * @param attrs The attributes to set on the object.
-         * @param cancellable Optional cancellable object, or `null` to ignore.
-         * @param callback Callback which is called when operation completes.
-         */
-        set_async(
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Set PKCS#11 attributes on an object. This call will return
-         * immediately and completes asynchronously.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param attrs The attributes to set on the object.
          * @param cancellable Optional cancellable object, or `null` to ignore.
          * @param callback Callback which is called when operation completes.
          */
-        set_async(
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_async(attrs: Attributes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Set PKCS#11 attributes on an object. This call will return
+         * immediately and completes asynchronously.
+         * 
+         * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
+         * @param attrs The attributes to set on the object.
+         * @param cancellable Optional cancellable object, or `null` to ignore.
+         * @param callback Callback which is called when operation completes.
+         */
+        set_async(attrs: Attributes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the status of the operation to set attributes on a PKCS#11 object,
          * begun with `gck_object_set_async()`.
@@ -1233,71 +1217,62 @@ export namespace Gck {
          * @returns Whether the attributes were successfully set on the object or not.
          */
         set_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set an attribute template on the object. The attr_type must be for
          * an attribute which contains a template.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
-         *
+         * 
          * This call may block for an indefinite period.
          * @param attr_type The attribute template type.
          * @param attrs The attribute template.
          * @param cancellable Optional cancellation object, or `null`.
          * @returns `true` if the operation succeeded.
          */
-        set_template(attr_type: bigint | number, attrs: Attributes, cancellable: Gio.Cancellable | null): boolean;
+        set_template(attr_type: (bigint | number), attrs: Attributes, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Set an attribute template on the object. The attr_type must be for
          * an attribute which contains a template.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param attr_type The attribute template type.
          * @param attrs The attribute template.
          * @param cancellable Optional cancellation object, or `null`.
          */
-        set_template_async(
-            attr_type: bigint | number,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        set_template_async(attr_type: (bigint | number), attrs: Attributes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Set an attribute template on the object. The attr_type must be for
          * an attribute which contains a template.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
-         *
-         * This call will return immediately and complete asynchronously.
-         * @param attr_type The attribute template type.
-         * @param attrs The attribute template.
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        set_template_async(
-            attr_type: bigint | number,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Set an attribute template on the object. The attr_type must be for
-         * an attribute which contains a template.
-         *
-         * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param attr_type The attribute template type.
          * @param attrs The attribute template.
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        set_template_async(
-            attr_type: bigint | number,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_template_async(attr_type: (bigint | number), attrs: Attributes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Set an attribute template on the object. The attr_type must be for
+         * an attribute which contains a template.
+         * 
+         * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
+         * 
+         * This call will return immediately and complete asynchronously.
+         * @param attr_type The attribute template type.
+         * @param attrs The attribute template.
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        set_template_async(attr_type: (bigint | number), attrs: Attributes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the result of an operation to set attribute template on
          * an object.
@@ -1307,19 +1282,19 @@ export namespace Gck {
         set_template_finish(result: Gio.AsyncResult): boolean;
     }
 
+
     namespace Password {
         // Signal signatures
         interface SignalSignatures extends Gio.TlsPassword.SignalSignatures {
-            'notify::key': (pspec: GObject.ParamSpec) => void;
-            'notify::module': (pspec: GObject.ParamSpec) => void;
-            'notify::token': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::warning': (pspec: GObject.ParamSpec) => void;
+            "notify::key": (pspec: GObject.ParamSpec) => void;
+            "notify::module": (pspec: GObject.ParamSpec) => void;
+            "notify::token": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::warning": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gio.TlsPassword.ConstructorProps {
             key: Object;
             module: Module;
@@ -1329,7 +1304,7 @@ export namespace Gck {
 
     /**
      * Represents a password which is requested of the user.
-     *
+     * 
      * This is used in conjuction with {@link Gio.TlsInteraction}. {@link Gck.Password} is
      * a {@link Gio.TlsPassword} which contains additional information about which
      * PKCS#11 token or key the password is being requested for.
@@ -1339,18 +1314,19 @@ export namespace Gck {
         static $gtype: GObject.GType<Password>;
 
         // Properties
-
         /**
          * The PKCS#11 key that the password is being requested for. If this
          * is set then the GckPassword:token property will be `null`
          * @construct-only
          */
         get key(): Object;
+
         /**
          * The PKCS#11 module that is requesting the password
          * @read-only
          */
         get module(): Module;
+
         /**
          * The PKCS#11 token the password is for, if this is set then
          * the GckPassword:object property will be `null`
@@ -1368,45 +1344,37 @@ export namespace Gck {
         $signals: Password.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Password.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Password.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Password.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Password.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Password.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Password.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Password.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Password.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Password.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Password.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Password.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Password.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Password.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * If the password request is to unlock a PKCS#11 key, then this is the
          * the object representing that key.
          * @returns the password is for this key, or `null` if not          being requested for a key; must be unreferenced after use
          */
         get_key(): Object;
+
         /**
          * Get the PKCS#11 module that is requesting the password.
          * @returns the module that is requesting the password, which          must be unreferenced after use
          */
         get_module(): Module;
+
         /**
          * If the password request is to unlock a PKCS#11 token, then this is the
          * slot containing that token.
@@ -1415,38 +1383,37 @@ export namespace Gck {
         get_token(): Slot;
     }
 
+
     namespace Session {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * When a GckSession is being disposed of it emits this signal to allow
              * a session pool to pick up the handle and keep it around.
-             *
+             * 
              * If no signal handler claims the handle, then it is closed.
              * @signal
              * @run-last
              */
-            'discard-handle': (arg0: number) => boolean | void;
-            'notify::app-data': (pspec: GObject.ParamSpec) => void;
-            'notify::handle': (pspec: GObject.ParamSpec) => void;
-            'notify::interaction': (pspec: GObject.ParamSpec) => void;
-            'notify::module': (pspec: GObject.ParamSpec) => void;
-            'notify::opening-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::options': (pspec: GObject.ParamSpec) => void;
-            'notify::slot': (pspec: GObject.ParamSpec) => void;
+            "discard-handle": (arg0: number) => (boolean | void);
+            "notify::app-data": (pspec: GObject.ParamSpec) => void;
+            "notify::handle": (pspec: GObject.ParamSpec) => void;
+            "notify::interaction": (pspec: GObject.ParamSpec) => void;
+            "notify::module": (pspec: GObject.ParamSpec) => void;
+            "notify::opening-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::options": (pspec: GObject.ParamSpec) => void;
+            "notify::slot": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             app_data: any;
             appData: any;
-            handle: bigint | number;
-            interaction: Gio.TlsInteraction | null;
+            handle: (bigint | number);
+            interaction: (Gio.TlsInteraction | null);
             module: Module;
-            opening_flags: bigint | number;
-            openingFlags: bigint | number;
+            opening_flags: (bigint | number);
+            openingFlags: (bigint | number);
             options: SessionOptions;
             slot: Slot;
         }
@@ -1454,7 +1421,7 @@ export namespace Gck {
 
     /**
      * Represents an open PKCS11 session.
-     *
+     * 
      * Before performing any PKCS11 operations, a session must be opened. This is
      * analogous to an open database handle, or a file handle.
      * @gir-type Class
@@ -1463,49 +1430,56 @@ export namespace Gck {
         static $gtype: GObject.GType<Session>;
 
         // Properties
-
         /**
          * Raw PKCS#11 application data used to open the PKCS#11 session.
          * @construct-only
          */
         set app_data(val: any);
+
         /**
          * Raw PKCS#11 application data used to open the PKCS#11 session.
          * @construct-only
          */
         set appData(val: any);
+
         /**
          * The raw CK_SESSION_HANDLE handle of this session.
          * @construct-only
          */
         get handle(): number;
+
         /**
          * Interaction object used to ask the user for pins when opening
          * sessions. Used if the session_options of the enumerator have
          * {@link Gck.SessionOptions.LOGIN_USER}
          */
-        get interaction(): Gio.TlsInteraction | null;
-        set interaction(val: Gio.TlsInteraction | null);
+        get interaction(): (Gio.TlsInteraction | null);
+        set interaction(val: (Gio.TlsInteraction | null));
+
         /**
          * The GckModule that this session is opened on.
          * @read-only
          */
         get module(): Module;
+
         /**
          * Raw PKCS#11 flags used to open the PKCS#11 session.
          * @construct-only
          */
-        set opening_flags(val: bigint | number);
+        set opening_flags(val: (bigint | number));
+
         /**
          * Raw PKCS#11 flags used to open the PKCS#11 session.
          * @construct-only
          */
-        set openingFlags(val: bigint | number);
+        set openingFlags(val: (bigint | number));
+
         /**
          * The options this session was opened with.
          * @construct-only
          */
         get options(): SessionOptions;
+
         /**
          * The GckSlot this session is opened on.
          * @construct-only
@@ -1522,34 +1496,24 @@ export namespace Gck {
         $signals: Session.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Initialize a session object from a raw PKCS#11 session handle.
          * Usually one would use the {@link Slot.open_session} function to
@@ -1558,7 +1522,8 @@ export namespace Gck {
          * @param session_handle the raw PKCS#11 handle of the session
          * @param options Session options. Those which are used during opening a session have no effect.
          */
-        static from_handle(slot: Slot, session_handle: bigint | number, options: SessionOptions): Session;
+        static from_handle(slot: Slot, session_handle: (bigint | number), options: SessionOptions): Session;
+
         /**
          * Open a session on the slot. This call may block for an indefinite period.
          * @param slot the slot to open session on
@@ -1566,12 +1531,8 @@ export namespace Gck {
          * @param interaction optional interaction for logins or object authentication
          * @param cancellable optional cancellation object
          */
-        static open(
-            slot: Slot,
-            options: SessionOptions,
-            interaction: Gio.TlsInteraction | null,
-            cancellable: Gio.Cancellable | null,
-        ): Session;
+        static open(slot: Slot, options: SessionOptions, interaction: (Gio.TlsInteraction | null), cancellable: (Gio.Cancellable | null)): Session;
+
         /**
          * Open a session on the slot. This call will return immediately and complete
          * asynchronously.
@@ -1581,13 +1542,8 @@ export namespace Gck {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        static open_async(
-            slot: Slot,
-            options: SessionOptions,
-            interaction: Gio.TlsInteraction | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<Session> | null,
-        ): void;
+        static open_async(slot: Slot, options: SessionOptions, interaction: (Gio.TlsInteraction | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Session> | null)): void;
+
         /**
          * Get the result of an open session operation.
          * @param result the result passed to the callback
@@ -1595,60 +1551,56 @@ export namespace Gck {
         static open_finish(result: Gio.AsyncResult): Session;
 
         // Methods
-
         /**
          * Create a new PKCS#11 object. This call may block for an
          * indefinite period.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param attrs The attributes to create the object with.
          * @param cancellable Optional cancellation object, or `null`.
          * @returns the newly created object or `null` if an error occurred
          */
-        create_object(attrs: Attributes, cancellable: Gio.Cancellable | null): Object;
+        create_object(attrs: Attributes, cancellable: (Gio.Cancellable | null)): Object;
+
         /**
          * Create a new PKCS#11 object. This call will return immediately
          * and complete asynchronously.
-         *
+         * 
          * If `attrs` is a floating reference, it is consumed.
          * @param attrs The attributes to create the object with.
          * @param cancellable Optional cancellation object or `null`.
          */
-        create_object_async(attrs: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<Object>;
+        create_object_async(attrs: Attributes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Object>;
+
         /**
          * Create a new PKCS#11 object. This call will return immediately
          * and complete asynchronously.
-         *
-         * If `attrs` is a floating reference, it is consumed.
-         * @param attrs The attributes to create the object with.
-         * @param cancellable Optional cancellation object or `null`.
-         * @param callback Called when the operation completes.
-         */
-        create_object_async(
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Create a new PKCS#11 object. This call will return immediately
-         * and complete asynchronously.
-         *
+         * 
          * If `attrs` is a floating reference, it is consumed.
          * @param attrs The attributes to create the object with.
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        create_object_async(
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Object> | void;
+        create_object_async(attrs: Attributes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Create a new PKCS#11 object. This call will return immediately
+         * and complete asynchronously.
+         * 
+         * If `attrs` is a floating reference, it is consumed.
+         * @param attrs The attributes to create the object with.
+         * @param cancellable Optional cancellation object or `null`.
+         * @param callback Called when the operation completes.
+         */
+        create_object_async(attrs: Attributes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Object> | void);
+
         /**
          * Get the result of creating a new PKCS#11 object.
          * @param result The result passed to the callback.
          * @returns the newly created object or `null` if an error occurred
          */
         create_object_finish(result: Gio.AsyncResult): Object;
+
         /**
          * Decrypt data in a mechanism specific manner. This call may
          * block for an indefinite period.
@@ -1658,12 +1610,8 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`
          * @returns the data that was decrypted,          or `null` if an error occured
          */
-        decrypt(
-            key: Object,
-            mech_type: bigint | number,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): Uint8Array;
+        decrypt(key: Object, mech_type: (bigint | number), input: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): Uint8Array;
+
         /**
          * Decrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1672,12 +1620,8 @@ export namespace Gck {
          * @param input data to decrypt
          * @param cancellable A GCancellable which can be used to cancel the operation.
          */
-        decrypt_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Uint8Array>;
+        decrypt_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Uint8Array>;
+
         /**
          * Decrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1687,13 +1631,8 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @param callback Called when the operation completes.
          */
-        decrypt_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        decrypt_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Decrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1703,19 +1642,15 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @param callback Called when the operation completes.
          */
-        decrypt_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Uint8Array> | void;
+        decrypt_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Uint8Array> | void);
+
         /**
          * Get the result of an decryption operation.
          * @param result The result object passed to the callback.
          * @returns the data that was decrypted,          or `null` if an error occurred
          */
         decrypt_finish(result: Gio.AsyncResult): Uint8Array;
+
         /**
          * Decrypt data in a mechanism specific manner. This call may
          * block for an indefinite period.
@@ -1725,16 +1660,12 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @returns the data that was decrypted,          or `null` if an error occured
          */
-        decrypt_full(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): Uint8Array;
+        decrypt_full(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): Uint8Array;
+
         /**
          * Derive a key from another key. This call may block for an
          * indefinite period.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param base The key to derive from.
          * @param mech_type The mechanism to use for derivation.
@@ -1742,32 +1673,24 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns the new derived key or `null` if the operation          failed
          */
-        derive_key(
-            base: Object,
-            mech_type: bigint | number,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): Object;
+        derive_key(base: Object, mech_type: (bigint | number), attrs: Attributes, cancellable: (Gio.Cancellable | null)): Object;
+
         /**
          * Derive a key from another key. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param base The key to derive from.
          * @param mechanism The mechanism to use for derivation.
          * @param attrs Additional attributes for the derived key.
          * @param cancellable Optional cancellation object or `null`.
          */
-        derive_key_async(
-            base: Object,
-            mechanism: Mechanism,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Object>;
+        derive_key_async(base: Object, mechanism: Mechanism, attrs: Attributes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Object>;
+
         /**
          * Derive a key from another key. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param base The key to derive from.
          * @param mechanism The mechanism to use for derivation.
@@ -1775,17 +1698,12 @@ export namespace Gck {
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        derive_key_async(
-            base: Object,
-            mechanism: Mechanism,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        derive_key_async(base: Object, mechanism: Mechanism, attrs: Attributes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Derive a key from another key. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param base The key to derive from.
          * @param mechanism The mechanism to use for derivation.
@@ -1793,23 +1711,19 @@ export namespace Gck {
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        derive_key_async(
-            base: Object,
-            mechanism: Mechanism,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Object> | void;
+        derive_key_async(base: Object, mechanism: Mechanism, attrs: Attributes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Object> | void);
+
         /**
          * Get the result of a derive key operation.
          * @param result The async result passed to the callback.
          * @returns the new derived key or `null` if the operation          failed
          */
         derive_key_finish(result: Gio.AsyncResult): Object;
+
         /**
          * Derive a key from another key. This call may block for an
          * indefinite period.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param base The key to derive from.
          * @param mechanism The mechanism to use for derivation.
@@ -1817,12 +1731,8 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns the new derived key or `null` if the operation          failed
          */
-        derive_key_full(
-            base: Object,
-            mechanism: Mechanism,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): Object;
+        derive_key_full(base: Object, mechanism: Mechanism, attrs: Attributes, cancellable: (Gio.Cancellable | null)): Object;
+
         /**
          * Encrypt data in a mechanism specific manner. This call may
          * block for an indefinite period.
@@ -1832,12 +1742,8 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`
          * @returns the data that was encrypted,          or `null` if an error occured.
          */
-        encrypt(
-            key: Object,
-            mech_type: bigint | number,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): Uint8Array;
+        encrypt(key: Object, mech_type: (bigint | number), input: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): Uint8Array;
+
         /**
          * Encrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1846,12 +1752,8 @@ export namespace Gck {
          * @param input the data to encrypt
          * @param cancellable A GCancellable which can be used to cancel the operation.
          */
-        encrypt_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Uint8Array>;
+        encrypt_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Uint8Array>;
+
         /**
          * Encrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1861,13 +1763,8 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @param callback Called when the operation completes.
          */
-        encrypt_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        encrypt_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Encrypt data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -1877,19 +1774,15 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @param callback Called when the operation completes.
          */
-        encrypt_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Uint8Array> | void;
+        encrypt_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Uint8Array> | void);
+
         /**
          * Get the result of an encryption operation.
          * @param result The result object passed to the callback.
          * @returns the data that was encrypted,          or `null` if an error occurred.
          */
         encrypt_finish(result: Gio.AsyncResult): Uint8Array;
+
         /**
          * Encrypt data in a mechanism specific manner. This call may
          * block for an indefinite period.
@@ -1899,135 +1792,123 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @returns the data that was encrypted,          or `null` if an error occured
          */
-        encrypt_full(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): Uint8Array;
+        encrypt_full(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): Uint8Array;
+
         /**
          * Setup an enumerator for listing matching objects available via this session.
-         *
+         * 
          * If `match` is a floating reference, it is consumed.
-         *
+         * 
          * This call will not block but will return an enumerator immediately.
          * @param match attributes that the objects must match, or empty for all objects
          * @returns a new enumerator
          */
         enumerate_objects(match: Attributes): Enumerator;
+
         /**
          * Find the objects matching the passed attributes. This call may
          * block for an indefinite period.
-         *
+         * 
          * If `match` is a floating reference, it is consumed.
          * @param match the attributes to match against objects
          * @param cancellable optional cancellation object or `null`
          * @returns a list of          the matching objects, which may be empty
          */
-        find_handles(match: Attributes, cancellable: Gio.Cancellable | null): (bigint | number)[] | null;
+        find_handles(match: Attributes, cancellable: (Gio.Cancellable | null)): ((bigint | number)[] | null);
+
         /**
          * Find the objects matching the passed attributes. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If `match` is a floating reference, it is consumed.
          * @param match the attributes to match against the objects
          * @param cancellable optional cancellation object or `null`
          */
-        find_handles_async(
-            match: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<(bigint | number)[] | null>;
+        find_handles_async(match: Attributes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<((bigint | number)[] | null)>;
+
         /**
          * Find the objects matching the passed attributes. This call will
          * return immediately and complete asynchronously.
-         *
-         * If `match` is a floating reference, it is consumed.
-         * @param match the attributes to match against the objects
-         * @param cancellable optional cancellation object or `null`
-         * @param callback called when the operation completes
-         */
-        find_handles_async(
-            match: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Find the objects matching the passed attributes. This call will
-         * return immediately and complete asynchronously.
-         *
+         * 
          * If `match` is a floating reference, it is consumed.
          * @param match the attributes to match against the objects
          * @param cancellable optional cancellation object or `null`
          * @param callback called when the operation completes
          */
-        find_handles_async(
-            match: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<(bigint | number)[] | null> | void;
+        find_handles_async(match: Attributes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Find the objects matching the passed attributes. This call will
+         * return immediately and complete asynchronously.
+         * 
+         * If `match` is a floating reference, it is consumed.
+         * @param match the attributes to match against the objects
+         * @param cancellable optional cancellation object or `null`
+         * @param callback called when the operation completes
+         */
+        find_handles_async(match: Attributes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<((bigint | number)[] | null)> | void);
+
         /**
          * Get the result of a find handles operation.
          * @param result the asynchronous result
          * @returns an array of          handles that matched, which may be empty, or `null` on failure
          */
-        find_handles_finish(result: Gio.AsyncResult): (bigint | number)[] | null;
+        find_handles_finish(result: Gio.AsyncResult): ((bigint | number)[] | null);
+
         /**
          * Find the objects matching the passed attributes. This call may
          * block for an indefinite period.
-         *
+         * 
          * If `match` is a floating reference, it is consumed.
          * @param match the attributes to match
          * @param cancellable Optional cancellation object or `null`.
          * @returns a list of the matching          objects, which may be empty
          */
-        find_objects(match: Attributes, cancellable: Gio.Cancellable | null): Object[];
+        find_objects(match: Attributes, cancellable: (Gio.Cancellable | null)): Object[];
+
         /**
          * Find the objects matching the passed attributes. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If the `match` {@link Gck.Attributes} is floating, it is consumed.
          * @param match The attributes to match.
          * @param cancellable Optional cancellation object or `null`.
          */
-        find_objects_async(match: Attributes, cancellable: Gio.Cancellable | null): globalThis.Promise<Object[]>;
+        find_objects_async(match: Attributes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Object[]>;
+
         /**
          * Find the objects matching the passed attributes. This call will
          * return immediately and complete asynchronously.
-         *
-         * If the `match` {@link Gck.Attributes} is floating, it is consumed.
-         * @param match The attributes to match.
-         * @param cancellable Optional cancellation object or `null`.
-         * @param callback Called when the operation completes.
-         */
-        find_objects_async(
-            match: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Find the objects matching the passed attributes. This call will
-         * return immediately and complete asynchronously.
-         *
+         * 
          * If the `match` {@link Gck.Attributes} is floating, it is consumed.
          * @param match The attributes to match.
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        find_objects_async(
-            match: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Object[]> | void;
+        find_objects_async(match: Attributes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Find the objects matching the passed attributes. This call will
+         * return immediately and complete asynchronously.
+         * 
+         * If the `match` {@link Gck.Attributes} is floating, it is consumed.
+         * @param match The attributes to match.
+         * @param cancellable Optional cancellation object or `null`.
+         * @param callback Called when the operation completes.
+         */
+        find_objects_async(match: Attributes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Object[]> | void);
+
         /**
          * Get the result of a find operation.
          * @param result The attributes to match.
          * @returns a list of the matching          objects, which may be empty
          */
         find_objects_finish(result: Gio.AsyncResult): Object[];
+
         /**
          * Generate a new key pair of public and private keys. This call may block for
          * an indefinite period.
-         *
+         * 
          * If `public_attrs` and/or `private_attrs` is a floating reference, it is
          * consumed.
          * @param mech_type The mechanism type to use for key generation.
@@ -2036,16 +1917,12 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns `true` if the operation succeeded.
          */
-        generate_key_pair(
-            mech_type: bigint | number,
-            public_attrs: Attributes,
-            private_attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, Object | null, Object | null];
+        generate_key_pair(mech_type: (bigint | number), public_attrs: Attributes, private_attrs: Attributes, cancellable: (Gio.Cancellable | null)): [boolean, Object | null, Object | null];
+
         /**
          * Generate a new key pair of public and private keys. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If `public_attrs` and/or `private_attrs` is a floating reference, it is
          * consumed.
          * @param mechanism The mechanism to use for key generation.
@@ -2053,16 +1930,12 @@ export namespace Gck {
          * @param private_attrs Additional attributes for the generated private key.
          * @param cancellable Optional cancellation object or `null`.
          */
-        generate_key_pair_async(
-            mechanism: Mechanism,
-            public_attrs: Attributes,
-            private_attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<[Object | null, Object | null]>;
+        generate_key_pair_async(mechanism: Mechanism, public_attrs: Attributes, private_attrs: Attributes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[(Object | null), (Object | null)]>;
+
         /**
          * Generate a new key pair of public and private keys. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If `public_attrs` and/or `private_attrs` is a floating reference, it is
          * consumed.
          * @param mechanism The mechanism to use for key generation.
@@ -2071,17 +1944,12 @@ export namespace Gck {
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        generate_key_pair_async(
-            mechanism: Mechanism,
-            public_attrs: Attributes,
-            private_attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        generate_key_pair_async(mechanism: Mechanism, public_attrs: Attributes, private_attrs: Attributes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Generate a new key pair of public and private keys. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If `public_attrs` and/or `private_attrs` is a floating reference, it is
          * consumed.
          * @param mechanism The mechanism to use for key generation.
@@ -2090,23 +1958,19 @@ export namespace Gck {
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        generate_key_pair_async(
-            mechanism: Mechanism,
-            public_attrs: Attributes,
-            private_attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[Object | null, Object | null]> | void;
+        generate_key_pair_async(mechanism: Mechanism, public_attrs: Attributes, private_attrs: Attributes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[(Object | null), (Object | null)]> | void);
+
         /**
          * Get the result of a generate key pair operation.
          * @param result The async result passed to the callback.
          * @returns `true` if the operation succeeded.
          */
         generate_key_pair_finish(result: Gio.AsyncResult): [boolean, Object | null, Object | null];
+
         /**
          * Generate a new key pair of public and private keys. This call may block for an
          * indefinite period.
-         *
+         * 
          * If `public_attrs` and/or `private_attrs` is a floating reference, it is
          * consumed.
          * @param mechanism The mechanism to use for key generation.
@@ -2115,105 +1979,105 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns `true` if the operation succeeded.
          */
-        generate_key_pair_full(
-            mechanism: Mechanism,
-            public_attrs: Attributes,
-            private_attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, Object | null, Object | null];
+        generate_key_pair_full(mechanism: Mechanism, public_attrs: Attributes, private_attrs: Attributes, cancellable: (Gio.Cancellable | null)): [boolean, Object | null, Object | null];
+
         /**
          * Get the raw PKCS#11 session handle from a session object.
          * @returns The raw session handle.
          */
         get_handle(): number;
+
         /**
          * Get information about the session.
          * @returns the session info. Use the `gck_session_info_free()`          to release when done
          */
         get_info(): SessionInfo;
+
         /**
          * Get the interaction object set on this session, which is used to prompt
          * for pins and the like.
          * @returns the interaction object, or `null`
          */
-        get_interaction(): Gio.TlsInteraction | null;
+        get_interaction(): (Gio.TlsInteraction | null);
+
         /**
          * Get the PKCS#11 module to which this session belongs.
          * @returns the module, which should be unreffed after use
          */
         get_module(): Module;
+
         /**
          * Get the options this session was opened with.
          * @returns The session options.
          */
         get_options(): SessionOptions;
+
         /**
          * Get the PKCS#11 slot to which this session belongs.
          * @returns The slot, which should be unreffed after use.
          */
         get_slot(): Slot;
+
         /**
          * Get the session state. The state is the various PKCS#11 CKS_XXX flags.
          * @returns the session state
          */
         get_state(): number;
+
         /**
          * Initialize the user's pin on this slot that this session is opened on.
          * According to the PKCS#11 standards, the session must be logged in with
          * the CKU_SO user type.
-         *
+         * 
          * This call may block for an indefinite period.
          * @param pin the user's PIN, or `null` for       protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          * @returns Whether successful or not.
          */
-        init_pin(pin: Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        init_pin(pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initialize the user's pin on this slot that this session is opened on.
          * According to the PKCS#11 standards, the session must be logged in with
          * the `CKU_SO` user type.
-         *
+         * 
          * This call will return immediately and completes asynchronously.
          * @param pin the user's PIN, or `null` for protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          */
-        init_pin_async(pin: Uint8Array | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_pin_async(pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Initialize the user's pin on this slot that this session is opened on.
          * According to the PKCS#11 standards, the session must be logged in with
          * the `CKU_SO` user type.
-         *
-         * This call will return immediately and completes asynchronously.
-         * @param pin the user's PIN, or `null` for protected authentication path
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        init_pin_async(
-            pin: Uint8Array | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Initialize the user's pin on this slot that this session is opened on.
-         * According to the PKCS#11 standards, the session must be logged in with
-         * the `CKU_SO` user type.
-         *
+         * 
          * This call will return immediately and completes asynchronously.
          * @param pin the user's PIN, or `null` for protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        init_pin_async(
-            pin: Uint8Array | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        init_pin_async(pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Initialize the user's pin on this slot that this session is opened on.
+         * According to the PKCS#11 standards, the session must be logged in with
+         * the `CKU_SO` user type.
+         * 
+         * This call will return immediately and completes asynchronously.
+         * @param pin the user's PIN, or `null` for protected authentication path
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        init_pin_async(pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the result of initializing a user's PIN.
          * @param result The result passed to the callback.
          * @returns Whether the operation was successful or not.
          */
         init_pin_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Login the user on the session. This call may block for
          * an indefinite period.
@@ -2222,7 +2086,8 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns Whether successful or not.
          */
-        login(user_type: bigint | number, pin: Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        login(user_type: (bigint | number), pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Login the user on the session. This call will return
          * immediately and completes asynchronously.
@@ -2230,25 +2095,8 @@ export namespace Gck {
          * @param pin the user's PIN, or `null` for       protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          */
-        login_async(
-            user_type: bigint | number,
-            pin: Uint8Array | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Login the user on the session. This call will return
-         * immediately and completes asynchronously.
-         * @param user_type The type of login user.
-         * @param pin the user's PIN, or `null` for       protected authentication path
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        login_async(
-            user_type: bigint | number,
-            pin: Uint8Array | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        login_async(user_type: (bigint | number), pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Login the user on the session. This call will return
          * immediately and completes asynchronously.
@@ -2257,18 +2105,25 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        login_async(
-            user_type: bigint | number,
-            pin: Uint8Array | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        login_async(user_type: (bigint | number), pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Login the user on the session. This call will return
+         * immediately and completes asynchronously.
+         * @param user_type The type of login user.
+         * @param pin the user's PIN, or `null` for       protected authentication path
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        login_async(user_type: (bigint | number), pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the result of a login operation.
          * @param result The result passed to the callback.
          * @returns Whether the operation was successful or not.
          */
         login_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Login the user on the session requesting the password interactively
          * when necessary. This call may block for an indefinite period.
@@ -2277,11 +2132,8 @@ export namespace Gck {
          * @param cancellable optional cancellation object, or `null`
          * @returns Whether successful or not.
          */
-        login_interactive(
-            user_type: bigint | number,
-            interaction: Gio.TlsInteraction | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        login_interactive(user_type: (bigint | number), interaction: (Gio.TlsInteraction | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Login the user on the session prompting for passwords interactively when
          * necessary. This call will return immediately and completes asynchronously.
@@ -2289,25 +2141,8 @@ export namespace Gck {
          * @param interaction interaction to request PIN when necessary
          * @param cancellable optional cancellation object, or `null`
          */
-        login_interactive_async(
-            user_type: bigint | number,
-            interaction: Gio.TlsInteraction | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Login the user on the session prompting for passwords interactively when
-         * necessary. This call will return immediately and completes asynchronously.
-         * @param user_type the type of login user
-         * @param interaction interaction to request PIN when necessary
-         * @param cancellable optional cancellation object, or `null`
-         * @param callback called when the operation completes
-         */
-        login_interactive_async(
-            user_type: bigint | number,
-            interaction: Gio.TlsInteraction | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        login_interactive_async(user_type: (bigint | number), interaction: (Gio.TlsInteraction | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Login the user on the session prompting for passwords interactively when
          * necessary. This call will return immediately and completes asynchronously.
@@ -2316,104 +2151,94 @@ export namespace Gck {
          * @param cancellable optional cancellation object, or `null`
          * @param callback called when the operation completes
          */
-        login_interactive_async(
-            user_type: bigint | number,
-            interaction: Gio.TlsInteraction | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        login_interactive_async(user_type: (bigint | number), interaction: (Gio.TlsInteraction | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Login the user on the session prompting for passwords interactively when
+         * necessary. This call will return immediately and completes asynchronously.
+         * @param user_type the type of login user
+         * @param interaction interaction to request PIN when necessary
+         * @param cancellable optional cancellation object, or `null`
+         * @param callback called when the operation completes
+         */
+        login_interactive_async(user_type: (bigint | number), interaction: (Gio.TlsInteraction | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the result of a login operation.
          * @param result the result passed to the callback
          * @returns Whether the operation was successful or not.
          */
         login_interactive_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Log out of the session. This call may block for an indefinite period.
          * @param cancellable Optional cancellation object, or `null`.
          * @returns Whether the logout was successful or not.
          */
-        logout(cancellable: Gio.Cancellable | null): boolean;
+        logout(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Log out of the session. This call returns immediately and completes
          * asynchronously.
          * @param cancellable Optional cancellation object, or `null`.
          */
-        logout_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Log out of the session. This call returns immediately and completes
-         * asynchronously.
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        logout_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        logout_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Log out of the session. This call returns immediately and completes
          * asynchronously.
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        logout_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        logout_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Log out of the session. This call returns immediately and completes
+         * asynchronously.
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        logout_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the result of logging out of a session.
          * @param result The result passed to the callback.
          * @returns Whether the logout was successful or not.
          */
         logout_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set the interaction object on this session, which is used to prompt for
          * pins and the like.
          * @param interaction the interaction or `null`
          */
-        set_interaction(interaction: Gio.TlsInteraction | null): void;
+        set_interaction(interaction: (Gio.TlsInteraction | null)): void;
+
         /**
          * Change the user's pin on this slot that this session is opened on.
-         *
+         * 
          * This call may block for an indefinite period.
          * @param old_pin the user's old PIN, or `null`           for protected authentication path.
          * @param new_pin the user's new PIN, or `null`           for protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          * @returns Whether successful or not.
          */
-        set_pin(old_pin: Uint8Array | null, new_pin: Uint8Array | null, cancellable: Gio.Cancellable | null): boolean;
+        set_pin(old_pin: (Uint8Array | null), new_pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Change the user's pin on this slot that this session is opened on.
-         *
+         * 
          * This call will return immediately and completes asynchronously.
          * @param old_pin the user's old PIN, or `null`           for protected authentication path
          * @param n_old_pin the length of the old PIN
          * @param new_pin the user's new PIN, or `null`           for protected authentication path
          * @param cancellable Optional cancellation object, or `null`.
          */
-        set_pin_async(
-            old_pin: Uint8Array | null,
-            n_old_pin: bigint | number,
-            new_pin: Uint8Array | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        set_pin_async(old_pin: (Uint8Array | null), n_old_pin: (bigint | number), new_pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Change the user's pin on this slot that this session is opened on.
-         *
-         * This call will return immediately and completes asynchronously.
-         * @param old_pin the user's old PIN, or `null`           for protected authentication path
-         * @param n_old_pin the length of the old PIN
-         * @param new_pin the user's new PIN, or `null`           for protected authentication path
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        set_pin_async(
-            old_pin: Uint8Array | null,
-            n_old_pin: bigint | number,
-            new_pin: Uint8Array | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Change the user's pin on this slot that this session is opened on.
-         *
+         * 
          * This call will return immediately and completes asynchronously.
          * @param old_pin the user's old PIN, or `null`           for protected authentication path
          * @param n_old_pin the length of the old PIN
@@ -2421,19 +2246,27 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        set_pin_async(
-            old_pin: Uint8Array | null,
-            n_old_pin: bigint | number,
-            new_pin: Uint8Array | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_pin_async(old_pin: (Uint8Array | null), n_old_pin: (bigint | number), new_pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Change the user's pin on this slot that this session is opened on.
+         * 
+         * This call will return immediately and completes asynchronously.
+         * @param old_pin the user's old PIN, or `null`           for protected authentication path
+         * @param n_old_pin the length of the old PIN
+         * @param new_pin the user's new PIN, or `null`           for protected authentication path
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        set_pin_async(old_pin: (Uint8Array | null), n_old_pin: (bigint | number), new_pin: (Uint8Array | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the result of changing a user's PIN.
          * @param result The result passed to the callback.
          * @returns Whether the operation was successful or not.
          */
         set_pin_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Sign data in a mechanism specific manner. This call may
          * block for an indefinite period.
@@ -2443,12 +2276,8 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`
          * @returns the data that was signed,          or `null` if an error occured
          */
-        sign(
-            key: Object,
-            mech_type: bigint | number,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): Uint8Array;
+        sign(key: Object, mech_type: (bigint | number), input: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): Uint8Array;
+
         /**
          * Sign data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -2457,12 +2286,8 @@ export namespace Gck {
          * @param input data to sign
          * @param cancellable A GCancellable which can be used to cancel the operation.
          */
-        sign_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Uint8Array>;
+        sign_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Uint8Array>;
+
         /**
          * Sign data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -2472,13 +2297,8 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @param callback Called when the operation completes.
          */
-        sign_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        sign_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Sign data in a mechanism specific manner. This call will
          * return immediately and complete asynchronously.
@@ -2488,19 +2308,15 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @param callback Called when the operation completes.
          */
-        sign_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Uint8Array> | void;
+        sign_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Uint8Array> | void);
+
         /**
          * Get the result of an signing operation.
          * @param result The result object passed to the callback.
          * @returns the data that was signed,          or `null` if an error occurred
          */
         sign_finish(result: Gio.AsyncResult): Uint8Array;
+
         /**
          * Sign data in a mechanism specific manner. This call may
          * block for an indefinite period.
@@ -2511,17 +2327,12 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @returns The data that was signed, or `null` if an error occured.
          */
-        sign_full(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            n_result: bigint | number,
-            cancellable: Gio.Cancellable | null,
-        ): number;
+        sign_full(key: Object, mechanism: Mechanism, input: (Uint8Array | string), n_result: (bigint | number), cancellable: (Gio.Cancellable | null)): number;
+
         /**
          * Unwrap a key from a byte stream. This call may block for an
          * indefinite period.
-         *
+         * 
          * If `attrs` is a floating reference, it is consumed.
          * @param wrapper The key to use for unwrapping.
          * @param mech_type The mechanism to use for unwrapping.
@@ -2530,17 +2341,12 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns the new unwrapped key or `null` if the          operation failed
          */
-        unwrap_key(
-            wrapper: Object,
-            mech_type: bigint | number,
-            input: Uint8Array | string,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): Object;
+        unwrap_key(wrapper: Object, mech_type: (bigint | number), input: (Uint8Array | string), attrs: Attributes, cancellable: (Gio.Cancellable | null)): Object;
+
         /**
          * Unwrap a key from a byte stream. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If `attrs` is a floating reference, it is consumed.
          * @param wrapper The key to use for unwrapping.
          * @param mechanism The mechanism to use for unwrapping.
@@ -2548,17 +2354,12 @@ export namespace Gck {
          * @param attrs Additional attributes for the unwrapped key.
          * @param cancellable Optional cancellation object or `null`.
          */
-        unwrap_key_async(
-            wrapper: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Object>;
+        unwrap_key_async(wrapper: Object, mechanism: Mechanism, input: (Uint8Array | string), attrs: Attributes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Object>;
+
         /**
          * Unwrap a key from a byte stream. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If `attrs` is a floating reference, it is consumed.
          * @param wrapper The key to use for unwrapping.
          * @param mechanism The mechanism to use for unwrapping.
@@ -2567,18 +2368,12 @@ export namespace Gck {
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        unwrap_key_async(
-            wrapper: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        unwrap_key_async(wrapper: Object, mechanism: Mechanism, input: (Uint8Array | string), attrs: Attributes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Unwrap a key from a byte stream. This call will
          * return immediately and complete asynchronously.
-         *
+         * 
          * If `attrs` is a floating reference, it is consumed.
          * @param wrapper The key to use for unwrapping.
          * @param mechanism The mechanism to use for unwrapping.
@@ -2587,24 +2382,19 @@ export namespace Gck {
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        unwrap_key_async(
-            wrapper: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Object> | void;
+        unwrap_key_async(wrapper: Object, mechanism: Mechanism, input: (Uint8Array | string), attrs: Attributes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Object> | void);
+
         /**
          * Get the result of a unwrap key operation.
          * @param result The async result passed to the callback.
          * @returns the new unwrapped key or `null` if the operation          failed.
          */
         unwrap_key_finish(result: Gio.AsyncResult): Object;
+
         /**
          * Unwrap a key from a byte stream. This call may block for an
          * indefinite period.
-         *
+         * 
          * If `attrs` is a floating reference, it is consumed.
          * @param wrapper The key to use for unwrapping.
          * @param mechanism The mechanism to use for unwrapping.
@@ -2613,13 +2403,8 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns the new unwrapped key or `null` if the operation          failed
          */
-        unwrap_key_full(
-            wrapper: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            attrs: Attributes,
-            cancellable: Gio.Cancellable | null,
-        ): Object;
+        unwrap_key_full(wrapper: Object, mechanism: Mechanism, input: (Uint8Array | string), attrs: Attributes, cancellable: (Gio.Cancellable | null)): Object;
+
         /**
          * Verify data in a mechanism specific manner. This call may
          * block for an indefinite period.
@@ -2630,13 +2415,8 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`
          * @returns `true` if the data verified correctly, otherwise a failure or error occurred.
          */
-        verify(
-            key: Object,
-            mech_type: bigint | number,
-            input: Uint8Array | string,
-            signature: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        verify(key: Object, mech_type: (bigint | number), input: (Uint8Array | string), signature: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Verify data in a mechanism specific manner. This call returns
          * immediately and completes asynchronously.
@@ -2646,13 +2426,8 @@ export namespace Gck {
          * @param signature the signature
          * @param cancellable A GCancellable which can be used to cancel the operation.
          */
-        verify_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            signature: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        verify_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), signature: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Verify data in a mechanism specific manner. This call returns
          * immediately and completes asynchronously.
@@ -2663,14 +2438,8 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @param callback Called when the operation completes.
          */
-        verify_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            signature: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        verify_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), signature: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Verify data in a mechanism specific manner. This call returns
          * immediately and completes asynchronously.
@@ -2681,20 +2450,15 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @param callback Called when the operation completes.
          */
-        verify_async(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            signature: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        verify_async(key: Object, mechanism: Mechanism, input: (Uint8Array | string), signature: (Uint8Array | string), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Get the result of an verify operation.
          * @param result The result object passed to the callback.
          * @returns `true` if the data verified correctly, otherwise a failure or error occurred.
          */
         verify_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Verify data in a mechanism specific manner. This call may
          * block for an indefinite period.
@@ -2705,13 +2469,8 @@ export namespace Gck {
          * @param cancellable A GCancellable which can be used to cancel the operation.
          * @returns `true` if the data verified correctly, otherwise a failure or error occurred.
          */
-        verify_full(
-            key: Object,
-            mechanism: Mechanism,
-            input: Uint8Array | string,
-            signature: Uint8Array | string,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        verify_full(key: Object, mechanism: Mechanism, input: (Uint8Array | string), signature: (Uint8Array | string), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Wrap a key into a byte stream. This call may block for an
          * indefinite period.
@@ -2721,12 +2480,8 @@ export namespace Gck {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns the wrapped data or `null`          if the operation failed
          */
-        wrap_key(
-            wrapper: Object,
-            mech_type: bigint | number,
-            wrapped: Object,
-            cancellable: Gio.Cancellable | null,
-        ): Uint8Array;
+        wrap_key(wrapper: Object, mech_type: (bigint | number), wrapped: Object, cancellable: (Gio.Cancellable | null)): Uint8Array;
+
         /**
          * Wrap a key into a byte stream. This call will
          * return immediately and complete asynchronously.
@@ -2735,12 +2490,8 @@ export namespace Gck {
          * @param wrapped The key to wrap.
          * @param cancellable Optional cancellation object or `null`.
          */
-        wrap_key_async(
-            wrapper: Object,
-            mechanism: Mechanism,
-            wrapped: Object,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Uint8Array>;
+        wrap_key_async(wrapper: Object, mechanism: Mechanism, wrapped: Object, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Uint8Array>;
+
         /**
          * Wrap a key into a byte stream. This call will
          * return immediately and complete asynchronously.
@@ -2750,13 +2501,8 @@ export namespace Gck {
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        wrap_key_async(
-            wrapper: Object,
-            mechanism: Mechanism,
-            wrapped: Object,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        wrap_key_async(wrapper: Object, mechanism: Mechanism, wrapped: Object, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Wrap a key into a byte stream. This call will
          * return immediately and complete asynchronously.
@@ -2766,19 +2512,15 @@ export namespace Gck {
          * @param cancellable Optional cancellation object or `null`.
          * @param callback Called when the operation completes.
          */
-        wrap_key_async(
-            wrapper: Object,
-            mechanism: Mechanism,
-            wrapped: Object,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Uint8Array> | void;
+        wrap_key_async(wrapper: Object, mechanism: Mechanism, wrapped: Object, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Uint8Array> | void);
+
         /**
          * Get the result of a wrap key operation.
          * @param result The async result passed to the callback.
          * @returns the wrapped data or `null`          if the operation failed
          */
         wrap_key_finish(result: Gio.AsyncResult): Uint8Array;
+
         /**
          * Wrap a key into a byte stream. This call may block for an
          * indefinite period.
@@ -2788,44 +2530,40 @@ export namespace Gck {
          * @param cancellable Optional cancellation object, or `null`.
          * @returns the wrapped data or `null`          if the operation failed
          */
-        wrap_key_full(
-            wrapper: Object,
-            mechanism: Mechanism,
-            wrapped: Object,
-            cancellable: Gio.Cancellable | null,
-        ): Uint8Array;
+        wrap_key_full(wrapper: Object, mechanism: Mechanism, wrapped: Object, cancellable: (Gio.Cancellable | null)): Uint8Array;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -2834,85 +2572,40 @@ export namespace Gck {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         *
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         *
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         *
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         *
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -2922,11 +2615,51 @@ export namespace Gck {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -2934,6 +2667,7 @@ export namespace Gck {
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Finishes the async construction for the various g_async_initable_new
          * calls, returning the created object or `null` on error.
@@ -2941,38 +2675,39 @@ export namespace Gck {
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Session;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -2983,11 +2718,8 @@ export namespace Gck {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -2995,39 +2727,40 @@ export namespace Gck {
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -3037,40 +2770,41 @@ export namespace Gck {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -3080,27 +2814,27 @@ export namespace Gck {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Slot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::handle': (pspec: GObject.ParamSpec) => void;
-            'notify::module': (pspec: GObject.ParamSpec) => void;
+            "notify::handle": (pspec: GObject.ParamSpec) => void;
+            "notify::module": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            handle: bigint | number;
+            handle: (bigint | number);
             module: Module;
         }
     }
 
     /**
      * Represents a PKCS#11 slot that can contain a token.
-     *
+     * 
      * A PKCS#11 slot can contain a token. As an example, a slot might be a card
      * reader, and the token the card. If the PKCS#11 module is not a hardware
      * driver, often the slot and token are equivalent.
@@ -3110,12 +2844,12 @@ export namespace Gck {
         static $gtype: GObject.GType<Slot>;
 
         // Properties
-
         /**
          * The raw CK_SLOT_ID handle of this slot.
          * @construct-only
          */
         get handle(): number;
+
         /**
          * The PKCS11 object that this slot is a part of.
          * @construct-only
@@ -3132,54 +2866,44 @@ export namespace Gck {
         $signals: Slot.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Slot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Slot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Slot.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Slot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Slot.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Slot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Slot.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Slot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Slot.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Slot.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Slot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Slot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Slot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Create a new GckSlot object for a raw PKCS#11 handle.
          * @param module The module that this slot is on.
          * @param slot_id The raw PKCS#11 handle or slot id of this slot.
          */
-        static from_handle(module: Module, slot_id: bigint | number): Slot;
+        static from_handle(module: Module, slot_id: (bigint | number)): Slot;
 
         // Methods
-
         /**
          * Setup an enumerator for listing matching objects on the slot.
-         *
+         * 
          * If the `match` {@link Gck.Attributes} is floating, it is consumed.
-         *
+         * 
          * This call will not block but will return an enumerator immediately.
          * @param match attributes that the objects must match, or empty for all objects
          * @param options options for opening a session
          * @returns a new enumerator
          */
         enumerate_objects(match: Attributes, options: SessionOptions): Enumerator;
+
         /**
          * Checks equality of two slots. Two GckSlot objects can point to the same
          * underlying PKCS#11 slot.
@@ -3187,104 +2911,110 @@ export namespace Gck {
          * @returns `true` if slot1 and slot2 are equal.               `false` if either is not a GckSlot.
          */
         equal(slot2: Slot): boolean;
+
         /**
          * Get the raw PKCS#11 handle of a slot.
          * @returns the raw CK_SLOT_ID handle
          */
         get_handle(): number;
+
         /**
          * Get the information for this slot.
          * @returns the slot information, when done, use `gck_slot_info_free()`          to release it.
          */
         get_info(): SlotInfo;
+
         /**
          * Get information for the specified mechanism.
          * @param mech_type The mechanisms type to get info for.
          * @returns the mechanism information, or `null` if failed; use          `gck_mechanism_info_free()` when done with it
          */
-        get_mechanism_info(mech_type: bigint | number): MechanismInfo;
+        get_mechanism_info(mech_type: (bigint | number)): MechanismInfo;
+
         /**
          * Get the available mechanisms for this slot.
          * @returns a list of the mechanisms          for this slot, which should be freed with g_array_free ()
          */
         get_mechanisms(): number[];
+
         /**
          * Get the module that this slot is on.
          * @returns The module, you must unreference this after          you're done with it.
          */
         get_module(): Module;
+
         /**
          * Get the token information for this slot.
          * @returns the token information; when done, use `gck_token_info_free()`          to release it
          */
         get_token_info(): TokenInfo;
+
         /**
          * Check if the PKCS11 slot has the given flags.
          * @param flags The flags to check.
          * @returns Whether one or more flags exist.
          */
-        has_flags(flags: bigint | number): boolean;
+        has_flags(flags: (bigint | number)): boolean;
+
         /**
          * Create a hash value for the GckSlot.
-         *
+         * 
          * This function is intended for easily hashing a GckSlot to add to
          * a GHashTable or similar data structure.
          * @returns An integer that can be used as a hash value, or 0 if invalid.
          */
         hash(): number;
+
         /**
          * Check whether the PKCS#11 URI matches the slot
          * @param uri the uri to match against the slot
          * @returns whether the URI matches or not
          */
         match(uri: UriData): boolean;
+
         /**
          * Open a session on the slot. If the 'auto reuse' setting is set,
          * then this may be a recycled session with the same flags.
-         *
+         * 
          * This call may block for an indefinite period.
          * @param options The {@link Gck.SessionOptions} to open a session with.
          * @param cancellable An optional cancellation object, or `null`.
          * @returns a new session or `null` if an error occurs
          */
-        open_session(options: SessionOptions, cancellable: Gio.Cancellable | null): Session;
+        open_session(options: SessionOptions, cancellable: (Gio.Cancellable | null)): Session;
+
         /**
          * Open a session on the slot. If the 'auto reuse' setting is set,
          * then this may be a recycled session with the same flags.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param options The options to open the new session with.
          * @param cancellable Optional cancellation object, or `null`.
          */
-        open_session_async(options: SessionOptions, cancellable: Gio.Cancellable | null): globalThis.Promise<Session>;
+        open_session_async(options: SessionOptions, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Session>;
+
         /**
          * Open a session on the slot. If the 'auto reuse' setting is set,
          * then this may be a recycled session with the same flags.
-         *
-         * This call will return immediately and complete asynchronously.
-         * @param options The options to open the new session with.
-         * @param cancellable Optional cancellation object, or `null`.
-         * @param callback Called when the operation completes.
-         */
-        open_session_async(
-            options: SessionOptions,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Open a session on the slot. If the 'auto reuse' setting is set,
-         * then this may be a recycled session with the same flags.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param options The options to open the new session with.
          * @param cancellable Optional cancellation object, or `null`.
          * @param callback Called when the operation completes.
          */
-        open_session_async(
-            options: SessionOptions,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Session> | void;
+        open_session_async(options: SessionOptions, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Open a session on the slot. If the 'auto reuse' setting is set,
+         * then this may be a recycled session with the same flags.
+         * 
+         * This call will return immediately and complete asynchronously.
+         * @param options The options to open the new session with.
+         * @param cancellable Optional cancellation object, or `null`.
+         * @param callback Called when the operation completes.
+         */
+        open_session_async(options: SessionOptions, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Session> | void);
+
         /**
          * Get the result of an open session operation. If the 'auto reuse' setting is set,
          * then this may be a recycled session with the same flags.
@@ -3294,11 +3024,12 @@ export namespace Gck {
         open_session_finish(result: Gio.AsyncResult): Session;
     }
 
+
     /**
      * This structure represents a PKCS#11 `CK_ATTRIBUTE`. These attributes contain
      * information about a PKCS#11 object. Use {@link Object.get} or
      * {@link Object.set} to set and attributes on an object.
-     *
+     * 
      * Although you are free to allocate a {@link Gck.Attribute} in your own code, no
      * functions in this library will operate on such an attribute.
      * @gir-type Struct
@@ -3307,65 +3038,69 @@ export namespace Gck {
         static $gtype: GObject.GType<Attribute>;
 
         // Fields
-
         type: number;
+
         value: Uint8Array;
+
         length: number;
 
         // Constructors
+        constructor(attr_type: (bigint | number), value: number, length: (bigint | number));
 
-        constructor(attr_type: bigint | number, value: number, length: bigint | number);
+        static ["new"](attr_type: (bigint | number), value: number, length: (bigint | number)): Attribute;
 
-        static ['new'](attr_type: bigint | number, value: number, length: bigint | number): Attribute;
+        static new_boolean(attr_type: (bigint | number), value: boolean): Attribute;
 
-        static new_boolean(attr_type: bigint | number, value: boolean): Attribute;
+        static new_date(attr_type: (bigint | number), value: GLib.Date): Attribute;
 
-        static new_date(attr_type: bigint | number, value: GLib.Date): Attribute;
+        static new_empty(attr_type: (bigint | number)): Attribute;
 
-        static new_empty(attr_type: bigint | number): Attribute;
+        static new_invalid(attr_type: (bigint | number)): Attribute;
 
-        static new_invalid(attr_type: bigint | number): Attribute;
+        static new_string(attr_type: (bigint | number), value: string): Attribute;
 
-        static new_string(attr_type: bigint | number, value: string): Attribute;
-
-        static new_ulong(attr_type: bigint | number, value: bigint | number): Attribute;
+        static new_ulong(attr_type: (bigint | number), value: (bigint | number)): Attribute;
 
         // Methods
-
         /**
          * Clear allocated memory held by a {@link Gck.Attribute}.
-         *
+         * 
          * This attribute must have been allocated by a Gck library function, or
          * the results of this method are undefined.
-         *
+         * 
          * The type of the attribute will remain set.
          */
         clear(): void;
+
         /**
          * Dump the specified attribute using `g_printerr()`.
          */
         dump(): void;
+
         /**
          * Duplicate the PKCS#11 attribute. All value memory is
          * also copied.
-         *
+         * 
          * The `attr` must have been allocated or initialized by a Gck function or
          * the results of this function are undefined.
          * @returns the duplicated attribute; use `gck_attribute_free()`          to free it
          */
         dup(): Attribute;
+
         /**
          * Compare two attributes. Useful with <code>GHashTable</code>.
          * @param attr2 second attribute to compare
          * @returns `true` if the attributes are equal.
          */
         equal(attr2: Attribute): boolean;
+
         /**
          * Free an attribute and its allocated memory. These is usually
          * used with attributes that are allocated by {@link Attribute.new}
          * or a similar function.
          */
         free(): void;
+
         /**
          * Get the CK_BBOOL of a PKCS#11 attribute. No conversion
          * is performed. It is an error to pass an attribute to this
@@ -3374,18 +3109,20 @@ export namespace Gck {
          * @returns The boolean value of the attribute.
          */
         get_boolean(): boolean;
+
         /**
          * Get the raw value in the attribute.
-         *
+         * 
          * This is useful from scripting languages. C callers will generally
          * access the {@link Gck.Attribute} struct directly.
-         *
+         * 
          * This function will `null` if the attribute contains empty or invalid
          * data. The returned data must not be modified and is only valid
          * as long as this `attribute`.
          * @returns the value data or `null`
          */
         get_data(): Uint8Array;
+
         /**
          * Get the CK_DATE of a PKCS#11 attribute. No
          * conversion is performed. It is an error to pass an attribute
@@ -3394,6 +3131,7 @@ export namespace Gck {
          * @param value The date value to fill in with the parsed date.
          */
         get_date(value: GLib.Date): void;
+
         /**
          * Get the string value of a PKCS#11 attribute. No
          * conversion is performed. It is an error to pass an attribute
@@ -3401,7 +3139,8 @@ export namespace Gck {
          * a value of the right type.
          * @returns a null terminated string, to be freed with               `g_free()`, or `null` if the value was invalid
          */
-        get_string(): string | null;
+        get_string(): (string | null);
+
         /**
          * Get the CK_ULONG value of a PKCS#11 attribute. No
          * conversion is performed. It is an error to pass an attribute
@@ -3410,20 +3149,23 @@ export namespace Gck {
          * @returns The ulong value of the attribute.
          */
         get_ulong(): number;
+
         /**
          * Hash an attribute for use in <code>GHashTable</code> keys.
          * @returns the hash code
          */
         hash(): number;
+
         /**
          * Initialize a PKCS#11 attribute as a copy of another attribute.
          * This copies the value memory as well.
-         *
+         * 
          * When done with the copied attribute you should use
          * {@link Attribute.clear} to free the internal memory.
          * @param src An attribute to copy.
          */
         init_copy(src: Attribute): void;
+
         /**
          * Check if the PKCS#11 attribute represents 'invalid' or 'not found'
          * according to the PKCS#11 spec. That is, having length
@@ -3433,9 +3175,10 @@ export namespace Gck {
         is_invalid(): boolean;
     }
 
+
     /**
      * A set of {@link Attribute} structures.
-     *
+     * 
      * These attributes contain information about a PKCS11 object. Use
      * {@link Object.get} or {@link Object.set} to set and retrieve attributes on
      * an object.
@@ -3445,102 +3188,110 @@ export namespace Gck {
         static $gtype: GObject.GType<Attributes>;
 
         // Constructors
+        constructor(reserved: (bigint | number));
 
-        constructor(reserved: bigint | number);
-
-        static ['new'](reserved: bigint | number): Attributes;
+        static ["new"](reserved: (bigint | number)): Attributes;
 
         // Methods
-
         /**
          * Get attribute at the specified index in the attribute array.
-         *
+         * 
          * Use {@link Attributes.count} to determine how many attributes are
          * in the array.
          * @param index The attribute index to retrieve.
          * @returns the specified attribute
          */
         at(index: number): Attribute;
+
         /**
          * Check whether the attributes contain a certain attribute.
          * @param match The attribute to find
          * @returns `true` if the attributes contain the attribute.
          */
         contains(match: Attribute): boolean;
+
         /**
          * Get the number of attributes in this attribute array.
          * @returns The number of contained attributes.
          */
         count(): number;
+
         /**
          * Dump the attributes using `g_printerr()`.
          */
         dump(): void;
+
         /**
          * Find an attribute with the specified type in the array.
          * @param attr_type The type of attribute to find.
          * @returns the first attribute found with the specified type,          or `null`
          */
-        find(attr_type: bigint | number): Attribute;
+        find(attr_type: (bigint | number)): Attribute;
+
         /**
          * Find an attribute with the specified type in the array.
-         *
+         * 
          * The attribute (if found) must be of the right size to store
          * a boolean value (ie: CK_BBOOL). If the attribute is marked invalid
          * then it will be treated as not found.
          * @param attr_type The type of attribute to find.
          * @returns Whether a value was found or not.
          */
-        find_boolean(attr_type: bigint | number): [boolean, boolean];
+        find_boolean(attr_type: (bigint | number)): [boolean, boolean];
+
         /**
          * Find an attribute with the specified type in the array.
-         *
+         * 
          * The attribute (if found) must be of the right size to store
          * a date value (ie: CK_DATE). If the attribute is marked invalid
          * then it will be treated as not found.
          * @param attr_type The type of attribute to find.
          * @returns Whether a value was found or not.
          */
-        find_date(attr_type: bigint | number): [boolean, GLib.Date];
+        find_date(attr_type: (bigint | number)): [boolean, GLib.Date];
+
         /**
          * Find an attribute with the specified type in the array.
-         *
+         * 
          * If the attribute is marked invalid then it will be treated as not found.
          * The resulting string will be null-terminated, and must be freed by the caller
          * using `g_free()`.
          * @param attr_type The type of attribute to find.
          * @returns Whether a value was found or not.
          */
-        find_string(attr_type: bigint | number): [boolean, string];
+        find_string(attr_type: (bigint | number)): [boolean, string];
+
         /**
          * Find an attribute with the specified type in the array.
-         *
+         * 
          * The attribute (if found) must be of the right size to store
          * a unsigned long value (ie: CK_ULONG). If the attribute is marked invalid
          * then it will be treated as not found.
          * @param attr_type The type of attribute to find.
          * @returns Whether a value was found or not.
          */
-        find_ulong(attr_type: bigint | number): [boolean, number];
+        find_ulong(attr_type: (bigint | number)): [boolean, number];
+
         /**
          * Reference this attributes array.
          * @returns the attributes
          */
         ref(): Attributes;
+
         /**
          * {@link Gck.Attributes} uses a floating reference count system. {@link Builder.end}
          * and {@link Attributes.new_empty} both return floating references.
-         *
+         * 
          * Calling this function on a {@link Gck.Attributes} with a floating
          * reference will convert the floating reference into a full reference.
          * Calling this function on a non-floating {@link Gck.Attributes} results
          * in an additional normal reference being added.
-         *
+         * 
          * In other words, if the `attrs` is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
          * reference.  If the `attrs` is not floating, then this call adds a
          * new normal reference increasing the reference count by one.
-         *
+         * 
          * All Gck library functions that assume ownership of floating references
          * are documented as such. Essentially any Gck function that performs
          * an operation using a {@link Gck.Attributes} argument rather than operating on the
@@ -3548,26 +3299,29 @@ export namespace Gck {
          * @returns the referenced attributes
          */
         ref_sink(): Attributes;
+
         /**
          * Print out attributes to a string in aform that's useful for debugging
          * or logging.
-         *
+         * 
          * The format of the string returned may change in the future.
          * @returns a newly allocated string
          */
         to_string(): string;
+
         /**
          * Unreference this attribute array.
-         *
+         * 
          * When all outstanding references are gone, the array will be freed.
          */
         unref(): void;
     }
 
+
     /**
      * A builder for a set of attributes. Add attributes to a builder, and then use
      * {@link Builder.end} to get the completed {@link Attributes}.
-     *
+     * 
      * The fields of {@link Gck.Builder} are private and not to be accessed directly.
      * @gir-type Struct
      */
@@ -3575,48 +3329,47 @@ export namespace Gck {
         static $gtype: GObject.GType<Builder>;
 
         // Constructors
-
         constructor(flags: BuilderFlags);
 
-        static ['new'](flags: BuilderFlags): Builder;
+        static ["new"](flags: BuilderFlags): Builder;
 
         // Static methods
-
         /**
          * Unreferences a builder. If this was the last reference then the builder
          * is freed.
-         *
+         * 
          * It is an error to use this function on builders that were allocated on the
          * stack.
          * @param builder the builder
          */
-        static unref(builder: any | null): void;
+        static unref(builder: (any | null)): void;
 
         // Methods
-
         /**
          * Add all the `attrs` attributes to the builder. The attributes are added
          * uncondititionally whether or not attributes with the same types already
          * exist in the builder.
-         *
+         * 
          * As an optimization, the attribute memory values are automatically shared
          * between the attributes and the builder.
          * @param attrs the attributes to add
          */
         add_all(attrs: Attributes): void;
+
         /**
          * Add an attribute to the builder. The attribute is added unconditionally whether
          * or not an attribute with the same type already exists on the builder.
-         *
+         * 
          * The `attr` attribute must have been created or owned by the Gck library.
          * If you call this function on an arbitrary {@link Gck.Attribute} that is allocated on
          * the stack or elsewhere, then this will result in undefined behavior.
-         *
+         * 
          * As an optimization, the attribute memory value is automatically shared
          * between the attribute and the builder.
          * @param attr the attribute to add
          */
         add_attribute(attr: Attribute): void;
+
         /**
          * Add a new attribute to the builder for the boolean `value`.
          * Unconditionally adds a new attribute, even if one with the same `attr_type`
@@ -3624,20 +3377,22 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the attribute value
          */
-        add_boolean(attr_type: bigint | number, value: boolean): void;
+        add_boolean(attr_type: (bigint | number), value: boolean): void;
+
         /**
          * Add a new attribute to the builder with an arbitrary value. Unconditionally
          * adds a new attribute, even if one with the same `attr_type` already exists.
-         *
+         * 
          * The memory in `value` is copied by the builder.
-         *
+         * 
          * `null` may be specified for the `value` argument, in which case an empty
          * attribute is created. {@link INVALID} may be specified for the length, in
          * which case an invalid attribute is created in the PKCS#11 style.
          * @param attr_type the new attribute type
          * @param value the new attribute memory
          */
-        add_data(attr_type: bigint | number, value: Uint8Array | null): void;
+        add_data(attr_type: (bigint | number), value: (Uint8Array | null)): void;
+
         /**
          * Add a new attribute to the builder for the date `value`.
          * Unconditionally adds a new attribute, even if one with the same `attr_type`
@@ -3645,37 +3400,41 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the attribute value
          */
-        add_date(attr_type: bigint | number, value: GLib.Date): void;
+        add_date(attr_type: (bigint | number), value: GLib.Date): void;
+
         /**
          * Add a new attribute to the builder that is empty. Unconditionally
          * adds a new attribute, even if one with the same `attr_type` already exists.
          * @param attr_type the new attribute type
          */
-        add_empty(attr_type: bigint | number): void;
+        add_empty(attr_type: (bigint | number)): void;
+
         /**
          * Add a new attribute to the builder that is invalid in the PKCS#11 sense.
          * Unconditionally adds a new attribute, even if one with the same `attr_type`
          * already exists.
          * @param attr_type the new attribute type
          */
-        add_invalid(attr_type: bigint | number): void;
+        add_invalid(attr_type: (bigint | number)): void;
+
         /**
          * Add the attributes with the types in `only_types` from `attrs` to the
          * builder. The attributes are added uncondititionally whether or not
          * attributes with the same types already exist in the builder.
-         *
+         * 
          * ```c
          * // Add the CKA_ID and CKA_CLASS attributes from attrs to builder
          * gulong only[] = { CKA_ID, CKA_CLASS };
          * gck_builder_add_onlyv (builder, attrs, only, 2);
          * ```
-         *
+         * 
          * As an optimization, the attribute memory values are automatically shared
          * between the attributes and the builder.
          * @param attrs the attributes to add
          * @param only_types the types of attributes to add
          */
         add_only(attrs: Attributes, only_types: (bigint | number)[]): void;
+
         /**
          * Add a new attribute to the builder for the string `value` or `null`.
          * Unconditionally adds a new attribute, even if one with the same `attr_type`
@@ -3683,7 +3442,8 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the attribute value
          */
-        add_string(attr_type: bigint | number, value: string | null): void;
+        add_string(attr_type: (bigint | number), value: (string | null)): void;
+
         /**
          * Add a new attribute to the builder for the unsigned long `value`.
          * Unconditionally adds a new attribute, even if one with the same `attr_type`
@@ -3691,31 +3451,34 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the attribute value
          */
-        add_ulong(attr_type: bigint | number, value: bigint | number): void;
+        add_ulong(attr_type: (bigint | number), value: (bigint | number)): void;
+
         /**
          * Clear the builder and release all allocated memory. The builder may be used
          * again to build another set of attributes after this function call.
-         *
+         * 
          * If memory is shared between this builder and other attributes, then that
          * memory is only freed when both of them are cleared or unreferenced.
          */
         clear(): void;
+
         /**
          * Make a copy of the builder and its state. The new builder is allocated
          * with {@link Builder.new} and should be freed with `gck_builder_unref()`.
-         *
+         * 
          * Attribute value memory is automatically shared between the two builders,
          * and is only freed when both are gone.
          * @returns the builder copy, which should be freed with          `gck_builder_unref()`.
          */
         copy(): Builder;
+
         /**
          * Complete the {@link Gck.Builder}, and return the attributes contained in the builder.
          * The {@link Gck.Builder} will be cleared after this function call, and it is no
          * longer necessary to use {@link Builder.clear} on it, although it is also
          * permitted. The builder may be used again to build another set of attributes
          * after this function call.
-         *
+         * 
          * The returned set of attributes is floating, and should either be passed to
          * another gck library function which consumes this floating reference, or if
          * you wish to keep these attributes around you should ref them with
@@ -3723,18 +3486,20 @@ export namespace Gck {
          * @returns a floating reference to the attributes created          in the builder
          */
         end(): Attributes;
+
         /**
          * Find an attribute in the builder. Both valid and invalid attributes (in
          * the PKCS#11 sense) are returned. If multiple attributes exist for the given
          * attribute type, then the first one is returned.
-         *
+         * 
          * The returned {@link Attribute} is owned by the builder and may not be
          * modified in any way. It is only valid until another attribute is added to or
          * set on the builder, or until the builder is cleared or unreferenced.
          * @param attr_type the type of attribute to find
          * @returns the attribute or `null` if not found
          */
-        find(attr_type: bigint | number): Attribute;
+        find(attr_type: (bigint | number)): Attribute;
+
         /**
          * Find a boolean attribute in the builder that has the type `attr_type`, is
          * of the correct boolean size, and is not invalid in the PKCS#11 sense.
@@ -3743,7 +3508,8 @@ export namespace Gck {
          * @param attr_type the type of attribute to find
          * @returns whether a valid boolean attribute was found
          */
-        find_boolean(attr_type: bigint | number): [boolean, boolean];
+        find_boolean(attr_type: (bigint | number)): [boolean, boolean];
+
         /**
          * Find a date attribute in the builder that has the type `attr_type`, is of
          * the correct date size, and is not invalid in the PKCS#11 sense.
@@ -3752,7 +3518,8 @@ export namespace Gck {
          * @param attr_type the type of attribute to find
          * @returns whether a valid date attribute was found
          */
-        find_date(attr_type: bigint | number): [boolean, GLib.Date];
+        find_date(attr_type: (bigint | number)): [boolean, GLib.Date];
+
         /**
          * Find a string attribute in the builder that has the type `attr_type`, has a
          * non `null` value pointer, and is not invalid in the PKCS#11 sense.
@@ -3761,7 +3528,8 @@ export namespace Gck {
          * @param attr_type the type of attribute to find
          * @returns whether a valid string attribute was found
          */
-        find_string(attr_type: bigint | number): [boolean, string];
+        find_string(attr_type: (bigint | number)): [boolean, string];
+
         /**
          * Find a unsigned long attribute in the builder that has the type `attr_type`,
          * is of the correct unsigned long size, and is not invalid in the PKCS#11 sense.
@@ -3770,52 +3538,57 @@ export namespace Gck {
          * @param attr_type the type of attribute to find
          * @returns whether a valid unsigned long attribute was found
          */
-        find_ulong(attr_type: bigint | number): [boolean, number];
+        find_ulong(attr_type: (bigint | number)): [boolean, number];
+
         /**
          * Initialize a stack allocated builder, with the default flags.
-         *
+         * 
          * This is equivalent to initializing a builder variable with the
          * `GCK_BUILDER_INIT` constant, or setting it to zeroed memory.
-         *
+         * 
          * ```c
          * // Equivalent ways of initializing a GckBuilder
          * GckBuilder builder = GCK_BUILDER_INIT;
          * GckBuilder builder2;
          * GckBuilder builder3;
-         *
+         * 
          * gck_builder_init (&builder2);
-         *
+         * 
          * memset (&builder3, 0, sizeof (builder3));
          * ```
          */
         init(): void;
+
         /**
          * Initialize a stack allocated builder, with the appropriate flags.
-         *
+         * 
          * If the {@link Gck.BuilderFlags.SECURE_MEMORY} flag is specified then non-pageable memory
          * will be used for the various values of the attributes in the builder
          * @param flags the flags for the new builder
          */
         init_full(flags: BuilderFlags): void;
+
         /**
          * Add a reference to a builder that was created with {@link Builder.new}. The
          * builder must later be unreferenced again with `gck_builder_unref()`.
-         *
+         * 
          * It is an error to use this function on builders that were allocated on the
          * stack.
          * @returns the builder
          */
         ref(): Builder;
+
         /**
          * Set all the `attrs` attributes to the builder. If any attributes with the
          * same types are already present in the builder, then those attributes are
          * changed to the new values.
-         *
+         * 
          * As an optimization, the attribute memory values are automatically shared
          * between the attributes and the builder.
          * @param attrs the attributes to set
          */
         set_all(attrs: Attributes): void;
+
         /**
          * Set an attribute on the builder for the boolean `value`.
          * If an attribute with `attr_type` already exists in the builder then it is
@@ -3823,21 +3596,23 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the attribute value
          */
-        set_boolean(attr_type: bigint | number, value: boolean): void;
+        set_boolean(attr_type: (bigint | number), value: boolean): void;
+
         /**
          * Set a new attribute to the builder with an arbitrary value. If an attribute
          * with `attr_type` already exists in the builder then it is changed to the new
          * value, otherwise an attribute is added.
-         *
+         * 
          * The memory in `value` is copied by the builder.
-         *
+         * 
          * `null` may be specified for the `value` argument, in which case an empty
          * attribute is created. {@link INVALID} may be specified for the length, in
          * which case an invalid attribute is created in the PKCS#11 style.
          * @param attr_type the attribute type
          * @param value the new attribute memory
          */
-        set_data(attr_type: bigint | number, value: Uint8Array | null): void;
+        set_data(attr_type: (bigint | number), value: (Uint8Array | null)): void;
+
         /**
          * Set an attribute on the builder for the date `value`.
          * If an attribute with `attr_type` already exists in the builder then it is
@@ -3845,21 +3620,24 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the attribute value
          */
-        set_date(attr_type: bigint | number, value: GLib.Date): void;
+        set_date(attr_type: (bigint | number), value: GLib.Date): void;
+
         /**
          * Set an attribute on the builder that is empty. If an attribute
          * with `attr_type` already exists in the builder then it is changed to the new
          * value, otherwise an attribute is added.
          * @param attr_type the attribute type
          */
-        set_empty(attr_type: bigint | number): void;
+        set_empty(attr_type: (bigint | number)): void;
+
         /**
          * Set an attribute on the builder that is invalid in the PKCS#11 sense.
          * If an attribute with `attr_type` already exists in the builder then it is
          * changed to the new value, otherwise an attribute is added.
          * @param attr_type the attribute type
          */
-        set_invalid(attr_type: bigint | number): void;
+        set_invalid(attr_type: (bigint | number)): void;
+
         /**
          * Set an attribute on the builder for the string `value` or `null`.
          * If an attribute with `attr_type` already exists in the builder then it is
@@ -3867,7 +3645,8 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the attribute value
          */
-        set_string(attr_type: bigint | number, value: string): void;
+        set_string(attr_type: (bigint | number), value: string): void;
+
         /**
          * Set an attribute on the builder for the unsigned long `value`.
          * If an attribute with `attr_type` already exists in the builder then it is
@@ -3875,42 +3654,47 @@ export namespace Gck {
          * @param attr_type the new attribute type
          * @param value the attribute value
          */
-        set_ulong(attr_type: bigint | number, value: bigint | number): void;
+        set_ulong(attr_type: (bigint | number), value: (bigint | number)): void;
+
         /**
          * Take the attributes that have been built in the {@link Gck.Builder}. The builder
          * will no longer contain any attributes after this function call.
-         *
+         * 
          * The returned set of attributes is a full reference, not floating.
          * @returns the stolen attributes, which should be freed with          `gck_attributes_unref()`
          */
         steal(): Attributes;
+
         /**
          * Add a new attribute to the builder with an arbitrary value. Unconditionally
          * adds a new attribute, even if one with the same `attr_type` already exists.
-         *
+         * 
          * Ownership of the `value` memory is taken by the builder, may be reallocated,
          * and is eventually freed with `g_free()`. The memory must have been allocated
          * using the standard GLib memory allocation routines.
-         *
+         * 
          * `null` may be specified for the `value` argument, in which case an empty
          * attribute is created. {@link INVALID} may be specified for the length, in
          * which case an invalid attribute is created in the PKCS#11 style.
          * @param attr_type the new attribute type
          * @param value the new         attribute memory
          */
-        take_data(attr_type: bigint | number, value: Uint8Array | null): void;
+        take_data(attr_type: (bigint | number), value: (Uint8Array | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type EnumeratorClass = typeof Enumerator;
+
     /**
      * @gir-type Struct
      */
     abstract class EnumeratorPrivate {
         static $gtype: GObject.GType<EnumeratorPrivate>;
     }
+
 
     /**
      * Represents a mechanism used with crypto operations.
@@ -3920,17 +3704,19 @@ export namespace Gck {
         static $gtype: GObject.GType<Mechanism>;
 
         // Fields
-
         type: number;
+
         parameter: any;
+
         n_parameter: number;
     }
 
+
     /**
      * Represents information about a PKCS11 mechanism.
-     *
+     * 
      * This is analogous to a CK_MECHANISM_INFO structure.
-     *
+     * 
      * When you're done with this structure it should be released with
      * `gck_mechanism_info_free()`.
      * @gir-type Struct
@@ -3939,34 +3725,37 @@ export namespace Gck {
         static $gtype: GObject.GType<MechanismInfo>;
 
         // Fields
-
         min_key_size: number;
+
         max_key_size: number;
+
         flags: number;
 
         // Methods
-
         /**
          * Make a copy of the mechanism info.
          * @returns a newly allocated copy mechanism info
          */
         copy(): MechanismInfo;
+
         /**
          * Free the GckMechanismInfo and associated resources.
          */
         free(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ModuleClass = typeof Module;
+
     /**
      * Holds information about the PKCS#11 module.
-     *
+     * 
      * This structure corresponds to `CK_MODULE_INFO` in the PKCS#11 standard. The
      * strings are `null` terminated for easier use.
-     *
+     * 
      * Use `gck_module_info_free()` to release this structure when done with it.
      * @gir-type Struct
      */
@@ -3974,27 +3763,33 @@ export namespace Gck {
         static $gtype: GObject.GType<ModuleInfo>;
 
         // Fields
-
         pkcs11_version_major: number;
+
         pkcs11_version_minor: number;
+
         manufacturer_id: string;
+
         flags: number;
+
         library_description: string;
+
         library_version_major: number;
+
         library_version_minor: number;
 
         // Methods
-
         /**
          * Make a copy of the module info.
          * @returns a newly allocated copy module info
          */
         copy(): ModuleInfo;
+
         /**
          * Free a GckModuleInfo structure.
          */
         free(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -4003,14 +3798,17 @@ export namespace Gck {
         static $gtype: GObject.GType<ModulePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ObjectCacheIface = typeof ObjectCache;
+
     /**
      * @gir-type Alias
      */
     type ObjectClass = typeof Object;
+
     /**
      * @gir-type Struct
      */
@@ -4018,10 +3816,12 @@ export namespace Gck {
         static $gtype: GObject.GType<ObjectPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PasswordClass = typeof Password;
+
     /**
      * @gir-type Struct
      */
@@ -4029,13 +3829,15 @@ export namespace Gck {
         static $gtype: GObject.GType<PasswordPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SessionClass = typeof Session;
+
     /**
      * Information about the session. This is analogous to a CK_SESSION_INFO structure.
-     *
+     * 
      * When done with this structure, release it using `gck_session_info_free()`.
      * @gir-type Struct
      */
@@ -4043,24 +3845,27 @@ export namespace Gck {
         static $gtype: GObject.GType<SessionInfo>;
 
         // Fields
-
         slot_id: number;
+
         state: number;
+
         flags: number;
+
         device_error: number;
 
         // Methods
-
         /**
          * Make a new copy of a session info structure.
          * @returns a new copy of the session info
          */
         copy(): SessionInfo;
+
         /**
          * Free the GckSessionInfo structure and all associated memory.
          */
         free(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -4069,16 +3874,18 @@ export namespace Gck {
         static $gtype: GObject.GType<SessionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SlotClass = typeof Slot;
+
     /**
      * Represents information about a PKCS11 slot.
-     *
+     * 
      * This is analogous to a CK_SLOT_INFO structure, but the
      * strings are far more usable.
-     *
+     * 
      * When you're done with this structure it should be released with
      * `gck_slot_info_free()`.
      * @gir-type Struct
@@ -4087,27 +3894,33 @@ export namespace Gck {
         static $gtype: GObject.GType<SlotInfo>;
 
         // Fields
-
         slot_description: string;
+
         manufacturer_id: string;
+
         flags: number;
+
         hardware_version_major: number;
+
         hardware_version_minor: number;
+
         firmware_version_major: number;
+
         firmware_version_minor: number;
 
         // Methods
-
         /**
          * Make a copy of the slot info.
          * @returns a newly allocated copy slot info
          */
         copy(): SlotInfo;
+
         /**
          * Free the GckSlotInfo and associated resources.
          */
         free(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -4116,12 +3929,13 @@ export namespace Gck {
         static $gtype: GObject.GType<SlotPrivate>;
     }
 
+
     /**
      * Represents information about a PKCS11 token.
-     *
+     * 
      * This is analogous to a CK_TOKEN_INFO structure, but the
      * strings are far more usable.
-     *
+     * 
      * When you're done with this structure it should be released with
      * `gck_token_info_free()`.
      * @gir-type Struct
@@ -4130,45 +3944,64 @@ export namespace Gck {
         static $gtype: GObject.GType<TokenInfo>;
 
         // Fields
-
         label: string;
+
         manufacturer_id: string;
+
         model: string;
+
         serial_number: string;
+
         flags: number;
+
         max_session_count: number;
+
         session_count: number;
+
         max_rw_session_count: number;
+
         rw_session_count: number;
+
         max_pin_len: number;
+
         min_pin_len: number;
+
         total_public_memory: number;
+
         free_public_memory: number;
+
         total_private_memory: number;
+
         free_private_memory: number;
+
         hardware_version_major: number;
+
         hardware_version_minor: number;
+
         firmware_version_major: number;
+
         firmware_version_minor: number;
+
         utc_time: number;
 
         // Methods
-
         /**
          * Make a copy of the token info.
          * @returns a newly allocated copy token info
          */
         copy(): TokenInfo;
+
         /**
          * Free the GckTokenInfo and associated resources.
          */
         free(): void;
     }
 
+
     /**
      * Information about the contents of a PKCS#11 URI. Various fields may be `null`
      * depending on the context that the URI was parsed for.
-     *
+     * 
      * Since PKCS#11 URIs represent a set which results from the intersections of
      * all of the URI parts, if `any_recognized` is set to `true` then usually the URI
      * should be treated as not matching anything.
@@ -4178,31 +4011,29 @@ export namespace Gck {
         static $gtype: GObject.GType<UriData>;
 
         // Fields
-
         any_unrecognized: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                any_unrecognized: boolean;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            any_unrecognized: boolean;
+        }>);
 
-        static ['new'](): UriData;
+        static ["new"](): UriData;
 
         // Methods
-
         /**
          * Copy a {@link Gck.UriData}
          * @returns newly allocated copy of the uri data
          */
         copy(): UriData;
+
         /**
          * Free a {@link Gck.UriData}.
          */
         free(): void;
     }
+
 
     namespace ObjectCache {
         /**
@@ -4210,14 +4041,14 @@ export namespace Gck {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds the attributes to the set cached on this object. If an attribute is
              * already present in the cache it will be overridden by this value.
-             *
+             * 
              * This will be done in a thread-safe manner.
-             *
+             * 
              * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
              * @param attrs the attributes to cache
              * @virtual
@@ -4225,10 +4056,10 @@ export namespace Gck {
             vfunc_fill(attrs: Attributes): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {
-            attributes: Attributes | null;
+            attributes: (Attributes | null);
         }
     }
 
@@ -4239,86 +4070,83 @@ export namespace Gck {
     /**
      * An interface implemented by derived classes of {@link Object} to indicate
      * which attributes they'd like an enumerator to retrieve.
-     *
+     * 
      * These attributes are then cached on the object and can be retrieved through
      * the {@link ObjectCache.attributes} property.
      * @gir-type Interface
      */
     interface ObjectCache extends Object, ObjectCache.Interface {
-        // Properties
 
+        // Properties
         /**
          * The attributes cached on this object.
          */
-        get attributes(): Attributes | null;
-        set attributes(val: Attributes | null);
+        get attributes(): (Attributes | null);
+        set attributes(val: (Attributes | null));
 
         // Methods
-
         /**
          * Adds the attributes to the set cached on this object. If an attribute is
          * already present in the cache it will be overridden by this value.
-         *
+         * 
          * This will be done in a thread-safe manner.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param attrs the attributes to cache
          */
         fill(attrs: Attributes): void;
+
         /**
          * Sets the attributes cached on this object.
-         *
+         * 
          * If the `attrs` {@link Gck.Attributes} is floating, it is consumed.
          * @param attrs the attributes to set
          */
-        set_attributes(attrs: Attributes | null): void;
+        set_attributes(attrs: (Attributes | null)): void;
+
         /**
          * Update the object cache with given attributes. If an attribute already
          * exists in the cache, it will be updated, and if it doesn't it will be added.
-         *
+         * 
          * This may block, use the asynchronous version when this is not desirable
          * @param attr_types the types of attributes to update
          * @param cancellable optional cancellation object
          * @returns whether the cache update was successful
          */
-        update(attr_types: (bigint | number)[], cancellable: Gio.Cancellable | null): boolean;
+        update(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Update the object cache with given attributes. If an attribute already
          * exists in the cache, it will be updated, and if it doesn't it will be added.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param attr_types the types of attributes to update
          * @param cancellable optional cancellation object
          */
-        update_async(attr_types: (bigint | number)[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        update_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Update the object cache with given attributes. If an attribute already
          * exists in the cache, it will be updated, and if it doesn't it will be added.
-         *
-         * This call will return immediately and complete asynchronously.
-         * @param attr_types the types of attributes to update
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        update_async(
-            attr_types: (bigint | number)[],
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Update the object cache with given attributes. If an attribute already
-         * exists in the cache, it will be updated, and if it doesn't it will be added.
-         *
+         * 
          * This call will return immediately and complete asynchronously.
          * @param attr_types the types of attributes to update
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        update_async(
-            attr_types: (bigint | number)[],
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        update_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Update the object cache with given attributes. If an attribute already
+         * exists in the cache, it will be updated, and if it doesn't it will be added.
+         * 
+         * This call will return immediately and complete asynchronously.
+         * @param attr_types the types of attributes to update
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        update_async(attr_types: (bigint | number)[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete an asynchronous operation to update the object cache with given
          * attributes.
@@ -4327,6 +4155,7 @@ export namespace Gck {
          */
         update_finish(result: Gio.AsyncResult): boolean;
     }
+
 
     export const ObjectCache: ObjectCacheNamespace & {
         new (): ObjectCache; // This allows `obj instanceof ObjectCache`
@@ -4337,6 +4166,7 @@ export namespace Gck {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

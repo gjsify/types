@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -23,9 +24,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Gdk from '@girs/gdk-3.0';
 
 export namespace GdkX11 {
+
     /**
      * GdkX11-3.0
      */
+
 
     /**
      * Converts from a {@link Gdk.Atom} to the X atom for the default GDK display
@@ -34,6 +37,7 @@ export namespace GdkX11 {
      * @returns the X atom corresponding to `atom`.
      */
     function x11_atom_to_xatom(atom: Gdk.Atom): xlib.Atom;
+
     /**
      * Converts from a {@link Gdk.Atom} to the X atom for a {@link Gdk.Display}
      * with the same string value. The special value `GDK_NONE`
@@ -44,9 +48,10 @@ export namespace GdkX11 {
      * @since 2.2
      */
     function x11_atom_to_xatom_for_display(display: X11Display, atom: Gdk.Atom): xlib.Atom;
+
     /**
      * Returns the device ID as seen by XInput2.
-     *
+     * 
      * > If `gdk_disable_multidevice()` has been called, this function
      * > will respectively return 2/3 for the core pointer and keyboard,
      * > (matching the IDs for the Virtual Core Pointer and Keyboard in
@@ -57,6 +62,7 @@ export namespace GdkX11 {
      * @since 3.2
      */
     function x11_device_get_id(device: X11DeviceCore): number;
+
     /**
      * Returns the {@link Gdk.Device} that wraps the given device ID.
      * @param device_manager a {@link Gdk.DeviceManager}
@@ -64,13 +70,15 @@ export namespace GdkX11 {
      * @returns The {@link Gdk.Device} wrapping the device ID,          or `null` if the given ID doesn’t currently represent a device.
      * @since 3.2
      */
-    function x11_device_manager_lookup(device_manager: X11DeviceManagerCore, device_id: number): X11DeviceCore | null;
+    function x11_device_manager_lookup(device_manager: X11DeviceManagerCore, device_id: number): (X11DeviceCore | null);
+
     /**
      * Frees the data returned from `gdk_x11_display_string_to_compound_text()`.
      * @param ctext The pointer stored in `ctext` from a call to   `gdk_x11_display_string_to_compound_text()`.
      * @since 2.24
      */
     function x11_free_compound_text(ctext: number): void;
+
     /**
      * Frees the array of strings created by
      * `gdk_x11_display_text_property_to_text_list()`.
@@ -78,22 +86,26 @@ export namespace GdkX11 {
      * @since 2.24
      */
     function x11_free_text_list(list: string): void;
+
     /**
      * Gets the root window of the default screen
      * (see `gdk_x11_get_default_screen()`).
      * @returns an Xlib Window.
      */
     function x11_get_default_root_xwindow(): xlib.Window;
+
     /**
      * Gets the default GTK+ screen number.
      * @returns returns the screen number specified by   the --display command line option or the DISPLAY environment   variable when `gdk_init()` calls XOpenDisplay().
      */
     function x11_get_default_screen(): number;
+
     /**
      * Gets the default GTK+ display.
      * @returns the Xlib Display* for the display specified in the `--display` command line option or the `DISPLAY` environment variable.
      */
     function x11_get_default_xdisplay(): xlib.Display;
+
     /**
      * Used with `gdk_window_set_background_pattern()` to inherit background from
      * parent window. Useful for imitating transparency when compositing is not
@@ -102,12 +114,14 @@ export namespace GdkX11 {
      * @deprecated since 3.24: Don't use this function
      */
     function x11_get_parent_relative_pattern(): cairo.Pattern;
+
     /**
      * Routine to get the current X server time stamp.
      * @param window a {@link Gdk.Window}, used for communication          with the server.  The window must have          GDK_PROPERTY_CHANGE_MASK in its events mask or a hang will          result.
      * @returns the time stamp.
      */
     function x11_get_server_time(window: X11Window): number;
+
     /**
      * Returns the X atom for GDK’s default display corresponding to `atom_name`.
      * This function caches the result, so if called repeatedly it is much
@@ -116,6 +130,7 @@ export namespace GdkX11 {
      * @returns a X atom for GDK’s default display.
      */
     function x11_get_xatom_by_name(atom_name: string): xlib.Atom;
+
     /**
      * Returns the X atom for a {@link Gdk.Display} corresponding to `atom_name`.
      * This function caches the result, so if called repeatedly it is much
@@ -126,6 +141,7 @@ export namespace GdkX11 {
      * @since 2.2
      */
     function x11_get_xatom_by_name_for_display(display: X11Display, atom_name: string): xlib.Atom;
+
     /**
      * Returns the name of an X atom for GDK’s default display. This
      * function is meant mainly for debugging, so for convenience, unlike
@@ -136,6 +152,7 @@ export namespace GdkX11 {
      * @returns name of the X atom; this string is owned by GTK+,   so it shouldn’t be modifed or freed.
      */
     function x11_get_xatom_name(xatom: xlib.Atom): string;
+
     /**
      * Returns the name of an X atom for its display. This
      * function is meant mainly for debugging, so for convenience, unlike
@@ -147,13 +164,15 @@ export namespace GdkX11 {
      * @since 2.2
      */
     function x11_get_xatom_name_for_display(display: X11Display, xatom: xlib.Atom): string;
+
     /**
      * Call `gdk_x11_display_grab()` on the default display.
      * To ungrab the server again, use `gdk_x11_ungrab_server()`.
-     *
+     * 
      * `gdk_x11_grab_server()`/gdk_x11_ungrab_server() calls can be nested.
      */
     function x11_grab_server(): void;
+
     /**
      * Find the {@link Gdk.Display} corresponding to `xdisplay`, if any exists.
      * @param xdisplay a pointer to an X Display
@@ -161,17 +180,18 @@ export namespace GdkX11 {
      * @since 2.2
      */
     function x11_lookup_xdisplay(xdisplay: xlib.Display): X11Display;
+
     /**
      * Registers interest in receiving extension events with type codes
      * between `event_base` and `event_base + n_events - 1`.
      * The registered events must have the window field in the same place
      * as core X events (this is not the case for e.g. XKB extension events).
-     *
+     * 
      * If an event type is registered, events of this type will go through
      * global and window-specific filters (see `gdk_window_add_filter()`).
      * Unregistered events will only go through global filters.
      * GDK may register the events of some X extensions on its own.
-     *
+     * 
      * This function should only be needed in unusual circumstances, e.g.
      * when filtering XInput extension events on the root window.
      * @param display a {@link Gdk.Display}
@@ -180,22 +200,25 @@ export namespace GdkX11 {
      * @since 2.4
      */
     function x11_register_standard_event_type(display: X11Display, event_base: number, n_events: number): void;
+
     /**
      * Sets the `SM_CLIENT_ID` property on the application’s leader window so that
      * the window manager can save the application’s state using the X11R6 ICCCM
      * session management protocol.
-     *
+     * 
      * See the X Session Management Library documentation for more information on
      * session management and the Inter-Client Communication Conventions Manual
      * @param sm_client_id the client id assigned by the session manager    when the connection was opened, or `null` to remove the property.
      * @since 2.24
      */
-    function x11_set_sm_client_id(sm_client_id: string | null): void;
+    function x11_set_sm_client_id(sm_client_id: (string | null)): void;
+
     /**
      * Ungrab the default display after it has been grabbed with
      * `gdk_x11_grab_server()`.
      */
     function x11_ungrab_server(): void;
+
     /**
      * Convert from an X atom for the default display to the corresponding
      * {@link Gdk.Atom}.
@@ -203,6 +226,7 @@ export namespace GdkX11 {
      * @returns the corresponding G#dkAtom.
      */
     function x11_xatom_to_atom(xatom: xlib.Atom): Gdk.Atom;
+
     /**
      * Convert from an X atom for a {@link Gdk.Display} to the corresponding
      * {@link Gdk.Atom}.
@@ -212,15 +236,17 @@ export namespace GdkX11 {
      * @since 2.2
      */
     function x11_xatom_to_atom_for_display(display: X11Display, xatom: xlib.Atom): Gdk.Atom;
+
     namespace X11AppLaunchContext {
         // Signal signatures
         interface SignalSignatures extends Gdk.AppLaunchContext.SignalSignatures {
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.AppLaunchContext.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.AppLaunchContext.ConstructorProps {}
+        }
     }
 
     /**
@@ -239,45 +265,36 @@ export namespace GdkX11 {
         $signals: X11AppLaunchContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11AppLaunchContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11AppLaunchContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11AppLaunchContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11AppLaunchContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11AppLaunchContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11AppLaunchContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11AppLaunchContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11AppLaunchContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11AppLaunchContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11AppLaunchContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11AppLaunchContext.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof X11AppLaunchContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11AppLaunchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace X11Cursor {
         // Signal signatures
         interface SignalSignatures extends Gdk.Cursor.SignalSignatures {
-            'notify::cursor-type': (pspec: GObject.ParamSpec) => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "notify::cursor-type": (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.Cursor.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.Cursor.ConstructorProps {}
+        }
     }
 
     /**
@@ -296,39 +313,30 @@ export namespace GdkX11 {
         $signals: X11Cursor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11Cursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11Cursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Cursor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11Cursor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Cursor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11Cursor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Cursor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11Cursor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Cursor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11Cursor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11Cursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11Cursor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11Cursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the X cursor belonging to a {@link Gdk.Cursor}.
          * @returns an Xlib Cursor.
          */
         get_xcursor(): xlib.Cursor;
+
         /**
          * Returns the display of a {@link Gdk.Cursor}.
          * @returns an Xlib Display*.
@@ -336,29 +344,31 @@ export namespace GdkX11 {
         get_xdisplay(): xlib.Display;
     }
 
+
     namespace X11DeviceCore {
         // Signal signatures
         interface SignalSignatures extends Gdk.Device.SignalSignatures {
-            'notify::associated-device': (pspec: GObject.ParamSpec) => void;
-            'notify::axes': (pspec: GObject.ParamSpec) => void;
-            'notify::device-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
-            'notify::has-cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::input-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::input-source': (pspec: GObject.ParamSpec) => void;
-            'notify::n-axes': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::num-touches': (pspec: GObject.ParamSpec) => void;
-            'notify::product-id': (pspec: GObject.ParamSpec) => void;
-            'notify::seat': (pspec: GObject.ParamSpec) => void;
-            'notify::tool': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::vendor-id': (pspec: GObject.ParamSpec) => void;
+            "notify::associated-device": (pspec: GObject.ParamSpec) => void;
+            "notify::axes": (pspec: GObject.ParamSpec) => void;
+            "notify::device-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::has-cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::input-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::input-source": (pspec: GObject.ParamSpec) => void;
+            "notify::n-axes": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::num-touches": (pspec: GObject.ParamSpec) => void;
+            "notify::product-id": (pspec: GObject.ParamSpec) => void;
+            "notify::seat": (pspec: GObject.ParamSpec) => void;
+            "notify::tool": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::vendor-id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.Device.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.Device.ConstructorProps {}
+        }
     }
 
     /**
@@ -377,42 +387,35 @@ export namespace GdkX11 {
         $signals: X11DeviceCore.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11DeviceCore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11DeviceCore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DeviceCore.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11DeviceCore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DeviceCore.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11DeviceCore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DeviceCore.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11DeviceCore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DeviceCore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11DeviceCore.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11DeviceCore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11DeviceCore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11DeviceCore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace X11DeviceManagerCore {
         // Signal signatures
         interface SignalSignatures extends Gdk.DeviceManager.SignalSignatures {
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.DeviceManager.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.DeviceManager.ConstructorProps {}
+        }
     }
 
     /**
@@ -431,46 +434,35 @@ export namespace GdkX11 {
         $signals: X11DeviceManagerCore.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11DeviceManagerCore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11DeviceManagerCore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DeviceManagerCore.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11DeviceManagerCore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DeviceManagerCore.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11DeviceManagerCore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DeviceManagerCore.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11DeviceManagerCore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DeviceManagerCore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11DeviceManagerCore.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11DeviceManagerCore.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof X11DeviceManagerCore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11DeviceManagerCore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace X11DeviceManagerXI2 {
         // Signal signatures
         interface SignalSignatures extends X11DeviceManagerCore.SignalSignatures {
-            'notify::major': (pspec: GObject.ParamSpec) => void;
-            'notify::minor': (pspec: GObject.ParamSpec) => void;
-            'notify::opcode': (pspec: GObject.ParamSpec) => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "notify::major": (pspec: GObject.ParamSpec) => void;
+            "notify::minor": (pspec: GObject.ParamSpec) => void;
+            "notify::opcode": (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends X11DeviceManagerCore.ConstructorProps {
             major: number;
             minor: number;
@@ -485,17 +477,18 @@ export namespace GdkX11 {
         static $gtype: GObject.GType<X11DeviceManagerXI2>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 0
          */
         get major(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get minor(): number;
+
         /**
          * @construct-only
          * @default 0
@@ -512,58 +505,47 @@ export namespace GdkX11 {
         $signals: X11DeviceManagerXI2.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11DeviceManagerXI2.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11DeviceManagerXI2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DeviceManagerXI2.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DeviceManagerXI2.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DeviceManagerXI2.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11DeviceManagerXI2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DeviceManagerXI2.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11DeviceManagerXI2.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof X11DeviceManagerXI2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11DeviceManagerXI2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace X11DeviceXI2 {
         // Signal signatures
         interface SignalSignatures extends Gdk.Device.SignalSignatures {
-            'notify::device-id': (pspec: GObject.ParamSpec) => void;
-            'notify::associated-device': (pspec: GObject.ParamSpec) => void;
-            'notify::axes': (pspec: GObject.ParamSpec) => void;
-            'notify::device-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
-            'notify::has-cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::input-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::input-source': (pspec: GObject.ParamSpec) => void;
-            'notify::n-axes': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::num-touches': (pspec: GObject.ParamSpec) => void;
-            'notify::product-id': (pspec: GObject.ParamSpec) => void;
-            'notify::seat': (pspec: GObject.ParamSpec) => void;
-            'notify::tool': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::vendor-id': (pspec: GObject.ParamSpec) => void;
+            "notify::device-id": (pspec: GObject.ParamSpec) => void;
+            "notify::associated-device": (pspec: GObject.ParamSpec) => void;
+            "notify::axes": (pspec: GObject.ParamSpec) => void;
+            "notify::device-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::has-cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::input-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::input-source": (pspec: GObject.ParamSpec) => void;
+            "notify::n-axes": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::num-touches": (pspec: GObject.ParamSpec) => void;
+            "notify::product-id": (pspec: GObject.ParamSpec) => void;
+            "notify::seat": (pspec: GObject.ParamSpec) => void;
+            "notify::tool": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::vendor-id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gdk.Device.ConstructorProps {
             device_id: number;
             deviceId: number;
@@ -577,12 +559,12 @@ export namespace GdkX11 {
         static $gtype: GObject.GType<X11DeviceXI2>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 0
          */
         get device_id(): number;
+
         /**
          * @construct-only
          * @default 0
@@ -599,40 +581,34 @@ export namespace GdkX11 {
         $signals: X11DeviceXI2.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11DeviceXI2.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11DeviceXI2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DeviceXI2.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11DeviceXI2.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DeviceXI2.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11DeviceXI2.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DeviceXI2.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11DeviceXI2.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DeviceXI2.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11DeviceXI2.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11DeviceXI2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11DeviceXI2.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11DeviceXI2.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace X11Display {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Display.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Display.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.Display.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.Display.ConstructorProps {}
+        }
     }
 
     /**
@@ -651,34 +627,24 @@ export namespace GdkX11 {
         $signals: X11Display.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11Display.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11Display.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11Display.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11Display.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Retrieves the version of the GLX implementation.
          * @param display a {@link Gdk.Display}
@@ -686,46 +652,49 @@ export namespace GdkX11 {
         static get_glx_version(display: Gdk.Display): [boolean, number, number];
 
         // Methods
-
         /**
          * Pops the error trap pushed by `gdk_x11_display_error_trap_push()`.
          * Will XSync() if necessary and will always block until
          * the error is known to have occurred or not occurred,
          * so the error code can be returned.
-         *
+         * 
          * If you don’t need to use the return value,
          * `gdk_x11_display_error_trap_pop_ignored()` would be more efficient.
-         *
+         * 
          * See `gdk_error_trap_pop()` for the all-displays-at-once
          * equivalent.
          * @returns X error code or 0 on success
          */
         error_trap_pop(): number;
+
         /**
          * Pops the error trap pushed by `gdk_x11_display_error_trap_push()`.
          * Does not block to see if an error occurred; merely records the
          * range of requests to ignore errors for, and ignores those errors
          * if they arrive asynchronously.
-         *
+         * 
          * See `gdk_error_trap_pop_ignored()` for the all-displays-at-once
          * equivalent.
          */
         error_trap_pop_ignored(): void;
+
         /**
          * Begins a range of X requests on `display` for which X error events
          * will be ignored. Unignored errors (when no trap is pushed) will abort
          * the application. Use `gdk_x11_display_error_trap_pop()` or
          * `gdk_x11_display_error_trap_pop_ignored()`to lift a trap pushed
          * with this function.
-         *
+         * 
          * See also `gdk_error_trap_push()` to push a trap on all displays.
          */
         error_trap_push(): void;
+
         /**
          * Gets the startup notification ID for a display.
          * @returns the startup notification ID for `display`
          */
         get_startup_notification_id(): string;
+
         /**
          * Returns the timestamp of the last user interaction on
          * `display`. The timestamp is taken from events caused
@@ -734,22 +703,25 @@ export namespace GdkX11 {
          * @returns the timestamp of the last user interaction
          */
         get_user_time(): number;
+
         /**
          * Returns the X display of a {@link Gdk.Display}.
          * @returns an X display
          */
         get_xdisplay(): xlib.Display;
+
         /**
          * Call XGrabServer() on `display`.
          * To ungrab the display again, use `gdk_x11_display_ungrab()`.
-         *
+         * 
          * `gdk_x11_display_grab()`/gdk_x11_display_ungrab() calls can be nested.
          */
         grab(): void;
+
         /**
          * Sets the cursor theme from which the images for cursor
          * should be taken.
-         *
+         * 
          * If the windowing system supports it, existing cursors created
          * with `gdk_cursor_new()`, `gdk_cursor_new_for_display()` and
          * `gdk_cursor_new_from_name()` are updated to reflect the theme
@@ -761,36 +733,39 @@ export namespace GdkX11 {
          * @param theme the name of the cursor theme to use, or `null` to unset         a previously set value
          * @param size the cursor size to use, or 0 to keep the previous size
          */
-        set_cursor_theme(theme: string | null, size: number): void;
+        set_cursor_theme(theme: (string | null), size: number): void;
+
         /**
          * Sets the startup notification ID for a display.
-         *
+         * 
          * This is usually taken from the value of the DESKTOP_STARTUP_ID
          * environment variable, but in some cases (such as the application not
          * being launched using `exec()`) it can come from other sources.
-         *
+         * 
          * If the ID contains the string "_TIME" then the portion following that
          * string is taken to be the X11 timestamp of the event that triggered
          * the application to be launched and the GDK current event time is set
          * accordingly.
-         *
+         * 
          * The startup ID is also what is used to signal that the startup is
          * complete (for example, when opening a window or when calling
          * `gdk_notify_startup_complete()`).
          * @param startup_id the startup notification ID (must be valid utf8)
          */
         set_startup_notification_id(startup_id: string): void;
+
         /**
          * Forces a specific window scale for all windows on this display,
          * instead of using the default or user configured scale. This
          * is can be used to disable scaling support by setting `scale` to
          * 1, or to programmatically set the window scale.
-         *
+         * 
          * Once the scale is set by this call it will not change in response
          * to later user configuration changes.
          * @param scale The new scale value
          */
         set_window_scale(scale: number): void;
+
         /**
          * Convert a string from the encoding of the current
          * locale into a form suitable for storing in a window property.
@@ -798,6 +773,7 @@ export namespace GdkX11 {
          * @returns 0 upon success, non-zero upon failure
          */
         string_to_compound_text(str: string): [number, Gdk.Atom, number, Uint8Array];
+
         /**
          * Convert a text string from the encoding as it is stored
          * in a property into an array of strings in the encoding of
@@ -810,18 +786,14 @@ export namespace GdkX11 {
          * @param list location to store an  array of strings in    the encoding of the current locale. This array should be    freed using `gdk_free_text_list()`.
          * @returns the number of strings stored in list, or 0,     if the conversion failed
          */
-        text_property_to_text_list(
-            encoding: Gdk.Atom,
-            format: number,
-            text: number,
-            length: number,
-            list: string,
-        ): number;
+        text_property_to_text_list(encoding: Gdk.Atom, format: number, text: number, length: number, list: string): number;
+
         /**
          * Ungrab `display` after it has been grabbed with
          * `gdk_x11_display_grab()`.
          */
         ungrab(): void;
+
         /**
          * Converts from UTF-8 to compound text.
          * @param str a UTF-8 string
@@ -830,15 +802,17 @@ export namespace GdkX11 {
         utf8_to_compound_text(str: string): [boolean, Gdk.Atom, number, Uint8Array];
     }
 
+
     namespace X11DisplayManager {
         // Signal signatures
         interface SignalSignatures extends Gdk.DisplayManager.SignalSignatures {
-            'notify::default-display': (pspec: GObject.ParamSpec) => void;
+            "notify::default-display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.DisplayManager.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.DisplayManager.ConstructorProps {}
+        }
     }
 
     /**
@@ -857,40 +831,34 @@ export namespace GdkX11 {
         $signals: X11DisplayManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11DisplayManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11DisplayManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DisplayManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11DisplayManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DisplayManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11DisplayManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DisplayManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11DisplayManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DisplayManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11DisplayManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11DisplayManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11DisplayManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11DisplayManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace X11DragContext {
         // Signal signatures
-        interface SignalSignatures extends Gdk.DragContext.SignalSignatures {}
+        interface SignalSignatures extends Gdk.DragContext.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.DragContext.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.DragContext.ConstructorProps {}
+        }
     }
 
     /**
@@ -909,44 +877,37 @@ export namespace GdkX11 {
         $signals: X11DragContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11DragContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11DragContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DragContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11DragContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DragContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11DragContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11DragContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11DragContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11DragContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11DragContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11DragContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11DragContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11DragContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace X11GLContext {
         // Signal signatures
         interface SignalSignatures extends Gdk.GLContext.SignalSignatures {
-            'notify::display': (pspec: GObject.ParamSpec) => void;
-            'notify::shared-context': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::shared-context": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
+        }
     }
 
     /**
@@ -965,40 +926,34 @@ export namespace GdkX11 {
         $signals: X11GLContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11GLContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11GLContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11GLContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11GLContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11GLContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11GLContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11GLContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11GLContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11GLContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11GLContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11GLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11GLContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11GLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace X11Keymap {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Keymap.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Keymap.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.Keymap.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.Keymap.ConstructorProps {}
+        }
     }
 
     /**
@@ -1017,34 +972,24 @@ export namespace GdkX11 {
         $signals: X11Keymap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11Keymap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11Keymap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Keymap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11Keymap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Keymap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11Keymap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Keymap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11Keymap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Keymap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11Keymap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11Keymap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11Keymap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11Keymap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Extracts the group from the state field sent in an X Key event.
          * This is only needed for code processing raw X events, since {@link Gdk.EventKey}
@@ -1053,6 +998,7 @@ export namespace GdkX11 {
          * @returns the index of the active keyboard group for the event
          */
         get_group_for_state(state: number): number;
+
         /**
          * Determines whether a particular key code represents a key that
          * is a modifier. That is, it’s a key that normally just affects
@@ -1066,24 +1012,26 @@ export namespace GdkX11 {
         key_is_modifier(keycode: number): boolean;
     }
 
+
     namespace X11Monitor {
         // Signal signatures
         interface SignalSignatures extends Gdk.Monitor.SignalSignatures {
-            'notify::display': (pspec: GObject.ParamSpec) => void;
-            'notify::geometry': (pspec: GObject.ParamSpec) => void;
-            'notify::height-mm': (pspec: GObject.ParamSpec) => void;
-            'notify::manufacturer': (pspec: GObject.ParamSpec) => void;
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::refresh-rate': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::subpixel-layout': (pspec: GObject.ParamSpec) => void;
-            'notify::width-mm': (pspec: GObject.ParamSpec) => void;
-            'notify::workarea': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::geometry": (pspec: GObject.ParamSpec) => void;
+            "notify::height-mm": (pspec: GObject.ParamSpec) => void;
+            "notify::manufacturer": (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::refresh-rate": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::subpixel-layout": (pspec: GObject.ParamSpec) => void;
+            "notify::width-mm": (pspec: GObject.ParamSpec) => void;
+            "notify::workarea": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
+        }
     }
 
     /**
@@ -1102,39 +1050,30 @@ export namespace GdkX11 {
         $signals: X11Monitor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11Monitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Monitor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11Monitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Monitor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11Monitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Monitor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11Monitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Monitor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11Monitor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11Monitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param monitor
+         * @param monitor 
          */
         static get_output(monitor: Gdk.Monitor): xlib.XID;
     }
+
 
     namespace X11Screen {
         // Signal signatures
@@ -1143,14 +1082,15 @@ export namespace GdkX11 {
              * @signal
              * @run-last
              */
-            'window-manager-changed': () => void;
-            'notify::font-options': (pspec: GObject.ParamSpec) => void;
-            'notify::resolution': (pspec: GObject.ParamSpec) => void;
+            "window-manager-changed": () => void;
+            "notify::font-options": (pspec: GObject.ParamSpec) => void;
+            "notify::resolution": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.Screen.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.Screen.ConstructorProps {}
+        }
     }
 
     /**
@@ -1169,34 +1109,24 @@ export namespace GdkX11 {
         $signals: X11Screen.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11Screen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11Screen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Screen.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11Screen.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Screen.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11Screen.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Screen.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11Screen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Screen.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11Screen.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11Screen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11Screen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11Screen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the current workspace for `screen` when running under a
          * window manager that supports multiple workspaces, as described
@@ -1205,6 +1135,7 @@ export namespace GdkX11 {
          * @returns the current workspace, or 0 if workspaces are not supported
          */
         get_current_desktop(): number;
+
         /**
          * Gets the XID of the specified output/monitor.
          * If the X server does not support version 1.2 of the RANDR
@@ -1213,6 +1144,7 @@ export namespace GdkX11 {
          * @returns the XID of the monitor
          */
         get_monitor_output(monitor_num: number): xlib.XID;
+
         /**
          * Returns the number of workspaces for `screen` when running under a
          * window manager that supports multiple workspaces, as described
@@ -1221,32 +1153,37 @@ export namespace GdkX11 {
          * @returns the number of workspaces, or 0 if workspaces are not supported
          */
         get_number_of_desktops(): number;
+
         /**
          * Returns the index of a {@link Gdk.Screen}.
          * @returns the position of `screen` among the screens     of its display
          */
         get_screen_number(): number;
+
         /**
          * Returns the name of the window manager for `screen`.
          * @returns the name of the window manager screen `screen`, or "unknown" if the window manager is unknown. The string is owned by GDK and should not be freed.
          */
         get_window_manager_name(): string;
+
         /**
          * Returns the screen of a {@link Gdk.Screen}.
          * @returns an Xlib Screen*
          */
         get_xscreen(): xlib.Screen;
+
         /**
          * Looks up the {@link Gdk.Visual} for a particular screen and X Visual ID.
          * @param xvisualid an X Visual ID.
          * @returns the {@link Gdk.Visual} (owned by the screen   object), or `null` if the visual ID wasn’t found.
          */
         lookup_visual(xvisualid: xlib.VisualID): X11Visual;
+
         /**
          * This function is specific to the X11 backend of GDK, and indicates
          * whether the window manager supports a certain hint from the
          * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec) specification.
-         *
+         * 
          * When using this function, keep in mind that the window manager
          * can change over time; so you shouldn’t use this function in
          * a way that impacts persistent application state. A common bug
@@ -1261,13 +1198,16 @@ export namespace GdkX11 {
         supports_net_wm_hint(property: Gdk.Atom): boolean;
     }
 
+
     namespace X11Visual {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Visual.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Visual.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.Visual.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.Visual.ConstructorProps {}
+        }
     }
 
     /**
@@ -1286,34 +1226,24 @@ export namespace GdkX11 {
         $signals: X11Visual.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11Visual.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11Visual.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Visual.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11Visual.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Visual.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11Visual.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Visual.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11Visual.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Visual.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11Visual.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11Visual.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11Visual.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11Visual.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the X visual belonging to a {@link Gdk.Visual}.
          * @returns an Xlib Visual*.
@@ -1321,15 +1251,17 @@ export namespace GdkX11 {
         get_xvisual(): xlib.Visual;
     }
 
+
     namespace X11Window {
         // Signal signatures
         interface SignalSignatures extends Gdk.Window.SignalSignatures {
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gdk.Window.ConstructorProps {
 
-        interface ConstructorProps extends Gdk.Window.ConstructorProps {}
+        }
     }
 
     /**
@@ -1348,7 +1280,6 @@ export namespace GdkX11 {
         $signals: X11Window.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -1356,28 +1287,19 @@ export namespace GdkX11 {
         static foreign_new_for_display(display: X11Display, window: xlib.Window): X11Window;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Window.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11Window.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Window.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11Window.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Window.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Window.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11Window.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11Window.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Looks up the {@link Gdk.Window} that wraps the given native window handle.
          * @param display the {@link Gdk.Display} corresponding to the           window handle
@@ -1386,17 +1308,18 @@ export namespace GdkX11 {
         static lookup_for_display(display: X11Display, window: xlib.Window): X11Window;
 
         // Methods
-
         /**
          * Gets the number of the workspace `window` is on.
          * @returns the current workspace of `window`
          */
         get_desktop(): number;
+
         /**
          * Returns the X resource (window) belonging to a {@link Gdk.Window}.
          * @returns the ID of `drawable`’s X resource.
          */
         get_xid(): xlib.Window;
+
         /**
          * Moves the window to the correct workspace when running under a
          * window manager that supports multiple workspaces, as described
@@ -1404,6 +1327,7 @@ export namespace GdkX11 {
          * Will not do anything if the window is already on all workspaces.
          */
         move_to_current_desktop(): void;
+
         /**
          * Moves the window to the given workspace when running unde a
          * window manager that supports multiple workspaces, as described
@@ -1411,6 +1335,7 @@ export namespace GdkX11 {
          * @param desktop the number of the workspace to move the window to
          */
         move_to_desktop(desktop: number): void;
+
         /**
          * This is the same as `gdk_window_set_shadow_width()` but it only works
          * on GdkX11Window.
@@ -1420,6 +1345,7 @@ export namespace GdkX11 {
          * @param bottom The bottom extent
          */
         set_frame_extents(left: number, right: number, top: number, bottom: number): void;
+
         /**
          * This function can be used to disable frame synchronization for a window.
          * Normally frame synchronziation will be enabled or disabled based on whether
@@ -1430,29 +1356,32 @@ export namespace GdkX11 {
          * @param frame_sync_enabled whether frame-synchronization should be enabled
          */
         set_frame_sync_enabled(frame_sync_enabled: boolean): void;
+
         /**
          * Set a hint for the window manager, requesting that the titlebar
          * should be hidden when the window is maximized.
-         *
+         * 
          * Note that this property is automatically updated by GTK+, so this
          * function should only be used by applications which do not use GTK+
          * to create toplevel windows.
          * @param hide_titlebar_when_maximized whether to hide the titlebar when                                maximized
          */
         set_hide_titlebar_when_maximized(hide_titlebar_when_maximized: boolean): void;
+
         /**
          * GTK+ applications can request a dark theme variant. In order to
          * make other applications - namely window managers using GTK+ for
          * themeing - aware of this choice, GTK+ uses this function to
          * export the requested theme variant as _GTK_THEME_VARIANT property
          * on toplevel windows.
-         *
+         * 
          * Note that this property is automatically updated by GTK+, so this
          * function should only be used by applications which do not use GTK+
          * to create toplevel windows.
          * @param variant the theme variant to export
          */
         set_theme_variant(variant: string): void;
+
         /**
          * The application can use this call to update the _NET_WM_USER_TIME
          * property on a toplevel window.  This property stores an Xserver
@@ -1462,13 +1391,14 @@ export namespace GdkX11 {
          * windows when they are mapped depending on whether the new window
          * was created by a user action or is a "pop-up" window activated by a
          * timer or some other event.
-         *
+         * 
          * Note that this property is automatically updated by GDK, so this
          * function should only be used by applications which handle input
          * events bypassing GDK.
          * @param timestamp An XServer timestamp to which the property should be set
          */
         set_user_time(timestamp: number): void;
+
         /**
          * This function modifies or removes an arbitrary X11 window
          * property of type UTF8_STRING.  If the given `window` is
@@ -1476,74 +1406,91 @@ export namespace GdkX11 {
          * @param name Property name, will be interned as an X atom
          * @param value Property value, or `null` to delete
          */
-        set_utf8_property(name: string, value: string | null): void;
+        set_utf8_property(name: string, value: (string | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type X11AppLaunchContextClass = typeof X11AppLaunchContext;
+
     /**
      * @gir-type Alias
      */
     type X11CursorClass = typeof X11Cursor;
+
     /**
      * @gir-type Alias
      */
     type X11DeviceCoreClass = typeof X11DeviceCore;
+
     /**
      * @gir-type Alias
      */
     type X11DeviceManagerCoreClass = typeof X11DeviceManagerCore;
+
     /**
      * @gir-type Alias
      */
     type X11DeviceManagerXI2Class = typeof X11DeviceManagerXI2;
+
     /**
      * @gir-type Alias
      */
     type X11DeviceXI2Class = typeof X11DeviceXI2;
+
     /**
      * @gir-type Alias
      */
     type X11DisplayClass = typeof X11Display;
+
     /**
      * @gir-type Alias
      */
     type X11DisplayManagerClass = typeof X11DisplayManager;
+
     /**
      * @gir-type Alias
      */
     type X11DragContextClass = typeof X11DragContext;
+
     /**
      * @gir-type Alias
      */
     type X11GLContextClass = typeof X11GLContext;
+
     /**
      * @gir-type Alias
      */
     type X11KeymapClass = typeof X11Keymap;
+
     /**
      * @gir-type Alias
      */
     type X11MonitorClass = typeof X11Monitor;
+
     /**
      * @gir-type Alias
      */
     type X11ScreenClass = typeof X11Screen;
+
     /**
      * @gir-type Alias
      */
     type X11VisualClass = typeof X11Visual;
+
     /**
      * @gir-type Alias
      */
     type X11WindowClass = typeof X11Window;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

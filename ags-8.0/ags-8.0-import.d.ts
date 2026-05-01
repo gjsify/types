@@ -1,3 +1,4 @@
+
 import type Ags80 from '@girs/ags-8.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GnomeAutoar {
+
     /**
      * GnomeAutoar-0.1
      */
+
 
     /**
      * @gir-type Enum
@@ -29,6 +32,7 @@ export namespace GnomeAutoar {
         OVERWRITE,
         CHANGE_DESTINATION,
     }
+
 
     /**
      * This is a non-negative number which represents filters supported by
@@ -79,6 +83,7 @@ export namespace GnomeAutoar {
         LRZIP,
     }
 
+
     /**
      * This is a non-negative number which represents formats supported by
      * libarchive. A libarchive format is a file format which can store many
@@ -105,7 +110,7 @@ export namespace GnomeAutoar {
         /**
          * `ARCHIVE_FORMAT_7ZIP`: 7-zip archive
          */
-        '7ZIP',
+        "7ZIP",
         /**
          * `ARCHIVE_FORMAT_AR_BSD`: BSD variant of Unix archive
          *   format. This format does not support storing directories.
@@ -146,9 +151,13 @@ export namespace GnomeAutoar {
         XAR,
     }
 
+
     const EMPTY_ARCHIVE_ERRNO: number;
+
     const NOT_AN_ARCHIVE_ERRNO: number;
+
     const PASSPHRASE_REQUIRED_ERRNO: number;
+
     /**
      * Checks whether a mime type is supported by autoar. This function does no
      * blocking IO.
@@ -156,12 +165,14 @@ export namespace GnomeAutoar {
      * @returns `true` if the mime type is supported
      */
     function check_mime_type_supported(mime_type: string): boolean;
+
     /**
      * Gets description of the filter from the internal static data.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns description about the filter
      */
     function filter_get_description(filter: Filter): string;
+
     /**
      * Gets description of the filter from libarchive. This function creates
      * and destroys an archive object in order to get the description string.
@@ -169,12 +180,14 @@ export namespace GnomeAutoar {
      * @returns description about the filter. Free the returned string with `g_free()`.
      */
     function filter_get_description_libarchive(filter: Filter): string;
+
     /**
      * Gets the file name extension of the filter from the internal static data.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns a file name extension
      */
     function filter_get_extension(filter: Filter): string;
+
     /**
      * Gets the filter code used by libarchive. You can use the return value
      * as the argument for `archive_write_add_filter()`.
@@ -182,23 +195,27 @@ export namespace GnomeAutoar {
      * @returns an integer
      */
     function filter_get_filter_libarchive(filter: Filter): number;
+
     /**
      * Gets the MIME type of the filter from the internal static data.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns an MIME type
      */
     function filter_get_mime_type(filter: Filter): string;
+
     /**
      * Checks whether an {@link GnomeAutoar.Filter} is valid.
      * @param filter an {@link GnomeAutoar.Filter}
      * @returns `true` if the value of `filter` is valid
      */
     function filter_is_valid(filter: Filter): boolean;
+
     /**
      * Gets the maximal allowed values of {@link GnomeAutoar.Filter}
      * @returns maximal allowed values of {@link GnomeAutoar.Filter}
      */
     function filter_last(): number;
+
     /**
      * Gets the description for an archive `format` compressed by
      * `filter` using `GContentType` and `autoar_format_filter_get_mime_type()`.
@@ -207,6 +224,7 @@ export namespace GnomeAutoar {
      * @returns description about the archive. Free the returned string with `g_free()`.
      */
     function format_filter_get_description(format: Format, filter: Filter): string;
+
     /**
      * Gets the file name extension for an archive `format` compressed by
      * `filter`. The first character of the returned string is always '.'
@@ -215,6 +233,7 @@ export namespace GnomeAutoar {
      * @returns a file name extension. Free the returned string with `g_free()`.
      */
     function format_filter_get_extension(format: Format, filter: Filter): string;
+
     /**
      * Gets the MIME type for an archive `format` compressed by
      * `filter`. This function always succeed, but it is not guaranteed
@@ -227,12 +246,14 @@ export namespace GnomeAutoar {
      * @returns an MIME type. Free the returned string with `g_free()`.
      */
     function format_filter_get_mime_type(format: Format, filter: Filter): string;
+
     /**
      * Gets description of the format from the internal static data.
      * @param format an {@link GnomeAutoar.Format}
      * @returns description about the format
      */
     function format_get_description(format: Format): string;
+
     /**
      * Gets description of the format from libarchive. This function creates
      * and destroys an archive object in order to get the description string.
@@ -240,12 +261,14 @@ export namespace GnomeAutoar {
      * @returns description about the format. Free the returned string with `g_free()`.
      */
     function format_get_description_libarchive(format: Format): string;
+
     /**
      * Gets the file name extension of the format from the internal static data.
      * @param format an {@link GnomeAutoar.Format}
      * @returns a file name extension
      */
     function format_get_extension(format: Format): string;
+
     /**
      * Gets the format code used by libarchive. You can use the return value
      * as the argument for `archive_read_support_format_by_code()` and
@@ -258,28 +281,33 @@ export namespace GnomeAutoar {
      * @returns an integer
      */
     function format_get_format_libarchive(format: Format): number;
+
     /**
      * Gets the MIME type of the format from the internal static data.
      * @param format an {@link GnomeAutoar.Format}
      * @returns an MIME type
      */
     function format_get_mime_type(format: Format): string;
+
     /**
      * Checks whether an {@link GnomeAutoar.Format} is valid.
      * @param format an {@link GnomeAutoar.Format}
      * @returns `true` if the value of `format` is valid
      */
     function format_is_valid(format: Format): boolean;
+
     /**
      * Gets the maximal allowed values of {@link GnomeAutoar.Format}
      * @returns maximal allowed values of {@link GnomeAutoar.Format}
      */
     function format_last(): number;
+
     /**
      * Gets the libarchive Error Quark.
      * @returns a {@link GLib.Quark}.
      */
     function libarchive_quark(): GLib.Quark;
+
     /**
      * This function will query the file's mime type and then call
      * `autoar_check_mime_type_supported()`, so it does blocking IO.
@@ -287,18 +315,21 @@ export namespace GnomeAutoar {
      * @returns `true` if the mime type of the {@link Gio.File} is supported
      */
     function query_mime_type_supported(file: Gio.File): boolean;
+
     /**
      * @gir-type Callback
      */
     interface FilterFunc {
-        (a: any | null): number;
+        (a: (any | null)): number;
     }
+
     /**
      * @gir-type Callback
      */
     interface FormatFunc {
-        (a: any | null): number;
+        (a: (any | null)): number;
     }
+
     namespace Compressor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -321,7 +352,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            'decide-dest': (arg0: Gio.File) => void;
+            "decide-dest": (arg0: Gio.File) => void;
             /**
              * This signal is emitted when error occurs and all jobs should be terminated.
              * Possible error domains are `AUTOAR_COMPRESSOR_ERROR`, `G_IO_ERROR`, and
@@ -341,34 +372,33 @@ export namespace GnomeAutoar {
              * @run-last
              */
             progress: (arg0: number, arg1: number) => void;
-            'notify::completed-files': (pspec: GObject.ParamSpec) => void;
-            'notify::completed-size': (pspec: GObject.ParamSpec) => void;
-            'notify::create-top-level-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::files': (pspec: GObject.ParamSpec) => void;
-            'notify::notify-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::output-file': (pspec: GObject.ParamSpec) => void;
-            'notify::output-is-dest': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::source-files': (pspec: GObject.ParamSpec) => void;
+            "notify::completed-files": (pspec: GObject.ParamSpec) => void;
+            "notify::completed-size": (pspec: GObject.ParamSpec) => void;
+            "notify::create-top-level-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::files": (pspec: GObject.ParamSpec) => void;
+            "notify::notify-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::output-file": (pspec: GObject.ParamSpec) => void;
+            "notify::output-is-dest": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::source-files": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed_files: number;
             completedFiles: number;
-            completed_size: bigint | number;
-            completedSize: bigint | number;
+            completed_size: (bigint | number);
+            completedSize: (bigint | number);
             create_top_level_directory: boolean;
             createTopLevelDirectory: boolean;
             files: number;
-            notify_interval: bigint | number;
-            notifyInterval: bigint | number;
+            notify_interval: (bigint | number);
+            notifyInterval: (bigint | number);
             output_file: Gio.File;
             outputFile: Gio.File;
             output_is_dest: boolean;
             outputIsDest: boolean;
-            size: bigint | number;
+            size: (bigint | number);
             source_files: any;
             sourceFiles: any;
         }
@@ -381,79 +411,93 @@ export namespace GnomeAutoar {
         static $gtype: GObject.GType<Compressor>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get completed_files(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get completedFiles(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get completed_size(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get completedSize(): number;
+
         /**
          * @default false
          */
         get create_top_level_directory(): boolean;
         set create_top_level_directory(val: boolean);
+
         /**
          * @default false
          */
         get createTopLevelDirectory(): boolean;
         set createTopLevelDirectory(val: boolean);
+
         /**
          * @read-only
          * @default 0
          */
         get files(): number;
+
         /**
          * @default 100000
          */
         get notify_interval(): number;
-        set notify_interval(val: bigint | number);
+        set notify_interval(val: (bigint | number));
+
         /**
          * @default 100000
          */
         get notifyInterval(): number;
-        set notifyInterval(val: bigint | number);
+        set notifyInterval(val: (bigint | number));
+
         /**
          * @construct-only
          */
         get output_file(): Gio.File;
+
         /**
          * @construct-only
          */
         get outputFile(): Gio.File;
+
         /**
          * @default false
          */
         get output_is_dest(): boolean;
         set output_is_dest(val: boolean);
+
         /**
          * @default false
          */
         get outputIsDest(): boolean;
         set outputIsDest(val: boolean);
+
         /**
          * @read-only
          * @default 0
          */
         get size(): number;
+
         /**
          * @construct-only
          */
         get source_files(): any;
+
         /**
          * @construct-only
          */
@@ -469,85 +513,75 @@ export namespace GnomeAutoar {
         $signals: Compressor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Compressor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            source_files: Gio.File[],
-            output_file: Gio.File,
-            format: Format,
-            filter: Filter,
-            create_top_level_directory: boolean,
-        ): Compressor;
+        static ["new"](source_files: Gio.File[], output_file: Gio.File, format: Format, filter: Filter, create_top_level_directory: boolean): Compressor;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Compressor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Compressor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Compressor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Compressor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compressor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Compressor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Compressor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Compressor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Compressor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the {@link GnomeAutoar.Compressor} Error Quark.
          */
         static quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Gets the number of files has been read
          * @returns number of files has been read
          */
         get_completed_files(): number;
+
         /**
          * Gets the size in bytes has been read from the source files and directories.
          * @returns file size in bytes has been read
          */
         get_completed_size(): number;
+
         /**
          * Gets whether a top level directory will be created in the new archive.
          * @returns whether a top level directory will be created
          */
         get_create_top_level_directory(): boolean;
+
         /**
          * Gets the number of files will be read when the operation is completed. This
          * value is currently unset, so calling this function is useless.
          * @returns total number of files
          */
         get_files(): number;
+
         /**
          * Gets the compression filter
          * @returns the compression filter
          */
         get_filter(): Filter;
+
         /**
          * Gets the compression format
          * @returns the compression format
          */
         get_format(): Format;
+
         /**
          * See `autoar_compressor_set_notify_interval()`.
          * @returns the minimal interval in microseconds between the emission of the {@link GnomeAutoar.Compressor.SignalSignatures.progress | GnomeAutoar.Compressor::progress} signal.
          */
         get_notify_interval(): number;
+
         /**
          * If {@link GnomeAutoar.Compressor.output_is_dest} is `false`, gets the directory which
          * contains the new archive. Otherwise, gets the the new archive. See
@@ -555,22 +589,26 @@ export namespace GnomeAutoar {
          * @returns a {@link Gio.File}
          */
         get_output_file(): Gio.File;
+
         /**
          * See `autoar_compressor_set_output_is_dest()`.
          * @returns `true` if {@link GnomeAutoar.Compressor.output} is the location of the new archive.
          */
         get_output_is_dest(): boolean;
+
         /**
          * Gets the size in bytes will be read when the operation is completed. This
          * value is currently unset, so calling this function is useless.
          * @returns total file size in bytes
          */
         get_size(): number;
+
         /**
          * Gets the list of source files.
          * @returns a {@link GLib.List} with the source files
          */
         get_source_files(): Gio.File[];
+
         /**
          * Sets the minimal interval between emission of {@link GnomeAutoar.Compressor.SignalSignatures.progress | GnomeAutoar.Compressor::progress}
          * signal. This prevent too frequent signal emission, which may cause
@@ -578,7 +616,8 @@ export namespace GnomeAutoar {
          * interval to 0, so you will receive every progress update.
          * @param notify_interval the minimal interval in microseconds
          */
-        set_notify_interval(notify_interval: bigint | number): void;
+        set_notify_interval(notify_interval: (bigint | number)): void;
+
         /**
          * By default {@link GnomeAutoar.Compressor.output_is_dest} is set to `false`, which means
          * the new archive will be created as a regular file under
@@ -595,17 +634,20 @@ export namespace GnomeAutoar {
          * @param output_is_dest `true` if the location of the new archive has been already decided
          */
         set_output_is_dest(output_is_dest: boolean): void;
+
         /**
          * Sets the archive passphrase. It works only with `ARCHIVE_FORMAT_ZIP`.
          * @param passphrase the archive passphrase
          */
         set_passphrase(passphrase: string): void;
+
         /**
          * Runs the archive creating work. All callbacks will be called in the same
          * thread as the caller of this functions.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start(cancellable: Gio.Cancellable | null): void;
+        start(cancellable: (Gio.Cancellable | null)): void;
+
         /**
          * Asynchronously runs the archive creating work. You should connect to
          * {@link GnomeAutoar.Compressor.SignalSignatures.cancelled | GnomeAutoar.Compressor::cancelled}, {@link GnomeAutoar.Compressor.SignalSignatures.error | GnomeAutoar.Compressor::error}, and
@@ -614,8 +656,9 @@ export namespace GnomeAutoar {
          * safely manipulate GTK+ widgets in the callbacks.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start_async(cancellable: Gio.Cancellable | null): void;
+        start_async(cancellable: (Gio.Cancellable | null)): void;
     }
+
 
     namespace Extractor {
         // Signal signatures
@@ -638,12 +681,12 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            conflict: (arg0: Gio.File, arg1: any | null) => number;
+            conflict: (arg0: Gio.File, arg1: (any | null)) => number;
             /**
              * @signal
              * @run-last
              */
-            'decide-destination': (arg0: Gio.File, arg1: any | null) => GObject.Object;
+            "decide-destination": (arg0: Gio.File, arg1: (any | null)) => GObject.Object;
             /**
              * This signal is emitted when error occurs and all jobs should be terminated.
              * Possible error domains are `AUTOAR_EXTRACTOR_ERROR`, `G_IO_ERROR`, and
@@ -666,7 +709,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            'request-passphrase': () => string;
+            "request-passphrase": () => string;
             /**
              * This signal is emitted when {@link GnomeAutoar.Extractor} finish scanning filename entries
              * in the source archive.
@@ -674,28 +717,27 @@ export namespace GnomeAutoar {
              * @run-last
              */
             scanned: (arg0: number) => void;
-            'notify::completed-files': (pspec: GObject.ParamSpec) => void;
-            'notify::completed-size': (pspec: GObject.ParamSpec) => void;
-            'notify::delete-after-extraction': (pspec: GObject.ParamSpec) => void;
-            'notify::notify-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::output-file': (pspec: GObject.ParamSpec) => void;
-            'notify::output-is-dest': (pspec: GObject.ParamSpec) => void;
-            'notify::source-file': (pspec: GObject.ParamSpec) => void;
-            'notify::total-files': (pspec: GObject.ParamSpec) => void;
-            'notify::total-size': (pspec: GObject.ParamSpec) => void;
+            "notify::completed-files": (pspec: GObject.ParamSpec) => void;
+            "notify::completed-size": (pspec: GObject.ParamSpec) => void;
+            "notify::delete-after-extraction": (pspec: GObject.ParamSpec) => void;
+            "notify::notify-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::output-file": (pspec: GObject.ParamSpec) => void;
+            "notify::output-is-dest": (pspec: GObject.ParamSpec) => void;
+            "notify::source-file": (pspec: GObject.ParamSpec) => void;
+            "notify::total-files": (pspec: GObject.ParamSpec) => void;
+            "notify::total-size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed_files: number;
             completedFiles: number;
-            completed_size: bigint | number;
-            completedSize: bigint | number;
+            completed_size: (bigint | number);
+            completedSize: (bigint | number);
             delete_after_extraction: boolean;
             deleteAfterExtraction: boolean;
-            notify_interval: bigint | number;
-            notifyInterval: bigint | number;
+            notify_interval: (bigint | number);
+            notifyInterval: (bigint | number);
             output_file: Gio.File;
             outputFile: Gio.File;
             output_is_dest: boolean;
@@ -704,8 +746,8 @@ export namespace GnomeAutoar {
             sourceFile: Gio.File;
             total_files: number;
             totalFiles: number;
-            total_size: bigint | number;
-            totalSize: bigint | number;
+            total_size: (bigint | number);
+            totalSize: (bigint | number);
         }
     }
 
@@ -716,88 +758,104 @@ export namespace GnomeAutoar {
         static $gtype: GObject.GType<Extractor>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get completed_files(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get completedFiles(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get completed_size(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get completedSize(): number;
+
         /**
          * @default false
          */
         get delete_after_extraction(): boolean;
         set delete_after_extraction(val: boolean);
+
         /**
          * @default false
          */
         get deleteAfterExtraction(): boolean;
         set deleteAfterExtraction(val: boolean);
+
         /**
          * @default 100000
          */
         get notify_interval(): number;
-        set notify_interval(val: bigint | number);
+        set notify_interval(val: (bigint | number));
+
         /**
          * @default 100000
          */
         get notifyInterval(): number;
-        set notifyInterval(val: bigint | number);
+        set notifyInterval(val: (bigint | number));
+
         /**
          * @construct-only
          */
         get output_file(): Gio.File;
+
         /**
          * @construct-only
          */
         get outputFile(): Gio.File;
+
         /**
          * @default false
          */
         get output_is_dest(): boolean;
         set output_is_dest(val: boolean);
+
         /**
          * @default false
          */
         get outputIsDest(): boolean;
         set outputIsDest(val: boolean);
+
         /**
          * @construct-only
          */
         get source_file(): Gio.File;
+
         /**
          * @construct-only
          */
         get sourceFile(): Gio.File;
+
         /**
          * @read-only
          * @default 0
          */
         get total_files(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get totalFiles(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get total_size(): number;
+
         /**
          * @read-only
          * @default 0
@@ -814,63 +872,56 @@ export namespace GnomeAutoar {
         $signals: Extractor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Extractor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source_file: Gio.File, output_file: Gio.File): Extractor;
+        static ["new"](source_file: Gio.File, output_file: Gio.File): Extractor;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Extractor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Extractor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Extractor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Extractor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Extractor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Extractor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Extractor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Extractor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Extractor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the {@link GnomeAutoar.Extractor} Error Quark.
          */
         static quark(): GLib.Quark;
 
         // Methods
-
         /**
          * Gets the number of files has been written to disk.
          * @returns number of files has been written to disk
          */
         get_completed_files(): number;
+
         /**
          * Gets the size in bytes has been written to disk.
          * @returns size in bytes has been written
          */
         get_completed_size(): number;
+
         /**
          * Whether the source archive will be deleted after a successful extraction.
          * @returns `true` if the source archive will be deleted after a succesful extraction
          */
         get_delete_after_extraction(): boolean;
+
         /**
          * See `autoar_extractor_set_notify_interval()`.
          * @returns the minimal interval in microseconds between the emission of the {@link GnomeAutoar.Extractor.SignalSignatures.progress | GnomeAutoar.Extractor::progress} signal.
          */
         get_notify_interval(): number;
+
         /**
          * Gets the {@link Gio.File} object which represents the output directory of extracted
          * file or directory, or the extracted file or directory itself if you set
@@ -878,34 +929,40 @@ export namespace GnomeAutoar {
          * @returns a {@link Gio.File}
          */
         get_output_file(): Gio.File;
+
         /**
          * See `autoar_extractor_set_output_is_dest()`.
          * @returns `true` if {@link GnomeAutoar.Extractor.output_file} is the destination for extracted files
          */
         get_output_is_dest(): boolean;
+
         /**
          * Gets the {@link Gio.File} object which represents the source archive that will be
          * extracted for this object.
          * @returns a {@link Gio.File}
          */
         get_source_file(): Gio.File;
+
         /**
          * Gets the total number of files will be written when the operation is
          * completed.
          * @returns total number of extracted files
          */
         get_total_files(): number;
+
         /**
          * Gets the size in bytes will be written when the operation is completed.
          * @returns total size of extracted files in bytes
          */
         get_total_size(): number;
+
         /**
          * By default {@link GnomeAutoar.Extractor.delete_after_extraction} is set to `false` so the
          * source archive will not be automatically deleted if extraction succeeds.
          * @param delete_after_extraction `true` if the source archive should be deleted after a successful extraction
          */
         set_delete_after_extraction(delete_after_extraction: boolean): void;
+
         /**
          * Sets the minimal interval between emission of {@link GnomeAutoar.Extractor.SignalSignatures.progress | GnomeAutoar.Extractor::progress}
          * signal. This prevent too frequent signal emission, which may cause
@@ -913,7 +970,8 @@ export namespace GnomeAutoar {
          * to 0, so you will receive every progress update.
          * @param notify_interval the minimal interval in microseconds
          */
-        set_notify_interval(notify_interval: bigint | number): void;
+        set_notify_interval(notify_interval: (bigint | number)): void;
+
         /**
          * By default {@link GnomeAutoar.Extractor.output_is_dest} is set to `false`, which means
          * only one file or directory will be created in {@link GnomeAutoar.Extractor.output_file}.
@@ -923,26 +981,29 @@ export namespace GnomeAutoar {
          * extracted files. In any case, the destination will be notified via
          * {@link GnomeAutoar.Extractor.SignalSignatures.decide_destination | GnomeAutoar.Extractor::decide-destination}, when it is possible to set a new
          * destination.
-         *
+         * 
          * {@link GnomeAutoar.Extractor} will attempt to create the destination regardless to whether
          * its path was internally decided or not.
-         *
+         * 
          * This function should only be called before calling `autoar_extractor_start()` or
          * `autoar_extractor_start_async()`.
          * @param output_is_dest `true` if {@link GnomeAutoar.Extractor.output_file} is the destination for extracted files
          */
         set_output_is_dest(output_is_dest: boolean): void;
+
         /**
          * Sets a passphrase to use if the file to decompress is passphrase-protected.
          * @param passphrase a string with the passphrase to use
          */
         set_passphrase(passphrase: string): void;
+
         /**
          * Runs the archive extracting work. All callbacks will be called in the same
          * thread as the caller of this functions.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start(cancellable: Gio.Cancellable | null): void;
+        start(cancellable: (Gio.Cancellable | null)): void;
+
         /**
          * Asynchronously runs the archive extracting work. You should connect to
          * {@link GnomeAutoar.Extractor.SignalSignatures.cancelled | GnomeAutoar.Extractor::cancelled}, {@link GnomeAutoar.Extractor.SignalSignatures.error | GnomeAutoar.Extractor::error}, and
@@ -951,22 +1012,26 @@ export namespace GnomeAutoar {
          * safely manipulate GTK+ widgets in the callbacks.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null` to ignore
          */
-        start_async(cancellable: Gio.Cancellable | null): void;
+        start_async(cancellable: (Gio.Cancellable | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type CompressorClass = typeof Compressor;
+
     /**
      * @gir-type Alias
      */
     type ExtractorClass = typeof Extractor;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,9 +27,11 @@ import type Atk from '@girs/atk-1.0';
 import type CDesktopEnums from '@girs/cdesktopenums-3.0';
 
 export namespace CinnamonDesktop {
+
     /**
      * CinnamonDesktop-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -37,6 +40,7 @@ export namespace CinnamonDesktop {
         NORMAL,
         LARGE,
     }
+
 
     /**
      * @gir-type Enum
@@ -48,6 +52,7 @@ export namespace CinnamonDesktop {
         OFF,
         UNKNOWN,
     }
+
 
     /**
      * @gir-type Enum
@@ -67,6 +72,7 @@ export namespace CinnamonDesktop {
         UNKNOWN,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -74,21 +80,27 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static UNKNOWN: number;
+
         static NO_RANDR_EXTENSION: number;
+
         static RANDR_ERROR: number;
+
         static BOUNDS_ERROR: number;
+
         static CRTC_ASSIGNMENT: number;
+
         static NO_MATCHING_CONFIG: number;
+
         static NO_DPMS_EXTENSION: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
 
+
     const RR_CONNECTOR_TYPE_PANEL: string;
+
     /**
      * Returns the GSettings key string of the
      * given media key type.
@@ -96,6 +108,7 @@ export namespace CinnamonDesktop {
      * @returns the string corresponding to the provided media key type or `null`
      */
     function desktop_get_media_key_string(type: number): string;
+
     /**
      * Prepends a terminal (either the one configured as default in
      * the user's GNOME setup, or one of the common xterm emulators) to the passed
@@ -109,12 +122,15 @@ export namespace CinnamonDesktop {
      * @param argv a pointer to the vector
      */
     function desktop_prepend_terminal_to_vector(argc: number, argv: string): void;
+
     /**
-     * @param factory
-     * @param quick
+     * @param factory 
+     * @param quick 
      */
     function desktop_thumbnail_cache_check_permissions(factory: DesktopThumbnailFactory, quick: boolean): boolean;
+
     function desktop_thumbnail_cache_fix_permissions(): void;
+
     /**
      * Returns whether the thumbnail has the correct uri embedded in the
      * Thumb::URI option in the png.
@@ -124,6 +140,7 @@ export namespace CinnamonDesktop {
      * @since 2.2
      */
     function desktop_thumbnail_has_uri(pixbuf: GdkPixbuf.Pixbuf, uri: string): boolean;
+
     /**
      * Returns whether the thumbnail has the correct uri and mtime embedded in the
      * png options.
@@ -133,7 +150,8 @@ export namespace CinnamonDesktop {
      * @returns TRUE if the thumbnail has the right `uri` and `mtime`
      * @since 2.2
      */
-    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: bigint | number): boolean;
+    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: (bigint | number)): boolean;
+
     /**
      * Calculates the MD5 checksum of the uri. This can be useful
      * if you want to manually handle thumbnail files.
@@ -143,6 +161,7 @@ export namespace CinnamonDesktop {
      * @deprecated since 2.22: Use {@link GLib.Checksum} instead
      */
     function desktop_thumbnail_md5(uri: string): string;
+
     /**
      * Returns the filename that a thumbnail of size `size` for `uri` would have.
      * @param uri an uri
@@ -151,6 +170,7 @@ export namespace CinnamonDesktop {
      * @since 2.2
      */
     function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize): string;
+
     /**
      * Scales the pixbuf to the desired size. This function
      * is a lot faster than gdk-pixbuf when scaling down by
@@ -161,17 +181,15 @@ export namespace CinnamonDesktop {
      * @returns a scaled pixbuf
      * @since 2.2
      */
-    function desktop_thumbnail_scale_down_pixbuf(
-        pixbuf: GdkPixbuf.Pixbuf,
-        dest_width: number,
-        dest_height: number,
-    ): GdkPixbuf.Pixbuf;
+    function desktop_thumbnail_scale_down_pixbuf(pixbuf: GdkPixbuf.Pixbuf, dest_width: number, dest_height: number): GdkPixbuf.Pixbuf;
+
     /**
      * Gets all locales.
      * @returns a newly allocated `null`-terminated string array containing the   all locales. Free with `g_strfreev()`.
      * @since 3.8
      */
     function get_all_locales(): string[];
+
     /**
      * Gets the country name for `code`. If `translation` is provided the
      * returned string is translated accordingly.
@@ -180,7 +198,8 @@ export namespace CinnamonDesktop {
      * @returns the country name. Caller takes ownership.
      * @since 3.8
      */
-    function get_country_from_code(code: string, translation: string | null): string;
+    function get_country_from_code(code: string, translation: (string | null)): string;
+
     /**
      * Gets the country description for `locale`. If `translation` is
      * provided the returned string is translated accordingly.
@@ -189,7 +208,8 @@ export namespace CinnamonDesktop {
      * @returns the country description. Caller takes ownership.
      * @since 3.8
      */
-    function get_country_from_locale(locale: string, translation: string | null): string;
+    function get_country_from_locale(locale: string, translation: (string | null)): string;
+
     /**
      * Gets the default input source's type and identifier for a given
      * locale.
@@ -198,6 +218,7 @@ export namespace CinnamonDesktop {
      * @since 3.8
      */
     function get_input_source_from_locale(locale: string): [boolean, string, string];
+
     /**
      * Gets the language name for `code`. If `translation` is provided the
      * returned string is translated accordingly.
@@ -206,7 +227,8 @@ export namespace CinnamonDesktop {
      * @returns the language name. Caller takes ownership.
      * @since 3.8
      */
-    function get_language_from_code(code: string, translation: string | null): string;
+    function get_language_from_code(code: string, translation: (string | null)): string;
+
     /**
      * Gets the language description for `locale`. If `translation` is
      * provided the returned string is translated accordingly.
@@ -215,7 +237,8 @@ export namespace CinnamonDesktop {
      * @returns the language description. Caller takes ownership.
      * @since 3.8
      */
-    function get_language_from_locale(locale: string, translation: string | null): string;
+    function get_language_from_locale(locale: string, translation: (string | null)): string;
+
     /**
      * Gets a translation of the raw `modifier` string. If `translation`
      * is provided the returned string is translated accordingly.
@@ -224,7 +247,8 @@ export namespace CinnamonDesktop {
      * @returns the translated modifier string. Caller takes ownership.
      * @since 3.34
      */
-    function get_translated_modifier(modifier: string, translation: string | null): string;
+    function get_translated_modifier(modifier: string, translation: (string | null)): string;
+
     /**
      * Returns `true` if there are translations for language `code`.
      * @param code an ISO 639 code string
@@ -232,6 +256,7 @@ export namespace CinnamonDesktop {
      * @since 3.8
      */
     function language_has_translations(code: string): boolean;
+
     /**
      * Gets the normalized locale string in the form
      * [language[_country][.codeset][`modifier`]] for `name`.
@@ -240,6 +265,7 @@ export namespace CinnamonDesktop {
      * @since 3.8
      */
     function normalize_locale(locale: string): string;
+
     /**
      * Extracts the various components of a locale string in XPG format.
      * ([language[_country][.codeset][`modifier`]]). See
@@ -249,29 +275,31 @@ export namespace CinnamonDesktop {
      * @since 3.8
      */
     function parse_locale(locale: string): [boolean, string, string, string, string];
+
     /**
      * Returns the {@link GLib.Quark} that will be used for {@link GLib.Error} values returned by the
      * GnomeRR API.
      * @returns a {@link GLib.Quark} used to identify errors coming from the GnomeRR API.
      */
     function rr_error_quark(): GLib.Quark;
+
     /**
      * If the current process is running inside a user systemd instance, then move
      * the launched PID into a transient scope. The given `name` will be used to
      * create a unit name. It should be the application ID for desktop files or
      * the executable in all other cases.
-     *
+     * 
      * It is advisable to use this function every time where the started application
      * can be considered reasonably independent of the launching application. Placing
      * it in a scope creates proper separation between the programs rather than being
      * considered a single entity by systemd.
-     *
+     * 
      * It is always safe to call this function. Note that a successful return code
      * does not imply that a unit has been created. It solely means that no error
      * condition was hit sending the request.
-     *
+     * 
      * If `connection` is `null` then `g_dbus_get()` will be called internally.
-     *
+     * 
      * Note that most callers will not need to handle errors. As such, it is normal
      * to pass a `null` `callback`.
      * @param name Name for the application
@@ -280,64 +308,24 @@ export namespace CinnamonDesktop {
      * @param connection An {@link Gio.DBusConnection} to the session bus, or `null`
      * @param cancellable {@link Gio.Cancellable} to use
      */
-    function start_systemd_scope(
-        name: string,
-        pid: number,
-        description: string | null,
-        connection: Gio.DBusConnection | null,
-        cancellable: Gio.Cancellable | null,
-    ): globalThis.Promise<boolean>;
+    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
     /**
      * If the current process is running inside a user systemd instance, then move
      * the launched PID into a transient scope. The given `name` will be used to
      * create a unit name. It should be the application ID for desktop files or
      * the executable in all other cases.
-     *
+     * 
      * It is advisable to use this function every time where the started application
      * can be considered reasonably independent of the launching application. Placing
      * it in a scope creates proper separation between the programs rather than being
      * considered a single entity by systemd.
-     *
+     * 
      * It is always safe to call this function. Note that a successful return code
      * does not imply that a unit has been created. It solely means that no error
      * condition was hit sending the request.
-     *
+     * 
      * If `connection` is `null` then `g_dbus_get()` will be called internally.
-     *
-     * Note that most callers will not need to handle errors. As such, it is normal
-     * to pass a `null` `callback`.
-     * @param name Name for the application
-     * @param pid The PID of the application
-     * @param description A description to use for the unit, or `null`
-     * @param connection An {@link Gio.DBusConnection} to the session bus, or `null`
-     * @param cancellable {@link Gio.Cancellable} to use
-     * @param callback Callback to call when the operation is done
-     */
-    function start_systemd_scope(
-        name: string,
-        pid: number,
-        description: string | null,
-        connection: Gio.DBusConnection | null,
-        cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<string> | null,
-    ): void;
-    /**
-     * If the current process is running inside a user systemd instance, then move
-     * the launched PID into a transient scope. The given `name` will be used to
-     * create a unit name. It should be the application ID for desktop files or
-     * the executable in all other cases.
-     *
-     * It is advisable to use this function every time where the started application
-     * can be considered reasonably independent of the launching application. Placing
-     * it in a scope creates proper separation between the programs rather than being
-     * considered a single entity by systemd.
-     *
-     * It is always safe to call this function. Note that a successful return code
-     * does not imply that a unit has been created. It solely means that no error
-     * condition was hit sending the request.
-     *
-     * If `connection` is `null` then `g_dbus_get()` will be called internally.
-     *
+     * 
      * Note that most callers will not need to handle errors. As such, it is normal
      * to pass a `null` `callback`.
      * @param name Name for the application
@@ -347,30 +335,53 @@ export namespace CinnamonDesktop {
      * @param cancellable {@link Gio.Cancellable} to use
      * @param callback Callback to call when the operation is done
      */
-    function start_systemd_scope(
-        name: string,
-        pid: number,
-        description: string | null,
-        connection: Gio.DBusConnection | null,
-        cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<string> | null,
-    ): globalThis.Promise<boolean> | void;
+    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): void;
+    /**
+     * If the current process is running inside a user systemd instance, then move
+     * the launched PID into a transient scope. The given `name` will be used to
+     * create a unit name. It should be the application ID for desktop files or
+     * the executable in all other cases.
+     * 
+     * It is advisable to use this function every time where the started application
+     * can be considered reasonably independent of the launching application. Placing
+     * it in a scope creates proper separation between the programs rather than being
+     * considered a single entity by systemd.
+     * 
+     * It is always safe to call this function. Note that a successful return code
+     * does not imply that a unit has been created. It solely means that no error
+     * condition was hit sending the request.
+     * 
+     * If `connection` is `null` then `g_dbus_get()` will be called internally.
+     * 
+     * Note that most callers will not need to handle errors. As such, it is normal
+     * to pass a `null` `callback`.
+     * @param name Name for the application
+     * @param pid The PID of the application
+     * @param description A description to use for the unit, or `null`
+     * @param connection An {@link Gio.DBusConnection} to the session bus, or `null`
+     * @param cancellable {@link Gio.Cancellable} to use
+     * @param callback Callback to call when the operation is done
+     */
+    function start_systemd_scope(name: string, pid: number, description: (string | null), connection: (Gio.DBusConnection | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<string> | null)): (globalThis.Promise<boolean> | void);
+
     /**
      * Finish an asynchronous operation to create a transient scope that was
      * started with `gnome_start_systemd_scope()`.
-     *
+     * 
      * Note that a successful return code does not imply that a unit has been
      * created. It solely means that no error condition was hit sending the request.
      * @param res A {@link Gio.AsyncResult}
      * @returns `false` on error, `true` otherwise
      */
     function start_systemd_scope_finish(res: Gio.AsyncResult): boolean;
+
     /**
      * @gir-type Callback
      */
     interface IdleMonitorWatchFunc {
         (monitor: IdleMonitor, id: number): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -383,6 +394,7 @@ export namespace CinnamonDesktop {
         REFLECT_X,
         REFLECT_Y,
     }
+
 
     namespace BG {
         // Signal signatures
@@ -400,8 +412,9 @@ export namespace CinnamonDesktop {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -420,36 +433,26 @@ export namespace CinnamonDesktop {
         $signals: BG.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BG.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BG;
+        static ["new"](): BG;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BG.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BG.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BG.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BG.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * This function queries the _XROOTPMAP_ID property from
          * the root window associated with `screen` to determine
@@ -459,10 +462,12 @@ export namespace CinnamonDesktop {
          * @param screen a {@link Gdk.Screen}
          */
         static get_surface_from_root(screen: Gdk.Screen): cairo.Surface;
+
         /**
-         * @param background
+         * @param background 
          */
         static set_accountsservice_background(background: string): void;
+
         /**
          * Set the root pixmap, and properties pointing to it. We
          * do this atomically with a server grab to make sure that
@@ -474,6 +479,7 @@ export namespace CinnamonDesktop {
          * @param surface the {@link cairo.Surface} to set root background from.   Must be an xlib surface backing a pixmap.
          */
         static set_surface_as_root(screen: Gdk.Screen, surface: cairo.Surface): void;
+
         /**
          * Set the root pixmap, and properties pointing to it.
          * This function differs from `gnome_bg_set_surface_as_root()`
@@ -485,119 +491,119 @@ export namespace CinnamonDesktop {
         static set_surface_as_root_with_crossfade(screen: Gdk.Screen, surface: cairo.Surface): BGCrossfade;
 
         // Methods
-
         changes_with_time(): boolean;
+
         /**
-         * @param image
-         * @param width
-         * @param height
+         * @param image 
+         * @param width 
+         * @param height 
          */
         create_and_set_gtk_image(image: Gtk.Image, width: number, height: number): void;
+
         /**
          * @param root_window the {@link Gdk.Window}
          * @param screen the {@link Gdk.Screen}
          */
         create_and_set_surface_as_root(root_window: Gdk.Window, screen: Gdk.Screen): void;
+
         /**
          * Creates a thumbnail for a certain frame, where 'frame' is somewhat
          * vaguely defined as 'suitable point to show while single-stepping
          * through the slideshow'.
-         * @param factory
-         * @param screen
-         * @param dest_width
-         * @param dest_height
-         * @param frame_num
+         * @param factory 
+         * @param screen 
+         * @param dest_width 
+         * @param dest_height 
+         * @param frame_num 
          * @returns the newly created thumbnail or or NULL if frame_num is out of bounds.
          */
-        create_frame_thumbnail(
-            factory: DesktopThumbnailFactory,
-            screen: Gdk.Screen,
-            dest_width: number,
-            dest_height: number,
-            frame_num: number,
-        ): GdkPixbuf.Pixbuf;
+        create_frame_thumbnail(factory: DesktopThumbnailFactory, screen: Gdk.Screen, dest_width: number, dest_height: number, frame_num: number): GdkPixbuf.Pixbuf;
+
         /**
          * Create a surface that can be set as background for `window`. If `is_root` is
          * TRUE, the surface created will be created by a temporary X server connection
          * so that if someone calls XKillClient on it, it won't affect the application
          * who created it.
-         * @param window
-         * @param width
-         * @param height
-         * @param root
+         * @param window 
+         * @param width 
+         * @param height 
+         * @param root 
          * @returns `null` on error (e.g. out of X connections)
          */
         create_surface(window: Gdk.Window, width: number, height: number, root: boolean): cairo.Surface;
+
         /**
-         * @param factory
-         * @param screen
-         * @param dest_width
-         * @param dest_height
+         * @param factory 
+         * @param screen 
+         * @param dest_width 
+         * @param dest_height 
          * @returns a {@link GdkPixbuf.Pixbuf} showing the background as a thumbnail
          */
-        create_thumbnail(
-            factory: DesktopThumbnailFactory,
-            screen: Gdk.Screen,
-            dest_width: number,
-            dest_height: number,
-        ): GdkPixbuf.Pixbuf;
+        create_thumbnail(factory: DesktopThumbnailFactory, screen: Gdk.Screen, dest_width: number, dest_height: number): GdkPixbuf.Pixbuf;
+
         /**
-         * @param dest
-         * @param screen
-         * @param is_root
+         * @param dest 
+         * @param screen 
+         * @param is_root 
          */
         draw(dest: GdkPixbuf.Pixbuf, screen: Gdk.Screen, is_root: boolean): void;
+
         /**
-         * @param type
-         * @param primary
-         * @param secondary
+         * @param type 
+         * @param primary 
+         * @param secondary 
          */
         get_color(type: CDesktopEnums.BackgroundShading, primary: Gdk.Color, secondary: Gdk.Color): void;
+
         get_filename(): string;
+
         /**
-         * @param factory
-         * @param best_width
-         * @param best_height
-         * @param width
-         * @param height
+         * @param factory 
+         * @param best_width 
+         * @param best_height 
+         * @param width 
+         * @param height 
          */
-        get_image_size(
-            factory: DesktopThumbnailFactory,
-            best_width: number,
-            best_height: number,
-            width: number,
-            height: number,
-        ): boolean;
+        get_image_size(factory: DesktopThumbnailFactory, best_width: number, best_height: number, width: number, height: number): boolean;
+
         get_placement(): CDesktopEnums.BackgroundStyle;
+
         has_multiple_sizes(): boolean;
+
         /**
-         * @param dest_width
-         * @param dest_height
+         * @param dest_width 
+         * @param dest_height 
          */
         is_dark(dest_width: number, dest_height: number): boolean;
+
         /**
-         * @param settings
+         * @param settings 
          */
         load_from_preferences(settings: Gio.Settings): void;
+
         /**
-         * @param settings
+         * @param settings 
          */
         save_to_preferences(settings: Gio.Settings): void;
+
         /**
-         * @param type
-         * @param primary
-         * @param secondary
+         * @param type 
+         * @param primary 
+         * @param secondary 
          */
         set_color(type: CDesktopEnums.BackgroundShading, primary: Gdk.Color, secondary: Gdk.Color): void;
+
         /**
-         * @param filename
+         * @param filename 
          */
         set_filename(filename: string): void;
+
         /**
-         * @param placement
+         * @param placement 
          */
         set_placement(placement: CDesktopEnums.BackgroundStyle): void;
     }
+
 
     namespace BGCrossfade {
         // Signal signatures
@@ -610,12 +616,11 @@ export namespace CinnamonDesktop {
              * @run-last
              */
             finished: (arg0: GObject.Object) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             height: number;
             width: number;
@@ -629,7 +634,6 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<BGCrossfade>;
 
         // Properties
-
         /**
          * When a crossfade is running, this is height of the fading
          * surface.
@@ -637,6 +641,7 @@ export namespace CinnamonDesktop {
          * @default 0
          */
         get height(): number;
+
         /**
          * When a crossfade is running, this is width of the fading
          * surface.
@@ -655,48 +660,36 @@ export namespace CinnamonDesktop {
         $signals: BGCrossfade.SignalSignatures;
 
         // Fields
-
         parent_object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<BGCrossfade.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](width: number, height: number): BGCrossfade;
+        static ["new"](width: number, height: number): BGCrossfade;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BGCrossfade.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BGCrossfade.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BGCrossfade.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BGCrossfade.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BGCrossfade.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BGCrossfade.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BGCrossfade.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BGCrossfade.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BGCrossfade.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BGCrossfade.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BGCrossfade.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BGCrossfade.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param window
+         * @param window 
          * @virtual
          */
         vfunc_finished(window: Gdk.Window): void;
 
         // Methods
-
         /**
          * This function reveals whether or not `fade` is currently
          * running on a window.  See `gnome_bg_crossfade_start()` for
@@ -704,6 +697,7 @@ export namespace CinnamonDesktop {
          * @returns `true` if fading, or `false` if not fading
          */
         is_started(): boolean;
+
         /**
          * Before initiating a crossfade with `gnome_bg_crossfade_start()`
          * a start and end surface have to be set.  This function sets
@@ -712,6 +706,7 @@ export namespace CinnamonDesktop {
          * @returns `true` if successful, or `false` if the surface could not be copied.
          */
         set_end_surface(surface: cairo.Surface): boolean;
+
         /**
          * Before initiating a crossfade with `gnome_bg_crossfade_start()`
          * a start and end surface have to be set.  This function sets
@@ -720,6 +715,7 @@ export namespace CinnamonDesktop {
          * @returns `true` if successful, or `false` if the surface could not be copied.
          */
         set_start_surface(surface: cairo.Surface): boolean;
+
         /**
          * This function initiates a quick crossfade between two surfaces on
          * the background of `window`.  Before initiating the crossfade both
@@ -729,6 +725,7 @@ export namespace CinnamonDesktop {
          * @param window The {@link Gdk.Window} to draw crossfade on
          */
         start(window: Gdk.Window): void;
+
         /**
          * This function stops any in progress crossfades that may be
          * happening.  It's harmless to call this function if `fade` is
@@ -737,13 +734,16 @@ export namespace CinnamonDesktop {
         stop(): void;
     }
 
+
     namespace DesktopThumbnailFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -762,107 +762,103 @@ export namespace CinnamonDesktop {
         $signals: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DesktopThumbnailFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](size: DesktopThumbnailSize): DesktopThumbnailFactory;
+        static ["new"](size: DesktopThumbnailSize): DesktopThumbnailFactory;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DesktopThumbnailFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DesktopThumbnailFactory.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DesktopThumbnailFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns TRUE if this GnomeIconFactory can (at least try) to thumbnail
          * this file. Thumbnails or files with failed thumbnails won't be thumbnailed.
-         *
+         * 
          * Usage of this function is threadsafe.
          * @param uri the uri of a file
          * @param mime_type the mime type of the file
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
          */
-        can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
+        can_thumbnail(uri: string, mime_type: string, mtime: (bigint | number)): boolean;
+
         /**
          * Creates a failed thumbnail for the file so that we don't try
          * to re-thumbnail the file later.
-         *
+         * 
          * Usage of this function is threadsafe.
          * @param uri the uri of a file
          * @param mtime the modification time of the file
          */
-        create_failed_thumbnail(uri: string, mtime: bigint | number): void;
+        create_failed_thumbnail(uri: string, mtime: (bigint | number)): void;
+
         /**
          * Tries to generate a thumbnail for the specified file. If it succeeds
          * it returns a pixbuf that can be used as a thumbnail.
-         *
+         * 
          * Usage of this function is threadsafe.
          * @param uri the uri of a file
          * @param mime_type the mime type of the file
          * @returns thumbnail pixbuf if thumbnailing succeeded, `null` otherwise.
          */
         generate_thumbnail(uri: string, mime_type: string): GdkPixbuf.Pixbuf;
+
         /**
          * Tries to locate an failed thumbnail for the file specified. Writing
          * and looking for failed thumbnails is important to avoid to try to
          * thumbnail e.g. broken images several times.
-         *
+         * 
          * Usage of this function is threadsafe.
          * @param uri the uri of a file
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
          */
-        has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
+        has_valid_failed_thumbnail(uri: string, mtime: (bigint | number)): boolean;
+
         /**
          * Tries to locate an existing thumbnail for the file specified.
-         *
+         * 
          * Usage of this function is threadsafe.
          * @param uri the uri of a file
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
          */
-        lookup(uri: string, mtime: bigint | number): string;
+        lookup(uri: string, mtime: (bigint | number)): string;
+
         /**
          * Saves `thumbnail` at the right place. If the save fails a
          * failed thumbnail is written.
-         *
+         * 
          * Usage of this function is threadsafe.
          * @param thumbnail the thumbnail as a pixbuf
          * @param uri the uri of a file
          * @param original_mtime the modification time of the original file
          */
-        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number): void;
+        save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: (bigint | number)): void;
     }
+
 
     namespace IdleMonitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
+        }
     }
 
     /**
@@ -881,51 +877,44 @@ export namespace CinnamonDesktop {
         $signals: IdleMonitor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<IdleMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): IdleMonitor;
+        static ["new"](): IdleMonitor;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof IdleMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof IdleMonitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof IdleMonitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof IdleMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof IdleMonitor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof IdleMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @param interval_msec The idletime interval, in milliseconds. It must be     a strictly positive value (> 0).
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `gnome_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `gnome_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: bigint | number, callback: IdleMonitorWatchFunc | null): number;
+        add_idle_watch(interval_msec: (bigint | number), callback: (IdleMonitorWatchFunc | null)): number;
+
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `gnome_idle_monitor_add_idle_watch()`, has triggered.
          */
-        add_user_active_watch(callback: IdleMonitorWatchFunc | null): number;
+        add_user_active_watch(callback: (IdleMonitorWatchFunc | null)): number;
+
         /**
          * @returns The current idle time, in milliseconds
          */
         get_idletime(): number;
+
         /**
          * Removes an idle time watcher, previously added by
          * `gnome_idle_monitor_add_idle_watch()` or
@@ -933,39 +922,40 @@ export namespace CinnamonDesktop {
          * @param id A watch ID
          */
         remove_watch(id: number): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -975,40 +965,41 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1018,16 +1009,19 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace PnpIds {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1046,36 +1040,26 @@ export namespace CinnamonDesktop {
         $signals: PnpIds.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PnpIds.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PnpIds;
+        static ["new"](): PnpIds;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PnpIds.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PnpIds.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PnpIds.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PnpIds.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PnpIds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PnpIds.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Find the full manufacturer name for the given PNP ID.
          * @param pnp_id the PNP ID to look for
@@ -1084,14 +1068,14 @@ export namespace CinnamonDesktop {
         get_pnp_id(pnp_id: string): string;
     }
 
+
     namespace RRConfig {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             screen: RRScreen;
         }
@@ -1104,7 +1088,6 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<RRConfig>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -1120,7 +1103,6 @@ export namespace CinnamonDesktop {
         $signals: RRConfig.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RRConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -1128,73 +1110,74 @@ export namespace CinnamonDesktop {
         static new_current(screen: RRScreen): RRConfig;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RRConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRConfig.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RRConfig.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RRConfig.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RRConfig.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RRConfig.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RRConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRConfig.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RRConfig.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RRConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RRConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param screen
+         * @param screen 
          */
         applicable(screen: RRScreen): boolean;
+
         /**
-         * @param screen
+         * @param screen 
          */
         apply(screen: RRScreen): boolean;
+
         /**
-         * @param screen
+         * @param screen 
          */
         apply_persistent(screen: RRScreen): boolean;
+
         ensure_primary(): boolean;
+
         /**
-         * @param config2
+         * @param config2 
          */
         equal(config2: RRConfig): boolean;
+
         /**
          * @returns whether at least two outputs are at (0, 0) offset and they have the same width/height.  Those outputs are of course connected and on (i.e. they have a CRTC assigned).
          */
         get_clone(): boolean;
+
         /**
          * @returns the output configuration for this {@link CinnamonDesktop.RRConfig}
          */
         get_outputs(): RROutputInfo[];
+
         load_current(): boolean;
+
         /**
-         * @param config2
+         * @param config2 
          */
         match(config2: RRConfig): boolean;
+
         sanitize(): void;
+
         /**
-         * @param clone
+         * @param clone 
          */
         set_clone(clone: boolean): void;
     }
 
+
     namespace RRLabeler {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::config': (pspec: GObject.ParamSpec) => void;
+            "notify::config": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             config: RRConfig;
         }
@@ -1207,7 +1190,6 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<RRLabeler>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -1223,58 +1205,53 @@ export namespace CinnamonDesktop {
         $signals: RRLabeler.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RRLabeler.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](config: RRConfig): RRLabeler;
+        static ["new"](config: RRConfig): RRLabeler;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RRLabeler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRLabeler.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RRLabeler.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RRLabeler.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RRLabeler.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RRLabeler.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RRLabeler.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRLabeler.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RRLabeler.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RRLabeler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RRLabeler.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRLabeler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the color used for the label on a given output (monitor).
          * @param output Output device (i.e. monitor) to query
          */
         get_rgba_for_output(output: RROutputInfo): Gdk.RGBA;
+
         /**
          * Hide output labels.
          */
         hide(): void;
+
         /**
          * Show the labels.
          */
         show(): void;
     }
 
+
     namespace RROutputInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1293,73 +1270,80 @@ export namespace CinnamonDesktop {
         $signals: RROutputInfo.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RROutputInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RROutputInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RROutputInfo.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RROutputInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RROutputInfo.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RROutputInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RROutputInfo.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RROutputInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RROutputInfo.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RROutputInfo.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RROutputInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RROutputInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RROutputInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_aspect_ratio(): number;
+
         /**
          * @returns the display name of this output
          */
         get_display_name(): string;
+
         /**
          * Get the geometry for the monitor connected to the specified output.
          * If the monitor is a tiled monitor, it returns the geometry for the complete monitor.
          */
         get_geometry(): [number, number, number, number];
+
         /**
          * @returns the output name
          */
         get_name(): string;
+
         get_preferred_height(): number;
+
         get_preferred_width(): number;
+
         get_primary(): boolean;
+
         get_product(): string;
+
         get_refresh_rate(): number;
+
         get_rotation(): RRRotation;
+
         get_serial(): string;
+
         get_underscanning(): boolean;
+
         get_vendor(): string;
+
         /**
          * @returns whether there is a CRTC assigned to this output (i.e. a signal is being sent to it)
          */
         is_active(): boolean;
+
         /**
          * @returns whether the output is physically connected to a monitor
          */
         is_connected(): boolean;
+
         /**
          * @returns `true` if the specified output is connected to the primary tile of a monitor or to an untiled monitor, `false` if the output is connected to a secondary tile.
          */
         is_primary_tile(): boolean;
+
         /**
-         * @param active
+         * @param active 
          */
         set_active(active: boolean): void;
+
         /**
          * Set the geometry for the monitor connected to the specified output.
          * If the monitor is a tiled monitor, it sets the geometry for the complete monitor.
@@ -1369,27 +1353,33 @@ export namespace CinnamonDesktop {
          * @param height monitor height
          */
         set_geometry(x: number, y: number, width: number, height: number): void;
+
         /**
-         * @param primary
+         * @param primary 
          */
         set_primary(primary: boolean): void;
+
         /**
-         * @param rate
+         * @param rate 
          */
         set_refresh_rate(rate: number): void;
+
         /**
-         * @param rotation
+         * @param rotation 
          */
         set_rotation(rotation: RRRotation): void;
+
         /**
-         * @param underscanning
+         * @param underscanning 
          */
         set_underscanning(underscanning: boolean): void;
+
         /**
-         * @param rotation
+         * @param rotation 
          */
         supports_rotation(rotation: RRRotation): boolean;
     }
+
 
     namespace RRScreen {
         // Signal signatures
@@ -1404,7 +1394,7 @@ export namespace CinnamonDesktop {
              * port, or a port is hotplugged with an active output. The latter
              * can happen if a laptop is docked, and the dock provides a new
              * active output.
-             *
+             * 
              * The `output` value is not a {@link GObject.Object}. The returned `output` value can
              * only assume to be valid during the emission of the signal (i.e. within
              * your signal handler only), as it may change later when the `screen`
@@ -1416,12 +1406,12 @@ export namespace CinnamonDesktop {
              * @signal
              * @run-first
              */
-            'output-connected': (arg0: any | null) => void;
+            "output-connected": (arg0: (any | null)) => void;
             /**
              * This signal is emitted when a display device is disconnected from
              * a port, or a port output is hot-unplugged. The latter can happen
              * if a laptop is undocked, and the dock provided the output.
-             *
+             * 
              * The `output` value is not a {@link GObject.Object}. The returned `output` value can
              * only assume to be valid during the emission of the signal (i.e. within
              * your signal handler only), as it may change later when the `screen`
@@ -1433,15 +1423,13 @@ export namespace CinnamonDesktop {
              * @signal
              * @run-first
              */
-            'output-disconnected': (arg0: any | null) => void;
-            'notify::dpms-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::gdk-screen': (pspec: GObject.ParamSpec) => void;
+            "output-disconnected": (arg0: (any | null)) => void;
+            "notify::dpms-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::gdk-screen": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.Initable.ConstructorProps {
             dpms_mode: RRDpmsModeType;
             dpmsMode: RRDpmsModeType;
             gdk_screen: Gdk.Screen;
@@ -1456,21 +1444,23 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<RRScreen>;
 
         // Properties
-
         /**
          * @default CinnamonDesktop.RRDpmsModeType.UNKNOWN
          */
         get dpms_mode(): RRDpmsModeType;
         set dpms_mode(val: RRDpmsModeType);
+
         /**
          * @default CinnamonDesktop.RRDpmsModeType.UNKNOWN
          */
         get dpmsMode(): RRDpmsModeType;
         set dpmsMode(val: RRDpmsModeType);
+
         /**
          * @construct-only
          */
         get gdk_screen(): Gdk.Screen;
+
         /**
          * @construct-only
          */
@@ -1486,145 +1476,146 @@ export namespace CinnamonDesktop {
         $signals: RRScreen.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RRScreen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](screen: Gdk.Screen): RRScreen;
+        static ["new"](screen: Gdk.Screen): RRScreen;
 
         static new_finish(result: Gio.AsyncResult): RRScreen;
-        // Conflicted with Gio.AsyncInitable.new_finish
 
+        // Conflicted with Gio.AsyncInitable.new_finish
         static new_finish(...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RRScreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRScreen.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RRScreen.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RRScreen.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RRScreen.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RRScreen.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RRScreen.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RRScreen.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RRScreen.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RRScreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RRScreen.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RRScreen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param screen
-         * @param callback
+         * @param screen 
+         * @param callback 
          */
-        static new_async(screen: Gdk.Screen, callback: Gio.AsyncReadyCallback<RRScreen> | null): void;
+        static new_async(screen: Gdk.Screen, callback: (Gio.AsyncReadyCallback<RRScreen> | null)): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_changed(): void;
+
         /**
-         * @param output
+         * @param output 
          * @virtual
          */
         vfunc_output_connected(output: RROutput): void;
+
         /**
-         * @param output
+         * @param output 
          * @virtual
          */
         vfunc_output_disconnected(output: RROutput): void;
 
         // Methods
-
         /**
-         * @param id
+         * @param id 
          * @returns the CRTC identified by `id`
          */
         get_crtc_by_id(id: number): RRCrtc;
+
         get_dpms_mode(): [boolean, RRDpmsMode];
+
         /**
-         * @param id
+         * @param id 
          * @returns the output identified by `id`
          */
         get_output_by_id(id: number): RROutput;
+
         /**
-         * @param name
+         * @param name 
          * @returns the output identified by `name`
          */
         get_output_by_name(name: string): RROutput;
+
         /**
          * Get the ranges of the screen
          */
         get_ranges(): [number, number, number, number];
+
         /**
          * List available XRandR clone modes
          */
         list_clone_modes(): RRMode[];
+
         /**
          * List all CRTCs
          */
         list_crtcs(): RRCrtc[];
+
         /**
          * List available XRandR modes
          */
         list_modes(): RRMode[];
+
         /**
          * List all outputs
          */
         list_outputs(): RROutput[];
+
         /**
          * Refreshes the screen configuration, and calls the screen's callback if it
          * exists and if the screen's configuration changed.
          * @returns TRUE if the screen's configuration changed; otherwise, the function returns FALSE and a NULL error if the configuration didn't change, or FALSE and a non-NULL error if there was an error while refreshing the configuration.
          */
         refresh(): boolean;
+
         /**
          * This method also disables the DPMS timeouts.
-         * @param mode
+         * @param mode 
          */
         set_dpms_mode(mode: RRDpmsMode): boolean;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -1633,85 +1624,40 @@ export namespace CinnamonDesktop {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         *
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         *
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         *
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         *
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -1721,11 +1667,51 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -1733,6 +1719,7 @@ export namespace CinnamonDesktop {
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Finishes the async construction for the various g_async_initable_new
          * calls, returning the created object or `null` on error.
@@ -1740,38 +1727,39 @@ export namespace CinnamonDesktop {
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): RRScreen;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -1782,11 +1770,8 @@ export namespace CinnamonDesktop {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -1794,39 +1779,40 @@ export namespace CinnamonDesktop {
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1836,40 +1822,41 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1879,18 +1866,18 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace WallClock {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::clock': (pspec: GObject.ParamSpec) => void;
-            'notify::format-string': (pspec: GObject.ParamSpec) => void;
+            "notify::clock": (pspec: GObject.ParamSpec) => void;
+            "notify::format-string": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             clock: string;
             format_string: string;
@@ -1905,13 +1892,13 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<WallClock>;
 
         // Properties
-
         /**
          * A formatted string representing the current clock display.
          * @read-only
          * @default null
          */
         get clock(): string;
+
         /**
          * If not NULL, the wall clock will format the time/date according to
          * this format string.  If the format string is invalid, the default string
@@ -1920,6 +1907,7 @@ export namespace CinnamonDesktop {
          */
         get format_string(): string;
         set format_string(val: string);
+
         /**
          * If not NULL, the wall clock will format the time/date according to
          * this format string.  If the format string is invalid, the default string
@@ -1939,97 +1927,92 @@ export namespace CinnamonDesktop {
         $signals: WallClock.SignalSignatures;
 
         // Fields
-
         parent_object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<WallClock.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): WallClock;
+        static ["new"](): WallClock;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WallClock.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WallClock.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WallClock.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WallClock.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WallClock.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WallClock.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WallClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Returns the translation of the format string according to
          * the LC_TIME locale.
-         * @param gettext_domain
-         * @param format_string
+         * @param gettext_domain 
+         * @param format_string 
          */
-        static lctime_format(gettext_domain: string | null, format_string: string | null): string;
+        static lctime_format(gettext_domain: (string | null), format_string: (string | null)): string;
 
         // Methods
-
         /**
          * Returns a formatted date and time based on either default format
          * settings, or via a custom-set format string.
-         *
+         * 
          * The returned string should be ready to be set on a label.
          * @returns The formatted date/time string.
          */
         get_clock(): string;
+
         /**
          * Returns a formatted date and time based on the provided format string.
          * The returned string should be ready to be set on a label.
-         * @param format_string
+         * @param format_string 
          * @returns The formatted date/time string, or NULL if there was a problem with the format string.
          */
         get_clock_for_format(format_string: string): string;
+
         /**
          * Returns the current date-only format based on current locale
          * defaults and clock settings.
          * @returns The default date format string.
          */
         get_default_date_format(): string;
+
         /**
          * Returns the current time-only format based on current locale
          * defaults and clock settings.
          * @returns The default time format string.
          */
         get_default_time_format(): string;
+
         /**
          * Sets the wall clock to use the provided format string for any
          * subsequent updates.  Passing NULL will un-set any custom format,
          * and rely on a default locale format.
-         *
+         * 
          * Any invalid format string passed will cause it to be ignored,
          * and the default locale format used instead.
-         * @param format_string
+         * @param format_string 
          * @returns Whether or not the format string was valid and accepted.
          */
-        set_format_string(format_string: string | null): boolean;
+        set_format_string(format_string: (string | null)): boolean;
     }
+
 
     namespace XkbInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2048,63 +2031,56 @@ export namespace CinnamonDesktop {
         $signals: XkbInfo.SignalSignatures;
 
         // Fields
-
         parent_object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<XkbInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): XkbInfo;
+        static ["new"](): XkbInfo;
 
         static new_with_extras(): XkbInfo;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XkbInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XkbInfo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XkbInfo.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XkbInfo.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XkbInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof XkbInfo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XkbInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @param group_id identifier for group
          * @returns the translated description for the group `group_id`.
          */
         description_for_group(group_id: string): string;
+
         /**
          * @param group_id identifier for group containing the option
          * @param id option identifier
          * @returns the translated description for the option `id`.
          */
         description_for_option(group_id: string, id: string): string;
+
         /**
          * Returns a list of all layout identifiers we know about.
          * @returns the list of layout names. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
          */
         get_all_layouts(): string[];
+
         /**
          * Returns a list of all option group identifiers we know about.
          * @returns the list of option group ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
          */
         get_all_option_groups(): string[];
+
         /**
          * Returns a list of all languages supported by a layout, given by
          * `layout_id`.
@@ -2112,21 +2088,23 @@ export namespace CinnamonDesktop {
          * @returns the list of ISO 639 code strings. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
          */
         get_languages_for_layout(layout_id: string): string[];
+
         /**
          * Retrieves information about a layout. Both `display_name` and
          * `short_name` are suitable to show in UIs and might be localized if
          * translations are available.
-         *
+         * 
          * Some layouts don't provide a short name (2 or 3 letters) or don't
          * specify a XKB variant, in those cases `short_name` or `xkb_variant`
          * are empty strings, i.e. "".
-         *
+         * 
          * If the given layout doesn't exist the return value is `false` and
          * all the (out) parameters are set to `null`.
          * @param id layout's identifier about which to retrieve the info
          * @returns `true` if the layout exists or `false` otherwise.
          */
         get_layout_info(id: string): [boolean, string, string, string, string];
+
         /**
          * Returns a list of all layout identifiers we know about for
          * `country_code`.
@@ -2134,6 +2112,7 @@ export namespace CinnamonDesktop {
          * @returns the list of layout ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
          */
         get_layouts_for_country(country_code: string): string[];
+
         /**
          * Returns a list of all layout identifiers we know about for
          * `language_code`.
@@ -2141,12 +2120,14 @@ export namespace CinnamonDesktop {
          * @returns the list of layout ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
          */
         get_layouts_for_language(language_code: string): string[];
+
         /**
          * Gets whether multiple options can be selected for a given group.
          * @param group_id identifier for group
          * @returns `true` if multiple selection is allowed, `false` otherwise.
          */
         get_option_group_allows_multiple_selection(group_id: string): boolean;
+
         /**
          * Returns a list of all option identifiers we know about for group
          * `group_id`.
@@ -2156,14 +2137,17 @@ export namespace CinnamonDesktop {
         get_options_for_group(group_id: string): string[];
     }
 
+
     /**
      * @gir-type Alias
      */
     type BGClass = typeof BG;
+
     /**
      * @gir-type Alias
      */
     type BGCrossfadeClass = typeof BGCrossfade;
+
     /**
      * @gir-type Struct
      */
@@ -2171,10 +2155,12 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<BGCrossfadePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DesktopThumbnailFactoryClass = typeof DesktopThumbnailFactory;
+
     /**
      * @gir-type Struct
      */
@@ -2182,10 +2168,12 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<DesktopThumbnailFactoryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IdleMonitorClass = typeof IdleMonitor;
+
     /**
      * @gir-type Struct
      */
@@ -2193,10 +2181,12 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<IdleMonitorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PnpIdsClass = typeof PnpIds;
+
     /**
      * @gir-type Struct
      */
@@ -2204,16 +2194,19 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<PnpIdsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RRConfigClass = typeof RRConfig;
+
     /**
      * @gir-type Struct
      */
     abstract class RRConfigPrivate {
         static $gtype: GObject.GType<RRConfigPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -2222,47 +2215,57 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<RRCrtc>;
 
         // Methods
-
         /**
-         * @param output
+         * @param output 
          */
         can_drive_output(output: RROutput): boolean;
+
         /**
          * @returns the current mode of this crtc
          */
         get_current_mode(): RRMode;
+
         get_current_rotation(): RRRotation;
+
         /**
-         * @param size
+         * @param size 
          * @returns `true` for success
          */
         get_gamma(size: number): [boolean, number, number, number];
+
         get_id(): number;
+
         get_position(): [number, number];
+
         get_rotations(): RRRotation;
+
         /**
-         * @param size
-         * @param red
-         * @param green
-         * @param blue
+         * @param size 
+         * @param red 
+         * @param green 
+         * @param blue 
          */
         set_gamma(size: number, red: number, green: number, blue: number): boolean;
+
         /**
-         * @param rotation
+         * @param rotation 
          */
         supports_rotation(rotation: RRRotation): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RRLabelerClass = typeof RRLabeler;
+
     /**
      * @gir-type Struct
      */
     abstract class RRLabelerPrivate {
         static $gtype: GObject.GType<RRLabelerPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -2271,19 +2274,25 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<RRMode>;
 
         // Methods
-
         get_freq(): number;
+
         get_freq_f(): number;
+
         get_height(): number;
+
         get_id(): number;
+
         get_is_interlaced(): boolean;
+
         /**
          * Returns TRUE if this mode is a tiled
          * mode created for span a tiled monitor.
          */
         get_is_tiled(): boolean;
+
         get_width(): number;
     }
+
 
     /**
      * @gir-type Struct
@@ -2292,60 +2301,82 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<RROutput>;
 
         // Methods
-
         /**
-         * @param clone
+         * @param clone 
          */
         can_clone(clone: RROutput): boolean;
+
         /**
          * @returns The currently set backlight brightness
          */
         get_backlight(): number;
+
         get_crtc(): RRCrtc;
+
         /**
          * @returns the current mode of this output
          */
         get_current_mode(): RRMode;
+
         get_display_name(): string;
+
         /**
-         * @param size
+         * @param size 
          */
-        get_edid_data(size: bigint | number): number;
+        get_edid_data(size: (bigint | number)): number;
+
         get_id(): number;
+
         get_ids_from_edid(): [string, string, string];
+
         get_is_primary(): boolean;
+
         get_is_underscanning(): boolean;
+
         /**
          * @returns The minimum backlight step available in percent
          */
         get_min_backlight_step(): number;
+
         get_name(): string;
+
         get_physical_size(): [number, number];
+
         get_position(): [number, number];
+
         get_possible_crtcs(): RRCrtc[];
+
         get_preferred_mode(): RRMode;
+
         is_builtin_display(): boolean;
+
         /**
          * @returns If the output is connected
          */
         is_connected(): boolean;
+
         list_modes(): RRMode[];
+
         /**
          * @param value the absolute value which is 0 >= this <= 100
          * @returns `true` for success
          */
         set_backlight(value: number): boolean;
+
         /**
-         * @param mode
+         * @param mode 
          */
         supports_mode(mode: RRMode): boolean;
+
         supports_underscanning(): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RROutputInfoClass = typeof RROutputInfo;
+
     /**
      * @gir-type Struct
      */
@@ -2353,10 +2384,12 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<RROutputInfoPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RRScreenClass = typeof RRScreen;
+
     /**
      * @gir-type Struct
      */
@@ -2364,10 +2397,12 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<RRScreenPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WallClockClass = typeof WallClock;
+
     /**
      * @gir-type Struct
      */
@@ -2375,10 +2410,12 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<WallClockPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type XkbInfoClass = typeof XkbInfo;
+
     /**
      * @gir-type Struct
      */
@@ -2386,11 +2423,13 @@ export namespace CinnamonDesktop {
         static $gtype: GObject.GType<XkbInfoPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

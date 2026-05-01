@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -29,27 +30,31 @@ import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace ClutterGdk {
+
     /**
      * ClutterGdk-1.0
      */
 
+
     /**
      * Disable the event retrieval in Clutter.
-     *
+     * 
      * Callers of this function have to set up an event filter using the
      * GDK API, and call `clutter_gdk_handle_event()`.
-     *
+     * 
      * This function should only be used when embedding Clutter into
      * a GDK based toolkit.
      * @since 1.10
      */
     function disable_event_retrieval(): void;
+
     /**
      * Retrieves the pointer to the default display.
      * @returns the default display
      * @since 0.6
      */
     function get_default_display(): Gdk.Display;
+
     /**
      * Gets the stage for a particular X window.
      * @param window a `GtkWindow`
@@ -57,6 +62,7 @@ export namespace ClutterGdk {
      * @since 1.10
      */
     function get_stage_from_window(window: Gdk.Window): Clutter.Stage;
+
     /**
      * Gets the stages GdkWindow.
      * @param stage a {@link Clutter.Stage}
@@ -64,9 +70,10 @@ export namespace ClutterGdk {
      * @since 1.10
      */
     function get_stage_window(stage: Clutter.Stage): Gdk.Window;
+
     /**
      * Retrieves the {@link Gdk.Visual} used by Clutter.
-     *
+     * 
      * This function should be used when embedding Clutter inside GDK-based
      * foreign toolkits, to ensure that the visual applied to the {@link Gdk.Window}
      * used to render the {@link Clutter.Stage} is the correct one.
@@ -74,6 +81,7 @@ export namespace ClutterGdk {
      * @since 1.22
      */
     function get_visual(): Gdk.Visual;
+
     /**
      * This function processes a single GDK event; it can be used to hook
      * into external event processing
@@ -81,11 +89,12 @@ export namespace ClutterGdk {
      * @returns {@link Gdk.FilterReturn}. {@link Gdk.FilterReturn.REMOVE} indicates that  Clutter has internally handled the event and the caller should do  no further processing. {@link Gdk.FilterReturn.CONTINUE} indicates that Clutter  is either not interested in the event, or has used the event to  update internal state without taking any exclusive action.  {@link Gdk.FilterReturn.TRANSLATE} will not occur.
      */
     function handle_event(event: Gdk.Event): Gdk.FilterReturn;
+
     /**
      * Sets the display connection Clutter should use; must be called
      * before `clutter_init()`, `clutter_init_with_args()` or other functions
      * pertaining Clutter's initialization process.
-     *
+     * 
      * If you are parsing the command line arguments by retrieving Clutter's
      * {@link GLib.OptionGroup} with `clutter_get_option_group()` and calling
      * `g_option_context_parse()` yourself, you should also call
@@ -94,6 +103,7 @@ export namespace ClutterGdk {
      * @since 0.8
      */
     function set_display(display: Gdk.Display): void;
+
     /**
      * Target the {@link Clutter.Stage} to use an existing external {@link Gdk.Window}
      * @param stage a {@link Clutter.Stage}
@@ -102,11 +112,13 @@ export namespace ClutterGdk {
      * @since 1.10
      */
     function set_stage_foreign(stage: Clutter.Stage, window: Gdk.Window): boolean;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

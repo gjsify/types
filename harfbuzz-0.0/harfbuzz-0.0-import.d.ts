@@ -1,3 +1,4 @@
+
 import type HarfBuzz00 from '@girs/harfbuzz-0.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

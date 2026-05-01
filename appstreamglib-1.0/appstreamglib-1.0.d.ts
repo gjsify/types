@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace AppStreamGlib {
+
     /**
      * AppStreamGlib-1.0
      */
+
 
     /**
      * The kind of the agreement.
@@ -44,6 +47,7 @@ export namespace AppStreamGlib {
         PRIVACY,
     }
 
+
     /**
      * The error type.
      * @gir-type Enum
@@ -58,6 +62,7 @@ export namespace AppStreamGlib {
          */
         INVALID_TYPE,
     }
+
 
     /**
      * The component type.
@@ -138,6 +143,7 @@ export namespace AppStreamGlib {
         ICON_THEME,
     }
 
+
     /**
      * The component merge kind.
      * @gir-type Enum
@@ -161,6 +167,7 @@ export namespace AppStreamGlib {
         APPEND,
     }
 
+
     /**
      * The application scope.
      * @gir-type Enum
@@ -179,6 +186,7 @@ export namespace AppStreamGlib {
          */
         SYSTEM,
     }
+
 
     /**
      * The application state.
@@ -235,6 +243,7 @@ export namespace AppStreamGlib {
         PURCHASING,
     }
 
+
     /**
      * The flags to use when checking input.
      * @gir-type Enum
@@ -253,6 +262,7 @@ export namespace AppStreamGlib {
          */
         CHECK_VALID_UTF8,
     }
+
 
     /**
      * The flags to use when validating.
@@ -280,6 +290,7 @@ export namespace AppStreamGlib {
          */
         ALL_APPS,
     }
+
 
     /**
      * The bundle type.
@@ -316,6 +327,7 @@ export namespace AppStreamGlib {
         APPIMAGE,
     }
 
+
     /**
      * The checksum target type.
      * @gir-type Enum
@@ -342,6 +354,7 @@ export namespace AppStreamGlib {
          */
         DEVICE,
     }
+
 
     /**
      * A content rating system for a particular territory.
@@ -415,6 +428,7 @@ export namespace AppStreamGlib {
         IARC,
     }
 
+
     /**
      * The specified level of an content_rating rating ID.
      * @gir-type Enum
@@ -441,6 +455,7 @@ export namespace AppStreamGlib {
          */
         INTENSE,
     }
+
 
     /**
      * The format kind.
@@ -469,6 +484,7 @@ export namespace AppStreamGlib {
         METAINFO,
     }
 
+
     /**
      * The error type.
      * @gir-type Enum
@@ -479,6 +495,7 @@ export namespace AppStreamGlib {
          */
         FAILED,
     }
+
 
     /**
      * The icon type.
@@ -511,6 +528,7 @@ export namespace AppStreamGlib {
         LOCAL,
     }
 
+
     /**
      * The flags to use when loading icons.
      * @gir-type Enum
@@ -525,6 +543,7 @@ export namespace AppStreamGlib {
          */
         SEARCH_SIZE,
     }
+
 
     /**
      * The component type.
@@ -577,6 +596,7 @@ export namespace AppStreamGlib {
         GENERIC,
     }
 
+
     /**
      * The image type.
      * @gir-type Enum
@@ -595,6 +615,7 @@ export namespace AppStreamGlib {
          */
         THUMBNAIL,
     }
+
 
     /**
      * The flags used for loading images.
@@ -627,6 +648,7 @@ export namespace AppStreamGlib {
         ALWAYS_RESIZE,
     }
 
+
     /**
      * The flags used for saving images.
      * @gir-type Enum
@@ -650,6 +672,7 @@ export namespace AppStreamGlib {
         BLUR,
     }
 
+
     /**
      * The error type.
      * @gir-type Struct
@@ -658,24 +681,25 @@ export namespace AppStreamGlib {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Generic failure
          */
         static FAILED: number;
+
         /**
          * Invalid type
          */
         static INVALID_TYPE: number;
+
         /**
          * Data not found
          */
         static NOT_FOUND: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * The kudo type.
@@ -716,6 +740,7 @@ export namespace AppStreamGlib {
         HI_DPI_ICON,
     }
 
+
     /**
      * The launchable type.
      * @gir-type Enum
@@ -742,6 +767,7 @@ export namespace AppStreamGlib {
          */
         URL,
     }
+
 
     /**
      * The format used when converting to or from AppStream descriptions.
@@ -770,6 +796,7 @@ export namespace AppStreamGlib {
         HTML,
     }
 
+
     /**
      * The error type.
      * @gir-type Struct
@@ -778,24 +805,25 @@ export namespace AppStreamGlib {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Generic failure
          */
         static FAILED: number;
+
         /**
          * XML markup was invalid
          */
         static INVALID_MARKUP: number;
+
         /**
          * No support for parsing
          */
         static NO_SUPPORT: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * The flags to use when inserting a node.
@@ -832,6 +860,7 @@ export namespace AppStreamGlib {
         BASE64_ENCODED,
     }
 
+
     /**
      * The flags for converting to XML.
      * @gir-type Enum
@@ -862,6 +891,7 @@ export namespace AppStreamGlib {
          */
         SORT_CHILDREN,
     }
+
 
     /**
      * The problem type.
@@ -930,6 +960,7 @@ export namespace AppStreamGlib {
         RESOLUTION_INCORRECT,
     }
 
+
     /**
      * The provide type.
      * @gir-type Enum
@@ -985,6 +1016,7 @@ export namespace AppStreamGlib {
         ID,
     }
 
+
     /**
      * The release size kind.
      * @gir-type Enum
@@ -1005,6 +1037,7 @@ export namespace AppStreamGlib {
         DEVELOPMENT,
     }
 
+
     /**
      * The release state.
      * @gir-type Enum
@@ -1023,6 +1056,7 @@ export namespace AppStreamGlib {
          */
         AVAILABLE,
     }
+
 
     /**
      * The relational comparison type.
@@ -1067,6 +1101,7 @@ export namespace AppStreamGlib {
         REGEX,
     }
 
+
     /**
      * The require type.
      * @gir-type Enum
@@ -1102,6 +1137,7 @@ export namespace AppStreamGlib {
         MEMORY,
     }
 
+
     /**
      * The screenshot type.
      * @gir-type Enum
@@ -1120,6 +1156,7 @@ export namespace AppStreamGlib {
          */
         DEFAULT,
     }
+
 
     /**
      * The release size kind.
@@ -1140,6 +1177,7 @@ export namespace AppStreamGlib {
         DOWNLOAD,
     }
 
+
     /**
      * The error type.
      * @gir-type Enum
@@ -1150,6 +1188,7 @@ export namespace AppStreamGlib {
          */
         FAILED,
     }
+
 
     /**
      * The flags to use when searching in the store.
@@ -1165,6 +1204,7 @@ export namespace AppStreamGlib {
          */
         USE_WILDCARDS,
     }
+
 
     /**
      * The flags to use when local files are added or removed from the store.
@@ -1185,6 +1225,7 @@ export namespace AppStreamGlib {
         REMOVED,
     }
 
+
     /**
      * The suggest type.
      * @gir-type Enum
@@ -1203,6 +1244,7 @@ export namespace AppStreamGlib {
          */
         HEURISTIC,
     }
+
 
     /**
      * The tag type.
@@ -1468,6 +1510,7 @@ export namespace AppStreamGlib {
         LIBRARY,
     }
 
+
     /**
      * The flags to use when matching %AsTag's.
      * @gir-type Enum
@@ -1487,6 +1530,7 @@ export namespace AppStreamGlib {
         USE_TRANSLATED,
     }
 
+
     /**
      * The translation type.
      * @gir-type Enum
@@ -1505,6 +1549,7 @@ export namespace AppStreamGlib {
          */
         QT,
     }
+
 
     /**
      * The urgency of a release.
@@ -1532,6 +1577,7 @@ export namespace AppStreamGlib {
          */
         CRITICAL,
     }
+
 
     /**
      * The URL type.
@@ -1592,6 +1638,7 @@ export namespace AppStreamGlib {
         CONTRIBUTE,
     }
 
+
     /**
      * The error type.
      * @gir-type Struct
@@ -1600,20 +1647,20 @@ export namespace AppStreamGlib {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Generic failure
          */
         static FAILED: number;
+
         /**
          * Invalid type
          */
         static INVALID_TYPE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * The flags used when installing and removing metadata files.
@@ -1634,20 +1681,35 @@ export namespace AppStreamGlib {
         USER,
     }
 
+
     const APP_SUBSUME_FLAG_DEDUPE: number;
+
     const APP_SUBSUME_FLAG_MERGE: number;
+
     const IMAGE_ALPHA_FLAG_BOTTOM: number;
+
     const IMAGE_ALPHA_FLAG_INTERNAL: number;
+
     const IMAGE_ALPHA_FLAG_LEFT: number;
+
     const IMAGE_ALPHA_FLAG_NONE: number;
+
     const IMAGE_ALPHA_FLAG_RIGHT: number;
+
     const IMAGE_ALPHA_FLAG_TOP: number;
+
     const IMAGE_LARGE_HEIGHT: number;
+
     const IMAGE_LARGE_WIDTH: number;
+
     const IMAGE_NORMAL_HEIGHT: number;
+
     const IMAGE_NORMAL_WIDTH: number;
+
     const IMAGE_THUMBNAIL_HEIGHT: number;
+
     const IMAGE_THUMBNAIL_WIDTH: number;
+
     /**
      * Converts the text representation to an enumerated value.
      * @param id_kind the string.
@@ -1655,6 +1717,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function id_kind_from_string(id_kind: string): IdKind;
+
     /**
      * Converts the enumerated value to an text representation.
      * @param id_kind the {@link AppStreamGlib.IdKind}.
@@ -1662,11 +1725,13 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function id_kind_to_string(id_kind: IdKind): string;
+
     /**
      * @returns An error quark.
      * @since 0.3.7
      */
     function inf_error_quark(): GLib.Quark;
+
     /**
      * Parses the DriverVer string into a recognisable version and timestamp;
      * @param keyfile a {@link GLib.KeyFile}
@@ -1674,10 +1739,11 @@ export namespace AppStreamGlib {
      * @returns the version string, or `null` for error.
      * @since 0.3.5
      */
-    function inf_get_driver_version(keyfile: GLib.KeyFile, timestamp: bigint | number): string;
+    function inf_get_driver_version(keyfile: GLib.KeyFile, timestamp: (bigint | number)): string;
+
     /**
      * Repairs .inf file data and opens it as a keyfile.
-     *
+     * 
      * Important: The group and keynames are all forced to lower case as INF files
      * are specified as case insensitive and GKeyFile *is* case sensitive.
      * Any backslashes or spaces in the key name are also converted to '_'.
@@ -1688,6 +1754,7 @@ export namespace AppStreamGlib {
      * @since 0.3.5
      */
     function inf_load_data(keyfile: GLib.KeyFile, data: string, flags: InfLoadFlags): boolean;
+
     /**
      * Repairs an .inf file and opens it as a keyfile.
      * @param keyfile a {@link GLib.KeyFile}
@@ -1697,6 +1764,7 @@ export namespace AppStreamGlib {
      * @since 0.3.5
      */
     function inf_load_file(keyfile: GLib.KeyFile, filename: string, flags: InfLoadFlags): boolean;
+
     /**
      * Converts the text representation to an enumerated value.
      * @param kudo_kind the string.
@@ -1704,6 +1772,7 @@ export namespace AppStreamGlib {
      * @since 0.2.2
      */
     function kudo_kind_from_string(kudo_kind: string): KudoKind;
+
     /**
      * Converts the enumerated value to an text representation.
      * @param kudo_kind the `AsKudoKind`.
@@ -1711,6 +1780,7 @@ export namespace AppStreamGlib {
      * @since 0.2.2
      */
     function kudo_kind_to_string(kudo_kind: KudoKind): string;
+
     /**
      * Converts an XML description into a printable form.
      * @param markup the text to copy.
@@ -1719,6 +1789,7 @@ export namespace AppStreamGlib {
      * @since 0.3.5
      */
     function markup_convert(markup: string, format: MarkupConvertFormat): string;
+
     /**
      * Converts an XML description into a printable form.
      * @param markup the text to copy.
@@ -1728,6 +1799,7 @@ export namespace AppStreamGlib {
      * @since 0.3.5
      */
     function markup_convert_full(markup: string, format: MarkupConvertFormat, flags: MarkupConvertFlag): string;
+
     /**
      * Converts an XML description into a printable form.
      * @param markup the text to copy.
@@ -1735,6 +1807,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function markup_convert_simple(markup: string): string;
+
     /**
      * Imports text and converts to AppStream markup.
      * @param text the text to import.
@@ -1743,6 +1816,7 @@ export namespace AppStreamGlib {
      * @since 0.5.11
      */
     function markup_import(text: string, format: MarkupConvertFormat): string;
+
     /**
      * Splits up a long line into an array of smaller strings, each being no longer
      * than `line_len`. Words are not split.
@@ -1752,6 +1826,7 @@ export namespace AppStreamGlib {
      * @since 0.3.5
      */
     function markup_strsplit_words(text: string, line_len: number): string[];
+
     /**
      * Validates some markup.
      * @param markup the text to validate
@@ -1759,11 +1834,13 @@ export namespace AppStreamGlib {
      * @since 0.5.1
      */
     function markup_validate(markup: string): boolean;
+
     /**
      * @returns An error quark.
      * @since 0.1.0
      */
     function node_error_quark(): GLib.Quark;
+
     /**
      * Gets a node attribute, e.g. "false"
      * @param node a {@link AppStreamGlib.Node}
@@ -1772,6 +1849,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function node_get_attribute(node: GLib.Node, key: string): string;
+
     /**
      * Gets a node attribute, e.g. 34
      * @param node a {@link AppStreamGlib.Node}
@@ -1780,6 +1858,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function node_get_attribute_as_int(node: GLib.Node, key: string): number;
+
     /**
      * Gets a node attribute, e.g. 34
      * @param node a {@link AppStreamGlib.Node}
@@ -1788,6 +1867,7 @@ export namespace AppStreamGlib {
      * @since 0.6.1
      */
     function node_get_attribute_as_uint(node: GLib.Node, key: string): number;
+
     /**
      * Gets the node data, e.g. "Copyright 2014 Richard Hughes"
      * @param node a {@link AppStreamGlib.Node}
@@ -1795,6 +1875,7 @@ export namespace AppStreamGlib {
      * @since 0.1.6
      */
     function node_get_comment(node: GLib.Node): string;
+
     /**
      * Gets the node data, e.g. "paragraph text"
      * @param node a {@link AppStreamGlib.Node}
@@ -1802,6 +1883,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function node_get_data(node: GLib.Node): string;
+
     /**
      * Extracts localized values from the DOM tree
      * @param node a {@link AppStreamGlib.Node}
@@ -1810,6 +1892,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function node_get_localized(node: GLib.Node, key: string): GLib.HashTable<any, any>;
+
     /**
      * Gets the 'best' locale version of a specific data value.
      * @param node a {@link AppStreamGlib.Node}.
@@ -1818,10 +1901,11 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function node_get_localized_best(node: GLib.Node, key: string): string;
+
     /**
      * Denormalize AppData data like this:
-     *
-     *
+     * 
+     * 
      * ```
      * <description>
      *  <p>Hi</p>
@@ -1832,21 +1916,22 @@ export namespace AppStreamGlib {
      *  </ul>
      * </description>
      * ```
-     *
-     *
+     * 
+     * 
      * into a hash that contains:
-     *
-     *
+     * 
+     * 
      * ```
      * "C"  ->  "<p>Hi</p><ul><li>First</li></ul>"
      * "pl" ->  "<p>Czesc</p><ul><li>Pierwszy</li></ul>"
      * ```
-     *
+     * 
      * @param node a {@link AppStreamGlib.Node}.
      * @returns a hash table of data
      * @since 0.1.0
      */
     function node_get_localized_unwrap(node: GLib.Node): GLib.HashTable<any, any>;
+
     /**
      * Gets the node name, e.g. "body"
      * @param node a {@link AppStreamGlib.Node}
@@ -1854,6 +1939,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function node_get_name(node: GLib.Node): string;
+
     /**
      * Gets the node tag enum.
      * @param node a {@link AppStreamGlib.Node}
@@ -1861,6 +1947,7 @@ export namespace AppStreamGlib {
      * @since 0.1.2
      */
     function node_get_tag(node: GLib.Node): Tag;
+
     /**
      * Inserts a hash table of data into the DOM.
      * @param parent a parent {@link AppStreamGlib.Node}.
@@ -1870,13 +1957,8 @@ export namespace AppStreamGlib {
      * @param insert_flags any %AsNodeInsertFlags.
      * @since 0.1.0
      */
-    function node_insert_hash(
-        parent: GLib.Node,
-        name: string,
-        attr_key: string,
-        hash: { [key: string]: any } | GLib.HashTable<any, any>,
-        insert_flags: NodeInsertFlags,
-    ): void;
+    function node_insert_hash(parent: GLib.Node, name: string, attr_key: string, hash: ({ [key: string]: any } | GLib.HashTable<any, any>), insert_flags: NodeInsertFlags): void;
+
     /**
      * Inserts a localized key into the DOM.
      * @param parent a parent {@link AppStreamGlib.Node}.
@@ -1885,12 +1967,8 @@ export namespace AppStreamGlib {
      * @param insert_flags any %AsNodeInsertFlags.
      * @since 0.1.0
      */
-    function node_insert_localized(
-        parent: GLib.Node,
-        name: string,
-        localized: { [key: string]: any } | GLib.HashTable<any, any>,
-        insert_flags: NodeInsertFlags,
-    ): void;
+    function node_insert_localized(parent: GLib.Node, name: string, localized: ({ [key: string]: any } | GLib.HashTable<any, any>), insert_flags: NodeInsertFlags): void;
+
     /**
      * Converts a node and it's children to XML.
      * @param node a {@link AppStreamGlib.Node}.
@@ -1899,12 +1977,14 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function node_to_xml(node: GLib.Node, flags: NodeToXmlFlags): GLib.String;
+
     /**
      * Deallocates all notes in the tree.
      * @param node a {@link AppStreamGlib.Node}.
      * @since 0.1.0
      */
     function node_unref(node: GLib.Node): void;
+
     /**
      * Converts the text representation to an enumerated value.
      * @param size_kind the string.
@@ -1912,6 +1992,7 @@ export namespace AppStreamGlib {
      * @since 0.5.2
      */
     function size_kind_from_string(size_kind: string): SizeKind;
+
     /**
      * Converts the enumerated value to an text representation.
      * @param size_kind the {@link AppStreamGlib.SizeKind}.
@@ -1919,6 +2000,7 @@ export namespace AppStreamGlib {
      * @since 0.5.2
      */
     function size_kind_to_string(size_kind: SizeKind): string;
+
     /**
      * Converts the text representation to an enumerated value.
      * @param tag the string.
@@ -1926,6 +2008,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function tag_from_string(tag: string): Tag;
+
     /**
      * Converts the text representation to an enumerated value also converting
      * legacy key names.
@@ -1935,6 +2018,7 @@ export namespace AppStreamGlib {
      * @since 0.1.2
      */
     function tag_from_string_full(tag: string, flags: TagFlags): Tag;
+
     /**
      * Converts the enumerated value to an text representation.
      * @param tag the %AsTag value.
@@ -1942,6 +2026,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function tag_to_string(tag: Tag): string;
+
     /**
      * Converts the text representation to an enumerated value.
      * @param urgency_kind the string.
@@ -1949,6 +2034,7 @@ export namespace AppStreamGlib {
      * @since 0.5.1
      */
     function urgency_kind_from_string(urgency_kind: string): UrgencyKind;
+
     /**
      * Converts the enumerated value to an text representation.
      * @param urgency_kind the {@link AppStreamGlib.UrgencyKind}.
@@ -1956,6 +2042,7 @@ export namespace AppStreamGlib {
      * @since 0.5.1
      */
     function urgency_kind_to_string(urgency_kind: UrgencyKind): string;
+
     /**
      * Converts the text representation to an enumerated value.
      * @param url_kind the string.
@@ -1963,6 +2050,7 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function url_kind_from_string(url_kind: string): UrlKind;
+
     /**
      * Converts the enumerated value to an text representation.
      * @param url_kind the `AsUrlKind`.
@@ -1970,15 +2058,17 @@ export namespace AppStreamGlib {
      * @since 0.1.0
      */
     function url_kind_to_string(url_kind: UrlKind): string;
+
     /**
      * Fixes a string to be a valid AppStream ID.
-     *
+     * 
      * This function replaces any invalid chars with an underscore.
      * @param str a string to build the AppStream ID from
      * @returns a valid AppStream ID, or `null` if `str` is invalid
      * @since 0.6.4
      */
     function utils_appstream_id_build(str: string): string;
+
     /**
      * Checks to see if a string is a valid AppStream ID. A valid AppStream ID only
      * contains alphanumeric chars, dots and dashes.
@@ -1987,11 +2077,13 @@ export namespace AppStreamGlib {
      * @since 0.6.4
      */
     function utils_appstream_id_valid(str: string): boolean;
+
     /**
      * @returns An error quark.
      * @since 0.3.7
      */
     function utils_error_quark(): GLib.Quark;
+
     /**
      * Finds an icon filename from a filesystem root.
      * @param destdir the destdir.
@@ -2000,6 +2092,7 @@ export namespace AppStreamGlib {
      * @since 0.2.5
      */
     function utils_find_icon_filename(destdir: string, search: string): string;
+
     /**
      * Finds an icon filename from a filesystem root.
      * @param destdir the destdir.
@@ -2009,10 +2102,11 @@ export namespace AppStreamGlib {
      * @since 0.3.1
      */
     function utils_find_icon_filename_full(destdir: string, search: string, flags: UtilsFindIconFlag): string;
+
     /**
      * Returns a GUID for some data. This uses a hash and so even small
      * differences in the `data` will produce radically different return values.
-     *
+     * 
      * The implementation is taken from RFC4122, Section 4.1.3; specifically
      * using a type-5 SHA-1 hash.
      * @param namespace_id A namespace ID, e.g. "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
@@ -2021,15 +2115,16 @@ export namespace AppStreamGlib {
      * @returns A new GUID, or `null` if the namespace_id was invalid
      * @since 0.6.13
      */
-    function utils_guid_from_data(namespace_id: string, data: number, data_len: bigint | number): string;
+    function utils_guid_from_data(namespace_id: string, data: number, data_len: (bigint | number)): string;
+
     /**
      * Returns a GUID for a given string. This uses a hash and so even small
      * differences in the `str` will produce radically different return values.
-     *
+     * 
      * The implementation is taken from RFC4122, Section 4.1.3; specifically
      * using a type-5 SHA-1 hash with a DNS namespace.
      * The same result can be obtained with this simple python program:
-     *
+     * 
      *    #!/usr/bin/python
      *    import uuid
      *    print uuid.uuid5(uuid.NAMESPACE_DNS, 'python.org')
@@ -2038,6 +2133,7 @@ export namespace AppStreamGlib {
      * @since 0.5.0
      */
     function utils_guid_from_string(str: string): string;
+
     /**
      * Checks the source string is a valid string GUID descriptor.
      * @param guid string to check
@@ -2045,6 +2141,7 @@ export namespace AppStreamGlib {
      * @since 0.5.0
      */
     function utils_guid_is_valid(guid: string): boolean;
+
     /**
      * Installs an AppData, MetaInfo, AppStream XML or AppStream Icon metadata file.
      * @param location the {@link AppStreamGlib.UtilsLocation}, e.g. {@link AppStreamGlib.UtilsLocation.CACHE}
@@ -2054,12 +2151,8 @@ export namespace AppStreamGlib {
      * @returns `true` for success, `false` if error is set
      * @since 0.3.4
      */
-    function utils_install_filename(
-        location: UtilsLocation,
-        filename: string,
-        origin: string,
-        destdir: string,
-    ): boolean;
+    function utils_install_filename(location: UtilsLocation, filename: string, origin: string, destdir: string): boolean;
+
     /**
      * Searches the known list of blacklisted desktop IDs.
      * @param desktop_id a desktop ID, e.g. "gimp.desktop"
@@ -2067,6 +2160,7 @@ export namespace AppStreamGlib {
      * @since 0.2.2
      */
     function utils_is_blacklisted_id(desktop_id: string): boolean;
+
     /**
      * Searches the known list of registered category IDs.
      * @param category_id a desktop ID, e.g. "AudioVideoEditing"
@@ -2074,6 +2168,7 @@ export namespace AppStreamGlib {
      * @since 0.2.4
      */
     function utils_is_category_id(category_id: string): boolean;
+
     /**
      * Searches the known list of registered environment IDs.
      * @param environment_id a desktop ID, e.g. "GNOME"
@@ -2081,6 +2176,7 @@ export namespace AppStreamGlib {
      * @since 0.2.4
      */
     function utils_is_environment_id(environment_id: string): boolean;
+
     /**
      * Checks the licence string to check it being a valid licence.
      * NOTE: SPDX licences can't typically contain brackets.
@@ -2089,6 +2185,7 @@ export namespace AppStreamGlib {
      * @since 0.2.5
      */
     function utils_is_spdx_license(license: string): boolean;
+
     /**
      * Searches the known list of SPDX license IDs.
      * @param license_id a single SPDX license ID, e.g. "CC-BY-3.0"
@@ -2096,6 +2193,7 @@ export namespace AppStreamGlib {
      * @since 0.1.5
      */
     function utils_is_spdx_license_id(license_id: string): boolean;
+
     /**
      * Searches the known list of stock icons.
      * @param name an icon name
@@ -2103,6 +2201,7 @@ export namespace AppStreamGlib {
      * @since 0.1.3
      */
     function utils_is_stock_icon_name(name: string): boolean;
+
     /**
      * Converts a non-SPDX license into an SPDX format string where possible.
      * @param license a not-quite SPDX license string, e.g. "GPLv3+"
@@ -2110,6 +2209,7 @@ export namespace AppStreamGlib {
      * @since 0.5.5
      */
     function utils_license_to_spdx(license: string): string;
+
     /**
      * Checks the search token if it is valid. Valid tokens are at least 3 chars in
      * length, not common words like "and", and do not contain markup.
@@ -2118,6 +2218,7 @@ export namespace AppStreamGlib {
      * @since 0.3.4
      */
     function utils_search_token_valid(token: string): boolean;
+
     /**
      * Splits up a string into tokens and returns tokens that are suitable for
      * searching. This includes taking out common words and casefolding the
@@ -2127,6 +2228,7 @@ export namespace AppStreamGlib {
      * @since 0.3.4
      */
     function utils_search_tokenize(search: string): string[];
+
     /**
      * De-tokenizes the SPDX licenses into a string.
      * @param license_tokens license tokens, typically from `as_utils_spdx_license_tokenize()`
@@ -2134,6 +2236,7 @@ export namespace AppStreamGlib {
      * @since 0.2.5
      */
     function utils_spdx_license_detokenize(license_tokens: string): string;
+
     /**
      * Tokenizes the SPDX license string (or any simarly formatted string)
      * into parts. Any licence parts of the string e.g. "LGPL-2.0+" are prefexed
@@ -2145,6 +2248,7 @@ export namespace AppStreamGlib {
      * @since 0.1.5
      */
     function utils_spdx_license_tokenize(license: string): string[];
+
     /**
      * Performs multiple search and replace operations on the given string.
      * @param string The {@link GLib.String} to operate on
@@ -2154,6 +2258,7 @@ export namespace AppStreamGlib {
      * @since 0.5.11
      */
     function utils_string_replace(string: GLib.String, search: string, replace: string): number;
+
     /**
      * Builds a valid unique ID using available data.
      * @param scope a {@link AppStreamGlib.AppScope} e.g. {@link AppStreamGlib.AppScope.SYSTEM}
@@ -2165,14 +2270,8 @@ export namespace AppStreamGlib {
      * @returns a unique name, or `null` for error;
      * @since 0.6.1
      */
-    function utils_unique_id_build(
-        scope: AppScope,
-        bundle_kind: BundleKind,
-        origin: string,
-        kind: AppKind,
-        id: string,
-        branch: string,
-    ): string;
+    function utils_unique_id_build(scope: AppScope, bundle_kind: BundleKind, origin: string, kind: AppKind, id: string, branch: string): string;
+
     /**
      * Checks two unique IDs for equality allowing globs to match.
      * @param unique_id1 a unique ID
@@ -2181,12 +2280,13 @@ export namespace AppStreamGlib {
      * @since 0.6.1
      */
     function utils_unique_id_equal(unique_id1: string, unique_id2: string): boolean;
+
     /**
      * Converts a unique-id to a hash value.
-     *
+     * 
      * This function implements the widely used DJB hash on the ID subset of the
      * unique-id string.
-     *
+     * 
      * It can be passed to `g_hash_table_new()` as the hash_func parameter,
      * when using non-NULL strings or unique_ids as keys in a GHashTable.
      * @param unique_id a unique ID
@@ -2194,6 +2294,7 @@ export namespace AppStreamGlib {
      * @since 0.6.2
      */
     function utils_unique_id_hash(unique_id: string): number;
+
     /**
      * Checks two unique IDs for equality allowing globs to match, whilst also
      * allowing clients to whitelist sections that have to match.
@@ -2204,6 +2305,7 @@ export namespace AppStreamGlib {
      * @since 0.7.8
      */
     function utils_unique_id_match(unique_id1: string, unique_id2: string, match_flags: UniqueIdMatchFlags): boolean;
+
     /**
      * Checks if a unique ID is valid i.e. has the correct number of
      * sections.
@@ -2212,6 +2314,7 @@ export namespace AppStreamGlib {
      * @since 0.6.1
      */
     function utils_unique_id_valid(unique_id: string): boolean;
+
     /**
      * Compares version numbers for sorting.
      * @param version_a the release version, e.g. 1.2.3
@@ -2220,6 +2323,7 @@ export namespace AppStreamGlib {
      * @since 0.3.5
      */
     function utils_vercmp(version_a: string, version_b: string): number;
+
     /**
      * Compares version numbers for sorting.
      * @param version_a the release version, e.g. 1.2.3
@@ -2229,6 +2333,7 @@ export namespace AppStreamGlib {
      * @since 0.7.15
      */
     function utils_vercmp_full(version_a: string, version_b: string, flags: VersionCompareFlag): number;
+
     /**
      * Returns a dotted decimal version string from a 16 bit number.
      * @param val A uint16le version number
@@ -2237,6 +2342,7 @@ export namespace AppStreamGlib {
      * @since 0.5.2
      */
     function utils_version_from_uint16(val: number, flags: VersionParseFlag): string;
+
     /**
      * Returns a dotted decimal version string from a 32 bit number.
      * @param val A uint32le version number
@@ -2245,15 +2351,16 @@ export namespace AppStreamGlib {
      * @since 0.5.2
      */
     function utils_version_from_uint32(val: number, flags: VersionParseFlag): string;
+
     /**
      * Returns a dotted decimal version string from a version string. The supported
      * formats are:
-     *
+     * 
      * - Dotted decimal, e.g. "1.2.3"
      * - Base 16, a hex number *with* a 0x prefix, e.g. "0x10203"
      * - Base 10, a string containing just [0-9], e.g. "66051"
      * - Date in YYYYMMDD format, e.g. 20150915
-     *
+     * 
      * Anything with a '.' or that doesn't match [0-9] or 0x[a-f,0-9] is considered
      * a string and returned without modification.
      * @param version A version number
@@ -2261,6 +2368,7 @@ export namespace AppStreamGlib {
      * @since 0.5.2
      */
     function utils_version_parse(version: string): string;
+
     /**
      * The flags to use when parsing resources.
      * @gir-type Flags
@@ -2303,6 +2411,7 @@ export namespace AppStreamGlib {
          */
         ONLY_NATIVE_LANGS,
     }
+
 
     /**
      * The component attributes.
@@ -2363,6 +2472,7 @@ export namespace AppStreamGlib {
         DEVELOPER_VERIFIED,
     }
 
+
     /**
      * The token match kind, which we want to be exactly 16 bits for storage
      * reasons.
@@ -2406,6 +2516,7 @@ export namespace AppStreamGlib {
          */
         ORIGIN,
     }
+
 
     /**
      * The flags to use when subsuming applications.
@@ -2564,6 +2675,7 @@ export namespace AppStreamGlib {
         AGREEMENTS,
     }
 
+
     /**
      * The flags used when loading INF files.
      * @gir-type Flags
@@ -2583,6 +2695,7 @@ export namespace AppStreamGlib {
         CASE_INSENSITIVE,
     }
 
+
     /**
      * The flags used when converting descriptions from AppStream-style.
      * @gir-type Flags
@@ -2597,6 +2710,7 @@ export namespace AppStreamGlib {
          */
         IGNORE_ERRORS,
     }
+
 
     /**
      * The flags for converting from XML.
@@ -2621,6 +2735,7 @@ export namespace AppStreamGlib {
         ONLY_NATIVE_LANGS,
     }
 
+
     /**
      * The flags for the review.
      * @gir-type Flags
@@ -2640,6 +2755,7 @@ export namespace AppStreamGlib {
          */
         VOTED,
     }
+
 
     /**
      * The flags to use when adding applications to the store.
@@ -2667,6 +2783,7 @@ export namespace AppStreamGlib {
          */
         ONLY_NATIVE_LANGS,
     }
+
 
     /**
      * The flags to use when loading the store.
@@ -2723,6 +2840,7 @@ export namespace AppStreamGlib {
         ONLY_MERGE_APPS,
     }
 
+
     /**
      * The flags used when matching unique IDs.
      * @gir-type Flags
@@ -2758,6 +2876,7 @@ export namespace AppStreamGlib {
         BRANCH,
     }
 
+
     /**
      * The flags used when finding icons.
      * @gir-type Flags
@@ -2773,6 +2892,7 @@ export namespace AppStreamGlib {
         HI_DPI,
     }
 
+
     /**
      * The flags used when comparing version numbers.
      * @gir-type Flags
@@ -2787,6 +2907,7 @@ export namespace AppStreamGlib {
          */
         USE_HEURISTICS,
     }
+
 
     /**
      * The flags used when parsing version numbers.
@@ -2807,13 +2928,16 @@ export namespace AppStreamGlib {
         USE_BCD,
     }
 
+
     namespace Agreement {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2832,41 +2956,32 @@ export namespace AppStreamGlib {
         $signals: Agreement.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Agreement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Agreement;
+        static ["new"](): Agreement;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Agreement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Agreement.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Agreement.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Agreement.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Agreement.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Agreement.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Agreement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Agreement.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Agreement.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Agreement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Agreement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Agreement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param value the string.
          */
         static kind_from_string(value: string): AgreementKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param value the {@link AppStreamGlib.AgreementKind}.
@@ -2874,36 +2989,41 @@ export namespace AppStreamGlib {
         static kind_to_string(value: AgreementKind): string;
 
         // Methods
-
         /**
-         * @param agreement_section
+         * @param agreement_section 
          */
         add_section(agreement_section: AgreementSection): void;
+
         /**
          * Gets the agreement kind.
          * @returns a string, e.g. {@link AppStreamGlib.AgreementKind.EULA}
          */
         get_kind(): AgreementKind;
+
         /**
          * Gets the first section in the agreement.
          * @returns agreement section, or `null`
          */
         get_section_default(): AgreementSection;
+
         /**
          * Gets all the sections in the agreement.
          * @returns array
          */
         get_sections(): AgreementSection[];
+
         /**
          * Gets the agreement version_id.
          * @returns a string, e.g. "1.4a", or NULL
          */
         get_version_id(): string;
+
         /**
          * Sets the agreement kind.
          * @param kind the agreement kind, e.g. {@link AppStreamGlib.AgreementKind.EULA}
          */
         set_kind(kind: AgreementKind): void;
+
         /**
          * Sets the agreement version identifier.
          * @param version_id the agreement version ID, e.g. "1.4a"
@@ -2911,13 +3031,16 @@ export namespace AppStreamGlib {
         set_version_id(version_id: string): void;
     }
 
+
     namespace AgreementSection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2936,79 +3059,77 @@ export namespace AppStreamGlib {
         $signals: AgreementSection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AgreementSection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): AgreementSection;
+        static ["new"](): AgreementSection;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AgreementSection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AgreementSection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AgreementSection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AgreementSection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AgreementSection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AgreementSection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AgreementSection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AgreementSection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AgreementSection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AgreementSection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AgreementSection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AgreementSection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the agreement section desc.
          * @param locale the locale. e.g. "en_GB"
          * @returns a string, e.g. "GDPR", or NULL
          */
-        get_description(locale: string | null): string;
+        get_description(locale: (string | null)): string;
+
         /**
          * Gets the agreement section kind.
          * @returns a string, e.g. "GDPR", or NULL
          */
         get_kind(): string;
+
         /**
          * Gets the agreement section name.
          * @param locale the locale. e.g. "en_GB"
          * @returns a string, e.g. "GDPR", or NULL
          */
-        get_name(locale: string | null): string;
+        get_name(locale: (string | null)): string;
+
         /**
          * Sets the agreement section description.
          * @param locale the locale. e.g. "en_GB"
          * @param desc the rating desc, e.g. "GDPR"
          */
-        set_description(locale: string | null, desc: string): void;
+        set_description(locale: (string | null), desc: string): void;
+
         /**
          * Sets the agreement section kind.
          * @param kind the rating kind, e.g. "GDPR"
          */
         set_kind(kind: string): void;
+
         /**
          * Sets the agreement section name.
          * @param locale the locale. e.g. "en_GB"
          * @param name the rating name, e.g. "GDPR"
          */
-        set_name(locale: string | null, name: string): void;
+        set_name(locale: (string | null), name: string): void;
     }
+
 
     namespace App {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3027,82 +3148,82 @@ export namespace AppStreamGlib {
         $signals: App.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): App;
+        static ["new"](): App;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof App.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof App.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof App.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
+
         /**
          * Guesses the source kind based from the filename.
          * @param filename a file name
          */
         static guess_source_kind(filename: string): FormatKind;
+
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): AppKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.AppKind}.
          */
         static kind_to_string(kind: AppKind): string;
+
         /**
          * Converts the text representation to an enumerated value.
          * @param merge_kind a source kind string
          */
         static merge_kind_from_string(merge_kind: string): AppMergeKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param merge_kind the {@link AppStreamGlib.AppMergeKind}, e.g. {@link AppStreamGlib.AppMergeKind.REPLACE}
          */
         static merge_kind_to_string(merge_kind: AppMergeKind): string;
+
         /**
          * Converts the text representation to an enumerated value.
          * @param scope a source kind string
          */
         static scope_from_string(scope: string): AppScope;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param scope the {@link AppStreamGlib.AppScope}, e.g. {@link AppStreamGlib.AppScope.SYSTEM}
          */
         static scope_to_string(scope: AppScope): string;
+
         /**
          * Converts the text representation to an enumerated value.
          * @param source_kind a source kind string
          */
         static source_kind_from_string(source_kind: string): FormatKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param source_kind the {@link AppStreamGlib.FormatKind}.
          */
         static source_kind_to_string(source_kind: FormatKind): string;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param state the {@link AppStreamGlib.AppState}.
@@ -3110,161 +3231,189 @@ export namespace AppStreamGlib {
         static state_to_string(state: AppState): string;
 
         // Methods
-
         /**
          * Adds a addon to an application.
          * @param addon a {@link AppStreamGlib.App} instance.
          */
         add_addon(addon: App): void;
+
         /**
          * Adds a agreement to an application.
          * @param agreement a {@link AppStreamGlib.Agreement} instance.
          */
         add_agreement(agreement: Agreement): void;
+
         /**
          * Adds a package name to an application.
          * @param arch the package name.
          */
         add_arch(arch: string): void;
+
         /**
          * Adds a bundle to an application.
          * @param bundle a {@link AppStreamGlib.Bundle} instance.
          */
         add_bundle(bundle: Bundle): void;
+
         /**
          * Adds a menu category to the application.
          * @param category the category.
          */
         add_category(category: string): void;
+
         /**
          * Adds a desktop that requires this application to be installed.
          * @param compulsory_for_desktop the desktop string, e.g. "GNOME".
          */
         add_compulsory_for_desktop(compulsory_for_desktop: string): void;
+
         /**
          * Adds a content_rating to an application.
          * @param content_rating a {@link AppStreamGlib.ContentRating} instance.
          */
         add_content_rating(content_rating: ContentRating): void;
+
         /**
          * Adds a parent ID to the application.
          * @param _extends the full ID, e.g. "eclipse.desktop".
          */
         add_extends(_extends: string): void;
+
         /**
          * Add a format the application has been built from.
          * @param format the {@link AppStreamGlib.Format}.
          */
         add_format(format: Format): void;
+
         /**
          * Adds a icon to an application.
          * @param icon a {@link AppStreamGlib.Icon} instance.
          */
         add_icon(icon: Icon): void;
+
         /**
          * Add a keyword the application should match against.
          * @param locale the locale. e.g. "en_GB"
          * @param keyword the keyword.
          */
-        add_keyword(locale: string | null, keyword: string): void;
+        add_keyword(locale: (string | null), keyword: string): void;
+
         /**
          * Add a kudo the application has obtained.
          * @param kudo the kudo.
          */
         add_kudo(kudo: string): void;
+
         /**
          * Add a kudo the application has obtained.
          * @param kudo_kind the {@link AppStreamGlib.KudoKind}.
          */
         add_kudo_kind(kudo_kind: KudoKind): void;
+
         /**
          * Adds a language to the application.
          * @param percentage the percentage completion of the translation, or 0 for unknown
          * @param locale the locale. e.g. "en_GB"
          */
-        add_language(percentage: number, locale: string | null): void;
+        add_language(percentage: number, locale: (string | null)): void;
+
         /**
          * Adds a launchable to an application.
          * @param launchable a {@link AppStreamGlib.Launchable} instance.
          */
         add_launchable(launchable: Launchable): void;
+
         /**
          * Adds a metadata entry to the application.
          * @param key the metadata key.
          * @param value the value to store.
          */
-        add_metadata(key: string, value: string | null): void;
+        add_metadata(key: string, value: (string | null)): void;
+
         /**
          * Adds a mimetype the application can process.
          * @param mimetype the mimetype.
          */
         add_mimetype(mimetype: string): void;
+
         /**
          * Add a permission the application has obtained.
          * @param permission the permission.
          */
         add_permission(permission: string): void;
+
         /**
          * Adds a package name to an application.
          * @param pkgname the package name.
          */
         add_pkgname(pkgname: string): void;
+
         /**
          * Adds a provide to an application.
          * @param provide a {@link AppStreamGlib.Provide} instance.
          */
         add_provide(provide: Provide): void;
+
         /**
          * Adds a specific attribute to an application.
          * @param quirk the {@link AppStreamGlib.AppQuirk}, e.g. {@link AppStreamGlib.AppQuirk.PROVENANCE}
          */
         add_quirk(quirk: AppQuirk): void;
+
         /**
          * Adds a release to an application.
          * @param release a {@link AppStreamGlib.Release} instance.
          */
         add_release(release: Release): void;
+
         /**
          * Adds a require to an application.
          * @param require a {@link AppStreamGlib.Require} instance.
          */
         add_require(require: Require): void;
+
         /**
          * Adds a review to an application.
          * @param review a {@link AppStreamGlib.Review} instance.
          */
         add_review(review: Review): void;
+
         /**
          * Adds a screenshot to an application.
          * @param screenshot a {@link AppStreamGlib.Screenshot} instance.
          */
         add_screenshot(screenshot: Screenshot): void;
+
         /**
          * Adds a suggest to an application.
          * @param suggest a {@link AppStreamGlib.Suggest} instance.
          */
         add_suggest(suggest: Suggest): void;
+
         /**
          * Adds a translation to an application.
          * @param translation a {@link AppStreamGlib.Translation} instance.
          */
         add_translation(translation: Translation): void;
+
         /**
          * Adds some URL data to the application.
          * @param url_kind the URL kind, e.g. {@link AppStreamGlib.UrlKind.HOMEPAGE}
          * @param url the full URL.
          */
         add_url(url_kind: UrlKind, url: string): void;
+
         /**
          * Converts all the icons in the application to a specific kind.
          * @param kind the AsIconKind, e.g. {@link AppStreamGlib.IconKind.EMBEDDED}.
          * @returns `true` for success
          */
         convert_icons(kind: IconKind): boolean;
+
         /**
          * Compare one application with another for equality using the following
          * properties:
-         *
+         * 
          *  1. scope, e.g. `system` or `user`
          *  2. bundle kind, e.g. `package` or `flatpak`
          *  3. origin, e.g. `fedora` or `gnome-apps-nightly`
@@ -3275,129 +3424,153 @@ export namespace AppStreamGlib {
          * @returns `true` if the applications are equal
          */
         equal(app2: App): boolean;
+
         /**
          * Gets all the addons the application has.
          * @returns an array
          */
         get_addons(): App[];
+
         /**
          * Gets a agreement the application has defined of a specific type.
          * @param kind an agreement kind, e.g. {@link AppStreamGlib.AgreementKind.EULA}
          * @returns a {@link AppStreamGlib.Agreement} or NULL for not found
          */
         get_agreement_by_kind(kind: AgreementKind): Agreement;
+
         /**
          * Gets a privacy policys the application has defined of a specific type.
          * @returns a {@link AppStreamGlib.Agreement} or NULL for not found
          */
         get_agreement_default(): Agreement;
+
         /**
          * Gets the supported architectures for the application, or an empty list
          * if all architectures are supported.
          * @returns an array
          */
         get_architectures(): string[];
+
         /**
          * Gets the branch for the application.
          * @returns string, or `null` if unset
          */
         get_branch(): string;
+
         /**
          * Finds the default bundle.
          * @returns a {@link AppStreamGlib.Bundle}, or `null`
          */
         get_bundle_default(): Bundle;
+
         /**
          * Gets any bundles the application has defined.
          * @returns an array
          */
         get_bundles(): Bundle[];
+
         /**
          * Get the application categories.
          * @returns an array
          */
         get_categories(): string[];
+
         /**
          * Gets the application summary for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_comment(locale: string | null): string;
+        get_comment(locale: (string | null)): string;
+
         /**
          * Gets the comments set for the application.
          * @returns hash table of comments
          */
         get_comments(): GLib.HashTable<any, any>;
+
         /**
          * Returns the desktops where this application is compulsory.
          * @returns an array
          */
         get_compulsory_for_desktops(): string[];
+
         /**
          * Gets a content ratings the application has defined of a specific type.
          * @param kind a ratings kind, e.g. "oars-1.0"
          * @returns a {@link AppStreamGlib.ContentRating} or NULL for not found
          */
         get_content_rating(kind: string): ContentRating;
+
         /**
          * Gets any content_ratings the application has defined.
          * @returns an array
          */
         get_content_ratings(): ContentRating[];
+
         /**
          * Gets the application description markup for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_description(locale: string | null): string;
+        get_description(locale: (string | null)): string;
+
         /**
          * Gets the descriptions set for the application.
          * @returns hash table of descriptions
          */
         get_descriptions(): GLib.HashTable<any, any>;
+
         /**
          * Gets the application developer name for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_developer_name(locale: string | null): string;
+        get_developer_name(locale: (string | null)): string;
+
         /**
          * Gets the developer_names set for the application.
          * @returns hash table of developer_names
          */
         get_developer_names(): GLib.HashTable<any, any>;
+
         /**
          * Gets the IDs that are extended from the addon.
          * @returns an array
          */
         get_extends(): string[];
+
         /**
          * Searches the list of formats for a specific filename.
          * @param filename a filename, e.g. "/home/hughsie/dave.desktop"
          * @returns A {@link AppStreamGlib.Format}, or `null` if not found
          */
         get_format_by_filename(filename: string): Format;
+
         /**
          * Searches the list of formats for a specific format kind.
          * @param kind a {@link AppStreamGlib.FormatKind}, e.g. {@link AppStreamGlib.FormatKind.APPDATA}
          * @returns A {@link AppStreamGlib.Format}, or `null` if not found
          */
         get_format_by_kind(kind: FormatKind): Format;
+
         /**
          * Returns the default format.
          * @returns A {@link AppStreamGlib.Format}, or `null` if not found
          */
         get_format_default(): Format;
+
         /**
          * Gets any formats that make up the application.
          * @returns an array
          */
         get_formats(): string[];
+
         /**
          * Finds the default icon.
          * @returns a {@link AppStreamGlib.Icon}, or `null`
          */
         get_icon_default(): Icon;
+
         /**
          * Finds an icon of a specific size.
          * @param width Size in pixels
@@ -3405,179 +3578,213 @@ export namespace AppStreamGlib {
          * @returns a {@link AppStreamGlib.Icon}, or `null`
          */
         get_icon_for_size(width: number, height: number): Icon;
+
         /**
          * Gets the application icon path.
          * @returns string, or `null` if unset
          */
         get_icon_path(): string;
+
         /**
          * Gets any icons the application has defined.
          * @returns an array
          */
         get_icons(): Icon[];
+
         /**
          * Gets the full ID value.
          * @returns the ID, e.g. "org.gnome.Software.desktop"
          */
         get_id(): string;
+
         /**
          * Returns a filename which represents the applications ID, e.g. "gimp.desktop"
          * becomes "gimp" and is used for cache directories.
          * @returns A utf8 filename
          */
         get_id_filename(): string;
+
         /**
          * Gets the ID kind.
          * @returns enumerated value
          */
         get_id_kind(): IdKind;
+
         /**
          * Gets the full ID value, stripping any prefix.
          * @returns the ID, e.g. "org.gnome.Software.desktop"
          */
         get_id_no_prefix(): string;
+
         /**
          * Gets any keywords the application should match against.
          * @param locale the locale. e.g. "en_GB"
          * @returns an array, or `null`
          */
-        get_keywords(locale: string | null): string[];
+        get_keywords(locale: (string | null)): string[];
+
         /**
          * Gets the ID kind.
          * @returns enumerated value
          */
         get_kind(): AppKind;
+
         /**
          * Gets any kudos the application has obtained.
          * @returns an array
          */
         get_kudos(): string[];
+
         /**
          * Gets the language coverage for the specific language.
          * @param locale the locale. e.g. "en_GB"
          * @returns a percentage value where 0 is unspecified, or -1 for not found
          */
-        get_language(locale: string | null): number;
+        get_language(locale: (string | null)): number;
+
         /**
          * Get a list of all languages.
          * @returns list of language values
          */
         get_languages(): string[];
+
         /**
          * Searches the list of launchables for a specific launchable kind.
          * @param kind a {@link AppStreamGlib.LaunchableKind}, e.g. {@link AppStreamGlib.FormatKind.APPDATA}
          * @returns A {@link AppStreamGlib.Launchable}, or `null` if not found
          */
         get_launchable_by_kind(kind: LaunchableKind): Launchable;
+
         /**
          * Returns the default launchable.
          * @returns A {@link AppStreamGlib.Launchable}, or `null` if not found
          */
         get_launchable_default(): Launchable;
+
         /**
          * Gets all the launchables the application has.
          * @returns an array
          */
         get_launchables(): Launchable[];
+
         /**
          * Gets the merge_kind of the application.
          * @returns enumerated value
          */
         get_merge_kind(): AppMergeKind;
+
         /**
          * Gets the metadata set for the application.
          * @returns hash table of metadata
          */
         get_metadata(): GLib.HashTable<string, string>;
+
         /**
          * Gets some metadata item.
          * @param key the metadata key.
          * @returns string, or `null` if unset
          */
         get_metadata_item(key: string): string;
+
         /**
          * Gets the application project license.
          * @returns string, or `null` if unset
          */
         get_metadata_license(): string;
+
         /**
          * Gets any mimetypes the application will register.
          * @returns an array
          */
         get_mimetypes(): string[];
+
         /**
          * Gets the application name for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @returns string, or `null` if unset
          */
-        get_name(locale: string | null): string;
+        get_name(locale: (string | null)): string;
+
         /**
          * Gets the names set for the application.
          * @returns hash table of names
          */
         get_names(): GLib.HashTable<any, any>;
+
         /**
          * Gets the application origin.
          * @returns the origin string, or `null` if unset
          */
         get_origin(): string;
+
         /**
          * Gets any permissions the application has obtained.
          * @returns an array
          */
         get_permissions(): string[];
+
         /**
          * Gets the default package name.
          * @returns string, or `null` if unset
          */
         get_pkgname_default(): string;
+
         /**
          * Gets the package names (if any) for the application.
          * @returns an array
          */
         get_pkgnames(): string[];
+
         /**
          * Gets the application priority. Larger values trump smaller values.
          * @returns priority value
          */
         get_priority(): number;
+
         /**
          * Gets an application project group.
          * @returns string, or `null` if unset
          */
         get_project_group(): string;
+
         /**
          * Gets the application project license.
          * @returns string, or `null` if unset
          */
         get_project_license(): string;
+
         /**
          * Gets all the provides the application has.
          * @returns an array
          */
         get_provides(): Provide[];
+
         /**
          * Gets a specific release from the application.
          * @param version a version string
          * @returns a release, or `null`
          */
         get_release(version: string): Release;
+
         /**
          * Gets a specific release from the application.
          * @param version a release version number, e.g. "1.2.3"
          * @returns a release, or `null`
          */
         get_release_by_version(version: string): Release;
+
         /**
          * Gets the default (newest) release from the application.
          * @returns a release, or `null`
          */
         get_release_default(): Release;
+
         /**
          * Gets all the releases the application has had.
          * @returns an array
          */
         get_releases(): Release[];
+
         /**
          * Gets a specific requirement for the application.
          * @param kind a {@link AppStreamGlib.RequireKind}, e.g. {@link AppStreamGlib.RequireKind.FIRMWARE}
@@ -3585,6 +3792,7 @@ export namespace AppStreamGlib {
          * @returns A {@link AppStreamGlib.Require}, or `null` for not found
          */
         get_require_by_value(kind: RequireKind, value: string): Require;
+
         /**
          * Gets any requires the application has defined. A requirement could be that
          * a firmware version has to be below a defined version or that another
@@ -3592,42 +3800,50 @@ export namespace AppStreamGlib {
          * @returns an array
          */
         get_requires(): Require[];
+
         /**
          * Gets any reviews the application has defined.
          * @returns an array
          */
         get_reviews(): Screenshot[];
+
         /**
          * Gets the scope of the application.
          * @returns enumerated value
          */
         get_scope(): AppScope;
+
         /**
          * Gets the default screenshot for the component.
          * @returns a screenshot or `null`
          */
         get_screenshot_default(): Screenshot;
+
         /**
          * Gets any screenshots the application has defined.
          * @returns an array
          */
         get_screenshots(): Screenshot[];
+
         /**
          * Gets the token match fields. The bitfield given here is used to choose what
          * is included in the token cache.
          * @returns a {@link AppStreamGlib.AppSearchMatch}, e.g. {@link AppStreamGlib.AppSearchMatch.PKGNAME}
          */
         get_search_match(): number;
+
         /**
          * Gets the default source filename the instance was populated from.
          * @returns string, or `null` if unset
          */
         get_source_file(): string;
+
         /**
          * Gets the source kind, i.e. where the AsApp came from.
          * @returns enumerated value
          */
         get_source_kind(): FormatKind;
+
         /**
          * Gets the source package name that produced the binary package.
          * Only source packages producing more than one binary package will have this
@@ -3635,286 +3851,338 @@ export namespace AppStreamGlib {
          * @returns string, or `null` if unset
          */
         get_source_pkgname(): string;
+
         /**
          * Gets the application state.
          * @returns enumerated value
          */
         get_state(): AppState;
+
         /**
          * Gets any suggests the application has defined.
          * @returns an array
          */
         get_suggests(): Suggest[];
+
         /**
          * Gets any translations the application has defined.
          * @returns an array
          */
         get_translations(): Translation[];
+
         /**
          * Gets the trust flags, i.e. how trusted the incoming data is.
          * @returns bitfield
          */
         get_trust_flags(): number;
+
         /**
          * Gets the unique ID value to represent the component.
          * @returns the unique ID, e.g. `system/package/fedora/desktop/gimp.desktop/master`
          */
         get_unique_id(): string;
+
         /**
          * Gets the application upstream update contact email.
          * @returns string, or `null` if unset
          */
         get_update_contact(): string;
+
         /**
          * Gets a URL.
          * @param url_kind the URL kind, e.g. {@link AppStreamGlib.UrlKind.HOMEPAGE}.
          * @returns string, or `null` if unset
          */
         get_url_item(url_kind: UrlKind): string;
+
         /**
          * Gets the URLs set for the application.
          * @returns hash table of URLs
          */
         get_urls(): GLib.HashTable<any, any>;
+
         /**
          * Gets the list of vetos.
          * @returns A list of vetos
          */
         get_vetos(): string[];
+
         /**
          * Searches the category list for a specific item.
          * @param category a category string, e.g. "DesktopSettings"
          * @returns `true` if the application has got the specified category
          */
         has_category(category: string): boolean;
+
         /**
          * Searches the compulsory for desktop list for a specific item.
          * @param desktop a desktop string, e.g. "GNOME"
          * @returns `true` if the application is compulsory for a specific desktop
          */
         has_compulsory_for_desktop(desktop: string): boolean;
+
         /**
          * Searches the kudo list for a specific item.
          * @param kudo a kudo string, e.g. "SearchProvider"
          * @returns `true` if the application has got the specified kudo
          */
         has_kudo(kudo: string): boolean;
+
         /**
          * Searches the kudo list for a specific item.
          * @param kudo a {@link AppStreamGlib.KudoKind}, e.g. {@link AppStreamGlib.KudoKind.SEARCH_PROVIDER}
          * @returns `true` if the application has got the specified kudo
          */
         has_kudo_kind(kudo: KudoKind): boolean;
+
         /**
          * Searches the permission list for a specific item.
          * @param permission a permission string, e.g. "Network"
          * @returns `true` if the application has got the specified permission
          */
         has_permission(permission: string): boolean;
+
         /**
          * Queries to see if an application has a specific attribute.
          * @param quirk the {@link AppStreamGlib.AppQuirk}, e.g. {@link AppStreamGlib.AppQuirk.PROVENANCE}
          * @returns `true` if the application has the attribute
          */
         has_quirk(quirk: AppQuirk): boolean;
+
         /**
          * Parses an AppData file and populates the application state.
          * @param data data to parse.
          * @param flags {@link AppStreamGlib.AppParseFlags}, e.g. {@link AppStreamGlib.AppParseFlags.USE_HEURISTICS}
          * @returns `true` for success
          */
-        parse_data(data: GLib.Bytes | Uint8Array, flags: number): boolean;
+        parse_data(data: (GLib.Bytes | Uint8Array), flags: number): boolean;
+
         /**
          * Parses a desktop or AppData file and populates the application state.
-         *
+         * 
          * Applications that are not suitable for the store will have vetos added.
          * @param filename file to load.
          * @param flags {@link AppStreamGlib.AppParseFlags}, e.g. {@link AppStreamGlib.AppParseFlags.USE_HEURISTICS}
          * @returns `true` for success
          */
         parse_file(filename: string, flags: number): boolean;
+
         /**
          * Removed a menu category from the application.
          * @param category the category.
          */
         remove_category(category: string): void;
+
         /**
          * Removes a format the application has been built from.
          * @param format the {@link AppStreamGlib.Format}.
          */
         remove_format(format: Format): void;
+
         /**
          * Remove a kudo the application has obtained.
          * @param kudo the kudo.
          */
         remove_kudo(kudo: string): void;
+
         /**
          * Removes a metadata item from the application.
          * @param key the metadata key.
          */
         remove_metadata(key: string): void;
+
         /**
          * Removes a reason to not include the application in the metadata.
          * @param description veto string
          */
         remove_veto(description: string): void;
+
         /**
          * Searches application data for a specific keyword.
          * @param search the search term.
          * @returns a match scrore, where 0 is no match and 100 is the best match.
          */
         search_matches(search: string): number;
+
         /**
          * Searches application data for all the specific keywords.
          * @param search the search terms.
          * @returns a match scrore, where 0 is no match and larger numbers are better matches. It's probably a good idea to use `as_utils_search_tokenize()` to populate search as very short or common keywords will return a lot of matches.
          */
         search_matches_all(search: string): number;
+
         /**
          * Set the branch that the instance was sourced from.
          * @param branch the branch, e.g. "master" or "3-16".
          */
         set_branch(branch: string): void;
+
         /**
          * Sets the application summary for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @param comment the application summary.
          */
-        set_comment(locale: string | null, comment: string): void;
+        set_comment(locale: (string | null), comment: string): void;
+
         /**
          * Sets the application description markup for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @param description the application description.
          */
-        set_description(locale: string | null, description: string): void;
+        set_description(locale: (string | null), description: string): void;
+
         /**
          * Sets the application developer name for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @param developer_name the application developer name.
          */
-        set_developer_name(locale: string | null, developer_name: string): void;
+        set_developer_name(locale: (string | null), developer_name: string): void;
+
         /**
          * Sets the icon path, where local icons would be found.
          * @param icon_path the local path.
          */
         set_icon_path(icon_path: string): void;
+
         /**
          * Sets a new application ID. Any invalid characters will be automatically replaced.
          * @param id the new _full_ application ID, e.g. "org.gnome.Software.desktop".
          */
         set_id(id: string): void;
+
         /**
          * Sets the application kind.
          * @param id_kind the {@link AppStreamGlib.AppKind}.
          */
         set_id_kind(id_kind: IdKind): void;
+
         /**
          * Sets the application kind.
          * @param kind the {@link AppStreamGlib.AppKind}.
          */
         set_kind(kind: AppKind): void;
+
         /**
          * Sets the merge kind of the application.
          * @param merge_kind the {@link AppStreamGlib.AppMergeKind}.
          */
         set_merge_kind(merge_kind: AppMergeKind): void;
+
         /**
          * Set the project license.
          * @param metadata_license the project license string.
          */
         set_metadata_license(metadata_license: string): void;
+
         /**
          * Sets the application name for a specific locale.
          * @param locale the locale. e.g. "en_GB"
          * @param name the application name.
          */
-        set_name(locale: string | null, name: string): void;
+        set_name(locale: (string | null), name: string): void;
+
         /**
          * Sets the application origin.
          * @param origin the origin, e.g. "fedora-21"
          */
         set_origin(origin: string): void;
+
         /**
          * Sets the application priority, where 0 is default and positive numbers
          * are better than negative numbers.
          * @param priority the priority.
          */
         set_priority(priority: number): void;
+
         /**
          * Set any project affiliation.
          * @param project_group the project group, e.g. "GNOME".
          */
         set_project_group(project_group: string): void;
+
         /**
          * Set the project license.
          * @param project_license the project license string.
          */
         set_project_license(project_license: string): void;
+
         /**
          * Sets the scope of the application.
          * @param scope the {@link AppStreamGlib.AppScope}.
          */
         set_scope(scope: AppScope): void;
+
         /**
          * Sets the token match fields. The bitfield given here is used to choose what
          * is included in the token cache.
          * @param search_match the {@link AppStreamGlib.AppSearchMatch}, e.g. {@link AppStreamGlib.AppSearchMatch.PKGNAME}
          */
         set_search_match(search_match: number): void;
+
         /**
          * Set the file that the instance was sourced from.
          * @param source_file the filename.
          */
         set_source_file(source_file: string): void;
+
         /**
          * Sets the source kind.
          * @param source_kind the {@link AppStreamGlib.FormatKind}.
          */
         set_source_kind(source_kind: FormatKind): void;
+
         /**
          * Set the project license.
          * @param source_pkgname the project license string.
          */
         set_source_pkgname(source_pkgname: string): void;
+
         /**
          * Sets the application state.
          * @param state the {@link AppStreamGlib.AppState}.
          */
         set_state(state: AppState): void;
+
         /**
          * Sets the check flags, where {@link AppStreamGlib.AppTrustFlags.COMPLETE} is completely
          * trusted input.
          * @param trust_flags the {@link AppStreamGlib.AppTrustFlags}.
          */
         set_trust_flags(trust_flags: number): void;
+
         /**
          * Set the project license.
          * @param update_contact the project license string.
          */
         set_update_contact(update_contact: string): void;
+
         /**
          * Copies information from the donor to the application object.
          * @param donor the donor.
          */
         subsume(donor: App): void;
+
         /**
          * Copies information from the donor to the application object.
          * @param donor the donor.
          * @param flags any optional {@link AppStreamGlib.AppSubsumeFlags}, e.g. {@link AppStreamGlib.AppSubsumeFlags.NO_OVERWRITE}
          */
-        subsume_full(donor: App, flags: bigint | number): void;
+        subsume_full(donor: App, flags: (bigint | number)): void;
+
         /**
          * Exports a DOM tree to an XML file.
          * @param file a {@link Gio.File}
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` for success
          */
-        to_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+        to_file(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Exports a DOM tree to an XML string.
          * @returns an XML string, or `null`
          */
         to_xml(): GLib.String;
+
         /**
          * Validates data in the instance for style and consistency.
          * @param flags the {@link AppStreamGlib.AppValidateFlags} to use, e.g. {@link AppStreamGlib.AppValidateFlags.NONE}
@@ -3923,13 +4191,16 @@ export namespace AppStreamGlib {
         validate(flags: number): Problem[];
     }
 
+
     namespace Bundle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3948,41 +4219,32 @@ export namespace AppStreamGlib {
         $signals: Bundle.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Bundle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Bundle;
+        static ["new"](): Bundle;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Bundle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bundle.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Bundle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Bundle.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Bundle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Bundle.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Bundle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Bundle.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Bundle.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Bundle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Bundle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Bundle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): BundleKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.BundleKind}.
@@ -3990,42 +4252,48 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: BundleKind): string;
 
         // Methods
-
         /**
          * Gets the ID for this bundle.
          * @returns ID, e.g. "foobar-1.0.2"
          */
         get_id(): string;
+
         /**
          * Gets the bundle kind.
          * @returns the {@link AppStreamGlib.BundleKind}
          */
         get_kind(): BundleKind;
+
         /**
          * Gets the runtime required for this bundle.
          * @returns Runtime identifier, e.g. "org.gnome.Platform/i386/master"
          */
         get_runtime(): string;
+
         /**
          * Gets the SDK for this bundle.
          * @returns SDK identifier, e.g. "org.gnome.Sdk/i386/master"
          */
         get_sdk(): string;
+
         /**
          * Sets the ID for this bundle.
          * @param id the URL.
          */
         set_id(id: string): void;
+
         /**
          * Sets the bundle kind.
          * @param kind the {@link AppStreamGlib.BundleKind}, e.g. {@link AppStreamGlib.BundleKind.FLATPAK}.
          */
         set_kind(kind: BundleKind): void;
+
         /**
          * Sets the runtime required for this bundle.
          * @param runtime the URL.
          */
         set_runtime(runtime: string): void;
+
         /**
          * Sets the SDK for this bundle.
          * @param sdk the URL.
@@ -4033,13 +4301,16 @@ export namespace AppStreamGlib {
         set_sdk(sdk: string): void;
     }
 
+
     namespace Checksum {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4058,41 +4329,32 @@ export namespace AppStreamGlib {
         $signals: Checksum.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Checksum.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Checksum;
+        static ["new"](): Checksum;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Checksum.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checksum.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Checksum.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Checksum.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Checksum.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Checksum.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Checksum.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Checksum.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Checksum.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Checksum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Checksum.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Checksum.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param target a source kind string
          */
         static target_from_string(target: string): ChecksumTarget;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param target the {@link AppStreamGlib.ChecksumTarget}.
@@ -4100,42 +4362,48 @@ export namespace AppStreamGlib {
         static target_to_string(target: ChecksumTarget): string;
 
         // Methods
-
         /**
          * Gets the full qualified URL for the checksum, usually pointing at some mirror.
          * @returns URL
          */
         get_filename(): string;
+
         /**
          * Gets the checksum kind.
          * @returns the {@link GLib.ChecksumType}
          */
         get_kind(): GLib.ChecksumType;
+
         /**
          * Gets the checksum target.
          * @returns the {@link GLib.ChecksumType}
          */
         get_target(): ChecksumTarget;
+
         /**
          * Gets the suggested value the checksum, including file extension.
          * @returns filename
          */
         get_value(): string;
+
         /**
          * Sets the filename used to generate the checksum.
          * @param filename the URL.
          */
         set_filename(filename: string): void;
+
         /**
          * Sets the checksum kind.
          * @param kind the {@link GLib.ChecksumType}, e.g. {@link GLib.ChecksumType.SHA1}.
          */
         set_kind(kind: GLib.ChecksumType): void;
+
         /**
          * Sets the checksum target.
          * @param target the {@link GLib.ChecksumType}, e.g. {@link AppStreamGlib.ChecksumTarget.CONTAINER}.
          */
         set_target(target: ChecksumTarget): void;
+
         /**
          * Sets the checksum value filename.
          * @param value the new filename value.
@@ -4143,13 +4411,16 @@ export namespace AppStreamGlib {
         set_value(value: string): void;
     }
 
+
     namespace ContentRating {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4168,40 +4439,30 @@ export namespace AppStreamGlib {
         $signals: ContentRating.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ContentRating.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ContentRating;
+        static ["new"](): ContentRating;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ContentRating.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentRating.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ContentRating.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContentRating.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ContentRating.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContentRating.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ContentRating.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContentRating.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ContentRating.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ContentRating.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ContentRating.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContentRating.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the highest {@link AppStreamGlib.ContentRatingValue} which is allowed to be seen by the
          * given Common Sense Media `age` for the given subsection `id`.
-         *
+         * 
          * For example, if the CSM age mappings for `violence-bloodshed` are:
          *  * age ≥ 0 for {@link AppStreamGlib.ContentRatingValue.NONE}
          *  * age ≥ 9 for {@link AppStreamGlib.ContentRatingValue.MILD}
@@ -4214,6 +4475,7 @@ export namespace AppStreamGlib {
          * @param age the CSM age
          */
         static attribute_from_csm_age(id: string, age: number): ContentRatingValue;
+
         /**
          * Get a human-readable description of what content would be expected to
          * require the content rating attribute given by `id` and `value`.
@@ -4221,25 +4483,29 @@ export namespace AppStreamGlib {
          * @param value the {@link AppStreamGlib.ContentRatingValue}, e.g. {@link AppStreamGlib.ContentRatingValue.INTENSE}
          */
         static attribute_get_description(id: string, value: ContentRatingValue): string;
+
         /**
          * Gets the Common Sense Media approved age for a specific rating level.
          * @param id the subsection ID e.g. `violence-cartoon`
          * @param value the {@link AppStreamGlib.ContentRatingValue}, e.g. {@link AppStreamGlib.ContentRatingValue.INTENSE}
          */
         static attribute_to_csm_age(id: string, value: ContentRatingValue): number;
+
         /**
          * Returns a list of all the valid OARS content rating attribute IDs as could
          * be passed to `as_content_rating_add_attribute()` or
          * `as_content_rating_attribute_to_csm_age()`.
          */
         static get_all_rating_ids(): string[];
+
         /**
          * Format `age` as a human-readable string in the given rating `system`. This is
          * the way to present system-specific strings in a UI.
          * @param system an {@link AppStreamGlib.ContentRatingSystem}
          * @param age a CSM age to format
          */
-        static system_format_age(system: ContentRatingSystem, age: number): string | null;
+        static system_format_age(system: ContentRatingSystem, age: number): (string | null);
+
         /**
          * Determine the most appropriate {@link AppStreamGlib.ContentRatingSystem} for the given `locale`.
          * Content rating systems are selected by territory. If no content rating system
@@ -4247,12 +4513,14 @@ export namespace AppStreamGlib {
          * @param locale a locale, in the format described in `man 3 setlocale`
          */
         static system_from_locale(locale: string): ContentRatingSystem;
+
         /**
          * Get the CSM ages corresponding to the entries returned by
          * `as_content_rating_system_get_formatted_ages()` for this `system`.
          * @param system an {@link AppStreamGlib.ContentRatingSystem}
          */
         static system_get_csm_ages(system: ContentRatingSystem): number[];
+
         /**
          * Get an array of all the possible return values of
          * `as_content_rating_system_format_age()` for the given `system`. The array is
@@ -4260,17 +4528,20 @@ export namespace AppStreamGlib {
          * @param system an {@link AppStreamGlib.ContentRatingSystem}
          */
         static system_get_formatted_ages(system: ContentRatingSystem): string[];
+
         /**
          * Get a human-readable string to identify `system`. `null` will be returned for
          * {@link AppStreamGlib.ContentRatingSystem.UNKNOWN}.
          * @param system an {@link AppStreamGlib.ContentRatingSystem}
          */
-        static system_to_string(system: ContentRatingSystem): string | null;
+        static system_to_string(system: ContentRatingSystem): (string | null);
+
         /**
          * Converts the text representation to an enumerated value.
          * @param value the string.
          */
         static value_from_string(value: string): ContentRatingValue;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param value the {@link AppStreamGlib.ContentRatingValue}.
@@ -4278,24 +4549,25 @@ export namespace AppStreamGlib {
         static value_to_string(value: ContentRatingValue): string;
 
         // Methods
-
         /**
          * Adds an attribute value to the content rating.
          * @param id a content rating ID, e.g. `money-gambling`.
          * @param value a {@link AppStreamGlib.ContentRatingValue}, e.g. {@link AppStreamGlib.ContentRatingValue.MODERATE}.
          */
         add_attribute(id: string, value: ContentRatingValue): void;
+
         /**
          * Gets the content_rating kind.
          * @returns a string, e.g. "oars-1.0", or NULL
          */
         get_kind(): string;
+
         /**
          * Gets the lowest Common Sense Media approved age for the content_rating block.
          * NOTE: these numbers are based on the data and descriptions available from
          * https://www.commonsensemedia.org/about-us/our-mission/about-our-ratings and
          * you may disagree with them.
-         *
+         * 
          * You're free to disagree with these, and of course you should use your own
          * brain to work our if your child is able to cope with the concepts enumerated
          * here. Some 13 year olds may be fine with the concept of mutilation of body
@@ -4303,20 +4575,23 @@ export namespace AppStreamGlib {
          * @returns The age in years, 0 for no rating, or G_MAXUINT for no details.
          */
         get_minimum_age(): number;
+
         /**
          * Gets the set of ratings IDs which are present in this `content_rating`. An
          * example of a ratings ID is `violence-bloodshed`.
-         *
+         * 
          * The IDs are returned in lexicographical order.
          * @returns `null`-terminated    array of ratings IDs; each ratings ID is owned by the {@link AppStreamGlib.ContentRating} and    must not be freed, but the container must be freed with `g_free()`
          */
         get_rating_ids(): string[];
+
         /**
          * Gets the set value of a content rating key.
          * @param id A ratings ID, e.g. `violence-bloodshed`.
          * @returns the {@link AppStreamGlib.ContentRatingValue}, or {@link AppStreamGlib.ContentRatingValue.UNKNOWN}
          */
         get_value(id: string): ContentRatingValue;
+
         /**
          * Sets the content rating kind.
          * @param kind the rating kind, e.g. "oars-1.0"
@@ -4324,13 +4599,16 @@ export namespace AppStreamGlib {
         set_kind(kind: string): void;
     }
 
+
     namespace Format {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4349,74 +4627,69 @@ export namespace AppStreamGlib {
         $signals: Format.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Format.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Format;
+        static ["new"](): Format;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Format.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Format.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Format.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Format.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Format.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Format.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Format.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Format.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Format.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Format.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Format.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Format.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Guesses the source kind based from the filename.
          * @param filename a file name
          */
         static guess_kind(filename: string): FormatKind;
+
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): FormatKind;
+
         /**
-         * @param kind
+         * @param kind 
          */
         static kind_to_string(kind: FormatKind): string;
 
         // Methods
-
         /**
          * Checks if two formats are the same.
          * @param format2 a {@link AppStreamGlib.Format} instance.
          * @returns `true` for success
          */
         equal(format2: Format): boolean;
+
         /**
          * Gets the filename required for this format.
          * @returns Runtime identifier, e.g. "org.gnome.Platform/i386/master"
          */
         get_filename(): string;
+
         /**
          * Gets the format kind.
          * @returns the {@link AppStreamGlib.FormatKind}
          */
         get_kind(): FormatKind;
+
         /**
          * Sets the filename required for this format.
          * @param filename the URL.
          */
         set_filename(filename: string): void;
+
         /**
          * Sets the format kind.
          * @param kind the {@link AppStreamGlib.FormatKind}, e.g. {@link AppStreamGlib.FormatKind.APPDATA}.
@@ -4424,13 +4697,16 @@ export namespace AppStreamGlib {
         set_kind(kind: FormatKind): void;
     }
 
+
     namespace Icon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4449,42 +4725,34 @@ export namespace AppStreamGlib {
         $signals: Icon.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Icon;
+        static ["new"](): Icon;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Icon.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Icon.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Icon.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Icon.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Icon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Icon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
+
         /**
          * Converts the text representation to an enumerated value.
          * @param icon_kind the string.
          */
         static kind_from_string(icon_kind: string): IconKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param icon_kind the `AsIconKind`.
@@ -4492,106 +4760,124 @@ export namespace AppStreamGlib {
         static kind_to_string(icon_kind: IconKind): string;
 
         // Methods
-
         /**
          * Converts the icon from one kind to another.
          * @param kind a %AsIconKind, e.g. #AS_ICON_KIND_EMBEDDED
          * @returns `true` for success
          */
         convert_to_kind(kind: IconKind): boolean;
+
         /**
          * Gets the absolute path on disk of the icon.
          * NOTE: This is only set for icons of type {@link AppStreamGlib.IconKind.LOCAL}
          * @returns the absolute filename on disk
          */
         get_filename(): string;
+
         /**
          * Gets the icon height.
          * @returns height in pixels
          */
         get_height(): number;
+
         /**
          * Gets the icon kind.
          * @returns the {@link AppStreamGlib.IconKind}
          */
         get_kind(): IconKind;
+
         /**
          * Gets the name of the icon, e.g. "epiphany.png"
          * @returns the basename of the icon
          */
         get_name(): string;
+
         /**
          * Gets the icon pixbuf if set.
          * @returns the {@link GdkPixbuf.Pixbuf}, or `null`
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
+
         /**
          * Gets the suggested prefix of the icon.
          * @returns filename
          */
         get_prefix(): string;
+
         /**
          * Gets the icon scale.
          * @returns scale factor
          */
         get_scale(): number;
+
         /**
          * Gets the full qualified URL for the icon, usually pointing at some mirror.
          * NOTE: This is only set for icons of type {@link AppStreamGlib.IconKind.REMOTE}
          * @returns the fully qualified URL
          */
         get_url(): string;
+
         /**
          * Gets the icon width.
          * @returns width in pixels
          */
         get_width(): number;
+
         /**
          * Loads the icon into a local pixbuf.
          * @param flags a {@link AppStreamGlib.IconLoadFlags}, e.g. {@link AppStreamGlib.IconLoadFlags.SEARCH_SIZE}
          * @returns `true` for success
          */
         load(flags: IconLoadFlags): boolean;
+
         /**
          * Sets the icon absolute filename.
          * @param filename the new icon URL.
          */
         set_filename(filename: string): void;
+
         /**
          * Sets the icon height.
          * @param height the height in pixels.
          */
         set_height(height: number): void;
+
         /**
          * Sets the icon kind.
          * @param kind the {@link AppStreamGlib.IconKind}, e.g. {@link AppStreamGlib.IconKind.STOCK}.
          */
         set_kind(kind: IconKind): void;
+
         /**
          * Sets the basename to use for the icon.
          * @param name the icon name, e.g. "gimp.png"
          */
         set_name(name: string): void;
+
         /**
          * Sets the icon pixbuf.
          * @param pixbuf the {@link GdkPixbuf.Pixbuf}, or `null`
          */
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
+
         /**
          * Sets the icon prefix filename.
          * @param prefix the new filename prefix.
          */
         set_prefix(prefix: string): void;
+
         /**
          * Sets the icon scale.
          * @param scale the scale as a factor.
          */
         set_scale(scale: number): void;
+
         /**
          * Sets the icon URL.
          * @param url the new icon URL.
          */
         set_url(url: string): void;
+
         /**
          * Sets the icon width.
          * @param width the width in pixels.
@@ -4599,13 +4885,16 @@ export namespace AppStreamGlib {
         set_width(width: number): void;
     }
 
+
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4624,41 +4913,32 @@ export namespace AppStreamGlib {
         $signals: Image.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Image;
+        static ["new"](): Image;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): ImageKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.ImageKind}.
@@ -4666,62 +4946,71 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: ImageKind): string;
 
         // Methods
-
         /**
          * Checks if two images are the same.
          * @param image2 a {@link AppStreamGlib.Image} instance.
          * @returns `true` for success
          */
         equal(image2: Image): boolean;
+
         /**
          * Gets the suggested basename the image, including file extension.
          * @returns filename
          */
         get_basename(): string;
+
         /**
          * Gets the image height.
          * @returns height in pixels
          */
         get_height(): number;
+
         /**
          * Gets the image kind.
          * @returns the {@link AppStreamGlib.ImageKind}
          */
         get_kind(): ImageKind;
+
         /**
          * Gets the locale of the image.
          * @returns locale, or `null`
          */
         get_locale(): string;
+
         /**
          * Gets the string representation of the pixbuf hash value.
          * @returns string representing the MD5 sum, or `null` if unset
          */
         get_md5(): string;
+
         /**
          * Gets the image pixbuf if set.
          * @returns the {@link GdkPixbuf.Pixbuf}, or `null`
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
+
         /**
          * Gets the full qualified URL for the image, usually pointing at some mirror.
          * @returns URL
          */
         get_url(): string;
+
         /**
          * Gets the image width.
          * @returns width in pixels
          */
         get_width(): number;
+
         /**
          * Reads a pixbuf from a file.
-         *
+         * 
          * NOTE: This function also sets the suggested filename which can be retrieved
          * using `as_image_get_basename()`. This can be overridden if required.
          * @param filename filename to read from
          * @returns `true` for success
          */
         load_filename(filename: string): boolean;
+
         /**
          * Reads an image from a file.
          * @param filename filename to read from
@@ -4731,6 +5020,7 @@ export namespace AppStreamGlib {
          * @returns `true` for success
          */
         load_filename_full(filename: string, dest_size: number, src_size_min: number, flags: ImageLoadFlags): boolean;
+
         /**
          * Saves a pixbuf to a file.
          * @param filename filename to write to
@@ -4740,6 +5030,7 @@ export namespace AppStreamGlib {
          * @returns `true` for success
          */
         save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags): boolean;
+
         /**
          * Resamples a pixbuf to a specific size.
          * @param width target width, or 0 for default
@@ -4748,36 +5039,43 @@ export namespace AppStreamGlib {
          * @returns A {@link GdkPixbuf.Pixbuf} of the specified size
          */
         save_pixbuf(width: number, height: number, flags: ImageSaveFlags): GdkPixbuf.Pixbuf;
+
         /**
          * Sets the image basename filename.
          * @param basename the new filename basename.
          */
         set_basename(basename: string): void;
+
         /**
          * Sets the image height.
          * @param height the height in pixels.
          */
         set_height(height: number): void;
+
         /**
          * Sets the image kind.
          * @param kind the {@link AppStreamGlib.ImageKind}, e.g. {@link AppStreamGlib.ImageKind.THUMBNAIL}.
          */
         set_kind(kind: ImageKind): void;
+
         /**
          * Sets the image locale.
          * @param locale the new image locale, e.g. "en_GB" or `null`.
          */
         set_locale(locale: string): void;
+
         /**
          * Sets the image pixbuf.
          * @param pixbuf the {@link GdkPixbuf.Pixbuf}, or `null`
          */
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
+
         /**
          * Sets the fully-qualified mirror URL to use for the image.
          * @param url the URL.
          */
         set_url(url: string): void;
+
         /**
          * Sets the image width.
          * @param width the width in pixels.
@@ -4785,13 +5083,16 @@ export namespace AppStreamGlib {
         set_width(width: number): void;
     }
 
+
     namespace Launchable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4810,41 +5111,32 @@ export namespace AppStreamGlib {
         $signals: Launchable.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Launchable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Launchable;
+        static ["new"](): Launchable;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Launchable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Launchable.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Launchable.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Launchable.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Launchable.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Launchable.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Launchable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Launchable.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Launchable.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Launchable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Launchable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Launchable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): LaunchableKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.LaunchableKind}.
@@ -4852,22 +5144,24 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: LaunchableKind): string;
 
         // Methods
-
         /**
          * Gets the launchable kind.
          * @returns the {@link AppStreamGlib.LaunchableKind}
          */
         get_kind(): LaunchableKind;
+
         /**
          * Gets the value to use for the launchable.
          * @returns usually a desktop ID, e.g. "gimp.desktop"
          */
         get_value(): string;
+
         /**
          * Sets the launchable kind.
          * @param kind the {@link AppStreamGlib.LaunchableKind}, e.g. {@link AppStreamGlib.LaunchableKind.DESKTOP_ID}.
          */
         set_kind(kind: LaunchableKind): void;
+
         /**
          * Sets the fully-qualified mirror URL to use for the launchable.
          * @param value the URL.
@@ -4875,13 +5169,16 @@ export namespace AppStreamGlib {
         set_value(value: string): void;
     }
 
+
     namespace Problem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4900,36 +5197,26 @@ export namespace AppStreamGlib {
         $signals: Problem.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Problem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Problem;
+        static ["new"](): Problem;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Problem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Problem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Problem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Problem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Problem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Problem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Problem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Problem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Problem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Problem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Problem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Problem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.ProblemKind}.
@@ -4937,32 +5224,36 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: ProblemKind): string;
 
         // Methods
-
         /**
          * Gets the problem kind.
          * @returns a {@link AppStreamGlib.ProblemKind}, e.g. {@link AppStreamGlib.ProblemKind.TAG_MISSING}
          */
         get_kind(): ProblemKind;
+
         /**
          * Gets the line number of the problem if known.
          * @returns a line number, where 0 is unknown
          */
         get_line_number(): number;
+
         /**
          * Gets the specific message for the problem.
          * @returns the message
          */
         get_message(): string;
+
         /**
          * Sets the problem kind.
          * @param kind the {@link AppStreamGlib.ProblemKind}.
          */
         set_kind(kind: ProblemKind): void;
+
         /**
          * Adds an line_number to the problem.
          * @param line_number a `guint` instance.
          */
         set_line_number(line_number: number): void;
+
         /**
          * Sets a message on the problem.
          * @param message the message text.
@@ -4970,13 +5261,16 @@ export namespace AppStreamGlib {
         set_message(message: string): void;
     }
 
+
     namespace Provide {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4995,41 +5289,32 @@ export namespace AppStreamGlib {
         $signals: Provide.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Provide.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Provide;
+        static ["new"](): Provide;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Provide.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Provide.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Provide.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Provide.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Provide.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Provide.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Provide.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Provide.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Provide.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Provide.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Provide.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Provide.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): ProvideKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.ProvideKind}.
@@ -5037,22 +5322,24 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: ProvideKind): string;
 
         // Methods
-
         /**
          * Gets the provide kind.
          * @returns the {@link AppStreamGlib.ProvideKind}
          */
         get_kind(): ProvideKind;
+
         /**
          * Gets the full qualified URL for the provide, usually pointing at some mirror.
          * @returns URL
          */
         get_value(): string;
+
         /**
          * Sets the provide kind.
          * @param kind the {@link AppStreamGlib.ProvideKind}, e.g. {@link AppStreamGlib.ProvideKind.LIBRARY}.
          */
         set_kind(kind: ProvideKind): void;
+
         /**
          * Sets the fully-qualified mirror URL to use for the provide.
          * @param value the URL.
@@ -5060,13 +5347,16 @@ export namespace AppStreamGlib {
         set_value(value: string): void;
     }
 
+
     namespace Release {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5085,51 +5375,44 @@ export namespace AppStreamGlib {
         $signals: Release.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Release.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Release;
+        static ["new"](): Release;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Release.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Release.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Release.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Release.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Release.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Release.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Release.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Release.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Release.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param kind_str the string.
          */
         static kind_from_string(kind_str: string): ReleaseKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.ReleaseKind}.
          */
         static kind_to_string(kind: ReleaseKind): string;
+
         /**
          * Converts the text representation to an enumerated value.
          * @param state a string
          */
         static state_from_string(state: string): ReleaseState;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param state the {@link AppStreamGlib.ReleaseState}, e.g. {@link AppStreamGlib.ReleaseState.INSTALLED}
@@ -5137,154 +5420,180 @@ export namespace AppStreamGlib {
         static state_to_string(state: ReleaseState): string;
 
         // Methods
-
         /**
          * Adds a release checksum.
          * @param checksum a {@link AppStreamGlib.Checksum} instance.
          */
         add_checksum(checksum: Checksum): void;
+
         /**
          * Adds a release location.
          * @param location the location string.
          */
         add_location(location: string): void;
+
         /**
          * Gets the release blob, which is typically firmware file data.
          * @param filename a filename
          * @returns a {@link GLib.Bytes}, or `null` for not set
          */
         get_blob(filename: string): GLib.Bytes;
+
         /**
          * Gets the checksum for a release.
          * @param fn a file basename
          * @returns an {@link AppStreamGlib.Checksum}, or `null` for not found
          */
         get_checksum_by_fn(fn: string): Checksum;
+
         /**
          * Gets the checksum for a release.
          * @param target a {@link AppStreamGlib.ChecksumTarget}, e.g. {@link AppStreamGlib.ChecksumTarget.CONTAINER}
          * @returns an {@link AppStreamGlib.Checksum}, or `null` for not found
          */
         get_checksum_by_target(target: ChecksumTarget): Checksum;
+
         /**
          * Gets the release checksums.
          * @returns list of checksums
          */
         get_checksums(): Checksum[];
+
         /**
          * Gets the release description markup for a given locale.
          * @param locale the locale. e.g. "en_GB"
          * @returns markup, or `null` for not set or invalid
          */
-        get_description(locale: string | null): string;
+        get_description(locale: (string | null)): string;
+
         /**
          * Gets the typical install duration.
          * @returns install duration in seconds, or 0 for unset
          */
         get_install_duration(): number;
+
         /**
          * Gets the type of the release.
          * @returns enumerated value, e.g. {@link AppStreamGlib.ReleaseKind.STABLE}
          */
         get_kind(): ReleaseKind;
+
         /**
          * Gets the default release location, typically a URL.
          * @returns string, or `null` for not set or invalid
          */
         get_location_default(): string;
+
         /**
          * Gets the release locations, typically URLs.
          * @returns list of locations
          */
         get_locations(): string[];
+
         /**
          * Gets the release size.
          * @param kind a {@link AppStreamGlib.SizeKind}, e.g. #AS_SIZE_KIND_DOWNLOAD
          * @returns The size in bytes, or 0 for unknown.
          */
         get_size(kind: SizeKind): number;
+
         /**
          * Gets the release state.
          * @returns enumberated value, or {@link AppStreamGlib.ReleaseState.UNKNOWN} for not set or invalid
          */
         get_state(): ReleaseState;
+
         /**
          * Gets the release timestamp.
          * @returns timestamp, or 0 for unset
          */
         get_timestamp(): number;
+
         /**
          * Gets the release urgency.
          * @returns enumberated value, or {@link AppStreamGlib.UrgencyKind.UNKNOWN} for not set or invalid
          */
         get_urgency(): UrgencyKind;
+
         /**
          * Gets a URL.
          * @param url_kind the URL kind, e.g. {@link AppStreamGlib.UrlKind.HOMEPAGE}.
          * @returns string, or `null` if unset
          */
         get_url(url_kind: UrlKind): string;
+
         /**
          * Gets the release version.
          * @returns string, or `null` for not set or invalid
          */
         get_version(): string;
+
         /**
          * Sets a release blob, which is typically firmware data or a detached signature.
-         *
+         * 
          * NOTE: This is not stored in the XML file, and is only available in-memory.
          * @param filename a filename
          * @param blob the {@link GLib.Bytes} data blob
          */
-        set_blob(filename: string, blob: GLib.Bytes | Uint8Array): void;
+        set_blob(filename: string, blob: (GLib.Bytes | Uint8Array)): void;
+
         /**
          * Sets the description release markup.
          * @param locale the locale. e.g. "en_GB"
          * @param description the description markup.
          */
-        set_description(locale: string | null, description: string): void;
+        set_description(locale: (string | null), description: string): void;
+
         /**
          * Sets the typical duration of the install.
          * @param install_duration the install duration in seconds
          */
-        set_install_duration(install_duration: bigint | number): void;
+        set_install_duration(install_duration: (bigint | number)): void;
+
         /**
          * Sets the release kind.
          * @param kind the {@link AppStreamGlib.ReleaseKind}
          */
         set_kind(kind: ReleaseKind): void;
+
         /**
          * Sets the release size.
          * @param kind a {@link AppStreamGlib.SizeKind}, e.g. #AS_SIZE_KIND_DOWNLOAD
          * @param size a size in bytes, or 0 for unknown
          */
-        set_size(kind: SizeKind, size: bigint | number): void;
+        set_size(kind: SizeKind, size: (bigint | number)): void;
+
         /**
          * Sets the release state.
          * @param state the release state, e.g. {@link AppStreamGlib.ReleaseState.INSTALLED}
          */
         set_state(state: ReleaseState): void;
+
         /**
          * Sets the release timestamp.
          * @param timestamp the timestamp value.
          */
-        set_timestamp(timestamp: bigint | number): void;
+        set_timestamp(timestamp: (bigint | number)): void;
+
         /**
          * Sets the release urgency.
          * @param urgency the release urgency, e.g. {@link AppStreamGlib.UrgencyKind.CRITICAL}
          */
         set_urgency(urgency: UrgencyKind): void;
+
         /**
          * Adds some URL data to the application.
          * @param url_kind the URL kind, e.g. {@link AppStreamGlib.UrlKind.DETAILS}
          * @param url the full URL.
          */
         set_url(url_kind: UrlKind, url: string): void;
+
         /**
          * Sets the release version.
          * @param version the version string.
          */
         set_version(version: string): void;
+
         /**
          * Compares two release.
          * @param rel2 a {@link AppStreamGlib.Release} instance.
@@ -5293,13 +5602,16 @@ export namespace AppStreamGlib {
         vercmp(rel2: Release): number;
     }
 
+
     namespace Require {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5318,51 +5630,44 @@ export namespace AppStreamGlib {
         $signals: Require.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Require.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Require;
+        static ["new"](): Require;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Require.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Require.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Require.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Require.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Require.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Require.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Require.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Require.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Require.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Require.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Require.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Require.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param compare the string.
          */
         static compare_from_string(compare: string): RequireCompare;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param compare the {@link AppStreamGlib.RequireCompare}.
          */
         static compare_to_string(compare: RequireCompare): string;
+
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): RequireKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.RequireKind}.
@@ -5370,53 +5675,61 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: RequireKind): string;
 
         // Methods
-
         /**
          * Checks if two requires are the same.
          * @param require2 a {@link AppStreamGlib.Require} instance.
          * @returns `true` for success
          */
         equal(require2: Require): boolean;
+
         /**
          * Gets the require version comparison type.
          * @returns the {@link AppStreamGlib.RequireKind}
          */
         get_compare(): RequireCompare;
+
         /**
          * Gets the require kind.
          * @returns the {@link AppStreamGlib.RequireKind}
          */
         get_kind(): RequireKind;
+
         /**
          * Gets the require value if set.
          * @returns the value, e.g. "bootloader"
          */
         get_value(): string;
+
         /**
          * Gets the require version if set.
          * @returns the version, e.g. "0.1.2"
          */
         get_version(): string;
+
         /**
          * Sets the require version comparison type.
          * @param compare the {@link AppStreamGlib.RequireKind}, e.g. {@link AppStreamGlib.RequireKind.ID}.
          */
         set_compare(compare: RequireCompare): void;
+
         /**
          * Sets the require kind.
          * @param kind the {@link AppStreamGlib.RequireKind}, e.g. {@link AppStreamGlib.RequireKind.ID}.
          */
         set_kind(kind: RequireKind): void;
+
         /**
          * Sets the require value.
          * @param value an require version, e.g. `firmware`
          */
         set_value(value: string): void;
+
         /**
          * Sets the require version.
          * @param version an version number, e.g. `0.1.2`
          */
         set_version(version: string): void;
+
         /**
          * Compares the version number of the requirement with a predicate.
          * @param version a version number, e.g. `0.1.3`
@@ -5425,27 +5738,27 @@ export namespace AppStreamGlib {
         version_compare(version: string): boolean;
     }
 
+
     namespace Review {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::date': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::locale': (pspec: GObject.ParamSpec) => void;
-            'notify::rating': (pspec: GObject.ParamSpec) => void;
-            'notify::reviewer-id': (pspec: GObject.ParamSpec) => void;
-            'notify::reviewer-name': (pspec: GObject.ParamSpec) => void;
-            'notify::summary': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
+            "notify::date": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::locale": (pspec: GObject.ParamSpec) => void;
+            "notify::rating": (pspec: GObject.ParamSpec) => void;
+            "notify::reviewer-id": (pspec: GObject.ParamSpec) => void;
+            "notify::reviewer-name": (pspec: GObject.ParamSpec) => void;
+            "notify::summary": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             date: Review;
             description: string;
-            flags: bigint | number;
+            flags: (bigint | number);
             id: string;
             locale: string;
             rating: number;
@@ -5465,72 +5778,82 @@ export namespace AppStreamGlib {
         static $gtype: GObject.GType<Review>;
 
         // Properties
-
         /**
          * @since 0.6.1
          */
         get date(): Review;
         set date(val: Review);
+
         /**
          * @since 0.6.1
          * @default null
          */
         get description(): string;
         set description(val: string);
+
         /**
          * @since 0.6.1
          * @default 0
          */
         get flags(): number;
-        set flags(val: bigint | number);
+        set flags(val: (bigint | number));
+
         /**
          * @since 0.6.1
          * @default null
          */
         get id(): string;
         set id(val: string);
+
         /**
          * @since 0.6.1
          * @default null
          */
         get locale(): string;
         set locale(val: string);
+
         /**
          * @since 0.6.1
          * @default 0
          */
         get rating(): number;
         set rating(val: number);
+
         /**
          * @since 0.6.1
          * @default null
          */
         get reviewer_id(): string;
         set reviewer_id(val: string);
+
         /**
          * @since 0.6.1
          * @default null
          */
         get reviewerId(): string;
         set reviewerId(val: string);
+
         /**
          * @since 0.6.1
          * @default null
          */
         get reviewer_name(): string;
         set reviewer_name(val: string);
+
         /**
          * @since 0.6.1
          * @default null
          */
         get reviewerName(): string;
         set reviewerName(val: string);
+
         /**
          * @since 0.6.1
          * @default null
          */
         get summary(): string;
         set summary(val: string);
+
         /**
          * @since 0.6.1
          * @default null
@@ -5548,41 +5871,32 @@ export namespace AppStreamGlib {
         $signals: Review.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Review.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Review;
+        static ["new"](): Review;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Review.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Review.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Review.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Review.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Review.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Review.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Review.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Review.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Review.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Review.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Review.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Review.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds flags to an existing review without replacing the other flags.
          * @param flags a {@link AppStreamGlib.ReviewFlags}, e.g. {@link AppStreamGlib.ReviewFlags.SELF}
          */
         add_flags(flags: ReviewFlags): void;
+
         /**
          * Adds metadata to the review object.
          * It is left for the the plugin to use this method as required, but a
@@ -5591,38 +5905,45 @@ export namespace AppStreamGlib {
          * @param value a string
          */
         add_metadata(key: string, value: string): void;
+
         /**
          * Checks if two reviews are the same.
          * @param review2 a {@link AppStreamGlib.Review} instance.
          * @returns `true` for success
          */
         equal(review2: Review): boolean;
+
         /**
          * Gets the date the review was originally submitted.
          * @returns the {@link GLib.DateTime}, or `null` for unset
          */
         get_date(): GLib.DateTime;
+
         /**
          * Gets the multi-line review text that forms the body of the review.
          * @returns the string, or `null`
          */
         get_description(): string;
+
         /**
          * Gets any flags set on the review, for example if the user has already
          * voted on the review or if the user wrote the review themselves.
          * @returns a {@link AppStreamGlib.ReviewFlags}, e.g. {@link AppStreamGlib.ReviewFlags.SELF}
          */
         get_flags(): ReviewFlags;
+
         /**
          * Gets the review id.
          * @returns the review identifier, e.g. "deadbeef"
          */
         get_id(): string;
+
         /**
          * Gets the locale for the review.
          * @returns the string, or `null`
          */
         get_locale(): string;
+
         /**
          * Gets some metadata from a review object.
          * It is left for the the plugin to use this method as required, but a
@@ -5631,89 +5952,106 @@ export namespace AppStreamGlib {
          * @returns A string value, or `null` for not found
          */
         get_metadata_item(key: string): string;
+
         /**
          * This allows the UI to sort reviews into the correct order.
          * Higher numbers indicate a more important or relevant review.
          * @returns the review priority, or 0 for unset.
          */
         get_priority(): number;
+
         /**
          * Gets the star rating of the review, where 100 is 5 stars.
          * @returns integer as a percentage, or 0 for unset
          */
         get_rating(): number;
+
         /**
          * Gets the name of the reviewer.
          * @returns the reviewer ID, e.g. "deadbeef", or `null`
          */
         get_reviewer_id(): string;
+
         /**
          * Gets the name of the reviewer.
          * @returns the reviewer name, e.g. "David Smith", or `null`
          */
         get_reviewer_name(): string;
+
         /**
          * Gets the review summary.
          * @returns the one-line summary, e.g. "Awesome application"
          */
         get_summary(): string;
+
         /**
          * Gets the version string for the application being reviewed..
          * @returns the version string, e.g. "0.1.2", or `null` for unset
          */
         get_version(): string;
+
         /**
          * Sets the date the review was originally submitted.
          * @param date a {@link GLib.DateTime}, or `null`
          */
         set_date(date: GLib.DateTime): void;
+
         /**
          * Sets the multi-line review text that forms the body of the review.
          * @param description multi-line description
          */
         set_description(description: string): void;
+
         /**
          * Gets any flags set on the review, for example if the user has already
          * voted on the review or if the user wrote the review themselves.
          * @param flags a {@link AppStreamGlib.ReviewFlags}, e.g. {@link AppStreamGlib.ReviewFlags.SELF}
          */
         set_flags(flags: ReviewFlags): void;
+
         /**
          * Sets the review identifier that is unique to each review.
          * @param id review identifier, e.g. "deadbeef"
          */
         set_id(id: string): void;
+
         /**
          * Sets the locale for the review.
          * @param locale locale, e.g. "en_GB"
          */
         set_locale(locale: string): void;
+
         /**
          * Sets the priority for the review, where positive numbers indicate
          * a better review for the specific user.
          * @param priority a priority value
          */
         set_priority(priority: number): void;
+
         /**
          * Sets the star rating of the review, where 100 is 5 stars..
          * @param rating a integer as a percentage, or 0 for unset
          */
         set_rating(rating: number): void;
+
         /**
          * Sets the name of the reviewer, which can be left unset.
          * @param reviewer_id the reviewer ID, e.g. "deadbeef"
          */
         set_reviewer_id(reviewer_id: string): void;
+
         /**
          * Sets the name of the reviewer, which can be left unset.
          * @param reviewer_name the reviewer name, e.g. "David Smith"
          */
         set_reviewer_name(reviewer_name: string): void;
+
         /**
          * Sets the one-line summary that may be displayed in bold.
          * @param summary a one-line summary, e.g. "Awesome application"
          */
         set_summary(summary: string): void;
+
         /**
          * Sets the version string for the application being reviewed.
          * @param version a version string, e.g. "0.1.2"
@@ -5721,13 +6059,16 @@ export namespace AppStreamGlib {
         set_version(version: string): void;
     }
 
+
     namespace Screenshot {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5746,41 +6087,32 @@ export namespace AppStreamGlib {
         $signals: Screenshot.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Screenshot;
+        static ["new"](): Screenshot;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Screenshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Screenshot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Screenshot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Screenshot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Screenshot.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Screenshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Screenshot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Screenshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): ScreenshotKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.ScreenshotKind}.
@@ -5788,24 +6120,26 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: ScreenshotKind): string;
 
         // Methods
-
         /**
          * Adds an image to the screenshot.
          * @param image a {@link AppStreamGlib.Image} instance.
          */
         add_image(image: Image): void;
+
         /**
          * Checks if two screenshots are the same.
          * @param screenshot2 a {@link AppStreamGlib.Screenshot} instance.
          * @returns `true` for success
          */
         equal(screenshot2: Screenshot): boolean;
+
         /**
          * Gets the image caption for a specific locale.
          * @param locale the locale, or `null`. e.g. "en_GB"
          * @returns the caption
          */
-        get_caption(locale: string | null): string;
+        get_caption(locale: (string | null)): string;
+
         /**
          * Gets the AsImage closest to the target size. The {@link AppStreamGlib.Image} may not actually
          * be the requested size, and the application may have to pad / rescale the
@@ -5815,11 +6149,12 @@ export namespace AppStreamGlib {
          * @returns an {@link AppStreamGlib.Image}, or `null`
          */
         get_image(width: number, height: number): Image;
+
         /**
          * Gets the AsImage closest to the target size with the specified locale.
          * The {@link AppStreamGlib.Image} may not actually be the requested size, and the application may
          * have to pad / rescale the image to make it fit.
-         *
+         * 
          * FIXME: This function assumes the images are ordered in preference order, e.g.
          * "en_GB -> en -> NULL"
          * @param locale locale, e.g. "en_GB"
@@ -5827,50 +6162,59 @@ export namespace AppStreamGlib {
          * @param height target height
          * @returns an {@link AppStreamGlib.Image}, or `null`
          */
-        get_image_for_locale(locale: string | null, width: number, height: number): Image;
+        get_image_for_locale(locale: (string | null), width: number, height: number): Image;
+
         /**
          * Gets the images included in the screenshot of all sizes and locales.
          * @returns an array
          */
         get_images(): Image[];
+
         /**
          * Returns all images of all sizes that are compatible with a specific locale.
          * @param locale a locale, e.g. `en_GB`
          * @returns an array
          */
         get_images_for_locale(locale: string): Image[];
+
         /**
          * Gets the screenshot kind.
          * @returns a {@link AppStreamGlib.ScreenshotKind}
          */
         get_kind(): ScreenshotKind;
+
         /**
          * Gets the screenshot priority.
          * @returns a priority value
          */
         get_priority(): number;
+
         /**
          * Gets the source image (the unscaled version) for the screenshot
          * @returns an {@link AppStreamGlib.Image}, or `null`
          */
         get_source(): Image;
+
         /**
          * Sets a caption on the screenshot for a specific locale.
          * @param locale the locale, or `null`. e.g. "en_GB"
          * @param caption the caption text.
          */
-        set_caption(locale: string | null, caption: string): void;
+        set_caption(locale: (string | null), caption: string): void;
+
         /**
          * Sets the screenshot kind.
          * @param kind the {@link AppStreamGlib.ScreenshotKind}.
          */
         set_kind(kind: ScreenshotKind): void;
+
         /**
          * Sets the screenshot priority. Higher numbers are better.
          * @param priority the priority value.
          */
         set_priority(priority: number): void;
     }
+
 
     namespace Store {
         // Signal signatures
@@ -5882,7 +6226,7 @@ export namespace AppStreamGlib {
              * @since 0.6.5
              * @run-last
              */
-            'app-added': (arg0: App) => void;
+            "app-added": (arg0: App) => void;
             /**
              * The ::app-changed signal is emitted when a component has been changed
              * in the store.
@@ -5890,7 +6234,7 @@ export namespace AppStreamGlib {
              * @since 0.6.5
              * @run-last
              */
-            'app-changed': (arg0: App) => void;
+            "app-changed": (arg0: App) => void;
             /**
              * The ::app-removed signal is emitted when a component has been removed
              * from the store.
@@ -5898,7 +6242,7 @@ export namespace AppStreamGlib {
              * @since 0.6.5
              * @run-last
              */
-            'app-removed': (arg0: App) => void;
+            "app-removed": (arg0: App) => void;
             /**
              * The ::changed signal is emitted when components have been added
              * or removed from the store.
@@ -5910,8 +6254,9 @@ export namespace AppStreamGlib {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5930,112 +6275,110 @@ export namespace AppStreamGlib {
         $signals: Store.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Store.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Store;
+        static ["new"](): Store;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Store.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Store.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Store.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Store.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Store.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Store.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Store.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Store.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Store.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Store.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
-         * @param app
+         * @param app 
          * @virtual
          */
         vfunc_app_added(app: App): void;
+
         /**
-         * @param app
+         * @param app 
          * @virtual
          */
         vfunc_app_changed(app: App): void;
+
         /**
-         * @param app
+         * @param app 
          * @virtual
          */
         vfunc_app_removed(app: App): void;
+
         /**
          * @virtual
          */
         vfunc_changed(): void;
 
         // Methods
-
         /**
          * Adds an application to the store. If a lower priority application has already
          * been added then this new application will replace it.
-         *
+         * 
          * Additionally only applications where the kind is known will be added.
          * @param app a {@link AppStreamGlib.App} instance.
          */
         add_app(app: App): void;
+
         /**
          * Adds several applications to the store.
-         *
+         * 
          * Additionally only applications where the kind is known will be added.
          * @param apps an array of apps
          */
         add_apps(apps: App[]): void;
+
         /**
          * Adds a filter to the store so that only components of this type are
          * loaded into the store. This may be useful if the client is only interested
          * in certain types of component, or not interested in loading components
          * it cannot process.
-         *
+         * 
          * If no filter is set then all types of components are loaded.
          * @param kind a {@link AppStreamGlib.AppKind}, e.g. {@link AppStreamGlib.AppKind.FIRMWARE}
          */
         add_filter(kind: AppKind): void;
+
         /**
          * Adds a metadata index key.
-         *
+         * 
          * NOTE: if applications are removed *all* the indexes will be invalid and
          * will have to be re-added.
          * @param key the metadata key.
          */
         add_metadata_index(key: string): void;
+
         /**
          * Converts all the icons in the store to a specific kind.
          * @param kind the AsIconKind, e.g. {@link AppStreamGlib.IconKind.EMBEDDED}.
          * @returns `true` for success
          */
         convert_icons(kind: IconKind): boolean;
+
         /**
          * Gets an array of all the valid applications in the store.
          * @returns an array
          */
         dup_apps(): App[];
+
         /**
          * Gets an array of all the merge applications that match a specific ID.
          * @param id the application full ID.
          * @returns an array
          */
         dup_apps_by_id_merge(id: string): App[];
+
         /**
          * Parses an appstream store presented as an archive. This is typically
          * a .cab file containing firmware files.
@@ -6043,15 +6386,16 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        from_bytes(bytes: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
+        from_bytes(bytes: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Parses an AppStream XML or DEP-11 YAML file and adds any valid applications
          * to the store.
-         *
+         * 
          * If the root node does not have a 'origin' attribute, then the method
          * `as_store_set_origin()` should be called *before* this function if cached
          * icons are required.
-         *
+         * 
          * If `file` does not exist, {@link Gio.IOErrorEnum.NOT_FOUND} will be returned. Other
          * `GIOErrors` and `AsStoreErrors` may be returned as appropriate.
          * @param file a {@link Gio.File}.
@@ -6059,10 +6403,11 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        from_file(file: Gio.File, icon_root: string | null, cancellable: Gio.Cancellable | null): boolean;
+        from_file(file: Gio.File, icon_root: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Parses AppStream XML file and adds any valid applications to the store.
-         *
+         * 
          * If the root node does not have a 'origin' attribute, then the method
          * `as_store_set_origin()` should be called *before* this function if cached
          * icons are required.
@@ -6070,17 +6415,20 @@ export namespace AppStreamGlib {
          * @param icon_root the icon path, or `null` for the default.
          * @returns `true` for success
          */
-        from_xml(data: string, icon_root: string | null): boolean;
+        from_xml(data: string, icon_root: (string | null)): boolean;
+
         /**
          * Gets the flags used for adding applications to the store.
          * @returns the {@link AppStreamGlib.StoreAddFlags}, or 0 if unset
          */
         get_add_flags(): number;
+
         /**
          * Gets the AppStream API version.
          * @returns the API version
          */
         get_api_version(): number;
+
         /**
          * Finds an application in the store by ID.
          * If more than one application exists matching the specific ID,
@@ -6090,12 +6438,14 @@ export namespace AppStreamGlib {
          * @returns a {@link AppStreamGlib.App} or `null`
          */
         get_app_by_id(id: string): App;
+
         /**
          * Finds an application in the store ignoring the prefix type.
          * @param id the application full ID.
          * @returns a {@link AppStreamGlib.App} or `null`
          */
         get_app_by_id_ignore_prefix(id: string): App;
+
         /**
          * Finds an application in the store by either by the current desktop ID
          * or a desktop ID that it has used previously. This allows upstream software
@@ -6105,6 +6455,7 @@ export namespace AppStreamGlib {
          * @returns a {@link AppStreamGlib.App} or `null`
          */
         get_app_by_id_with_fallbacks(id: string): App;
+
         /**
          * Finds an application in the store that provides a specific launchable.
          * @param kind the {@link AppStreamGlib.LaunchableKind}
@@ -6112,18 +6463,21 @@ export namespace AppStreamGlib {
          * @returns a {@link AppStreamGlib.App} or `null`
          */
         get_app_by_launchable(kind: LaunchableKind, value: string): App;
+
         /**
          * Finds an application in the store by package name.
          * @param pkgname the package name.
          * @returns a {@link AppStreamGlib.App} or `null`
          */
         get_app_by_pkgname(pkgname: string): App;
+
         /**
          * Finds an application in the store by any of the possible package names.
          * @param pkgnames the package names to find.
          * @returns a {@link AppStreamGlib.App} or `null`
          */
         get_app_by_pkgnames(pkgnames: string): App;
+
         /**
          * Finds an application in the store by something that it provides.
          * @param kind the {@link AppStreamGlib.ProvideKind}
@@ -6131,6 +6485,7 @@ export namespace AppStreamGlib {
          * @returns a {@link AppStreamGlib.App} or `null`
          */
         get_app_by_provide(kind: ProvideKind, value: string): App;
+
         /**
          * Finds an application in the store by matching the unique ID.
          * @param unique_id the application unique ID, e.g.      `user/flatpak/gnome-apps-nightly/app/gimp.desktop/master`
@@ -6138,11 +6493,13 @@ export namespace AppStreamGlib {
          * @returns a {@link AppStreamGlib.App} or `null`
          */
         get_app_by_unique_id(unique_id: string, search_flags: number): App;
+
         /**
          * Gets an array of all the valid applications in the store.
          * @returns an array
          */
         get_apps(): App[];
+
         /**
          * Gets an array of all the applications that match a specific ID,
          * ignoring the prefix type.
@@ -6150,12 +6507,14 @@ export namespace AppStreamGlib {
          * @returns an array
          */
         get_apps_by_id(id: string): App[];
+
         /**
          * Gets an array of all the merge applications that match a specific ID.
          * @param id the application full ID.
          * @returns an array
          */
         get_apps_by_id_merge(id: string): App[];
+
         /**
          * Gets an array of all the applications that match a specific metadata element.
          * @param key metadata key
@@ -6163,6 +6522,7 @@ export namespace AppStreamGlib {
          * @returns an array
          */
         get_apps_by_metadata(key: string, value: string): App[];
+
         /**
          * Finds any applications in the store by something that they provides.
          * @param kind the {@link AppStreamGlib.ProvideKind}
@@ -6170,207 +6530,223 @@ export namespace AppStreamGlib {
          * @returns an array of applications
          */
         get_apps_by_provide(kind: ProvideKind, value: string): App[];
+
         /**
          * Gets the metadata builder identifier, which is used to work out if old
          * metadata is compatible with this builder.
          * @returns the builder_id string, or `null` if unset
          */
         get_builder_id(): string;
+
         /**
          * Gets the destdir, which is used to prefix usr.
          * @returns the destdir path, or `null` if unset
          */
         get_destdir(): string;
+
         /**
          * Gets the metadata origin, which is used to locate icons.
          * @returns the origin string, or `null` if unset
          */
         get_origin(): string;
+
         /**
          * Gets the token match fields. The bitfield given here is used to choose what
          * is included in the token cache.
          * @returns a {@link AppStreamGlib.AppSearchMatch}, e.g. {@link AppStreamGlib.AppSearchMatch.PKGNAME}
          */
         get_search_match(): number;
+
         /**
          * Gets the size of the store after deduplication and prioritization has
          * taken place.
          * @returns the number of usable applications in the store
          */
         get_size(): number;
+
         /**
          * Gets the AppStream API version.
          * @returns the API version
          */
         get_version(): string;
+
         /**
          * Gets the flags used for adding files to the store.
          * @returns the {@link AppStreamGlib.StoreWatchFlags}, or 0 if unset
          */
         get_watch_flags(): number;
+
         /**
          * Loads the store from the default locations.
          * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        load(flags: number, cancellable: Gio.Cancellable | null): boolean;
+        load(flags: number, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously loads the store from the default locations.
          * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        load_async(flags: StoreLoadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Asynchronously loads the store from the default locations.
-         * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
-         * @param cancellable a {@link Gio.Cancellable}.
-         * @param callback A {@link Gio.AsyncReadyCallback}
-         */
-        load_async(
-            flags: StoreLoadFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        load_async(flags: StoreLoadFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously loads the store from the default locations.
          * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback A {@link Gio.AsyncReadyCallback}
          */
-        load_async(
-            flags: StoreLoadFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        load_async(flags: StoreLoadFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously loads the store from the default locations.
+         * @param flags {@link AppStreamGlib.StoreLoadFlags}, e.g. {@link AppStreamGlib.StoreLoadFlags.APP_INFO_SYSTEM}
+         * @param cancellable a {@link Gio.Cancellable}.
+         * @param callback A {@link Gio.AsyncReadyCallback}
+         */
+        load_async(flags: StoreLoadFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Retrieve the result of `as_store_load_async()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns `true` for success
          */
         load_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Loads the store from a specific path.
          * @param path A path to load
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          */
-        load_path(path: string, cancellable: Gio.Cancellable | null): boolean;
+        load_path(path: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously loads the store from a specific path.
          * @param path A path to load
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        load_path_async(path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Asynchronously loads the store from a specific path.
-         * @param path A path to load
-         * @param cancellable a {@link Gio.Cancellable}.
-         * @param callback A {@link Gio.AsyncReadyCallback}
-         */
-        load_path_async(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        load_path_async(path: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously loads the store from a specific path.
          * @param path A path to load
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback A {@link Gio.AsyncReadyCallback}
          */
-        load_path_async(
-            path: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        load_path_async(path: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously loads the store from a specific path.
+         * @param path A path to load
+         * @param cancellable a {@link Gio.Cancellable}.
+         * @param callback A {@link Gio.AsyncReadyCallback}
+         */
+        load_path_async(path: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Retrieve the result of `as_store_load_path_async()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns `true` for success
          */
         load_path_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Populates the token cache for all applications in the store. This allows
          * all the search keywords for all applications in the store to be
          * pre-processed at one time in multiple threads rather than on demand.
-         *
+         * 
          * Note: Calling `as_app_search_matches()` automatically generates the search
          * cache for the {@link AppStreamGlib.App} object if it has not already been generated.
          */
         load_search_cache(): void;
+
         /**
          * Removes all applications from the store.
          */
         remove_all(): void;
+
         /**
          * Removes an application from the store if it exists.
          * @param app a {@link AppStreamGlib.App} instance.
          */
         remove_app(app: App): void;
+
         /**
          * Removes an application from the store if it exists.
          * @param id an application id
          */
         remove_app_by_id(id: string): void;
+
         /**
          * Removes any applications from the store if they have any vetos.
          */
         remove_apps_with_veto(): void;
+
         /**
          * Removed a filter from the store so that components of this type are no longer
          * loaded into the store. This may be useful if the client is only interested
          * in certain types of component.
-         *
+         * 
          * If all filters are removed then all types of components are loaded.
          * @param kind a {@link AppStreamGlib.AppKind}, e.g. {@link AppStreamGlib.AppKind.FIRMWARE}
          */
         remove_filter(kind: AppKind): void;
+
         /**
          * Sets the flags used when adding applications to the store.
-         *
+         * 
          * NOTE: Using {@link AppStreamGlib.StoreAddFlags.PREFER_LOCAL} may be a privacy risk depending on
          * your level of paranoia, and should not be used by default.
          * @param add_flags the {@link AppStreamGlib.StoreAddFlags}, e.g. {@link AppStreamGlib.StoreAddFlags.NONE}
          */
         set_add_flags(add_flags: number): void;
+
         /**
          * Sets the AppStream API version.
          * @param api_version the API version
          */
         set_api_version(api_version: number): void;
+
         /**
          * Sets the metadata builder identifier, which is used to work out if old
          * metadata can be used.
          * @param builder_id the builder_id, e.g. "appstream-glib:1"
          */
         set_builder_id(builder_id: string): void;
+
         /**
          * Sets the destdir, which is used to prefix usr.
          * @param destdir the destdir, e.g. "/tmp"
          */
         set_destdir(destdir: string): void;
+
         /**
          * Sets the metadata origin, which is used to locate icons.
          * @param origin the origin, e.g. "fedora-21"
          */
         set_origin(origin: string): void;
+
         /**
          * Sets the token match fields. The bitfield given here is used to choose what
          * is included in the token cache.
          * @param search_match the {@link AppStreamGlib.AppSearchMatch}, e.g. {@link AppStreamGlib.AppSearchMatch.PKGNAME}
          */
         set_search_match(search_match: number): void;
+
         /**
          * Sets the AppStream API version.
          * @param api_version the API version
          */
         set_version(api_version: string): void;
+
         /**
          * Sets the flags used when adding files to the store.
          * @param watch_flags the {@link AppStreamGlib.StoreWatchFlags}, e.g. {@link AppStreamGlib.StoreWatchFlags.NONE}
          */
         set_watch_flags(watch_flags: number): void;
+
         /**
          * Outputs an optionally compressed XML file of all the applications in the store.
          * @param file file
@@ -6378,13 +6754,15 @@ export namespace AppStreamGlib {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @returns A {@link GLib.String}
          */
-        to_file(file: Gio.File, flags: number, cancellable: Gio.Cancellable | null): boolean;
+        to_file(file: Gio.File, flags: number, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Outputs an XML representation of all the applications in the store.
          * @param flags the AsNodeToXmlFlags, e.g. {@link AppStreamGlib.NodeToXmlFlags.NONE}.
          * @returns A {@link GLib.String}
          */
         to_xml(flags: number): GLib.String;
+
         /**
          * Validates information in the store for data applicable to the defined
          * metadata version.
@@ -6394,13 +6772,16 @@ export namespace AppStreamGlib {
         validate(flags: number): Problem[];
     }
 
+
     namespace Suggest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6419,41 +6800,32 @@ export namespace AppStreamGlib {
         $signals: Suggest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Suggest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Suggest;
+        static ["new"](): Suggest;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Suggest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Suggest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Suggest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Suggest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Suggest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Suggest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Suggest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Suggest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Suggest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Suggest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Suggest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Suggest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): SuggestKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.SuggestKind}.
@@ -6461,22 +6833,24 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: SuggestKind): string;
 
         // Methods
-
         /**
          * Add a the suggest application ID.
          * @param id an application ID, e.g. `gimp.desktop`
          */
         add_id(id: string): void;
+
         /**
          * Gets the suggest ids if set.
          * @returns the {@link GLib.PtrArray}, or `null`
          */
         get_ids(): string[];
+
         /**
          * Gets the suggest kind.
          * @returns the {@link AppStreamGlib.SuggestKind}
          */
         get_kind(): SuggestKind;
+
         /**
          * Sets the suggest kind.
          * @param kind the {@link AppStreamGlib.SuggestKind}, e.g. {@link AppStreamGlib.SuggestKind.UPSTREAM}.
@@ -6484,13 +6858,16 @@ export namespace AppStreamGlib {
         set_kind(kind: SuggestKind): void;
     }
 
+
     namespace Translation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6509,41 +6886,32 @@ export namespace AppStreamGlib {
         $signals: Translation.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Translation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Translation;
+        static ["new"](): Translation;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Translation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Translation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Translation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Translation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Translation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Translation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Translation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Translation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Translation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Translation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Translation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Translation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Converts the text representation to an enumerated value.
          * @param kind the string.
          */
         static kind_from_string(kind: string): TranslationKind;
+
         /**
          * Converts the enumerated value to an text representation.
          * @param kind the {@link AppStreamGlib.TranslationKind}.
@@ -6551,22 +6919,24 @@ export namespace AppStreamGlib {
         static kind_to_string(kind: TranslationKind): string;
 
         // Methods
-
         /**
          * Gets the ID for this translation.
          * @returns ID, e.g. "foobar-1.0.2"
          */
         get_id(): string;
+
         /**
          * Gets the translation kind.
          * @returns the {@link AppStreamGlib.TranslationKind}
          */
         get_kind(): TranslationKind;
+
         /**
          * Sets the ID for this translation.
          * @param id the URL.
          */
         set_id(id: string): void;
+
         /**
          * Sets the translation kind.
          * @param kind the {@link AppStreamGlib.TranslationKind}, e.g. `AS_TRANSLATION_KIND_THUMBNAIL`.
@@ -6574,103 +6944,127 @@ export namespace AppStreamGlib {
         set_kind(kind: TranslationKind): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AgreementClass = typeof Agreement;
+
     /**
      * @gir-type Alias
      */
     type AgreementSectionClass = typeof AgreementSection;
+
     /**
      * @gir-type Alias
      */
     type AppClass = typeof App;
+
     /**
      * @gir-type Alias
      */
     type BundleClass = typeof Bundle;
+
     /**
      * @gir-type Alias
      */
     type ChecksumClass = typeof Checksum;
+
     /**
      * @gir-type Alias
      */
     type ContentRatingClass = typeof ContentRating;
+
     /**
      * @gir-type Alias
      */
     type FormatClass = typeof Format;
+
     /**
      * @gir-type Alias
      */
     type IconClass = typeof Icon;
+
     /**
      * @gir-type Alias
      */
     type ImageClass = typeof Image;
+
     /**
      * @gir-type Alias
      */
     type LaunchableClass = typeof Launchable;
+
     /**
      * @gir-type Alias
      */
     type ProblemClass = typeof Problem;
+
     /**
      * @gir-type Alias
      */
     type ProvideClass = typeof Provide;
+
     /**
      * @gir-type Alias
      */
     type ReleaseClass = typeof Release;
+
     /**
      * @gir-type Alias
      */
     type RequireClass = typeof Require;
+
     /**
      * @gir-type Alias
      */
     type ReviewClass = typeof Review;
+
     /**
      * @gir-type Alias
      */
     type ScreenshotClass = typeof Screenshot;
+
     /**
      * @gir-type Alias
      */
     type StoreClass = typeof Store;
+
     /**
      * @gir-type Alias
      */
     type SuggestClass = typeof Suggest;
+
     /**
      * @gir-type Alias
      */
     type TranslationClass = typeof Translation;
+
     /**
      * The source kind.
-     *
+     * 
      * This has been deprecated since 0.6.9 in favour of using AsFormatKind.
      * @gir-type Alias
      */
     type AppSourceKind = FormatKind;
+
     /**
      * The flags used for reporting the alpha cutouts in the image.
      * @gir-type Alias
      */
     type ImageAlphaFlags = number;
+
     /**
      * @gir-type Alias
      */
     type Node = GLib.Node;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GLib from '@girs/glib-2.0';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace GLibWin32 {
+
     /**
      * GLibWin32-2.0
      */
+
 
     /**
      * Type of Windows edition to check for at run-time.
@@ -40,48 +43,59 @@ export namespace GLibWin32 {
         SERVER,
     }
 
+
     /**
-     * @param major
-     * @param minor
-     * @param spver
-     * @param os_type
+     * @param major 
+     * @param minor 
+     * @param spver 
+     * @param os_type 
      */
     function check_windows_version(major: number, minor: number, spver: number, os_type: OSType): boolean;
+
     /**
-     * @param error
+     * @param error 
      */
     function error_message(error: number): string;
+
     /**
-     * @param f
-     * @param size
+     * @param f 
+     * @param size 
      */
     function ftruncate(f: number, size: number): number;
+
     /**
-     * @param _package
-     * @param dll_name
+     * @param _package 
+     * @param dll_name 
      */
     function get_package_installation_directory(_package: string, dll_name: string): string;
+
     /**
-     * @param hmodule
+     * @param hmodule 
      */
-    function get_package_installation_directory_of_module(hmodule: any | null): string;
+    function get_package_installation_directory_of_module(hmodule: (any | null)): string;
+
     /**
-     * @param _package
-     * @param dll_name
-     * @param subdir
+     * @param _package 
+     * @param dll_name 
+     * @param subdir 
      */
     function get_package_installation_subdirectory(_package: string, dll_name: string, subdir: string): string;
+
     function get_windows_version(): number;
+
     function getlocale(): string;
+
     /**
-     * @param utf8filename
+     * @param utf8filename 
      */
     function locale_filename_from_utf8(utf8filename: string): string;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

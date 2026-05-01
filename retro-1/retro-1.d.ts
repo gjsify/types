@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Retro {
+
     /**
      * Retro-1
      */
+
 
     /**
      * @gir-type Enum
@@ -51,6 +54,7 @@ export namespace Retro {
         Y,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -72,6 +76,7 @@ export namespace Retro {
          */
         RIGHT,
     }
+
 
     /**
      * @gir-type Enum
@@ -118,6 +123,7 @@ export namespace Retro {
          */
         TYPE_MASK,
     }
+
 
     /**
      * @gir-type Enum
@@ -202,6 +208,7 @@ export namespace Retro {
         R3,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -244,6 +251,7 @@ export namespace Retro {
         START,
     }
 
+
     /**
      * Represents the memory types for the Libretro core.
      * @gir-type Enum
@@ -266,6 +274,7 @@ export namespace Retro {
          */
         VIDEO_RAM,
     }
+
 
     /**
      * @gir-type Enum
@@ -325,6 +334,7 @@ export namespace Retro {
         BUTTON_5,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -351,6 +361,7 @@ export namespace Retro {
         PRESSED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -372,6 +383,7 @@ export namespace Retro {
          */
         WEAK,
     }
+
 
     /**
      * @gir-type Enum
@@ -399,17 +411,20 @@ export namespace Retro {
         CRT,
     }
 
+
     /**
-     * @param type
+     * @param type 
      */
     function controller_type_get_id_count(type: ControllerType): number;
+
     /**
-     * @param type
+     * @param type 
      */
     function controller_type_get_index_count(type: ControllerType): number;
+
     /**
      * Logs an error or debugging message.
-     *
+     * 
      * This is a convenience function to forward the {@link Retro.Core.SignalSignatures.log | Retro.Core::log} signal of
      * {@link Retro.Core} to `g_log()`, see it for more information.
      * @param sender a {@link Retro.Core}
@@ -417,24 +432,29 @@ export namespace Retro {
      * @param log_level the log level, either from {@link GLib.LogLevelFlags} or a user-defined level
      * @param message the message to log
      */
-    function g_log(sender: Core, log_domain: string | null, log_level: GLib.LogLevelFlags, message: string): void;
+    function g_log(sender: Core, log_domain: (string | null), log_level: GLib.LogLevelFlags, message: string): void;
+
     function gtk_get_resource(): Gio.Resource;
+
     /**
      * @param button_code a button code
      * @returns the corresponding joypad id
      */
     function joypad_id_from_button_code(button_code: number): JoypadId;
+
     /**
      * @param joypad_id a {@link Retro.JoypadId}
      * @returns the corresponding button code
      */
     function joypad_id_to_button_code(joypad_id: JoypadId): number;
+
     /**
      * Gets the aspect ratio of `pixbuf` by reading the 'aspect-ratio' pixbuf option.
      * @param pixbuf a {@link GdkPixbuf.Pixbuf}
      * @returns the aspect ratio, or 0 if the option is not set or its value is invalid.
      */
     function pixbuf_get_aspect_ratio(pixbuf: GdkPixbuf.Pixbuf): number;
+
     /**
      * Sets the aspect ratio of `pixbuf` by setting the 'aspect-ratio' pixbuf option.
      * Use `retro_pixbuf_get_aspect_ratio()` to retrieve it.
@@ -442,6 +462,7 @@ export namespace Retro {
      * @param aspect_ratio the aspect ratio value
      */
     function pixbuf_set_aspect_ratio(pixbuf: GdkPixbuf.Pixbuf, aspect_ratio: number): void;
+
     /**
      * Gets a {@link Retro.VideoFilter} from it's name. It defaults to
      * RETRO_VIDEO_FILTER_SMOOTH in case of error.
@@ -449,13 +470,16 @@ export namespace Retro {
      * @returns a {@link Retro.VideoFilter}
      */
     function video_filter_from_string(filter: string): VideoFilter;
+
     namespace ControllerIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -474,40 +498,31 @@ export namespace Retro {
         $signals: ControllerIterator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControllerIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControllerIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControllerIterator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControllerIterator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControllerIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControllerIterator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControllerIterator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControllerIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControllerIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControllerIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Fetch the next {@link Retro.Controller} and the port number it is plugged into.
          * @returns `false` if it reached the end, `true` otherwise
          */
         next(): [boolean, number, Controller | null];
     }
+
 
     namespace Core {
         // Signal signatures
@@ -533,7 +548,7 @@ export namespace Retro {
             message: (arg0: string, arg1: number) => void;
             /**
              * The ::shutdown signal is emitted when the core shut down.
-             *
+             * 
              * The core must be released or re-started in order to function anew.
              * @signal
              * @run-last
@@ -542,29 +557,28 @@ export namespace Retro {
             /**
              * The ::video-output signal is emitted each time a new video frame is emitted
              * by the core.
-             *
+             * 
              * `pixdata` will be invalid after the signal emission, copy it in some way if
              * you want to keep it.
              * @signal
              * @run-last
              */
-            'video-output': (arg0: Pixdata) => void;
-            'notify::api-version': (pspec: GObject.ParamSpec) => void;
-            'notify::content-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::frames-per-second': (pspec: GObject.ParamSpec) => void;
-            'notify::game-loaded': (pspec: GObject.ParamSpec) => void;
-            'notify::is-initiated': (pspec: GObject.ParamSpec) => void;
-            'notify::runahead': (pspec: GObject.ParamSpec) => void;
-            'notify::save-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::speed-rate': (pspec: GObject.ParamSpec) => void;
-            'notify::support-no-game': (pspec: GObject.ParamSpec) => void;
-            'notify::system-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::user-name': (pspec: GObject.ParamSpec) => void;
+            "video-output": (arg0: Pixdata) => void;
+            "notify::api-version": (pspec: GObject.ParamSpec) => void;
+            "notify::content-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::frames-per-second": (pspec: GObject.ParamSpec) => void;
+            "notify::game-loaded": (pspec: GObject.ParamSpec) => void;
+            "notify::is-initiated": (pspec: GObject.ParamSpec) => void;
+            "notify::runahead": (pspec: GObject.ParamSpec) => void;
+            "notify::save-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::speed-rate": (pspec: GObject.ParamSpec) => void;
+            "notify::support-no-game": (pspec: GObject.ParamSpec) => void;
+            "notify::system-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::user-name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             api_version: number;
             apiVersion: number;
@@ -598,61 +612,71 @@ export namespace Retro {
         static $gtype: GObject.GType<Core>;
 
         // Properties
-
         /**
          * The Libretro API version implement by the core.
          * @read-only
          */
         get api_version(): number;
+
         /**
          * The Libretro API version implement by the core.
          * @read-only
          */
         get apiVersion(): number;
+
         get content_directory(): string;
         set content_directory(val: string);
+
         get contentDirectory(): string;
         set contentDirectory(val: string);
+
         /**
          * The filename of the core.
          * @construct-only
          */
         get filename(): string;
+
         /**
          * The FPS rate for the core's video output.
          * @read-only
          */
         get frames_per_second(): number;
+
         /**
          * The FPS rate for the core's video output.
          * @read-only
          */
         get framesPerSecond(): number;
+
         /**
          * Whether a game has been loaded.
          * @read-only
          */
         get game_loaded(): boolean;
+
         /**
          * Whether a game has been loaded.
          * @read-only
          */
         get gameLoaded(): boolean;
+
         /**
          * Whether the core has been initiated.
          * @read-only
          */
         get is_initiated(): boolean;
+
         /**
          * Whether the core has been initiated.
          * @read-only
          */
         get isInitiated(): boolean;
+
         /**
          * The number of frames to run ahead of time. This allows to know in advance
          * what should happen in the given number of frames, allowing to react in
          * advance.
-         *
+         * 
          * Note that this is resource intensive as the core will be iterated over
          * multiple times for each perceived iteration. In order to work, this
          * requires the cores to properly support serialization, otherwise the
@@ -660,61 +684,71 @@ export namespace Retro {
          */
         get runahead(): number;
         set runahead(val: number);
+
         /**
          * The save directory of the core.
-         *
+         * 
          * The core will save some data here.
          */
         get save_directory(): string;
         set save_directory(val: string);
+
         /**
          * The save directory of the core.
-         *
+         * 
          * The core will save some data here.
          */
         get saveDirectory(): string;
         set saveDirectory(val: string);
+
         /**
          * The speed ratio at wich the core will run.
          */
         get speed_rate(): number;
         set speed_rate(val: number);
+
         /**
          * The speed ratio at wich the core will run.
          */
         get speedRate(): number;
         set speedRate(val: number);
+
         /**
          * Whether the core supports running with no game.
          * @read-only
          */
         get support_no_game(): boolean;
+
         /**
          * Whether the core supports running with no game.
          * @read-only
          */
         get supportNoGame(): boolean;
+
         /**
          * The system directory of the core.
-         *
+         * 
          * The core will look here for additional data, such as firmware ROMs or
          * configuration files.
          */
         get system_directory(): string;
         set system_directory(val: string);
+
         /**
          * The system directory of the core.
-         *
+         * 
          * The core will look here for additional data, such as firmware ROMs or
          * configuration files.
          */
         get systemDirectory(): string;
         set systemDirectory(val: string);
+
         /**
          * The name of the user.
          */
         get user_name(): string;
         set user_name(val: string);
+
         /**
          * The name of the user.
          */
@@ -731,194 +765,214 @@ export namespace Retro {
         $signals: Core.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Core.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string): Core;
+        static ["new"](filename: string): Core;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Core.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Core.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Core.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Core.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * This initializes `self`, loads its available options and loads the medias. You
          * need to boot `self` before using some of its methods.
          */
         boot(): void;
+
         /**
          * Gets the Libretro API version implement by the core.
          * @returns the API version
          */
         get_api_version(): number;
+
         /**
          * Gets whether the state of `self` can be accessed.
          * @returns whether the state of `self` can be accessed
          */
         get_can_access_state(): boolean;
+
         get_content_directory(): string;
+
         /**
          * Gets the filename of the core.
          * @returns the filename of the core
          */
         get_filename(): string;
+
         /**
          * Gets the FPS rate for the core's video output.
          * @returns the FPS rate for the core's video output
          */
         get_frames_per_second(): number;
+
         /**
          * Gets whether a game has been loaded.
          * @returns whether a game has been loaded
          */
         get_game_loaded(): boolean;
+
         /**
          * Gets whether the core has been initiated.
          * @returns whether the core has been initiated
          */
         get_is_initiated(): boolean;
+
         /**
          * Gets the size of a memory region of `self`.
          * @param memory_type the type of memory
          * @returns the size of a memory region
          */
         get_memory_size(memory_type: MemoryType): number;
+
         /**
          * Gets the option for the given key.
          * @param key the key of the option
          * @returns the option
          */
         get_option(key: string): Option;
+
         get_runahead(): number;
+
         /**
          * Gets the save directory of the core.
-         *
+         * 
          * The core will save some data here.
          * @returns the save directory of the core
          */
         get_save_directory(): string;
+
         /**
          * Gets the speed rate at which to run the core.
          * @returns the speed rate
          */
         get_speed_rate(): number;
+
         /**
          * Gets whether the core supports running with no game.
          * @returns whether the core supports running with no game
          */
         get_support_no_game(): boolean;
+
         /**
          * Gets the system directory of the core.
-         *
+         * 
          * The core will look here for additional data, such as firmware ROMs or
          * configuration files.
          * @returns the system directory of the core
          */
         get_system_directory(): string;
+
         /**
          * Gets the name of the user.
          * @returns the name of the user
          */
         get_user_name(): string;
+
         /**
          * Gets whether the core has an option for the given key.
          * @param key the key of the option
          * @returns whether the core has an option for the given key
          */
         has_option(key: string): boolean;
+
         /**
          * Creates a new {@link Retro.ControllerIterator} which can be used to iterate through
          * the controllers plugged into `self`.
          * @returns a new {@link Retro.ControllerIterator}
          */
         iterate_controllers(): ControllerIterator;
+
         /**
          * Creates a new {@link Retro.OptionIterator} which can be used to iterate through the
          * options of `self`.
          * @returns a new {@link Retro.OptionIterator}
          */
         iterate_options(): OptionIterator;
+
         /**
          * Iterate `self` for a frame.
          */
         iteration(): void;
+
         /**
          * Loads a memory region of `self`.
          * @param memory_type the type of memory
          * @param filename a file to load the data from
          */
         load_memory(memory_type: MemoryType, filename: string): void;
+
         /**
          * Loads the state of the `self`.
          * @param filename the file to load the state from
          */
         load_state(filename: string): void;
+
         /**
          * Overrides default value for the option `key`. This can be used to set value
          * for a startup-only option.
-         *
+         * 
          * You can use this before booting the core.
          * @param key the key of the option
          * @param value the default value
          */
         override_option_default(key: string, value: string): void;
+
         /**
          * Resets `self`.
          */
         reset(): void;
+
         /**
          * Starts running the core. If the core was stopped, it will restart from this
          * moment.
          */
         run(): void;
+
         /**
          * Saves a memory region of `self`.
          * @param memory_type the type of memory
          * @param filename a file to save the data to
          */
         save_memory(memory_type: MemoryType, filename: string): void;
+
         /**
          * Saves the state of `self`.
          * @param filename the file to save the state to
          */
         save_state(filename: string): void;
+
         /**
-         * @param content_directory
+         * @param content_directory 
          */
         set_content_directory(content_directory: string): void;
+
         /**
          * Plugs `controller` into the specified port number of `self`.
          * @param port the port number
          * @param controller a {@link Retro.Controller}
          */
-        set_controller(port: number, controller: Controller | null): void;
+        set_controller(port: number, controller: (Controller | null)): void;
+
         /**
          * Sets the current media index.
-         *
+         * 
          * You can use this after booting the core.
          * @param media_index the media index
          */
         set_current_media(media_index: number): void;
+
         /**
          * Uses `controller` as the default controller for the given type. When a port
          * has no controller plugged plugged into it, the core will use the default
@@ -926,61 +980,72 @@ export namespace Retro {
          * @param controller_type a {@link Retro.ControllerType}
          * @param controller a {@link Retro.Controller}
          */
-        set_default_controller(controller_type: ControllerType, controller: Controller | null): void;
+        set_default_controller(controller_type: ControllerType, controller: (Controller | null)): void;
+
         /**
          * Sets the widget whose key events will be forwarded to `self`.
          * @param widget a {@link Gtk.Widget}, or `null`
          */
-        set_keyboard(widget: Gtk.Widget | null): void;
+        set_keyboard(widget: (Gtk.Widget | null)): void;
+
         /**
          * Sets the medias to load into the core.
-         *
+         * 
          * You can use this before booting the core.
          * @param uris the URIs
          */
         set_medias(uris: string[]): void;
+
         /**
-         * @param runahead
+         * @param runahead 
          */
         set_runahead(runahead: number): void;
+
         /**
          * Sets the save directory of the core.
-         *
+         * 
          * The core will save some data here.
          * @param save_directory the save directory
          */
         set_save_directory(save_directory: string): void;
+
         /**
          * Sets the speed rate at which to run the core.
          * @param speed_rate a speed rate
          */
         set_speed_rate(speed_rate: number): void;
+
         /**
          * Sets the system directory of the core.
-         *
+         * 
          * The core will look here for additional data, such as firmware ROMs or
          * configuration files.
          * @param system_directory the system directory
          */
         set_system_directory(system_directory: string): void;
+
         /**
          * Sets the name of the user.
          * @param user_name the user name
          */
         set_user_name(user_name: string): void;
+
         /**
          * Stops running the core.
          */
         stop(): void;
     }
 
+
     namespace CoreDescriptor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -999,107 +1064,110 @@ export namespace Retro {
         $signals: CoreDescriptor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CoreDescriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string): CoreDescriptor;
+        static ["new"](filename: string): CoreDescriptor;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CoreDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CoreDescriptor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CoreDescriptor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CoreDescriptor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreDescriptor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CoreDescriptor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CoreDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CoreDescriptor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the MD5 fingerprint of the firmware file, or `null`.
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_firmware_md5(firmware: string): string | null;
+        get_firmware_md5(firmware: string): (string | null);
+
         /**
          * Gets the demanded path to the firmware file, or `null`.
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_firmware_path(firmware: string): string | null;
+        get_firmware_path(firmware: string): (string | null);
+
         /**
          * Gets the SHA512 fingerprint of the firmware file, or `null`.
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_firmware_sha512(firmware: string): string | null;
+        get_firmware_sha512(firmware: string): (string | null);
+
         /**
          * Gets the list of firmwares used by the core for this platform.
          * @param platform a platform name
          * @returns a `null`-terminated string array or `null`, the array should be freed with `g_strfreev()`
          */
         get_firmwares(platform: string): string[];
+
         /**
          * Gets the icon, or `null` if it doesn't exist.
          * @returns a {@link Gio.Icon} or `null`
          */
-        get_icon(): Gio.Icon | null;
+        get_icon(): (Gio.Icon | null);
+
         /**
          * Gets the ID of `self`.
          * @returns the ID of `self`, free it with `g_free()`
          */
         get_id(): string;
+
         /**
          * Gets whether the core is an emulator, and hence need games to be loaded.
          * @returns whether the core is an emulator
          */
         get_is_emulator(): boolean;
+
         /**
          * Gets whether the firmware is mandatory for the core to function.
          * @param firmware a firmware name
          * @returns whether the firmware is mandatory for the core to function
          */
         get_is_firmware_mandatory(firmware: string): boolean;
+
         /**
          * Gets whether the core is a game, and hence can't load games.
          * @returns whether the core is a game
          */
         get_is_game(): boolean;
+
         /**
          * Gets the list of MIME types accepted used by the core for this platform.
          * @param platform a platform name
          * @returns a `null`-terminated string array or `null`, the array should be freed with `g_strfreev()`
          */
         get_mime_type(platform: string): string[];
+
         /**
          * Gets the module file name, or `null` if it doesn't exist.
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_module(): string | null;
+        get_module(): (string | null);
+
         /**
          * Gets the module file, or `null` if it doesn't exist.
          * @returns a {@link Gio.File} or `null`
          */
-        get_module_file(): Gio.File | null;
+        get_module_file(): (Gio.File | null);
+
         /**
          * Gets the name, or `null` if it doesn't exist.
          * @returns a string or `null`, free it with `g_free()`
          */
-        get_name(): string | null;
+        get_name(): (string | null);
+
         /**
          * Gets whether the platform supports all of the given MIME types.
          * @param platform a platform name
@@ -1107,34 +1175,40 @@ export namespace Retro {
          * @returns whether the platform supports all of the given MIME types
          */
         get_platform_supports_mime_types(platform: string, mime_types: string[]): boolean;
+
         /**
          * Gets the URI of the file of `self`.
          * @returns the URI of the file of `self`, free it with `g_free()`
          */
         get_uri(): string;
+
         /**
          * Gets whether the firmware declares its MD5 fingerprint.
          * @param firmware a firmware name
          * @returns whether the firmware declares its MD5 fingerprint
          */
         has_firmware_md5(firmware: string): boolean;
+
         /**
          * Gets whether the firmware declares its SHA512 fingerprint.
          * @param firmware a firmware name
          * @returns whether the firmware declares its SHA512 fingerprint
          */
         has_firmware_sha512(firmware: string): boolean;
+
         /**
          * Gets whether the platform has associated firmwares.
          * @param platform a platform name
          * @returns whether the platform has associated firmwares
          */
         has_firmwares(platform: string): boolean;
+
         /**
          * Gets whether the core has an icon.
          * @returns whether the core has an icon
          */
         has_icon(): boolean;
+
         /**
          * Gets whether the core descriptor declares the given platform.
          * @param platform a platform name
@@ -1143,6 +1217,7 @@ export namespace Retro {
         has_platform(platform: string): boolean;
     }
 
+
     namespace CoreView {
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
@@ -1150,67 +1225,62 @@ export namespace Retro {
              * The ::controller-state-changed signal is emitted when a key is pressed
              * or released, mouse pointer is moved, or a mouse button is pressed or
              * released.
-             *
+             * 
              * Applications should not connect to it.
              * @signal
              * @run-last
              */
-            'controller-state-changed': () => void;
-            'notify::can-grab-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::snap-pointer-to-borders': (pspec: GObject.ParamSpec) => void;
-            'notify::above-child': (pspec: GObject.ParamSpec) => void;
-            'notify::visible-window': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "controller-state-changed": () => void;
+            "notify::can-grab-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::snap-pointer-to-borders": (pspec: GObject.ParamSpec) => void;
+            "notify::above-child": (pspec: GObject.ParamSpec) => void;
+            "notify::visible-window": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.EventBox.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.EventBox.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             can_grab_pointer: boolean;
             canGrabPointer: boolean;
             snap_pointer_to_borders: boolean;
@@ -1225,13 +1295,15 @@ export namespace Retro {
         static $gtype: GObject.GType<CoreView>;
 
         // Properties
-
         get can_grab_pointer(): boolean;
         set can_grab_pointer(val: boolean);
+
         get canGrabPointer(): boolean;
         set canGrabPointer(val: boolean);
+
         get snap_pointer_to_borders(): boolean;
         set snap_pointer_to_borders(val: boolean);
+
         get snapPointerToBorders(): boolean;
         set snapPointerToBorders(val: boolean);
 
@@ -1245,36 +1317,26 @@ export namespace Retro {
         $signals: CoreView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CoreView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CoreView;
+        static ["new"](): CoreView;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CoreView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CoreView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CoreView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CoreView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CoreView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CoreView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CoreView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Creates a new {@link Retro.Controller} exposing `self` as the specified controller
          * type. The valid controller types are RETRO_CONTROLLER_TYPE_JOYPAD,
@@ -1284,6 +1346,7 @@ export namespace Retro {
          * @returns a new {@link Retro.Controller}
          */
         as_controller(controller_type: ControllerType): Controller;
+
         /**
          * Gets whether the pointer should be grabbed when clicking on the view. This
          * allows `self` to work as a RETRO_CONTROLLER_TYPE_MOUSE instead of a
@@ -1291,32 +1354,37 @@ export namespace Retro {
          * @returns whether the pointer should snap to the borders
          */
         get_can_grab_pointer(): boolean;
+
         /**
          * Gets a flag representing the capabilities of `self` when exposed as a
          * controller. See `retro_controller_get_capabilities()` for more information on
          * the flag.
-         *
+         * 
          * See `retro_core_view_as_controller()` to know the capabilities of
          * {@link Retro.CoreView} when exposed as a controller.
          * @returns the capabilities flag of `self` when exposed as a controller
          */
         get_controller_capabilities(): number;
+
         /**
          * Gets the state of an input of `self`.
          * @param input a {@link Retro.Input} to query `self`
          * @returns the input's state
          */
         get_input_state(input: Input): number;
+
         /**
          * Gets the currently set key joypad mapping.
          * @returns a {@link Retro.KeyJoypadMapping}
          */
         get_key_joypad_mapping(): KeyJoypadMapping;
+
         /**
          * Gets the currently displayed video frame.
          * @returns a {@link GdkPixbuf.Pixbuf}
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
+
         /**
          * Gets whether the pointer should be considered to be at the border of the
          * video display when it is outside of it. This is used when `self` is exposed as
@@ -1324,11 +1392,13 @@ export namespace Retro {
          * @returns whether the pointer should snap to the borders
          */
         get_snap_pointer_to_borders(): boolean;
+
         /**
          * Sets the `self` as the default controllers of `core`.
          * @param core a {@link Retro.Core}
          */
-        set_as_default_controller(core: Core | null): void;
+        set_as_default_controller(core: (Core | null)): void;
+
         /**
          * Sets whether the pointer should be grabbed when clicking on the view. This
          * allows `self` to work as a RETRO_CONTROLLER_TYPE_MOUSE instead of a
@@ -1336,30 +1406,35 @@ export namespace Retro {
          * @param can_grab_pointer whether the pointer should be grabbed when clicking on the view
          */
         set_can_grab_pointer(can_grab_pointer: boolean): void;
+
         /**
          * Sets `core` as the {@link Retro.Core} handled by `self`.
          * @param core a {@link Retro.Core}, or `null`
          */
-        set_core(core: Core | null): void;
+        set_core(core: (Core | null)): void;
+
         /**
          * Sets the video filter to use to render the core's video on `self`.
          * @param filter a {@link Retro.VideoFilter}
          */
         set_filter(filter: VideoFilter): void;
+
         /**
          * Sets the key joypad mapping on `self`. If given mapping is `null`, then set to
          * an empty configuration.
          * @param mapping a {@link Retro.KeyJoypadMapping}
          */
-        set_key_joypad_mapping(mapping: KeyJoypadMapping | null): void;
+        set_key_joypad_mapping(mapping: (KeyJoypadMapping | null)): void;
+
         /**
          * Sets `pixbuf` as the currently displayed video frame.
-         *
+         * 
          * `retro_pixbuf_set_aspect_ratio()` can be used to specify the aspect ratio for
          * the pixbuf. Otherwise the core's aspect ratio will be used.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}
          */
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
+
         /**
          * Sets whether the pointer should be considered to be at the border of the
          * video display when it is outside of it. This is used when `self` is exposed as
@@ -1369,13 +1444,16 @@ export namespace Retro {
         set_snap_pointer_to_borders(snap_pointer_to_borders: boolean): void;
     }
 
+
     namespace KeyJoypadMapping {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1394,44 +1472,35 @@ export namespace Retro {
         $signals: KeyJoypadMapping.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<KeyJoypadMapping.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): KeyJoypadMapping;
+        static ["new"](): KeyJoypadMapping;
 
         static new_default(): KeyJoypadMapping;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof KeyJoypadMapping.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof KeyJoypadMapping.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof KeyJoypadMapping.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof KeyJoypadMapping.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KeyJoypadMapping.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof KeyJoypadMapping.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<KeyJoypadMapping.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof KeyJoypadMapping.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KeyJoypadMapping.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the mapping key code for the joypad button id.
          * @param button joypad button id
          * @returns mapping key code
          */
         get_button_key(button: JoypadId): number;
+
         /**
          * Maps the joypad button id to mapping key code.
          * @param button joypad button id
@@ -1440,13 +1509,16 @@ export namespace Retro {
         set_button_key(button: JoypadId, hardware_keycode: number): void;
     }
 
+
     namespace ModuleIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1465,42 +1537,33 @@ export namespace Retro {
         $signals: ModuleIterator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ModuleIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](lookup_paths: string[], recursive: boolean): ModuleIterator;
+        static ["new"](lookup_paths: string[], recursive: boolean): ModuleIterator;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ModuleIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ModuleIterator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ModuleIterator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ModuleIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModuleIterator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ModuleIterator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ModuleIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ModuleIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModuleIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the last {@link Retro.CoreDescriptor} fetched by `retro_module_iterator_next()`,
          * or `null` if the end was reached.
          * @returns a {@link Retro.CoreDescriptor}, or `null`
          */
-        get(): CoreDescriptor | null;
+        get(): (CoreDescriptor | null);
+
         /**
          * Fetch the next {@link Retro.ModuleIterator}.
          * @returns `false` if it reached the end, `true` otherwise
@@ -1508,13 +1571,16 @@ export namespace Retro {
         next(): boolean;
     }
 
+
     namespace ModuleQuery {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1533,42 +1599,33 @@ export namespace Retro {
         $signals: ModuleQuery.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ModuleQuery.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](recursive: boolean): ModuleQuery;
+        static ["new"](recursive: boolean): ModuleQuery;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ModuleQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ModuleQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ModuleQuery.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ModuleQuery.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ModuleQuery.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ModuleQuery.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ModuleQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ModuleQuery.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ModuleQuery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Creates a new {@link Retro.ModuleIterator}.
          * @returns a new {@link Retro.ModuleIterator}
          */
         iterator(): ModuleIterator;
     }
+
 
     namespace Option {
         // Signal signatures
@@ -1577,12 +1634,13 @@ export namespace Retro {
              * @signal
              * @run-last
              */
-            'value-changed': () => void;
+            "value-changed": () => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1601,54 +1659,48 @@ export namespace Retro {
         $signals: Option.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Option.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Option.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Option.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Option.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Option.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Option.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Option.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Option.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Option.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Option.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the description of `self`.
          * @returns the description of `self`
          */
         get_description(): string;
+
         /**
          * Gets the key of `self`.
          * @returns the key of `self`
          */
         get_key(): string;
+
         /**
          * Gets the value of `self`.
          * @returns the value of `self`
          */
         get_value(): string;
+
         /**
          * Gets the value of `self`.
          * @returns the value of `self`
          */
         get_values(): string[];
+
         /**
          * Sets the value for `self`. An error will be thrown if the value is invalid for
          * `self`.
@@ -1657,13 +1709,16 @@ export namespace Retro {
         set_value(value: string): void;
     }
 
+
     namespace OptionIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1682,34 +1737,24 @@ export namespace Retro {
         $signals: OptionIterator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OptionIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OptionIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OptionIterator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OptionIterator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OptionIterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionIterator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OptionIterator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OptionIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OptionIterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OptionIterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Fetch the next {@link Retro.Option} and its key.
          * @returns `false` if it reached the end, `true` otherwise
@@ -1717,46 +1762,57 @@ export namespace Retro {
         next(): [boolean, number, Option | null];
     }
 
+
     /**
      * @gir-type Alias
      */
     type ControllerInterface = typeof Controller;
+
     /**
      * @gir-type Alias
      */
     type ControllerIteratorClass = typeof ControllerIterator;
+
     /**
      * @gir-type Alias
      */
     type CoreClass = typeof Core;
+
     /**
      * @gir-type Alias
      */
     type CoreDescriptorClass = typeof CoreDescriptor;
+
     /**
      * @gir-type Alias
      */
     type CoreViewClass = typeof CoreView;
+
     /**
      * @gir-type Alias
      */
     type KeyJoypadMappingClass = typeof KeyJoypadMapping;
+
     /**
      * @gir-type Alias
      */
     type ModuleIteratorClass = typeof ModuleIterator;
+
     /**
      * @gir-type Alias
      */
     type ModuleQueryClass = typeof ModuleQuery;
+
     /**
      * @gir-type Alias
      */
     type OptionClass = typeof Option;
+
     /**
      * @gir-type Alias
      */
     type OptionIteratorClass = typeof OptionIterator;
+
     /**
      * @gir-type Struct
      */
@@ -1764,45 +1820,51 @@ export namespace Retro {
         static $gtype: GObject.GType<Pixdata>;
 
         // Methods
-
         /**
          * Copies `self` into a new {@link Retro.Pixdata}.
          * @returns a new {@link Retro.Pixdata}, use `retro_pixdata_free()` to free it
          */
         copy(): Pixdata;
+
         /**
          * Frees the given {@link Retro.Pixdata} object.
          */
         free(): void;
+
         /**
          * Gets the aspect ratio the video should be rendered with.
          * @returns the aspect ratio
          */
         get_aspect_ratio(): number;
+
         /**
          * Gets the height of `self`.
          * @returns the height
          */
         get_height(): number;
+
         /**
          * Gets the width of `self`.
          * @returns the width
          */
         get_width(): number;
+
         /**
          * Loads an OpenGL texture from `self`.
          * @returns whether the loading was successful
          */
         load_gl_texture(): boolean;
+
         /**
          * Creates a new {@link GdkPixbuf.Pixbuf} from `self`.
-         *
+         * 
          * The {@link GdkPixbuf.Pixbuf} stores the intended aspect-ratio, you can access it via
          * `retro_pixbuf_get_aspect_ratio()`.
          * @returns a new {@link Retro.Pixdata}
          */
         to_pixbuf(): GdkPixbuf.Pixbuf;
     }
+
 
     /**
      * @gir-type Struct
@@ -1812,46 +1874,54 @@ export namespace Retro {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): Input;
+        }>);
+
+        static ["new"](): Input;
 
         // Methods
-
         /**
          * Copies `self` into a new {@link Retro.Input}.
          * @returns a new {@link Retro.Input}, use `retro_input_free()` to free it
          */
         copy(): Input;
+
         /**
          * Frees the given {@link Retro.Input}.
          */
         free(): void;
+
         /**
          * Gets the analog id and index of `self`, if any.
          * @returns whether the id and the index were retrieved
          */
         get_analog(): [boolean, AnalogId, AnalogIndex];
+
         /**
          * Gets the controller type of `self`.
          * @returns the controller type of `self`
          */
         get_controller_type(): ControllerType;
+
         /**
          * Gets the joypad id of `self`, if any.
          * @returns whether the id was retrieved
          */
         get_joypad(): [boolean, JoypadId];
+
         /**
          * Gets the lightgun id of `self`, if any.
          * @returns whether the id was retrieved
          */
         get_lightgun(): [boolean, LightgunId];
+
         /**
          * Gets the mouse id of `self`, if any.
          * @returns whether the id was retrieved
          */
         get_mouse(): [boolean, MouseId];
+
         /**
          * Gets the pointer id of `self`, if any.
          * @returns whether the id was retrieved
@@ -1859,39 +1929,44 @@ export namespace Retro {
         get_pointer(): [boolean, PointerId];
     }
 
+
     namespace Controller {
         /**
          * Interface for implementing Controller.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets a flag representing the capabilities of `self`. Each bit index matches
              * the {@link Retro.ControllerType} of same number.
-             *
+             * 
              * For example, if `self` is an analog gamepad, the value would be: (1 <<
              * RETRO_CONTROLLER_TYPE_JOYPAD) | (1 << RETRO_CONTROLLER_TYPE_ANALOG).
              * @virtual
              */
-            vfunc_get_capabilities(): bigint | number;
+            vfunc_get_capabilities(): (bigint | number);
+
             /**
              * Gets the main type of the controller.
              * @virtual
              */
             vfunc_get_controller_type(): ControllerType;
+
             /**
              * Gets the state of an input of `self`.
              * @param input a {@link Retro.Input} to query `self`
              * @virtual
              */
             vfunc_get_input_state(input: Input): number;
+
             /**
              * Gets whether `self` supports rumble effects.
              * @virtual
              */
             vfunc_get_supports_rumble(): boolean;
+
             /**
              * Sets the rumble state of `self`.
              * @param effect the rumble effect
@@ -1901,9 +1976,11 @@ export namespace Retro {
             vfunc_set_rumble_state(effect: RumbleEffect, strength: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ControllerNamespace {
@@ -1914,40 +1991,46 @@ export namespace Retro {
      * @gir-type Interface
      */
     interface Controller extends GObject.Object, Controller.Interface {
-        // Methods
 
+        // Methods
         emit_state_changed(): void;
+
         /**
          * Gets a flag representing the capabilities of `self`. Each bit index matches
          * the {@link Retro.ControllerType} of same number.
-         *
+         * 
          * For example, if `self` is an analog gamepad, the value would be: (1 <<
          * RETRO_CONTROLLER_TYPE_JOYPAD) | (1 << RETRO_CONTROLLER_TYPE_ANALOG).
          * @returns the capabilities flag of `self`
          */
         get_capabilities(): number;
+
         /**
          * Gets the main type of the controller.
          * @returns the controller type of `self`
          */
         get_controller_type(): ControllerType;
+
         /**
          * Gets the state of an input of `self`.
          * @param input a {@link Retro.Input} to query `self`
          * @returns the input's state
          */
         get_input_state(input: Input): number;
+
         /**
          * Gets whether `self` supports rumble effects.
          * @returns whether `self` supports rumble effects.
          */
         get_supports_rumble(): boolean;
+
         /**
          * Gets whether `self` has the capability to represent the given controller type.
          * @param controller_type a {@link Retro.ControllerType}
          * @returns whether `self` has the capability
          */
         has_capability(controller_type: ControllerType): boolean;
+
         /**
          * Sets the rumble state of `self`.
          * @param effect the rumble effect
@@ -1955,6 +2038,7 @@ export namespace Retro {
          */
         set_rumble_state(effect: RumbleEffect, strength: number): void;
     }
+
 
     export const Controller: ControllerNamespace & {
         new (): Controller; // This allows `obj instanceof Controller`
@@ -1965,6 +2049,7 @@ export namespace Retro {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,9 +27,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Shumate {
+
     /**
      * Shumate-1.0
      */
+
 
     /**
      * Error codes in the #SHUMATE_FILE_CACHE_ERROR domain.
@@ -38,23 +41,21 @@ export namespace Shumate {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * An unspecified error occurred during the operation.
          */
         static FAILED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the {@link Shumate.FileCache} error quark.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -99,6 +100,7 @@ export namespace Shumate {
         MULTIPOLYGON,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -116,6 +118,7 @@ export namespace Shumate {
          */
         MERCATOR,
     }
+
 
     /**
      * @gir-type Enum
@@ -148,6 +151,7 @@ export namespace Shumate {
         DONE,
     }
 
+
     /**
      * Error codes that occurs while parsing the style in {@link VectorRenderer}.
      * @gir-type Struct
@@ -156,40 +160,43 @@ export namespace Shumate {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * An unspecified error occurred during the operation.
          */
         static FAILED: number;
+
         /**
          * A JSON node in the style has the wrong type (e.g. an object where there should be an array).
          */
         static MALFORMED_STYLE: number;
+
         /**
          * An unsupported layer type was encountered.
          */
         static UNSUPPORTED_LAYER: number;
+
         /**
          * An invalid or unrecognized expression was encountered.
          */
         static INVALID_EXPRESSION: number;
+
         /**
          * Libshumate was compiled without vector tile support. As of 1.6, vector tile support is always enabled and this error never occurs.
          */
         static SUPPORT_OMITTED: number;
+
         /**
          * An unsupported style spec feature was encountered.
          */
         static UNSUPPORTED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * Error codes in the #SHUMATE_TILE_DOWNLOADER_ERROR domain.
@@ -199,39 +206,41 @@ export namespace Shumate {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * An unspecified error occurred during the operation.
          */
         static FAILED: number;
+
         /**
          * An unsuccessful HTTP response was received from the server.
          */
         static BAD_RESPONSE: number;
+
         /**
          * The server could not be reached.
          */
         static COULD_NOT_CONNECT: number;
+
         /**
          * The provided URL isn't valid
          */
         static MALFORMED_URL: number;
+
         /**
          * The tile source has been marked as offline.
          */
         static OFFLINE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the {@link Shumate.TileDownloader} error quark.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -258,6 +267,7 @@ export namespace Shumate {
          */
         IMPERIAL,
     }
+
 
     /**
      * @gir-type Enum
@@ -310,169 +320,186 @@ export namespace Shumate {
         COLLATOR,
     }
 
+
     /**
      * The major version of libshumate (1, if `SHUMATE_VERSION` is 1.2.3)
      */
     const MAJOR_VERSION: number;
+
     /**
      * Maps for Free Relief
      */
     const MAP_SOURCE_MFF_RELIEF: string;
+
     /**
      * OpenStreetMap Cycle Map
      */
     const MAP_SOURCE_OSM_CYCLE_MAP: string;
+
     /**
      * OpenStreetMap Mapnik
      */
     const MAP_SOURCE_OSM_MAPNIK: string;
+
     /**
      * OpenStreetMap Transport Map
      */
     const MAP_SOURCE_OSM_TRANSPORT_MAP: string;
+
     /**
      * OpenWeatherMap clouds layer
      */
     const MAP_SOURCE_OWM_CLOUDS: string;
+
     /**
      * OpenWeatherMap precipitation
      */
     const MAP_SOURCE_OWM_PRECIPITATION: string;
+
     /**
      * OpenWeatherMap sea level pressure
      */
     const MAP_SOURCE_OWM_PRESSURE: string;
+
     /**
      * OpenWeatherMap temperature
      */
     const MAP_SOURCE_OWM_TEMPERATURE: string;
+
     /**
      * OpenWeatherMap wind
      */
     const MAP_SOURCE_OWM_WIND: string;
+
     /**
      * The maximal possible latitude value.
      */
     const MAX_LATITUDE: number;
+
     /**
      * The maximal possible longitude value.
      */
     const MAX_LONGITUDE: number;
+
     /**
      * The micro version of libshumate (3, if `SHUMATE_VERSION` is 1.2.3)
      */
     const MICRO_VERSION: number;
+
     /**
      * The minor version of libshumate (2, if `SHUMATE_VERSION` is 1.2.3)
      */
     const MINOR_VERSION: number;
+
     /**
      * The minimal possible latitude value.
      */
     const MIN_LATITUDE: number;
+
     /**
      * The minimal possible longitude value.
      */
     const MIN_LONGITUDE: number;
+
     /**
      * Gets the {@link Shumate.FileCache} error quark.
      * @returns a {@link GLib.Quark}
      */
     function file_cache_error_quark(): GLib.Quark;
+
     /**
      * Gets the user agent libshumate will use for all requests.
-     *
+     * 
      * This API is not thread-safe and should only be called from the main thread.
      * @returns the user agent
      */
     function get_user_agent(): string;
+
     /**
      * Sets the user agent that libshumate uses for all requests.
-     *
+     * 
      * This API is not thread-safe and should only be called from the main thread.
      * @param new_user_agent the new user agent, or `null` to reset to the default
      */
-    function set_user_agent(new_user_agent: string | null): void;
+    function set_user_agent(new_user_agent: (string | null)): void;
+
     /**
      * @returns a {@link GLib.Quark}
      */
     function style_error_quark(): GLib.Quark;
+
     /**
      * Gets the {@link Shumate.TileDownloader} error quark.
      * @returns a {@link GLib.Quark}
      */
     function tile_downloader_error_quark(): GLib.Quark;
+
     /**
      * @gir-type Callback
      */
     interface VectorSpriteFallbackFunc {
-        (sprite_sheet: VectorSpriteSheet, name: string, scale: number): VectorSprite | null;
+        (sprite_sheet: VectorSpriteSheet, name: string, scale: number): (VectorSprite | null);
     }
+
     namespace Compass {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::viewport': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            "notify::viewport": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
-            viewport: Viewport | null;
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
+            viewport: (Viewport | null);
         }
     }
 
     /**
      * A widget displaying a compass.
-     *
+     * 
      * # CSS nodes
-     *
+     * 
      * ```
      * map-compass
      * ├── revealer
      * ├──── image
      * ```
-     *
+     * 
      * {@link Shumate.Compass} uses a single CSS node with name map-compass. It also uses an
      * image named "map-compass".
      * @gir-type Class
@@ -481,12 +508,11 @@ export namespace Shumate {
         static $gtype: GObject.GType<Compass>;
 
         // Properties
-
         /**
          * The viewport to use.
          */
-        get viewport(): Viewport | null;
-        set viewport(val: Viewport | null);
+        get viewport(): (Viewport | null);
+        set viewport(val: (Viewport | null));
 
         /**
          * Compile-time signal type information.
@@ -498,128 +524,130 @@ export namespace Shumate {
         $signals: Compass.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Compass.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](viewport: Viewport | null): Compass;
+        static ["new"](viewport: (Viewport | null)): Compass;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Compass.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compass.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Compass.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Compass.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Compass.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Compass.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Compass.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compass.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Compass.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Compass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Compass.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Compass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the viewport used by the compass.
          * @returns The {@link Shumate.Viewport} used by the compass
          */
-        get_viewport(): Viewport | null;
+        get_viewport(): (Viewport | null);
+
         /**
          * Sets the compass viewport.
          * @param viewport a {@link Viewport}
          */
-        set_viewport(viewport: Viewport | null): void;
+        set_viewport(viewport: (Viewport | null)): void;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -627,24 +655,28 @@ export namespace Shumate {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -655,102 +687,114 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -758,14 +802,16 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -774,7 +820,8 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -784,12 +831,8 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -799,12 +842,8 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -812,17 +851,15 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -830,48 +867,53 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
     }
 
+
     namespace Coordinate {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {
 
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {}
+        }
     }
 
     /**
@@ -891,52 +933,46 @@ export namespace Shumate {
         $signals: Coordinate.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Coordinate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Coordinate;
+        static ["new"](): Coordinate;
 
         static new_full(latitude: number, longitude: number): Coordinate;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Coordinate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Coordinate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Coordinate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Coordinate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Coordinate.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Coordinate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * The latitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Calculates the distance in meters between two locations.
-         *
+         * 
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
@@ -944,32 +980,38 @@ export namespace Shumate {
          * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @returns the longitude coordinate in degrees.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
@@ -978,6 +1020,7 @@ export namespace Shumate {
          */
         vfunc_set_location(latitude: number, longitude: number): void;
     }
+
 
     namespace DataSource {
         // Signal signatures
@@ -989,13 +1032,12 @@ export namespace Shumate {
              * @deprecated since 1.1: Use {@link DataSource.start_request} and connect to the notify signals of the resulting {@link DataSourceRequest}.
              * @run-last
              */
-            'received-data': (arg0: number, arg1: number, arg2: number, arg3: GLib.Bytes) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
+            "received-data": (arg0: number, arg1: number, arg2: number, arg3: GLib.Bytes) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             max_zoom_level: number;
             maxZoomLevel: number;
@@ -1012,7 +1054,6 @@ export namespace Shumate {
         static $gtype: GObject.GType<DataSource>;
 
         // Properties
-
         /**
          * The maximum zoom level
          * @since 1.1
@@ -1020,6 +1061,7 @@ export namespace Shumate {
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
+
         /**
          * The maximum zoom level
          * @since 1.1
@@ -1027,6 +1069,7 @@ export namespace Shumate {
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
+
         /**
          * The minimum zoom level
          * @since 1.1
@@ -1034,6 +1077,7 @@ export namespace Shumate {
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
+
         /**
          * The minimum zoom level
          * @since 1.1
@@ -1052,37 +1096,27 @@ export namespace Shumate {
         $signals: DataSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DataSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Gets the data for the tile at the given coordinates.
-         *
+         * 
          * Some data sources may return data multiple times. For example,
          * {@link TileDownloader} may return data from a cache, then return updated
          * data from the network. `Shumate.DataSource::received-data` is emitted
@@ -1094,20 +1128,16 @@ export namespace Shumate {
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          * @virtual
          */
-        vfunc_get_tile_data_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Gets the final result of a request started with
          * `shumate_data_source_get_tile_data_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @virtual
          */
-        vfunc_get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null;
+        vfunc_get_tile_data_finish(result: Gio.AsyncResult): (GLib.Bytes | null);
+
         /**
          * Begins a request for a tile.
          * @param x X coordinate to request
@@ -1116,28 +1146,24 @@ export namespace Shumate {
          * @param cancellable for cancelling the request
          * @virtual
          */
-        vfunc_start_request(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable: Gio.Cancellable | null,
-        ): DataSourceRequest;
+        vfunc_start_request(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null)): DataSourceRequest;
 
         // Methods
-
         /**
          * Gets the data source's maximum zoom level.
          * @returns the maximum zoom level this data source supports
          */
         get_max_zoom_level(): number;
+
         /**
          * Gets the data source's minimum zoom level.
          * @returns the minimum zoom level this data source supports
          */
         get_min_zoom_level(): number;
+
         /**
          * Gets the data for the tile at the given coordinates.
-         *
+         * 
          * Some data sources may return data multiple times. For example,
          * {@link TileDownloader} may return data from a cache, then return updated
          * data from the network. `Shumate.DataSource::received-data` is emitted
@@ -1147,35 +1173,11 @@ export namespace Shumate {
          * @param zoom_level the Z coordinate to fetch
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_tile_data_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Bytes | null>;
+        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GLib.Bytes | null)>;
+
         /**
          * Gets the data for the tile at the given coordinates.
-         *
-         * Some data sources may return data multiple times. For example,
-         * {@link TileDownloader} may return data from a cache, then return updated
-         * data from the network. `Shumate.DataSource::received-data` is emitted
-         * each time data is received, then `callback` is called after the last update.
-         * @param x the X coordinate to fetch
-         * @param y the Y coordinate to fetch
-         * @param zoom_level the Z coordinate to fetch
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
-         */
-        get_tile_data_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Gets the data for the tile at the given coordinates.
-         *
+         * 
          * Some data sources may return data multiple times. For example,
          * {@link TileDownloader} may return data from a cache, then return updated
          * data from the network. `Shumate.DataSource::received-data` is emitted
@@ -1186,30 +1188,43 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        get_tile_data_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Bytes | null> | void;
+        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Gets the data for the tile at the given coordinates.
+         * 
+         * Some data sources may return data multiple times. For example,
+         * {@link TileDownloader} may return data from a cache, then return updated
+         * data from the network. `Shumate.DataSource::received-data` is emitted
+         * each time data is received, then `callback` is called after the last update.
+         * @param x the X coordinate to fetch
+         * @param y the Y coordinate to fetch
+         * @param zoom_level the Z coordinate to fetch
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
+         */
+        get_tile_data_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GLib.Bytes | null)> | void);
+
         /**
          * Gets the final result of a request started with
          * `shumate_data_source_get_tile_data_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns The requested data, or `null` if an error occurred
          */
-        get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null;
+        get_tile_data_finish(result: Gio.AsyncResult): (GLib.Bytes | null);
+
         /**
          * Sets the data source's maximum zoom level.
          * @param zoom_level the maximum zoom level
          */
         set_max_zoom_level(zoom_level: number): void;
+
         /**
          * Sets the data source's minimum zoom level.
          * @param zoom_level the minimum zoom level
          */
         set_min_zoom_level(zoom_level: number): void;
+
         /**
          * Begins a request for a tile.
          * @param x X coordinate to request
@@ -1218,26 +1233,26 @@ export namespace Shumate {
          * @param cancellable for cancelling the request
          * @returns a {@link DataSourceRequest} object for tracking the request.
          */
-        start_request(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): DataSourceRequest;
+        start_request(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null)): DataSourceRequest;
     }
+
 
     namespace DataSourceRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::completed': (pspec: GObject.ParamSpec) => void;
-            'notify::data': (pspec: GObject.ParamSpec) => void;
-            'notify::error': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
+            "notify::completed": (pspec: GObject.ParamSpec) => void;
+            "notify::data": (pspec: GObject.ParamSpec) => void;
+            "notify::error": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-level": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             completed: boolean;
-            data: GLib.Bytes | null;
-            error: GLib.Error | null;
+            data: (GLib.Bytes | null);
+            error: (GLib.Error | null);
             x: number;
             y: number;
             zoom_level: number;
@@ -1247,12 +1262,12 @@ export namespace Shumate {
 
     /**
      * Represents a request to a {@link DataSource} for a tile.
-     *
+     * 
      * Data sources can return a tile multiple times. For example, a
      * {@link TileDownloader} may return cached data first, then later return data
      * from a network service when it arrives. This allows the map to be rendered
      * as quickly as possible without waiting for the network unnecessarily.
-     *
+     * 
      * Conventional async/finish method pairs don't support multiple returns.
      * Instead, {@link DataSource.start_request} is available, which returns a
      * {@link DataSourceRequest} whose properties, {@link DataSourceRequest.data}
@@ -1260,7 +1275,7 @@ export namespace Shumate {
      * The `GObject.Object::notify` signal can be used to watch for these
      * changes. When the request is done and no more data will be returned,
      * {@link DataSourceRequest.completed} is set to `true`.
-     *
+     * 
      * {@link DataSource} implementations can use a subclass of
      * {@link DataSourceRequest}, but the base class should be sufficient in most
      * cases.
@@ -1271,7 +1286,6 @@ export namespace Shumate {
         static $gtype: GObject.GType<DataSourceRequest>;
 
         // Properties
-
         /**
          * `true` if the request has been completed, otherwise `false`. A completed
          * request will not receive further updates to either
@@ -1281,19 +1295,22 @@ export namespace Shumate {
          * @default false
          */
         get completed(): boolean;
+
         /**
          * The most recent data for the tile, if available. If an error is emitted,
          * this will be set to `null`.
          * @since 1.1
          * @read-only
          */
-        get data(): GLib.Bytes | null;
+        get data(): (GLib.Bytes | null);
+
         /**
          * The error that occurred during the request, if any.
          * @since 1.1
          * @read-only
          */
-        get error(): GLib.Error | null;
+        get error(): (GLib.Error | null);
+
         /**
          * The X coordinate of the requested tile.
          * @since 1.1
@@ -1301,6 +1318,7 @@ export namespace Shumate {
          * @default 0
          */
         get x(): number;
+
         /**
          * The Y coordinate of the requested tile.
          * @since 1.1
@@ -1308,6 +1326,7 @@ export namespace Shumate {
          * @default 0
          */
         get y(): number;
+
         /**
          * The zoom level of the requested tile.
          * @since 1.1
@@ -1315,6 +1334,7 @@ export namespace Shumate {
          * @default 0
          */
         get zoom_level(): number;
+
         /**
          * The zoom level of the requested tile.
          * @since 1.1
@@ -1333,93 +1353,92 @@ export namespace Shumate {
         $signals: DataSourceRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DataSourceRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](x: number, y: number, zoom_level: number): DataSourceRequest;
+        static ["new"](x: number, y: number, zoom_level: number): DataSourceRequest;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DataSourceRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSourceRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DataSourceRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSourceRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DataSourceRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DataSourceRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DataSourceRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DataSourceRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DataSourceRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DataSourceRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DataSourceRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DataSourceRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Marks the request as complete. No more data or errors may be emitted.
-         *
+         * 
          * This can only be called if data has been emitted. If there is no data,
          * use {@link DataSourceRequest.emit_error} instead, which will automatically
          * complete the request.
          */
         complete(): void;
+
         /**
          * Emits tile data as a response to the request. This sets the
          * {@link DataSourceRequest.data} property.
-         *
+         * 
          * If `complete` is `true`, then {@link DataSourceRequest.completed} is set to
          * `true` as well.
          * @param data the data to emit
          * @param complete `true` to also complete the request, `false` otherwise
          */
-        emit_data(data: GLib.Bytes | Uint8Array, complete: boolean): void;
+        emit_data(data: (GLib.Bytes | Uint8Array), complete: boolean): void;
+
         /**
          * Emits a fatal error in response to the request. This completes the request,
          * so no more data or errors can be emitted after this. Non-fatal errors should
          * not be reported.
-         *
+         * 
          * If {@link DataSourceRequest.data} was previously set, it will be cleared.
          * @param error an error
          */
         emit_error(error: GLib.Error): void;
+
         /**
          * Gets the latest data from the request.
          * @returns The latest data, if any.
          */
-        get_data(): GLib.Bytes | null;
+        get_data(): (GLib.Bytes | null);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_data
+    // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+
         /**
          * Gets the latest error from the request.
          * @returns The latest error, if any.
          */
-        get_error(): GLib.Error | null;
+        get_error(): (GLib.Error | null);
+
         /**
          * Gets the X coordinate of the requested tile.
          * @returns the X coordinate
          */
         get_x(): number;
+
         /**
          * Gets the Y coordinate of the requested tile.
          * @returns the Y coordinate
          */
         get_y(): number;
+
         /**
          * Gets the zoom level of the requested tile.
          * @returns the zoom level
          */
         get_zoom_level(): number;
+
         /**
          * Gets whether the request has been completed. Completed requests will not
          * receive new data or errors.
@@ -1428,16 +1447,16 @@ export namespace Shumate {
         is_completed(): boolean;
     }
 
+
     namespace FileCache {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::cache-dir': (pspec: GObject.ParamSpec) => void;
-            'notify::cache-key': (pspec: GObject.ParamSpec) => void;
-            'notify::size-limit': (pspec: GObject.ParamSpec) => void;
+            "notify::cache-dir": (pspec: GObject.ParamSpec) => void;
+            "notify::cache-key": (pspec: GObject.ParamSpec) => void;
+            "notify::size-limit": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             cache_dir: string;
             cacheDir: string;
@@ -1452,13 +1471,13 @@ export namespace Shumate {
      * A cache that stores and retrieves tiles from the file system. It is mainly
      * used by {@link TileDownloader}, but can also be used by custom data
      * sources.
-     *
+     * 
      * The cache will be filled up to a certain size limit. When this limit is
      * reached, the cache can be purged, and the tiles that are accessed least are
      * deleted.
-     *
+     * 
      * ## ETags
-     *
+     * 
      * The cache can optionally store an ETag string with each tile. This is
      * useful to avoid redownloading old tiles that haven't changed (for example,
      * using the HTTP If-None-Match header).
@@ -1468,19 +1487,20 @@ export namespace Shumate {
         static $gtype: GObject.GType<FileCache>;
 
         // Properties
-
         /**
          * The directory where the tile database is stored.
          * @construct-only
          * @default null
          */
         get cache_dir(): string;
+
         /**
          * The directory where the tile database is stored.
          * @construct-only
          * @default null
          */
         get cacheDir(): string;
+
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
@@ -1488,6 +1508,7 @@ export namespace Shumate {
          * @default null
          */
         get cache_key(): string;
+
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
@@ -1495,17 +1516,19 @@ export namespace Shumate {
          * @default null
          */
         get cacheKey(): string;
+
         /**
          * The cache size limit in bytes.
-         *
+         * 
          * Note: this new value will not be applied until you call `shumate_file_cache_purge()`
          * @default 100000000
          */
         get size_limit(): number;
         set size_limit(val: number);
+
         /**
          * The cache size limit in bytes.
-         *
+         * 
          * Note: this new value will not be applied until you call `shumate_file_cache_purge()`
          * @default 100000000
          */
@@ -1522,52 +1545,45 @@ export namespace Shumate {
         $signals: FileCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FileCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_full(size_limit: number, cache_key: string, cache_dir: string | null): FileCache;
+        static new_full(size_limit: number, cache_key: string, cache_dir: (string | null)): FileCache;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the directory where the cache database is stored.
          * @returns the directory
          */
         get_cache_dir(): string;
+
         /**
          * Gets the key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
          * @returns the cache key
          */
         get_cache_key(): string;
+
         /**
          * Gets the cache size limit in bytes.
          * @returns size limit
          */
         get_size_limit(): number;
+
         /**
          * Gets tile data from the cache, if it is available.
          * @param x the X coordinate of the tile
@@ -1575,27 +1591,8 @@ export namespace Shumate {
          * @param zoom_level the zoom level of the tile
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_tile_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]>;
-        /**
-         * Gets tile data from the cache, if it is available.
-         * @param x the X coordinate of the tile
-         * @param y the Y coordinate of the tile
-         * @param zoom_level the zoom level of the tile
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
-         */
-        get_tile_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        get_tile_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[GLib.Bytes, string, (GLib.DateTime | null)]>;
+
         /**
          * Gets tile data from the cache, if it is available.
          * @param x the X coordinate of the tile
@@ -1604,28 +1601,34 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        get_tile_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]> | void;
+        get_tile_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Gets tile data from the cache, if it is available.
+         * @param x the X coordinate of the tile
+         * @param y the Y coordinate of the tile
+         * @param zoom_level the zoom level of the tile
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
+         */
+        get_tile_async(x: number, y: number, zoom_level: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[GLib.Bytes, string, (GLib.DateTime | null)]> | void);
+
         /**
          * Gets the tile data from a completed `shumate_file_cache_get_tile_async()`
          * operation.
-         *
+         * 
          * `modtime` will be set to the time the tile was added to the cache, or the
          * latest time it was confirmed to be up to date.
-         *
+         * 
          * `etag` will be set to the data's ETag, if present.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link GLib.Bytes} containing the tile data, or `null` if the tile was not in the cache or an error occurred
          */
         get_tile_finish(result: Gio.AsyncResult): [GLib.Bytes, string, GLib.DateTime | null];
+
         /**
          * Marks a tile in the cache as being up to date, without changing its data.
-         *
+         * 
          * For example, a network source might call this function when it gets an HTTP
          * 304 Not Modified response.
          * @param x the X coordinate of the tile
@@ -1633,29 +1636,30 @@ export namespace Shumate {
          * @param zoom_level the zoom level of the tile
          */
         mark_up_to_date(x: number, y: number, zoom_level: number): void;
+
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
          * the size limit.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        purge_cache_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Removes less used tiles from the cache, if necessary, until it fits in
-         * the size limit.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
-         */
-        purge_cache_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        purge_cache_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
          * the size limit.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        purge_cache_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        purge_cache_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Removes less used tiles from the cache, if necessary, until it fits in
+         * the size limit.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
+         */
+        purge_cache_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Gets the result of an async operation started using
          * `shumate_file_cache_purge_cache_async()`.
@@ -1663,11 +1667,13 @@ export namespace Shumate {
          * @returns `true` if any tiles were removed, otherwise `false`
          */
         purge_cache_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Sets the cache size limit in bytes.
          * @param size_limit the cache limit in bytes
          */
         set_size_limit(size_limit: number): void;
+
         /**
          * Stores a tile in the cache.
          * @param x the X coordinate of the tile
@@ -1677,33 +1683,8 @@ export namespace Shumate {
          * @param etag an ETag string, or `null`
          * @param cancellable a {@link Gio.Cancellable}
          */
-        store_tile_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            bytes: GLib.Bytes | Uint8Array,
-            etag: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Stores a tile in the cache.
-         * @param x the X coordinate of the tile
-         * @param y the Y coordinate of the tile
-         * @param zoom_level the zoom level of the tile
-         * @param bytes a {@link GLib.Bytes}
-         * @param etag an ETag string, or `null`
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
-         */
-        store_tile_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            bytes: GLib.Bytes | Uint8Array,
-            etag: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        store_tile_async(x: number, y: number, zoom_level: number, bytes: (GLib.Bytes | Uint8Array), etag: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Stores a tile in the cache.
          * @param x the X coordinate of the tile
@@ -1714,15 +1695,20 @@ export namespace Shumate {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        store_tile_async(
-            x: number,
-            y: number,
-            zoom_level: number,
-            bytes: GLib.Bytes | Uint8Array,
-            etag: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        store_tile_async(x: number, y: number, zoom_level: number, bytes: (GLib.Bytes | Uint8Array), etag: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Stores a tile in the cache.
+         * @param x the X coordinate of the tile
+         * @param y the Y coordinate of the tile
+         * @param zoom_level the zoom level of the tile
+         * @param bytes a {@link GLib.Bytes}
+         * @param etag an ETag string, or `null`
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
+         */
+        store_tile_async(x: number, y: number, zoom_level: number, bytes: (GLib.Bytes | Uint8Array), etag: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Gets the success value of a completed `shumate_file_cache_store_tile_async()`
          * operation.
@@ -1732,56 +1718,51 @@ export namespace Shumate {
         store_tile_finish(result: Gio.AsyncResult): boolean;
     }
 
+
     namespace Layer {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::viewport': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            "notify::viewport": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             viewport: Viewport;
         }
     }
@@ -1789,7 +1770,7 @@ export namespace Shumate {
     /**
      * Every layer (overlay that moves together with the map) has to inherit this
      * class and implement its virtual methods.
-     *
+     * 
      * You can use the same layer to display many types of maps.  In Shumate they
      * are called map sources.  You can change the {@link MapLayer.map_source}
      * property at any time to replace the current displayed map.
@@ -1799,7 +1780,6 @@ export namespace Shumate {
         static $gtype: GObject.GType<Layer>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -1815,130 +1795,130 @@ export namespace Shumate {
         $signals: Layer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Returns a string to show in the debug overlay, which can be
          * enabled in the GTK inspector.
          * @virtual
          */
-        vfunc_get_debug_text(): string | null;
+        vfunc_get_debug_text(): (string | null);
 
         // Methods
-
         /**
          * Gets the {@link Shumate.Viewport} used by this layer.
          * @returns The {@link Shumate.Viewport}.
          */
         get_viewport(): Viewport;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -1946,24 +1926,28 @@ export namespace Shumate {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -1974,102 +1958,114 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -2077,14 +2073,16 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -2093,7 +2091,8 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2103,12 +2102,8 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -2118,12 +2113,8 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -2131,17 +2122,15 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -2149,89 +2138,87 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
     }
 
+
     namespace License {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::extra-text': (pspec: GObject.ParamSpec) => void;
-            'notify::xalign': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            "notify::extra-text": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             extra_text: string;
             extraText: string;
             xalign: number;
@@ -2246,7 +2233,6 @@ export namespace Shumate {
         static $gtype: GObject.GType<License>;
 
         // Properties
-
         /**
          * Sets additional text to be displayed in the license area.  The map's
          * license will be added below it. Your text can have multiple lines, just use
@@ -2255,6 +2241,7 @@ export namespace Shumate {
          */
         get extra_text(): string;
         set extra_text(val: string);
+
         /**
          * Sets additional text to be displayed in the license area.  The map's
          * license will be added below it. Your text can have multiple lines, just use
@@ -2263,6 +2250,7 @@ export namespace Shumate {
          */
         get extraText(): string;
         set extraText(val: string);
+
         /**
          * The license's horizontal alignment
          * @default 0.5
@@ -2280,151 +2268,158 @@ export namespace Shumate {
         $signals: License.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<License.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): License;
+        static ["new"](): License;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof License.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, License.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof License.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, License.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof License.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<License.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof License.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<License.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param map_source
+         * @param map_source 
          */
         append_map_source(map_source: MapSource): void;
+
         /**
          * Gets the additional license text.
          * @returns the additional license text
          */
         get_extra_text(): string;
+
         /**
          * Get the license's text horizontal alignment.
          * @returns the license's text horizontal alignment.
          */
         get_xalign(): number;
+
         /**
-         * @param map_source
+         * @param map_source 
          */
         prepend_map_source(map_source: MapSource): void;
+
         /**
-         * @param map_source
+         * @param map_source 
          */
         remove_map_source(map_source: MapSource): void;
+
         /**
          * Show the additional license text on the map view.  The text will preceed the
          * map's licence when displayed. Use "\n" to separate the lines.
          * @param text the additional license text
          */
         set_extra_text(text: string): void;
+
         /**
          * Set the license's text horizontal alignment.
          * @param xalign The license's text horizontal alignment
          */
         set_xalign(xalign: number): void;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -2432,24 +2427,28 @@ export namespace Shumate {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -2460,102 +2459,114 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -2563,14 +2574,16 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -2579,7 +2592,8 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -2589,12 +2603,8 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -2604,12 +2614,8 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -2617,17 +2623,15 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -2635,37 +2639,41 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
     }
+
 
     namespace Map {
         // Signal signatures
@@ -2679,48 +2687,48 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed': () => void;
-            'notify::animate-zoom': (pspec: GObject.ParamSpec) => void;
-            'notify::go-to-duration': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::viewport': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-on-double-click': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            "animation-completed": () => void;
+            "notify::animate-zoom": (pspec: GObject.ParamSpec) => void;
+            "notify::go-to-duration": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::viewport": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-on-double-click": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2730,7 +2738,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::animate-zoom': () => void;
+            "animation-completed::animate-zoom": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2740,7 +2748,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::go-to-duration': () => void;
+            "animation-completed::go-to-duration": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2750,7 +2758,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::state': () => void;
+            "animation-completed::state": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2760,7 +2768,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::viewport': () => void;
+            "animation-completed::viewport": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2770,7 +2778,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::zoom-on-double-click': () => void;
+            "animation-completed::zoom-on-double-click": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2780,7 +2788,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::can-focus': () => void;
+            "animation-completed::can-focus": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2790,7 +2798,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::can-target': () => void;
+            "animation-completed::can-target": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2800,7 +2808,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::css-classes': () => void;
+            "animation-completed::css-classes": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2810,7 +2818,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::css-name': () => void;
+            "animation-completed::css-name": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2820,7 +2828,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::cursor': () => void;
+            "animation-completed::cursor": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2830,7 +2838,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::focus-on-click': () => void;
+            "animation-completed::focus-on-click": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2840,7 +2848,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::focusable': () => void;
+            "animation-completed::focusable": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2850,7 +2858,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::halign': () => void;
+            "animation-completed::halign": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2860,7 +2868,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::has-default': () => void;
+            "animation-completed::has-default": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2870,7 +2878,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::has-focus': () => void;
+            "animation-completed::has-focus": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2880,7 +2888,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::has-tooltip': () => void;
+            "animation-completed::has-tooltip": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2890,7 +2898,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::height-request': () => void;
+            "animation-completed::height-request": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2900,7 +2908,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::hexpand': () => void;
+            "animation-completed::hexpand": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2910,7 +2918,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::hexpand-set': () => void;
+            "animation-completed::hexpand-set": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2920,7 +2928,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::layout-manager': () => void;
+            "animation-completed::layout-manager": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2930,7 +2938,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::limit-events': () => void;
+            "animation-completed::limit-events": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2940,7 +2948,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::margin-bottom': () => void;
+            "animation-completed::margin-bottom": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2950,7 +2958,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::margin-end': () => void;
+            "animation-completed::margin-end": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2960,7 +2968,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::margin-start': () => void;
+            "animation-completed::margin-start": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2970,7 +2978,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::margin-top': () => void;
+            "animation-completed::margin-top": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2980,7 +2988,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::name': () => void;
+            "animation-completed::name": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -2990,7 +2998,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::opacity': () => void;
+            "animation-completed::opacity": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3000,7 +3008,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::overflow': () => void;
+            "animation-completed::overflow": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3010,7 +3018,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::parent': () => void;
+            "animation-completed::parent": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3020,7 +3028,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::receives-default': () => void;
+            "animation-completed::receives-default": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3030,7 +3038,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::root': () => void;
+            "animation-completed::root": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3040,7 +3048,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::scale-factor': () => void;
+            "animation-completed::scale-factor": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3050,7 +3058,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::sensitive': () => void;
+            "animation-completed::sensitive": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3060,7 +3068,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::tooltip-markup': () => void;
+            "animation-completed::tooltip-markup": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3070,7 +3078,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::tooltip-text': () => void;
+            "animation-completed::tooltip-text": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3080,7 +3088,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::valign': () => void;
+            "animation-completed::valign": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3090,7 +3098,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::vexpand': () => void;
+            "animation-completed::vexpand": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3100,7 +3108,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::vexpand-set': () => void;
+            "animation-completed::vexpand-set": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3110,7 +3118,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::visible': () => void;
+            "animation-completed::visible": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3120,7 +3128,7 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::width-request': () => void;
+            "animation-completed::width-request": () => void;
             /**
              * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -3130,18 +3138,12 @@ export namespace Shumate {
              * @detailed
              * @run-last
              */
-            'animation-completed::accessible-role': () => void;
+            "animation-completed::accessible-role": () => void;
             [key: `animation-completed::${string}`]: () => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             animate_zoom: boolean;
             animateZoom: boolean;
             go_to_duration: number;
@@ -3156,20 +3158,20 @@ export namespace Shumate {
     /**
      * The Map widget is a {@link Gtk.Widget} that show and allows interaction with
      * the user.
-     *
+     * 
      * This is the base widget and doesn't have advanced features. You can check the
      * {@link Shumate.SimpleMap} for a ready-to-use widget.
-     *
+     * 
      * By default, a {@link Shumate.Viewport} is created and can be accessed with
      * {@link Shumate.Map.get_viewport}.
-     *
+     * 
      * Unless created with {@link Shumate.Map.new_simple}, the widget doesn't hold any
      * layer and won't show anything. A {@link Shumate.Layer} can be added or removed
      * using the {@link Shumate.Map.add_layer} or {@link Shumate.Map.remove_layer}
      * methods.
-     *
+     * 
      * ## CSS nodes
-     *
+     * 
      * {@link Shumate.Map} has a single CSS node with the name “map-view”.
      * @gir-type Class
      */
@@ -3177,39 +3179,42 @@ export namespace Shumate {
         static $gtype: GObject.GType<Map>;
 
         // Properties
-
         /**
          * Animate zoom change when zooming in/out.
          * @default true
          */
         get animate_zoom(): boolean;
         set animate_zoom(val: boolean);
+
         /**
          * Animate zoom change when zooming in/out.
          * @default true
          */
         get animateZoom(): boolean;
         set animateZoom(val: boolean);
+
         /**
          * The duration of an animation when going to a location, in milliseconds.
          * A value of 0 means that the duration is calculated automatically for you.
-         *
+         * 
          * Please note that animation of `shumate_map_ensure_visible` also
          * involves a 'go-to' animation.
          * @default 0
          */
         get go_to_duration(): number;
         set go_to_duration(val: number);
+
         /**
          * The duration of an animation when going to a location, in milliseconds.
          * A value of 0 means that the duration is calculated automatically for you.
-         *
+         * 
          * Please note that animation of `shumate_map_ensure_visible` also
          * involves a 'go-to' animation.
          * @default 0
          */
         get goToDuration(): number;
         set goToDuration(val: number);
+
         /**
          * The view's global state. Useful to inform using if the view is busy loading
          * tiles or not.
@@ -3217,18 +3222,21 @@ export namespace Shumate {
          * @default Shumate.State.NONE
          */
         get state(): State;
+
         /**
          * The viewport, which contains information about the center, rotation, zoom,
          * etc. of the map.
          * @read-only
          */
         get viewport(): Viewport;
+
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @default true
          */
         get zoom_on_double_click(): boolean;
         set zoom_on_double_click(val: boolean);
+
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @default true
@@ -3246,74 +3254,71 @@ export namespace Shumate {
         $signals: Map.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Map.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Map;
+        static ["new"](): Map;
 
         static new_simple(): Map;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Map.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Map.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Map.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Map.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Map.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Map.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new layer to the view
          * @param layer a {@link Shumate.Layer}
          */
         add_layer(layer: Layer): void;
+
         /**
          * Centers the map on these coordinates.
          * @param latitude the longitude to center the map at
          * @param longitude the longitude to center the map at
          */
         center_on(latitude: number, longitude: number): void;
+
         /**
          * Checks whether the view animates zoom level changes.
          * @returns TRUE if the view animates zooms, FALSE otherwise.
          */
         get_animate_zoom(): boolean;
+
         /**
          * Get the 'go-to-duration' property.
          * @returns the animation duration when calling {@link Map.go_to},   in milliseconds.
          */
         get_go_to_duration(): number;
+
         /**
          * Gets the view's state.
          * @returns the state.
          */
         get_state(): State;
+
         /**
          * Get the {@link Shumate.Viewport} used by this view.
          * @returns the {@link Shumate.Viewport}
          */
         get_viewport(): Viewport;
+
         /**
          * Checks whether the view zooms on double click.
          * @returns TRUE if the view zooms on double click, FALSE otherwise.
          */
         get_zoom_on_double_click(): boolean;
+
         /**
          * Move from the current position to these coordinates. All tiles in the
          * intermediate view WILL be loaded!
@@ -3321,6 +3326,7 @@ export namespace Shumate {
          * @param longitude the longitude to center the map at
          */
         go_to(latitude: number, longitude: number): void;
+
         /**
          * Move from the current position to these coordinates and zoom to the given
          * zoom level. All tiles in the intermediate view WILL be loaded!
@@ -3329,6 +3335,7 @@ export namespace Shumate {
          * @param zoom_level the zoom level to end at
          */
         go_to_full(latitude: number, longitude: number, zoom_level: number): void;
+
         /**
          * Move from the current position to these coordinates and zoom to the given
          * zoom level. The given duration is used instead of the map's default {@link Map.go_to_duration}.
@@ -3339,144 +3346,165 @@ export namespace Shumate {
          * @param duration_ms animation duration in milliseconds
          */
         go_to_full_with_duration(latitude: number, longitude: number, zoom_level: number, duration_ms: number): void;
+
         /**
          * Adds `layer` to `self` above `next_sibling` or, if `next_sibling` is `null`, at
          * the bottom of the layer list.
          * @param layer a {@link Shumate.Layer}
          * @param next_sibling a {@link Shumate.Layer} that is a child of `self`, or `null`
          */
-        insert_layer_above(layer: Layer, next_sibling: Layer | null): void;
+        insert_layer_above(layer: Layer, next_sibling: (Layer | null)): void;
+
         /**
          * Adds `layer` to `self` behind `next_sibling` or, if `next_sibling` is `null`, at
          * the top of the layer list.
          * @param layer a {@link Shumate.Layer}
          * @param next_sibling a {@link Shumate.Layer} that is a child of `self`, or `null`
          */
-        insert_layer_behind(layer: Layer, next_sibling: Layer | null): void;
+        insert_layer_behind(layer: Layer, next_sibling: (Layer | null)): void;
+
         /**
          * Removes the given layer from the view
          * @param layer a {@link Shumate.Layer}
          */
         remove_layer(layer: Layer): void;
+
         /**
          * Should the view animate zoom level changes.
          * @param value a `gboolean`
          */
         set_animate_zoom(value: boolean): void;
+
         /**
          * Set the duration of the transition of {@link Map.go_to}.
          * @param duration the animation duration, in milliseconds
          */
         set_go_to_duration(duration: number): void;
+
         /**
          * Changes the currently used map source. `g_object_unref`() will be called on
          * the previous one.
-         *
+         * 
          * As a side effect, changing the primary map source will also clear all
          * secondary map sources.
          * @param map_source a {@link Shumate.MapSource}
          */
         set_map_source(map_source: MapSource): void;
+
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @param value a `gboolean`
          */
         set_zoom_on_double_click(value: boolean): void;
+
         /**
          * Stop the go to animation.  The view will stay where it was when the
          * animation was stopped.
          */
         stop_go_to(): void;
+
         /**
          * Zooms the map in. If {@link Map.animate_zoom} is `TRUE`, the change will be animated.
          */
         zoom_in(): void;
+
         /**
          * Zooms the map out. If {@link Map.animate_zoom} is `TRUE`, the change will be animated.
          */
         zoom_out(): void;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -3484,24 +3512,28 @@ export namespace Shumate {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -3512,102 +3544,114 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -3615,14 +3659,16 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -3631,7 +3677,8 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -3641,12 +3688,8 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -3656,12 +3699,8 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -3669,17 +3708,15 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -3687,111 +3724,109 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
     }
+
 
     namespace MapLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
             /**
              * Emitted when all the tiles in the map view are finished loading.
-             *
+             * 
              * As the map is panned or zoomed, this signal may be emitted multiple times.
              * @signal
              * @since 1.4
              * @run-last
              */
-            'map-loaded': (arg0: boolean) => void;
+            "map-loaded": (arg0: boolean) => void;
             /**
              * Emitted when a symbol in the map layer is clicked.
              * @signal
              * @since 1.1
              * @run-last
              */
-            'symbol-clicked': (arg0: SymbolEvent) => void;
+            "symbol-clicked": (arg0: SymbolEvent) => void;
             /**
              * Emitted when a tile fails to load.
              * @signal
              * @since 1.4
              * @run-last
              */
-            'tile-error': (arg0: Tile, arg1: GLib.Error) => void;
-            'notify::map-source': (pspec: GObject.ParamSpec) => void;
-            'notify::viewport': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            "tile-error": (arg0: Tile, arg1: GLib.Error) => void;
+            "notify::map-source": (pspec: GObject.ParamSpec) => void;
+            "notify::viewport": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Layer.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Layer.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             map_source: MapSource;
             mapSource: MapSource;
         }
@@ -3800,9 +3835,9 @@ export namespace Shumate {
     /**
      * A {@link Shumate.Layer} implementation that fetches tiles from a {@link Shumate.MapSource}
      * and draws them as a grid.
-     *
+     * 
      * ## CSS nodes
-     *
+     * 
      * {@link Shumate.Point} has a single CSS node with the name “map-layer”.
      * @gir-type Class
      */
@@ -3810,11 +3845,11 @@ export namespace Shumate {
         static $gtype: GObject.GType<MapLayer>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get map_source(): MapSource;
+
         /**
          * @construct-only
          */
@@ -3830,50 +3865,41 @@ export namespace Shumate {
         $signals: MapLayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MapLayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](map_source: MapSource, viewport: Viewport): MapLayer;
+        static ["new"](map_source: MapSource, viewport: Viewport): MapLayer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MapLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapLayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MapLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapLayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MapLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapLayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MapLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapLayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MapLayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MapLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MapLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace MapSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: string;
             license: string;
@@ -3894,7 +3920,7 @@ export namespace Shumate {
      * The base class for all map sources. Map sources fill {@link Tile} objects
      * with images from various sources: a web API, for example, or a test pattern
      * generated on demand.
-     *
+     * 
      * The most common map source is {@link RasterRenderer}, which fetches tiles
      * using a {@link TileDownloader}.
      * @gir-type Class
@@ -3903,73 +3929,83 @@ export namespace Shumate {
         static $gtype: GObject.GType<MapSource>;
 
         // Properties
-
         /**
          * The id of the map source
          * @default null
          */
         get id(): string;
         set id(val: string);
+
         /**
          * The usage license of the map source
          * @default null
          */
         get license(): string;
         set license(val: string);
+
         /**
          * The usage license's uri for more information
          * @default null
          */
         get license_uri(): string;
         set license_uri(val: string);
+
         /**
          * The usage license's uri for more information
          * @default null
          */
         get licenseUri(): string;
         set licenseUri(val: string);
+
         /**
          * The maximum zoom level
          * @default 18
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
+
         /**
          * The maximum zoom level
          * @default 18
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
+
         /**
          * The minimum zoom level
          * @default 0
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
+
         /**
          * The minimum zoom level
          * @default 0
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
+
         /**
          * The name of the map source
          * @default null
          */
         get name(): string;
         set name(val: string);
+
         /**
          * The map projection of the map source
          * @default Shumate.MapProjection.MERCATOR
          */
         get projection(): MapProjection;
         set projection(val: MapProjection);
+
         /**
          * The tile size of the map source
          * @default 256
          */
         get tile_size(): number;
         set tile_size(val: number);
+
         /**
          * The tile size of the map source
          * @default 256
@@ -3987,34 +4023,24 @@ export namespace Shumate {
         $signals: MapSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MapSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MapSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MapSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MapSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Asynchronous version of `shumate_map_source_fill_tile()`.
          * @param tile a {@link Shumate.Tile}
@@ -4022,11 +4048,8 @@ export namespace Shumate {
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          * @virtual
          */
-        vfunc_fill_tile_async(
-            tile: Tile,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_fill_tile_async(tile: Tile, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Gets the success value of a completed `shumate_map_source_fill_tile_async()`
          * operation.
@@ -4036,35 +4059,29 @@ export namespace Shumate {
         vfunc_fill_tile_finish(result: Gio.AsyncResult): boolean;
 
         // Methods
+        /**
+         * Asynchronous version of `shumate_map_source_fill_tile()`.
+         * @param tile a {@link Shumate.Tile}
+         * @param cancellable a {@link Gio.Cancellable}
+         */
+        fill_tile_async(tile: Tile, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * Asynchronous version of `shumate_map_source_fill_tile()`.
          * @param tile a {@link Shumate.Tile}
          * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        fill_tile_async(tile: Tile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        fill_tile_async(tile: Tile, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronous version of `shumate_map_source_fill_tile()`.
          * @param tile a {@link Shumate.Tile}
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
-        fill_tile_async(
-            tile: Tile,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronous version of `shumate_map_source_fill_tile()`.
-         * @param tile a {@link Shumate.Tile}
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
-         */
-        fill_tile_async(
-            tile: Tile,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        fill_tile_async(tile: Tile, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Gets the success value of a completed `shumate_map_source_fill_tile_async()`
          * operation.
@@ -4072,6 +4089,7 @@ export namespace Shumate {
          * @returns `true` if the tile was filled with valid data, otherwise `false`
          */
         fill_tile_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Gets the number of tiles in a column at this zoom level for this map
          * source.
@@ -4079,11 +4097,13 @@ export namespace Shumate {
          * @returns the number of tiles in a column
          */
         get_column_count(zoom_level: number): number;
+
         /**
          * Gets map source's id.
          * @returns the map source's id.
          */
         get_id(): string;
+
         /**
          * Gets the latitude corresponding to this y position in the map source's
          * projection.
@@ -4092,16 +4112,19 @@ export namespace Shumate {
          * @returns the latitude
          */
         get_latitude(zoom_level: number, y: number): number;
+
         /**
          * Gets map source's license.
          * @returns the map source's license.
          */
         get_license(): string;
+
         /**
          * Gets map source's license URI.
          * @returns the map source's license URI.
          */
         get_license_uri(): string;
+
         /**
          * Gets the longitude corresponding to this x position in the map source's
          * projection.
@@ -4110,11 +4133,13 @@ export namespace Shumate {
          * @returns the longitude
          */
         get_longitude(zoom_level: number, x: number): number;
+
         /**
          * Gets map source's maximum zoom level.
          * @returns the maximum zoom level this map source supports
          */
         get_max_zoom_level(): number;
+
         /**
          * Gets meters per pixel at the position on the map using this map source's projection.
          * @param zoom_level the zoom level
@@ -4123,35 +4148,41 @@ export namespace Shumate {
          * @returns the meters per pixel
          */
         get_meters_per_pixel(zoom_level: number, latitude: number, longitude: number): number;
+
         /**
          * Gets map source's minimum zoom level.
          * @returns the miminum zoom level this map source supports
          */
         get_min_zoom_level(): number;
+
         /**
          * Gets map source's name.
          * @returns the map source's name.
          */
         get_name(): string;
+
         /**
          * Gets map source's projection.
          * @returns the map source's projection.
          */
         get_projection(): MapProjection;
+
         /**
          * Gets the number of tiles in a row at this zoom level for this map source.
          * @param zoom_level the zoom level
          * @returns the number of tiles in a row
          */
         get_row_count(zoom_level: number): number;
+
         /**
          * Gets map source's tile size.
          * @returns the tile's size (width and height) in pixels for this map source
          */
         get_tile_size(): number;
+
         /**
          * Gets the apparent size of the map tiles at the given fractional zoom level.
-         *
+         * 
          * As the map is zoomed in, a tile gets bigger and bigger until, at the next
          * integer zoom level, it "splits" into four tiles at the next zoom level.
          * Thus, the size increase follows an exponential curve, base 2.
@@ -4159,6 +4190,7 @@ export namespace Shumate {
          * @returns the tile's size (width and height) in pixels for this map source at this zoom level
          */
         get_tile_size_at_zoom(zoom_level: number): number;
+
         /**
          * Gets the x position on the map using this map source's projection.
          * (0, 0) is located at the top left.
@@ -4167,6 +4199,7 @@ export namespace Shumate {
          * @returns the x position
          */
         get_x(zoom_level: number, longitude: number): number;
+
         /**
          * Gets the y position on the map using this map source's projection.
          * (0, 0) is located at the top left.
@@ -4175,41 +4208,49 @@ export namespace Shumate {
          * @returns the y position
          */
         get_y(zoom_level: number, latitude: number): number;
+
         /**
          * Sets the map source's id.
          * @param id an id
          */
         set_id(id: string): void;
+
         /**
          * Sets the map source's license.
          * @param license the licence
          */
         set_license(license: string): void;
+
         /**
          * Sets the map source's license URI.
          * @param license_uri the licence URI
          */
         set_license_uri(license_uri: string): void;
+
         /**
          * Sets the map source's maximum zoom level.
          * @param zoom_level the maximum zoom level
          */
         set_max_zoom_level(zoom_level: number): void;
+
         /**
          * Sets the map source's minimal zoom level.
          * @param zoom_level the minimal zoom level
          */
         set_min_zoom_level(zoom_level: number): void;
+
         /**
          * Sets the map source's name.
          * @param name a name
          */
         set_name(name: string): void;
+
         /**
          * Sets the map source's projection.
          * @param projection a {@link Shumate.MapProjection}
          */
         set_projection(projection: MapProjection): void;
+
         /**
          * Sets the map source's tile size.
          * @param tile_size the tile size
@@ -4217,27 +4258,26 @@ export namespace Shumate {
         set_tile_size(tile_size: number): void;
     }
 
+
     namespace MapSourceRegistry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
+        }
     }
 
     /**
      * This object allows you to hold {@link MapSource} instances, you can access a
      * default set of sources with {@link MapSourceRegistry.populate_defaults}.
-     *
+     * 
      * It conveniently implements {@link Gio.ListModel} to easily integrate with it.
      * @gir-type Class
      */
-    class MapSourceRegistry<A extends GObject.Object = GObject.Object>
-        extends GObject.Object
-        implements Gio.ListModel<A>
-    {
+    class MapSourceRegistry<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<MapSourceRegistry>;
 
         /**
@@ -4250,105 +4290,102 @@ export namespace Shumate {
         $signals: MapSourceRegistry.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MapSourceRegistry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MapSourceRegistry;
+        static ["new"](): MapSourceRegistry;
 
         static new_with_defaults(): MapSourceRegistry;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MapSourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceRegistry.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MapSourceRegistry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSourceRegistry.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MapSourceRegistry.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSourceRegistry.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MapSourceRegistry.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceRegistry.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MapSourceRegistry.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MapSourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MapSourceRegistry.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the {@link Shumate.MapSource} to the {@link Shumate.MapSourceRegistry}
          * @param map_source a {@link Shumate.MapSource}
          */
         add(map_source: MapSource): void;
+
         /**
          * Find the {@link Shumate.MapSource} with the corresponding id
          * @param id the id of the {@link Shumate.MapSource}
          * @returns the {@link Shumate.MapSource} or `null` if no map source has been found
          */
-        get_by_id(id: string): MapSource | null;
+        get_by_id(id: string): (MapSource | null);
+
         /**
          * Populates the {@link Shumate.MapSourceRegistry} with a default set of sources.
          */
         populate_defaults(): void;
+
         /**
          * Removes the corresponding {@link Shumate.MapSource} from the registry.
          * If the source doesn't exist in the registry, this function does nothing.
          * @param id a {@link Shumate.MapSource} id
          */
         remove(id: string): void;
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
          */
         get_n_items(): number;
+
         /**
          * Get the item at `position`.
-         *
+         * 
          * If `position` is greater than the number of items in `list`, `null` is
          * returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.
-         *
+         * 
          * This function is meant to be used by language bindings in place
          * of `g_list_model_get_item()`.
-         *
+         * 
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): A | null;
+        get_item(position: number): (A | null);
+
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
-         *
+         * 
          * This function should only be called by classes implementing
          * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
-         *
+         * 
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
@@ -4357,7 +4394,7 @@ export namespace Shumate {
          * made from a fresh mainloop dispatch.  It is particularly not
          * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
-         *
+         * 
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
@@ -4367,33 +4404,36 @@ export namespace Shumate {
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
+
         /**
          * Get the item at `position`. If `position` is greater than the number of
          * items in `list`, `null` is returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.  See `g_list_model_get_n_items()`.
-         *
+         * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): A | null;
+        vfunc_get_item(position: number): (A | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
@@ -4402,63 +4442,57 @@ export namespace Shumate {
         vfunc_get_n_items(): number;
     }
 
+
     namespace Marker {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::x-hotspot': (pspec: GObject.ParamSpec) => void;
-            'notify::y-hotspot': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::x-hotspot": (pspec: GObject.ParamSpec) => void;
+            "notify::y-hotspot": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps,
-                Location.ConstructorProps {
-            child: Gtk.Widget | null;
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Location.ConstructorProps {
+            child: (Gtk.Widget | null);
             selectable: boolean;
             x_hotspot: number;
             xHotspot: number;
@@ -4471,18 +4505,18 @@ export namespace Shumate {
      * Markers represent points of interest on a map. Markers need to be
      * placed on a layer (a {@link MarkerLayer}). Layers have to be added to a
      * {@link Map} for the markers to show on the map.
-     *
+     * 
      * A marker is nothing more than a regular {@link Gtk.Widget}. You can draw on
      * it what ever you want. Set the marker's position on the map using
      * {@link Location.set_location}.
-     *
+     * 
      * This is a base class of all markers. A typical usage of a marker is for
      * instance to add a {@link Gtk.Image} with a pin image and add the
      * {@link Gtk.GestureClick} controller to listen to click events and show
      * a {@link Gtk.Popover} with the description of the marker.
-     *
+     * 
      * ## CSS nodes
-     *
+     * 
      * {@link Shumate.Marker} has a single CSS node with the name “map-marker”.
      * @gir-type Class
      */
@@ -4490,18 +4524,19 @@ export namespace Shumate {
         static $gtype: GObject.GType<Marker>;
 
         // Properties
-
         /**
          * The child widget of the marker
          */
-        get child(): Gtk.Widget | null;
-        set child(val: Gtk.Widget | null);
+        get child(): (Gtk.Widget | null);
+        set child(val: (Gtk.Widget | null));
+
         /**
          * The selectable state of the marker
          * @default false
          */
         get selectable(): boolean;
         set selectable(val: boolean);
+
         /**
          * The x hotspot of the marker, a negative value means that the actual
          * x hotspot is calculated with the {@link Gtk.Widget.halign} property.
@@ -4511,6 +4546,7 @@ export namespace Shumate {
          */
         get x_hotspot(): number;
         set x_hotspot(val: number);
+
         /**
          * The x hotspot of the marker, a negative value means that the actual
          * x hotspot is calculated with the {@link Gtk.Widget.halign} property.
@@ -4520,6 +4556,7 @@ export namespace Shumate {
          */
         get xHotspot(): number;
         set xHotspot(val: number);
+
         /**
          * The y hotspot of the marker, a negative value means that the actual
          * y hotspot is calculated with the {@link Gtk.Widget.valign} property.
@@ -4529,6 +4566,7 @@ export namespace Shumate {
          */
         get y_hotspot(): number;
         set y_hotspot(val: number);
+
         /**
          * The y hotspot of the marker, a negative value means that the actual
          * y hotspot is calculated with the {@link Gtk.Widget.valign} property.
@@ -4549,52 +4587,48 @@ export namespace Shumate {
         $signals: Marker.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Marker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Marker;
+        static ["new"](): Marker;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Marker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Marker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Marker.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Marker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Marker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         animate_in(): void;
+
         /**
-         * @param delay
+         * @param delay 
          */
         animate_in_with_delay(delay: number): void;
+
         animate_out(): void;
+
         /**
-         * @param delay
+         * @param delay 
          */
         animate_out_with_delay(delay: number): void;
+
         /**
          * Retrieves the current child of `marker`.
          * @returns a {@link Gtk.Widget}.
          */
-        get_child(): Gtk.Widget | null;
+        get_child(): (Gtk.Widget | null);
+
         get_draggable(): boolean;
+
         /**
          * Get the hotspot point for the given marker. The value is in pixel relative
          * to the top-left corner. Any negative value means that the hotspot get
@@ -4602,25 +4636,30 @@ export namespace Shumate {
          * properties.
          */
         get_hotspot(): [number, number];
+
         /**
          * Checks whether the marker is selectable.
          * @returns the selectable or not state of the marker.
          */
         get_selectable(): boolean;
+
         /**
          * Checks whether the marker is selected.
          * @returns `true` if the marker is selected, otherwise `false`
          */
         is_selected(): boolean;
+
         /**
          * Sets the child widget of `marker`.
          * @param child a {@link Gtk.Widget}
          */
-        set_child(child: Gtk.Widget | null): void;
+        set_child(child: (Gtk.Widget | null)): void;
+
         /**
-         * @param value
+         * @param value 
          */
         set_draggable(value: boolean): void;
+
         /**
          * Set the hotspot point for the given marker. The value is in pixel relative
          * to the top-left corner. Use any negative value to fallback to the
@@ -4629,107 +4668,121 @@ export namespace Shumate {
          * @param y_hotspot the y hotspot
          */
         set_hotspot(x_hotspot: number, y_hotspot: number): void;
+
         /**
          * Sets the marker as selectable or not.
          * @param value the selectable state
          */
         set_selectable(value: boolean): void;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * The latitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -4737,24 +4790,28 @@ export namespace Shumate {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -4765,102 +4822,114 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -4868,14 +4937,16 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -4884,7 +4955,8 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -4894,12 +4966,8 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -4909,12 +4977,8 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -4922,17 +4986,15 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -4940,39 +5002,43 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
+
         /**
          * Calculates the distance in meters between two locations.
-         *
+         * 
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
@@ -4980,32 +5046,38 @@ export namespace Shumate {
          * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @returns the longitude coordinate in degrees.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
@@ -5015,6 +5087,7 @@ export namespace Shumate {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
+
     namespace MarkerLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
@@ -5023,60 +5096,54 @@ export namespace Shumate {
              * @signal
              * @run-last
              */
-            'marker-selected': (arg0: Marker) => void;
+            "marker-selected": (arg0: Marker) => void;
             /**
              * Emitted when a marker in the layer is unselected.
              * @signal
              * @run-last
              */
-            'marker-unselected': (arg0: Marker) => void;
-            'notify::selection-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::viewport': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            "marker-unselected": (arg0: Marker) => void;
+            "notify::selection-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::viewport": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Layer.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Layer.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             selection_mode: Gtk.SelectionMode;
             selectionMode: Gtk.SelectionMode;
         }
@@ -5091,13 +5158,13 @@ export namespace Shumate {
         static $gtype: GObject.GType<MarkerLayer>;
 
         // Properties
-
         /**
          * Determines the type of selection that will be performed.
          * @default Gtk.SelectionMode.NONE
          */
         get selection_mode(): Gtk.SelectionMode;
         set selection_mode(val: Gtk.SelectionMode);
+
         /**
          * Determines the type of selection that will be performed.
          * @default Gtk.SelectionMode.NONE
@@ -5115,75 +5182,72 @@ export namespace Shumate {
         $signals: MarkerLayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MarkerLayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](viewport: Viewport): MarkerLayer;
+        static ["new"](viewport: Viewport): MarkerLayer;
 
         static new_full(viewport: Viewport, mode: Gtk.SelectionMode): MarkerLayer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MarkerLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MarkerLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MarkerLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MarkerLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MarkerLayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MarkerLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the marker to the layer.
          * @param marker a {@link Marker}
          */
         add_marker(marker: Marker): void;
+
         /**
          * Gets a copy of the list of all markers inserted into the layer. You should
          * free the list but not its contents.
          * @returns the list
          */
         get_markers(): Marker[];
+
         /**
          * Gets a list of selected markers in the layer.
          * @returns the list
          */
         get_selected(): Marker[];
+
         /**
          * Gets the selection mode of the layer.
          * @returns the selection mode of the layer.
          */
         get_selection_mode(): Gtk.SelectionMode;
+
         /**
          * Removes all markers from the layer.
          */
         remove_all(): void;
+
         /**
          * Removes the marker from the layer.
          * @param marker a {@link Marker}
          */
         remove_marker(marker: Marker): void;
+
         /**
          * Selects all selectable markers in the layer.
          */
         select_all_markers(): void;
+
         /**
          * Selects a marker in this layer.
-         *
+         * 
          * If {@link MarkerLayer}:selection-mode is {@link Gtk.SelectionMode.SINGLE} or
          * {@link Gtk.SelectionMode.BROWSE}, all other markers will be unselected. If the mode is
          * {@link Gtk.SelectionMode.NONE} or `marker` is not selectable, nothing will happen.
@@ -5191,21 +5255,24 @@ export namespace Shumate {
          * @returns `true` if the marker is now selected, otherwise `false`
          */
         select_marker(marker: Marker): boolean;
+
         /**
          * Sets the selection mode of the layer.
-         *
+         * 
          * NOTE: changing selection mode to {@link Gtk.SelectionMode.NONE}, {@link Gtk.SelectionMode.SINGLE}
          * or {@link Gtk.SelectionMode.BROWSE} will clear all previously selected markers.
          * @param mode a {@link Gtk.SelectionMode} value
          */
         set_selection_mode(mode: Gtk.SelectionMode): void;
+
         /**
          * Unselects all markers in the layer.
          */
         unselect_all_markers(): void;
+
         /**
          * Unselects a marker in this layer.
-         *
+         * 
          * This works even if {@link MarkerLayer}:selection-mode is
          * {@link Gtk.SelectionMode.BROWSE}. Browse mode only prevents user interaction, not the
          * program, from unselecting a marker.
@@ -5214,63 +5281,58 @@ export namespace Shumate {
         unselect_marker(marker: Marker): void;
     }
 
+
     namespace PathLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
-            'notify::closed': (pspec: GObject.ParamSpec) => void;
-            'notify::fill': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::outline-color': (pspec: GObject.ParamSpec) => void;
-            'notify::outline-width': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-width': (pspec: GObject.ParamSpec) => void;
-            'notify::viewport': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            "notify::closed": (pspec: GObject.ParamSpec) => void;
+            "notify::fill": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::outline-color": (pspec: GObject.ParamSpec) => void;
+            "notify::outline-width": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-width": (pspec: GObject.ParamSpec) => void;
+            "notify::viewport": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Layer.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Layer.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             closed: boolean;
             fill: boolean;
             fill_color: Gdk.RGBA;
@@ -5289,7 +5351,7 @@ export namespace Shumate {
 
     /**
      * A layer displaying line path between inserted {@link Location} objects
-     *
+     * 
      * This layer shows a connection between inserted objects implementing the
      * {@link Location} interface. This means that both {@link Marker}
      * objects and {@link Coordinate} objects can be inserted into the layer.
@@ -5301,73 +5363,84 @@ export namespace Shumate {
         static $gtype: GObject.GType<PathLayer>;
 
         // Properties
-
         /**
          * The shape is a closed path
          * @default false
          */
         get closed(): boolean;
         set closed(val: boolean);
+
         /**
          * The shape should be filled
          * @default false
          */
         get fill(): boolean;
         set fill(val: boolean);
+
         /**
          * The path's fill color
          */
         get fill_color(): Gdk.RGBA;
         set fill_color(val: Gdk.RGBA);
+
         /**
          * The path's fill color
          */
         get fillColor(): Gdk.RGBA;
         set fillColor(val: Gdk.RGBA);
+
         /**
          * The path's outline color
          */
         get outline_color(): Gdk.RGBA;
         set outline_color(val: Gdk.RGBA);
+
         /**
          * The path's outline color
          */
         get outlineColor(): Gdk.RGBA;
         set outlineColor(val: Gdk.RGBA);
+
         /**
          * The path's outline width (in pixels)
          * @default 0
          */
         get outline_width(): number;
         set outline_width(val: number);
+
         /**
          * The path's outline width (in pixels)
          * @default 0
          */
         get outlineWidth(): number;
         set outlineWidth(val: number);
+
         /**
          * The shape should be stroked
          * @default true
          */
         get stroke(): boolean;
         set stroke(val: boolean);
+
         /**
          * The path's stroke color
          */
         get stroke_color(): Gdk.RGBA;
         set stroke_color(val: Gdk.RGBA);
+
         /**
          * The path's stroke color
          */
         get strokeColor(): Gdk.RGBA;
         set strokeColor(val: Gdk.RGBA);
+
         /**
          * The path's stroke width (in pixels)
          * @default 2
          */
         get stroke_width(): number;
         set stroke_width(val: number);
+
         /**
          * The path's stroke width (in pixels)
          * @default 2
@@ -5385,152 +5458,164 @@ export namespace Shumate {
         $signals: PathLayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PathLayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](viewport: Viewport): PathLayer;
+        static ["new"](viewport: Viewport): PathLayer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PathLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PathLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PathLayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PathLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a {@link Location} object to the layer.
          * The node is prepended to the list.
          * @param location a {@link Location}
          */
         add_node(location: Location): void;
+
         /**
          * Gets information whether the path is closed.
          * @returns `true` when the path is closed, `false` otherwise
          */
         get_closed(): boolean;
+
         /**
          * Returns the list of dash segment lengths.
          * @returns the list
          */
         get_dash(): number[];
+
         /**
          * Checks whether the path is filled.
          * @returns `true` if the path is filled, `false` otherwise.
          */
         get_fill(): boolean;
+
         /**
          * Gets the path's fill color.
          * @returns the path's fill color.
          */
         get_fill_color(): Gdk.RGBA;
+
         /**
          * Gets a copy of the list of all {@link Location} objects inserted into the layer. You should
          * free the list but not its contents.
          * @returns the list
          */
         get_nodes(): Location[];
+
         /**
          * Gets the path's outline color.
          * @returns the path's outline color.
          */
         get_outline_color(): Gdk.RGBA;
+
         /**
          * Gets the width of the outline.
          * @returns the width of the outline
          */
         get_outline_width(): number;
+
         /**
          * Checks whether the path is stroked.
          * @returns `true` if the path is stroked, `false` otherwise.
          */
         get_stroke(): boolean;
+
         /**
          * Gets the path's stroke color.
          * @returns the path's stroke color.
          */
         get_stroke_color(): Gdk.RGBA;
+
         /**
          * Gets the width of the stroke.
          * @returns the width of the stroke
          */
         get_stroke_width(): number;
+
         /**
          * Inserts a {@link Location} object to the specified position.
          * @param location a {@link Location}
          * @param position position in the list where the {@link Location} object should be inserted
          */
         insert_node(location: Location, position: number): void;
+
         /**
          * Removes all {@link Location} objects from the layer.
          */
         remove_all(): void;
+
         /**
          * Removes the {@link Location} object from the layer.
          * @param location a {@link Location}
          */
         remove_node(location: Location): void;
+
         /**
          * Makes the path closed.
          * @param value `true` to make the path closed
          */
         set_closed(value: boolean): void;
+
         /**
          * Sets dashed line pattern in a way similar to `cairo_set_dash()` of cairo. This
          * method supports only integer values for segment lengths. The values have to be
          * passed inside the data pointer of the list (using the `GUINT_TO_POINTER` conversion)
-         *
+         * 
          * Pass `null` to use solid line.
          * @param dash_pattern list of integer values representing lengths     of dashes/spaces (see cairo documentation of `cairo_set_dash()`)
          */
         set_dash(dash_pattern: number[]): void;
+
         /**
          * Sets the path to be filled
          * @param value if the path is filled
          */
         set_fill(value: boolean): void;
+
         /**
          * Set the path's fill color.
          * @param color The path's fill color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_fill_color(color: Gdk.RGBA | null): void;
+        set_fill_color(color: (Gdk.RGBA | null)): void;
+
         /**
          * Set the path's outline color.
          * @param color The path's outline color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_outline_color(color: Gdk.RGBA | null): void;
+        set_outline_color(color: (Gdk.RGBA | null)): void;
+
         /**
          * Sets the width of the outline
          * @param value the width of the outline (in pixels)
          */
         set_outline_width(value: number): void;
+
         /**
          * Sets the path to be stroked
          * @param value if the path is stroked
          */
         set_stroke(value: boolean): void;
+
         /**
          * Set the path's stroke color.
          * @param color The path's stroke color or `null` to reset to the         default color. The color parameter is copied.
          */
-        set_stroke_color(color: Gdk.RGBA | null): void;
+        set_stroke_color(color: (Gdk.RGBA | null)): void;
+
         /**
          * Sets the width of the stroke
          * @param value the width of the stroke (in pixels)
@@ -5538,69 +5623,65 @@ export namespace Shumate {
         set_stroke_width(value: number): void;
     }
 
+
     namespace Point {
         // Signal signatures
         interface SignalSignatures extends Marker.SignalSignatures {
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::x-hotspot': (pspec: GObject.ParamSpec) => void;
-            'notify::y-hotspot': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::x-hotspot": (pspec: GObject.ParamSpec) => void;
+            "notify::y-hotspot": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Marker.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps, Location.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Marker.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps,
-                Location.ConstructorProps {}
+        }
     }
 
     /**
      * A simple variant of {@link Marker} showing the location of the point as a
      * circle on the map.
-     *
+     * 
      * ## CSS nodes
-     *
+     * 
      * {@link Shumate.Point} has a single CSS node with the name “map-point”.
      * @gir-type Class
      */
@@ -5617,50 +5698,44 @@ export namespace Shumate {
         $signals: Point.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Point.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Point;
+        static ["new"](): Point;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Point.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Point.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Point.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Point.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Point.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Point.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Point.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * The latitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Calculates the distance in meters between two locations.
-         *
+         * 
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
@@ -5668,32 +5743,38 @@ export namespace Shumate {
          * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @returns the longitude coordinate in degrees.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
@@ -5703,22 +5784,22 @@ export namespace Shumate {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
+
     namespace RasterRenderer {
         // Signal signatures
         interface SignalSignatures extends MapSource.SignalSignatures {
-            'notify::data-source': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
+            "notify::data-source": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends MapSource.ConstructorProps {
             data_source: DataSource;
             dataSource: DataSource;
@@ -5732,13 +5813,13 @@ export namespace Shumate {
         static $gtype: GObject.GType<RasterRenderer>;
 
         // Properties
-
         /**
          * The data source that provides image tiles to display. In most cases,
          * a {@link TileDownloader} is sufficient.
          * @construct-only
          */
         get data_source(): DataSource;
+
         /**
          * The data source that provides image tiles to display. In most cases,
          * a {@link TileDownloader} is sufficient.
@@ -5756,130 +5837,96 @@ export namespace Shumate {
         $signals: RasterRenderer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RasterRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](data_source: DataSource): RasterRenderer;
+        static ["new"](data_source: DataSource): RasterRenderer;
 
         static new_from_url(url_template: string): RasterRenderer;
 
-        static new_full(
-            id: string,
-            name: string,
-            license: string,
-            license_uri: string,
-            min_zoom: number,
-            max_zoom: number,
-            tile_size: number,
-            projection: MapProjection,
-            data_source: DataSource,
-        ): RasterRenderer;
+        static new_full(id: string, name: string, license: string, license_uri: string, min_zoom: number, max_zoom: number, tile_size: number, projection: MapProjection, data_source: DataSource): RasterRenderer;
 
-        static new_full_from_url(
-            id: string,
-            name: string,
-            license: string,
-            license_uri: string,
-            min_zoom: number,
-            max_zoom: number,
-            tile_size: number,
-            projection: MapProjection,
-            url_template: string,
-        ): RasterRenderer;
+        static new_full_from_url(id: string, name: string, license: string, license_uri: string, min_zoom: number, max_zoom: number, tile_size: number, projection: MapProjection, url_template: string): RasterRenderer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RasterRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RasterRenderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RasterRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RasterRenderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RasterRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RasterRenderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RasterRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RasterRenderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RasterRenderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RasterRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RasterRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RasterRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Scale {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::max-width': (pspec: GObject.ParamSpec) => void;
-            'notify::unit': (pspec: GObject.ParamSpec) => void;
-            'notify::viewport': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            "notify::max-width": (pspec: GObject.ParamSpec) => void;
+            "notify::unit": (pspec: GObject.ParamSpec) => void;
+            "notify::viewport": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             max_width: number;
             maxWidth: number;
             unit: Unit;
-            viewport: Viewport | null;
+            viewport: (Viewport | null);
         }
     }
 
     /**
      * A widget displaying a scale.
-     *
+     * 
      * # CSS nodes
-     *
+     * 
      * ```
      * map-scale
      * ├── label[.metric][.imperial]
      * ```
-     *
+     * 
      * {@link Shumate.Scale} uses a single CSS node with name map-scale, it has up to two
      * childs different labels.
      * @gir-type Class
@@ -5888,30 +5935,32 @@ export namespace Shumate {
         static $gtype: GObject.GType<Scale>;
 
         // Properties
-
         /**
          * The size of the map scale on screen in pixels.
          * @default 150
          */
         get max_width(): number;
         set max_width(val: number);
+
         /**
          * The size of the map scale on screen in pixels.
          * @default 150
          */
         get maxWidth(): number;
         set maxWidth(val: number);
+
         /**
          * The scale's units.
          * @default Shumate.Unit.BOTH
          */
         get unit(): Unit;
         set unit(val: Unit);
+
         /**
          * The viewport to use.
          */
-        get viewport(): Viewport | null;
-        set viewport(val: Viewport | null);
+        get viewport(): (Viewport | null);
+        set viewport(val: (Viewport | null));
 
         /**
          * Compile-time signal type information.
@@ -5923,148 +5972,154 @@ export namespace Shumate {
         $signals: Scale.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Scale.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](viewport: Viewport | null): Scale;
+        static ["new"](viewport: (Viewport | null)): Scale;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Scale.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Scale.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Scale.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the maximum scale width.
          * @returns The maximum scale width in pixels.
          */
         get_max_width(): number;
+
         /**
          * Gets the unit used by the scale.
          * @returns The unit used by the scale
          */
         get_unit(): Unit;
+
         /**
          * Gets the viewport used by the scale.
          * @returns The {@link Shumate.Viewport} used by the scale
          */
-        get_viewport(): Viewport | null;
+        get_viewport(): (Viewport | null);
+
         /**
          * Sets the maximum width of the scale on the screen in pixels
          * @param value the number of pixels
          */
         set_max_width(value: number): void;
+
         /**
          * Sets the scale unit.
          * @param unit a {@link Shumate.Unit}
          */
         set_unit(unit: Unit): void;
+
         /**
          * Sets the scale viewport.
          * @param viewport a {@link Shumate.Viewport}
          */
-        set_viewport(viewport: Viewport | null): void;
+        set_viewport(viewport: (Viewport | null)): void;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -6072,24 +6127,28 @@ export namespace Shumate {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -6100,102 +6159,114 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -6203,14 +6274,16 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -6219,7 +6292,8 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -6229,12 +6303,8 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -6244,12 +6314,8 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -6257,17 +6323,15 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -6275,37 +6339,41 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
     }
+
 
     namespace SimpleMap {
         // Signal signatures
@@ -6317,66 +6385,60 @@ export namespace Shumate {
              * @since 1.1
              * @run-last
              */
-            'symbol-clicked': (arg0: SymbolEvent) => void;
-            'notify::base-map-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::compass': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::map': (pspec: GObject.ParamSpec) => void;
-            'notify::map-source': (pspec: GObject.ParamSpec) => void;
-            'notify::scale': (pspec: GObject.ParamSpec) => void;
-            'notify::show-zoom-buttons': (pspec: GObject.ParamSpec) => void;
-            'notify::viewport': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            "symbol-clicked": (arg0: SymbolEvent) => void;
+            "notify::base-map-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::compass": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::map": (pspec: GObject.ParamSpec) => void;
+            "notify::map-source": (pspec: GObject.ParamSpec) => void;
+            "notify::scale": (pspec: GObject.ParamSpec) => void;
+            "notify::show-zoom-buttons": (pspec: GObject.ParamSpec) => void;
+            "notify::viewport": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             base_map_layer: MapLayer;
             baseMapLayer: MapLayer;
             compass: Compass;
             license: License;
-            map: Map | any;
+            map: (Map | any);
             map_source: MapSource;
             mapSource: MapSource;
             scale: Scale;
@@ -6389,7 +6451,7 @@ export namespace Shumate {
     /**
      * A ready-to-use map {@link Gtk.Widget}.If you want to use your own implementation,
      * you can look at the {@link Shumate.Map} widget.
-     *
+     * 
      * The simple map contains a zoom widget, a {@link Shumate.License} at the bottom,
      * a {@link Shumate.Scale} and a {@link Shumate.Compass}.
      * @gir-type Class
@@ -6398,56 +6460,65 @@ export namespace Shumate {
         static $gtype: GObject.GType<SimpleMap>;
 
         // Properties
-
         /**
          * The {@link MapLayer} that displays the map source.
-         *
+         * 
          * This is a read-only property. To change the basemap, set the
          * {@link SimpleMap.map_source} property.
          * @since 1.4
          * @read-only
          */
         get base_map_layer(): MapLayer;
+
         /**
          * The {@link MapLayer} that displays the map source.
-         *
+         * 
          * This is a read-only property. To change the basemap, set the
          * {@link SimpleMap.map_source} property.
          * @since 1.4
          * @read-only
          */
         get baseMapLayer(): MapLayer;
+
         /**
          * @read-only
          */
         get compass(): Compass;
+
         /**
          * @read-only
          */
         get license(): License;
+
         /**
          * @read-only
          */
-        // This accessor conflicts with a field or function name in a parent class or interface.
-        map: Map | any;
+    // This accessor conflicts with a field or function name in a parent class or interface.
+         map: Map | any;
+
         get map_source(): MapSource;
         set map_source(val: MapSource);
+
         get mapSource(): MapSource;
         set mapSource(val: MapSource);
+
         /**
          * @read-only
          */
         get scale(): Scale;
+
         /**
          * @default true
          */
         get show_zoom_buttons(): boolean;
         set show_zoom_buttons(val: boolean);
+
         /**
          * @default true
          */
         get showZoomButtons(): boolean;
         set showZoomButtons(val: boolean);
+
         /**
          * @read-only
          */
@@ -6463,194 +6534,208 @@ export namespace Shumate {
         $signals: SimpleMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SimpleMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SimpleMap;
+        static ["new"](): SimpleMap;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SimpleMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SimpleMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SimpleMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SimpleMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SimpleMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SimpleMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SimpleMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SimpleMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SimpleMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SimpleMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a map layer as an overlay on top of the base map.
          * @param layer a {@link Layer} to add
          */
         add_overlay_layer(layer: Layer): void;
+
         /**
          * Gets the {@link MapLayer} that displays the base map.
          * @returns the base map layer
          */
         get_base_map_layer(): MapLayer;
+
         /**
          * Gets the compass widget for the map.
          * @returns a {@link Compass}
          */
         get_compass(): Compass;
+
         /**
          * Gets the license widget for the map.
          * @returns a {@link License}
          */
         get_license(): License;
+
         /**
          * Gets the {@link SimpleMap}'s underlying {@link Map}.
          * @returns a {@link Map}
          */
         get_map(): Map;
+
         /**
          * Gets the map source for the current base layer.
          * @returns a {@link MapSource}
          */
         get_map_source(): MapSource;
+
         /**
          * Gets the scale widget for the map.
          * @returns a {@link Scale}
          */
         get_scale(): Scale;
+
         /**
          * Gets whether or not the zoom buttons are shown.
          * @returns `true` if the zoom buttons are visible, otherwise `false`
          */
         get_show_zoom_buttons(): boolean;
+
         /**
          * Gets the map's viewport, needed for constructing map layers that will be added
          * to it.
          * @returns a {@link Viewport}
          */
         get_viewport(): Viewport;
+
         /**
          * Inserts a map layer as an overlay on top of the base map. The layer will
          * appear above `sibling`, or at the bottom (but still above the base map)
          * if `sibling` is `null`.
          * @param layer a {@link Layer} to insert
-         * @param sibling
+         * @param sibling 
          */
         insert_overlay_layer_above(layer: Layer, sibling: Layer): void;
+
         /**
          * Inserts a map layer as an overlay on top of the base map. The layer will
          * appear just below `sibling`, or above everything else if `sibling` is `null`.
          * @param layer a {@link Layer} to insert
-         * @param sibling
+         * @param sibling 
          */
         insert_overlay_layer_behind(layer: Layer, sibling: Layer): void;
+
         /**
          * Removes a layer from the map.
          * @param layer a {@link Layer} that was added to the map previously
          */
         remove_overlay_layer(layer: Layer): void;
+
         /**
          * Sets the source for the base map.
          * @param map_source a {@link MapSource}
          */
-        set_map_source(map_source: MapSource | null): void;
+        set_map_source(map_source: (MapSource | null)): void;
+
         /**
          * Sets whether or not the zoom buttons are shown.
          * @param show_zoom_buttons `true` to show the zoom buttons, `false` to hide them
          */
         set_show_zoom_buttons(show_zoom_buttons: boolean): void;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -6658,24 +6743,28 @@ export namespace Shumate {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -6686,102 +6775,114 @@ export namespace Shumate {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -6789,14 +6890,16 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -6805,7 +6908,8 @@ export namespace Shumate {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -6815,12 +6919,8 @@ export namespace Shumate {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -6830,12 +6930,8 @@ export namespace Shumate {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -6843,17 +6939,15 @@ export namespace Shumate {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -6861,51 +6955,54 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
     }
 
+
     namespace SymbolEvent {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::feature-id': (pspec: GObject.ParamSpec) => void;
-            'notify::layer': (pspec: GObject.ParamSpec) => void;
-            'notify::n-press': (pspec: GObject.ParamSpec) => void;
-            'notify::source-layer': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::feature-id": (pspec: GObject.ParamSpec) => void;
+            "notify::layer": (pspec: GObject.ParamSpec) => void;
+            "notify::n-press": (pspec: GObject.ParamSpec) => void;
+            "notify::source-layer": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Location.ConstructorProps {
             feature_id: string;
             featureId: string;
@@ -6921,11 +7018,11 @@ export namespace Shumate {
      * An object containing the details of a map feature that has been clicked.
      * It is the argument of the `Shumate.MapLayer::symbol-clicked` and
      * `Shumate.SimpleMap::symbol-clicked` signals.
-     *
+     * 
      * When vector maps are rendered, they may contain labels and icons. When one
      * of these symbols is clicked, these signals are emitted to give the
      * application access to the original location and details of the map feature.
-     *
+     * 
      * {@link SymbolEvent} implements {@link Location} so you can get the latitude
      * and longitude of the feature that was clicked.
      * @gir-type Class
@@ -6935,7 +7032,6 @@ export namespace Shumate {
         static $gtype: GObject.GType<SymbolEvent>;
 
         // Properties
-
         /**
          * The ID of the feature that this event pertains to, as it was given in the
          * data source.
@@ -6944,6 +7040,7 @@ export namespace Shumate {
          * @default null
          */
         get feature_id(): string;
+
         /**
          * The ID of the feature that this event pertains to, as it was given in the
          * data source.
@@ -6952,6 +7049,7 @@ export namespace Shumate {
          * @default null
          */
         get featureId(): string;
+
         /**
          * The ID of the style layer of the symbol that this event pertains to.
          * @since 1.1
@@ -6959,6 +7057,7 @@ export namespace Shumate {
          * @default null
          */
         get layer(): string;
+
         /**
          * The number of clicks/presses triggering the symbol event.
          * @since 1.5
@@ -6966,6 +7065,7 @@ export namespace Shumate {
          */
         get n_press(): number;
         set n_press(val: number);
+
         /**
          * The number of clicks/presses triggering the symbol event.
          * @since 1.5
@@ -6973,12 +7073,14 @@ export namespace Shumate {
          */
         get nPress(): number;
         set nPress(val: number);
+
         /**
          * The ID of the source layer of the symbol that this event pertains to.
          * @read-only
          * @default null
          */
         get source_layer(): string;
+
         /**
          * The ID of the source layer of the symbol that this event pertains to.
          * @read-only
@@ -6996,72 +7098,67 @@ export namespace Shumate {
         $signals: SymbolEvent.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SymbolEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SymbolEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolEvent.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SymbolEvent.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SymbolEvent.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SymbolEvent.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SymbolEvent.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SymbolEvent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SymbolEvent.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SymbolEvent.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SymbolEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SymbolEvent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SymbolEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the feature ID as specified in the data source. The meaning of the
          * ID, if any, is up to the source.
-         *
+         * 
          * Feature IDs in Mapbox Vector Tile format are integers, but they are
          * formatted as a string here for futureproofing.
          * @returns the feature ID
          */
         get_feature_id(): string;
+
         /**
          * Gets a list of the keys of the source feature's tags.
          * @returns a list of the tag keys
          */
         get_keys(): string[];
+
         /**
          * Gets the name of the layer the clicked symbol is in, as named in the vector
          * stylesheet.
-         *
+         * 
          * Note that this is distinct from the name of the layer in the vector tile
          * schema. Some styles have multiple symbol layers derived from the same
          * data source layer.
          * @returns the layer name
          */
         get_layer(): string;
+
         /**
          * Gets the number of clicks/presses that initiated the event.
          * @returns the number of presses
          */
         get_n_press(): number;
+
         /**
          * Gets the name of the source layer the clicked feature is in,
          * as named in the vector tile schema.
          * @returns the layer name
          */
         get_source_layer(): string;
+
         /**
          * Gets a tag from the source feature.
-         *
+         * 
          * The available tags depend on the vector tile schema and the source layer.
          * Check the documentation for the tiles you're using to see what information
          * is available.
@@ -7069,23 +7166,26 @@ export namespace Shumate {
          * @returns the tag value, formatted as a string
          */
         get_tag(tag_name: string): string;
+
         /**
          * The latitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Calculates the distance in meters between two locations.
-         *
+         * 
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
@@ -7093,32 +7193,38 @@ export namespace Shumate {
          * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @returns the longitude coordinate in degrees.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
@@ -7128,25 +7234,25 @@ export namespace Shumate {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
+
     namespace Tile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fade-in': (pspec: GObject.ParamSpec) => void;
-            'notify::paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
+            "notify::fade-in": (pspec: GObject.ParamSpec) => void;
+            "notify::paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-level": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             fade_in: boolean;
             fadeIn: boolean;
-            paintable: Gdk.Paintable | null;
+            paintable: (Gdk.Paintable | null);
             scale_factor: number;
             scaleFactor: number;
             size: number;
@@ -7166,24 +7272,26 @@ export namespace Shumate {
         static $gtype: GObject.GType<Tile>;
 
         // Properties
-
         /**
          * Specifies whether the tile should fade in when loading
          * @default false
          */
         get fade_in(): boolean;
         set fade_in(val: boolean);
+
         /**
          * Specifies whether the tile should fade in when loading
          * @default false
          */
         get fadeIn(): boolean;
         set fadeIn(val: boolean);
+
         /**
          * The {@link Gdk.Paintable} backing the tile
          */
-        get paintable(): Gdk.Paintable | null;
-        set paintable(val: Gdk.Paintable | null);
+        get paintable(): (Gdk.Paintable | null);
+        set paintable(val: (Gdk.Paintable | null));
+
         /**
          * The scale factor of the widget the tile will be displayed in.
          * @since 1.1
@@ -7191,6 +7299,7 @@ export namespace Shumate {
          */
         get scale_factor(): number;
         set scale_factor(val: number);
+
         /**
          * The scale factor of the widget the tile will be displayed in.
          * @since 1.1
@@ -7198,36 +7307,42 @@ export namespace Shumate {
          */
         get scaleFactor(): number;
         set scaleFactor(val: number);
+
         /**
          * The size of the tile in pixels
          * @default 256
          */
         get size(): number;
         set size(val: number);
+
         /**
          * The state of the tile
          * @default Shumate.State.NONE
          */
         get state(): State;
         set state(val: State);
+
         /**
          * The x position of the tile
          * @default 0
          */
         get x(): number;
         set x(val: number);
+
         /**
          * The y position of the tile
          * @default 0
          */
         get y(): number;
         set y(val: number);
+
         /**
          * The zoom level of the tile
          * @default 0
          */
         get zoom_level(): number;
         set zoom_level(val: number);
+
         /**
          * The zoom level of the tile
          * @default 0
@@ -7245,113 +7360,118 @@ export namespace Shumate {
         $signals: Tile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Tile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Tile;
+        static ["new"](): Tile;
 
         static new_full(x: number, y: number, size: number, zoom_level: number): Tile;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Tile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Tile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Tile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Tile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Tile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Tile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Checks whether the tile should fade in.
          * @returns the return value determines whether the tile should fade in when loading.
          */
         get_fade_in(): boolean;
+
         /**
          * Get the {@link Gdk.Paintable} representing this tile.
          * @returns A {@link Gdk.Paintable}
          */
-        get_paintable(): Gdk.Paintable | null;
+        get_paintable(): (Gdk.Paintable | null);
+
         /**
          * Gets the scale factor of the tile.
          * @returns the scale factor
          */
         get_scale_factor(): number;
+
         /**
          * Gets the tile's size.
          * @returns the tile's size in pixels
          */
         get_size(): number;
+
         /**
          * Gets the current state of tile loading.
          * @returns the tile's {@link Shumate.State}
          */
         get_state(): State;
+
         /**
          * Gets the tile's x position.
          * @returns the tile's x position
          */
         get_x(): number;
+
         /**
          * Gets the tile's y position.
          * @returns the tile's y position
          */
         get_y(): number;
+
         /**
          * Gets the tile's zoom level.
          * @returns the tile's zoom level
          */
         get_zoom_level(): number;
+
         /**
          * Sets the flag determining whether the tile should fade in when loading
          * @param fade_in determines whether the tile should fade in when loading
          */
         set_fade_in(fade_in: boolean): void;
+
         /**
          * Sets the {@link Gdk.Paintable} representing this tile.
          * @param paintable a {@link Gdk.Paintable}
          */
         set_paintable(paintable: Gdk.Paintable): void;
+
         /**
          * Sets the scale factor of the tile.
          * @param scale_factor the scale factor
          */
         set_scale_factor(scale_factor: number): void;
+
         /**
          * Sets the tile's size
          * @param size the size in pixels
          */
         set_size(size: number): void;
+
         /**
          * Sets the tile's {@link Shumate.State}
          * @param state a {@link Shumate.State}
          */
         set_state(state: State): void;
+
         /**
          * Sets the tile's x position
          * @param x the position
          */
         set_x(x: number): void;
+
         /**
          * Sets the tile's y position
          * @param y the position
          */
         set_y(y: number): void;
+
         /**
          * Sets the tile's zoom level
          * @param zoom_level the zoom level
@@ -7359,16 +7479,16 @@ export namespace Shumate {
         set_zoom_level(zoom_level: number): void;
     }
 
+
     namespace TileDownloader {
         // Signal signatures
         interface SignalSignatures extends DataSource.SignalSignatures {
-            'notify::url-template': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
+            "notify::url-template": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends DataSource.ConstructorProps {
             url_template: string;
             urlTemplate: string;
@@ -7378,7 +7498,7 @@ export namespace Shumate {
     /**
      * A {@link DataSource} that asynchronously downloads tiles from an online
      * service using a given template.
-     *
+     * 
      * It contains an internal {@link FileCache} to cache the tiles on the system.
      * @gir-type Class
      */
@@ -7386,10 +7506,9 @@ export namespace Shumate {
         static $gtype: GObject.GType<TileDownloader>;
 
         // Properties
-
         /**
          * A template for construting the URL to download a tile from.
-         *
+         * 
          * The template has the following replacements:
          * - "{x}": The X coordinate of the tile
          * - "{y}": The Y coordinate of the tile
@@ -7400,9 +7519,10 @@ export namespace Shumate {
          * @default null
          */
         get url_template(): string;
+
         /**
          * A template for construting the URL to download a tile from.
-         *
+         * 
          * The template has the following replacements:
          * - "{x}": The X coordinate of the tile
          * - "{y}": The Y coordinate of the tile
@@ -7424,47 +7544,41 @@ export namespace Shumate {
         $signals: TileDownloader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TileDownloader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](url_template: string): TileDownloader;
+        static ["new"](url_template: string): TileDownloader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TileDownloader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileDownloader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TileDownloader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TileDownloader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TileDownloader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TileDownloader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TileDownloader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileDownloader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TileDownloader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TileDownloader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TileDownloader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileDownloader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace VectorReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Provides low-level access to the contents of a vector tile.
-     *
+     * 
      * To create a new {@link VectorReader}, use {@link VectorReader.new} and pass
      * the bytes of a vector tile, which you might get from a {@link DataSource}.
      * Then, use {@link VectorReader.iterate} to get a {@link VectorReaderIter}
@@ -7486,36 +7600,26 @@ export namespace Shumate {
         $signals: VectorReader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VectorReader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](bytes: GLib.Bytes | Uint8Array): VectorReader;
+        static ["new"](bytes: (GLib.Bytes | Uint8Array)): VectorReader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VectorReader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorReader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VectorReader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorReader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VectorReader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorReader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VectorReader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorReader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VectorReader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VectorReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VectorReader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Creates a new {@link VectorReaderIter} for `self`.
          * @returns A new {@link VectorReaderIter}
@@ -7523,14 +7627,14 @@ export namespace Shumate {
         iterate(): VectorReaderIter;
     }
 
+
     namespace VectorReaderIter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::reader': (pspec: GObject.ParamSpec) => void;
+            "notify::reader": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             reader: VectorReader;
         }
@@ -7538,25 +7642,25 @@ export namespace Shumate {
 
     /**
      * Reads the layers and features of a vector tile.
-     *
+     * 
      * To create a new {@link VectorReaderIter}, use {@link VectorReader.iterate}.
-     *
+     * 
      * A vector tile consists of named layers, which contain features. Each feature
      * has an ID, a geometry, and a set of key/value tags. The meanings of
      * the IDs and tags depends on the data source that the tile came from. The
      * [OpenMapTiles schema](https://openmaptiles.org/schema/) is a common schema
      * for vector tiles.
-     *
+     * 
      * To read all layers in a tile, use {@link VectorReaderIter.get_layer_count} and
      * {@link VectorReaderIter.read_layer}. If you know the name of the layer you
      * want, you can also use {@link VectorReaderIter.read_layer_by_name}.
      * Once the iterator is reading a layer, you can call
      * {@link VectorReaderIter.next_feature} in a loop to read all the features in
      * the layer.
-     *
+     * 
      * A {@link VectorReaderIter} is not thread-safe, but iterators created
      * from the same {@link VectorReader} can be used in different threads.
-     *
+     * 
      * See [the Mapbox Vector Tile specification](https://github.com/mapbox/vector-tile-spec/tree/master/2.1)
      * for more information about the vector tile format.
      * @gir-type Class
@@ -7566,7 +7670,6 @@ export namespace Shumate {
         static $gtype: GObject.GType<VectorReaderIter>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -7582,106 +7685,104 @@ export namespace Shumate {
         $signals: VectorReaderIter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VectorReaderIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VectorReaderIter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorReaderIter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VectorReaderIter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorReaderIter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VectorReaderIter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorReaderIter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VectorReaderIter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorReaderIter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VectorReaderIter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VectorReaderIter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VectorReaderIter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorReaderIter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Determines whether the current feature contains the given point.
-         *
+         * 
          * The point must be specified in tile space. See
          * {@link VectorReaderIter.get_layer_extent} to get the range of the
          * coordinates.
-         *
+         * 
          * Only polygon or multipolygon features can contain a point. For all
          * other feature types, this function returns `false`.
-         *
+         * 
          * If the point is on the border of the polygon, this function may return
          * either `true` or `false`.
-         * @param x
-         * @param y
+         * @param x 
+         * @param y 
          * @returns `true` if the feature contains the point, `false` otherwise.
          */
         feature_contains_point(x: number, y: number): boolean;
+
         /**
          * Gets the geometry type of the current feature.
          * @returns The geometry type of the current feature.
          */
         get_feature_geometry_type(): GeometryType;
+
         /**
          * Gets the ID of the current feature.
          * @returns The ID of the current feature.
          */
         get_feature_id(): number;
+
         /**
          * Gets the keys of the tags of the current feature.
          * @returns The keys of the tags of the current feature.
          */
         get_feature_keys(): string[];
+
         /**
          * Gets the coordinates of the current feature in tile space, if the
          * feature is a single point.
-         *
+         * 
          * See {@link VectorReaderIter.get_layer_extent} to get the range
          * of the coordinates.
-         *
+         * 
          * It is an error to call this function if the feature is not a single point.
          * Use {@link VectorReaderIter.get_feature_geometry_type} to check
          * the feature's geometry type.
          * @returns `true` if the feature is a point, `false` otherwise.
          */
         get_feature_point(): [boolean, number, number];
+
         /**
          * Gets the value of the tag with the given key.
          * @param key The key of the tag to get.
          * @returns `true` if the tag was found, `false` otherwise.
          */
         get_feature_tag(key: string): [boolean, unknown];
+
         /**
          * Gets the number of layers in the vector tile.
          * @returns The number of layers.
          */
         get_layer_count(): number;
+
         /**
          * Gets the extent for coordinates in the current layer.
-         *
+         * 
          * 0 represents the top and left edges of the tile, and this value
          * represents the bottom and right edges. Feature geometries may extend
          * outside of this range, since tiles often include some margin.
-         *
+         * 
          * Tiles do not contain metadata about the location of the tile within
          * the world, so it is up to the caller to know the tile's coordinates
          * and convert latitude/longitude to tile-space coordinates.
          * @returns The layer's extent
          */
         get_layer_extent(): number;
+
         /**
          * Gets the number of features in the current layer.
-         *
+         * 
          * You can loop over all features in the current layer by calling
          * {@link VectorReaderIter.read_feature} with each index from 0 to
          * the feature count, but it might be easier to use
@@ -7689,67 +7790,73 @@ export namespace Shumate {
          * @returns The number of features in the current layer.
          */
         get_layer_feature_count(): number;
+
         /**
          * Gets the name of the current layer.
          * @returns The name of the current layer.
          */
         get_layer_name(): string;
+
         /**
          * Gets the reader that the iterator is iterating over.
          * @returns The reader that the iterator is iterating over.
          */
         get_reader(): VectorReader;
+
         /**
          * Advances the iterator to the next feature in the current layer.
          * @returns `true` if there is a next feature, `false` otherwise.
          */
         next_feature(): boolean;
+
         /**
          * Moves the iterator to the feature at the given index in the current layer.
-         *
+         * 
          * You can get the number of features in the current layer with
          * {@link VectorReaderIter.get_layer_feature_count}.
          * @param index The index of the feature to read.
          */
         read_feature(index: number): void;
+
         /**
          * Sets the current layer of the reader to the layer at the given index.
          * @param index The index of the layer to read.
          */
         read_layer(index: number): void;
+
         /**
          * Moves the iterator to the layer with the given name, if present.
-         *
+         * 
          * If the layer is not found, the current layer will be set to `null` and the
          * function will return `false`. Layers are typically omitted if they are empty,
          * so don't assume that a layer in the schema will always be present.
-         *
+         * 
          * The iterator's current feature will be `null` after calling this function;
          * use {@link VectorReaderIter.next_feature} to advance to the first feature
          * in the layer.
-         * @param name
+         * @param name 
          * @returns `true` if the layer was found, `false` otherwise.
          */
         read_layer_by_name(name: string): boolean;
     }
 
+
     namespace VectorRenderer {
         // Signal signatures
         interface SignalSignatures extends MapSource.SignalSignatures {
-            'notify::sprite-sheet': (pspec: GObject.ParamSpec) => void;
-            'notify::style-json': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
+            "notify::sprite-sheet": (pspec: GObject.ParamSpec) => void;
+            "notify::style-json": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends MapSource.ConstructorProps, Gio.Initable.ConstructorProps {
             sprite_sheet: VectorSpriteSheet;
             spriteSheet: VectorSpriteSheet;
@@ -7766,32 +7873,34 @@ export namespace Shumate {
         static $gtype: GObject.GType<VectorRenderer>;
 
         // Properties
-
         /**
          * The sprite sheet used to render icons and textures.
          * @since 1.1
          */
         get sprite_sheet(): VectorSpriteSheet;
         set sprite_sheet(val: VectorSpriteSheet);
+
         /**
          * The sprite sheet used to render icons and textures.
          * @since 1.1
          */
         get spriteSheet(): VectorSpriteSheet;
         set spriteSheet(val: VectorSpriteSheet);
+
         /**
          * A map style, in [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/)
          * format.
-         *
+         * 
          * Note that not all features of the specification are supported.
          * @construct-only
          * @default null
          */
         get style_json(): string;
+
         /**
          * A map style, in [Mapbox Style Specification](https://docs.mapbox.com/mapbox-gl-js/style-spec/)
          * format.
-         *
+         * 
          * Note that not all features of the specification are supported.
          * @construct-only
          * @default null
@@ -7808,36 +7917,26 @@ export namespace Shumate {
         $signals: VectorRenderer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VectorRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: string, style_json: string): VectorRenderer;
+        static ["new"](id: string, style_json: string): VectorRenderer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VectorRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorRenderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VectorRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorRenderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VectorRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorRenderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VectorRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorRenderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VectorRenderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VectorRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VectorRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Checks whether libshumate was compiled with vector tile support. Previous
          * versions of libshumate had a build-time option to disable vector tiles,
@@ -7846,10 +7945,9 @@ export namespace Shumate {
         static is_supported(): boolean;
 
         // Methods
-
         /**
          * Gets a global state value.
-         *
+         * 
          * If the value has not been set with {@link VectorRenderer.set_global_state}, the default
          * defined in the style will be returned, or `null` if no default is defined. Note that an
          * explicitly set null value will return a {@link VectorValue} of type null, while an
@@ -7858,20 +7956,23 @@ export namespace Shumate {
          * @returns the state value, or `null` if none is set
          */
         get_global_state(key: string): VectorValue;
+
         /**
          * Gets the sprite sheet used to render icons and textures.
          * @returns the {@link VectorSpriteSheet}
          */
         get_sprite_sheet(): VectorSpriteSheet;
+
         /**
          * Resets a global state value to the default defined in the style, or to null
          * if no default is defined.
          * @param key the state key
          */
         reset_global_state(key: string): void;
+
         /**
          * Adds a data source to the renderer.
-         *
+         * 
          * Currently, {@link VectorRenderer} only supports one data source
          * and throws an error if the style does not contain exactly one
          * data source. However, support for multiple sources may be added
@@ -7882,25 +7983,28 @@ export namespace Shumate {
          * @param data_source a {@link DataSource}
          */
         set_data_source(name: string, data_source: DataSource): void;
+
         /**
          * Sets a global state value.
-         *
+         * 
          * Global state can be accessed in the stylesheet through the "global-state" expression operator.
          * This allows styles to provide options that can be configured without changing the style JSON.
-         *
+         * 
          * Previously rendered tiles are not affected by changes to global state and must be re-rendered.
          * @param key the state key
          * @param value the state value
          */
         set_global_state(key: string, value: VectorValue): void;
+
         /**
          * Sets the sprite sheet used to render icons and textures.
          * @param sprites a {@link VectorSpriteSheet}
          */
         set_sprite_sheet(sprites: VectorSpriteSheet): void;
+
         /**
          * Sets the sprite sheet used by the style JSON to render icons and textures.
-         *
+         * 
          * The existing {@link VectorRenderer.sprite_sheet} property will be replaced
          * with a new instance of {@link VectorSpriteSheet}.
          * @param sprites_pixbuf a {@link GdkPixbuf.Pixbuf}
@@ -7908,39 +8012,40 @@ export namespace Shumate {
          * @returns whether the sprite sheet was loaded successfully
          */
         set_sprite_sheet_data(sprites_pixbuf: GdkPixbuf.Pixbuf, sprites_json: string): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -7950,40 +8055,41 @@ export namespace Shumate {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -7993,42 +8099,38 @@ export namespace Shumate {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace VectorSprite {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::source-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::source-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::source-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::source-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                GObject.Object.ConstructorProps,
-                Gdk.Paintable.ConstructorProps,
-                Gtk.SymbolicPaintable.ConstructorProps {
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gdk.Paintable.ConstructorProps, Gtk.SymbolicPaintable.ConstructorProps {
             height: number;
             scale_factor: number;
             scaleFactor: number;
             source_paintable: Gdk.Paintable;
             sourcePaintable: Gdk.Paintable;
-            source_rect: Gdk.Rectangle | null;
-            sourceRect: Gdk.Rectangle | null;
+            source_rect: (Gdk.Rectangle | null);
+            sourceRect: (Gdk.Rectangle | null);
             width: number;
         }
     }
 
     /**
      * A sprite used to draw textures or icons.
-     *
+     * 
      * ## Symbolic icons
-     *
+     * 
      * If a sprite is created from a {@link Gtk.SymbolicPaintable} source, such
      * as a symbolic icon, then when the sprite is part of a symbol layer it
      * will be drawn using the icon-color property (or the text color, if the
@@ -8040,7 +8142,6 @@ export namespace Shumate {
         static $gtype: GObject.GType<VectorSprite>;
 
         // Properties
-
         /**
          * The height at which the sprite should be drawn, in pixels.
          * @since 1.1
@@ -8048,6 +8149,7 @@ export namespace Shumate {
          * @default 0
          */
         get height(): number;
+
         /**
          * The intended scale factor of the sprite.
          * @since 1.1
@@ -8055,6 +8157,7 @@ export namespace Shumate {
          * @default 1
          */
         get scale_factor(): number;
+
         /**
          * The intended scale factor of the sprite.
          * @since 1.1
@@ -8062,30 +8165,35 @@ export namespace Shumate {
          * @default 1
          */
         get scaleFactor(): number;
+
         /**
          * The {@link Gdk.Paintable} used to draw the sprite.
          * @since 1.1
          * @construct-only
          */
         get source_paintable(): Gdk.Paintable;
+
         /**
          * The {@link Gdk.Paintable} used to draw the sprite.
          * @since 1.1
          * @construct-only
          */
         get sourcePaintable(): Gdk.Paintable;
+
         /**
          * The area of the source rectangle to draw, or `null` to use the entire paintable.
          * @since 1.1
          * @construct-only
          */
-        get source_rect(): Gdk.Rectangle | null;
+        get source_rect(): (Gdk.Rectangle | null);
+
         /**
          * The area of the source rectangle to draw, or `null` to use the entire paintable.
          * @since 1.1
          * @construct-only
          */
-        get sourceRect(): Gdk.Rectangle | null;
+        get sourceRect(): (Gdk.Rectangle | null);
+
         /**
          * The width at which the sprite should be drawn, in pixels.
          * @since 1.1
@@ -8104,79 +8212,68 @@ export namespace Shumate {
         $signals: VectorSprite.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VectorSprite.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source_paintable: Gdk.Paintable): VectorSprite;
+        static ["new"](source_paintable: Gdk.Paintable): VectorSprite;
 
-        static new_full(
-            source_paintable: Gdk.Paintable,
-            width: number,
-            height: number,
-            scale_factor: number,
-            source_rect: Gdk.Rectangle | null,
-        ): VectorSprite;
+        static new_full(source_paintable: Gdk.Paintable, width: number, height: number, scale_factor: number, source_rect: (Gdk.Rectangle | null)): VectorSprite;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VectorSprite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorSprite.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VectorSprite.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorSprite.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VectorSprite.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorSprite.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VectorSprite.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorSprite.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VectorSprite.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VectorSprite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VectorSprite.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorSprite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the height at which the sprite should be drawn.
          * @returns the sprite's height in pixels
          */
         get_height(): number;
+
         /**
          * Gets the intended scale factor of the sprite.
          * @returns the sprite's scale factor
          */
         get_scale_factor(): number;
+
         /**
          * Gets the source {@link Gdk.Paintable} used to draw the sprite.
-         *
+         * 
          * Note that {@link VectorSprite} also implements {@link Gdk.Paintable}.
          * In most cases, you should draw the sprite rather than the original paintable.
          * @returns the source paintable
          */
         get_source_paintable(): Gdk.Paintable;
+
         /**
          * Gets the source rectangle of the sprite.
          * @returns the sprite's source rectangle, or `null` if the entire paintable is used
          */
-        get_source_rect(): Gdk.Rectangle | null;
+        get_source_rect(): (Gdk.Rectangle | null);
+
         /**
          * Gets the width at which the sprite should be drawn.
          * @returns the sprite's width in pixels
          */
         get_width(): number;
+
         /**
          * Compute a concrete size for the {@link Gdk.Paintable}.
-         *
+         * 
          * Applies the sizing algorithm outlined in the
          * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
          * to the given `paintable`. See that link for more details.
-         *
+         * 
          * It is not necessary to call this function when both `specified_width`
          * and `specified_height` are known, but it is useful to call this
          * function in GtkWidget:measure implementations to compute the
@@ -8186,109 +8283,112 @@ export namespace Shumate {
          * @param default_width the width `paintable` would be drawn into if   no other constraints were given
          * @param default_height the height `paintable` would be drawn into if   no other constraints were given
          */
-        compute_concrete_size(
-            specified_width: number,
-            specified_height: number,
-            default_width: number,
-            default_height: number,
-        ): [number, number];
+        compute_concrete_size(specified_width: number, specified_height: number, default_width: number, default_height: number): [number, number];
+
         /**
          * Gets an immutable paintable for the current contents displayed by `paintable`.
-         *
+         * 
          * This is useful when you want to retain the current state of an animation,
          * for example to take a screenshot of a running animation.
-         *
+         * 
          * If the `paintable` is already immutable, it will return itself.
          * @returns An immutable paintable for the current   contents of `paintable`
          */
         get_current_image(): Gdk.Paintable;
+
         /**
          * Get flags for the paintable.
-         *
+         * 
          * This is oftentimes useful for optimizations.
-         *
+         * 
          * See {@link Gdk.PaintableFlags} for the flags and what they mean.
          * @returns The {@link Gdk.PaintableFlags} for this paintable
          */
         get_flags(): Gdk.PaintableFlags;
+
         /**
          * Gets the preferred aspect ratio the `paintable` would like to be displayed at.
-         *
+         * 
          * The aspect ratio is the width divided by the height, so a value of 0.5
          * means that the `paintable` prefers to be displayed twice as high as it
          * is wide. Consumers of this interface can use this to preserve aspect
          * ratio when displaying the paintable.
-         *
+         * 
          * This is a purely informational value and does not in any way limit the
          * values that may be passed to {@link Gdk.Paintable.snapshot}.
-         *
+         * 
          * Usually when a `paintable` returns nonzero values from
          * {@link Gdk.Paintable.get_intrinsic_width} and
          * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
-         *
+         * 
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
          * @returns the intrinsic aspect ratio of `paintable` or 0 if none.
          */
         get_intrinsic_aspect_ratio(): number;
+
         /**
          * Gets the preferred height the `paintable` would like to be displayed at.
-         *
+         * 
          * Consumers of this interface can use this to reserve enough space to draw
          * the paintable.
-         *
+         * 
          * This is a purely informational value and does not in any way limit the
          * values that may be passed to {@link Gdk.Paintable.snapshot}.
-         *
+         * 
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
          * @returns the intrinsic height of `paintable` or 0 if none.
          */
         get_intrinsic_height(): number;
+
         /**
          * Gets the preferred width the `paintable` would like to be displayed at.
-         *
+         * 
          * Consumers of this interface can use this to reserve enough space to draw
          * the paintable.
-         *
+         * 
          * This is a purely informational value and does not in any way limit the
          * values that may be passed to {@link Gdk.Paintable.snapshot}.
-         *
+         * 
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
          * @returns the intrinsic width of `paintable` or 0 if none.
          */
         get_intrinsic_width(): number;
+
         /**
          * Called by implementations of {@link Gdk.Paintable} to invalidate their contents.
-         *
+         * 
          * Unless the contents are invalidated, implementations must guarantee that
          * multiple calls of {@link Gdk.Paintable.snapshot} produce the same output.
-         *
+         * 
          * This function will emit the `Gdk.Paintable::invalidate-contents`
          * signal.
-         *
+         * 
          * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_CONTENTS} flag,
          * it must not call this function.
          */
         invalidate_contents(): void;
+
         /**
          * Called by implementations of {@link Gdk.Paintable} to invalidate their size.
-         *
+         * 
          * As long as the size is not invalidated, `paintable` must return the same
          * values for its intrinsic width, height and aspect ratio.
-         *
+         * 
          * This function will emit the `Gdk.Paintable::invalidate-size`
          * signal.
-         *
+         * 
          * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_SIZE} flag,
          * it must not call this function.
          */
         invalidate_size(): void;
+
         /**
          * Snapshots the given paintable with the given `width` and `height`.
-         *
+         * 
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
@@ -8297,77 +8397,83 @@ export namespace Shumate {
          * @param height height to snapshot in
          */
         snapshot(snapshot: Gdk.Snapshot, width: number, height: number): void;
+
         /**
          * Gets an immutable paintable for the current contents displayed by `paintable`.
-         *
+         * 
          * This is useful when you want to retain the current state of an animation,
          * for example to take a screenshot of a running animation.
-         *
+         * 
          * If the `paintable` is already immutable, it will return itself.
          * @virtual
          */
         vfunc_get_current_image(): Gdk.Paintable;
+
         /**
          * Get flags for the paintable.
-         *
+         * 
          * This is oftentimes useful for optimizations.
-         *
+         * 
          * See {@link Gdk.PaintableFlags} for the flags and what they mean.
          * @virtual
          */
         vfunc_get_flags(): Gdk.PaintableFlags;
+
         /**
          * Gets the preferred aspect ratio the `paintable` would like to be displayed at.
-         *
+         * 
          * The aspect ratio is the width divided by the height, so a value of 0.5
          * means that the `paintable` prefers to be displayed twice as high as it
          * is wide. Consumers of this interface can use this to preserve aspect
          * ratio when displaying the paintable.
-         *
+         * 
          * This is a purely informational value and does not in any way limit the
          * values that may be passed to {@link Gdk.Paintable.snapshot}.
-         *
+         * 
          * Usually when a `paintable` returns nonzero values from
          * {@link Gdk.Paintable.get_intrinsic_width} and
          * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
-         *
+         * 
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
          * @virtual
          */
         vfunc_get_intrinsic_aspect_ratio(): number;
+
         /**
          * Gets the preferred height the `paintable` would like to be displayed at.
-         *
+         * 
          * Consumers of this interface can use this to reserve enough space to draw
          * the paintable.
-         *
+         * 
          * This is a purely informational value and does not in any way limit the
          * values that may be passed to {@link Gdk.Paintable.snapshot}.
-         *
+         * 
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
          * @virtual
          */
         vfunc_get_intrinsic_height(): number;
+
         /**
          * Gets the preferred width the `paintable` would like to be displayed at.
-         *
+         * 
          * Consumers of this interface can use this to reserve enough space to draw
          * the paintable.
-         *
+         * 
          * This is a purely informational value and does not in any way limit the
          * values that may be passed to {@link Gdk.Paintable.snapshot}.
-         *
+         * 
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
          * @virtual
          */
         vfunc_get_intrinsic_width(): number;
+
         /**
          * Snapshots the given paintable with the given `width` and `height`.
-         *
+         * 
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
@@ -8377,9 +8483,10 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_snapshot(snapshot: Gdk.Snapshot, width: number, height: number): void;
+
         /**
          * Snapshots the paintable with the given colors.
-         *
+         * 
          * If less than 5 colors are provided, GTK will pad the array with default
          * colors.
          * @param snapshot a {@link Gdk.Snapshot} to snapshot to
@@ -8388,9 +8495,10 @@ export namespace Shumate {
          * @param colors a pointer to an array of colors
          */
         snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
+
         /**
          * Snapshots the paintable with the given colors and weight.
-         *
+         * 
          * If less than 5 colors are provided, GTK will pad the array with default
          * colors.
          * @param snapshot a {@link Gdk.Snapshot} to snapshot to
@@ -8399,16 +8507,11 @@ export namespace Shumate {
          * @param colors a pointer to an array of colors
          * @param weight The font weight to use (from 1 to 1000, with default 400)
          */
-        snapshot_with_weight(
-            snapshot: Gdk.Snapshot,
-            width: number,
-            height: number,
-            colors: Gdk.RGBA[],
-            weight: number,
-        ): void;
+        snapshot_with_weight(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[], weight: number): void;
+
         /**
          * Snapshots the paintable with the given colors.
-         *
+         * 
          * If less than 5 colors are provided, GTK will pad the array with default
          * colors.
          * @param snapshot a {@link Gdk.Snapshot} to snapshot to
@@ -8418,9 +8521,10 @@ export namespace Shumate {
          * @virtual
          */
         vfunc_snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
+
         /**
          * Snapshots the paintable with the given colors and weight.
-         *
+         * 
          * If less than 5 colors are provided, GTK will pad the array with default
          * colors.
          * @param snapshot a {@link Gdk.Snapshot} to snapshot to
@@ -8430,54 +8534,51 @@ export namespace Shumate {
          * @param weight The font weight to use (from 1 to 1000, with default 400)
          * @virtual
          */
-        vfunc_snapshot_with_weight(
-            snapshot: Gdk.Snapshot,
-            width: number,
-            height: number,
-            colors: Gdk.RGBA[],
-            weight: number,
-        ): void;
+        vfunc_snapshot_with_weight(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[], weight: number): void;
     }
+
 
     namespace VectorSpriteSheet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * A collection of {@link VectorSprite}s.
-     *
+     * 
      * Sprites are used as icons in symbols or as the pattern for a fill layer.
-     *
+     * 
      * Most MapLibre stylesheets provide their spritesheet as a PNG image and a JSON
      * description of the sprites. This spritesheet can be added using
      * {@link VectorSpriteSheet.add_page}. Sprites can also be added individually
      * using {@link VectorSpriteSheet.add_sprite}.
-     *
+     * 
      * Some map styles rely on application code to provide some or all of their
      * sprites. This is supported using a fallback function, which can be set using
      * {@link VectorSpriteSheet.set_fallback}. This function can generate sprites
      * on demand. For example, it could load a symbolic icon from the {@link Gtk.IconTheme}
      * or render a custom highway shield.
-     *
+     * 
      * ## HiDPI support
-     *
+     * 
      * Map styles should provide a double resolution spritesheet for high DPI
      * displays. That spritesheet can be added as a separate page.
      * The {@link VectorSpriteSheet} will pick the best sprites for the display's
      * scale factor.
-     *
+     * 
      * If a fallback function is set, it receives the requested scale factor
      * as an argument. It should use this to generate the sprite at the correct size.
      * For example, if the scale factor is 2, the image should be twice as large
      * (but the *sprite's* width and height should be the same).
-     *
+     * 
      * ## Thread Safety
-     *
+     * 
      * {@link VectorSpriteSheet} is thread safe.
      * @gir-type Class
      * @since 1.1
@@ -8495,43 +8596,33 @@ export namespace Shumate {
         $signals: VectorSpriteSheet.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VectorSpriteSheet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): VectorSpriteSheet;
+        static ["new"](): VectorSpriteSheet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VectorSpriteSheet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorSpriteSheet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VectorSpriteSheet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorSpriteSheet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VectorSpriteSheet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VectorSpriteSheet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VectorSpriteSheet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VectorSpriteSheet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VectorSpriteSheet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VectorSpriteSheet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VectorSpriteSheet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VectorSpriteSheet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a page to the spritesheet.
-         *
+         * 
          * See <https://maplibre.org/maplibre-gl-js-docs/style-spec/sprite/> for
          * details about the spritesheet format. Most stylesheets provide these files
          * along with the main style JSON.
-         *
+         * 
          * Map styles should provide a double resolution spritesheet for high DPI
          * displays. That spritesheet should be added as its own page, with a
          * `default_scale` of 2.
@@ -8541,39 +8632,43 @@ export namespace Shumate {
          * @returns `true` if the page was added successfully, `false` otherwise
          */
         add_page(texture: Gdk.Texture, json: string, default_scale: number): boolean;
+
         /**
          * Adds a sprite to the spritesheet.
          * @param name the name of the sprite
          * @param sprite a {@link VectorSprite}
          */
         add_sprite(name: string, sprite: VectorSprite): void;
+
         /**
          * Gets a sprite from the spritesheet.
-         *
+         * 
          * The returned sprite might not be at the requested scale factor if an exact
          * match is not found.
          * @param name an icon name
          * @param scale the scale factor of the icon
          * @returns a {@link VectorSprite}, or `null` if the icon does not exist.
          */
-        get_sprite(name: string, scale: number): VectorSprite | null;
+        get_sprite(name: string, scale: number): (VectorSprite | null);
+
         /**
          * Sets a fallback function to generate sprites.
-         *
+         * 
          * The fallback function is called when a texture is not found in the sprite
          * sheet. It receives the icon name and scale factor, and should return a
          * {@link VectorSprite}, or `null` if the icon could not be generated.
          * It may be called in a different thread, and it may be called multiple times
          * for the same icon name.
-         *
+         * 
          * If a previous fallback function was set, it will be replaced and any sprites
          * it generated will be cleared.
-         *
+         * 
          * `fallback` may be `null` to clear the fallback function.
          * @param fallback a {@link ShumateVectorSpriteFallbackFunc} or `null`
          */
-        set_fallback(fallback: VectorSpriteFallbackFunc | null): void;
+        set_fallback(fallback: (VectorSpriteFallbackFunc | null)): void;
     }
+
 
     namespace Viewport {
         // Signal signatures
@@ -8586,24 +8681,23 @@ export namespace Shumate {
              * @run-last
              */
             changed: () => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::reference-map-source': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::reference-map-source": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Location.ConstructorProps {
             max_zoom_level: number;
             maxZoomLevel: number;
             min_zoom_level: number;
             minZoomLevel: number;
-            reference_map_source: MapSource | null;
-            referenceMapSource: MapSource | null;
+            reference_map_source: (MapSource | null);
+            referenceMapSource: (MapSource | null);
             rotation: number;
             zoom_level: number;
             zoomLevel: number;
@@ -8612,7 +8706,7 @@ export namespace Shumate {
 
     /**
      * The object holding the coordinate, zoom-level, and rotation state of the current view.
-     *
+     * 
      * As the object implements {@link Shumate.Location}, the latitude and longitude are
      * accessible via the interface methods.
      * @gir-type Class
@@ -8621,53 +8715,60 @@ export namespace Shumate {
         static $gtype: GObject.GType<Viewport>;
 
         // Properties
-
         /**
          * The highest allowed level of zoom of the content.
          * @default 20
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
+
         /**
          * The highest allowed level of zoom of the content.
          * @default 20
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
+
         /**
          * The lowest allowed level of zoom of the content.
          * @default 0
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
+
         /**
          * The lowest allowed level of zoom of the content.
          * @default 0
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
+
         /**
          * The reference {@link Shumate.MapSource} being displayed
          */
-        get reference_map_source(): MapSource | null;
-        set reference_map_source(val: MapSource | null);
+        get reference_map_source(): (MapSource | null);
+        set reference_map_source(val: (MapSource | null));
+
         /**
          * The reference {@link Shumate.MapSource} being displayed
          */
-        get referenceMapSource(): MapSource | null;
-        set referenceMapSource(val: MapSource | null);
+        get referenceMapSource(): (MapSource | null);
+        set referenceMapSource(val: (MapSource | null));
+
         /**
          * The rotation of the map view, in radians clockwise from up being due north
          * @default 0
          */
         get rotation(): number;
         set rotation(val: number);
+
         /**
          * The level of zoom of the content.
          * @default 3
          */
         get zoom_level(): number;
         set zoom_level(val: number);
+
         /**
          * The level of zoom of the content.
          * @default 3
@@ -8685,61 +8786,56 @@ export namespace Shumate {
         $signals: Viewport.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Viewport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Viewport;
+        static ["new"](): Viewport;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the maximal zoom level
          * @returns the maximal zoom level
          */
         get_max_zoom_level(): number;
+
         /**
          * Get the minimal zoom level
          * @returns the minimal zoom level
          */
         get_min_zoom_level(): number;
+
         /**
          * Get the reference map source
          * @returns the reference {@link Shumate.MapSource} or `null` when none has been set.
          */
-        get_reference_map_source(): MapSource | null;
+        get_reference_map_source(): (MapSource | null);
+
         /**
          * Gets the current rotation
          * @returns the current rotation
          */
         get_rotation(): number;
+
         /**
          * Get the current zoom level
          * @returns the current zoom level
          */
         get_zoom_level(): number;
+
         /**
          * Gets the position on `widget` that correspond to the given latitude and
          * longitude.
@@ -8748,31 +8844,37 @@ export namespace Shumate {
          * @param longitude the longitude
          */
         location_to_widget_coords(widget: Gtk.Widget, latitude: number, longitude: number): [number, number];
+
         /**
          * Set the maximal zoom level
          * @param max_zoom_level the maximal zoom level
          */
         set_max_zoom_level(max_zoom_level: number): void;
+
         /**
          * Set the minimal zoom level
          * @param min_zoom_level the minimal zoom level
          */
         set_min_zoom_level(min_zoom_level: number): void;
+
         /**
          * Set the reference map source
          * @param map_source a {@link Shumate.MapSource} or `null` to set none.
          */
-        set_reference_map_source(map_source: MapSource | null): void;
+        set_reference_map_source(map_source: (MapSource | null)): void;
+
         /**
          * Sets the rotation
          * @param rotation the rotation
          */
         set_rotation(rotation: number): void;
+
         /**
          * Set the zoom level
          * @param zoom_level the zoom level
          */
         set_zoom_level(zoom_level: number): void;
+
         /**
          * Gets the latitude and longitude corresponding to a position on `widget`.
          * @param widget a {@link Gtk.Widget} that uses `self` as viewport
@@ -8780,23 +8882,26 @@ export namespace Shumate {
          * @param y the y coordinate
          */
         widget_coords_to_location(widget: Gtk.Widget, x: number, y: number): [number, number];
+
         /**
          * The latitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate in degrees
          * @default 0
-         * @category Inherited from Shumate.Location
+          * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Calculates the distance in meters between two locations.
-         *
+         * 
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
@@ -8804,32 +8909,38 @@ export namespace Shumate {
          * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @returns the longitude coordinate in degrees.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
@@ -8839,114 +8950,142 @@ export namespace Shumate {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CompassClass = typeof Compass;
+
     /**
      * @gir-type Alias
      */
     type CoordinateClass = typeof Coordinate;
+
     /**
      * @gir-type Alias
      */
     type DataSourceClass = typeof DataSource;
+
     /**
      * @gir-type Alias
      */
     type DataSourceRequestClass = typeof DataSourceRequest;
+
     /**
      * @gir-type Alias
      */
     type FileCacheClass = typeof FileCache;
+
     /**
      * @gir-type Alias
      */
     type LayerClass = typeof Layer;
+
     /**
      * @gir-type Alias
      */
     type LicenseClass = typeof License;
+
     /**
      * @gir-type Alias
      */
     type LocationInterface = typeof Location;
+
     /**
      * @gir-type Alias
      */
     type MapClass = typeof Map;
+
     /**
      * @gir-type Alias
      */
     type MapLayerClass = typeof MapLayer;
+
     /**
      * @gir-type Alias
      */
     type MapSourceClass = typeof MapSource;
+
     /**
      * @gir-type Alias
      */
     type MapSourceRegistryClass = typeof MapSourceRegistry;
+
     /**
      * @gir-type Alias
      */
     type MarkerClass = typeof Marker;
+
     /**
      * @gir-type Alias
      */
     type MarkerLayerClass = typeof MarkerLayer;
+
     /**
      * @gir-type Alias
      */
     type PathLayerClass = typeof PathLayer;
+
     /**
      * @gir-type Alias
      */
     type PointClass = typeof Point;
+
     /**
      * @gir-type Alias
      */
     type RasterRendererClass = typeof RasterRenderer;
+
     /**
      * @gir-type Alias
      */
     type ScaleClass = typeof Scale;
+
     /**
      * @gir-type Alias
      */
     type SimpleMapClass = typeof SimpleMap;
+
     /**
      * @gir-type Alias
      */
     type SymbolEventClass = typeof SymbolEvent;
+
     /**
      * @gir-type Alias
      */
     type TileClass = typeof Tile;
+
     /**
      * @gir-type Alias
      */
     type TileDownloaderClass = typeof TileDownloader;
+
     /**
      * @gir-type Alias
      */
     type VectorReaderClass = typeof VectorReader;
+
     /**
      * @gir-type Alias
      */
     type VectorReaderIterClass = typeof VectorReaderIter;
+
     /**
      * @gir-type Alias
      */
     type VectorRendererClass = typeof VectorRenderer;
+
     /**
      * @gir-type Alias
      */
     type VectorSpriteClass = typeof VectorSprite;
+
     /**
      * @gir-type Alias
      */
     type VectorSpriteSheetClass = typeof VectorSpriteSheet;
+
     /**
      * A mutable value used in the vector style specification.
      * @gir-type Struct
@@ -8957,131 +9096,152 @@ export namespace Shumate {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): VectorValue;
+        }>);
+
+        static ["new"](): VectorValue;
 
         static new_boolean(_boolean: boolean): VectorValue;
 
         static new_color(color: Gdk.RGBA): VectorValue;
 
-        static new_from_value(value: GObject.Value | any): VectorValue;
+        static new_from_value(value: (GObject.Value | any)): VectorValue;
 
         static new_number(number: number): VectorValue;
 
         static new_string(string: string): VectorValue;
 
         // Methods
-
         /**
          * Appends `element` to the array value of `self`. The value of `element` is copied.
          * @param element a {@link VectorValue} to append to the array
          */
         array_append(element: VectorValue): void;
+
         /**
          * Creates a duplicate of `self`.
          * @returns a new {@link VectorValue} which is a duplicate of `self`
          */
         dup(): VectorValue;
+
         /**
          * Compares two {@link VectorValue}s for equality.
          * @param b a {@link VectorValue}
          * @returns `true` if `a` and `b` are equal, `false` otherwise
          */
         equal(b: VectorValue): boolean;
+
         /**
          * Frees a {@link VectorValue}.
          */
         free(): void;
+
         /**
          * Gets the boolean value of `self`.
          * @returns `true` if `self` is a boolean value and `boolean` was set, `false` otherwise
          */
         get_boolean(): [boolean, boolean];
+
         /**
          * Gets the color value of `self`.
-         *
+         * 
          * If `self` is a string value, it will attempt to parse the string as a color.
          * @returns `true` if `self` is a color value and `color` was set, `false` otherwise
          */
         get_color(): [boolean, Gdk.RGBA];
+
         /**
          * Gets the number value of `self`.
          * @returns `true` if `self` is a number value and `number` was set, `false` otherwise
          */
         get_number(): [boolean, number];
+
         /**
          * Gets the string value of `self`.
          * @returns `true` if `self` is a string value and `string` was set, `false` otherwise
          */
         get_string(): [boolean, string];
+
         /**
          * Gets the type of value stored in `self`.
          * @returns the type of `self`
          */
         get_value_type(): VectorValueType;
+
         /**
          * Calculates a hash value for `self`.
          * @returns a hash value for `self`
          */
         hash(): number;
+
         /**
          * Checks if `self` is a null value.
          * @returns `true` if `self` is a null value, `false` otherwise
          */
         is_null(): boolean;
+
         /**
          * Sets `self` to a boolean value.
          * @param _boolean a boolean value
          */
         set_boolean(_boolean: boolean): void;
+
         /**
          * Sets `self` to a color value.
          * @param color a {@link Gdk.RGBA}
          */
         set_color(color: Gdk.RGBA): void;
+
         /**
          * Sets `self` to a number value.
          * @param number a number value
          */
         set_number(number: number): void;
+
         /**
          * Sets `self` to a string value.
          * @param string a string value
          */
         set_string(string: string): void;
+
         /**
          * Sets `self` to an empty array value.
          */
         start_array(): void;
+
         /**
          * Sets `self` to a null value.
          */
         unset(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ViewportClass = typeof Viewport;
+
     namespace Location {
         /**
          * Interface for implementing Location.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the latitude coordinate in degrees.
              * @virtual
              */
             vfunc_get_latitude(): number;
+
             /**
              * Gets the longitude coordinate in degrees.
              * @virtual
              */
             vfunc_get_longitude(): number;
+
             /**
              * Sets the coordinates of the location
              * @param latitude the latitude in degrees
@@ -9091,8 +9251,8 @@ export namespace Shumate {
             vfunc_set_location(latitude: number, longitude: number): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             latitude: number;
             longitude: number;
@@ -9105,20 +9265,21 @@ export namespace Shumate {
     }
     /**
      * An interface common to objects having latitude and longitude
-     *
+     * 
      * By implementing {@link Shumate.Location} the object declares that it has latitude
      * and longitude and can be used to specify location on the map.
      * @gir-type Interface
      */
     interface Location extends GObject.Object, Location.Interface {
-        // Properties
 
+        // Properties
         /**
          * The latitude coordonate in degrees
          * @default 0
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate in degrees
          * @default 0
@@ -9127,10 +9288,9 @@ export namespace Shumate {
         set longitude(val: number);
 
         // Methods
-
         /**
          * Calculates the distance in meters between two locations.
-         *
+         * 
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
@@ -9138,16 +9298,19 @@ export namespace Shumate {
          * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
+
         /**
          * Gets the latitude coordinate in degrees.
          * @returns the latitude coordinate in degrees.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate in degrees.
          * @returns the longitude coordinate in degrees.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
@@ -9155,6 +9318,7 @@ export namespace Shumate {
          */
         set_location(latitude: number, longitude: number): void;
     }
+
 
     export const Location: LocationNamespace & {
         new (): Location; // This allows `obj instanceof Location`
@@ -9165,6 +9329,7 @@ export namespace Shumate {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

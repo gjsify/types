@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -18,9 +19,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GstVideo {
+
     /**
      * GstVideo-0.10
      */
+
 
     /**
      * @gir-type Enum
@@ -60,217 +63,241 @@ export namespace GstVideo {
         NV21,
     }
 
+
     const BLUE_MASK_15: string;
+
     const BLUE_MASK_15_INT: number;
+
     const BLUE_MASK_16: string;
+
     const BLUE_MASK_16_INT: number;
+
     const BYTE1_MASK_24: string;
+
     const BYTE1_MASK_24_INT: number;
+
     const BYTE1_MASK_32: string;
+
     const BYTE1_MASK_32_INT: number;
+
     const BYTE2_MASK_24: string;
+
     const BYTE2_MASK_24_INT: number;
+
     const BYTE2_MASK_32: string;
+
     const BYTE2_MASK_32_INT: number;
+
     const BYTE3_MASK_24: string;
+
     const BYTE3_MASK_24_INT: number;
+
     const BYTE3_MASK_32: string;
+
     const BYTE3_MASK_32_INT: number;
+
     const BYTE4_MASK_32: string;
+
     const BYTE4_MASK_32_INT: number;
+
     const CAPS_RGB_15: string;
+
     const CAPS_RGB_16: string;
+
     const FPS_RANGE: string;
+
     const GREEN_MASK_15: string;
+
     const GREEN_MASK_15_INT: number;
+
     const GREEN_MASK_16: string;
+
     const GREEN_MASK_16_INT: number;
+
     const RED_MASK_15: string;
+
     const RED_MASK_15_INT: number;
+
     const RED_MASK_16: string;
+
     const RED_MASK_16_INT: number;
+
     const SIZE_RANGE: string;
+
     /**
-     * @param video_width
-     * @param video_height
-     * @param video_par_n
-     * @param video_par_d
-     * @param display_par_n
-     * @param display_par_d
+     * @param video_width 
+     * @param video_height 
+     * @param video_par_n 
+     * @param video_par_d 
+     * @param display_par_n 
+     * @param display_par_d 
      */
-    function calculate_display_ratio(
-        video_width: number,
-        video_height: number,
-        video_par_n: number,
-        video_par_d: number,
-        display_par_n: number,
-        display_par_d: number,
-    ): [boolean, number, number];
+    function calculate_display_ratio(video_width: number, video_height: number, video_par_n: number, video_par_d: number, display_par_n: number, display_par_d: number): [boolean, number, number];
+
     /**
-     * @param in_still
+     * @param in_still 
      */
     function event_new_still_frame(in_still: boolean): Gst.Event;
+
     /**
-     * @param event
+     * @param event 
      */
     function event_parse_still_frame(event: Gst.Event): [boolean, boolean];
+
     /**
-     * @param format
-     * @param width
-     * @param height
-     * @param fps_n
-     * @param fps_d
-     * @param src_format
-     * @param src_value
-     * @param dest_format
+     * @param format 
+     * @param width 
+     * @param height 
+     * @param fps_n 
+     * @param fps_d 
+     * @param src_format 
+     * @param src_value 
+     * @param dest_format 
      */
-    function format_convert(
-        format: Format,
-        width: number,
-        height: number,
-        fps_n: number,
-        fps_d: number,
-        src_format: Gst.Format,
-        src_value: number,
-        dest_format: Gst.Format,
-    ): [boolean, number];
+    function format_convert(format: Format, width: number, height: number, fps_n: number, fps_d: number, src_format: Gst.Format, src_value: number, dest_format: Gst.Format): [boolean, number];
+
     /**
-     * @param fourcc
+     * @param fourcc 
      */
     function format_from_fourcc(fourcc: number): Format;
+
     /**
-     * @param format
-     * @param component
-     * @param height
+     * @param format 
+     * @param component 
+     * @param height 
      */
     function format_get_component_height(format: Format, component: number, height: number): number;
+
     /**
-     * @param format
-     * @param component
-     * @param width
-     * @param height
+     * @param format 
+     * @param component 
+     * @param width 
+     * @param height 
      */
     function format_get_component_offset(format: Format, component: number, width: number, height: number): number;
+
     /**
-     * @param format
-     * @param component
-     * @param width
+     * @param format 
+     * @param component 
+     * @param width 
      */
     function format_get_component_width(format: Format, component: number, width: number): number;
+
     /**
-     * @param format
-     * @param component
+     * @param format 
+     * @param component 
      */
     function format_get_pixel_stride(format: Format, component: number): number;
+
     /**
-     * @param format
-     * @param component
-     * @param width
+     * @param format 
+     * @param component 
+     * @param width 
      */
     function format_get_row_stride(format: Format, component: number, width: number): number;
+
     /**
-     * @param format
-     * @param width
-     * @param height
+     * @param format 
+     * @param width 
+     * @param height 
      */
     function format_get_size(format: Format, width: number, height: number): number;
+
     /**
-     * @param format
+     * @param format 
      */
     function format_has_alpha(format: Format): boolean;
+
     /**
-     * @param format
+     * @param format 
      */
     function format_is_rgb(format: Format): boolean;
+
     /**
-     * @param format
+     * @param format 
      */
     function format_is_yuv(format: Format): boolean;
+
     /**
-     * @param format
-     * @param width
-     * @param height
-     * @param framerate_n
-     * @param framerate_d
-     * @param par_n
-     * @param par_d
+     * @param format 
+     * @param width 
+     * @param height 
+     * @param framerate_n 
+     * @param framerate_d 
+     * @param par_n 
+     * @param par_d 
      */
-    function format_new_caps(
-        format: Format,
-        width: number,
-        height: number,
-        framerate_n: number,
-        framerate_d: number,
-        par_n: number,
-        par_d: number,
-    ): Gst.Caps;
+    function format_new_caps(format: Format, width: number, height: number, framerate_n: number, framerate_d: number, par_n: number, par_d: number): Gst.Caps;
+
     /**
-     * @param format
-     * @param width
-     * @param height
-     * @param framerate_n
-     * @param framerate_d
-     * @param par_n
-     * @param par_d
-     * @param interlaced
+     * @param format 
+     * @param width 
+     * @param height 
+     * @param framerate_n 
+     * @param framerate_d 
+     * @param par_n 
+     * @param par_d 
+     * @param interlaced 
      */
-    function format_new_caps_interlaced(
-        format: Format,
-        width: number,
-        height: number,
-        framerate_n: number,
-        framerate_d: number,
-        par_n: number,
-        par_d: number,
-        interlaced: boolean,
-    ): Gst.Caps;
+    function format_new_caps_interlaced(format: Format, width: number, height: number, framerate_n: number, framerate_d: number, par_n: number, par_d: number, interlaced: boolean): Gst.Caps;
+
     /**
-     * @param caps
-     * @param format
+     * @param caps 
+     * @param format 
      */
     function format_parse_caps(caps: Gst.Caps, format: Format): [boolean, number, number];
+
     /**
-     * @param caps
+     * @param caps 
      */
     function format_parse_caps_interlaced(caps: Gst.Caps): [boolean, boolean];
+
     /**
-     * @param format
+     * @param format 
      */
     function format_to_fourcc(format: Format): number;
+
     /**
-     * @param pad
+     * @param pad 
      */
     function frame_rate(pad: Gst.Pad): unknown;
+
     /**
-     * @param pad
+     * @param pad 
      */
     function get_size(pad: Gst.Pad): [boolean, number, number];
+
     /**
-     * @param caps
+     * @param caps 
      */
     function parse_caps_chroma_site(caps: Gst.Caps): string;
+
     /**
-     * @param caps
+     * @param caps 
      */
     function parse_caps_color_matrix(caps: Gst.Caps): string;
+
     /**
-     * @param caps
+     * @param caps 
      */
     function parse_caps_framerate(caps: Gst.Caps): [boolean, number, number];
+
     /**
-     * @param caps
+     * @param caps 
      */
     function parse_caps_pixel_aspect_ratio(caps: Gst.Caps): [boolean, number, number];
+
     namespace Filter {
         // Signal signatures
         interface SignalSignatures extends GstBase.Transform.SignalSignatures {
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GstBase.Transform.ConstructorProps {
 
-        interface ConstructorProps extends GstBase.Transform.ConstructorProps {}
+        }
     }
 
     /**
@@ -289,57 +316,48 @@ export namespace GstVideo {
         $signals: Filter.SignalSignatures;
 
         // Fields
-
         element: GstBase.Transform;
+
         inited: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<Filter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Filter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Filter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Filter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Sink {
         // Signal signatures
         interface SignalSignatures extends GstBase.Sink.SignalSignatures {
-            'notify::show-preroll-frame': (pspec: GObject.ParamSpec) => void;
-            'notify::async': (pspec: GObject.ParamSpec) => void;
-            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-last-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::last-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
-            'notify::preroll-queue-len': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
-            'notify::sync': (pspec: GObject.ParamSpec) => void;
-            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::show-preroll-frame": (pspec: GObject.ParamSpec) => void;
+            "notify::async": (pspec: GObject.ParamSpec) => void;
+            "notify::blocksize": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-last-buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::last-buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::max-lateness": (pspec: GObject.ParamSpec) => void;
+            "notify::preroll-queue-len": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::render-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::sync": (pspec: GObject.ParamSpec) => void;
+            "notify::ts-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GstBase.Sink.ConstructorProps {
             show_preroll_frame: boolean;
             showPrerollFrame: boolean;
@@ -354,9 +372,9 @@ export namespace GstVideo {
         static $gtype: GObject.GType<Sink>;
 
         // Properties
-
         get show_preroll_frame(): boolean;
         set show_preroll_frame(val: boolean);
+
         get showPrerollFrame(): boolean;
         set showPrerollFrame(val: boolean);
 
@@ -370,61 +388,53 @@ export namespace GstVideo {
         $signals: Sink.SignalSignatures;
 
         // Fields
-
         element: GstBase.Sink;
+
         width: number;
+
         height: number;
 
         // Constructors
-
         constructor(properties?: Partial<Sink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Sink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Sink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Sink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Sink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Sink.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Sink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param src
-         * @param dst
-         * @param result
-         * @param scaling
+         * @param src 
+         * @param dst 
+         * @param result 
+         * @param scaling 
          */
         static center_rect(src: Rectangle, dst: Rectangle, result: Rectangle, scaling: boolean): void;
 
         // Virtual methods
-
         /**
-         * @param buf
+         * @param buf 
          * @virtual
          */
         vfunc_show_frame(buf: Gst.Buffer): Gst.FlowReturn;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FilterClass = typeof Filter;
+
     /**
      * Helper structure representing a rectangular area.
      * @gir-type Struct
@@ -433,28 +443,30 @@ export namespace GstVideo {
         static $gtype: GObject.GType<Rectangle>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         w: number;
+
         h: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                w: number;
-                h: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            w: number;
+            h: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type SinkClass = typeof Sink;
+
     /**
      * @gir-type Struct
      */
@@ -462,11 +474,13 @@ export namespace GstVideo {
         static $gtype: GObject.GType<SinkPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

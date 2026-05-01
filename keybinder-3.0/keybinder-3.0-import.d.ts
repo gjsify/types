@@ -1,3 +1,4 @@
+
 import type Keybinder30 from '@girs/keybinder-3.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

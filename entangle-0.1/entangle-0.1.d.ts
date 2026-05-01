@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -30,9 +31,11 @@ import type Gst from '@girs/gst-1.0';
 import type GExiv2 from '@girs/gexiv2-0.16';
 
 export namespace Entangle {
+
     /**
      * Entangle-0.1
      */
+
 
     /**
      * @gir-type Enum
@@ -41,6 +44,7 @@ export namespace Entangle {
         RAM,
         CARD,
     }
+
 
     /**
      * @gir-type Enum
@@ -54,6 +58,7 @@ export namespace Entangle {
         OUT_FINE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -63,6 +68,7 @@ export namespace Entangle {
         SATURATION,
         ABS_COLOURIMETRIC,
     }
+
 
     /**
      * @gir-type Enum
@@ -76,6 +82,7 @@ export namespace Entangle {
         GOLDEN_SECTIONS,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -85,15 +92,18 @@ export namespace Entangle {
         THUMBNAIL,
     }
 
+
     /**
-     * @param debug_app
-     * @param debug_gphoto
+     * @param debug_app 
+     * @param debug_gphoto 
      */
     function debug_setup(debug_app: boolean, debug_gphoto: boolean): void;
+
     /**
-     * @param enabled
+     * @param enabled 
      */
     function dpms_set_blanking(enabled: boolean): boolean;
+
     /**
      * Automatically rotate the pixbuf `src` so that it is in its
      * "natural" orientation. Will first try to apply the orientation
@@ -104,15 +114,16 @@ export namespace Entangle {
      * @param metadata the exiv2 metadata for the pixbuf
      * @returns the rotated pixbuf
      */
-    function pixbuf_auto_rotate(src: GdkPixbuf.Pixbuf, metadata: GExiv2.Metadata | null): GdkPixbuf.Pixbuf;
+    function pixbuf_auto_rotate(src: GdkPixbuf.Pixbuf, metadata: (GExiv2.Metadata | null)): GdkPixbuf.Pixbuf;
+
     /**
      * If `slot` is ENTANGLE_PIXBUF_IMAGE_SLOT_MASTER then the primary
      * image data is loaded.
-     *
+     * 
      * If `slot` is ENTANGLE_PIXBUF_IMAGE_SLOT_PREVIEW and the image is
      * a raw file, any embedded preview data is loaded. For non-raw
      * files the primary image data is loaded.
-     *
+     * 
      * If `slot` is ENTANGLE_PIXBUF_IMAGE_SLOT_THUMBNAIL and the image is
      * a raw file, any embedded thumbnail data is loaded. For non-raw
      * files any thumbnail in the exiv2 metadata is loaded. If no thumbnail
@@ -123,38 +134,32 @@ export namespace Entangle {
      * @param metadata filled with metadata object instance
      * @returns the pixbuf for the image slot
      */
-    function pixbuf_open_image(
-        image: Image,
-        slot: PixbufImageSlot,
-        applyOrientation: boolean,
-        metadata: GExiv2.Metadata | null,
-    ): GdkPixbuf.Pixbuf;
+    function pixbuf_open_image(image: Image, slot: PixbufImageSlot, applyOrientation: boolean, metadata: (GExiv2.Metadata | null)): GdkPixbuf.Pixbuf;
+
     namespace Application {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
-            'notify::active-cameras': (pspec: GObject.ParamSpec) => void;
-            'notify::preferences': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-cameras': (pspec: GObject.ParamSpec) => void;
-            'notify::active-window': (pspec: GObject.ParamSpec) => void;
-            'notify::app-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::menubar': (pspec: GObject.ParamSpec) => void;
-            'notify::register-session': (pspec: GObject.ParamSpec) => void;
-            'notify::screensaver-active': (pspec: GObject.ParamSpec) => void;
-            'notify::action-group': (pspec: GObject.ParamSpec) => void;
-            'notify::application-id': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::inactivity-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::is-busy': (pspec: GObject.ParamSpec) => void;
-            'notify::is-registered': (pspec: GObject.ParamSpec) => void;
-            'notify::is-remote': (pspec: GObject.ParamSpec) => void;
-            'notify::resource-base-path': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
+            "notify::active-cameras": (pspec: GObject.ParamSpec) => void;
+            "notify::preferences": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-cameras": (pspec: GObject.ParamSpec) => void;
+            "notify::active-window": (pspec: GObject.ParamSpec) => void;
+            "notify::app-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::menubar": (pspec: GObject.ParamSpec) => void;
+            "notify::register-session": (pspec: GObject.ParamSpec) => void;
+            "notify::screensaver-active": (pspec: GObject.ParamSpec) => void;
+            "notify::action-group": (pspec: GObject.ParamSpec) => void;
+            "notify::application-id": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::inactivity-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::is-busy": (pspec: GObject.ParamSpec) => void;
+            "notify::is-registered": (pspec: GObject.ParamSpec) => void;
+            "notify::is-remote": (pspec: GObject.ParamSpec) => void;
+            "notify::resource-base-path": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
+        interface ConstructorProps extends Gtk.Application.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps {
             active_cameras: CameraList;
             activeCameras: CameraList;
             preferences: Preferences;
@@ -170,23 +175,26 @@ export namespace Entangle {
         static $gtype: GObject.GType<Application>;
 
         // Properties
-
         /**
          * @read-only
          */
         get active_cameras(): CameraList;
+
         /**
          * @read-only
          */
         get activeCameras(): CameraList;
+
         /**
          * @read-only
          */
         get preferences(): Preferences;
+
         /**
          * @read-only
          */
         get supported_cameras(): CameraList;
+
         /**
          * @read-only
          */
@@ -202,57 +210,51 @@ export namespace Entangle {
         $signals: Application.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Application;
+        static ["new"](): Application;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Application.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Application.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieve the active camera list
          * @returns the camera list
          */
         get_active_cameras(): CameraList;
+
         /**
          * Retrieve the plugin manager
          * @returns the plugin engine
          */
         get_plugin_engine(): Peas.Engine;
+
         /**
          * Retrieve the application preferences object
          * @returns the application preferences
          */
         get_preferences(): Preferences;
+
         /**
          * Retrieve the supported camera list
          * @returns the camera list
          */
         get_supported_cameras(): CameraList;
     }
+
 
     namespace Camera {
         // Signal signatures
@@ -261,57 +263,56 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'camera-closed': () => void;
+            "camera-closed": () => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-controls-changed': () => void;
+            "camera-controls-changed": () => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-file-added': (arg0: CameraFile) => void;
+            "camera-file-added": (arg0: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-file-captured': (arg0: CameraFile) => void;
+            "camera-file-captured": (arg0: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-file-deleted': (arg0: CameraFile) => void;
+            "camera-file-deleted": (arg0: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-file-downloaded': (arg0: CameraFile) => void;
+            "camera-file-downloaded": (arg0: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-file-previewed': (arg0: CameraFile) => void;
+            "camera-file-previewed": (arg0: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-opened': () => void;
-            'notify::driver': (pspec: GObject.ParamSpec) => void;
-            'notify::has-capture': (pspec: GObject.ParamSpec) => void;
-            'notify::has-preview': (pspec: GObject.ParamSpec) => void;
-            'notify::has-settings': (pspec: GObject.ParamSpec) => void;
-            'notify::has-viewfinder': (pspec: GObject.ParamSpec) => void;
-            'notify::manual': (pspec: GObject.ParamSpec) => void;
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::port': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::serial': (pspec: GObject.ParamSpec) => void;
-            'notify::summary': (pspec: GObject.ParamSpec) => void;
+            "camera-opened": () => void;
+            "notify::driver": (pspec: GObject.ParamSpec) => void;
+            "notify::has-capture": (pspec: GObject.ParamSpec) => void;
+            "notify::has-preview": (pspec: GObject.ParamSpec) => void;
+            "notify::has-settings": (pspec: GObject.ParamSpec) => void;
+            "notify::has-viewfinder": (pspec: GObject.ParamSpec) => void;
+            "notify::manual": (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::port": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::serial": (pspec: GObject.ParamSpec) => void;
+            "notify::summary": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             driver: string;
             has_capture: boolean;
@@ -338,74 +339,87 @@ export namespace Entangle {
         static $gtype: GObject.GType<Camera>;
 
         // Properties
-
         /**
          * @read-only
          * @default null
          */
         get driver(): string;
+
         /**
          * @construct-only
          * @default false
          */
         get has_capture(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get hasCapture(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get has_preview(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get hasPreview(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get has_settings(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get hasSettings(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get has_viewfinder(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get hasViewfinder(): boolean;
+
         /**
          * @read-only
          * @default null
          */
         get manual(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get model(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get port(): string;
+
         get progress(): Progress;
         set progress(val: Progress);
+
         /**
          * @construct-only
          * @default null
          */
         get serial(): string;
+
         /**
          * @read-only
          * @default null
@@ -422,94 +436,78 @@ export namespace Entangle {
         $signals: Camera.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Camera.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            model: string,
-            port: string,
-            serial: string,
-            hasCapture: boolean,
-            hasPreview: boolean,
-            hasSettings: boolean,
-        ): Camera;
+        static ["new"](model: string, port: string, serial: string, hasCapture: boolean, hasPreview: boolean, hasSettings: boolean): Camera;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Camera.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Camera.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Camera.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Trigger the autofocus mechanism on the camera, waiting
          * until focus is achieved or fails.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @returns TRUE if autofocus was achieved, FALSE on error
          */
         autofocus(): boolean;
+
         /**
          * Trigger the autofocus mechanism on the camera, waiting
          * until focus is achieved or fails.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_autofocus_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        autofocus_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        autofocus_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Trigger the autofocus mechanism on the camera, waiting
          * until focus is achieved or fails.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_autofocus_finish
-         * can be used to check the status
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        autofocus_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Trigger the autofocus mechanism on the camera, waiting
-         * until focus is achieved or fails.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_autofocus_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        autofocus_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        autofocus_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Trigger the autofocus mechanism on the camera, waiting
+         * until focus is achieved or fails.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_autofocus_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        autofocus_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_autofocus_async.
@@ -517,69 +515,71 @@ export namespace Entangle {
          * @returns TRUE if autofocus was performed, FALSE on error
          */
         autofocus_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Trigger the camera shutter and download the first resulting
          * image. If the camera is shooting in multiple formats (eg JPEG
          * and RAW) this method will only return the first format captured
          * The caller should watch for signal notifications to detect any
          * additional images
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @returns the captured image or NULL
          */
         capture_image(): CameraFile;
+
         /**
          * Trigger the camera shutter and download the first resulting
          * image. If the camera is shooting in multiple formats (eg JPEG
          * and RAW) this method will only return the first format captured
          * The caller should watch for signal notifications to detect any
          * additional images
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_capture_image_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        capture_image_async(cancellable: Gio.Cancellable | null): globalThis.Promise<CameraFile>;
+        capture_image_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<CameraFile>;
+
         /**
          * Trigger the camera shutter and download the first resulting
          * image. If the camera is shooting in multiple formats (eg JPEG
          * and RAW) this method will only return the first format captured
          * The caller should watch for signal notifications to detect any
          * additional images
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_capture_image_finish
-         * can be used to check the status
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        capture_image_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Trigger the camera shutter and download the first resulting
-         * image. If the camera is shooting in multiple formats (eg JPEG
-         * and RAW) this method will only return the first format captured
-         * The caller should watch for signal notifications to detect any
-         * additional images
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_capture_image_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        capture_image_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<CameraFile> | void;
+        capture_image_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Trigger the camera shutter and download the first resulting
+         * image. If the camera is shooting in multiple formats (eg JPEG
+         * and RAW) this method will only return the first format captured
+         * The caller should watch for signal notifications to detect any
+         * additional images
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_capture_image_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        capture_image_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CameraFile> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_capture_image_async.
@@ -587,49 +587,51 @@ export namespace Entangle {
          * @returns the captured image or NULL
          */
         capture_image_finish(result: Gio.AsyncResult): CameraFile;
+
         /**
          * Close from the camera, enabling it to be used by
          * other applications.
-         *
+         * 
          * This block execution of the caller until completion.
          * @returns TRUE if the camera is closed, FALSE on error
          */
         close(): boolean;
+
         /**
          * Close from the camera, enabling it to be used by
          * other applications.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_open_async
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        close_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Close from the camera, enabling it to be used by
          * other applications.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_open_async
-         * can be used to check the status
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Close from the camera, enabling it to be used by
-         * other applications.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_open_async
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        close_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        close_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Close from the camera, enabling it to be used by
+         * other applications.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_open_async
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        close_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_close_async
@@ -637,50 +639,36 @@ export namespace Entangle {
          * @returns TRUE if the camera is closed, FALSE on error
          */
         close_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Delete `file` from the camera capture target.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @param file the file to delete
          * @returns TRUE if the file was deleted, FALSE on error
          */
         delete_file(file: CameraFile): boolean;
+
         /**
          * Delete `file` from the camera capture target.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_delete_file_finish
          * can be used to check the status
          * @param file the file to delete
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        delete_file_async(file: CameraFile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_file_async(file: CameraFile, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Delete `file` from the camera capture target.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_delete_file_finish
-         * can be used to check the status
-         * @param file the file to delete
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        delete_file_async(
-            file: CameraFile,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Delete `file` from the camera capture target.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_delete_file_finish
          * can be used to check the status
@@ -688,11 +676,22 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        delete_file_async(
-            file: CameraFile,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        delete_file_async(file: CameraFile, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Delete `file` from the camera capture target.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_delete_file_finish
+         * can be used to check the status
+         * @param file the file to delete
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        delete_file_async(file: CameraFile, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_delete_file_async.
@@ -700,54 +699,39 @@ export namespace Entangle {
          * @returns TRUE if the file was deleted, FALSE on error
          */
         delete_file_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Download the data associated with `file` and set the data
          * on `file`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @param file the file whose contents to download
          * @returns TRUE if the file was downloaded, FALSE on error
          */
         download_file(file: CameraFile): boolean;
+
         /**
          * Download the data associated with `file` and set the data
          * on `file`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_download_file_finish
          * can be used to check the status
          * @param file the file whose contents to download
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        download_file_async(file: CameraFile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        download_file_async(file: CameraFile, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Download the data associated with `file` and set the data
          * on `file`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_download_file_finish
-         * can be used to check the status
-         * @param file the file whose contents to download
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        download_file_async(
-            file: CameraFile,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Download the data associated with `file` and set the data
-         * on `file`.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_download_file_finish
          * can be used to check the status
@@ -755,11 +739,23 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        download_file_async(
-            file: CameraFile,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        download_file_async(file: CameraFile, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Download the data associated with `file` and set the data
+         * on `file`.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_download_file_finish
+         * can be used to check the status
+         * @param file the file whose contents to download
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        download_file_async(file: CameraFile, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_download_file_async.
@@ -767,125 +763,140 @@ export namespace Entangle {
          * @returns TRUE if the file was downloaded, FALSE on error
          */
         download_file_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Get the configuration controls associated with the camera.
-         *
+         * 
          * This can only be invoked when the camera is opened.
          * @returns the controls, or NULL
          */
         get_controls(): ControlGroup;
+
         /**
          * Get the camera driver information text. This is only available
          * while the camera is opened
          * @returns the camera driver information
          */
         get_driver(): string;
+
         /**
          * Check if the camera supports images capture
          * @returns TRUE if the camera supports image capture, FALSE otherwise
          */
         get_has_capture(): boolean;
+
         /**
          * Check if the camera supports images preview
          * @returns TRUE if the camera supports image preview, FALSE otherwise
          */
         get_has_preview(): boolean;
+
         /**
          * Check if the camera supports configuration settings
          * @returns TRUE if the camera supports configuration settings, FALSE otherwise
          */
         get_has_settings(): boolean;
+
         /**
          * Check if the camera supports view finder control
          * @returns TRUE if the camera supports view finder control, FALSE otherwise
          */
         get_has_viewfinder(): boolean;
+
         /**
          * Get the camera manual text. This is only available
          * while the camera is opened
          * @returns the camera manual
          */
         get_manual(): string;
+
         /**
          * Get the camera model name
          * @returns the model name
          */
         get_model(): string;
+
         /**
          * Determine if the camera is currently opened
          * @returns TRUE if the camera is opened, FALSE otherwise
          */
         get_opened(): boolean;
+
         /**
          * Get the camera port name
          * @returns the port name
          */
         get_port(): string;
+
         /**
          * Get the object instance that is receiving operation
          * progress notifications
          * @returns the progress object
          */
         get_progress(): Progress;
+
         /**
          * Get the camera summary text. This is only available
          * while the camera is opened
          * @returns the camera summary
          */
         get_summary(): string;
+
         /**
          * Check whether the camera is mounted as a virtual filesystem,
          * which would prevent opening it.
          * @returns TRUE if the camera is mounted, FALSE otherwise
          */
         is_mounted(): boolean;
+
         /**
          * Loads the configuration controls from the camera.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @returns TRUE if the controls were loaded, FALSE on error
          */
         load_controls(): boolean;
+
         /**
          * Loads the configuration controls from the camera.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_load_controls_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        load_controls_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        load_controls_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Loads the configuration controls from the camera.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_load_controls_finish
-         * can be used to check the status
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        load_controls_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Loads the configuration controls from the camera.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_load_controls_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        load_controls_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        load_controls_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Loads the configuration controls from the camera.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_load_controls_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        load_controls_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_load_controls_async.
@@ -893,57 +904,39 @@ export namespace Entangle {
          * @returns TRUE if the controls were loaded, FALSE on error
          */
         load_controls_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Trigger the focus mechanism on the camera, to move
          * by `step`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @param step how much to change focus by
          * @returns TRUE if autofocus was achieved, FALSE on error
          */
         manualfocus(step: CameraManualFocusStep): boolean;
+
         /**
          * Trigger the focus mechanism on the camera, to move
          * by `step`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_manualfocus_finish
          * can be used to check the status
          * @param step how much to change focus by
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        manualfocus_async(
-            step: CameraManualFocusStep,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        manualfocus_async(step: CameraManualFocusStep, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Trigger the focus mechanism on the camera, to move
          * by `step`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_manualfocus_finish
-         * can be used to check the status
-         * @param step how much to change focus by
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        manualfocus_async(
-            step: CameraManualFocusStep,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Trigger the focus mechanism on the camera, to move
-         * by `step`.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_manualfocus_finish
          * can be used to check the status
@@ -951,11 +944,23 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        manualfocus_async(
-            step: CameraManualFocusStep,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        manualfocus_async(step: CameraManualFocusStep, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Trigger the focus mechanism on the camera, to move
+         * by `step`.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_manualfocus_finish
+         * can be used to check the status
+         * @param step how much to change focus by
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        manualfocus_async(step: CameraManualFocusStep, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_manualfocus_async.
@@ -963,74 +968,77 @@ export namespace Entangle {
          * @returns TRUE if manual focus was performed, FALSE on error
          */
         manualfocus_finish(result: Gio.AsyncResult): boolean;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
-        mount_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        mount_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
-         * @param cancellable
-         * @param callback
+         * @param cancellable 
+         * @param callback 
          */
-        mount_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        mount_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param cancellable
-         * @param callback
+         * @param cancellable 
+         * @param callback 
          */
-        mount_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        mount_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param result
+         * @param result 
          */
         mount_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Attempt to open to and initialize the camera. This
          * may fail if the camera is in use by another application,
          * has gone to sleep or has been disconnected from the port.
-         *
+         * 
          * This block execution of the caller until completion.
          * @returns TRUE if the camera is connected, FALSE on error
          */
         open(): boolean;
+
         /**
          * Attempt to open to and initialize the camera. This
          * may fail if the camera is in use by another application,
          * has gone to sleep or has been disconnected from the port.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_open_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        open_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        open_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Attempt to open to and initialize the camera. This
          * may fail if the camera is in use by another application,
          * has gone to sleep or has been disconnected from the port.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_open_finish
-         * can be used to check the status
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        open_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Attempt to open to and initialize the camera. This
-         * may fail if the camera is in use by another application,
-         * has gone to sleep or has been disconnected from the port.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_open_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        open_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        open_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Attempt to open to and initialize the camera. This
+         * may fail if the camera is in use by another application,
+         * has gone to sleep or has been disconnected from the port.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_open_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        open_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_open_async
@@ -1038,61 +1046,63 @@ export namespace Entangle {
          * @returns TRUE if the camera is opened, FALSE on error
          */
         open_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Enable "live view", if not already enabled, and capture a
          * low resolution preview image. The "live view" mode will
          * remain enabled after execution.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @returns the captured image or NULL
          */
         preview_image(): CameraFile;
+
         /**
          * Enable "live view", if not already enabled, and capture a
          * low resolution preview image. The "live view" mode will
          * remain enabled after execution.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_preview_image_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        preview_image_async(cancellable: Gio.Cancellable | null): globalThis.Promise<CameraFile>;
+        preview_image_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<CameraFile>;
+
         /**
          * Enable "live view", if not already enabled, and capture a
          * low resolution preview image. The "live view" mode will
          * remain enabled after execution.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_preview_image_finish
-         * can be used to check the status
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        preview_image_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Enable "live view", if not already enabled, and capture a
-         * low resolution preview image. The "live view" mode will
-         * remain enabled after execution.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_preview_image_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        preview_image_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<CameraFile> | void;
+        preview_image_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Enable "live view", if not already enabled, and capture a
+         * low resolution preview image. The "live view" mode will
+         * remain enabled after execution.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_preview_image_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        preview_image_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CameraFile> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_preview_image_async.
@@ -1100,62 +1110,45 @@ export namespace Entangle {
          * @returns the captured image or NULL
          */
         preview_image_finish(result: Gio.AsyncResult): CameraFile;
+
         /**
          * Wait upto `waitms` milliseconds for events to arrive from
          * the camera. Signals will be emitted for any interesting
          * events that arrive. Multiple events will be processed
          * until `waitms` is exceeded.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @param waitms the number of milliseconds to wait
          * @returns TRUE if the file was deleted, FALSE on error
          */
-        process_events(waitms: bigint | number): boolean;
+        process_events(waitms: (bigint | number)): boolean;
+
         /**
          * Wait upto `waitms` milliseconds for events to arrive from
          * the camera. Signals will be emitted for any interesting
          * events that arrive. Multiple events will be processed
          * until `waitms` is exceeded.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_process_events_finish
          * can be used to check the status
          * @param waitms the number of milliseconds to wait
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        process_events_async(waitms: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        process_events_async(waitms: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Wait upto `waitms` milliseconds for events to arrive from
          * the camera. Signals will be emitted for any interesting
          * events that arrive. Multiple events will be processed
          * until `waitms` is exceeded.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_process_events_finish
-         * can be used to check the status
-         * @param waitms the number of milliseconds to wait
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        process_events_async(
-            waitms: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Wait upto `waitms` milliseconds for events to arrive from
-         * the camera. Signals will be emitted for any interesting
-         * events that arrive. Multiple events will be processed
-         * until `waitms` is exceeded.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_process_events_finish
          * can be used to check the status
@@ -1163,11 +1156,25 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        process_events_async(
-            waitms: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        process_events_async(waitms: (bigint | number), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Wait upto `waitms` milliseconds for events to arrive from
+         * the camera. Signals will be emitted for any interesting
+         * events that arrive. Multiple events will be processed
+         * until `waitms` is exceeded.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_process_events_finish
+         * can be used to check the status
+         * @param waitms the number of milliseconds to wait
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        process_events_async(waitms: (bigint | number), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_process_events_async.
@@ -1175,53 +1182,55 @@ export namespace Entangle {
          * @returns TRUE if events were processed, FALSE on error
          */
         process_events_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Saves the configuration controls to the camera.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @returns TRUE if the controls were saved, FALSE on error
          */
         save_controls(): boolean;
+
         /**
          * Saves the configuration controls to the camera.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_save_controls_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        save_controls_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        save_controls_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Saves the configuration controls to the camera.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_save_controls_finish
-         * can be used to check the status
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        save_controls_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Saves the configuration controls to the camera.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_save_controls_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        save_controls_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        save_controls_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Saves the configuration controls to the camera.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_save_controls_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        save_controls_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_save_controls_async.
@@ -1229,57 +1238,39 @@ export namespace Entangle {
          * @returns TRUE if the controls were saved, FALSE on error
          */
         save_controls_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set the destination for storing captured images
          * to `target`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @param target the capture target
          * @returns TRUE if the capture target was changed, FALSE on error
          */
         set_capture_target(target: CameraCaptureTarget): boolean;
+
         /**
          * Set the destination for storing captured images
          * to `target`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_set_clock_finish
          * can be used to check the status
          * @param target the capture target
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        set_capture_target_async(
-            target: CameraCaptureTarget,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        set_capture_target_async(target: CameraCaptureTarget, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Set the destination for storing captured images
          * to `target`.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_set_clock_finish
-         * can be used to check the status
-         * @param target the capture target
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        set_capture_target_async(
-            target: CameraCaptureTarget,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Set the destination for storing captured images
-         * to `target`.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_set_clock_finish
          * can be used to check the status
@@ -1287,63 +1278,60 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        set_capture_target_async(
-            target: CameraCaptureTarget,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_capture_target_async(target: CameraCaptureTarget, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param result
+         * Set the destination for storing captured images
+         * to `target`.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_clock_finish
+         * can be used to check the status
+         * @param target the capture target
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_capture_target_async(target: CameraCaptureTarget, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
+        /**
+         * @param result 
          */
         set_capture_target_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Update the camera clock to be `epochsecs` seconds since
          * the epoch.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @param epochsecs new time in seconds since the epoch
          * @returns TRUE if the clock was changed, FALSE on error
          */
-        set_clock(epochsecs: bigint | number): boolean;
+        set_clock(epochsecs: (bigint | number)): boolean;
+
         /**
          * Update the camera clock to be `epochsecs` seconds since
          * the epoch.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_set_clock_finish
          * can be used to check the status
          * @param epochsecs new time in seconds since the epoch
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        set_clock_async(epochsecs: bigint | number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_clock_async(epochsecs: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Update the camera clock to be `epochsecs` seconds since
          * the epoch.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_set_clock_finish
-         * can be used to check the status
-         * @param epochsecs new time in seconds since the epoch
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        set_clock_async(
-            epochsecs: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Update the camera clock to be `epochsecs` seconds since
-         * the epoch.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_set_clock_finish
          * can be used to check the status
@@ -1351,11 +1339,23 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        set_clock_async(
-            epochsecs: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_clock_async(epochsecs: (bigint | number), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Update the camera clock to be `epochsecs` seconds since
+         * the epoch.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_clock_finish
+         * can be used to check the status
+         * @param epochsecs new time in seconds since the epoch
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_clock_async(epochsecs: (bigint | number), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_set_clock_async.
@@ -1363,64 +1363,49 @@ export namespace Entangle {
          * @returns TRUE if the clock was changed, FALSE on error
          */
         set_clock_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set the object instance to receive operation progress
          * notifications
          * @param prog the progress instance
          */
-        set_progress(prog: Progress | null): void;
+        set_progress(prog: (Progress | null)): void;
+
         /**
          * If `enabled` is TRUE, the view finder will be activated
          * allowing preview images to be captured. If `enabled` is
          * FALSE, the view finder will be deactivated.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This block execution of the caller until completion.
          * @param enabled TRUE to turn on the view finder
          * @returns TRUE if the viewer finder state was changed, FALSE on error
          */
         set_viewfinder(enabled: boolean): boolean;
+
         /**
          * If `enabled` is TRUE, the view finder will be activated
          * allowing preview images to be captured. If `enabled` is
          * FALSE, the view finder will be deactivated.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_set_viewfinder_finish
          * can be used to check the status
          * @param enabled TRUE to turn on the view finder
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        set_viewfinder_async(enabled: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        set_viewfinder_async(enabled: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * If `enabled` is TRUE, the view finder will be activated
          * allowing preview images to be captured. If `enabled` is
          * FALSE, the view finder will be deactivated.
-         *
+         * 
          * This can only be invoked when the camera is opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_set_viewfinder_finish
-         * can be used to check the status
-         * @param enabled TRUE to turn on the view finder
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        set_viewfinder_async(
-            enabled: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * If `enabled` is TRUE, the view finder will be activated
-         * allowing preview images to be captured. If `enabled` is
-         * FALSE, the view finder will be deactivated.
-         *
-         * This can only be invoked when the camera is opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_set_viewfinder_finish
          * can be used to check the status
@@ -1428,11 +1413,24 @@ export namespace Entangle {
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        set_viewfinder_async(
-            enabled: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        set_viewfinder_async(enabled: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * If `enabled` is TRUE, the view finder will be activated
+         * allowing preview images to be captured. If `enabled` is
+         * FALSE, the view finder will be deactivated.
+         * 
+         * This can only be invoked when the camera is opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_set_viewfinder_finish
+         * can be used to check the status
+         * @param enabled TRUE to turn on the view finder
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        set_viewfinder_async(enabled: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_set_viewfinder_async.
@@ -1440,41 +1438,42 @@ export namespace Entangle {
          * @returns TRUE if the viewfinder state was changed, FALSE on error
          */
         set_viewfinder_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Unmount the camera virtual filesystem, allowing it to be
          * opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_unmount_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          */
-        unmount_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        unmount_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Unmount the camera virtual filesystem, allowing it to be
          * opened.
-         *
-         * This will execute in the background, and invoke `callback`
-         * when complete, whereupon entangle_camera_unmount_finish
-         * can be used to check the status
-         * @param cancellable optional GCancellable object, NULL to ignore.
-         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
-         */
-        unmount_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Unmount the camera virtual filesystem, allowing it to be
-         * opened.
-         *
+         * 
          * This will execute in the background, and invoke `callback`
          * when complete, whereupon entangle_camera_unmount_finish
          * can be used to check the status
          * @param cancellable optional GCancellable object, NULL to ignore.
          * @param callback a GAsyncReadyCallback to call when the request is satisfied.
          */
-        unmount_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        unmount_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Unmount the camera virtual filesystem, allowing it to be
+         * opened.
+         * 
+         * This will execute in the background, and invoke `callback`
+         * when complete, whereupon entangle_camera_unmount_finish
+         * can be used to check the status
+         * @param cancellable optional GCancellable object, NULL to ignore.
+         * @param callback a GAsyncReadyCallback to call when the request is satisfied.
+         */
+        unmount_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Check the completion status of a previous call to
          * entangle_camera_unmount_async.
@@ -1484,6 +1483,7 @@ export namespace Entangle {
         unmount_finish(result: Gio.AsyncResult): boolean;
     }
 
+
     namespace CameraAutomata {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -1491,19 +1491,18 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'camera-capture-begin': () => void;
+            "camera-capture-begin": () => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-capture-end': () => void;
-            'notify::camera': (pspec: GObject.ParamSpec) => void;
-            'notify::delete-file': (pspec: GObject.ParamSpec) => void;
-            'notify::session': (pspec: GObject.ParamSpec) => void;
+            "camera-capture-end": () => void;
+            "notify::camera": (pspec: GObject.ParamSpec) => void;
+            "notify::delete-file": (pspec: GObject.ParamSpec) => void;
+            "notify::session": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             camera: Camera;
             delete_file: boolean;
@@ -1519,19 +1518,21 @@ export namespace Entangle {
         static $gtype: GObject.GType<CameraAutomata>;
 
         // Properties
-
         get camera(): Camera;
         set camera(val: Camera);
+
         /**
          * @default true
          */
         get delete_file(): boolean;
         set delete_file(val: boolean);
+
         /**
          * @default true
          */
         get deleteFile(): boolean;
         set deleteFile(val: boolean);
+
         get session(): Session;
         set session(val: Session);
 
@@ -1545,124 +1546,116 @@ export namespace Entangle {
         $signals: CameraAutomata.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraAutomata.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CameraAutomata;
+        static ["new"](): CameraAutomata;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraAutomata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraAutomata.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraAutomata.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraAutomata.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraAutomata.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraAutomata.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraAutomata.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraAutomata.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraAutomata.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraAutomata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraAutomata.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraAutomata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param cancel 
+         */
+        capture_async(cancel: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
-         * @param cancel
+         * @param cancel 
+         * @param callback 
          */
-        capture_async(cancel: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        capture_async(cancel: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param cancel
-         * @param callback
+         * @param cancel 
+         * @param callback 
          */
-        capture_async(cancel: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        capture_async(cancel: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param cancel
-         * @param callback
-         */
-        capture_async(
-            cancel: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
-        /**
-         * @param res
+         * @param res 
          */
         capture_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Get the camera associated with the automata
          * @returns the camera or NULL
          */
         get_camera(): Camera;
+
         get_delete_file(): boolean;
+
         /**
          * Get the session associated with the automata
          * @returns the session or NULL
          */
         get_session(): Session;
+
         /**
-         * @param cancel
-         * @param confirm
+         * @param cancel 
+         * @param confirm 
          */
-        preview_async(cancel: Gio.Cancellable | null, confirm: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        preview_async(cancel: (Gio.Cancellable | null), confirm: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
-         * @param cancel
-         * @param confirm
-         * @param callback
+         * @param cancel 
+         * @param confirm 
+         * @param callback 
          */
-        preview_async(
-            cancel: Gio.Cancellable | null,
-            confirm: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        preview_async(cancel: (Gio.Cancellable | null), confirm: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param cancel
-         * @param confirm
-         * @param callback
+         * @param cancel 
+         * @param confirm 
+         * @param callback 
          */
-        preview_async(
-            cancel: Gio.Cancellable | null,
-            confirm: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        preview_async(cancel: (Gio.Cancellable | null), confirm: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param res
+         * @param res 
          */
         preview_finish(res: Gio.AsyncResult): boolean;
+
         /**
-         * @param camera
+         * @param camera 
          */
         set_camera(camera: Camera): void;
+
         /**
-         * @param value
+         * @param value 
          */
         set_delete_file(value: boolean): void;
+
         /**
-         * @param session
+         * @param session 
          */
         set_session(session: Session): void;
     }
 
+
     namespace CameraFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data': (pspec: GObject.ParamSpec) => void;
-            'notify::folder': (pspec: GObject.ParamSpec) => void;
-            'notify::mimetype': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::data": (pspec: GObject.ParamSpec) => void;
+            "notify::folder": (pspec: GObject.ParamSpec) => void;
+            "notify::mimetype": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: Uint8Array | string;
+            data: (Uint8Array | string);
             folder: string;
             mimetype: string;
             name: string;
@@ -1676,19 +1669,21 @@ export namespace Entangle {
         static $gtype: GObject.GType<CameraFile>;
 
         // Properties
-
         get data(): Uint8Array;
-        set data(val: Uint8Array | string);
+        set data(val: (Uint8Array | string));
+
         /**
          * @construct-only
          * @default null
          */
         get folder(): string;
+
         /**
          * @default null
          */
         get mimetype(): string;
         set mimetype(val: string);
+
         /**
          * @construct-only
          * @default null
@@ -1705,61 +1700,56 @@ export namespace Entangle {
         $signals: CameraFile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](folder: string, name: string): CameraFile;
+        static ["new"](folder: string, name: string): CameraFile;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraFile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraFile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraFile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraFile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraFile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the raw data associated with the camera file
          * @returns the camera data
          */
         get_data(): Uint8Array;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_data
+    // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+
         /**
          * Get the path of the folder on the camera which stores the file
          * @returns the folder path
          */
         get_folder(): string;
+
         /**
          * Get the mimetype of the camera file, as a string
          * @returns the mime type or NULL
          */
         get_mimetype(): string;
+
         /**
          * Gets the name of the camera file, without any folder component
          * @returns the file name
          */
         get_name(): string;
+
         /**
          * Saves the content of the camera file to the local
          * filesystem path identified by `localpath`
@@ -1767,6 +1757,7 @@ export namespace Entangle {
          * @returns TRUE if the file was saved, FALSE on error
          */
         save_path(localpath: string): boolean;
+
         /**
          * Saves the content of the camera file to the virtual
          * filesystem location identified by `uri`. `uri` can be
@@ -1775,6 +1766,7 @@ export namespace Entangle {
          * @returns TRUE if the file was saved, FALSE on error
          */
         save_uri(uri: string): boolean;
+
         /**
          * Set the raw data for the camera file. If there was pre-existing data
          * set this will be released. Passing NULL for `data` will clear the
@@ -1783,20 +1775,23 @@ export namespace Entangle {
          * caller will affect this object
          * @param data the new data
          */
-        set_data(data: Uint8Array | null): void;
+        set_data(data: (Uint8Array | null)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set_data
+    // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
+
         /**
          * Set the mimetype of the data associated with the file.
          * This replaces any previously set mime type. Passing in
          * NULL for `mimetype` will clear the mime type information.
          * @param mimetype the new mime type
          */
-        set_mimetype(mimetype: string | null): void;
+        set_mimetype(mimetype: (string | null)): void;
     }
+
 
     namespace CameraList {
         // Signal signatures
@@ -1805,18 +1800,17 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'camera-added': (arg0: Camera) => void;
+            "camera-added": (arg0: Camera) => void;
             /**
              * @signal
              * @run-first
              */
-            'camera-removed': (arg0: Camera) => void;
-            'notify::active': (pspec: GObject.ParamSpec) => void;
-            'notify::device-manager': (pspec: GObject.ParamSpec) => void;
+            "camera-removed": (arg0: Camera) => void;
+            "notify::active": (pspec: GObject.ParamSpec) => void;
+            "notify::device-manager": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             active: boolean;
             device_manager: DeviceManager;
@@ -1831,16 +1825,17 @@ export namespace Entangle {
         static $gtype: GObject.GType<CameraList>;
 
         // Properties
-
         /**
          * @construct-only
          * @default false
          */
         get active(): boolean;
+
         /**
          * @read-only
          */
         get device_manager(): DeviceManager;
+
         /**
          * @read-only
          */
@@ -1856,7 +1851,6 @@ export namespace Entangle {
         $signals: CameraList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -1866,66 +1860,64 @@ export namespace Entangle {
         static new_supported(): CameraList;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the camera `cam` to the list `list`
          * @param cam the camera to add
          */
         add(cam: Camera): void;
+
         /**
          * Get the total number of cameras currently detected
          * @returns the number of cameras
          */
         count(): number;
+
         /**
          * Get the camera connected to hardware address `port`
          * @param port the hardware port address
          * @returns the camera connected to `port`, or NULL
          */
         find(port: string): Camera;
+
         /**
          * Get the camera at position `entry` in the list
          * @param entry the index of the camera to get
          * @returns the camera at position `entry`
          */
         get(entry: number): Camera;
+
         /**
          * Get the full list of cameras
          * @returns a list of {@link Entangle.Camera} objects
          */
         get_cameras(): Camera[];
+
         /**
          * De-intialization the list of cameras
          * @returns TRUE if the refresh was successful, FALSE on error
          */
         refresh(): boolean;
+
         /**
          * Removes the camera `cam` from the list `list`
          * @param cam the camera to remove
          */
         remove(cam: Camera): void;
     }
+
 
     namespace CameraManager {
         // Signal signatures
@@ -1935,95 +1927,87 @@ export namespace Entangle {
              * @run-first
              */
             closed: () => void;
-            'notify::camera': (pspec: GObject.ParamSpec) => void;
-            'notify::show-menubar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::camera": (pspec: GObject.ParamSpec) => void;
+            "notify::show-menubar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.ApplicationWindow.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Progress.ConstructorProps,
-                Gio.ActionGroup.ConstructorProps,
-                Gio.ActionMap.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.ApplicationWindow.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Progress.ConstructorProps, Gio.ActionGroup.ConstructorProps, Gio.ActionMap.ConstructorProps, Gtk.Buildable.ConstructorProps {
             camera: Camera;
         }
     }
@@ -2031,14 +2015,10 @@ export namespace Entangle {
     /**
      * @gir-type Class
      */
-    class CameraManager
-        extends Gtk.ApplicationWindow
-        implements Atk.ImplementorIface, Progress, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
-    {
+    class CameraManager extends Gtk.ApplicationWindow implements Atk.ImplementorIface, Progress, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable {
         static $gtype: GObject.GType<CameraManager>;
 
         // Properties
-
         get camera(): Camera;
         set camera(val: Camera);
 
@@ -2052,127 +2032,136 @@ export namespace Entangle {
         $signals: CameraManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](app: Application): CameraManager;
-        // Conflicted with Gtk.Window.new
+        static ["new"](app: Application): CameraManager;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Window.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param script
+         * @param script 
          */
         add_script(script: Script): void;
+
         capture(): void;
+
         /**
          * Get the camera currently being used
          * @returns the camera or NULL
          */
         get_camera(): Camera;
+
         get_media_context_menu(): boolean;
+
         preview_begin(): void;
+
         preview_cancel(): void;
+
         /**
-         * @param script
+         * @param script 
          */
         remove_script(script: Script): void;
+
         /**
-         * @param cam
+         * @param cam 
          */
         set_camera(cam: Camera): void;
+
         /**
-         * @param enabled
+         * @param enabled 
          */
         set_media_context_menu(enabled: boolean): void;
+
         /**
-         * @param target
-         * @param msg
+         * @param target 
+         * @param msg 
          */
         start(target: number, msg: string): void;
+
         stop(): void;
+
         /**
-         * @param current
+         * @param current 
          */
         update(current: number): void;
+
         /**
-         * @param target
-         * @param msg
+         * @param target 
+         * @param msg 
          * @virtual
          */
         vfunc_start(target: number, msg: string): void;
+
         /**
          * @virtual
          */
         vfunc_stop(): void;
+
         /**
-         * @param current
+         * @param current 
          * @virtual
          */
         vfunc_update(current: number): void;
+
         /**
          * Emits the `Gio.ActionGroup::action-added` signal on `action_group`.
-         *
+         * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
+
         /**
          * Emits the `Gio.ActionGroup::action-enabled-changed` signal on `action_group`.
-         *
+         * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
+
         /**
          * Emits the `Gio.ActionGroup::action-removed` signal on `action_group`.
-         *
+         * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
+
         /**
          * Emits the `Gio.ActionGroup::action-state-changed` signal on `action_group`.
-         *
+         * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
+
         /**
          * Activate the named action within `action_group`.
-         *
+         * 
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
          * parameters then `parameter` must be `NULL`.  See
          * {@link Gio.ActionGroup.get_action_parameter_type}.
-         *
+         * 
          * If the {@link Gio.ActionGroup} implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
@@ -2181,166 +2170,175 @@ export namespace Entangle {
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
-         *
+         * 
          * The following code which runs in a remote app instance, shows an
          * example of a ‘quit’ action being activated on the primary app
          * instance over D-Bus. Here {@link Gio.DBusConnection.flush} is called
          * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
          * may fail to be activated on the primary instance.
-         *
+         * 
          * ```c
          * // call ‘quit’ action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
-         *
+         * 
          * // make sure the action is activated now
          * g_dbus_connection_flush (…);
-         *
+         * 
          * g_debug ("Application has been terminated. Exiting.");
-         *
+         * 
          * exit (0);
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          */
-        activate_action(action_name: string, parameter: GLib.Variant | null): void;
+        activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
-         *
+         * 
          * The action must be stateful and `value` must be of the correct type.
          * See {@link Gio.ActionGroup.get_action_state_type}.
-         *
+         * 
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
          * See {@link Gio.ActionGroup.get_action_state_hint}.
-         *
+         * 
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
+
         /**
          * Checks if the named action within `action_group` is currently enabled.
-         *
+         * 
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
          */
         get_action_enabled(action_name: string): boolean;
+
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
-         *
+         * 
          * When activating the action using {@link Gio.ActionGroup.activate_action},
          * the {@link GLib.Variant} given to that function must be of the type returned
          * by this function.
-         *
+         * 
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
-         *
+         * 
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
          */
-        get_action_parameter_type(action_name: string): GLib.VariantType | null;
+        get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+
         /**
          * Queries the current state of the named action within `action_group`.
-         *
+         * 
          * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
          * given by {@link Gio.ActionGroup.get_action_state_type}.
-         *
+         * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
-        get_action_state(action_name: string): GLib.Variant | null;
+        get_action_state(action_name: string): (GLib.Variant | null);
+
         /**
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
-         *
+         * 
          * If `NULL` is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
-         *
+         * 
          * If a {@link GLib.Variant} array is returned then each item in the array is a
          * possible value for the state.  If a {@link GLib.Variant} pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
-         *
+         * 
          * In any case, the information is merely a hint.  It may be possible to
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
-         *
+         * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
-        get_action_state_hint(action_name: string): GLib.Variant | null;
+        get_action_state_hint(action_name: string): (GLib.Variant | null);
+
         /**
          * Queries the type of the state of the named action within
          * `action_group`.
-         *
+         * 
          * If the action is stateful then this function returns the
          * {@link GLib.VariantType} of the state.  All calls to
          * {@link Gio.ActionGroup.change_action_state} must give a {@link GLib.Variant} of this
          * type and {@link Gio.ActionGroup.get_action_state} will return a {@link GLib.Variant}
          * of the same type.
-         *
+         * 
          * If the action is not stateful then this function will return `NULL`.
          * In that case, {@link Gio.ActionGroup.get_action_state} will return `NULL`
          * and you must not call {@link Gio.ActionGroup.change_action_state}.
-         *
+         * 
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
          */
-        get_action_state_type(action_name: string): GLib.VariantType | null;
+        get_action_state_type(action_name: string): (GLib.VariantType | null);
+
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
          */
         has_action(action_name: string): boolean;
+
         /**
          * Lists the actions contained within `action_group`.
-         *
+         * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
          */
         list_actions(): string[];
+
         /**
          * Queries all aspects of the named action within an `action_group`.
-         *
+         * 
          * This function acquires the information available from
          * {@link Gio.ActionGroup.has_action}, {@link Gio.ActionGroup.get_action_enabled},
          * {@link Gio.ActionGroup.get_action_parameter_type},
          * {@link Gio.ActionGroup.get_action_state_type},
          * {@link Gio.ActionGroup.get_action_state_hint} and
          * {@link Gio.ActionGroup.get_action_state} with a single function call.
-         *
+         * 
          * This provides two main benefits.
-         *
+         * 
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
          * {@link Gio.ActionGroup} can now be done by only overriding this one virtual
          * function.
-         *
+         * 
          * The interface provides a default implementation of this function that
          * calls the individual functions, as required, to fetch the
          * information.  The interface also provides default implementations of
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
-         *
+         * 
          * If the action exists, `TRUE` is returned and any of the requested
          * fields (as indicated by having a non-`NULL` reference passed in) are
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
@@ -2348,58 +2346,54 @@ export namespace Entangle {
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
          */
-        query_action(
-            action_name: string,
-        ): [
-            boolean,
-            boolean,
-            GLib.VariantType | null,
-            GLib.VariantType | null,
-            GLib.Variant | null,
-            GLib.Variant | null,
-        ];
+        query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
+
         /**
          * Emits the `Gio.ActionGroup::action-added` signal on `action_group`.
-         *
+         * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
+
         /**
          * Emits the `Gio.ActionGroup::action-enabled-changed` signal on `action_group`.
-         *
+         * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
+
         /**
          * Emits the `Gio.ActionGroup::action-removed` signal on `action_group`.
-         *
+         * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
+
         /**
          * Emits the `Gio.ActionGroup::action-state-changed` signal on `action_group`.
-         *
+         * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
+
         /**
          * Activate the named action within `action_group`.
-         *
+         * 
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
          * parameters then `parameter` must be `NULL`.  See
          * {@link Gio.ActionGroup.get_action_parameter_type}.
-         *
+         * 
          * If the {@link Gio.ActionGroup} implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
@@ -2408,168 +2402,177 @@ export namespace Entangle {
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
-         *
+         * 
          * The following code which runs in a remote app instance, shows an
          * example of a ‘quit’ action being activated on the primary app
          * instance over D-Bus. Here {@link Gio.DBusConnection.flush} is called
          * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
          * may fail to be activated on the primary instance.
-         *
+         * 
          * ```c
          * // call ‘quit’ action on primary instance
          * g_action_group_activate_action (G_ACTION_GROUP (app), "quit", NULL);
-         *
+         * 
          * // make sure the action is activated now
          * g_dbus_connection_flush (…);
-         *
+         * 
          * g_debug ("Application has been terminated. Exiting.");
-         *
+         * 
          * exit (0);
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
          * @virtual
          */
-        vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
+        vfunc_activate_action(action_name: string, parameter: (GLib.Variant | null)): void;
+
         /**
          * Request for the state of the named action within `action_group` to be
          * changed to `value`.
-         *
+         * 
          * The action must be stateful and `value` must be of the correct type.
          * See {@link Gio.ActionGroup.get_action_state_type}.
-         *
+         * 
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
          * See {@link Gio.ActionGroup.get_action_state_hint}.
-         *
+         * 
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
+
         /**
          * Checks if the named action within `action_group` is currently enabled.
-         *
+         * 
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
+
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
-         *
+         * 
          * When activating the action using {@link Gio.ActionGroup.activate_action},
          * the {@link GLib.Variant} given to that function must be of the type returned
          * by this function.
-         *
+         * 
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
-         *
+         * 
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
+        vfunc_get_action_parameter_type(action_name: string): (GLib.VariantType | null);
+
         /**
          * Queries the current state of the named action within `action_group`.
-         *
+         * 
          * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
          * given by {@link Gio.ActionGroup.get_action_state_type}.
-         *
+         * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state(action_name: string): GLib.Variant | null;
+        vfunc_get_action_state(action_name: string): (GLib.Variant | null);
+
         /**
          * Requests a hint about the valid range of values for the state of the
          * named action within `action_group`.
-         *
+         * 
          * If `NULL` is returned it either means that the action is not stateful
          * or that there is no hint about the valid range of values for the
          * state of the action.
-         *
+         * 
          * If a {@link GLib.Variant} array is returned then each item in the array is a
          * possible value for the state.  If a {@link GLib.Variant} pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
-         *
+         * 
          * In any case, the information is merely a hint.  It may be possible to
          * have a state value outside of the hinted range and setting a value
          * within the range may fail.
-         *
+         * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
+        vfunc_get_action_state_hint(action_name: string): (GLib.Variant | null);
+
         /**
          * Queries the type of the state of the named action within
          * `action_group`.
-         *
+         * 
          * If the action is stateful then this function returns the
          * {@link GLib.VariantType} of the state.  All calls to
          * {@link Gio.ActionGroup.change_action_state} must give a {@link GLib.Variant} of this
          * type and {@link Gio.ActionGroup.get_action_state} will return a {@link GLib.Variant}
          * of the same type.
-         *
+         * 
          * If the action is not stateful then this function will return `NULL`.
          * In that case, {@link Gio.ActionGroup.get_action_state} will return `NULL`
          * and you must not call {@link Gio.ActionGroup.change_action_state}.
-         *
+         * 
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @virtual
          */
-        vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
+        vfunc_get_action_state_type(action_name: string): (GLib.VariantType | null);
+
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
+
         /**
          * Lists the actions contained within `action_group`.
-         *
+         * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @virtual
          */
         vfunc_list_actions(): string[];
+
         /**
          * Queries all aspects of the named action within an `action_group`.
-         *
+         * 
          * This function acquires the information available from
          * {@link Gio.ActionGroup.has_action}, {@link Gio.ActionGroup.get_action_enabled},
          * {@link Gio.ActionGroup.get_action_parameter_type},
          * {@link Gio.ActionGroup.get_action_state_type},
          * {@link Gio.ActionGroup.get_action_state_hint} and
          * {@link Gio.ActionGroup.get_action_state} with a single function call.
-         *
+         * 
          * This provides two main benefits.
-         *
+         * 
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
          * {@link Gio.ActionGroup} can now be done by only overriding this one virtual
          * function.
-         *
+         * 
          * The interface provides a default implementation of this function that
          * calls the individual functions, as required, to fetch the
          * information.  The interface also provides default implementations of
          * those functions that call this function.  All implementations,
          * therefore, must override either this function or all of the others.
-         *
+         * 
          * If the action exists, `TRUE` is returned and any of the requested
          * fields (as indicated by having a non-`NULL` reference passed in) are
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
@@ -2577,64 +2580,60 @@ export namespace Entangle {
          * @param action_name the name of an action in the group
          * @virtual
          */
-        vfunc_query_action(
-            action_name: string,
-        ): [
-            boolean,
-            boolean,
-            GLib.VariantType | null,
-            GLib.VariantType | null,
-            GLib.Variant | null,
-            GLib.Variant | null,
-        ];
+        vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
+
         /**
          * Adds an action to the `action_map`.
-         *
+         * 
          * If the action map already contains an action with the same name
          * as `action` then the old action is dropped from the action map.
-         *
+         * 
          * The action map takes its own reference on `action`.
          * @param action a {@link Gio.Action}
          */
         add_action(action: Gio.Action): void;
+
         /**
-         * A convenience function for creating multiple simple actions.
+         * A convenience function for creating multiple simple actions. 
          * See Gio.ActionEntryObj for the structure of the action entry.
          * @param entries Array of action entries to add
          */
         add_action_entries(entries: Gio.ActionEntryObj[]): void;
+
         /**
          * Looks up the action with the name `action_name` in `action_map`.
-         *
+         * 
          * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
          */
-        lookup_action(action_name: string): Gio.Action | null;
+        lookup_action(action_name: string): (Gio.Action | null);
+
         /**
          * Removes the named action from the action map.
-         *
+         * 
          * If no action of this name is in the map then nothing happens.
          * @param action_name the name of the action
          */
         remove_action(action_name: string): void;
+
         /**
          * Remove actions from a {@link Gio.ActionMap}. This is meant as the reverse of
          * {@link Gio.ActionMap.add_action_entries}.
-         *
-         *
+         * 
+         * 
          * ```c
          * static const GActionEntry entries[] = {
          *     { "quit",         activate_quit              },
          *     { "print-string", activate_print_string, "s" }
          * };
-         *
+         * 
          * void
          * add_actions (GActionMap *map)
          * {
          *   g_action_map_add_action_entries (map, entries, G_N_ELEMENTS (entries), NULL);
          * }
-         *
+         * 
          * void
          * remove_actions (GActionMap *map)
          * {
@@ -2644,34 +2643,38 @@ export namespace Entangle {
          * @param entries a pointer to   the first item in an array of {@link Gio.ActionEntry} structs
          */
         remove_action_entries(entries: Gio.ActionEntry[]): void;
+
         /**
          * Adds an action to the `action_map`.
-         *
+         * 
          * If the action map already contains an action with the same name
          * as `action` then the old action is dropped from the action map.
-         *
+         * 
          * The action map takes its own reference on `action`.
          * @param action a {@link Gio.Action}
          * @virtual
          */
         vfunc_add_action(action: Gio.Action): void;
+
         /**
          * Looks up the action with the name `action_name` in `action_map`.
-         *
+         * 
          * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
          * @virtual
          */
-        vfunc_lookup_action(action_name: string): Gio.Action | null;
+        vfunc_lookup_action(action_name: string): (Gio.Action | null);
+
         /**
          * Removes the named action from the action map.
-         *
+         * 
          * If no action of this name is in the map then nothing happens.
          * @param action_name the name of the action
          * @virtual
          */
         vfunc_remove_action(action_name: string): void;
     }
+
 
     namespace CameraPicker {
         // Signal signatures
@@ -2680,95 +2683,93 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'picker-connect': (arg0: GObject.Object) => void;
+            "picker-connect": (arg0: GObject.Object) => void;
             /**
              * @signal
              * @run-first
              */
-            'picker-refresh': () => void;
-            'notify::cameras': (pspec: GObject.ParamSpec) => void;
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "picker-refresh": () => void;
+            "notify::cameras": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             cameras: CameraList;
         }
     }
@@ -2780,7 +2781,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<CameraPicker>;
 
         // Properties
-
         get cameras(): CameraList;
         set cameras(val: CameraList);
 
@@ -2794,50 +2794,40 @@ export namespace Entangle {
         $signals: CameraPicker.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraPicker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CameraPicker;
+        static ["new"](): CameraPicker;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraPicker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraPicker.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraPicker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraPicker.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraPicker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraPicker.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraPicker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraPicker.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraPicker.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraPicker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraPicker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraPicker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param cameras
+         * @param cameras 
          */
         set_camera_list(cameras: CameraList): void;
     }
 
+
     namespace CameraPreferences {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::camera': (pspec: GObject.ParamSpec) => void;
+            "notify::camera": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             camera: Camera;
         }
@@ -2850,7 +2840,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<CameraPreferences>;
 
         // Properties
-
         get camera(): Camera;
         set camera(val: Camera);
 
@@ -2864,142 +2853,134 @@ export namespace Entangle {
         $signals: CameraPreferences.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraPreferences.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CameraPreferences;
+        static ["new"](): CameraPreferences;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraPreferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraPreferences.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraPreferences.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraPreferences.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraPreferences.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraPreferences.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraPreferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraPreferences.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraPreferences.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraPreferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraPreferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraPreferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the camera whose cameras are displayed
          * @returns the camera or NULL
          */
         get_camera(): Camera;
+
         /**
          * @returns the list of controls
          */
         get_controls(): string[];
+
         /**
          * Set the camera to display cameras for
          * @param camera the camera to display cameras for, or NULL
          */
-        set_camera(camera: Camera | null): void;
+        set_camera(camera: (Camera | null)): void;
+
         /**
          * @param controls the list of controls
          */
         set_controls(controls: string): void;
     }
 
+
     namespace CameraSupport {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::camera-list': (pspec: GObject.ParamSpec) => void;
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::camera-list": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             camera_list: CameraList;
             cameraList: CameraList;
         }
@@ -3012,9 +2993,9 @@ export namespace Entangle {
         static $gtype: GObject.GType<CameraSupport>;
 
         // Properties
-
         get camera_list(): CameraList;
         set camera_list(val: CameraList);
+
         get cameraList(): CameraList;
         set cameraList(val: CameraList);
 
@@ -3028,59 +3009,50 @@ export namespace Entangle {
         $signals: CameraSupport.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraSupport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CameraSupport;
+        static ["new"](): CameraSupport;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraSupport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraSupport.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraSupport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraSupport.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraSupport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraSupport.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraSupport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraSupport.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraSupport.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraSupport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraSupport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraSupport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the camera list
          * @returns the camera list or NULL
          */
         get_camera_list(): CameraList;
+
         /**
          * Set the camera list for the widget
          * @param list the list of cameras
          */
-        set_camera_list(list: CameraList | null): void;
+        set_camera_list(list: (CameraList | null)): void;
     }
+
 
     namespace ColourProfile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            "notify::data": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: Uint8Array | string;
+            data: (Uint8Array | string);
             filename: string;
         }
     }
@@ -3092,11 +3064,11 @@ export namespace Entangle {
         static $gtype: GObject.GType<ColourProfile>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get data(): Uint8Array;
+
         /**
          * @construct-only
          * @default null
@@ -3113,53 +3085,46 @@ export namespace Entangle {
         $signals: ColourProfile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ColourProfile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_data(data: Uint8Array | string): ColourProfile;
+        static new_data(data: (Uint8Array | string)): ColourProfile;
 
         static new_file(filename: string): ColourProfile;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ColourProfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColourProfile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ColourProfile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColourProfile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ColourProfile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColourProfile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ColourProfile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColourProfile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ColourProfile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ColourProfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ColourProfile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColourProfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the copyright of the profile
          * @returns the profile copyright
          */
         copyright(): string;
+
         /**
          * Get the description of the profile
          * @returns the profile description
          */
         description(): string;
+
         /**
          * Get the manufacturer of the profile
          * @returns the profile manufacturer
          */
         manufacturer(): string;
+
         /**
          * Get the model of the profile
          * @returns the profile model
@@ -3167,15 +3132,15 @@ export namespace Entangle {
         model(): string;
     }
 
+
     namespace ColourProfileTransform {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dst-profile': (pspec: GObject.ParamSpec) => void;
-            'notify::src-profile': (pspec: GObject.ParamSpec) => void;
+            "notify::dst-profile": (pspec: GObject.ParamSpec) => void;
+            "notify::src-profile": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dst_profile: ColourProfile;
             dstProfile: ColourProfile;
@@ -3191,19 +3156,21 @@ export namespace Entangle {
         static $gtype: GObject.GType<ColourProfileTransform>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get dst_profile(): ColourProfile;
+
         /**
          * @construct-only
          */
         get dstProfile(): ColourProfile;
+
         /**
          * @construct-only
          */
         get src_profile(): ColourProfile;
+
         /**
          * @construct-only
          */
@@ -3219,38 +3186,26 @@ export namespace Entangle {
         $signals: ColourProfileTransform.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ColourProfileTransform.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](src: ColourProfile, dst: ColourProfile, intent: ColourProfileIntent): ColourProfileTransform;
+        static ["new"](src: ColourProfile, dst: ColourProfile, intent: ColourProfileIntent): ColourProfileTransform;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ColourProfileTransform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColourProfileTransform.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ColourProfileTransform.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColourProfileTransform.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ColourProfileTransform.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColourProfileTransform.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ColourProfileTransform.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColourProfileTransform.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ColourProfileTransform.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ColourProfileTransform.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ColourProfileTransform.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColourProfileTransform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Apply the colour profile transformation `trans` to the pixbuf
          * data in `srcpixbuf` and return a new pixbuf whose data is
@@ -3262,19 +3217,19 @@ export namespace Entangle {
         apply(srcpixbuf: GdkPixbuf.Pixbuf): GdkPixbuf.Pixbuf;
     }
 
+
     namespace Control {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             dirty: boolean;
             id: number;
@@ -3292,32 +3247,36 @@ export namespace Entangle {
         static $gtype: GObject.GType<Control>;
 
         // Properties
-
         /**
          * @construct-only
          * @default false
          */
         get dirty(): boolean;
+
         /**
          * @construct-only
          * @default 0
          */
         get id(): number;
+
         /**
          * @construct-only
          * @default null
          */
         get info(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get label(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get path(): string;
+
         /**
          * @construct-only
          * @default false
@@ -3334,66 +3293,65 @@ export namespace Entangle {
         $signals: Control.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Control.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): Control;
+        static ["new"](path: string, id: number, label: string, info: string, readonly: boolean): Control;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Control.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Control.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Control.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Control.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Control.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Control.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Control.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Control.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Control.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_dirty(): boolean;
+
         get_id(): number;
+
         get_info(): string;
+
         get_label(): string;
+
         get_path(): string;
+
         get_readonly(): boolean;
+
         /**
-         * @param dirty
+         * @param dirty 
          */
         set_dirty(dirty: boolean): void;
+
         /**
-         * @param ro
+         * @param ro 
          */
         set_readonly(ro: boolean): void;
     }
 
+
     namespace ControlButton {
         // Signal signatures
         interface SignalSignatures extends Control.SignalSignatures {
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Control.ConstructorProps {
 
-        interface ConstructorProps extends Control.ConstructorProps {}
+        }
     }
 
     /**
@@ -3412,49 +3370,40 @@ export namespace Entangle {
         $signals: ControlButton.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControlButton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlButton;
+        static ["new"](path: string, id: number, label: string, info: string, readonly: boolean): ControlButton;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControlButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlButton.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControlButton.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlButton.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControlButton.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlButton.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControlButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlButton.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControlButton.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControlButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControlButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ControlChoice {
         // Signal signatures
         interface SignalSignatures extends Control.SignalSignatures {
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Control.ConstructorProps {
             value: string;
         }
@@ -3467,7 +3416,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<ControlChoice>;
 
         // Properties
-
         /**
          * @default null
          */
@@ -3484,62 +3432,55 @@ export namespace Entangle {
         $signals: ControlChoice.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControlChoice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlChoice;
+        static ["new"](path: string, id: number, label: string, info: string, readonly: boolean): ControlChoice;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControlChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlChoice.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControlChoice.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlChoice.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControlChoice.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlChoice.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControlChoice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlChoice.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControlChoice.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControlChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControlChoice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param entry
+         * @param entry 
          */
         add_entry(entry: string): void;
+
         clear_entries(): void;
+
         entry_count(): number;
+
         /**
-         * @param idx
+         * @param idx 
          */
         entry_get(idx: number): string;
     }
 
+
     namespace ControlDate {
         // Signal signatures
         interface SignalSignatures extends Control.SignalSignatures {
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Control.ConstructorProps {
             value: number;
         }
@@ -3552,7 +3493,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<ControlDate>;
 
         // Properties
-
         /**
          * @default 0
          */
@@ -3569,49 +3509,42 @@ export namespace Entangle {
         $signals: ControlDate.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControlDate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlDate;
+        static ["new"](path: string, id: number, label: string, info: string, readonly: boolean): ControlDate;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControlDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlDate.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControlDate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlDate.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControlDate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlDate.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControlDate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlDate.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControlDate.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControlDate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControlDate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlDate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ControlGroup {
         // Signal signatures
         interface SignalSignatures extends Control.SignalSignatures {
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Control.ConstructorProps {
 
-        interface ConstructorProps extends Control.ConstructorProps {}
+        }
     }
 
     /**
@@ -3630,52 +3563,45 @@ export namespace Entangle {
         $signals: ControlGroup.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControlGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlGroup;
+        static ["new"](path: string, id: number, label: string, info: string, readonly: boolean): ControlGroup;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControlGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlGroup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControlGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlGroup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControlGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlGroup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControlGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlGroup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControlGroup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControlGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControlGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the `control` to `group`
          * @param control the child control to add
          */
         add(control: Control): void;
+
         /**
          * Get the number of controls which are immediate
          * children of this group
          * @returns the number of child controls
          */
         count(): number;
+
         /**
          * @param idx the index of the control to fetch
          * @returns the control at index `idx`, or NULL
          */
         get(idx: number): Control;
+
         /**
          * Get the control which has the path `path`
          * @param path unique path of the control
@@ -3684,71 +3610,67 @@ export namespace Entangle {
         get_by_path(path: string): Control;
     }
 
+
     namespace ControlPanel {
         // Signal signatures
         interface SignalSignatures extends Gtk.Expander.SignalSignatures {
-            'notify::camera': (pspec: GObject.ParamSpec) => void;
-            'notify::camera-prefs': (pspec: GObject.ParamSpec) => void;
-            'notify::has-controls': (pspec: GObject.ParamSpec) => void;
-            'notify::expanded': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::label-fill': (pspec: GObject.ParamSpec) => void;
-            'notify::label-widget': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-toplevel': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::use-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::use-underline': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::camera": (pspec: GObject.ParamSpec) => void;
+            "notify::camera-prefs": (pspec: GObject.ParamSpec) => void;
+            "notify::has-controls": (pspec: GObject.ParamSpec) => void;
+            "notify::expanded": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::label-fill": (pspec: GObject.ParamSpec) => void;
+            "notify::label-widget": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-toplevel": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::use-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::use-underline": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Expander.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Expander.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             camera: Camera;
             camera_prefs: CameraPreferences;
             cameraPrefs: CameraPreferences;
@@ -3764,24 +3686,27 @@ export namespace Entangle {
         static $gtype: GObject.GType<ControlPanel>;
 
         // Properties
-
         /**
          * @read-only
          */
         get camera(): Camera;
+
         /**
          * @construct-only
          */
         get camera_prefs(): CameraPreferences;
+
         /**
          * @construct-only
          */
         get cameraPrefs(): CameraPreferences;
+
         /**
          * @read-only
          * @default false
          */
         get has_controls(): boolean;
+
         /**
          * @read-only
          * @default false
@@ -3798,64 +3723,55 @@ export namespace Entangle {
         $signals: ControlPanel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControlPanel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](prefs: CameraPreferences): ControlPanel;
-        // Conflicted with Gtk.Expander.new
+        static ["new"](prefs: CameraPreferences): ControlPanel;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Expander.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControlPanel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlPanel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControlPanel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlPanel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControlPanel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlPanel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControlPanel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlPanel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControlPanel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControlPanel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControlPanel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlPanel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the camera preferences whose controls are displayed
          * @returns the camera preferences or NULL
          */
         get_camera_preferences(): CameraPreferences;
+
         get_has_controls(): boolean;
     }
+
 
     namespace ControlRange {
         // Signal signatures
         interface SignalSignatures extends Control.SignalSignatures {
-            'notify::range-max': (pspec: GObject.ParamSpec) => void;
-            'notify::range-min': (pspec: GObject.ParamSpec) => void;
-            'notify::range-step': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            "notify::range-max": (pspec: GObject.ParamSpec) => void;
+            "notify::range-min": (pspec: GObject.ParamSpec) => void;
+            "notify::range-step": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Control.ConstructorProps {
             range_max: number;
             rangeMax: number;
@@ -3874,37 +3790,42 @@ export namespace Entangle {
         static $gtype: GObject.GType<ControlRange>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 0
          */
         get range_max(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get rangeMax(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get range_min(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get rangeMin(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get range_step(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get rangeStep(): number;
+
         /**
          * @default 0
          */
@@ -3921,67 +3842,50 @@ export namespace Entangle {
         $signals: ControlRange.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControlRange.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            path: string,
-            id: number,
-            label: string,
-            info: string,
-            readonly: boolean,
-            min: number,
-            max: number,
-            step: number,
-        ): ControlRange;
-        // Conflicted with Entangle.Control.new
+        static ["new"](path: string, id: number, label: string, info: string, readonly: boolean, min: number, max: number, step: number): ControlRange;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Entangle.Control.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControlRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlRange.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControlRange.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlRange.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControlRange.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlRange.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControlRange.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlRange.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControlRange.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControlRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControlRange.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlRange.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_max(): number;
+
         get_min(): number;
+
         get_step(): number;
     }
+
 
     namespace ControlText {
         // Signal signatures
         interface SignalSignatures extends Control.SignalSignatures {
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Control.ConstructorProps {
             value: string;
         }
@@ -3994,7 +3898,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<ControlText>;
 
         // Properties
-
         /**
          * @default null
          */
@@ -4011,49 +3914,40 @@ export namespace Entangle {
         $signals: ControlText.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControlText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlText;
+        static ["new"](path: string, id: number, label: string, info: string, readonly: boolean): ControlText;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControlText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlText.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControlText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlText.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControlText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlText.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControlText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlText.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControlText.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControlText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControlText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ControlToggle {
         // Signal signatures
         interface SignalSignatures extends Control.SignalSignatures {
-            'notify::value': (pspec: GObject.ParamSpec) => void;
-            'notify::dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::info': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
+            "notify::dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::info": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Control.ConstructorProps {
             value: boolean;
         }
@@ -4066,7 +3960,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<ControlToggle>;
 
         // Properties
-
         /**
          * @default false
          */
@@ -4083,34 +3976,26 @@ export namespace Entangle {
         $signals: ControlToggle.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ControlToggle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlToggle;
+        static ["new"](path: string, id: number, label: string, info: string, readonly: boolean): ControlToggle;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ControlToggle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlToggle.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ControlToggle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlToggle.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ControlToggle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ControlToggle.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ControlToggle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ControlToggle.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ControlToggle.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ControlToggle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ControlToggle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ControlToggle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace DeviceManager {
         // Signal signatures
@@ -4119,17 +4004,18 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'device-added': (arg0: string) => void;
+            "device-added": (arg0: string) => void;
             /**
              * @signal
              * @run-first
              */
-            'device-removed': (arg0: string) => void;
+            "device-removed": (arg0: string) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4148,145 +4034,133 @@ export namespace Entangle {
         $signals: DeviceManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DeviceManager;
+        static ["new"](): DeviceManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DeviceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param devpath
+         * @param devpath 
          */
         serial_id(devpath: string): string;
     }
 
+
     namespace HelpAbout {
         // Signal signatures
         interface SignalSignatures extends Gtk.AboutDialog.SignalSignatures {
-            'notify::artists': (pspec: GObject.ParamSpec) => void;
-            'notify::authors': (pspec: GObject.ParamSpec) => void;
-            'notify::comments': (pspec: GObject.ParamSpec) => void;
-            'notify::copyright': (pspec: GObject.ParamSpec) => void;
-            'notify::documenters': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-type': (pspec: GObject.ParamSpec) => void;
-            'notify::logo': (pspec: GObject.ParamSpec) => void;
-            'notify::logo-icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::program-name': (pspec: GObject.ParamSpec) => void;
-            'notify::translator-credits': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
-            'notify::website': (pspec: GObject.ParamSpec) => void;
-            'notify::website-label': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap-license': (pspec: GObject.ParamSpec) => void;
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::artists": (pspec: GObject.ParamSpec) => void;
+            "notify::authors": (pspec: GObject.ParamSpec) => void;
+            "notify::comments": (pspec: GObject.ParamSpec) => void;
+            "notify::copyright": (pspec: GObject.ParamSpec) => void;
+            "notify::documenters": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-type": (pspec: GObject.ParamSpec) => void;
+            "notify::logo": (pspec: GObject.ParamSpec) => void;
+            "notify::logo-icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::program-name": (pspec: GObject.ParamSpec) => void;
+            "notify::translator-credits": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
+            "notify::website": (pspec: GObject.ParamSpec) => void;
+            "notify::website-label": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap-license": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.AboutDialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.AboutDialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -4305,45 +4179,36 @@ export namespace Entangle {
         $signals: HelpAbout.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<HelpAbout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): HelpAbout;
+        static ["new"](): HelpAbout;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HelpAbout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HelpAbout.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HelpAbout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HelpAbout.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HelpAbout.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HelpAbout.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HelpAbout.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HelpAbout.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HelpAbout.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HelpAbout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HelpAbout.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HelpAbout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Image {
         // Signal signatures
         interface SignalSignatures extends Media.SignalSignatures {
-            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::metadata": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Media.ConstructorProps {
             pixbuf: GdkPixbuf.Pixbuf;
         }
@@ -4356,7 +4221,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<Image>;
 
         // Properties
-
         get pixbuf(): GdkPixbuf.Pixbuf;
         set pixbuf(val: GdkPixbuf.Pixbuf);
 
@@ -4370,7 +4234,6 @@ export namespace Entangle {
         $signals: Image.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -4380,33 +4243,25 @@ export namespace Entangle {
         static new_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Image;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Image.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the pixbuf associated with the image, if it is available
          * @returns the image pixbuf or NULL
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
+
         /**
          * Set the pixbuf associated with the image
          * @param pixbuf the new pixbuf
@@ -4414,67 +4269,63 @@ export namespace Entangle {
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
     }
 
+
     namespace ImageDisplay {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
-            'notify::aspect-ratio': (pspec: GObject.ParamSpec) => void;
-            'notify::autoscale': (pspec: GObject.ParamSpec) => void;
-            'notify::flip-horizontally': (pspec: GObject.ParamSpec) => void;
-            'notify::flip-vertically': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-point': (pspec: GObject.ParamSpec) => void;
-            'notify::image': (pspec: GObject.ParamSpec) => void;
-            'notify::mask-enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::mask-opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overexposure-highlighting': (pspec: GObject.ParamSpec) => void;
-            'notify::scale': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::aspect-ratio": (pspec: GObject.ParamSpec) => void;
+            "notify::autoscale": (pspec: GObject.ParamSpec) => void;
+            "notify::flip-horizontally": (pspec: GObject.ParamSpec) => void;
+            "notify::flip-vertically": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-point": (pspec: GObject.ParamSpec) => void;
+            "notify::image": (pspec: GObject.ParamSpec) => void;
+            "notify::mask-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::mask-opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overexposure-highlighting": (pspec: GObject.ParamSpec) => void;
+            "notify::scale": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.DrawingArea.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             aspect_ratio: number;
             aspectRatio: number;
             autoscale: boolean;
@@ -4502,84 +4353,99 @@ export namespace Entangle {
         static $gtype: GObject.GType<ImageDisplay>;
 
         // Properties
-
         /**
          * @default 1.69
          */
         get aspect_ratio(): number;
         set aspect_ratio(val: number);
+
         /**
          * @default 1.69
          */
         get aspectRatio(): number;
         set aspectRatio(val: number);
+
         /**
          * @default true
          */
         get autoscale(): boolean;
         set autoscale(val: boolean);
+
         /**
          * @default true
          */
         get flip_horizontally(): boolean;
         set flip_horizontally(val: boolean);
+
         /**
          * @default true
          */
         get flipHorizontally(): boolean;
         set flipHorizontally(val: boolean);
+
         /**
          * @default true
          */
         get flip_vertically(): boolean;
         set flip_vertically(val: boolean);
+
         /**
          * @default true
          */
         get flipVertically(): boolean;
         set flipVertically(val: boolean);
+
         /**
          * @default false
          */
         get focus_point(): boolean;
         set focus_point(val: boolean);
+
         /**
          * @default false
          */
         get focusPoint(): boolean;
         set focusPoint(val: boolean);
+
         get image(): Image;
         set image(val: Image);
+
         /**
          * @default false
          */
         get mask_enabled(): boolean;
         set mask_enabled(val: boolean);
+
         /**
          * @default false
          */
         get maskEnabled(): boolean;
         set maskEnabled(val: boolean);
+
         /**
          * @default 0.5
          */
         get mask_opacity(): number;
         set mask_opacity(val: number);
+
         /**
          * @default 0.5
          */
         get maskOpacity(): number;
         set maskOpacity(val: number);
+
         /**
          * @default true
          */
         get overexposure_highlighting(): boolean;
         set overexposure_highlighting(val: boolean);
+
         /**
          * @default true
          */
         get overexposureHighlighting(): boolean;
         set overexposureHighlighting(val: boolean);
+
         /**
          * @default 0
          */
@@ -4596,175 +4462,189 @@ export namespace Entangle {
         $signals: ImageDisplay.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImageDisplay.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ImageDisplay;
+        static ["new"](): ImageDisplay;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImageDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageDisplay.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImageDisplay.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageDisplay.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImageDisplay.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageDisplay.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImageDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageDisplay.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImageDisplay.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImageDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImageDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_aspect_ratio(): number;
+
         get_autoscale(): boolean;
+
         get_background(): string;
+
         get_flip_horizontally(): boolean;
+
         get_flip_vertically(): boolean;
+
         get_focus_point(): boolean;
+
         get_grid_display(): ImageDisplayGrid;
+
         /**
          * Retrieve the image being displayed. If there are multiple
          * images to be displayed, then only the first image is returned.
          * @returns the image being displayed, or NULL
          */
         get_image(): Image;
+
         /**
          * Get the list of images being displayed
          * @returns the list of images
          */
         get_image_list(): Image[];
+
         get_loaded(): boolean;
+
         get_mask_enabled(): boolean;
+
         get_mask_opacity(): number;
+
         get_overexposure_highlighting(): boolean;
+
         get_scale(): number;
+
         get_text_overlay(): string;
+
         /**
-         * @param aspect
+         * @param aspect 
          */
         set_aspect_ratio(aspect: number): void;
+
         /**
-         * @param autoscale
+         * @param autoscale 
          */
         set_autoscale(autoscale: boolean): void;
+
         /**
-         * @param background
+         * @param background 
          */
         set_background(background: string): void;
+
         /**
-         * @param enabled
+         * @param enabled 
          */
         set_flip_horizontally(enabled: boolean): void;
+
         /**
-         * @param enabled
+         * @param enabled 
          */
         set_flip_vertically(enabled: boolean): void;
+
         /**
-         * @param enabled
+         * @param enabled 
          */
         set_focus_point(enabled: boolean): void;
+
         /**
-         * @param mode
+         * @param mode 
          */
         set_grid_display(mode: ImageDisplayGrid): void;
+
         /**
          * Set the image to be displayed by the widget. This is a
          * shortcut for setting an image list of length 1.
          * @param image the image to display, or NULL
          */
-        set_image(image: Image | null): void;
+        set_image(image: (Image | null)): void;
+
         /**
          * Set the list of images to be displayed. If multiple images
          * are provided they are overlayed with opacity
          * @param images the images to display
          */
         set_image_list(images: Image[]): void;
+
         /**
-         * @param enabled
+         * @param enabled 
          */
         set_mask_enabled(enabled: boolean): void;
+
         /**
-         * @param opacity
+         * @param opacity 
          */
         set_mask_opacity(opacity: number): void;
+
         /**
-         * @param enabled
+         * @param enabled 
          */
         set_overexposure_highlighting(enabled: boolean): void;
+
         /**
-         * @param scale
+         * @param scale 
          */
         set_scale(scale: number): void;
+
         /**
          * Set a message to render over the top of the image
          * @param msg the message to display, or NULL
          */
-        set_text_overlay(msg: string | null): void;
+        set_text_overlay(msg: (string | null)): void;
     }
+
 
     namespace ImageHistogram {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
-            'notify::image': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::image": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.DrawingArea.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             image: Image;
         }
     }
@@ -4776,7 +4656,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<ImageHistogram>;
 
         // Properties
-
         get image(): Image;
         set image(val: Image);
 
@@ -4790,64 +4669,57 @@ export namespace Entangle {
         $signals: ImageHistogram.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImageHistogram.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ImageHistogram;
+        static ["new"](): ImageHistogram;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImageHistogram.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageHistogram.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImageHistogram.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageHistogram.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImageHistogram.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageHistogram.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImageHistogram.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageHistogram.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImageHistogram.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImageHistogram.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImageHistogram.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageHistogram.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_histogram_linear(): boolean;
+
         /**
          * Retrieve the image that the histogram is displayed for
          * @returns the image displayed
          */
         get_image(): Image;
+
         /**
-         * @param linear
+         * @param linear 
          */
         set_histogram_linear(linear: boolean): void;
+
         /**
          * Set the image to display the histogram for
          * @param image the image to display histogram for, or NULL
          */
-        set_image(image: Image | null): void;
+        set_image(image: (Image | null)): void;
     }
+
 
     namespace ImageLoader {
         // Signal signatures
         interface SignalSignatures extends PixbufLoader.SignalSignatures {
-            'notify::embedded-preview': (pspec: GObject.ParamSpec) => void;
-            'notify::colour-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::with-metadata': (pspec: GObject.ParamSpec) => void;
-            'notify::workers': (pspec: GObject.ParamSpec) => void;
+            "notify::embedded-preview": (pspec: GObject.ParamSpec) => void;
+            "notify::colour-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::with-metadata": (pspec: GObject.ParamSpec) => void;
+            "notify::workers": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends PixbufLoader.ConstructorProps {
             embedded_preview: boolean;
             embeddedPreview: boolean;
@@ -4861,12 +4733,12 @@ export namespace Entangle {
         static $gtype: GObject.GType<ImageLoader>;
 
         // Properties
-
         /**
          * @construct-only
          * @default false
          */
         get embedded_preview(): boolean;
+
         /**
          * @construct-only
          * @default false
@@ -4883,60 +4755,53 @@ export namespace Entangle {
         $signals: ImageLoader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImageLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ImageLoader;
+        static ["new"](): ImageLoader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImageLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageLoader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImageLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageLoader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImageLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageLoader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImageLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageLoader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImageLoader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImageLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImageLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param image
+         * @param image 
          */
         add(image: Image): void;
+
         get_embedded_preview(): boolean;
+
         /**
-         * @param image
+         * @param image 
          */
         remove(image: Image): void;
+
         /**
-         * @param enable
+         * @param enable 
          */
         set_embedded_preview(enable: boolean): void;
     }
 
+
     namespace Media {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::metadata": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             filename: string;
             metadata: GExiv2.Metadata;
@@ -4950,12 +4815,12 @@ export namespace Entangle {
         static $gtype: GObject.GType<Media>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get filename(): string;
+
         get metadata(): GExiv2.Metadata;
         set metadata(val: GExiv2.Metadata);
 
@@ -4969,63 +4834,59 @@ export namespace Entangle {
         $signals: Media.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Media.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Media.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Media.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        ["delete"](): boolean;
 
-        ['delete'](): boolean;
         /**
          * Get the size of the media on disk, if it is backed by
          * a file on disk
          * @returns the size in bytes, or 0
          */
         get_file_size(): never;
+
         /**
          * Get the filename associated with the media, if it has one.
          * @returns the filename or NULL
          */
         get_filename(): string;
+
         /**
          * Get the time at which the media was last modified, if
          * it is backed by a file on disk
          * @returns the last modification time in seconds since epoch, or 0
          */
         get_last_modified(): number;
+
         /**
          * Get the metadata associated with the media, if it is available
          * @returns the media metadata or NULL
          */
         get_metadata(): GExiv2.Metadata;
+
         /**
          * Set the metadata associated with the media
          * @param metadata the new metadata
          */
         set_metadata(metadata: GExiv2.Metadata): void;
     }
+
 
     namespace MediaPopup {
         // Signal signatures
@@ -5034,89 +4895,87 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'popup-close': () => void;
-            'notify::media': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "popup-close": () => void;
+            "notify::media": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Window.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
             media: Media;
         }
     }
@@ -5128,7 +4987,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<MediaPopup>;
 
         // Properties
-
         get media(): Media;
         set media(val: Media);
 
@@ -5142,132 +5000,124 @@ export namespace Entangle {
         $signals: MediaPopup.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaPopup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MediaPopup;
+        static ["new"](): MediaPopup;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaPopup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPopup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaPopup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaPopup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaPopup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaPopup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaPopup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaPopup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaPopup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaPopup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaPopup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaPopup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_background(): string;
+
         /**
          * Retrieve the media that the popup is currently displaying
          * @returns the media displayed
          */
         get_media(): Media;
+
         /**
-         * @param monitor
+         * @param monitor 
          */
         move_to_monitor(monitor: number): void;
+
         /**
-         * @param background
+         * @param background 
          */
         set_background(background: string): void;
+
         /**
          * Set the media to be displayed by the popup
          * @param media the media to display, or NULL
          */
-        set_media(media: Media | null): void;
+        set_media(media: (Media | null)): void;
+
         /**
-         * @param parent
-         * @param x
-         * @param y
+         * @param parent 
+         * @param x 
+         * @param y 
          */
         show(parent: Gtk.Window, x: number, y: number): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.show
+    // Conflicted with Gtk.Widget.show
         show(...args: never[]): any;
+
         /**
-         * @param monitor
+         * @param monitor 
          */
         show_on_monitor(monitor: number): void;
     }
 
+
     namespace MediaStatusbar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
-            'notify::media': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::media": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
             media: Media;
         }
     }
@@ -5279,7 +5129,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<MediaStatusbar>;
 
         // Properties
-
         get media(): Media;
         set media(val: Media);
 
@@ -5293,65 +5142,60 @@ export namespace Entangle {
         $signals: MediaStatusbar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaStatusbar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MediaStatusbar;
+        static ["new"](): MediaStatusbar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaStatusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaStatusbar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaStatusbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaStatusbar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaStatusbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaStatusbar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaStatusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaStatusbar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaStatusbar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaStatusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MediaStatusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaStatusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Retrieve the media that status is currently displayed for
          * @returns the media displayed
          */
         get_media(): Media;
+
         /**
          * Set the media to display status information for
          * @param media the media to display status for, or NULL
          */
-        set_media(media: Media | null): void;
+        set_media(media: (Media | null)): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
+
 
     namespace PixbufLoader {
         // Signal signatures
@@ -5360,32 +5204,31 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'metadata-loaded': (arg0: Image) => void;
+            "metadata-loaded": (arg0: Image) => void;
             /**
              * @signal
              * @run-first
              */
-            'metadata-unloaded': (arg0: Image) => void;
+            "metadata-unloaded": (arg0: Image) => void;
             /**
              * @signal
              * @run-first
              */
-            'pixbuf-loaded': (arg0: Image) => void;
+            "pixbuf-loaded": (arg0: Image) => void;
             /**
              * @signal
              * @run-first
              */
-            'pixbuf-unloaded': (arg0: Image) => void;
-            'notify::colour-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::with-metadata': (pspec: GObject.ParamSpec) => void;
-            'notify::workers': (pspec: GObject.ParamSpec) => void;
+            "pixbuf-unloaded": (arg0: Image) => void;
+            "notify::colour-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::with-metadata": (pspec: GObject.ParamSpec) => void;
+            "notify::workers": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            colour_transform: ColourProfileTransform | null;
-            colourTransform: ColourProfileTransform | null;
+            colour_transform: (ColourProfileTransform | null);
+            colourTransform: (ColourProfileTransform | null);
             with_metadata: boolean;
             withMetadata: boolean;
             workers: number;
@@ -5399,21 +5242,24 @@ export namespace Entangle {
         static $gtype: GObject.GType<PixbufLoader>;
 
         // Properties
+        get colour_transform(): (ColourProfileTransform | null);
+        set colour_transform(val: (ColourProfileTransform | null));
 
-        get colour_transform(): ColourProfileTransform | null;
-        set colour_transform(val: ColourProfileTransform | null);
-        get colourTransform(): ColourProfileTransform | null;
-        set colourTransform(val: ColourProfileTransform | null);
+        get colourTransform(): (ColourProfileTransform | null);
+        set colourTransform(val: (ColourProfileTransform | null));
+
         /**
          * @construct-only
          * @default false
          */
         get with_metadata(): boolean;
+
         /**
          * @construct-only
          * @default false
          */
         get withMetadata(): boolean;
+
         /**
          * @construct-only
          * @default 1
@@ -5430,40 +5276,31 @@ export namespace Entangle {
         $signals: PixbufLoader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PixbufLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PixbufLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PixbufLoader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PixbufLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PixbufLoader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PixbufLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PixbufLoader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PixbufLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PixbufLoader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PixbufLoader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PixbufLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PixbufLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PixbufLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the colour transform that will be applied when loading
          * images
          * @returns the colour profile transform
          */
-        get_colour_transform(): ColourProfileTransform | null;
+        get_colour_transform(): (ColourProfileTransform | null);
+
         /**
          * Get the loaded metadata for `image`, if any. If this is
          * called before the 'metadata-loaded' signal is emitted
@@ -5471,7 +5308,8 @@ export namespace Entangle {
          * @param image the camera image
          * @returns the metadata
          */
-        get_metadata(image: Image): GExiv2.Metadata | null;
+        get_metadata(image: Image): (GExiv2.Metadata | null);
+
         /**
          * Get the loaded pixbuf for `image`, if any. If this is
          * called before the 'pixbuf-loaded' signal is emitted
@@ -5479,12 +5317,14 @@ export namespace Entangle {
          * @param image the camera image
          * @returns the pixbuf
          */
-        get_pixbuf(image: Image): GdkPixbuf.Pixbuf | null;
+        get_pixbuf(image: Image): (GdkPixbuf.Pixbuf | null);
+
         /**
          * Get the number of worker threads associated with the loader
          * @returns the maximum number of worker threads
          */
         get_workers(): number;
+
         /**
          * Determine if the image has completed loading. Normally it is
          * better to wait for the 'pixbuf-loaded' or 'metadata-loaded'
@@ -5495,6 +5335,7 @@ export namespace Entangle {
          * @returns a true value if the image is currently loaded
          */
         is_ready(image: Image): boolean;
+
         /**
          * Request that `loader` have its pixbuf and metadata loaded.
          * The loading of the data may take place asynchronously
@@ -5504,6 +5345,7 @@ export namespace Entangle {
          * @returns a true value if the image was queued for loading
          */
         load(image: Image): boolean;
+
         /**
          * Set the colour profile transform that will be applied when
          * loading images. This will trigger a mass-reload of all
@@ -5511,16 +5353,19 @@ export namespace Entangle {
          * @param transform the new colour profile transform
          */
         set_colour_transform(transform: ColourProfileTransform): void;
+
         /**
          * Set the maximum number of worker threads for the pixbuf loader
          * @param count the new limit on workers
          */
         set_workers(count: number): void;
+
         /**
          * Request a mass reload of the data associated with all
          * images
          */
         trigger_reload(): void;
+
         /**
          * Indicate that `image` is no longer required and can have its
          * pixbuf / metadata unloaded. The unloading of the data may
@@ -5532,39 +5377,39 @@ export namespace Entangle {
         unload(image: Image): boolean;
     }
 
+
     namespace Preferences {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::capture-continuous-preview': (pspec: GObject.ParamSpec) => void;
-            'notify::capture-delete-file': (pspec: GObject.ParamSpec) => void;
-            'notify::capture-electronic-shutter': (pspec: GObject.ParamSpec) => void;
-            'notify::capture-filename-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::capture-last-session': (pspec: GObject.ParamSpec) => void;
-            'notify::capture-sync-clock': (pspec: GObject.ParamSpec) => void;
-            'notify::cms-detect-system-profile': (pspec: GObject.ParamSpec) => void;
-            'notify::cms-enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::cms-monitor-profile': (pspec: GObject.ParamSpec) => void;
-            'notify::cms-rgb-profile': (pspec: GObject.ParamSpec) => void;
-            'notify::img-aspect-ratio': (pspec: GObject.ParamSpec) => void;
-            'notify::img-background': (pspec: GObject.ParamSpec) => void;
-            'notify::img-embedded-preview': (pspec: GObject.ParamSpec) => void;
-            'notify::img-flip-horizontally': (pspec: GObject.ParamSpec) => void;
-            'notify::img-flip-vertically': (pspec: GObject.ParamSpec) => void;
-            'notify::img-focus-point': (pspec: GObject.ParamSpec) => void;
-            'notify::img-grid-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::img-highlight': (pspec: GObject.ParamSpec) => void;
-            'notify::img-mask-enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::img-mask-opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::img-onion-layers': (pspec: GObject.ParamSpec) => void;
-            'notify::img-onion-skin': (pspec: GObject.ParamSpec) => void;
-            'notify::img-overexposure-highlighting': (pspec: GObject.ParamSpec) => void;
-            'notify::interface-auto-connect': (pspec: GObject.ParamSpec) => void;
-            'notify::interface-histogram-linear': (pspec: GObject.ParamSpec) => void;
-            'notify::interface-screen-blank': (pspec: GObject.ParamSpec) => void;
+            "notify::capture-continuous-preview": (pspec: GObject.ParamSpec) => void;
+            "notify::capture-delete-file": (pspec: GObject.ParamSpec) => void;
+            "notify::capture-electronic-shutter": (pspec: GObject.ParamSpec) => void;
+            "notify::capture-filename-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::capture-last-session": (pspec: GObject.ParamSpec) => void;
+            "notify::capture-sync-clock": (pspec: GObject.ParamSpec) => void;
+            "notify::cms-detect-system-profile": (pspec: GObject.ParamSpec) => void;
+            "notify::cms-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::cms-monitor-profile": (pspec: GObject.ParamSpec) => void;
+            "notify::cms-rgb-profile": (pspec: GObject.ParamSpec) => void;
+            "notify::img-aspect-ratio": (pspec: GObject.ParamSpec) => void;
+            "notify::img-background": (pspec: GObject.ParamSpec) => void;
+            "notify::img-embedded-preview": (pspec: GObject.ParamSpec) => void;
+            "notify::img-flip-horizontally": (pspec: GObject.ParamSpec) => void;
+            "notify::img-flip-vertically": (pspec: GObject.ParamSpec) => void;
+            "notify::img-focus-point": (pspec: GObject.ParamSpec) => void;
+            "notify::img-grid-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::img-highlight": (pspec: GObject.ParamSpec) => void;
+            "notify::img-mask-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::img-mask-opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::img-onion-layers": (pspec: GObject.ParamSpec) => void;
+            "notify::img-onion-skin": (pspec: GObject.ParamSpec) => void;
+            "notify::img-overexposure-highlighting": (pspec: GObject.ParamSpec) => void;
+            "notify::interface-auto-connect": (pspec: GObject.ParamSpec) => void;
+            "notify::interface-histogram-linear": (pspec: GObject.ParamSpec) => void;
+            "notify::interface-screen-blank": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             capture_continuous_preview: boolean;
             captureContinuousPreview: boolean;
@@ -5628,250 +5473,300 @@ export namespace Entangle {
         static $gtype: GObject.GType<Preferences>;
 
         // Properties
-
         /**
          * @default false
          */
         get capture_continuous_preview(): boolean;
         set capture_continuous_preview(val: boolean);
+
         /**
          * @default false
          */
         get captureContinuousPreview(): boolean;
         set captureContinuousPreview(val: boolean);
+
         /**
          * @default true
          */
         get capture_delete_file(): boolean;
         set capture_delete_file(val: boolean);
+
         /**
          * @default true
          */
         get captureDeleteFile(): boolean;
         set captureDeleteFile(val: boolean);
+
         /**
          * @default false
          */
         get capture_electronic_shutter(): boolean;
         set capture_electronic_shutter(val: boolean);
+
         /**
          * @default false
          */
         get captureElectronicShutter(): boolean;
         set captureElectronicShutter(val: boolean);
+
         /**
          * @default null
          */
         get capture_filename_pattern(): string;
         set capture_filename_pattern(val: string);
+
         /**
          * @default null
          */
         get captureFilenamePattern(): string;
         set captureFilenamePattern(val: string);
+
         /**
          * @default null
          */
         get capture_last_session(): string;
         set capture_last_session(val: string);
+
         /**
          * @default null
          */
         get captureLastSession(): string;
         set captureLastSession(val: string);
+
         /**
          * @default false
          */
         get capture_sync_clock(): boolean;
         set capture_sync_clock(val: boolean);
+
         /**
          * @default false
          */
         get captureSyncClock(): boolean;
         set captureSyncClock(val: boolean);
+
         /**
          * @default true
          */
         get cms_detect_system_profile(): boolean;
         set cms_detect_system_profile(val: boolean);
+
         /**
          * @default true
          */
         get cmsDetectSystemProfile(): boolean;
         set cmsDetectSystemProfile(val: boolean);
+
         /**
          * @default false
          */
         get cms_enabled(): boolean;
         set cms_enabled(val: boolean);
+
         /**
          * @default false
          */
         get cmsEnabled(): boolean;
         set cmsEnabled(val: boolean);
+
         get cms_monitor_profile(): ColourProfile;
         set cms_monitor_profile(val: ColourProfile);
+
         get cmsMonitorProfile(): ColourProfile;
         set cmsMonitorProfile(val: ColourProfile);
+
         get cms_rgb_profile(): ColourProfile;
         set cms_rgb_profile(val: ColourProfile);
+
         get cmsRgbProfile(): ColourProfile;
         set cmsRgbProfile(val: ColourProfile);
+
         /**
          * @default 1.33
          */
         get img_aspect_ratio(): string;
         set img_aspect_ratio(val: string);
+
         /**
          * @default 1.33
          */
         get imgAspectRatio(): string;
         set imgAspectRatio(val: string);
+
         /**
          * @default #000000
          */
         get img_background(): string;
         set img_background(val: string);
+
         /**
          * @default #000000
          */
         get imgBackground(): string;
         set imgBackground(val: string);
+
         /**
          * @default false
          */
         get img_embedded_preview(): boolean;
         set img_embedded_preview(val: boolean);
+
         /**
          * @default false
          */
         get imgEmbeddedPreview(): boolean;
         set imgEmbeddedPreview(val: boolean);
+
         /**
          * @default true
          */
         get img_flip_horizontally(): boolean;
         set img_flip_horizontally(val: boolean);
+
         /**
          * @default true
          */
         get imgFlipHorizontally(): boolean;
         set imgFlipHorizontally(val: boolean);
+
         /**
          * @default true
          */
         get img_flip_vertically(): boolean;
         set img_flip_vertically(val: boolean);
+
         /**
          * @default true
          */
         get imgFlipVertically(): boolean;
         set imgFlipVertically(val: boolean);
+
         /**
          * @default false
          */
         get img_focus_point(): boolean;
         set img_focus_point(val: boolean);
+
         /**
          * @default false
          */
         get imgFocusPoint(): boolean;
         set imgFocusPoint(val: boolean);
+
         /**
          * @default 4
          */
         get img_grid_lines(): number;
         set img_grid_lines(val: number);
+
         /**
          * @default 4
          */
         get imgGridLines(): number;
         set imgGridLines(val: number);
+
         /**
          * @default `FFFFFF`
          */
         get img_highlight(): string;
         set img_highlight(val: string);
+
         /**
          * @default `FFFFFF`
          */
         get imgHighlight(): string;
         set imgHighlight(val: string);
+
         /**
          * @default false
          */
         get img_mask_enabled(): boolean;
         set img_mask_enabled(val: boolean);
+
         /**
          * @default false
          */
         get imgMaskEnabled(): boolean;
         set imgMaskEnabled(val: boolean);
+
         /**
          * @default 90
          */
         get img_mask_opacity(): number;
         set img_mask_opacity(val: number);
+
         /**
          * @default 90
          */
         get imgMaskOpacity(): number;
         set imgMaskOpacity(val: number);
+
         /**
          * @default 3
          */
         get img_onion_layers(): number;
         set img_onion_layers(val: number);
+
         /**
          * @default 3
          */
         get imgOnionLayers(): number;
         set imgOnionLayers(val: number);
+
         /**
          * @default false
          */
         get img_onion_skin(): boolean;
         set img_onion_skin(val: boolean);
+
         /**
          * @default false
          */
         get imgOnionSkin(): boolean;
         set imgOnionSkin(val: boolean);
+
         /**
          * @default true
          */
         get img_overexposure_highlighting(): boolean;
         set img_overexposure_highlighting(val: boolean);
+
         /**
          * @default true
          */
         get imgOverexposureHighlighting(): boolean;
         set imgOverexposureHighlighting(val: boolean);
+
         /**
          * @default true
          */
         get interface_auto_connect(): boolean;
         set interface_auto_connect(val: boolean);
+
         /**
          * @default true
          */
         get interfaceAutoConnect(): boolean;
         set interfaceAutoConnect(val: boolean);
+
         /**
          * @default false
          */
         get interface_histogram_linear(): boolean;
         set interface_histogram_linear(val: boolean);
+
         /**
          * @default false
          */
         get interfaceHistogramLinear(): boolean;
         set interfaceHistogramLinear(val: boolean);
+
         /**
          * @default false
          */
         get interface_screen_blank(): boolean;
         set interface_screen_blank(val: boolean);
+
         /**
          * @default false
          */
@@ -5888,53 +5783,45 @@ export namespace Entangle {
         $signals: Preferences.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Preferences.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Preferences;
+        static ["new"](): Preferences;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Preferences.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Preferences.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Preferences.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Preferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static ensure_girepository_dir(): void;
+
         static ensure_gsettings_dir(): void;
 
         // Methods
-
         /**
          * Determine if the preview mode will continue to operate after each
          * image is captured.
          * @returns TRUE if preview mode will continue after capture, FALSE otherwise
          */
         capture_get_continuous_preview(): boolean;
+
         /**
          * Determine if the file will be deleted from the camera after it
          * has been downloaded.
          * @returns TRUE if the files will be deleted after download
          */
         capture_get_delete_file(): boolean;
+
         /**
          * Determines if the capture event will use the next preview output as
          * capture image, instead of triggering a normal capture, with shutter
@@ -5942,6 +5829,7 @@ export namespace Entangle {
          * @returns TRUE if no mechanical shutter action occurs on a capture, FALSE otherwise
          */
         capture_get_electronic_shutter(): boolean;
+
         /**
          * Get the filename pattern to use for naming images that
          * are saved after download. In the pattern any repeated
@@ -5950,190 +5838,224 @@ export namespace Entangle {
          * @returns the filename pattern.
          */
         capture_get_filename_pattern(): string;
+
         /**
          * Get the most recently used directory for the
          * image session
          * @returns the session directory
          */
         capture_get_last_session(): string;
+
         /**
          * Determines if the camera clock will be automatically synchronized
          * to the host computer clock when first connecting
          * @returns TRUE if the clock will synchronized, FALSE otherwise
          */
         capture_get_sync_clock(): boolean;
+
         /**
          * If `enabled` is set to TRUE, then the preview mode will
          * continue to run after each image is captured
          * @param enabled TRUE to make preview mode continue after capture
          */
         capture_set_continuous_preview(enabled: boolean): void;
+
         /**
          * If `enabled` is set to TRUE, then files will be deleted from the
          * camera after they are downloaded.
          * @param enabled TRUE if files should be deleted from camera after capture
          */
         capture_set_delete_file(enabled: boolean): void;
+
         /**
          * If `enabled` is TRUE, then the camera shutter will not be activated
          * when capturing an image.
          * @param enabled TRUE if no mechanical shutter action should occur on capture
          */
         capture_set_electronic_shutter(enabled: boolean): void;
+
         /**
          * Set the pattern to use for naming images that are
          * saved after download.
          * @param pattern the filename pattern
          */
         capture_set_filename_pattern(pattern: string): void;
+
         /**
          * Record `dir` as being the most recently used session
          * directory
          * @param dir the new session
          */
         capture_set_last_session(dir: string): void;
+
         /**
          * If `enabled` is TRUE, then the camera clock will be synchronized to
          * the host computer clock when first connecting
          * @param enabled TRUE if the clock should be synchronized
          */
         capture_set_sync_clock(enabled: boolean): void;
+
         /**
          * Determine if the monitor profile will be automatically
          * detected, which is usually preferrable since
          * it copes with multiple monitor scenarios
          */
         cms_get_detect_system_profile(): boolean;
+
         /**
          * Determine if images should be displayed with colour management
          * applied
          * @returns TRUE if colour management is active
          */
         cms_get_enabled(): boolean;
+
         /**
          * Get the profile associated with the display, if any.
          * @returns the colour profile
          */
         cms_get_monitor_profile(): ColourProfile;
+
         /**
          * Determine the rendering intent for displaying images
          * @returns the image rendering intent
          */
         cms_get_rendering_intent(): ColourProfileIntent;
+
         /**
          * Get the colour profile that represents the RGB working space
          * @returns the colour space
          */
         cms_get_rgb_profile(): ColourProfile;
+
         /**
          * If `enabled` is TRUE then the monitor profile will be
          * automatically detected
          * @param enabled TRUE to automatically detect the monitor profile
          */
         cms_set_detect_system_profile(enabled: boolean): void;
+
         /**
          * If `enabled` is TRUE, colour management will be applied when
          * displaying images
          * @param enabled TRUE to enable colour management
          */
         cms_set_enabled(enabled: boolean): void;
+
         /**
          * If `prof` is not NULL, it will be used as the current monitor
          * profile. This is only honoured if automatic detection of
          * the monitor profile is disabled.
          * @param prof the new monitor profile
          */
-        cms_set_monitor_profile(prof: ColourProfile | null): void;
+        cms_set_monitor_profile(prof: (ColourProfile | null)): void;
+
         /**
          * Set the rendering intent for displaying images
          * @param intent the new rendering intent
          */
         cms_set_rendering_intent(intent: ColourProfileIntent): void;
+
         /**
          * Set the colour profile that represents the RGB working space
          * @param prof the new rgb profile
          */
-        cms_set_rgb_profile(prof: ColourProfile | null): void;
+        cms_set_rgb_profile(prof: (ColourProfile | null)): void;
+
         /**
          * Get the aspect ratio for any mask to apply to the image
          * @returns the aspect ratio for the mask
          */
         img_get_aspect_ratio(): string;
+
         /**
          * Get the colour used as the background when displaying images
          * @returns the background colour
          */
         img_get_background(): string;
+
         /**
          * Determine whether to use the embedded preview from files
          * for thumbnails.
          * @returns TRUE if embedded preview should be used
          */
         img_get_embedded_preview(): boolean;
+
         /**
          * Determine if the image display should be flipped horizontally
          * @returns TRUE if image display should be flipped horizontally
          */
         img_get_flip_horizontally(): boolean;
+
         /**
          * Determine if the image display should be flipped vertically
          * @returns TRUE if image display should be flipped vertically
          */
         img_get_flip_vertically(): boolean;
+
         /**
          * Determine if the center focus point should be displayed in
          * preview mode
          * @returns TRUE if a focus point is to be rendered
          */
         img_get_focus_point(): boolean;
+
         /**
          * Determine what grid lines to display in preview mode
          * @returns the grid lines to display
          */
         img_get_grid_lines(): number;
+
         /**
          * Get the colour to use when highlighting images
          * @returns the highlight colour
          */
         img_get_highlight(): string;
+
         /**
          * Determine if an aspect ratio mask to be applied to the
          * image display
          * @returns TRUE if an aspect ratio mask should be applied
          */
         img_get_mask_enabled(): boolean;
+
         /**
          * Get the opacity of any mask to apply to the image
          * @returns the opacity between 0 and 100
          */
         img_get_mask_opacity(): number;
+
         /**
          * Determine how many images to overlay in onion skinning mode
          * @returns the number of image overlays
          */
         img_get_onion_layers(): number;
+
         /**
          * Determine if onion skinning should be used when displaying
          * images
          * @returns TRUE if onion skinning is enabled
          */
         img_get_onion_skin(): boolean;
+
         /**
          * Determine if areas of overexposure should be highlighted on
          * the image display
          * @returns TRUE if overexposure should be highlighted
          */
         img_get_overexposure_highlighting(): boolean;
+
         /**
          * Set the aspect ratio for any mask to apply to the image
          * @param aspect the new aspect ratio
          */
         img_set_aspect_ratio(aspect: string): void;
+
         /**
          * Set the colour used as the background when displaying images
          * @param bkg the background colour
          */
         img_set_background(bkg: string): void;
+
         /**
          * If `enabled` is TRUE, any embedded preview will be used
          * when generating thumbnails rather than loading the full
@@ -6141,105 +6063,124 @@ export namespace Entangle {
          * @param enabled TRUE to use the embedded preview
          */
         img_set_embedded_preview(enabled: boolean): void;
+
         /**
          * If `enabled` is TRUE the image display will be flipped horizontally
          * @param enabled TRUE to flip horizontally
          */
         img_set_flip_horizontally(enabled: boolean): void;
+
         /**
          * If `enabled` is TRUE the image display will be flipped vertically
          * @param enabled TRUE to flip vertically
          */
         img_set_flip_vertically(enabled: boolean): void;
+
         /**
          * If `enabled` is TRUE then a focus point will be display in
          * preview mode.
          * @param enabled TRUE to render a focus point
          */
         img_set_focus_point(enabled: boolean): void;
+
         /**
          * Set the grid lines to display when in image preview mode
          * @param gridLines the grid lines to display
          */
         img_set_grid_lines(gridLines: number): void;
+
         /**
          * Set the colour to use when highlighting images
          * @param bkg the highlight colour
          */
         img_set_highlight(bkg: string): void;
+
         /**
          * If `enabled` is TRUE an aspect ratio mask will be applied
          * to the image display
          * @param enabled TRUE to apply an aspect ratio mask
          */
         img_set_mask_enabled(enabled: boolean): void;
+
         /**
          * Set the opacity to use when rendering the image mask
          * @param opacity the opacity of the mask between 0 and 100
          */
         img_set_mask_opacity(opacity: number): void;
+
         /**
          * Set the number of images to overlay when in onion skinning
          * mode
          * @param layers the number of image overlays
          */
         img_set_onion_layers(layers: number): void;
+
         /**
          * If `enabled` is TRUE then onion skinning will be enabled
          * when displaying images
          * @param enabled TRUE to enable onion skinning
          */
         img_set_onion_skin(enabled: boolean): void;
+
         /**
          * If `enabled` is TRUE areas of overexposure will be highlighted on
          * the image display
          * @param enabled TRUE to highlight overeposure
          */
         img_set_overexposure_highlighting(enabled: boolean): void;
+
         /**
          * Add the plugin called `name` to the active list
          * @param name the plugin to add
          */
         interface_add_plugin(name: string): void;
+
         /**
          * Determine whether the application will attempt to automatically
          * connect to cameras at startup
          * @returns TRUE if cameras will be automatically connected, FALSE otherwise
          */
         interface_get_auto_connect(): boolean;
+
         /**
          * Determine if the histogram will be displayed in
          * linear or logarithmic mode
          * @returns TRUE if the histogram is linear, FALSE for logarithmic
          */
         interface_get_histogram_linear(): boolean;
+
         /**
          * Get the names of the plugins that are enabled for the
          * application
          * @returns the list of plugin names, NULL terminated
          */
         interface_get_plugins(): string[];
+
         /**
          * Determine if the screen wil be blanked prior to capturing
          * the image
          * @returns TRUE if the screen will blank at time of capture
          */
         interface_get_screen_blank(): boolean;
+
         /**
          * Remove the plugin called `name` from the active list
          * @param name the plugin to remove
          */
         interface_remove_plugin(name: string): void;
+
         /**
-         * @param autoconn
+         * @param autoconn 
          */
         interface_set_auto_connect(autoconn: boolean): void;
+
         /**
          * If `enabled` is TRUE then the histogram will be displayed in
          * linear mode, otherwise logarithmic mode will be used
          * @param enabled TRUE to set the histogram to linear mode
          */
         interface_set_histogram_linear(enabled: boolean): void;
+
         /**
          * If `blank` is set to TRUE, the screen will be blanked
          * during capture to avoid light from the screen influencing
@@ -6249,94 +6190,92 @@ export namespace Entangle {
         interface_set_screen_blank(blank: boolean): void;
     }
 
+
     namespace PreferencesDisplay {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Dialog.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -6355,43 +6294,34 @@ export namespace Entangle {
         $signals: PreferencesDisplay.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PreferencesDisplay.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PreferencesDisplay;
+        static ["new"](): PreferencesDisplay;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PreferencesDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesDisplay.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PreferencesDisplay.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PreferencesDisplay.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PreferencesDisplay.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PreferencesDisplay.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PreferencesDisplay.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PreferencesDisplay.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PreferencesDisplay.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PreferencesDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PreferencesDisplay.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PreferencesDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Script {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::title': (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             title: string;
         }
@@ -6404,7 +6334,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<Script>;
 
         // Properties
-
         /**
          * @default Untitled script
          */
@@ -6421,50 +6350,38 @@ export namespace Entangle {
         $signals: Script.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Script.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Script.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Script.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Script.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Script.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Script.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Script.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Script.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Script.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Script.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Script.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Script.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Script.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @param automata the camera automata
          * @param cancel cancellation handler
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the script has finished
          * @virtual
          */
-        vfunc_execute_async(
-            automata: CameraAutomata,
-            cancel: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_execute_async(automata: CameraAutomata, cancel: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * @param result a GAsyncResult
          * @virtual
          */
         vfunc_execute_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Get the configuration controls for the script
          * @virtual
@@ -6472,42 +6389,38 @@ export namespace Entangle {
         vfunc_get_config_widget(): Gtk.Widget;
 
         // Methods
+        /**
+         * @param automata the camera automata
+         * @param cancel cancellation handler
+         */
+        execute_async(automata: CameraAutomata, cancel: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * @param automata the camera automata
          * @param cancel cancellation handler
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the script has finished
          */
-        execute_async(automata: CameraAutomata, cancel: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        execute_async(automata: CameraAutomata, cancel: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * @param automata the camera automata
          * @param cancel cancellation handler
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the script has finished
          */
-        execute_async(
-            automata: CameraAutomata,
-            cancel: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * @param automata the camera automata
-         * @param cancel cancellation handler
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the script has finished
-         */
-        execute_async(
-            automata: CameraAutomata,
-            cancel: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        execute_async(automata: CameraAutomata, cancel: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * @param result a GAsyncResult
          * @returns TRUE on success, false otherwise
          */
         execute_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Get the configuration controls for the script
          * @returns the config widget
          */
         get_config_widget(): Gtk.Widget;
+
         /**
          * Get the title of the script
          * @returns the title of the script
@@ -6515,65 +6428,62 @@ export namespace Entangle {
         get_title(): string;
     }
 
+
     namespace ScriptConfig {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::orientation': (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::orientation": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Box.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Orientable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Box.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Orientable.ConstructorProps {}
+        }
     }
 
     /**
@@ -6592,63 +6502,59 @@ export namespace Entangle {
         $signals: ScriptConfig.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ScriptConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ScriptConfig;
+        static ["new"](): ScriptConfig;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ScriptConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptConfig.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ScriptConfig.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScriptConfig.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ScriptConfig.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScriptConfig.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ScriptConfig.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptConfig.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ScriptConfig.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ScriptConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ScriptConfig.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptConfig.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param script
+         * @param script 
          */
         add_script(script: Script): void;
+
         /**
          * Retrieve the script that the config is displayed for
          * @returns the script displayed
          */
         get_selected(): Script;
+
         has_scripts(): boolean;
+
         /**
-         * @param script
+         * @param script 
          */
         remove_script(script: Script): void;
+
         /**
          * The orientation of the orientable.
          * @since 2.16
          * @default Gtk.Orientation.HORIZONTAL
-         * @category Inherited from Gtk.Orientable
+          * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
+
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
+
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
@@ -6656,15 +6562,17 @@ export namespace Entangle {
         set_orientation(orientation: Gtk.Orientation): void;
     }
 
+
     namespace ScriptSimple {
         // Signal signatures
         interface SignalSignatures extends Script.SignalSignatures {
-            'notify::title': (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Script.ConstructorProps {
 
-        interface ConstructorProps extends Script.ConstructorProps {}
+        }
     }
 
     /**
@@ -6683,46 +6591,37 @@ export namespace Entangle {
         $signals: ScriptSimple.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ScriptSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ScriptSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptSimple.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ScriptSimple.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScriptSimple.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ScriptSimple.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ScriptSimple.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ScriptSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ScriptSimple.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ScriptSimple.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ScriptSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ScriptSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ScriptSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Runs the logic for the script. The implementation should
          *  use the `automata` object to perform capture/preview operations on
          *  the camera. `cancel` will indicate whether the script should be
          *  aborted early. `result` should be set when the script completes
          *  or aborts.
-         * @param automata
-         * @param cancel
-         * @param result
+         * @param automata 
+         * @param cancel 
+         * @param result 
          * @virtual
          */
-        vfunc_execute(automata: CameraAutomata, cancel: Gio.Cancellable | null, result: Gio.Task): void;
+        vfunc_execute(automata: CameraAutomata, cancel: (Gio.Cancellable | null), result: Gio.Task): void;
+
         /**
          * create a data object that will be associated
          *  with the {@link Gio.Task} passed to the `execute` method.
@@ -6731,22 +6630,24 @@ export namespace Entangle {
         vfunc_init_task_data<T = GObject.Object>(): T;
 
         // Methods
-
         /**
          * @param result the task object
          * @returns the data
          */
         get_task_data<T = GObject.Object>(result: Gio.Task): T;
+
         /**
          * @returns the data
          */
         init_task_data<T = GObject.Object>(): T;
+
         /**
-         * @param result
-         * @param message
+         * @param result 
+         * @param message 
          */
         return_task_error(result: Gio.Task, message: string): void;
     }
+
 
     namespace Session {
         // Signal signatures
@@ -6755,18 +6656,17 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'session-media-added': (arg0: Media) => void;
+            "session-media-added": (arg0: Media) => void;
             /**
              * @signal
              * @run-first
              */
-            'session-media-removed': (arg0: Media) => void;
-            'notify::directory': (pspec: GObject.ParamSpec) => void;
-            'notify::filename-pattern': (pspec: GObject.ParamSpec) => void;
+            "session-media-removed": (arg0: Media) => void;
+            "notify::directory": (pspec: GObject.ParamSpec) => void;
+            "notify::filename-pattern": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             directory: string;
             filename_pattern: string;
@@ -6781,17 +6681,18 @@ export namespace Entangle {
         static $gtype: GObject.GType<Session>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get directory(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get filename_pattern(): string;
+
         /**
          * @construct-only
          * @default null
@@ -6808,58 +6709,52 @@ export namespace Entangle {
         $signals: Session.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](directory: string, filenamePattern: string): Session;
+        static ["new"](directory: string, filenamePattern: string): Session;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Session.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Session.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Session.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add `media` to the `session`
          * @param media the media file to add to the session
          */
         add_media(media: Media): void;
+
         /**
          * Get the media file at position `idx` in the session
          * @param idx index of the media file to fetch
          * @returns the media file
          */
         get_media(idx: number): Media;
+
         /**
          * Get the total number of media files in the session
          * @returns the file count
          */
         get_media_count(): number;
+
         /**
          * Load all the files present in the directory associated
          * with the session
          * @returns TRUE if the session was loaded
          */
         load(): boolean;
+
         /**
          * Generate a new unique filename for `file`, taking into
          * account its file extension and any previously generated
@@ -6868,12 +6763,14 @@ export namespace Entangle {
          * @returns the new filename
          */
         next_filename(file: CameraFile): string;
+
         /**
          * Remove `media` from the `session`
          * @param media the media to remove from the session
          */
         remove_media(media: Media): void;
     }
+
 
     namespace SessionBrowser {
         // Signal signatures
@@ -6882,62 +6779,56 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            'selection-changed': () => void;
-            'notify::session': (pspec: GObject.ParamSpec) => void;
-            'notify::thumbnail-loader': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::hadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::hscroll-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::vadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::vscroll-policy': (pspec: GObject.ParamSpec) => void;
+            "selection-changed": () => void;
+            "notify::session": (pspec: GObject.ParamSpec) => void;
+            "notify::thumbnail-loader": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::hscroll-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::vscroll-policy": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.DrawingArea.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Scrollable.ConstructorProps {
+        interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
             session: Session;
             thumbnail_loader: ThumbnailLoader;
             thumbnailLoader: ThumbnailLoader;
@@ -6951,11 +6842,12 @@ export namespace Entangle {
         static $gtype: GObject.GType<SessionBrowser>;
 
         // Properties
-
         get session(): Session;
         set session(val: Session);
+
         get thumbnail_loader(): ThumbnailLoader;
         set thumbnail_loader(val: ThumbnailLoader);
+
         get thumbnailLoader(): ThumbnailLoader;
         set thumbnailLoader(val: ThumbnailLoader);
 
@@ -6969,37 +6861,28 @@ export namespace Entangle {
         $signals: SessionBrowser.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SessionBrowser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SessionBrowser;
+        static ["new"](): SessionBrowser;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SessionBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionBrowser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SessionBrowser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SessionBrowser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SessionBrowser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SessionBrowser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SessionBrowser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SessionBrowser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SessionBrowser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SessionBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SessionBrowser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SessionBrowser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_background(): string;
+
         /**
          * Get a list of images prior to the currently selected image.
          * If `include_selected` is true, then the currently selected
@@ -7008,8 +6891,10 @@ export namespace Entangle {
          * @param count maximum number of images to return
          * @returns the list of images
          */
-        get_earlier_images(include_selected: boolean, count: bigint | number): Image[];
+        get_earlier_images(include_selected: boolean, count: (bigint | number)): Image[];
+
         get_highlight(): string;
+
         /**
          * Retrieve the media displayed at the co-ordinates (`x`, `y`)
          * @param x the horizontal co-ordinate
@@ -7017,91 +6902,105 @@ export namespace Entangle {
          * @returns the media, or NULL
          */
         get_media_at_coords(x: number, y: number): Media;
+
         /**
          * @returns the selected media or NULL
          */
         get_selected_media(): Media;
+
         /**
          * Get the session being displayed
          * @returns the session
          */
         get_session(): Session;
+
         /**
          * Get the thumbnail loader used by the session browser
          * @returns the session browser
          */
         get_thumbnail_loader(): ThumbnailLoader;
+
         /**
-         * @param background
+         * @param background 
          */
         set_background(background: string): void;
+
         /**
-         * @param highlight
+         * @param highlight 
          */
         set_highlight(highlight: string): void;
+
         /**
          * Set the session to be displayed
          * @param session the session to display
          */
         set_session(session: Session): void;
+
         /**
          * Set the thumbnail loader to use for generating image
          * thumbnails
          * @param loader the thumbnail loader to use
          */
         set_thumbnail_loader(loader: ThumbnailLoader): void;
+
         /**
          * Horizontal {@link Gtk.Adjustment} of the scrollable widget. This adjustment is
          * shared between the scrollable widget and its parent.
          * @since 3.0
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get hadjustment(): Gtk.Adjustment;
         set hadjustment(val: Gtk.Adjustment);
+
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
         set hscroll_policy(val: Gtk.ScrollablePolicy);
+
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
         set hscrollPolicy(val: Gtk.ScrollablePolicy);
+
         /**
          * Verical {@link Gtk.Adjustment} of the scrollable widget. This adjustment is shared
          * between the scrollable widget and its parent.
          * @since 3.0
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get vadjustment(): Gtk.Adjustment;
         set vadjustment(val: Gtk.Adjustment);
+
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
         set vscroll_policy(val: Gtk.ScrollablePolicy);
+
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
         set vscrollPolicy(val: Gtk.ScrollablePolicy);
+
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -7111,31 +7010,37 @@ export namespace Entangle {
          * @returns `true` if `border` has been set
          */
         get_border(): [boolean, Gtk.Border];
+
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
          */
         get_hadjustment(): Gtk.Adjustment;
+
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
+
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
          */
         get_vadjustment(): Gtk.Adjustment;
+
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
+
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
@@ -7143,11 +7048,13 @@ export namespace Entangle {
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
+
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
@@ -7155,6 +7062,7 @@ export namespace Entangle {
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
+
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -7166,18 +7074,18 @@ export namespace Entangle {
         vfunc_get_border(): [boolean, Gtk.Border];
     }
 
+
     namespace ThumbnailLoader {
         // Signal signatures
         interface SignalSignatures extends PixbufLoader.SignalSignatures {
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::colour-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::with-metadata': (pspec: GObject.ParamSpec) => void;
-            'notify::workers': (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::colour-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::with-metadata": (pspec: GObject.ParamSpec) => void;
+            "notify::workers": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends PixbufLoader.ConstructorProps {
             height: number;
             width: number;
@@ -7191,12 +7099,12 @@ export namespace Entangle {
         static $gtype: GObject.GType<ThumbnailLoader>;
 
         // Properties
-
         /**
          * @construct-only
          * @default 128
          */
         get height(): number;
+
         /**
          * @construct-only
          * @default 128
@@ -7213,45 +7121,36 @@ export namespace Entangle {
         $signals: ThumbnailLoader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ThumbnailLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](width: number, height: number): ThumbnailLoader;
+        static ["new"](width: number, height: number): ThumbnailLoader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ThumbnailLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThumbnailLoader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ThumbnailLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThumbnailLoader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ThumbnailLoader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ThumbnailLoader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ThumbnailLoader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ThumbnailLoader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ThumbnailLoader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ThumbnailLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ThumbnailLoader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ThumbnailLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Video {
         // Signal signatures
         interface SignalSignatures extends Media.SignalSignatures {
-            'notify::source': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::metadata': (pspec: GObject.ParamSpec) => void;
+            "notify::source": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::metadata": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Media.ConstructorProps {
             source: GstBase.BaseSrc;
         }
@@ -7264,7 +7163,6 @@ export namespace Entangle {
         static $gtype: GObject.GType<Video>;
 
         // Properties
-
         get source(): GstBase.BaseSrc;
         set source(val: GstBase.BaseSrc);
 
@@ -7278,7 +7176,6 @@ export namespace Entangle {
         $signals: Video.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Video.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -7288,33 +7185,25 @@ export namespace Entangle {
         static new_source(source: GstBase.BaseSrc): Video;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Video.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Video.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Video.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Video.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Video.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Video.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Video.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the live video source element
          * @returns the video source
          */
         get_source(): GstBase.BaseSrc;
+
         /**
          * Set the live video source element
          * @param source the new video source or NULL
@@ -7322,194 +7211,239 @@ export namespace Entangle {
         set_source(source: GstBase.BaseSrc): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ApplicationClass = typeof Application;
+
     /**
      * @gir-type Alias
      */
     type CameraAutomataClass = typeof CameraAutomata;
+
     /**
      * @gir-type Alias
      */
     type CameraClass = typeof Camera;
+
     /**
      * @gir-type Alias
      */
     type CameraFileClass = typeof CameraFile;
+
     /**
      * @gir-type Alias
      */
     type CameraListClass = typeof CameraList;
+
     /**
      * @gir-type Alias
      */
     type CameraManagerClass = typeof CameraManager;
+
     /**
      * @gir-type Alias
      */
     type CameraPickerClass = typeof CameraPicker;
+
     /**
      * @gir-type Alias
      */
     type CameraPreferencesClass = typeof CameraPreferences;
+
     /**
      * @gir-type Alias
      */
     type CameraSupportClass = typeof CameraSupport;
+
     /**
      * @gir-type Alias
      */
     type ColourProfileClass = typeof ColourProfile;
+
     /**
      * @gir-type Alias
      */
     type ColourProfileTransformClass = typeof ColourProfileTransform;
+
     /**
      * @gir-type Alias
      */
     type ControlButtonClass = typeof ControlButton;
+
     /**
      * @gir-type Alias
      */
     type ControlChoiceClass = typeof ControlChoice;
+
     /**
      * @gir-type Alias
      */
     type ControlClass = typeof Control;
+
     /**
      * @gir-type Alias
      */
     type ControlDateClass = typeof ControlDate;
+
     /**
      * @gir-type Alias
      */
     type ControlGroupClass = typeof ControlGroup;
+
     /**
      * @gir-type Alias
      */
     type ControlPanelClass = typeof ControlPanel;
+
     /**
      * @gir-type Alias
      */
     type ControlRangeClass = typeof ControlRange;
+
     /**
      * @gir-type Alias
      */
     type ControlTextClass = typeof ControlText;
+
     /**
      * @gir-type Alias
      */
     type ControlToggleClass = typeof ControlToggle;
+
     /**
      * @gir-type Alias
      */
     type DeviceManagerClass = typeof DeviceManager;
+
     /**
      * @gir-type Alias
      */
     type HelpAboutClass = typeof HelpAbout;
+
     /**
      * @gir-type Alias
      */
     type ImageClass = typeof Image;
+
     /**
      * @gir-type Alias
      */
     type ImageDisplayClass = typeof ImageDisplay;
+
     /**
      * @gir-type Alias
      */
     type ImageHistogramClass = typeof ImageHistogram;
+
     /**
      * @gir-type Alias
      */
     type ImageLoaderClass = typeof ImageLoader;
+
     /**
      * @gir-type Alias
      */
     type MediaClass = typeof Media;
+
     /**
      * @gir-type Alias
      */
     type MediaPopupClass = typeof MediaPopup;
+
     /**
      * @gir-type Alias
      */
     type MediaStatusbarClass = typeof MediaStatusbar;
+
     /**
      * @gir-type Alias
      */
     type PixbufLoaderClass = typeof PixbufLoader;
+
     /**
      * @gir-type Alias
      */
     type PreferencesClass = typeof Preferences;
+
     /**
      * @gir-type Alias
      */
     type PreferencesDisplayClass = typeof PreferencesDisplay;
+
     /**
      * @gir-type Alias
      */
     type ProgressInterface = typeof Progress;
+
     /**
      * @gir-type Alias
      */
     type ScriptClass = typeof Script;
+
     /**
      * @gir-type Alias
      */
     type ScriptConfigClass = typeof ScriptConfig;
+
     /**
      * @gir-type Alias
      */
     type ScriptSimpleClass = typeof ScriptSimple;
+
     /**
      * @gir-type Alias
      */
     type SessionBrowserClass = typeof SessionBrowser;
+
     /**
      * @gir-type Alias
      */
     type SessionClass = typeof Session;
+
     /**
      * @gir-type Alias
      */
     type ThumbnailLoaderClass = typeof ThumbnailLoader;
+
     /**
      * @gir-type Alias
      */
     type VideoClass = typeof Video;
+
     namespace Progress {
         /**
          * Interface for implementing Progress.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param target
-             * @param msg
+             * @param target 
+             * @param msg 
              * @virtual
              */
             vfunc_start(target: number, msg: string): void;
+
             /**
              * @virtual
              */
             vfunc_stop(): void;
+
             /**
-             * @param current
+             * @param current 
              * @virtual
              */
             vfunc_update(current: number): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface ProgressNamespace {
@@ -7520,19 +7454,22 @@ export namespace Entangle {
      * @gir-type Interface
      */
     interface Progress extends GObject.Object, Progress.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param target
-         * @param msg
+         * @param target 
+         * @param msg 
          */
         start(target: number, msg: string): void;
+
         stop(): void;
+
         /**
-         * @param current
+         * @param current 
          */
         update(current: number): void;
     }
+
 
     export const Progress: ProgressNamespace & {
         new (): Progress; // This allows `obj instanceof Progress`
@@ -7543,6 +7480,7 @@ export namespace Entangle {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

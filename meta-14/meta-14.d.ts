@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -31,9 +32,11 @@ import type Clutter from '@girs/clutter-14';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Meta {
+
     /**
      * Meta-14
      */
+
 
     /**
      * @gir-type Enum
@@ -44,7 +47,7 @@ export namespace Meta {
 
     /**
      * Function a window button can have.
-     *
+     * 
      * Note, you can't add stuff here without extending the theme format
      * to draw a new function and breaking all existing themes.
      * @gir-type Enum
@@ -72,6 +75,7 @@ export namespace Meta {
         LAST,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -86,6 +90,7 @@ export namespace Meta {
         WAIT,
         FORCE_CLOSE,
     }
+
 
     /**
      * @gir-type Enum
@@ -128,6 +133,7 @@ export namespace Meta {
         NONE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -142,6 +148,7 @@ export namespace Meta {
         WAYLAND,
         X11,
     }
+
 
     /**
      * @gir-type Enum
@@ -234,6 +241,7 @@ export namespace Meta {
         LAST,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -262,6 +270,7 @@ export namespace Meta {
          */
         BOTTOMRIGHT,
     }
+
 
     /**
      * @gir-type Enum
@@ -292,6 +301,7 @@ export namespace Meta {
         RIGHT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -317,6 +327,7 @@ export namespace Meta {
         SCREEN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -337,6 +348,7 @@ export namespace Meta {
          */
         ERROR,
     }
+
 
     /**
      * @gir-type Enum
@@ -382,6 +394,7 @@ export namespace Meta {
          */
         LAST,
     }
+
 
     /**
      * @gir-type Enum
@@ -478,6 +491,7 @@ export namespace Meta {
         KEYBOARD_RESIZING_W,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -502,6 +516,7 @@ export namespace Meta {
         STATIC,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -516,6 +531,7 @@ export namespace Meta {
         ALLOW,
         DENY,
     }
+
 
     /**
      * @gir-type Enum
@@ -889,6 +905,7 @@ export namespace Meta {
         LAST,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -928,6 +945,7 @@ export namespace Meta {
         IDLE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -942,6 +960,7 @@ export namespace Meta {
         LTR,
         RTL,
     }
+
 
     /**
      * @gir-type Enum
@@ -960,6 +979,7 @@ export namespace Meta {
         BUILTIN,
         UNKNOWN,
     }
+
 
     /**
      * @gir-type Enum
@@ -1006,6 +1026,7 @@ export namespace Meta {
         DOWN_RIGHT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1015,7 +1036,7 @@ export namespace Meta {
 
     /**
      * A representation for complex pixel formats
-     *
+     * 
      * Some pixel formats that are used in the wild are a bit more complex than
      * just ARGB and all its variants. For example: a component might be put in a
      * different plane (i.e. at a different place in memory). Another example are
@@ -1048,6 +1069,7 @@ export namespace Meta {
         YUV420,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1065,6 +1087,7 @@ export namespace Meta {
         CCW,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1080,6 +1103,7 @@ export namespace Meta {
         STRIP,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1094,6 +1118,7 @@ export namespace Meta {
         MODE_CHANGE,
         HOTPLUG,
     }
+
 
     /**
      * @gir-type Enum
@@ -1241,6 +1266,7 @@ export namespace Meta {
         CHECK_ALIVE_TIMEOUT,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1258,6 +1284,7 @@ export namespace Meta {
         N_SELECTION_TYPES,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1273,6 +1300,7 @@ export namespace Meta {
         FORCED_OFF,
         FORCED_ON,
     }
+
 
     /**
      * @gir-type Enum
@@ -1303,6 +1331,7 @@ export namespace Meta {
         BOTTOM,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1320,6 +1349,7 @@ export namespace Meta {
         UNFULLSCREEN,
         MONITOR_MOVE,
     }
+
 
     /**
      * @gir-type Enum
@@ -1364,6 +1394,7 @@ export namespace Meta {
         LAST,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1393,6 +1424,7 @@ export namespace Meta {
         NORMAL_ALL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1413,6 +1445,7 @@ export namespace Meta {
          */
         INSTANTLY,
     }
+
 
     /**
      * @gir-type Enum
@@ -1435,6 +1468,7 @@ export namespace Meta {
         X11,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1456,6 +1490,7 @@ export namespace Meta {
          */
         APP,
     }
+
 
     /**
      * @gir-type Enum
@@ -1534,13 +1569,21 @@ export namespace Meta {
         OVERRIDE_OTHER,
     }
 
+
     const CURRENT_TIME: number;
+
     const PRIORITY_BEFORE_REDRAW: number;
+
     const PRIORITY_PREFS_NOTIFY: number;
+
     const PRIORITY_REDRAW: number;
+
     const PRIORITY_RESIZE: number;
+
     const VIRTUAL_CORE_KEYBOARD_ID: number;
+
     const VIRTUAL_CORE_POINTER_ID: number;
+
     /**
      * Convert an accelerator keyval and modifier mask into a string parsable by `meta_parse_accelerator`.
      * @param accelerator_mods Accelerator modifier mask.
@@ -1548,51 +1591,56 @@ export namespace Meta {
      * @returns The accelerator name.
      */
     function accelerator_name(accelerator_mods: Clutter.ModifierType, accelerator_key: number): string;
+
     /**
-     * @param debug_flags
-     * @param draw_flags
-     * @param pick_flags
+     * @param debug_flags 
+     * @param draw_flags 
+     * @param pick_flags 
      */
-    function add_clutter_debug_flags(
-        debug_flags: Clutter.DebugFlag,
-        draw_flags: Clutter.DrawDebugFlag,
-        pick_flags: Clutter.PickDebugFlag,
-    ): void;
+    function add_clutter_debug_flags(debug_flags: Clutter.DebugFlag, draw_flags: Clutter.DrawDebugFlag, pick_flags: Clutter.PickDebugFlag): void;
+
     /**
-     * @param flag
+     * @param flag 
      */
     function add_debug_paint_flag(flag: DebugPaintFlag): void;
+
     /**
      * Ensure log messages for the given topic `topic`
      * will be printed.
      * @param topic Topic for which logging will be started
      */
     function add_verbose_topic(topic: DebugTopic): void;
+
     /**
      * Create a context.
      * @param name Human readable name of display server or window manager
      * @returns A new context instance.
      */
     function create_context(name: string): Context;
+
     /**
      * Disables unredirection, can be useful in situations where having
      * unredirected windows is undesirable like when recording a video.
      * @param display a {@link Meta.Display}
      */
     function disable_unredirect_for_display(display: Display): void;
+
     /**
      * Enables unredirection which reduces the overhead for apps like games.
      * @param display a {@link Meta.Display}
      */
     function enable_unredirect_for_display(display: Display): void;
+
     /**
-     * @param code
+     * @param code 
      */
     function exit(code: ExitCode): void;
+
     /**
-     * @param keybinding_action
+     * @param keybinding_action 
      */
     function external_binding_name_for_action(keybinding_action: number): string;
+
     /**
      * Converts a frame type enum value to the name string that would
      * appear in the theme definition file.
@@ -1600,56 +1648,66 @@ export namespace Meta {
      * @returns the string value
      */
     function frame_type_to_string(type: FrameType): string;
+
     /**
-     * @param src
-     * @param n
+     * @param src 
+     * @param n 
      */
-    function g_utf8_strndup(src: string, n: bigint | number): string;
-    function get_clutter_debug_flags(): [
-        Clutter.DebugFlag | null,
-        Clutter.DrawDebugFlag | null,
-        Clutter.PickDebugFlag | null,
-    ];
+    function g_utf8_strndup(src: string, n: (bigint | number)): string;
+
+    function get_clutter_debug_flags(): [Clutter.DebugFlag | null, Clutter.DrawDebugFlag | null, Clutter.PickDebugFlag | null];
+
     function get_debug_paint_flags(): DebugPaintFlag;
+
     function get_locale_direction(): LocaleDirection;
+
     /**
      * @param display a {@link Meta.Display}
      * @returns The {@link Clutter.Stage} for the display
      */
     function get_stage_for_display(display: Display): Clutter.Actor;
+
     /**
      * @param display a {@link Meta.Display}
      * @returns The top window group corresponding to `display`
      */
     function get_top_window_group_for_display(display: Display): Clutter.Actor;
+
     /**
      * @param display a {@link Meta.Display}
      * @returns The set of {@link Meta.WindowActor} on `display`
      */
     function get_window_actors(display: Display): Clutter.Actor[];
+
     /**
      * @param display a {@link Meta.Display}
      * @returns The window group corresponding to `display`
      */
     function get_window_group_for_display(display: Display): Clutter.Actor;
+
     /**
-     * @param gravity
+     * @param gravity 
      */
     function gravity_to_string(gravity: Gravity): string;
+
     /**
      * Returns `true` if this instance of Mutter comes from Mutter
      * restarting itself (for example to enable/disable stereo.)
-     *
+     * 
      * See {@link Meta.restart}. If this is the case, any startup visuals
      * or animations should be suppressed.
      */
     function is_restart(): boolean;
+
     /**
-     * @param topic
+     * @param topic 
      */
     function is_topic_enabled(topic: DebugTopic): boolean;
+
     function is_verbose(): boolean;
+
     function is_wayland_compositor(): boolean;
+
     /**
      * Allows users to register a custom handler for a
      * builtin key binding.
@@ -1657,93 +1715,136 @@ export namespace Meta {
      * @param handler The new handler function
      * @returns `true` if the binding known as `name` was found, `false` otherwise.
      */
-    function keybindings_set_custom_handler(name: string, handler: KeyHandlerFunc | null): boolean;
+    function keybindings_set_custom_handler(name: string, handler: (KeyHandlerFunc | null)): boolean;
+
     function pop_no_msg_prefix(): void;
+
     /**
-     * @param pref
+     * @param pref 
      */
     function preference_to_string(pref: Preference): string;
+
     function prefs_bell_is_audible(): boolean;
+
     /**
-     * @param i
-     * @param name
+     * @param i 
+     * @param name 
      */
     function prefs_change_workspace_name(i: number, name: string): void;
+
     function prefs_get_action_double_click_titlebar(): GDesktopEnums.TitlebarAction;
+
     function prefs_get_action_middle_click_titlebar(): GDesktopEnums.TitlebarAction;
+
     function prefs_get_action_right_click_titlebar(): GDesktopEnums.TitlebarAction;
+
     function prefs_get_attach_modal_dialogs(): boolean;
+
     function prefs_get_auto_maximize(): boolean;
+
     function prefs_get_auto_raise(): boolean;
+
     function prefs_get_auto_raise_delay(): number;
+
     function prefs_get_button_layout(): ButtonLayout;
+
     function prefs_get_center_new_windows(): boolean;
+
     function prefs_get_check_alive_timeout(): number;
+
     function prefs_get_compositing_manager(): boolean;
+
     function prefs_get_cursor_size(): number;
+
     function prefs_get_cursor_theme(): string;
+
     function prefs_get_disable_workarounds(): boolean;
+
     function prefs_get_drag_threshold(): number;
+
     function prefs_get_draggable_border_width(): number;
+
     function prefs_get_dynamic_workspaces(): boolean;
+
     function prefs_get_edge_tiling(): boolean;
+
     function prefs_get_focus_change_on_pointer_rest(): boolean;
+
     function prefs_get_focus_mode(): GDesktopEnums.FocusMode;
+
     function prefs_get_focus_new_windows(): GDesktopEnums.FocusNewWindows;
+
     function prefs_get_force_fullscreen(): boolean;
+
     function prefs_get_gnome_accessibility(): boolean;
+
     function prefs_get_gnome_animations(): boolean;
+
     /**
-     * @param name
+     * @param name 
      */
     function prefs_get_keybinding_action(name: string): KeyBindingAction;
+
     /**
-     * @param name
+     * @param name 
      */
-    function prefs_get_keybinding_label(name: string): string | null;
+    function prefs_get_keybinding_label(name: string): (string | null);
+
     function prefs_get_mouse_button_menu(): number;
+
     function prefs_get_mouse_button_mods(): Clutter.ModifierType;
+
     function prefs_get_mouse_button_resize(): number;
+
     function prefs_get_num_workspaces(): number;
+
     function prefs_get_raise_on_click(): boolean;
+
     function prefs_get_show_fallback_app_menu(): boolean;
+
     function prefs_get_visual_bell(): boolean;
+
     function prefs_get_visual_bell_type(): GDesktopEnums.VisualBellType;
+
     /**
-     * @param i
+     * @param i 
      */
     function prefs_get_workspace_name(i: number): string;
+
     function prefs_get_workspaces_only_on_primary(): boolean;
+
     /**
-     * @param whether
+     * @param whether 
      */
     function prefs_set_force_fullscreen(whether: boolean): void;
+
     /**
-     * @param n_workspaces
+     * @param n_workspaces 
      */
     function prefs_set_num_workspaces(n_workspaces: number): void;
+
     /**
-     * @param whether
+     * @param whether 
      */
     function prefs_set_show_fallback_app_menu(whether: boolean): void;
+
     function push_no_msg_prefix(): void;
+
     /**
-     * @param debug_flags
-     * @param draw_flags
-     * @param pick_flags
+     * @param debug_flags 
+     * @param draw_flags 
+     * @param pick_flags 
      */
-    function remove_clutter_debug_flags(
-        debug_flags: Clutter.DebugFlag,
-        draw_flags: Clutter.DrawDebugFlag,
-        pick_flags: Clutter.PickDebugFlag,
-    ): void;
+    function remove_clutter_debug_flags(debug_flags: Clutter.DebugFlag, draw_flags: Clutter.DrawDebugFlag, pick_flags: Clutter.PickDebugFlag): void;
+
     /**
-     * @param flag
+     * @param flag 
      */
     function remove_debug_paint_flag(flag: DebugPaintFlag): void;
+
     /**
      * Stop printing log messages for the given topic `topic`.
-     *
+     * 
      * Note that this method does not stack with {@link Meta.add_verbose_topic};
      * i.e. if two calls to {@link Meta.add_verbose_topic} for the same
      * topic are made, one call to {@link Meta.remove_verbose_topic}  will
@@ -1751,60 +1852,69 @@ export namespace Meta {
      * @param topic Topic for which logging will be stopped
      */
     function remove_verbose_topic(topic: DebugTopic): void;
+
     /**
      * Starts the process of restarting the compositor.
-     *
+     * 
      * Note that Mutter's involvement here is to make the restart
      * visually smooth for the user - it cannot itself safely
      * reexec a program that embeds libmuttter.
-     *
+     * 
      * So in order for this to work, the compositor must handle two
      * signals
-     *
+     * 
      * - `Meta.Display::show-restart-message`, to display the
      * message passed here on the Clutter stage
      * - `Meta.Display::restart` to actually reexec the compositor.
      * @param message message to display to the user, or `null`
      * @param context a {@link Meta.Context}
      */
-    function restart(message: string | null, context: Context): void;
+    function restart(message: (string | null), context: Context): void;
+
     /**
-     * @param topic
+     * @param topic 
      */
     function topic_to_string(topic: DebugTopic): string;
+
     /**
-     * @param v1
-     * @param v2
+     * @param v1 
+     * @param v2 
      */
-    function unsigned_long_equal(v1: any | null, v2: any | null): number;
+    function unsigned_long_equal(v1: (any | null), v2: (any | null)): number;
+
     /**
-     * @param v
+     * @param v 
      */
-    function unsigned_long_hash(v: any | null): number;
+    function unsigned_long_hash(v: (any | null)): number;
+
     /**
      * @gir-type Callback
      */
     interface IdleMonitorWatchFunc {
         (monitor: IdleMonitor, watch_id: number): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface KeyHandlerFunc {
-        (display: Display, window: Window, event: any | null, binding: KeyBinding): void;
+        (display: Display, window: Window, event: (any | null), binding: KeyBinding): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface PrefsChangedFunc {
         (pref: Preference): void;
     }
+
     /**
      * @gir-type Callback
      */
     interface WindowForeachFunc {
         (window: Window): boolean;
     }
+
     /**
      * @gir-type Flags
      */
@@ -1819,6 +1929,7 @@ export namespace Meta {
         NONE,
         BARRIERS,
     }
+
 
     /**
      * @gir-type Flags
@@ -1849,6 +1960,7 @@ export namespace Meta {
         NEGATIVE_Y,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -1863,6 +1975,7 @@ export namespace Meta {
         NONE,
         STICKY,
     }
+
 
     /**
      * @gir-type Flags
@@ -1884,6 +1997,7 @@ export namespace Meta {
          */
         OPAQUE_REGION,
     }
+
 
     /**
      * @gir-type Flags
@@ -2012,6 +2126,7 @@ export namespace Meta {
         EIS,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2056,6 +2171,7 @@ export namespace Meta {
          */
         VERTICAL,
     }
+
 
     /**
      * @gir-type Flags
@@ -2102,6 +2218,7 @@ export namespace Meta {
         CUSTOM_TRIGGER,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2130,6 +2247,7 @@ export namespace Meta {
         FEATURE_STATE_CHANGE_BEEP,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2155,6 +2273,7 @@ export namespace Meta {
         BOTH,
     }
 
+
     namespace Backend {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -2162,38 +2281,37 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'gpu-added': (arg0: any | null) => void;
+            "gpu-added": (arg0: (any | null)) => void;
             /**
              * @signal
              * @run-last
              */
-            'keymap-changed': () => void;
+            "keymap-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'keymap-layout-group-changed': (arg0: number) => void;
+            "keymap-layout-group-changed": (arg0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            'last-device-changed': (arg0: Clutter.InputDevice) => void;
+            "last-device-changed": (arg0: Clutter.InputDevice) => void;
             /**
              * @signal
              * @run-last
              */
-            'lid-is-closed-changed': (arg0: boolean) => void;
+            "lid-is-closed-changed": (arg0: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            'prepare-shutdown': () => void;
-            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
-            'notify::context': (pspec: GObject.ParamSpec) => void;
+            "prepare-shutdown": () => void;
+            "notify::capabilities": (pspec: GObject.ParamSpec) => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             capabilities: BackendCapabilities;
             context: Context;
@@ -2202,9 +2320,9 @@ export namespace Meta {
 
     /**
      * Handles monitor config, modesetting, cursor sprites, ...
-     *
+     * 
      * MetaBackend is the abstraction that deals with several things like:
-     *
+     * 
      * - Modesetting (depending on the backend, this can be done either by X or KMS)
      * - Initializing the {@link Meta.Settings}
      * - Setting up Monitor configuration
@@ -2218,7 +2336,7 @@ export namespace Meta {
      * - Querying UPower (over D-Bus) to know when the lid is closed
      * - Setup Remote Desktop / Screencasting (`MetaRemoteDesktop`)
      * - Setup the `MetaEgl` object
-     *
+     * 
      * Note that the {@link Meta.Backend} is not a subclass of {@link Clutter.Backend}.
      * It is responsible for creating the correct one, based on the backend that is
      * used (`MetaBackendNative` or `MetaBackendX11`).
@@ -2228,12 +2346,12 @@ export namespace Meta {
         static $gtype: GObject.GType<Backend>;
 
         // Properties
-
         /**
          * @read-only
          * @default Meta.BackendCapabilities.NONE
          */
         get capabilities(): BackendCapabilities;
+
         /**
          * @construct-only
          */
@@ -2249,122 +2367,126 @@ export namespace Meta {
         $signals: Backend.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Backend.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Backend.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Backend.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Backend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         freeze_keyboard(timestamp: number): void;
+
         get_capabilities(): BackendCapabilities;
+
         /**
          * @returns The {@link Meta.Context}
          */
         get_context(): Context;
+
         /**
          * @returns the {@link Meta.IdleMonitor} that tracks server-global idle time for all devices.
          */
         get_core_idle_monitor(): IdleMonitor;
+
         /**
          * Gets the global {@link Meta.Dnd} that's managed by this backend.
          * @returns the {@link Meta.Dnd}
          */
         get_dnd(): Dnd;
+
         /**
          * @returns A {@link Meta.MonitorManager}
          */
         get_monitor_manager(): MonitorManager;
+
         /**
          * @returns The {@link Meta.RemoteAccessController}
          */
         get_remote_access_controller(): RemoteAccessController;
+
         /**
          * Gets the global {@link Clutter.Stage} that's managed by this backend.
          * @returns the {@link Clutter.Stage}
          */
         get_stage(): Clutter.Actor;
+
         is_headless(): boolean;
+
         /**
          * @returns `true` if the rendering is hardware accelerated, otherwise `false`.
          */
         is_rendering_hardware_accelerated(): boolean;
+
         /**
-         * @param idx
+         * @param idx 
          */
         lock_layout_group(idx: number): void;
+
         /**
-         * @param layouts
-         * @param variants
-         * @param options
-         * @param model
+         * @param layouts 
+         * @param variants 
+         * @param options 
+         * @param model 
          */
         set_keymap(layouts: string, variants: string, options: string, model: string): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         unfreeze_keyboard(timestamp: number): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         ungrab_keyboard(timestamp: number): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2374,40 +2496,41 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2417,8 +2540,9 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Background {
         // Signal signatures
@@ -2428,11 +2552,10 @@ export namespace Meta {
              * @run-last
              */
             changed: () => void;
-            'notify::meta-display': (pspec: GObject.ParamSpec) => void;
+            "notify::meta-display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             meta_display: Display;
             metaDisplay: Display;
@@ -2441,7 +2564,7 @@ export namespace Meta {
 
     /**
      * This class handles tracking and painting the root window background.
-     *
+     * 
      * By integrating with {@link Meta.WindowGroup} we can avoid painting parts of
      * the background that are obscured by other windows.
      * @gir-type Class
@@ -2450,11 +2573,11 @@ export namespace Meta {
         static $gtype: GObject.GType<Background>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get meta_display(): Display;
+
         /**
          * @construct-only
          */
@@ -2470,154 +2593,138 @@ export namespace Meta {
         $signals: Background.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Background.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](display: Display): Background;
+        static ["new"](display: Display): Background;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Background.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Background.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Background.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Background.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Background.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Background.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Background.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Background.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Background.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Background.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Background.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Background.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static refresh_all(): void;
 
         // Methods
-
         /**
-         * @param file1
-         * @param file2
-         * @param blend_factor
-         * @param style
+         * @param file1 
+         * @param file2 
+         * @param blend_factor 
+         * @param style 
          */
         set_blend(file1: Gio.File, file2: Gio.File, blend_factor: number, style: GDesktopEnums.BackgroundStyle): void;
+
         /**
-         * @param color
+         * @param color 
          */
         set_color(color: Clutter.Color): void;
+
         /**
          * Set the background to `file`
          * @param file a {@link Gio.File} representing the background file
          * @param style the background style to apply
          */
-        set_file(file: Gio.File | null, style: GDesktopEnums.BackgroundStyle): void;
+        set_file(file: (Gio.File | null), style: GDesktopEnums.BackgroundStyle): void;
+
         /**
-         * @param shading_direction
-         * @param color
-         * @param second_color
+         * @param shading_direction 
+         * @param color 
+         * @param second_color 
          */
-        set_gradient(
-            shading_direction: GDesktopEnums.BackgroundShading,
-            color: Clutter.Color,
-            second_color: Clutter.Color,
-        ): void;
+        set_gradient(shading_direction: GDesktopEnums.BackgroundShading, color: Clutter.Color, second_color: Clutter.Color): void;
     }
+
 
     namespace BackgroundActor {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
-            'notify::meta-display': (pspec: GObject.ParamSpec) => void;
-            'notify::monitor': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::meta-display": (pspec: GObject.ParamSpec) => void;
+            "notify::monitor": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps<Clutter.LayoutManager, BackgroundContent>,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps {
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps<Clutter.LayoutManager, BackgroundContent>, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
             meta_display: Display;
             metaDisplay: Display;
             monitor: number;
@@ -2626,27 +2733,25 @@ export namespace Meta {
 
     /**
      * This class handles tracking and painting the root window background.
-     *
+     * 
      * By integrating with {@link Meta.WindowGroup} we can avoid painting parts of
      * the background that are obscured by other windows.
      * @gir-type Class
      */
-    class BackgroundActor
-        extends Clutter.Actor<Clutter.LayoutManager, BackgroundContent>
-        implements Atk.ImplementorIface, Clutter.Animatable
-    {
+    class BackgroundActor extends Clutter.Actor<Clutter.LayoutManager, BackgroundContent> implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<BackgroundActor>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get meta_display(): Display;
+
         /**
          * @construct-only
          */
         get metaDisplay(): Display;
+
         /**
          * @construct-only
          * @default 0
@@ -2663,59 +2768,54 @@ export namespace Meta {
         $signals: BackgroundActor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BackgroundActor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](display: Display, monitor: number): BackgroundActor;
-        // Conflicted with Clutter.Actor.new
+        static ["new"](display: Display, monitor: number): BackgroundActor;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Clutter.Actor.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BackgroundActor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundActor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BackgroundActor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundActor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BackgroundActor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundActor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BackgroundActor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundActor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BackgroundActor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BackgroundActor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BackgroundActor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackgroundActor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
          * @param property_name the name of the property to interpolate
@@ -2724,23 +2824,27 @@ export namespace Meta {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -2748,12 +2852,13 @@ export namespace Meta {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
          * @param property_name the name of the property to interpolate
@@ -2761,11 +2866,8 @@ export namespace Meta {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -2775,23 +2877,23 @@ export namespace Meta {
         vfunc_set_final_state(property_name: string, value: unknown): void;
     }
 
+
     namespace BackgroundContent {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::background': (pspec: GObject.ParamSpec) => void;
-            'notify::brightness': (pspec: GObject.ParamSpec) => void;
-            'notify::gradient': (pspec: GObject.ParamSpec) => void;
-            'notify::gradient-height': (pspec: GObject.ParamSpec) => void;
-            'notify::gradient-max-darkness': (pspec: GObject.ParamSpec) => void;
-            'notify::meta-display': (pspec: GObject.ParamSpec) => void;
-            'notify::monitor': (pspec: GObject.ParamSpec) => void;
-            'notify::rounded-clip-radius': (pspec: GObject.ParamSpec) => void;
-            'notify::vignette': (pspec: GObject.ParamSpec) => void;
-            'notify::vignette-sharpness': (pspec: GObject.ParamSpec) => void;
+            "notify::background": (pspec: GObject.ParamSpec) => void;
+            "notify::brightness": (pspec: GObject.ParamSpec) => void;
+            "notify::gradient": (pspec: GObject.ParamSpec) => void;
+            "notify::gradient-height": (pspec: GObject.ParamSpec) => void;
+            "notify::gradient-max-darkness": (pspec: GObject.ParamSpec) => void;
+            "notify::meta-display": (pspec: GObject.ParamSpec) => void;
+            "notify::monitor": (pspec: GObject.ParamSpec) => void;
+            "notify::rounded-clip-radius": (pspec: GObject.ParamSpec) => void;
+            "notify::vignette": (pspec: GObject.ParamSpec) => void;
+            "notify::vignette-sharpness": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {
             background: Background;
             brightness: number;
@@ -2813,10 +2915,10 @@ export namespace Meta {
 
     /**
      * This class handles tracking and painting the root window background.
-     *
+     * 
      * By integrating with {@link Meta.WindowGroup} we can avoid painting parts of
      * the background that are obscured by other windows.
-     *
+     * 
      * The overall model drawing model of this content is that we have one
      * texture, or two interpolated textures, possibly with alpha or
      * margins that let the underlying background show through, blended
@@ -2824,25 +2926,25 @@ export namespace Meta {
      * can then be affected by a "vignette" that darkens the background
      * away from a central point (or as a no-GLSL fallback, simply darkens
      * the background) and by overall opacity.
-     *
+     * 
      * As of GNOME 3.14, GNOME is only using a fraction of this when the
      * user sets the background through the control center - what can be
      * set is:
-     *
+     * 
      *  A single image without a border
      *  An animation of images without a border that blend together,
      *   with the blend changing every 4-5 minutes
      *  A solid color with a repeated noise texture blended over it
-     *
+     * 
      * This all is pretty easy to do in a fragment shader, except when:
-     *
+     * 
      *  A) We don't have GLSL - in this case, the operation of
      *     interpolating the two textures and blending the result over the
      *     background can't be expressed with Cogl's fixed-function layer
      *     combining (which is confined to what GL's texture environment
      *     combining can do) So we can only handle the above directly if
      *     there are no margins or alpha.
-     *
+     * 
      *  B) The image textures are sliced. Texture size limits on older
      *     hardware (pre-965 intel hardware, r300, etc.)  is often 2048,
      *     and it would be common to use a texture larger than this for a
@@ -2850,7 +2952,7 @@ export namespace Meta {
      *     for this by breaking the texture up into multiple textures, but
      *     can't multitexture with sliced textures. So we can only handle
      *     the above if there's a single texture.
-     *
+     * 
      * However, even when we *can* represent everything in a single pass,
      * it's not necessarily efficient. If we want to draw a 1024x768
      * background, it's pretty inefficient to bilinearly texture from
@@ -2866,72 +2968,85 @@ export namespace Meta {
         static $gtype: GObject.GType<BackgroundContent>;
 
         // Properties
-
         get background(): Background;
         set background(val: Background);
+
         /**
          * @default 1
          */
         get brightness(): number;
         set brightness(val: number);
+
         /**
          * @default false
          */
         get gradient(): boolean;
         set gradient(val: boolean);
+
         /**
          * @default 0
          */
         get gradient_height(): number;
         set gradient_height(val: number);
+
         /**
          * @default 0
          */
         get gradientHeight(): number;
         set gradientHeight(val: number);
+
         /**
          * @default 0
          */
         get gradient_max_darkness(): number;
         set gradient_max_darkness(val: number);
+
         /**
          * @default 0
          */
         get gradientMaxDarkness(): number;
         set gradientMaxDarkness(val: number);
+
         /**
          * @construct-only
          */
         get meta_display(): Display;
+
         /**
          * @construct-only
          */
         get metaDisplay(): Display;
+
         /**
          * @construct-only
          * @default 0
          */
         get monitor(): number;
+
         /**
          * @default 0
          */
         get rounded_clip_radius(): number;
         set rounded_clip_radius(val: number);
+
         /**
          * @default 0
          */
         get roundedClipRadius(): number;
         set roundedClipRadius(val: number);
+
         /**
          * @default false
          */
         get vignette(): boolean;
         set vignette(val: boolean);
+
         /**
          * @default 0
          */
         get vignette_sharpness(): number;
         set vignette_sharpness(val: number);
+
         /**
          * @default 0
          */
@@ -2948,53 +3063,44 @@ export namespace Meta {
         $signals: BackgroundContent.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BackgroundContent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BackgroundContent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundContent.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BackgroundContent.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundContent.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BackgroundContent.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundContent.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BackgroundContent.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundContent.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BackgroundContent.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BackgroundContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BackgroundContent.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackgroundContent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates a new actor to draw the background for the given monitor.
-         * @param display
+         * @param display 
          * @param monitor Index of the monitor for which to draw the background
          */
-        static ['new'](display: Display, monitor: number): Clutter.Content;
+        static ["new"](display: Display, monitor: number): Clutter.Content;
 
         // Methods
-
         /**
-         * @param background
+         * @param background 
          */
         set_background(background: Background): void;
+
         /**
-         * @param enabled
-         * @param height
-         * @param tone_start
+         * @param enabled 
+         * @param height 
+         * @param tone_start 
          */
         set_gradient(enabled: boolean, height: number, tone_start: number): void;
+
         /**
          * Sets the bounding clip rectangle of the {@link Meta.BackgroundContent} that's used
          * when a rounded clip set via `meta_background_content_set_rounded_clip_radius()`
@@ -3002,187 +3108,196 @@ export namespace Meta {
          * of the full texture.
          * @param bounds The new bounding clip rectangle, or `null`
          */
-        set_rounded_clip_bounds(bounds: Graphene.Rect | null): void;
+        set_rounded_clip_bounds(bounds: (Graphene.Rect | null)): void;
+
         /**
-         * @param radius
+         * @param radius 
          */
         set_rounded_clip_radius(radius: number): void;
+
         /**
-         * @param enabled
-         * @param brightness
-         * @param sharpness
+         * @param enabled 
+         * @param brightness 
+         * @param sharpness 
          */
         set_vignette(enabled: boolean, brightness: number, sharpness: number): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
          */
         get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          */
         invalidate(): void;
+
         /**
          * Signals that `content`'s size changed. Attached actors with request mode
          * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
-         *
+         * 
          * Attached actors with other request modes are not redrawn. To redraw them
          * too, use {@link Clutter.Content.invalidate}.
          */
         invalidate_size(): void;
+
         /**
          * virtual function; called each time a {@link Clutter.Content} is attached
          *   to a {@link Clutter.Actor}.
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_attached(actor: Clutter.Actor): void;
+
         /**
          * virtual function; called each time a {@link Clutter.Content} is detached
          *   from a {@link Clutter.Actor}.
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_detached(actor: Clutter.Actor): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          * @virtual
          */
         vfunc_invalidate(): void;
+
         /**
          * Signals that `content`'s size changed. Attached actors with request mode
          * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
-         *
+         * 
          * Attached actors with other request modes are not redrawn. To redraw them
          * too, use {@link Clutter.Content.invalidate}.
          * @virtual
          */
         vfunc_invalidate_size(): void;
+
         /**
          * virtual function; called each time the content needs to
          *   paint itself
-         * @param actor
-         * @param node
-         * @param paint_context
+         * @param actor 
+         * @param node 
+         * @param paint_context 
          * @virtual
          */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode, paint_context: Clutter.PaintContext): void;
     }
 
+
     namespace BackgroundGroup {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps {}
+        }
     }
 
     /**
      * Container for background actors
-     *
+     * 
      * This class is a subclass of ClutterActor with special handling for
      * MetaBackgroundActor/MetaBackgroundGroup when painting children.
      * It makes sure to only draw the parts of the backgrounds not
      * occluded by opaque windows.
-     *
+     * 
      * See {@link Meta.WindowGroup} for more information behind the motivation,
      * and details on implementation.
      * @gir-type Class
@@ -3200,56 +3315,51 @@ export namespace Meta {
         $signals: BackgroundGroup.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BackgroundGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BackgroundGroup;
+        static ["new"](): BackgroundGroup;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BackgroundGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundGroup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BackgroundGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundGroup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BackgroundGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundGroup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BackgroundGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundGroup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BackgroundGroup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BackgroundGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BackgroundGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackgroundGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
          * @param property_name the name of the property to interpolate
@@ -3258,23 +3368,27 @@ export namespace Meta {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -3282,12 +3396,13 @@ export namespace Meta {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
          * @param property_name the name of the property to interpolate
@@ -3295,11 +3410,8 @@ export namespace Meta {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -3308,6 +3420,7 @@ export namespace Meta {
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
     }
+
 
     namespace BackgroundImage {
         // Signal signatures
@@ -3320,8 +3433,9 @@ export namespace Meta {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3341,34 +3455,24 @@ export namespace Meta {
         $signals: BackgroundImage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BackgroundImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BackgroundImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundImage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BackgroundImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundImage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BackgroundImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundImage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BackgroundImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundImage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BackgroundImage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BackgroundImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BackgroundImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackgroundImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * This function is a convenience function for checking for success,
          * without having to call `meta_background_image_get_texture()` and
@@ -3376,28 +3480,33 @@ export namespace Meta {
          * @returns `true` if loading completed successfully, otherwise `false`
          */
         get_success(): boolean;
+
         /**
          * @returns a {@link Cogl.Texture} if loading succeeded; if  loading failed or has not yet finished, `null`.
          */
         get_texture(): Cogl.Texture;
+
         /**
          * @returns `true` if loading has already completed, `false` otherwise
          */
         is_loaded(): boolean;
     }
 
+
     namespace BackgroundImageCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Caches loading of textures for backgrounds.
-     *
+     * 
      * There's actually nothing background specific about it, other than it is tuned
      * to work well for large images as typically are used for backgrounds.
      * @gir-type Class
@@ -3415,44 +3524,31 @@ export namespace Meta {
         $signals: BackgroundImageCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BackgroundImageCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BackgroundImageCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundImageCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BackgroundImageCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundImageCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BackgroundImageCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackgroundImageCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BackgroundImageCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackgroundImageCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BackgroundImageCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BackgroundImageCache.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof BackgroundImageCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackgroundImageCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static get_default(): BackgroundImageCache;
 
         // Methods
-
         /**
          * Loads an image to use as a background, or returns a reference to an
          * image that is already in the process of loading or loaded.
-         *
+         * 
          * In either case, what is returned is a {@link Meta.BackgroundImage} which can be dereferenced
          * to get a {@link Cogl.Texture}. If {@link Meta.BackgroundImage.is_loaded} returns `true`,
          * the background is loaded, otherwise the `Meta.BackgroundImage::loaded`
@@ -3462,6 +3558,7 @@ export namespace Meta {
          * @returns a {@link Meta.BackgroundImage} to dereference to get the loaded texture
          */
         load(file: Gio.File): BackgroundImage;
+
         /**
          * Remove an entry from the cache; this would be used if monitoring
          * showed that the file changed.
@@ -3469,6 +3566,7 @@ export namespace Meta {
          */
         purge(file: Gio.File): void;
     }
+
 
     namespace Barrier {
         // Signal signatures
@@ -3487,17 +3585,16 @@ export namespace Meta {
              * @run-first
              */
             left: (arg0: BarrierEvent) => void;
-            'notify::backend': (pspec: GObject.ParamSpec) => void;
-            'notify::directions': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::x1': (pspec: GObject.ParamSpec) => void;
-            'notify::x2': (pspec: GObject.ParamSpec) => void;
-            'notify::y1': (pspec: GObject.ParamSpec) => void;
-            'notify::y2': (pspec: GObject.ParamSpec) => void;
+            "notify::backend": (pspec: GObject.ParamSpec) => void;
+            "notify::directions": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::x1": (pspec: GObject.ParamSpec) => void;
+            "notify::x2": (pspec: GObject.ParamSpec) => void;
+            "notify::y1": (pspec: GObject.ParamSpec) => void;
+            "notify::y2": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             backend: Backend;
             directions: BarrierDirection;
@@ -3517,36 +3614,41 @@ export namespace Meta {
         static $gtype: GObject.GType<Barrier>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get backend(): Backend;
+
         /**
          * @construct-only
          * @default 0
          */
         get directions(): BarrierDirection;
+
         /**
          * @construct-only
          * @default Meta.BarrierFlags.NONE
          */
         get flags(): BarrierFlags;
+
         /**
          * @construct-only
          * @default 0
          */
         get x1(): number;
+
         /**
          * @construct-only
          * @default 32767
          */
         get x2(): number;
+
         /**
          * @construct-only
          * @default 0
          */
         get y1(): number;
+
         /**
          * @construct-only
          * @default 32767
@@ -3563,46 +3665,30 @@ export namespace Meta {
         $signals: Barrier.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Barrier.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            backend: Backend,
-            x1: number,
-            y1: number,
-            x2: number,
-            y2: number,
-            directions: BarrierDirection,
-            flags: BarrierFlags,
-        ): Barrier;
+        static ["new"](backend: Backend, x1: number, y1: number, x2: number, y2: number, directions: BarrierDirection, flags: BarrierFlags): Barrier;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Barrier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Barrier.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Barrier.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Barrier.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Barrier.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Barrier.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Barrier.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Barrier.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Barrier.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Barrier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Barrier.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Barrier.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         destroy(): void;
+
         is_active(): boolean;
+
         /**
          * In XI2.3, pointer barriers provide a feature where they can
          * be temporarily released so that the pointer goes through
@@ -3611,39 +3697,40 @@ export namespace Meta {
          * @param event The event to release the pointer for
          */
         release(event: BarrierEvent): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -3653,40 +3740,41 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -3696,18 +3784,18 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Compositor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::backend': (pspec: GObject.ParamSpec) => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "notify::backend": (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             backend: Backend;
             display: Display;
@@ -3716,31 +3804,31 @@ export namespace Meta {
 
     /**
      * Compositor API
-     *
+     * 
      * At a high-level, a window is not-visible or visible. When a
      * window is added (with `meta_compositor_add_window()`) it is not visible.
      * `meta_compositor_show_window()` indicates a transition from not-visible to
      * visible. Some of the reasons for this:
-     *
+     * 
      * - Window newly created
      * - Window is unminimized
      * - Window is moved to the current desktop
      * - Window was made sticky
-     *
+     * 
      * `meta_compositor_hide_window()` indicates that the window has transitioned from
      * visible to not-visible. Some reasons include:
-     *
+     * 
      * - Window was destroyed
      * - Window is minimized
      * - Window is moved to a different desktop
      * - Window no longer sticky.
-     *
+     * 
      * Note that combinations are possible - a window might have first
      * been minimized and then moved to a different desktop. The 'effect' parameter
      * to `meta_compositor_show_window()` and `meta_compositor_hide_window()` is a hint
      * as to the appropriate effect to show the user and should not
      * be considered to be indicative of a state change.
-     *
+     * 
      * When the active workspace is changed, `meta_compositor_switch_workspace()` is
      * called first, then `meta_compositor_show_window()` and
      * `meta_compositor_hide_window()` are called individually for each window
@@ -3748,15 +3836,15 @@ export namespace Meta {
      * If hiding windows will affect the switch workspace animation, the
      * compositor needs to delay hiding the windows until the switch
      * workspace animation completes.
-     *
+     * 
      * # Containers #
-     *
+     * 
      * There's two containers in the stage that are used to place window actors, here
      * are listed in the order in which they are painted:
-     *
+     * 
      * - window group, accessible with `meta_get_window_group_for_display()`
      * - top window group, accessible with `meta_get_top_window_group_for_display()`
-     *
+     * 
      * Mutter will place actors representing windows in the window group, except for
      * override-redirect windows (ie. popups and menus) which will be placed in the
      * top window group.
@@ -3766,11 +3854,11 @@ export namespace Meta {
         static $gtype: GObject.GType<Compositor>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get backend(): Backend;
+
         /**
          * @construct-only
          */
@@ -3786,43 +3874,35 @@ export namespace Meta {
         $signals: Compositor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Compositor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Compositor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compositor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Compositor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Compositor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Compositor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Compositor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Compositor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Compositor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Compositor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Compositor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Compositor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Compositor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns The feedback group corresponding to `display`
          */
         get_feedback_group(): Clutter.Actor;
+
         /**
          * @returns a {@link Meta.Laters}
          */
         get_laters(): Laters;
     }
+
 
     namespace Context {
         // Signal signatures
@@ -3831,18 +3911,17 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'prepare-shutdown': () => void;
+            "prepare-shutdown": () => void;
             /**
              * @signal
              * @run-last
              */
             started: () => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::unsafe-mode': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::unsafe-mode": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
             unsafe_mode: boolean;
@@ -3857,17 +3936,18 @@ export namespace Meta {
         static $gtype: GObject.GType<Context>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * @default false
          */
         get unsafe_mode(): boolean;
         set unsafe_mode(val: boolean);
+
         /**
          * @default false
          */
@@ -3884,98 +3964,108 @@ export namespace Meta {
         $signals: Context.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Context.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Context.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Context.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Context.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Context.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Context.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Context.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * See `g_option_context_add_main_entries()` for more details.
          * @param entries a `null`-terminated array of `GOptionEntrys`
          * @param translation_domain a translation domain to use, or `null`
          */
-        add_option_entries(entries: GLib.OptionEntry[], translation_domain: string | null): void;
+        add_option_entries(entries: GLib.OptionEntry[], translation_domain: (string | null)): void;
+
         /**
          * See `g_option_context_add_group()` for more details.
          * @param group the group to add
          */
         add_option_group(group: GLib.OptionGroup): void;
+
         /**
          * @param argv Address of the`argv` parameter of `main()`, or `null`.
          * @returns `true` if the commandline arguments (if any) were valid and if the configuration has been successful, `false` otherwise
          */
-        configure(argv: string[] | null): [boolean, string[] | null];
+        configure(argv: (string[] | null)): [boolean, string[] | null];
+
         destroy(): void;
+
         /**
          * @returns the {@link Meta.Backend}
          */
         get_backend(): Backend;
+
         get_compositor_type(): CompositorType;
+
         /**
          * @returns the {@link Meta.Display}
          */
         get_display(): Display;
+
         /**
          * Get the {@link Meta.WaylandCompositor} associated with the MetaContext. The might be
          * none currently associated if the context hasn't been started or if the
          * requested compositor type is not {@link Meta.CompositorType.WAYLAND}.
          * @returns the {@link Meta.WaylandCompositor}
          */
-        get_wayland_compositor(): WaylandCompositor | null;
+        get_wayland_compositor(): (WaylandCompositor | null);
+
         is_replacing(): boolean;
+
         notify_ready(): void;
+
         /**
          * Raises the RLIMIT_NOFILE limit value to the hard limit.
          */
         raise_rlimit_nofile(): boolean;
+
         /**
          * Restores the RLIMIT_NOFILE limits from when the {@link Meta.Context} was created.
          */
         restore_rlimit_nofile(): boolean;
+
         run_main_loop(): boolean;
+
         /**
-         * @param wm_keybindings
+         * @param wm_keybindings 
          */
         set_gnome_wm_keybindings(wm_keybindings: string): void;
+
         /**
-         * @param plugin_gtype
+         * @param plugin_gtype 
          */
         set_plugin_gtype(plugin_gtype: GObject.GType): void;
+
         /**
-         * @param plugin_name
+         * @param plugin_name 
          */
         set_plugin_name(plugin_name: string): void;
+
         setup(): boolean;
+
         start(): boolean;
+
         terminate(): void;
+
         /**
-         * @param error
+         * @param error 
          */
         terminate_with_error(error: GLib.Error): void;
     }
+
 
     namespace CursorTracker {
         // Signal signatures
@@ -3984,22 +4074,21 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'cursor-changed': () => void;
+            "cursor-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'position-invalidated': () => void;
+            "position-invalidated": () => void;
             /**
              * @signal
              * @run-last
              */
-            'visibility-changed': () => void;
-            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            "visibility-changed": () => void;
+            "notify::backend": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             backend: Backend;
         }
@@ -4014,7 +4103,6 @@ export namespace Meta {
         static $gtype: GObject.GType<CursorTracker>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -4030,34 +4118,24 @@ export namespace Meta {
         $signals: CursorTracker.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CursorTracker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CursorTracker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CursorTracker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CursorTracker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CursorTracker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CursorTracker.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CursorTracker.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CursorTracker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CursorTracker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CursorTracker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Retrieves the cursor tracker object for `display`.
          * @param display the {@link Meta.Display}
@@ -4065,31 +4143,36 @@ export namespace Meta {
         static get_for_display(display: Display): CursorTracker;
 
         // Methods
-
         /**
          * Get the hotspot of the current cursor sprite.
          */
         get_hot(): [number, number];
+
         /**
          * Get the current pointer position and state.
          */
         get_pointer(): [Graphene.Point | null, Clutter.ModifierType | null];
+
         get_pointer_visible(): boolean;
+
         /**
          * Get the scale factor of the cursor sprite
          * @returns The scale factor of the cursor sprite
          */
         get_scale(): number;
+
         /**
          * Get the {@link Cogl.Texture} of the cursor sprite
          * @returns the {@link Cogl.Texture} of the cursor sprite
          */
-        get_sprite(): Cogl.Texture | null;
+        get_sprite(): (Cogl.Texture | null);
+
         /**
-         * @param visible
+         * @param visible 
          */
         set_pointer_visible(visible: boolean): void;
     }
+
 
     namespace Display {
         // Signal signatures
@@ -4098,7 +4181,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'accelerator-activated': (arg0: number, arg1: Clutter.InputDevice, arg2: number) => void;
+            "accelerator-activated": (arg0: number, arg1: Clutter.InputDevice, arg2: number) => void;
             /**
              * @signal
              * @run-last
@@ -4108,54 +4191,54 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'cursor-updated': () => void;
+            "cursor-updated": () => void;
             /**
              * @signal
              * @run-last
              */
-            'focus-window': (arg0: Window, arg1: number) => void;
+            "focus-window": (arg0: Window, arg1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            'gl-video-memory-purged': () => void;
+            "gl-video-memory-purged": () => void;
             /**
              * @signal
              * @run-last
              */
-            'grab-op-begin': (arg0: Window, arg1: GrabOp) => void;
+            "grab-op-begin": (arg0: Window, arg1: GrabOp) => void;
             /**
              * @signal
              * @run-last
              */
-            'grab-op-end': (arg0: Window, arg1: GrabOp) => void;
+            "grab-op-end": (arg0: Window, arg1: GrabOp) => void;
             /**
              * @signal
              * @run-last
              */
-            'in-fullscreen-changed': () => void;
+            "in-fullscreen-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'init-xserver': (arg0: Gio.Task) => boolean | void;
+            "init-xserver": (arg0: Gio.Task) => (boolean | void);
             /**
              * The ::modifiers-accelerator-activated signal will be emitted when
              * a special modifiers-only keybinding is activated.
              * @signal
              * @run-last
              */
-            'modifiers-accelerator-activated': () => boolean | void;
+            "modifiers-accelerator-activated": () => (boolean | void);
             /**
              * @signal
              * @run-last
              */
-            'overlay-key': () => void;
+            "overlay-key": () => void;
             /**
              * @signal
              * @run-last
              */
-            'pad-mode-switch': (arg0: Clutter.InputDevice, arg1: number, arg2: number) => void;
+            "pad-mode-switch": (arg0: Clutter.InputDevice, arg1: number, arg2: number) => void;
             /**
              * @signal
              * @run-last
@@ -4164,114 +4247,107 @@ export namespace Meta {
             /**
              * The signal is emitted to indicate that compositor
              * should reexec the process.
-             *
+             * 
              * This is emitted when {@link Meta.restart} is called,
              * either by Mutter internally or by the embedding compositor.
-             *
+             * 
              * See also `Meta.Display::show-restart-message`.
              * @signal
              * @run-last
              */
-            restart: () => boolean | void;
+            restart: () => (boolean | void);
             /**
              * @signal
              * @run-last
              */
-            'show-osd': (arg0: number, arg1: string, arg2: string) => void;
+            "show-osd": (arg0: number, arg1: string, arg2: string) => void;
             /**
              * Requests the pad button mapping OSD to be shown.
              * @signal
              * @run-last
              */
-            'show-pad-osd': (
-                arg0: Clutter.InputDevice,
-                arg1: Gio.Settings,
-                arg2: string,
-                arg3: boolean,
-                arg4: number,
-            ) => Clutter.Actor | null;
+            "show-pad-osd": (arg0: Clutter.InputDevice, arg1: Gio.Settings, arg2: string, arg3: boolean, arg4: number) => (Clutter.Actor | null);
             /**
              * @signal
              * @run-last
              */
-            'show-resize-popup': (arg0: boolean, arg1: Mtk.Rectangle, arg2: number, arg3: number) => boolean | void;
+            "show-resize-popup": (arg0: boolean, arg1: Mtk.Rectangle, arg2: number, arg3: number) => (boolean | void);
             /**
              * The signal will be emitted to indicate that the compositor
              * should show a message during restart.
-             *
+             * 
              * This is emitted when {@link Meta.restart} is called, either by Mutter
              * internally or by the embedding compositor. The message should be
              * immediately added to the Clutter stage in its final form -
              * `Meta.Display::restart` will be emitted to exit the application and leave the
              * stage contents frozen as soon as the the stage is painted again.
-             *
+             * 
              * On case of failure to restart, this signal will be emitted again
              * with `null` for `message`.
              * @signal
              * @run-last
              */
-            'show-restart-message': (arg0: string | null) => boolean | void;
+            "show-restart-message": (arg0: (string | null)) => (boolean | void);
             /**
              * @signal
              * @run-last
              */
-            'showing-desktop-changed': () => void;
+            "showing-desktop-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'window-created': (arg0: Window) => void;
+            "window-created": (arg0: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            'window-demands-attention': (arg0: Window) => void;
+            "window-demands-attention": (arg0: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            'window-entered-monitor': (arg0: number, arg1: Window) => void;
+            "window-entered-monitor": (arg0: number, arg1: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            'window-left-monitor': (arg0: number, arg1: Window) => void;
+            "window-left-monitor": (arg0: number, arg1: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            'window-marked-urgent': (arg0: Window) => void;
+            "window-marked-urgent": (arg0: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            'window-visibility-updated': (arg0: any | null, arg1: any | null, arg2: any | null) => void;
+            "window-visibility-updated": (arg0: (any | null), arg1: (any | null), arg2: (any | null)) => void;
             /**
              * @signal
              * @run-last
              */
-            'workareas-changed': () => void;
+            "workareas-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'x11-display-closing': () => void;
+            "x11-display-closing": () => void;
             /**
              * @signal
              * @run-last
              */
-            'x11-display-opened': () => void;
+            "x11-display-opened": () => void;
             /**
              * @signal
              * @run-last
              */
-            'x11-display-setup': () => void;
-            'notify::compositor-modifiers': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-window': (pspec: GObject.ParamSpec) => void;
+            "x11-display-setup": () => void;
+            "notify::compositor-modifiers": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             compositor_modifiers: Clutter.ModifierType;
             compositorModifiers: Clutter.ModifierType;
@@ -4282,7 +4358,7 @@ export namespace Meta {
 
     /**
      * Mutter display representation
-     *
+     * 
      * The display is represented as a {@link Meta.Display} struct.
      * @gir-type Class
      */
@@ -4290,21 +4366,23 @@ export namespace Meta {
         static $gtype: GObject.GType<Display>;
 
         // Properties
-
         /**
          * @read-only
          * @default 0
          */
         get compositor_modifiers(): Clutter.ModifierType;
+
         /**
          * @read-only
          * @default 0
          */
         get compositorModifiers(): Clutter.ModifierType;
+
         /**
          * @read-only
          */
         get focus_window(): Window;
+
         /**
          * @read-only
          */
@@ -4320,34 +4398,24 @@ export namespace Meta {
         $signals: Display.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Display.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Display.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Display.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Display.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Add a keybinding at runtime. The key `name` in `schema` needs to be of
          * type `G_VARIANT_TYPE_STRING_ARRAY`, with each string describing a
@@ -4356,7 +4424,7 @@ export namespace Meta {
          * such as "&lt;Ctl&gt;" and "&lt;Ctrl&gt;". If the key is set to the empty list or a
          * list with a single element of either "" or "disabled", the keybinding is
          * disabled.
-         *
+         * 
          * Use `meta_display_remove_keybinding()` to remove the binding.
          * @param name the binding's name
          * @param settings the {@link Gio.Settings} object where `name` is stored
@@ -4365,6 +4433,7 @@ export namespace Meta {
          * @returns the corresponding keybinding action if the keybinding was          added successfully, otherwise {@link Meta.KeyBindingAction.NONE}
          */
         add_keybinding(name: string, settings: Gio.Settings, flags: KeyBindingFlags, handler: KeyHandlerFunc): number;
+
         /**
          * Sets the mouse-mode flag to `false`, which means that motion events are
          * no longer ignored in mouse or sloppy focus.
@@ -4372,30 +4441,39 @@ export namespace Meta {
          * keybindings, and only in a manner compatible with core code.
          */
         clear_mouse_mode(): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         close(timestamp: number): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         focus_default_window(timestamp: number): void;
+
         /**
          * @returns the {@link Meta.Compositor}
          */
         get_compositor(): Compositor;
+
         get_compositor_modifiers(): Clutter.ModifierType;
+
         /**
          * @returns the {@link Meta.Context}
          */
         get_context(): Context;
+
         /**
          * Gets the index of the monitor that currently has the mouse pointer.
          * @returns a monitor index
          */
         get_current_monitor(): number;
+
         get_current_time(): number;
+
         get_current_time_roundtrip(): number;
+
         /**
          * Get our best guess as to the "currently" focused window (that is,
          * the window that we expect will be focused at the point when the X
@@ -4403,6 +4481,7 @@ export namespace Meta {
          * @returns The current focus window
          */
         get_focus_window(): Window;
+
         /**
          * Get the keybinding action bound to `keycode`. Builtin keybindings
          * have a fixed associated {@link Meta.KeyBindingAction}, for bindings added
@@ -4412,81 +4491,90 @@ export namespace Meta {
          * @param mask Event mask
          * @returns The action that should be taken for the given key, or {@link Meta.KeyBindingAction.NONE}.
          */
-        get_keybinding_action(keycode: number, mask: bigint | number): number;
+        get_keybinding_action(keycode: number, mask: (bigint | number)): number;
+
         /**
          * @returns Timestamp of the last user interaction event with a window
          */
         get_last_user_time(): number;
+
         /**
          * Stores the location and size of the indicated `monitor` in `geometry`.
          * @param monitor the monitor number
          */
         get_monitor_geometry(monitor: number): Mtk.Rectangle;
+
         /**
          * Determines whether there is a fullscreen window obscuring the specified
          * monitor. If there is a fullscreen window, the desktop environment will
          * typically hide any controls that might obscure the fullscreen window.
-         *
+         * 
          * You can get notification when this changes by connecting to
          * MetaDisplay::in-fullscreen-changed.
          * @param monitor the monitor number
          * @returns `true` if there is a fullscreen window covering the specified monitor.
          */
         get_monitor_in_fullscreen(monitor: number): boolean;
+
         /**
-         * @param rect
+         * @param rect 
          */
         get_monitor_index_for_rect(rect: Mtk.Rectangle): number;
+
         /**
-         * @param which_monitor
-         * @param dir
+         * @param which_monitor 
+         * @param dir 
          */
         get_monitor_neighbor_index(which_monitor: number, dir: DisplayDirection): number;
+
         /**
          * Gets the monitor scaling value for the given `monitor`.
          * @param monitor the monitor number
          * @returns the monitor scaling value
          */
         get_monitor_scale(monitor: number): number;
+
         /**
          * Gets the number of monitors that are joined together to form `display`.
          * @returns the number of monitors
          */
         get_n_monitors(): number;
+
         /**
-         * @param pad
-         * @param button_number
+         * @param pad 
+         * @param button_number 
          */
         get_pad_button_label(pad: Clutter.InputDevice, button_number: number): string;
+
         /**
-         * @param pad
-         * @param feature
-         * @param direction
-         * @param feature_number
+         * @param pad 
+         * @param feature 
+         * @param direction 
+         * @param feature_number 
          */
-        get_pad_feature_label(
-            pad: Clutter.InputDevice,
-            feature: PadFeatureType,
-            direction: PadDirection,
-            feature_number: number,
-        ): string;
+        get_pad_feature_label(pad: Clutter.InputDevice, feature: PadFeatureType, direction: PadDirection, feature_number: number): string;
+
         /**
          * Gets the index of the primary monitor on this `display`.
          * @returns a monitor index
          */
         get_primary_monitor(): number;
+
         /**
          * @returns The selection manager of the display
          */
         get_selection(): Selection;
+
         /**
          * Retrieve the size of the display.
          */
         get_size(): [number, number];
+
         /**
          * @returns The sound player of the display
          */
         get_sound_player(): SoundPlayer;
+
         /**
          * Determine the active window that should be displayed for Alt-TAB.
          * @param type type of tab list
@@ -4494,6 +4582,7 @@ export namespace Meta {
          * @returns Current window
          */
         get_tab_current(type: TabList, workspace: Workspace): Window;
+
         /**
          * Determine the list of windows that should be displayed for Alt-TAB
          * functionality.  The windows are returned in most recently used order.
@@ -4504,7 +4593,8 @@ export namespace Meta {
          * @param workspace origin workspace
          * @returns List of windows
          */
-        get_tab_list(type: TabList, workspace: Workspace | null): Window[];
+        get_tab_list(type: TabList, workspace: (Workspace | null)): Window[];
+
         /**
          * Determine the next window that should be displayed for Alt-TAB
          * functionality.
@@ -4514,34 +4604,40 @@ export namespace Meta {
          * @param backward If `true`, look for the previous window.
          * @returns Next window
          */
-        get_tab_next(type: TabList, workspace: Workspace, window: Window | null, backward: boolean): Window;
+        get_tab_next(type: TabList, workspace: Workspace, window: (Window | null), backward: boolean): Window;
+
         /**
          * @returns The workspace manager of the display
          */
         get_workspace_manager(): WorkspaceManager;
+
         /**
-         * @param accelerator
-         * @param flags
+         * @param accelerator 
+         * @param flags 
          */
         grab_accelerator(accelerator: string, flags: KeyBindingFlags): number;
+
         /**
          * Returns `true` if there is an ongoing grab operation.
          * @returns Whether there is an active display grab operation.
          */
         is_grabbed(): boolean;
+
         /**
          * Tells whether the event sequence is the used for pointer emulation
          * and single-touch interaction.
          * @param sequence a {@link Clutter.EventSequence}
          * @returns `TRUE` if the sequence emulates pointer behavior
          */
-        is_pointer_emulating_sequence(sequence: Clutter.EventSequence | null): boolean;
+        is_pointer_emulating_sequence(sequence: (Clutter.EventSequence | null)): boolean;
+
         /**
          * List all windows, including override-redirect ones. The windows are
          * in no particular order.
          * @returns List of windows
          */
         list_all_windows(): Window[];
+
         /**
          * Remove keybinding `name`; the function will fail if `name` is not a known
          * keybinding or has not been added with `meta_display_add_keybinding()`.
@@ -4549,20 +4645,24 @@ export namespace Meta {
          * @returns `true` if the binding has been removed successfully,          otherwise `false`
          */
         remove_keybinding(name: string): boolean;
+
         /**
-         * @param pad
-         * @param edition_mode
+         * @param pad 
+         * @param edition_mode 
          */
         request_pad_osd(pad: Clutter.InputDevice, edition_mode: boolean): void;
+
         /**
-         * @param cursor
+         * @param cursor 
          */
         set_cursor(cursor: Cursor): void;
+
         /**
-         * @param window
-         * @param timestamp
+         * @param window 
+         * @param timestamp 
          */
         set_input_focus(window: Window, timestamp: number): void;
+
         /**
          * Sorts a set of windows according to their current stacking order. If windows
          * from multiple screens are present in the set of input windows, then all the
@@ -4570,21 +4670,24 @@ export namespace Meta {
          * Since the stacking order of override-redirect windows isn't controlled by
          * Metacity, if override-redirect windows are in the input, the result may not
          * correspond to the actual stacking order in the X server.
-         *
+         * 
          * An example of using this would be to sort the list of transient dialogs for a
          * window into their current stacking order.
          * @param windows Set of windows
          * @returns Input windows sorted by stacking order, from lowest to highest
          */
         sort_windows_by_stacking(windows: Window[]): Window[];
+
         /**
-         * @param action_id
+         * @param action_id 
          */
         ungrab_accelerator(action_id: number): boolean;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         unset_input_focus(timestamp: number): void;
+
         /**
          * Xserver time can wraparound, thus comparing two timestamps needs to take
          * this into account. If no wraparound has occurred, this is equivalent to
@@ -4592,7 +4695,7 @@ export namespace Meta {
          * Otherwise, we need to account for the fact that wraparound can occur
          * and the fact that a timestamp of 0 must be special-cased since it
          * means "older than anything else".
-         *
+         * 
          * Note that this is NOT an equivalent for time1 <= time2; if that's what
          * you need then you'll need to swap the order of the arguments and negate
          * the result.
@@ -4602,6 +4705,7 @@ export namespace Meta {
         xserver_time_is_before(time1: number, time2: number): boolean;
     }
 
+
     namespace Dnd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -4609,22 +4713,23 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'dnd-enter': () => void;
+            "dnd-enter": () => void;
             /**
              * @signal
              * @run-last
              */
-            'dnd-leave': () => void;
+            "dnd-leave": () => void;
             /**
              * @signal
              * @run-last
              */
-            'dnd-position-change': (arg0: number, arg1: number) => void;
+            "dnd-position-change": (arg0: number, arg1: number) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4643,41 +4748,32 @@ export namespace Meta {
         $signals: Dnd.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Dnd.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Dnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dnd.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Dnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Dnd.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Dnd.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Dnd.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Dnd.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Dnd.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Dnd.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Dnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Dnd.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Dnd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace IdleMonitor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::device': (pspec: GObject.ParamSpec) => void;
+            "notify::device": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             device: Clutter.InputDevice;
         }
@@ -4691,7 +4787,6 @@ export namespace Meta {
         static $gtype: GObject.GType<IdleMonitor>;
 
         // Properties
-
         /**
          * The device to listen to idletime on.
          * @construct-only
@@ -4708,49 +4803,42 @@ export namespace Meta {
         $signals: IdleMonitor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<IdleMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof IdleMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof IdleMonitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof IdleMonitor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof IdleMonitor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IdleMonitor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof IdleMonitor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof IdleMonitor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IdleMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @param interval_msec The idletime interval, in milliseconds
          * @param callback The callback to call when the user has     accumulated `interval_msec` milliseconds of idle time.
          * @returns a watch id Adds a watch for a specific idle time. The callback will be called when the user has accumulated `interval_msec` milliseconds of idle time. This function will return an ID that can either be passed to `meta_idle_monitor_remove_watch()`, or can be used to tell idle time watches apart if you have more than one. Also note that this function will only care about positive transitions (user's idle time exceeding a certain time). If you want to know about when the user has become active, use `meta_idle_monitor_add_user_active_watch()`.
          */
-        add_idle_watch(interval_msec: bigint | number, callback: IdleMonitorWatchFunc | null): number;
+        add_idle_watch(interval_msec: (bigint | number), callback: (IdleMonitorWatchFunc | null)): number;
+
         /**
          * @param callback The callback to call when the user is     active again.
          * @returns a watch id Add a one-time watch to know when the user is active again. Note that this watch is one-time and will de-activate after the function is called, for efficiency purposes. It's most convenient to call this when an idle watch, as added by `meta_idle_monitor_add_idle_watch()`, has triggered.
          */
-        add_user_active_watch(callback: IdleMonitorWatchFunc | null): number;
+        add_user_active_watch(callback: (IdleMonitorWatchFunc | null)): number;
+
         /**
          * @returns The current idle time, in milliseconds, or -1 for not supported
          */
         get_idletime(): number;
+
         /**
          * Removes an idle time watcher, previously added by
          * `meta_idle_monitor_add_idle_watch()` or
@@ -4760,13 +4848,16 @@ export namespace Meta {
         remove_watch(id: number): void;
     }
 
+
     namespace Laters {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4785,34 +4876,24 @@ export namespace Meta {
         $signals: Laters.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Laters.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Laters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Laters.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Laters.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Laters.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Laters.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Laters.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Laters.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Laters.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Laters.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Laters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Laters.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Laters.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets up a callback  to be called at some later time. `when` determines the
          * particular later occasion at which it is called. This is much like `g_idle_add()`,
@@ -4825,6 +4906,7 @@ export namespace Meta {
          * @returns an integer ID (guaranteed to be non-zero) that can be used  to cancel the callback and prevent it from being run.
          */
         add(when: LaterType, func: GLib.SourceFunc): number;
+
         /**
          * Removes a callback added with `meta_later_add()`
          * @param later_id the integer ID returned from `meta_later_add()`
@@ -4832,16 +4914,16 @@ export namespace Meta {
         remove(later_id: number): void;
     }
 
+
     namespace LaunchContext {
         // Signal signatures
         interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {
-            'notify::display': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
-            'notify::workspace': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp": (pspec: GObject.ParamSpec) => void;
+            "notify::workspace": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {
             display: Display;
             timestamp: number;
@@ -4856,16 +4938,17 @@ export namespace Meta {
         static $gtype: GObject.GType<LaunchContext>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get display(): Display;
+
         /**
          * @default 0
          */
         get timestamp(): number;
         set timestamp(val: number);
+
         get workspace(): Workspace;
         set workspace(val: Workspace);
 
@@ -4879,43 +4962,35 @@ export namespace Meta {
         $signals: LaunchContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LaunchContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LaunchContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LaunchContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LaunchContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LaunchContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LaunchContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LaunchContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LaunchContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LaunchContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LaunchContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LaunchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LaunchContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LaunchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         set_timestamp(timestamp: number): void;
+
         /**
-         * @param workspace
+         * @param workspace 
          */
         set_workspace(workspace: Workspace): void;
     }
+
 
     namespace MonitorManager {
         // Signal signatures
@@ -4924,36 +4999,35 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'confirm-display-change': () => void;
+            "confirm-display-change": () => void;
             /**
              * @signal
              * @run-last
              */
-            'monitor-privacy-screen-changed': (arg0: unknown, arg1: boolean) => void;
+            "monitor-privacy-screen-changed": (arg0: unknown, arg1: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            'monitors-changed': () => void;
+            "monitors-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'monitors-changed-internal': () => void;
+            "monitors-changed-internal": () => void;
             /**
              * @signal
              * @run-last
              */
-            'power-save-mode-changed': (arg0: PowerSaveChangeReason) => void;
-            'notify::backend': (pspec: GObject.ParamSpec) => void;
-            'notify::experimental-hdr': (pspec: GObject.ParamSpec) => void;
-            'notify::has-builtin-panel': (pspec: GObject.ParamSpec) => void;
-            'notify::night-light-supported': (pspec: GObject.ParamSpec) => void;
-            'notify::panel-orientation-managed': (pspec: GObject.ParamSpec) => void;
+            "power-save-mode-changed": (arg0: PowerSaveChangeReason) => void;
+            "notify::backend": (pspec: GObject.ParamSpec) => void;
+            "notify::experimental-hdr": (pspec: GObject.ParamSpec) => void;
+            "notify::has-builtin-panel": (pspec: GObject.ParamSpec) => void;
+            "notify::night-light-supported": (pspec: GObject.ParamSpec) => void;
+            "notify::panel-orientation-managed": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             backend: Backend;
             experimental_hdr: string;
@@ -4969,12 +5043,12 @@ export namespace Meta {
 
     /**
      * A manager for multiple monitors
-     *
+     * 
      * {@link Meta.MonitorManager} is an abstract class which contains methods to handle
      * multiple monitors (both `MetaMonitor` and `MetaLogicalMonitor`) and GPU's
      * (`MetaGpu`). Its functions include reading and/or changing the current
      * configuration and available capabiliies.
-     *
+     * 
      * The {@link Meta.MonitorManager} also provides the "org.gnome.Mutter.DisplayConfig"
      * DBus service, so apps like GNOME Settings can use this functionality.
      * @gir-type Class
@@ -4983,46 +5057,53 @@ export namespace Meta {
         static $gtype: GObject.GType<MonitorManager>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get backend(): Backend;
+
         /**
          * @default null
          */
         get experimental_hdr(): string;
         set experimental_hdr(val: string);
+
         /**
          * @default null
          */
         get experimentalHdr(): string;
         set experimentalHdr(val: string);
+
         /**
          * @read-only
          * @default false
          */
         get has_builtin_panel(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get hasBuiltinPanel(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get night_light_supported(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get nightLightSupported(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get panel_orientation_managed(): boolean;
+
         /**
          * @read-only
          * @default false
@@ -5039,70 +5120,69 @@ export namespace Meta {
         $signals: MonitorManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MonitorManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MonitorManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MonitorManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MonitorManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MonitorManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MonitorManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MonitorManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MonitorManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MonitorManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MonitorManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MonitorManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MonitorManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MonitorManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         can_switch_config(): boolean;
+
         get_display_configuration_timeout(): number;
+
         /**
          * Returns whether the built-in display (i.e. a laptop panel) is turned on.
          */
         get_is_builtin_display_on(): boolean;
+
         /**
          * @param connector A valid connector name
          * @returns The monitor index or -1 if `id` isn't valid or the connector isn't associated with a logical monitor.
          */
         get_monitor_for_connector(connector: string): number;
+
         get_panel_orientation_managed(): boolean;
+
         get_switch_config(): MonitorSwitchConfigType;
+
         /**
-         * @param config_type
+         * @param config_type 
          */
         switch_config(config_type: MonitorSwitchConfigType): void;
     }
 
+
     namespace MultiTexture {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * A texture that can have multiple planes.
-     *
+     * 
      * {@link Meta.MultiTexture} allows one to deal with non-trivial formats that
      * have multiple planes, requires subsampling and/or aren't in RGB. A common
      * example of this are decoded video frames, which often use something in the
      * YUV colorspace, combined with subsampling.
-     *
+     * 
      * The basic idea of a {@link Meta.MultiTexture} is the following:
      * - Each plane is represented by a separate {@link Cogl.Texture}. That means that you
      *   should add each of these planes as a layer to your CoglPipeline.
@@ -5127,43 +5207,34 @@ export namespace Meta {
         $signals: MultiTexture.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MultiTexture.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](format: MultiTextureFormat, planes: Cogl.Texture, n_planes: number): MultiTexture;
+        static ["new"](format: MultiTextureFormat, planes: Cogl.Texture, n_planes: number): MultiTexture;
 
         static new_simple(plane: Cogl.Texture): MultiTexture;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MultiTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiTexture.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MultiTexture.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MultiTexture.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MultiTexture.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MultiTexture.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MultiTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MultiTexture.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MultiTexture.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MultiTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MultiTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MultiTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the {@link Meta.MultiTextureFormat} that is used by this texture.
          * @returns The texture format that is used by this {@link Meta.MultiTexture}.
          */
         get_format(): MultiTextureFormat;
+
         /**
          * Returns the height of the {@link Meta.MultiTexture}. Prefer this over calling
          * `cogl_texture_get_height()` on one of the textures, as that might give a
@@ -5171,6 +5242,7 @@ export namespace Meta {
          * @returns The height of the texture.
          */
         get_height(): number;
+
         /**
          * Returns the number of planes for this texture. Note that this is entirely
          * dependent on the {@link Cogl.PixelFormat} that is used. For example, simple RGB
@@ -5179,6 +5251,7 @@ export namespace Meta {
          * @returns The number of planes in this {@link Meta.MultiTexture}.
          */
         get_n_planes(): number;
+
         /**
          * Returns the n'th plane of the {@link Meta.MultiTexture}. Note that it's a programming
          * error to use with an index larger than `meta_multi_texture_get_n_planes()`.
@@ -5186,6 +5259,7 @@ export namespace Meta {
          * @returns The plane at the given `index`.
          */
         get_plane(index: number): Cogl.Texture;
+
         /**
          * Returns the width of the {@link Meta.MultiTexture}. Prefer this over calling
          * `cogl_texture_get_width()` on one of the textures, as that might give a
@@ -5193,12 +5267,14 @@ export namespace Meta {
          * @returns The width of the texture.
          */
         get_width(): number;
+
         /**
          * A small function that checks whether the given multi texture uses a "simple"
          * format, i.e. one that can be represented by a {@link Cogl.PixelFormat}.
          * @returns Whether the texture format is #META_MULTI_TEXTURE_FORMAT_SIMPLE
          */
         is_simple(): boolean;
+
         /**
          * Returns a string representation of `multi_texture`, useful for debugging
          * purposes.
@@ -5207,13 +5283,16 @@ export namespace Meta {
         to_string(): string;
     }
 
+
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5233,67 +5312,61 @@ export namespace Meta {
         $signals: Plugin.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Plugin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param gtype
+         * @param gtype 
          */
         static manager_set_plugin_type(gtype: GObject.GType): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_confirm_display_change(): void;
+
         /**
          * Virtual function called when the window represented by `actor` is destroyed.
          * @param actor a {@link Meta.WindowActor}
          * @virtual
          */
         vfunc_destroy(actor: WindowActor): void;
+
         /**
          * @virtual
          */
         vfunc_hide_tile_preview(): void;
+
         /**
          * Virtual function called when handling each keybinding.
          * @param binding a {@link Meta.KeyBinding}
          * @virtual
          */
         vfunc_keybinding_filter(binding: KeyBinding): boolean;
+
         /**
          * Virtual function called when the workspace-switching effect needs to be
          * killed prematurely.
          * @virtual
          */
         vfunc_kill_switch_workspace(): void;
+
         /**
          * Virtual function called when the effects on `actor` need to be killed
          * prematurely; the plugin must call the `completed()` callback as if the effect
@@ -5302,6 +5375,7 @@ export namespace Meta {
          * @virtual
          */
         vfunc_kill_window_effects(actor: WindowActor): void;
+
         /**
          * Virtual function called when the user triggered the "locate-pointer"
          * mechanism.
@@ -5310,68 +5384,73 @@ export namespace Meta {
          * @virtual
          */
         vfunc_locate_pointer(): void;
+
         /**
          * Virtual function called when the window represented by `actor` is mapped.
          * @param actor a {@link Meta.WindowActor}
          * @virtual
          */
         vfunc_map(actor: WindowActor): void;
+
         /**
          * Virtual function called when the window represented by `actor` is minimized.
          * @param actor a {@link Meta.WindowActor}
          * @virtual
          */
         vfunc_minimize(actor: WindowActor): void;
+
         /**
          * Virtual function that returns information about the {@link Meta.Plugin}.
          * @virtual
          */
         vfunc_plugin_info(): PluginInfo;
+
         /**
-         * @param window
-         * @param tile_rect
-         * @param tile_monitor_number
+         * @param window 
+         * @param tile_rect 
+         * @param tile_monitor_number 
          * @virtual
          */
         vfunc_show_tile_preview(window: Window, tile_rect: Mtk.Rectangle, tile_monitor_number: number): void;
+
         /**
-         * @param window
-         * @param menu
-         * @param x
-         * @param y
+         * @param window 
+         * @param menu 
+         * @param x 
+         * @param y 
          * @virtual
          */
         vfunc_show_window_menu(window: Window, menu: WindowMenuType, x: number, y: number): void;
+
         /**
-         * @param window
-         * @param menu
-         * @param rect
+         * @param window 
+         * @param menu 
+         * @param rect 
          * @virtual
          */
         vfunc_show_window_menu_for_rect(window: Window, menu: WindowMenuType, rect: Mtk.Rectangle): void;
+
         /**
-         * @param actor
-         * @param which_change
-         * @param old_frame_rect
-         * @param old_buffer_rect
+         * @param actor 
+         * @param which_change 
+         * @param old_frame_rect 
+         * @param old_buffer_rect 
          * @virtual
          */
-        vfunc_size_change(
-            actor: WindowActor,
-            which_change: SizeChange,
-            old_frame_rect: Mtk.Rectangle,
-            old_buffer_rect: Mtk.Rectangle,
-        ): void;
+        vfunc_size_change(actor: WindowActor, which_change: SizeChange, old_frame_rect: Mtk.Rectangle, old_buffer_rect: Mtk.Rectangle): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_size_changed(actor: WindowActor): void;
+
         /**
          * Virtual function called when the compositor starts managing a screen
          * @virtual
          */
         vfunc_start(): void;
+
         /**
          * Virtual function called when the window represented by `actor` is destroyed.
          * @param from origin workspace
@@ -5380,53 +5459,63 @@ export namespace Meta {
          * @virtual
          */
         vfunc_switch_workspace(from: number, to: number, direction: MotionDirection): void;
+
         /**
          * Virtual function called when the window represented by `actor` is unminimized.
          * @param actor a {@link Meta.WindowActor}
          * @virtual
          */
         vfunc_unminimize(actor: WindowActor): void;
+
         /**
          * Virtual function called when handling each event.
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_xevent_filter(event: xlib.XEvent): boolean;
 
         // Methods
-
         /**
-         * @param ok
+         * @param ok 
          */
         complete_display_change(ok: boolean): void;
+
         /**
-         * @param actor
+         * @param actor 
          */
         destroy_completed(actor: WindowActor): void;
+
         /**
          * Gets the {@link Meta.Display} corresponding to a plugin.
          * @returns the {@link Meta.Display} for the plugin
          */
         get_display(): Display;
+
         get_info(): PluginInfo;
+
         /**
-         * @param actor
+         * @param actor 
          */
         map_completed(actor: WindowActor): void;
+
         /**
-         * @param actor
+         * @param actor 
          */
         minimize_completed(actor: WindowActor): void;
+
         /**
-         * @param actor
+         * @param actor 
          */
         size_change_completed(actor: WindowActor): void;
+
         switch_workspace_completed(): void;
+
         /**
-         * @param actor
+         * @param actor 
          */
         unminimize_completed(actor: WindowActor): void;
     }
+
 
     namespace RemoteAccessController {
         // Signal signatures
@@ -5435,12 +5524,13 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'new-handle': (arg0: RemoteAccessHandle) => void;
+            "new-handle": (arg0: RemoteAccessHandle) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5459,41 +5549,30 @@ export namespace Meta {
         $signals: RemoteAccessController.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RemoteAccessController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RemoteAccessController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteAccessController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RemoteAccessController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RemoteAccessController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RemoteAccessController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RemoteAccessController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RemoteAccessController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteAccessController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RemoteAccessController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RemoteAccessController.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof RemoteAccessController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteAccessController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Inhibits remote access sessions from being created and running. Any active
          * remote access session will be terminated.
          */
         inhibit_remote_access(): void;
+
         /**
          * Uninhibits remote access sessions from being created and running. If this was
          * the last inhibition that was inhibited, new remote access sessions can now
@@ -5501,6 +5580,7 @@ export namespace Meta {
          */
         uninhibit_remote_access(): void;
     }
+
 
     namespace RemoteAccessHandle {
         // Signal signatures
@@ -5510,11 +5590,10 @@ export namespace Meta {
              * @run-last
              */
             stopped: () => void;
-            'notify::is-recording': (pspec: GObject.ParamSpec) => void;
+            "notify::is-recording": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             is_recording: boolean;
             isRecording: boolean;
@@ -5528,12 +5607,12 @@ export namespace Meta {
         static $gtype: GObject.GType<RemoteAccessHandle>;
 
         // Properties
-
         /**
          * @construct-only
          * @default false
          */
         get is_recording(): boolean;
+
         /**
          * @construct-only
          * @default false
@@ -5550,34 +5629,24 @@ export namespace Meta {
         $signals: RemoteAccessHandle.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RemoteAccessHandle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RemoteAccessHandle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteAccessHandle.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RemoteAccessHandle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RemoteAccessHandle.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RemoteAccessHandle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RemoteAccessHandle.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RemoteAccessHandle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RemoteAccessHandle.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RemoteAccessHandle.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RemoteAccessHandle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RemoteAccessHandle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RemoteAccessHandle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Stop the associated remote access session.
          * @virtual
@@ -5585,13 +5654,14 @@ export namespace Meta {
         vfunc_stop(): void;
 
         // Methods
-
         get_disable_animations(): boolean;
+
         /**
          * Stop the associated remote access session.
          */
         stop(): void;
     }
+
 
     namespace Selection {
         // Signal signatures
@@ -5600,12 +5670,13 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'owner-changed': (arg0: number, arg1: SelectionSource) => void;
+            "owner-changed": (arg0: number, arg1: SelectionSource) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5624,42 +5695,33 @@ export namespace Meta {
         $signals: Selection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Selection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](display: Display): Selection;
+        static ["new"](display: Display): Selection;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Selection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Selection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Selection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Selection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Selection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Selection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Selection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Selection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Selection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the list of supported mimetypes for the given selection type.
          * @param selection_type Selection to query
          * @returns The supported mimetypes
          */
         get_mimetypes(selection_type: SelectionType): string[];
+
         /**
          * Sets `owner` as the owner of the selection given by `selection_type`,
          * unsets any previous owner there was.
@@ -5667,6 +5729,7 @@ export namespace Meta {
          * @param owner New selection owner
          */
         set_owner(selection_type: SelectionType, owner: SelectionSource): void;
+
         /**
          * Requests a transfer of `mimetype` on the selection given by
          * `selection_type`.
@@ -5676,31 +5739,8 @@ export namespace Meta {
          * @param output Output stream to write contents to
          * @param cancellable Cancellable
          */
-        transfer_async(
-            selection_type: SelectionType,
-            mimetype: string,
-            size: bigint | number,
-            output: Gio.OutputStream,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Requests a transfer of `mimetype` on the selection given by
-         * `selection_type`.
-         * @param selection_type Selection type
-         * @param mimetype Mimetype to transfer
-         * @param size Maximum size to transfer, -1 for unlimited
-         * @param output Output stream to write contents to
-         * @param cancellable Cancellable
-         * @param callback User callback
-         */
-        transfer_async(
-            selection_type: SelectionType,
-            mimetype: string,
-            size: bigint | number,
-            output: Gio.OutputStream,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        transfer_async(selection_type: SelectionType, mimetype: string, size: (bigint | number), output: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Requests a transfer of `mimetype` on the selection given by
          * `selection_type`.
@@ -5711,20 +5751,27 @@ export namespace Meta {
          * @param cancellable Cancellable
          * @param callback User callback
          */
-        transfer_async(
-            selection_type: SelectionType,
-            mimetype: string,
-            size: bigint | number,
-            output: Gio.OutputStream,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        transfer_async(selection_type: SelectionType, mimetype: string, size: (bigint | number), output: Gio.OutputStream, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Requests a transfer of `mimetype` on the selection given by
+         * `selection_type`.
+         * @param selection_type Selection type
+         * @param mimetype Mimetype to transfer
+         * @param size Maximum size to transfer, -1 for unlimited
+         * @param output Output stream to write contents to
+         * @param cancellable Cancellable
+         * @param callback User callback
+         */
+        transfer_async(selection_type: SelectionType, mimetype: string, size: (bigint | number), output: Gio.OutputStream, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the transfer of a queried mimetype.
          * @param result The async result
          * @returns `TRUE` if the transfer was successful.
          */
         transfer_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Unsets `owner` as the owner the selection given by `selection_type`. If
          * `owner` does not own the selection, nothing is done.
@@ -5733,6 +5780,7 @@ export namespace Meta {
          */
         unset_owner(selection_type: SelectionType, owner: SelectionSource): void;
     }
+
 
     namespace SelectionSource {
         // Signal signatures
@@ -5752,8 +5800,9 @@ export namespace Meta {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5772,58 +5821,48 @@ export namespace Meta {
         $signals: SelectionSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SelectionSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SelectionSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SelectionSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SelectionSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SelectionSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SelectionSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SelectionSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SelectionSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SelectionSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SelectionSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SelectionSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SelectionSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SelectionSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_activated(): void;
+
         /**
          * @virtual
          */
         vfunc_deactivated(): void;
+
         /**
          * Returns the list of supported mimetypes.
          * @virtual
          */
         vfunc_get_mimetypes(): string[];
+
         /**
-         * @param mimetype
-         * @param cancellable
-         * @param callback
+         * @param mimetype 
+         * @param cancellable 
+         * @param callback 
          * @virtual
          */
-        vfunc_read_async(
-            mimetype: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_read_async(mimetype: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes a read from the selection source.
          * @param result The async result
@@ -5832,42 +5871,38 @@ export namespace Meta {
         vfunc_read_finish(result: Gio.AsyncResult): Gio.InputStream;
 
         // Methods
-
         /**
          * Returns the list of supported mimetypes.
          * @returns The supported mimetypes
          */
         get_mimetypes(): string[];
+
         /**
          * Returns `TRUE` if the source is active on a selection.
          * @returns `TRUE` if the source owns a selection.
          */
         is_active(): boolean;
+
         /**
-         * @param mimetype
-         * @param cancellable
+         * @param mimetype 
+         * @param cancellable 
          */
-        read_async(mimetype: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        read_async(mimetype: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+
         /**
-         * @param mimetype
-         * @param cancellable
-         * @param callback
+         * @param mimetype 
+         * @param cancellable 
+         * @param callback 
          */
-        read_async(
-            mimetype: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        read_async(mimetype: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param mimetype
-         * @param cancellable
-         * @param callback
+         * @param mimetype 
+         * @param cancellable 
+         * @param callback 
          */
-        read_async(
-            mimetype: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.InputStream> | void;
+        read_async(mimetype: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+
         /**
          * Finishes a read from the selection source.
          * @param result The async result
@@ -5876,13 +5911,16 @@ export namespace Meta {
         read_finish(result: Gio.AsyncResult): Gio.InputStream;
     }
 
+
     namespace SelectionSourceMemory {
         // Signal signatures
-        interface SignalSignatures extends SelectionSource.SignalSignatures {}
+        interface SignalSignatures extends SelectionSource.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends SelectionSource.ConstructorProps {
 
-        interface ConstructorProps extends SelectionSource.ConstructorProps {}
+        }
     }
 
     /**
@@ -5901,36 +5939,26 @@ export namespace Meta {
         $signals: SelectionSourceMemory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SelectionSourceMemory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](mimetype: string, content: GLib.Bytes | Uint8Array): SelectionSourceMemory;
+        static ["new"](mimetype: string, content: (GLib.Bytes | Uint8Array)): SelectionSourceMemory;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SelectionSourceMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SelectionSourceMemory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SelectionSourceMemory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SelectionSourceMemory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SelectionSourceMemory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SelectionSourceMemory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SelectionSourceMemory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SelectionSourceMemory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SelectionSourceMemory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SelectionSourceMemory.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof SelectionSourceMemory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SelectionSourceMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace ShadowFactory {
         // Signal signatures
@@ -5943,13 +5971,14 @@ export namespace Meta {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Create window shadows.
-     *
+     * 
      * It caches shadows internally so that multiple shadows created for
      * the same shape with the same radius will share the same {@link Meta.Shadow}.
      * @gir-type Class
@@ -5967,40 +5996,29 @@ export namespace Meta {
         $signals: ShadowFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ShadowFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ShadowFactory;
+        static ["new"](): ShadowFactory;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ShadowFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShadowFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ShadowFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShadowFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ShadowFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShadowFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ShadowFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShadowFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ShadowFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ShadowFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ShadowFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShadowFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static get_default(): ShadowFactory;
 
         // Methods
-
         /**
          * Gets the shadow parameters for a particular class of shadows
          * for either the focused or unfocused state. If the class name
@@ -6010,6 +6028,7 @@ export namespace Meta {
          * @param focused whether the shadow is for a focused window
          */
         get_params(class_name: string, focused: boolean): ShadowParams;
+
         /**
          * Gets the appropriate shadow object for drawing shadows for the
          * specified window shape. The region that we are shadowing is specified
@@ -6024,6 +6043,7 @@ export namespace Meta {
          * @returns a newly referenced {@link Meta.Shadow}; unref with  `meta_shadow_unref()`
          */
         get_shadow(shape: WindowShape, width: number, height: number, class_name: string, focused: boolean): Shadow;
+
         /**
          * Updates the shadow parameters for a particular class of shadows
          * for either the focused or unfocused state. If the class name
@@ -6037,6 +6057,7 @@ export namespace Meta {
         set_params(class_name: string, focused: boolean, params: ShadowParams): void;
     }
 
+
     namespace ShapedTexture {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -6044,17 +6065,18 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'size-changed': () => void;
+            "size-changed": () => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {}
+        }
     }
 
     /**
      * A ClutterContent which draws a shaped texture
-     *
+     * 
      * A MetaShapedTexture draws a {@link Cogl.Texture} (often provided from a client
      * surface) in such a way that it matches any required transformations that
      * give its final shape, such as a `MetaMonitorTransform`, y-invertedness, or a
@@ -6074,34 +6096,24 @@ export namespace Meta {
         $signals: ShapedTexture.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ShapedTexture.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ShapedTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShapedTexture.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ShapedTexture.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShapedTexture.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ShapedTexture.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ShapedTexture.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ShapedTexture.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ShapedTexture.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ShapedTexture.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ShapedTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ShapedTexture.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ShapedTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Flattens the two layers of the shaped texture into one ARGB32
          * image by alpha blending the two images, and returns the flattened
@@ -6109,103 +6121,118 @@ export namespace Meta {
          * @param clip A clipping rectangle, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the texture, the rectangle will be clipped.
          * @returns a new cairo surface to be freed with `cairo_surface_destroy()`.
          */
-        get_image(clip: Mtk.Rectangle | null): cairo.Surface | null;
+        get_image(clip: (Mtk.Rectangle | null)): (cairo.Surface | null);
+
         /**
          * @returns the unshaped texture
          */
         get_texture(): MultiTexture;
+
         /**
-         * @param create_mipmaps
+         * @param create_mipmaps 
          */
         set_create_mipmaps(create_mipmaps: boolean): void;
+
         /**
-         * @param mask_texture
+         * @param mask_texture 
          */
         set_mask_texture(mask_texture: Cogl.Texture): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
          */
         get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          */
         invalidate(): void;
+
         /**
          * Signals that `content`'s size changed. Attached actors with request mode
          * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
-         *
+         * 
          * Attached actors with other request modes are not redrawn. To redraw them
          * too, use {@link Clutter.Content.invalidate}.
          */
         invalidate_size(): void;
+
         /**
          * virtual function; called each time a {@link Clutter.Content} is attached
          *   to a {@link Clutter.Actor}.
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_attached(actor: Clutter.Actor): void;
+
         /**
          * virtual function; called each time a {@link Clutter.Content} is detached
          *   from a {@link Clutter.Actor}.
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_detached(actor: Clutter.Actor): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          * @virtual
          */
         vfunc_invalidate(): void;
+
         /**
          * Signals that `content`'s size changed. Attached actors with request mode
          * set to {@link Clutter.RequestMode.CONTENT_SIZE} will have a relayout queued.
-         *
+         * 
          * Attached actors with other request modes are not redrawn. To redraw them
          * too, use {@link Clutter.Content.invalidate}.
          * @virtual
          */
         vfunc_invalidate_size(): void;
+
         /**
          * virtual function; called each time the content needs to
          *   paint itself
-         * @param actor
-         * @param node
-         * @param paint_context
+         * @param actor 
+         * @param node 
+         * @param paint_context 
          * @virtual
          */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode, paint_context: Clutter.PaintContext): void;
     }
 
+
     namespace SoundPlayer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6224,137 +6251,126 @@ export namespace Meta {
         $signals: SoundPlayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SoundPlayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SoundPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SoundPlayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SoundPlayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SoundPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SoundPlayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SoundPlayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SoundPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SoundPlayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SoundPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Plays a sound from a file.
          * @param file file to play
          * @param description description of the played sound
          * @param cancellable cancellable for the request
          */
-        play_from_file(file: Gio.File, description: string, cancellable: Gio.Cancellable | null): void;
+        play_from_file(file: Gio.File, description: string, cancellable: (Gio.Cancellable | null)): void;
+
         /**
          * Plays a sound from the sound theme.
          * @param name sound theme name of the event
          * @param description description of the event
          * @param cancellable cancellable for the request
          */
-        play_from_theme(name: string, description: string, cancellable: Gio.Cancellable | null): void;
+        play_from_theme(name: string, description: string, cancellable: (Gio.Cancellable | null)): void;
     }
+
 
     namespace Stage {
         // Signal signatures
         interface SignalSignatures extends Clutter.Stage.SignalSignatures {
-            'notify::is-grabbed': (pspec: GObject.ParamSpec) => void;
-            'notify::key-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::perspective': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::is-grabbed": (pspec: GObject.ParamSpec) => void;
+            "notify::key-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::perspective": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Clutter.Stage.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Clutter.Stage.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps {}
+        }
     }
 
     /**
@@ -6373,32 +6389,24 @@ export namespace Meta {
         $signals: Stage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Stage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Stage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Stage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace StartupNotification {
         // Signal signatures
@@ -6408,11 +6416,10 @@ export namespace Meta {
              * @run-last
              */
             changed: (arg0: StartupSequence) => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             display: Display;
         }
@@ -6425,7 +6432,6 @@ export namespace Meta {
         static $gtype: GObject.GType<StartupNotification>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -6441,47 +6447,37 @@ export namespace Meta {
         $signals: StartupNotification.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StartupNotification.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StartupNotification.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StartupNotification.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StartupNotification.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StartupNotification.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StartupNotification.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StartupNotification.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StartupNotification.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StartupNotification.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StartupNotification.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StartupNotification.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof StartupNotification.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StartupNotification.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Creates an app launch context.
          * @returns a launch context.
          */
         create_launcher(): LaunchContext;
+
         /**
          * Get the list of startup sequences arrived in the startup notification object.
          * @returns a {@link GLib.SList} of {@link Meta.StartupSequence} in the {@link Meta.StartupNotification}.
          */
         get_sequences(): StartupSequence[];
     }
+
 
     namespace StartupSequence {
         // Signal signatures
@@ -6496,28 +6492,27 @@ export namespace Meta {
              * @run-last
              */
             timeout: () => void;
-            'notify::application-id': (pspec: GObject.ParamSpec) => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::timestamp': (pspec: GObject.ParamSpec) => void;
-            'notify::wmclass': (pspec: GObject.ParamSpec) => void;
-            'notify::workspace': (pspec: GObject.ParamSpec) => void;
+            "notify::application-id": (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::timestamp": (pspec: GObject.ParamSpec) => void;
+            "notify::wmclass": (pspec: GObject.ParamSpec) => void;
+            "notify::workspace": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            application_id: string | null;
-            applicationId: string | null;
+            application_id: (string | null);
+            applicationId: (string | null);
             display: Display;
-            icon_name: string | null;
-            iconName: string | null;
+            icon_name: (string | null);
+            iconName: (string | null);
             id: string;
             name: string;
-            timestamp: bigint | number;
-            wmclass: string | null;
+            timestamp: (bigint | number);
+            wmclass: (string | null);
             workspace: number;
         }
     }
@@ -6529,51 +6524,59 @@ export namespace Meta {
         static $gtype: GObject.GType<StartupSequence>;
 
         // Properties
+        /**
+         * @construct-only
+         * @default null
+         */
+        get application_id(): (string | null);
 
         /**
          * @construct-only
          * @default null
          */
-        get application_id(): string | null;
-        /**
-         * @construct-only
-         * @default null
-         */
-        get applicationId(): string | null;
+        get applicationId(): (string | null);
+
         /**
          * @construct-only
          */
         get display(): Display;
+
         /**
          * @construct-only
          * @default null
          */
-        get icon_name(): string | null;
+        get icon_name(): (string | null);
+
         /**
          * @construct-only
          * @default null
          */
-        get iconName(): string | null;
+        get iconName(): (string | null);
+
         /**
          * @construct-only
          * @default null
          */
         get id(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * @construct-only
          * @default 0
          */
         get timestamp(): number;
+
         /**
          * @construct-only
          * @default null
          */
-        get wmclass(): string | null;
+        get wmclass(): (string | null);
+
         /**
          * @construct-only
          * @default -1
@@ -6590,56 +6593,55 @@ export namespace Meta {
         $signals: StartupSequence.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StartupSequence.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StartupSequence.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StartupSequence.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StartupSequence.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StartupSequence.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StartupSequence.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StartupSequence.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StartupSequence.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StartupSequence.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StartupSequence.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StartupSequence.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StartupSequence.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StartupSequence.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         complete(): void;
+
         /**
          * Get the application id of the startup sequence.
          * @returns the application id or `null`.
          */
-        get_application_id(): string | null;
+        get_application_id(): (string | null);
+
         get_completed(): boolean;
+
         /**
          * Get the icon name of the startup sequence.
          * @returns the icon name or `null`.
          */
-        get_icon_name(): string | null;
+        get_icon_name(): (string | null);
+
         get_id(): string;
+
         get_name(): string;
+
         get_timestamp(): number;
+
         /**
          * Get the wmclass of the startup sequence.
          * @returns the wmclass or `null`.
          */
-        get_wmclass(): string | null;
+        get_wmclass(): (string | null);
+
         get_workspace(): number;
     }
+
 
     namespace WaylandClient {
         // Signal signatures
@@ -6648,12 +6650,13 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'client-destroyed': () => void;
+            "client-destroyed": () => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6674,59 +6677,54 @@ export namespace Meta {
         $signals: WaylandClient.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WaylandClient.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](context: Context, launcher: Gio.SubprocessLauncher): WaylandClient;
+        static ["new"](context: Context, launcher: Gio.SubprocessLauncher): WaylandClient;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WaylandClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandClient.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WaylandClient.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WaylandClient.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WaylandClient.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WaylandClient.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WaylandClient.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandClient.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WaylandClient.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WaylandClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WaylandClient.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param window
+         * @param window 
          */
         hide_from_window_list(window: Window): void;
+
         /**
          * Mark window as DESKTOP window
          * @param window a MetaWindow
          */
         make_desktop(window: Window): void;
+
         /**
          * Mark window as DOCK window
          * @param window a MetaWindow
          */
         make_dock(window: Window): void;
+
         /**
-         * @param window
+         * @param window 
          */
         owns_window(window: Window): boolean;
+
         /**
          * Shows again this window in window lists, like taskbars, pagers...
          * @param window a MetaWindow
          */
         show_in_window_list(window: Window): void;
+
         /**
          * Creates a {@link Gio.Subprocess} given a provided array of arguments, launching a new
          * process with the binary specified in the first element of argv, and with the
@@ -6739,6 +6737,7 @@ export namespace Meta {
         spawnv(display: Display, argv: string[]): Gio.Subprocess;
     }
 
+
     namespace WaylandCompositor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -6746,12 +6745,13 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'prepare-shutdown': () => void;
+            "prepare-shutdown": () => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -6770,39 +6770,30 @@ export namespace Meta {
         $signals: WaylandCompositor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WaylandCompositor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WaylandCompositor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandCompositor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WaylandCompositor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WaylandCompositor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WaylandCompositor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WaylandCompositor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WaylandCompositor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandCompositor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WaylandCompositor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WaylandCompositor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WaylandCompositor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandCompositor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns the Wayland display object
          */
-        get_wayland_display(): any | null;
+        get_wayland_display(): (any | null);
     }
+
 
     namespace WaylandSurface {
         // Signal signatures
@@ -6811,7 +6802,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'actor-changed': () => void;
+            "actor-changed": () => void;
             /**
              * @signal
              * @run-last
@@ -6826,34 +6817,33 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'geometry-changed': () => void;
+            "geometry-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'pre-state-applied': () => void;
+            "pre-state-applied": () => void;
             /**
              * @signal
              * @run-last
              */
-            'shortcuts-inhibited': () => void;
+            "shortcuts-inhibited": () => void;
             /**
              * @signal
              * @run-last
              */
-            'shortcuts-restored': () => void;
+            "shortcuts-restored": () => void;
             /**
              * @signal
              * @run-last
              */
             unmapped: () => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            window: Window | null;
+            window: (Window | null);
         }
     }
 
@@ -6864,11 +6854,10 @@ export namespace Meta {
         static $gtype: GObject.GType<WaylandSurface>;
 
         // Properties
-
         /**
          * @read-only
          */
-        get window(): Window | null;
+        get window(): (Window | null);
 
         /**
          * Compile-time signal type information.
@@ -6880,40 +6869,31 @@ export namespace Meta {
         $signals: WaylandSurface.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WaylandSurface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WaylandSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WaylandSurface.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WaylandSurface.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WaylandSurface.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WaylandSurface.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WaylandSurface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WaylandSurface.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WaylandSurface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the {@link Meta.Window} associated with this wayland surface.
          * @returns a {@link Meta.Window}
          */
-        get_window(): Window | null;
+        get_window(): (Window | null);
     }
+
 
     namespace Window {
         // Signal signatures
@@ -6929,18 +6909,18 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'highest-scale-monitor-changed': () => void;
+            "highest-scale-monitor-changed": () => void;
             /**
              * This is emitted when the position of a window might
              * have changed.
-             *
+             * 
              * Specifically, this is emitted when the position of
              * the toplevel window has changed, or when the position
              * of the client window has changed.
              * @signal
              * @run-last
              */
-            'position-changed': () => void;
+            "position-changed": () => void;
             /**
              * @signal
              * @run-last
@@ -6955,14 +6935,14 @@ export namespace Meta {
             /**
              * This is emitted when the size of a window might
              * have changed.
-             *
+             * 
              * Specifically, this is emitted when the size of
              * the toplevel window has changed, or when the
              * size of the client window has changed.
              * @signal
              * @run-last
              */
-            'size-changed': () => void;
+            "size-changed": () => void;
             /**
              * @signal
              * @run-last
@@ -6977,37 +6957,36 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'workspace-changed': () => void;
-            'notify::above': (pspec: GObject.ParamSpec) => void;
-            'notify::appears-focused': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::demands-attention': (pspec: GObject.ParamSpec) => void;
-            'notify::display': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::fullscreen': (pspec: GObject.ParamSpec) => void;
-            'notify::gtk-app-menu-object-path': (pspec: GObject.ParamSpec) => void;
-            'notify::gtk-application-id': (pspec: GObject.ParamSpec) => void;
-            'notify::gtk-application-object-path': (pspec: GObject.ParamSpec) => void;
-            'notify::gtk-menubar-object-path': (pspec: GObject.ParamSpec) => void;
-            'notify::gtk-unique-bus-name': (pspec: GObject.ParamSpec) => void;
-            'notify::gtk-window-object-path': (pspec: GObject.ParamSpec) => void;
-            'notify::is-alive': (pspec: GObject.ParamSpec) => void;
-            'notify::maximized-horizontally': (pspec: GObject.ParamSpec) => void;
-            'notify::maximized-vertically': (pspec: GObject.ParamSpec) => void;
-            'notify::minimized': (pspec: GObject.ParamSpec) => void;
-            'notify::mutter-hints': (pspec: GObject.ParamSpec) => void;
-            'notify::on-all-workspaces': (pspec: GObject.ParamSpec) => void;
-            'notify::resizeable': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::urgent': (pspec: GObject.ParamSpec) => void;
-            'notify::user-time': (pspec: GObject.ParamSpec) => void;
-            'notify::window-type': (pspec: GObject.ParamSpec) => void;
-            'notify::wm-class': (pspec: GObject.ParamSpec) => void;
+            "workspace-changed": () => void;
+            "notify::above": (pspec: GObject.ParamSpec) => void;
+            "notify::appears-focused": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::demands-attention": (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::fullscreen": (pspec: GObject.ParamSpec) => void;
+            "notify::gtk-app-menu-object-path": (pspec: GObject.ParamSpec) => void;
+            "notify::gtk-application-id": (pspec: GObject.ParamSpec) => void;
+            "notify::gtk-application-object-path": (pspec: GObject.ParamSpec) => void;
+            "notify::gtk-menubar-object-path": (pspec: GObject.ParamSpec) => void;
+            "notify::gtk-unique-bus-name": (pspec: GObject.ParamSpec) => void;
+            "notify::gtk-window-object-path": (pspec: GObject.ParamSpec) => void;
+            "notify::is-alive": (pspec: GObject.ParamSpec) => void;
+            "notify::maximized-horizontally": (pspec: GObject.ParamSpec) => void;
+            "notify::maximized-vertically": (pspec: GObject.ParamSpec) => void;
+            "notify::minimized": (pspec: GObject.ParamSpec) => void;
+            "notify::mutter-hints": (pspec: GObject.ParamSpec) => void;
+            "notify::on-all-workspaces": (pspec: GObject.ParamSpec) => void;
+            "notify::resizeable": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::urgent": (pspec: GObject.ParamSpec) => void;
+            "notify::user-time": (pspec: GObject.ParamSpec) => void;
+            "notify::window-type": (pspec: GObject.ParamSpec) => void;
+            "notify::wm-class": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             above: boolean;
             appears_focused: boolean;
@@ -7018,18 +6997,18 @@ export namespace Meta {
             display: Display;
             effect: number;
             fullscreen: boolean;
-            gtk_app_menu_object_path: string | null;
-            gtkAppMenuObjectPath: string | null;
-            gtk_application_id: string | null;
-            gtkApplicationId: string | null;
-            gtk_application_object_path: string | null;
-            gtkApplicationObjectPath: string | null;
-            gtk_menubar_object_path: string | null;
-            gtkMenubarObjectPath: string | null;
-            gtk_unique_bus_name: string | null;
-            gtkUniqueBusName: string | null;
-            gtk_window_object_path: string | null;
-            gtkWindowObjectPath: string | null;
+            gtk_app_menu_object_path: (string | null);
+            gtkAppMenuObjectPath: (string | null);
+            gtk_application_id: (string | null);
+            gtkApplicationId: (string | null);
+            gtk_application_object_path: (string | null);
+            gtkApplicationObjectPath: (string | null);
+            gtk_menubar_object_path: (string | null);
+            gtkMenubarObjectPath: (string | null);
+            gtk_unique_bus_name: (string | null);
+            gtkUniqueBusName: (string | null);
+            gtk_window_object_path: (string | null);
+            gtkWindowObjectPath: (string | null);
             is_alive: boolean;
             isAlive: boolean;
             maximized_horizontally: boolean;
@@ -7037,8 +7016,8 @@ export namespace Meta {
             maximized_vertically: boolean;
             maximizedVertically: boolean;
             minimized: boolean;
-            mutter_hints: string | null;
-            mutterHints: string | null;
+            mutter_hints: (string | null);
+            mutterHints: (string | null);
             on_all_workspaces: boolean;
             onAllWorkspaces: boolean;
             resizeable: boolean;
@@ -7050,42 +7029,42 @@ export namespace Meta {
             userTime: number;
             window_type: WindowType;
             windowType: WindowType;
-            wm_class: string | null;
-            wmClass: string | null;
+            wm_class: (string | null);
+            wmClass: (string | null);
         }
     }
 
     /**
      * A display-agnostic abstraction for a window.
-     *
+     * 
      * {@link Meta.Window} is the core abstraction in Mutter of a window. It has the
      * properties you'd expect, such as a title, whether it's fullscreen,
      * has decorations, etc.
-     *
+     * 
      * Since a lot of different kinds of windows exist, each window also a
      * {@link Meta.WindowType} which denotes which kind of window we're exactly dealing
      * with. For example, one expects slightly different behaviour from a dialog
      * than a "normal" window. The type of a window can be queried with
      * {@link Meta.Window.get_window_type}.
-     *
+     * 
      * Common API for windows include:
-     *
+     * 
      * - Minimizing: {@link Meta.Window.minimize} / {@link Meta.Window.unminimize}
      * - Maximizing: {@link Meta.Window.maximize} / {@link Meta.Window.unmaximize}
      * - Fullscreen: {@link Meta.Window.make_fullscreen} / {@link Meta.Window.unmake_fullscreen}
      *               / {@link Meta.Window.is_fullscreen}
-     *
+     * 
      * Each {@link Meta.Window} is part of either one or all {@link Meta.Workspace}s of the
      * desktop. You can activate a window on a certain workspace using
      * {@link Meta.Window.activate_with_workspace}, and query on which workspace it is
      * located using {@link Meta.Window.located_on_workspace}. The workspace it is part
      * of can be obtained using {@link Meta.Window.get_workspace}.
-     *
+     * 
      * Each display protocol should make a subclass to be compatible with that
      * protocols' specifics, for example `MetaWindowX11` and `MetaWindowWayland`.
      * This is independent of the protocol that the client uses, which is modeled
      * using the {@link Meta.WindowClientType} enum.
-     *
+     * 
      * To integrate within the Clutter scene graph, which deals with the actual
      * rendering, each {@link Meta.Window} will be part of a {@link Meta.WindowActor}.
      * @gir-type Class
@@ -7094,221 +7073,262 @@ export namespace Meta {
         static $gtype: GObject.GType<Window>;
 
         // Properties
-
         /**
          * @read-only
          * @default false
          */
         get above(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get appears_focused(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get appearsFocused(): boolean;
+
         /**
          * @read-only
          * @default true
          */
         get decorated(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get demands_attention(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get demandsAttention(): boolean;
+
         /**
          * @construct-only
          */
         get display(): Display;
+
         /**
          * @construct-only
          * @default 4
          */
         get effect(): number;
+
         /**
          * @read-only
          * @default false
          */
         get fullscreen(): boolean;
+
         /**
          * @read-only
          * @default null
          */
-        get gtk_app_menu_object_path(): string | null;
+        get gtk_app_menu_object_path(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtkAppMenuObjectPath(): string | null;
+        get gtkAppMenuObjectPath(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtk_application_id(): string | null;
+        get gtk_application_id(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtkApplicationId(): string | null;
+        get gtkApplicationId(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtk_application_object_path(): string | null;
+        get gtk_application_object_path(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtkApplicationObjectPath(): string | null;
+        get gtkApplicationObjectPath(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtk_menubar_object_path(): string | null;
+        get gtk_menubar_object_path(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtkMenubarObjectPath(): string | null;
+        get gtkMenubarObjectPath(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtk_unique_bus_name(): string | null;
+        get gtk_unique_bus_name(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtkUniqueBusName(): string | null;
+        get gtkUniqueBusName(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtk_window_object_path(): string | null;
+        get gtk_window_object_path(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get gtkWindowObjectPath(): string | null;
+        get gtkWindowObjectPath(): (string | null);
+
         /**
          * @read-only
          * @default true
          */
         get is_alive(): boolean;
+
         /**
          * @read-only
          * @default true
          */
         get isAlive(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get maximized_horizontally(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get maximizedHorizontally(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get maximized_vertically(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get maximizedVertically(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get minimized(): boolean;
+
         /**
          * @read-only
          * @default null
          */
-        get mutter_hints(): string | null;
+        get mutter_hints(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get mutterHints(): string | null;
+        get mutterHints(): (string | null);
+
         /**
          * @read-only
          * @default false
          */
         get on_all_workspaces(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get onAllWorkspaces(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get resizeable(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get skip_taskbar(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get skipTaskbar(): boolean;
+
         /**
          * @read-only
          * @default null
          */
         get title(): string;
+
         /**
          * @read-only
          * @default false
          */
         get urgent(): boolean;
+
         /**
          * @read-only
          * @default 0
          */
         get user_time(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get userTime(): number;
+
         /**
          * @read-only
          * @default Meta.WindowType.NORMAL
          */
         get window_type(): WindowType;
+
         /**
          * @read-only
          * @default Meta.WindowType.NORMAL
          */
         get windowType(): WindowType;
+
         /**
          * @read-only
          * @default null
          */
-        get wm_class(): string | null;
+        get wm_class(): (string | null);
+
         /**
          * @read-only
          * @default null
          */
-        get wmClass(): string | null;
+        get wmClass(): (string | null);
 
         /**
          * Compile-time signal type information.
@@ -7320,260 +7340,288 @@ export namespace Meta {
         $signals: Window.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Window.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Window.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Window.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Window.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Window.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Window.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param current_time
+         * @param current_time 
          */
         activate(current_time: number): void;
+
         /**
-         * @param current_time
-         * @param workspace
+         * @param current_time 
+         * @param workspace 
          */
         activate_with_workspace(current_time: number, workspace: Workspace): void;
+
         allows_move(): boolean;
+
         allows_resize(): boolean;
+
         /**
-         * @param op
-         * @param device
-         * @param sequence
-         * @param timestamp
-         * @param pos_hint
+         * @param op 
+         * @param device 
+         * @param sequence 
+         * @param timestamp 
+         * @param pos_hint 
          */
-        begin_grab_op(
-            op: GrabOp,
-            device: Clutter.InputDevice | null,
-            sequence: Clutter.EventSequence | null,
-            timestamp: number,
-            pos_hint: Graphene.Point | null,
-        ): boolean;
+        begin_grab_op(op: GrabOp, device: (Clutter.InputDevice | null), sequence: (Clutter.EventSequence | null), timestamp: number, pos_hint: (Graphene.Point | null)): boolean;
+
         can_close(): boolean;
+
         can_maximize(): boolean;
+
         can_minimize(): boolean;
+
         /**
-         * @param workspace
+         * @param workspace 
          */
         change_workspace(workspace: Workspace): void;
+
         /**
-         * @param space_index
-         * @param append
+         * @param space_index 
+         * @param append 
          */
         change_workspace_by_index(space_index: number, append: boolean): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         check_alive(timestamp: number): void;
+
         /**
          * Converts a desired bounds of the client window into the corresponding bounds
          * of the window frame (excluding invisible borders and client side shadows.)
          * @param client_rect client rectangle in root coordinates
          */
         client_rect_to_frame_rect(client_rect: Mtk.Rectangle): Mtk.Rectangle;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
-        ['delete'](timestamp: number): void;
+        ["delete"](timestamp: number): void;
+
         /**
          * Follow the chain of parents of `window`, skipping transient windows,
          * and return the "root" window which has no non-transient parent.
          * @returns The root ancestor window
          */
         find_root_ancestor(): Window;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         focus(timestamp: number): void;
+
         /**
          * If `window` is transient, call `func` with the window for which it's transient,
          * repeatedly until either we find a non-transient window, or `func` returns `false`.
          * @param func Called for each window which is a transient parent of `window`
          */
         foreach_ancestor(func: WindowForeachFunc): void;
+
         /**
          * Call `func` for every window which is either transient for `window`, or is
          * a transient of a window which is in turn transient for `window`.
          * The order of window enumeration is not defined.
-         *
+         * 
          * Iteration will stop if `func` at any point returns `false`.
          * @param func Called for each window which is a transient of `window` (transitively)
          */
         foreach_transient(func: WindowForeachFunc): void;
+
         /**
          * Converts a desired frame bounds for a window into the bounds of the client
          * window.
          * @param frame_rect desired frame bounds for the window
          */
         frame_rect_to_client_rect(frame_rect: Mtk.Rectangle): Mtk.Rectangle;
+
         /**
          * Gets the rectangle that the pixmap or buffer of `window` occupies.
-         *
+         * 
          * For X11 windows, this is the server-side geometry of the toplevel
          * window.
-         *
+         * 
          * For Wayland windows, this is the bounding rectangle of the attached
          * buffer.
          */
         get_buffer_rect(): Mtk.Rectangle;
+
         /**
          * Returns the {@link Meta.WindowClientType} of the window.
          * @returns The root ancestor window
          */
         get_client_type(): WindowClientType;
+
         /**
          * Gets the compositor's wrapper object for `window`.
          * @returns the wrapper object.
          */
         get_compositor_private<T = GObject.Object>(): T;
+
         get_description(): string;
+
         /**
          * @returns The display for `window`
          */
         get_display(): Display;
+
         /**
          * Gets a region representing the outer bounds of the window's frame.
          * @returns a {@link Mtk.Region}  holding the outer bounds of the window, or `null` if the window  doesn't have a frame.
          */
-        get_frame_bounds(): Mtk.Region | null;
+        get_frame_bounds(): (Mtk.Region | null);
+
         /**
          * Gets the rectangle that bounds `window` that is what the user thinks of
          * as the edge of the window.
-         *
+         * 
          * This doesn't include any extra reactive area that we or the client
          * adds to the window, or any area that the client adds to draw a client-side shadow.
          */
         get_frame_rect(): Mtk.Rectangle;
+
         /**
          * Gets the type of window decorations that should be used for this window.
          * @returns the frame type
          */
         get_frame_type(): FrameType;
+
         /**
          * @returns the object path
          */
-        get_gtk_app_menu_object_path(): string | null;
+        get_gtk_app_menu_object_path(): (string | null);
+
         /**
          * @returns the application ID
          */
-        get_gtk_application_id(): string | null;
+        get_gtk_application_id(): (string | null);
+
         /**
          * @returns the object path
          */
-        get_gtk_application_object_path(): string | null;
+        get_gtk_application_object_path(): (string | null);
+
         /**
          * @returns the object path
          */
-        get_gtk_menubar_object_path(): string | null;
+        get_gtk_menubar_object_path(): (string | null);
+
         /**
          * @returns the theme variant or `null`
          */
-        get_gtk_theme_variant(): string | null;
+        get_gtk_theme_variant(): (string | null);
+
         /**
          * @returns the unique name
          */
-        get_gtk_unique_bus_name(): string | null;
+        get_gtk_unique_bus_name(): (string | null);
+
         /**
          * @returns the object path
          */
-        get_gtk_window_object_path(): string | null;
+        get_gtk_window_object_path(): (string | null);
+
         /**
          * Gets the location of the icon corresponding to the window.
-         *
+         * 
          * The location will be provided set by the task bar or other user interface
          * element displaying the icon, and is relative to the root window.
          * @returns `true` if the icon geometry was successfully retrieved.
          */
         get_icon_geometry(): [boolean, Mtk.Rectangle];
+
         /**
          * Returns the window id associated with window.
          * @returns The window id
          */
         get_id(): number;
+
         get_layer(): StackLayer;
+
         /**
          * Gets the current maximization state of the window, as combination
          * of the {@link Meta.MaximizeFlags.HORIZONTAL} and {@link Meta.MaximizeFlags.VERTICAL} flags;
          * @returns current maximization state
          */
         get_maximized(): MaximizeFlags;
+
         /**
          * Gets index of the monitor that this window is on.
          * @returns The index of the monitor in the screens monitor list, or -1 if the window has been recently unmanaged and does not have a monitor.
          */
         get_monitor(): number;
+
         /**
          * Gets the current value of the _MUTTER_HINTS property.
-         *
+         * 
          * The purpose of the hints is to allow fine-tuning of the Window Manager and
          * Compositor behaviour on per-window basis, and is intended primarily for
          * hints that are plugin-specific.
-         *
+         * 
          * The property is a list of colon-separated key=value pairs. The key names for
          * any plugin-specific hints must be suitably namespaced to allow for shared
          * use; 'mutter-' key prefix is reserved for internal use, and must not be used
          * by plugins.
          * @returns the _MUTTER_HINTS string, or `null` if no hints are set.
          */
-        get_mutter_hints(): string | null;
+        get_mutter_hints(): (string | null);
+
         /**
          * Returns the pid of the process that created this window, if available
          * to the windowing system.
-         *
+         * 
          * Note that the value returned by this is vulnerable to spoofing attacks
          * by the client.
          * @returns the pid, or 0 if not known.
          */
         get_pid(): number;
+
         get_role(): string;
+
         /**
          * Gets an unique id for a sandboxed app (currently flatpaks and snaps are
          * supported).
          * @returns the sandboxed application ID or `null`
          */
-        get_sandboxed_app_id(): string | null;
+        get_sandboxed_app_id(): (string | null);
+
         /**
          * The stable sequence number is a monotonicially increasing
          * unique integer assigned to each {@link Meta.Window} upon creation.
-         *
+         * 
          * This number can be useful for sorting windows in a stable
          * fashion.
          * @returns Internal sequence number for this window
          */
         get_stable_sequence(): number;
+
         /**
          * Gets the startup id of the given {@link Meta.Window}
          * @returns the startup id
          */
-        get_startup_id(): string | null;
+        get_startup_id(): (string | null);
+
         /**
          * Returns the matching tiled window on the same monitor as `window`. This is
          * the topmost tiled window in a complementary tile mode that is:
-         *
+         * 
          *  - on the same monitor;
          *  - on the same workspace;
          *  - spanning the remaining monitor width;
@@ -7581,11 +7629,13 @@ export namespace Meta {
          *    partially visible in the common edge.
          * @returns the matching tiled window or `null` if it doesn't exist.
          */
-        get_tile_match(): Window | null;
+        get_tile_match(): (Window | null);
+
         /**
          * @returns the current title of the window.
          */
         get_title(): string;
+
         /**
          * Returns the {@link Meta.Window} for the window that is pointed to by the
          * WM_TRANSIENT_FOR hint on this window (see XGetTransientForHint()
@@ -7594,13 +7644,14 @@ export namespace Meta {
          * above its associated window.
          * @returns the window this window is transient for, or `null` if the WM_TRANSIENT_FOR hint is unset or does not point to a toplevel window that Mutter knows about.
          */
-        get_transient_for(): Window | null;
+        get_transient_for(): (Window | null);
+
         /**
          * The user time represents a timestamp for the last time the user
          * interacted with this window.
-         *
+         * 
          * Note this property is only available for non-override-redirect windows.
-         *
+         * 
          * The property is set by Mutter initially upon window creation,
          * and updated thereafter on input events (key and button presses) seen by Mutter,
          * client updates to the _NET_WM_USER_TIME property (if later than the current time)
@@ -7608,51 +7659,64 @@ export namespace Meta {
          * @returns The last time the user interacted with this window.
          */
         get_user_time(): number;
+
         get_window_type(): WindowType;
+
         /**
          * Return the current value of the name part of `WM_CLASS` X property.
          * @returns the current value of the name part of `WM_CLASS` X property
          */
-        get_wm_class(): string | null;
+        get_wm_class(): (string | null);
+
         /**
          * Return the current value of the instance part of `WM_CLASS` X property.
          * @returns the current value of the instance part of `WM_CLASS` X property.
          */
-        get_wm_class_instance(): string | null;
+        get_wm_class_instance(): (string | null);
+
         /**
          * Get the work area for all monitors for `window`.
          */
         get_work_area_all_monitors(): Mtk.Rectangle;
+
         /**
          * Get the work area for the monitor `window` is currently on.
          */
         get_work_area_current_monitor(): Mtk.Rectangle;
+
         /**
          * Get the work area for `window`, given the monitor index
          * `which_monitor`.
          * @param which_monitor a moniotr to get the work area for
          */
         get_work_area_for_monitor(which_monitor: number): Mtk.Rectangle;
+
         /**
          * Gets the {@link Meta.Workspace} that the window is currently displayed on.
-         *
+         * 
          * If the window is on all workspaces, returns the currently active
          * workspace.
          * @returns the {@link Meta.Workspace} for the window
          */
         get_workspace(): Workspace;
+
         /**
          * Tests if `window` has any transients attached to it.
-         *
+         * 
          * If the `attach_modal_dialogs` option is not enabled, this will
          * always return `false`.
          * @returns whether `window` has attached transients
          */
         has_attached_dialogs(): boolean;
+
         has_focus(): boolean;
+
         has_pointer(): boolean;
+
         is_above(): boolean;
+
         is_always_on_all_workspaces(): boolean;
+
         /**
          * The function determines whether `window` is an ancestor of `transient`; it does
          * so by traversing the `transient`'s ancestors until it either locates `window`
@@ -7661,80 +7725,101 @@ export namespace Meta {
          * @returns `true` if window is an ancestor of transient.
          */
         is_ancestor_of_transient(_transient: Window): boolean;
+
         /**
          * Tests if `window` should be attached to its parent window.
-         *
+         * 
          * If the `attach_modal_dialogs` option is not enabled, this will
          * always return `false`.
          * @returns whether `window` should be attached to its parent
          */
         is_attached_dialog(): boolean;
+
         /**
          * Check if if the window has decorations drawn by the client.
-         *
+         * 
          * `window->decorated` refers only to whether we should add decorations.
          */
         is_client_decorated(): boolean;
+
         /**
          * @returns `true` if the window is currently fullscreen
          */
         is_fullscreen(): boolean;
+
         is_hidden(): boolean;
+
         /**
          * @returns `true` if the window is occupies an entire monitor or               the whole screen.
          */
         is_monitor_sized(): boolean;
+
         is_on_all_workspaces(): boolean;
+
         /**
          * @returns `true` if the window is on the primary monitor
          */
         is_on_primary_monitor(): boolean;
+
         /**
          * @returns `true` if this window isn't managed by mutter; it will control its own positioning and mutter won't draw decorations among other things.  In X terminology this is "override redirect".
          */
         is_override_redirect(): boolean;
+
         /**
          * @returns `true` if this window originates from a host different from the one running mutter.
          */
         is_remote(): boolean;
+
         /**
          * @returns `true` if the window is occupies the               the whole screen (all monitors).
          */
         is_screen_sized(): boolean;
+
         /**
          * Gets whether this window should be ignored by task lists.
          * @returns `true` if the skip bar hint is set.
          */
         is_skip_taskbar(): boolean;
+
         kill(): void;
+
         /**
          * @param workspace a {@link Meta.Workspace}
          * @returns whether `window` is displayed on `workspace`, or whether it will be displayed on all workspaces.
          */
         located_on_workspace(workspace: Workspace): boolean;
+
         lower(): void;
+
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         lower_with_transients(timestamp: number): void;
+
         make_above(): void;
+
         make_fullscreen(): void;
+
         /**
-         * @param directions
+         * @param directions 
          */
         maximize(directions: MaximizeFlags): void;
+
         minimize(): void;
+
         /**
          * Moves the window to the desired location on window's assigned
          * workspace, using the northwest edge of the frame as the reference,
          * instead of the actual window's origin, but only if a frame is present.
-         *
+         * 
          * Otherwise, acts identically to `meta_window_move()`.
          * @param user_op bool to indicate whether or not this is a user operation
          * @param root_x_nw desired x pos
          * @param root_y_nw desired y pos
          */
         move_frame(user_op: boolean, root_x_nw: number, root_y_nw: number): void;
+
         /**
          * Resizes the window so that its outer bounds (including frame)
          * fit within the given rect
@@ -7745,13 +7830,16 @@ export namespace Meta {
          * @param h desired height
          */
         move_resize_frame(user_op: boolean, root_x_nw: number, root_y_nw: number, w: number, h: number): void;
+
         /**
          * Moves the window to the monitor with index `monitor`, keeping
          * the relative position of the window's top left corner.
          * @param monitor desired monitor index
          */
         move_to_monitor(monitor: number): void;
+
         raise(): void;
+
         /**
          * Raises a window and marks it as the most recently used window on the
          * workspace `target_workspace`. If the window exists on all workspaces, it will
@@ -7761,68 +7849,82 @@ export namespace Meta {
          * @param workspace the {@link Meta.Workspace} to raise and make it most recent on
          */
         raise_and_make_recent_on_workspace(workspace: Workspace): void;
+
         /**
-         * @param priv
+         * @param priv 
          */
         set_compositor_private(priv: GObject.Object): void;
+
         set_demands_attention(): void;
+
         /**
          * Sets or unsets the location of the icon corresponding to the window.
-         *
+         * 
          * If set, the location should correspond to a dock, task bar or other user
          * interface element displaying the icon, and is relative to the root window.
          * @param rect rectangle with the desired geometry or `null`.
          */
-        set_icon_geometry(rect: Mtk.Rectangle | null): void;
+        set_icon_geometry(rect: (Mtk.Rectangle | null)): void;
+
         shove_titlebar_onscreen(): void;
+
         /**
          * @returns `true` if window would be visible, if its workspace was current
          */
         showing_on_its_workspace(): boolean;
+
         stick(): void;
+
         titlebar_is_onscreen(): boolean;
+
         unmake_above(): void;
+
         unmake_fullscreen(): void;
+
         /**
-         * @param directions
+         * @param directions 
          */
         unmaximize(directions: MaximizeFlags): void;
+
         unminimize(): void;
+
         unset_demands_attention(): void;
+
         unstick(): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -7832,40 +7934,41 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -7875,8 +7978,9 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace WindowActor {
         // Signal signatures
@@ -7893,7 +7997,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'effects-completed': () => void;
+            "effects-completed": () => void;
             /**
              * The ::first-frame signal will be emitted the first time a frame
              * of window contents has been drawn by the application and Mutter
@@ -7901,7 +8005,7 @@ export namespace Meta {
              * window starts off initially hidden, obscured, or on on a
              * different workspace, the ::first-frame signal will be emitted
              * even though the user doesn't see the contents.
-             *
+             * 
              * MetaDisplay::window-created is a good place to connect to this
              * signal - at that point, the MetaWindowActor for the window
              * exists, but the window has reliably not yet been drawn.
@@ -7910,106 +8014,101 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'first-frame': () => void;
+            "first-frame": () => void;
             /**
              * @signal
              * @run-last
              */
             thawed: () => void;
-            'notify::meta-window': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::meta-window": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps {
-            meta_window: Window | null;
-            metaWindow: Window | null;
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
+            meta_window: (Window | null);
+            metaWindow: (Window | null);
         }
     }
 
     /**
      * An actor representing a top-level window in the scene graph
-     *
+     * 
      * {@link Meta.WindowActor} is a {@link Clutter.Actor} that adds a notion of a window to the
      * Clutter scene graph. It contains a {@link Meta.Window} which provides the windowing
      * API, and the {@link Meta.Compositor} that handles it.  For the actual content of the
      * window, it contains a `MetaSurfaceActor`.
-     *
+     * 
      * {@link Meta.WindowActor} takes care of the rendering features you need for your
      * window. For example, it will take the windows' requested opacity and use
      * that for `clutter_actor_set_opacity()`. Furthermore, it will also draw a
@@ -8022,15 +8121,15 @@ export namespace Meta {
         static $gtype: GObject.GType<WindowActor>;
 
         // Properties
+        /**
+         * @construct-only
+         */
+        get meta_window(): (Window | null);
 
         /**
          * @construct-only
          */
-        get meta_window(): Window | null;
-        /**
-         * @construct-only
-         */
-        get metaWindow(): Window | null;
+        get metaWindow(): (Window | null);
 
         /**
          * Compile-time signal type information.
@@ -8042,34 +8141,24 @@ export namespace Meta {
         $signals: WindowActor.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WindowActor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WindowActor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowActor.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WindowActor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WindowActor.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WindowActor.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WindowActor.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WindowActor.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowActor.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WindowActor.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WindowActor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WindowActor.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowActor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Freezes the {@link Meta.WindowActor}, which inhibits updates and geometry
          * changes of the window. This property is refcounted, so make sure
@@ -8077,63 +8166,74 @@ export namespace Meta {
          * as this function to allow updates again.
          */
         freeze(): void;
+
         /**
          * Flattens the layers of `self` into one ARGB32 image by alpha blending
          * the images, and returns the flattened image.
          * @param clip A clipping rectangle, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the actor, the rectangle will be clipped.
          * @returns a new cairo surface to be freed with `cairo_surface_destroy()`.
          */
-        get_image(clip: Mtk.Rectangle | null): cairo.Surface | null;
+        get_image(clip: (Mtk.Rectangle | null)): (cairo.Surface | null);
+
         /**
          * Gets the {@link Meta.Window} object that the the {@link Meta.WindowActor} is displaying
          * @returns the displayed {@link Meta.Window}
          */
-        get_meta_window(): Window | null;
+        get_meta_window(): (Window | null);
+
         /**
          * Gets the ClutterActor that is used to display the contents of the window,
          * or NULL if no texture is shown yet, because the window is not mapped.
          * @returns the {@link Clutter.Actor} for the contents
          */
-        get_texture(): ShapedTexture | null;
+        get_texture(): (ShapedTexture | null);
+
         /**
          * Gets whether the X window that the actor was displaying has been destroyed
          * @returns `true` when the window is destroyed, otherwise `false`
          */
         is_destroyed(): boolean;
+
         /**
          * @param clip A clipping rectangle, in actor coordinates, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the actor, the rectangle will be clipped.
          * @returns a new {@link Clutter.Content}
          */
-        paint_to_content(clip: Mtk.Rectangle | null): Clutter.Content | null;
+        paint_to_content(clip: (Mtk.Rectangle | null)): (Clutter.Content | null);
+
         sync_visibility(): void;
+
         /**
          * Thaws/unfreezes the {@link Meta.WindowActor} to allow updates and geometry
          * changes after a window was frozen using `meta_window_actor_freeze()`.
          */
         thaw(): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
          * @param property_name the name of the property to interpolate
@@ -8142,23 +8242,27 @@ export namespace Meta {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -8166,12 +8270,13 @@ export namespace Meta {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
          * @param property_name the name of the property to interpolate
@@ -8179,11 +8284,8 @@ export namespace Meta {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -8193,89 +8295,87 @@ export namespace Meta {
         vfunc_set_final_state(property_name: string, value: unknown): void;
     }
 
+
     namespace WindowGroup {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::color-state': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::color-state": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps {}
+        }
     }
 
     /**
@@ -8294,54 +8394,49 @@ export namespace Meta {
         $signals: WindowGroup.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WindowGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WindowGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowGroup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WindowGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WindowGroup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WindowGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WindowGroup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WindowGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowGroup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WindowGroup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WindowGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WindowGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @returns a {@link Clutter.Actor}
          */
         get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
          * @param property_name the name of the property to interpolate
@@ -8350,23 +8445,27 @@ export namespace Meta {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Get animated actor.
          * @virtual
          */
         vfunc_get_actor(): Clutter.Actor;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -8374,12 +8473,13 @@ export namespace Meta {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}s.
          * @param property_name the name of the property to interpolate
@@ -8387,11 +8487,8 @@ export namespace Meta {
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -8401,6 +8498,7 @@ export namespace Meta {
         vfunc_set_final_state(property_name: string, value: unknown): void;
     }
 
+
     namespace Workspace {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -8408,19 +8506,18 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'window-added': (arg0: Window) => void;
+            "window-added": (arg0: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            'window-removed': (arg0: Window) => void;
-            'notify::active': (pspec: GObject.ParamSpec) => void;
-            'notify::n-windows': (pspec: GObject.ParamSpec) => void;
-            'notify::workspace-index': (pspec: GObject.ParamSpec) => void;
+            "window-removed": (arg0: Window) => void;
+            "notify::active": (pspec: GObject.ParamSpec) => void;
+            "notify::n-windows": (pspec: GObject.ParamSpec) => void;
+            "notify::workspace-index": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             active: boolean;
             n_windows: number;
@@ -8432,7 +8529,7 @@ export namespace Meta {
 
     /**
      * Workspaces
-     *
+     * 
      * A workspace is a set of windows which all live on the same
      * screen.  (You may also see the name "desktop" around the place,
      * which is the EWMH's name for the same thing.)  Only one workspace
@@ -8444,27 +8541,30 @@ export namespace Meta {
         static $gtype: GObject.GType<Workspace>;
 
         // Properties
-
         /**
          * @read-only
          * @default false
          */
         get active(): boolean;
+
         /**
          * @read-only
          * @default 0
          */
         get n_windows(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get nWindows(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get workspace_index(): number;
+
         /**
          * @read-only
          * @default 0
@@ -8481,48 +8581,39 @@ export namespace Meta {
         $signals: Workspace.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Workspace.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Workspace.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Workspace.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Workspace.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Workspace.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Workspace.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Workspace.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Workspace.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Workspace.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Workspace.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Workspace.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Workspace.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Workspace.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param timestamp
+         * @param timestamp 
          */
         activate(timestamp: number): void;
+
         /**
          * Switches to `workspace` and possibly activates the window `focus_this`.
-         *
+         * 
          * The window `focus_this` is activated by calling `meta_window_activate()`
          * which will unminimize it and transient parents, raise it and give it
          * the focus.
-         *
+         * 
          * If a window is currently being moved by the user, it will be
          * moved to `workspace`.
-         *
+         * 
          * The advantage of calling this function instead of `meta_workspace_activate()`
          * followed by `meta_window_activate()` is that it happens as a unit, so
          * no other window gets focused first before `focus_this`.
@@ -8530,11 +8621,13 @@ export namespace Meta {
          * @param timestamp timestamp for `focus_this`
          */
         activate_with_focus(focus_this: Window, timestamp: number): void;
+
         /**
          * Gets the {@link Meta.Display} that the workspace is part of.
          * @returns the {@link Meta.Display} for the workspace
          */
         get_display(): Display;
+
         /**
          * Calculate and retrieve the workspace that is next to `workspace`,
          * according to `direction` and the current workspace layout, as set
@@ -8543,23 +8636,28 @@ export namespace Meta {
          * @returns the workspace next to `workspace`, or   `workspace` itself if the neighbor would be outside the layout
          */
         get_neighbor(direction: MotionDirection): Workspace;
+
         /**
          * Stores the work area in `area`.
          */
         get_work_area_all_monitors(): Mtk.Rectangle;
+
         /**
          * Stores the work area for `which_monitor` on `workspace`
          * in `area`.
          * @param which_monitor a monitor index
          */
         get_work_area_for_monitor(which_monitor: number): Mtk.Rectangle;
+
         index(): number;
+
         /**
          * Gets windows contained on the workspace, including workspace->windows
          * and also sticky windows. Override-redirect windows are not included.
          * @returns the list of windows.
          */
         list_windows(): Window[];
+
         /**
          * Sets a list of struts that will be used in addition to the struts
          * of the windows in the workspace when computing the work area of
@@ -8569,6 +8667,7 @@ export namespace Meta {
         set_builtin_struts(struts: Strut[]): void;
     }
 
+
     namespace WorkspaceManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -8576,39 +8675,38 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            'active-workspace-changed': () => void;
+            "active-workspace-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'showing-desktop-changed': () => void;
+            "showing-desktop-changed": () => void;
             /**
              * @signal
              * @run-last
              */
-            'workspace-added': (arg0: number) => void;
+            "workspace-added": (arg0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            'workspace-removed': (arg0: number) => void;
+            "workspace-removed": (arg0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            'workspace-switched': (arg0: number, arg1: number, arg2: MotionDirection) => void;
+            "workspace-switched": (arg0: number, arg1: number, arg2: MotionDirection) => void;
             /**
              * @signal
              * @run-last
              */
-            'workspaces-reordered': () => void;
-            'notify::layout-columns': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-rows': (pspec: GObject.ParamSpec) => void;
-            'notify::n-workspaces': (pspec: GObject.ParamSpec) => void;
+            "workspaces-reordered": () => void;
+            "notify::layout-columns": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-rows": (pspec: GObject.ParamSpec) => void;
+            "notify::n-workspaces": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             layout_columns: number;
             layoutColumns: number;
@@ -8626,32 +8724,36 @@ export namespace Meta {
         static $gtype: GObject.GType<WorkspaceManager>;
 
         // Properties
-
         /**
          * @read-only
          * @default 1
          */
         get layout_columns(): number;
+
         /**
          * @read-only
          * @default 1
          */
         get layoutColumns(): number;
+
         /**
          * @read-only
          * @default -1
          */
         get layout_rows(): number;
+
         /**
          * @read-only
          * @default -1
          */
         get layoutRows(): number;
+
         /**
          * @read-only
          * @default 1
          */
         get n_workspaces(): number;
+
         /**
          * @read-only
          * @default 1
@@ -8668,34 +8770,24 @@ export namespace Meta {
         $signals: WorkspaceManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WorkspaceManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WorkspaceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkspaceManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WorkspaceManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WorkspaceManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WorkspaceManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WorkspaceManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WorkspaceManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WorkspaceManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WorkspaceManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WorkspaceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WorkspaceManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WorkspaceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Append a new workspace to the workspace manager and (optionally) switch to that
          * display.
@@ -8704,14 +8796,20 @@ export namespace Meta {
          * @returns the newly appended workspace.
          */
         append_new_workspace(activate: boolean, timestamp: number): Workspace;
+
         /**
          * @returns The current workspace
          */
         get_active_workspace(): Workspace;
+
         get_active_workspace_index(): number;
+
         get_layout_columns(): number;
+
         get_layout_rows(): number;
+
         get_n_workspaces(): number;
+
         /**
          * Gets the workspace object for one of a workspace manager's workspaces given the workspace
          * index. It's valid to call this function with an out-of-range index and it
@@ -8719,7 +8817,8 @@ export namespace Meta {
          * @param index index of one of the display's workspaces
          * @returns the workspace object with specified   index, or `null` if the index is out of range.
          */
-        get_workspace_by_index(index: number): Workspace | null;
+        get_workspace_by_index(index: number): (Workspace | null);
+
         /**
          * Explicitly set the layout of workspaces. Once this has been called, the contents of the
          * _NET_DESKTOP_LAYOUT property on the root window are completely ignored.
@@ -8728,23 +8827,20 @@ export namespace Meta {
          * @param n_rows number of rows of workspaces, or -1 to determine the number of rows from   `n_columns` and the total number of workspaces
          * @param n_columns number of columns of workspaces, or -1 to determine the number of columns from   `n_rows` and the total number of workspaces
          */
-        override_workspace_layout(
-            starting_corner: DisplayCorner,
-            vertical_layout: boolean,
-            n_rows: number,
-            n_columns: number,
-        ): void;
+        override_workspace_layout(starting_corner: DisplayCorner, vertical_layout: boolean, n_rows: number, n_columns: number): void;
+
         /**
-         * @param workspace
-         * @param timestamp
+         * @param workspace 
+         * @param timestamp 
          */
         remove_workspace(workspace: Workspace, timestamp: number): void;
+
         /**
          * Reorder a workspace to a new index. If the workspace is currently active
          * the "active-workspace-changed" signal will be emitted.
          * If the workspace's index is the same as `new_index` or the workspace
          * will not be found in the list, this function will return.
-         *
+         * 
          * Calling this function will also emit the "workspaces-reordered" signal.
          * @param workspace a {@link Meta.Workspace} to reorder
          * @param new_index the new index of the passed workspace
@@ -8752,18 +8848,21 @@ export namespace Meta {
         reorder_workspace(workspace: Workspace, new_index: number): void;
     }
 
+
     namespace X11Display {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Mutter X display handler
-     *
+     * 
      * The X11 display is represented as a {@link Meta.X11Display} struct.
      * @gir-type Class
      */
@@ -8780,80 +8879,81 @@ export namespace Meta {
         $signals: X11Display.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<X11Display.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof X11Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof X11Display.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof X11Display.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof X11Display.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, X11Display.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof X11Display.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<X11Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof X11Display.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<X11Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param window
+         * @param window 
          */
         lookup_xwindow(window: Window): xlib.Window;
+
         /**
-         * @param display
+         * @param display 
          */
         redirect_windows(display: Display): void;
+
         /**
-         * @param region
+         * @param region 
          */
         set_stage_input_region(region: xfixes.XserverRegion): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type BackendClass = typeof Backend;
+
     /**
      * @gir-type Alias
      */
     type BackgroundActorClass = typeof BackgroundActor;
+
     /**
      * @gir-type Alias
      */
     type BackgroundClass = typeof Background;
+
     /**
      * @gir-type Alias
      */
     type BackgroundContentClass = typeof BackgroundContent;
+
     /**
      * @gir-type Alias
      */
     type BackgroundGroupClass = typeof BackgroundGroup;
+
     /**
      * @gir-type Alias
      */
     type BackgroundImageCacheClass = typeof BackgroundImageCache;
+
     /**
      * @gir-type Alias
      */
     type BackgroundImageClass = typeof BackgroundImage;
+
     /**
      * @gir-type Alias
      */
     type BarrierClass = typeof Barrier;
+
     /**
      * @gir-type Struct
      */
@@ -8861,33 +8961,39 @@ export namespace Meta {
         static $gtype: GObject.GType<BarrierEvent>;
 
         // Fields
-
         event_id: number;
+
         dt: number;
+
         time: number;
+
         x: number;
+
         y: number;
+
         dx: number;
+
         dy: number;
+
         released: boolean;
+
         grabbed: boolean;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                event_id: number;
-                dt: number;
-                time: number;
-                x: number;
-                y: number;
-                dx: number;
-                dy: number;
-                released: boolean;
-                grabbed: boolean;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            event_id: number;
+            dt: number;
+            time: number;
+            x: number;
+            y: number;
+            dx: number;
+            dy: number;
+            released: boolean;
+            grabbed: boolean;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -8896,37 +9002,46 @@ export namespace Meta {
         static $gtype: GObject.GType<ButtonLayout>;
 
         // Fields
-
         left_buttons: ButtonFunction[];
+
         left_buttons_has_spacer: boolean[];
+
         right_buttons: ButtonFunction[];
+
         right_buttons_has_spacer: boolean[];
     }
+
 
     /**
      * @gir-type Alias
      */
     type CloseDialogInterface = typeof CloseDialog;
+
     /**
      * @gir-type Alias
      */
     type CompositorClass = typeof Compositor;
+
     /**
      * @gir-type Alias
      */
     type ContextClass = typeof Context;
+
     /**
      * @gir-type Alias
      */
     type CursorTrackerClass = typeof CursorTracker;
+
     /**
      * @gir-type Alias
      */
     type DisplayClass = typeof Display;
+
     /**
      * @gir-type Alias
      */
     type DndClass = typeof Dnd;
+
     /**
      * @gir-type Struct
      */
@@ -8934,11 +9049,13 @@ export namespace Meta {
         static $gtype: GObject.GType<Edge>;
 
         // Fields
-
         rect: Mtk.Rectangle;
+
         side_type: Side;
+
         edge_type: EdgeType;
     }
+
 
     /**
      * @gir-type Struct
@@ -8947,6 +9064,7 @@ export namespace Meta {
         static $gtype: GObject.GType<Frame>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -8954,23 +9072,24 @@ export namespace Meta {
         static $gtype: GObject.GType<FrameBorder>;
 
         // Fields
-
         left: number;
+
         right: number;
+
         top: number;
+
         bottom: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                left: number;
-                right: number;
-                top: number;
-                bottom: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            left: number;
+            right: number;
+            top: number;
+            bottom: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -8979,34 +9098,35 @@ export namespace Meta {
         static $gtype: GObject.GType<FrameBorders>;
 
         // Fields
-
         visible: FrameBorder;
+
         invisible: FrameBorder;
+
         total: FrameBorder;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                visible: FrameBorder;
-                invisible: FrameBorder;
-                total: FrameBorder;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            visible: FrameBorder;
+            invisible: FrameBorder;
+            total: FrameBorder;
+        }>);
 
         // Methods
-
         clear(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type IdleMonitorClass = typeof IdleMonitor;
+
     /**
      * @gir-type Alias
      */
     type InhibitShortcutsDialogInterface = typeof InhibitShortcutsDialog;
+
     /**
      * @gir-type Struct
      */
@@ -9014,34 +9134,43 @@ export namespace Meta {
         static $gtype: GObject.GType<KeyBinding>;
 
         // Methods
-
         get_mask(): number;
+
         get_modifiers(): Clutter.ModifierType;
+
         get_name(): string;
+
         is_builtin(): boolean;
+
         is_reversed(): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type LatersClass = typeof Laters;
+
     /**
      * @gir-type Alias
      */
     type LaunchContextClass = typeof LaunchContext;
+
     /**
      * @gir-type Alias
      */
     type MonitorManagerClass = typeof MonitorManager;
+
     /**
      * @gir-type Alias
      */
     type MultiTextureClass = typeof MultiTexture;
+
     /**
      * @gir-type Alias
      */
     type PluginClass = typeof Plugin;
+
     /**
      * @gir-type Struct
      */
@@ -9049,46 +9178,53 @@ export namespace Meta {
         static $gtype: GObject.GType<PluginInfo>;
 
         // Fields
-
         name: string;
+
         version: string;
+
         author: string;
+
         license: string;
+
         description: string;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                name: string;
-                version: string;
-                author: string;
-                license: string;
-                description: string;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            name: string;
+            version: string;
+            author: string;
+            license: string;
+            description: string;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type RemoteAccessControllerClass = typeof RemoteAccessController;
+
     /**
      * @gir-type Alias
      */
     type RemoteAccessHandleClass = typeof RemoteAccessHandle;
+
     /**
      * @gir-type Alias
      */
     type SelectionClass = typeof Selection;
+
     /**
      * @gir-type Alias
      */
     type SelectionSourceClass = typeof SelectionSource;
+
     /**
      * @gir-type Alias
      */
     type SelectionSourceMemoryClass = typeof SelectionSourceMemory;
+
     /**
      * @gir-type Struct
      */
@@ -9096,15 +9232,16 @@ export namespace Meta {
         static $gtype: GObject.GType<Settings>;
 
         // Methods
-
         get_font_dpi(): number;
+
         get_ui_scaling_factor(): number;
     }
+
 
     /**
      * Holds a shadow texture along with information about how to
      * apply that texture to draw a window texture.
-     *
+     * 
      * E.g., it knows how big the unscaled borders are on each
      * side of the shadow texture.
      * @gir-type Struct
@@ -9113,7 +9250,6 @@ export namespace Meta {
         static $gtype: GObject.GType<Shadow>;
 
         // Methods
-
         /**
          * Computes the bounds of the pixels that will be affected by
          * `meta_shadow_paint()`
@@ -9121,48 +9257,38 @@ export namespace Meta {
          * @param window_y y position of the region to paint a shadow for
          * @param window_width actual width of the region to paint a shadow for
          * @param window_height actual height of the region to paint a shadow for
-         * @param bounds
+         * @param bounds 
          */
-        get_bounds(
-            window_x: number,
-            window_y: number,
-            window_width: number,
-            window_height: number,
-            bounds: Mtk.Rectangle,
-        ): void;
+        get_bounds(window_x: number, window_y: number, window_width: number, window_height: number, bounds: Mtk.Rectangle): void;
+
         /**
          * Paints the shadow at the given position, for the specified actual
          * size of the region.
-         *
+         * 
          * Since a {@link Meta.Shadow} can be shared between different sizes with
          * the same extracted {@link Meta.WindowShape} the size needs to be passed in here.
-         * @param framebuffer
+         * @param framebuffer 
          * @param window_x x position of the region to paint a shadow for
          * @param window_y y position of the region to paint a shadow for
          * @param window_width actual width of the region to paint a shadow for
          * @param window_height actual height of the region to paint a shadow for
-         * @param opacity
+         * @param opacity 
          * @param clip if non-`null` specifies the visible portion   of the shadow.
          * @param clip_strictly if `true`, drawing will be clipped strictly   to `clip`, otherwise, it will be only used to optimize   drawing.
          */
-        paint(
-            framebuffer: Cogl.Framebuffer,
-            window_x: number,
-            window_y: number,
-            window_width: number,
-            window_height: number,
-            opacity: number,
-            clip: Mtk.Region | null,
-            clip_strictly: boolean,
-        ): void;
+        paint(framebuffer: Cogl.Framebuffer, window_x: number, window_y: number, window_width: number, window_height: number, opacity: number, clip: (Mtk.Region | null), clip_strictly: boolean): void;
+
         ref(): Shadow;
+
         unref(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ShadowFactoryClass = typeof ShadowFactory;
+
     /**
      * Information about how to draw a particular style of shadow.
      * @gir-type Struct
@@ -9171,46 +9297,53 @@ export namespace Meta {
         static $gtype: GObject.GType<ShadowParams>;
 
         // Fields
-
         radius: number;
+
         top_fade: number;
+
         x_offset: number;
+
         y_offset: number;
+
         opacity: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                radius: number;
-                top_fade: number;
-                x_offset: number;
-                y_offset: number;
-                opacity: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            radius: number;
+            top_fade: number;
+            x_offset: number;
+            y_offset: number;
+            opacity: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type ShapedTextureClass = typeof ShapedTexture;
+
     /**
      * @gir-type Alias
      */
     type SoundPlayerClass = typeof SoundPlayer;
+
     /**
      * @gir-type Alias
      */
     type StageClass = typeof Stage;
+
     /**
      * @gir-type Alias
      */
     type StartupNotificationClass = typeof StartupNotification;
+
     /**
      * @gir-type Alias
      */
     type StartupSequenceClass = typeof StartupSequence;
+
     /**
      * @gir-type Struct
      */
@@ -9218,42 +9351,49 @@ export namespace Meta {
         static $gtype: GObject.GType<Strut>;
 
         // Fields
-
         rect: Mtk.Rectangle;
+
         side: Side;
     }
+
 
     /**
      * @gir-type Alias
      */
     type WaylandClientClass = typeof WaylandClient;
+
     /**
      * @gir-type Alias
      */
     type WaylandCompositorClass = typeof WaylandCompositor;
+
     /**
      * @gir-type Alias
      */
     type WaylandSurfaceClass = typeof WaylandSurface;
+
     /**
      * @gir-type Alias
      */
     type WindowActorClass = typeof WindowActor;
+
     /**
      * @gir-type Alias
      */
     type WindowClass = typeof Window;
+
     /**
      * @gir-type Alias
      */
     type WindowGroupClass = typeof WindowGroup;
+
     /**
      * Represents a 9-sliced region with borders on all sides that
      * are unscaled, and a constant central region that is scaled.
-     *
+     * 
      * For example, the regions representing two windows that are rounded rectangles,
      * with the same corner radius but different sizes, have the same MetaWindowShape.
-     *
+     * 
      * {@link Meta.WindowShape} is designed to be used as part of a hash table key, so has
      * efficient hash and equal functions.
      * @gir-type Struct
@@ -9262,26 +9402,28 @@ export namespace Meta {
         static $gtype: GObject.GType<WindowShape>;
 
         // Constructors
-
         constructor(region: Mtk.Region);
 
-        static ['new'](region: Mtk.Region): WindowShape;
+        static ["new"](region: Mtk.Region): WindowShape;
 
         // Methods
-
         /**
-         * @param shape_b
+         * @param shape_b 
          */
         equal(shape_b: WindowShape): boolean;
+
         /**
-         * @param border_top
-         * @param border_right
-         * @param border_bottom
-         * @param border_left
+         * @param border_top 
+         * @param border_right 
+         * @param border_bottom 
+         * @param border_left 
          */
         get_borders(border_top: number, border_right: number, border_bottom: number, border_left: number): void;
+
         hash(): number;
+
         ref(): WindowShape;
+
         /**
          * Converts the shape to to a MtkRegion using the given width
          * and height for the central scaled region.
@@ -9290,40 +9432,47 @@ export namespace Meta {
          * @returns a newly created region
          */
         to_region(center_width: number, center_height: number): Mtk.Region;
+
         unref(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type WorkspaceClass = typeof Workspace;
+
     /**
      * @gir-type Alias
      */
     type WorkspaceManagerClass = typeof WorkspaceManager;
+
     /**
      * @gir-type Alias
      */
     type X11DisplayClass = typeof X11Display;
+
     namespace CloseDialog {
         /**
          * Interface for implementing CloseDialog.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Call whenever `dialog` should receive keyboard focus,
              * usually when the window would.
              * @virtual
              */
             vfunc_focus(): void;
+
             /**
              * Hides the close dialog.
              * @virtual
              */
             vfunc_hide(): void;
+
             /**
              * Shows the close dialog.
              * @virtual
@@ -9331,8 +9480,8 @@ export namespace Meta {
             vfunc_show(): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             window: Window;
         }
@@ -9346,40 +9495,44 @@ export namespace Meta {
      * @gir-type Interface
      */
     interface CloseDialog extends GObject.Object, CloseDialog.Interface {
-        // Properties
 
+        // Properties
         /**
          * @construct-only
          */
         get window(): Window;
 
         // Methods
-
         /**
          * Call whenever `dialog` should receive keyboard focus,
          * usually when the window would.
          */
         focus(): void;
+
         /**
          * Hides the close dialog.
          */
         hide(): void;
+
         /**
          * Returns whether `dialog` is currently visible.
          * @returns `TRUE` if `dialog` is visible.
          */
         is_visible(): boolean;
+
         /**
          * Responds and closes the dialog. To be called by {@link Meta.CloseDialog}
          * implementations.
          * @param response a {@link Meta.CloseDialogResponse}
          */
         response(response: CloseDialogResponse): void;
+
         /**
          * Shows the close dialog.
          */
         show(): void;
     }
+
 
     export const CloseDialog: CloseDialogNamespace & {
         new (): CloseDialog; // This allows `obj instanceof CloseDialog`
@@ -9391,13 +9544,14 @@ export namespace Meta {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Hides the inhibit shortcuts dialog.
              * @virtual
              */
             vfunc_hide(): void;
+
             /**
              * Shows the inhibit shortcuts dialog.
              * @virtual
@@ -9405,8 +9559,8 @@ export namespace Meta {
             vfunc_show(): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             window: Window;
         }
@@ -9420,30 +9574,32 @@ export namespace Meta {
      * @gir-type Interface
      */
     interface InhibitShortcutsDialog extends GObject.Object, InhibitShortcutsDialog.Interface {
-        // Properties
 
+        // Properties
         /**
          * @construct-only
          */
         get window(): Window;
 
         // Methods
-
         /**
          * Hides the inhibit shortcuts dialog.
          */
         hide(): void;
+
         /**
          * Responds and closes the dialog. To be called by {@link Meta.InhibitShortcutsDialog}
          * implementations.
          * @param response a {@link Meta.InhibitShortcutsDialogResponse}
          */
         response(response: InhibitShortcutsDialogResponse): void;
+
         /**
          * Shows the inhibit shortcuts dialog.
          */
         show(): void;
     }
+
 
     export const InhibitShortcutsDialog: InhibitShortcutsDialogNamespace & {
         new (): InhibitShortcutsDialog; // This allows `obj instanceof InhibitShortcutsDialog`
@@ -9454,6 +9610,7 @@ export namespace Meta {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

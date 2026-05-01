@@ -1,3 +1,4 @@
+
 import type Garcon10 from '@girs/garcon-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

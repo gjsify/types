@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -14,9 +15,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 
 export namespace Keybinder {
+
     /**
      * Keybinder-0.0
      */
+
 
     /**
      * Grab a key combination globally and register a callback to be called each
@@ -27,35 +30,41 @@ export namespace Keybinder {
      * @returns `true` if the accelerator could be grabbed
      * @since 0.3.0
      */
-    function bind(keystring: string, handler: Handler, notify: GLib.DestroyNotify | null): boolean;
+    function bind(keystring: string, handler: Handler, notify: (GLib.DestroyNotify | null)): boolean;
+
     /**
      * @returns the current event timestamp
      */
     function get_current_event_time(): number;
+
     /**
      * Initialize the keybinder library.
-     *
+     * 
      * This function must be called after initializing GTK, before calling any
      * other function in the library. Can only be called once.
      */
     function init(): void;
+
     /**
      * Unregister all previously bound callbacks for this keystring.
      * @param keystring an accelerator description (gtk_accelerator_parse() format)
      * @since 0.3.0
      */
     function unbind(keystring: string): void;
+
     /**
      * @gir-type Callback
      */
     interface Handler {
         (keystring: string): void;
     }
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 import type DbusmenuGtk04 from '@girs/dbusmenugtk-0.4';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

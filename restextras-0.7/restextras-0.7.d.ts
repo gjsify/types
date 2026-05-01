@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -19,41 +20,36 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace RestExtras {
+
     /**
      * RestExtras-0.7
      */
+
 
     /**
      * @gir-type Callback
      */
     interface YoutubeProxyUploadCallback<A = GObject.Object> {
-        (
-            proxy: YoutubeProxy,
-            payload: string,
-            total: number,
-            uploaded: number,
-            error: GLib.Error,
-            weak_object: A,
-        ): void;
+        (proxy: YoutubeProxy, payload: string, total: number, uploaded: number, error: GLib.Error, weak_object: A): void;
     }
+
     namespace FlickrProxy {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
-            'notify::api-key': (pspec: GObject.ParamSpec) => void;
-            'notify::shared-secret': (pspec: GObject.ParamSpec) => void;
-            'notify::token': (pspec: GObject.ParamSpec) => void;
-            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
-            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
-            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
-            'notify::url-format': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
+            "notify::api-key": (pspec: GObject.ParamSpec) => void;
+            "notify::shared-secret": (pspec: GObject.ParamSpec) => void;
+            "notify::token": (pspec: GObject.ParamSpec) => void;
+            "notify::binding-required": (pspec: GObject.ParamSpec) => void;
+            "notify::disable-cookies": (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::ssl-ca-file": (pspec: GObject.ParamSpec) => void;
+            "notify::ssl-strict": (pspec: GObject.ParamSpec) => void;
+            "notify::url-format": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
             api_key: string;
             apiKey: string;
@@ -71,27 +67,30 @@ export namespace RestExtras {
         static $gtype: GObject.GType<FlickrProxy>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get api_key(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get apiKey(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get shared_secret(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get sharedSecret(): string;
+
         /**
          * @default null
          */
@@ -108,41 +107,31 @@ export namespace RestExtras {
         $signals: FlickrProxy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FlickrProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](api_key: string, shared_secret: string): FlickrProxy;
-        // Conflicted with Rest.Proxy.new
+        static ["new"](api_key: string, shared_secret: string): FlickrProxy;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Rest.Proxy.new
+        static ["new"](...args: never[]): any;
 
         static new_with_token(api_key: string, shared_secret: string, token: string): FlickrProxy;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FlickrProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FlickrProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FlickrProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FlickrProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlickrProxy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FlickrProxy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FlickrProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FlickrProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlickrProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Examines the Flickr response and if it not a successful reply, set `error` and
          * return FALSE.
@@ -151,70 +140,76 @@ export namespace RestExtras {
         static is_successful(root: Rest.XmlNode): boolean;
 
         // Methods
-
         /**
-         * @param frob
-         * @param perms
+         * @param frob 
+         * @param perms 
          */
         build_login_url(frob: string, perms: string): string;
+
         /**
          * Get the API key.
          * @returns the API key. This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
          */
         get_api_key(): string;
+
         /**
          * Get the shared secret for authentication.
          * @returns the shared secret. This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
          */
         get_shared_secret(): string;
+
         /**
          * Get the current token.
          * @returns the token, or `null` if there is no token yet.  This string is owned by {@link RestExtras.FlickrProxy} and should not be freed.
          */
         get_token(): string;
+
         /**
          * Create a new {@link Rest.ProxyCall} that can be used for uploading.
-         *
+         * 
          * See http://www.flickr.com/services/api/upload.api.html for details on
          * uploading to Flickr.
          * @returns a new {@link RestExtras.FlickrProxyCall}
          */
         new_upload(): FlickrProxyCall;
+
         /**
          * Create a new {@link Rest.ProxyCall} that can be used for uploading.  `filename` will
          * be set as the "photo" parameter for you, avoiding you from having to open the
          * file and determine the MIME type.
-         *
+         * 
          * Note that this function can in theory block.
-         *
+         * 
          * See http://www.flickr.com/services/api/upload.api.html for details on
          * uploading to Flickr.
          * @param filename the file to upload
          * @returns a new {@link RestExtras.FlickrProxyCall}
          */
         new_upload_for_file(filename: string): FlickrProxyCall;
+
         /**
          * Set the token.
          * @param token the access token
          */
         set_token(token: string): void;
+
         /**
-         * @param params
+         * @param params 
          */
-        sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
+        sign(params: ({ [key: string]: any } | GLib.HashTable<any, any>)): string;
     }
+
 
     namespace FlickrProxyCall {
         // Signal signatures
         interface SignalSignatures extends Rest.ProxyCall.SignalSignatures {
-            'notify::upload': (pspec: GObject.ParamSpec) => void;
-            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            "notify::upload": (pspec: GObject.ParamSpec) => void;
+            "notify::proxy": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
-            upload: boolean | any;
+            upload: (boolean | any);
         }
     }
 
@@ -226,15 +221,14 @@ export namespace RestExtras {
         static $gtype: GObject.GType<FlickrProxyCall>;
 
         // Properties
-
         /**
          * Set if the call should be sent to the photo upload endpoint and not the
          * general-purpose endpoint.
          * @construct-only
          * @default false
          */
-        // This accessor conflicts with a field or function name in a parent class or interface.
-        upload: boolean | any;
+    // This accessor conflicts with a field or function name in a parent class or interface.
+         upload: boolean | any;
 
         /**
          * Compile-time signal type information.
@@ -246,51 +240,42 @@ export namespace RestExtras {
         $signals: FlickrProxyCall.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FlickrProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FlickrProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FlickrProxyCall.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FlickrProxyCall.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FlickrProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FlickrProxyCall.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FlickrProxyCall.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FlickrProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FlickrProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FlickrProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace LastfmProxy {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
-            'notify::api-key': (pspec: GObject.ParamSpec) => void;
-            'notify::secret': (pspec: GObject.ParamSpec) => void;
-            'notify::session-key': (pspec: GObject.ParamSpec) => void;
-            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
-            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
-            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
-            'notify::url-format': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
+            "notify::api-key": (pspec: GObject.ParamSpec) => void;
+            "notify::secret": (pspec: GObject.ParamSpec) => void;
+            "notify::session-key": (pspec: GObject.ParamSpec) => void;
+            "notify::binding-required": (pspec: GObject.ParamSpec) => void;
+            "notify::disable-cookies": (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::ssl-ca-file": (pspec: GObject.ParamSpec) => void;
+            "notify::ssl-strict": (pspec: GObject.ParamSpec) => void;
+            "notify::url-format": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
             api_key: string;
             apiKey: string;
@@ -308,27 +293,30 @@ export namespace RestExtras {
         static $gtype: GObject.GType<LastfmProxy>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get api_key(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get apiKey(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get secret(): string;
+
         /**
          * @default null
          */
         get session_key(): string;
         set session_key(val: string);
+
         /**
          * @default null
          */
@@ -345,41 +333,31 @@ export namespace RestExtras {
         $signals: LastfmProxy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LastfmProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](api_key: string, secret: string): LastfmProxy;
-        // Conflicted with Rest.Proxy.new
+        static ["new"](api_key: string, secret: string): LastfmProxy;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Rest.Proxy.new
+        static ["new"](...args: never[]): any;
 
         static new_with_session(api_key: string, secret: string, session_key: string): LastfmProxy;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LastfmProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LastfmProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LastfmProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LastfmProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastfmProxy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LastfmProxy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LastfmProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LastfmProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LastfmProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Examines the Lastfm response and if it not a successful reply, set `error` and
          * return FALSE.
@@ -388,46 +366,52 @@ export namespace RestExtras {
         static is_successful(root: Rest.XmlNode): boolean;
 
         // Methods
-
         /**
-         * @param token
+         * @param token 
          */
         build_login_url(token: string): string;
+
         /**
          * Get the API key.
          * @returns the API key. This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
          */
         get_api_key(): string;
+
         /**
          * Get the secret for authentication.
          * @returns the secret. This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
          */
         get_secret(): string;
+
         /**
          * Get the current session key.
          * @returns the session key, or `null` if there is no session key yet.  This string is owned by {@link RestExtras.LastfmProxy} and should not be freed.
          */
         get_session_key(): string;
+
         /**
          * Set the session key.
          * @param session_key the access session_key
          */
         set_session_key(session_key: string): void;
+
         /**
-         * @param params
+         * @param params 
          */
-        sign(params: { [key: string]: any } | GLib.HashTable<any, any>): string;
+        sign(params: ({ [key: string]: any } | GLib.HashTable<any, any>)): string;
     }
+
 
     namespace LastfmProxyCall {
         // Signal signatures
         interface SignalSignatures extends Rest.ProxyCall.SignalSignatures {
-            'notify::proxy': (pspec: GObject.ParamSpec) => void;
+            "notify::proxy": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
 
-        interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {}
+        }
     }
 
     /**
@@ -447,50 +431,41 @@ export namespace RestExtras {
         $signals: LastfmProxyCall.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LastfmProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LastfmProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LastfmProxyCall.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LastfmProxyCall.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LastfmProxyCall.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LastfmProxyCall.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LastfmProxyCall.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LastfmProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LastfmProxyCall.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LastfmProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace YoutubeProxy {
         // Signal signatures
         interface SignalSignatures extends Rest.Proxy.SignalSignatures {
-            'notify::developer-key': (pspec: GObject.ParamSpec) => void;
-            'notify::user-auth': (pspec: GObject.ParamSpec) => void;
-            'notify::binding-required': (pspec: GObject.ParamSpec) => void;
-            'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::ssl-ca-file': (pspec: GObject.ParamSpec) => void;
-            'notify::ssl-strict': (pspec: GObject.ParamSpec) => void;
-            'notify::url-format': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
-            'notify::username': (pspec: GObject.ParamSpec) => void;
+            "notify::developer-key": (pspec: GObject.ParamSpec) => void;
+            "notify::user-auth": (pspec: GObject.ParamSpec) => void;
+            "notify::binding-required": (pspec: GObject.ParamSpec) => void;
+            "notify::disable-cookies": (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::ssl-ca-file": (pspec: GObject.ParamSpec) => void;
+            "notify::ssl-strict": (pspec: GObject.ParamSpec) => void;
+            "notify::url-format": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
             developer_key: string;
             developerKey: string;
@@ -507,22 +482,24 @@ export namespace RestExtras {
         static $gtype: GObject.GType<YoutubeProxy>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get developer_key(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get developerKey(): string;
+
         /**
          * @default null
          */
         get user_auth(): string;
         set user_auth(val: string);
+
         /**
          * @default null
          */
@@ -539,42 +516,33 @@ export namespace RestExtras {
         $signals: YoutubeProxy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<YoutubeProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](developer_key: string): YoutubeProxy;
+        static ["new"](developer_key: string): YoutubeProxy;
 
         static new_with_auth(developer_key: string, user_auth: string): YoutubeProxy;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof YoutubeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof YoutubeProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof YoutubeProxy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof YoutubeProxy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, YoutubeProxy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof YoutubeProxy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<YoutubeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof YoutubeProxy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<YoutubeProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param user_auth
+         * @param user_auth 
          */
         set_user_auth(user_auth: string): void;
+
         /**
          * Upload a file.
          * @param filename filename
@@ -584,23 +552,20 @@ export namespace RestExtras {
          * @param weak_object an object instance used to tie the life cycle of the proxy to
          * @returns `true`, or `false` if the file could not be opened
          */
-        upload_async(
-            filename: string,
-            fields: { [key: string]: any } | GLib.HashTable<any, any>,
-            incomplete: boolean,
-            callback: YoutubeProxyUploadCallback,
-            weak_object: GObject.Object,
-        ): boolean;
+        upload_async(filename: string, fields: ({ [key: string]: any } | GLib.HashTable<any, any>), incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type FlickrProxyCallClass = typeof FlickrProxyCall;
+
     /**
      * @gir-type Alias
      */
     type FlickrProxyClass = typeof FlickrProxy;
+
     /**
      * @gir-type Struct
      */
@@ -608,14 +573,17 @@ export namespace RestExtras {
         static $gtype: GObject.GType<FlickrProxyPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LastfmProxyCallClass = typeof LastfmProxyCall;
+
     /**
      * @gir-type Alias
      */
     type LastfmProxyClass = typeof LastfmProxy;
+
     /**
      * @gir-type Struct
      */
@@ -623,10 +591,12 @@ export namespace RestExtras {
         static $gtype: GObject.GType<LastfmProxyPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type YoutubeProxyClass = typeof YoutubeProxy;
+
     /**
      * @gir-type Struct
      */
@@ -634,11 +604,13 @@ export namespace RestExtras {
         static $gtype: GObject.GType<YoutubeProxyPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

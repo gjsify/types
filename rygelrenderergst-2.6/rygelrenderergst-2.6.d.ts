@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GUPnPAV from '@girs/gupnpav-1.0';
 import type Gst from '@girs/gst-1.0';
 
 export namespace RygelRendererGst {
+
     /**
      * RygelRendererGst-2.6
      */
+
 
     /**
      * @gir-type Struct
@@ -36,38 +39,36 @@ export namespace RygelRendererGst {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static NO_ELEMENT: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     namespace PlaybinPlayer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::playbin': (pspec: GObject.ParamSpec) => void;
-            'notify::supported-profiles': (pspec: GObject.ParamSpec) => void;
-            'notify::playback-state': (pspec: GObject.ParamSpec) => void;
-            'notify::allowed-playback-speeds': (pspec: GObject.ParamSpec) => void;
-            'notify::playback-speed': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::volume': (pspec: GObject.ParamSpec) => void;
-            'notify::duration': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::metadata': (pspec: GObject.ParamSpec) => void;
-            'notify::mime-type': (pspec: GObject.ParamSpec) => void;
-            'notify::can-seek': (pspec: GObject.ParamSpec) => void;
-            'notify::can-seek-bytes': (pspec: GObject.ParamSpec) => void;
-            'notify::content-features': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::byte-position': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
+            "notify::playbin": (pspec: GObject.ParamSpec) => void;
+            "notify::supported-profiles": (pspec: GObject.ParamSpec) => void;
+            "notify::playback-state": (pspec: GObject.ParamSpec) => void;
+            "notify::allowed-playback-speeds": (pspec: GObject.ParamSpec) => void;
+            "notify::playback-speed": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::volume": (pspec: GObject.ParamSpec) => void;
+            "notify::duration": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::metadata": (pspec: GObject.ParamSpec) => void;
+            "notify::mime-type": (pspec: GObject.ParamSpec) => void;
+            "notify::can-seek": (pspec: GObject.ParamSpec) => void;
+            "notify::can-seek-bytes": (pspec: GObject.ParamSpec) => void;
+            "notify::content-features": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::byte-position": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelRenderer.MediaPlayer.ConstructorProps {
             playbin: Gst.Element;
             supported_profiles: RygelCore.DLNAProfile[];
@@ -82,13 +83,14 @@ export namespace RygelRendererGst {
         static $gtype: GObject.GType<PlaybinPlayer>;
 
         // Properties
-
         get playbin(): Gst.Element;
         set playbin(val: Gst.Element);
+
         /**
          * @read-only
          */
         get supported_profiles(): RygelCore.DLNAProfile[];
+
         /**
          * @read-only
          */
@@ -104,330 +106,404 @@ export namespace RygelRendererGst {
         $signals: PlaybinPlayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PlaybinPlayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PlaybinPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaybinPlayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PlaybinPlayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlaybinPlayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PlaybinPlayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlaybinPlayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PlaybinPlayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaybinPlayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PlaybinPlayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PlaybinPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PlaybinPlayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlaybinPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static instance(): PlaybinPlayer;
 
         // Methods
-
         get_playbin(): Gst.Element;
+
         get_supported_profiles(): RygelCore.DLNAProfile[];
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get playback_state(): string;
         set playback_state(val: string);
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get playbackState(): string;
         set playbackState(val: string);
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get allowed_playback_speeds(): string[];
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get allowedPlaybackSpeeds(): string[];
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get playback_speed(): string;
         set playback_speed(val: string);
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get playbackSpeed(): string;
         set playbackSpeed(val: string);
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
-        get uri(): string | null;
-        set uri(val: string | null);
+        get uri(): (string | null);
+        set uri(val: (string | null));
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get volume(): number;
         set volume(val: number);
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get duration(): number;
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get size(): number;
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
-        get metadata(): string | null;
-        set metadata(val: string | null);
+        get metadata(): (string | null);
+        set metadata(val: (string | null));
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
-        get mime_type(): string | null;
-        set mime_type(val: string | null);
+        get mime_type(): (string | null);
+        set mime_type(val: (string | null));
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get mimeType(): string;
         set mimeType(val: string);
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get can_seek(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get canSeek(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get can_seek_bytes(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get canSeekBytes(): boolean;
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
-        get content_features(): string | null;
-        set content_features(val: string | null);
+        get content_features(): (string | null);
+        set content_features(val: (string | null));
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get contentFeatures(): string;
         set contentFeatures(val: string);
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get position(): number;
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get byte_position(): number;
+
         /**
          * @read-only
-         * @category Inherited from RygelRenderer.MediaPlayer
+          * @category Inherited from RygelRenderer.MediaPlayer
          */
         get bytePosition(): number;
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
-        get user_agent(): string | null;
-        set user_agent(val: string | null);
+        get user_agent(): (string | null);
+        set user_agent(val: (string | null));
+
         /** @category Inherited from RygelRenderer.MediaPlayer */
         get userAgent(): string;
         set userAgent(val: string);
+
         /**
-         * @param time
+         * @param time 
          */
-        seek(time: bigint | number): boolean;
+        seek(time: (bigint | number)): boolean;
+
         /**
-         * @param bytes
+         * @param bytes 
          */
-        seek_bytes(bytes: bigint | number): boolean;
+        seek_bytes(bytes: (bigint | number)): boolean;
+
         get_protocols(): string[];
+
         get_mime_types(): string[];
+
         /**
-         * @param speed
+         * @param speed 
          */
         play_speed_to_double(speed: string): number;
+
         get_playback_state(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_playback_state(value: string): void;
+
         get_allowed_playback_speeds(): string[];
+
         get_playback_speed(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_playback_speed(value: string): void;
-        get_uri(): string | null;
+
+        get_uri(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_uri(value: string | null): void;
+        set_uri(value: (string | null)): void;
+
         get_volume(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_volume(value: number): void;
+
         get_duration(): number;
+
         get_size(): number;
-        get_metadata(): string | null;
+
+        get_metadata(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_metadata(value: string | null): void;
-        get_mime_type(): string | null;
+        set_metadata(value: (string | null)): void;
+
+        get_mime_type(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_mime_type(value: string | null): void;
+        set_mime_type(value: (string | null)): void;
+
         get_can_seek(): boolean;
+
         get_can_seek_bytes(): boolean;
-        get_content_features(): string | null;
+
+        get_content_features(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_content_features(value: string | null): void;
+        set_content_features(value: (string | null)): void;
+
         get_duration_as_str(): string;
+
         get_position(): number;
+
         get_byte_position(): number;
+
         get_position_as_str(): string;
-        get_user_agent(): string | null;
+
+        get_user_agent(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_user_agent(value: string | null): void;
+        set_user_agent(value: (string | null)): void;
+
         get_protocol_info(): string;
+
         /**
-         * @param time
+         * @param time 
          * @virtual
          */
         vfunc_seek(time: number): boolean;
+
         /**
-         * @param bytes
+         * @param bytes 
          * @virtual
          */
         vfunc_seek_bytes(bytes: number): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_protocols(): string[];
+
         /**
          * @virtual
          */
         vfunc_get_mime_types(): string[];
+
         /**
          * @virtual
          */
         vfunc_get_playback_state(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_playback_state(value: string): void;
+
         /**
          * @virtual
          */
         vfunc_get_allowed_playback_speeds(): string[];
+
         /**
          * @virtual
          */
         vfunc_get_playback_speed(): string;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_playback_speed(value: string): void;
+
         /**
          * @virtual
          */
-        vfunc_get_uri(): string | null;
+        vfunc_get_uri(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
-        vfunc_set_uri(value: string | null): void;
+        vfunc_set_uri(value: (string | null)): void;
+
         /**
          * @virtual
          */
         vfunc_get_volume(): number;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_volume(value: number): void;
+
         /**
          * @virtual
          */
-        vfunc_get_duration(): bigint | number;
+        vfunc_get_duration(): (bigint | number);
+
         /**
          * @virtual
          */
-        vfunc_get_size(): bigint | number;
+        vfunc_get_size(): (bigint | number);
+
         /**
          * @virtual
          */
-        vfunc_get_metadata(): string | null;
+        vfunc_get_metadata(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
-        vfunc_set_metadata(value: string | null): void;
+        vfunc_set_metadata(value: (string | null)): void;
+
         /**
          * @virtual
          */
-        vfunc_get_mime_type(): string | null;
+        vfunc_get_mime_type(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
-        vfunc_set_mime_type(value: string | null): void;
+        vfunc_set_mime_type(value: (string | null)): void;
+
         /**
          * @virtual
          */
         vfunc_get_can_seek(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_can_seek_bytes(): boolean;
+
         /**
          * @virtual
          */
-        vfunc_get_content_features(): string | null;
+        vfunc_get_content_features(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
-        vfunc_set_content_features(value: string | null): void;
-        /**
-         * @virtual
-         */
-        vfunc_get_position(): bigint | number;
+        vfunc_set_content_features(value: (string | null)): void;
+
         /**
          * @virtual
          */
-        vfunc_get_byte_position(): bigint | number;
+        vfunc_get_position(): (bigint | number);
+
         /**
          * @virtual
          */
-        vfunc_get_user_agent(): string | null;
+        vfunc_get_byte_position(): (bigint | number);
+
         /**
-         * @param value
          * @virtual
          */
-        vfunc_set_user_agent(value: string | null): void;
+        vfunc_get_user_agent(): (string | null);
+
+        /**
+         * @param value 
+         * @virtual
+         */
+        vfunc_set_user_agent(value: (string | null)): void;
     }
+
 
     namespace PlaybinRenderer {
         // Signal signatures
         interface SignalSignatures extends RygelRenderer.MediaRenderer.SignalSignatures {
-            'notify::player': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            "notify::player": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::capabilities": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends RygelRenderer.MediaRenderer.ConstructorProps {
 
-        interface ConstructorProps extends RygelRenderer.MediaRenderer.ConstructorProps {}
+        }
     }
 
     /**
@@ -446,43 +522,35 @@ export namespace RygelRendererGst {
         $signals: PlaybinRenderer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PlaybinRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string): PlaybinRenderer;
+        static ["new"](title: string): PlaybinRenderer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PlaybinRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaybinRenderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PlaybinRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlaybinRenderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PlaybinRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PlaybinRenderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PlaybinRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PlaybinRenderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PlaybinRenderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PlaybinRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PlaybinRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PlaybinRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
-        get_playbin(): Gst.Element | null;
+        get_playbin(): (Gst.Element | null);
     }
+
 
     /**
      * @gir-type Alias
      */
     type PlaybinPlayerClass = typeof PlaybinPlayer;
+
     /**
      * @gir-type Struct
      */
@@ -490,10 +558,12 @@ export namespace RygelRendererGst {
         static $gtype: GObject.GType<PlaybinPlayerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlaybinRendererClass = typeof PlaybinRenderer;
+
     /**
      * @gir-type Struct
      */
@@ -501,11 +571,13 @@ export namespace RygelRendererGst {
         static $gtype: GObject.GType<PlaybinRendererPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

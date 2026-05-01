@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,9 +27,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type PangoFT2 from '@girs/pangoft2-1.0';
 
 export namespace PangoXft {
+
     /**
      * PangoXft-1.0
      */
+
 
     /**
      * Returns the {@link PangoXft.FontMap} for the given display and screen.
@@ -40,6 +43,7 @@ export namespace PangoXft {
      * @since 1.2
      */
     function get_font_map(display: xlib.Display, screen: number): Pango.FontMap;
+
     /**
      * Renders a {@link Pango.GlyphString} onto an Xrender Picture object.
      * @param display an X display
@@ -50,15 +54,8 @@ export namespace PangoXft {
      * @param x the x position of start of string (in pixels)
      * @param y the y position of baseline (in pixels)
      */
-    function picture_render(
-        display: xlib.Display,
-        src_picture: xlib.Picture,
-        dest_picture: xlib.Picture,
-        font: Pango.Font,
-        glyphs: Pango.GlyphString,
-        x: number,
-        y: number,
-    ): void;
+    function picture_render(display: xlib.Display, src_picture: xlib.Picture, dest_picture: xlib.Picture, font: Pango.Font, glyphs: Pango.GlyphString, x: number, y: number): void;
+
     /**
      * Renders a {@link Pango.GlyphString} onto an XftDraw object wrapping an X drawable.
      * @param draw the XftDraw object.
@@ -68,14 +65,8 @@ export namespace PangoXft {
      * @param x the x position of start of string (in pixels)
      * @param y the y position of baseline (in pixels)
      */
-    function render(
-        draw: xft.Draw,
-        color: xft.Color,
-        font: Pango.Font,
-        glyphs: Pango.GlyphString,
-        x: number,
-        y: number,
-    ): void;
+    function render(draw: xft.Draw, color: xft.Color, font: Pango.Font, glyphs: Pango.GlyphString, x: number, y: number): void;
+
     /**
      * Render a {@link Pango.Layout} onto a XftDraw
      * @param draw an XftDraw
@@ -86,6 +77,7 @@ export namespace PangoXft {
      * @since 1.8
      */
     function render_layout(draw: xft.Draw, color: xft.Color, layout: Pango.Layout, x: number, y: number): void;
+
     /**
      * Render a {@link Pango.LayoutLine} onto a XftDraw
      * @param draw an XftDraw
@@ -96,11 +88,12 @@ export namespace PangoXft {
      * @since 1.8
      */
     function render_layout_line(draw: xft.Draw, color: xft.Color, line: Pango.LayoutLine, x: number, y: number): void;
+
     /**
      * Renders a {@link Pango.GlyphString} onto a XftDraw, possibly
      * transforming the layed-out coordinates through a transformation
      * matrix.
-     *
+     * 
      * Note that the transformation matrix for `font` is not
      * changed, so to produce correct rendering results, the `font`
      * must have been loaded using a {@link Pango.Context} with an identical
@@ -114,15 +107,8 @@ export namespace PangoXft {
      * @param y the y position of the baseline (in Pango units   in user space coordinates)
      * @since 1.8
      */
-    function render_transformed(
-        draw: xft.Draw,
-        color: xft.Color,
-        matrix: Pango.Matrix | null,
-        font: Pango.Font,
-        glyphs: Pango.GlyphString,
-        x: number,
-        y: number,
-    ): void;
+    function render_transformed(draw: xft.Draw, color: xft.Color, matrix: (Pango.Matrix | null), font: Pango.Font, glyphs: Pango.GlyphString, x: number, y: number): void;
+
     /**
      * Sets a function that will be called to do final configuration
      * substitution on a {@link fontconfig.Pattern} before it is used to load
@@ -135,6 +121,7 @@ export namespace PangoXft {
      * @deprecated since 1.46: Use `pango_fc_font_map_set_default_substitute()` instead.
      */
     function set_default_substitute(display: xlib.Display, screen: number, func: SubstituteFunc): void;
+
     /**
      * Release any resources that have been cached for the
      * combination of `display` and `screen`. Note that when the
@@ -145,6 +132,7 @@ export namespace PangoXft {
      * @since 1.2
      */
     function shutdown_display(display: xlib.Display, screen: number): void;
+
     /**
      * Call this function any time the results of the
      * default substitution function set with
@@ -157,22 +145,25 @@ export namespace PangoXft {
      * @deprecated since 1.46: Use `pango_fc_font_map_substitute_changed()` instead.
      */
     function substitute_changed(display: xlib.Display, screen: number): void;
+
     /**
      * @gir-type Callback
      */
     interface SubstituteFunc {
-        (pattern: fontconfig.Pattern, data: any | null): void;
+        (pattern: fontconfig.Pattern, data: (any | null)): void;
     }
+
     namespace Font {
         // Signal signatures
         interface SignalSignatures extends PangoFc.Font.SignalSignatures {
-            'notify::fontmap': (pspec: GObject.ParamSpec) => void;
-            'notify::pattern': (pspec: GObject.ParamSpec) => void;
+            "notify::fontmap": (pspec: GObject.ParamSpec) => void;
+            "notify::pattern": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends PangoFc.Font.ConstructorProps {
 
-        interface ConstructorProps extends PangoFc.Font.ConstructorProps {}
+        }
     }
 
     /**
@@ -193,58 +184,50 @@ export namespace PangoXft {
         $signals: Font.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Font.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Font.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Font.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Font.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Font.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Font.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the glyph index for a given Unicode character
          * for `font`.
-         *
+         * 
          * If you only want to determine whether the font has
          * the glyph, use `pango_xft_font_has_char()`.
-         *
+         * 
          * Use `pango_fc_font_get_glyph()` instead.
          * @param wc Unicode codepoint to look up
          * @returns the glyph index, or 0, if the Unicode  character does not exist in the font.
          */
         get_glyph(wc: string): number;
+
         /**
          * Returns the index of a glyph suitable for drawing `wc` as an
          * unknown character.
-         *
+         * 
          * Use PANGO_GET_UNKNOWN_GLYPH() instead.
          * @param wc the Unicode character for which a glyph is needed.
          * @returns a glyph index into `font`.
          */
         get_unknown_glyph(wc: string): Pango.Glyph;
+
         /**
          * Determines whether `font` has a glyph for the codepoint `wc`.
-         *
+         * 
          * Use `pango_fc_font_has_char()` instead.
          * @param wc Unicode codepoint to look up
          * @returns `true` if `font` has the requested codepoint.
@@ -252,17 +235,18 @@ export namespace PangoXft {
         has_char(wc: string): boolean;
     }
 
+
     namespace FontMap {
         // Signal signatures
         interface SignalSignatures extends PangoFc.FontMap.SignalSignatures {
-            'notify::item-type': (pspec: GObject.ParamSpec) => void;
-            'notify::n-items': (pspec: GObject.ParamSpec) => void;
+            "notify::item-type": (pspec: GObject.ParamSpec) => void;
+            "notify::n-items": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap.ConstructorProps, Gio.ListModel.ConstructorProps {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends PangoFc.FontMap.ConstructorProps, Gio.ListModel.ConstructorProps {}
+        }
     }
 
     /**
@@ -284,77 +268,72 @@ export namespace PangoXft {
         $signals: FontMap.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FontMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FontMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FontMap.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FontMap.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontMap.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FontMap.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FontMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FontMap.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
          */
         get_n_items(): number;
+
         /**
          * Get the item at `position`.
-         *
+         * 
          * If `position` is greater than the number of items in `list`, `null` is
          * returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.
-         *
+         * 
          * This function is meant to be used by language bindings in place
          * of `g_list_model_get_item()`.
-         *
+         * 
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): A | null;
+        get_item(position: number): (A | null);
+
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
-         *
+         * 
          * This function should only be called by classes implementing
          * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
-         *
+         * 
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
@@ -363,7 +342,7 @@ export namespace PangoXft {
          * made from a fresh mainloop dispatch.  It is particularly not
          * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
-         *
+         * 
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
@@ -373,33 +352,36 @@ export namespace PangoXft {
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
+
         /**
          * Get the item at `position`. If `position` is greater than the number of
          * items in `list`, `null` is returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.  See `g_list_model_get_n_items()`.
-         *
+         * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): A | null;
+        vfunc_get_item(position: number): (A | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
@@ -408,15 +390,15 @@ export namespace PangoXft {
         vfunc_get_n_items(): number;
     }
 
+
     namespace Renderer {
         // Signal signatures
         interface SignalSignatures extends Pango.Renderer.SignalSignatures {
-            'notify::display': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
+            "notify::display": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {
             display: any;
             screen: number;
@@ -435,11 +417,11 @@ export namespace PangoXft {
         static $gtype: GObject.GType<Renderer>;
 
         // Properties
-
         /**
          * @construct-only
          */
         set display(val: any);
+
         /**
          * @construct-only
          * @default 0
@@ -456,63 +438,54 @@ export namespace PangoXft {
         $signals: Renderer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](display: xlib.Display, screen: number): Renderer;
+        static ["new"](display: xlib.Display, screen: number): Renderer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Renderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Renderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * draw the specified glyphs using
          *   the current foreground color and other foreground
          *   attributes
-         * @param xft_font
-         * @param glyphs
-         * @param n_glyphs
+         * @param xft_font 
+         * @param glyphs 
+         * @param n_glyphs 
          * @virtual
          */
         vfunc_composite_glyphs(xft_font: xft.Font, glyphs: xft.GlyphSpec, n_glyphs: number): void;
+
         /**
          * draw the specified trapezoids using
          *   the current color and other attributes for `part`
-         * @param part
-         * @param trapezoids
-         * @param n_trapezoids
+         * @param part 
+         * @param trapezoids 
+         * @param n_trapezoids 
          * @virtual
          */
         vfunc_composite_trapezoids(part: Pango.RenderPart, trapezoids: xlib.XTrapezoid, n_trapezoids: number): void;
 
         // Methods
-
         /**
          * Sets the default foreground color for a XftRenderer.
          * @param default_color the default foreground color
          */
         set_default_color(default_color: Pango.Color): void;
+
         /**
          * Sets the XftDraw object that the renderer is drawing to.
          * The renderer must not be currently active.
@@ -521,10 +494,12 @@ export namespace PangoXft {
         set_draw(draw: xft.Draw): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RendererClass = typeof Renderer;
+
     /**
      * @gir-type Struct
      */
@@ -532,11 +507,13 @@ export namespace PangoXft {
         static $gtype: GObject.GType<RendererPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

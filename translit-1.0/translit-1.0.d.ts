@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Translit {
+
     /**
      * Translit-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -30,20 +33,22 @@ export namespace Translit {
         FAILED,
     }
 
+
     function error_quark(): GLib.Quark;
+
     /**
-     * @param backend
-     * @param type
+     * @param backend 
+     * @param type 
      */
     function implement_transliterator(backend: string, type: GObject.GType): void;
+
     namespace Transliterator {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
         }
@@ -56,7 +61,6 @@ export namespace Translit {
         static $gtype: GObject.GType<Transliterator>;
 
         // Properties
-
         /**
          * The transliteration which {@link Translit.Transliterator} supports
          * @construct-only
@@ -74,34 +78,24 @@ export namespace Translit {
         $signals: Transliterator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Transliterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Transliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transliterator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Transliterator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Transliterator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Transliterator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Transliterator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Transliterator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transliterator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Transliterator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Transliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Transliterator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get a transliterator instance whose name is `name`.
          * @param backend backend name (e.g. "m17n")
@@ -110,7 +104,6 @@ export namespace Translit {
         static get(backend: string, name: string): Transliterator;
 
         // Virtual methods
-
         /**
          * @param input an input string in UTF-8
          * @virtual
@@ -118,7 +111,6 @@ export namespace Translit {
         vfunc_transliterate(input: string): [string, number];
 
         // Methods
-
         /**
          * @param input an input string in UTF-8
          * @returns a newly allocated output string
@@ -126,10 +118,12 @@ export namespace Translit {
         transliterate(input: string): [string, number];
     }
 
+
     /**
      * @gir-type Alias
      */
     type TransliteratorClass = typeof Transliterator;
+
     /**
      * @gir-type Struct
      */
@@ -137,11 +131,13 @@ export namespace Translit {
         static $gtype: GObject.GType<TransliteratorPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

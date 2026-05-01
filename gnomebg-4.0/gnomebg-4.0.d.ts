@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 
 export namespace GnomeBG {
+
     /**
      * GnomeBG-4.0
      */
+
 
     namespace BG {
         // Signal signatures
@@ -45,8 +48,9 @@ export namespace GnomeBG {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -65,143 +69,131 @@ export namespace GnomeBG {
         $signals: BG.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BG.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BG;
+        static ["new"](): BG;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BG.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BG.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BG.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BG.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BG.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BG.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         changes_with_time(): boolean;
+
         /**
          * Creates a thumbnail for a certain frame, where 'frame' is somewhat
          * vaguely defined as 'suitable point to show while single-stepping
          * through the slideshow'.
-         * @param factory
-         * @param screen_area
-         * @param dest_width
-         * @param dest_height
-         * @param frame_num
+         * @param factory 
+         * @param screen_area 
+         * @param dest_width 
+         * @param dest_height 
+         * @param frame_num 
          * @returns the newly created thumbnail or or NULL if frame_num is out of bounds.
          */
-        create_frame_thumbnail(
-            factory: GnomeDesktop.DesktopThumbnailFactory,
-            screen_area: cairo.RectangleInt,
-            dest_width: number,
-            dest_height: number,
-            frame_num: number,
-        ): GdkPixbuf.Pixbuf;
+        create_frame_thumbnail(factory: GnomeDesktop.DesktopThumbnailFactory, screen_area: cairo.RectangleInt, dest_width: number, dest_height: number, frame_num: number): GdkPixbuf.Pixbuf;
+
         /**
          * Create a surface that can be set as background for `window`.
-         * @param window
-         * @param width
-         * @param height
+         * @param window 
+         * @param width 
+         * @param height 
          * @returns `null` on error (e.g. out of X connections)
          */
         create_surface(window: Gdk.Surface, width: number, height: number): cairo.Surface;
+
         /**
-         * @param factory
-         * @param screen_area
-         * @param dest_width
-         * @param dest_height
+         * @param factory 
+         * @param screen_area 
+         * @param dest_width 
+         * @param dest_height 
          * @returns a {@link GdkPixbuf.Pixbuf} showing the background as a thumbnail
          */
-        create_thumbnail(
-            factory: GnomeDesktop.DesktopThumbnailFactory,
-            screen_area: cairo.RectangleInt,
-            dest_width: number,
-            dest_height: number,
-        ): GdkPixbuf.Pixbuf;
+        create_thumbnail(factory: GnomeDesktop.DesktopThumbnailFactory, screen_area: cairo.RectangleInt, dest_width: number, dest_height: number): GdkPixbuf.Pixbuf;
+
         /**
-         * @param dest
+         * @param dest 
          */
         draw(dest: GdkPixbuf.Pixbuf): void;
+
         get_filename(): string;
+
         /**
-         * @param factory
-         * @param best_width
-         * @param best_height
-         * @param width
-         * @param height
+         * @param factory 
+         * @param best_width 
+         * @param best_height 
+         * @param width 
+         * @param height 
          */
-        get_image_size(
-            factory: GnomeDesktop.DesktopThumbnailFactory,
-            best_width: number,
-            best_height: number,
-            width: number,
-            height: number,
-        ): boolean;
+        get_image_size(factory: GnomeDesktop.DesktopThumbnailFactory, best_width: number, best_height: number, width: number, height: number): boolean;
+
         get_placement(): GDesktopEnums.BackgroundStyle;
+
         /**
-         * @param type
-         * @param primary
-         * @param secondary
+         * @param type 
+         * @param primary 
+         * @param secondary 
          */
         get_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
+
         has_multiple_sizes(): boolean;
+
         /**
-         * @param dest_width
-         * @param dest_height
+         * @param dest_width 
+         * @param dest_height 
          */
         is_dark(dest_width: number, dest_height: number): boolean;
+
         /**
-         * @param settings
+         * @param settings 
          */
         load_from_preferences(settings: Gio.Settings): void;
+
         /**
-         * @param settings
+         * @param settings 
          */
         save_to_preferences(settings: Gio.Settings): void;
+
         /**
-         * @param filename
+         * @param filename 
          */
         set_filename(filename: string): void;
+
         /**
-         * @param placement
+         * @param placement 
          */
         set_placement(placement: GDesktopEnums.BackgroundStyle): void;
+
         /**
-         * @param type
-         * @param primary
-         * @param secondary
+         * @param type 
+         * @param primary 
+         * @param secondary 
          */
         set_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void;
     }
 
+
     namespace BGSlideShow {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::has-multiple-sizes': (pspec: GObject.ParamSpec) => void;
-            'notify::start-time': (pspec: GObject.ParamSpec) => void;
-            'notify::total-duration': (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::has-multiple-sizes": (pspec: GObject.ParamSpec) => void;
+            "notify::start-time": (pspec: GObject.ParamSpec) => void;
+            "notify::total-duration": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             file: Gio.File;
             has_multiple_sizes: boolean;
@@ -220,36 +212,41 @@ export namespace GnomeBG {
         static $gtype: GObject.GType<BGSlideShow>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get file(): Gio.File;
+
         /**
          * @read-only
          * @default false
          */
         get has_multiple_sizes(): boolean;
+
         /**
          * @read-only
          * @default false
          */
         get hasMultipleSizes(): boolean;
+
         /**
          * @read-only
          * @default 0
          */
         get start_time(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get startTime(): number;
+
         /**
          * @read-only
          * @default 0
          */
         get total_duration(): number;
+
         /**
          * @read-only
          * @default 0
@@ -266,55 +263,47 @@ export namespace GnomeBG {
         $signals: BGSlideShow.SignalSignatures;
 
         // Fields
-
         parent_object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<BGSlideShow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string): BGSlideShow;
+        static ["new"](filename: string): BGSlideShow;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BGSlideShow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BGSlideShow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BGSlideShow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BGSlideShow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BGSlideShow.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BGSlideShow.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BGSlideShow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BGSlideShow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BGSlideShow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the current slides progress.
          * @param width monitor width
          * @param height monitor height
          */
         get_current_slide(width: number, height: number): [number, number, boolean, string, string];
+
         /**
          * gets whether or not the slide show has multiple sizes for different monitors
          * @returns `true` if multiple sizes
          */
         get_has_multiple_sizes(): boolean;
+
         /**
          * Returns number of slides in slide show
          */
         get_num_slides(): number;
+
         /**
          * Retrieves slide by frame number
          * @param frame_number frame number
@@ -322,42 +311,45 @@ export namespace GnomeBG {
          * @param height monitor height
          * @returns `true` if successful
          */
-        get_slide(
-            frame_number: number,
-            width: number,
-            height: number,
-        ): [boolean, number, number, boolean, string, string];
+        get_slide(frame_number: number, width: number, height: number): [boolean, number, number, boolean, string, string];
+
         /**
          * gets the start time of the slide show
          * @returns a timestamp
          */
         get_start_time(): number;
+
         /**
          * gets the total duration of the slide show
          * @returns a timestamp
          */
         get_total_duration(): number;
+
         /**
          * Tries to load the slide show.
          * @returns `true` if successful
          */
         load(): boolean;
+
         /**
          * Tries to load the slide show asynchronously.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback
          */
-        load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        load_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type BGClass = typeof BG;
+
     /**
      * @gir-type Alias
      */
     type BGSlideShowClass = typeof BGSlideShow;
+
     /**
      * @gir-type Struct
      */
@@ -365,11 +357,13 @@ export namespace GnomeBG {
         static $gtype: GObject.GType<BGSlideShowPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

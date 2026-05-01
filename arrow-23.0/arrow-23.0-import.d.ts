@@ -1,3 +1,4 @@
+
 import type Arrow230 from '@girs/arrow-23.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

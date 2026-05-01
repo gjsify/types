@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -23,17 +24,21 @@ import type libxml2 from '@girs/libxml2-2.0';
 import type Vgda from '@girs/vgda-1';
 
 export namespace Vgpg {
+
     /**
      * Vgpg-1
      */
 
+
     namespace Connection {
         // Signal signatures
-        interface SignalSignatures extends Vgda.GProvider.SignalSignatures {}
+        interface SignalSignatures extends Vgda.GProvider.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Vgda.GProvider.ConstructorProps {
 
-        interface ConstructorProps extends Vgda.GProvider.ConstructorProps {}
+        }
     }
 
     /**
@@ -52,43 +57,35 @@ export namespace Vgpg {
         $signals: Connection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Connection;
+        static ["new"](): Connection;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Connection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Connection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         current_user(): Vda.Role;
     }
+
 
     /**
      * @gir-type Alias
      */
     type ConnectionClass = typeof Connection;
+
     /**
      * @gir-type Struct
      */
@@ -96,11 +93,13 @@ export namespace Vgpg {
         static $gtype: GObject.GType<ConnectionPrivate>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

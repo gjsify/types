@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -20,9 +21,11 @@ import type GModule from '@girs/gmodule-2.0';
 import type GstAudio from '@girs/gstaudio-1.0';
 
 export namespace GstTranscoder {
+
     /**
      * GstTranscoder-1.0
      */
+
 
     /**
      * @gir-type Struct
@@ -31,25 +34,24 @@ export namespace GstTranscoder {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * generic error.
          */
         static FAILED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets a string representing the given error.
          * @param error a {@link GstTranscoder.TranscoderError}
          */
         static get_name(error: TranscoderError): string;
+
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -60,7 +62,7 @@ export namespace GstTranscoder {
 
     /**
      * Types of messages that will be posted on the transcoder API bus.
-     *
+     * 
      * See also `gst_transcoder_get_message_bus`()
      * @gir-type Enum
      * @since 1.20
@@ -92,6 +94,7 @@ export namespace GstTranscoder {
         WARNING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -120,49 +123,58 @@ export namespace GstTranscoder {
         PLAYING,
     }
 
+
     /**
      * Gets a string representing the given error.
      * @param error a {@link GstTranscoder.TranscoderError}
      * @returns a string with the given error.
      */
     function transcoder_error_get_name(error: TranscoderError): string;
+
     function transcoder_error_quark(): GLib.Quark;
+
     /**
      * Returns (transfer none): The message name
      * @param message a {@link GstTranscoder.TranscoderMessage}
      * @since 1.20
      */
     function transcoder_message_get_name(message: TranscoderMessage): string;
+
     /**
      * Parse the given duration `msg` and extract the corresponding {@link Gst.ClockTime}
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function transcoder_message_parse_duration(msg: Gst.Message): Gst.ClockTime;
+
     /**
      * Parse the given error `msg` and extract the corresponding {@link GLib.Error}
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function transcoder_message_parse_error(msg: Gst.Message): [GLib.Error | null, Gst.Structure];
+
     /**
      * Parse the given position `msg` and extract the corresponding {@link Gst.ClockTime}
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function transcoder_message_parse_position(msg: Gst.Message): Gst.ClockTime;
+
     /**
      * Parse the given state `msg` and extract the corresponding {@link GstTranscoder.TranscoderState}
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function transcoder_message_parse_state(msg: Gst.Message): TranscoderState;
+
     /**
      * Parse the given error `msg` and extract the corresponding {@link GLib.Error} warning
      * @param msg A {@link Gst.Message}
      * @since 1.20
      */
     function transcoder_message_parse_warning(msg: Gst.Message): [GLib.Error | null, Gst.Structure];
+
     /**
      * Gets a string representing the given state.
      * @param state a {@link GstTranscoder.TranscoderState}
@@ -170,31 +182,31 @@ export namespace GstTranscoder {
      * @since 1.20
      */
     function transcoder_state_get_name(state: TranscoderState): string;
+
     namespace Transcoder {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
-            'notify::avoid-reencoding': (pspec: GObject.ParamSpec) => void;
-            'notify::dest-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::duration': (pspec: GObject.ParamSpec) => void;
-            'notify::pipeline': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::position-update-interval': (pspec: GObject.ParamSpec) => void;
-            'notify::profile': (pspec: GObject.ParamSpec) => void;
-            'notify::src-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "notify::avoid-reencoding": (pspec: GObject.ParamSpec) => void;
+            "notify::dest-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::duration": (pspec: GObject.ParamSpec) => void;
+            "notify::pipeline": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::position-update-interval": (pspec: GObject.ParamSpec) => void;
+            "notify::profile": (pspec: GObject.ParamSpec) => void;
+            "notify::src-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gst.Object.ConstructorProps {
             avoid_reencoding: boolean;
             avoidReencoding: boolean;
             dest_uri: string;
             destUri: string;
-            duration: bigint | number;
+            duration: (bigint | number);
             pipeline: Gst.Element;
-            position: bigint | number;
+            position: (bigint | number);
             position_update_interval: number;
             positionUpdateInterval: number;
             profile: GstPbutils.EncodingProfile;
@@ -210,62 +222,72 @@ export namespace GstTranscoder {
         static $gtype: GObject.GType<Transcoder>;
 
         // Properties
-
         /**
          * See #encodebin:avoid-reencoding
          * @default false
          */
         get avoid_reencoding(): boolean;
         set avoid_reencoding(val: boolean);
+
         /**
          * See #encodebin:avoid-reencoding
          * @default false
          */
         get avoidReencoding(): boolean;
         set avoidReencoding(val: boolean);
+
         /**
          * @construct-only
          * @default null
          */
         get dest_uri(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get destUri(): string;
+
         /**
          * @read-only
          * @default 18446744073709551615
          */
         get duration(): number;
+
         /**
          * @read-only
          */
         get pipeline(): Gst.Element;
+
         /**
          * @read-only
          * @default 18446744073709551615
          */
         get position(): number;
+
         /**
          * @default 100
          */
         get position_update_interval(): number;
         set position_update_interval(val: number);
+
         /**
          * @default 100
          */
         get positionUpdateInterval(): number;
         set positionUpdateInterval(val: number);
+
         /**
          * @construct-only
          */
         get profile(): GstPbutils.EncodingProfile;
+
         /**
          * @construct-only
          * @default null
          */
         get src_uri(): string;
+
         /**
          * @construct-only
          * @default null
@@ -282,68 +304,60 @@ export namespace GstTranscoder {
         $signals: Transcoder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Transcoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](source_uri: string, dest_uri: string, encoding_profile: string): Transcoder;
+        static ["new"](source_uri: string, dest_uri: string, encoding_profile: string): Transcoder;
 
         static new_full(source_uri: string, dest_uri: string, profile: GstPbutils.EncodingProfile): Transcoder;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Transcoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transcoder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Transcoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Transcoder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Transcoder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Transcoder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Transcoder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Transcoder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Transcoder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Transcoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Transcoder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Transcoder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * @param msg A {@link Gst.Message}
          */
         static is_transcoder_message(msg: Gst.Message): boolean;
 
         // Methods
-
         /**
          * @returns `true` if the transcoder tries to avoid reencoding streams where reencoding is not strictly needed, `false` otherwise.
          */
         get_avoid_reencoding(): boolean;
+
         /**
          * Gets the URI of the destination of the transcoded stream.
          * @returns a string containing the URI of the destination of the transcoded stream. `g_free()` after usage.
          */
         get_dest_uri(): string;
+
         /**
          * Retrieves the duration of the media stream that self represents.
          * @returns the duration of the transcoding media stream, in nanoseconds.
          */
         get_duration(): Gst.ClockTime;
+
         /**
          * GstTranscoder API exposes a {@link Gst.Bus} instance which purpose is to provide data
          * structures representing transcoder-internal events in form of {@link Gst.Message}-s of
          * type GST_MESSAGE_APPLICATION.
-         *
+         * 
          * Each message carries a "transcoder-message" field of type {@link GstTranscoder.TranscoderMessage}.
          * Further fields of the message data are specific to each possible value of
          * that enumeration.
-         *
+         * 
          * Applications can consume the messages asynchronously within their own
          * event-loop / UI-thread etc. Note that in case the application does not
          * consume the messages, the bus will accumulate these internally and eventually
@@ -351,18 +365,22 @@ export namespace GstTranscoder {
          * @returns The transcoder message bus instance
          */
         get_message_bus(): Gst.Bus;
+
         /**
          * @returns The internal uritranscodebin instance
          */
         get_pipeline(): Gst.Element;
+
         /**
          * @returns the absolute position time, in nanoseconds, of the transcoding stream.
          */
         get_position(): Gst.ClockTime;
+
         /**
          * @returns current position update interval in milliseconds
          */
         get_position_update_interval(): number;
+
         /**
          * Gets the {@link GstTranscoder.TranscoderSignalAdapter} attached to `self` if it is attached to
          * the right {@link GLib.MainContext}. If no {@link GstTranscoder.TranscoderSignalAdapter} has been created
@@ -372,24 +390,28 @@ export namespace GstTranscoder {
          * @param context A {@link GLib.MainContext} on which the main-loop will process                       transcoder bus messages on. Can be NULL (thread-default                       context will be used then).
          * @returns The {@link GstTranscoder.TranscoderSignalAdapter} to connect signal handlers to.
          */
-        get_signal_adapter(context: GLib.MainContext | null): TranscoderSignalAdapter | null;
+        get_signal_adapter(context: (GLib.MainContext | null)): (TranscoderSignalAdapter | null);
+
         /**
          * Gets the URI of the currently-transcoding stream.
          * @returns a string containing the URI of the source stream. `g_free()` after usage.
          */
         get_source_uri(): string;
+
         /**
          * Gets the {@link GstTranscoder.TranscoderSignalAdapter} attached to `self` to emit signals from
          * its thread of emission.
          * @returns The {@link GstTranscoder.TranscoderSignalAdapter} to connect signal handlers to.
          */
         get_sync_signal_adapter(): TranscoderSignalAdapter;
+
         /**
          * Run the transcoder task synchonously. You can connect
          * to the 'position' signal to get information about the
          * progress of the transcoding.
          */
         run(): boolean;
+
         /**
          * Run the transcoder task asynchronously. You should connect
          * to the 'done' signal to be notified about when the
@@ -397,10 +419,12 @@ export namespace GstTranscoder {
          * notified about any error.
          */
         run_async(): void;
+
         /**
          * @param avoid_reencoding `true` if the transcoder should try to avoid reencoding streams where * reencoding is not strictly needed, `false` otherwise.
          */
         set_avoid_reencoding(avoid_reencoding: boolean): void;
+
         /**
          * Sets `cpu_usage` as target percentage CPU usage of the process running the
          * transcoding task. It will modulate the transcoding speed to reach that target
@@ -408,6 +432,7 @@ export namespace GstTranscoder {
          * @param cpu_usage The percentage of the CPU the process running the transcoder should try to use. It takes into account the number of cores available.
          */
         set_cpu_usage(cpu_usage: number): void;
+
         /**
          * Set interval in milliseconds between two position-updated signals.
          * Pass 0 to stop updating the position.
@@ -415,6 +440,7 @@ export namespace GstTranscoder {
          */
         set_position_update_interval(interval: number): void;
     }
+
 
     namespace TranscoderSignalAdapter {
         // Signal signatures
@@ -428,7 +454,7 @@ export namespace GstTranscoder {
              * @signal
              * @run-last
              */
-            'duration-changed': (arg0: number) => void;
+            "duration-changed": (arg0: number) => void;
             /**
              * @signal
              * @run-last
@@ -438,24 +464,23 @@ export namespace GstTranscoder {
              * @signal
              * @run-last
              */
-            'position-updated': (arg0: number) => void;
+            "position-updated": (arg0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            'state-changed': (arg0: TranscoderState) => void;
+            "state-changed": (arg0: TranscoderState) => void;
             /**
              * @signal
              * @run-last
              */
             warning: (arg0: GLib.Error, arg1: Gst.Structure) => void;
-            'notify::transcoder': (pspec: GObject.ParamSpec) => void;
+            "notify::transcoder": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            transcoder: Transcoder | null;
+            transcoder: (Transcoder | null);
         }
     }
 
@@ -468,13 +493,12 @@ export namespace GstTranscoder {
         static $gtype: GObject.GType<TranscoderSignalAdapter>;
 
         // Properties
-
         /**
          * The {@link GstTranscoder.Transcoder} tracked by the adapter.
          * @since 1.20
          * @read-only
          */
-        get transcoder(): Transcoder | null;
+        get transcoder(): (Transcoder | null);
 
         /**
          * Compile-time signal type information.
@@ -486,55 +510,47 @@ export namespace GstTranscoder {
         $signals: TranscoderSignalAdapter.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TranscoderSignalAdapter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TranscoderSignalAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TranscoderSignalAdapter.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TranscoderSignalAdapter.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TranscoderSignalAdapter.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TranscoderSignalAdapter.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TranscoderSignalAdapter.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TranscoderSignalAdapter.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof TranscoderSignalAdapter.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TranscoderSignalAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns The {@link GstTranscoder.Transcoder} `self` is tracking
          */
-        get_transcoder(): Transcoder | null;
+        get_transcoder(): (Transcoder | null);
     }
+
 
     /**
      * @gir-type Alias
      */
     type TranscoderClass = typeof Transcoder;
+
     /**
      * @gir-type Alias
      */
     type TranscoderSignalAdapterClass = typeof TranscoderSignalAdapter;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

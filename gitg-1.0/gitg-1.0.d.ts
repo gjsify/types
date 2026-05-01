@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -27,9 +28,11 @@ import type xlib from '@girs/xlib-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Gitg {
+
     /**
      * Gitg-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -46,6 +49,7 @@ export namespace Gitg {
         SESSION,
         FOREVER,
     }
+
 
     /**
      * @gir-type Enum
@@ -73,6 +77,7 @@ export namespace Gitg {
         NUM,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -91,6 +96,7 @@ export namespace Gitg {
         STASH,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -106,6 +112,7 @@ export namespace Gitg {
         SELECTED,
         PRELIGHT,
     }
+
 
     /**
      * @gir-type Enum
@@ -124,6 +131,7 @@ export namespace Gitg {
         TRANSFERRING,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -138,6 +146,7 @@ export namespace Gitg {
         NORMAL,
         SELECTION,
     }
+
 
     /**
      * @gir-type Enum
@@ -154,6 +163,7 @@ export namespace Gitg {
         TRASH,
         DELETE,
     }
+
 
     /**
      * @gir-type Enum
@@ -172,6 +182,7 @@ export namespace Gitg {
         DUMMY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -188,6 +199,7 @@ export namespace Gitg {
         ITEM,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -195,13 +207,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static CANCELLED: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -210,13 +221,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static INVALID_FORMAT: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -225,13 +235,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static THREADS_UNSAFE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -240,16 +249,18 @@ export namespace Gitg {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static ALREADY_CONNECTED: number;
+
         static ALREADY_CONNECTING: number;
+
         static ALREADY_DISCONNECTED: number;
+
         static STILL_CONNECTING: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Struct
@@ -258,19 +269,24 @@ export namespace Gitg {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static PRE_COMMIT_HOOK_FAILED: number;
+
         static COMMIT_MSG_HOOK_FAILED: number;
+
         static NOTHING_TO_COMMIT: number;
+
         static INDEX_ENTRY_NOT_FOUND: number;
+
         static SIGN_CONFIG_NOT_FOUND: number;
+
         static SIGN_CONFIG_ERROR: number;
+
         static UPDATE_REF_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -287,8 +303,11 @@ export namespace Gitg {
         REMOVE,
     }
 
+
     function commit_model_columns_type(): GObject.GType;
+
     function init(): void;
+
     /**
      * @gir-type Flags
      */
@@ -309,6 +328,7 @@ export namespace Gitg {
         HIDDEN,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -327,13 +347,14 @@ export namespace Gitg {
         SIGN_COMMIT,
     }
 
+
     namespace Async {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        interface ThreadFunc {
-            (): void;
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
         }
+    interface ThreadFunc {
+        (): void;
+    }
     }
 
     /**
@@ -343,144 +364,136 @@ export namespace Gitg {
         static $gtype: GObject.GType<Async>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](): Async;
+        static ["new"](): Async;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Async.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Async.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Async.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Async.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Async.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Async.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Async.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Async.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Async.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Async.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Async.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Async.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @param func 
+         * @param _callback_ 
+         */
+        static thread(func: Async.ThreadFunc, _callback_: (Gio.AsyncReadyCallback<Async> | null)): void;
 
         /**
-         * @param func
-         * @param _callback_
-         */
-        static thread(func: Async.ThreadFunc, _callback_: Gio.AsyncReadyCallback<Async> | null): void;
-        /**
-         * @param _res_
+         * @param _res_ 
          */
         static thread_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param func
-         * @param _callback_
+         * @param func 
+         * @param _callback_ 
          */
-        static thread_try(func: Async.ThreadFunc, _callback_: Gio.AsyncReadyCallback<Async> | null): void;
+        static thread_try(func: Async.ThreadFunc, _callback_: (Gio.AsyncReadyCallback<Async> | null)): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         static thread_try_finish(_res_: Gio.AsyncResult): void;
     }
 
+
     namespace AuthenticationDialog {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::username': (pspec: GObject.ParamSpec) => void;
-            'notify::password': (pspec: GObject.ParamSpec) => void;
-            'notify::life-time': (pspec: GObject.ParamSpec) => void;
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::username": (pspec: GObject.ParamSpec) => void;
+            "notify::password": (pspec: GObject.ParamSpec) => void;
+            "notify::life-time": (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {
             username: string;
             password: string;
@@ -496,19 +509,21 @@ export namespace Gitg {
         static $gtype: GObject.GType<AuthenticationDialog>;
 
         // Properties
-
         /**
          * @read-only
          */
         get username(): string;
+
         /**
          * @read-only
          */
         get password(): string;
+
         /**
          * @read-only
          */
         get life_time(): AuthenticationLifeTime;
+
         /**
          * @read-only
          */
@@ -524,53 +539,46 @@ export namespace Gitg {
         $signals: AuthenticationDialog.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AuthenticationDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](url: string, username: string | null, failed: boolean): AuthenticationDialog;
-        // Conflicted with Gtk.Dialog.new
+        static ["new"](url: string, username: (string | null), failed: boolean): AuthenticationDialog;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Dialog.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AuthenticationDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthenticationDialog.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AuthenticationDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthenticationDialog.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AuthenticationDialog.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthenticationDialog.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AuthenticationDialog.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthenticationDialog.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AuthenticationDialog.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AuthenticationDialog.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof AuthenticationDialog.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthenticationDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_username(): string;
+
         get_password(): string;
+
         get_life_time(): AuthenticationLifeTime;
     }
 
+
     namespace AvatarCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -589,92 +597,71 @@ export namespace Gitg {
         $signals: AvatarCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AvatarCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AvatarCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AvatarCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AvatarCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AvatarCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AvatarCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AvatarCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AvatarCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
-        static ['default'](): AvatarCache;
+        static ["default"](): AvatarCache;
 
         // Methods
+        /**
+         * @param email 
+         * @param size 
+         * @param cancellable 
+         */
+        load(email: string, size: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(GdkPixbuf.Pixbuf | null)>;
 
         /**
-         * @param email
-         * @param size
-         * @param cancellable
+         * @param email 
+         * @param size 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        load(
-            email: string,
-            size: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GdkPixbuf.Pixbuf | null>;
+        load(email: string, size: number, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param email
-         * @param size
-         * @param cancellable
-         * @param _callback_
+         * @param email 
+         * @param size 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        load(
-            email: string,
-            size: number,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        load(email: string, size: number, cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(GdkPixbuf.Pixbuf | null)> | void);
+
         /**
-         * @param email
-         * @param size
-         * @param cancellable
-         * @param _callback_
+         * @param _res_ 
          */
-        load(
-            email: string,
-            size: number,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GdkPixbuf.Pixbuf | null> | void;
-        /**
-         * @param _res_
-         */
-        load_finish(_res_: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
+        load_finish(_res_: Gio.AsyncResult): (GdkPixbuf.Pixbuf | null);
     }
+
 
     namespace BranchBase {
         // Signal signatures
         interface SignalSignatures extends Ggit.Branch.SignalSignatures {
-            'notify::native': (pspec: GObject.ParamSpec) => void;
-            'notify::d-parsed-name': (pspec: GObject.ParamSpec) => void;
-            'notify::d-pushes': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::working': (pspec: GObject.ParamSpec) => void;
+            "notify::native": (pspec: GObject.ParamSpec) => void;
+            "notify::d-parsed-name": (pspec: GObject.ParamSpec) => void;
+            "notify::d-pushes": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::working": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Ggit.Branch.ConstructorProps, Ref.ConstructorProps, Branch.ConstructorProps {
 
-        interface ConstructorProps
-            extends Ggit.Branch.ConstructorProps, Ref.ConstructorProps, Branch.ConstructorProps {}
+        }
     }
 
     /**
@@ -693,224 +680,247 @@ export namespace Gitg {
         $signals: BranchBase.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BranchBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BranchBase;
+        static ["new"](): BranchBase;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BranchBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BranchBase.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BranchBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BranchBase.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BranchBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BranchBase.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BranchBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BranchBase.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BranchBase.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BranchBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BranchBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BranchBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from Gitg.Ref */
         get d_parsed_name(): ParsedRefName;
         set d_parsed_name(val: ParsedRefName);
+
         /** @category Inherited from Gitg.Ref */
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
+
         /** @category Inherited from Gitg.Ref */
-        get d_pushes(): Ref[] | null;
-        set d_pushes(val: Ref[] | null);
+        get d_pushes(): (Ref[] | null);
+        set d_pushes(val: (Ref[] | null));
+
         /** @category Inherited from Gitg.Ref */
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
+
         /** @category Inherited from Gitg.Ref */
         get state(): RefState;
         set state(val: RefState);
+
         /** @category Inherited from Gitg.Ref */
         get working(): boolean;
         set working(val: boolean);
+
         get_owner(): Repository;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
+
         get_d_parsed_name(): ParsedRefName;
+
         /**
-         * @param value
+         * @param value 
          */
         set_d_parsed_name(value: ParsedRefName): void;
-        get_d_pushes(): Ref[] | null;
+
+        get_d_pushes(): (Ref[] | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_d_pushes(value: Ref[] | null): void;
+        set_d_pushes(value: (Ref[] | null)): void;
+
         get_state(): RefState;
+
         /**
-         * @param value
+         * @param value 
          */
         set_state(value: RefState): void;
+
         get_working(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_working(value: boolean): void;
+
         get_parsed_name(): ParsedRefName;
+
         get_pushes(): Ref[];
+
         /**
          * @virtual
          */
         vfunc_get_owner(): Repository;
+
         /**
          * @virtual
          */
         vfunc_get_d_parsed_name(): ParsedRefName;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_d_parsed_name(value: ParsedRefName): void;
+
         /**
          * @virtual
          */
-        vfunc_get_d_pushes(): Ref[] | null;
+        vfunc_get_d_pushes(): (Ref[] | null);
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
-        vfunc_set_d_pushes(value: Ref[] | null): void;
+        vfunc_set_d_pushes(value: (Ref[] | null)): void;
+
         /**
          * @virtual
          */
         vfunc_get_state(): RefState;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_state(value: RefState): void;
+
         /**
          * @virtual
          */
         vfunc_get_working(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_working(value: boolean): void;
+
         get_upstream(): Ref;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Ggit.Branch.get_upstream
         get_upstream(...args: never[]): any;
+
         /**
          * @virtual
          */
         vfunc_get_upstream(): Ref;
+
         /**
          * Deletes `ref`.
-         *
+         * 
          * This method works for both direct and symbolic references.
-         *
+         * 
          * The reference will be immediately removed on disk and from
          * memory. The given reference pointer will no longer be valid.
          */
-        ['delete'](): void;
+        ["delete"](): void;
+
         /**
          * Gets the full name of `ref`.
          * @returns the full name of a reference or `null`.
          */
-        get_name(): string | null;
+        get_name(): (string | null);
     }
+
 
     namespace CellRendererLanes {
         // Signal signatures
         interface SignalSignatures extends Gtk.CellRendererText.SignalSignatures {
-            'notify::commit': (pspec: GObject.ParamSpec) => void;
-            'notify::next-commit': (pspec: GObject.ParamSpec) => void;
-            'notify::lane-width': (pspec: GObject.ParamSpec) => void;
-            'notify::dot-width': (pspec: GObject.ParamSpec) => void;
-            'notify::labels': (pspec: GObject.ParamSpec) => void;
-            'notify::align-set': (pspec: GObject.ParamSpec) => void;
-            'notify::alignment': (pspec: GObject.ParamSpec) => void;
-            'notify::attributes': (pspec: GObject.ParamSpec) => void;
-            'notify::background': (pspec: GObject.ParamSpec) => void;
-            'notify::background-gdk': (pspec: GObject.ParamSpec) => void;
-            'notify::background-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::background-set': (pspec: GObject.ParamSpec) => void;
-            'notify::editable': (pspec: GObject.ParamSpec) => void;
-            'notify::editable-set': (pspec: GObject.ParamSpec) => void;
-            'notify::ellipsize': (pspec: GObject.ParamSpec) => void;
-            'notify::ellipsize-set': (pspec: GObject.ParamSpec) => void;
-            'notify::family': (pspec: GObject.ParamSpec) => void;
-            'notify::family-set': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::foreground': (pspec: GObject.ParamSpec) => void;
-            'notify::foreground-gdk': (pspec: GObject.ParamSpec) => void;
-            'notify::foreground-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::foreground-set': (pspec: GObject.ParamSpec) => void;
-            'notify::language': (pspec: GObject.ParamSpec) => void;
-            'notify::language-set': (pspec: GObject.ParamSpec) => void;
-            'notify::markup': (pspec: GObject.ParamSpec) => void;
-            'notify::max-width-chars': (pspec: GObject.ParamSpec) => void;
-            'notify::placeholder-text': (pspec: GObject.ParamSpec) => void;
-            'notify::rise': (pspec: GObject.ParamSpec) => void;
-            'notify::rise-set': (pspec: GObject.ParamSpec) => void;
-            'notify::scale': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-set': (pspec: GObject.ParamSpec) => void;
-            'notify::single-paragraph-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::size-points': (pspec: GObject.ParamSpec) => void;
-            'notify::size-set': (pspec: GObject.ParamSpec) => void;
-            'notify::stretch': (pspec: GObject.ParamSpec) => void;
-            'notify::stretch-set': (pspec: GObject.ParamSpec) => void;
-            'notify::strikethrough': (pspec: GObject.ParamSpec) => void;
-            'notify::strikethrough-set': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::style-set': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::underline': (pspec: GObject.ParamSpec) => void;
-            'notify::underline-set': (pspec: GObject.ParamSpec) => void;
-            'notify::variant': (pspec: GObject.ParamSpec) => void;
-            'notify::variant-set': (pspec: GObject.ParamSpec) => void;
-            'notify::weight': (pspec: GObject.ParamSpec) => void;
-            'notify::weight-set': (pspec: GObject.ParamSpec) => void;
-            'notify::width-chars': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap-width': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-gdk': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::cell-background-set': (pspec: GObject.ParamSpec) => void;
-            'notify::editing': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::is-expanded': (pspec: GObject.ParamSpec) => void;
-            'notify::is-expander': (pspec: GObject.ParamSpec) => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::xalign': (pspec: GObject.ParamSpec) => void;
-            'notify::xpad': (pspec: GObject.ParamSpec) => void;
-            'notify::yalign': (pspec: GObject.ParamSpec) => void;
-            'notify::ypad': (pspec: GObject.ParamSpec) => void;
+            "notify::commit": (pspec: GObject.ParamSpec) => void;
+            "notify::next-commit": (pspec: GObject.ParamSpec) => void;
+            "notify::lane-width": (pspec: GObject.ParamSpec) => void;
+            "notify::dot-width": (pspec: GObject.ParamSpec) => void;
+            "notify::labels": (pspec: GObject.ParamSpec) => void;
+            "notify::align-set": (pspec: GObject.ParamSpec) => void;
+            "notify::alignment": (pspec: GObject.ParamSpec) => void;
+            "notify::attributes": (pspec: GObject.ParamSpec) => void;
+            "notify::background": (pspec: GObject.ParamSpec) => void;
+            "notify::background-gdk": (pspec: GObject.ParamSpec) => void;
+            "notify::background-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::background-set": (pspec: GObject.ParamSpec) => void;
+            "notify::editable": (pspec: GObject.ParamSpec) => void;
+            "notify::editable-set": (pspec: GObject.ParamSpec) => void;
+            "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
+            "notify::ellipsize-set": (pspec: GObject.ParamSpec) => void;
+            "notify::family": (pspec: GObject.ParamSpec) => void;
+            "notify::family-set": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::foreground": (pspec: GObject.ParamSpec) => void;
+            "notify::foreground-gdk": (pspec: GObject.ParamSpec) => void;
+            "notify::foreground-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::foreground-set": (pspec: GObject.ParamSpec) => void;
+            "notify::language": (pspec: GObject.ParamSpec) => void;
+            "notify::language-set": (pspec: GObject.ParamSpec) => void;
+            "notify::markup": (pspec: GObject.ParamSpec) => void;
+            "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
+            "notify::placeholder-text": (pspec: GObject.ParamSpec) => void;
+            "notify::rise": (pspec: GObject.ParamSpec) => void;
+            "notify::rise-set": (pspec: GObject.ParamSpec) => void;
+            "notify::scale": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-set": (pspec: GObject.ParamSpec) => void;
+            "notify::single-paragraph-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::size-points": (pspec: GObject.ParamSpec) => void;
+            "notify::size-set": (pspec: GObject.ParamSpec) => void;
+            "notify::stretch": (pspec: GObject.ParamSpec) => void;
+            "notify::stretch-set": (pspec: GObject.ParamSpec) => void;
+            "notify::strikethrough": (pspec: GObject.ParamSpec) => void;
+            "notify::strikethrough-set": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::style-set": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::underline": (pspec: GObject.ParamSpec) => void;
+            "notify::underline-set": (pspec: GObject.ParamSpec) => void;
+            "notify::variant": (pspec: GObject.ParamSpec) => void;
+            "notify::variant-set": (pspec: GObject.ParamSpec) => void;
+            "notify::weight": (pspec: GObject.ParamSpec) => void;
+            "notify::weight-set": (pspec: GObject.ParamSpec) => void;
+            "notify::width-chars": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap-width": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-gdk": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::cell-background-set": (pspec: GObject.ParamSpec) => void;
+            "notify::editing": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::is-expanded": (pspec: GObject.ParamSpec) => void;
+            "notify::is-expander": (pspec: GObject.ParamSpec) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::xpad": (pspec: GObject.ParamSpec) => void;
+            "notify::yalign": (pspec: GObject.ParamSpec) => void;
+            "notify::ypad": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
-            commit: Commit | null;
-            next_commit: Commit | null;
+            commit: (Commit | null);
+            next_commit: (Commit | null);
             nextCommit: Commit;
             lane_width: number;
             laneWidth: number;
@@ -927,21 +937,27 @@ export namespace Gitg {
         static $gtype: GObject.GType<CellRendererLanes>;
 
         // Properties
+        get commit(): (Commit | null);
+        set commit(val: (Commit | null));
 
-        get commit(): Commit | null;
-        set commit(val: Commit | null);
-        get next_commit(): Commit | null;
-        set next_commit(val: Commit | null);
+        get next_commit(): (Commit | null);
+        set next_commit(val: (Commit | null));
+
         get nextCommit(): Commit;
         set nextCommit(val: Commit);
+
         get lane_width(): number;
         set lane_width(val: number);
+
         get laneWidth(): number;
         set laneWidth(val: number);
+
         get dot_width(): number;
         set dot_width(val: number);
+
         get dotWidth(): number;
         set dotWidth(val: number);
+
         get labels(): Ref[];
         set labels(val: Ref[]);
 
@@ -955,79 +971,79 @@ export namespace Gitg {
         $signals: CellRendererLanes.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CellRendererLanes.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CellRendererLanes;
+        static ["new"](): CellRendererLanes;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CellRendererLanes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererLanes.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CellRendererLanes.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CellRendererLanes.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CellRendererLanes.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CellRendererLanes.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CellRendererLanes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CellRendererLanes.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CellRendererLanes.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CellRendererLanes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CellRendererLanes.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CellRendererLanes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param widget 
+         * @param x 
+         * @param cell_w 
+         */
+        get_ref_at_pos(widget: Gtk.Widget, x: number, cell_w: number): [(Ref | null), number];
+
+        get_commit(): (Commit | null);
 
         /**
-         * @param widget
-         * @param x
-         * @param cell_w
+         * @param value 
          */
-        get_ref_at_pos(widget: Gtk.Widget, x: number, cell_w: number): [Ref | null, number];
-        get_commit(): Commit | null;
+        set_commit(value: (Commit | null)): void;
+
+        get_next_commit(): (Commit | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_commit(value: Commit | null): void;
-        get_next_commit(): Commit | null;
-        /**
-         * @param value
-         */
-        set_next_commit(value: Commit | null): void;
+        set_next_commit(value: (Commit | null)): void;
+
         get_lane_width(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_lane_width(value: number): void;
+
         get_dot_width(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_dot_width(value: number): void;
+
         get_labels(): Ref[];
+
         /**
-         * @param value
+         * @param value 
          */
         set_labels(value: Ref[]): void;
     }
 
+
     namespace Color {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::r': (pspec: GObject.ParamSpec) => void;
-            'notify::g': (pspec: GObject.ParamSpec) => void;
-            'notify::b': (pspec: GObject.ParamSpec) => void;
+            "notify::r": (pspec: GObject.ParamSpec) => void;
+            "notify::g": (pspec: GObject.ParamSpec) => void;
+            "notify::b": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             r: number;
             g: number;
@@ -1042,15 +1058,16 @@ export namespace Gitg {
         static $gtype: GObject.GType<Color>;
 
         // Properties
-
         /**
          * @read-only
          */
         get r(): number;
+
         /**
          * @read-only
          */
         get g(): number;
+
         /**
          * @read-only
          */
@@ -1066,121 +1083,117 @@ export namespace Gitg {
         $signals: Color.SignalSignatures;
 
         // Fields
-
         idx: number;
 
         // Constructors
-
         constructor(properties?: Partial<Color.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Color;
+        static ["new"](): Color;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Color.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Color.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Color.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Color.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Color.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Color.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Color.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Color.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static reset(): void;
+
         static next(): Color;
 
         // Methods
-
         components(): [number, number, number];
+
         next_index(): Color;
+
         copy(): Color;
+
         get_r(): number;
+
         get_g(): number;
+
         get_b(): number;
     }
+
 
     namespace CommitListView {
         // Signal signatures
         interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
-            'notify::activate-on-single-click': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-grid-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-search': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-tree-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::expander-column': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-height-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::headers-clickable': (pspec: GObject.ParamSpec) => void;
-            'notify::headers-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::hover-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::hover-selection': (pspec: GObject.ParamSpec) => void;
-            'notify::level-indentation': (pspec: GObject.ParamSpec) => void;
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::reorderable': (pspec: GObject.ParamSpec) => void;
-            'notify::rubber-banding': (pspec: GObject.ParamSpec) => void;
-            'notify::rules-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::search-column': (pspec: GObject.ParamSpec) => void;
-            'notify::show-expanders': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-column': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-grid-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-search": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-tree-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::expander-column": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-height-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::headers-clickable": (pspec: GObject.ParamSpec) => void;
+            "notify::headers-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::hover-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::hover-selection": (pspec: GObject.ParamSpec) => void;
+            "notify::level-indentation": (pspec: GObject.ParamSpec) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::reorderable": (pspec: GObject.ParamSpec) => void;
+            "notify::rubber-banding": (pspec: GObject.ParamSpec) => void;
+            "notify::rules-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::search-column": (pspec: GObject.ParamSpec) => void;
+            "notify::show-expanders": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-column": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Gtk.Buildable.ConstructorProps {
 
-        interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Gtk.Buildable.ConstructorProps {}
+        }
     }
 
     /**
@@ -1199,48 +1212,39 @@ export namespace Gitg {
         $signals: CommitListView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CommitListView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](model: CommitModel): CommitListView;
-        // Conflicted with Gtk.TreeView.new
+        static ["new"](model: CommitModel): CommitListView;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.TreeView.new
+        static ["new"](...args: never[]): any;
 
         static for_repository(repository: Repository): CommitListView;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CommitListView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommitListView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CommitListView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommitListView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CommitListView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommitListView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CommitListView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommitListView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CommitListView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CommitListView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CommitListView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommitListView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param column
-         * @param path
-         * @param x
+         * @param column 
+         * @param path 
+         * @param x 
          */
-        find_cell_at_pos(column: Gtk.TreeViewColumn, path: Gtk.TreePath, x: number): [Gtk.CellRenderer | null, number];
+        find_cell_at_pos(column: Gtk.TreeViewColumn, path: Gtk.TreePath, x: number): [(Gtk.CellRenderer | null), number];
     }
+
 
     namespace CommitModel {
         // Signal signatures
@@ -1260,18 +1264,17 @@ export namespace Gitg {
             /**
              * @signal
              */
-            'begin-clear': () => void;
+            "begin-clear": () => void;
             /**
              * @signal
              */
-            'end-clear': () => void;
-            'notify::limit': (pspec: GObject.ParamSpec) => void;
-            'notify::sort-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::repository': (pspec: GObject.ParamSpec) => void;
+            "end-clear": () => void;
+            "notify::limit": (pspec: GObject.ParamSpec) => void;
+            "notify::sort-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::repository": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {
             limit: number;
             sort_mode: Ggit.SortMode;
@@ -1287,13 +1290,15 @@ export namespace Gitg {
         static $gtype: GObject.GType<CommitModel>;
 
         // Properties
-
         get limit(): number;
         set limit(val: number);
+
         get sort_mode(): Ggit.SortMode;
         set sort_mode(val: Ggit.SortMode);
+
         get sortMode(): Ggit.SortMode;
         set sortMode(val: Ggit.SortMode);
+
         get repository(): Repository;
         set repository(val: Repository);
 
@@ -1307,113 +1312,124 @@ export namespace Gitg {
         $signals: CommitModel.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CommitModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](repository: Repository | null): CommitModel;
+        static ["new"](repository: (Repository | null)): CommitModel;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CommitModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommitModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CommitModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommitModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CommitModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CommitModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CommitModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CommitModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CommitModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CommitModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CommitModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CommitModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_permanent_lanes(): Ggit.OId[];
+
         /**
-         * @param value
+         * @param value 
          */
         set_permanent_lanes(value: Ggit.OId[]): void;
+
         reload(): void;
+
         size(): number;
+
         /**
-         * @param idx
+         * @param idx 
          */
-        get(idx: number): Commit | null;
+        get(idx: number): (Commit | null);
+
         /**
-         * @param ids
+         * @param ids 
          */
         set_include(ids: Ggit.OId[]): void;
+
         get_include(): Ggit.OId[];
+
         /**
-         * @param ids
+         * @param ids 
          */
         set_exclude(ids: Ggit.OId[]): void;
+
         /**
-         * @param iter
+         * @param iter 
          */
-        commit_from_iter(iter: Gtk.TreeIter): Commit | null;
+        commit_from_iter(iter: Gtk.TreeIter): (Commit | null);
+
         /**
-         * @param commit
+         * @param commit 
          */
-        path_from_commit(commit: Commit): Gtk.TreePath | null;
+        path_from_commit(commit: Commit): (Gtk.TreePath | null);
+
         /**
-         * @param path
+         * @param path 
          */
-        commit_from_path(path: Gtk.TreePath): Commit | null;
+        commit_from_path(path: Gtk.TreePath): (Commit | null);
+
         get_limit(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_limit(value: number): void;
+
         get_sort_mode(): Ggit.SortMode;
+
         /**
-         * @param value
+         * @param value 
          */
         set_sort_mode(value: Ggit.SortMode): void;
+
         get_repository(): Repository;
+
         /**
-         * @param value
+         * @param value 
          */
         set_repository(value: Repository): void;
+
         /**
          * Creates a new {@link Gtk.TreeModel}, with `child_model` as the child_model
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
          */
-        filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
+        filter_new(root: (Gtk.TreePath | null)): Gtk.TreeModel;
+
         /**
          * Calls func on each node in model in a depth-first fashion.
-         *
+         * 
          * If `func` returns `true`, then the tree ceases to be walked,
          * and `gtk_tree_model_foreach()` returns.
          * @param func a function to be called on each row
          */
         foreach(func: Gtk.TreeModelForeachFunc): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @returns the type of the column
          */
         get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @returns the flags supported by this interface
          */
         get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -1421,6 +1437,7 @@ export namespace Gitg {
          * @returns `true`, if `iter` was set
          */
         get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Initializes `iter` with the first iterator in the tree
          * (the one at the path "0") and returns `true`. Returns
@@ -1428,6 +1445,7 @@ export namespace Gitg {
          * @returns `true`, if `iter` was set
          */
         get_iter_first(): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to a valid iterator pointing to `path_string`, if it
          * exists. Otherwise, `iter` is left invalid and `false` is returned.
@@ -1435,22 +1453,25 @@ export namespace Gitg {
          * @returns `true`, if `iter` was set
          */
         get_iter_from_string(path_string: string): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @returns the number of columns
          */
         get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns a newly-created {@link Gtk.TreePath}-struct
          */
         get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Generates a string representation of the iter.
-         *
+         * 
          * This string is a “:” separated list of numbers.
          * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
@@ -1458,55 +1479,61 @@ export namespace Gitg {
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
          */
         get_value(iter: Gtk.TreeIter, column: number): unknown;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @returns `true`, if `iter` has been set to the first child
          */
-        iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @returns `true` if `iter` has children
          */
         iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @returns the number of children of `iter`
          */
-        iter_n_children(iter: Gtk.TreeIter | null): number;
+        iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the next node
          */
         iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -1516,37 +1543,40 @@ export namespace Gitg {
          * @param n the index of the desired child
          * @returns `true`, if `parent` has an `n`-th child
          */
-        iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @returns `true`, if `iter` is set to the parent of `child`
          */
         iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -1555,30 +1585,33 @@ export namespace Gitg {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          */
         row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -1587,49 +1620,55 @@ export namespace Gitg {
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
          */
         row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.rows_reordered | Gtk.TreeModel::rows-reordered} signal on `tree_model`.
-         *
+         * 
          * This should be called by models when their rows have been
          * reordered.
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
-        rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
+        rows_reordered(path: Gtk.TreePath, iter: (Gtk.TreeIter | null), new_order: number[]): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          */
         unref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Returns the type of the column.
          * @param index_ the column index
          * @virtual
          */
         vfunc_get_column_type(index_: number): GObject.GType;
+
         /**
          * Returns a set of flags supported by this interface.
-         *
+         * 
          * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @virtual
          */
         vfunc_get_flags(): Gtk.TreeModelFlags;
+
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
          * not exist, `iter` is set to an invalid iterator and `false` is returned.
@@ -1637,22 +1676,25 @@ export namespace Gitg {
          * @virtual
          */
         vfunc_get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
+
         /**
          * Returns the number of columns supported by `tree_model`.
          * @virtual
          */
         vfunc_get_n_columns(): number;
+
         /**
          * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
-         *
+         * 
          * This path should be freed with `gtk_tree_path_free()`.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_get_path(iter: Gtk.TreeIter): Gtk.TreePath;
+
         /**
          * Initializes and sets `value` to that at `column`.
-         *
+         * 
          * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
          * @param iter the {@link Gtk.TreeIter}-struct
@@ -1660,46 +1702,51 @@ export namespace Gitg {
          * @virtual
          */
         vfunc_get_value(iter: Gtk.TreeIter, column: number): GObject.Value | any;
+
         /**
          * Sets `iter` to point to the first child of `parent`.
-         *
+         * 
          * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
-         *
+         * 
          * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
          * @param parent the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_children(parent: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
+        vfunc_iter_children(parent: (Gtk.TreeIter | null)): [boolean, Gtk.TreeIter];
+
         /**
          * Returns `true` if `iter` has children, `false` otherwise.
          * @param iter the {@link Gtk.TreeIter}-struct to test for children
          * @virtual
          */
         vfunc_iter_has_child(iter: Gtk.TreeIter): boolean;
+
         /**
          * Returns the number of children that `iter` has.
-         *
+         * 
          * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
          * @param iter the {@link Gtk.TreeIter}-struct, or `null`
          * @virtual
          */
-        vfunc_iter_n_children(iter: Gtk.TreeIter | null): number;
+        vfunc_iter_n_children(iter: (Gtk.TreeIter | null)): number;
+
         /**
          * Sets `iter` to point to the node following it at the current level.
-         *
+         * 
          * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_next(iter: Gtk.TreeIter): boolean;
+
         /**
          * Sets `iter` to be the child of `parent`, using the given index.
-         *
+         * 
          * The first index is 0. If `n` is too big, or `parent` has no children,
          * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
@@ -1709,37 +1756,40 @@ export namespace Gitg {
          * @param n the index of the desired child
          * @virtual
          */
-        vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
+        vfunc_iter_nth_child(parent: (Gtk.TreeIter | null), n: number): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to be the parent of `child`.
-         *
+         * 
          * If `child` is at the toplevel, and doesn’t have a parent, then
          * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
-         *
+         * 
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
          * @param child the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
+
         /**
          * Sets `iter` to point to the previous node at the current level.
-         *
+         * 
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
+
         /**
          * Lets the tree ref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons.
-         *
+         * 
          * This function is primarily meant as a way for views to let
          * caching models know when nodes are being displayed (and hence,
          * whether or not to cache that node). Being displayed means a node
@@ -1748,13 +1798,14 @@ export namespace Gitg {
          * would not want to keep the entire file-hierarchy in memory,
          * just the sections that are currently being displayed by
          * every current view.
-         *
+         * 
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
          */
         vfunc_ref_node(iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
@@ -1762,19 +1813,21 @@ export namespace Gitg {
          * @virtual
          */
         vfunc_row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
-         *
+         * 
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
          * the row previously was at. It may not be a valid location anymore.
-         *
+         * 
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
          * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          * @virtual
          */
         vfunc_row_deleted(path: Gtk.TreePath): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
@@ -1784,6 +1837,7 @@ export namespace Gitg {
          * @virtual
          */
         vfunc_row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
          * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
@@ -1791,14 +1845,15 @@ export namespace Gitg {
          * @virtual
          */
         vfunc_row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
+
         /**
          * Lets the tree unref the node.
-         *
+         * 
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
          * this means, see `gtk_tree_model_ref_node()`.
-         *
+         * 
          * Please note that nodes that are deleted are not unreffed.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @virtual
@@ -1806,20 +1861,20 @@ export namespace Gitg {
         vfunc_unref_node(iter: Gtk.TreeIter): void;
     }
 
+
     namespace Commit {
         // Signal signatures
         interface SignalSignatures extends Ggit.Commit.SignalSignatures {
-            'notify::tag': (pspec: GObject.ParamSpec) => void;
-            'notify::mylane': (pspec: GObject.ParamSpec) => void;
-            'notify::lane': (pspec: GObject.ParamSpec) => void;
-            'notify::format-patch-name': (pspec: GObject.ParamSpec) => void;
-            'notify::committer-date-for-display': (pspec: GObject.ParamSpec) => void;
-            'notify::author-date-for-display': (pspec: GObject.ParamSpec) => void;
-            'notify::native': (pspec: GObject.ParamSpec) => void;
+            "notify::tag": (pspec: GObject.ParamSpec) => void;
+            "notify::mylane": (pspec: GObject.ParamSpec) => void;
+            "notify::lane": (pspec: GObject.ParamSpec) => void;
+            "notify::format-patch-name": (pspec: GObject.ParamSpec) => void;
+            "notify::committer-date-for-display": (pspec: GObject.ParamSpec) => void;
+            "notify::author-date-for-display": (pspec: GObject.ParamSpec) => void;
+            "notify::native": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Ggit.Commit.ConstructorProps {
             tag: LaneTag;
             mylane: number;
@@ -1840,35 +1895,42 @@ export namespace Gitg {
         static $gtype: GObject.GType<Commit>;
 
         // Properties
-
         get tag(): LaneTag;
         set tag(val: LaneTag);
+
         get mylane(): number;
         set mylane(val: number);
+
         /**
          * @read-only
          */
         get lane(): Lane;
+
         /**
          * @read-only
          */
         get format_patch_name(): string;
+
         /**
          * @read-only
          */
         get formatPatchName(): string;
+
         /**
          * @read-only
          */
         get committer_date_for_display(): string;
+
         /**
          * @read-only
          */
         get committerDateForDisplay(): string;
+
         /**
          * @read-only
          */
         get author_date_for_display(): string;
+
         /**
          * @read-only
          */
@@ -1884,76 +1946,81 @@ export namespace Gitg {
         $signals: Commit.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Commit.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Commit;
+        static ["new"](): Commit;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Commit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Commit.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Commit.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Commit.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Commit.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Commit.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Commit.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Commit.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Commit.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Commit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Commit.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Commit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_lanes(): Lane[];
+
         /**
-         * @param lane
-         * @param idx
+         * @param lane 
+         * @param idx 
          */
         insert_lane(lane: Lane, idx: number): Lane[];
+
         /**
-         * @param lane
+         * @param lane 
          */
         remove_lane(lane: Lane): Lane[];
+
         /**
-         * @param lanes
-         * @param mylane
+         * @param lanes 
+         * @param mylane 
          */
         update_lanes(lanes: Lane[], mylane: number): void;
+
         /**
-         * @param options
-         * @param parent
+         * @param options 
+         * @param parent 
          */
-        get_diff(options: Ggit.DiffOptions | null, parent: number): Ggit.Diff;
+        get_diff(options: (Ggit.DiffOptions | null), parent: number): Ggit.Diff;
+
         get_note(): Ggit.Note;
+
         get_tag(): LaneTag;
+
         /**
-         * @param value
+         * @param value 
          */
         set_tag(value: LaneTag): void;
+
         get_mylane(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_mylane(value: number): void;
+
         get_lane(): Lane;
+
         get_format_patch_name(): string;
+
         get_committer_date_for_display(): string;
+
         get_author_date_for_display(): string;
     }
 
+
     namespace CredentialsManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -1963,59 +2030,44 @@ export namespace Gitg {
         static $gtype: GObject.GType<CredentialsManager>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](
-            config: Ggit.Config | null,
-            window: Gtk.Window,
-            save_user_in_config: boolean,
-        ): CredentialsManager;
+        static ["new"](config: (Ggit.Config | null), window: Gtk.Window, save_user_in_config: boolean): CredentialsManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CredentialsManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CredentialsManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CredentialsManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CredentialsManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CredentialsManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CredentialsManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CredentialsManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CredentialsManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CredentialsManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CredentialsManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CredentialsManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param url
-         * @param username
-         * @param allowed_types
+         * @param url 
+         * @param username 
+         * @param allowed_types 
          */
-        credentials(url: string, username: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
+        credentials(url: string, username: (string | null), allowed_types: Ggit.Credtype): (Ggit.Cred | null);
     }
+
 
     namespace Date {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::date-string': (pspec: GObject.ParamSpec) => void;
-            'notify::date': (pspec: GObject.ParamSpec) => void;
+            "notify::date-string": (pspec: GObject.ParamSpec) => void;
+            "notify::date": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             date_string: string;
             dateString: string;
@@ -2030,11 +2082,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<Date>;
 
         // Properties
-
         get date_string(): string;
         set date_string(val: string);
+
         get dateString(): string;
         set dateString(val: string);
+
         /**
          * @read-only
          */
@@ -2050,89 +2103,83 @@ export namespace Gitg {
         $signals: Date.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Date.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](date: string): Date;
+        static ["new"](date: string): Date;
 
         static for_date_time(dt: GLib.DateTime): Date;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Date.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Date.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Date.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Date.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Date.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Date.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Date.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Date.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Date.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Date.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Date.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Date.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param date
+         * @param date 
          */
         static parse(date: string): GLib.DateTime;
 
         // Methods
-
         /**
-         * @param t
+         * @param t 
          */
         get_relative_date(t: GLib.TimeSpan): string;
+
         for_display(): string;
+
         get_date_string(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_date_string(value: string): void;
+
         get_date(): GLib.DateTime;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2142,40 +2189,41 @@ export namespace Gitg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2185,57 +2233,57 @@ export namespace Gitg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace DiffStat {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
-            'notify::added': (pspec: GObject.ParamSpec) => void;
-            'notify::removed': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::added": (pspec: GObject.ParamSpec) => void;
+            "notify::removed": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps {
             added: number;
             removed: number;
@@ -2249,9 +2297,9 @@ export namespace Gitg {
         static $gtype: GObject.GType<DiffStat>;
 
         // Properties
-
         get added(): number;
         set added(val: number);
+
         get removed(): number;
         set removed(val: number);
 
@@ -2265,107 +2313,100 @@ export namespace Gitg {
         $signals: DiffStat.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DiffStat.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DiffStat;
+        static ["new"](): DiffStat;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DiffStat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiffStat.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DiffStat.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DiffStat.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DiffStat.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DiffStat.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DiffStat.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiffStat.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DiffStat.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DiffStat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DiffStat.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiffStat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_added(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_added(value: number): void;
+
         get_removed(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_removed(value: number): void;
     }
 
+
     namespace DiffViewOptions {
         // Signal signatures
         interface SignalSignatures extends Gtk.Toolbar.SignalSignatures {
-            'notify::context-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::view': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-size': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-size-set': (pspec: GObject.ParamSpec) => void;
-            'notify::show-arrow': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-style': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::context-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::view": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-size": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-size-set": (pspec: GObject.ParamSpec) => void;
+            "notify::show-arrow": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-style": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Toolbar.ConstructorProps {
             context_lines: number;
             contextLines: number;
-            view: DiffView | null;
+            view: (DiffView | null);
         }
     }
 
@@ -2376,13 +2417,14 @@ export namespace Gitg {
         static $gtype: GObject.GType<DiffViewOptions>;
 
         // Properties
-
         get context_lines(): number;
         set context_lines(val: number);
+
         get contextLines(): number;
         set contextLines(val: number);
-        get view(): DiffView | null;
-        set view(val: DiffView | null);
+
+        get view(): (DiffView | null);
+        set view(val: (DiffView | null));
 
         /**
          * Compile-time signal type information.
@@ -2394,50 +2436,44 @@ export namespace Gitg {
         $signals: DiffViewOptions.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DiffViewOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](view: DiffView | null): DiffViewOptions;
-        // Conflicted with Gtk.Toolbar.new
+        static ["new"](view: (DiffView | null)): DiffViewOptions;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Toolbar.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DiffViewOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiffViewOptions.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DiffViewOptions.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DiffViewOptions.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DiffViewOptions.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DiffViewOptions.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DiffViewOptions.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiffViewOptions.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DiffViewOptions.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DiffViewOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DiffViewOptions.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiffViewOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_context_lines(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_context_lines(value: number): void;
-        get_view(): DiffView | null;
+
+        get_view(): (DiffView | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_view(value: DiffView | null): void;
+        set_view(value: (DiffView | null)): void;
     }
+
 
     namespace DiffView {
         // Signal signatures
@@ -2445,82 +2481,81 @@ export namespace Gitg {
             /**
              * @signal
              */
-            'options-changed': () => void;
-            'notify::options': (pspec: GObject.ParamSpec) => void;
-            'notify::has-selection': (pspec: GObject.ParamSpec) => void;
-            'notify::diff': (pspec: GObject.ParamSpec) => void;
-            'notify::commit': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::staged': (pspec: GObject.ParamSpec) => void;
-            'notify::unstaged': (pspec: GObject.ParamSpec) => void;
-            'notify::show-parents': (pspec: GObject.ParamSpec) => void;
-            'notify::default-collapse-all': (pspec: GObject.ParamSpec) => void;
-            'notify::use-gravatar': (pspec: GObject.ParamSpec) => void;
-            'notify::tab-width': (pspec: GObject.ParamSpec) => void;
-            'notify::handle-selection': (pspec: GObject.ParamSpec) => void;
-            'notify::highlight': (pspec: GObject.ParamSpec) => void;
-            'notify::repository': (pspec: GObject.ParamSpec) => void;
-            'notify::new-is-workdir': (pspec: GObject.ParamSpec) => void;
-            'notify::ignore-whitespace': (pspec: GObject.ParamSpec) => void;
-            'notify::changes-inline': (pspec: GObject.ParamSpec) => void;
-            'notify::context-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
-            'notify::column-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::row-homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "options-changed": () => void;
+            "notify::options": (pspec: GObject.ParamSpec) => void;
+            "notify::has-selection": (pspec: GObject.ParamSpec) => void;
+            "notify::diff": (pspec: GObject.ParamSpec) => void;
+            "notify::commit": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::staged": (pspec: GObject.ParamSpec) => void;
+            "notify::unstaged": (pspec: GObject.ParamSpec) => void;
+            "notify::show-parents": (pspec: GObject.ParamSpec) => void;
+            "notify::default-collapse-all": (pspec: GObject.ParamSpec) => void;
+            "notify::use-gravatar": (pspec: GObject.ParamSpec) => void;
+            "notify::tab-width": (pspec: GObject.ParamSpec) => void;
+            "notify::handle-selection": (pspec: GObject.ParamSpec) => void;
+            "notify::highlight": (pspec: GObject.ParamSpec) => void;
+            "notify::repository": (pspec: GObject.ParamSpec) => void;
+            "notify::new-is-workdir": (pspec: GObject.ParamSpec) => void;
+            "notify::ignore-whitespace": (pspec: GObject.ParamSpec) => void;
+            "notify::changes-inline": (pspec: GObject.ParamSpec) => void;
+            "notify::context-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
+            "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::row-homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
             options: Ggit.DiffOptions;
             has_selection: boolean;
             hasSelection: boolean;
-            diff: Ggit.Diff | null;
-            commit: Commit | null;
+            diff: (Ggit.Diff | null);
+            commit: (Commit | null);
             wrap_lines: boolean;
             wrapLines: boolean;
             staged: boolean;
@@ -2536,7 +2571,7 @@ export namespace Gitg {
             handle_selection: boolean;
             handleSelection: boolean;
             highlight: boolean;
-            repository: Repository | null;
+            repository: (Repository | null);
             new_is_workdir: boolean;
             newIsWorkdir: boolean;
             ignore_whitespace: boolean;
@@ -2555,65 +2590,92 @@ export namespace Gitg {
         static $gtype: GObject.GType<DiffView>;
 
         // Properties
-
         /**
          * @read-only
          */
         get options(): Ggit.DiffOptions;
+
         get has_selection(): boolean;
         set has_selection(val: boolean);
+
         get hasSelection(): boolean;
         set hasSelection(val: boolean);
-        get diff(): Ggit.Diff | null;
-        set diff(val: Ggit.Diff | null);
-        get commit(): Commit | null;
-        set commit(val: Commit | null);
+
+        get diff(): (Ggit.Diff | null);
+        set diff(val: (Ggit.Diff | null));
+
+        get commit(): (Commit | null);
+        set commit(val: (Commit | null));
+
         get wrap_lines(): boolean;
         set wrap_lines(val: boolean);
+
         get wrapLines(): boolean;
         set wrapLines(val: boolean);
+
         get staged(): boolean;
         set staged(val: boolean);
+
         get unstaged(): boolean;
         set unstaged(val: boolean);
+
         get show_parents(): boolean;
         set show_parents(val: boolean);
+
         get showParents(): boolean;
         set showParents(val: boolean);
+
         get default_collapse_all(): boolean;
         set default_collapse_all(val: boolean);
+
         get defaultCollapseAll(): boolean;
         set defaultCollapseAll(val: boolean);
+
         get use_gravatar(): boolean;
         set use_gravatar(val: boolean);
+
         get useGravatar(): boolean;
         set useGravatar(val: boolean);
+
         get tab_width(): number;
         set tab_width(val: number);
+
         get tabWidth(): number;
         set tabWidth(val: number);
+
         get handle_selection(): boolean;
         set handle_selection(val: boolean);
+
         get handleSelection(): boolean;
         set handleSelection(val: boolean);
+
         get highlight(): boolean;
         set highlight(val: boolean);
-        get repository(): Repository | null;
-        set repository(val: Repository | null);
+
+        get repository(): (Repository | null);
+        set repository(val: (Repository | null));
+
         get new_is_workdir(): boolean;
         set new_is_workdir(val: boolean);
+
         get newIsWorkdir(): boolean;
         set newIsWorkdir(val: boolean);
+
         get ignore_whitespace(): boolean;
         set ignore_whitespace(val: boolean);
+
         get ignoreWhitespace(): boolean;
         set ignoreWhitespace(val: boolean);
+
         get changes_inline(): boolean;
         set changes_inline(val: boolean);
+
         get changesInline(): boolean;
         set changesInline(val: boolean);
+
         get context_lines(): number;
         set context_lines(val: number);
+
         get contextLines(): number;
         set contextLines(val: number);
 
@@ -2627,157 +2689,179 @@ export namespace Gitg {
         $signals: DiffView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DiffView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DiffView;
+        static ["new"](): DiffView;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DiffView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiffView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DiffView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DiffView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DiffView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DiffView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DiffView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DiffView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DiffView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DiffView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DiffView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DiffView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_options_changed(): void;
 
         // Methods
+        /**
+         * @param buffer 
+         * @param regex 
+         * @param replacement 
+         * @param custom_color_link 
+         * @param is_custom_color 
+         * @param is_custom_link 
+         */
+        apply_link_tags(buffer: Gtk.TextBuffer, regex: GLib.Regex, replacement: (string | null), custom_color_link: Gdk.RGBA, is_custom_color: boolean, is_custom_link: boolean): void;
 
         /**
-         * @param buffer
-         * @param regex
-         * @param replacement
-         * @param custom_color_link
-         * @param is_custom_color
-         * @param is_custom_link
-         */
-        apply_link_tags(
-            buffer: Gtk.TextBuffer,
-            regex: GLib.Regex,
-            replacement: string | null,
-            custom_color_link: Gdk.RGBA,
-            is_custom_color: boolean,
-            is_custom_link: boolean,
-        ): void;
-        /**
-         * @param texview
-         * @param iter
+         * @param texview 
+         * @param iter 
          */
         follow_if_link(texview: Gtk.Widget, iter: Gtk.TextIter): void;
+
         get_selection(): PatchSet[];
+
         clear_selection(): void;
+
         get_options(): Ggit.DiffOptions;
+
         get_has_selection(): boolean;
-        get_diff(): Ggit.Diff | null;
+
+        get_diff(): (Ggit.Diff | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_diff(value: Ggit.Diff | null): void;
-        get_commit(): Commit | null;
+        set_diff(value: (Ggit.Diff | null)): void;
+
+        get_commit(): (Commit | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_commit(value: Commit | null): void;
+        set_commit(value: (Commit | null)): void;
+
         get_wrap_lines(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_wrap_lines(value: boolean): void;
+
         get_staged(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_staged(value: boolean): void;
+
         get_unstaged(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_unstaged(value: boolean): void;
+
         get_show_parents(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_show_parents(value: boolean): void;
+
         get_default_collapse_all(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_default_collapse_all(value: boolean): void;
+
         get_use_gravatar(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_use_gravatar(value: boolean): void;
+
         get_tab_width(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_tab_width(value: number): void;
+
         get_handle_selection(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_handle_selection(value: boolean): void;
+
         get_highlight(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_highlight(value: boolean): void;
-        get_repository(): Repository | null;
+
+        get_repository(): (Repository | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_repository(value: Repository | null): void;
+        set_repository(value: (Repository | null)): void;
+
         get_new_is_workdir(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_new_is_workdir(value: boolean): void;
+
         get_ignore_whitespace(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_ignore_whitespace(value: boolean): void;
+
         get_changes_inline(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_changes_inline(value: boolean): void;
+
         get_context_lines(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_context_lines(value: number): void;
     }
 
+
     namespace FontManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -2796,38 +2880,31 @@ export namespace Gitg {
         $signals: FontManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FontManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](text_view: Gtk.TextView, plugin: boolean): FontManager;
+        static ["new"](text_view: Gtk.TextView, plugin: boolean): FontManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FontManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FontManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FontManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FontManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FontManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FontManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FontManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FontManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FontManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FontManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FontManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace GPGUtils {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -2837,60 +2914,49 @@ export namespace Gitg {
         static $gtype: GObject.GType<GPGUtils>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](): GPGUtils;
+        static ["new"](): GPGUtils;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GPGUtils.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GPGUtils.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GPGUtils.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GPGUtils.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GPGUtils.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GPGUtils.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GPGUtils.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GPGUtils.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GPGUtils.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GPGUtils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GPGUtils.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GPGUtils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param commit_content
-         * @param signing_key
+         * @param commit_content 
+         * @param signing_key 
          */
         static sign_commit_object(commit_content: string, signing_key: string): string;
     }
 
+
     namespace Hook {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::environment': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::working-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::output': (pspec: GObject.ParamSpec) => void;
+            "notify::environment": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::working-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::output": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             environment: Gee.HashMap;
             name: string;
-            working_directory: Gio.File | null;
+            working_directory: (Gio.File | null);
             workingDirectory: Gio.File;
             output: string[];
         }
@@ -2903,15 +2969,18 @@ export namespace Gitg {
         static $gtype: GObject.GType<Hook>;
 
         // Properties
-
         get environment(): Gee.HashMap;
         set environment(val: Gee.HashMap);
+
         get name(): string;
         set name(val: string);
-        get working_directory(): Gio.File | null;
-        set working_directory(val: Gio.File | null);
+
+        get working_directory(): (Gio.File | null);
+        set working_directory(val: (Gio.File | null));
+
         get workingDirectory(): Gio.File;
         set workingDirectory(val: Gio.File);
+
         /**
          * @read-only
          */
@@ -2927,90 +2996,92 @@ export namespace Gitg {
         $signals: Hook.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Hook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): Hook;
+        static ["new"](name: string): Hook;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Hook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Hook.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Hook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Hook.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Hook.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Hook.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Hook.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Hook.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Hook.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Hook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Hook.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Hook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param arg
+         * @param arg 
          */
         add_argument(arg: string): void;
+
         /**
-         * @param repository
+         * @param repository 
          */
         exists_in(repository: Ggit.Repository): boolean;
+
         /**
-         * @param repository
+         * @param repository 
          */
         run_sync(repository: Ggit.Repository): number;
+
         /**
-         * @param repository
+         * @param repository 
          */
         run(repository: Ggit.Repository): globalThis.Promise<number>;
+
         /**
-         * @param repository
-         * @param _callback_
+         * @param repository 
+         * @param _callback_ 
          */
-        run(repository: Ggit.Repository, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        run(repository: Ggit.Repository, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param repository
-         * @param _callback_
+         * @param repository 
+         * @param _callback_ 
          */
-        run(
-            repository: Ggit.Repository,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        run(repository: Ggit.Repository, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         run_finish(_res_: Gio.AsyncResult): number;
+
         get_environment(): Gee.HashMap;
+
         /**
-         * @param value
+         * @param value 
          */
         set_environment(value: Gee.HashMap): void;
+
         get_name(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_name(value: string): void;
-        get_working_directory(): Gio.File | null;
+
+        get_working_directory(): (Gio.File | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_working_directory(value: Gio.File | null): void;
+        set_working_directory(value: (Gio.File | null)): void;
+
         get_output(): string[];
     }
 
+
     namespace LabelRenderer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -3020,98 +3091,73 @@ export namespace Gitg {
         static $gtype: GObject.GType<LabelRenderer>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](): LabelRenderer;
+        static ["new"](): LabelRenderer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LabelRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelRenderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LabelRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LabelRenderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LabelRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LabelRenderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LabelRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelRenderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LabelRenderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LabelRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LabelRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @param widget 
+         * @param font 
+         * @param labels 
+         */
+        static width(widget: Gtk.Widget, font: (any | null), labels: Ref[]): number;
 
         /**
-         * @param widget
-         * @param font
-         * @param labels
+         * @param widget 
+         * @param font 
+         * @param context 
+         * @param labels 
+         * @param area 
          */
-        static width(widget: Gtk.Widget, font: any | null, labels: Ref[]): number;
+        static draw(widget: Gtk.Widget, font: Pango.FontDescription, context: cairo.Context, labels: Ref[], area: Gdk.Rectangle): void;
+
         /**
-         * @param widget
-         * @param font
-         * @param context
-         * @param labels
-         * @param area
+         * @param widget 
+         * @param font 
+         * @param labels 
+         * @param x 
          */
-        static draw(
-            widget: Gtk.Widget,
-            font: Pango.FontDescription,
-            context: cairo.Context,
-            labels: Ref[],
-            area: Gdk.Rectangle,
-        ): void;
+        static get_ref_at_pos(widget: Gtk.Widget, font: Pango.FontDescription, labels: Ref[], x: number): [(Ref | null), number];
+
         /**
-         * @param widget
-         * @param font
-         * @param labels
-         * @param x
+         * @param widget 
+         * @param font 
+         * @param r 
+         * @param height 
+         * @param minwidth 
          */
-        static get_ref_at_pos(
-            widget: Gtk.Widget,
-            font: Pango.FontDescription,
-            labels: Ref[],
-            x: number,
-        ): [Ref | null, number];
-        /**
-         * @param widget
-         * @param font
-         * @param r
-         * @param height
-         * @param minwidth
-         */
-        static render_ref(
-            widget: Gtk.Widget,
-            font: Pango.FontDescription,
-            r: Ref,
-            height: number,
-            minwidth: number,
-        ): GdkPixbuf.Pixbuf;
+        static render_ref(widget: Gtk.Widget, font: Pango.FontDescription, r: Ref, height: number, minwidth: number): GdkPixbuf.Pixbuf;
     }
+
 
     namespace Lanes {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::inactive-max': (pspec: GObject.ParamSpec) => void;
-            'notify::inactive-collapse': (pspec: GObject.ParamSpec) => void;
-            'notify::inactive-gap': (pspec: GObject.ParamSpec) => void;
-            'notify::inactive-enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::miss-commits': (pspec: GObject.ParamSpec) => void;
+            "notify::inactive-max": (pspec: GObject.ParamSpec) => void;
+            "notify::inactive-collapse": (pspec: GObject.ParamSpec) => void;
+            "notify::inactive-gap": (pspec: GObject.ParamSpec) => void;
+            "notify::inactive-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::miss-commits": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             inactive_max: number;
             inactiveMax: number;
@@ -3133,25 +3179,33 @@ export namespace Gitg {
         static $gtype: GObject.GType<Lanes>;
 
         // Properties
-
         get inactive_max(): number;
         set inactive_max(val: number);
+
         get inactiveMax(): number;
         set inactiveMax(val: number);
+
         get inactive_collapse(): number;
         set inactive_collapse(val: number);
+
         get inactiveCollapse(): number;
         set inactiveCollapse(val: number);
+
         get inactive_gap(): number;
         set inactive_gap(val: number);
+
         get inactiveGap(): number;
         set inactiveGap(val: number);
+
         get inactive_enabled(): boolean;
         set inactive_enabled(val: boolean);
+
         get inactiveEnabled(): boolean;
         set inactiveEnabled(val: boolean);
+
         get miss_commits(): Gee.LinkedList;
         set miss_commits(val: Gee.LinkedList);
+
         get missCommits(): Gee.LinkedList;
         set missCommits(val: Gee.LinkedList);
 
@@ -3165,80 +3219,84 @@ export namespace Gitg {
         $signals: Lanes.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Lanes.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Lanes;
+        static ["new"](): Lanes;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Lanes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lanes.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Lanes.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Lanes.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Lanes.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Lanes.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Lanes.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lanes.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Lanes.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Lanes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Lanes.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lanes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param reserved 
+         * @param roots 
+         */
+        reset(reserved: (Ggit.OId[] | null), roots: (Gee.HashSet | null)): void;
 
         /**
-         * @param reserved
-         * @param roots
-         */
-        reset(reserved: Ggit.OId[] | null, roots: Gee.HashSet | null): void;
-        /**
-         * @param next
-         * @param save_miss
+         * @param next 
+         * @param save_miss 
          */
         next(next: Commit, save_miss: boolean): [boolean, Lane[], number];
+
         get_inactive_max(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_inactive_max(value: number): void;
+
         get_inactive_collapse(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_inactive_collapse(value: number): void;
+
         get_inactive_gap(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_inactive_gap(value: number): void;
+
         get_inactive_enabled(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_inactive_enabled(value: boolean): void;
+
         get_miss_commits(): Gee.LinkedList;
+
         /**
-         * @param value
+         * @param value 
          */
         set_miss_commits(value: Gee.LinkedList): void;
     }
 
+
     namespace Lane {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -3257,98 +3315,90 @@ export namespace Gitg {
         $signals: Lane.SignalSignatures;
 
         // Fields
-
         color: Color;
+
         from: number[];
+
         tag: LaneTag;
 
         // Constructors
-
         constructor(properties?: Partial<Lane.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Lane;
+        static ["new"](): Lane;
 
-        static with_color(color: Color | null): Lane;
+        static with_color(color: (Color | null)): Lane;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Lane.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lane.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Lane.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Lane.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Lane.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Lane.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Lane.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Lane.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Lane.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Lane.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Lane.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Lane.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         copy(): Lane;
+
         dup(): Lane;
     }
+
 
     namespace ProgressBin {
         // Signal signatures
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
-            'notify::fraction': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::fraction": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Bin.ConstructorProps {
             fraction: number;
         }
@@ -3361,7 +3411,6 @@ export namespace Gitg {
         static $gtype: GObject.GType<ProgressBin>;
 
         // Properties
-
         get fraction(): number;
         set fraction(val: number);
 
@@ -3375,56 +3424,49 @@ export namespace Gitg {
         $signals: ProgressBin.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ProgressBin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ProgressBin;
+        static ["new"](): ProgressBin;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ProgressBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressBin.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ProgressBin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProgressBin.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ProgressBin.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ProgressBin.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ProgressBin.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ProgressBin.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ProgressBin.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ProgressBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ProgressBin.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ProgressBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_fraction(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_fraction(value: number): void;
     }
 
+
     namespace RefBase {
         // Signal signatures
         interface SignalSignatures extends Ggit.Ref.SignalSignatures {
-            'notify::native': (pspec: GObject.ParamSpec) => void;
-            'notify::d-parsed-name': (pspec: GObject.ParamSpec) => void;
-            'notify::d-pushes': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::working': (pspec: GObject.ParamSpec) => void;
+            "notify::native": (pspec: GObject.ParamSpec) => void;
+            "notify::d-parsed-name": (pspec: GObject.ParamSpec) => void;
+            "notify::d-pushes": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::working": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Ggit.Ref.ConstructorProps, Ref.ConstructorProps {
 
-        interface ConstructorProps extends Ggit.Ref.ConstructorProps, Ref.ConstructorProps {}
+        }
     }
 
     /**
@@ -3443,143 +3485,161 @@ export namespace Gitg {
         $signals: RefBase.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RefBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): RefBase;
+        static ["new"](): RefBase;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RefBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RefBase.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RefBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RefBase.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RefBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RefBase.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RefBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RefBase.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RefBase.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RefBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RefBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RefBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from Gitg.Ref */
         get d_parsed_name(): ParsedRefName;
         set d_parsed_name(val: ParsedRefName);
+
         /** @category Inherited from Gitg.Ref */
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
+
         /** @category Inherited from Gitg.Ref */
-        get d_pushes(): Ref[] | null;
-        set d_pushes(val: Ref[] | null);
+        get d_pushes(): (Ref[] | null);
+        set d_pushes(val: (Ref[] | null));
+
         /** @category Inherited from Gitg.Ref */
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
+
         /** @category Inherited from Gitg.Ref */
         get state(): RefState;
         set state(val: RefState);
+
         /** @category Inherited from Gitg.Ref */
         get working(): boolean;
         set working(val: boolean);
+
         get_owner(): Repository;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
+
         get_d_parsed_name(): ParsedRefName;
+
         /**
-         * @param value
+         * @param value 
          */
         set_d_parsed_name(value: ParsedRefName): void;
-        get_d_pushes(): Ref[] | null;
+
+        get_d_pushes(): (Ref[] | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_d_pushes(value: Ref[] | null): void;
+        set_d_pushes(value: (Ref[] | null)): void;
+
         get_state(): RefState;
+
         /**
-         * @param value
+         * @param value 
          */
         set_state(value: RefState): void;
+
         get_working(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_working(value: boolean): void;
+
         get_parsed_name(): ParsedRefName;
+
         get_pushes(): Ref[];
+
         /**
          * @virtual
          */
         vfunc_get_owner(): Repository;
+
         /**
          * @virtual
          */
         vfunc_get_d_parsed_name(): ParsedRefName;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_d_parsed_name(value: ParsedRefName): void;
+
         /**
          * @virtual
          */
-        vfunc_get_d_pushes(): Ref[] | null;
+        vfunc_get_d_pushes(): (Ref[] | null);
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
-        vfunc_set_d_pushes(value: Ref[] | null): void;
+        vfunc_set_d_pushes(value: (Ref[] | null)): void;
+
         /**
          * @virtual
          */
         vfunc_get_state(): RefState;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_state(value: RefState): void;
+
         /**
          * @virtual
          */
         vfunc_get_working(): boolean;
+
         /**
-         * @param value
+         * @param value 
          * @virtual
          */
         vfunc_set_working(value: boolean): void;
     }
 
+
     namespace ParsedRefName {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::rtype': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::shortname': (pspec: GObject.ParamSpec) => void;
-            'notify::remote-name': (pspec: GObject.ParamSpec) => void;
-            'notify::remote-branch': (pspec: GObject.ParamSpec) => void;
-            'notify::prefix': (pspec: GObject.ParamSpec) => void;
+            "notify::rtype": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::shortname": (pspec: GObject.ParamSpec) => void;
+            "notify::remote-name": (pspec: GObject.ParamSpec) => void;
+            "notify::remote-branch": (pspec: GObject.ParamSpec) => void;
+            "notify::prefix": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             rtype: RefType;
             name: string;
             shortname: string;
-            remote_name: string | null;
+            remote_name: (string | null);
             remoteName: string;
-            remote_branch: string | null;
+            remote_branch: (string | null);
             remoteBranch: string;
-            prefix: string | null;
+            prefix: (string | null);
         }
     }
 
@@ -3590,37 +3650,43 @@ export namespace Gitg {
         static $gtype: GObject.GType<ParsedRefName>;
 
         // Properties
-
         get rtype(): RefType;
         set rtype(val: RefType);
+
         /**
          * @read-only
          */
         get name(): string;
+
         /**
          * @read-only
          */
         get shortname(): string;
+
         /**
          * @read-only
          */
-        get remote_name(): string | null;
+        get remote_name(): (string | null);
+
         /**
          * @read-only
          */
         get remoteName(): string;
+
         /**
          * @read-only
          */
-        get remote_branch(): string | null;
+        get remote_branch(): (string | null);
+
         /**
          * @read-only
          */
         get remoteBranch(): string;
+
         /**
          * @read-only
          */
-        get prefix(): string | null;
+        get prefix(): (string | null);
 
         /**
          * Compile-time signal type information.
@@ -3632,43 +3698,39 @@ export namespace Gitg {
         $signals: ParsedRefName.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ParsedRefName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string): ParsedRefName;
+        static ["new"](name: string): ParsedRefName;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ParsedRefName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ParsedRefName.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ParsedRefName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ParsedRefName.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ParsedRefName.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ParsedRefName.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ParsedRefName.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ParsedRefName.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ParsedRefName.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ParsedRefName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ParsedRefName.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ParsedRefName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_rtype(): RefType;
+
         get_name(): string;
+
         get_shortname(): string;
-        get_remote_name(): string | null;
-        get_remote_branch(): string | null;
-        get_prefix(): string | null;
+
+        get_remote_name(): (string | null);
+
+        get_remote_branch(): (string | null);
+
+        get_prefix(): (string | null);
     }
+
 
     namespace Remote {
         // Signal signatures
@@ -3676,26 +3738,25 @@ export namespace Gitg {
             /**
              * @signal
              */
-            'tip-updated': (arg0: string, arg1: Ggit.OId, arg2: Ggit.OId) => void;
-            'notify::transfer-progress': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::fetch-specs': (pspec: GObject.ParamSpec) => void;
-            'notify::push-specs': (pspec: GObject.ParamSpec) => void;
-            'notify::credentials-provider': (pspec: GObject.ParamSpec) => void;
-            'notify::native': (pspec: GObject.ParamSpec) => void;
+            "tip-updated": (arg0: string, arg1: Ggit.OId, arg2: Ggit.OId) => void;
+            "notify::transfer-progress": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::fetch-specs": (pspec: GObject.ParamSpec) => void;
+            "notify::push-specs": (pspec: GObject.ParamSpec) => void;
+            "notify::credentials-provider": (pspec: GObject.ParamSpec) => void;
+            "notify::native": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Ggit.Remote.ConstructorProps {
             transfer_progress: number;
             transferProgress: number;
             state: RemoteState;
-            fetch_specs: string[] | null;
+            fetch_specs: (string[] | null);
             fetchSpecs: string[];
-            push_specs: string[] | null;
+            push_specs: (string[] | null);
             pushSpecs: string[];
-            credentials_provider: CredentialsProvider | null;
+            credentials_provider: (CredentialsProvider | null);
             credentialsProvider: CredentialsProvider;
         }
     }
@@ -3707,27 +3768,34 @@ export namespace Gitg {
         static $gtype: GObject.GType<Remote>;
 
         // Properties
-
         /**
          * @read-only
          */
         get transfer_progress(): number;
+
         /**
          * @read-only
          */
         get transferProgress(): number;
+
         get state(): RemoteState;
         set state(val: RemoteState);
-        get fetch_specs(): string[] | null;
-        set fetch_specs(val: string[] | null);
+
+        get fetch_specs(): (string[] | null);
+        set fetch_specs(val: (string[] | null));
+
         get fetchSpecs(): string[];
         set fetchSpecs(val: string[]);
-        get push_specs(): string[] | null;
-        set push_specs(val: string[] | null);
+
+        get push_specs(): (string[] | null);
+        set push_specs(val: (string[] | null));
+
         get pushSpecs(): string[];
         set pushSpecs(val: string[]);
-        get credentials_provider(): CredentialsProvider | null;
-        set credentials_provider(val: CredentialsProvider | null);
+
+        get credentials_provider(): (CredentialsProvider | null);
+        set credentials_provider(val: (CredentialsProvider | null));
+
         get credentialsProvider(): CredentialsProvider;
         set credentialsProvider(val: CredentialsProvider);
 
@@ -3741,189 +3809,186 @@ export namespace Gitg {
         $signals: Remote.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Remote.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Remote;
+        static ["new"](): Remote;
 
         // Signals
+        /** @signal */
+        connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect_after<K extends keyof Remote.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof Remote.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Remote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Remote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param direction 
+         * @param callbacks 
+         */
+        connect(direction: Ggit.Direction, callbacks: (Ggit.RemoteCallbacks | null)): globalThis.Promise<void>;
 
         /**
-         * @param direction
-         * @param callbacks
+         * @param direction 
+         * @param callbacks 
+         * @param _callback_ 
          */
-        connect(direction: Ggit.Direction, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        connect(direction: Ggit.Direction, callbacks: (Ggit.RemoteCallbacks | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param direction
-         * @param callbacks
-         * @param _callback_
+         * @param direction 
+         * @param callbacks 
+         * @param _callback_ 
          */
-        connect(
-            direction: Ggit.Direction,
-            callbacks: Ggit.RemoteCallbacks | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        connect(direction: Ggit.Direction, callbacks: (Ggit.RemoteCallbacks | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param direction
-         * @param callbacks
-         * @param _callback_
+         * @param args 
          */
-        connect(
-            direction: Ggit.Direction,
-            callbacks: Ggit.RemoteCallbacks | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
-        /**
-         * @param args
-         */
-        // Conflicted with Ggit.Remote.connect
+    // Conflicted with Ggit.Remote.connect
         connect(...args: never[]): any;
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         connect_finish(_res_: Gio.AsyncResult): void;
+
         disconnect(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        disconnect(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        disconnect(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        disconnect(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        disconnect(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Remote.disconnect
+    // Conflicted with Ggit.Remote.disconnect
         disconnect(...args: never[]): any;
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         disconnect_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param callbacks
+         * @param callbacks 
          */
-        download(callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        download(callbacks: (Ggit.RemoteCallbacks | null)): globalThis.Promise<void>;
+
         /**
-         * @param callbacks
-         * @param _callback_
+         * @param callbacks 
+         * @param _callback_ 
          */
-        download(callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        download(callbacks: (Ggit.RemoteCallbacks | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param callbacks
-         * @param _callback_
+         * @param callbacks 
+         * @param _callback_ 
          */
-        download(
-            callbacks: Ggit.RemoteCallbacks | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        download(callbacks: (Ggit.RemoteCallbacks | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Remote.download
+    // Conflicted with Ggit.Remote.download
         download(...args: never[]): any;
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         download_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param branch
-         * @param callbacks
+         * @param branch 
+         * @param callbacks 
          */
-        push(branch: string, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        push(branch: string, callbacks: (Ggit.RemoteCallbacks | null)): globalThis.Promise<void>;
+
         /**
-         * @param branch
-         * @param callbacks
-         * @param _callback_
+         * @param branch 
+         * @param callbacks 
+         * @param _callback_ 
          */
-        push(
-            branch: string,
-            callbacks: Ggit.RemoteCallbacks | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        push(branch: string, callbacks: (Ggit.RemoteCallbacks | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param branch
-         * @param callbacks
-         * @param _callback_
+         * @param branch 
+         * @param callbacks 
+         * @param _callback_ 
          */
-        push(
-            branch: string,
-            callbacks: Ggit.RemoteCallbacks | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        push(branch: string, callbacks: (Ggit.RemoteCallbacks | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Remote.push
+    // Conflicted with Ggit.Remote.push
         push(...args: never[]): any;
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         push_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param message
-         * @param callbacks
+         * @param message 
+         * @param callbacks 
          */
-        fetch(message: string | null, callbacks: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        fetch(message: (string | null), callbacks: (Ggit.RemoteCallbacks | null)): globalThis.Promise<void>;
+
         /**
-         * @param message
-         * @param callbacks
-         * @param _callback_
+         * @param message 
+         * @param callbacks 
+         * @param _callback_ 
          */
-        fetch(
-            message: string | null,
-            callbacks: Ggit.RemoteCallbacks | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        fetch(message: (string | null), callbacks: (Ggit.RemoteCallbacks | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param message
-         * @param callbacks
-         * @param _callback_
+         * @param message 
+         * @param callbacks 
+         * @param _callback_ 
          */
-        fetch(
-            message: string | null,
-            callbacks: Ggit.RemoteCallbacks | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        fetch(message: (string | null), callbacks: (Ggit.RemoteCallbacks | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         fetch_finish(_res_: Gio.AsyncResult): void;
+
         get_transfer_progress(): number;
+
         get_state(): RemoteState;
-        get_fetch_specs(): string[] | null;
+
+        get_fetch_specs(): (string[] | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_fetch_specs(value: string[] | null): void;
-        get_push_specs(): string[] | null;
+        set_fetch_specs(value: (string[] | null)): void;
+
+        get_push_specs(): (string[] | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_push_specs(value: string[] | null): void;
-        get_credentials_provider(): CredentialsProvider | null;
+        set_push_specs(value: (string[] | null)): void;
+
+        get_credentials_provider(): (CredentialsProvider | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_credentials_provider(value: CredentialsProvider | null): void;
+        set_credentials_provider(value: (CredentialsProvider | null)): void;
     }
+
 
     namespace RepositoryListBox {
         // Signal signatures
@@ -3931,68 +3996,67 @@ export namespace Gitg {
             /**
              * @signal
              */
-            'repository-activated': (arg0: Repository) => void;
+            "repository-activated": (arg0: Repository) => void;
             /**
              * @signal
              */
-            'show-error': (arg0: string, arg1: string) => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::bookmarks-from-recent-files': (pspec: GObject.ParamSpec) => void;
-            'notify::location': (pspec: GObject.ParamSpec) => void;
-            'notify::has-selection': (pspec: GObject.ParamSpec) => void;
-            'notify::activate-on-single-click': (pspec: GObject.ParamSpec) => void;
-            'notify::selection-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "show-error": (arg0: string, arg1: string) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::bookmarks-from-recent-files": (pspec: GObject.ParamSpec) => void;
+            "notify::location": (pspec: GObject.ParamSpec) => void;
+            "notify::has-selection": (pspec: GObject.ParamSpec) => void;
+            "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
+            "notify::selection-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.ListBox.ConstructorProps {
             mode: SelectionMode;
             bookmarks_from_recent_files: boolean;
             bookmarksFromRecentFiles: boolean;
-            location: Gio.File | null;
+            location: (Gio.File | null);
             has_selection: boolean;
             hasSelection: boolean;
         }
@@ -4005,19 +4069,23 @@ export namespace Gitg {
         static $gtype: GObject.GType<RepositoryListBox>;
 
         // Properties
-
         get mode(): SelectionMode;
         set mode(val: SelectionMode);
+
         get bookmarks_from_recent_files(): boolean;
         set bookmarks_from_recent_files(val: boolean);
+
         get bookmarksFromRecentFiles(): boolean;
         set bookmarksFromRecentFiles(val: boolean);
-        get location(): Gio.File | null;
-        set location(val: Gio.File | null);
+
+        get location(): (Gio.File | null);
+        set location(val: (Gio.File | null));
+
         /**
          * @read-only
          */
         get has_selection(): boolean;
+
         /**
          * @read-only
          */
@@ -4033,73 +4101,76 @@ export namespace Gitg {
         $signals: RepositoryListBox.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RepositoryListBox.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): RepositoryListBox;
+        static ["new"](): RepositoryListBox;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RepositoryListBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepositoryListBox.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RepositoryListBox.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RepositoryListBox.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RepositoryListBox.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RepositoryListBox.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RepositoryListBox.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepositoryListBox.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RepositoryListBox.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RepositoryListBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RepositoryListBox.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepositoryListBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         populate_bookmarks(): void;
+
         /**
-         * @param row
-         * @param repository
+         * @param row 
+         * @param repository 
          */
-        end_cloning(row: RepositoryListBoxRow, repository: Repository | null): void;
+        end_cloning(row: RepositoryListBoxRow, repository: (Repository | null)): void;
+
         /**
-         * @param location
+         * @param location 
          */
-        begin_cloning(location: Gio.File): RepositoryListBoxRow | null;
+        begin_cloning(location: Gio.File): (RepositoryListBoxRow | null);
+
         /**
-         * @param repository
-         * @param visited
+         * @param repository 
+         * @param visited 
          */
-        add_repository(repository: Repository, visited: GLib.DateTime | null): RepositoryListBoxRow | null;
+        add_repository(repository: Repository, visited: (GLib.DateTime | null)): (RepositoryListBoxRow | null);
+
         get_selection(): RepositoryListBoxRow[];
+
         /**
-         * @param text
+         * @param text 
          */
-        filter_text(text: string | null): void;
+        filter_text(text: (string | null)): void;
+
         get_mode(): SelectionMode;
+
         /**
-         * @param value
+         * @param value 
          */
         set_mode(value: SelectionMode): void;
+
         get_bookmarks_from_recent_files(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_bookmarks_from_recent_files(value: boolean): void;
-        get_location(): Gio.File | null;
+
+        get_location(): (Gio.File | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_location(value: Gio.File | null): void;
+        set_location(value: (Gio.File | null)): void;
+
         get_has_selection(): boolean;
     }
+
 
     namespace RepositoryListBoxRow {
         // Signal signatures
@@ -4107,85 +4178,84 @@ export namespace Gitg {
             /**
              * @signal
              */
-            'request-remove': () => void;
+            "request-remove": () => void;
             /**
              * @signal
              */
-            'request-delete-source': () => void;
+            "request-delete-source": () => void;
             /**
              * @signal
              */
-            'secondary-clicked': () => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::repository': (pspec: GObject.ParamSpec) => void;
-            'notify::can-remove': (pspec: GObject.ParamSpec) => void;
-            'notify::time': (pspec: GObject.ParamSpec) => void;
-            'notify::fraction': (pspec: GObject.ParamSpec) => void;
-            'notify::repository-name': (pspec: GObject.ParamSpec) => void;
-            'notify::dirname': (pspec: GObject.ParamSpec) => void;
-            'notify::branch-name': (pspec: GObject.ParamSpec) => void;
-            'notify::loading': (pspec: GObject.ParamSpec) => void;
-            'notify::activatable': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "secondary-clicked": () => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::repository": (pspec: GObject.ParamSpec) => void;
+            "notify::can-remove": (pspec: GObject.ParamSpec) => void;
+            "notify::time": (pspec: GObject.ParamSpec) => void;
+            "notify::fraction": (pspec: GObject.ParamSpec) => void;
+            "notify::repository-name": (pspec: GObject.ParamSpec) => void;
+            "notify::dirname": (pspec: GObject.ParamSpec) => void;
+            "notify::branch-name": (pspec: GObject.ParamSpec) => void;
+            "notify::loading": (pspec: GObject.ParamSpec) => void;
+            "notify::activatable": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
             mode: SelectionMode;
             selected: boolean;
-            repository: Repository | null;
+            repository: (Repository | null);
             can_remove: boolean;
             canRemove: boolean;
             time: GLib.DateTime;
             fraction: number;
-            repository_name: string | null;
+            repository_name: (string | null);
             repositoryName: string;
-            dirname: string | null;
-            branch_name: string | null;
+            dirname: (string | null);
+            branch_name: (string | null);
             branchName: string;
             loading: boolean;
         }
@@ -4198,33 +4268,44 @@ export namespace Gitg {
         static $gtype: GObject.GType<RepositoryListBoxRow>;
 
         // Properties
-
         get mode(): SelectionMode;
         set mode(val: SelectionMode);
+
         get selected(): boolean;
         set selected(val: boolean);
-        get repository(): Repository | null;
-        set repository(val: Repository | null);
+
+        get repository(): (Repository | null);
+        set repository(val: (Repository | null));
+
         get can_remove(): boolean;
         set can_remove(val: boolean);
+
         get canRemove(): boolean;
         set canRemove(val: boolean);
+
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
+
         /**
          * @write-only
          */
         set fraction(val: number);
-        get repository_name(): string | null;
-        set repository_name(val: string | null);
+
+        get repository_name(): (string | null);
+        set repository_name(val: (string | null));
+
         get repositoryName(): string;
         set repositoryName(val: string);
-        get dirname(): string | null;
-        set dirname(val: string | null);
-        get branch_name(): string | null;
-        set branch_name(val: string | null);
+
+        get dirname(): (string | null);
+        set dirname(val: (string | null));
+
+        get branch_name(): (string | null);
+        set branch_name(val: (string | null));
+
         get branchName(): string;
         set branchName(val: string);
+
         get loading(): boolean;
         set loading(val: boolean);
 
@@ -4238,111 +4319,117 @@ export namespace Gitg {
         $signals: RepositoryListBoxRow.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RepositoryListBoxRow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](repository: Repository | null, dirname: string): RepositoryListBoxRow;
-        // Conflicted with Gtk.ListBoxRow.new
+        static ["new"](repository: (Repository | null), dirname: string): RepositoryListBoxRow;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.ListBoxRow.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RepositoryListBoxRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepositoryListBoxRow.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RepositoryListBoxRow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RepositoryListBoxRow.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RepositoryListBoxRow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RepositoryListBoxRow.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RepositoryListBoxRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepositoryListBoxRow.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RepositoryListBoxRow.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RepositoryListBoxRow.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof RepositoryListBoxRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepositoryListBoxRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_mode(): SelectionMode;
+
         /**
-         * @param value
+         * @param value 
          */
         set_mode(value: SelectionMode): void;
+
         get_selected(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_selected(value: boolean): void;
-        get_repository(): Repository | null;
+
+        get_repository(): (Repository | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_repository(value: Repository | null): void;
+        set_repository(value: (Repository | null)): void;
+
         get_can_remove(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_can_remove(value: boolean): void;
+
         get_time(): GLib.DateTime;
+
         /**
-         * @param value
+         * @param value 
          */
         set_time(value: GLib.DateTime): void;
+
         /**
-         * @param value
+         * @param value 
          */
         set_fraction(value: number): void;
-        get_repository_name(): string | null;
+
+        get_repository_name(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_repository_name(value: string | null): void;
-        get_dirname(): string | null;
+        set_repository_name(value: (string | null)): void;
+
+        get_dirname(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_dirname(value: string | null): void;
-        get_branch_name(): string | null;
+        set_dirname(value: (string | null)): void;
+
+        get_branch_name(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_branch_name(value: string | null): void;
+        set_branch_name(value: (string | null)): void;
+
         get_loading(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_loading(value: boolean): void;
     }
 
+
     namespace Repository {
         // Signal signatures
         interface SignalSignatures extends Ggit.Repository.SignalSignatures {
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::stage': (pspec: GObject.ParamSpec) => void;
-            'notify::clone-options': (pspec: GObject.ParamSpec) => void;
-            'notify::head': (pspec: GObject.ParamSpec) => void;
-            'notify::init': (pspec: GObject.ParamSpec) => void;
-            'notify::is-bare': (pspec: GObject.ParamSpec) => void;
-            'notify::location': (pspec: GObject.ParamSpec) => void;
-            'notify::url': (pspec: GObject.ParamSpec) => void;
-            'notify::workdir': (pspec: GObject.ParamSpec) => void;
-            'notify::native': (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::stage": (pspec: GObject.ParamSpec) => void;
+            "notify::clone-options": (pspec: GObject.ParamSpec) => void;
+            "notify::head": (pspec: GObject.ParamSpec) => void;
+            "notify::init": (pspec: GObject.ParamSpec) => void;
+            "notify::is-bare": (pspec: GObject.ParamSpec) => void;
+            "notify::location": (pspec: GObject.ParamSpec) => void;
+            "notify::url": (pspec: GObject.ParamSpec) => void;
+            "notify::workdir": (pspec: GObject.ParamSpec) => void;
+            "notify::native": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Ggit.Repository.ConstructorProps {
-            name: string | null;
+            name: (string | null);
             stage: Stage;
         }
     }
@@ -4354,11 +4441,11 @@ export namespace Gitg {
         static $gtype: GObject.GType<Repository>;
 
         // Properties
-
         /**
          * @read-only
          */
-        get name(): string | null;
+        get name(): (string | null);
+
         /**
          * @read-only
          */
@@ -4374,134 +4461,144 @@ export namespace Gitg {
         $signals: Repository.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Repository.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](location: Gio.File, workdir: Gio.File | null): Repository;
+        static ["new"](location: Gio.File, workdir: (Gio.File | null)): Repository;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Repository.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Repository.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Repository.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Repository.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Repository.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Repository.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Repository.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Repository.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param location
-         * @param is_bare
+         * @param location 
+         * @param is_bare 
          */
         static init_repository(location: Gio.File, is_bare: boolean): Repository;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Repository.init_repository
+    // Conflicted with Ggit.Repository.init_repository
         static init_repository(...args: never[]): any;
 
         // Methods
-
         clear_refs_cache(): void;
+
         /**
-         * @param id
+         * @param id 
          */
         refs_for_id(id: Ggit.OId): Ref[];
+
         /**
-         * @param t_type
-         * @param t_dup_func
-         * @param id
+         * @param t_type 
+         * @param t_dup_func 
+         * @param id 
          */
-        lookup(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, id: Ggit.OId): any | null;
+        lookup(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, id: Ggit.OId): (any | null);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Repository.lookup
+    // Conflicted with Ggit.Repository.lookup
         lookup(...args: never[]): any;
+
         /**
-         * @param name
+         * @param name 
          */
         lookup_reference(name: string): Ref;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Repository.lookup_reference
+    // Conflicted with Ggit.Repository.lookup_reference
         lookup_reference(...args: never[]): any;
+
         /**
-         * @param short_name
+         * @param short_name 
          */
         lookup_reference_dwim(short_name: string): Ref;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Repository.lookup_reference_dwim
+    // Conflicted with Ggit.Repository.lookup_reference_dwim
         lookup_reference_dwim(...args: never[]): any;
+
         /**
-         * @param name
-         * @param obj
-         * @param flags
+         * @param name 
+         * @param obj 
+         * @param flags 
          */
         create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Repository.create_branch
+    // Conflicted with Ggit.Repository.create_branch
         create_branch(...args: never[]): any;
+
         /**
-         * @param name
-         * @param oid
-         * @param message
+         * @param name 
+         * @param oid 
+         * @param message 
          */
         create_reference(name: string, oid: Ggit.OId, message: string): Ref;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Repository.create_reference
+    // Conflicted with Ggit.Repository.create_reference
         create_reference(...args: never[]): any;
+
         /**
-         * @param name
-         * @param target
-         * @param message
+         * @param name 
+         * @param target 
+         * @param message 
          */
         create_symbolic_reference(name: string, target: string, message: string): Ref;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Repository.create_symbolic_reference
+    // Conflicted with Ggit.Repository.create_symbolic_reference
         create_symbolic_reference(...args: never[]): any;
+
         get_head(): Ref;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Repository.get_head
+    // Conflicted with Ggit.Repository.get_head
         get_head(...args: never[]): any;
+
         /**
-         * @param env
-         * @param envname
+         * @param env 
+         * @param envname 
          */
         get_signature_with_environment(env: Gee.Map, envname: string): Ggit.Signature;
-        get_name(): string | null;
+
+        get_name(): (string | null);
+
         get_stage(): Stage;
     }
 
+
     namespace Resource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -4511,52 +4608,41 @@ export namespace Gitg {
         static $gtype: GObject.GType<Resource>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](): Resource;
+        static ["new"](): Resource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Resource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Resource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Resource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Resource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Resource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param id
+         * @param id 
          */
-        static load_css(id: string): Gtk.CssProvider | null;
+        static load_css(id: string): (Gtk.CssProvider | null);
     }
+
 
     namespace SidebarStore {
         // Signal signatures
         interface SignalSignatures extends Gtk.TreeStore.SignalSignatures {
-            'notify::clearing': (pspec: GObject.ParamSpec) => void;
+            "notify::clearing": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.TreeStore.ConstructorProps {
             clearing: boolean;
         }
@@ -4569,7 +4655,6 @@ export namespace Gitg {
         static $gtype: GObject.GType<SidebarStore>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -4585,80 +4670,82 @@ export namespace Gitg {
         $signals: SidebarStore.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SidebarStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): SidebarStore;
+        static ["new"](): SidebarStore;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SidebarStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SidebarStore.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SidebarStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SidebarStore.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SidebarStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SidebarStore.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SidebarStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SidebarStore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SidebarStore.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SidebarStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SidebarStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SidebarStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param text
+         * @param text 
          */
         append_dummy(text: string): SidebarStore;
+
         /**
-         * @param item
+         * @param item 
          */
         append(item: SidebarItem): SidebarStore;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.TreeStore.append
+    // Conflicted with Gtk.TreeStore.append
         append(...args: never[]): any;
+
         /**
-         * @param text
-         * @param id
+         * @param text 
+         * @param id 
          */
         begin_header(text: string, id: number): SidebarStoreSidebarHeader;
+
         end_header(): SidebarStore;
+
         begin_section(): number;
+
         end_section(): void;
+
         clear(): void;
+
         /**
-         * @param iter
+         * @param iter 
          */
         item_for_iter(iter: Gtk.TreeIter): SidebarItem;
+
         /**
-         * @param iter
-         * @param numclick
+         * @param iter 
+         * @param numclick 
          */
         activate(iter: Gtk.TreeIter, numclick: number): void;
+
         get_clearing(): boolean;
     }
+
 
     namespace SidebarStoreSidebarText {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, SidebarItem.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, SidebarItem.ConstructorProps {}
+        }
     }
 
     /**
@@ -4677,79 +4764,77 @@ export namespace Gitg {
         $signals: SidebarStoreSidebarText.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SidebarStoreSidebarText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](text: string): SidebarStoreSidebarText;
+        static ["new"](text: string): SidebarStoreSidebarText;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SidebarStoreSidebarText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SidebarStoreSidebarText.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SidebarStoreSidebarText.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SidebarStoreSidebarText.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SidebarStoreSidebarText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SidebarStoreSidebarText.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SidebarStoreSidebarText.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof SidebarStoreSidebarText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SidebarStoreSidebarText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.SidebarItem
+          * @category Inherited from Gitg.SidebarItem
          */
         get text(): string;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.SidebarItem
+          * @category Inherited from Gitg.SidebarItem
          */
-        get icon_name(): string | null;
+        get icon_name(): (string | null);
+
         /**
          * @read-only
-         * @category Inherited from Gitg.SidebarItem
+          * @category Inherited from Gitg.SidebarItem
          */
         get iconName(): string;
+
         /**
-         * @param numclick
+         * @param numclick 
          */
         activate(numclick: number): void;
+
         get_text(): string;
-        get_icon_name(): string | null;
+
+        get_icon_name(): (string | null);
+
         /**
-         * @param numclick
+         * @param numclick 
          * @virtual
          */
         vfunc_activate(numclick: number): void;
+
         /**
          * @virtual
          */
         vfunc_get_text(): string;
+
         /**
          * @virtual
          */
-        vfunc_get_icon_name(): string | null;
+        vfunc_get_icon_name(): (string | null);
     }
+
 
     namespace SidebarStoreSidebarHeader {
         // Signal signatures
         interface SignalSignatures extends SidebarStoreSidebarText.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends SidebarStoreSidebarText.ConstructorProps {
             id: number;
         }
@@ -4762,7 +4847,6 @@ export namespace Gitg {
         static $gtype: GObject.GType<SidebarStoreSidebarHeader>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -4778,43 +4862,32 @@ export namespace Gitg {
         $signals: SidebarStoreSidebarHeader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SidebarStoreSidebarHeader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](text: string, id: number): SidebarStoreSidebarHeader;
-        // Conflicted with Gitg.SidebarStoreSidebarText.new
+        static ["new"](text: string, id: number): SidebarStoreSidebarHeader;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gitg.SidebarStoreSidebarText.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SidebarStoreSidebarHeader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SidebarStoreSidebarHeader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SidebarStoreSidebarHeader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SidebarStoreSidebarHeader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SidebarStoreSidebarHeader.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SidebarStoreSidebarHeader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_id(): number;
     }
+
 
     namespace Sidebar {
         // Signal signatures
@@ -4826,73 +4899,72 @@ export namespace Gitg {
             /**
              * @signal
              */
-            'populate-popup': (arg0: Gtk.Menu) => void;
-            'notify::model': (pspec: GObject.ParamSpec) => void;
-            'notify::activate-on-single-click': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-grid-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-search': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-tree-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::expander-column': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-height-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::headers-clickable': (pspec: GObject.ParamSpec) => void;
-            'notify::headers-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::hover-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::hover-selection': (pspec: GObject.ParamSpec) => void;
-            'notify::level-indentation': (pspec: GObject.ParamSpec) => void;
-            'notify::reorderable': (pspec: GObject.ParamSpec) => void;
-            'notify::rubber-banding': (pspec: GObject.ParamSpec) => void;
-            'notify::rules-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::search-column': (pspec: GObject.ParamSpec) => void;
-            'notify::show-expanders': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-column': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "populate-popup": (arg0: Gtk.Menu) => void;
+            "notify::model": (pspec: GObject.ParamSpec) => void;
+            "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-grid-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-search": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-tree-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::expander-column": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-height-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::headers-clickable": (pspec: GObject.ParamSpec) => void;
+            "notify::headers-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::hover-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::hover-selection": (pspec: GObject.ParamSpec) => void;
+            "notify::level-indentation": (pspec: GObject.ParamSpec) => void;
+            "notify::reorderable": (pspec: GObject.ParamSpec) => void;
+            "notify::rubber-banding": (pspec: GObject.ParamSpec) => void;
+            "notify::rules-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::search-column": (pspec: GObject.ParamSpec) => void;
+            "notify::show-expanders": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-column": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps {
-            model: SidebarStore | any;
+            model: (SidebarStore | any);
         }
     }
 
@@ -4903,11 +4975,10 @@ export namespace Gitg {
         static $gtype: GObject.GType<Sidebar>;
 
         // Properties
-
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        get model(): SidebarStore | any;
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        set model(val: SidebarStore | any);
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        get model(): (SidebarStore | any);
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        set model(val: (SidebarStore | any));
 
         /**
          * Compile-time signal type information.
@@ -4919,116 +4990,111 @@ export namespace Gitg {
         $signals: Sidebar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Sidebar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Sidebar;
+        static ["new"](): Sidebar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Sidebar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sidebar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Sidebar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Sidebar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Sidebar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Sidebar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Sidebar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sidebar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Sidebar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Sidebar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Sidebar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sidebar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param sel
-         * @param model
-         * @param path
-         * @param cursel
+         * @param sel 
+         * @param model 
+         * @param path 
+         * @param cursel 
          * @virtual
          */
-        vfunc_select_function(
-            sel: Gtk.TreeSelection,
-            model: Gtk.TreeModel,
-            path: Gtk.TreePath,
-            cursel: boolean,
-        ): boolean;
+        vfunc_select_function(sel: Gtk.TreeSelection, model: Gtk.TreeModel, path: Gtk.TreePath, cursel: boolean): boolean;
+
         /**
-         * @param sel
+         * @param sel 
          * @virtual
          */
         vfunc_selection_changed(sel: Gtk.TreeSelection): void;
 
         // Methods
-
         /**
-         * @param sel
-         * @param model
-         * @param path
-         * @param cursel
+         * @param sel 
+         * @param model 
+         * @param path 
+         * @param cursel 
          */
         select_function(sel: Gtk.TreeSelection, model: Gtk.TreeModel, path: Gtk.TreePath, cursel: boolean): boolean;
+
         /**
-         * @param sel
+         * @param sel 
          */
         selection_changed(sel: Gtk.TreeSelection): void;
+
         get_selected_iter(): [boolean, Gtk.TreeIter];
+
         /**
-         * @param t_type
-         * @param t_dup_func
+         * @param t_type 
+         * @param t_dup_func 
          */
-        get_selected_item(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): any | null;
+        get_selected_item(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): (any | null);
+
         /**
-         * @param t_dup_func
+         * @param t_dup_func 
          */
         get_selected_items(t_dup_func: GObject.BoxedCopyFunc): [any[], number];
+
         /**
-         * @param item
+         * @param item 
          */
         select(item: SidebarItem): void;
+
         /**
-         * @param item
+         * @param item 
          */
         is_selected(item: SidebarItem): boolean;
+
         get_model(): SidebarStore;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.TreeView.get_model
+    // Conflicted with Gtk.TreeView.get_model
         get_model(...args: never[]): any;
+
         /**
-         * @param value
+         * @param value 
          */
         set_model(value: SidebarStore): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.TreeView.set_model
+    // Conflicted with Gtk.TreeView.set_model
         set_model(...args: never[]): any;
     }
+
 
     namespace StageStatusFile {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::is-staged': (pspec: GObject.ParamSpec) => void;
-            'notify::is-unstaged': (pspec: GObject.ParamSpec) => void;
-            'notify::is-untracked': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::is-staged": (pspec: GObject.ParamSpec) => void;
+            "notify::is-unstaged": (pspec: GObject.ParamSpec) => void;
+            "notify::is-untracked": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, StageStatusItem.ConstructorProps {
             flags: Ggit.StatusFlags;
         }
@@ -5041,7 +5107,6 @@ export namespace Gitg {
         static $gtype: GObject.GType<StageStatusFile>;
 
         // Properties
-
         /**
          * @read-only
          */
@@ -5057,124 +5122,133 @@ export namespace Gitg {
         $signals: StageStatusFile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StageStatusFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string, flags: Ggit.StatusFlags): StageStatusFile;
+        static ["new"](path: string, flags: Ggit.StatusFlags): StageStatusFile;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StageStatusFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StageStatusFile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StageStatusFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StageStatusFile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StageStatusFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StageStatusFile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StageStatusFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StageStatusFile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StageStatusFile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StageStatusFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof StageStatusFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StageStatusFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_flags(): Ggit.StatusFlags;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get path(): string;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get is_staged(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get isStaged(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get is_unstaged(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get isUnstaged(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get is_untracked(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get isUntracked(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
-        get icon_name(): string | null;
+        get icon_name(): (string | null);
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get iconName(): string;
+
         get_path(): string;
+
         get_is_staged(): boolean;
+
         get_is_unstaged(): boolean;
+
         get_is_untracked(): boolean;
-        get_icon_name(): string | null;
+
+        get_icon_name(): (string | null);
+
         /**
          * @virtual
          */
         vfunc_get_path(): string;
+
         /**
          * @virtual
          */
         vfunc_get_is_staged(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_is_unstaged(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_is_untracked(): boolean;
+
         /**
          * @virtual
          */
-        vfunc_get_icon_name(): string | null;
+        vfunc_get_icon_name(): (string | null);
     }
+
 
     namespace StageStatusSubmodule {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::submodule': (pspec: GObject.ParamSpec) => void;
-            'notify::is-dirty': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::is-staged': (pspec: GObject.ParamSpec) => void;
-            'notify::is-unstaged': (pspec: GObject.ParamSpec) => void;
-            'notify::is-untracked': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
+            "notify::submodule": (pspec: GObject.ParamSpec) => void;
+            "notify::is-dirty": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::is-staged": (pspec: GObject.ParamSpec) => void;
+            "notify::is-unstaged": (pspec: GObject.ParamSpec) => void;
+            "notify::is-untracked": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, StageStatusItem.ConstructorProps {
             submodule: Ggit.Submodule;
             is_dirty: boolean;
@@ -5190,19 +5264,21 @@ export namespace Gitg {
         static $gtype: GObject.GType<StageStatusSubmodule>;
 
         // Properties
-
         /**
          * @read-only
          */
         get submodule(): Ggit.Submodule;
+
         /**
          * @read-only
          */
         get is_dirty(): boolean;
+
         /**
          * @read-only
          */
         get isDirty(): boolean;
+
         /**
          * @read-only
          */
@@ -5218,120 +5294,132 @@ export namespace Gitg {
         $signals: StageStatusSubmodule.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StageStatusSubmodule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](submodule: Ggit.Submodule): StageStatusSubmodule;
+        static ["new"](submodule: Ggit.Submodule): StageStatusSubmodule;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StageStatusSubmodule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StageStatusSubmodule.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StageStatusSubmodule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StageStatusSubmodule.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StageStatusSubmodule.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StageStatusSubmodule.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StageStatusSubmodule.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StageStatusSubmodule.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StageStatusSubmodule.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StageStatusSubmodule.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof StageStatusSubmodule.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StageStatusSubmodule.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_submodule(): Ggit.Submodule;
+
         get_is_dirty(): boolean;
+
         get_flags(): Ggit.SubmoduleStatus;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get path(): string;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get is_staged(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get isStaged(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get is_unstaged(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get isUnstaged(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get is_untracked(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get isUntracked(): boolean;
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
-        get icon_name(): string | null;
+        get icon_name(): (string | null);
+
         /**
          * @read-only
-         * @category Inherited from Gitg.StageStatusItem
+          * @category Inherited from Gitg.StageStatusItem
          */
         get iconName(): string;
+
         get_path(): string;
+
         get_is_staged(): boolean;
+
         get_is_unstaged(): boolean;
+
         get_is_untracked(): boolean;
-        get_icon_name(): string | null;
+
+        get_icon_name(): (string | null);
+
         /**
          * @virtual
          */
         vfunc_get_path(): string;
+
         /**
          * @virtual
          */
         vfunc_get_is_staged(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_is_unstaged(): boolean;
+
         /**
          * @virtual
          */
         vfunc_get_is_untracked(): boolean;
+
         /**
          * @virtual
          */
-        vfunc_get_icon_name(): string | null;
+        vfunc_get_icon_name(): (string | null);
     }
+
 
     namespace StageStatusEnumerator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5350,63 +5438,54 @@ export namespace Gitg {
         $signals: StageStatusEnumerator.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<StageStatusEnumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof StageStatusEnumerator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StageStatusEnumerator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof StageStatusEnumerator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StageStatusEnumerator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof StageStatusEnumerator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, StageStatusEnumerator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof StageStatusEnumerator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, StageStatusEnumerator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof StageStatusEnumerator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<StageStatusEnumerator.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof StageStatusEnumerator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<StageStatusEnumerator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         cancel(): void;
+
         /**
-         * @param num
+         * @param num 
          */
         next_items(num: number): globalThis.Promise<StageStatusItem[]>;
+
         /**
-         * @param num
-         * @param _callback_
+         * @param num 
+         * @param _callback_ 
          */
-        next_items(num: number, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        next_items(num: number, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param num
-         * @param _callback_
+         * @param num 
+         * @param _callback_ 
          */
-        next_items(
-            num: number,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<StageStatusItem[]> | void;
+        next_items(num: number, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<StageStatusItem[]> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         next_items_finish(_res_: Gio.AsyncResult): StageStatusItem[];
     }
 
+
     namespace PatchSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -5416,51 +5495,46 @@ export namespace Gitg {
         static $gtype: GObject.GType<PatchSet>;
 
         // Fields
-
         ref_count: number;
+
         filename: string;
+
         patches: PatchSetPatch[];
+
         patches_length1: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](): PatchSet;
+        static ["new"](): PatchSet;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PatchSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PatchSet.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PatchSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PatchSet.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PatchSet.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PatchSet.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PatchSet.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PatchSet.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PatchSet.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PatchSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PatchSet.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PatchSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         reversed(): PatchSet;
     }
 
+
     namespace Stage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -5479,609 +5553,569 @@ export namespace Gitg {
         $signals: Stage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Stage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Stage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Stage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         refresh(): globalThis.Promise<void>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        refresh(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        refresh(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        refresh(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        refresh(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         refresh_finish(_res_: Gio.AsyncResult): void;
-        get_head_tree(): globalThis.Promise<Ggit.Tree | null>;
+
+        get_head_tree(): globalThis.Promise<(Ggit.Tree | null)>;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        get_head_tree(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        get_head_tree(_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        get_head_tree(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.Tree | null> | void;
+        get_head_tree(_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Tree | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        get_head_tree_finish(_res_: Gio.AsyncResult): Ggit.Tree | null;
+        get_head_tree_finish(_res_: Gio.AsyncResult): (Ggit.Tree | null);
+
         /**
-         * @param options
+         * @param options 
          */
-        file_status(options: Ggit.StatusOptions | null): StageStatusEnumerator;
+        file_status(options: (Ggit.StatusOptions | null)): StageStatusEnumerator;
+
         /**
-         * @param author
+         * @param author 
          */
         pre_commit_hook(author: Ggit.Signature): globalThis.Promise<void>;
+
         /**
-         * @param author
-         * @param _callback_
+         * @param author 
+         * @param _callback_ 
          */
-        pre_commit_hook(author: Ggit.Signature, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        pre_commit_hook(author: Ggit.Signature, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param author
-         * @param _callback_
+         * @param author 
+         * @param _callback_ 
          */
-        pre_commit_hook(
-            author: Ggit.Signature,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        pre_commit_hook(author: Ggit.Signature, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         pre_commit_hook_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param index
-         * @param reference
-         * @param message
-         * @param author
-         * @param committer
-         * @param parents
-         * @param options
+         * @param index 
+         * @param reference 
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param parents 
+         * @param options 
          */
-        commit_index(
-            index: Ggit.Index,
-            reference: Ggit.Ref,
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
-        ): globalThis.Promise<Ggit.OId | null>;
+        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions): globalThis.Promise<(Ggit.OId | null)>;
+
         /**
-         * @param index
-         * @param reference
-         * @param message
-         * @param author
-         * @param committer
-         * @param parents
-         * @param options
-         * @param _callback_
+         * @param index 
+         * @param reference 
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param parents 
+         * @param options 
+         * @param _callback_ 
          */
-        commit_index(
-            index: Ggit.Index,
-            reference: Ggit.Ref,
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param index
-         * @param reference
-         * @param message
-         * @param author
-         * @param committer
-         * @param parents
-         * @param options
-         * @param _callback_
+         * @param index 
+         * @param reference 
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param parents 
+         * @param options 
+         * @param _callback_ 
          */
-        commit_index(
-            index: Ggit.Index,
-            reference: Ggit.Ref,
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Ggit.OId | null> | void;
+        commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.OId | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        commit_index_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
+        commit_index_finish(_res_: Gio.AsyncResult): (Ggit.OId | null);
+
         /**
-         * @param treeoid
-         * @param reference
-         * @param message
-         * @param author
-         * @param committer
-         * @param parents
-         * @param options
+         * @param treeoid 
+         * @param reference 
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param parents 
+         * @param options 
          */
-        commit_tree(
-            treeoid: Ggit.OId,
-            reference: Ggit.Ref,
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
-        ): globalThis.Promise<Ggit.OId | null>;
+        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions): globalThis.Promise<(Ggit.OId | null)>;
+
         /**
-         * @param treeoid
-         * @param reference
-         * @param message
-         * @param author
-         * @param committer
-         * @param parents
-         * @param options
-         * @param _callback_
+         * @param treeoid 
+         * @param reference 
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param parents 
+         * @param options 
+         * @param _callback_ 
          */
-        commit_tree(
-            treeoid: Ggit.OId,
-            reference: Ggit.Ref,
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param treeoid
-         * @param reference
-         * @param message
-         * @param author
-         * @param committer
-         * @param parents
-         * @param options
-         * @param _callback_
+         * @param treeoid 
+         * @param reference 
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param parents 
+         * @param options 
+         * @param _callback_ 
          */
-        commit_tree(
-            treeoid: Ggit.OId,
-            reference: Ggit.Ref,
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            parents: Ggit.OId[] | null,
-            options: StageCommitOptions,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Ggit.OId | null> | void;
+        commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: (Ggit.OId[] | null), options: StageCommitOptions, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.OId | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        commit_tree_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
+        commit_tree_finish(_res_: Gio.AsyncResult): (Ggit.OId | null);
+
         /**
-         * @param message
-         * @param author
-         * @param committer
-         * @param options
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param options 
          */
-        commit(
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            options: StageCommitOptions,
-        ): globalThis.Promise<Ggit.OId | null>;
+        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions): globalThis.Promise<(Ggit.OId | null)>;
+
         /**
-         * @param message
-         * @param author
-         * @param committer
-         * @param options
-         * @param _callback_
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param options 
+         * @param _callback_ 
          */
-        commit(
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            options: StageCommitOptions,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param message
-         * @param author
-         * @param committer
-         * @param options
-         * @param _callback_
+         * @param message 
+         * @param author 
+         * @param committer 
+         * @param options 
+         * @param _callback_ 
          */
-        commit(
-            message: string,
-            author: Ggit.Signature,
-            committer: Ggit.Signature,
-            options: StageCommitOptions,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Ggit.OId | null> | void;
+        commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.OId | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        commit_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
+        commit_finish(_res_: Gio.AsyncResult): (Ggit.OId | null);
+
         /**
-         * @param file
+         * @param file 
          */
         revert(file: Gio.File): globalThis.Promise<void>;
+
         /**
-         * @param file
-         * @param _callback_
+         * @param file 
+         * @param _callback_ 
          */
-        revert(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        revert(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param file
-         * @param _callback_
+         * @param file 
+         * @param _callback_ 
          */
-        revert(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        revert(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         revert_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param path
+         * @param path 
          */
         revert_path(path: string): globalThis.Promise<void>;
+
         /**
-         * @param path
-         * @param _callback_
+         * @param path 
+         * @param _callback_ 
          */
-        revert_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        revert_path(path: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param path
-         * @param _callback_
+         * @param path 
+         * @param _callback_ 
          */
-        revert_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        revert_path(path: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         revert_path_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param patch
+         * @param patch 
          */
         revert_patch(patch: PatchSet): globalThis.Promise<void>;
+
         /**
-         * @param patch
-         * @param _callback_
+         * @param patch 
+         * @param _callback_ 
          */
-        revert_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        revert_patch(patch: PatchSet, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param patch
-         * @param _callback_
+         * @param patch 
+         * @param _callback_ 
          */
-        revert_patch(
-            patch: PatchSet,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        revert_patch(patch: PatchSet, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         revert_patch_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param file
+         * @param file 
          */
-        ['delete'](file: Gio.File): globalThis.Promise<void>;
+        ["delete"](file: Gio.File): globalThis.Promise<void>;
+
         /**
-         * @param file
-         * @param _callback_
+         * @param file 
+         * @param _callback_ 
          */
-        ['delete'](file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        ["delete"](file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param file
-         * @param _callback_
+         * @param file 
+         * @param _callback_ 
          */
-        ['delete'](file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        ["delete"](file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param path
+         * @param path 
          */
         delete_path(path: string): globalThis.Promise<void>;
+
         /**
-         * @param path
-         * @param _callback_
+         * @param path 
+         * @param _callback_ 
          */
-        delete_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        delete_path(path: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param path
-         * @param _callback_
+         * @param path 
+         * @param _callback_ 
          */
-        delete_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        delete_path(path: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_path_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param file
+         * @param file 
          */
         stage(file: Gio.File): globalThis.Promise<void>;
+
         /**
-         * @param file
-         * @param _callback_
+         * @param file 
+         * @param _callback_ 
          */
-        stage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        stage(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param file
-         * @param _callback_
+         * @param file 
+         * @param _callback_ 
          */
-        stage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        stage(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         stage_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param path
+         * @param path 
          */
         stage_path(path: string): globalThis.Promise<void>;
+
         /**
-         * @param path
-         * @param _callback_
+         * @param path 
+         * @param _callback_ 
          */
-        stage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        stage_path(path: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param path
-         * @param _callback_
+         * @param path 
+         * @param _callback_ 
          */
-        stage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        stage_path(path: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         stage_path_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param path
-         * @param commit
+         * @param path 
+         * @param commit 
          */
         stage_commit(path: string, commit: Ggit.Commit): globalThis.Promise<void>;
+
         /**
-         * @param path
-         * @param commit
-         * @param _callback_
+         * @param path 
+         * @param commit 
+         * @param _callback_ 
          */
-        stage_commit(path: string, commit: Ggit.Commit, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        stage_commit(path: string, commit: Ggit.Commit, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param path
-         * @param commit
-         * @param _callback_
+         * @param path 
+         * @param commit 
+         * @param _callback_ 
          */
-        stage_commit(
-            path: string,
-            commit: Ggit.Commit,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        stage_commit(path: string, commit: Ggit.Commit, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         stage_commit_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param patch
+         * @param patch 
          */
         stage_patch(patch: PatchSet): globalThis.Promise<void>;
+
         /**
-         * @param patch
-         * @param _callback_
+         * @param patch 
+         * @param _callback_ 
          */
-        stage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        stage_patch(patch: PatchSet, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param patch
-         * @param _callback_
+         * @param patch 
+         * @param _callback_ 
          */
-        stage_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        stage_patch(patch: PatchSet, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         stage_patch_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param file
+         * @param file 
          */
         unstage(file: Gio.File): globalThis.Promise<void>;
+
         /**
-         * @param file
-         * @param _callback_
+         * @param file 
+         * @param _callback_ 
          */
-        unstage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        unstage(file: Gio.File, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param file
-         * @param _callback_
+         * @param file 
+         * @param _callback_ 
          */
-        unstage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        unstage(file: Gio.File, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         unstage_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param path
+         * @param path 
          */
         unstage_path(path: string): globalThis.Promise<void>;
+
         /**
-         * @param path
-         * @param _callback_
+         * @param path 
+         * @param _callback_ 
          */
-        unstage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        unstage_path(path: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param path
-         * @param _callback_
+         * @param path 
+         * @param _callback_ 
          */
-        unstage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        unstage_path(path: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         unstage_path_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param patch
+         * @param patch 
          */
         unstage_patch(patch: PatchSet): globalThis.Promise<void>;
+
         /**
-         * @param patch
-         * @param _callback_
+         * @param patch 
+         * @param _callback_ 
          */
-        unstage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        unstage_patch(patch: PatchSet, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param patch
-         * @param _callback_
+         * @param patch 
+         * @param _callback_ 
          */
-        unstage_patch(
-            patch: PatchSet,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        unstage_patch(patch: PatchSet, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         unstage_patch_finish(_res_: Gio.AsyncResult): void;
+
         /**
-         * @param files
-         * @param defopts
+         * @param files 
+         * @param defopts 
          */
-        diff_index_all(
-            files: StageStatusItem[] | null,
-            defopts: Ggit.DiffOptions | null,
-        ): globalThis.Promise<Ggit.Diff | null>;
+        diff_index_all(files: (StageStatusItem[] | null), defopts: (Ggit.DiffOptions | null)): globalThis.Promise<(Ggit.Diff | null)>;
+
         /**
-         * @param files
-         * @param defopts
-         * @param _callback_
+         * @param files 
+         * @param defopts 
+         * @param _callback_ 
          */
-        diff_index_all(
-            files: StageStatusItem[] | null,
-            defopts: Ggit.DiffOptions | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        diff_index_all(files: (StageStatusItem[] | null), defopts: (Ggit.DiffOptions | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param files
-         * @param defopts
-         * @param _callback_
+         * @param files 
+         * @param defopts 
+         * @param _callback_ 
          */
-        diff_index_all(
-            files: StageStatusItem[] | null,
-            defopts: Ggit.DiffOptions | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Ggit.Diff | null> | void;
+        diff_index_all(files: (StageStatusItem[] | null), defopts: (Ggit.DiffOptions | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Diff | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        diff_index_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
+        diff_index_all_finish(_res_: Gio.AsyncResult): (Ggit.Diff | null);
+
         /**
-         * @param f
-         * @param defopts
+         * @param f 
+         * @param defopts 
          */
-        diff_index(f: StageStatusItem, defopts: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
+        diff_index(f: StageStatusItem, defopts: (Ggit.DiffOptions | null)): globalThis.Promise<(Ggit.Diff | null)>;
+
         /**
-         * @param f
-         * @param defopts
-         * @param _callback_
+         * @param f 
+         * @param defopts 
+         * @param _callback_ 
          */
-        diff_index(
-            f: StageStatusItem,
-            defopts: Ggit.DiffOptions | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        diff_index(f: StageStatusItem, defopts: (Ggit.DiffOptions | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param f
-         * @param defopts
-         * @param _callback_
+         * @param f 
+         * @param defopts 
+         * @param _callback_ 
          */
-        diff_index(
-            f: StageStatusItem,
-            defopts: Ggit.DiffOptions | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Ggit.Diff | null> | void;
+        diff_index(f: StageStatusItem, defopts: (Ggit.DiffOptions | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Diff | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        diff_index_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
+        diff_index_finish(_res_: Gio.AsyncResult): (Ggit.Diff | null);
+
         /**
-         * @param files
-         * @param defopts
+         * @param files 
+         * @param defopts 
          */
-        diff_workdir_all(
-            files: StageStatusItem[],
-            defopts: Ggit.DiffOptions | null,
-        ): globalThis.Promise<Ggit.Diff | null>;
+        diff_workdir_all(files: StageStatusItem[], defopts: (Ggit.DiffOptions | null)): globalThis.Promise<(Ggit.Diff | null)>;
+
         /**
-         * @param files
-         * @param defopts
-         * @param _callback_
+         * @param files 
+         * @param defopts 
+         * @param _callback_ 
          */
-        diff_workdir_all(
-            files: StageStatusItem[],
-            defopts: Ggit.DiffOptions | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        diff_workdir_all(files: StageStatusItem[], defopts: (Ggit.DiffOptions | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param files
-         * @param defopts
-         * @param _callback_
+         * @param files 
+         * @param defopts 
+         * @param _callback_ 
          */
-        diff_workdir_all(
-            files: StageStatusItem[],
-            defopts: Ggit.DiffOptions | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Ggit.Diff | null> | void;
+        diff_workdir_all(files: StageStatusItem[], defopts: (Ggit.DiffOptions | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Diff | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        diff_workdir_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
+        diff_workdir_all_finish(_res_: Gio.AsyncResult): (Ggit.Diff | null);
+
         /**
-         * @param f
-         * @param defopts
+         * @param f 
+         * @param defopts 
          */
-        diff_workdir(f: StageStatusItem, defopts: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
+        diff_workdir(f: StageStatusItem, defopts: (Ggit.DiffOptions | null)): globalThis.Promise<(Ggit.Diff | null)>;
+
         /**
-         * @param f
-         * @param defopts
-         * @param _callback_
+         * @param f 
+         * @param defopts 
+         * @param _callback_ 
          */
-        diff_workdir(
-            f: StageStatusItem,
-            defopts: Ggit.DiffOptions | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        diff_workdir(f: StageStatusItem, defopts: (Ggit.DiffOptions | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param f
-         * @param defopts
-         * @param _callback_
+         * @param f 
+         * @param defopts 
+         * @param _callback_ 
          */
-        diff_workdir(
-            f: StageStatusItem,
-            defopts: Ggit.DiffOptions | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Ggit.Diff | null> | void;
+        diff_workdir(f: StageStatusItem, defopts: (Ggit.DiffOptions | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(Ggit.Diff | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        diff_workdir_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
+        diff_workdir_finish(_res_: Gio.AsyncResult): (Ggit.Diff | null);
     }
+
 
     namespace TextConv {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -6091,107 +6125,96 @@ export namespace Gitg {
         static $gtype: GObject.GType<TextConv>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](): TextConv;
+        static ["new"](): TextConv;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TextConv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextConv.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TextConv.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TextConv.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TextConv.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TextConv.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TextConv.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TextConv.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TextConv.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TextConv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TextConv.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TextConv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param repository
-         * @param file
+         * @param repository 
+         * @param file 
          */
         static has_textconv_command(repository: Repository, file: Ggit.DiffFile): boolean;
+
         /**
-         * @param repository
-         * @param file
+         * @param repository 
+         * @param file 
          */
         static get_textconv_content(repository: Repository, file: Ggit.DiffFile): Uint8Array;
+
         /**
-         * @param repository
-         * @param file
-         * @param raw_content
+         * @param repository 
+         * @param file 
+         * @param raw_content 
          */
-        static get_textconv_content_from_raw(
-            repository: Repository,
-            file: Ggit.DiffFile,
-            raw_content: Uint8Array | null,
-        ): Uint8Array;
+        static get_textconv_content_from_raw(repository: Repository, file: Ggit.DiffFile, raw_content: (Uint8Array | null)): Uint8Array;
     }
+
 
     namespace Theme {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps {
 
-        interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
+        }
     }
 
     /**
@@ -6210,46 +6233,37 @@ export namespace Gitg {
         $signals: Theme.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Theme.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Theme;
+        static ["new"](): Theme;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Theme.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Theme.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Theme.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Theme.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Theme.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Theme.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Theme.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Theme.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static instance(): Theme;
 
         // Methods
-
         is_theme_dark(): boolean;
     }
 
+
     namespace Utils {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
     }
 
     /**
@@ -6259,55 +6273,46 @@ export namespace Gitg {
         static $gtype: GObject.GType<Utils>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](): Utils;
+        static ["new"](): Utils;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Utils.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Utils.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Utils.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Utils.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Utils.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Utils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Utils.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Utils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param file
+         * @param file 
          */
         static replace_home_dir_with_tilde(file: Gio.File): string;
+
         /**
-         * @param path
+         * @param path 
          */
         static expand_home_dir(path: string): string;
     }
 
+
     namespace WhenMapped {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        interface OnMapped {
-            (): void;
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
         }
+    interface OnMapped {
+        (): void;
+    }
     }
 
     /**
@@ -6317,49 +6322,40 @@ export namespace Gitg {
         static $gtype: GObject.GType<WhenMapped>;
 
         // Fields
-
         ref_count: number;
 
         // Constructors
-
         _init(...args: any[]): void;
 
-        static ['new'](widget: Gtk.Widget): WhenMapped;
+        static ["new"](widget: Gtk.Widget): WhenMapped;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WhenMapped.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WhenMapped.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WhenMapped.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WhenMapped.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WhenMapped.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WhenMapped.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WhenMapped.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WhenMapped.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WhenMapped.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WhenMapped.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WhenMapped.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WhenMapped.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param mapped
-         * @param lifetime
+         * @param mapped 
+         * @param lifetime 
          */
-        update(mapped: WhenMapped.OnMapped, lifetime: GObject.Object | null): void;
+        update(mapped: WhenMapped.OnMapped, lifetime: (GObject.Object | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AsyncClass = typeof Async;
+
     /**
      * @gir-type Struct
      */
@@ -6367,10 +6363,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<AsyncPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AuthenticationDialogClass = typeof AuthenticationDialog;
+
     /**
      * @gir-type Struct
      */
@@ -6378,10 +6376,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<AuthenticationDialogPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AvatarCacheClass = typeof AvatarCache;
+
     /**
      * @gir-type Struct
      */
@@ -6389,10 +6389,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<AvatarCachePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BranchBaseClass = typeof BranchBase;
+
     /**
      * @gir-type Struct
      */
@@ -6400,10 +6402,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<BranchBasePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CellRendererLanesClass = typeof CellRendererLanes;
+
     /**
      * @gir-type Struct
      */
@@ -6411,10 +6415,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<CellRendererLanesPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ColorClass = typeof Color;
+
     /**
      * @gir-type Struct
      */
@@ -6422,10 +6428,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<ColorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CommitListViewClass = typeof CommitListView;
+
     /**
      * @gir-type Struct
      */
@@ -6433,10 +6441,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<CommitListViewPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CommitModelClass = typeof CommitModel;
+
     /**
      * @gir-type Struct
      */
@@ -6444,10 +6454,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<CommitModelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CommitClass = typeof Commit;
+
     /**
      * @gir-type Struct
      */
@@ -6455,10 +6467,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<CommitPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CredentialsManagerClass = typeof CredentialsManager;
+
     /**
      * @gir-type Struct
      */
@@ -6466,10 +6480,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<CredentialsManagerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DateClass = typeof Date;
+
     /**
      * @gir-type Struct
      */
@@ -6477,10 +6493,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<DatePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DiffStatClass = typeof DiffStat;
+
     /**
      * @gir-type Struct
      */
@@ -6488,10 +6506,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<DiffStatPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DiffViewOptionsClass = typeof DiffViewOptions;
+
     /**
      * @gir-type Struct
      */
@@ -6499,10 +6519,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<DiffViewOptionsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DiffViewClass = typeof DiffView;
+
     /**
      * @gir-type Struct
      */
@@ -6510,10 +6532,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<DiffViewPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FontManagerClass = typeof FontManager;
+
     /**
      * @gir-type Struct
      */
@@ -6521,10 +6545,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<FontManagerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type GPGUtilsClass = typeof GPGUtils;
+
     /**
      * @gir-type Struct
      */
@@ -6532,10 +6558,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<GPGUtilsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HookClass = typeof Hook;
+
     /**
      * @gir-type Struct
      */
@@ -6543,10 +6571,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<HookPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LabelRendererClass = typeof LabelRenderer;
+
     /**
      * @gir-type Struct
      */
@@ -6554,10 +6584,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<LabelRendererPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LanesClass = typeof Lanes;
+
     /**
      * @gir-type Struct
      */
@@ -6565,10 +6597,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<LanesPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LaneClass = typeof Lane;
+
     /**
      * @gir-type Struct
      */
@@ -6576,10 +6610,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<LanePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ProgressBinClass = typeof ProgressBin;
+
     /**
      * @gir-type Struct
      */
@@ -6587,10 +6623,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<ProgressBinPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RefBaseClass = typeof RefBase;
+
     /**
      * @gir-type Struct
      */
@@ -6598,10 +6636,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<RefBasePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ParsedRefNameClass = typeof ParsedRefName;
+
     /**
      * @gir-type Struct
      */
@@ -6609,10 +6649,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<ParsedRefNamePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RemoteClass = typeof Remote;
+
     /**
      * @gir-type Struct
      */
@@ -6620,10 +6662,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<RemotePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RepositoryListBoxClass = typeof RepositoryListBox;
+
     /**
      * @gir-type Struct
      */
@@ -6631,10 +6675,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<RepositoryListBoxPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RepositoryListBoxRowClass = typeof RepositoryListBoxRow;
+
     /**
      * @gir-type Struct
      */
@@ -6642,10 +6688,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<RepositoryListBoxRowPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RepositoryClass = typeof Repository;
+
     /**
      * @gir-type Struct
      */
@@ -6653,10 +6701,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<RepositoryPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ResourceClass = typeof Resource;
+
     /**
      * @gir-type Struct
      */
@@ -6664,10 +6714,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<ResourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SidebarStoreClass = typeof SidebarStore;
+
     /**
      * @gir-type Struct
      */
@@ -6675,10 +6727,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<SidebarStorePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SidebarStoreSidebarTextClass = typeof SidebarStoreSidebarText;
+
     /**
      * @gir-type Struct
      */
@@ -6686,10 +6740,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<SidebarStoreSidebarTextPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SidebarStoreSidebarHeaderClass = typeof SidebarStoreSidebarHeader;
+
     /**
      * @gir-type Struct
      */
@@ -6697,10 +6753,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<SidebarStoreSidebarHeaderPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SidebarClass = typeof Sidebar;
+
     /**
      * @gir-type Struct
      */
@@ -6708,10 +6766,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<SidebarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StageStatusFileClass = typeof StageStatusFile;
+
     /**
      * @gir-type Struct
      */
@@ -6719,10 +6779,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<StageStatusFilePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StageStatusSubmoduleClass = typeof StageStatusSubmodule;
+
     /**
      * @gir-type Struct
      */
@@ -6730,10 +6792,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<StageStatusSubmodulePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StageStatusEnumeratorClass = typeof StageStatusEnumerator;
+
     /**
      * @gir-type Struct
      */
@@ -6741,16 +6805,19 @@ export namespace Gitg {
         static $gtype: GObject.GType<StageStatusEnumeratorPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PatchSetClass = typeof PatchSet;
+
     /**
      * @gir-type Struct
      */
     abstract class PatchSetPrivate {
         static $gtype: GObject.GType<PatchSetPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -6759,17 +6826,21 @@ export namespace Gitg {
         static $gtype: GObject.GType<PatchSetPatch>;
 
         // Fields
-
         type: PatchSetType;
+
         old_offset: number;
+
         new_offset: number;
+
         length: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type StageClass = typeof Stage;
+
     /**
      * @gir-type Struct
      */
@@ -6777,10 +6848,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<StagePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TextConvClass = typeof TextConv;
+
     /**
      * @gir-type Struct
      */
@@ -6788,10 +6861,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<TextConvPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ThemeClass = typeof Theme;
+
     /**
      * @gir-type Struct
      */
@@ -6799,10 +6874,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<ThemePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UtilsClass = typeof Utils;
+
     /**
      * @gir-type Struct
      */
@@ -6810,10 +6887,12 @@ export namespace Gitg {
         static $gtype: GObject.GType<UtilsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WhenMappedClass = typeof WhenMapped;
+
     /**
      * @gir-type Struct
      */
@@ -6821,43 +6900,51 @@ export namespace Gitg {
         static $gtype: GObject.GType<WhenMappedPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BranchIface = typeof Branch;
+
     /**
      * @gir-type Alias
      */
     type RefIface = typeof Ref;
+
     /**
      * @gir-type Alias
      */
     type CredentialsProviderIface = typeof CredentialsProvider;
+
     /**
      * @gir-type Alias
      */
     type SidebarItemIface = typeof SidebarItem;
+
     /**
      * @gir-type Alias
      */
     type StageStatusItemIface = typeof StageStatusItem;
+
     namespace Branch {
         /**
          * Interface for implementing Branch.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_upstream(): Ref;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends Ggit.Branch.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends Ggit.Branch.ConstructorProps {
+
+        }
     }
 
     export interface BranchNamespace {
@@ -6868,15 +6955,17 @@ export namespace Gitg {
      * @gir-type Interface
      */
     interface Branch extends Ggit.Branch, Branch.Interface {
-        // Methods
 
+        // Methods
         get_upstream(): Ref;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Branch.get_upstream
+    // Conflicted with Ggit.Branch.get_upstream
         get_upstream(...args: never[]): any;
     }
+
 
     export const Branch: BranchNamespace & {
         new (): Branch; // This allows `obj instanceof Branch`
@@ -6888,56 +6977,64 @@ export namespace Gitg {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_owner(): Repository;
+
             /**
              * @virtual
              */
             vfunc_get_d_parsed_name(): ParsedRefName;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_d_parsed_name(value: ParsedRefName): void;
+
             /**
              * @virtual
              */
-            vfunc_get_d_pushes(): Ref[] | null;
+            vfunc_get_d_pushes(): (Ref[] | null);
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
-            vfunc_set_d_pushes(value: Ref[] | null): void;
+            vfunc_set_d_pushes(value: (Ref[] | null)): void;
+
             /**
              * @virtual
              */
             vfunc_get_state(): RefState;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_state(value: RefState): void;
+
             /**
              * @virtual
              */
             vfunc_get_working(): boolean;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_working(value: boolean): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Ggit.Ref.ConstructorProps {
             d_parsed_name: ParsedRefName;
             dParsedName: ParsedRefName;
-            d_pushes: Ref[] | null;
+            d_pushes: (Ref[] | null);
             dPushes: Ref[];
             state: RefState;
             working: boolean;
@@ -6952,52 +7049,68 @@ export namespace Gitg {
      * @gir-type Interface
      */
     interface Ref extends Ggit.Ref, Ref.Interface {
-        // Properties
 
+        // Properties
         get d_parsed_name(): ParsedRefName;
         set d_parsed_name(val: ParsedRefName);
+
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
-        get d_pushes(): Ref[] | null;
-        set d_pushes(val: Ref[] | null);
+
+        get d_pushes(): (Ref[] | null);
+        set d_pushes(val: (Ref[] | null));
+
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
+
         get state(): RefState;
         set state(val: RefState);
+
         get working(): boolean;
         set working(val: boolean);
 
         // Methods
-
         get_owner(): Repository;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Ggit.Ref.get_owner
+    // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
+
         get_d_parsed_name(): ParsedRefName;
+
         /**
-         * @param value
+         * @param value 
          */
         set_d_parsed_name(value: ParsedRefName): void;
-        get_d_pushes(): Ref[] | null;
+
+        get_d_pushes(): (Ref[] | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_d_pushes(value: Ref[] | null): void;
+        set_d_pushes(value: (Ref[] | null)): void;
+
         get_state(): RefState;
+
         /**
-         * @param value
+         * @param value 
          */
         set_state(value: RefState): void;
+
         get_working(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_working(value: boolean): void;
+
         get_parsed_name(): ParsedRefName;
+
         get_pushes(): Ref[];
     }
+
 
     export const Ref: RefNamespace & {
         new (): Ref; // This allows `obj instanceof Ref`
@@ -7009,24 +7122,22 @@ export namespace Gitg {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param url
-             * @param username_from_url
-             * @param allowed_types
+             * @param url 
+             * @param username_from_url 
+             * @param allowed_types 
              * @virtual
              */
-            vfunc_credentials(
-                url: string,
-                username_from_url: string | null,
-                allowed_types: Ggit.Credtype,
-            ): Ggit.Cred | null;
+            vfunc_credentials(url: string, username_from_url: (string | null), allowed_types: Ggit.Credtype): (Ggit.Cred | null);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface CredentialsProviderNamespace {
@@ -7037,15 +7148,16 @@ export namespace Gitg {
      * @gir-type Interface
      */
     interface CredentialsProvider extends GObject.Object, CredentialsProvider.Interface {
-        // Methods
 
+        // Methods
         /**
-         * @param url
-         * @param username_from_url
-         * @param allowed_types
+         * @param url 
+         * @param username_from_url 
+         * @param allowed_types 
          */
-        credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
+        credentials(url: string, username_from_url: (string | null), allowed_types: Ggit.Credtype): (Ggit.Cred | null);
     }
+
 
     export const CredentialsProvider: CredentialsProviderNamespace & {
         new (): CredentialsProvider; // This allows `obj instanceof CredentialsProvider`
@@ -7057,28 +7169,30 @@ export namespace Gitg {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
-             * @param numclick
+             * @param numclick 
              * @virtual
              */
             vfunc_activate(numclick: number): void;
+
             /**
              * @virtual
              */
             vfunc_get_text(): string;
+
             /**
              * @virtual
              */
-            vfunc_get_icon_name(): string | null;
+            vfunc_get_icon_name(): (string | null);
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             text: string;
-            icon_name: string | null;
+            icon_name: (string | null);
             iconName: string;
         }
     }
@@ -7091,30 +7205,34 @@ export namespace Gitg {
      * @gir-type Interface
      */
     interface SidebarItem extends GObject.Object, SidebarItem.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get text(): string;
+
         /**
          * @read-only
          */
-        get icon_name(): string | null;
+        get icon_name(): (string | null);
+
         /**
          * @read-only
          */
         get iconName(): string;
 
         // Methods
-
         /**
-         * @param numclick
+         * @param numclick 
          */
         activate(numclick: number): void;
+
         get_text(): string;
-        get_icon_name(): string | null;
+
+        get_icon_name(): (string | null);
     }
+
 
     export const SidebarItem: SidebarItemNamespace & {
         new (): SidebarItem; // This allows `obj instanceof SidebarItem`
@@ -7126,32 +7244,36 @@ export namespace Gitg {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_get_path(): string;
+
             /**
              * @virtual
              */
             vfunc_get_is_staged(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get_is_unstaged(): boolean;
+
             /**
              * @virtual
              */
             vfunc_get_is_untracked(): boolean;
+
             /**
              * @virtual
              */
-            vfunc_get_icon_name(): string | null;
+            vfunc_get_icon_name(): (string | null);
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             path: string;
             is_staged: boolean;
@@ -7160,7 +7282,7 @@ export namespace Gitg {
             isUnstaged: boolean;
             is_untracked: boolean;
             isUntracked: boolean;
-            icon_name: string | null;
+            icon_name: (string | null);
             iconName: string;
         }
     }
@@ -7173,53 +7295,65 @@ export namespace Gitg {
      * @gir-type Interface
      */
     interface StageStatusItem extends GObject.Object, StageStatusItem.Interface {
-        // Properties
 
+        // Properties
         /**
          * @read-only
          */
         get path(): string;
+
         /**
          * @read-only
          */
         get is_staged(): boolean;
+
         /**
          * @read-only
          */
         get isStaged(): boolean;
+
         /**
          * @read-only
          */
         get is_unstaged(): boolean;
+
         /**
          * @read-only
          */
         get isUnstaged(): boolean;
+
         /**
          * @read-only
          */
         get is_untracked(): boolean;
+
         /**
          * @read-only
          */
         get isUntracked(): boolean;
+
         /**
          * @read-only
          */
-        get icon_name(): string | null;
+        get icon_name(): (string | null);
+
         /**
          * @read-only
          */
         get iconName(): string;
 
         // Methods
-
         get_path(): string;
+
         get_is_staged(): boolean;
+
         get_is_unstaged(): boolean;
+
         get_is_untracked(): boolean;
-        get_icon_name(): string | null;
+
+        get_icon_name(): (string | null);
     }
+
 
     export const StageStatusItem: StageStatusItemNamespace & {
         new (): StageStatusItem; // This allows `obj instanceof StageStatusItem`
@@ -7230,6 +7364,7 @@ export namespace Gitg {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

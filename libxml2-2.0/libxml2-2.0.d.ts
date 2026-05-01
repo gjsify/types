@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,17 +14,21 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace libxml2 {
+
     /**
      * libxml2-2.0
      */
 
+
     function dummy(): void;
+
     /**
      * @gir-type Struct
      */
     class Node {
         static $gtype: GObject.GType<Node>;
     }
+
 
     /**
      * @gir-type Struct
@@ -32,12 +37,14 @@ export namespace libxml2 {
         static $gtype: GObject.GType<NodePtr>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class Doc {
         static $gtype: GObject.GType<Doc>;
     }
+
 
     /**
      * @gir-type Struct
@@ -46,12 +53,14 @@ export namespace libxml2 {
         static $gtype: GObject.GType<DocPtr>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class NsPtr {
         static $gtype: GObject.GType<NsPtr>;
     }
+
 
     /**
      * @gir-type Struct
@@ -60,12 +69,14 @@ export namespace libxml2 {
         static $gtype: GObject.GType<Char>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class TextWriter {
         static $gtype: GObject.GType<TextWriter>;
     }
+
 
     /**
      * @gir-type Struct
@@ -74,11 +85,13 @@ export namespace libxml2 {
         static $gtype: GObject.GType<TextReader>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

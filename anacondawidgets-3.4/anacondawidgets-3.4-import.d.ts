@@ -1,3 +1,4 @@
+
 import type AnacondaWidgets34 from '@girs/anacondawidgets-3.4';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

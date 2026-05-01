@@ -1,3 +1,4 @@
+
 import type Xmlb20 from '@girs/xmlb-2.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

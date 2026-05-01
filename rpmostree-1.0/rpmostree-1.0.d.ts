@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,29 +18,35 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace RpmOstree {
+
     /**
      * RpmOstree-1.0
      */
+
 
     /**
      * Release version component (e.g. 9 if `RPM_OSTREE_VERSION` is 2017.9)
      * @since 2017.8
      */
     const RELEASE_VERSION: number;
+
     /**
      * @since 2017.8
      */
     const VERSION: number;
+
     /**
      * Version encoded as a string, useful for printing and concatenation.
      * @since 2017.8
      */
     const VERSION_S: string;
+
     /**
      * Year version component (e.g. 2017 if `RPM_OSTREE_VERSION` is 2017.9)
      * @since 2017.8
      */
     const YEAR_VERSION: number;
+
     /**
      * The `RPM_OSTREE_CHECK_VERSION` macro operates at compile time, whereas
      * this function operates at runtime.  The distinction is most useful for
@@ -49,9 +56,10 @@ export namespace RpmOstree {
      * @returns `true` if current library has at least the requested version, `false` otherwise
      */
     function check_version(required_year: number, required_release: number): boolean;
+
     /**
      * Compute the RPM package delta between two commits.
-     *
+     * 
      * If there are multiple packages with the same name, they are dealt
      * with as follow:
      *   - if there are N pkgs of the same name in `orig_ref`, and 0 pkgs of the same name in
@@ -63,14 +71,10 @@ export namespace RpmOstree {
      * @param repo An OSTree repository
      * @param orig_ref Original ref (branch or commit)
      * @param new_ref New ref (branch or commit)
-     * @param cancellable
+     * @param cancellable 
      */
-    function db_diff(
-        repo: OSTree.Repo,
-        orig_ref: string,
-        new_ref: string,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
+    function db_diff(repo: OSTree.Repo, orig_ref: string, new_ref: string, cancellable: (Gio.Cancellable | null)): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
+
     /**
      * This function is identical to `rpm_ostree_db_diff_ext()`, but supports a `flags` argument to
      * further control behaviour. At least one of the `out` parameters must not be NULL.
@@ -78,16 +82,11 @@ export namespace RpmOstree {
      * @param orig_ref Original ref (branch or commit)
      * @param new_ref New ref (branch or commit)
      * @param flags Flags controlling diff behaviour
-     * @param cancellable
+     * @param cancellable 
      * @since 2017.12
      */
-    function db_diff_ext(
-        repo: OSTree.Repo,
-        orig_ref: string,
-        new_ref: string,
-        flags: DbDiffExtFlags,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
+    function db_diff_ext(repo: OSTree.Repo, orig_ref: string, new_ref: string, flags: DbDiffExtFlags, cancellable: (Gio.Cancellable | null)): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
+
     /**
      * Return all of the RPM packages present in the `ref` branch or commit
      * in `repo`.
@@ -96,17 +95,20 @@ export namespace RpmOstree {
      * @param cancellable Cancellable
      * @returns A query result, or `null` on error
      */
-    function db_query_all(repo: OSTree.Repo, ref: string, cancellable: Gio.Cancellable | null): Package[];
+    function db_query_all(repo: OSTree.Repo, ref: string, cancellable: (Gio.Cancellable | null)): Package[];
+
     /**
      * @returns A string for RPM's architecture, commonly used for e.g. $basearch in URLs
      * @since 2017.8
      */
     function get_basearch(): string;
+
     /**
      * @param src String (commonly a URL)
      * @returns A copy of `src` with all references for `${basearch}` replaced with `rpmostree_get_basearch()`, or `null` on error Since: 2017.8
      */
     function varsubst_basearch(src: string): string;
+
     /**
      * @gir-type Flags
      */
@@ -115,13 +117,16 @@ export namespace RpmOstree {
         ALLOW_NOENT,
     }
 
+
     namespace Package {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -140,63 +145,59 @@ export namespace RpmOstree {
         $signals: Package.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Package.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Package.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Package.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Package.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Package.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Package.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Package.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Package.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Package.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Compares two packages by name, epoch:version-release and architecture.
          * @param p2 Package
          * @returns an integer suitable for sorting functions; negative if `p1` should          sort before `p2` in name or version, 0 if equal, positive if `p1`          should sort after `p2`
          */
         cmp(p2: Package): number;
+
         /**
          * @returns The package architecture
          */
         get_arch(): string;
+
         /**
          * @returns The package epoch:version-release
          */
         get_evr(): string;
+
         /**
          * @returns The package name
          */
         get_name(): string;
+
         /**
          * @returns A formatted UTF-8 string containing the name, epoch, version, release, and architecture.  Avoid parsing this; instead use individual getters for more precise control.
          */
         get_nevra(): string;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

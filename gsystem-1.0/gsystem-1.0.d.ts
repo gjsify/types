@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace GSystem {
+
     /**
      * GSystem-1.0
      */
+
 
     /**
      * Flags to define the behaviour of the standard input/output/error of
@@ -45,6 +48,7 @@ export namespace GSystem {
         STDERR_MERGE,
     }
 
+
     /**
      * Load all extended attributes for the file named `name` residing in
      * directory `dfd`.
@@ -52,49 +56,46 @@ export namespace GSystem {
      * @param name File name
      * @param cancellable Cancellable
      */
-    function dfd_and_name_get_all_xattrs(
-        dfd: number,
-        name: string,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, GLib.Variant];
+    function dfd_and_name_get_all_xattrs(dfd: number, name: string, cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant];
+
     /**
-     * @param dfd
-     * @param name
-     * @param xattrs
-     * @param cancellable
+     * @param dfd 
+     * @param name 
+     * @param xattrs 
+     * @param cancellable 
      */
-    function dfd_and_name_set_all_xattrs(
-        dfd: number,
-        name: string,
-        xattrs: GLib.Variant,
-        cancellable: Gio.Cancellable | null,
-    ): boolean;
+    function dfd_and_name_set_all_xattrs(dfd: number, name: string, xattrs: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
-     * @param dfd_iter
+     * @param dfd_iter 
      */
     function dirfd_iterator_clear(dfd_iter: DirFdIterator): void;
+
     /**
-     * @param dfd
-     * @param path
-     * @param follow
-     * @param dfd_iter
+     * @param dfd 
+     * @param path 
+     * @param follow 
+     * @param dfd_iter 
      */
     function dirfd_iterator_init_at(dfd: number, path: string, follow: boolean, dfd_iter: DirFdIterator): boolean;
+
     /**
-     * @param dfd
-     * @param dfd_iter
+     * @param dfd 
+     * @param dfd_iter 
      */
     function dirfd_iterator_init_take_fd(dfd: number, dfd_iter: DirFdIterator): boolean;
+
     /**
      * Read all extended attributes from `fd` in a canonical sorted order, and
      * set `out_xattrs` with the result.
-     *
+     * 
      * If the filesystem does not support extended attributes, `out_xattrs`
      * will have 0 elements, and this function will return successfully.
      * @param fd a file descriptor
      * @param cancellable Cancellable
      */
-    function fd_get_all_xattrs(fd: number, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
+    function fd_get_all_xattrs(fd: number, cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant];
+
     /**
      * For each attribute in `xattrs`, set its value on the file or
      * directory referred to by `fd`.  This function does not remove any
@@ -103,7 +104,8 @@ export namespace GSystem {
      * @param xattrs Extended attributes
      * @param cancellable Cancellable
      */
-    function fd_set_all_xattrs(fd: number, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+    function fd_set_all_xattrs(fd: number, xattrs: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Merely wraps UNIX `chmod()`.
      * @param path Path to file
@@ -111,7 +113,8 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_chmod(path: Gio.File, mode: number, cancellable: Gio.Cancellable | null): boolean;
+    function file_chmod(path: Gio.File, mode: number, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Merely wraps UNIX `chown()`.
      * @param path Path to file
@@ -120,7 +123,8 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_chown(path: Gio.File, owner: number, group: number, cancellable: Gio.Cancellable | null): boolean;
+    function file_chown(path: Gio.File, owner: number, group: number, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Like `g_file_create()`, except this function allows specifying the
      * access mode.  This allows atomically creating private files.
@@ -128,11 +132,8 @@ export namespace GSystem {
      * @param mode Unix access permissions
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_create(
-        file: Gio.File,
-        mode: number,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Gio.OutputStream | null];
+    function file_create(file: Gio.File, mode: number, cancellable: (Gio.Cancellable | null)): [boolean, Gio.OutputStream | null];
+
     /**
      * Like `g_file_make_directory()`, except does not throw an error if the
      * directory already exists.
@@ -140,7 +141,8 @@ export namespace GSystem {
      * @param with_parents Also create parent directories
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_ensure_directory(dir: Gio.File, with_parents: boolean, cancellable: Gio.Cancellable | null): boolean;
+    function file_ensure_directory(dir: Gio.File, with_parents: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Wraps UNIX `mkdir()` function with support for `cancellable`, and
      * uses `error` instead of errno.
@@ -148,30 +150,31 @@ export namespace GSystem {
      * @param mode Create directory with these permissions
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_ensure_directory_mode(dir: Gio.File, mode: number, cancellable: Gio.Cancellable | null): boolean;
+    function file_ensure_directory_mode(dir: Gio.File, mode: number, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * This is a version of `g_file_enumerator_next_file()` that's easier to
      * use correctly from C programs.  With `g_file_enumerator_next_file()`,
      * the gboolean return value signifies "end of iteration or error", which
      * requires allocation of a temporary {@link GLib.Error}.
-     *
+     * 
      * In contrast, with this function, a `false` return from
      * `gs_file_enumerator_iterate()` <emphasis>always</emphasis> means
      * "error".  End of iteration is signaled by `out_info` being `null`.
-     *
+     * 
      * Another crucial difference is that the references for `out_info` and
      * `out_child` are owned by `direnum` (they are cached as hidden
      * properties).  You must not unref them in your own code.  This makes
      * memory management significantly easier for C code in combination
      * with loops.
-     *
+     * 
      * Finally, this function optionally allows retrieving a {@link Gio.File} as
      * well.
-     *
+     * 
      * The code pattern for correctly using `gs_file_enumerator_iterate()` from C
      * is:
-     *
-     *
+     * 
+     * 
      * ```
      * direnum = g_file_enumerate_children (file, ...);
      * while (TRUE)
@@ -183,40 +186,41 @@ export namespace GSystem {
      *       break;
      *     ... do stuff with "info"; do not unref it! ...
      *   }
-     *
+     * 
      * out:
      *   g_object_unref (direnum); // Note: frees the last `info`
      * ```
-     *
+     * 
      * @param direnum an open {@link Gio.FileEnumerator}
      * @param cancellable a {@link Gio.Cancellable}
      */
-    function file_enumerator_iterate(
-        direnum: Gio.FileEnumerator,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Gio.FileInfo | null, Gio.File | null];
+    function file_enumerator_iterate(direnum: Gio.FileEnumerator, cancellable: (Gio.Cancellable | null)): [boolean, Gio.FileInfo | null, Gio.File | null];
+
     /**
      * Read all extended attributes of `f` in a canonical sorted order, and
      * set `out_xattrs` with the result.
-     *
+     * 
      * If the filesystem does not support extended attributes, `out_xattrs`
      * will have 0 elements, and this function will return successfully.
      * @param f a {@link Gio.File}
      * @param cancellable Cancellable
      */
-    function file_get_all_xattrs(f: Gio.File, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
+    function file_get_all_xattrs(f: Gio.File, cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant];
+
     /**
      * Like `g_file_get_basename()`, but returns a constant copy so callers
      * don't need to free the result.
-     * @param file
+     * @param file 
      */
     function file_get_basename_cached(file: Gio.File): string;
+
     /**
      * Like `g_file_get_path()`, but returns a constant copy so callers
      * don't need to free the result.
-     * @param file
+     * @param file 
      */
     function file_get_path_cached(file: Gio.File): string;
+
     /**
      * Like `gs_file_get_relative_path()`, but does not mandate that
      * the two files have any parent in common. This function will
@@ -226,6 +230,7 @@ export namespace GSystem {
      * @returns The relative path between the two.
      */
     function file_get_relpath(one: Gio.File, two: Gio.File): string;
+
     /**
      * Merely wraps UNIX `lchown()`.
      * @param path Path to file
@@ -234,18 +239,19 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_lchown(path: Gio.File, owner: number, group: number, cancellable: Gio.Cancellable | null): boolean;
+    function file_lchown(path: Gio.File, owner: number, group: number, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * First tries to use the UNIX `link()` call, but if the files are on
      * separate devices, fall back to copying via `g_file_copy()`.
-     *
+     * 
      * The given `flags` have different semantics than those documented
      * when hardlinking is used.  Specifically, both
      * #G_FILE_COPY_TARGET_DEFAULT_PERMS and #G_FILE_COPY_BACKUP are not
      * supported.  #G_FILE_COPY_NOFOLLOW_SYMLINKS treated as if it was
      * always given - if you want to follow symbolic links, you will need
      * to resolve them manually.
-     *
+     * 
      * Beware - do not use this function if `src` may be modified, and it's
      * undesirable for the changes to also be reflected in `dest`.  The
      * best use of this function is in the case where `src` and `dest` are
@@ -254,14 +260,10 @@ export namespace GSystem {
      * @param src Source file
      * @param dest Destination file
      * @param flags flags
-     * @param cancellable
+     * @param cancellable 
      */
-    function file_linkcopy(
-        src: Gio.File,
-        dest: Gio.File,
-        flags: Gio.FileCopyFlags,
-        cancellable: Gio.Cancellable | null,
-    ): boolean;
+    function file_linkcopy(src: Gio.File, dest: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * This function is similar to `gs_file_linkcopy()`, except it also uses
      * `gs_file_sync_data()` to ensure that `dest` is in stable storage
@@ -269,36 +271,35 @@ export namespace GSystem {
      * @param src Source file
      * @param dest Destination file
      * @param flags flags
-     * @param cancellable
+     * @param cancellable 
      */
-    function file_linkcopy_sync_data(
-        src: Gio.File,
-        dest: Gio.File,
-        flags: Gio.FileCopyFlags,
-        cancellable: Gio.Cancellable | null,
-    ): boolean;
+    function file_linkcopy_sync_data(src: Gio.File, dest: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Like `g_file_load_contents()`, except validates the contents are
      * UTF-8.
      * @param file Path to file whose contents must be UTF-8
-     * @param cancellable
+     * @param cancellable 
      */
-    function file_load_contents_utf8(file: Gio.File, cancellable: Gio.Cancellable | null): string;
+    function file_load_contents_utf8(file: Gio.File, cancellable: (Gio.Cancellable | null)): string;
+
     /**
      * Return a {@link GLib.Bytes} which references a readonly view of the contents of
      * `file`.  This function uses {@link GLib.MappedFile} internally.
      * @param file a {@link Gio.File}
-     * @param cancellable
+     * @param cancellable 
      * @returns a newly referenced {@link GLib.Bytes}
      */
-    function file_map_readonly(file: Gio.File, cancellable: Gio.Cancellable | null): GLib.Bytes;
+    function file_map_readonly(file: Gio.File, cancellable: (Gio.Cancellable | null)): GLib.Bytes;
+
     /**
      * On success, sets `out_fd` to a file descriptor for the directory
      * that can be used with UNIX functions such as `openat()`.
      * @param path Directory name
      * @param cancellable Cancellable
      */
-    function file_open_dir_fd(path: Gio.File, cancellable: Gio.Cancellable | null): [boolean, number];
+    function file_open_dir_fd(path: Gio.File, cancellable: (Gio.Cancellable | null)): [boolean, number];
+
     /**
      * On success, sets `out_fd` to a file descriptor for the directory
      * that can be used with UNIX functions such as `openat()`.
@@ -306,11 +307,8 @@ export namespace GSystem {
      * @param name Directory name
      * @param cancellable Cancellable
      */
-    function file_open_dir_fd_at(
-        parent_dfd: number,
-        name: string,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, number];
+    function file_open_dir_fd_at(parent_dfd: number, name: string, cancellable: (Gio.Cancellable | null)): [boolean, number];
+
     /**
      * Like `g_file_open_tmp()`, except the file will be created in the
      * provided `tmpdir`, and allows specification of the Unix `mode`, which
@@ -318,13 +316,10 @@ export namespace GSystem {
      * in `out_file`, and optionally `out_stream`.
      * @param tmpdir Directory to place temporary file
      * @param mode Default mode (will be affected by umask)
-     * @param cancellable
+     * @param cancellable 
      */
-    function file_open_in_tmpdir(
-        tmpdir: Gio.File,
-        mode: number,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Gio.File, Gio.OutputStream | null];
+    function file_open_in_tmpdir(tmpdir: Gio.File, mode: number, cancellable: (Gio.Cancellable | null)): [boolean, Gio.File, Gio.OutputStream | null];
+
     /**
      * Like `g_file_open_tmp()`, except the file will be created in the
      * provided `tmpdir`, and allows specification of the Unix `mode`, which
@@ -332,20 +327,18 @@ export namespace GSystem {
      * in `out_name`, and optionally `out_stream`.
      * @param tmpdir_fd Directory to place temporary file
      * @param mode Default mode (will be affected by umask)
-     * @param cancellable
+     * @param cancellable 
      */
-    function file_open_in_tmpdir_at(
-        tmpdir_fd: number,
-        mode: number,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, string, Gio.OutputStream | null];
+    function file_open_in_tmpdir_at(tmpdir_fd: number, mode: number, cancellable: (Gio.Cancellable | null)): [boolean, string, Gio.OutputStream | null];
+
     /**
      * Wrapper for `openat()` using `O_RDONLY` with `O_NOATIME` if available.
      * @param dfd File descriptor for directory
      * @param name Pathname, relative to `dfd`
      * @param cancellable Cancellable
      */
-    function file_openat_noatime(dfd: number, name: string, cancellable: Gio.Cancellable | null): [boolean, number];
+    function file_openat_noatime(dfd: number, name: string, cancellable: (Gio.Cancellable | null)): [boolean, number];
+
     /**
      * Like `g_file_read()`, but try to avoid updating the file's
      * access time.  This should be used by background scanning
@@ -354,7 +347,8 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns A new input stream, or `null` on error
      */
-    function file_read_noatime(file: Gio.File, cancellable: Gio.Cancellable | null): Gio.InputStream;
+    function file_read_noatime(file: Gio.File, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+
     /**
      * Return a {@link Gio.File} that contains the same path with symlinks
      * followed. That is, it's a {@link Gio.File} whose path is the result
@@ -362,7 +356,8 @@ export namespace GSystem {
      * @param file A {@link Gio.File}
      * @returns A new {@link Gio.File} or `null` if `file` is invalid
      */
-    function file_realpath(file: Gio.File): Gio.File | null;
+    function file_realpath(file: Gio.File): (Gio.File | null);
+
     /**
      * This function wraps the raw Unix function `rename()`.
      * @param from Current path
@@ -370,7 +365,8 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_rename(from: Gio.File, to: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+    function file_rename(from: Gio.File, to: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * For each attribute in `xattrs`, set its value on the file or
      * directory referred to by `file`.  This function does not remove any
@@ -379,14 +375,16 @@ export namespace GSystem {
      * @param xattrs Extended attributes
      * @param cancellable Cancellable
      */
-    function file_set_all_xattrs(file: Gio.File, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+    function file_set_all_xattrs(file: Gio.File, xattrs: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Wraps the UNIX `fsync()` function (or `fdatasync()`, if available), which
      * ensures that the data in `file` is on non-volatile storage.
      * @param file a {@link Gio.File}
-     * @param cancellable
+     * @param cancellable 
      */
-    function file_sync_data(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+    function file_sync_data(file: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Like `g_file_delete()`, except this function does not follow Unix
      * symbolic links, and will delete a symbolic link even if it's
@@ -396,7 +394,8 @@ export namespace GSystem {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
      */
-    function file_unlink(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+    function file_unlink(path: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Generate a name suitable for use as a temporary file.  This
      * function does no I/O; it is not guaranteed that a file with that
@@ -404,7 +403,8 @@ export namespace GSystem {
      * @param prefix String prepended to the result
      * @param suffix String suffixed to the result
      */
-    function fileutil_gen_tmp_name(prefix: string | null, suffix: string | null): string;
+    function fileutil_gen_tmp_name(prefix: (string | null), suffix: (string | null)): string;
+
     /**
      * Log structured data in an operating-system specific fashion.  The
      * parameter `opts` should be an array of UTF-8 KEY=VALUE strings.
@@ -415,22 +415,25 @@ export namespace GSystem {
      * @param message Text message to send
      * @param keys Optional structured data
      */
-    function log_structured(message: string, keys: string[] | null): void;
+    function log_structured(message: string, keys: (string[] | null)): void;
+
     /**
      * Like `gs_log_structured()`, but also print to standard output (if it
      * is not already connected to the system log).
      * @param message A message to log
      * @param keys Optional structured data
      */
-    function log_structured_print(message: string, keys: string[] | null): void;
+    function log_structured_print(message: string, keys: (string[] | null)): void;
+
     /**
      * Use `openat()` to open a directory, using a standard set of flags.
      * @param dfd File descriptor for origin directory
      * @param path Pathname, relative to `dfd`
      * @param follow Whether or not to follow symbolic links
-     * @param out_fd
+     * @param out_fd 
      */
     function opendirat(dfd: number, path: string, follow: boolean, out_fd: number): boolean;
+
     /**
      * Use `openat()` to open a directory, using a standard set of flags.
      * This function sets errno.
@@ -439,6 +442,7 @@ export namespace GSystem {
      * @param follow Whether or not to follow symbolic links
      */
     function opendirat_with_errno(dfd: number, path: string, follow: boolean): number;
+
     /**
      * Set `error` to an error with domain `G_IO_ERROR`, and code based on
      * the value of `saved_errno`.  The error message is set using a
@@ -446,16 +450,18 @@ export namespace GSystem {
      * @param error Error
      * @param saved_errno errno value
      */
-    function set_error_from_errno(error: GLib.Error | null, saved_errno: number): void;
+    function set_error_from_errno(error: (GLib.Error | null), saved_errno: number): void;
+
     /**
      * Recursively copy path `src` (which must be a directory) to the
      * target `dest`.  Any existing files are overwritten.
      * @param src Source path
      * @param dest Destination path
-     * @param cancellable
+     * @param cancellable 
      * @returns `true` on success
      */
-    function shutil_cp_a(src: Gio.File, dest: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+    function shutil_cp_a(src: Gio.File, dest: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Recursively copy path `src` (which must be a directory) to the
      * target `dest`.  If possible, hardlinks are used; if a hardlink is
@@ -463,17 +469,19 @@ export namespace GSystem {
      * overwritten.
      * @param src Source path
      * @param dest Destination path
-     * @param cancellable
+     * @param cancellable 
      * @returns `true` on success
      */
-    function shutil_cp_al_or_fallback(src: Gio.File, dest: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+    function shutil_cp_al_or_fallback(src: Gio.File, dest: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Recursively delete the filename referenced by `path`; it may be a
      * file or directory.  No error is thrown if `path` does not exist.
      * @param path A file or directory
-     * @param cancellable
+     * @param cancellable 
      */
-    function shutil_rm_rf(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+    function shutil_rm_rf(path: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Recursively delete the filename referenced by the combination of
      * the directory fd@dfd and `path`; it may be a file or directory.  No
@@ -482,7 +490,8 @@ export namespace GSystem {
      * @param path Path
      * @param cancellable Cancellable
      */
-    function shutil_rm_rf_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
+    function shutil_rm_rf_at(dfd: number, path: string, cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Use this function when you want your code to behave differently
      * depeneding on whether your program was started as a systemd unit,
@@ -490,20 +499,23 @@ export namespace GSystem {
      * @returns `true` if stdout is (probably) connnected to the systemd journal
      */
     function stdout_is_journal(): boolean;
+
     namespace Console {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * First, this class offers API to access the standard input and
      * output/error, streams as {@link Gio.InputStream} and {@link Gio.OutputStream}
      * respectively.
-     *
+     * 
      * In the case where the process is connected to a controlling
      * terminal, the `gs_console_get()` API is available, which exposes a
      * number of additional features such as no-echo password reading.
@@ -522,34 +534,24 @@ export namespace GSystem {
         $signals: Console.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Console.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Console.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Console.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Console.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Console.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Console.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Console.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * If the current process has an interactive console, return the
          * singleton {@link GSystem.Console} instance.  On Unix, this is equivalent to
@@ -557,52 +559,56 @@ export namespace GSystem {
          * this function will return `null`.
          */
         static get(): Console;
+
         static get_stderr(): Gio.OutputStream;
+
         static get_stdin(): Gio.InputStream;
+
         static get_stdout(): Gio.OutputStream;
 
         // Methods
-
         /**
          * The primary use case for this function is to output periodic
          * "status" or "progress" information.  The first time this function
          * is called, `line` will be output normally.  Subsequent invocations
          * will overwrite the previous.
-         *
+         * 
          * You must invoke `gs_console_end_status_line()` to return the console
          * to normal mode.  In particular, concurrent use of this function and
          * the stream returned by `gs_console_get_stdout()` results in undefined
          * behavior.
          * @param line String to output
-         * @param cancellable
+         * @param cancellable 
          */
-        begin_status_line(line: string, cancellable: Gio.Cancellable | null): boolean;
+        begin_status_line(line: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Complete a series of invocations of `gs_console_begin_status_line()`,
          * returning the stream to normal mode.  The last printed status line
          * remains on the console; if this is not desired, print an empty
          * string to clear it before invoking this function.
-         * @param cancellable
+         * @param cancellable 
          */
-        end_status_line(cancellable: Gio.Cancellable | null): boolean;
+        end_status_line(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Write `prompt` to standard output, then switch output echo off, read
          * a result string, then switch output echo back on.
          * @param prompt A string to output before reading the password
-         * @param cancellable
+         * @param cancellable 
          * @returns A string, or `null` on error
          */
-        read_password(prompt: string, cancellable: Gio.Cancellable | null): string;
+        read_password(prompt: string, cancellable: (Gio.Cancellable | null)): string;
     }
+
 
     namespace Subprocess {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': (pspec: GObject.ParamSpec) => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             context: SubprocessContext;
         }
@@ -612,7 +618,7 @@ export namespace GSystem {
      * This class wraps the lower-level `g_spawn_async_with_pipes()` API,
      * providing a more modern GIO-style API, such as returning
      * {@link Gio.InputStream} objects for child output pipes.
-     *
+     * 
      * One major advantage that GIO brings over the core GLib library is
      * comprehensive API for asynchronous I/O, such
      * `g_output_stream_splice_async()`.  This makes GSubprocess
@@ -628,7 +634,6 @@ export namespace GSystem {
         static $gtype: GObject.GType<Subprocess>;
 
         // Properties
-
         /**
          * @since 2.36
          * @construct-only
@@ -645,84 +650,74 @@ export namespace GSystem {
         $signals: Subprocess.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Subprocess.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](context: SubprocessContext, cancellable: Gio.Cancellable | null): Subprocess;
+        static ["new"](context: SubprocessContext, cancellable: (Gio.Cancellable | null)): Subprocess;
 
-        static new_simple_argv(
-            argv: string[],
-            stdout_disposition: SubprocessStreamDisposition,
-            stderr_disposition: SubprocessStreamDisposition,
-            cancellable: Gio.Cancellable | null,
-        ): Subprocess;
+        static new_simple_argv(argv: string[], stdout_disposition: SubprocessStreamDisposition, stderr_disposition: SubprocessStreamDisposition, cancellable: (Gio.Cancellable | null)): Subprocess;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Subprocess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Subprocess.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Subprocess.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Subprocess.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Subprocess.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Subprocess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Subprocess.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Subprocess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Use an operating-system specific method to attempt an immediate,
          * forceful termination of the process.  There is no mechanism to
          * determine whether or not the request itself was successful;
          * however, you can use `gs_subprocess_wait()` to monitor the status of
          * the process after calling this function.
-         *
+         * 
          * On Unix, this function sends `SIGKILL`.
          */
         force_exit(): void;
+
         /**
          * The identifier for this child process; it is valid as long as the
          * process `self` is referenced.  In particular, do
          * <emphasis>not</emphasis> call `g_spawn_close_pid()` on this value;
          * that is handled internally.
-         *
+         * 
          * On some Unix versions, it is possible for there to be a race
          * condition where `waitpid()` may have been called to collect the child
          * before any watches (such as that installed by
          * `gs_subprocess_add_watch()`) have fired.  If you are planning to use
          * native functions such as `kill()` on the pid, your program should
          * gracefully handle an `ESRCH` result to mitigate this.
-         *
+         * 
          * If you want to request process termination, using the high level
          * `gs_subprocess_request_exit()` and `gs_subprocess_force_exit()` API is
          * recommended.
          * @returns Operating-system specific identifier for child process
          */
         get_pid(): GLib.Pid;
+
         /**
          * @returns Pipe
          */
         get_stderr_pipe(): Gio.InputStream;
+
         /**
          * @returns Pipe
          */
         get_stdin_pipe(): Gio.OutputStream;
+
         /**
          * @returns Pipe
          */
         get_stdout_pipe(): Gio.InputStream;
+
         /**
          * This API uses an operating-system specific mechanism to request
          * that the subprocess gracefully exit.  This API is not available on
@@ -731,48 +726,50 @@ export namespace GSystem {
          * gracefully.  For example, if you are communicating via input or
          * output pipe with the child, many programs will automatically exit
          * when one of their standard input or output are closed.
-         *
+         * 
          * On Unix, this API sends `SIGTERM`.
-         *
+         * 
          * A `true` return value does <emphasis>not</emphasis> mean the
          * subprocess has exited, merely that an exit request was initiated.
          * You can use `gs_subprocess_add_watch()` to monitor the status of the
          * process after calling this function.
-         *
+         * 
          * This function returns `true` if the process has already exited.
          * @returns `true` if the operation is supported, `false` otherwise.
          */
         request_exit(): boolean;
+
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
          */
-        wait(cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
-        /**
-         * Start an asynchronous wait for the subprocess `self` to exit.
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback Invoked when process exits, or `cancellable` is cancelled
-         */
-        wait(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        wait(cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
+
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback Invoked when process exits, or `cancellable` is cancelled
          */
-        wait(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        wait(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Start an asynchronous wait for the subprocess `self` to exit.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback Invoked when process exits, or `cancellable` is cancelled
+         */
+        wait(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+
         /**
          * The exit status of the process will be stored in `out_exit_status`.
          * See the documentation of `g_spawn_check_exit_status()` for more
          * details.
-         *
+         * 
          * Note that `error` is not set if the process exits abnormally; you
          * must use `g_spawn_check_exit_status()` for that.
          * @param result a {@link Gio.AsyncResult}
          */
         wait_finish(result: Gio.AsyncResult): [boolean, number];
+
         /**
          * Synchronously wait for the subprocess to terminate, returning the
          * status code in `out_exit_status`.  See the documentation of
@@ -781,46 +778,48 @@ export namespace GSystem {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if `cancellable` was cancelled
          */
-        wait_sync(cancellable: Gio.Cancellable | null): [boolean, number];
+        wait_sync(cancellable: (Gio.Cancellable | null)): [boolean, number];
+
         /**
          * Combines `gs_subprocess_wait_sync()` with `g_spawn_check_exit_status()`.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if process exited abnormally, or `cancellable` was cancelled
          */
-        wait_sync_check(cancellable: Gio.Cancellable | null): boolean;
+        wait_sync_check(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -830,40 +829,41 @@ export namespace GSystem {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -873,17 +873,17 @@ export namespace GSystem {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace SubprocessContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::argv': (pspec: GObject.ParamSpec) => void;
+            "notify::argv": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             argv: string[];
         }
@@ -893,7 +893,7 @@ export namespace GSystem {
      * This class contains a set of options for launching child processes,
      * such as where its standard input and output will be directed, the
      * argument list, the environment, and more.
-     *
+     * 
      * While the {@link GSystem.Subprocess} class has high level functions covering
      * popular cases, use of this class allows access to more advanced
      * options.  It can also be used to launch multiple subprocesses with
@@ -904,14 +904,13 @@ export namespace GSystem {
         static $gtype: GObject.GType<SubprocessContext>;
 
         // Properties
-
         /**
          * Array of arguments passed to child process; must have at least
          * one element.  The first element has special handling - if it is
          * an not absolute path ( as determined by `g_path_is_absolute()` ),
          * then the system search path will be used.  See
          * {@link GLib.SpawnFlags.SEARCH_PATH}.
-         *
+         * 
          * Note that in order to use the Unix-specific argv0 functionality,
          * you must use the setter function
          * `gs_subprocess_context_set_args_and_argv0()`.  For more information
@@ -931,50 +930,41 @@ export namespace GSystem {
         $signals: SubprocessContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SubprocessContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](argv: string): SubprocessContext;
+        static ["new"](argv: string): SubprocessContext;
 
         static new_argv0(argv0: string, argv: string): SubprocessContext;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SubprocessContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SubprocessContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SubprocessContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SubprocessContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SubprocessContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SubprocessContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SubprocessContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SubprocessContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Append an argument to the child's argument vector.
          * @param arg An argument
          */
         argv_append(arg: string): void;
+
         /**
          * This allows you to open a pipe between the parent and child
          * processes, independent of the standard streams.  For this function,
          * the pipe is set up so that the parent can read, and the child can
          * write.  For the opposite version, see
          * `gs_subprocess_context_open_pipe_write()`.
-         *
+         * 
          * The returned `out_fdno` is the file descriptor number that the child
          * will see; you need to communicate this number via a separate
          * channel, such as the argument list.  For example, if you're using
@@ -983,68 +973,83 @@ export namespace GSystem {
          * @returns `true` on success, `false` on error (and `error` will be set)
          */
         open_pipe_read(): [boolean, Gio.InputStream, number];
+
         /**
          * Like `gs_subprocess_context_open_pipe_read()`, but returns a writable
          * channel from which the child process can read.
          * @returns `true` on success, `false` on error (and `error` will be set)
          */
         open_pipe_write(): [boolean, Gio.OutputStream, number];
+
         /**
-         * @param cwd
+         * @param cwd 
          */
         set_cwd(cwd: string): void;
+
         /**
          * Replace the environment that will be used for the child process.
          * The default is to inherit the current process.
          * @param environ Environment KEY=VALUE pairs
          */
         set_environment(environ: string[]): void;
+
         /**
-         * @param keep_descriptors
+         * @param keep_descriptors 
          */
         set_keep_descriptors(keep_descriptors: boolean): void;
+
         /**
-         * @param search_path
-         * @param search_path_from_envp
+         * @param search_path 
+         * @param search_path_from_envp 
          */
         set_search_path(search_path: boolean, search_path_from_envp: boolean): void;
+
         /**
-         * @param disposition
+         * @param disposition 
          */
         set_stderr_disposition(disposition: SubprocessStreamDisposition): void;
+
         /**
-         * @param fd
+         * @param fd 
          */
         set_stderr_fd(fd: number): void;
+
         /**
-         * @param path
+         * @param path 
          */
         set_stderr_file_path(path: string): void;
+
         /**
-         * @param disposition
+         * @param disposition 
          */
         set_stdin_disposition(disposition: SubprocessStreamDisposition): void;
+
         /**
-         * @param fd
+         * @param fd 
          */
         set_stdin_fd(fd: number): void;
+
         /**
-         * @param path
+         * @param path 
          */
         set_stdin_file_path(path: string): void;
+
         /**
-         * @param disposition
+         * @param disposition 
          */
         set_stdout_disposition(disposition: SubprocessStreamDisposition): void;
+
         /**
-         * @param fd
+         * @param fd 
          */
         set_stdout_fd(fd: number): void;
+
         /**
-         * @param path
+         * @param path 
          */
         set_stdout_file_path(path: string): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -1053,27 +1058,28 @@ export namespace GSystem {
         static $gtype: GObject.GType<DirFdIterator>;
 
         // Fields
-
         initialized: boolean;
+
         fd: number;
+
         padding_data: any[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                initialized: boolean;
-                fd: number;
-                padding_data: any[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            initialized: boolean;
+            fd: number;
+            padding_data: any[];
+        }>);
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

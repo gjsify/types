@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,9 +14,11 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace DBus {
+
     /**
      * DBus-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -26,12 +29,14 @@ export namespace DBus {
         STARTER,
     }
 
+
     /**
      * @gir-type Struct
      */
     class Connection {
         static $gtype: GObject.GType<Connection>;
     }
+
 
     /**
      * @gir-type Struct
@@ -40,12 +45,14 @@ export namespace DBus {
         static $gtype: GObject.GType<Error>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class Message {
         static $gtype: GObject.GType<Message>;
     }
+
 
     /**
      * @gir-type Struct
@@ -54,6 +61,7 @@ export namespace DBus {
         static $gtype: GObject.GType<MessageIter>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -61,11 +69,13 @@ export namespace DBus {
         static $gtype: GObject.GType<PendingCall>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

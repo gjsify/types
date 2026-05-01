@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -33,9 +34,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace ClutterGst {
+
     /**
      * ClutterGst-3.0
      */
+
 
     /**
      * @gir-type Enum
@@ -60,52 +63,61 @@ export namespace ClutterGst {
         DOWNLOAD,
     }
 
+
     /**
      * ClutterGst major version (e.g. "1", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MAJOR_VERSION: number;
+
     /**
      * ClutterGst micro version (e.g. "3", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MICRO_VERSION: number;
+
     /**
      * ClutterGst minor version (e.g. "2", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MINOR_VERSION: number;
+
     /**
      * ClutterGst full version (e.g. "1.2.3")
      */
     const VERSION: number;
+
     /**
      * ClutterGst full version, encoded as an hexadecimal value.
      */
     const VERSION_HEX: number;
+
     /**
      * ClutterGst full version, encoded as a string.
      */
     const VERSION_S: string;
+
     /**
      * Creates a new {@link ClutterGst.VideoSink} initialized with Clutter's Cogl context.
      * @returns the newly created {@link ClutterGst.VideoSink}.
      * @since 3.0
      */
     function create_video_sink(): Gst.Element;
+
     /**
      * Utility function to initialize both Clutter and GStreamer.
-     *
+     * 
      * This function should be called before calling any other GLib functions. If
      * this is not an option, your program must initialise the GLib thread system
      * using `g_thread_init()` before any other GLib functions are called.
      * @param argv A pointer to an array
      * @returns A {@link Clutter.InitError}.
      */
-    function init(argv: string[] | null): [Clutter.InitError, string[] | null];
+    function init(argv: (string[] | null)): [Clutter.InitError, string[] | null];
+
     /**
      * This function does the same work as `clutter_gst_init()`. Additionally, it
      * allows you to add your own command line options, and it automatically
      * generates nicely formatted --help output. Clutter's and GStreamer's
      * {@link GLib.OptionGroup}<!-- -->s are added to the set of available options.
-     *
+     * 
      * Your program must initialise the GLib thread system using `g_thread_init()`
      * before any other GLib functions are called.
      * @param argv A pointer to an array
@@ -115,12 +127,8 @@ export namespace ClutterGst {
      * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
      * @since 1.0
      */
-    function init_with_args(
-        argv: string[] | null,
-        parameter_string: string,
-        entries: GLib.OptionEntry,
-        translation_domain: string,
-    ): [Clutter.InitError, string[] | null];
+    function init_with_args(argv: (string[] | null), parameter_string: string, entries: GLib.OptionEntry, translation_domain: string): [Clutter.InitError, string[] | null];
+
     /**
      * @gir-type Flags
      */
@@ -144,20 +152,20 @@ export namespace ClutterGst {
         ACCURATE,
     }
 
+
     namespace Aspectratio {
         // Signal signatures
         interface SignalSignatures extends Content.SignalSignatures {
-            'notify::fill-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::paint-borders': (pspec: GObject.ParamSpec) => void;
-            'notify::frame': (pspec: GObject.ParamSpec) => void;
-            'notify::paint-frame': (pspec: GObject.ParamSpec) => void;
-            'notify::paint-overlays': (pspec: GObject.ParamSpec) => void;
-            'notify::player': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            "notify::fill-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::paint-borders": (pspec: GObject.ParamSpec) => void;
+            "notify::frame": (pspec: GObject.ParamSpec) => void;
+            "notify::paint-frame": (pspec: GObject.ParamSpec) => void;
+            "notify::paint-overlays": (pspec: GObject.ParamSpec) => void;
+            "notify::player": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Content.ConstructorProps, Clutter.Content.ConstructorProps {
             fill_allocation: boolean;
             fillAllocation: boolean;
@@ -169,7 +177,7 @@ export namespace ClutterGst {
     /**
      * Implementation of {@link ClutterGst.Content} that displays video streams
      * with respects to their aspect ratio.
-     *
+     * 
      * The {@link ClutterGst.Aspectratio} structure contains only private data and
      * should not be accessed directly.
      * @gir-type Class
@@ -178,7 +186,6 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Aspectratio>;
 
         // Properties
-
         /**
          * Whether the content should fill its allocation with video rather
          * than adding borders.
@@ -187,6 +194,7 @@ export namespace ClutterGst {
          */
         get fill_allocation(): boolean;
         set fill_allocation(val: boolean);
+
         /**
          * Whether the content should fill its allocation with video rather
          * than adding borders.
@@ -195,6 +203,7 @@ export namespace ClutterGst {
          */
         get fillAllocation(): boolean;
         set fillAllocation(val: boolean);
+
         /**
          * Whether or not paint borders on the sides of the video
          * @since 3.0
@@ -202,6 +211,7 @@ export namespace ClutterGst {
          */
         get paint_borders(): boolean;
         set paint_borders(val: boolean);
+
         /**
          * Whether or not paint borders on the sides of the video
          * @since 3.0
@@ -220,87 +230,85 @@ export namespace ClutterGst {
         $signals: Aspectratio.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Aspectratio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Aspectratio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Aspectratio.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Aspectratio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Aspectratio.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Aspectratio.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Aspectratio.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Aspectratio.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Aspectratio.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Aspectratio.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Aspectratio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Aspectratio.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Aspectratio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        static ["new"](): Clutter.Content;
 
-        static ['new'](): Clutter.Content;
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
          */
         get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          */
         invalidate(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_attached(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_detached(actor: Clutter.Actor): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          * @virtual
          */
         vfunc_invalidate(): void;
+
         /**
-         * @param actor
-         * @param node
+         * @param actor 
+         * @param node 
          * @virtual
          */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode): void;
     }
+
 
     namespace Camera {
         // Signal signatures
@@ -311,36 +319,35 @@ export namespace ClutterGst {
              * @action
              * @run-last
              */
-            'photo-saved': () => void;
+            "photo-saved": () => void;
             /**
              * The ::photo-taken signal is emitted when a photo was taken.
              * @signal
              * @action
              * @run-last
              */
-            'photo-taken': (arg0: GdkPixbuf.Pixbuf) => void;
+            "photo-taken": (arg0: GdkPixbuf.Pixbuf) => void;
             /**
              * The ::ready-for-capture signal is emitted whenever the value of
              * clutter_gst_camera_is_ready_for_capture changes.
              * @signal
              * @run-last
              */
-            'ready-for-capture': (arg0: boolean) => void;
+            "ready-for-capture": (arg0: boolean) => void;
             /**
              * The ::video-saved signal is emitted when a video was saved to disk.
              * @signal
              * @action
              * @run-last
              */
-            'video-saved': () => void;
-            'notify::device': (pspec: GObject.ParamSpec) => void;
-            'notify::audio-volume': (pspec: GObject.ParamSpec) => void;
-            'notify::idle': (pspec: GObject.ParamSpec) => void;
-            'notify::playing': (pspec: GObject.ParamSpec) => void;
+            "video-saved": () => void;
+            "notify::device": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::idle": (pspec: GObject.ParamSpec) => void;
+            "notify::playing": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Player.ConstructorProps {
             device: CameraDevice;
         }
@@ -349,7 +356,7 @@ export namespace ClutterGst {
     /**
      * Implementation of {@link ClutterGst.Player} that displays camera streams
      * using GStreamer.
-     *
+     * 
      * The {@link ClutterGst.Camera} structure contains only private data and
      * should not be accessed directly.
      * @gir-type Class
@@ -358,7 +365,6 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Camera>;
 
         // Properties
-
         get device(): CameraDevice;
         set device(val: CameraDevice);
 
@@ -372,75 +378,70 @@ export namespace ClutterGst {
         $signals: Camera.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Camera.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Camera;
+        static ["new"](): Camera;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Camera.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Camera.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Camera.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_photo_saved(): void;
+
         /**
-         * @param pixbuf
+         * @param pixbuf 
          * @virtual
          */
         vfunc_photo_taken(pixbuf: GdkPixbuf.Pixbuf): void;
+
         /**
-         * @param ready
+         * @param ready 
          * @virtual
          */
         vfunc_ready_for_capture(ready: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_video_saved(): void;
 
         // Methods
-
         /**
-         * @param cur_value
+         * @param cur_value 
          */
         get_brightness(cur_value: number): boolean;
+
         /**
-         * @param min_value
-         * @param max_value
-         * @param default_value
+         * @param min_value 
+         * @param max_value 
+         * @param default_value 
          */
         get_brightness_range(min_value: number, max_value: number, default_value: number): boolean;
+
         /**
          * Retrieve the current selected camera device.
          * @returns The currently selected camera device
          */
         get_camera_device(): CameraDevice;
+
         /**
          * Retrieve the current value for the color balance property `property`,
-         *
+         * 
          * This method will return FALSE if `property` does not exist or color balance is not
          * supported on `self`.
          * See `clutter_gst_camera_supports_color_balance()`.
@@ -449,9 +450,10 @@ export namespace ClutterGst {
          * @returns `true` if successful, `false` otherwise
          */
         get_color_balance_property(property: string, cur_value: number): boolean;
+
         /**
          * Retrieve the minimum, maximum and default values for the color balance property `property`,
-         *
+         * 
          * This method will return FALSE if `property` does not exist or color balance is not
          * supported on `self`.
          * See `clutter_gst_camera_supports_color_balance()`.
@@ -461,30 +463,29 @@ export namespace ClutterGst {
          * @param default_value Pointer to store the default value of `property`, or `null`
          * @returns `true` if successful, `false` otherwise
          */
-        get_color_balance_property_range(
-            property: string,
-            min_value: number,
-            max_value: number,
-            default_value: number,
-        ): boolean;
+        get_color_balance_property_range(property: string, min_value: number, max_value: number, default_value: number): boolean;
+
         /**
-         * @param cur_value
+         * @param cur_value 
          */
         get_contrast(cur_value: number): boolean;
+
         /**
-         * @param min_value
-         * @param max_value
-         * @param default_value
+         * @param min_value 
+         * @param max_value 
+         * @param default_value 
          */
         get_contrast_range(min_value: number, max_value: number, default_value: number): boolean;
+
         /**
          * Retrieve the current filter being used.
          * @returns The current filter or `null` if none is set
          */
         get_filter(): Gst.Element;
+
         /**
          * Retrieve the current gamma value.
-         *
+         * 
          * This method will return FALSE if gamma correction is not
          * supported on `self`.
          * See `clutter_gst_camera_supports_gamma_correction()`.
@@ -492,9 +493,10 @@ export namespace ClutterGst {
          * @returns `true` if successful, `false` otherwise
          */
         get_gamma(cur_value: number): boolean;
+
         /**
          * Retrieve the minimum, maximum and default gamma values.
-         *
+         * 
          * This method will return FALSE if gamma correction is not
          * supported on `self`.
          * See `clutter_gst_camera_supports_gamma_correction()`.
@@ -504,56 +506,66 @@ export namespace ClutterGst {
          * @returns `true` if successful, `false` otherwise
          */
         get_gamma_range(min_value: number, max_value: number, default_value: number): boolean;
+
         /**
-         * @param cur_value
+         * @param cur_value 
          */
         get_hue(cur_value: number): boolean;
+
         /**
-         * @param min_value
-         * @param max_value
-         * @param default_value
+         * @param min_value 
+         * @param max_value 
+         * @param default_value 
          */
         get_hue_range(min_value: number, max_value: number, default_value: number): boolean;
+
         /**
-         * @param cur_value
+         * @param cur_value 
          */
         get_saturation(cur_value: number): boolean;
+
         /**
-         * @param min_value
-         * @param max_value
-         * @param default_value
+         * @param min_value 
+         * @param max_value 
+         * @param default_value 
          */
         get_saturation_range(min_value: number, max_value: number, default_value: number): boolean;
+
         /**
          * Check whether the `self` is ready for video/photo capture.
          * @returns `true` if `self` is ready for capture, `false` otherwise
          */
         is_ready_for_capture(): boolean;
+
         /**
          * Check whether the `self` is recording video.
          * @returns `true` if `self` is recording video, `false` otherwise
          */
         is_recording_video(): boolean;
+
         /**
          * Remove the current filter, if any.
          * @returns `true` on success, `false` otherwise
          */
         remove_filter(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_brightness(value: number): boolean;
+
         /**
          * Set the new active camera device.
          * @param device a {@link ClutterGst.CameraDevice}
          * @returns `true` on success, `false` otherwise
          */
         set_camera_device(device: CameraDevice): boolean;
+
         /**
          * Set the value for the color balance property `property` to `value`.
          * Allowed values can be retrieved with
          * `clutter_gst_camera_get_color_balance_property_range()`.
-         *
+         * 
          * This method will return FALSE if `property` does not exist or color balance is not
          * supported on `self`.
          * See `clutter_gst_camera_supports_color_balance()`.
@@ -562,10 +574,12 @@ export namespace ClutterGst {
          * @returns `true` if successful, `false` otherwise
          */
         set_color_balance_property(property: string, value: number): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_contrast(value: number): boolean;
+
         /**
          * Set the filter element to be used.
          * Filters can be used for effects, image processing, etc.
@@ -573,11 +587,12 @@ export namespace ClutterGst {
          * @returns `true` on success, `false` otherwise
          */
         set_filter(filter: Gst.Element): boolean;
+
         /**
          * Set the gamma value.
          * Allowed values can be retrieved with
          * `clutter_gst_camera_get_gamma_range()`.
-         *
+         * 
          * This method will return FALSE if gamma correction is not
          * supported on `self`.
          * See `clutter_gst_camera_supports_gamma_correction()`.
@@ -585,58 +600,68 @@ export namespace ClutterGst {
          * @returns `true` if successful, `false` otherwise
          */
         set_gamma(value: number): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_hue(value: number): boolean;
+
         /**
          * Set the encoding profile to be used for photo captures.
          * The default profile saves photos as JPEG images.
          * @param profile A {@link GstPbutils.EncodingProfile} to be used for photo captures.
          */
         set_photo_profile(profile: GstPbutils.EncodingProfile): void;
+
         /**
-         * @param value
+         * @param value 
          */
         set_saturation(value: number): boolean;
+
         /**
          * Set the encoding profile to be used for video recording.
          * The default profile saves videos as Ogg/Theora videos.
          * @param profile A {@link GstPbutils.EncodingProfile} to be used for video recording.
          */
         set_video_profile(profile: GstPbutils.EncodingProfile): void;
+
         /**
          * Start a video recording with the `self` and save it to `filename`.
          * This method requires that `self` is playing and ready for capture.
-         *
+         * 
          * The ::video-saved signal will be emitted when the video is saved.
          * @param filename the name of the video file to where the recording will be saved
          * @returns `true` if the video recording was successfully started, `false` otherwise
          */
         start_video_recording(filename: string): boolean;
+
         /**
          * Stop recording video on the `self`.
          */
         stop_video_recording(): void;
+
         /**
          * Check whether the `self` supports color balance.
          * @returns `true` if `self` supports color balance, `false` otherwise
          */
         supports_color_balance(): boolean;
+
         /**
          * Check whether the `self` supports gamma correction.
          * @returns `true` if `self` supports gamma correction, `false` otherwise
          */
         supports_gamma_correction(): boolean;
+
         /**
          * Take a photo with the `self` and save it to `filename`.
          * This method requires that `self` is playing and ready for capture.
-         *
+         * 
          * The ::photo-saved signal will be emitted when the video is saved.
          * @param filename the name of the file to where the photo will be saved
          * @returns `true` if the photo was successfully captured, `false` otherwise
          */
         take_photo(filename: string): boolean;
+
         /**
          * Take a photo with the `self` and emit it in the ::photo-taken signal as a
          * {@link GdkPixbuf.Pixbuf}.
@@ -644,76 +669,88 @@ export namespace ClutterGst {
          * @returns `true` if the photo was successfully captured, `false` otherwise
          */
         take_photo_pixbuf(): boolean;
+
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
          * @default 0.5
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get audio_volume(): number;
         set audio_volume(val: number);
+
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
          * @default 0.5
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get audioVolume(): number;
         set audioVolume(val: number);
+
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
          * @read-only
          * @default true
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
+
         /**
          * Whether the {@link ClutterGst.Player} actor is playing.
          * @default false
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get playing(): boolean;
         set playing(val: boolean);
+
         /**
          * Retrieves the playback volume of `self`.
          * @returns The playback volume between 0.0 and 1.0
          */
         get_audio_volume(): number;
+
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
          * @returns the {@link ClutterGst.Frame} of the last frame.
          */
         get_frame(): Frame;
+
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
          */
         get_idle(): boolean;
+
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
          * @returns the {@link Gst.Pipeline} element used by the player
          */
         get_pipeline(): Gst.Element;
+
         /**
          * Retrieves the playing status of `self`.
          * @returns `true` if playing, `false` if stopped.
          */
         get_playing(): boolean;
+
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
          * @returns the {@link ClutterGst.VideoSink} element used by the player
          */
         get_video_sink(): VideoSink;
+
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
          */
         set_audio_volume(volume: number): void;
+
         /**
          * Starts or stops playing of `self`.
-         *
+         * 
          * The implementation might be asynchronous, so the way to know whether
          * the actual playing state of the `self` is to use the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}
          * signal on the {@link ClutterGst.Player.playing} property and then retrieve the
@@ -722,64 +759,76 @@ export namespace ClutterGst {
          * @param playing `true` to start playing
          */
         set_playing(playing: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_eos(): void;
+
         /**
-         * @param error
+         * @param error 
          * @virtual
          */
         vfunc_error(error: GLib.Error): void;
+
         /**
          * Retrieves the playback volume of `self`.
          * @virtual
          */
         vfunc_get_audio_volume(): number;
+
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
          * @virtual
          */
         vfunc_get_frame(): Frame;
+
         /**
          * Get the idle state of the pipeline.
          * @virtual
          */
         vfunc_get_idle(): boolean;
+
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
          * @virtual
          */
         vfunc_get_pipeline(): Gst.Element;
+
         /**
          * Retrieves the playing status of `self`.
          * @virtual
          */
         vfunc_get_playing(): boolean;
+
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
          * @virtual
          */
         vfunc_get_video_sink(): VideoSink;
+
         /**
-         * @param frame
+         * @param frame 
          * @virtual
          */
         vfunc_new_frame(frame: Frame): void;
+
         /**
          * @virtual
          */
         vfunc_ready(): void;
+
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
          * @virtual
          */
         vfunc_set_audio_volume(volume: number): void;
+
         /**
          * Starts or stops playing of `self`.
-         *
+         * 
          * The implementation might be asynchronous, so the way to know whether
          * the actual playing state of the `self` is to use the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}
          * signal on the {@link ClutterGst.Player.playing} property and then retrieve the
@@ -789,13 +838,15 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_set_playing(playing: boolean): void;
+
         /**
-         * @param width
-         * @param height
+         * @param width 
+         * @param height 
          * @virtual
          */
         vfunc_size_change(width: number, height: number): void;
     }
+
 
     namespace CameraDevice {
         // Signal signatures
@@ -806,14 +857,13 @@ export namespace ClutterGst {
              * @signal
              * @run-last
              */
-            'capture-resolution-changed': (arg0: number, arg1: number) => void;
-            'notify::element-factory': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::node': (pspec: GObject.ParamSpec) => void;
+            "capture-resolution-changed": (arg0: number, arg1: number) => void;
+            "notify::element-factory": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::node": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             element_factory: Gst.ElementFactory;
             elementFactory: Gst.ElementFactory;
@@ -824,7 +874,7 @@ export namespace ClutterGst {
 
     /**
      * GObject representing a camera device using GStreamer.
-     *
+     * 
      * The {@link ClutterGst.CameraDevice} structure contains only private data and
      * should not be accessed directly.
      * @gir-type Class
@@ -833,23 +883,25 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<CameraDevice>;
 
         // Properties
-
         /**
          * The GstElementFactory for this device.
          * @construct-only
          */
         get element_factory(): Gst.ElementFactory;
+
         /**
          * The GstElementFactory for this device.
          * @construct-only
          */
         get elementFactory(): Gst.ElementFactory;
+
         /**
          * The device name.
          * @construct-only
          * @default null
          */
         get name(): string;
+
         /**
          * The device node.
          * @construct-only
@@ -867,62 +919,55 @@ export namespace ClutterGst {
         $signals: CameraDevice.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraDevice.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraDevice.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraDevice.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraDevice.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraDevice.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraDevice.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param width
-         * @param height
+         * @param width 
+         * @param height 
          * @virtual
          */
         vfunc_capture_resolution_changed(width: number, height: number): void;
 
         // Methods
-
         /**
          * Retrieve the current capture resolution being used by `device`.
          */
         get_capture_resolution(): [number, number];
+
         /**
          * Retrieve the name of the `device`.
          * @returns the device name.
          */
         get_name(): string;
+
         /**
          * Retrieve the node (location) of the `device`.
          * @returns the device node.
          */
         get_node(): string;
+
         /**
          * Retrieve the supported resolutions of the `device`.
          * @returns an array of {@link ClutterGst.VideoResolution} with the                                supported resolutions.
          */
         get_supported_resolutions(): VideoResolution[];
+
         /**
          * Set the capture resolution to be used by `device`.
          * @param width The new capture resolution width to use
@@ -930,6 +975,7 @@ export namespace ClutterGst {
          */
         set_capture_resolution(width: number, height: number): void;
     }
+
 
     namespace CameraManager {
         // Signal signatures
@@ -940,24 +986,25 @@ export namespace ClutterGst {
              * @signal
              * @run-last
              */
-            'camera-added': (arg0: CameraDevice) => void;
+            "camera-added": (arg0: CameraDevice) => void;
             /**
              * The ::camera-removed signal is emitted whenever a camera device
              * is unplugged/removed from the system.
              * @signal
              * @run-last
              */
-            'camera-removed': (arg0: CameraDevice) => void;
+            "camera-removed": (arg0: CameraDevice) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * An object to list available cameras on the system.
-     *
+     * 
      * The {@link ClutterGst.CameraManager} structure contains only private data and
      * should not be accessed directly.
      * @gir-type Class
@@ -975,50 +1022,40 @@ export namespace ClutterGst {
         $signals: CameraManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CameraManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CameraManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CameraManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CameraManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CameraManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CameraManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CameraManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CameraManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CameraManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get the camera manager.
-         *
+         * 
          * <note>This function has to be called from Clutter's main
          * thread.</note>
          */
         static get_default(): CameraManager;
 
         // Methods
-
         /**
          * Retrieve an array of supported camera devices.
          * @returns An array of {@link ClutterGst.CameraDevice} representing                                the supported camera devices
          */
         get_camera_devices(): CameraDevice[];
     }
+
 
     namespace Content {
         // Signal signatures
@@ -1028,16 +1065,15 @@ export namespace ClutterGst {
              * @signal
              * @run-last
              */
-            'size-change': (arg0: number, arg1: number) => void;
-            'notify::frame': (pspec: GObject.ParamSpec) => void;
-            'notify::paint-frame': (pspec: GObject.ParamSpec) => void;
-            'notify::paint-overlays': (pspec: GObject.ParamSpec) => void;
-            'notify::player': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            "size-change": (arg0: number, arg1: number) => void;
+            "notify::frame": (pspec: GObject.ParamSpec) => void;
+            "notify::paint-frame": (pspec: GObject.ParamSpec) => void;
+            "notify::paint-overlays": (pspec: GObject.ParamSpec) => void;
+            "notify::player": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {
             frame: Frame;
             paint_frame: boolean;
@@ -1059,31 +1095,36 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Content>;
 
         // Properties
-
         get frame(): Frame;
         set frame(val: Frame);
+
         /**
          * @default true
          */
         get paint_frame(): boolean;
         set paint_frame(val: boolean);
+
         /**
          * @default true
          */
         get paintFrame(): boolean;
         set paintFrame(val: boolean);
+
         /**
          * @default true
          */
         get paint_overlays(): boolean;
         set paint_overlays(val: boolean);
+
         /**
          * @default true
          */
         get paintOverlays(): boolean;
         set paintOverlays(val: boolean);
+
         get player(): GObject.Object;
         set player(val: GObject.Object);
+
         get sink(): VideoSink;
         set sink(val: VideoSink);
 
@@ -1097,147 +1138,149 @@ export namespace ClutterGst {
         $signals: Content.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Content.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Content.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Content.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Content.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Content.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Content.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Content.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Content.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Content.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Content.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        static ["new"](): Clutter.Content;
 
-        static ['new'](): Clutter.Content;
         /**
          * @param sink A {@link ClutterGst.VideoSink}
          */
         static new_with_sink(sink: VideoSink): Clutter.Content;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_has_painting_content(): boolean;
 
         // Methods
-
         /**
          * @returns The {@link ClutterGst.Frame} currently attached to `self`.
          */
         get_frame(): Frame;
+
         /**
          * @returns The {@link ClutterGst.Overlays} currently attached to `self`.
          */
         get_overlays(): Overlays;
+
         /**
          * @returns The {@link ClutterGst.Player} currently attached to `self`.
          */
         get_player(): Player;
+
         /**
          * @returns The {@link ClutterGst.VideoSink} currently attached to `self`.
          */
         get_sink(): VideoSink;
+
         /**
          * Set the current frame.
          * @param frame A {@link ClutterGst.Frame}
          */
         set_frame(frame: Frame): void;
+
         /**
          * @param player A {@link ClutterGst.Player} or `null`
          */
         set_player(player: Player): void;
+
         /**
          * @param sink A {@link ClutterGst.VideoSink} or `null`
          */
         set_sink(sink: VideoSink): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
          */
         get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          */
         invalidate(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_attached(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_detached(actor: Clutter.Actor): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          * @virtual
          */
         vfunc_invalidate(): void;
+
         /**
-         * @param actor
-         * @param node
+         * @param actor 
+         * @param node 
          * @virtual
          */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode): void;
     }
 
+
     namespace Crop {
         // Signal signatures
         interface SignalSignatures extends Content.SignalSignatures {
-            'notify::cull-backface': (pspec: GObject.ParamSpec) => void;
-            'notify::input-region': (pspec: GObject.ParamSpec) => void;
-            'notify::output-region': (pspec: GObject.ParamSpec) => void;
-            'notify::paint-borders': (pspec: GObject.ParamSpec) => void;
-            'notify::frame': (pspec: GObject.ParamSpec) => void;
-            'notify::paint-frame': (pspec: GObject.ParamSpec) => void;
-            'notify::paint-overlays': (pspec: GObject.ParamSpec) => void;
-            'notify::player': (pspec: GObject.ParamSpec) => void;
-            'notify::sink': (pspec: GObject.ParamSpec) => void;
+            "notify::cull-backface": (pspec: GObject.ParamSpec) => void;
+            "notify::input-region": (pspec: GObject.ParamSpec) => void;
+            "notify::output-region": (pspec: GObject.ParamSpec) => void;
+            "notify::paint-borders": (pspec: GObject.ParamSpec) => void;
+            "notify::frame": (pspec: GObject.ParamSpec) => void;
+            "notify::paint-frame": (pspec: GObject.ParamSpec) => void;
+            "notify::paint-overlays": (pspec: GObject.ParamSpec) => void;
+            "notify::player": (pspec: GObject.ParamSpec) => void;
+            "notify::sink": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Content.ConstructorProps, Clutter.Content.ConstructorProps {
             cull_backface: boolean;
             cullBackface: boolean;
@@ -1253,7 +1296,7 @@ export namespace ClutterGst {
     /**
      * Implementation of {@link ClutterGst.Content} that displays a sub region of
      * video streams.
-     *
+     * 
      * The {@link ClutterGst.Crop} structure contains only private data and
      * should not be accessed directly.
      * @gir-type Class
@@ -1262,7 +1305,6 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Crop>;
 
         // Properties
-
         /**
          * Whether to cull the backface of the actor
          * @since 3.0
@@ -1270,6 +1312,7 @@ export namespace ClutterGst {
          */
         get cull_backface(): boolean;
         set cull_backface(val: boolean);
+
         /**
          * Whether to cull the backface of the actor
          * @since 3.0
@@ -1277,30 +1320,35 @@ export namespace ClutterGst {
          */
         get cullBackface(): boolean;
         set cullBackface(val: boolean);
+
         /**
          * Input region in the video frame (all values between 0 and 1).
          * @since 3.0
          */
         get input_region(): Box;
         set input_region(val: Box);
+
         /**
          * Input region in the video frame (all values between 0 and 1).
          * @since 3.0
          */
         get inputRegion(): Box;
         set inputRegion(val: Box);
+
         /**
          * Output region in the actor's allocation (all values between 0 and 1).
          * @since 3.0
          */
         get output_region(): Box;
         set output_region(val: Box);
+
         /**
          * Output region in the actor's allocation (all values between 0 and 1).
          * @since 3.0
          */
         get outputRegion(): Box;
         set outputRegion(val: Box);
+
         /**
          * Whether or not paint borders on the sides of the video
          * @since 3.0
@@ -1308,6 +1356,7 @@ export namespace ClutterGst {
          */
         get paint_borders(): boolean;
         set paint_borders(val: boolean);
+
         /**
          * Whether or not paint borders on the sides of the video
          * @since 3.0
@@ -1326,88 +1375,87 @@ export namespace ClutterGst {
         $signals: Crop.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Crop.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Crop;
-        // Conflicted with ClutterGst.Content.new
+        static ["new"](): Crop;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with ClutterGst.Content.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Crop.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Crop.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Crop.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Crop.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Crop.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Crop.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Crop.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Crop.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Crop.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Crop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Crop.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Crop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
          */
         get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          */
         invalidate(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_attached(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_detached(actor: Clutter.Actor): void;
+
         /**
          * Retrieves the natural size of the `content`, if any.
-         *
+         * 
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
+
         /**
          * Invalidates a {@link Clutter.Content}.
-         *
+         * 
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
          * @virtual
          */
         vfunc_invalidate(): void;
+
         /**
-         * @param actor
-         * @param node
+         * @param actor 
+         * @param node 
          * @virtual
          */
         vfunc_paint_content(actor: Clutter.Actor, node: Clutter.PaintNode): void;
     }
+
 
     namespace Playback {
         // Signal signatures
@@ -1419,28 +1467,27 @@ export namespace ClutterGst {
              * @since 1.4
              * @run-last
              */
-            'should-buffer': (arg0: Gst.Query) => boolean | void;
-            'notify::audio-stream': (pspec: GObject.ParamSpec) => void;
-            'notify::audio-streams': (pspec: GObject.ParamSpec) => void;
-            'notify::buffer-fill': (pspec: GObject.ParamSpec) => void;
-            'notify::can-seek': (pspec: GObject.ParamSpec) => void;
-            'notify::duration': (pspec: GObject.ParamSpec) => void;
-            'notify::in-seek': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::seek-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::subtitle-font-name': (pspec: GObject.ParamSpec) => void;
-            'notify::subtitle-track': (pspec: GObject.ParamSpec) => void;
-            'notify::subtitle-tracks': (pspec: GObject.ParamSpec) => void;
-            'notify::subtitle-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
-            'notify::audio-volume': (pspec: GObject.ParamSpec) => void;
-            'notify::idle': (pspec: GObject.ParamSpec) => void;
-            'notify::playing': (pspec: GObject.ParamSpec) => void;
+            "should-buffer": (arg0: Gst.Query) => (boolean | void);
+            "notify::audio-stream": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-streams": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer-fill": (pspec: GObject.ParamSpec) => void;
+            "notify::can-seek": (pspec: GObject.ParamSpec) => void;
+            "notify::duration": (pspec: GObject.ParamSpec) => void;
+            "notify::in-seek": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::seek-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle-font-name": (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle-track": (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle-tracks": (pspec: GObject.ParamSpec) => void;
+            "notify::subtitle-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
+            "notify::audio-volume": (pspec: GObject.ParamSpec) => void;
+            "notify::idle": (pspec: GObject.ParamSpec) => void;
+            "notify::playing": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Player.ConstructorProps {
             audio_stream: number;
             audioStream: number;
@@ -1473,7 +1520,7 @@ export namespace ClutterGst {
     /**
      * Implementation of {@link ClutterGst.Playback} that displays media streams
      * using GStreamer.
-     *
+     * 
      * The {@link ClutterGst.Playback} structure contains only private data and
      * should not be accessed directly.
      * @gir-type Class
@@ -1482,7 +1529,6 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Playback>;
 
         // Properties
-
         /**
          * Index of the current audio stream.
          * @since 1.4
@@ -1490,6 +1536,7 @@ export namespace ClutterGst {
          */
         get audio_stream(): number;
         set audio_stream(val: number);
+
         /**
          * Index of the current audio stream.
          * @since 1.4
@@ -1497,18 +1544,21 @@ export namespace ClutterGst {
          */
         get audioStream(): number;
         set audioStream(val: number);
+
         /**
          * List of audio streams available on the current media.
          * @since 1.4
          * @read-only
          */
         get audio_streams(): any;
+
         /**
          * List of audio streams available on the current media.
          * @since 1.4
          * @read-only
          */
         get audioStreams(): any;
+
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
@@ -1516,6 +1566,7 @@ export namespace ClutterGst {
          * @default 0
          */
         get buffer_fill(): number;
+
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
@@ -1523,24 +1574,28 @@ export namespace ClutterGst {
          * @default 0
          */
         get bufferFill(): number;
+
         /**
          * Whether the current stream is seekable.
          * @read-only
          * @default false
          */
         get can_seek(): boolean;
+
         /**
          * Whether the current stream is seekable.
          * @read-only
          * @default false
          */
         get canSeek(): boolean;
+
         /**
          * The duration of the current stream, in seconds
          * @read-only
          * @default 0
          */
         get duration(): number;
+
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
@@ -1548,6 +1603,7 @@ export namespace ClutterGst {
          * @default false
          */
         get in_seek(): boolean;
+
         /**
          * Whether or not the stream is being seeked.
          * @since 1.6
@@ -1555,6 +1611,7 @@ export namespace ClutterGst {
          * @default false
          */
         get inSeek(): boolean;
+
         /**
          * The current progress of the playback, as a normalized
          * value between 0.0 and 1.0.
@@ -1562,6 +1619,7 @@ export namespace ClutterGst {
          */
         get progress(): number;
         set progress(val: number);
+
         /**
          * Flags to use when seeking.
          * @since 1.4
@@ -1569,6 +1627,7 @@ export namespace ClutterGst {
          */
         get seek_flags(): SeekFlags;
         set seek_flags(val: SeekFlags);
+
         /**
          * Flags to use when seeking.
          * @since 1.4
@@ -1576,6 +1635,7 @@ export namespace ClutterGst {
          */
         get seekFlags(): SeekFlags;
         set seekFlags(val: SeekFlags);
+
         /**
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
@@ -1584,6 +1644,7 @@ export namespace ClutterGst {
          */
         get subtitle_font_name(): string;
         set subtitle_font_name(val: string);
+
         /**
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
@@ -1592,6 +1653,7 @@ export namespace ClutterGst {
          */
         get subtitleFontName(): string;
         set subtitleFontName(val: string);
+
         /**
          * Current subtitle track being displayed.
          * @since 1.4
@@ -1599,6 +1661,7 @@ export namespace ClutterGst {
          */
         get subtitle_track(): number;
         set subtitle_track(val: number);
+
         /**
          * Current subtitle track being displayed.
          * @since 1.4
@@ -1606,36 +1669,42 @@ export namespace ClutterGst {
          */
         get subtitleTrack(): number;
         set subtitleTrack(val: number);
+
         /**
          * List of subtitle tracks available.
          * @since 1.4
          * @read-only
          */
         get subtitle_tracks(): any;
+
         /**
          * List of subtitle tracks available.
          * @since 1.4
          * @read-only
          */
         get subtitleTracks(): any;
+
         /**
          * The location of a subtitle file, expressed as a valid URI.
          * @default null
          */
         get subtitle_uri(): string;
         set subtitle_uri(val: string);
+
         /**
          * The location of a subtitle file, expressed as a valid URI.
          * @default null
          */
         get subtitleUri(): string;
         set subtitleUri(val: string);
+
         /**
          * The location of a media file, expressed as a valid URI.
          * @default null
          */
         get uri(): string;
         set uri(val: string);
+
         /**
          * The User Agent used by {@link ClutterGst.Playback} with network protocols.
          * @since 1.4
@@ -1643,6 +1712,7 @@ export namespace ClutterGst {
          */
         get user_agent(): string;
         set user_agent(val: string);
+
         /**
          * The User Agent used by {@link ClutterGst.Playback} with network protocols.
          * @since 1.4
@@ -1661,44 +1731,33 @@ export namespace ClutterGst {
         $signals: Playback.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Playback.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Playback;
+        static ["new"](): Playback;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Playback.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Playback.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Playback.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Playback.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Playback.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Playback.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Playback.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Playback.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Playback.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Playback.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Playback.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Playback.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param query
+         * @param query 
          * @virtual
          */
         vfunc_should_buffer(query: Gst.Query): boolean;
 
         // Methods
-
         /**
          * Get the current audio stream. The number returned in the index of the
          * audio stream playing in the list returned by
@@ -1706,60 +1765,72 @@ export namespace ClutterGst {
          * @returns the index of the current audio stream, -1 if the media has no audio stream
          */
         get_audio_stream(): number;
+
         /**
          * Get the list of audio streams of the current media.
          * @returns a list of strings describing the available audio streams
          */
         get_audio_streams(): string[];
+
         /**
          * Retrieves the buffer duration when buffering network streams.
          * @returns The buffer duration
          */
         get_buffer_duration(): number;
+
         /**
          * Retrieves the amount of the stream that is buffered.
          * @returns the fill level, between 0.0 and 1.0
          */
         get_buffer_fill(): number;
+
         /**
          * Retrieves the buffer size when buffering network streams.
          * @returns The buffer size
          */
         get_buffer_size(): number;
+
         /**
          * @returns a {@link ClutterGst.BufferingMode}
          */
         get_buffering_mode(): BufferingMode;
+
         /**
          * Retrieves the duration of the media stream that `self` represents.
          * @returns the duration of the media stream, in seconds
          */
         get_duration(): number;
+
         /**
          * Whether the player is seeking.
          * @returns TRUE if the player is seeking, FALSE otherwise.
          */
         get_in_seek(): boolean;
+
         /**
          * Retrieves the position in the media stream that `self` represents.
          * @returns the position in the media stream, in seconds
          */
         get_position(): number;
+
         /**
          * Retrieves the playback progress of `self`.
          * @returns the playback progress, between 0.0 and 1.0
          */
         get_progress(): number;
+
         /**
          * Get the current value of the seek-flags property.
          * @returns a combination of {@link ClutterGst.SeekFlags}
          */
         get_seek_flags(): SeekFlags;
+
         /**
          * Retrieves the font name currently used.
          * @returns a string containing the font name. Use `g_free()`   to free the returned string
          */
         get_subtitle_font_name(): string;
+
         /**
          * Get the current subtitles track. The number returned is the index of the
          * subtiles track in the list returned by
@@ -1767,179 +1838,208 @@ export namespace ClutterGst {
          * @returns the index of the current subtitlest track, -1 if the media has no subtitles track or if the subtitles have been turned off
          */
         get_subtitle_track(): number;
+
         /**
          * Get the list of subtitles tracks of the current media.
          * @returns a list of strings describing the available subtitles tracks
          */
         get_subtitle_tracks(): string[];
+
         /**
          * Retrieves the URI of the subtitle file in use.
          * @returns the URI of the subtitle file. Use `g_free()`   to free the returned string
          */
         get_subtitle_uri(): string;
+
         /**
          * Retrieves the URI from `self`.
          * @returns the URI of the media stream. Use `g_free()`   to free the returned string
          */
         get_uri(): string;
+
         /**
          * Retrieves the user agent used when streaming.
          * @returns the user agent used. The returned string has to be freed with `g_free()`
          */
         get_user_agent(): string;
+
         /**
          * Whether the player is using a live media.
          * @returns TRUE if the player is using a live media, FALSE otherwise.
          */
         is_live_media(): boolean;
+
         /**
          * Set the audio stream to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_playback_get_audio_streams()`.
          * @param index_ the index of the audio stream
          */
         set_audio_stream(index_: number): void;
+
         /**
          * Sets the buffer duration to be used when buffering network streams.
          * @param duration The new duration
          */
-        set_buffer_duration(duration: bigint | number): void;
+        set_buffer_duration(duration: (bigint | number)): void;
+
         /**
          * Sets the buffer size to be used when buffering network streams.
          * @param size The new size
          */
         set_buffer_size(size: number): void;
+
         /**
          * @param mode a {@link ClutterGst.BufferingMode}
          */
         set_buffering_mode(mode: BufferingMode): void;
+
         /**
          * Sets the source of `self` using a file path.
          * @param filename A filename
          */
         set_filename(filename: string): void;
+
         /**
          * Sets the playback progress of `self`. The `progress` is
          * a normalized value between 0.0 (begin) and 1.0 (end).
          * @param progress the progress of the playback, between 0.0 and 1.0
          */
         set_progress(progress: number): void;
+
         /**
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to {@link ClutterGst.SeekFlags.NONE}.
          * @param flags a combination of {@link ClutterGst.SeekFlags}
          */
         set_seek_flags(flags: SeekFlags): void;
+
         /**
          * Sets the font used by the subtitle renderer. The `font_name` string must be
          * either `null`, which means that the default font name of the underlying
          * implementation will be used; or must follow the grammar recognized by
          * `pango_font_description_from_string()` like:
-         *
-         *
+         * 
+         * 
          * ```
          *   clutter_gst_playback_set_subtitle_font_name (player, "Sans 24pt");
          * ```
-         *
+         * 
          * @param font_name a font name, or `null` to set the default font name
          */
         set_subtitle_font_name(font_name: string): void;
+
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_playback_get_subtitle_tracks()`.
-         *
+         * 
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
          */
         set_subtitle_track(index_: number): void;
+
         /**
          * Sets the location of a subtitle file to display while playing `self`.
          * @param uri the URI of a subtitle file
          */
         set_subtitle_uri(uri: string): void;
+
         /**
          * Sets the URI of `self` to `uri`.
          * @param uri the URI of the media stream
          */
         set_uri(uri: string): void;
+
         /**
          * Sets the user agent to use when streaming.
-         *
+         * 
          * When streaming content, you might want to set a custom user agent, eg. to
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
          * @param user_agent the user agent
          */
         set_user_agent(user_agent: string): void;
+
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
          * @default 0.5
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get audio_volume(): number;
         set audio_volume(val: number);
+
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
          * @default 0.5
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get audioVolume(): number;
         set audioVolume(val: number);
+
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
          * @read-only
          * @default true
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
+
         /**
          * Whether the {@link ClutterGst.Player} actor is playing.
          * @default false
-         * @category Inherited from ClutterGst.Player
+          * @category Inherited from ClutterGst.Player
          */
         get playing(): boolean;
         set playing(val: boolean);
+
         /**
          * Retrieves the playback volume of `self`.
          * @returns The playback volume between 0.0 and 1.0
          */
         get_audio_volume(): number;
+
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
          * @returns the {@link ClutterGst.Frame} of the last frame.
          */
         get_frame(): Frame;
+
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
          */
         get_idle(): boolean;
+
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
          * @returns the {@link Gst.Pipeline} element used by the player
          */
         get_pipeline(): Gst.Element;
+
         /**
          * Retrieves the playing status of `self`.
          * @returns `true` if playing, `false` if stopped.
          */
         get_playing(): boolean;
+
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
          * @returns the {@link ClutterGst.VideoSink} element used by the player
          */
         get_video_sink(): VideoSink;
+
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
          */
         set_audio_volume(volume: number): void;
+
         /**
          * Starts or stops playing of `self`.
-         *
+         * 
          * The implementation might be asynchronous, so the way to know whether
          * the actual playing state of the `self` is to use the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}
          * signal on the {@link ClutterGst.Player.playing} property and then retrieve the
@@ -1948,64 +2048,76 @@ export namespace ClutterGst {
          * @param playing `true` to start playing
          */
         set_playing(playing: boolean): void;
+
         /**
          * @virtual
          */
         vfunc_eos(): void;
+
         /**
-         * @param error
+         * @param error 
          * @virtual
          */
         vfunc_error(error: GLib.Error): void;
+
         /**
          * Retrieves the playback volume of `self`.
          * @virtual
          */
         vfunc_get_audio_volume(): number;
+
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
          * @virtual
          */
         vfunc_get_frame(): Frame;
+
         /**
          * Get the idle state of the pipeline.
          * @virtual
          */
         vfunc_get_idle(): boolean;
+
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
          * @virtual
          */
         vfunc_get_pipeline(): Gst.Element;
+
         /**
          * Retrieves the playing status of `self`.
          * @virtual
          */
         vfunc_get_playing(): boolean;
+
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
          * @virtual
          */
         vfunc_get_video_sink(): VideoSink;
+
         /**
-         * @param frame
+         * @param frame 
          * @virtual
          */
         vfunc_new_frame(frame: Frame): void;
+
         /**
          * @virtual
          */
         vfunc_ready(): void;
+
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
          * @virtual
          */
         vfunc_set_audio_volume(volume: number): void;
+
         /**
          * Starts or stops playing of `self`.
-         *
+         * 
          * The implementation might be asynchronous, so the way to know whether
          * the actual playing state of the `self` is to use the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}
          * signal on the {@link ClutterGst.Player.playing} property and then retrieve the
@@ -2015,13 +2127,15 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_set_playing(playing: boolean): void;
+
         /**
-         * @param width
-         * @param height
+         * @param width 
+         * @param height 
          * @virtual
          */
         vfunc_size_change(width: number, height: number): void;
     }
+
 
     namespace VideoSink {
         // Signal signatures
@@ -2037,7 +2151,7 @@ export namespace ClutterGst {
              * @since 3.0
              * @run-last
              */
-            'new-frame': () => void;
+            "new-frame": () => void;
             /**
              * The sink will emit this signal whenever there are new textures
              * available for set of overlays on the video. After this signal is
@@ -2048,7 +2162,7 @@ export namespace ClutterGst {
              * @since 3.0
              * @run-last
              */
-            'new-overlays': () => void;
+            "new-overlays": () => void;
             /**
              * The sink will emit this signal as soon as it has gathered enough
              * information from the video to configure a pipeline. If the
@@ -2057,7 +2171,7 @@ export namespace ClutterGst {
              * will typically either be a copy of the one returned by
              * `clutter_gst_video_sink_get_pipeline()` or it can be a completely custom
              * pipeline which is setup using `clutter_gst_video_sink_setup_pipeline()`.
-             *
+             * 
              * Note that it is an error to call either of those functions before
              * this signal is emitted. The {@link ClutterGst.VideoSink.SignalSignatures.new_frame | ClutterGst.VideoSink::new-frame} signal
              * will only be emitted after the pipeline is ready so the application
@@ -2066,33 +2180,28 @@ export namespace ClutterGst {
              * @since 3.0
              * @run-last
              */
-            'pipeline-ready': () => void;
-            'notify::update-priority': (pspec: GObject.ParamSpec) => void;
-            'notify::show-preroll-frame': (pspec: GObject.ParamSpec) => void;
-            'notify::async': (pspec: GObject.ParamSpec) => void;
-            'notify::blocksize': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-last-sample': (pspec: GObject.ParamSpec) => void;
-            'notify::last-sample': (pspec: GObject.ParamSpec) => void;
-            'notify::max-bitrate': (pspec: GObject.ParamSpec) => void;
-            'notify::max-lateness': (pspec: GObject.ParamSpec) => void;
-            'notify::processing-deadline': (pspec: GObject.ParamSpec) => void;
-            'notify::qos': (pspec: GObject.ParamSpec) => void;
-            'notify::render-delay': (pspec: GObject.ParamSpec) => void;
-            'notify::stats': (pspec: GObject.ParamSpec) => void;
-            'notify::sync': (pspec: GObject.ParamSpec) => void;
-            'notify::throttle-time': (pspec: GObject.ParamSpec) => void;
-            'notify::ts-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            "pipeline-ready": () => void;
+            "notify::update-priority": (pspec: GObject.ParamSpec) => void;
+            "notify::show-preroll-frame": (pspec: GObject.ParamSpec) => void;
+            "notify::async": (pspec: GObject.ParamSpec) => void;
+            "notify::blocksize": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-last-sample": (pspec: GObject.ParamSpec) => void;
+            "notify::last-sample": (pspec: GObject.ParamSpec) => void;
+            "notify::max-bitrate": (pspec: GObject.ParamSpec) => void;
+            "notify::max-lateness": (pspec: GObject.ParamSpec) => void;
+            "notify::processing-deadline": (pspec: GObject.ParamSpec) => void;
+            "notify::qos": (pspec: GObject.ParamSpec) => void;
+            "notify::render-delay": (pspec: GObject.ParamSpec) => void;
+            "notify::stats": (pspec: GObject.ParamSpec) => void;
+            "notify::sync": (pspec: GObject.ParamSpec) => void;
+            "notify::throttle-time": (pspec: GObject.ParamSpec) => void;
+            "notify::ts-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                GstVideo.VideoSink.ConstructorProps,
-                GstVideo.ColorBalance.ConstructorProps,
-                GstVideo.Navigation.ConstructorProps {
+        interface ConstructorProps extends GstVideo.VideoSink.ConstructorProps, GstVideo.ColorBalance.ConstructorProps, GstVideo.Navigation.ConstructorProps {
             update_priority: number;
             updatePriority: number;
         }
@@ -2108,12 +2217,12 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<VideoSink>;
 
         // Properties
-
         /**
          * @default 150
          */
         get update_priority(): number;
         set update_priority(val: number);
+
         /**
          * @default 150
          */
@@ -2130,51 +2239,42 @@ export namespace ClutterGst {
         $signals: VideoSink.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<VideoSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): VideoSink;
+        static ["new"](): VideoSink;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof VideoSink.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof VideoSink.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_new_frame(): void;
+
         /**
          * @virtual
          */
         vfunc_new_overlays(): void;
+
         /**
          * @virtual
          */
         vfunc_pipeline_ready(): void;
 
         // Methods
-
         /**
          * Returns a {@link ClutterGst.Frame} object suitable to render the current
          * frame of the given video sink. An application is free to make a
@@ -2182,12 +2282,14 @@ export namespace ClutterGst {
          * @returns A {@link ClutterGst.Frame} or NULL if there   isn't a frame to be displayed yet.
          */
         get_frame(): Frame;
+
         get_overlays(): Overlays;
+
         /**
          * Returns whether the pipeline is ready and so
          * `clutter_gst_video_sink_get_pipeline()` and
          * `clutter_gst_video_sink_setup_pipeline()` can be called without causing error.
-         *
+         * 
          * Note: Normally an application will wait until the
          * {@link ClutterGst.VideoSink.SignalSignatures.pipeline_ready | ClutterGst.VideoSink::pipeline-ready} signal is emitted instead of
          * polling the ready status with this api, but sometimes when a sink
@@ -2196,15 +2298,17 @@ export namespace ClutterGst {
          * @returns `true` if the sink is ready, else `false`
          */
         is_ready(): boolean;
+
         /**
          * Get the {@link GstVideo.ColorBalanceType} of this implementation.
          * @returns A the {@link GstVideo.ColorBalanceType}.
          */
         get_balance_type(): GstVideo.ColorBalanceType;
+
         /**
          * Retrieve the current value of the indicated channel, between min_value
          * and max_value.
-         *
+         * 
          * See Also: The {@link GstVideo.ColorBalanceChannel}.min_value and
          *         {@link GstVideo.ColorBalanceChannel}.max_value members of the
          *         {@link GstVideo.ColorBalanceChannel} object.
@@ -2212,20 +2316,23 @@ export namespace ClutterGst {
          * @returns The current value of the channel.
          */
         get_value(channel: GstVideo.ColorBalanceChannel): number;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gst.Object.get_value
         get_value(...args: never[]): any;
+
         /**
          * Retrieve a list of the available channels.
          * @returns A          GList containing pointers to {@link GstVideo.ColorBalanceChannel}          objects. The list is owned by the {@link GstVideo.ColorBalance}          instance and must not be freed.
          */
         list_channels(): GstVideo.ColorBalanceChannel[];
+
         /**
          * Sets the current value of the channel to the passed value, which must
          * be between min_value and max_value.
-         *
+         * 
          * See Also: The {@link GstVideo.ColorBalanceChannel}.min_value and
          *         {@link GstVideo.ColorBalanceChannel}.max_value members of the
          *         {@link GstVideo.ColorBalanceChannel} object.
@@ -2233,6 +2340,7 @@ export namespace ClutterGst {
          * @param value The new value for the channel.
          */
         set_value(channel: GstVideo.ColorBalanceChannel, value: number): void;
+
         /**
          * A helper function called by implementations of the GstColorBalance
          * interface. It fires the {@link GstVideo.ColorBalance.SignalSignatures.value_changed | GstVideo.ColorBalance::value-changed} signal on the
@@ -2242,15 +2350,17 @@ export namespace ClutterGst {
          * @param value The new value of the channel
          */
         value_changed(channel: GstVideo.ColorBalanceChannel, value: number): void;
+
         /**
          * Get the {@link GstVideo.ColorBalanceType} of this implementation.
          * @virtual
          */
         vfunc_get_balance_type(): GstVideo.ColorBalanceType;
+
         /**
          * Retrieve the current value of the indicated channel, between min_value
          * and max_value.
-         *
+         * 
          * See Also: The {@link GstVideo.ColorBalanceChannel}.min_value and
          *         {@link GstVideo.ColorBalanceChannel}.max_value members of the
          *         {@link GstVideo.ColorBalanceChannel} object.
@@ -2258,15 +2368,17 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_get_value(channel: GstVideo.ColorBalanceChannel): number;
+
         /**
          * Retrieve a list of the available channels.
          * @virtual
          */
         vfunc_list_channels(): GstVideo.ColorBalanceChannel[];
+
         /**
          * Sets the current value of the channel to the passed value, which must
          * be between min_value and max_value.
-         *
+         * 
          * See Also: The {@link GstVideo.ColorBalanceChannel}.min_value and
          *         {@link GstVideo.ColorBalanceChannel}.max_value members of the
          *         {@link GstVideo.ColorBalanceChannel} object.
@@ -2275,6 +2387,7 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_set_value(channel: GstVideo.ColorBalanceChannel, value: number): void;
+
         /**
          * A helper function called by implementations of the GstColorBalance
          * interface. It fires the {@link GstVideo.ColorBalance.SignalSignatures.value_changed | GstVideo.ColorBalance::value-changed} signal on the
@@ -2285,30 +2398,36 @@ export namespace ClutterGst {
          * @virtual
          */
         vfunc_value_changed(channel: GstVideo.ColorBalanceChannel, value: number): void;
+
         /**
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
          */
         send_command(command: GstVideo.NavigationCommand): void;
+
         /**
-         * @param structure
+         * @param structure 
          */
         send_event(structure: Gst.Structure): void;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gst.Element.send_event
         send_event(...args: never[]): any;
+
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
          */
         send_event_simple(event: Gst.Event): void;
+
         /**
          * @param event The type of the key event. Recognised values are "key-press" and "key-release"
          * @param key Character representation of the key. This is typically as produced by XKeysymToString.
          */
         send_key_event(event: string, key: string): void;
+
         /**
          * Sends a mouse event to the navigation interface. Mouse event coordinates
          * are sent relative to the display space of the related output area. This is
@@ -2320,6 +2439,7 @@ export namespace ClutterGst {
          * @param y The y coordinate of the mouse event.
          */
         send_mouse_event(event: string, button: number, x: number, y: number): void;
+
         /**
          * Sends a mouse scroll event to the navigation interface. Mouse event coordinates
          * are sent relative to the display space of the related output area. This is
@@ -2331,27 +2451,31 @@ export namespace ClutterGst {
          * @param delta_y The delta_y coordinate of the mouse event.
          */
         send_mouse_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void;
+
         /**
          * sending a navigation event.
-         * @param structure
+         * @param structure 
          * @virtual
          */
         vfunc_send_event(structure: Gst.Structure): void;
+
         /**
-         * @param args
+         * @param args 
          * @virtual
          */
         // Conflicted with Gst.Element.vfunc_send_event
         vfunc_send_event(...args: never[]): any;
+
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
          * @virtual
          */
         vfunc_send_event_simple(event: Gst.Event): void;
+
         /**
          * Increases the reference count of `object`.
-         *
+         * 
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
          * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
@@ -2359,15 +2483,17 @@ export namespace ClutterGst {
          * @returns the same `object`
          */
         ref(): GObject.Object;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
+
         /**
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
+         * 
          * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
          * pointer to `null` rather than retain a dangling pointer to a potentially
@@ -2376,16 +2502,19 @@ export namespace ClutterGst {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AspectratioClass = typeof Aspectratio;
+
     /**
      * @gir-type Struct
      */
     abstract class AspectratioPrivate {
         static $gtype: GObject.GType<AspectratioPrivate>;
     }
+
 
     /**
      * Bounding box of an area in a video texture or actor's allocation.
@@ -2397,30 +2526,30 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Box>;
 
         // Fields
-
         x1: number;
+
         y1: number;
+
         x2: number;
+
         y2: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x1: number;
-                y1: number;
-                x2: number;
-                y2: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x1: number;
+            y1: number;
+            x2: number;
+            y2: number;
+        }>);
 
         // Methods
-
         /**
          * Retrieves the height of the `box`
          * @returns the height of the box
          */
         get_height(): number;
+
         /**
          * Retrieves the width of the `box`
          * @returns the width of the box
@@ -2428,14 +2557,17 @@ export namespace ClutterGst {
         get_width(): number;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CameraClass = typeof Camera;
+
     /**
      * @gir-type Alias
      */
     type CameraDeviceClass = typeof CameraDevice;
+
     /**
      * @gir-type Struct
      */
@@ -2443,16 +2575,19 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<CameraDevicePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CameraManagerClass = typeof CameraManager;
+
     /**
      * @gir-type Struct
      */
     abstract class CameraManagerPrivate {
         static $gtype: GObject.GType<CameraManagerPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -2461,10 +2596,12 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<CameraPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ContentClass = typeof Content;
+
     /**
      * @gir-type Struct
      */
@@ -2472,16 +2609,19 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<ContentPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CropClass = typeof Crop;
+
     /**
      * @gir-type Struct
      */
     abstract class CropPrivate {
         static $gtype: GObject.GType<CropPrivate>;
     }
+
 
     /**
      * Represents a frame outputted by the {@link ClutterGst.VideoSink}.
@@ -2492,18 +2632,16 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Frame>;
 
         // Fields
-
         resolution: VideoResolution;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                resolution: VideoResolution;
-                pipeline: unknown;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            resolution: VideoResolution;
+            pipeline: unknown;
+        }>);
     }
+
 
     /**
      * Represents a video overlay outputted by the {@link ClutterGst.VideoSink}.
@@ -2514,18 +2652,16 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Overlay>;
 
         // Fields
-
         position: Box;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                position: Box;
-                pipeline: unknown;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            position: Box;
+            pipeline: unknown;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -2535,22 +2671,21 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<Overlays>;
 
         // Fields
-
         overlays: any[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                overlays: any[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            overlays: any[];
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type PlaybackClass = typeof Playback;
+
     /**
      * @gir-type Struct
      */
@@ -2558,16 +2693,19 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<PlaybackPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlayerIface = typeof Player;
+
     /**
      * @gir-type Struct
      */
     abstract class PlayerIfacePrivate {
         static $gtype: GObject.GType<PlayerIfacePrivate>;
     }
+
 
     /**
      * A video resolution.
@@ -2578,28 +2716,30 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<VideoResolution>;
 
         // Fields
-
         width: number;
+
         height: number;
+
         par_n: number;
+
         par_d: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                width: number;
-                height: number;
-                par_n: number;
-                par_d: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            width: number;
+            height: number;
+            par_n: number;
+            par_d: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type VideoSinkClass = typeof VideoSink;
+
     /**
      * @gir-type Struct
      */
@@ -2607,72 +2747,84 @@ export namespace ClutterGst {
         static $gtype: GObject.GType<VideoSinkPrivate>;
     }
 
+
     namespace Player {
         /**
          * Interface for implementing Player.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_eos(): void;
+
             /**
-             * @param error
+             * @param error 
              * @virtual
              */
             vfunc_error(error: GLib.Error): void;
+
             /**
              * Retrieves the playback volume of `self`.
              * @virtual
              */
             vfunc_get_audio_volume(): number;
+
             /**
              * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
              * @virtual
              */
             vfunc_get_frame(): Frame;
+
             /**
              * Get the idle state of the pipeline.
              * @virtual
              */
             vfunc_get_idle(): boolean;
+
             /**
              * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
              * GStreamer API.
              * @virtual
              */
             vfunc_get_pipeline(): Gst.Element;
+
             /**
              * Retrieves the playing status of `self`.
              * @virtual
              */
             vfunc_get_playing(): boolean;
+
             /**
              * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
              * @virtual
              */
             vfunc_get_video_sink(): VideoSink;
+
             /**
-             * @param frame
+             * @param frame 
              * @virtual
              */
             vfunc_new_frame(frame: Frame): void;
+
             /**
              * @virtual
              */
             vfunc_ready(): void;
+
             /**
              * Sets the playback volume of `self` to `volume`.
              * @param volume the volume as a double between 0.0 and 1.0
              * @virtual
              */
             vfunc_set_audio_volume(volume: number): void;
+
             /**
              * Starts or stops playing of `self`.
-             *
+             * 
              * The implementation might be asynchronous, so the way to know whether
              * the actual playing state of the `self` is to use the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}
              * signal on the {@link ClutterGst.Player.playing} property and then retrieve the
@@ -2682,16 +2834,17 @@ export namespace ClutterGst {
              * @virtual
              */
             vfunc_set_playing(playing: boolean): void;
+
             /**
-             * @param width
-             * @param height
+             * @param width 
+             * @param height 
              * @virtual
              */
             vfunc_size_change(width: number, height: number): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             audio_volume: number;
             audioVolume: number;
@@ -2711,8 +2864,8 @@ export namespace ClutterGst {
      * @since 1.4
      */
     interface Player extends GObject.Object, Player.Interface {
-        // Properties
 
+        // Properties
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
@@ -2720,6 +2873,7 @@ export namespace ClutterGst {
          */
         get audio_volume(): number;
         set audio_volume(val: number);
+
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
@@ -2727,6 +2881,7 @@ export namespace ClutterGst {
          */
         get audioVolume(): number;
         set audioVolume(val: number);
+
         /**
          * Whether the {@link ClutterGst.Player} is in idle mode.
          * @since 1.4
@@ -2734,6 +2889,7 @@ export namespace ClutterGst {
          * @default true
          */
         get idle(): boolean;
+
         /**
          * Whether the {@link ClutterGst.Player} actor is playing.
          * @default false
@@ -2742,46 +2898,52 @@ export namespace ClutterGst {
         set playing(val: boolean);
 
         // Methods
-
         /**
          * Retrieves the playback volume of `self`.
          * @returns The playback volume between 0.0 and 1.0
          */
         get_audio_volume(): number;
+
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
          * @returns the {@link ClutterGst.Frame} of the last frame.
          */
         get_frame(): Frame;
+
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
          */
         get_idle(): boolean;
+
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
          * @returns the {@link Gst.Pipeline} element used by the player
          */
         get_pipeline(): Gst.Element;
+
         /**
          * Retrieves the playing status of `self`.
          * @returns `true` if playing, `false` if stopped.
          */
         get_playing(): boolean;
+
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
          * @returns the {@link ClutterGst.VideoSink} element used by the player
          */
         get_video_sink(): VideoSink;
+
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
          */
         set_audio_volume(volume: number): void;
+
         /**
          * Starts or stops playing of `self`.
-         *
+         * 
          * The implementation might be asynchronous, so the way to know whether
          * the actual playing state of the `self` is to use the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}
          * signal on the {@link ClutterGst.Player.playing} property and then retrieve the
@@ -2792,6 +2954,7 @@ export namespace ClutterGst {
         set_playing(playing: boolean): void;
     }
 
+
     export const Player: PlayerNamespace & {
         new (): Player; // This allows `obj instanceof Player`
     };
@@ -2801,6 +2964,7 @@ export namespace ClutterGst {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

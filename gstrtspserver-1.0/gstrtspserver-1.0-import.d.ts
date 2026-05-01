@@ -1,3 +1,4 @@
+
 import type GstRtspServer10 from '@girs/gstrtspserver-1.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

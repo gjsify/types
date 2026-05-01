@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GObject from '@girs/gobject-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace TrackerMiner {
+
     /**
      * TrackerMiner-1.0
      */
+
 
     /**
      * Possible errors returned when calling `tracker_decorator_next_finish()`.
@@ -43,6 +46,7 @@ export namespace TrackerMiner {
         PAUSED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -57,6 +61,7 @@ export namespace TrackerMiner {
         DENY,
         ACCEPT,
     }
+
 
     /**
      * @gir-type Enum
@@ -73,6 +78,7 @@ export namespace TrackerMiner {
         DIRECTORY,
         PARENT_DIRECTORY,
     }
+
 
     /**
      * Possible errors returned when calling {@link TrackerMiner.Miner} APIs or
@@ -113,6 +119,7 @@ export namespace TrackerMiner {
         INVALID_COOKIE,
     }
 
+
     /**
      * Possible errors returned when calling creating new objects based on
      * the {@link TrackerMiner.MinerFS} type and other APIs available with this class.
@@ -127,6 +134,7 @@ export namespace TrackerMiner {
          */
         MINER_FS_ERROR_INIT,
     }
+
 
     /**
      * @gir-type Enum
@@ -143,9 +151,10 @@ export namespace TrackerMiner {
         UNKNOWN,
         GPRS,
         EDGE,
-        '3G',
+        "3G",
         LAN,
     }
+
 
     /**
      * The name of the D-Bus interface to use for all data miners that
@@ -153,6 +162,7 @@ export namespace TrackerMiner {
      * @since 0.8.
      */
     const MINER_DBUS_INTERFACE: string;
+
     /**
      * D-Bus name prefix to use for all data miners. This allows custom
      * miners to be written using `TRACKER_MINER_DBUS_NAME_PREFIX` + "Files" for
@@ -161,6 +171,7 @@ export namespace TrackerMiner {
      * @since 0.8.
      */
     const MINER_DBUS_NAME_PREFIX: string;
+
     /**
      * D-Bus path prefix to use for all data miners. This allows custom
      * miners to be written using `TRACKER_MINER_DBUS_PATH_PREFIX` + "Files" for
@@ -169,11 +180,13 @@ export namespace TrackerMiner {
      * @since 0.8.
      */
     const MINER_DBUS_PATH_PREFIX: string;
+
     /**
      * Used as the domain for any `GErrors` reported by `TrackerMiner` objects.
      * @since 0.8.
      */
     const MINER_ERROR_DOMAIN: string;
+
     /**
      * @gir-type Flags
      */
@@ -196,6 +209,7 @@ export namespace TrackerMiner {
         CHECK_DELETED,
     }
 
+
     namespace Decorator {
         // Signal signatures
         interface SignalSignatures extends Miner.SignalSignatures {
@@ -216,21 +230,20 @@ export namespace TrackerMiner {
              * @since 0.18.
              * @run-last
              */
-            'items-available': () => void;
-            'notify::class-names': (pspec: GObject.ParamSpec) => void;
-            'notify::commit-batch-size': (pspec: GObject.ParamSpec) => void;
-            'notify::data-source': (pspec: GObject.ParamSpec) => void;
-            'notify::priority-rdf-types': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
-            'notify::status': (pspec: GObject.ParamSpec) => void;
+            "items-available": () => void;
+            "notify::class-names": (pspec: GObject.ParamSpec) => void;
+            "notify::commit-batch-size": (pspec: GObject.ParamSpec) => void;
+            "notify::data-source": (pspec: GObject.ParamSpec) => void;
+            "notify::priority-rdf-types": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-handler": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-xml": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining-time": (pspec: GObject.ParamSpec) => void;
+            "notify::status": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Miner.ConstructorProps, Gio.Initable.ConstructorProps {
             class_names: string[];
             classNames: string[];
@@ -252,27 +265,33 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<Decorator>;
 
         // Properties
-
         get class_names(): string[];
         set class_names(val: string[]);
+
         get classNames(): string[];
         set classNames(val: string[]);
+
         get commit_batch_size(): number;
         set commit_batch_size(val: number);
+
         get commitBatchSize(): number;
         set commitBatchSize(val: number);
+
         /**
          * @construct-only
          */
         get data_source(): string;
+
         /**
          * @construct-only
          */
         get dataSource(): string;
+
         /**
          * @write-only
          */
         set priority_rdf_types(val: string[]);
+
         /**
          * @write-only
          */
@@ -288,38 +307,27 @@ export namespace TrackerMiner {
         $signals: Decorator.SignalSignatures;
 
         // Fields
-
         priv: any;
 
         // Constructors
-
         constructor(properties?: Partial<Decorator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Decorator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Decorator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Decorator.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Decorator.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Decorator.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Decorator.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Decorator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Decorator.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Decorator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.Decorator} errors
          * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
@@ -327,18 +335,17 @@ export namespace TrackerMiner {
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_finished(): void;
+
         /**
          * @virtual
          */
         vfunc_items_available(): void;
 
         // Methods
-
         /**
          * Deletes resource needing extended metadata extraction from the
          * queue. `id` is the same IDs emitted by tracker-store when the database is
@@ -346,12 +353,14 @@ export namespace TrackerMiner {
          * @param id an ID.
          */
         delete_id(id: number): void;
+
         /**
          * This function returns a string list of class names which are being
          * updated with extended metadata. An example would be 'nfo:Document'.
          * @returns a const gchar** or `NULL`.
          */
         get_class_names(): string[];
+
         /**
          * The unique string identifying this {@link TrackerMiner.Decorator} that has
          * extracted the extended metadata. This is essentially an identifier
@@ -359,6 +368,7 @@ export namespace TrackerMiner {
          * @returns a const gchar* or `NULL` if an error happened.
          */
         get_data_source(): string;
+
         /**
          * Get the number of items left in the queue to be processed. This
          * indicates content that may already exist in Tracker but is waiting
@@ -367,41 +377,42 @@ export namespace TrackerMiner {
          * @returns the number of items queued to be processed, always >= 0.
          */
         get_n_items(): number;
+
         /**
          * Processes the next resource in the queue to have extended metadata
          * extracted. If the item in the queue has been completed already, it
          * signals it's completion instead.
-         *
+         * 
          * This function will give a {@link GLib.Error} if the miner is paused at the
          * time it is called.
          * @param cancellable a {@link Gio.Cancellable}.
          */
-        next(cancellable: Gio.Cancellable | null): globalThis.Promise<DecoratorInfo>;
+        next(cancellable: (Gio.Cancellable | null)): globalThis.Promise<DecoratorInfo>;
+
         /**
          * Processes the next resource in the queue to have extended metadata
          * extracted. If the item in the queue has been completed already, it
          * signals it's completion instead.
-         *
-         * This function will give a {@link GLib.Error} if the miner is paused at the
-         * time it is called.
-         * @param cancellable a {@link Gio.Cancellable}.
-         * @param callback a {@link Gio.AsyncReadyCallback}.
-         */
-        next(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Processes the next resource in the queue to have extended metadata
-         * extracted. If the item in the queue has been completed already, it
-         * signals it's completion instead.
-         *
+         * 
          * This function will give a {@link GLib.Error} if the miner is paused at the
          * time it is called.
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback a {@link Gio.AsyncReadyCallback}.
          */
-        next(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<DecoratorInfo> | void;
+        next(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Processes the next resource in the queue to have extended metadata
+         * extracted. If the item in the queue has been completed already, it
+         * signals it's completion instead.
+         * 
+         * This function will give a {@link GLib.Error} if the miner is paused at the
+         * time it is called.
+         * @param cancellable a {@link Gio.Cancellable}.
+         * @param callback a {@link Gio.AsyncReadyCallback}.
+         */
+        next(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<DecoratorInfo> | void);
+
         /**
          * Should be called in the callback function provided to
          * `tracker_decorator_next()` to return the result of the task be it an
@@ -410,6 +421,7 @@ export namespace TrackerMiner {
          * @returns a {@link TrackerMiner.DecoratorInfo} on success or  `NULL` on error. Free with `tracker_decorator_info_unref()`.
          */
         next_finish(result: Gio.AsyncResult): DecoratorInfo;
+
         /**
          * Adds resource needing extended metadata extraction to the queue.
          * `id` is the same IDs emitted by tracker-store when the database is updated for
@@ -418,6 +430,7 @@ export namespace TrackerMiner {
          * @param class_name_id the ID of the resource's class.
          */
         prepend_id(id: number, class_name_id: number): void;
+
         /**
          * Re-evaluate the priority queues internally to ensure that
          * `rdf_types` are handled before all other content. This is useful for
@@ -426,39 +439,40 @@ export namespace TrackerMiner {
          * @param rdf_types a string array of rdf types
          */
         set_priority_rdf_types(rdf_types: string): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -468,40 +482,41 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -511,27 +526,29 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace DecoratorFS {
         // Signal signatures
         interface SignalSignatures extends Decorator.SignalSignatures {
-            'notify::class-names': (pspec: GObject.ParamSpec) => void;
-            'notify::commit-batch-size': (pspec: GObject.ParamSpec) => void;
-            'notify::data-source': (pspec: GObject.ParamSpec) => void;
-            'notify::priority-rdf-types': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
-            'notify::status': (pspec: GObject.ParamSpec) => void;
+            "notify::class-names": (pspec: GObject.ParamSpec) => void;
+            "notify::commit-batch-size": (pspec: GObject.ParamSpec) => void;
+            "notify::data-source": (pspec: GObject.ParamSpec) => void;
+            "notify::priority-rdf-types": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-handler": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-xml": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining-time": (pspec: GObject.ParamSpec) => void;
+            "notify::status": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Decorator.ConstructorProps, Gio.Initable.ConstructorProps {
 
-        interface ConstructorProps extends Decorator.ConstructorProps, Gio.Initable.ConstructorProps {}
+        }
     }
 
     /**
@@ -551,38 +568,27 @@ export namespace TrackerMiner {
         $signals: DecoratorFS.SignalSignatures;
 
         // Fields
-
         priv: any;
 
         // Constructors
-
         constructor(properties?: Partial<DecoratorFS.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DecoratorFS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DecoratorFS.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DecoratorFS.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DecoratorFS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DecoratorFS.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DecoratorFS.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DecoratorFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DecoratorFS.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DecoratorFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Prepends a file for processing.
          * @param file a {@link Gio.File} to process
@@ -591,20 +597,21 @@ export namespace TrackerMiner {
         prepend_file(file: Gio.File): number;
     }
 
+
     namespace IndexingTree {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
              * The ::child-updated signal may be emitted to notify
              * about possible changes on children of a root.
-             *
+             * 
              * {@link TrackerMiner.IndexingTree} does not emit those by itself,
              * those may be triggered through `tracker_indexing_tree_notify_update()`.
              * @signal
              * @since 1.10
              * @run-last
              */
-            'child-updated': (arg0: Gio.File, arg1: Gio.File) => void;
+            "child-updated": (arg0: Gio.File, arg1: Gio.File) => void;
             /**
              * the ::directory-added signal is emitted when a new
              * directory is added to the list of other directories which
@@ -615,7 +622,7 @@ export namespace TrackerMiner {
              * @since 0.14.0
              * @run-last
              */
-            'directory-added': (arg0: Gio.File) => void;
+            "directory-added": (arg0: Gio.File) => void;
             /**
              * the ::directory-removed signal is emitted when a
              * directory is removed from the list of other directories
@@ -626,7 +633,7 @@ export namespace TrackerMiner {
              * @since 0.14.0
              * @run-last
              */
-            'directory-removed': (arg0: Gio.File) => void;
+            "directory-removed": (arg0: Gio.File) => void;
             /**
              * The ::directory-updated signal is emitted on a root
              * when either its indexing flags change (e.g. due to consecutive
@@ -636,13 +643,12 @@ export namespace TrackerMiner {
              * @since 0.14.0
              * @run-last
              */
-            'directory-updated': (arg0: Gio.File) => void;
-            'notify::filter-hidden': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
+            "directory-updated": (arg0: Gio.File) => void;
+            "notify::filter-hidden": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             filter_hidden: boolean;
             filterHidden: boolean;
@@ -658,11 +664,12 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<IndexingTree>;
 
         // Properties
-
         get filter_hidden(): boolean;
         set filter_hidden(val: boolean);
+
         get filterHidden(): boolean;
         set filterHidden(val: boolean);
+
         /**
          * @construct-only
          */
@@ -678,66 +685,57 @@ export namespace TrackerMiner {
         $signals: IndexingTree.SignalSignatures;
 
         // Fields
-
         priv: any;
 
         // Constructors
-
         constructor(properties?: Partial<IndexingTree.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): IndexingTree;
+        static ["new"](): IndexingTree;
 
         static new_with_root(root: Gio.File): IndexingTree;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof IndexingTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof IndexingTree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof IndexingTree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof IndexingTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, IndexingTree.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof IndexingTree.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<IndexingTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof IndexingTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<IndexingTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param root
-         * @param child
+         * @param root 
+         * @param child 
          * @virtual
          */
         vfunc_child_updated(root: Gio.File, child: Gio.File): void;
+
         /**
-         * @param directory
+         * @param directory 
          * @virtual
          */
         vfunc_directory_added(directory: Gio.File): void;
+
         /**
-         * @param directory
+         * @param directory 
          * @virtual
          */
         vfunc_directory_removed(directory: Gio.File): void;
+
         /**
-         * @param directory
+         * @param directory 
          * @virtual
          */
         vfunc_directory_updated(directory: Gio.File): void;
 
         // Methods
-
         /**
          * Adds a directory to the indexing tree with the
          * given configuration flags.
@@ -745,22 +743,25 @@ export namespace TrackerMiner {
          * @param flags Configuration flags for the directory
          */
         add(directory: Gio.File, flags: DirectoryFlags): void;
+
         /**
          * Adds a new filter for basenames.
          * @param filter filter type
          * @param glob_string glob-style string for the filter
          */
         add_filter(filter: FilterType, glob_string: string): void;
+
         /**
          * Clears all filters of a given type.
          * @param type filter type to clear
          */
         clear_filters(type: FilterType): void;
+
         /**
          * returns `true` if `file` should be indexed according to the
          * parameters given through `tracker_indexing_tree_add()` and
          * `tracker_indexing_tree_add_filter()`.
-         *
+         * 
          * If `file_type` is #G_FILE_TYPE_UNKNOWN, file type will be queried to the
          * file system.
          * @param file a {@link Gio.File}
@@ -768,6 +769,7 @@ export namespace TrackerMiner {
          * @returns `true` if `file` should be indexed.
          */
         file_is_indexable(file: Gio.File, file_type: Gio.FileType): boolean;
+
         /**
          * Evaluates if the URL represented by `file` is the same of that for
          * the root of the `tree`.
@@ -775,6 +777,7 @@ export namespace TrackerMiner {
          * @returns `true` if `file` matches the URL canonically, otherwise `false`.
          */
         file_is_root(file: Gio.File): boolean;
+
         /**
          * Returns `true` if `file` matches any filter of the given filter type.
          * @param type filter type
@@ -782,6 +785,7 @@ export namespace TrackerMiner {
          * @returns `true` if `file` is filtered.
          */
         file_matches_filter(type: FilterType, file: Gio.File): boolean;
+
         /**
          * Get the default filtering policies for `tree` when indexing content.
          * Some content is black listed or white listed and the default policy
@@ -792,12 +796,14 @@ export namespace TrackerMiner {
          * @returns Either #TRACKER_FILTER_POLICY_DENY or #TRACKER_FILTER_POLICY_ALLOW.
          */
         get_default_policy(filter: FilterType): FilterPolicy;
+
         /**
          * Describes if the `tree` should index hidden content. To change this
          * setting, see `tracker_indexing_tree_set_filter_hidden()`.
          * @returns `false` if hidden files are indexed, otherwise `true`.
          */
         get_filter_hidden(): boolean;
+
         /**
          * Returns the {@link Gio.File} that represents the master root location for all
          * indexing locations. For example, if
@@ -806,46 +812,49 @@ export namespace TrackerMiner {
          * <filename>file:///</filename>. Only one scheme per `tree` can be
          * used, so you can not mix <filename>http</filename> and
          * <filename>file</filename> roots in `tree`.
-         *
+         * 
          * The return value should <emphasis>NEVER</emphasis> be `null`. In
          * cases where no root is given, we fallback to
          * <filename>file:///</filename>.
-         *
+         * 
          * Roots explained:
-         *
+         * 
          * - master root = top most level root node,
          *   e.g. file:///
-         *
+         * 
          * - config root = a root node from GSettings,
          *   e.g. file:///home/martyn/Documents
-         *
+         * 
          * - root = ANY root, normally config root, but it can also apply to
          *   roots added for devices, which technically are not a config root or a
          *   master root.
          * @returns the effective root for all locations, or `null` on error. The root is owned by `tree` and should not be freed. It can be referenced using `g_object_ref()`.
          */
         get_master_root(): Gio.File;
+
         /**
          * Returns the {@link Gio.File} that was previously added through `tracker_indexing_tree_add()`
          * and would equal or contain `file`, or `null` if none applies.
-         *
+         * 
          * If the return value is non-`null`, `directory_flags` would contain the
          * {@link TrackerMiner.DirectoryFlags} applying to `file`.
          * @param file a {@link Gio.File}
          * @returns the effective parent in `tree`, or `null`
          */
         get_root(file: Gio.File): [Gio.File, DirectoryFlags];
+
         /**
          * Returns the list of indexing roots in `tree`
          * @returns The list          of roots, the list itself must be freed with `g_list_free()`,          the list elements are owned by `tree` and should not be          freed.
          */
         list_roots(): Gio.File[];
+
         /**
          * Signals either {@link TrackerMiner.IndexingTree.SignalSignatures.directory_updated | TrackerMiner.IndexingTree::directory-updated} or
          * {@link TrackerMiner.IndexingTree.SignalSignatures.child_updated | TrackerMiner.IndexingTree::child-updated} on the given file and
          * returns `TRUE`. If `file` is not indexed according to the
          * {@link TrackerMiner.IndexingTree}, `FALSE` is returned.
-         *
+         * 
          * If `recursive` is `TRUE`, {@link TrackerMiner.IndexingTree.SignalSignatures.directory_updated | TrackerMiner.IndexingTree::directory-updated}
          * will be emitted on the indexing roots that are contained in `file`.
          * @param file a {@link Gio.File}
@@ -853,6 +862,7 @@ export namespace TrackerMiner {
          * @returns `TRUE` if a signal is emitted.
          */
         notify_update(file: Gio.File, recursive: boolean): boolean;
+
         /**
          * returns `true` if `parent` should be indexed based on its contents.
          * @param parent parent directory
@@ -860,6 +870,7 @@ export namespace TrackerMiner {
          * @returns `true` if `parent` should be indexed.
          */
         parent_is_indexable(parent: Gio.File, children: Gio.File[]): boolean;
+
         /**
          * Removes `directory` from the indexing tree, note that
          * only directories previously added with `tracker_indexing_tree_add()`
@@ -867,23 +878,25 @@ export namespace TrackerMiner {
          * @param directory {@link Gio.File} pointing to a directory
          */
         remove(directory: Gio.File): void;
+
         /**
          * Set the default `policy` (to allow or deny) for content in `tree`
          * based on the type - in this case `filter`. Here, `filter` is a file
          * or directory and there are some other options too.
-         *
+         * 
          * For example, you can (by default), disable indexing all directories
          * using this function.
          * @param filter a {@link TrackerMiner.FilterType}
          * @param policy a {@link TrackerMiner.FilterPolicy}
          */
         set_default_policy(filter: FilterType, policy: FilterPolicy): void;
+
         /**
          * When indexing content, sometimes it is preferable to ignore hidden
          * content, for example, files prefixed with &quot;.&quot;. This is
          * common for files in a home directory which are usually config
          * files.
-         *
+         * 
          * Sets the indexing policy for `tree` with hidden files and content.
          * To ignore hidden files, `filter_hidden` should be `true`, otherwise
          * `false`.
@@ -891,6 +904,7 @@ export namespace TrackerMiner {
          */
         set_filter_hidden(filter_hidden: boolean): void;
     }
+
 
     namespace Miner {
         // Signal signatures
@@ -903,7 +917,7 @@ export namespace TrackerMiner {
              * @since 0.8
              * @run-last
              */
-            'ignore-next-update': (arg0: string[]) => void;
+            "ignore-next-update": (arg0: string[]) => void;
             /**
              * the ::paused signal is emitted whenever
              * there is any reason to pause, either
@@ -953,16 +967,15 @@ export namespace TrackerMiner {
              * @run-last
              */
             stopped: () => void;
-            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
-            'notify::status': (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-handler": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-xml": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining-time": (pspec: GObject.ParamSpec) => void;
+            "notify::status": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             introspection_handler: any;
             introspectionHandler: any;
@@ -984,25 +997,32 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<Miner>;
 
         // Properties
-
         get introspection_handler(): any;
         set introspection_handler(val: any);
+
         get introspectionHandler(): any;
         set introspectionHandler(val: any);
+
         get introspection_xml(): string;
         set introspection_xml(val: string);
+
         get introspectionXml(): string;
         set introspectionXml(val: string);
+
         /**
          * @construct-only
          */
         get name(): string;
+
         get progress(): number;
         set progress(val: number);
+
         get remaining_time(): number;
         set remaining_time(val: number);
+
         get remainingTime(): number;
         set remainingTime(val: number);
+
         get status(): string;
         set status(val: string);
 
@@ -1016,34 +1036,24 @@ export namespace TrackerMiner {
         $signals: Miner.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Miner.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Miner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Miner.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Miner.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Miner.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Miner.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Miner.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Miner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Miner.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Miner.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.Miner} errors
          * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
@@ -1051,79 +1061,90 @@ export namespace TrackerMiner {
         static error_quark(): GLib.Quark;
 
         // Virtual methods
-
         /**
          * Tells the miner to mark `urls` are to ignore on next update.
          * @param urls the urls to mark as to ignore on next update
          * @virtual
          */
         vfunc_ignore_next_update(urls: string[]): void;
+
         /**
          * @virtual
          */
         vfunc_paused(): void;
+
         /**
-         * @param status
-         * @param progress
+         * @param status 
+         * @param progress 
          * @virtual
          */
         vfunc_progress(status: string, progress: number): void;
+
         /**
          * @virtual
          */
         vfunc_resumed(): void;
+
         /**
          * @virtual
          */
         vfunc_started(): void;
+
         /**
          * @virtual
          */
         vfunc_stopped(): void;
 
         // Methods
-
         /**
          * Gets the {@link Tracker.SparqlConnection} initialized by `miner`
          * @returns a {@link Tracker.SparqlConnection}.
          */
         get_connection(): Tracker.SparqlConnection;
+
         /**
          * Gets the {@link Gio.DBusConnection} initialized by `miner`
          * @returns a {@link Gio.DBusConnection}.
          */
         get_dbus_connection(): Gio.DBusConnection;
+
         /**
          * Gets the DBus name registered by `miner`
          * @returns a constant string which should not be modified by the caller.
          */
         get_dbus_full_name(): string;
+
         /**
          * Gets the DBus path registered by `miner`
          * @returns a constant string which should not be modified by the caller.
          */
         get_dbus_full_path(): string;
+
         /**
          * Returns the number of pause reasons holding `miner` from
          * indexing contents.
          * @returns The number of current pause reasons
          */
         get_n_pause_reasons(): number;
+
         /**
          * Tells the miner to mark `urls` are to ignore on next update.
          * @param urls the urls to mark as to ignore on next update
          */
         ignore_next_update(urls: string[]): void;
+
         /**
          * Returns `TRUE` if the miner is paused.
          * @returns `TRUE` if the miner is paused.
          */
         is_paused(): boolean;
+
         /**
          * Returns `TRUE` if the miner has been started.
          * @returns `TRUE` if the miner is already started.
          */
         is_started(): boolean;
+
         /**
          * Asks `miner` to pause. On success the cookie ID is returned,
          * this is what must be used in `tracker_miner_resume()` to resume
@@ -1132,6 +1153,7 @@ export namespace TrackerMiner {
          * @returns The pause cookie ID.
          */
         pause(reason: string): number;
+
         /**
          * Asks the miner to resume processing. The cookie must be something
          * returned by `tracker_miner_pause()`. The miner won't actually resume
@@ -1140,47 +1162,50 @@ export namespace TrackerMiner {
          * @returns `TRUE` if the cookie was valid.
          */
         resume(cookie: number): boolean;
+
         /**
          * Tells the miner to start processing data.
          */
         start(): void;
+
         /**
          * Tells the miner to stop processing data.
          */
         stop(): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1190,40 +1215,41 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1233,8 +1259,9 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace MinerFS {
         // Signal signatures
@@ -1258,11 +1285,11 @@ export namespace TrackerMiner {
              * @since 1.2
              * @run-last
              */
-            'finished-root': (arg0: Gio.File) => void;
+            "finished-root": (arg0: Gio.File) => void;
             /**
              * The ::ignore-next-update-file signal is emitted whenever a file should
              * be marked as to ignore on next update, and it's metadata prepared for that.
-             *
+             * 
              * `builder` is the {@link Tracker.SparqlBuilder} where all sparql updates
              * to be performed for `file` will be appended.
              * @signal
@@ -1270,18 +1297,14 @@ export namespace TrackerMiner {
              * @deprecated since 0.12
              * @run-last
              */
-            'ignore-next-update-file': (
-                arg0: Gio.File,
-                arg1: Tracker.SparqlBuilder,
-                arg2: Gio.Cancellable | null,
-            ) => boolean | void;
+            "ignore-next-update-file": (arg0: Gio.File, arg1: Tracker.SparqlBuilder, arg2: (Gio.Cancellable | null)) => (boolean | void);
             /**
              * The ::process-file signal is emitted whenever a file should
              * be processed, and it's metadata extracted.
-             *
+             * 
              * `builder` is the {@link Tracker.SparqlBuilder} where all sparql updates
              * to be performed for `file` will be appended.
-             *
+             * 
              * This signal allows both synchronous and asynchronous extraction,
              * in the synchronous case `cancellable` can be safely ignored. In
              * either case, on successful metadata extraction, implementations
@@ -1292,19 +1315,15 @@ export namespace TrackerMiner {
              * @since 0.8
              * @run-last
              */
-            'process-file': (
-                arg0: Gio.File,
-                arg1: Tracker.SparqlBuilder,
-                arg2: Gio.Cancellable | null,
-            ) => boolean | void;
+            "process-file": (arg0: Gio.File, arg1: Tracker.SparqlBuilder, arg2: (Gio.Cancellable | null)) => (boolean | void);
             /**
              * The ::process-file-attributes signal is emitted whenever a file should
              * be processed, but only the attribute-related metadata extracted.
-             *
+             * 
              * `builder` is the {@link Tracker.SparqlBuilder} where all sparql updates
              * to be performed for `file` will be appended. For the properties being
              * updated, the DELETE statements should be included as well.
-             *
+             * 
              * This signal allows both synchronous and asynchronous extraction,
              * in the synchronous case `cancellable` can be safely ignored. In
              * either case, on successful metadata extraction, implementations
@@ -1315,27 +1334,23 @@ export namespace TrackerMiner {
              * @since 0.10
              * @run-last
              */
-            'process-file-attributes': (
-                arg0: Gio.File,
-                arg1: Tracker.SparqlBuilder,
-                arg2: Gio.Cancellable | null,
-            ) => boolean | void;
+            "process-file-attributes": (arg0: Gio.File, arg1: Tracker.SparqlBuilder, arg2: (Gio.Cancellable | null)) => (boolean | void);
             /**
              * The ::remove-file signal will be emitted on files that need removal
              * according to the miner configuration (either the files themselves are
              * deleted, or the directory/contents no longer need inspection according
              * to miner configuration and their location.
-             *
+             * 
              * This operation is always assumed to be recursive, the `children_only`
              * argument will be `true` if for any reason the topmost directory needs
              * to stay (e.g. moved from a recursively indexed directory tree to a
              * non-recursively indexed location).
-             *
+             * 
              * The `builder` argument can be used to provide additional SPARQL
              * deletes and updates necessary around the deletion of those items. If
              * the return value of this signal is `true`, `builder` is expected to
              * contain all relevant deletes for this operation.
-             *
+             * 
              * If the return value of this signal is `false`, the miner will apply
              * its default behavior, which is deleting all triples that correspond
              * to the affected URIs.
@@ -1343,7 +1358,7 @@ export namespace TrackerMiner {
              * @since 1.8
              * @run-last
              */
-            'remove-file': (arg0: Gio.File, arg1: boolean, arg2: Tracker.SparqlBuilder) => boolean | void;
+            "remove-file": (arg0: Gio.File, arg1: boolean, arg2: Tracker.SparqlBuilder) => (boolean | void);
             /**
              * The ::writeback-file signal is emitted whenever a file must be written
              * back
@@ -1351,29 +1366,23 @@ export namespace TrackerMiner {
              * @since 0.10.20
              * @run-last
              */
-            'writeback-file': (
-                arg0: Gio.File,
-                arg1: string[],
-                arg2: string[][],
-                arg3: Gio.Cancellable | null,
-            ) => boolean | void;
-            'notify::data-provider': (pspec: GObject.ParamSpec) => void;
-            'notify::initial-crawling': (pspec: GObject.ParamSpec) => void;
-            'notify::mtime-checking': (pspec: GObject.ParamSpec) => void;
-            'notify::processing-pool-ready-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::processing-pool-wait-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::throttle': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
-            'notify::status': (pspec: GObject.ParamSpec) => void;
+            "writeback-file": (arg0: Gio.File, arg1: string[], arg2: string[][], arg3: (Gio.Cancellable | null)) => (boolean | void);
+            "notify::data-provider": (pspec: GObject.ParamSpec) => void;
+            "notify::initial-crawling": (pspec: GObject.ParamSpec) => void;
+            "notify::mtime-checking": (pspec: GObject.ParamSpec) => void;
+            "notify::processing-pool-ready-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::processing-pool-wait-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::throttle": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-handler": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-xml": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining-time": (pspec: GObject.ParamSpec) => void;
+            "notify::status": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Miner.ConstructorProps, Gio.Initable.ConstructorProps {
             data_provider: DataProvider;
             dataProvider: DataProvider;
@@ -1398,35 +1407,45 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<MinerFS>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get data_provider(): DataProvider;
+
         /**
          * @construct-only
          */
         get dataProvider(): DataProvider;
+
         get initial_crawling(): boolean;
         set initial_crawling(val: boolean);
+
         get initialCrawling(): boolean;
         set initialCrawling(val: boolean);
+
         get mtime_checking(): boolean;
         set mtime_checking(val: boolean);
+
         get mtimeChecking(): boolean;
         set mtimeChecking(val: boolean);
+
         get processing_pool_ready_limit(): number;
         set processing_pool_ready_limit(val: number);
+
         get processingPoolReadyLimit(): number;
         set processingPoolReadyLimit(val: number);
+
         get processing_pool_wait_limit(): number;
         set processing_pool_wait_limit(val: number);
+
         get processingPoolWaitLimit(): number;
         set processingPoolWaitLimit(val: number);
+
         /**
          * @construct-only
          */
         get root(): Gio.File;
+
         get throttle(): number;
         set throttle(val: number);
 
@@ -1440,34 +1459,24 @@ export namespace TrackerMiner {
         $signals: MinerFS.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MinerFS.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MinerFS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MinerFS.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MinerFS.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MinerFS.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MinerFS.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MinerFS.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MinerFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MinerFS.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MinerFS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.MinerFS} errors
          * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
@@ -1475,80 +1484,59 @@ export namespace TrackerMiner {
         static error_quark(): GLib.Quark;
 
         // Virtual methods
+        /**
+         * @param elapsed 
+         * @param directories_found 
+         * @param directories_ignored 
+         * @param files_found 
+         * @param files_ignored 
+         * @virtual
+         */
+        vfunc_finished(elapsed: number, directories_found: number, directories_ignored: number, files_found: number, files_ignored: number): void;
 
         /**
-         * @param elapsed
-         * @param directories_found
-         * @param directories_ignored
-         * @param files_found
-         * @param files_ignored
+         * @param root 
+         * @param directories_found 
+         * @param directories_ignored 
+         * @param files_found 
+         * @param files_ignored 
          * @virtual
          */
-        vfunc_finished(
-            elapsed: number,
-            directories_found: number,
-            directories_ignored: number,
-            files_found: number,
-            files_ignored: number,
-        ): void;
+        vfunc_finished_root(root: Gio.File, directories_found: number, directories_ignored: number, files_found: number, files_ignored: number): void;
+
         /**
-         * @param root
-         * @param directories_found
-         * @param directories_ignored
-         * @param files_found
-         * @param files_ignored
+         * @param file 
+         * @param builder 
+         * @param cancellable 
          * @virtual
          */
-        vfunc_finished_root(
-            root: Gio.File,
-            directories_found: number,
-            directories_ignored: number,
-            files_found: number,
-            files_ignored: number,
-        ): void;
+        vfunc_ignore_next_update_file(file: Gio.File, builder: Tracker.SparqlBuilder, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param file
-         * @param builder
-         * @param cancellable
+         * @param file 
+         * @param builder 
+         * @param cancellable 
          * @virtual
          */
-        vfunc_ignore_next_update_file(
-            file: Gio.File,
-            builder: Tracker.SparqlBuilder,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        vfunc_process_file(file: Gio.File, builder: Tracker.SparqlBuilder, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param file
-         * @param builder
-         * @param cancellable
+         * @param file 
+         * @param builder 
+         * @param cancellable 
          * @virtual
          */
-        vfunc_process_file(
-            file: Gio.File,
-            builder: Tracker.SparqlBuilder,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        vfunc_process_file_attributes(file: Gio.File, builder: Tracker.SparqlBuilder, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param file
-         * @param builder
-         * @param cancellable
-         * @virtual
-         */
-        vfunc_process_file_attributes(
-            file: Gio.File,
-            builder: Tracker.SparqlBuilder,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
-        /**
-         * @param file
-         * @param children_only
-         * @param builder
+         * @param file 
+         * @param children_only 
+         * @param builder 
          * @virtual
          */
         vfunc_remove_file(file: Gio.File, children_only: boolean, builder: Tracker.SparqlBuilder): boolean;
 
         // Methods
-
         /**
          * Tells the miner-fs that the given {@link Gio.File} corresponds to a
          * directory which was created in the store without a specific
@@ -1558,6 +1546,7 @@ export namespace TrackerMiner {
          * @param file a {@link Gio.File}
          */
         add_directory_without_parent(file: Gio.File): void;
+
         /**
          * Tells the filesystem miner to check and index a directory,
          * this file must be part of the usual crawling directories
@@ -1566,6 +1555,7 @@ export namespace TrackerMiner {
          * @param check_parents whether to check parents and eligibility or not
          */
         check_directory(file: Gio.File, check_parents: boolean): void;
+
         /**
          * Tells the filesystem miner to check and index a directory at
          * a given priority, this file must be part of the usual crawling
@@ -1575,6 +1565,7 @@ export namespace TrackerMiner {
          * @param check_parents whether to check parents and eligibility or not
          */
         check_directory_with_priority(file: Gio.File, priority: number, check_parents: boolean): void;
+
         /**
          * Tells the filesystem miner to check and index a file,
          * this file must be part of the usual crawling directories
@@ -1583,6 +1574,7 @@ export namespace TrackerMiner {
          * @param check_parents whether to check parents and eligibility or not
          */
         check_file(file: Gio.File, check_parents: boolean): void;
+
         /**
          * Tells the filesystem miner to check and index a file at
          * a given priority, this file must be part of the usual
@@ -1593,12 +1585,14 @@ export namespace TrackerMiner {
          * @param check_parents whether to check parents and eligibility or not
          */
         check_file_with_priority(file: Gio.File, priority: number, check_parents: boolean): void;
+
         /**
          * Tells the filesystem miner to inspect a directory.
          * @param file {@link Gio.File} for the directory to inspect
          * @param recurse whether the directory should be inspected recursively
          */
         directory_add(file: Gio.File, recurse: boolean): void;
+
         /**
          * Removes a directory from being inspected by `fs`. Note that only directory
          *  watches are removed.
@@ -1606,6 +1600,7 @@ export namespace TrackerMiner {
          * @returns `true` if the directory was successfully removed.
          */
         directory_remove(file: Gio.File): boolean;
+
         /**
          * Removes a directory from being inspected by `fs`, and removes all
          * associated metadata of the directory (and its contents) from the
@@ -1614,6 +1609,7 @@ export namespace TrackerMiner {
          * @returns `true` if the directory was successfully removed.
          */
         directory_remove_full(file: Gio.File): boolean;
+
         /**
          * Notifies `fs` that all processing on `file` has been finished, if any error
          * happened during file data processing, it should be passed in `error`, else
@@ -1622,25 +1618,30 @@ export namespace TrackerMiner {
          * @param error a {@link GLib.Error} with the error that happened during processing, or `null`.
          */
         file_notify(file: Gio.File, error: GLib.Error): void;
+
         /**
          * Tells `fs` to force mtime checking (regardless of the global mtime check
          * configuration) on the given `directory`.
          * @param directory a {@link Gio.File} representing the directory
          */
         force_mtime_checking(directory: Gio.File): void;
+
         force_recheck(): void;
+
         /**
          * Returns the {@link TrackerMiner.DataProvider} implementation, which is being used
          * to supply {@link Gio.File} and {@link Gio.FileInfo} content to Tracker.
          * @returns The {@link TrackerMiner.DataProvider} supplying content
          */
         get_data_provider(): DataProvider;
+
         /**
          * Returns the {@link TrackerMiner.IndexingTree} which determines
          * what files/directories are indexed by `fs`
          * @returns The {@link TrackerMiner.IndexingTree}          holding the indexing configuration
          */
         get_indexing_tree(): IndexingTree;
+
         /**
          * Returns a boolean which indicates if the indexing tree is crawled
          * upon start up or not. This may be set to `false` if working
@@ -1649,6 +1650,7 @@ export namespace TrackerMiner {
          * @returns `true` if a file system structure is crawled for new updates on start up, otherwise `false`.
          */
         get_initial_crawling(): boolean;
+
         /**
          * Returns a boolean used to identify if file modification time checks
          * are performed when processing content. This may be set to `false` if
@@ -1657,6 +1659,7 @@ export namespace TrackerMiner {
          * @returns `true` if mtime checks for directories against the database are done when `fs` crawls the file system, otherwise `false`.
          */
         get_mtime_checking(): boolean;
+
         /**
          * If `file` is currently being processed by `fs`, this function
          * will return the parent folder URN if any. This function is
@@ -1668,23 +1671,26 @@ export namespace TrackerMiner {
          * @param file a {@link Gio.File} obtained in {@link TrackerMiner.MinerFS.SignalSignatures.process_file | TrackerMiner.MinerFS::process-file}
          * @returns The parent folder URN, or `null`.
          */
-        get_parent_urn(file: Gio.File): string | null;
+        get_parent_urn(file: Gio.File): (string | null);
+
         /**
          * Gets the current throttle value, see
          * `tracker_miner_fs_set_throttle()` for more details.
          * @returns a double representing a value between 0.0 and 1.0.
          */
         get_throttle(): number;
+
         /**
          * If the item exists in the store, this function retrieves
          * the URN for a {@link Gio.File} being currently processed.
-         *
+         * 
          * If `file` is not being currently processed by `fs`, or doesn't
          * exist in the store yet, `null` will be returned.
          * @param file a {@link Gio.File} obtained in {@link TrackerMiner.MinerFS.SignalSignatures.process_file | TrackerMiner.MinerFS::process-file}
          * @returns The URN containing the data associated to `file`,          or `null`.
          */
-        get_urn(file: Gio.File): string | null;
+        get_urn(file: Gio.File): (string | null);
+
         /**
          * The `fs` keeps many priority queus for content it is processing.
          * This function returns `true` if the sum of all (or any) priority
@@ -1693,54 +1699,58 @@ export namespace TrackerMiner {
          * @returns `true` if there are items to process in the internal queues, otherwise `false`.
          */
         has_items_to_process(): boolean;
+
         /**
          * If the item exists in the store, this function retrieves
          * the URN of the given {@link Gio.File}
-         *
+         * 
          * If `file` doesn't exist in the store yet, `null` will be returned.
          * @param file a {@link Gio.File}
          * @returns A newly allocated string with the URN containing the data associated          to `file`, or `null`.
          */
         query_urn(file: Gio.File): string;
+
         /**
          * Tells the `fs` that crawling the {@link TrackerMiner.IndexingTree} should happen
          * initially. This is actually required to set up file system monitor
          * using technologies like inotify, etc.
-         *
+         * 
          * Setting this to `FALSE` can dramatically improve the start up the
          * crawling of the `fs`.
-         *
+         * 
          * The down side is that using this consistently means that some files
          * on the disk may be out of date with files in the database.
-         *
+         * 
          * The main purpose of this function is for systems where a `fs` is
          * running the entire time and where it is very unlikely that a file
          * could be changed outside between startup and shutdown of the
          * process using this API.
-         *
+         * 
          * The default if not set directly is that `do_initial_crawling` is `true`.
          * @param do_initial_crawling a `gboolean`
          */
         set_initial_crawling(do_initial_crawling: boolean): void;
+
         /**
          * Tells the miner-fs that during the crawling phase, directory mtime
          * checks should or shouldn't be performed against the database to
          * make sure we have the most up to date version of the file being
          * checked at the time. Setting this to `FALSE` can dramatically
          * improve the start up the crawling of the `fs`.
-         *
+         * 
          * The down side is that using this consistently means that some files
          * on the disk may be out of date with files in the database.
-         *
+         * 
          * The main purpose of this function is for systems where a `fs` is
          * running the entire time and where it is very unlikely that a file
          * could be changed outside between startup and shutdown of the
          * process using this API.
-         *
+         * 
          * The default if not set directly is that `mtime_checking` is `true`.
          * @param mtime_checking a `gboolean`
          */
         set_mtime_checking(mtime_checking: boolean): void;
+
         /**
          * Tells the filesystem miner to throttle its operations. A value of
          * 0.0 means no throttling at all, so the miner will perform
@@ -1750,6 +1760,7 @@ export namespace TrackerMiner {
          * @param throttle a double between 0.0 and 1.0
          */
         set_throttle(throttle: number): void;
+
         /**
          * Tells the filesystem miner to writeback a file.
          * @param file {@link Gio.File} for the file to check
@@ -1757,6 +1768,7 @@ export namespace TrackerMiner {
          * @param results A array of results from the preparation query
          */
         writeback_file(file: Gio.File, rdf_types: string[], results: string[][]): void;
+
         /**
          * Notifies `fs` that all writing back on `file` has been finished, if any error
          * happened during file data processing, it should be passed in `error`, else
@@ -1765,39 +1777,40 @@ export namespace TrackerMiner {
          * @param error a {@link GLib.Error} with the error that happened during processing, or `null`.
          */
         writeback_notify(file: Gio.File, error: GLib.Error): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1807,40 +1820,41 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1850,8 +1864,9 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace MinerOnline {
         // Signal signatures
@@ -1859,14 +1874,14 @@ export namespace TrackerMiner {
             /**
              * the ::connected signal is emitted when a specific `type` of
              * network becomes connected.
-             *
+             * 
              * Return values of `TRUE` from this signal indicate whether a
              * {@link TrackerMiner.Miner} should resume indexing or not upon ::connected.
              * @signal
              * @since 0.18.0
              * @run-last
              */
-            connected: (arg0: NetworkType) => boolean | void;
+            connected: (arg0: NetworkType) => (boolean | void);
             /**
              * the ::disconnected signal is emitted when a specific `type` of
              * network becomes disconnected.
@@ -1875,17 +1890,16 @@ export namespace TrackerMiner {
              * @run-last
              */
             disconnected: () => void;
-            'notify::network-type': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-handler': (pspec: GObject.ParamSpec) => void;
-            'notify::introspection-xml': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::remaining-time': (pspec: GObject.ParamSpec) => void;
-            'notify::status': (pspec: GObject.ParamSpec) => void;
+            "notify::network-type": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-handler": (pspec: GObject.ParamSpec) => void;
+            "notify::introspection-xml": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::remaining-time": (pspec: GObject.ParamSpec) => void;
+            "notify::status": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Miner.ConstructorProps, Gio.Initable.ConstructorProps {
             network_type: NetworkType;
             networkType: NetworkType;
@@ -1900,11 +1914,11 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<MinerOnline>;
 
         // Properties
-
         /**
          * @read-only
          */
         get network_type(): NetworkType;
+
         /**
          * @read-only
          */
@@ -1920,84 +1934,75 @@ export namespace TrackerMiner {
         $signals: MinerOnline.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MinerOnline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MinerOnline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MinerOnline.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MinerOnline.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MinerOnline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MinerOnline.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MinerOnline.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MinerOnline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MinerOnline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MinerOnline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param network
+         * @param network 
          * @virtual
          */
         vfunc_connected(network: NetworkType): boolean;
+
         /**
          * @virtual
          */
         vfunc_disconnected(): void;
 
         // Methods
-
         /**
          * Get the type of network this data `miner` uses to index content.
          * @returns a {@link TrackerMiner.NetworkType} on success or #TRACKER_NETWORK_TYPE_NONE on error.
          */
         get_network_type(): NetworkType;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2007,40 +2012,41 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2050,21 +2056,25 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type DataProviderIface = typeof DataProvider;
+
     /**
      * @gir-type Alias
      */
     type DecoratorClass = typeof Decorator;
+
     /**
      * @gir-type Alias
      */
     type DecoratorFSClass = typeof DecoratorFS;
+
     /**
      * @gir-type Struct
      */
@@ -2072,30 +2082,31 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<DecoratorInfo>;
 
         // Methods
-
         /**
          * A MIME¹ type is a way of describing the content type of a file or
          * set of data. An example would be 'text/plain' for a clear text
          * document or file.
-         *
+         * 
          * ¹: http://en.wikipedia.org/wiki/MIME
          * @returns the MIME type for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
          */
         get_mimetype(): string;
+
         /**
          * A {@link Tracker.SparqlBuilder} allows the caller to extract the final
          * SPARQL used to insert the extracted metadata into the database for
          * the resource being processed.
-         *
+         * 
          * This function calls `g_task_get_task_data()` on the return value of
          * `tracker_decorator_info_get_task()`.
          * @returns a {@link Tracker.SparqlBuilder} on success or `NULL` on error.
          */
         get_sparql(): Tracker.SparqlBuilder;
+
         /**
          * Get the {@link Gio.Task} associated with retrieving extended metadata and
          * information for a URN in Tracker.
-         *
+         * 
          * The task object's data (accessible with `g_task_get_task_data()`) is the
          * {@link Tracker.SparqlBuilder} that you must populate with the results of the
          * metadata extraction. This can also be accessed with
@@ -2103,23 +2114,27 @@ export namespace TrackerMiner {
          * @returns the {@link Gio.Task} for {@link TrackerMiner.DecoratorInfo} on success or `NULL` if there is no existing {@link Gio.Task}.
          */
         get_task(): Gio.Task;
+
         /**
          * A URL is a Uniform Resource Locator and should be a location associated
          * with a resource in the database. For example, 'file:///tmp/foo.txt'.
          * @returns the URL for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
          */
         get_url(): string;
+
         /**
          * A URN is a Uniform Resource Name and should be a unique identifier
          * for a resource in the database.
          * @returns the URN for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
          */
         get_urn(): string;
+
         /**
          * Increases the reference count of `info` by 1.
          * @returns the same `info` passed in, or `null` on error.
          */
         ref(): DecoratorInfo;
+
         /**
          * Decreases the reference count of `info` by 1 and frees it when the
          * reference count reaches 0.
@@ -2127,22 +2142,27 @@ export namespace TrackerMiner {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type EnumeratorIface = typeof Enumerator;
+
     /**
      * @gir-type Alias
      */
     type IndexingTreeClass = typeof IndexingTree;
+
     /**
      * @gir-type Alias
      */
     type MinerClass = typeof Miner;
+
     /**
      * @gir-type Alias
      */
     type MinerFSClass = typeof MinerFS;
+
     /**
      * @gir-type Struct
      */
@@ -2150,10 +2170,12 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<MinerFSPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MinerOnlineClass = typeof MinerOnline;
+
     /**
      * @gir-type Struct
      */
@@ -2161,18 +2183,19 @@ export namespace TrackerMiner {
         static $gtype: GObject.GType<MinerPrivate>;
     }
 
+
     namespace DataProvider {
         /**
          * Interface for implementing DataProvider.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Creates a {@link TrackerMiner.Enumerator} to enumerate children at the URI
              * provided by `url`.
-             *
+             * 
              * The attributes value is a string that specifies the file attributes
              * that should be gathered. It is not an error if it's not possible to
              * read a particular requested attribute from a file - it just won't
@@ -2189,30 +2212,26 @@ export namespace TrackerMiner {
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
              * @virtual
              */
-            vfunc_begin(
-                url: Gio.File,
-                attributes: string,
-                flags: DirectoryFlags,
-                cancellable: Gio.Cancellable | null,
-            ): Enumerator;
+            vfunc_begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: (Gio.Cancellable | null)): Enumerator;
+
             /**
              * Precisely the same operation as `tracker_data_provider_begin()`
              * is performing, but asynchronously.
-             *
+             * 
              * When all i/o for the operation is finished the `callback` will be
              * called with the requested information.
-             *
+             * 
              * See the documentation of {@link TrackerMiner.DataProvider} for information about the
              * order of returned files.
-             *
+             * 
              * In case of a partial error the callback will be called with any
              * succeeding items and no error, and on the next request the error
              * will be reported. If a request is cancelled the callback will be
              * called with {@link Gio.IOErrorEnum.CANCELLED}.
-             *
+             * 
              * During an async request no other sync and async calls are allowed,
              * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-             *
+             * 
              * Any outstanding i/o request with higher priority (lower numerical
              * value) will be executed before an outstanding request with lower
              * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2224,14 +2243,8 @@ export namespace TrackerMiner {
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
              * @virtual
              */
-            vfunc_begin_async(
-                url: Gio.File,
-                attributes: string,
-                flags: DirectoryFlags,
-                io_priority: number,
-                cancellable: Gio.Cancellable | null,
-                callback: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
              * Finishes the asynchronous operation started with
              * `tracker_data_provider_begin_async()`.
@@ -2239,10 +2252,11 @@ export namespace TrackerMiner {
              * @virtual
              */
             vfunc_begin_finish(result: Gio.AsyncResult): Enumerator;
+
             /**
              * Closes any caches or operations related to creating the
              * {@link TrackerMiner.Enumerator} to enumerate data at `url`.
-             *
+             * 
              * The attributes value is a string that specifies the file attributes
              * that should be gathered. It is not an error if it's not possible to
              * read a particular requested attribute from a file - it just won't
@@ -2257,25 +2271,26 @@ export namespace TrackerMiner {
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
              * @virtual
              */
-            vfunc_end(enumerator: Enumerator, cancellable: Gio.Cancellable | null): boolean;
+            vfunc_end(enumerator: Enumerator, cancellable: (Gio.Cancellable | null)): boolean;
+
             /**
              * Precisely the same operation as `tracker_data_provider_end()`
              * is performing, but asynchronously.
-             *
+             * 
              * When all i/o for the operation is finished the `callback` will be
              * called with the requested information.
-             *
+             * 
              * See the documentation of {@link TrackerMiner.DataProvider} for information about the
              * order of returned files.
-             *
+             * 
              * In case of a partial error the callback will be called with any
              * succeeding items and no error, and on the next request the error
              * will be reported. If a request is cancelled the callback will be
              * called with {@link Gio.IOErrorEnum.CANCELLED}.
-             *
+             * 
              * During an async request no other sync and async calls are allowed,
              * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-             *
+             * 
              * Any outstanding i/o request with higher priority (lower numerical
              * value) will be executed before an outstanding request with lower
              * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2285,12 +2300,8 @@ export namespace TrackerMiner {
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
              * @virtual
              */
-            vfunc_end_async(
-                enumerator: Enumerator,
-                io_priority: number,
-                cancellable: Gio.Cancellable | null,
-                callback: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_end_async(enumerator: Enumerator, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
              * Finishes the asynchronous operation started with
              * `tracker_data_provider_end_async()`.
@@ -2300,9 +2311,11 @@ export namespace TrackerMiner {
             vfunc_end_finish(result: Gio.AsyncResult): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface DataProviderNamespace {
@@ -2314,12 +2327,12 @@ export namespace TrackerMiner {
      * @gir-type Interface
      */
     interface DataProvider extends GObject.Object, DataProvider.Interface {
-        // Methods
 
+        // Methods
         /**
          * Creates a {@link TrackerMiner.Enumerator} to enumerate children at the URI
          * provided by `url`.
-         *
+         * 
          * The attributes value is a string that specifies the file attributes
          * that should be gathered. It is not an error if it's not possible to
          * read a particular requested attribute from a file - it just won't
@@ -2336,30 +2349,26 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link TrackerMiner.Enumerator} or `null` on failure. This must be freed with `g_object_unref()`.
          */
-        begin(
-            url: Gio.File,
-            attributes: string,
-            flags: DirectoryFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Enumerator;
+        begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: (Gio.Cancellable | null)): Enumerator;
+
         /**
          * Precisely the same operation as `tracker_data_provider_begin()`
          * is performing, but asynchronously.
-         *
+         * 
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
-         *
+         * 
          * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
-         *
+         * 
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
          * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
+         * 
          * During an async request no other sync and async calls are allowed,
          * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
+         * 
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2369,31 +2378,26 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        begin_async(
-            url: Gio.File,
-            attributes: string,
-            flags: DirectoryFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Enumerator>;
+        begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Enumerator>;
+
         /**
          * Precisely the same operation as `tracker_data_provider_begin()`
          * is performing, but asynchronously.
-         *
+         * 
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
-         *
+         * 
          * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
-         *
+         * 
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
          * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
+         * 
          * During an async request no other sync and async calls are allowed,
          * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
+         * 
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2404,32 +2408,26 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        begin_async(
-            url: Gio.File,
-            attributes: string,
-            flags: DirectoryFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Precisely the same operation as `tracker_data_provider_begin()`
          * is performing, but asynchronously.
-         *
+         * 
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
-         *
+         * 
          * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
-         *
+         * 
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
          * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
+         * 
          * During an async request no other sync and async calls are allowed,
          * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
+         * 
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2440,14 +2438,8 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        begin_async(
-            url: Gio.File,
-            attributes: string,
-            flags: DirectoryFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Enumerator> | void;
+        begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Enumerator> | void);
+
         /**
          * Finishes the asynchronous operation started with
          * `tracker_data_provider_begin_async()`.
@@ -2455,10 +2447,11 @@ export namespace TrackerMiner {
          * @returns a {@link TrackerMiner.Enumerator} or `null` on failure. This must be freed with `g_object_unref()`.
          */
         begin_finish(result: Gio.AsyncResult): Enumerator;
+
         /**
          * Closes any caches or operations related to creating the
          * {@link TrackerMiner.Enumerator} to enumerate data at `url`.
-         *
+         * 
          * The attributes value is a string that specifies the file attributes
          * that should be gathered. It is not an error if it's not possible to
          * read a particular requested attribute from a file - it just won't
@@ -2473,25 +2466,26 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` on success, otherwise `false` and `error` is set.
          */
-        end(enumerator: Enumerator, cancellable: Gio.Cancellable | null): boolean;
+        end(enumerator: Enumerator, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Precisely the same operation as `tracker_data_provider_end()`
          * is performing, but asynchronously.
-         *
+         * 
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
-         *
+         * 
          * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
-         *
+         * 
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
          * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
+         * 
          * During an async request no other sync and async calls are allowed,
          * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
+         * 
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2499,61 +2493,26 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        end_async(
-            enumerator: Enumerator,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        end_async(enumerator: Enumerator, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Precisely the same operation as `tracker_data_provider_end()`
          * is performing, but asynchronously.
-         *
+         * 
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
-         *
+         * 
          * See the documentation of {@link TrackerMiner.DataProvider} for information about the
          * order of returned files.
-         *
+         * 
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
          * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
+         * 
          * During an async request no other sync and async calls are allowed,
          * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
-         * Any outstanding i/o request with higher priority (lower numerical
-         * value) will be executed before an outstanding request with lower
-         * priority. Default priority is `G_PRIORITY_DEFAULT`.
-         * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
-         * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        end_async(
-            enumerator: Enumerator,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Precisely the same operation as `tracker_data_provider_end()`
-         * is performing, but asynchronously.
-         *
-         * When all i/o for the operation is finished the `callback` will be
-         * called with the requested information.
-         *
-         * See the documentation of {@link TrackerMiner.DataProvider} for information about the
-         * order of returned files.
-         *
-         * In case of a partial error the callback will be called with any
-         * succeeding items and no error, and on the next request the error
-         * will be reported. If a request is cancelled the callback will be
-         * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
-         * During an async request no other sync and async calls are allowed,
-         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
+         * 
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2562,12 +2521,36 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        end_async(
-            enumerator: Enumerator,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        end_async(enumerator: Enumerator, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Precisely the same operation as `tracker_data_provider_end()`
+         * is performing, but asynchronously.
+         * 
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         * 
+         * See the documentation of {@link TrackerMiner.DataProvider} for information about the
+         * order of returned files.
+         * 
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
+         * 
+         * During an async request no other sync and async calls are allowed,
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
+         * 
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        end_async(enumerator: Enumerator, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes the asynchronous operation started with
          * `tracker_data_provider_end_async()`.
@@ -2576,6 +2559,7 @@ export namespace TrackerMiner {
          */
         end_finish(result: Gio.AsyncResult): boolean;
     }
+
 
     export const DataProvider: DataProviderNamespace & {
         new (): DataProvider; // This allows `obj instanceof DataProvider`
@@ -2587,30 +2571,31 @@ export namespace TrackerMiner {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Enumerates to the next piece of data according to the `enumerator`
              * implementation.
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
              * @virtual
              */
-            vfunc_next(cancellable: Gio.Cancellable | null): any | null;
+            vfunc_next(cancellable: (Gio.Cancellable | null)): (any | null);
+
             /**
              * Precisely the same operation as `tracker_enumerator_next()`
              * is performing, but asynchronously.
-             *
+             * 
              * When all i/o for the operation is finished the `callback` will be
              * called with the requested information.
-             *
+             * 
              * In case of a partial error the callback will be called with any
              * succeeding items and no error, and on the next request the error
              * will be reported. If a request is cancelled the callback will be
              * called with {@link Gio.IOErrorEnum.CANCELLED}.
-             *
+             * 
              * During an async request no other sync and async calls are allowed,
              * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-             *
+             * 
              * Any outstanding i/o request with higher priority (lower numerical
              * value) will be executed before an outstanding request with lower
              * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2619,23 +2604,22 @@ export namespace TrackerMiner {
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
              * @virtual
              */
-            vfunc_next_async(
-                io_priority: number,
-                cancellable: Gio.Cancellable | null,
-                callback: Gio.AsyncReadyCallback<this> | null,
-            ): void;
+            vfunc_next_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
              * Finishes the asynchronous operation started with
              * `tracker_enumerator_next_async()`.
              * @param result a {@link Gio.AsyncResult}.
              * @virtual
              */
-            vfunc_next_finish(result: Gio.AsyncResult): any | null;
+            vfunc_next_finish(result: Gio.AsyncResult): (any | null);
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface EnumeratorNamespace {
@@ -2647,79 +2631,54 @@ export namespace TrackerMiner {
      * @gir-type Interface
      */
     interface Enumerator extends GObject.Object, Enumerator.Interface {
-        // Methods
 
+        // Methods
         /**
          * Enumerates to the next piece of data according to the `enumerator`
          * implementation.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Returns a `gpointer` with the next item from the `enumerator`, or `null` when `error` is set or the operation was cancelled in `cancellable`. The data must be freed. The function to free depends on the data returned by the enumerator and the {@link TrackerMiner.DataProvider} that created the `enumerator`.
          */
-        next(cancellable: Gio.Cancellable | null): any | null;
+        next(cancellable: (Gio.Cancellable | null)): (any | null);
+
         /**
          * Precisely the same operation as `tracker_enumerator_next()`
          * is performing, but asynchronously.
-         *
+         * 
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
-         *
+         * 
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
          * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
+         * 
          * During an async request no other sync and async calls are allowed,
          * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
+         * 
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        next_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<any | null>;
+        next_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<(any | null)>;
+
         /**
          * Precisely the same operation as `tracker_enumerator_next()`
          * is performing, but asynchronously.
-         *
+         * 
          * When all i/o for the operation is finished the `callback` will be
          * called with the requested information.
-         *
+         * 
          * In case of a partial error the callback will be called with any
          * succeeding items and no error, and on the next request the error
          * will be reported. If a request is cancelled the callback will be
          * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
+         * 
          * During an async request no other sync and async calls are allowed,
          * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
-         * Any outstanding i/o request with higher priority (lower numerical
-         * value) will be executed before an outstanding request with lower
-         * priority. Default priority is `G_PRIORITY_DEFAULT`.
-         * @param io_priority the [I/O priority][io-priority] of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        next_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Precisely the same operation as `tracker_enumerator_next()`
-         * is performing, but asynchronously.
-         *
-         * When all i/o for the operation is finished the `callback` will be
-         * called with the requested information.
-         *
-         * In case of a partial error the callback will be called with any
-         * succeeding items and no error, and on the next request the error
-         * will be reported. If a request is cancelled the callback will be
-         * called with {@link Gio.IOErrorEnum.CANCELLED}.
-         *
-         * During an async request no other sync and async calls are allowed,
-         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
-         *
+         * 
          * Any outstanding i/o request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
          * priority. Default priority is `G_PRIORITY_DEFAULT`.
@@ -2727,19 +2686,41 @@ export namespace TrackerMiner {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        next_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<any | null> | void;
+        next_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Precisely the same operation as `tracker_enumerator_next()`
+         * is performing, but asynchronously.
+         * 
+         * When all i/o for the operation is finished the `callback` will be
+         * called with the requested information.
+         * 
+         * In case of a partial error the callback will be called with any
+         * succeeding items and no error, and on the next request the error
+         * will be reported. If a request is cancelled the callback will be
+         * called with {@link Gio.IOErrorEnum.CANCELLED}.
+         * 
+         * During an async request no other sync and async calls are allowed,
+         * and will result in {@link Gio.IOErrorEnum.PENDING} errors.
+         * 
+         * Any outstanding i/o request with higher priority (lower numerical
+         * value) will be executed before an outstanding request with lower
+         * priority. Default priority is `G_PRIORITY_DEFAULT`.
+         * @param io_priority the [I/O priority][io-priority] of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        next_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(any | null)> | void);
+
         /**
          * Finishes the asynchronous operation started with
          * `tracker_enumerator_next_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns Returns a `gpointer` with the next item from the `enumerator`, or `null` when `error` is set or the operation was cancelled in `cancellable`. The data must be freed. The function to free depends on the data returned by the enumerator and the {@link TrackerMiner.DataProvider} that created the `enumerator`.
          */
-        next_finish(result: Gio.AsyncResult): any | null;
+        next_finish(result: Gio.AsyncResult): (any | null);
     }
+
 
     export const Enumerator: EnumeratorNamespace & {
         new (): Enumerator; // This allows `obj instanceof Enumerator`
@@ -2750,6 +2731,7 @@ export namespace TrackerMiner {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

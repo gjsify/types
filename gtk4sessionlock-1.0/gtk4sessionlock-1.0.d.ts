@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,15 +27,18 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace Gtk4SessionLock {
+
     /**
      * Gtk4SessionLock-1.0
      */
+
 
     /**
      * May block for a Wayland roundtrip the first time it's called.
      * @returns `true` if the platform is Wayland and Wayland compositor supports the Session Lock protocol.
      */
     function is_supported(): boolean;
+
     namespace Instance {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -54,7 +58,7 @@ export namespace Gtk4SessionLock {
              * The ::monitor signal is fired once for each monitor that exists when a lock is started, and then whenever a new
              * monitor is detected during the lock. You generally want to call `gtk_session_lock_instance_assign_window_to_monitor()`
              * once in the handler for this signal with a newly created window and the given monitor.
-             *
+             * 
              * This API does not directly tell you when a monitor is removed (GTK APIs can be used for that), however the window you
              * send to `gtk_session_lock_instance_assign_window_to_monitor()` will be automatically unmapped and dereferenced when its
              * monitor is removed or the screen is unlocked.
@@ -73,8 +77,9 @@ export namespace Gtk4SessionLock {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -96,36 +101,26 @@ export namespace Gtk4SessionLock {
         $signals: Instance.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Instance.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Instance;
+        static ["new"](): Instance;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Instance.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Instance.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Instance.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Instance.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Instance.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Instance.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Instance.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Instance.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Instance.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Instance.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Instance.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Instance.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * This must be called with a different unrealized window once for each monitor immediately after calling
          * `gtk_session_lock_lock()`. Hiding a window that is active on a monitor or not letting a window be resized by the
@@ -135,10 +130,12 @@ export namespace Gtk4SessionLock {
          * @param monitor The monitor to show it on
          */
         assign_window_to_monitor(window: Gtk.Window, monitor: Gdk.Monitor): void;
+
         /**
          * Returns if this instance currently holds a lock.
          */
         is_locked(): boolean;
+
         /**
          * Lock the screen. This should be called before assigning any windows to monitors. If this function fails the ::failed
          * signal is emitted, if it succeeds the ::locked signal is emitted. The ::failed signal may be emitted before the
@@ -147,21 +144,25 @@ export namespace Gtk4SessionLock {
          * @returns false on immediate fail, true if lock acquisition was successfully started
          */
         lock(): boolean;
+
         /**
          * If the screen is locked by this instance unlocks it and fires ::unlocked. Otherwise has no effect
          */
         unlock(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InstanceClass = typeof Instance;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

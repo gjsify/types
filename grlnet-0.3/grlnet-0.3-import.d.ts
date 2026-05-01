@@ -1,3 +1,4 @@
+
 import type GrlNet03 from '@girs/grlnet-0.3';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

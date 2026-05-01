@@ -1,3 +1,4 @@
+
 import type Tepl6 from '@girs/tepl-6';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

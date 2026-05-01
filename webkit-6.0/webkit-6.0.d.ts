@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -28,9 +29,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace WebKit {
+
     /**
      * WebKit-6.0
      */
+
 
     /**
      * @gir-type Enum
@@ -87,6 +90,7 @@ export namespace WebKit {
         UNKNOWN,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -109,6 +113,7 @@ export namespace WebKit {
          */
         TAB,
     }
+
 
     /**
      * @gir-type Enum
@@ -137,6 +142,7 @@ export namespace WebKit {
          */
         DENY,
     }
+
 
     /**
      * @gir-type Enum
@@ -169,6 +175,7 @@ export namespace WebKit {
          */
         DOCUMENT_BROWSER,
     }
+
 
     /**
      * @gir-type Enum
@@ -373,6 +380,7 @@ export namespace WebKit {
         CUSTOM,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -399,6 +407,7 @@ export namespace WebKit {
         NO_THIRD_PARTY,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -422,6 +431,7 @@ export namespace WebKit {
          */
         SQLITE,
     }
+
 
     /**
      * @gir-type Enum
@@ -450,6 +460,7 @@ export namespace WebKit {
         PERMANENT,
     }
 
+
     /**
      * Enum values used to denote the various download errors.
      * @gir-type Struct
@@ -458,31 +469,31 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Download failure due to network error
          */
         static NETWORK: number;
+
         /**
          * Download was cancelled by user
          */
         static CANCELLED_BY_USER: number;
+
         /**
          * Download failure due to destination error
          */
         static DESTINATION: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of download errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * Enum values used to denote the various errors related to the {@link WebKit.FaviconDatabase}.
@@ -492,31 +503,31 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * The {@link WebKit.FaviconDatabase} is closed
          */
         static NOT_INITIALIZED: number;
+
         /**
          * There is not an icon available for the requested URL
          */
         static FAVICON_NOT_FOUND: number;
+
         /**
          * There might be an icon for the requested URL, but its data is unknown at the moment
          */
         static FAVICON_UNKNOWN: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of favicon database errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -527,7 +538,7 @@ export namespace WebKit {
 
     /**
      * Describes the status of a {@link WebKitFeature}.
-     *
+     * 
      * The status for a given feature can be obtained with
      * `webkit_feature_get_status`.
      * @gir-type Enum
@@ -583,6 +594,7 @@ export namespace WebKit {
         MATURE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -605,6 +617,7 @@ export namespace WebKit {
          */
         NEVER,
     }
+
 
     /**
      * @gir-type Enum
@@ -649,6 +662,7 @@ export namespace WebKit {
         PASSWORD,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -678,6 +692,7 @@ export namespace WebKit {
         DISPLAYED,
     }
 
+
     /**
      * Enum values used to denote errors happening when executing JavaScript
      * @gir-type Struct
@@ -686,31 +701,31 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * An exception was raised in JavaScript execution
          */
         static SCRIPT_FAILED: number;
+
         /**
          * An unsupported parameter has been used to call and async function from API. Since 2.40
          */
         static INVALID_PARAMETER: number;
+
         /**
          * The result of JavaScript execution could not be returned. Since 2.40
          */
         static INVALID_RESULT: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of JavaScript errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -751,6 +766,7 @@ export namespace WebKit {
         FINISHED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -778,6 +794,7 @@ export namespace WebKit {
         MUTED,
     }
 
+
     /**
      * Enum values used to denote the various media errors.
      * @gir-type Struct
@@ -786,23 +803,21 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Preliminary load failure for media content types. A new load will be started to perform the media load. Since: 2.40
          */
         static LOAD: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of media errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -842,6 +857,7 @@ export namespace WebKit {
         OTHER,
     }
 
+
     /**
      * Enum values used to denote the various network errors.
      * @gir-type Struct
@@ -850,39 +866,41 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Generic load failure
          */
         static FAILED: number;
+
         /**
          * Load failure due to transport error
          */
         static TRANSPORT: number;
+
         /**
          * Load failure due to unknown protocol
          */
         static UNKNOWN_PROTOCOL: number;
+
         /**
          * Load failure due to cancellation
          */
         static CANCELLED: number;
+
         /**
          * Load failure due to missing file
          */
         static FILE_DOES_NOT_EXIST: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of networking errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -911,6 +929,7 @@ export namespace WebKit {
         CUSTOM,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -937,6 +956,7 @@ export namespace WebKit {
          */
         PROMPT,
     }
+
 
     /**
      * @gir-type Enum
@@ -984,6 +1004,7 @@ export namespace WebKit {
         RESPONSE,
     }
 
+
     /**
      * Enum values used to denote the various policy errors.
      * @gir-type Struct
@@ -992,39 +1013,41 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Generic load failure due to policy error
          */
         static FAILED: number;
+
         /**
          * Load failure due to unsupported mime type
          */
         static CANNOT_SHOW_MIME_TYPE: number;
+
         /**
          * Load failure due to URI that can not be shown
          */
         static CANNOT_SHOW_URI: number;
+
         /**
          * Load failure due to frame load interruption by policy change
          */
         static FRAME_LOAD_INTERRUPTED_BY_POLICY_CHANGE: number;
+
         /**
          * Load failure due to port restriction
          */
         static CANNOT_USE_RESTRICTED_PORT: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of policy errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * Enum values used to denote the various print errors.
@@ -1034,31 +1057,31 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Unspecified error during a print operation
          */
         static GENERAL: number;
+
         /**
          * Selected printer cannot be found
          */
         static PRINTER_NOT_FOUND: number;
+
         /**
          * Invalid page range
          */
         static INVALID_PAGE_RANGE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of printing errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1083,6 +1106,7 @@ export namespace WebKit {
         CANCEL,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1101,6 +1125,7 @@ export namespace WebKit {
          */
         MHTML,
     }
+
 
     /**
      * @gir-type Enum
@@ -1136,6 +1161,7 @@ export namespace WebKit {
         BEFORE_UNLOAD_CONFIRM,
     }
 
+
     /**
      * Enum values used to denote errors happening when creating snapshots of {@link WebKit.WebView}
      * @gir-type Struct
@@ -1144,23 +1170,21 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * An error occurred when creating a webpage snapshot.
          */
         static CREATE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of page snapshot errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1185,6 +1209,7 @@ export namespace WebKit {
          */
         FULL_DOCUMENT,
     }
+
 
     /**
      * @gir-type Enum
@@ -1211,6 +1236,7 @@ export namespace WebKit {
         FAIL,
     }
 
+
     /**
      * Errors that can occur while compiling content filters.
      * @gir-type Struct
@@ -1219,27 +1245,26 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * The JSON source for a content filter is invalid.
          */
         static INVALID_SOURCE: number;
+
         /**
          * The requested content filter could not be found.
          */
         static NOT_FOUND: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of user content filter errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1268,6 +1293,7 @@ export namespace WebKit {
         TOP_FRAME,
     }
 
+
     /**
      * Enum values used to denote errors happening when sending user messages.
      * @gir-type Struct
@@ -1276,23 +1302,21 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * The message was not handled by the receiver.
          */
         static MESSAGE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of user message errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1318,6 +1342,7 @@ export namespace WebKit {
          */
         END,
     }
+
 
     /**
      * @gir-type Enum
@@ -1345,6 +1370,7 @@ export namespace WebKit {
         AUTHOR,
     }
 
+
     /**
      * Enum values used to denote errors happening when parsing a {@link WebKit.WebExtension}
      * @gir-type Struct
@@ -1353,55 +1379,61 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * An unknown error occured.
          */
         static UNKNOWN: number;
+
         /**
          * A specified resource was not found on disk.
          */
         static RESOURCE_NOT_FOUND: number;
+
         /**
          * A resource failed the bundle's code signature checks.
          */
         static INVALID_RESOURCE_CODE_SIGNATURE: number;
+
         /**
          * An invalid `manifest.json` was encountered.
          */
         static INVALID_MANIFEST: number;
+
         /**
          * The manifest version is not supported.
          */
         static UNSUPPORTED_MANIFEST_VERSION: number;
+
         /**
          * An invalid manifest entry was encountered.
          */
         static INVALID_MANIFEST_ENTRY: number;
+
         /**
          * An invalid declarative net request entry was encountered.
          */
         static INVALID_DECLARATIVE_NET_REQUEST_ENTRY: number;
+
         /**
          * The extension specified background persistence that was not compatible with the platform or features requested.
          */
         static INVALID_BACKGROUND_PERSISTENCE: number;
+
         /**
          * The archive file is invalid or corrupt.
          */
         static INVALID_ARCHIVE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of Web Extension errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * Enum values used to denote errors happening when creating a {@link WebKit.WebExtensionMatchPattern}
@@ -1411,35 +1443,36 @@ export namespace WebKit {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * An unknown error occured.
          */
         static UNKNOWN: number;
+
         /**
          * The scheme component was invalid.
          */
         static INVALID_SCHEME: number;
+
         /**
          * The host component was invalid.
          */
         static INVALID_HOST: number;
+
         /**
          * The path component was invalid.
          */
         static INVALID_PATH: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         /**
          * Gets the quark for the domain of Web Extension Match Pattern errors.
          */
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -1469,6 +1502,7 @@ export namespace WebKit {
         MANIFESTV3,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1496,6 +1530,7 @@ export namespace WebKit {
         TERMINATED_BY_API,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -1505,7 +1540,7 @@ export namespace WebKit {
 
     /**
      * Enum values representing the XR session mode.
-     *
+     * 
      * See <https://immersive-web.github.io/webxr/#xrsessionmode-enum>
      * @gir-type Enum
      * @since 2.52
@@ -1525,6 +1560,7 @@ export namespace WebKit {
         IMMERSIVE_AR,
     }
 
+
     /**
      * The copy clipboard command. Copies the current selection inside
      * a {@link WebKit.WebView} to the clipboard.
@@ -1534,6 +1570,7 @@ export namespace WebKit {
      * inside the {@link WebKit.WebView}.
      */
     const EDITING_COMMAND_COPY: string;
+
     /**
      * The create link command. Creates a link element that is inserted at
      * the current cursor position. If there's a selection, the selected text
@@ -1543,6 +1580,7 @@ export namespace WebKit {
      * @since 2.10
      */
     const EDITING_COMMAND_CREATE_LINK: string;
+
     /**
      * The cut clipboard command. Copies the current selection inside
      * a {@link WebKit.WebView} to the clipboard and deletes the selected content.
@@ -1552,6 +1590,7 @@ export namespace WebKit {
      * editable and there is an active selection.
      */
     const EDITING_COMMAND_CUT: string;
+
     /**
      * The insert image command. Creates an image element that is inserted at
      * the current cursor position. It receives an URI as argument,
@@ -1560,6 +1599,7 @@ export namespace WebKit {
      * @since 2.10
      */
     const EDITING_COMMAND_INSERT_IMAGE: string;
+
     /**
      * The paste clipboard command. Pastes the contents of the clipboard to
      * a {@link WebKit.WebView}.
@@ -1569,6 +1609,7 @@ export namespace WebKit {
      * and clipboard is not empty.
      */
     const EDITING_COMMAND_PASTE: string;
+
     /**
      * The paste as plaintext clipboard command. Pastes the contents of the
      * clipboard to a {@link WebKit.WebView}, with formatting removed.
@@ -1579,6 +1620,7 @@ export namespace WebKit {
      * @since 2.30
      */
     const EDITING_COMMAND_PASTE_AS_PLAIN_TEXT: string;
+
     /**
      * The redo command. Redoes a previously undone editing command in
      * a {@link WebKit.WebView}.
@@ -1587,6 +1629,7 @@ export namespace WebKit {
      * to redo a command when it has been previously undone.
      */
     const EDITING_COMMAND_REDO: string;
+
     /**
      * The select all command. Selects all the content of the current text field in
      * a {@link WebKit.WebView}.
@@ -1595,6 +1638,7 @@ export namespace WebKit {
      * with `webkit_web_view_can_execute_editing_command()`.
      */
     const EDITING_COMMAND_SELECT_ALL: string;
+
     /**
      * The undo command. Undoes the last editing command in a {@link WebKit.WebView}.
      * You can check whether it's possible to execute the command with
@@ -1602,39 +1646,45 @@ export namespace WebKit {
      * to undo a command after a previously executed editing operation.
      */
     const EDITING_COMMAND_UNDO: string;
+
     /**
      * Like `webkit_get_major_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
      */
     const MAJOR_VERSION: number;
+
     /**
      * Like `webkit_get_micro_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
      */
     const MICRO_VERSION: number;
+
     /**
      * Like `webkit_get_minor_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
      */
     const MINOR_VERSION: number;
+
     /**
      * Gets the quark for the domain of download errors.
      * @returns download error domain.
      */
     function download_error_quark(): GLib.Quark;
+
     /**
      * Gets the quark for the domain of favicon database errors.
      * @returns favicon database error domain.
      */
     function favicon_database_error_quark(): GLib.Quark;
+
     /**
      * Returns the major version number of the WebKit library.
-     *
+     * 
      * (e.g. in WebKit version 1.8.3 this is 1.)
-     *
+     * 
      * This function is in the library, so it represents the WebKit library
      * your code is running against. Contrast with the #WEBKIT_MAJOR_VERSION
      * macro, which represents the major version of the WebKit headers you
@@ -1642,11 +1692,12 @@ export namespace WebKit {
      * @returns the major version number of the WebKit library
      */
     function get_major_version(): number;
+
     /**
      * Returns the micro version number of the WebKit library.
-     *
+     * 
      * (e.g. in WebKit version 1.8.3 this is 3.)
-     *
+     * 
      * This function is in the library, so it represents the WebKit library
      * your code is running against. Contrast with the #WEBKIT_MICRO_VERSION
      * macro, which represents the micro version of the WebKit headers you
@@ -1654,11 +1705,12 @@ export namespace WebKit {
      * @returns the micro version number of the WebKit library
      */
     function get_micro_version(): number;
+
     /**
      * Returns the minor version number of the WebKit library.
-     *
+     * 
      * (e.g. in WebKit version 1.8.3 this is 8.)
-     *
+     * 
      * This function is in the library, so it represents the WebKit library
      * your code is running against. Contrast with the #WEBKIT_MINOR_VERSION
      * macro, which represents the minor version of the WebKit headers you
@@ -1666,17 +1718,20 @@ export namespace WebKit {
      * @returns the minor version number of the WebKit library
      */
     function get_minor_version(): number;
+
     /**
      * Gets the quark for the domain of JavaScript errors.
      * @returns JavaScript error domain.
      */
     function javascript_error_quark(): GLib.Quark;
+
     /**
      * Gets the quark for the domain of media errors.
      * @returns media error domin.
      * @since 2.40
      */
     function media_error_quark(): GLib.Quark;
+
     /**
      * Get the key system for which access permission is being requested.
      * @param request a {@link WebKit.MediaKeySystemPermissionRequest}
@@ -1684,29 +1739,34 @@ export namespace WebKit {
      * @since 2.32
      */
     function media_key_system_permission_get_name(request: MediaKeySystemPermissionRequest): string;
+
     /**
      * Gets the quark for the domain of networking errors.
      * @returns network error domain.
      */
     function network_error_quark(): GLib.Quark;
+
     /**
      * Gets the quark for the domain of policy errors.
      * @returns policy error domain.
      */
     function policy_error_quark(): GLib.Quark;
+
     /**
      * Gets the quark for the domain of printing errors.
      * @returns print error domain.
      */
     function print_error_quark(): GLib.Quark;
+
     /**
      * Gets the quark for the domain of page snapshot errors.
      * @returns snapshot error domain.
      */
     function snapshot_error_quark(): GLib.Quark;
+
     /**
      * Use this function to format a URI for display.
-     *
+     * 
      * The URIs used internally by
      * WebKit may contain percent-encoded characters or Punycode, which are not
      * generally suitable to display to users. This function provides protection
@@ -1716,12 +1776,14 @@ export namespace WebKit {
      * @returns `uri` suitable for display, or `null` in    case of error.
      * @since 2.24
      */
-    function uri_for_display(uri: string): string | null;
+    function uri_for_display(uri: string): (string | null);
+
     /**
      * Gets the quark for the domain of user content filter errors.
      * @returns user content filter error domain.
      */
     function user_content_filter_error_quark(): GLib.Quark;
+
     /**
      * Check whether the permission request is for an audio device.
      * @param request a {@link WebKit.UserMediaPermissionRequest}
@@ -1729,6 +1791,7 @@ export namespace WebKit {
      * @since 2.8
      */
     function user_media_permission_is_for_audio_device(request: UserMediaPermissionRequest): boolean;
+
     /**
      * Check whether the permission request is for a display device.
      * @param request a {@link WebKit.UserMediaPermissionRequest}
@@ -1736,6 +1799,7 @@ export namespace WebKit {
      * @since 2.34
      */
     function user_media_permission_is_for_display_device(request: UserMediaPermissionRequest): boolean;
+
     /**
      * Check whether the permission request is for a video device.
      * @param request a {@link WebKit.UserMediaPermissionRequest}
@@ -1743,26 +1807,30 @@ export namespace WebKit {
      * @since 2.8
      */
     function user_media_permission_is_for_video_device(request: UserMediaPermissionRequest): boolean;
+
     /**
      * Gets the quark for the domain of user message errors.
      * @returns user message error domain.
      */
     function user_message_error_quark(): GLib.Quark;
+
     /**
      * Gets the quark for the domain of Web Extension errors.
      * @returns web extension error domain.
      * @since 2.52
      */
     function web_extension_error_quark(): GLib.Quark;
+
     /**
      * Gets the quark for the domain of Web Extension Match Pattern errors.
      * @returns web extension match pattern error domain.
      * @since 2.48
      */
     function web_extension_match_pattern_error_quark(): GLib.Quark;
+
     /**
      * Registers a custom URL scheme that can be used in match patterns.
-     *
+     * 
      * This method should be used to register any custom URL schemes used by the app for the extension base URLs,
      * other than `webkit-extension`, or if extensions should have access to other supported URL schemes when using `<all_urls>`.
      * @param urlScheme The custom URL scheme to register
@@ -1770,21 +1838,24 @@ export namespace WebKit {
      * @deprecated since 2.52: Use `webkit_web_extension_match_pattern_register_custom_url_scheme()` instead.
      */
     function web_extension_match_pattern_register_custom_URL_scheme(urlScheme: string): void;
+
     /**
      * Registers a custom URL scheme that can be used in match patterns.
-     *
+     * 
      * This method should be used to register any custom URL schemes used by the app for the extension base URLs,
      * other than `webkit-extension`, or if extensions should have access to other supported URL schemes when using `<all_urls>`.
      * @param urlScheme The custom URL scheme to register
      * @since 2.52
      */
     function web_extension_match_pattern_register_custom_url_scheme(urlScheme: string): void;
+
     /**
      * @gir-type Callback
      */
     interface URISchemeRequestCallback {
         (request: URISchemeRequest): void;
     }
+
     /**
      * @gir-type Flags
      */
@@ -1819,6 +1890,7 @@ export namespace WebKit {
          */
         STRIKETHROUGH,
     }
+
 
     /**
      * @gir-type Flags
@@ -1862,6 +1934,7 @@ export namespace WebKit {
         WRAP_AROUND,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -1903,6 +1976,7 @@ export namespace WebKit {
          */
         SELECTION,
     }
+
 
     /**
      * @gir-type Flags
@@ -1947,6 +2021,7 @@ export namespace WebKit {
         INHIBIT_OSK,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -1975,6 +2050,7 @@ export namespace WebKit {
          */
         TRANSPARENT_BACKGROUND,
     }
+
 
     /**
      * @gir-type Flags
@@ -2006,6 +2082,7 @@ export namespace WebKit {
          */
         MATCH_BIDIRECTIONALLY,
     }
+
 
     /**
      * @gir-type Flags
@@ -2074,6 +2151,7 @@ export namespace WebKit {
         ALL,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -2083,7 +2161,7 @@ export namespace WebKit {
 
     /**
      * Enum values representing the XR session features.
-     *
+     * 
      * See <https://immersive-web.github.io/webxr/#xrreferencespace-interface>.
      * And, see <https://immersive-web.github.io/webxr-hand-input/> for hand tracking.
      * @gir-type Flags
@@ -2124,6 +2202,7 @@ export namespace WebKit {
         LAYERS,
     }
 
+
     namespace AuthenticationRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -2148,13 +2227,14 @@ export namespace WebKit {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Represents an authentication request.
-     *
+     * 
      * Whenever a client attempts to load a page protected by HTTP
      * authentication, credentials will need to be provided to authorize access.
      * To allow the client to decide how it wishes to handle authentication,
@@ -2162,7 +2242,7 @@ export namespace WebKit {
      * WebKitAuthenticationRequest object to provide client side
      * authentication support. Credentials are exposed through the
      * {@link WebKit.Credential} object.
-     *
+     * 
      * In case the client application does not wish
      * to handle this signal WebKit will provide a default handler. To handle
      * authentication asynchronously, simply increase the reference count of the
@@ -2182,47 +2262,36 @@ export namespace WebKit {
         $signals: AuthenticationRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AuthenticationRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AuthenticationRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthenticationRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AuthenticationRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthenticationRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AuthenticationRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthenticationRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AuthenticationRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthenticationRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AuthenticationRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AuthenticationRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof AuthenticationRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthenticationRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Authenticate the {@link WebKit.AuthenticationRequest}.
-         *
+         * 
          * Authenticate the {@link WebKit.AuthenticationRequest} using the {@link WebKit.Credential}
          * supplied. To continue without credentials, pass `null` as `credential`.
          * @param credential A {@link WebKit.Credential}, or `null`
          */
-        authenticate(credential: Credential | null): void;
+        authenticate(credential: (Credential | null)): void;
+
         /**
          * Determine whether this {@link WebKit.AuthenticationRequest} should allow the storage of credentials.
-         *
+         * 
          * Determine whether the authentication method associated with this
          * {@link WebKit.AuthenticationRequest} should allow the storage of credentials.
          * This will return `false` if WebKit doesn't support credential storing,
@@ -2232,68 +2301,79 @@ export namespace WebKit {
          * @returns `true` if WebKit can store credentials or `false` otherwise.
          */
         can_save_credentials(): boolean;
+
         /**
          * Cancel the authentication challenge.
-         *
+         * 
          * This will also cancel the page loading and result in a
          * {@link WebKit.WebView.SignalSignatures.load_failed | WebKit.WebView::load-failed} signal with a {@link WebKit.NetworkError} of type {@link WebKit.NetworkError.CANCELLED} being emitted.
          */
         cancel(): void;
+
         /**
          * Get the {@link Gio.TlsPasswordFlags} of the {@link WebKit.AuthenticationScheme.CLIENT_CERTIFICATE_PIN_REQUESTED} authentication challenge.
          * @returns a {@link Gio.TlsPasswordFlags}
          */
         get_certificate_pin_flags(): Gio.TlsPasswordFlags;
+
         /**
          * Get the host that this authentication challenge is applicable to.
          * @returns The host of `request`.
          */
         get_host(): string;
+
         /**
          * Get the port that this authentication challenge is applicable to.
          * @returns The port of `request`.
          */
         get_port(): number;
+
         /**
          * Get the {@link WebKit.Credential} of the proposed authentication challenge.
-         *
+         * 
          * Get the {@link WebKit.Credential} of the proposed authentication challenge that was
          * stored from a previous session. The client can use this directly for
          * authentication or construct their own {@link WebKit.Credential}.
          * @returns A {@link WebKit.Credential} encapsulating credential details or `null` if there is no stored credential.
          */
         get_proposed_credential(): Credential;
+
         /**
          * Get the realm that this authentication challenge is applicable to.
          * @returns The realm of `request`.
          */
         get_realm(): string;
+
         /**
          * Get the authentication scheme of the authentication challenge.
          * @returns The {@link WebKit.AuthenticationScheme} of `request`.
          */
         get_scheme(): AuthenticationScheme;
+
         /**
          * Get the {@link WebKit.SecurityOrigin} that this authentication challenge is applicable to.
          * @returns a newly created {@link WebKit.SecurityOrigin}.
          */
         get_security_origin(): SecurityOrigin;
+
         /**
          * Determine whether the authentication challenge is associated with a proxy server.
-         *
+         * 
          * Determine whether the authentication challenge is associated with a proxy server rather than an "origin" server.
          * @returns `true` if authentication is for a proxy or `false` otherwise.
          */
         is_for_proxy(): boolean;
+
         /**
          * Determine whether this this is a first attempt or a retry for this authentication challenge.
          * @returns `true` if authentication attempt is a retry or `false` otherwise.
          */
         is_retry(): boolean;
+
         /**
          * Set whether the authentication method associated with `request`
          * should allow the storage of credentials.
-         *
+         * 
          * Set whether the authentication method associated with `request`
          * should allow the storage of credentials.
          * This should be used by applications handling their own credentials
@@ -2304,9 +2384,10 @@ export namespace WebKit {
          * @param enabled value to set
          */
         set_can_save_credentials(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Credential} of the proposed authentication challenge.
-         *
+         * 
          * Set the {@link WebKit.Credential} of the proposed authentication challenge that was
          * stored from a previous session. This should only be used by applications handling
          * their own credential storage. (When using the default WebKit credential storage,
@@ -2318,6 +2399,7 @@ export namespace WebKit {
         set_proposed_credential(credential: Credential): void;
     }
 
+
     namespace AutomationSession {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -2327,7 +2409,7 @@ export namespace WebKit {
              * return a {@link WebKit.WebView} created with {@link WebKit.WebView.is_controlled_by_automation}
              * construct property enabled and {@link WebKit.WebView.automation_presentation_type} construct
              * property set if needed.
-             *
+             * 
              * If the signal is emitted with "tab" detail, the returned {@link WebKit.WebView} should be
              * a new web view added to a new tab of the current browsing context window.
              * If the signal is emitted with "window" detail, the returned {@link WebKit.WebView} should be
@@ -2339,7 +2421,7 @@ export namespace WebKit {
              * @detailed
              * @run-last
              */
-            'create-web-view': () => WebView;
+            "create-web-view": () => WebView;
             /**
              * This signal is emitted when the given automation session is about to finish.
              * It allows clients to perform any cleanup tasks before the session is destroyed.
@@ -2347,15 +2429,15 @@ export namespace WebKit {
              * @since 2.46
              * @run-last
              */
-            'will-close': () => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "will-close": () => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
             /**
              * This signal is emitted when the automation client requests a new
              * browsing context to interact with it. The callback handler should
              * return a {@link WebKit.WebView} created with {@link WebKit.WebView.is_controlled_by_automation}
              * construct property enabled and {@link WebKit.WebView.automation_presentation_type} construct
              * property set if needed.
-             *
+             * 
              * If the signal is emitted with "tab" detail, the returned {@link WebKit.WebView} should be
              * a new web view added to a new tab of the current browsing context window.
              * If the signal is emitted with "window" detail, the returned {@link WebKit.WebView} should be
@@ -2367,12 +2449,11 @@ export namespace WebKit {
              * @detailed
              * @run-last
              */
-            'create-web-view::id': () => WebView;
+            "create-web-view::id": () => WebView;
             [key: `create-web-view::${string}`]: () => WebView;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: string;
         }
@@ -2380,7 +2461,7 @@ export namespace WebKit {
 
     /**
      * Automation Session.
-     *
+     * 
      * WebKitAutomationSession represents an automation session of a WebKitWebContext.
      * When a new session is requested, a WebKitAutomationSession is created and the signal
      * WebKitWebContext::automation-started is emitted with the WebKitAutomationSession as
@@ -2394,7 +2475,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<AutomationSession>;
 
         // Properties
-
         /**
          * The session unique identifier.
          * @since 2.18
@@ -2413,49 +2493,41 @@ export namespace WebKit {
         $signals: AutomationSession.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AutomationSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AutomationSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AutomationSession.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AutomationSession.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AutomationSession.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AutomationSession.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AutomationSession.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AutomationSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AutomationSession.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AutomationSession.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AutomationSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AutomationSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AutomationSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the the previously set {@link WebKit.AutomationSession}.
-         *
+         * 
          * Get the {@link WebKit.AutomationSession} previously set with `webkit_automation_session_set_application_info()`.
          * @returns the {@link WebKit.AutomationSession} of `session`, or `null` if no one has been set.
          */
         get_application_info(): ApplicationInfo;
+
         /**
          * Get the unique identifier of a {@link WebKit.AutomationSession}
          * @returns the unique identifier of `session`
          */
         get_id(): string;
+
         /**
          * Set the application information to `session`.
-         *
+         * 
          * This information will be used by the driver service
          * to match the requested capabilities with the actual application information. If this information
          * is not provided to the session when a new automation session is requested, the creation might fail
@@ -2466,6 +2538,7 @@ export namespace WebKit {
          */
         set_application_info(info: ApplicationInfo): void;
     }
+
 
     namespace BackForwardList {
         // Signal signatures
@@ -2479,21 +2552,22 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            changed: (arg0: BackForwardListItem | null, arg1: any | null) => void;
+            changed: (arg0: (BackForwardListItem | null), arg1: (any | null)) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * List of visited pages.
-     *
+     * 
      * WebKitBackForwardList maintains a list of visited pages used to
      * navigate to recent pages. Items are inserted in the list in the
      * order they are visited.
-     *
+     * 
      * WebKitBackForwardList also maintains the notion of the current item
      * (which is always at index 0), the preceding item (which is at index -1),
      * and the following item (which is at index 1).
@@ -2518,96 +2592,97 @@ export namespace WebKit {
         $signals: BackForwardList.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BackForwardList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BackForwardList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackForwardList.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BackForwardList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackForwardList.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BackForwardList.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackForwardList.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BackForwardList.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackForwardList.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BackForwardList.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BackForwardList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BackForwardList.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackForwardList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the item that precedes the current item.
          * @returns the {@link WebKit.BackForwardListItem}    preceding the current item or `null`.
          */
-        get_back_item(): BackForwardListItem | null;
+        get_back_item(): (BackForwardListItem | null);
+
         /**
          * Obtain the list of items preceding the current one.
          * @returns a {@link GLib.List} of    items preceding the current item.
          */
         get_back_list(): BackForwardListItem[];
+
         /**
          * Obtain a list up to some number of items preceding the current one.
          * @param limit the number of items to retrieve
          * @returns a {@link GLib.List} of    items preceding the current item limited by `limit`.
          */
         get_back_list_with_limit(limit: number): BackForwardListItem[];
+
         /**
          * Returns the current item in `back_forward_list`.
          * @returns a {@link WebKit.BackForwardListItem}    or `null` if `back_forward_list` is empty.
          */
-        get_current_item(): BackForwardListItem | null;
+        get_current_item(): (BackForwardListItem | null);
+
         /**
          * Returns the item that follows the current item.
          * @returns the {@link WebKit.BackForwardListItem}    following the current item or `null`.
          */
-        get_forward_item(): BackForwardListItem | null;
+        get_forward_item(): (BackForwardListItem | null);
+
         /**
          * Obtain the list of items following the current one.
          * @returns a {@link GLib.List} of    items following the current item.
          */
         get_forward_list(): BackForwardListItem[];
+
         /**
          * Obtain a list up to some number of items following the current one.
          * @param limit the number of items to retrieve
          * @returns a {@link GLib.List} of    items following the current item limited by `limit`.
          */
         get_forward_list_with_limit(limit: number): BackForwardListItem[];
+
         /**
          * Obtain the amount of items in the list.
          * @returns the length of `back_forward_list`.
          */
         get_length(): number;
+
         /**
          * Returns the item at a given index relative to the current item.
          * @param index the index of the item
          * @returns the {@link WebKit.BackForwardListItem}    located at the specified index relative to the current item or `null`.
          */
-        get_nth_item(index: number): BackForwardListItem | null;
+        get_nth_item(index: number): (BackForwardListItem | null);
     }
+
 
     namespace BackForwardListItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
 
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
+        }
     }
 
     /**
      * One item of the {@link WebKit.BackForwardList}.
-     *
+     * 
      * A history item is part of the {@link WebKit.BackForwardList} and consists
      * out of a title and a URI.
      * @gir-type Class
@@ -2625,51 +2700,41 @@ export namespace WebKit {
         $signals: BackForwardListItem.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BackForwardListItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BackForwardListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackForwardListItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BackForwardListItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackForwardListItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BackForwardListItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BackForwardListItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BackForwardListItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BackForwardListItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BackForwardListItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BackForwardListItem.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof BackForwardListItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BackForwardListItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Obtain the original URI of the item.
-         *
+         * 
          * See also `webkit_back_forward_list_item_get_uri()`.
          * @returns the original URI of `list_item` or `null`    when the original URI is empty.
          */
         get_original_uri(): string;
+
         /**
          * Obtain the title of the item.
          * @returns the page title of `list_item` or `null`    when the title is empty.
          */
         get_title(): string;
+
         /**
          * Obtain the URI of the item.
-         *
+         * 
          * This URI may differ from the original URI if the page was,
          * for example, redirected to a new location.
          * See also `webkit_back_forward_list_item_get_original_uri()`.
@@ -2678,22 +2743,25 @@ export namespace WebKit {
         get_uri(): string;
     }
 
+
     namespace ClipboardPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+        }
     }
 
     /**
      * A permission request for reading clipboard contents.
-     *
+     * 
      * WebKitClipboardPermissionRequest represents a request for
      * permission to decide whether WebKit can access the clipboard to read
      * its contents through the Async Clipboard API.
-     *
+     * 
      * When a WebKitClipboardPermissionRequest is not handled by the user,
      * it is denied by default.
      * @gir-type Class
@@ -2712,52 +2780,46 @@ export namespace WebKit {
         $signals: ClipboardPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ClipboardPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ClipboardPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClipboardPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ClipboardPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ClipboardPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ClipboardPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ClipboardPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ClipboardPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClipboardPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ClipboardPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ClipboardPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ClipboardPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClipboardPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
          */
         vfunc_deny(): void;
     }
+
 
     namespace ColorChooserRequest {
         // Signal signatures
@@ -2772,11 +2834,10 @@ export namespace WebKit {
              * @run-last
              */
             finished: () => void;
-            'notify::rgba': (pspec: GObject.ParamSpec) => void;
+            "notify::rgba": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             rgba: Gdk.RGBA;
         }
@@ -2784,7 +2845,7 @@ export namespace WebKit {
 
     /**
      * A request to open a color chooser.
-     *
+     * 
      * Whenever the user interacts with an <input type='color' />
      * HTML element, WebKit will need to show a dialog to choose a color. For that
      * to happen in a general way, instead of just opening a {@link Gtk.ColorChooser}
@@ -2794,7 +2855,7 @@ export namespace WebKit {
      * object, which will allow the client application to specify the color to be
      * selected, to inspect the details of the request (e.g. to get initial color)
      * and to cancel the request, in case nothing was selected.
-     *
+     * 
      * In case the client application does not wish to handle this signal,
      * WebKit will provide a default handler which will asynchronously run
      * a regular {@link Gtk.ColorChooserDialog} for the user to interact with.
@@ -2804,7 +2865,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<ColorChooserRequest>;
 
         // Properties
-
         /**
          * The {@link Gdk.RGBA} color of the request
          * @since 2.8
@@ -2822,63 +2882,55 @@ export namespace WebKit {
         $signals: ColorChooserRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ColorChooserRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ColorChooserRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorChooserRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ColorChooserRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColorChooserRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ColorChooserRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ColorChooserRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ColorChooserRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ColorChooserRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ColorChooserRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ColorChooserRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ColorChooserRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ColorChooserRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Cancels `request` and the input element changes to use the initial color.
-         *
+         * 
          * Cancels `request` and the input element changes to use the initial color
          * it has before the request started.
          * The signal {@link WebKit.ColorChooserRequest.SignalSignatures.finished | WebKit.ColorChooserRequest::finished}
          * is emitted to notify that the request has finished.
          */
         cancel(): void;
+
         /**
          * Finishes `request` and the input element keeps the current value of
          * {@link WebKit.ColorChooserRequest.rgba}.
-         *
+         * 
          * Finishes `request` and the input element keeps the current value of
          * {@link WebKit.ColorChooserRequest.rgba}.
          * The signal {@link WebKit.ColorChooserRequest.SignalSignatures.finished | WebKit.ColorChooserRequest::finished}
          * is emitted to notify that the request has finished.
          */
         finish(): void;
+
         /**
          * Gets the bounding box of the color input element.
          */
         get_element_rectangle(): Gdk.Rectangle;
+
         /**
          * Gets the current {@link Gdk.RGBA} color of `request`
          */
         get_rgba(): Gdk.RGBA;
+
         /**
          * Sets the current {@link Gdk.RGBA} color of `request`
          * @param rgba a pointer {@link Gdk.RGBA}
@@ -2886,21 +2938,24 @@ export namespace WebKit {
         set_rgba(rgba: Gdk.RGBA): void;
     }
 
+
     namespace ContextMenu {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Represents the context menu in a {@link WebKit.WebView}.
-     *
+     * 
      * {@link WebKit.ContextMenu} represents a context menu containing
      * {@link WebKit.ContextMenuItem}<!-- -->s in a {@link WebKit.WebView}.
-     *
+     * 
      * When a {@link WebKit.WebView} is about to display the context menu, it
      * emits the {@link WebKit.WebView.SignalSignatures.context_menu | WebKit.WebView::context-menu} signal, which has the
      * {@link WebKit.ContextMenu} as an argument. You can modify it, adding new
@@ -2924,53 +2979,45 @@ export namespace WebKit {
         $signals: ContextMenu.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ContextMenu.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ContextMenu;
+        static ["new"](): ContextMenu;
 
         static new_with_items(items: ContextMenuItem[]): ContextMenu;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ContextMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ContextMenu.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ContextMenu.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ContextMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ContextMenu.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ContextMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ContextMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds `item` at the end of the `menu`.
          * @param item the {@link WebKit.ContextMenuItem} to add
          */
         append(item: ContextMenuItem): void;
+
         /**
          * Gets the first item in the `menu`.
          * @returns the first {@link WebKit.ContextMenuItem} of `menu`,    or `null` if the {@link WebKit.ContextMenu} is empty.
          */
         first(): ContextMenuItem;
+
         /**
          * Gets the {@link Gdk.Event} that triggered the context menu. This function only returns a valid
          * {@link Gdk.Event} when called for a {@link WebKit.ContextMenu} passed to {@link WebKit.WebView.SignalSignatures.context_menu | WebKit.WebView::context-menu}
          * signal; in all other cases, `null` is returned.
-         *
+         * 
          * The returned {@link Gdk.Event} is expected to be one of the following types:
          * <itemizedlist>
          * <listitem><para>
@@ -2986,41 +3033,47 @@ export namespace WebKit {
          * @returns the menu event or `null`.
          */
         get_event(): Gdk.Event;
+
         /**
          * Gets the item at the given position in the `menu`.
          * @param position the position of the item, counting from 0
          * @returns the {@link WebKit.ContextMenuItem} at position `position` in `menu`,    or `null` if the position is off the end of the `menu`.
          */
         get_item_at_position(position: number): ContextMenuItem;
+
         /**
          * Returns the item list of `menu`.
          * @returns a {@link GLib.List} of    {@link WebKit.ContextMenuItem}<!-- -->s
          */
         get_items(): ContextMenuItem[];
+
         /**
          * Gets the length of the `menu`.
          * @returns the number of {@link WebKit.ContextMenuItem}<!-- -->s in `menu`
          */
         get_n_items(): number;
+
         /**
          * Gets the position in view coordinates where the context menu was triggered.
-         *
+         * 
          * This function only returns valid coordinates when called for a {@link WebKit.ContextMenu}
          * passed to {@link WebKit.WebView.SignalSignatures.context_menu | WebKit.WebView::context-menu} signal.
          * @returns `true` if valid position coordinates are available, `false` otherwise
          */
         get_position(): [boolean, number, number];
+
         /**
          * Gets the user data of `menu`.
-         *
+         * 
          * This function can be used from the UI Process to get user data previously set
          * from the Web Process with `webkit_context_menu_set_user_data()`.
          * @returns the user data of `menu`, or `null` if `menu` doesn't have user data
          */
         get_user_data(): GLib.Variant;
+
         /**
          * Inserts `item` into the `menu` at the given position.
-         *
+         * 
          * If `position` is negative, or is larger than the number of items
          * in the {@link WebKit.ContextMenu}, the item is added on to the end of
          * the `menu`. The first position is 0.
@@ -3028,14 +3081,16 @@ export namespace WebKit {
          * @param position the position to insert the item
          */
         insert(item: ContextMenuItem, position: number): void;
+
         /**
          * Gets the last item in the `menu`.
          * @returns the last {@link WebKit.ContextMenuItem} of `menu`,    or `null` if the {@link WebKit.ContextMenu} is empty.
          */
         last(): ContextMenuItem;
+
         /**
          * Moves `item` to the given position in the `menu`.
-         *
+         * 
          * If `position` is negative, or is larger than the number of items
          * in the {@link WebKit.ContextMenu}, the item is added on to the end of
          * the `menu`.
@@ -3044,25 +3099,29 @@ export namespace WebKit {
          * @param position the new position to move the item
          */
         move_item(item: ContextMenuItem, position: number): void;
+
         /**
          * Adds `item` at the beginning of the `menu`.
          * @param item the {@link WebKit.ContextMenuItem} to add
          */
         prepend(item: ContextMenuItem): void;
+
         /**
          * Removes `item` from the `menu`.
-         *
+         * 
          * See also `webkit_context_menu_remove_all()` to remove all items.
          * @param item the {@link WebKit.ContextMenuItem} to remove
          */
         remove(item: ContextMenuItem): void;
+
         /**
          * Removes all items of the `menu`.
          */
         remove_all(): void;
+
         /**
          * Sets user data to `menu`.
-         *
+         * 
          * This function can be used from a Web Process extension to set user data
          * that can be retrieved from the UI Process using `webkit_context_menu_get_user_data()`.
          * If the `user_data` {@link GLib.Variant} is floating, it is consumed.
@@ -3071,18 +3130,21 @@ export namespace WebKit {
         set_user_data(user_data: GLib.Variant): void;
     }
 
+
     namespace ContextMenuItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
 
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
+        }
     }
 
     /**
      * One item of a {@link WebKit.ContextMenu}.
-     *
+     * 
      * The {@link WebKit.ContextMenu} is composed of {@link WebKit.ContextMenuItem}<!--
      * -->s. These items can be created from a `GtkAction`, from a
      * {@link WebKit.ContextMenuAction} or from a {@link WebKit.ContextMenuAction} and a
@@ -3103,12 +3165,11 @@ export namespace WebKit {
         $signals: ContextMenuItem.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ContextMenuItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_from_gaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem;
+        static new_from_gaction(action: Gio.Action, label: string, target: (GLib.Variant | null)): ContextMenuItem;
 
         static new_from_stock_action(action: ContextMenuAction): ContextMenuItem;
 
@@ -3119,41 +3180,34 @@ export namespace WebKit {
         static new_with_submenu(label: string, submenu: ContextMenu): ContextMenuItem;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ContextMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ContextMenuItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ContextMenuItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ContextMenuItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ContextMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ContextMenuItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContextMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the action associated to `item` as a {@link Gio.Action}.
          * @returns the {@link Gio.Action} associated to the {@link WebKit.ContextMenuItem},    or `null` if `item` is a separator.
          */
         get_gaction(): Gio.Action;
+
         /**
          * Gets the target {@link GLib.Variant} associated with `item`.
          * @returns the target {@link GLib.Variant} of the {@link WebKit.ContextMenuItem},    or `null` if `item` was not created with `webkit_context_menu_item_new_from_gaction()`    or if no target was specified.
          */
-        get_gaction_target(): GLib.Variant | null;
+        get_gaction_target(): (GLib.Variant | null);
+
         /**
          * Gets the {@link WebKit.ContextMenuAction} of `item`.
-         *
+         * 
          * If the {@link WebKit.ContextMenuItem} was not
          * created for a stock action {@link WebKit.ContextMenuAction.CUSTOM} will be
          * returned. If the {@link WebKit.ContextMenuItem} is a separator {@link WebKit.ContextMenuAction.NO_ACTION}
@@ -3161,30 +3215,35 @@ export namespace WebKit {
          * @returns the {@link WebKit.ContextMenuAction} of `item`
          */
         get_stock_action(): ContextMenuAction;
+
         /**
          * Gets the submenu of `item`.
          * @returns the {@link WebKit.ContextMenu} representing the submenu of    `item` or `null` if `item` doesn't have a submenu.
          */
         get_submenu(): ContextMenu;
+
         /**
          * Gets the title of `item`.
          * @returns the title of `item`, or `null` if `item` is a separator.
          */
         get_title(): string;
+
         /**
          * Checks whether `item` is a separator.
          * @returns `true` is `item` is a separator or `false` otherwise
          */
         is_separator(): boolean;
+
         /**
          * Sets or replaces the `item` submenu.
-         *
+         * 
          * If `submenu` is `null` the current
          * submenu of `item` is removed.
          * @param submenu a {@link WebKit.ContextMenu}
          */
-        set_submenu(submenu: ContextMenu | null): void;
+        set_submenu(submenu: (ContextMenu | null)): void;
     }
+
 
     namespace CookieManager {
         // Signal signatures
@@ -3198,13 +3257,14 @@ export namespace WebKit {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Defines how to handle cookies in a {@link WebKit.WebContext}.
-     *
+     * 
      * The WebKitCookieManager defines how to set up and handle cookies.
      * You can get it from a {@link WebKit.WebsiteDataManager} with
      * `webkit_website_data_manager_get_cookie_manager()`, and use it to set where to
@@ -3225,306 +3285,282 @@ export namespace WebKit {
         $signals: CookieManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CookieManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CookieManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CookieManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CookieManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CookieManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CookieManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CookieManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CookieManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CookieManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CookieManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CookieManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CookieManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Asynchronously add a {@link Soup.Cookie} to the underlying storage.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_cookie_manager_add_cookie_finish()` to get the result of the operation.
+         * @param cookie the {@link Soup.Cookie} to be added
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         */
+        add_cookie(cookie: Soup.Cookie, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously add a {@link Soup.Cookie} to the underlying storage.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_cookie_manager_add_cookie_finish()` to get the result of the operation.
-         * @param cookie the {@link Soup.Cookie} to be added
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         */
-        add_cookie(cookie: Soup.Cookie, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Asynchronously add a {@link Soup.Cookie} to the underlying storage.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_add_cookie_finish()` to get the result of the operation.
          * @param cookie the {@link Soup.Cookie} to be added
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        add_cookie(
-            cookie: Soup.Cookie,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        add_cookie(cookie: Soup.Cookie, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously add a {@link Soup.Cookie} to the underlying storage.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_add_cookie_finish()` to get the result of the operation.
          * @param cookie the {@link Soup.Cookie} to be added
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        add_cookie(
-            cookie: Soup.Cookie,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        add_cookie(cookie: Soup.Cookie, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_cookie_manager_add_cookie()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the cookie was added or `false` in case of error.
          */
         add_cookie_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Asynchronously delete a {@link Soup.Cookie} from the current session.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_delete_cookie_finish()` to get the result of the operation.
          * @param cookie the {@link Soup.Cookie} to be deleted
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        delete_cookie(cookie: Soup.Cookie, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        delete_cookie(cookie: Soup.Cookie, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously delete a {@link Soup.Cookie} from the current session.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_cookie_manager_delete_cookie_finish()` to get the result of the operation.
-         * @param cookie the {@link Soup.Cookie} to be deleted
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        delete_cookie(
-            cookie: Soup.Cookie,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously delete a {@link Soup.Cookie} from the current session.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_delete_cookie_finish()` to get the result of the operation.
          * @param cookie the {@link Soup.Cookie} to be deleted
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        delete_cookie(
-            cookie: Soup.Cookie,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        delete_cookie(cookie: Soup.Cookie, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously delete a {@link Soup.Cookie} from the current session.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_cookie_manager_delete_cookie_finish()` to get the result of the operation.
+         * @param cookie the {@link Soup.Cookie} to be deleted
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        delete_cookie(cookie: Soup.Cookie, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_cookie_manager_delete_cookie()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the cookie was deleted or `false` in case of error.
          */
         delete_cookie_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Asynchronously get the cookie acceptance policy of `cookie_manager`.
-         *
+         * 
          * Note that when policy was set to {@link WebKit.CookieAcceptPolicy.NO_THIRD_PARTY} and
          * ITP is enabled, this will return {@link WebKit.CookieAcceptPolicy.ALWAYS}.
          * See also `webkit_website_data_manager_set_itp_enabled()`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_get_accept_policy_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_accept_policy(cancellable: Gio.Cancellable | null): globalThis.Promise<CookieAcceptPolicy>;
+        get_accept_policy(cancellable: (Gio.Cancellable | null)): globalThis.Promise<CookieAcceptPolicy>;
+
         /**
          * Asynchronously get the cookie acceptance policy of `cookie_manager`.
-         *
+         * 
          * Note that when policy was set to {@link WebKit.CookieAcceptPolicy.NO_THIRD_PARTY} and
          * ITP is enabled, this will return {@link WebKit.CookieAcceptPolicy.ALWAYS}.
          * See also `webkit_website_data_manager_set_itp_enabled()`.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_cookie_manager_get_accept_policy_finish()` to get the result of the operation.
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_accept_policy(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Asynchronously get the cookie acceptance policy of `cookie_manager`.
-         *
-         * Note that when policy was set to {@link WebKit.CookieAcceptPolicy.NO_THIRD_PARTY} and
-         * ITP is enabled, this will return {@link WebKit.CookieAcceptPolicy.ALWAYS}.
-         * See also `webkit_website_data_manager_set_itp_enabled()`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_get_accept_policy_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_accept_policy(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<CookieAcceptPolicy> | void;
+        get_accept_policy(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously get the cookie acceptance policy of `cookie_manager`.
+         * 
+         * Note that when policy was set to {@link WebKit.CookieAcceptPolicy.NO_THIRD_PARTY} and
+         * ITP is enabled, this will return {@link WebKit.CookieAcceptPolicy.ALWAYS}.
+         * See also `webkit_website_data_manager_set_itp_enabled()`.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_cookie_manager_get_accept_policy_finish()` to get the result of the operation.
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_accept_policy(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<CookieAcceptPolicy> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_cookie_manager_get_accept_policy()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the cookie acceptance policy of `cookie_manager` as a {@link WebKit.CookieAcceptPolicy}.
          */
         get_accept_policy_finish(result: Gio.AsyncResult): CookieAcceptPolicy;
+
         /**
          * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_get_all_cookies_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_all_cookies(cancellable: Gio.Cancellable | null): globalThis.Promise<Soup.Cookie[]>;
+        get_all_cookies(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Soup.Cookie[]>;
+
         /**
          * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_cookie_manager_get_all_cookies_finish()` to get the result of the operation.
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback (closure user_data): a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_all_cookies(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_get_all_cookies_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (closure user_data): a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_all_cookies(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Soup.Cookie[]> | void;
+        get_all_cookies(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_cookie_manager_get_all_cookies_finish()` to get the result of the operation.
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback (closure user_data): a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_all_cookies(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Soup.Cookie[]> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_cookie_manager_get_all_cookies()`.
-         *
+         * 
          * The return value is a {@link GLib.List} of {@link Soup.Cookie} instances which should be released
          * with `g_list_free_full()` and `soup_cookie_free()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns A {@link GLib.List} of {@link Soup.Cookie} instances.
          */
         get_all_cookies_finish(result: Gio.AsyncResult): Soup.Cookie[];
+
         /**
          * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
-         *
+         * 
          * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager` associated with `uri`, which
          * must be either an HTTP or an HTTPS URL.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_get_cookies_finish()` to get the result of the operation.
          * @param uri the URI associated to the cookies to be retrieved
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_cookies(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Soup.Cookie[]>;
+        get_cookies(uri: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Soup.Cookie[]>;
+
         /**
          * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
-         *
+         * 
          * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager` associated with `uri`, which
          * must be either an HTTP or an HTTPS URL.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_cookie_manager_get_cookies_finish()` to get the result of the operation.
-         * @param uri the URI associated to the cookies to be retrieved
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_cookies(
-            uri: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
-         *
-         * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager` associated with `uri`, which
-         * must be either an HTTP or an HTTPS URL.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_get_cookies_finish()` to get the result of the operation.
          * @param uri the URI associated to the cookies to be retrieved
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_cookies(
-            uri: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Soup.Cookie[]> | void;
+        get_cookies(uri: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager`.
+         * 
+         * Asynchronously get a list of {@link Soup.Cookie} from `cookie_manager` associated with `uri`, which
+         * must be either an HTTP or an HTTPS URL.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_cookie_manager_get_cookies_finish()` to get the result of the operation.
+         * @param uri the URI associated to the cookies to be retrieved
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_cookies(uri: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Soup.Cookie[]> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_cookie_manager_get_cookies()`.
-         *
+         * 
          * The return value is a {@link GLib.List} of {@link Soup.Cookie} instances which should be released
          * with `g_list_free_full()` and `soup_cookie_free()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns A {@link GLib.List} of {@link Soup.Cookie} instances.
          */
         get_cookies_finish(result: Gio.AsyncResult): Soup.Cookie[];
+
         /**
          * Asynchronously replace all cookies in `cookie_manager` with the given list of `cookies`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_replace_cookies_finish()` to get the result of the operation.
          * @param cookies a {@link GLib.List} of {@link Soup.Cookie} to be added
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        replace_cookies(cookies: Soup.Cookie[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        replace_cookies(cookies: Soup.Cookie[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously replace all cookies in `cookie_manager` with the given list of `cookies`.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_cookie_manager_replace_cookies_finish()` to get the result of the operation.
-         * @param cookies a {@link GLib.List} of {@link Soup.Cookie} to be added
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback (closure user_data): a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        replace_cookies(
-            cookies: Soup.Cookie[],
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously replace all cookies in `cookie_manager` with the given list of `cookies`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_cookie_manager_replace_cookies_finish()` to get the result of the operation.
          * @param cookies a {@link GLib.List} of {@link Soup.Cookie} to be added
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (closure user_data): a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        replace_cookies(
-            cookies: Soup.Cookie[],
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        replace_cookies(cookies: Soup.Cookie[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously replace all cookies in `cookie_manager` with the given list of `cookies`.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_cookie_manager_replace_cookies_finish()` to get the result of the operation.
+         * @param cookies a {@link GLib.List} of {@link Soup.Cookie} to be added
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback (closure user_data): a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        replace_cookies(cookies: Soup.Cookie[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_cookie_manager_replace_cookies()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the cookies were added or `false` in case of error.
          */
         replace_cookies_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set the cookie acceptance policy of `cookie_manager` as `policy`.
-         *
+         * 
          * Note that ITP has its own way to handle third-party cookies, so when it's enabled,
          * and `policy` is set to {@link WebKit.CookieAcceptPolicy.NO_THIRD_PARTY}, {@link WebKit.CookieAcceptPolicy.ALWAYS}
          * will be used instead. Once disabled, the policy will be set back to {@link WebKit.CookieAcceptPolicy.NO_THIRD_PARTY}.
@@ -3532,9 +3568,10 @@ export namespace WebKit {
          * @param policy a {@link WebKit.CookieAcceptPolicy}
          */
         set_accept_policy(policy: CookieAcceptPolicy): void;
+
         /**
          * Set non-session cookies.
-         *
+         * 
          * Set the `filename` where non-session cookies are stored persistently using
          * `storage` as the format to read/write the cookies.
          * Cookies are initially read from `filename` to create an initial set of cookies.
@@ -3542,7 +3579,7 @@ export namespace WebKit {
          * signal is emitted.
          * By default, `cookie_manager` doesn't store the cookies persistently, so you need to call this
          * method to keep cookies saved across sessions.
-         *
+         * 
          * This method should never be called on a {@link WebKit.CookieManager} associated to an ephemeral {@link WebKit.WebsiteDataManager}.
          * @param filename the filename to read to/write from
          * @param storage a {@link WebKit.CookiePersistentStorage}
@@ -3550,23 +3587,26 @@ export namespace WebKit {
         set_persistent_storage(filename: string, storage: CookiePersistentStorage): void;
     }
 
+
     namespace DeviceInfoPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+        }
     }
 
     /**
      * A permission request for enumerating the user's media devices
-     *
+     * 
      * WebKitDeviceInfoPermissionRequest represents a request for
      * permission to whether WebKit should be allowed to access the user's
      * devices information when requested through the MediaDevices.enumerateDevices
      * API.
-     *
+     * 
      * When a WebKitDeviceInfoPermissionRequest is not handled by the user,
      * it is denied by default.
      * @gir-type Class
@@ -3585,52 +3625,46 @@ export namespace WebKit {
         $signals: DeviceInfoPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DeviceInfoPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfoPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceInfoPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DeviceInfoPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DeviceInfoPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DeviceInfoPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DeviceInfoPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
          */
         vfunc_deny(): void;
     }
+
 
     namespace Download {
         // Signal signatures
@@ -3642,14 +3676,14 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'created-destination': (arg0: string) => void;
+            "created-destination": (arg0: string) => void;
             /**
              * This signal is emitted after response is received to
              * decide a destination for the download using
              * `webkit_download_set_destination()`. If this signal is not
              * handled, the file will be downloaded to {@link GLib.UserDirectory.DIRECTORY_DOWNLOAD}
              * directory using `suggested_filename`.
-             *
+             * 
              * Since 2.40, you may handle this signal asynchronously by
              * returning `true` without calling `webkit_download_set_destination()`.
              * This indicates intent to eventually call `webkit_download_set_destination()`.
@@ -3658,7 +3692,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'decide-destination': (arg0: string) => boolean | void;
+            "decide-destination": (arg0: string) => (boolean | void);
             /**
              * This signal is emitted when an error occurs during the download
              * operation. The given `error`, of the domain `WEBKIT_DOWNLOAD_ERROR`,
@@ -3684,19 +3718,18 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'received-data': (arg0: number) => void;
-            'notify::allow-overwrite': (pspec: GObject.ParamSpec) => void;
-            'notify::destination': (pspec: GObject.ParamSpec) => void;
-            'notify::estimated-progress': (pspec: GObject.ParamSpec) => void;
-            'notify::response': (pspec: GObject.ParamSpec) => void;
+            "received-data": (arg0: number) => void;
+            "notify::allow-overwrite": (pspec: GObject.ParamSpec) => void;
+            "notify::destination": (pspec: GObject.ParamSpec) => void;
+            "notify::estimated-progress": (pspec: GObject.ParamSpec) => void;
+            "notify::response": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             allow_overwrite: boolean;
             allowOverwrite: boolean;
-            destination: string | null;
+            destination: (string | null);
             estimated_progress: number;
             estimatedProgress: number;
             response: URIResponse;
@@ -3705,7 +3738,7 @@ export namespace WebKit {
 
     /**
      * Object used to communicate with the application when downloading.
-     *
+     * 
      * {@link WebKit.Download} carries information about a download request and
      * response, including a {@link WebKit.URIRequest} and a {@link WebKit.URIResponse}
      * objects. The application may use this object to control the
@@ -3717,7 +3750,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<Download>;
 
         // Properties
-
         /**
          * Whether or not the download is allowed to overwrite an existing file on
          * disk. If this property is `false` and the destination already exists,
@@ -3727,6 +3759,7 @@ export namespace WebKit {
          */
         get allow_overwrite(): boolean;
         set allow_overwrite(val: boolean);
+
         /**
          * Whether or not the download is allowed to overwrite an existing file on
          * disk. If this property is `false` and the destination already exists,
@@ -3736,12 +3769,14 @@ export namespace WebKit {
          */
         get allowOverwrite(): boolean;
         set allowOverwrite(val: boolean);
+
         /**
          * The local path to where the download will be saved.
          * @read-only
          * @default null
          */
-        get destination(): string | null;
+        get destination(): (string | null);
+
         /**
          * An estimate of the percent completion for the download operation.
          * This value will range from 0.0 to 1.0. The value is an estimate
@@ -3753,6 +3788,7 @@ export namespace WebKit {
          * @default 1
          */
         get estimated_progress(): number;
+
         /**
          * An estimate of the percent completion for the download operation.
          * This value will range from 0.0 to 1.0. The value is an estimate
@@ -3764,6 +3800,7 @@ export namespace WebKit {
          * @default 1
          */
         get estimatedProgress(): number;
+
         /**
          * The {@link WebKit.URIResponse} associated with this download.
          * @read-only
@@ -3780,68 +3817,62 @@ export namespace WebKit {
         $signals: Download.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Download.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Download.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Download.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Download.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Download.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Download.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Download.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Download.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Download.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Download.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Download.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Download.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Download.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Cancels the download.
-         *
+         * 
          * When the ongoing download
          * operation is effectively cancelled the signal
          * {@link WebKit.Download.SignalSignatures.failed | WebKit.Download::failed} is emitted with
          * {@link WebKit.DownloadError.CANCELLED_BY_USER} error.
          */
         cancel(): void;
+
         /**
          * Returns the current value of the {@link WebKit.Download.allow_overwrite} property.
-         *
+         * 
          * Returns the current value of the {@link WebKit.Download.allow_overwrite} property,
          * which determines whether the download will overwrite an existing file on
          * disk, or if it will fail if the destination already exists.
          * @returns the current value of the {@link WebKit.Download.allow_overwrite} property
          */
         get_allow_overwrite(): boolean;
+
         /**
          * Obtains the destination to which the downloaded file will be written.
-         *
+         * 
          * You can connect to {@link WebKit.Download.SignalSignatures.created_destination | WebKit.Download::created-destination} to make
          * sure this method returns a valid destination.
          * @returns the destination or `null`
          */
-        get_destination(): string | null;
+        get_destination(): (string | null);
+
         /**
          * Gets the elapsed time in seconds, including any fractional part.
-         *
+         * 
          * If the download finished, had an error or was cancelled this is
          * the time between its start and the event.
          * @returns seconds since the download was started
          */
         get_elapsed_time(): number;
+
         /**
          * Gets the value of the {@link WebKit.Download.estimated_progress} property.
          * Gets the value of the {@link WebKit.Download.estimated_progress} property.
@@ -3850,23 +3881,26 @@ export namespace WebKit {
          * @returns an estimate of the of the percent complete for a download     as a range from 0.0 to 1.0.
          */
         get_estimated_progress(): number;
+
         /**
          * Gets the length of the data already downloaded for `download`.
-         *
+         * 
          * Gets the length of the data already downloaded for `download`
          * in bytes.
          * @returns the amount of bytes already downloaded.
          */
         get_received_data_length(): number;
+
         /**
          * Retrieves the {@link WebKit.URIRequest} object that backs the download
          * process.
          * @returns the {@link WebKit.URIRequest} of `download`
          */
         get_request(): URIRequest;
+
         /**
          * Retrieves the {@link WebKit.URIResponse} object that backs the download process.
-         *
+         * 
          * Retrieves the {@link WebKit.URIResponse} object that backs the download
          * process. This method returns `null` if called before the response
          * is received from the server. You can connect to notify::response
@@ -3874,23 +3908,26 @@ export namespace WebKit {
          * @returns the {@link WebKit.URIResponse}, or `null` if     the response hasn't been received yet.
          */
         get_response(): URIResponse;
+
         /**
          * Get the {@link WebKit.WebView} that initiated the download.
          * @returns the {@link WebKit.WebView} that initiated `download`,    or `null` if `download` was not initiated by a {@link WebKit.WebView}.
          */
         get_web_view(): WebView;
+
         /**
          * Sets the {@link WebKit.Download.allow_overwrite} property.
-         *
+         * 
          * Sets the {@link WebKit.Download.allow_overwrite} property, which determines whether
          * the download may overwrite an existing file on disk, or if it will fail if
          * the destination already exists.
          * @param allowed the new value for the {@link WebKit.Download.allow_overwrite} property
          */
         set_allow_overwrite(allowed: boolean): void;
+
         /**
          * Sets the destination to which the downloaded file will be written.
-         *
+         * 
          * This method should be called before the download transfer
          * starts or it will not have any effect on the ongoing download
          * operation. To set the destination using the filename suggested
@@ -3899,7 +3936,7 @@ export namespace WebKit {
          * set a fixed destination that doesn't depend on the suggested
          * filename you can connect to notify::response signal and call
          * `webkit_download_set_destination()`.
-         *
+         * 
          * If {@link WebKit.Download.SignalSignatures.decide_destination | WebKit.Download::decide-destination} signal is not handled
          * and destination is not set when the download transfer starts,
          * the file will be saved with the filename suggested by the server in
@@ -3908,6 +3945,7 @@ export namespace WebKit {
          */
         set_destination(destination: string): void;
     }
+
 
     namespace EditorState {
         // Signal signatures
@@ -3919,11 +3957,10 @@ export namespace WebKit {
              * @run-last
              */
             changed: () => void;
-            'notify::typing-attributes': (pspec: GObject.ParamSpec) => void;
+            "notify::typing-attributes": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             typing_attributes: number;
             typingAttributes: number;
@@ -3932,7 +3969,7 @@ export namespace WebKit {
 
     /**
      * Web editor state.
-     *
+     * 
      * WebKitEditorState represents the state of a {@link WebKit.WebView} editor.
      * Use `webkit_web_view_get_editor_state()` to get the WebKitEditorState
      * of a {@link WebKit.WebView}.
@@ -3943,7 +3980,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<EditorState>;
 
         // Properties
-
         /**
          * Bitmask of {@link WebKit.EditorTypingAttributes} flags.
          * See `webkit_editor_state_get_typing_attributes()` for more information.
@@ -3952,6 +3988,7 @@ export namespace WebKit {
          * @default 0
          */
         get typing_attributes(): number;
+
         /**
          * Bitmask of {@link WebKit.EditorTypingAttributes} flags.
          * See `webkit_editor_state_get_typing_attributes()` for more information.
@@ -3971,37 +4008,27 @@ export namespace WebKit {
         $signals: EditorState.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<EditorState.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof EditorState.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditorState.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof EditorState.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EditorState.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof EditorState.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, EditorState.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof EditorState.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, EditorState.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof EditorState.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<EditorState.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof EditorState.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<EditorState.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the typing attributes at the current cursor position.
-         *
+         * 
          * If there is a selection, this returns the typing attributes
          * of the selected text. Note that in case of a selection,
          * typing attributes are considered active only when they are
@@ -4009,32 +4036,38 @@ export namespace WebKit {
          * @returns a bitmask of {@link WebKit.EditorTypingAttributes} flags
          */
         get_typing_attributes(): number;
+
         /**
          * Gets whether a copy command can be issued.
          * @returns `true` if copy is currently available
          */
         is_copy_available(): boolean;
+
         /**
          * Gets whether a cut command can be issued.
          * @returns `true` if cut is currently available
          */
         is_cut_available(): boolean;
+
         /**
          * Gets whether a paste command can be issued.
          * @returns `true` if paste is currently available
          */
         is_paste_available(): boolean;
+
         /**
          * Gets whether a redo command can be issued.
          * @returns `true` if redo is currently available
          */
         is_redo_available(): boolean;
+
         /**
          * Gets whether an undo command can be issued.
          * @returns `true` if undo is currently available
          */
         is_undo_available(): boolean;
     }
+
 
     namespace FaviconDatabase {
         // Signal signatures
@@ -4049,22 +4082,23 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'favicon-changed': (arg0: string, arg1: string) => void;
+            "favicon-changed": (arg0: string, arg1: string) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Provides access to the icons associated with web sites.
-     *
+     * 
      * WebKit will automatically look for available icons in <link>
      * elements on opened pages as well as an existing favicon.ico and
      * load the images found into a memory cache if possible. That cache
      * is frozen to an on-disk database for persistence.
-     *
+     * 
      * If {@link WebKit.Settings.enable_private_browsing} is `true`, new icons
      * won't be added to the on-disk database and no existing icons will
      * be deleted from it. Nevertheless, WebKit will still store them in
@@ -4084,78 +4118,51 @@ export namespace WebKit {
         $signals: FaviconDatabase.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FaviconDatabase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FaviconDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FaviconDatabase.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FaviconDatabase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FaviconDatabase.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FaviconDatabase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FaviconDatabase.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FaviconDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FaviconDatabase.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FaviconDatabase.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FaviconDatabase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FaviconDatabase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FaviconDatabase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Clears all icons from the database.
          */
         clear(): void;
+
         /**
          * Asynchronously obtains a favicon image.
-         *
+         * 
          * Asynchronously obtains an image of the favicon for the
          * given page URI. It returns the cached icon if it's in the database
          * asynchronously waiting for the icon to be read from the database.
-         *
+         * 
          * This is an asynchronous method. When the operation is finished, callback will
          * be invoked. You can then call `webkit_favicon_database_get_favicon_finish()`
          * to get the result of the operation.
          * @param page_uri URI of the page for which we want to retrieve the favicon
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          */
-        get_favicon(page_uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gdk.Texture>;
+        get_favicon(page_uri: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gdk.Texture>;
+
         /**
          * Asynchronously obtains a favicon image.
-         *
+         * 
          * Asynchronously obtains an image of the favicon for the
          * given page URI. It returns the cached icon if it's in the database
          * asynchronously waiting for the icon to be read from the database.
-         *
-         * This is an asynchronous method. When the operation is finished, callback will
-         * be invoked. You can then call `webkit_favicon_database_get_favicon_finish()`
-         * to get the result of the operation.
-         * @param page_uri URI of the page for which we want to retrieve the favicon
-         * @param cancellable A {@link Gio.Cancellable} or `null`.
-         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is            satisfied or `null` if you don't care about the result.
-         */
-        get_favicon(
-            page_uri: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously obtains a favicon image.
-         *
-         * Asynchronously obtains an image of the favicon for the
-         * given page URI. It returns the cached icon if it's in the database
-         * asynchronously waiting for the icon to be read from the database.
-         *
+         * 
          * This is an asynchronous method. When the operation is finished, callback will
          * be invoked. You can then call `webkit_favicon_database_get_favicon_finish()`
          * to get the result of the operation.
@@ -4163,17 +4170,31 @@ export namespace WebKit {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is            satisfied or `null` if you don't care about the result.
          */
-        get_favicon(
-            page_uri: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gdk.Texture> | void;
+        get_favicon(page_uri: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously obtains a favicon image.
+         * 
+         * Asynchronously obtains an image of the favicon for the
+         * given page URI. It returns the cached icon if it's in the database
+         * asynchronously waiting for the icon to be read from the database.
+         * 
+         * This is an asynchronous method. When the operation is finished, callback will
+         * be invoked. You can then call `webkit_favicon_database_get_favicon_finish()`
+         * to get the result of the operation.
+         * @param page_uri URI of the page for which we want to retrieve the favicon
+         * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is            satisfied or `null` if you don't care about the result.
+         */
+        get_favicon(page_uri: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gdk.Texture> | void);
+
         /**
          * Finishes an operation started with `webkit_favicon_database_get_favicon()`.
          * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `webkit_favicon_database_get_favicon()`
          * @returns a new favicon image, or `null` in case of error.
          */
         get_favicon_finish(result: Gio.AsyncResult): Gdk.Texture;
+
         /**
          * Obtains the URI of the favicon for the given `page_uri`.
          * @param page_uri URI of the page containing the icon
@@ -4182,17 +4203,17 @@ export namespace WebKit {
         get_favicon_uri(page_uri: string): string;
     }
 
+
     namespace FileChooserRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mime-types': (pspec: GObject.ParamSpec) => void;
-            'notify::select-multiple': (pspec: GObject.ParamSpec) => void;
-            'notify::selected-files': (pspec: GObject.ParamSpec) => void;
+            "notify::filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mime-types": (pspec: GObject.ParamSpec) => void;
+            "notify::select-multiple": (pspec: GObject.ParamSpec) => void;
+            "notify::selected-files": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             filter: Gtk.FileFilter;
             mime_types: string[];
@@ -4206,7 +4227,7 @@ export namespace WebKit {
 
     /**
      * A request to open a file chooser.
-     *
+     * 
      * Whenever the user interacts with an HTML input element with
      * file type, WebKit will need to show a dialog to choose one or
      * more files to be uploaded to the server along with the rest of the
@@ -4219,7 +4240,7 @@ export namespace WebKit {
      * inspect the details of the request (e.g. if multiple selection
      * should be allowed) and to cancel the request, in case nothing was
      * selected.
-     *
+     * 
      * In case the client application does not wish to handle this signal,
      * WebKit will provide a default handler which will asynchronously run
      * a regular {@link Gtk.FileChooserDialog} for the user to interact with.
@@ -4229,7 +4250,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<FileChooserRequest>;
 
         // Properties
-
         /**
          * The filter currently associated with the request. See
          * `webkit_file_chooser_request_get_mime_types_filter()` for more
@@ -4237,6 +4257,7 @@ export namespace WebKit {
          * @read-only
          */
         get filter(): Gtk.FileFilter;
+
         /**
          * A `null`-terminated array of strings containing the list of MIME
          * types the file chooser dialog should handle. See
@@ -4244,6 +4265,7 @@ export namespace WebKit {
          * @read-only
          */
         get mime_types(): string[];
+
         /**
          * A `null`-terminated array of strings containing the list of MIME
          * types the file chooser dialog should handle. See
@@ -4251,6 +4273,7 @@ export namespace WebKit {
          * @read-only
          */
         get mimeTypes(): string[];
+
         /**
          * Whether the file chooser should allow selecting multiple
          * files. See
@@ -4260,6 +4283,7 @@ export namespace WebKit {
          * @default false
          */
         get select_multiple(): boolean;
+
         /**
          * Whether the file chooser should allow selecting multiple
          * files. See
@@ -4269,6 +4293,7 @@ export namespace WebKit {
          * @default false
          */
         get selectMultiple(): boolean;
+
         /**
          * A `null`-terminated array of strings containing the list of
          * selected files associated to the current request. See
@@ -4276,6 +4301,7 @@ export namespace WebKit {
          * @read-only
          */
         get selected_files(): string[];
+
         /**
          * A `null`-terminated array of strings containing the list of
          * selected files associated to the current request. See
@@ -4294,46 +4320,37 @@ export namespace WebKit {
         $signals: FileChooserRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FileChooserRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileChooserRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileChooserRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileChooserRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileChooserRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileChooserRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileChooserRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileChooserRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileChooserRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileChooserRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileChooserRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileChooserRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Ask WebKit to cancel the request.
-         *
+         * 
          * It's important to do this in case
          * no selection has been made in the client, otherwise the request
          * won't be properly completed and the browser will keep the request
          * pending forever, which might cause the browser to hang.
          */
         cancel(): void;
+
         /**
          * Get the list of MIME types the file chooser dialog should handle.
-         *
+         * 
          * Get the list of MIME types the file chooser dialog should handle,
          * in the format specified in RFC 2046 for "media types". Its contents
          * depend on the value of the 'accept' attribute for HTML input
@@ -4343,23 +4360,25 @@ export namespace WebKit {
          * @returns a `null`-terminated array of strings if a list of accepted MIME types is defined or `null` otherwise, meaning that any MIME type should be accepted. This array and its contents are owned by WebKit and should not be modified or freed.
          */
         get_mime_types(): string[];
+
         /**
          * Get the filter currently associated with the request.
-         *
+         * 
          * Get the filter currently associated with the request, ready to be
          * used by {@link Gtk.FileChooser}. This function should normally be called
          * before presenting the file chooser dialog to the user, to decide
          * whether to apply a filter so the user would not be allowed to
          * select files with other MIME types.
-         *
+         * 
          * See `webkit_file_chooser_request_get_mime_types()` if you are
          * interested in getting the list of accepted MIME types.
          * @returns a {@link Gtk.FileFilter} if a list of accepted MIME types is defined or `null` otherwise. The returned object is owned by WebKit should not be modified or freed.
          */
         get_mime_types_filter(): Gtk.FileFilter;
+
         /**
          * Whether the file chooser should allow selecting multiple files.
-         *
+         * 
          * Determine whether the file chooser associated to this
          * {@link WebKit.FileChooserRequest} should allow selecting multiple files,
          * which depends on the HTML input element having a 'multiple'
@@ -4367,21 +4386,23 @@ export namespace WebKit {
          * @returns `true` if the file chooser should allow selecting multiple files or `false` otherwise.
          */
         get_select_multiple(): boolean;
+
         /**
          * Get the list of selected files associated to the request.
-         *
+         * 
          * Get the list of selected files currently associated to the
          * request. Initially, the return value of this method contains any
          * files selected in previous file chooser requests for this HTML
          * input element. Once webkit_file_chooser_request_select_files, the
          * value will reflect whatever files are given.
-         *
+         * 
          * This function should normally be called only before presenting the
          * file chooser dialog to the user, to decide whether to perform some
          * extra action, like pre-selecting the files from a previous request.
          * @returns a `null`-terminated array of strings if there are selected files associated with the request or `null` otherwise. This array and its contents are owned by WebKit and should not be modified or freed.
          */
         get_selected_files(): string[];
+
         /**
          * Ask WebKit to select local files for upload and complete the
          * request.
@@ -4389,6 +4410,7 @@ export namespace WebKit {
          */
         select_files(files: string[]): void;
     }
+
 
     namespace FindController {
         // Signal signatures
@@ -4400,7 +4422,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'counted-matches': (arg0: number) => void;
+            "counted-matches": (arg0: number) => void;
             /**
              * This signal is emitted when a search operation does not find
              * any result for the given text. It will be issued if the text
@@ -4410,7 +4432,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'failed-to-find-text': () => void;
+            "failed-to-find-text": () => void;
             /**
              * This signal is emitted when a given text is found in the web
              * page text. It will be issued if the text is found
@@ -4420,15 +4442,14 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'found-text': (arg0: number) => void;
-            'notify::max-match-count': (pspec: GObject.ParamSpec) => void;
-            'notify::options': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::web-view': (pspec: GObject.ParamSpec) => void;
+            "found-text": (arg0: number) => void;
+            "notify::max-match-count": (pspec: GObject.ParamSpec) => void;
+            "notify::options": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::web-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             max_match_count: number;
             maxMatchCount: number;
@@ -4441,7 +4462,7 @@ export namespace WebKit {
 
     /**
      * Controls text search in a {@link WebKit.WebView}.
-     *
+     * 
      * A {@link WebKit.FindController} is used to search text in a {@link WebKit.WebView}. You
      * can get a {@link WebKit.WebView}<!-- -->'s {@link WebKit.FindController} with
      * `webkit_web_view_get_find_controller()`, and later use it to search
@@ -4457,36 +4478,40 @@ export namespace WebKit {
         static $gtype: GObject.GType<FindController>;
 
         // Properties
-
         /**
          * The maximum number of matches to report for a given search.
          * @read-only
          * @default 0
          */
         get max_match_count(): number;
+
         /**
          * The maximum number of matches to report for a given search.
          * @read-only
          * @default 0
          */
         get maxMatchCount(): number;
+
         /**
          * The options to be used in the search operation.
          * @read-only
          * @default WebKit.FindOptions.NONE
          */
         get options(): FindOptions;
+
         /**
          * The current search text for this {@link WebKit.FindController}.
          * @read-only
          * @default null
          */
         get text(): string;
+
         /**
          * The {@link WebKit.WebView} this controller is associated to.
          * @construct-only
          */
         get web_view(): WebView;
+
         /**
          * The {@link WebKit.WebView} this controller is associated to.
          * @construct-only
@@ -4503,37 +4528,27 @@ export namespace WebKit {
         $signals: FindController.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FindController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FindController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FindController.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FindController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FindController.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FindController.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FindController.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FindController.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FindController.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FindController.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FindController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FindController.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FindController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Counts the number of matches for `search_text`.
-         *
+         * 
          * Counts the number of matches for `search_text` found in the
          * {@link WebKit.WebView} with the provided `find_options`. The number of
          * matches will be provided by the
@@ -4543,9 +4558,10 @@ export namespace WebKit {
          * @param max_match_count the maximum number of matches allowed in the search
          */
         count_matches(search_text: string, find_options: number, max_match_count: number): void;
+
         /**
          * Gets the maximum number of matches to report.
-         *
+         * 
          * Gets the maximum number of matches to report during a text
          * lookup. This number is passed as the last argument of
          * `webkit_find_controller_search()` or
@@ -4553,17 +4569,19 @@ export namespace WebKit {
          * @returns the maximum number of matches to report.
          */
         get_max_match_count(): number;
+
         /**
          * Gets the {@link WebKit.FindOptions} for the current search.
-         *
+         * 
          * Gets a bitmask containing the {@link WebKit.FindOptions} associated with
          * the current search.
          * @returns a bitmask containing the {@link WebKit.FindOptions} associated with the current search.
          */
         get_options(): number;
+
         /**
          * Gets the text that `find_controller` is searching for.
-         *
+         * 
          * Gets the text that `find_controller` is currently searching
          * for. This text is passed to either
          * `webkit_find_controller_search()` or
@@ -4571,35 +4589,37 @@ export namespace WebKit {
          * @returns the text to look for in the {@link WebKit.WebView}.
          */
         get_search_text(): string;
+
         /**
          * Gets the {@link WebKit.WebView} this find controller is associated to.
-         *
+         * 
          * Do
          * not dereference the returned instance as it belongs to the
          * {@link WebKit.FindController}.
          * @returns the {@link WebKit.WebView}.
          */
         get_web_view(): WebView;
+
         /**
          * Looks for `search_text` associated with `find_controller`.
-         *
+         * 
          * Looks for `search_text` in the {@link WebKit.WebView} associated with
          * `find_controller` since the beginning of the document highlighting
          * up to `max_match_count` matches. The outcome of the search will be
          * asynchronously provided by the {@link WebKit.FindController.SignalSignatures.found_text | WebKit.FindController::found-text}
          * and {@link WebKit.FindController.SignalSignatures.failed_to_find_text | WebKit.FindController::failed-to-find-text} signals.
-         *
+         * 
          * To look for the next or previous occurrences of the same text
          * with the same find options use `webkit_find_controller_search_next()`
          * and/or `webkit_find_controller_search_previous()`. The
          * {@link WebKit.FindController} will use the same text and options for the
          * following searches unless they are modified by another call to this
          * method.
-         *
+         * 
          * Note that if the number of matches is higher than `max_match_count`
          * then {@link WebKit.FindController.SignalSignatures.found_text | WebKit.FindController::found-text} will report `G_MAXUINT` matches
          * instead of the actual number.
-         *
+         * 
          * Callers should call `webkit_find_controller_search_finish()` to
          * finish the current search operation.
          * @param search_text the text to look for
@@ -4607,45 +4627,51 @@ export namespace WebKit {
          * @param max_match_count the maximum number of matches allowed in the search
          */
         search(search_text: string, find_options: number, max_match_count: number): void;
+
         /**
          * Finishes a find operation.
-         *
+         * 
          * Finishes a find operation started by
          * `webkit_find_controller_search()`. It will basically unhighlight
          * every text match found.
-         *
+         * 
          * This method will be typically called when the search UI is
          * closed/hidden by the client application.
          */
         search_finish(): void;
+
         /**
          * Looks for the next occurrence of the search text.
-         *
+         * 
          * Calling this method before `webkit_find_controller_search()` or
          * `webkit_find_controller_count_matches()` is a programming error.
          */
         search_next(): void;
+
         /**
          * Looks for the previous occurrence of the search text.
-         *
+         * 
          * Calling this method before `webkit_find_controller_search()` or
          * `webkit_find_controller_count_matches()` is a programming error.
          */
         search_previous(): void;
     }
 
+
     namespace FormSubmissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Represents a form submission request.
-     *
+     * 
      * When a form is about to be submitted in a {@link WebKit.WebView}, the
      * {@link WebKit.WebView.SignalSignatures.submit_form | WebKit.WebView::submit-form} signal is emitted. Its request argument
      * contains information about the text fields of the form, that are
@@ -4667,53 +4693,43 @@ export namespace WebKit {
         $signals: FormSubmissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FormSubmissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FormSubmissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormSubmissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FormSubmissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormSubmissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FormSubmissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FormSubmissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FormSubmissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FormSubmissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FormSubmissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FormSubmissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof FormSubmissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FormSubmissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get lists of the text fields contained in the form associated to `request`.
-         *
+         * 
          * Get lists with the names and values of the text fields contained in
          * the form associated to `request`. Note that names and values may be
          * `null`.
-         *
+         * 
          * If this function returns `false`, then both `field_names` and
          * `field_values` will be empty.
          * @returns `true` if the form contains text fields, or `false` otherwise
          */
         list_text_fields(): [boolean, string[] | null, string[] | null];
+
         /**
          * Continue the form submission.
          */
         submit(): void;
     }
+
 
     namespace GeolocationManager {
         // Signal signatures
@@ -4724,14 +4740,14 @@ export namespace WebKit {
              * the updates using `webkit_geolocation_manager_update_position()` every time
              * the position changes, or use `webkit_geolocation_manager_failed()` in case
              * it isn't possible to determine the current position.
-             *
+             * 
              * If the signal is not handled, WebKit will try to determine the position
              * using GeoClue if available.
              * @signal
              * @since 2.26
              * @run-last
              */
-            start: () => boolean | void;
+            start: () => (boolean | void);
             /**
              * The signal is emitted to notify that `manager` doesn't need to receive
              * position updates anymore.
@@ -4740,11 +4756,10 @@ export namespace WebKit {
              * @run-last
              */
             stop: () => void;
-            'notify::enable-high-accuracy': (pspec: GObject.ParamSpec) => void;
+            "notify::enable-high-accuracy": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             enable_high_accuracy: boolean;
             enableHighAccuracy: boolean;
@@ -4753,7 +4768,7 @@ export namespace WebKit {
 
     /**
      * Geolocation manager.
-     *
+     * 
      * WebKitGeolocationManager provides API to get the geographical position of the user.
      * Once a {@link WebKit.GeolocationPermissionRequest} is allowed, when WebKit needs to know the
      * user location {@link WebKit.GeolocationManager.SignalSignatures.start | WebKit.GeolocationManager::start} signal is emitted. If the signal is handled
@@ -4767,7 +4782,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<GeolocationManager>;
 
         // Properties
-
         /**
          * Whether high accuracy is enabled. This is a read-only property that will be
          * set to `true` when a {@link WebKit.GeolocationManager} needs to get accurate position updates.
@@ -4777,6 +4791,7 @@ export namespace WebKit {
          * @default false
          */
         get enable_high_accuracy(): boolean;
+
         /**
          * Whether high accuracy is enabled. This is a read-only property that will be
          * set to `true` when a {@link WebKit.GeolocationManager} needs to get accurate position updates.
@@ -4797,44 +4812,36 @@ export namespace WebKit {
         $signals: GeolocationManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GeolocationManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GeolocationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GeolocationManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GeolocationManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GeolocationManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GeolocationManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GeolocationManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GeolocationManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GeolocationManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GeolocationManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GeolocationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GeolocationManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GeolocationManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Notify `manager` that determining the position failed.
          * @param error_message the error message
          */
         failed(error_message: string): void;
+
         /**
          * Get whether high accuracy is enabled.
          * @returns Whether the setting is enabled.
          */
         get_enable_high_accuracy(): boolean;
+
         /**
          * Notify `manager` that position has been updated to `position`.
          * @param position a {@link WebKit.GeolocationPosition}
@@ -4842,35 +4849,38 @@ export namespace WebKit {
         update_position(position: GeolocationPosition): void;
     }
 
+
     namespace GeolocationPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+        }
     }
 
     /**
      * A permission request for sharing the user's location.
-     *
+     * 
      * WebKitGeolocationPermissionRequest represents a request for
      * permission to decide whether WebKit should provide the user's
      * location to a website when requested through the Geolocation API.
-     *
+     * 
      * When a WebKitGeolocationPermissionRequest is not handled by the user,
      * it is denied by default.
-     *
+     * 
      * When embedding web views in your application, you *must* configure an
      * application identifier to allow web content to use geolocation services.
      * The identifier *must* match the name of the `.desktop` file which describes
      * the application, sans the suffix.
-     *
+     * 
      * If your application uses {@link Gio.Application} (or any subclass like
      * {@link Gtk.Application}), WebKit will automatically use the identifier returned by
      * `g_application_get_application_id()`. This is the recommended approach for
      * enabling geolocation in applications.
-     *
+     * 
      * If an identifier cannot be obtained through {@link Gio.Application}, the value
      * returned by `g_get_prgname()` will be used instead as a fallback. For
      * programs which cannot use {@link Gio.Application}, calling `g_set_prgname()` early
@@ -4891,46 +4901,39 @@ export namespace WebKit {
         $signals: GeolocationPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GeolocationPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GeolocationPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GeolocationPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GeolocationPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GeolocationPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GeolocationPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GeolocationPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GeolocationPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof GeolocationPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GeolocationPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
@@ -4938,19 +4941,19 @@ export namespace WebKit {
         vfunc_deny(): void;
     }
 
+
     namespace HitTestResult {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::context': (pspec: GObject.ParamSpec) => void;
-            'notify::image-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::link-label': (pspec: GObject.ParamSpec) => void;
-            'notify::link-title': (pspec: GObject.ParamSpec) => void;
-            'notify::link-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::media-uri': (pspec: GObject.ParamSpec) => void;
+            "notify::context": (pspec: GObject.ParamSpec) => void;
+            "notify::image-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::link-label": (pspec: GObject.ParamSpec) => void;
+            "notify::link-title": (pspec: GObject.ParamSpec) => void;
+            "notify::link-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::media-uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             context: number;
             image_uri: string;
@@ -4968,13 +4971,13 @@ export namespace WebKit {
 
     /**
      * Result of a Hit Test.
-     *
+     * 
      * A Hit Test is an operation to get context information about a given
      * point in a {@link WebKit.WebView}. {@link WebKit.HitTestResult} represents the
      * result of a Hit Test. It provides context information about what is
      * at the coordinates of the Hit Test, such as if there's a link,
      * an image or a media.
-     *
+     * 
      * You can get the context of the HitTestResult with
      * `webkit_hit_test_result_get_context()` that returns a bitmask of
      * {@link WebKit.HitTestResultContext} flags. You can also use
@@ -4983,7 +4986,7 @@ export namespace WebKit {
      * a link, image or a media element at the coordinates of the Hit Test.
      * Note that it's possible that several {@link WebKit.HitTestResultContext} flags
      * are active at the same time, for example if there's a link containing an image.
-     *
+     * 
      * When the mouse is moved over a {@link WebKit.WebView} a Hit Test is performed
      * for the mouse coordinates and {@link WebKit.WebView.SignalSignatures.mouse_target_changed | WebKit.WebView::mouse-target-changed}
      * signal is emitted with a {@link WebKit.HitTestResult}.
@@ -4993,7 +4996,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<HitTestResult>;
 
         // Properties
-
         /**
          * Bitmask of {@link WebKit.HitTestResultContext} flags representing
          * the context of the {@link WebKit.HitTestResult}.
@@ -5001,6 +5003,7 @@ export namespace WebKit {
          * @default 0
          */
         get context(): number;
+
         /**
          * The URI of the image if flag {@link WebKit.HitTestResultContext.IMAGE}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5008,6 +5011,7 @@ export namespace WebKit {
          * @default null
          */
         get image_uri(): string;
+
         /**
          * The URI of the image if flag {@link WebKit.HitTestResultContext.IMAGE}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5015,6 +5019,7 @@ export namespace WebKit {
          * @default null
          */
         get imageUri(): string;
+
         /**
          * The label of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5022,6 +5027,7 @@ export namespace WebKit {
          * @default null
          */
         get link_label(): string;
+
         /**
          * The label of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5029,6 +5035,7 @@ export namespace WebKit {
          * @default null
          */
         get linkLabel(): string;
+
         /**
          * The title of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5036,6 +5043,7 @@ export namespace WebKit {
          * @default null
          */
         get link_title(): string;
+
         /**
          * The title of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5043,6 +5051,7 @@ export namespace WebKit {
          * @default null
          */
         get linkTitle(): string;
+
         /**
          * The URI of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5050,6 +5059,7 @@ export namespace WebKit {
          * @default null
          */
         get link_uri(): string;
+
         /**
          * The URI of the link if flag {@link WebKit.HitTestResultContext.LINK}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5057,6 +5067,7 @@ export namespace WebKit {
          * @default null
          */
         get linkUri(): string;
+
         /**
          * The URI of the media if flag {@link WebKit.HitTestResultContext.MEDIA}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5064,6 +5075,7 @@ export namespace WebKit {
          * @default null
          */
         get media_uri(): string;
+
         /**
          * The URI of the media if flag {@link WebKit.HitTestResultContext.MEDIA}
          * is present in {@link WebKit.HitTestResult.context}
@@ -5082,101 +5094,103 @@ export namespace WebKit {
         $signals: HitTestResult.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<HitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HitTestResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HitTestResult.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HitTestResult.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HitTestResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HitTestResult.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HitTestResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HitTestResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HitTestResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets whether {@link WebKit.HitTestResultContext.EDITABLE} flag is present in
          * {@link WebKit.HitTestResult.context}.
          * @returns `true` if there's an editable element at the coordinates of the `hit_test_result`,    or `false` otherwise
          */
         context_is_editable(): boolean;
+
         /**
          * Gets whether {@link WebKit.HitTestResultContext.IMAGE} flag is present in
          * {@link WebKit.HitTestResult.context}.
          * @returns `true` if there's an image element in the coordinates of the Hit Test,    or `false` otherwise
          */
         context_is_image(): boolean;
+
         /**
          * Gets whether {@link WebKit.HitTestResultContext.LINK} flag is present in
          * {@link WebKit.HitTestResult.context}.
          * @returns `true` if there's a link element in the coordinates of the Hit Test,    or `false` otherwise
          */
         context_is_link(): boolean;
+
         /**
          * Gets whether {@link WebKit.HitTestResultContext.MEDIA} flag is present in
          * {@link WebKit.HitTestResult.context}.
          * @returns `true` if there's a media element in the coordinates of the Hit Test,    or `false` otherwise
          */
         context_is_media(): boolean;
+
         /**
          * Gets whether {@link WebKit.HitTestResultContext.SCROLLBAR} flag is present in
          * {@link WebKit.HitTestResult.context}.
          * @returns `true` if there's a scrollbar element at the coordinates of the `hit_test_result`,    or `false` otherwise
          */
         context_is_scrollbar(): boolean;
+
         /**
          * Gets whether {@link WebKit.HitTestResultContext.SELECTION} flag is present in
          * {@link WebKit.HitTestResult.context}.
          * @returns `true` if there's a selected element at the coordinates of the `hit_test_result`,    or `false` otherwise
          */
         context_is_selection(): boolean;
+
         /**
          * Gets the value of the {@link WebKit.HitTestResult.context} property.
          * @returns a bitmask of {@link WebKit.HitTestResultContext} flags
          */
         get_context(): number;
+
         /**
          * Gets the value of the {@link WebKit.HitTestResult.image_uri} property.
          * @returns the URI of the image element in the coordinates of the Hit Test,    or `null` if there isn't an image element in `hit_test_result` context
          */
         get_image_uri(): string;
+
         /**
          * Gets the value of the {@link WebKit.HitTestResult.link_label} property.
          * @returns the label of the link element in the coordinates of the Hit Test,    or `null` if there isn't a link element in `hit_test_result` context or the    link element doesn't have a label
          */
         get_link_label(): string;
+
         /**
          * Gets the value of the {@link WebKit.HitTestResult.link_title} property.
          * @returns the title of the link element in the coordinates of the Hit Test,    or `null` if there isn't a link element in `hit_test_result` context or the    link element doesn't have a title
          */
         get_link_title(): string;
+
         /**
          * Gets the value of the {@link WebKit.HitTestResult.link_uri} property.
          * @returns the URI of the link element in the coordinates of the Hit Test,    or `null` if there isn't a link element in `hit_test_result` context
          */
         get_link_uri(): string;
+
         /**
          * Gets the value of the {@link WebKit.HitTestResult.media_uri} property.
          * @returns the URI of the media element in the coordinates of the Hit Test,    or `null` if there isn't a media element in `hit_test_result` context
          */
         get_media_uri(): string;
     }
+
 
     namespace InputMethodContext {
         // Signal signatures
@@ -5197,7 +5211,7 @@ export namespace WebKit {
              * @since 2.28
              * @run-last
              */
-            'delete-surrounding': (arg0: number, arg1: number) => void;
+            "delete-surrounding": (arg0: number, arg1: number) => void;
             /**
              * Emitted whenever the preedit sequence currently being entered has changed.
              * It is also emitted at the end of a preedit sequence, in which case
@@ -5206,27 +5220,26 @@ export namespace WebKit {
              * @since 2.28
              * @run-last
              */
-            'preedit-changed': () => void;
+            "preedit-changed": () => void;
             /**
              * Emitted when a preediting sequence has been completed or canceled.
              * @signal
              * @since 2.28
              * @run-last
              */
-            'preedit-finished': () => void;
+            "preedit-finished": () => void;
             /**
              * Emitted when a new preediting sequence starts.
              * @signal
              * @since 2.28
              * @run-last
              */
-            'preedit-started': () => void;
-            'notify::input-hints': (pspec: GObject.ParamSpec) => void;
-            'notify::input-purpose': (pspec: GObject.ParamSpec) => void;
+            "preedit-started": () => void;
+            "notify::input-hints": (pspec: GObject.ParamSpec) => void;
+            "notify::input-purpose": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             input_hints: InputHints;
             inputHints: InputHints;
@@ -5237,11 +5250,11 @@ export namespace WebKit {
 
     /**
      * Base class for input method contexts.
-     *
+     * 
      * WebKitInputMethodContext defines the interface to implement WebKit input methods.
      * The input methods are used by WebKit, when editable content is focused, to map from
      * key events to Unicode character strings.
-     *
+     * 
      * An input method may consume multiple key events in sequence and finally
      * output the composed result. This is called preediting, and an input method
      * may provide feedback about this process by displaying the intermediate
@@ -5253,7 +5266,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<InputMethodContext>;
 
         // Properties
-
         /**
          * The {@link WebKit.InputHints} of the input associated with this context.
          * @since 2.28
@@ -5261,6 +5273,7 @@ export namespace WebKit {
          */
         get input_hints(): InputHints;
         set input_hints(val: InputHints);
+
         /**
          * The {@link WebKit.InputHints} of the input associated with this context.
          * @since 2.28
@@ -5268,6 +5281,7 @@ export namespace WebKit {
          */
         get inputHints(): InputHints;
         set inputHints(val: InputHints);
+
         /**
          * The {@link WebKit.InputPurpose} of the input associated with this context.
          * @since 2.28
@@ -5275,6 +5289,7 @@ export namespace WebKit {
          */
         get input_purpose(): InputPurpose;
         set input_purpose(val: InputPurpose);
+
         /**
          * The {@link WebKit.InputPurpose} of the input associated with this context.
          * @since 2.28
@@ -5293,62 +5308,56 @@ export namespace WebKit {
         $signals: InputMethodContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputMethodContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputMethodContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputMethodContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputMethodContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputMethodContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputMethodContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputMethodContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputMethodContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputMethodContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputMethodContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputMethodContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputMethodContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputMethodContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param text
+         * @param text 
          * @virtual
          */
         vfunc_committed(text: string): void;
+
         /**
-         * @param offset
-         * @param n_chars
+         * @param offset 
+         * @param n_chars 
          * @virtual
          */
         vfunc_delete_surrounding(offset: number, n_chars: number): void;
+
         /**
          * Allow `key_event` to be handled by the input method.
-         *
+         * 
          * If `true` is returned, then no further processing should be
          * done for the key event.
          * @param key_event the key event to filter
          * @virtual
          */
         vfunc_filter_key_event(key_event: Gdk.Event): boolean;
+
         /**
          * Get the pre-edit string and a list of WebKitInputMethodUnderline.
-         *
+         * 
          * Get the current pre-edit string for the `context`, and a list of WebKitInputMethodUnderline to apply to the string.
          * The string will be displayed inserted at `cursor_offset`.
          * @virtual
          */
         vfunc_get_preedit(): [string, InputMethodUnderline[] | null, number];
+
         /**
          * Notify `context` that cursor area changed in input associated.
          * @param x the x coordinate of cursor location
@@ -5358,19 +5367,22 @@ export namespace WebKit {
          * @virtual
          */
         vfunc_notify_cursor_area(x: number, y: number, width: number, height: number): void;
+
         /**
          * Notify `context` that input associated has gained focus.
          * @virtual
          */
         vfunc_notify_focus_in(): void;
+
         /**
          * Notify `context` that input associated has lost focus.
          * @virtual
          */
         vfunc_notify_focus_out(): void;
+
         /**
          * Notify `context` that the context surrounding the cursor has changed.
-         *
+         * 
          * If there's no selection `selection_index` is the same as `cursor_index`.
          * @param text text surrounding the insertion point
          * @param length the length of `text`, or -1 if `text` is nul-terminated
@@ -5379,25 +5391,30 @@ export namespace WebKit {
          * @virtual
          */
         vfunc_notify_surrounding(text: string, length: number, cursor_index: number, selection_index: number): void;
+
         /**
          * @virtual
          */
         vfunc_preedit_changed(): void;
+
         /**
          * @virtual
          */
         vfunc_preedit_finished(): void;
+
         /**
          * @virtual
          */
         vfunc_preedit_started(): void;
+
         /**
          * Reset the `context`.
-         *
+         * 
          * This will typically cause the input to clear the preedit state.
          * @virtual
          */
         vfunc_reset(): void;
+
         /**
          * Set whether `context` should enable preedit to display feedback.
          * @param enabled whether to enable preedit
@@ -5406,33 +5423,36 @@ export namespace WebKit {
         vfunc_set_enable_preedit(enabled: boolean): void;
 
         // Methods
-
         /**
          * Allow `key_event` to be handled by the input method.
-         *
+         * 
          * If `true` is returned, then no further processing should be
          * done for the key event.
          * @param key_event the key event to filter
          * @returns `true` if the key event was handled, or `false` otherwise
          */
         filter_key_event(key_event: Gdk.Event): boolean;
+
         /**
          * Get the value of the {@link WebKit.InputMethodContext.input_hints} property.
          * @returns the {@link WebKit.InputHints} of the input associated with `context`
          */
         get_input_hints(): InputHints;
+
         /**
          * Get the value of the {@link WebKit.InputMethodContext.input_purpose} property.
          * @returns the {@link WebKit.InputPurpose} of the input associated with `context`
          */
         get_input_purpose(): InputPurpose;
+
         /**
          * Get the pre-edit string and a list of WebKitInputMethodUnderline.
-         *
+         * 
          * Get the current pre-edit string for the `context`, and a list of WebKitInputMethodUnderline to apply to the string.
          * The string will be displayed inserted at `cursor_offset`.
          */
         get_preedit(): [string, InputMethodUnderline[] | null, number];
+
         /**
          * Notify `context` that cursor area changed in input associated.
          * @param x the x coordinate of cursor location
@@ -5441,17 +5461,20 @@ export namespace WebKit {
          * @param height the height of cursor area
          */
         notify_cursor_area(x: number, y: number, width: number, height: number): void;
+
         /**
          * Notify `context` that input associated has gained focus.
          */
         notify_focus_in(): void;
+
         /**
          * Notify `context` that input associated has lost focus.
          */
         notify_focus_out(): void;
+
         /**
          * Notify `context` that the context surrounding the cursor has changed.
-         *
+         * 
          * If there's no selection `selection_index` is the same as `cursor_index`.
          * @param text text surrounding the insertion point
          * @param length the length of `text`, or -1 if `text` is nul-terminated
@@ -5459,22 +5482,26 @@ export namespace WebKit {
          * @param selection_index the byte index of the selection cursor within `text`.
          */
         notify_surrounding(text: string, length: number, cursor_index: number, selection_index: number): void;
+
         /**
          * Reset the `context`.
-         *
+         * 
          * This will typically cause the input to clear the preedit state.
          */
         reset(): void;
+
         /**
          * Set whether `context` should enable preedit to display feedback.
          * @param enabled whether to enable preedit
          */
         set_enable_preedit(enabled: boolean): void;
+
         /**
          * Set the value of the {@link WebKit.InputMethodContext.input_hints} property.
          * @param hints a {@link WebKit.InputHints}
          */
         set_input_hints(hints: InputHints): void;
+
         /**
          * Set the value of the {@link WebKit.InputMethodContext.input_purpose} property.
          * @param purpose a {@link WebKit.InputPurpose}
@@ -5482,25 +5509,28 @@ export namespace WebKit {
         set_input_purpose(purpose: InputPurpose): void;
     }
 
+
     namespace MediaKeySystemPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+        }
     }
 
     /**
      * A permission request for using an EME Content Decryption Module.
-     *
+     * 
      * WebKitMediaKeySystemPermissionRequest represents a request for permission to decide whether
      * WebKit should use the given CDM to access protected media when requested through the
      * MediaKeySystem API.
-     *
+     * 
      * When a WebKitMediaKeySystemPermissionRequest is not handled by the user,
      * it is denied by default.
-     *
+     * 
      * When handling this permission request the application may perform additional installation of the
      * requested CDM, unless it is already present on the host system.
      * @gir-type Class
@@ -5518,49 +5548,39 @@ export namespace WebKit {
         $signals: MediaKeySystemPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MediaKeySystemPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaKeySystemPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaKeySystemPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MediaKeySystemPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MediaKeySystemPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MediaKeySystemPermissionRequest.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MediaKeySystemPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
@@ -5568,14 +5588,14 @@ export namespace WebKit {
         vfunc_deny(): void;
     }
 
+
     namespace NavigationPolicyDecision {
         // Signal signatures
         interface SignalSignatures extends PolicyDecision.SignalSignatures {
-            'notify::navigation-action': (pspec: GObject.ParamSpec) => void;
+            "notify::navigation-action": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends PolicyDecision.ConstructorProps {
             navigation_action: NavigationAction;
             navigationAction: NavigationAction;
@@ -5584,7 +5604,7 @@ export namespace WebKit {
 
     /**
      * A policy decision for navigation actions.
-     *
+     * 
      * WebKitNavigationPolicyDecision represents a policy decision for events associated with
      * navigations. If the value of {@link WebKit.NavigationPolicyDecision.mouse_button} is not 0, then
      * the navigation was triggered by a mouse event.
@@ -5594,13 +5614,13 @@ export namespace WebKit {
         static $gtype: GObject.GType<NavigationPolicyDecision>;
 
         // Properties
-
         /**
          * The {@link WebKit.NavigationAction} that triggered this policy decision.
          * @since 2.6
          * @read-only
          */
         get navigation_action(): NavigationAction;
+
         /**
          * The {@link WebKit.NavigationAction} that triggered this policy decision.
          * @since 2.6
@@ -5618,42 +5638,31 @@ export namespace WebKit {
         $signals: NavigationPolicyDecision.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NavigationPolicyDecision.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NavigationPolicyDecision.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NavigationPolicyDecision.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NavigationPolicyDecision.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NavigationPolicyDecision.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NavigationPolicyDecision.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NavigationPolicyDecision.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NavigationPolicyDecision.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NavigationPolicyDecision.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NavigationPolicyDecision.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NavigationPolicyDecision.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof NavigationPolicyDecision.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NavigationPolicyDecision.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the value of the {@link WebKit.NavigationPolicyDecision.navigation_action} property.
          * @returns The {@link WebKit.NavigationAction} triggering this policy decision.
          */
         get_navigation_action(): NavigationAction;
     }
+
 
     namespace NetworkSession {
         // Signal signatures
@@ -5664,14 +5673,13 @@ export namespace WebKit {
              * @since 2.40
              * @run-last
              */
-            'download-started': (arg0: Download) => void;
-            'notify::cache-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::data-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::is-ephemeral': (pspec: GObject.ParamSpec) => void;
+            "download-started": (arg0: Download) => void;
+            "notify::cache-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::data-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::is-ephemeral": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             cache_directory: string;
             cacheDirectory: string;
@@ -5691,7 +5699,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<NetworkSession>;
 
         // Properties
-
         /**
          * The base caches directory used to create the {@link WebKit.WebsiteDataManager}. If `null`, a default location will be used.
          * @since 2.40
@@ -5699,6 +5706,7 @@ export namespace WebKit {
          * @default null
          */
         set cache_directory(val: string);
+
         /**
          * The base caches directory used to create the {@link WebKit.WebsiteDataManager}. If `null`, a default location will be used.
          * @since 2.40
@@ -5706,6 +5714,7 @@ export namespace WebKit {
          * @default null
          */
         set cacheDirectory(val: string);
+
         /**
          * The base data directory used to create the {@link WebKit.WebsiteDataManager}. If `null`, a default location will be used.
          * @since 2.40
@@ -5713,6 +5722,7 @@ export namespace WebKit {
          * @default null
          */
         set data_directory(val: string);
+
         /**
          * The base data directory used to create the {@link WebKit.WebsiteDataManager}. If `null`, a default location will be used.
          * @since 2.40
@@ -5720,6 +5730,7 @@ export namespace WebKit {
          * @default null
          */
         set dataDirectory(val: string);
+
         /**
          * Whether to create an ephermeral {@link WebKit.WebsiteDataManager} for the session.
          * @since 2.40
@@ -5727,6 +5738,7 @@ export namespace WebKit {
          * @default false
          */
         get is_ephemeral(): boolean;
+
         /**
          * Whether to create an ephermeral {@link WebKit.WebsiteDataManager} for the session.
          * @since 2.40
@@ -5745,53 +5757,44 @@ export namespace WebKit {
         $signals: NetworkSession.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NetworkSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](data_directory: string | null, cache_directory: string | null): NetworkSession;
+        static ["new"](data_directory: (string | null), cache_directory: (string | null)): NetworkSession;
 
         static new_ephemeral(): NetworkSession;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NetworkSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkSession.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NetworkSession.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NetworkSession.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NetworkSession.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NetworkSession.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NetworkSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkSession.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NetworkSession.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NetworkSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof NetworkSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Get the default network session.
          * The default network session is created using `webkit_network_session_new()` and passing
          * `null` as data and cache directories.
          */
         static get_default(): NetworkSession;
+
         /**
          * Sets `settings` as the {@link WebKit.MemoryPressureSettings}.
-         *
+         * 
          * Sets `settings` as the {@link WebKit.MemoryPressureSettings} to be used by the network
          * process created by any instance of {@link WebKit.NetworkSession} after this function
          * is called.
-         *
+         * 
          * Be sure to call this function before creating any {@link WebKit.NetworkSession}.
-         *
+         * 
          * The periodic check for used memory is disabled by default on network processes. This will
          * be enabled only if custom settings have been set using this function. After that, in order
          * to remove the custom settings and disable the periodic check, this function must be called
@@ -5801,19 +5804,19 @@ export namespace WebKit {
         static set_memory_pressure_settings(settings: MemoryPressureSettings): void;
 
         // Methods
-
         /**
          * Ignore further TLS errors on the `host` for the certificate present in `info`.
-         *
+         * 
          * If `host` is an IPv6 address, it should not be surrounded by brackets. This
          * expectation matches `g_uri_get_host()`.
          * @param certificate a {@link Gio.TlsCertificate}
          * @param host the host for which a certificate is to be allowed
          */
         allow_tls_certificate_for_host(certificate: Gio.TlsCertificate, host: string): void;
+
         /**
          * Requests downloading of the specified URI string.
-         *
+         * 
          * The download operation will not be associated to any {@link WebKit.WebView},
          * if you are interested in starting a download from a particular {@link WebKit.WebView} use
          * `webkit_web_view_download_uri()` instead.
@@ -5821,86 +5824,94 @@ export namespace WebKit {
          * @returns a new {@link WebKit.Download} representing    the download operation.
          */
         download_uri(uri: string): Download;
+
         /**
          * Get the {@link WebKit.CookieManager} of `session`.
          * @returns a {@link WebKit.CookieManager}
          */
         get_cookie_manager(): CookieManager;
+
         /**
          * Get whether Intelligent Tracking Prevention (ITP) is enabled or not.
          * @returns `true` if ITP is enabled, or `false` otherwise.
          */
         get_itp_enabled(): boolean;
+
         /**
          * Asynchronously get the list of {@link WebKit.ITPThirdParty} seen for `session`.
-         *
+         * 
          * Every {@link WebKit.ITPThirdParty}
          * contains the list of {@link WebKit.ITPFirstParty} under which it has been seen.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_network_session_get_itp_summary_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_itp_summary(cancellable: Gio.Cancellable | null): globalThis.Promise<ITPThirdParty[]>;
+        get_itp_summary(cancellable: (Gio.Cancellable | null)): globalThis.Promise<ITPThirdParty[]>;
+
         /**
          * Asynchronously get the list of {@link WebKit.ITPThirdParty} seen for `session`.
-         *
+         * 
          * Every {@link WebKit.ITPThirdParty}
          * contains the list of {@link WebKit.ITPFirstParty} under which it has been seen.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_network_session_get_itp_summary_finish()` to get the result of the operation.
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_itp_summary(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Asynchronously get the list of {@link WebKit.ITPThirdParty} seen for `session`.
-         *
-         * Every {@link WebKit.ITPThirdParty}
-         * contains the list of {@link WebKit.ITPFirstParty} under which it has been seen.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_network_session_get_itp_summary_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_itp_summary(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<ITPThirdParty[]> | void;
+        get_itp_summary(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously get the list of {@link WebKit.ITPThirdParty} seen for `session`.
+         * 
+         * Every {@link WebKit.ITPThirdParty}
+         * contains the list of {@link WebKit.ITPFirstParty} under which it has been seen.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_network_session_get_itp_summary_finish()` to get the result of the operation.
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_itp_summary(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ITPThirdParty[]> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_network_session_get_itp_summary()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.List} of {@link WebKit.ITPThirdParty}.    You must free the {@link GLib.List} with `g_list_free()` and unref the {@link WebKit.ITPThirdParty}<!-- -->s with    `webkit_itp_third_party_unref()` when you're done with them.
          */
         get_itp_summary_finish(result: Gio.AsyncResult): ITPThirdParty[];
+
         /**
          * Get whether persistent credential storage is enabled or not.
-         *
+         * 
          * See also `webkit_network_session_set_persistent_credential_storage_enabled()`.
          * @returns `true` if persistent credential storage is enabled, or `false` otherwise.
          */
         get_persistent_credential_storage_enabled(): boolean;
+
         /**
          * Get the TLS errors policy of `session`.
          * @returns a {@link WebKit.TLSErrorsPolicy}
          */
         get_tls_errors_policy(): TLSErrorsPolicy;
+
         /**
          * Get the {@link WebKit.WebsiteDataManager} of `session`.
          * @returns a {@link WebKit.WebsiteDataManager}
          */
         get_website_data_manager(): WebsiteDataManager;
+
         /**
          * Resolve the domain name of the given `hostname` in advance, so that if a URI
          * of `hostname` is requested the load will be performed more quickly.
          * @param hostname a hostname to be resolved
          */
         prefetch_dns(hostname: string): void;
+
         /**
          * Enable or disable Intelligent Tracking Prevention (ITP).
-         *
+         * 
          * When ITP is enabled resource load statistics
          * are collected and used to decide whether to allow or block third-party cookies and prevent user tracking.
          * Note that while ITP is enabled the accept policy {@link WebKit.CookieAcceptPolicy.NO_THIRD_PARTY} is ignored and
@@ -5908,18 +5919,20 @@ export namespace WebKit {
          * @param enabled value to set
          */
         set_itp_enabled(enabled: boolean): void;
+
         /**
          * Enable or disable persistent credential storage.
-         *
+         * 
          * When enabled, which is the default for
          * non-ephemeral sessions, the network process will try to read and write HTTP authentiacation
          * credentials from persistent storage.
          * @param enabled value to set
          */
         set_persistent_credential_storage_enabled(enabled: boolean): void;
+
         /**
          * Set the network proxy settings to be used by connections started in `session` session.
-         *
+         * 
          * By default {@link WebKit.NetworkProxyMode.DEFAULT} is used, which means that the
          * system settings will be used (g_proxy_resolver_get_default()).
          * If you want to override the system default settings, you can either use
@@ -5930,13 +5943,15 @@ export namespace WebKit {
          * @param proxy_mode a {@link WebKit.NetworkProxyMode}
          * @param proxy_settings a {@link WebKit.NetworkProxySettings}, or `null`
          */
-        set_proxy_settings(proxy_mode: NetworkProxyMode, proxy_settings: NetworkProxySettings | null): void;
+        set_proxy_settings(proxy_mode: NetworkProxyMode, proxy_settings: (NetworkProxySettings | null)): void;
+
         /**
          * Set the TLS errors policy of `session` as `policy`.
          * @param policy a {@link WebKit.TLSErrorsPolicy}
          */
         set_tls_errors_policy(policy: TLSErrorsPolicy): void;
     }
+
 
     namespace Notification {
         // Signal signatures
@@ -5950,7 +5965,7 @@ export namespace WebKit {
             clicked: () => void;
             /**
              * Emitted when a notification has been withdrawn.
-             *
+             * 
              * The default handler will close the notification using libnotify, if built with
              * support for it.
              * @signal
@@ -5958,18 +5973,17 @@ export namespace WebKit {
              * @run-last
              */
             closed: () => void;
-            'notify::body': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::tag': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
+            "notify::body": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::tag": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             body: string;
-            id: bigint | number;
-            tag: string | null;
+            id: (bigint | number);
+            tag: (string | null);
             title: string;
         }
     }
@@ -5983,7 +5997,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<Notification>;
 
         // Properties
-
         /**
          * The body for the notification.
          * @since 2.8
@@ -5991,6 +6004,7 @@ export namespace WebKit {
          * @default null
          */
         get body(): string;
+
         /**
          * The unique id for the notification.
          * @since 2.8
@@ -5998,13 +6012,15 @@ export namespace WebKit {
          * @default 0
          */
         get id(): number;
+
         /**
          * The tag identifier for the notification.
          * @since 2.16
          * @read-only
          * @default null
          */
-        get tag(): string | null;
+        get tag(): (string | null);
+
         /**
          * The title for the notification.
          * @since 2.8
@@ -6023,60 +6039,55 @@ export namespace WebKit {
         $signals: Notification.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Notification.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Notification.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Notification.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Notification.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Notification.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Notification.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Notification.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Notification.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Notification.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Tells WebKit the notification has been clicked.
-         *
+         * 
          * This will emit the
          * {@link WebKit.Notification.SignalSignatures.clicked | WebKit.Notification::clicked} signal.
          */
         clicked(): void;
+
         /**
          * Closes the notification.
          */
         close(): void;
+
         /**
          * Obtains the body for the notification.
          * @returns the body for the notification
          */
         get_body(): string;
+
         /**
          * Obtains the unique id for the notification.
          * @returns the unique id for the notification
          */
         get_id(): number;
+
         /**
          * Obtains the tag identifier for the notification.
          * @returns the tag for the notification
          */
-        get_tag(): string | null;
+        get_tag(): (string | null);
+
         /**
          * Obtains the title for the notification.
          * @returns the title for the notification
@@ -6084,22 +6095,25 @@ export namespace WebKit {
         get_title(): string;
     }
 
+
     namespace NotificationPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+        }
     }
 
     /**
      * A permission request for displaying web notifications.
-     *
+     * 
      * WebKitNotificationPermissionRequest represents a request for
      * permission to decide whether WebKit should provide the user with
      * notifications through the Web Notification API.
-     *
+     * 
      * When a WebKitNotificationPermissionRequest is not handled by the user,
      * it is denied by default.
      * @gir-type Class
@@ -6118,52 +6132,46 @@ export namespace WebKit {
         $signals: NotificationPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NotificationPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NotificationPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NotificationPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NotificationPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NotificationPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NotificationPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NotificationPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NotificationPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NotificationPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NotificationPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NotificationPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof NotificationPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NotificationPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
          */
         vfunc_deny(): void;
     }
+
 
     namespace OptionMenu {
         // Signal signatures
@@ -6180,13 +6188,14 @@ export namespace WebKit {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Represents the dropdown menu of a `select` element in a {@link WebKit.WebView}.
-     *
+     * 
      * When a select element in a {@link WebKit.WebView} needs to display a dropdown menu, the signal
      * {@link WebKit.WebView.SignalSignatures.show_option_menu | WebKit.WebView::show-option-menu} is emitted, providing a WebKitOptionMenu with the
      * {@link WebKit.OptionMenuItem}<!-- -->s that should be displayed.
@@ -6206,37 +6215,27 @@ export namespace WebKit {
         $signals: OptionMenu.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OptionMenu.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OptionMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionMenu.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OptionMenu.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OptionMenu.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OptionMenu.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OptionMenu.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OptionMenu.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OptionMenu.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OptionMenu.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OptionMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OptionMenu.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OptionMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Activates the {@link WebKit.OptionMenuItem} at `index` in `menu`.
-         *
+         * 
          * Activating an item changes the value
          * of the element making the item the active one. You are expected to close the menu with
          * `webkit_option_menu_close()` after activating an item, calling this function again will have no
@@ -6244,9 +6243,10 @@ export namespace WebKit {
          * @param index the index of the item
          */
         activate_item(index: number): void;
+
         /**
          * Request to close a {@link WebKit.OptionMenu}.
-         *
+         * 
          * This emits WebKitOptionMenu::close signal.
          * This function should always be called to notify WebKit that the associated
          * menu has been closed. If the menu is closed and neither `webkit_option_menu_select_item()`
@@ -6254,6 +6254,7 @@ export namespace WebKit {
          * unchanged.
          */
         close(): void;
+
         /**
          * Gets the {@link Gdk.Event} that triggered the dropdown menu.
          * If `menu` was not triggered by a user interaction, like a mouse click,
@@ -6261,20 +6262,23 @@ export namespace WebKit {
          * @returns the menu event or `null`.
          */
         get_event(): Gdk.Event;
+
         /**
          * Returns the {@link WebKit.OptionMenuItem} at `index` in `menu`.
          * @param index the index of the item
          * @returns a {@link WebKit.OptionMenuItem} of `menu`.
          */
         get_item(index: number): OptionMenuItem;
+
         /**
          * Gets the length of the `menu`.
          * @returns the number of {@link WebKit.OptionMenuItem}<!-- -->s in `menu`
          */
         get_n_items(): number;
+
         /**
          * Selects the {@link WebKit.OptionMenuItem} at `index` in `menu`.
-         *
+         * 
          * Selecting an item changes the
          * text shown by the combo button, but it doesn't change the value of the element. You need to
          * explicitly activate the item with `webkit_option_menu_select_item()` or close the menu with
@@ -6284,22 +6288,25 @@ export namespace WebKit {
         select_item(index: number): void;
     }
 
+
     namespace PointerLockPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+        }
     }
 
     /**
      * A permission request for locking the pointer.
-     *
+     * 
      * WebKitPointerLockPermissionRequest represents a request for
      * permission to decide whether WebKit can lock the pointer device when
      * requested by web content.
-     *
+     * 
      * When a WebKitPointerLockPermissionRequest is not handled by the user,
      * it is allowed by default.
      * @gir-type Class
@@ -6318,46 +6325,39 @@ export namespace WebKit {
         $signals: PointerLockPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PointerLockPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PointerLockPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PointerLockPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PointerLockPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PointerLockPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PointerLockPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PointerLockPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PointerLockPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof PointerLockPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PointerLockPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
@@ -6365,18 +6365,21 @@ export namespace WebKit {
         vfunc_deny(): void;
     }
 
+
     namespace PolicyDecision {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * A pending policy decision.
-     *
+     * 
      * Often WebKit allows the client to decide the policy for certain
      * operations. For instance, a client may want to open a link in a new
      * tab, block a navigation entirely, query the user or trigger a download
@@ -6401,56 +6404,49 @@ export namespace WebKit {
         $signals: PolicyDecision.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PolicyDecision.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PolicyDecision.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PolicyDecision.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PolicyDecision.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PolicyDecision.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PolicyDecision.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PolicyDecision.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PolicyDecision.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PolicyDecision.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PolicyDecision.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PolicyDecision.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PolicyDecision.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PolicyDecision.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Spawn a download from this decision.
          */
         download(): void;
+
         /**
          * {@link WebKit.ResponsePolicyDecision}, this would cancel the request.
-         *
+         * 
          * Ignore the action which triggered this decision. For instance, for a
          * {@link WebKit.ResponsePolicyDecision}, this would cancel the request.
          */
         ignore(): void;
+
         /**
          * Accept the action which triggered this decision.
          */
         use(): void;
+
         /**
          * Accept the navigation action and continue with provided `policies`.
-         *
+         * 
          * Accept the navigation action which triggered this decision, and
          * continue with `policies` affecting all subsequent loads of resources
          * in the origin associated with the accepted navigation action.
-         *
+         * 
          * For example, a navigation decision to a video sharing website may
          * be accepted under the priviso no movies are allowed to autoplay. The
          * autoplay policy in this case would be set in the `policies`.
@@ -6458,6 +6454,7 @@ export namespace WebKit {
          */
         use_with_policies(policies: WebsitePolicies): void;
     }
+
 
     namespace PrintOperation {
         // Signal signatures
@@ -6477,13 +6474,12 @@ export namespace WebKit {
              * @run-last
              */
             finished: () => void;
-            'notify::page-setup': (pspec: GObject.ParamSpec) => void;
-            'notify::print-settings': (pspec: GObject.ParamSpec) => void;
-            'notify::web-view': (pspec: GObject.ParamSpec) => void;
+            "notify::page-setup": (pspec: GObject.ParamSpec) => void;
+            "notify::print-settings": (pspec: GObject.ParamSpec) => void;
+            "notify::web-view": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             page_setup: Gtk.PageSetup;
             pageSetup: Gtk.PageSetup;
@@ -6496,7 +6492,7 @@ export namespace WebKit {
 
     /**
      * Controls a print operation.
-     *
+     * 
      * A {@link WebKit.PrintOperation} controls a print operation in WebKit. With
      * a similar API to {@link Gtk.PrintOperation}, it lets you set the print
      * settings with `webkit_print_operation_set_print_settings()` or
@@ -6507,32 +6503,36 @@ export namespace WebKit {
         static $gtype: GObject.GType<PrintOperation>;
 
         // Properties
-
         /**
          * The initial {@link Gtk.PageSetup} for the print operation.
          */
         get page_setup(): Gtk.PageSetup;
         set page_setup(val: Gtk.PageSetup);
+
         /**
          * The initial {@link Gtk.PageSetup} for the print operation.
          */
         get pageSetup(): Gtk.PageSetup;
         set pageSetup(val: Gtk.PageSetup);
+
         /**
          * The initial {@link Gtk.PrintSettings} for the print operation.
          */
         get print_settings(): Gtk.PrintSettings;
         set print_settings(val: Gtk.PrintSettings);
+
         /**
          * The initial {@link Gtk.PrintSettings} for the print operation.
          */
         get printSettings(): Gtk.PrintSettings;
         set printSettings(val: Gtk.PrintSettings);
+
         /**
          * The {@link WebKit.WebView} that will be printed.
          * @construct-only
          */
         get web_view(): WebView;
+
         /**
          * The {@link WebKit.WebView} that will be printed.
          * @construct-only
@@ -6549,57 +6549,49 @@ export namespace WebKit {
         $signals: PrintOperation.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PrintOperation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](web_view: WebView): PrintOperation;
+        static ["new"](web_view: WebView): PrintOperation;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PrintOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PrintOperation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PrintOperation.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PrintOperation.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PrintOperation.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PrintOperation.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PrintOperation.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PrintOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Return the current page setup of `print_operation`.
-         *
+         * 
          * It returns `null` until
          * either `webkit_print_operation_set_page_setup()` or `webkit_print_operation_run_dialog()`
          * have been called.
          * @returns the current {@link Gtk.PageSetup} of `print_operation`.
          */
         get_page_setup(): Gtk.PageSetup;
+
         /**
          * Return the current print settings of `print_operation`.
-         *
+         * 
          * It returns `null` until
          * either `webkit_print_operation_set_print_settings()` or `webkit_print_operation_run_dialog()`
          * have been called.
          * @returns the current {@link Gtk.PrintSettings} of `print_operation`.
          */
         get_print_settings(): Gtk.PrintSettings;
+
         /**
          * Start a print operation using current print settings and page setup.
-         *
+         * 
          * Start a print operation using current print settings and page setup
          * without showing the print dialog. If either print settings or page setup
          * are not set with `webkit_print_operation_set_print_settings()` and
@@ -6608,16 +6600,17 @@ export namespace WebKit {
          * The {@link WebKit.PrintOperation.SignalSignatures.finished | WebKit.PrintOperation::finished} signal is emitted when the printing
          * operation finishes. If an error occurs while printing the signal
          * {@link WebKit.PrintOperation.SignalSignatures.failed | WebKit.PrintOperation::failed} is emitted before {@link WebKit.PrintOperation.SignalSignatures.finished | WebKit.PrintOperation::finished}.
-         *
+         * 
          * If the app is running in a sandbox, this function only works if printing to
          * a file that is in a location accessible to the sandbox, usually acquired
          * through the File Chooser portal. This function will not work for physical
          * printers when running in a sandbox.
          */
         print(): void;
+
         /**
          * Run the print dialog and start printing.
-         *
+         * 
          * Run the print dialog and start printing using the options selected by
          * the user. This method returns when the print dialog is closed.
          * If the print dialog is cancelled {@link WebKit.PrintOperationResponse.CANCEL}
@@ -6633,18 +6626,20 @@ export namespace WebKit {
          * @param parent transient parent of the print dialog
          * @returns the {@link WebKit.PrintOperationResponse} of the print dialog
          */
-        run_dialog(parent: Gtk.Window | null): PrintOperationResponse;
+        run_dialog(parent: (Gtk.Window | null)): PrintOperationResponse;
+
         /**
          * Set the current page setup of `print_operation`.
-         *
+         * 
          * Current page setup is used for the
          * initial values of the print dialog when `webkit_print_operation_run_dialog()` is called.
          * @param page_setup a {@link Gtk.PageSetup} to set
          */
         set_page_setup(page_setup: Gtk.PageSetup): void;
+
         /**
          * Set the current print settings of `print_operation`.
-         *
+         * 
          * Set the current print settings of `print_operation`. Current print settings are used for
          * the initial values of the print dialog when `webkit_print_operation_run_dialog()` is called.
          * @param print_settings a {@link Gtk.PrintSettings} to set
@@ -6652,15 +6647,15 @@ export namespace WebKit {
         set_print_settings(print_settings: Gtk.PrintSettings): void;
     }
 
+
     namespace ResponsePolicyDecision {
         // Signal signatures
         interface SignalSignatures extends PolicyDecision.SignalSignatures {
-            'notify::request': (pspec: GObject.ParamSpec) => void;
-            'notify::response': (pspec: GObject.ParamSpec) => void;
+            "notify::request": (pspec: GObject.ParamSpec) => void;
+            "notify::response": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends PolicyDecision.ConstructorProps {
             request: URIRequest;
             response: URIResponse;
@@ -6669,7 +6664,7 @@ export namespace WebKit {
 
     /**
      * A policy decision for resource responses.
-     *
+     * 
      * WebKitResponsePolicyDecision represents a policy decision for a
      * resource response, whether from the network or the local system.
      * A very common use case for these types of decision is deciding
@@ -6681,13 +6676,13 @@ export namespace WebKit {
         static $gtype: GObject.GType<ResponsePolicyDecision>;
 
         // Properties
-
         /**
          * This property contains the {@link WebKit.URIRequest} associated with this
          * policy decision.
          * @read-only
          */
         get request(): URIRequest;
+
         /**
          * This property contains the {@link WebKit.URIResponse} associated with this
          * policy decision.
@@ -6705,39 +6700,27 @@ export namespace WebKit {
         $signals: ResponsePolicyDecision.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ResponsePolicyDecision.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ResponsePolicyDecision.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResponsePolicyDecision.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ResponsePolicyDecision.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ResponsePolicyDecision.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ResponsePolicyDecision.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ResponsePolicyDecision.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ResponsePolicyDecision.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ResponsePolicyDecision.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ResponsePolicyDecision.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ResponsePolicyDecision.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ResponsePolicyDecision.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ResponsePolicyDecision.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Return the {@link WebKit.URIRequest} associated with the response decision.
-         *
+         * 
          * Modifications to the returned object are <emphasis>not</emphasis> taken
          * into account when the request is sent over the network, and is intended
          * only to aid in evaluating whether a response decision should be taken or
@@ -6746,19 +6729,22 @@ export namespace WebKit {
          * @returns The URI request that is associated with this policy decision.
          */
         get_request(): URIRequest;
+
         /**
          * Gets the value of the {@link WebKit.ResponsePolicyDecision.response} property.
          * @returns The URI response that is associated with this policy decision.
          */
         get_response(): URIResponse;
+
         /**
          * Gets whether the request is the main frame main resource
          * @returns `true` if the request is the main frame main resouce or `false` otherwise
          */
         is_main_frame_main_resource(): boolean;
+
         /**
          * Gets whether the MIME type of the response can be displayed in the {@link WebKit.WebView}.
-         *
+         * 
          * Gets whether the MIME type of the response can be displayed in the {@link WebKit.WebView}
          * that triggered this policy decision request. See also `webkit_web_view_can_show_mime_type()`.
          * @returns `true` if the MIME type of the response is supported or `false` otherwise
@@ -6766,18 +6752,21 @@ export namespace WebKit {
         is_mime_type_supported(): boolean;
     }
 
+
     namespace SecurityManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Controls security settings in a {@link WebKit.WebContext}.
-     *
+     * 
      * The {@link WebKit.SecurityManager} defines security settings for URI
      * schemes in a {@link WebKit.WebContext}. Get it from the context with
      * `webkit_web_context_get_security_manager()`, and use it to register a
@@ -6798,126 +6787,127 @@ export namespace WebKit {
         $signals: SecurityManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SecurityManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SecurityManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SecurityManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SecurityManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SecurityManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SecurityManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SecurityManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SecurityManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SecurityManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SecurityManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SecurityManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SecurityManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SecurityManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Register `scheme` as a CORS (Cross-origin resource sharing) enabled scheme.
-         *
+         * 
          * This means that CORS requests are allowed. See W3C CORS specification
          * http://www.w3.org/TR/cors/.
          * @param scheme a URI scheme
          */
         register_uri_scheme_as_cors_enabled(scheme: string): void;
+
         /**
          * Register `scheme` as a display isolated scheme.
-         *
+         * 
          * This means that pages cannot
          * display these URIs unless they are from the same scheme.
          * @param scheme a URI scheme
          */
         register_uri_scheme_as_display_isolated(scheme: string): void;
+
         /**
          * Register `scheme` as an empty document scheme.
-         *
+         * 
          * This means that
          * they are allowed to commit synchronously.
          * @param scheme a URI scheme
          */
         register_uri_scheme_as_empty_document(scheme: string): void;
+
         /**
          * Register `scheme` as a local scheme.
-         *
+         * 
          * This means that other non-local pages
          * cannot link to or access URIs of this scheme.
          * @param scheme a URI scheme
          */
         register_uri_scheme_as_local(scheme: string): void;
+
         /**
          * Register `scheme` as a no-access scheme.
-         *
+         * 
          * This means that pages loaded
          * with this URI scheme cannot access pages loaded with any other URI scheme.
          * @param scheme a URI scheme
          */
         register_uri_scheme_as_no_access(scheme: string): void;
+
         /**
          * Register `scheme` as a secure scheme.
-         *
+         * 
          * This means that mixed
          * content warnings won't be generated for this scheme when
          * included by an HTTPS page.
          * @param scheme a URI scheme
          */
         register_uri_scheme_as_secure(scheme: string): void;
+
         /**
          * Whether `scheme` is considered as a CORS enabled scheme.
-         *
+         * 
          * See also `webkit_security_manager_register_uri_scheme_as_cors_enabled()`.
          * @param scheme a URI scheme
          * @returns `true` if `scheme` is a CORS enabled scheme or `false` otherwise.
          */
         uri_scheme_is_cors_enabled(scheme: string): boolean;
+
         /**
          * Whether `scheme` is considered as a display isolated scheme.
-         *
+         * 
          * See also `webkit_security_manager_register_uri_scheme_as_display_isolated()`.
          * @param scheme a URI scheme
          * @returns `true` if `scheme` is a display isolated scheme or `false` otherwise.
          */
         uri_scheme_is_display_isolated(scheme: string): boolean;
+
         /**
          * Whether `scheme` is considered as an empty document scheme.
-         *
+         * 
          * See also `webkit_security_manager_register_uri_scheme_as_empty_document()`.
          * @param scheme a URI scheme
          * @returns `true` if `scheme` is an empty document scheme or `false` otherwise.
          */
         uri_scheme_is_empty_document(scheme: string): boolean;
+
         /**
          * Whether `scheme` is considered as a local scheme.
-         *
+         * 
          * See also `webkit_security_manager_register_uri_scheme_as_local()`.
          * @param scheme a URI scheme
          * @returns `true` if `scheme` is a local scheme or `false` otherwise.
          */
         uri_scheme_is_local(scheme: string): boolean;
+
         /**
          * Whether `scheme` is considered as a no-access scheme.
-         *
+         * 
          * See also `webkit_security_manager_register_uri_scheme_as_no_access()`.
          * @param scheme a URI scheme
          * @returns `true` if `scheme` is a no-access scheme or `false` otherwise.
          */
         uri_scheme_is_no_access(scheme: string): boolean;
+
         /**
          * Whether `scheme` is considered as a secure scheme.
-         *
+         * 
          * See also `webkit_security_manager_register_uri_scheme_as_secure()`.
          * @param scheme a URI scheme
          * @returns `true` if `scheme` is a secure scheme or `false` otherwise.
@@ -6925,72 +6915,72 @@ export namespace WebKit {
         uri_scheme_is_secure(scheme: string): boolean;
     }
 
+
     namespace Settings {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::allow-file-access-from-file-urls': (pspec: GObject.ParamSpec) => void;
-            'notify::allow-modal-dialogs': (pspec: GObject.ParamSpec) => void;
-            'notify::allow-top-navigation-to-data-urls': (pspec: GObject.ParamSpec) => void;
-            'notify::allow-universal-access-from-file-urls': (pspec: GObject.ParamSpec) => void;
-            'notify::auto-load-images': (pspec: GObject.ParamSpec) => void;
-            'notify::cursive-font-family': (pspec: GObject.ParamSpec) => void;
-            'notify::default-charset': (pspec: GObject.ParamSpec) => void;
-            'notify::default-font-family': (pspec: GObject.ParamSpec) => void;
-            'notify::default-font-size': (pspec: GObject.ParamSpec) => void;
-            'notify::default-monospace-font-size': (pspec: GObject.ParamSpec) => void;
-            'notify::disable-web-security': (pspec: GObject.ParamSpec) => void;
-            'notify::draw-compositing-indicators': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-2d-canvas-acceleration': (pspec: GObject.ParamSpec) => void;
-            'notify::enable2d-canvas-acceleration': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-back-forward-navigation-gestures': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-caret-browsing': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-developer-extras': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-dns-prefetching': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-encrypted-media': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-fullscreen': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-html5-database': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-html5-local-storage': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-hyperlink-auditing': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-javascript': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-javascript-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-media': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-media-capabilities': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-media-stream': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-mediasource': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-mock-capture-devices': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-offline-web-application-cache': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-page-cache': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-resizable-text-areas': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-site-specific-quirks': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-smooth-scrolling': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-spatial-navigation': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-tabs-to-links': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-webaudio': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-webgl': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-webrtc': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-write-console-messages-to-stdout': (pspec: GObject.ParamSpec) => void;
-            'notify::fantasy-font-family': (pspec: GObject.ParamSpec) => void;
-            'notify::hardware-acceleration-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::javascript-can-access-clipboard': (pspec: GObject.ParamSpec) => void;
-            'notify::javascript-can-open-windows-automatically': (pspec: GObject.ParamSpec) => void;
-            'notify::load-icons-ignoring-image-load-setting': (pspec: GObject.ParamSpec) => void;
-            'notify::math-font-family': (pspec: GObject.ParamSpec) => void;
-            'notify::media-content-types-requiring-hardware-support': (pspec: GObject.ParamSpec) => void;
-            'notify::media-playback-allows-inline': (pspec: GObject.ParamSpec) => void;
-            'notify::media-playback-requires-user-gesture': (pspec: GObject.ParamSpec) => void;
-            'notify::minimum-font-size': (pspec: GObject.ParamSpec) => void;
-            'notify::monospace-font-family': (pspec: GObject.ParamSpec) => void;
-            'notify::pictograph-font-family': (pspec: GObject.ParamSpec) => void;
-            'notify::print-backgrounds': (pspec: GObject.ParamSpec) => void;
-            'notify::sans-serif-font-family': (pspec: GObject.ParamSpec) => void;
-            'notify::serif-font-family': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
-            'notify::webrtc-udp-ports-range': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-text-only': (pspec: GObject.ParamSpec) => void;
+            "notify::allow-file-access-from-file-urls": (pspec: GObject.ParamSpec) => void;
+            "notify::allow-modal-dialogs": (pspec: GObject.ParamSpec) => void;
+            "notify::allow-top-navigation-to-data-urls": (pspec: GObject.ParamSpec) => void;
+            "notify::allow-universal-access-from-file-urls": (pspec: GObject.ParamSpec) => void;
+            "notify::auto-load-images": (pspec: GObject.ParamSpec) => void;
+            "notify::cursive-font-family": (pspec: GObject.ParamSpec) => void;
+            "notify::default-charset": (pspec: GObject.ParamSpec) => void;
+            "notify::default-font-family": (pspec: GObject.ParamSpec) => void;
+            "notify::default-font-size": (pspec: GObject.ParamSpec) => void;
+            "notify::default-monospace-font-size": (pspec: GObject.ParamSpec) => void;
+            "notify::disable-web-security": (pspec: GObject.ParamSpec) => void;
+            "notify::draw-compositing-indicators": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-2d-canvas-acceleration": (pspec: GObject.ParamSpec) => void;
+            "notify::enable2d-canvas-acceleration": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-back-forward-navigation-gestures": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-caret-browsing": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-developer-extras": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-dns-prefetching": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-encrypted-media": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-fullscreen": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-html5-database": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-html5-local-storage": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-hyperlink-auditing": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-javascript": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-javascript-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-media": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-media-capabilities": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-media-stream": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-mediasource": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-mock-capture-devices": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-offline-web-application-cache": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-page-cache": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-resizable-text-areas": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-site-specific-quirks": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-smooth-scrolling": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-spatial-navigation": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-tabs-to-links": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-webaudio": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-webgl": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-webrtc": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-write-console-messages-to-stdout": (pspec: GObject.ParamSpec) => void;
+            "notify::fantasy-font-family": (pspec: GObject.ParamSpec) => void;
+            "notify::hardware-acceleration-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::javascript-can-access-clipboard": (pspec: GObject.ParamSpec) => void;
+            "notify::javascript-can-open-windows-automatically": (pspec: GObject.ParamSpec) => void;
+            "notify::load-icons-ignoring-image-load-setting": (pspec: GObject.ParamSpec) => void;
+            "notify::math-font-family": (pspec: GObject.ParamSpec) => void;
+            "notify::media-content-types-requiring-hardware-support": (pspec: GObject.ParamSpec) => void;
+            "notify::media-playback-allows-inline": (pspec: GObject.ParamSpec) => void;
+            "notify::media-playback-requires-user-gesture": (pspec: GObject.ParamSpec) => void;
+            "notify::minimum-font-size": (pspec: GObject.ParamSpec) => void;
+            "notify::monospace-font-family": (pspec: GObject.ParamSpec) => void;
+            "notify::pictograph-font-family": (pspec: GObject.ParamSpec) => void;
+            "notify::print-backgrounds": (pspec: GObject.ParamSpec) => void;
+            "notify::sans-serif-font-family": (pspec: GObject.ParamSpec) => void;
+            "notify::serif-font-family": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
+            "notify::webrtc-udp-ports-range": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-text-only": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             allow_file_access_from_file_urls: boolean;
             allowFileAccessFromFileUrls: boolean;
@@ -7082,8 +7072,8 @@ export namespace WebKit {
             javascriptCanOpenWindowsAutomatically: boolean;
             load_icons_ignoring_image_load_setting: boolean;
             loadIconsIgnoringImageLoadSetting: boolean;
-            math_font_family: string | null;
-            mathFontFamily: string | null;
+            math_font_family: (string | null);
+            mathFontFamily: (string | null);
             media_content_types_requiring_hardware_support: string;
             mediaContentTypesRequiringHardwareSupport: string;
             media_playback_allows_inline: boolean;
@@ -7113,12 +7103,12 @@ export namespace WebKit {
 
     /**
      * Control the behaviour of a {@link WebKit.WebView}.
-     *
+     * 
      * {@link WebKit.Settings} can be applied to a {@link WebKit.WebView} to control text charset,
      * color, font sizes, printing mode, script support, loading of images and various
      * other things on a {@link WebKit.WebView}. After creation, a {@link WebKit.Settings} object
      * contains default settings.
-     *
+     * 
      * ```c
      * // Disable JavaScript
      * WebKitSettings *settings = webkit_web_view_group_get_settings (my_view_group);
@@ -7130,7 +7120,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<Settings>;
 
         // Properties
-
         /**
          * Whether file access is allowed from file URLs. By default, when
          * something is loaded in a {@link WebKit.WebView} using a file URI, cross
@@ -7142,6 +7131,7 @@ export namespace WebKit {
          */
         get allow_file_access_from_file_urls(): boolean;
         set allow_file_access_from_file_urls(val: boolean);
+
         /**
          * Whether file access is allowed from file URLs. By default, when
          * something is loaded in a {@link WebKit.WebView} using a file URI, cross
@@ -7153,6 +7143,7 @@ export namespace WebKit {
          */
         get allowFileAccessFromFileUrls(): boolean;
         set allowFileAccessFromFileUrls(val: boolean);
+
         /**
          * Determine whether it's allowed to create and run modal dialogs
          * from a {@link WebKit.WebView} through JavaScript with
@@ -7164,6 +7155,7 @@ export namespace WebKit {
          */
         get allow_modal_dialogs(): boolean;
         set allow_modal_dialogs(val: boolean);
+
         /**
          * Determine whether it's allowed to create and run modal dialogs
          * from a {@link WebKit.WebView} through JavaScript with
@@ -7175,6 +7167,7 @@ export namespace WebKit {
          */
         get allowModalDialogs(): boolean;
         set allowModalDialogs(val: boolean);
+
         /**
          * Whether or not the top frame is allowed to navigate to data URLs. It is disabled by default
          * due to the risk it poses when loading untrusted URLs, with data URLs being used in scamming
@@ -7185,6 +7178,7 @@ export namespace WebKit {
          */
         get allow_top_navigation_to_data_urls(): boolean;
         set allow_top_navigation_to_data_urls(val: boolean);
+
         /**
          * Whether or not the top frame is allowed to navigate to data URLs. It is disabled by default
          * due to the risk it poses when loading untrusted URLs, with data URLs being used in scamming
@@ -7195,6 +7189,7 @@ export namespace WebKit {
          */
         get allowTopNavigationToDataUrls(): boolean;
         set allowTopNavigationToDataUrls(val: boolean);
+
         /**
          * Whether or not JavaScript running in the context of a file scheme URL
          * should be allowed to access content from any origin.  By default, when
@@ -7207,6 +7202,7 @@ export namespace WebKit {
          */
         get allow_universal_access_from_file_urls(): boolean;
         set allow_universal_access_from_file_urls(val: boolean);
+
         /**
          * Whether or not JavaScript running in the context of a file scheme URL
          * should be allowed to access content from any origin.  By default, when
@@ -7219,6 +7215,7 @@ export namespace WebKit {
          */
         get allowUniversalAccessFromFileUrls(): boolean;
         set allowUniversalAccessFromFileUrls(val: boolean);
+
         /**
          * Determines whether images should be automatically loaded or not.
          * On devices where network bandwidth is of concern, it might be
@@ -7227,6 +7224,7 @@ export namespace WebKit {
          */
         get auto_load_images(): boolean;
         set auto_load_images(val: boolean);
+
         /**
          * Determines whether images should be automatically loaded or not.
          * On devices where network bandwidth is of concern, it might be
@@ -7235,42 +7233,49 @@ export namespace WebKit {
          */
         get autoLoadImages(): boolean;
         set autoLoadImages(val: boolean);
+
         /**
          * The font family used as the default for content using a cursive font.
          * @default serif
          */
         get cursive_font_family(): string;
         set cursive_font_family(val: string);
+
         /**
          * The font family used as the default for content using a cursive font.
          * @default serif
          */
         get cursiveFontFamily(): string;
         set cursiveFontFamily(val: string);
+
         /**
          * The default text charset used when interpreting content with an unspecified charset.
          * @default iso-8859-1
          */
         get default_charset(): string;
         set default_charset(val: string);
+
         /**
          * The default text charset used when interpreting content with an unspecified charset.
          * @default iso-8859-1
          */
         get defaultCharset(): string;
         set defaultCharset(val: string);
+
         /**
          * The font family to use as the default for content that does not specify a font.
          * @default sans-serif
          */
         get default_font_family(): string;
         set default_font_family(val: string);
+
         /**
          * The font family to use as the default for content that does not specify a font.
          * @default sans-serif
          */
         get defaultFontFamily(): string;
         set defaultFontFamily(val: string);
+
         /**
          * The default font size in pixels to use for content displayed if
          * no font size is specified.
@@ -7278,6 +7283,7 @@ export namespace WebKit {
          */
         get default_font_size(): number;
         set default_font_size(val: number);
+
         /**
          * The default font size in pixels to use for content displayed if
          * no font size is specified.
@@ -7285,6 +7291,7 @@ export namespace WebKit {
          */
         get defaultFontSize(): number;
         set defaultFontSize(val: number);
+
         /**
          * The default font size in pixels to use for content displayed in
          * monospace font if no font size is specified.
@@ -7292,6 +7299,7 @@ export namespace WebKit {
          */
         get default_monospace_font_size(): number;
         set default_monospace_font_size(val: number);
+
         /**
          * The default font size in pixels to use for content displayed in
          * monospace font if no font size is specified.
@@ -7299,9 +7307,10 @@ export namespace WebKit {
          */
         get defaultMonospaceFontSize(): number;
         set defaultMonospaceFontSize(val: number);
+
         /**
          * Enable or disable support for Web Security on pages.
-         *
+         * 
          * This setting disables the same-origin policy, allowing every website full control over
          * all other websites. This is for use in special environments where you wish to disable
          * all security and allow websites to hack each other. It is impossible to use this setting
@@ -7311,9 +7320,10 @@ export namespace WebKit {
          */
         get disable_web_security(): boolean;
         set disable_web_security(val: boolean);
+
         /**
          * Enable or disable support for Web Security on pages.
-         *
+         * 
          * This setting disables the same-origin policy, allowing every website full control over
          * all other websites. This is for use in special environments where you wish to disable
          * all security and allow websites to hack each other. It is impossible to use this setting
@@ -7323,6 +7333,7 @@ export namespace WebKit {
          */
         get disableWebSecurity(): boolean;
         set disableWebSecurity(val: boolean);
+
         /**
          * Whether to draw compositing borders and repaint counters on layers drawn
          * with accelerated compositing. This is useful for debugging issues related
@@ -7331,6 +7342,7 @@ export namespace WebKit {
          */
         get draw_compositing_indicators(): boolean;
         set draw_compositing_indicators(val: boolean);
+
         /**
          * Whether to draw compositing borders and repaint counters on layers drawn
          * with accelerated compositing. This is useful for debugging issues related
@@ -7339,6 +7351,7 @@ export namespace WebKit {
          */
         get drawCompositingIndicators(): boolean;
         set drawCompositingIndicators(val: boolean);
+
         /**
          * Enable or disable 2D canvas acceleration.
          * If this setting is enabled, the 2D canvas will be accelerated even if Skia CPU
@@ -7349,6 +7362,7 @@ export namespace WebKit {
          */
         get enable_2d_canvas_acceleration(): boolean;
         set enable_2d_canvas_acceleration(val: boolean);
+
         /**
          * Enable or disable 2D canvas acceleration.
          * If this setting is enabled, the 2D canvas will be accelerated even if Skia CPU
@@ -7359,6 +7373,7 @@ export namespace WebKit {
          */
         get enable2dCanvasAcceleration(): boolean;
         set enable2dCanvasAcceleration(val: boolean);
+
         /**
          * Enable or disable horizontal swipe gesture for back-forward navigation.
          * @since 2.24
@@ -7366,6 +7381,7 @@ export namespace WebKit {
          */
         get enable_back_forward_navigation_gestures(): boolean;
         set enable_back_forward_navigation_gestures(val: boolean);
+
         /**
          * Enable or disable horizontal swipe gesture for back-forward navigation.
          * @since 2.24
@@ -7373,30 +7389,35 @@ export namespace WebKit {
          */
         get enableBackForwardNavigationGestures(): boolean;
         set enableBackForwardNavigationGestures(val: boolean);
+
         /**
          * Whether to enable accessibility enhanced keyboard navigation.
          * @default false
          */
         get enable_caret_browsing(): boolean;
         set enable_caret_browsing(val: boolean);
+
         /**
          * Whether to enable accessibility enhanced keyboard navigation.
          * @default false
          */
         get enableCaretBrowsing(): boolean;
         set enableCaretBrowsing(val: boolean);
+
         /**
          * Determines whether or not developer tools, such as the Web Inspector, are enabled.
          * @default false
          */
         get enable_developer_extras(): boolean;
         set enable_developer_extras(val: boolean);
+
         /**
          * Determines whether or not developer tools, such as the Web Inspector, are enabled.
          * @default false
          */
         get enableDeveloperExtras(): boolean;
         set enableDeveloperExtras(val: boolean);
+
         /**
          * Determines whether or not to prefetch domain names. DNS prefetching attempts
          * to resolve domain names before a user tries to follow a link.
@@ -7405,6 +7426,7 @@ export namespace WebKit {
          */
         get enable_dns_prefetching(): boolean;
         set enable_dns_prefetching(val: boolean);
+
         /**
          * Determines whether or not to prefetch domain names. DNS prefetching attempts
          * to resolve domain names before a user tries to follow a link.
@@ -7413,30 +7435,33 @@ export namespace WebKit {
          */
         get enableDnsPrefetching(): boolean;
         set enableDnsPrefetching(val: boolean);
+
         /**
          * Enable or disable support for Encrypted Media API on pages.
          * EncryptedMedia is an experimental JavaScript API for playing encrypted media in HTML.
          * This property will only work as intended if the EncryptedMedia feature is enabled at build time
          * with the ENABLE_ENCRYPTED_MEDIA flag.
-         *
+         * 
          * See https://www.w3.org/TR/encrypted-media/
          * @since 2.20
          * @default false
          */
         get enable_encrypted_media(): boolean;
         set enable_encrypted_media(val: boolean);
+
         /**
          * Enable or disable support for Encrypted Media API on pages.
          * EncryptedMedia is an experimental JavaScript API for playing encrypted media in HTML.
          * This property will only work as intended if the EncryptedMedia feature is enabled at build time
          * with the ENABLE_ENCRYPTED_MEDIA flag.
-         *
+         * 
          * See https://www.w3.org/TR/encrypted-media/
          * @since 2.20
          * @default false
          */
         get enableEncryptedMedia(): boolean;
         set enableEncryptedMedia(val: boolean);
+
         /**
          * Whether to enable the Javascript Fullscreen API. The API
          * allows any HTML element to request fullscreen display. See also
@@ -7446,6 +7471,7 @@ export namespace WebKit {
          */
         get enable_fullscreen(): boolean;
         set enable_fullscreen(val: boolean);
+
         /**
          * Whether to enable the Javascript Fullscreen API. The API
          * allows any HTML element to request fullscreen display. See also
@@ -7455,41 +7481,46 @@ export namespace WebKit {
          */
         get enableFullscreen(): boolean;
         set enableFullscreen(val: boolean);
+
         /**
          * Whether to enable HTML5 client-side SQL database support (IndexedDB).
          * @default true
          */
         get enable_html5_database(): boolean;
         set enable_html5_database(val: boolean);
+
         /**
          * Whether to enable HTML5 client-side SQL database support (IndexedDB).
          * @default true
          */
         get enableHtml5Database(): boolean;
         set enableHtml5Database(val: boolean);
+
         /**
          * Whether to enable HTML5 local storage support. Local storage provides
          * simple synchronous storage access.
-         *
+         * 
          * HTML5 local storage specification is available at
          * http://dev.w3.org/html5/webstorage/.
          * @default true
          */
         get enable_html5_local_storage(): boolean;
         set enable_html5_local_storage(val: boolean);
+
         /**
          * Whether to enable HTML5 local storage support. Local storage provides
          * simple synchronous storage access.
-         *
+         * 
          * HTML5 local storage specification is available at
          * http://dev.w3.org/html5/webstorage/.
          * @default true
          */
         get enableHtml5LocalStorage(): boolean;
         set enableHtml5LocalStorage(val: boolean);
+
         /**
          * Determines whether or not hyperlink auditing is enabled.
-         *
+         * 
          * The hyperlink auditing specification is available at
          * http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#hyperlink-auditing.
          * @deprecated since 2.50
@@ -7497,9 +7528,10 @@ export namespace WebKit {
          */
         get enable_hyperlink_auditing(): boolean;
         set enable_hyperlink_auditing(val: boolean);
+
         /**
          * Determines whether or not hyperlink auditing is enabled.
-         *
+         * 
          * The hyperlink auditing specification is available at
          * http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#hyperlink-auditing.
          * @deprecated since 2.50
@@ -7507,18 +7539,21 @@ export namespace WebKit {
          */
         get enableHyperlinkAuditing(): boolean;
         set enableHyperlinkAuditing(val: boolean);
+
         /**
          * Determines whether or not JavaScript executes within a page.
          * @default true
          */
         get enable_javascript(): boolean;
         set enable_javascript(val: boolean);
+
         /**
          * Determines whether or not JavaScript executes within a page.
          * @default true
          */
         get enableJavascript(): boolean;
         set enableJavascript(val: boolean);
+
         /**
          * Determines whether or not JavaScript markup is allowed in document. When this setting is disabled,
          * all JavaScript-related elements and attributes are removed from the document during parsing. Note that
@@ -7528,6 +7563,7 @@ export namespace WebKit {
          */
         get enable_javascript_markup(): boolean;
         set enable_javascript_markup(val: boolean);
+
         /**
          * Determines whether or not JavaScript markup is allowed in document. When this setting is disabled,
          * all JavaScript-related elements and attributes are removed from the document during parsing. Note that
@@ -7537,6 +7573,7 @@ export namespace WebKit {
          */
         get enableJavascriptMarkup(): boolean;
         set enableJavascriptMarkup(val: boolean);
+
         /**
          * Enable or disable support for media playback on pages. This setting is enabled by
          * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
@@ -7546,6 +7583,7 @@ export namespace WebKit {
          */
         get enable_media(): boolean;
         set enable_media(val: boolean);
+
         /**
          * Enable or disable support for media playback on pages. This setting is enabled by
          * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
@@ -7555,6 +7593,7 @@ export namespace WebKit {
          */
         get enableMedia(): boolean;
         set enableMedia(val: boolean);
+
         /**
          * Enable or disable support for MediaCapabilities on pages. This
          * specification intends to provide APIs to allow websites to make an optimal
@@ -7562,13 +7601,14 @@ export namespace WebKit {
          * information about the decoding and encoding capabilities for a given format
          * but also output capabilities to find the best match based on the device’s
          * display.
-         *
+         * 
          * See also https://wicg.github.io/media-capabilities/
          * @since 2.22
          * @default true
          */
         get enable_media_capabilities(): boolean;
         set enable_media_capabilities(val: boolean);
+
         /**
          * Enable or disable support for MediaCapabilities on pages. This
          * specification intends to provide APIs to allow websites to make an optimal
@@ -7576,57 +7616,62 @@ export namespace WebKit {
          * information about the decoding and encoding capabilities for a given format
          * but also output capabilities to find the best match based on the device’s
          * display.
-         *
+         * 
          * See also https://wicg.github.io/media-capabilities/
          * @since 2.22
          * @default true
          */
         get enableMediaCapabilities(): boolean;
         set enableMediaCapabilities(val: boolean);
+
         /**
          * Enable or disable support for MediaStream on pages. MediaStream
          * is an experimental proposal for allowing web pages to access
          * audio and video devices for capture.
-         *
+         * 
          * See also http://dev.w3.org/2011/webrtc/editor/getusermedia.html
          * @since 2.4
          * @default true
          */
         get enable_media_stream(): boolean;
         set enable_media_stream(val: boolean);
+
         /**
          * Enable or disable support for MediaStream on pages. MediaStream
          * is an experimental proposal for allowing web pages to access
          * audio and video devices for capture.
-         *
+         * 
          * See also http://dev.w3.org/2011/webrtc/editor/getusermedia.html
          * @since 2.4
          * @default true
          */
         get enableMediaStream(): boolean;
         set enableMediaStream(val: boolean);
+
         /**
          * Enable or disable support for MediaSource on pages. MediaSource
          * extends HTMLMediaElement to allow JavaScript to generate media
          * streams for playback.
-         *
+         * 
          * See also http://www.w3.org/TR/media-source/
          * @since 2.4
          * @default true
          */
         get enable_mediasource(): boolean;
         set enable_mediasource(val: boolean);
+
         /**
          * Enable or disable support for MediaSource on pages. MediaSource
          * extends HTMLMediaElement to allow JavaScript to generate media
          * streams for playback.
-         *
+         * 
          * See also http://www.w3.org/TR/media-source/
          * @since 2.4
          * @default true
          */
         get enableMediasource(): boolean;
         set enableMediasource(val: boolean);
+
         /**
          * Enable or disable the Mock Capture Devices. Those are fake
          * Microphone and Camera devices to be used as MediaStream
@@ -7636,6 +7681,7 @@ export namespace WebKit {
          */
         get enable_mock_capture_devices(): boolean;
         set enable_mock_capture_devices(val: boolean);
+
         /**
          * Enable or disable the Mock Capture Devices. Those are fake
          * Microphone and Camera devices to be used as MediaStream
@@ -7645,6 +7691,7 @@ export namespace WebKit {
          */
         get enableMockCaptureDevices(): boolean;
         set enableMockCaptureDevices(val: boolean);
+
         /**
          * Unsupported setting. This property does nothing.
          * @deprecated since 2.44
@@ -7652,6 +7699,7 @@ export namespace WebKit {
          */
         get enable_offline_web_application_cache(): boolean;
         set enable_offline_web_application_cache(val: boolean);
+
         /**
          * Unsupported setting. This property does nothing.
          * @deprecated since 2.44
@@ -7659,6 +7707,7 @@ export namespace WebKit {
          */
         get enableOfflineWebApplicationCache(): boolean;
         set enableOfflineWebApplicationCache(val: boolean);
+
         /**
          * Enable or disable the page cache. Disabling the page cache is
          * generally only useful for special circumstances like low-memory
@@ -7673,6 +7722,7 @@ export namespace WebKit {
          */
         get enable_page_cache(): boolean;
         set enable_page_cache(val: boolean);
+
         /**
          * Enable or disable the page cache. Disabling the page cache is
          * generally only useful for special circumstances like low-memory
@@ -7687,18 +7737,21 @@ export namespace WebKit {
          */
         get enablePageCache(): boolean;
         set enablePageCache(val: boolean);
+
         /**
          * Determines whether or not text areas can be resized.
          * @default true
          */
         get enable_resizable_text_areas(): boolean;
         set enable_resizable_text_areas(val: boolean);
+
         /**
          * Determines whether or not text areas can be resized.
          * @default true
          */
         get enableResizableTextAreas(): boolean;
         set enableResizableTextAreas(val: boolean);
+
         /**
          * Whether to turn on site-specific quirks. Turning this on will
          * tell WebKit to use some site-specific workarounds for
@@ -7710,6 +7763,7 @@ export namespace WebKit {
          */
         get enable_site_specific_quirks(): boolean;
         set enable_site_specific_quirks(val: boolean);
+
         /**
          * Whether to turn on site-specific quirks. Turning this on will
          * tell WebKit to use some site-specific workarounds for
@@ -7721,18 +7775,21 @@ export namespace WebKit {
          */
         get enableSiteSpecificQuirks(): boolean;
         set enableSiteSpecificQuirks(val: boolean);
+
         /**
          * Enable or disable smooth scrolling.
          * @default true
          */
         get enable_smooth_scrolling(): boolean;
         set enable_smooth_scrolling(val: boolean);
+
         /**
          * Enable or disable smooth scrolling.
          * @default true
          */
         get enableSmoothScrolling(): boolean;
         set enableSmoothScrolling(val: boolean);
+
         /**
          * Whether to enable Spatial Navigation. This feature consists in the ability
          * to navigate between focusable elements in a Web page, such as hyperlinks
@@ -7745,6 +7802,7 @@ export namespace WebKit {
          */
         get enable_spatial_navigation(): boolean;
         set enable_spatial_navigation(val: boolean);
+
         /**
          * Whether to enable Spatial Navigation. This feature consists in the ability
          * to navigate between focusable elements in a Web page, such as hyperlinks
@@ -7757,6 +7815,7 @@ export namespace WebKit {
          */
         get enableSpatialNavigation(): boolean;
         set enableSpatialNavigation(val: boolean);
+
         /**
          * Determines whether the tab key cycles through the elements on the page.
          * When this setting is enabled, users will be able to focus the next element
@@ -7766,6 +7825,7 @@ export namespace WebKit {
          */
         get enable_tabs_to_links(): boolean;
         set enable_tabs_to_links(val: boolean);
+
         /**
          * Determines whether the tab key cycles through the elements on the page.
          * When this setting is enabled, users will be able to focus the next element
@@ -7775,24 +7835,27 @@ export namespace WebKit {
          */
         get enableTabsToLinks(): boolean;
         set enableTabsToLinks(val: boolean);
+
         /**
          * Enable or disable support for WebAudio on pages. WebAudio is an
          * API for processing and synthesizing audio in web applications
-         *
+         * 
          * See also https://webaudio.github.io/web-audio-api
          * @default true
          */
         get enable_webaudio(): boolean;
         set enable_webaudio(val: boolean);
+
         /**
          * Enable or disable support for WebAudio on pages. WebAudio is an
          * API for processing and synthesizing audio in web applications
-         *
+         * 
          * See also https://webaudio.github.io/web-audio-api
          * @default true
          */
         get enableWebaudio(): boolean;
         set enableWebaudio(val: boolean);
+
         /**
          * Enable or disable support for WebGL on pages. WebGL enables web
          * content to use an API based on OpenGL ES 2.0.
@@ -7800,6 +7863,7 @@ export namespace WebKit {
          */
         get enable_webgl(): boolean;
         set enable_webgl(val: boolean);
+
         /**
          * Enable or disable support for WebGL on pages. WebGL enables web
          * content to use an API based on OpenGL ES 2.0.
@@ -7807,30 +7871,33 @@ export namespace WebKit {
          */
         get enableWebgl(): boolean;
         set enableWebgl(val: boolean);
+
         /**
          * Enable WebRTC support for loaded pages.
-         *
+         * 
          * Enabling this setting implies that {@link Settings.enable_media_stream}
          * will be enabled as well.
-         *
+         * 
          * See also https://www.w3.org/TR/webrtc/
          * @since 2.38
          * @default false
          */
         get enable_webrtc(): boolean;
         set enable_webrtc(val: boolean);
+
         /**
          * Enable WebRTC support for loaded pages.
-         *
+         * 
          * Enabling this setting implies that {@link Settings.enable_media_stream}
          * will be enabled as well.
-         *
+         * 
          * See also https://www.w3.org/TR/webrtc/
          * @since 2.38
          * @default false
          */
         get enableWebrtc(): boolean;
         set enableWebrtc(val: boolean);
+
         /**
          * Enable or disable writing console messages to stdout. These are messages
          * sent to the console with console.log and related methods.
@@ -7839,6 +7906,7 @@ export namespace WebKit {
          */
         get enable_write_console_messages_to_stdout(): boolean;
         set enable_write_console_messages_to_stdout(val: boolean);
+
         /**
          * Enable or disable writing console messages to stdout. These are messages
          * sent to the console with console.log and related methods.
@@ -7847,23 +7915,26 @@ export namespace WebKit {
          */
         get enableWriteConsoleMessagesToStdout(): boolean;
         set enableWriteConsoleMessagesToStdout(val: boolean);
+
         /**
          * The font family used as the default for content using a fantasy font.
          * @default serif
          */
         get fantasy_font_family(): string;
         set fantasy_font_family(val: string);
+
         /**
          * The font family used as the default for content using a fantasy font.
          * @default serif
          */
         get fantasyFontFamily(): string;
         set fantasyFontFamily(val: string);
+
         /**
          * The {@link WebKit.HardwareAccelerationPolicy} to decide how to enable and disable
          * hardware acceleration. Disabling hardware acceleration might
          * cause some websites to not render correctly or consume more CPU.
-         *
+         * 
          * Note that changing this setting might not be possible if hardware acceleration is not
          * supported by the hardware or the system. In that case, you can get the value to know the
          * actual policy being used, but changing the setting will not have any effect.
@@ -7872,11 +7943,12 @@ export namespace WebKit {
          */
         get hardware_acceleration_policy(): HardwareAccelerationPolicy;
         set hardware_acceleration_policy(val: HardwareAccelerationPolicy);
+
         /**
          * The {@link WebKit.HardwareAccelerationPolicy} to decide how to enable and disable
          * hardware acceleration. Disabling hardware acceleration might
          * cause some websites to not render correctly or consume more CPU.
-         *
+         * 
          * Note that changing this setting might not be possible if hardware acceleration is not
          * supported by the hardware or the system. In that case, you can get the value to know the
          * actual policy being used, but changing the setting will not have any effect.
@@ -7885,6 +7957,7 @@ export namespace WebKit {
          */
         get hardwareAccelerationPolicy(): HardwareAccelerationPolicy;
         set hardwareAccelerationPolicy(val: HardwareAccelerationPolicy);
+
         /**
          * Whether JavaScript can access the clipboard. The default value is `false`. If
          * set to `true`, document.execCommand() allows cut, copy and paste commands.
@@ -7892,6 +7965,7 @@ export namespace WebKit {
          */
         get javascript_can_access_clipboard(): boolean;
         set javascript_can_access_clipboard(val: boolean);
+
         /**
          * Whether JavaScript can access the clipboard. The default value is `false`. If
          * set to `true`, document.execCommand() allows cut, copy and paste commands.
@@ -7899,6 +7973,7 @@ export namespace WebKit {
          */
         get javascriptCanAccessClipboard(): boolean;
         set javascriptCanAccessClipboard(val: boolean);
+
         /**
          * Whether JavaScript can open popup windows automatically without user
          * intervention.
@@ -7906,6 +7981,7 @@ export namespace WebKit {
          */
         get javascript_can_open_windows_automatically(): boolean;
         set javascript_can_open_windows_automatically(val: boolean);
+
         /**
          * Whether JavaScript can open popup windows automatically without user
          * intervention.
@@ -7913,6 +7989,7 @@ export namespace WebKit {
          */
         get javascriptCanOpenWindowsAutomatically(): boolean;
         set javascriptCanOpenWindowsAutomatically(val: boolean);
+
         /**
          * Unsupported setting. This property does nothing.
          * @deprecated since 2.42
@@ -7920,6 +7997,7 @@ export namespace WebKit {
          */
         get load_icons_ignoring_image_load_setting(): boolean;
         set load_icons_ignoring_image_load_setting(val: boolean);
+
         /**
          * Unsupported setting. This property does nothing.
          * @deprecated since 2.42
@@ -7927,20 +8005,23 @@ export namespace WebKit {
          */
         get loadIconsIgnoringImageLoadSetting(): boolean;
         set loadIconsIgnoringImageLoadSetting(val: boolean);
+
         /**
          * The font family used as the default for content using a math font.
          * @since 2.52
          * @default null
          */
-        get math_font_family(): string | null;
-        set math_font_family(val: string | null);
+        get math_font_family(): (string | null);
+        set math_font_family(val: (string | null));
+
         /**
          * The font family used as the default for content using a math font.
          * @since 2.52
          * @default null
          */
-        get mathFontFamily(): string | null;
-        set mathFontFamily(val: string | null);
+        get mathFontFamily(): (string | null);
+        set mathFontFamily(val: (string | null));
+
         /**
          * List of media content types requiring hardware support, split by semicolons (:).
          * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
@@ -7949,6 +8030,7 @@ export namespace WebKit {
          */
         get media_content_types_requiring_hardware_support(): string;
         set media_content_types_requiring_hardware_support(val: string);
+
         /**
          * List of media content types requiring hardware support, split by semicolons (:).
          * For example: 'video/webm; codecs="vp*":video/mp4; codecs="avc*":video/&ast; codecs="av1*"'.
@@ -7957,6 +8039,7 @@ export namespace WebKit {
          */
         get mediaContentTypesRequiringHardwareSupport(): string;
         set mediaContentTypesRequiringHardwareSupport(val: string);
+
         /**
          * Whether media playback is full-screen only or inline playback is allowed.
          * This is `true` by default, so media playback can be inline. Setting it to
@@ -7965,6 +8048,7 @@ export namespace WebKit {
          */
         get media_playback_allows_inline(): boolean;
         set media_playback_allows_inline(val: boolean);
+
         /**
          * Whether media playback is full-screen only or inline playback is allowed.
          * This is `true` by default, so media playback can be inline. Setting it to
@@ -7973,6 +8057,7 @@ export namespace WebKit {
          */
         get mediaPlaybackAllowsInline(): boolean;
         set mediaPlaybackAllowsInline(val: boolean);
+
         /**
          * Whether a user gesture (such as clicking the play button)
          * would be required to start media playback or load media. This is off
@@ -7983,6 +8068,7 @@ export namespace WebKit {
          */
         get media_playback_requires_user_gesture(): boolean;
         set media_playback_requires_user_gesture(val: boolean);
+
         /**
          * Whether a user gesture (such as clicking the play button)
          * would be required to start media playback or load media. This is off
@@ -7993,6 +8079,7 @@ export namespace WebKit {
          */
         get mediaPlaybackRequiresUserGesture(): boolean;
         set mediaPlaybackRequiresUserGesture(val: boolean);
+
         /**
          * The minimum font size in pixels used to display text. This setting
          * controls the absolute smallest size. Values other than 0 can
@@ -8001,6 +8088,7 @@ export namespace WebKit {
          */
         get minimum_font_size(): number;
         set minimum_font_size(val: number);
+
         /**
          * The minimum font size in pixels used to display text. This setting
          * controls the absolute smallest size. Values other than 0 can
@@ -8009,95 +8097,108 @@ export namespace WebKit {
          */
         get minimumFontSize(): number;
         set minimumFontSize(val: number);
+
         /**
          * The font family used as the default for content using a monospace font.
          * @default monospace
          */
         get monospace_font_family(): string;
         set monospace_font_family(val: string);
+
         /**
          * The font family used as the default for content using a monospace font.
          * @default monospace
          */
         get monospaceFontFamily(): string;
         set monospaceFontFamily(val: string);
+
         /**
          * The font family used as the default for content using a pictograph font.
          * @default serif
          */
         get pictograph_font_family(): string;
         set pictograph_font_family(val: string);
+
         /**
          * The font family used as the default for content using a pictograph font.
          * @default serif
          */
         get pictographFontFamily(): string;
         set pictographFontFamily(val: string);
+
         /**
          * Whether background images should be drawn during printing.
          * @default true
          */
         get print_backgrounds(): boolean;
         set print_backgrounds(val: boolean);
+
         /**
          * Whether background images should be drawn during printing.
          * @default true
          */
         get printBackgrounds(): boolean;
         set printBackgrounds(val: boolean);
+
         /**
          * The font family used as the default for content using a sans-serif font.
          * @default sans-serif
          */
         get sans_serif_font_family(): string;
         set sans_serif_font_family(val: string);
+
         /**
          * The font family used as the default for content using a sans-serif font.
          * @default sans-serif
          */
         get sansSerifFontFamily(): string;
         set sansSerifFontFamily(val: string);
+
         /**
          * The font family used as the default for content using a serif font.
          * @default serif
          */
         get serif_font_family(): string;
         set serif_font_family(val: string);
+
         /**
          * The font family used as the default for content using a serif font.
          * @default serif
          */
         get serifFontFamily(): string;
         set serifFontFamily(val: string);
+
         /**
          * The user-agent string used by WebKit. Unusual user-agent strings may cause web
          * content to render incorrectly or fail to run, as many web pages are written to
          * parse the user-agent strings of only the most popular browsers. Therefore, it's
          * typically better to not completely override the standard user-agent, but to use
          * `webkit_settings_set_user_agent_with_application_details()` instead.
-         *
+         * 
          * If this property is set to the empty string or `null`, it will revert to the standard
          * user-agent.
          * @default null
          */
         get user_agent(): string;
         set user_agent(val: string);
+
         /**
          * The user-agent string used by WebKit. Unusual user-agent strings may cause web
          * content to render incorrectly or fail to run, as many web pages are written to
          * parse the user-agent strings of only the most popular browsers. Therefore, it's
          * typically better to not completely override the standard user-agent, but to use
          * `webkit_settings_set_user_agent_with_application_details()` instead.
-         *
+         * 
          * If this property is set to the empty string or `null`, it will revert to the standard
          * user-agent.
          * @default null
          */
         get userAgent(): string;
         set userAgent(val: string);
+
         /**
          * Allow customization of the WebRTC UDP ports range.
-         *
+         * 
          * In some constrained environments where a firewall blocks UDP network traffic excepted on a
          * specific port range, this settings can be used to give hints to the WebRTC backend regarding
          * which ports to allocate. The format is min-port:max-port, so for instance 20000:30000. The
@@ -8108,9 +8209,10 @@ export namespace WebKit {
          */
         get webrtc_udp_ports_range(): string;
         set webrtc_udp_ports_range(val: string);
+
         /**
          * Allow customization of the WebRTC UDP ports range.
-         *
+         * 
          * In some constrained environments where a firewall blocks UDP network traffic excepted on a
          * specific port range, this settings can be used to give hints to the WebRTC backend regarding
          * which ports to allocate. The format is min-port:max-port, so for instance 20000:30000. The
@@ -8121,6 +8223,7 @@ export namespace WebKit {
          */
         get webrtcUdpPortsRange(): string;
         set webrtcUdpPortsRange(val: string);
+
         /**
          * Whether {@link WebKit.WebView.zoom_level} affects only the
          * text of the page or all the contents. Other contents containing text
@@ -8130,6 +8233,7 @@ export namespace WebKit {
          */
         get zoom_text_only(): boolean;
         set zoom_text_only(val: boolean);
+
         /**
          * Whether {@link WebKit.WebView.zoom_level} affects only the
          * text of the page or all the contents. Other contents containing text
@@ -8150,69 +8254,62 @@ export namespace WebKit {
         $signals: Settings.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Settings;
+        static ["new"](): Settings;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Convert `points` to the equivalent value in pixels.
-         *
+         * 
          * Applications can use this function to convert font size values
          * in points to font size values in pixels when setting the font size properties
          * of {@link WebKit.Settings}.
          * @param points the font size in points to convert to pixels
          */
         static font_size_to_pixels(points: number): number;
+
         /**
          * Convert `pixels` to the equivalent value in points.
-         *
+         * 
          * Applications can use this function to convert font size values
          * in pixels to font size values in points when getting the font size properties
          * of {@link WebKit.Settings}.
          * @param pixels the font size in pixels to convert to points
          */
         static font_size_to_points(pixels: number): number;
+
         /**
          * Gets the list of all available WebKit features.
-         *
+         * 
          * Features can be toggled with {@link Settings.set_feature_enabled},
          * and their current state determined with
          * {@link Settings.get_feature_enabled}.
-         *
+         * 
          * Note that most applications should use
          * {@link Settings.get_development_features} and
          * {@link Settings.get_experimental_features} instead.
          */
         static get_all_features(): FeatureList;
+
         /**
          * Gets the list of available development WebKit features.
-         *
+         * 
          * The returned features are a subset of those returned by
          * {@link Settings.get_all_features}, and includes those which
          * web and WebKit developers might find useful, but in general should
@@ -8220,9 +8317,10 @@ export namespace WebKit {
          * more details.
          */
         static get_development_features(): FeatureList;
+
         /**
          * Gets the list of available experimental WebKit features.
-         *
+         * 
          * The returned features are a subset of those returned by
          * {@link Settings.get_all_features}, and includes those which
          * certain applications may want to expose to end users; see
@@ -8231,527 +8329,627 @@ export namespace WebKit {
         static get_experimental_features(): FeatureList;
 
         // Methods
-
         /**
          * Reads the contents of the given `group_name` from the given `key_file` and apply the value of
          * each key/value to the corresponding property on the `settings`.
-         *
+         * 
          * Value types have to match with the corresponding setting property type and the group keys have to
          * match existing setting property names. If those conditions are not met, the function will return
          * `false`.
-         *
+         * 
          * Supported value types are strings (unquoted), booleans (0, 1, true, false) and unsigned integers.
          * @param key_file a {@link GLib.KeyFile}
          * @param group_name Name of the group to read from `key_file`
          * @returns `true` if the settings were correctly applied or `false` on error.
          */
         apply_from_key_file(key_file: GLib.KeyFile, group_name: string): boolean;
+
         /**
          * Get the {@link WebKit.Settings.allow_file_access_from_file_urls} property.
          * @returns `true` If file access from file URLs is allowed or `false` otherwise.
          */
         get_allow_file_access_from_file_urls(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.allow_modal_dialogs} property.
          * @returns `true` if it's allowed to create and run modal dialogs or `false` otherwise.
          */
         get_allow_modal_dialogs(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.allow_top_navigation_to_data_urls} property.
          * @returns `true` If navigation to data URLs from the top frame is allowed or `false`\ otherwise.
          */
         get_allow_top_navigation_to_data_urls(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.allow_universal_access_from_file_urls} property.
          * @returns `true` If universal access from file URLs is allowed or `false` otherwise.
          */
         get_allow_universal_access_from_file_urls(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.auto_load_images} property.
          * @returns `true` If auto loading of images is enabled or `false` otherwise.
          */
         get_auto_load_images(): boolean;
+
         /**
          * Gets the {@link WebKit.Settings.cursive_font_family} property.
          * @returns The default font family used to display content marked with cursive font.
          */
         get_cursive_font_family(): string;
+
         /**
          * Gets the {@link WebKit.Settings.default_charset} property.
          * @returns Default charset.
          */
         get_default_charset(): string;
+
         /**
          * Gets the {@link WebKit.Settings.default_font_family} property.
          * @returns The default font family used to display content that does not specify a font.
          */
         get_default_font_family(): string;
+
         /**
          * Gets the {@link WebKit.Settings.default_font_size} property.
          * @returns The default font size, in pixels.
          */
         get_default_font_size(): number;
+
         /**
          * Gets the {@link WebKit.Settings.default_monospace_font_size} property.
          * @returns Default monospace font size, in pixels.
          */
         get_default_monospace_font_size(): number;
+
         /**
          * Get the {@link WebKit.Settings.disable_web_security} property.
          * @returns `true` If web security support is disabled or `false` otherwise.
          */
         get_disable_web_security(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.draw_compositing_indicators} property.
          * @returns `true` If compositing borders are drawn or `false` otherwise.
          */
         get_draw_compositing_indicators(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_2d_canvas_acceleration} property.
          * @returns `true` if 2D canvas acceleration is enabled or `false` otherwise.
          */
         get_enable_2d_canvas_acceleration(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_back_forward_navigation_gestures} property.
          * @returns `true` if horizontal swipe gesture will trigger back-forward navigaiton or `false` otherwise.
          */
         get_enable_back_forward_navigation_gestures(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_caret_browsing} property.
          * @returns `true` If caret browsing is enabled or `false` otherwise.
          */
         get_enable_caret_browsing(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_developer_extras} property.
          * @returns `true` If developer extras is enabled or `false` otherwise.
          */
         get_enable_developer_extras(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_dns_prefetching} property.
          * @returns `true` If DNS prefetching is enabled or `false` otherwise.
          */
         get_enable_dns_prefetching(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_encrypted_media} property.
          * @returns `true` if EncryptedMedia support is enabled or `false` otherwise.
          */
         get_enable_encrypted_media(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_fullscreen} property.
          * @returns `true` If fullscreen support is enabled or `false` otherwise.
          */
         get_enable_fullscreen(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_html5_database} property.
          * @returns `true` if IndexedDB support is enabled or `false` otherwise.
          */
         get_enable_html5_database(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_html5_local_storage} property.
          * @returns `true` If HTML5 local storage support is enabled or `false` otherwise.
          */
         get_enable_html5_local_storage(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_hyperlink_auditing} property.
          * @returns `true` If hyper link auditing is enabled or `false` otherwise.
          */
         get_enable_hyperlink_auditing(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_javascript} property.
          * @returns `true` If JavaScript is enabled or `false` otherwise.
          */
         get_enable_javascript(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_javascript_markup} property.
          * @returns `true` if JavaScript markup is enabled or `false` otherwise.
          */
         get_enable_javascript_markup(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_media} property.
          * @returns `true` if media support is enabled or `false` otherwise.
          */
         get_enable_media(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_media_capabilities} property.
          * @returns `true` if MediaCapabilities support is enabled or `false` otherwise.
          */
         get_enable_media_capabilities(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_media_stream} property.
          * @returns `true` If mediastream support is enabled or `false` otherwise.
          */
         get_enable_media_stream(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_mediasource} property.
          * @returns `true` If MediaSource support is enabled or `false` otherwise.
          */
         get_enable_mediasource(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_mock_capture_devices} property.
          * @returns `true` If mock capture devices is enabled or `false` otherwise.
          */
         get_enable_mock_capture_devices(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_offline_web_application_cache} property.
          * @returns `false`.
          */
         get_enable_offline_web_application_cache(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_page_cache} property.
          * @returns `true` if page cache enabled or `false` otherwise.
          */
         get_enable_page_cache(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_resizable_text_areas} property.
          * @returns `true` If text areas can be resized or `false` otherwise.
          */
         get_enable_resizable_text_areas(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_site_specific_quirks} property.
          * @returns `true` if site specific quirks are enabled or `false` otherwise.
          */
         get_enable_site_specific_quirks(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_smooth_scrolling} property.
          * @returns `true` if smooth scrolling is enabled or `false` otherwise.
          */
         get_enable_smooth_scrolling(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_spatial_navigation} property.
          * @returns `true` If HTML5 spatial navigation support is enabled or `false` otherwise.
          */
         get_enable_spatial_navigation(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_tabs_to_links} property.
          * @returns `true` If tabs to link is enabled or `false` otherwise.
          */
         get_enable_tabs_to_links(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_webaudio} property.
          * @returns `true` If webaudio support is enabled or `false` otherwise.
          */
         get_enable_webaudio(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_webgl} property.
          * @returns `true` If WebGL support is enabled or `false` otherwise.
          */
         get_enable_webgl(): boolean;
+
         /**
          * Get the {@link Settings.enable_webrtc} property.
          * @returns `true` If WebRTC support is enabled or `false` otherwise.
          */
         get_enable_webrtc(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.enable_write_console_messages_to_stdout} property.
          * @returns `true` if writing console messages to stdout is enabled or `false` otherwise.
          */
         get_enable_write_console_messages_to_stdout(): boolean;
+
         /**
          * Gets the {@link WebKit.Settings.fantasy_font_family} property.
          * @returns The default font family used to display content marked with fantasy font.
          */
         get_fantasy_font_family(): string;
+
         /**
          * Gets whether a feature is enabled.
          * @param feature the feature to toggle.
          * @returns Whether the feature is enabled.
          */
         get_feature_enabled(feature: Feature): boolean;
+
         /**
          * Get the {@link WebKit.Settings.hardware_acceleration_policy} property.
          * @returns a {@link WebKit.HardwareAccelerationPolicy}
          */
         get_hardware_acceleration_policy(): HardwareAccelerationPolicy;
+
         /**
          * Get the {@link WebKit.Settings.javascript_can_access_clipboard} property.
          * @returns `true` If javascript-can-access-clipboard is enabled or `false` otherwise.
          */
         get_javascript_can_access_clipboard(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.javascript_can_open_windows_automatically} property.
          * @returns `true` If JavaScript can open window automatically or `false` otherwise.
          */
         get_javascript_can_open_windows_automatically(): boolean;
+
         /**
          * Setting no longer supported. This function returns `false`.
          * @returns `false`
          */
         get_load_icons_ignoring_image_load_setting(): boolean;
+
         /**
          * Gets the {@link WebKit.Settings.math_font_family} property.
          * @returns The default font family used to display content marked with math font. Since 2.52
          */
-        get_math_font_family(): string | null;
+        get_math_font_family(): (string | null);
+
         /**
          * Gets the {@link WebKit.Settings.media_content_types_requiring_hardware_support} property.
          * @returns Media content types requiring hardware support, or `null`.
          */
         get_media_content_types_requiring_hardware_support(): string;
+
         /**
          * Get the {@link WebKit.Settings.media_playback_allows_inline} property.
          * @returns `true` If inline playback is allowed for media    or `false` if only fullscreen playback is allowed.
          */
         get_media_playback_allows_inline(): boolean;
+
         /**
          * Get the {@link WebKit.Settings.media_playback_requires_user_gesture} property.
          * @returns `true` If an user gesture is needed to play or load media    or `false` if no user gesture is needed.
          */
         get_media_playback_requires_user_gesture(): boolean;
+
         /**
          * Gets the {@link WebKit.Settings.minimum_font_size} property.
          * @returns Minimum font size, in pixels.
          */
         get_minimum_font_size(): number;
+
         /**
          * Gets the {@link WebKit.Settings.monospace_font_family} property.
          * @returns Default font family used to display content marked with monospace font.
          */
         get_monospace_font_family(): string;
+
         /**
          * Gets the {@link WebKit.Settings.pictograph_font_family} property.
          * @returns The default font family used to display content marked with pictograph font.
          */
         get_pictograph_font_family(): string;
+
         /**
          * Get the {@link WebKit.Settings.print_backgrounds} property.
          * @returns `true` If background images should be printed or `false` otherwise.
          */
         get_print_backgrounds(): boolean;
+
         /**
          * Gets the {@link WebKit.Settings.sans_serif_font_family} property.
          * @returns The default font family used to display content marked with sans-serif font.
          */
         get_sans_serif_font_family(): string;
+
         /**
          * Gets the {@link WebKit.Settings.serif_font_family} property.
          * @returns The default font family used to display content marked with serif font.
          */
         get_serif_font_family(): string;
+
         /**
          * Get the {@link WebKit.Settings.user_agent} property.
          * @returns The current value of the user-agent property.
          */
         get_user_agent(): string;
+
         /**
          * Get the {@link Settings.webrtc_udp_ports_range} property.
          * @returns The WebRTC UDP ports range, or `null` if un-set.
          */
         get_webrtc_udp_ports_range(): string;
+
         /**
          * Get the {@link WebKit.Settings.zoom_text_only} property.
          * @returns `true` If zoom level of the view should only affect the text    or `false` if all view contents should be scaled.
          */
         get_zoom_text_only(): boolean;
+
         /**
          * Set the {@link WebKit.Settings.allow_file_access_from_file_urls} property.
          * @param allowed Value to be set
          */
         set_allow_file_access_from_file_urls(allowed: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.allow_modal_dialogs} property.
          * @param allowed Value to be set
          */
         set_allow_modal_dialogs(allowed: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.allow_top_navigation_to_data_urls} property.
          * @param allowed Value to be set
          */
         set_allow_top_navigation_to_data_urls(allowed: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.allow_universal_access_from_file_urls} property.
          * @param allowed Value to be set
          */
         set_allow_universal_access_from_file_urls(allowed: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.auto_load_images} property.
          * @param enabled Value to be set
          */
         set_auto_load_images(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.cursive_font_family} property.
          * @param cursive_font_family the new default cursive font family
          */
         set_cursive_font_family(cursive_font_family: string): void;
+
         /**
          * Set the {@link WebKit.Settings.default_charset} property.
          * @param default_charset default charset to be set
          */
         set_default_charset(default_charset: string): void;
+
         /**
          * Set the {@link WebKit.Settings.default_font_family} property.
          * @param default_font_family the new default font family
          */
         set_default_font_family(default_font_family: string): void;
+
         /**
          * Set the {@link WebKit.Settings.default_font_size} property.
          * @param font_size default font size to be set in pixels
          */
         set_default_font_size(font_size: number): void;
+
         /**
          * Set the {@link WebKit.Settings.default_monospace_font_size} property.
          * @param font_size default monospace font size to be set in pixels
          */
         set_default_monospace_font_size(font_size: number): void;
+
         /**
          * Set the {@link WebKit.Settings.disable_web_security} property.
          * @param disabled Value to be set
          */
         set_disable_web_security(disabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.draw_compositing_indicators} property.
          * @param enabled Value to be set
          */
         set_draw_compositing_indicators(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_2d_canvas_acceleration} property.
          * @param enabled Value to be set
          */
         set_enable_2d_canvas_acceleration(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_back_forward_navigation_gestures} property.
          * @param enabled value to be set
          */
         set_enable_back_forward_navigation_gestures(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_caret_browsing} property.
          * @param enabled Value to be set
          */
         set_enable_caret_browsing(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_developer_extras} property.
          * @param enabled Value to be set
          */
         set_enable_developer_extras(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_dns_prefetching} property.
          * @param enabled Value to be set
          */
         set_enable_dns_prefetching(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_encrypted_media} property.
          * @param enabled Value to be set
          */
         set_enable_encrypted_media(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_fullscreen} property.
          * @param enabled Value to be set
          */
         set_enable_fullscreen(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_html5_database} property.
          * @param enabled Value to be set
          */
         set_enable_html5_database(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_html5_local_storage} property.
          * @param enabled Value to be set
          */
         set_enable_html5_local_storage(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_hyperlink_auditing} property.
          * @param enabled Value to be set
          */
         set_enable_hyperlink_auditing(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_javascript} property.
          * @param enabled Value to be set
          */
         set_enable_javascript(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_javascript_markup} property.
          * @param enabled Value to be set
          */
         set_enable_javascript_markup(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_media} property.
          * @param enabled Value to be set
          */
         set_enable_media(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_media_capabilities} property.
          * @param enabled Value to be set
          */
         set_enable_media_capabilities(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_media_stream} property.
          * @param enabled Value to be set
          */
         set_enable_media_stream(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_mediasource} property.
          * @param enabled Value to be set
          */
         set_enable_mediasource(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_mock_capture_devices} property.
          * @param enabled Value to be set
          */
         set_enable_mock_capture_devices(enabled: boolean): void;
+
         /**
          * Setting no longer supported. This function does nothing.
          * @param enabled Value to be set
          */
         set_enable_offline_web_application_cache(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_page_cache} property.
          * @param enabled Value to be set
          */
         set_enable_page_cache(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_resizable_text_areas} property.
          * @param enabled Value to be set
          */
         set_enable_resizable_text_areas(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_site_specific_quirks} property.
          * @param enabled Value to be set
          */
         set_enable_site_specific_quirks(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_smooth_scrolling} property.
          * @param enabled Value to be set
          */
         set_enable_smooth_scrolling(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_spatial_navigation} property.
          * @param enabled Value to be set
          */
         set_enable_spatial_navigation(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_tabs_to_links} property.
          * @param enabled Value to be set
          */
         set_enable_tabs_to_links(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_webaudio} property.
          * @param enabled Value to be set
          */
         set_enable_webaudio(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_webgl} property.
          * @param enabled Value to be set
          */
         set_enable_webgl(enabled: boolean): void;
+
         /**
          * Set the {@link Settings.enable_webrtc} property.
-         *
+         * 
          * Setting this property to `true` implies the media-stream web-setting will also be enabled.
          * @param enabled Value to be set
          */
         set_enable_webrtc(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.enable_write_console_messages_to_stdout} property.
          * @param enabled Value to be set
          */
         set_enable_write_console_messages_to_stdout(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.fantasy_font_family} property.
          * @param fantasy_font_family the new default fantasy font family
          */
         set_fantasy_font_family(fantasy_font_family: string): void;
+
         /**
          * Enables or disables a feature.
-         *
+         * 
          * The current status of the feature can be determined with
          * `webkit_settings_get_feature_enabled`. To reset a feature to its
          * initial status, pass the value returned by
@@ -8760,101 +8958,116 @@ export namespace WebKit {
          * @param enabled whether the feature will be enabled.
          */
         set_feature_enabled(feature: Feature, enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.hardware_acceleration_policy} property.
          * @param policy a {@link WebKit.HardwareAccelerationPolicy}
          */
         set_hardware_acceleration_policy(policy: HardwareAccelerationPolicy): void;
+
         /**
          * Set the {@link WebKit.Settings.javascript_can_access_clipboard} property.
          * @param enabled Value to be set
          */
         set_javascript_can_access_clipboard(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.javascript_can_open_windows_automatically} property.
          * @param enabled Value to be set
          */
         set_javascript_can_open_windows_automatically(enabled: boolean): void;
+
         /**
          * Setting no longer supported. This function does nothing.
          * @param enabled Value to be set
          */
         set_load_icons_ignoring_image_load_setting(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.math_font_family} property.
-         *
+         * 
          * Since 2.52
          * @param math_font_family the new default math font family
          */
-        set_math_font_family(math_font_family: string | null): void;
+        set_math_font_family(math_font_family: (string | null)): void;
+
         /**
          * Set the {@link WebKit.Settings.media_content_types_requiring_hardware_support} property.
          * @param content_types list of media content types requiring hardware support split by semicolons (:) or `null` to use the default value.
          */
-        set_media_content_types_requiring_hardware_support(content_types: string | null): void;
+        set_media_content_types_requiring_hardware_support(content_types: (string | null)): void;
+
         /**
          * Set the {@link WebKit.Settings.media_playback_allows_inline} property.
          * @param enabled Value to be set
          */
         set_media_playback_allows_inline(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.media_playback_requires_user_gesture} property.
          * @param enabled Value to be set
          */
         set_media_playback_requires_user_gesture(enabled: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.minimum_font_size} property.
          * @param font_size minimum font size to be set in pixels
          */
         set_minimum_font_size(font_size: number): void;
+
         /**
          * Set the {@link WebKit.Settings.monospace_font_family} property.
          * @param monospace_font_family the new default monospace font family
          */
         set_monospace_font_family(monospace_font_family: string): void;
+
         /**
          * Set the {@link WebKit.Settings.pictograph_font_family} property.
          * @param pictograph_font_family the new default pictograph font family
          */
         set_pictograph_font_family(pictograph_font_family: string): void;
+
         /**
          * Set the {@link WebKit.Settings.print_backgrounds} property.
          * @param print_backgrounds Value to be set
          */
         set_print_backgrounds(print_backgrounds: boolean): void;
+
         /**
          * Set the {@link WebKit.Settings.sans_serif_font_family} property.
          * @param sans_serif_font_family the new default sans-serif font family
          */
         set_sans_serif_font_family(sans_serif_font_family: string): void;
+
         /**
          * Set the {@link WebKit.Settings.serif_font_family} property.
          * @param serif_font_family the new default serif font family
          */
         set_serif_font_family(serif_font_family: string): void;
+
         /**
          * Set the {@link WebKit.Settings.user_agent} property.
          * @param user_agent The new custom user agent string or `null` to use the default user agent
          */
-        set_user_agent(user_agent: string | null): void;
+        set_user_agent(user_agent: (string | null)): void;
+
         /**
          * Set the {@link WebKit.Settings.user_agent} property by appending the application details.
-         *
+         * 
          * Set the {@link WebKit.Settings.user_agent} property by appending the application details to the default user
          * agent. If no application name or version is given, the default user agent used will be used. If only
          * the version is given, the default engine version is used with the given application name.
          * @param application_name The application name used for the user agent or `null` to use the default user agent.
          * @param application_version The application version for the user agent or `null` to user the default version.
          */
-        set_user_agent_with_application_details(
-            application_name: string | null,
-            application_version: string | null,
-        ): void;
+        set_user_agent_with_application_details(application_name: (string | null), application_version: (string | null)): void;
+
         /**
          * Set the {@link Settings.webrtc_udp_ports_range} property.
          * @param udp_port_range Value to be set
          */
         set_webrtc_udp_ports_range(udp_port_range: string): void;
+
         /**
          * Set the {@link WebKit.Settings.zoom_text_only} property.
          * @param zoom_text_only Value to be set
@@ -8862,14 +9075,14 @@ export namespace WebKit {
         set_zoom_text_only(zoom_text_only: boolean): void;
     }
 
+
     namespace URIRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             uri: string;
         }
@@ -8877,7 +9090,7 @@ export namespace WebKit {
 
     /**
      * Represents a URI request.
-     *
+     * 
      * A {@link WebKit.URIRequest} can be created with a URI using the
      * `webkit_uri_request_new()` method, and you can get the URI of an
      * existing request with the `webkit_uri_request_get_uri()` one.
@@ -8887,7 +9100,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<URIRequest>;
 
         // Properties
-
         /**
          * The URI to which the request will be made.
          * @default about:blank
@@ -8905,51 +9117,44 @@ export namespace WebKit {
         $signals: URIRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<URIRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](uri: string): URIRequest;
+        static ["new"](uri: string): URIRequest;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof URIRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof URIRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof URIRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof URIRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof URIRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<URIRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof URIRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URIRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the HTTP headers of a {@link WebKit.URIRequest} as a {@link Soup.MessageHeaders}.
          * @returns a {@link Soup.MessageHeaders} with the HTTP headers of `request`    or `null` if `request` is not an HTTP request.
          */
         get_http_headers(): Soup.MessageHeaders;
+
         /**
          * Get the HTTP method of the {@link WebKit.URIRequest}.
          * @returns the HTTP method of the {@link WebKit.URIRequest} or `null` if `request` is not    an HTTP request.
          */
         get_http_method(): string;
+
         /**
          * Obtains the request URI.
          * @returns request URI, as a string.
          */
         get_uri(): string;
+
         /**
          * Set the URI of `request`
          * @param uri an URI
@@ -8957,22 +9162,22 @@ export namespace WebKit {
         set_uri(uri: string): void;
     }
 
+
     namespace URIResponse {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::content-length': (pspec: GObject.ParamSpec) => void;
-            'notify::http-headers': (pspec: GObject.ParamSpec) => void;
-            'notify::mime-type': (pspec: GObject.ParamSpec) => void;
-            'notify::status-code': (pspec: GObject.ParamSpec) => void;
-            'notify::suggested-filename': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            "notify::content-length": (pspec: GObject.ParamSpec) => void;
+            "notify::http-headers": (pspec: GObject.ParamSpec) => void;
+            "notify::mime-type": (pspec: GObject.ParamSpec) => void;
+            "notify::status-code": (pspec: GObject.ParamSpec) => void;
+            "notify::suggested-filename": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            content_length: bigint | number;
-            contentLength: bigint | number;
+            content_length: (bigint | number);
+            contentLength: (bigint | number);
             http_headers: Soup.MessageHeaders;
             httpHeaders: Soup.MessageHeaders;
             mime_type: string;
@@ -8987,7 +9192,7 @@ export namespace WebKit {
 
     /**
      * Represents an URI response.
-     *
+     * 
      * A {@link WebKit.URIResponse} contains information such as the URI, the
      * status code, the content length, the mime type, the HTTP status or
      * the suggested filename.
@@ -8997,67 +9202,76 @@ export namespace WebKit {
         static $gtype: GObject.GType<URIResponse>;
 
         // Properties
-
         /**
          * The expected content length of the response.
          * @read-only
          * @default 0
          */
         get content_length(): number;
+
         /**
          * The expected content length of the response.
          * @read-only
          * @default 0
          */
         get contentLength(): number;
+
         /**
          * The HTTP headers of the response, or `null` if the response is not an HTTP response.
          * @since 2.6
          * @read-only
          */
         get http_headers(): Soup.MessageHeaders;
+
         /**
          * The HTTP headers of the response, or `null` if the response is not an HTTP response.
          * @since 2.6
          * @read-only
          */
         get httpHeaders(): Soup.MessageHeaders;
+
         /**
          * The MIME type of the response.
          * @read-only
          * @default null
          */
         get mime_type(): string;
+
         /**
          * The MIME type of the response.
          * @read-only
          * @default null
          */
         get mimeType(): string;
+
         /**
          * The status code of the response as returned by the server.
          * @read-only
          * @default 0
          */
         get status_code(): number;
+
         /**
          * The status code of the response as returned by the server.
          * @read-only
          * @default 0
          */
         get statusCode(): number;
+
         /**
          * The suggested filename for the URI response.
          * @read-only
          * @default null
          */
         get suggested_filename(): string;
+
         /**
          * The suggested filename for the URI response.
          * @read-only
          * @default null
          */
         get suggestedFilename(): string;
+
         /**
          * The URI for which the response was made.
          * @read-only
@@ -9075,54 +9289,47 @@ export namespace WebKit {
         $signals: URIResponse.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<URIResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof URIResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof URIResponse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof URIResponse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof URIResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof URIResponse.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<URIResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof URIResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URIResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the expected content length of the {@link WebKit.URIResponse}.
-         *
+         * 
          * It can be 0 if the server provided an incorrect or missing Content-Length.
          * @returns the expected content length of `response`.
          */
         get_content_length(): number;
+
         /**
          * Get the HTTP headers of a {@link WebKit.URIResponse} as a {@link Soup.MessageHeaders}.
          * @returns a {@link Soup.MessageHeaders} with the HTTP headers of `response`    or `null` if `response` is not an HTTP response.
          */
         get_http_headers(): Soup.MessageHeaders;
+
         /**
          * Gets the MIME type of the response.
          * @returns MIME type, as a string.
          */
         get_mime_type(): string;
+
         /**
          * Get the status code of the {@link WebKit.URIResponse}.
-         *
+         * 
          * Get the status code of the {@link WebKit.URIResponse} as returned by
          * the server. It will normally be a `SoupKnownStatusCode`, for
          * example {@link Soup.Status.OK}, though the server can respond with any
@@ -9130,15 +9337,17 @@ export namespace WebKit {
          * @returns the status code of `response`
          */
         get_status_code(): number;
+
         /**
          * Get the suggested filename for `response`.
-         *
+         * 
          * Get the suggested filename for `response`, as specified by
          * the 'Content-Disposition' HTTP header, or `null` if it's not
          * present.
          * @returns the suggested filename or `null` if    the 'Content-Disposition' HTTP header is not present.
          */
         get_suggested_filename(): string;
+
         /**
          * Gets the URI which resulted in the response.
          * @returns response URI, as a string.
@@ -9146,18 +9355,21 @@ export namespace WebKit {
         get_uri(): string;
     }
 
+
     namespace URISchemeRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Represents a URI scheme request.
-     *
+     * 
      * If you register a particular URI scheme in a {@link WebKit.WebContext},
      * using `webkit_web_context_register_uri_scheme()`, you have to provide
      * a {@link WebKit.URISchemeRequestCallback}. After that, when a URI request
@@ -9181,81 +9393,80 @@ export namespace WebKit {
         $signals: URISchemeRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<URISchemeRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof URISchemeRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URISchemeRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof URISchemeRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URISchemeRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof URISchemeRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URISchemeRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof URISchemeRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URISchemeRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof URISchemeRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<URISchemeRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof URISchemeRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URISchemeRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Finish a {@link WebKit.URISchemeRequest} by setting the contents of the request and its mime type.
          * @param stream a {@link Gio.InputStream} to read the contents of the request
          * @param stream_length the length of the stream or -1 if not known
          * @param content_type the content type of the stream or `null` if not known
          */
-        finish(stream: Gio.InputStream, stream_length: bigint | number, content_type: string | null): void;
+        finish(stream: Gio.InputStream, stream_length: (bigint | number), content_type: (string | null)): void;
+
         /**
          * Finish a {@link WebKit.URISchemeRequest} with a {@link GLib.Error}.
          * @param error a {@link GLib.Error} that will be passed to the {@link WebKit.WebView}
          */
         finish_error(error: GLib.Error): void;
+
         /**
          * Finish a {@link WebKit.URISchemeRequest} by returning a {@link WebKit.URISchemeResponse}
          * @param response a {@link WebKit.URISchemeResponse}
          */
         finish_with_response(response: URISchemeResponse): void;
+
         /**
          * Get the request body.
          * @returns (nullable): the body of the `request`.
          */
         get_http_body(): Gio.InputStream;
+
         /**
          * Get the {@link Soup.MessageHeaders} of the request.
          * @returns the {@link Soup.MessageHeaders} of the `request`.
          */
         get_http_headers(): Soup.MessageHeaders;
+
         /**
          * Get the HTTP method of the `request`.
          * @returns the HTTP method of the `request`
          */
         get_http_method(): string;
+
         /**
          * Get the URI path of `request`.
          * @returns the URI path of `request`
          */
         get_path(): string;
+
         /**
          * Get the URI scheme of `request`.
          * @returns the URI scheme of `request`
          */
         get_scheme(): string;
+
         /**
          * Get the URI of `request`.
          * @returns the full URI of `request`
          */
         get_uri(): string;
+
         /**
          * Get the {@link WebKit.WebView} that initiated the request.
          * @returns the {@link WebKit.WebView} that initiated `request`.
@@ -9263,25 +9474,25 @@ export namespace WebKit {
         get_web_view(): WebView;
     }
 
+
     namespace URISchemeResponse {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::stream': (pspec: GObject.ParamSpec) => void;
-            'notify::stream-length': (pspec: GObject.ParamSpec) => void;
+            "notify::stream": (pspec: GObject.ParamSpec) => void;
+            "notify::stream-length": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             stream: Gio.InputStream;
-            stream_length: bigint | number;
-            streamLength: bigint | number;
+            stream_length: (bigint | number);
+            streamLength: (bigint | number);
         }
     }
 
     /**
      * Represents a URI scheme response.
-     *
+     * 
      * If you register a particular URI scheme in a {@link WebKit.WebContext},
      * using `webkit_web_context_register_uri_scheme()`, you have to provide
      * a {@link WebKit.URISchemeRequestCallback}. After that, when a URI response
@@ -9289,7 +9500,7 @@ export namespace WebKit {
      * called. There you will be able to provide more response parameters
      * when the methods and properties of a {@link WebKit.URISchemeRequest} is not
      * enough.
-     *
+     * 
      * When you finished setting up your {@link WebKit.URISchemeResponse}, call
      * `webkit_uri_request_finish_with_response()` with it to return the response.
      * @gir-type Class
@@ -9298,27 +9509,28 @@ export namespace WebKit {
         static $gtype: GObject.GType<URISchemeResponse>;
 
         // Properties
-
         /**
          * The input stream to read from.
          * @since 2.36
          * @construct-only
          */
         set stream(val: Gio.InputStream);
+
         /**
          * The input stream length in bytes, `-1` for unknown length.
          * @since 2.36
          * @construct-only
          * @default -1
          */
-        set stream_length(val: bigint | number);
+        set stream_length(val: (bigint | number));
+
         /**
          * The input stream length in bytes, `-1` for unknown length.
          * @since 2.36
          * @construct-only
          * @default -1
          */
-        set streamLength(val: bigint | number);
+        set streamLength(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -9330,67 +9542,59 @@ export namespace WebKit {
         $signals: URISchemeResponse.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<URISchemeResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](input_stream: Gio.InputStream, stream_length: bigint | number): URISchemeResponse;
+        static ["new"](input_stream: Gio.InputStream, stream_length: (bigint | number)): URISchemeResponse;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof URISchemeResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URISchemeResponse.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof URISchemeResponse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URISchemeResponse.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof URISchemeResponse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, URISchemeResponse.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof URISchemeResponse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, URISchemeResponse.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof URISchemeResponse.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<URISchemeResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof URISchemeResponse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<URISchemeResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Sets the content type for the `response`
          * @param content_type the content type of the stream
          */
         set_content_type(content_type: string): void;
+
         /**
          * Assign the provided {@link Soup.MessageHeaders} to the response.
-         *
+         * 
          * `headers` need to be of the type {@link Soup.MessageHeadersType.RESPONSE}.
          * Any existing headers will be overwritten.
          * @param headers the HTTP headers to be set
          */
         set_http_headers(headers: Soup.MessageHeaders): void;
+
         /**
          * Sets the status code and reason phrase for the `response`.
-         *
+         * 
          * If `status_code` is a known value and `reason_phrase` is `null`, the `reason_phrase` will be set automatically.
          * @param status_code the HTTP status code to be returned
          * @param reason_phrase a reason phrase
          */
-        set_status(status_code: number, reason_phrase: string | null): void;
+        set_status(status_code: number, reason_phrase: (string | null)): void;
     }
+
 
     namespace UserContentFilterStore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::path': (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             path: string;
         }
@@ -9398,13 +9602,13 @@ export namespace WebKit {
 
     /**
      * Handles storage of user content filters on disk.
-     *
+     * 
      * The WebKitUserContentFilterStore provides the means to import and save
      * [JSON rule sets](https://webkit.org/blog/3476/content-blockers-first-look/),
      * which can be loaded later in an efficient manner. Once filters are stored,
      * the {@link WebKit.UserContentFilter} objects which represent them can be added to
      * a {@link WebKit.UserContentManager} with `webkit_user_content_manager_add_filter()`.
-     *
+     * 
      * JSON rule sets are imported using `webkit_user_content_filter_store_save()` and stored
      * on disk in an implementation defined format. The contents of a filter store must be
      * managed using the {@link WebKit.UserContentFilterStore}: a list of all the stored filters
@@ -9418,7 +9622,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<UserContentFilterStore>;
 
         // Properties
-
         /**
          * The directory used for filter storage. This path is used as the base
          * directory where user content filters are stored on disk.
@@ -9438,130 +9641,115 @@ export namespace WebKit {
         $signals: UserContentFilterStore.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UserContentFilterStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](storage_path: string): UserContentFilterStore;
+        static ["new"](storage_path: string): UserContentFilterStore;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UserContentFilterStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserContentFilterStore.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UserContentFilterStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserContentFilterStore.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UserContentFilterStore.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserContentFilterStore.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UserContentFilterStore.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserContentFilterStore.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UserContentFilterStore.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UserContentFilterStore.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof UserContentFilterStore.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserContentFilterStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Asynchronously retrieve a list of the identifiers for all the stored filters.
+         * 
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * `webkit_user_content_filter_store_fetch_identifiers_finish()` to obtain the list of
+         * filter identifiers.
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         */
+        fetch_identifiers(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
 
         /**
          * Asynchronously retrieve a list of the identifiers for all the stored filters.
-         *
-         * When the operation is finished, `callback` will be invoked, which then can use
-         * `webkit_user_content_filter_store_fetch_identifiers_finish()` to obtain the list of
-         * filter identifiers.
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         */
-        fetch_identifiers(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
-        /**
-         * Asynchronously retrieve a list of the identifiers for all the stored filters.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_fetch_identifiers_finish()` to obtain the list of
          * filter identifiers.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the removal is completed
          */
-        fetch_identifiers(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        fetch_identifiers(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously retrieve a list of the identifiers for all the stored filters.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_fetch_identifiers_finish()` to obtain the list of
          * filter identifiers.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the removal is completed
          */
-        fetch_identifiers(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string[]> | void;
+        fetch_identifiers(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+
         /**
          * Finishes an asynchronous fetch of the list of stored filters.
-         *
+         * 
          * Finishes an asynchronous fetch of the list of identifiers for the stored filters previously
          * started with `webkit_user_content_filter_store_fetch_identifiers()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a `null`-terminated list of filter identifiers.
          */
         fetch_identifiers_finish(result: Gio.AsyncResult): string[];
+
         /**
          * Gets the storage path for user content filters.
          * @returns path, as a string.
          */
         get_path(): string;
+
         /**
          * Asynchronously load a content filter given its `identifier`.
-         *
+         * 
          * The filter must have been
          * previously stored using `webkit_user_content_filter_store_save()`.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_load_finish()` to obtain the resulting filter.
          * @param identifier a filter identifier
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        load(identifier: string, cancellable: Gio.Cancellable | null): globalThis.Promise<UserContentFilter>;
+        load(identifier: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<UserContentFilter>;
+
         /**
          * Asynchronously load a content filter given its `identifier`.
-         *
+         * 
          * The filter must have been
          * previously stored using `webkit_user_content_filter_store_save()`.
-         *
-         * When the operation is finished, `callback` will be invoked, which then can use
-         * `webkit_user_content_filter_store_load_finish()` to obtain the resulting filter.
-         * @param identifier a filter identifier
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the load is completed
-         */
-        load(
-            identifier: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously load a content filter given its `identifier`.
-         *
-         * The filter must have been
-         * previously stored using `webkit_user_content_filter_store_save()`.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_load_finish()` to obtain the resulting filter.
          * @param identifier a filter identifier
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the load is completed
          */
-        load(
-            identifier: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<UserContentFilter> | void;
+        load(identifier: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously load a content filter given its `identifier`.
+         * 
+         * The filter must have been
+         * previously stored using `webkit_user_content_filter_store_save()`.
+         * 
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * `webkit_user_content_filter_store_load_finish()` to obtain the resulting filter.
+         * @param identifier a filter identifier
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the load is completed
+         */
+        load(identifier: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<UserContentFilter> | void);
+
         /**
          * Finishes an asynchronous filter load previously started with
          * `webkit_user_content_filter_store_load()`.
@@ -9569,34 +9757,21 @@ export namespace WebKit {
          * @returns a {@link WebKit.UserContentFilter}, or `null` if the load failed
          */
         load_finish(result: Gio.AsyncResult): UserContentFilter;
+
         /**
          * Asynchronously remove a content filter given its `identifier`.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_remove_finish()` to check whether the removal was
          * successful.
          * @param identifier a filter identifier
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        remove(identifier: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        remove(identifier: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously remove a content filter given its `identifier`.
-         *
-         * When the operation is finished, `callback` will be invoked, which then can use
-         * `webkit_user_content_filter_store_remove_finish()` to check whether the removal was
-         * successful.
-         * @param identifier a filter identifier
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the removal is completed
-         */
-        remove(
-            identifier: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously remove a content filter given its `identifier`.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_remove_finish()` to check whether the removal was
          * successful.
@@ -9604,11 +9779,20 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the removal is completed
          */
-        remove(
-            identifier: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        remove(identifier: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously remove a content filter given its `identifier`.
+         * 
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * `webkit_user_content_filter_store_remove_finish()` to check whether the removal was
+         * successful.
+         * @param identifier a filter identifier
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the removal is completed
+         */
+        remove(identifier: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous filter removal previously started with
          * `webkit_user_content_filter_store_remove()`.
@@ -9616,63 +9800,37 @@ export namespace WebKit {
          * @returns whether the removal was successful
          */
         remove_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Asynchronously save a content filter from a set source rule.
-         *
+         * 
          * Asynchronously save a content filter from a source rule set in the
          * [WebKit content extesions JSON format](https://webkit.org/blog/3476/content-blockers-first-look/).
-         *
+         * 
          * The `identifier` can be used afterwards to refer to the filter when using
          * `webkit_user_content_filter_store_remove()` and `webkit_user_content_filter_store_load()`.
          * When the `identifier` has been used in the past, the new filter source will replace
          * the one saved beforehand for the same identifier.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_save_finish()` to obtain the resulting filter.
          * @param identifier a string used to identify the saved filter
          * @param source {@link GLib.Bytes} containing the rule set in JSON format
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        save(
-            identifier: string,
-            source: GLib.Bytes | Uint8Array,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<UserContentFilter>;
+        save(identifier: string, source: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null)): globalThis.Promise<UserContentFilter>;
+
         /**
          * Asynchronously save a content filter from a set source rule.
-         *
+         * 
          * Asynchronously save a content filter from a source rule set in the
          * [WebKit content extesions JSON format](https://webkit.org/blog/3476/content-blockers-first-look/).
-         *
+         * 
          * The `identifier` can be used afterwards to refer to the filter when using
          * `webkit_user_content_filter_store_remove()` and `webkit_user_content_filter_store_load()`.
          * When the `identifier` has been used in the past, the new filter source will replace
          * the one saved beforehand for the same identifier.
-         *
-         * When the operation is finished, `callback` will be invoked, which then can use
-         * `webkit_user_content_filter_store_save_finish()` to obtain the resulting filter.
-         * @param identifier a string used to identify the saved filter
-         * @param source {@link GLib.Bytes} containing the rule set in JSON format
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when saving is completed
-         */
-        save(
-            identifier: string,
-            source: GLib.Bytes | Uint8Array,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously save a content filter from a set source rule.
-         *
-         * Asynchronously save a content filter from a source rule set in the
-         * [WebKit content extesions JSON format](https://webkit.org/blog/3476/content-blockers-first-look/).
-         *
-         * The `identifier` can be used afterwards to refer to the filter when using
-         * `webkit_user_content_filter_store_remove()` and `webkit_user_content_filter_store_load()`.
-         * When the `identifier` has been used in the past, the new filter source will replace
-         * the one saved beforehand for the same identifier.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_save_finish()` to obtain the resulting filter.
          * @param identifier a string used to identify the saved filter
@@ -9680,12 +9838,28 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when saving is completed
          */
-        save(
-            identifier: string,
-            source: GLib.Bytes | Uint8Array,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<UserContentFilter> | void;
+        save(identifier: string, source: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously save a content filter from a set source rule.
+         * 
+         * Asynchronously save a content filter from a source rule set in the
+         * [WebKit content extesions JSON format](https://webkit.org/blog/3476/content-blockers-first-look/).
+         * 
+         * The `identifier` can be used afterwards to refer to the filter when using
+         * `webkit_user_content_filter_store_remove()` and `webkit_user_content_filter_store_load()`.
+         * When the `identifier` has been used in the past, the new filter source will replace
+         * the one saved beforehand for the same identifier.
+         * 
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * `webkit_user_content_filter_store_save_finish()` to obtain the resulting filter.
+         * @param identifier a string used to identify the saved filter
+         * @param source {@link GLib.Bytes} containing the rule set in JSON format
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when saving is completed
+         */
+        save(identifier: string, source: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<UserContentFilter> | void);
+
         /**
          * Finishes an asynchronous filter save previously started with
          * `webkit_user_content_filter_store_save()`.
@@ -9693,51 +9867,29 @@ export namespace WebKit {
          * @returns a {@link WebKit.UserContentFilter}, or `null` if saving failed
          */
         save_finish(result: Gio.AsyncResult): UserContentFilter;
+
         /**
          * Asynchronously save a content filter from the contents of a file.
-         *
+         * 
          * Asynchronously save a content filter from the contents of a file, which must be
          * native to the platform, as checked by `g_file_is_native()`. See
          * `webkit_user_content_filter_store_save()` for more details.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_save_finish()` to obtain the resulting filter.
          * @param identifier a string used to identify the saved filter
          * @param file a {@link Gio.File} containing the rule set in JSON format
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        save_from_file(
-            identifier: string,
-            file: Gio.File,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<UserContentFilter>;
+        save_from_file(identifier: string, file: Gio.File, cancellable: (Gio.Cancellable | null)): globalThis.Promise<UserContentFilter>;
+
         /**
          * Asynchronously save a content filter from the contents of a file.
-         *
+         * 
          * Asynchronously save a content filter from the contents of a file, which must be
          * native to the platform, as checked by `g_file_is_native()`. See
          * `webkit_user_content_filter_store_save()` for more details.
-         *
-         * When the operation is finished, `callback` will be invoked, which then can use
-         * `webkit_user_content_filter_store_save_finish()` to obtain the resulting filter.
-         * @param identifier a string used to identify the saved filter
-         * @param file a {@link Gio.File} containing the rule set in JSON format
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when saving is completed
-         */
-        save_from_file(
-            identifier: string,
-            file: Gio.File,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously save a content filter from the contents of a file.
-         *
-         * Asynchronously save a content filter from the contents of a file, which must be
-         * native to the platform, as checked by `g_file_is_native()`. See
-         * `webkit_user_content_filter_store_save()` for more details.
-         *
+         * 
          * When the operation is finished, `callback` will be invoked, which then can use
          * `webkit_user_content_filter_store_save_finish()` to obtain the resulting filter.
          * @param identifier a string used to identify the saved filter
@@ -9745,12 +9897,24 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when saving is completed
          */
-        save_from_file(
-            identifier: string,
-            file: Gio.File,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<UserContentFilter> | void;
+        save_from_file(identifier: string, file: Gio.File, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously save a content filter from the contents of a file.
+         * 
+         * Asynchronously save a content filter from the contents of a file, which must be
+         * native to the platform, as checked by `g_file_is_native()`. See
+         * `webkit_user_content_filter_store_save()` for more details.
+         * 
+         * When the operation is finished, `callback` will be invoked, which then can use
+         * `webkit_user_content_filter_store_save_finish()` to obtain the resulting filter.
+         * @param identifier a string used to identify the saved filter
+         * @param file a {@link Gio.File} containing the rule set in JSON format
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when saving is completed
+         */
+        save_from_file(identifier: string, file: Gio.File, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<UserContentFilter> | void);
+
         /**
          * Finishes and asynchronous filter save previously started with
          * `webkit_user_content_filter_store_save_from_file()`.
@@ -9759,6 +9923,7 @@ export namespace WebKit {
          */
         save_from_file_finish(result: Gio.AsyncResult): UserContentFilter;
     }
+
 
     namespace UserContentManager {
         // Signal signatures
@@ -9773,18 +9938,18 @@ export namespace WebKit {
              * @detailed
              * @run-last
              */
-            'script-message-received': (arg0: JavaScriptCore.Value) => void;
+            "script-message-received": (arg0: JavaScriptCore.Value) => void;
             /**
              * This signal is emitted when JavaScript in a web view calls
              * <code>window.webkit.messageHandlers.<name>.postMessage()</code>, after registering
              * <code><name></code> using
              * `webkit_user_content_manager_register_script_message_handler_with_reply()`
-             *
+             * 
              * The given `reply` can be used to send a return value with
              * `webkit_script_message_reply_return_value()` or an error message with
              * `webkit_script_message_reply_return_error_message()`. If none of them are
              * called, an automatic reply with an undefined value will be sent.
-             *
+             * 
              * It is possible to handle the reply asynchronously, by simply calling
              * `g_object_ref()` on the `reply` and returning `true`.
              * @signal
@@ -9792,34 +9957,29 @@ export namespace WebKit {
              * @detailed
              * @run-last
              */
-            'script-message-with-reply-received': (
-                arg0: JavaScriptCore.Value,
-                arg1: ScriptMessageReply,
-            ) => boolean | void;
+            "script-message-with-reply-received": (arg0: JavaScriptCore.Value, arg1: ScriptMessageReply) => (boolean | void);
             [key: `script-message-received::${string}`]: (arg0: JavaScriptCore.Value) => void;
-            [key: `script-message-with-reply-received::${string}`]: (
-                arg0: JavaScriptCore.Value,
-                arg1: ScriptMessageReply,
-            ) => boolean | void;
+            [key: `script-message-with-reply-received::${string}`]: (arg0: JavaScriptCore.Value, arg1: ScriptMessageReply) => (boolean | void);
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Manages user-defined content which affects web pages.
-     *
+     * 
      * Using a {@link WebKit.UserContentManager} user CSS style sheets can be set to
      * be injected in the web pages loaded by a {@link WebKit.WebView}, by
      * `webkit_user_content_manager_add_style_sheet()`.
-     *
+     * 
      * To use a {@link WebKit.UserContentManager}, it must be created using
      * `webkit_user_content_manager_new()`, and then used to construct
      * a {@link WebKit.WebView}. User style sheets can be created with
      * `webkit_user_style_sheet_new()`.
-     *
+     * 
      * User style sheets can be added and removed at any time, but
      * they will affect the web pages loaded afterwards.
      * @gir-type Class
@@ -9838,65 +9998,58 @@ export namespace WebKit {
         $signals: UserContentManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UserContentManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): UserContentManager;
+        static ["new"](): UserContentManager;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UserContentManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserContentManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UserContentManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserContentManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UserContentManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserContentManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UserContentManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserContentManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UserContentManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UserContentManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UserContentManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserContentManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a {@link WebKit.UserContentFilter} to the given {@link WebKit.UserContentManager}.
-         *
+         * 
          * The same {@link WebKit.UserContentFilter} can be reused with multiple
          * {@link WebKit.UserContentManager} instances.
-         *
+         * 
          * Filters need to be saved and loaded from {@link WebKit.UserContentFilterStore}.
          * @param filter A {@link WebKit.UserContentFilter}
          */
         add_filter(filter: UserContentFilter): void;
+
         /**
          * Adds a {@link WebKit.UserScript} to the given {@link WebKit.UserContentManager}.
-         *
+         * 
          * The same {@link WebKit.UserScript} can be reused with multiple
          * {@link WebKit.UserContentManager} instances.
          * @param script A {@link WebKit.UserScript}
          */
         add_script(script: UserScript): void;
+
         /**
          * Adds a {@link WebKit.UserStyleSheet} to the given {@link WebKit.UserContentManager}.
-         *
+         * 
          * The same {@link WebKit.UserStyleSheet} can be reused with multiple
          * {@link WebKit.UserContentManager} instances.
          * @param stylesheet A {@link WebKit.UserStyleSheet}
          */
         add_style_sheet(stylesheet: UserStyleSheet): void;
+
         /**
          * Registers a new user script message handler in script world.
-         *
+         * 
          * After it is registered,
          * scripts can use `window.webkit.messageHandlers.<name>.postMessage(value)`
          * to send messages. Those messages are received by connecting handlers
@@ -9905,7 +10058,7 @@ export namespace WebKit {
          * conditions between registering the handler name, and starting to
          * receive the signals, it is recommended to connect to the signal
          * *before* registering the handler name:
-         *
+         * 
          * ```c
          * WebKitWebView *view = webkit_web_view_new ();
          * WebKitUserContentManager *manager = webkit_web_view_get_user_content_manager ();
@@ -9913,109 +10066,118 @@ export namespace WebKit {
          *                   G_CALLBACK (handle_script_message), NULL);
          * webkit_user_content_manager_register_script_message_handler (manager, "foobar", "world");
          * ```
-         *
+         * 
          * Registering a script message handler will fail if the requested
          * name has been already registered before.
-         *
+         * 
          * If `null` is passed as the `world_name`, the default world will be used.
-         *
+         * 
          * The registered handler can be unregistered by using
          * `webkit_user_content_manager_unregister_script_message_handler()`.
          * @param name Name of the script message channel
          * @param world_name the name of a `WebKitScriptWorld`
          * @returns `true` if message handler was registered successfully, or `false` otherwise.
          */
-        register_script_message_handler(name: string, world_name: string | null): boolean;
+        register_script_message_handler(name: string, world_name: (string | null)): boolean;
+
         /**
          * Registers a new user script message handler in script world with name `world_name`.
-         *
+         * 
          * Different from `webkit_user_content_manager_register_script_message_handler()`,
          * when using this function to register the handler, the connected signal is
          * script-message-with-reply-received, and a reply provided by the user is expected.
          * Otherwise, the user will receive a default undefined value.
-         *
+         * 
          * If `null` is passed as the `world_name`, the default world will be used.
          * See `webkit_user_content_manager_register_script_message_handler()` for full description.
-         *
+         * 
          * Registering a script message handler will fail if the requested
          * name has been already registered before.
-         *
+         * 
          * The registered handler can be unregistered by using
          * `webkit_user_content_manager_unregister_script_message_handler()`.
          * @param name Name of the script message channel
          * @param world_name the name of a `WebKitScriptWorld`
          * @returns `true` if message handler was registered successfully, or `false` otherwise.
          */
-        register_script_message_handler_with_reply(name: string, world_name: string | null): boolean;
+        register_script_message_handler_with_reply(name: string, world_name: (string | null)): boolean;
+
         /**
          * Removes all content filters from the given {@link WebKit.UserContentManager}.
          */
         remove_all_filters(): void;
+
         /**
          * Removes all user scripts from the given {@link WebKit.UserContentManager}
-         *
+         * 
          * See also `webkit_user_content_manager_remove_script()`.
          */
         remove_all_scripts(): void;
+
         /**
          * Removes all user style sheets from the given {@link WebKit.UserContentManager}.
          */
         remove_all_style_sheets(): void;
+
         /**
          * Removes a filter from the given {@link WebKit.UserContentManager}.
-         *
+         * 
          * Since 2.24
          * @param filter A {@link WebKit.UserContentFilter}
          */
         remove_filter(filter: UserContentFilter): void;
+
         /**
          * Removes a filter by the given identifier.
-         *
+         * 
          * Removes a filter from the given {@link WebKit.UserContentManager} given the
          * identifier of a {@link WebKit.UserContentFilter} as returned by
          * `webkit_user_content_filter_get_identifier()`.
          * @param filter_id Filter identifier
          */
         remove_filter_by_id(filter_id: string): void;
+
         /**
          * Removes a {@link WebKit.UserScript} from the given {@link WebKit.UserContentManager}.
-         *
+         * 
          * See also `webkit_user_content_manager_remove_all_scripts()`.
          * @param script A {@link WebKit.UserScript}
          */
         remove_script(script: UserScript): void;
+
         /**
          * Removes a {@link WebKit.UserStyleSheet} from the given {@link WebKit.UserContentManager}.
-         *
+         * 
          * See also `webkit_user_content_manager_remove_all_style_sheets()`.
          * @param stylesheet A {@link WebKit.UserStyleSheet}
          */
         remove_style_sheet(stylesheet: UserStyleSheet): void;
+
         /**
          * Unregisters a previously registered message handler in script world with name `world_name`.
          * If `null` is passed as the `world_name`, the default world will be used.
-         *
+         * 
          * Note that this does *not* disconnect handlers for the
          * {@link WebKit.UserContentManager.SignalSignatures.script_message_received | WebKit.UserContentManager::script-message-received} signal;
          * they will be kept connected, but the signal will not be emitted
          * unless the handler name is registered again.
-         *
+         * 
          * See also `webkit_user_content_manager_register_script_message_handler()`.
          * @param name Name of the script message channel
          * @param world_name the name of a `WebKitScriptWorld`
          */
-        unregister_script_message_handler(name: string, world_name: string | null): void;
+        unregister_script_message_handler(name: string, world_name: (string | null)): void;
     }
+
 
     namespace UserMediaPermissionRequest {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::is-for-audio-device': (pspec: GObject.ParamSpec) => void;
-            'notify::is-for-video-device': (pspec: GObject.ParamSpec) => void;
+            "notify::is-for-audio-device": (pspec: GObject.ParamSpec) => void;
+            "notify::is-for-video-device": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
             is_for_audio_device: boolean;
             isForAudioDevice: boolean;
@@ -10026,11 +10188,11 @@ export namespace WebKit {
 
     /**
      * A permission request for accessing user's audio/video devices.
-     *
+     * 
      * WebKitUserMediaPermissionRequest represents a request for
      * permission to decide whether WebKit should be allowed to access the user's
      * audio and video source devices when requested through the getUserMedia API.
-     *
+     * 
      * When a WebKitUserMediaPermissionRequest is not handled by the user,
      * it is denied by default.
      * @gir-type Class
@@ -10040,7 +10202,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<UserMediaPermissionRequest>;
 
         // Properties
-
         /**
          * Whether the media device to which the permission was requested has a microphone or not.
          * @since 2.8
@@ -10048,6 +10209,7 @@ export namespace WebKit {
          * @default false
          */
         get is_for_audio_device(): boolean;
+
         /**
          * Whether the media device to which the permission was requested has a microphone or not.
          * @since 2.8
@@ -10055,6 +10217,7 @@ export namespace WebKit {
          * @default false
          */
         get isForAudioDevice(): boolean;
+
         /**
          * Whether the media device to which the permission was requested has a video capture capability or not.
          * @since 2.8
@@ -10062,6 +10225,7 @@ export namespace WebKit {
          * @default false
          */
         get is_for_video_device(): boolean;
+
         /**
          * Whether the media device to which the permission was requested has a video capture capability or not.
          * @since 2.8
@@ -10080,46 +10244,39 @@ export namespace WebKit {
         $signals: UserMediaPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UserMediaPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UserMediaPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserMediaPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserMediaPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserMediaPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UserMediaPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserMediaPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UserMediaPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof UserMediaPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserMediaPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
@@ -10127,27 +10284,27 @@ export namespace WebKit {
         vfunc_deny(): void;
     }
 
+
     namespace UserMessage {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::fd-list': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::parameters': (pspec: GObject.ParamSpec) => void;
+            "notify::fd-list": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::parameters": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
-            fd_list: Gio.UnixFDList | null;
-            fdList: Gio.UnixFDList | null;
+            fd_list: (Gio.UnixFDList | null);
+            fdList: (Gio.UnixFDList | null);
             name: string;
-            parameters: GLib.Variant | null;
+            parameters: (GLib.Variant | null);
         }
     }
 
     /**
      * Message that can be sent between the UI process and web process extensions.
-     *
+     * 
      * A WebKitUserMessage is a message that can be used for the communication between the UI process
      * and web process extensions. A WebKitUserMessage always has a name, and it can also include parameters and
      * UNIX file descriptors. Messages can be sent from a {@link WebKit.WebContext} to all web process extensions,
@@ -10161,19 +10318,20 @@ export namespace WebKit {
         static $gtype: GObject.GType<UserMessage>;
 
         // Properties
+        /**
+         * The UNIX file descriptors of the user message.
+         * @since 2.28
+         * @construct-only
+         */
+        get fd_list(): (Gio.UnixFDList | null);
 
         /**
          * The UNIX file descriptors of the user message.
          * @since 2.28
          * @construct-only
          */
-        get fd_list(): Gio.UnixFDList | null;
-        /**
-         * The UNIX file descriptors of the user message.
-         * @since 2.28
-         * @construct-only
-         */
-        get fdList(): Gio.UnixFDList | null;
+        get fdList(): (Gio.UnixFDList | null);
+
         /**
          * The name of the user message.
          * @since 2.28
@@ -10181,6 +10339,7 @@ export namespace WebKit {
          * @default null
          */
         get name(): string;
+
         /**
          * The parameters of the user message as a {@link GLib.Variant}, or `null`
          * if the message doesn't include parameters. Note that only complete types are
@@ -10188,7 +10347,7 @@ export namespace WebKit {
          * @since 2.28
          * @construct-only
          */
-        get parameters(): GLib.Variant | null;
+        get parameters(): (GLib.Variant | null);
 
         /**
          * Compile-time signal type information.
@@ -10200,60 +10359,49 @@ export namespace WebKit {
         $signals: UserMessage.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UserMessage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, parameters: GLib.Variant | null): UserMessage;
+        static ["new"](name: string, parameters: (GLib.Variant | null)): UserMessage;
 
-        static new_with_fd_list(
-            name: string,
-            parameters: GLib.Variant | null,
-            fd_list: Gio.UnixFDList | null,
-        ): UserMessage;
+        static new_with_fd_list(name: string, parameters: (GLib.Variant | null), fd_list: (Gio.UnixFDList | null)): UserMessage;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UserMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UserMessage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UserMessage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UserMessage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UserMessage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UserMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UserMessage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the `message` list of file descritpor.
          * @returns the message list of file descriptors
          */
-        get_fd_list(): Gio.UnixFDList | null;
+        get_fd_list(): (Gio.UnixFDList | null);
+
         /**
          * Get the `message` name.
          * @returns the message name
          */
         get_name(): string;
+
         /**
          * Get the `message` parameters.
          * @returns the message parameters
          */
-        get_parameters(): GLib.Variant | null;
+        get_parameters(): (GLib.Variant | null);
+
         /**
          * Send a reply to an user message.
-         *
+         * 
          * If `reply` is floating, it's consumed.
          * You can only send a reply to a {@link WebKit.UserMessage} that has been
          * received.
@@ -10261,6 +10409,7 @@ export namespace WebKit {
          */
         send_reply(reply: UserMessage): void;
     }
+
 
     namespace WebContext {
         // Signal signatures
@@ -10273,7 +10422,7 @@ export namespace WebKit {
              * @since 2.18
              * @run-last
              */
-            'automation-started': (arg0: AutomationSession) => void;
+            "automation-started": (arg0: AutomationSession) => void;
             /**
              * This signal is emitted when a {@link WebKit.WebContext} needs to set
              * initial notification permissions for a web process. It is emitted
@@ -10287,7 +10436,7 @@ export namespace WebKit {
              * @since 2.16
              * @run-last
              */
-            'initialize-notification-permissions': () => void;
+            "initialize-notification-permissions": () => void;
             /**
              * This signal is emitted when a new web process is about to be
              * launched. It signals the most appropriate moment to use
@@ -10297,25 +10446,24 @@ export namespace WebKit {
              * @since 2.4
              * @run-last
              */
-            'initialize-web-process-extensions': () => void;
+            "initialize-web-process-extensions": () => void;
             /**
              * This signal is emitted when a {@link WebKit.UserMessage} is received from a
              * web process extension. You can reply to the message using
              * `webkit_user_message_send_reply()`.
-             *
+             * 
              * You can handle the user message asynchronously by calling `g_object_ref()` on
              * `message` and returning `true`.
              * @signal
              * @since 2.28
              * @run-last
              */
-            'user-message-received': (arg0: UserMessage) => boolean | void;
-            'notify::memory-pressure-settings': (pspec: GObject.ParamSpec) => void;
-            'notify::time-zone-override': (pspec: GObject.ParamSpec) => void;
+            "user-message-received": (arg0: UserMessage) => (boolean | void);
+            "notify::memory-pressure-settings": (pspec: GObject.ParamSpec) => void;
+            "notify::time-zone-override": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             memory_pressure_settings: MemoryPressureSettings;
             memoryPressureSettings: MemoryPressureSettings;
@@ -10326,24 +10474,24 @@ export namespace WebKit {
 
     /**
      * Manages aspects common to all {@link WebKit.WebView}<!-- -->s
-     *
+     * 
      * The {@link WebKit.WebContext} manages all aspects common to all
      * {@link WebKit.WebView}<!-- -->s.
-     *
+     * 
      * You can define the {@link WebKit.CacheModel} with
      * `webkit_web_context_set_cache_model()`, depending on the needs of
      * your application. You can access the {@link WebKit.SecurityManager} to specify
      * the behaviour of your application regarding security using
      * `webkit_web_context_get_security_manager()`.
-     *
+     * 
      * It is also possible to change your preferred language or enable
      * spell checking, using `webkit_web_context_set_preferred_languages()`,
      * `webkit_web_context_set_spell_checking_languages()` and
      * `webkit_web_context_set_spell_checking_enabled()`.
-     *
+     * 
      * You can use `webkit_web_context_register_uri_scheme()` to register
      * custom URI schemes, and manage several other settings.
-     *
+     * 
      * TLS certificate validation failure is now treated as a transport
      * error by default. To handle TLS failures differently, you can
      * connect to {@link WebKit.WebView.SignalSignatures.load_failed_with_tls_errors | WebKit.WebView::load-failed-with-tls-errors}.
@@ -10356,26 +10504,27 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebContext>;
 
         // Properties
-
         /**
          * The {@link WebKit.MemoryPressureSettings} applied to the web processes created by this context.
          * @since 2.34
          * @construct-only
          */
         set memory_pressure_settings(val: MemoryPressureSettings);
+
         /**
          * The {@link WebKit.MemoryPressureSettings} applied to the web processes created by this context.
          * @since 2.34
          * @construct-only
          */
         set memoryPressureSettings(val: MemoryPressureSettings);
+
         /**
          * The timezone override for this web context. Setting this property provides a better
          * alternative to configure the timezone information for all webviews managed by the WebContext.
          * The other, less optimal, approach is to globally set the TZ environment variable in the
          * process before creating the context. However this approach might not be very convenient and
          * can have side-effects in your application.
-         *
+         * 
          * The expected values for this property are defined in the IANA timezone database. See this
          * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
          * @since 2.38
@@ -10383,13 +10532,14 @@ export namespace WebKit {
          * @default null
          */
         get time_zone_override(): string;
+
         /**
          * The timezone override for this web context. Setting this property provides a better
          * alternative to configure the timezone information for all webviews managed by the WebContext.
          * The other, less optimal, approach is to globally set the TZ environment variable in the
          * process before creating the context. However this approach might not be very convenient and
          * can have side-effects in your application.
-         *
+         * 
          * The expected values for this property are defined in the IANA timezone database. See this
          * wikipedia page for instance, https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
          * @since 2.38
@@ -10408,105 +10558,102 @@ export namespace WebKit {
         $signals: WebContext.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): WebContext;
+        static ["new"](): WebContext;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebContext.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebContext.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebContext.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebContext.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebContext.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebContext.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebContext.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WebContext.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the default web context.
          */
         static get_default(): WebContext;
 
         // Methods
-
         /**
          * Adds a path to be mounted in the sandbox.
-         *
+         * 
          * `path` must exist before any web process has been created. It is a fatal error
          * to add paths after a web process has been spawned.
-         *
+         * 
          * Paths under `/sys`, `/proc`, and `/dev` are invalid. Attempting to
          * add all of `/` is not valid. Since 2.40, adding the user's entire
          * home directory or /home is also not valid.
-         *
+         * 
          * See also `webkit_web_context_set_sandbox_enabled()`
          * @param path an absolute path to mount in the sandbox
          * @param read_only if `true` the path will be read-only
          */
         add_path_to_sandbox(path: string, read_only: boolean): void;
+
         /**
          * Returns the current cache model.
-         *
+         * 
          * For more information about this
          * value check the documentation of the function
          * `webkit_web_context_set_cache_model()`.
          * @returns the current {@link WebKit.CacheModel}
          */
         get_cache_model(): CacheModel;
+
         /**
          * Get the {@link WebKit.GeolocationManager} of `context`.
          * @returns the {@link WebKit.GeolocationManager} of `context`.
          */
         get_geolocation_manager(): GeolocationManager;
+
         /**
          * Get the {@link WebKit.NetworkSession} used for automation sessions started in `context`.
          * @returns a {@link WebKit.NetworkSession}, or `null` if automation is not enabled
          */
-        get_network_session_for_automation(): NetworkSession | null;
+        get_network_session_for_automation(): (NetworkSession | null);
+
         /**
          * Get the {@link WebKit.SecurityManager} of `context`.
          * @returns the {@link WebKit.SecurityManager} of `context`.
          */
         get_security_manager(): SecurityManager;
+
         /**
          * Get whether spell checking feature is currently enabled.
          * @returns `true` If spell checking is enabled, or `false` otherwise.
          */
         get_spell_checking_enabled(): boolean;
+
         /**
          * Get the the list of spell checking languages.
-         *
+         * 
          * Get the the list of spell checking languages associated with
          * `context`, or `null` if no languages have been previously set.
-         *
+         * 
          * See `webkit_web_context_set_spell_checking_languages()` for more
          * details on the format of the languages in the list.
          * @returns A `null`-terminated    array of languages if available, or `null` otherwise.
          */
         get_spell_checking_languages(): string[];
+
         /**
          * Get the {@link WebKit.WebContext.time_zone_override} property.
          */
         get_time_zone_override(): string;
+
         /**
          * Sets initial desktop notification permissions for the `context`.
-         *
+         * 
          * `allowed_origins` and `disallowed_origins` must each be {@link GLib.List} of
          * {@link WebKit.SecurityOrigin} objects representing origins that will,
          * respectively, either always or never have permission to show desktop
@@ -10515,7 +10662,7 @@ export namespace WebKit {
          * `allowed_origins` or `disallowed_origins`. This function is necessary
          * because some webpages proactively check whether they have permission
          * to display notifications without ever creating a permission request.
-         *
+         * 
          * This function only affects web processes that have not already been
          * created. The best time to call it is when handling
          * {@link WebKit.WebContext.SignalSignatures.initialize_notification_permissions | WebKit.WebContext::initialize-notification-permissions} so as to
@@ -10524,20 +10671,19 @@ export namespace WebKit {
          * @param allowed_origins a {@link GLib.List} of security origins
          * @param disallowed_origins a {@link GLib.List} of security origins
          */
-        initialize_notification_permissions(
-            allowed_origins: SecurityOrigin[],
-            disallowed_origins: SecurityOrigin[],
-        ): void;
+        initialize_notification_permissions(allowed_origins: SecurityOrigin[], disallowed_origins: SecurityOrigin[]): void;
+
         /**
          * Get whether automation is allowed in `context`.
-         *
+         * 
          * See also `webkit_web_context_set_automation_allowed()`.
          * @returns `true` if automation is allowed or `false` otherwise.
          */
         is_automation_allowed(): boolean;
+
         /**
          * Register `scheme` in `context`.
-         *
+         * 
          * Register `scheme` in `context`, so that when an URI request with `scheme` is made in the
          * {@link WebKit.WebContext}, the {@link WebKit.URISchemeRequestCallback} registered will be called with a
          * {@link WebKit.URISchemeRequest}.
@@ -10545,7 +10691,7 @@ export namespace WebKit {
          * {@link WebKit.URISchemeRequest} and calling `webkit_uri_scheme_request_finish()` later
          * when the data of the request is available or
          * `webkit_uri_scheme_request_finish_error()` in case of error.
-         *
+         * 
          * ```c
          * static void
          * about_uri_scheme_request_cb (WebKitURISchemeRequest *request,
@@ -10554,7 +10700,7 @@ export namespace WebKit {
          *     GInputStream *stream;
          *     gsize         stream_length;
          *     const gchar  *path = webkit_uri_scheme_request_get_path (request);
-         *
+         * 
          *     if (!g_strcmp0 (path, "memory")) {
          *         // Create a GInputStream with the contents of memory about page, and set its length to stream_length
          *     } else if (!g_strcmp0 (path, "applications")) {
@@ -10577,35 +10723,38 @@ export namespace WebKit {
          * @param callback a {@link WebKit.URISchemeRequestCallback}
          */
         register_uri_scheme(scheme: string, callback: URISchemeRequestCallback): void;
+
         /**
          * Send `message` to all web process extensions associated to `context`.
-         *
+         * 
          * If `message` is floating, it's consumed.
          * @param message a {@link WebKit.UserMessage}
          */
         send_message_to_all_extensions(message: UserMessage): void;
+
         /**
          * Set whether automation is allowed in `context`.
-         *
+         * 
          * When automation is enabled the browser could
          * be controlled by another process by requesting an automation session. When a new automation
          * session is requested the signal {@link WebKit.WebContext.SignalSignatures.automation_started | WebKit.WebContext::automation-started} is emitted.
          * Automation is disabled by default, so you need to explicitly call this method passing `true`
          * to enable it.
-         *
+         * 
          * Note that only one {@link WebKit.WebContext} can have automation enabled, so this will do nothing
          * if there's another {@link WebKit.WebContext} with automation already enabled.
          * @param allowed value to set
          */
         set_automation_allowed(allowed: boolean): void;
+
         /**
          * Specifies a usage model for WebViews.
-         *
+         * 
          * Specifies a usage model for WebViews, which WebKit will use to
          * determine its caching behavior. All web views follow the cache
          * model. This cache model determines the RAM and disk space to use
          * for caching previously viewed content .
-         *
+         * 
          * Research indicates that users tend to browse within clusters of
          * documents that hold resources in common, and to revisit previously
          * visited documents. WebKit and the frameworks below it include
@@ -10613,7 +10762,7 @@ export namespace WebKit {
          * substantially improving document load speed in browsing
          * situations. The WebKit cache model controls the behaviors of all of
          * these caches, including various WebCore caches.
-         *
+         * 
          * Browsers can improve document load speed substantially by
          * specifying {@link WebKit.CacheModel.WEB_BROWSER}. Applications without a
          * browsing interface can reduce memory usage substantially by
@@ -10622,12 +10771,13 @@ export namespace WebKit {
          * @param cache_model a {@link WebKit.CacheModel}
          */
         set_cache_model(cache_model: CacheModel): void;
+
         /**
          * Set the list of preferred languages.
-         *
+         * 
          * Set the list of preferred languages, sorted from most desirable
          * to least desirable. The list will be used in the following ways:
-         *
+         * 
          * - Determining how to build the `Accept-Language` HTTP header that will be
          *   included in the network requests started by the {@link WebKit.WebContext}.
          * - Setting the values of `navigator.language` and `navigator.languages`.
@@ -10635,43 +10785,47 @@ export namespace WebKit {
          *   `Intl` functions.
          * @param languages a `null`-terminated list of language identifiers
          */
-        set_preferred_languages(languages: string[] | null): void;
+        set_preferred_languages(languages: (string[] | null)): void;
+
         /**
          * Enable or disable the spell checking feature.
          * @param enabled Value to be set
          */
         set_spell_checking_enabled(enabled: boolean): void;
+
         /**
          * Set the list of spell checking languages to be used for spell
          * checking.
-         *
+         * 
          * The locale string typically is in the form lang_COUNTRY, where lang
          * is an ISO-639 language code, and COUNTRY is an ISO-3166 country code.
          * For instance, sv_FI for Swedish as written in Finland or pt_BR
          * for Portuguese as written in Brazil.
-         *
+         * 
          * You need to call this function with a valid list of languages at
          * least once in order to properly enable the spell checking feature
          * in WebKit.
          * @param languages a `null`-terminated list of spell checking languages
          */
         set_spell_checking_languages(languages: string[]): void;
+
         /**
          * Set the directory where WebKit will look for web process extensions.
-         *
+         * 
          * This method must be called before loading anything in this context,
          * otherwise it will not have any effect. You can connect to
          * {@link WebKit.WebContext.SignalSignatures.initialize_web_process_extensions | WebKit.WebContext::initialize-web-process-extensions} to call this method
          * before anything is loaded.
-         *
+         * 
          * If your web process extension is installed to an unusual location,
          * then you may also need to call `webkit_web_context_add_path_to_sandbox()`.
          * @param directory the directory to add
          */
         set_web_process_extensions_directory(directory: string): void;
+
         /**
          * Set user data to be passed to Web Extensions on initialization.
-         *
+         * 
          * The data will be passed to the
          * `WebKitWebProcessExtensionInitializeWithUserDataFunction`.
          * This method must be called before loading anything in this context,
@@ -10683,44 +10837,44 @@ export namespace WebKit {
         set_web_process_extensions_initialization_user_data(user_data: GLib.Variant): void;
     }
 
+
     namespace WebExtension {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::default-locale': (pspec: GObject.ParamSpec) => void;
-            'notify::display-action-label': (pspec: GObject.ParamSpec) => void;
-            'notify::display-description': (pspec: GObject.ParamSpec) => void;
-            'notify::display-name': (pspec: GObject.ParamSpec) => void;
-            'notify::display-short-name': (pspec: GObject.ParamSpec) => void;
-            'notify::display-version': (pspec: GObject.ParamSpec) => void;
-            'notify::has-background-content': (pspec: GObject.ParamSpec) => void;
-            'notify::has-commands': (pspec: GObject.ParamSpec) => void;
-            'notify::has-content-modification-rules': (pspec: GObject.ParamSpec) => void;
-            'notify::has-injected-content': (pspec: GObject.ParamSpec) => void;
-            'notify::has-options-page': (pspec: GObject.ParamSpec) => void;
-            'notify::has-override-new-tab-page': (pspec: GObject.ParamSpec) => void;
-            'notify::has-persistent-background-content': (pspec: GObject.ParamSpec) => void;
-            'notify::manifest-version': (pspec: GObject.ParamSpec) => void;
-            'notify::optional-permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::requested-permissions': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
+            "notify::default-locale": (pspec: GObject.ParamSpec) => void;
+            "notify::display-action-label": (pspec: GObject.ParamSpec) => void;
+            "notify::display-description": (pspec: GObject.ParamSpec) => void;
+            "notify::display-name": (pspec: GObject.ParamSpec) => void;
+            "notify::display-short-name": (pspec: GObject.ParamSpec) => void;
+            "notify::display-version": (pspec: GObject.ParamSpec) => void;
+            "notify::has-background-content": (pspec: GObject.ParamSpec) => void;
+            "notify::has-commands": (pspec: GObject.ParamSpec) => void;
+            "notify::has-content-modification-rules": (pspec: GObject.ParamSpec) => void;
+            "notify::has-injected-content": (pspec: GObject.ParamSpec) => void;
+            "notify::has-options-page": (pspec: GObject.ParamSpec) => void;
+            "notify::has-override-new-tab-page": (pspec: GObject.ParamSpec) => void;
+            "notify::has-persistent-background-content": (pspec: GObject.ParamSpec) => void;
+            "notify::manifest-version": (pspec: GObject.ParamSpec) => void;
+            "notify::optional-permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::requested-permissions": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-            default_locale: string | null;
-            defaultLocale: string | null;
-            display_action_label: string | null;
-            displayActionLabel: string | null;
-            display_description: string | null;
-            displayDescription: string | null;
-            display_name: string | null;
-            displayName: string | null;
-            display_short_name: string | null;
-            displayShortName: string | null;
-            display_version: string | null;
-            displayVersion: string | null;
+            default_locale: (string | null);
+            defaultLocale: (string | null);
+            display_action_label: (string | null);
+            displayActionLabel: (string | null);
+            display_description: (string | null);
+            displayDescription: (string | null);
+            display_name: (string | null);
+            displayName: (string | null);
+            display_short_name: (string | null);
+            displayShortName: (string | null);
+            display_version: (string | null);
+            displayVersion: (string | null);
             has_background_content: boolean;
             hasBackgroundContent: boolean;
             has_commands: boolean;
@@ -10737,21 +10891,21 @@ export namespace WebKit {
             hasPersistentBackgroundContent: boolean;
             manifest_version: string;
             manifestVersion: string;
-            optional_permissions: string[] | null;
-            optionalPermissions: string[] | null;
+            optional_permissions: (string[] | null);
+            optionalPermissions: (string[] | null);
             path: string;
-            requested_permissions: string[] | null;
-            requestedPermissions: string[] | null;
-            version: string | null;
+            requested_permissions: (string[] | null);
+            requestedPermissions: (string[] | null);
+            version: (string | null);
         }
     }
 
     /**
      * Represents a [WebExtension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions).
-     *
+     * 
      * A {@link WebKit.WebExtension} object encapsulates a web extension’s
      * resources that are defined by a [`manifest.json` file](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json).
-     *
+     * 
      * This class handles the reading and parsing of the manifest file
      * along with the supporting resources like icons and localizations.
      * @gir-type Class
@@ -10761,6 +10915,14 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebExtension>;
 
         // Properties
+        /**
+         * The default locale for the {@link WebKit.WebExtension}.
+         * See `webkit_web_extension_get_default_locale()` for more details.
+         * @since 2.52
+         * @read-only
+         * @default null
+         */
+        get default_locale(): (string | null);
 
         /**
          * The default locale for the {@link WebKit.WebExtension}.
@@ -10769,15 +10931,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get default_locale(): string | null;
-        /**
-         * The default locale for the {@link WebKit.WebExtension}.
-         * See `webkit_web_extension_get_default_locale()` for more details.
-         * @since 2.52
-         * @read-only
-         * @default null
-         */
-        get defaultLocale(): string | null;
+        get defaultLocale(): (string | null);
+
         /**
          * The localized extension action label of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_action_label()` for more details.
@@ -10785,7 +10940,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get display_action_label(): string | null;
+        get display_action_label(): (string | null);
+
         /**
          * The localized extension action label of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_action_label()` for more details.
@@ -10793,7 +10949,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get displayActionLabel(): string | null;
+        get displayActionLabel(): (string | null);
+
         /**
          * The localized description of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_description()` for more details.
@@ -10801,7 +10958,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get display_description(): string | null;
+        get display_description(): (string | null);
+
         /**
          * The localized description of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_description()` for more details.
@@ -10809,7 +10967,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get displayDescription(): string | null;
+        get displayDescription(): (string | null);
+
         /**
          * The localized name of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_name()` for more details.
@@ -10817,7 +10976,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get display_name(): string | null;
+        get display_name(): (string | null);
+
         /**
          * The localized name of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_name()` for more details.
@@ -10825,7 +10985,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get displayName(): string | null;
+        get displayName(): (string | null);
+
         /**
          * The localized short name of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_short_name()` for more details.
@@ -10833,7 +10994,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get display_short_name(): string | null;
+        get display_short_name(): (string | null);
+
         /**
          * The localized short name of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_short_name()` for more details.
@@ -10841,7 +11003,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get displayShortName(): string | null;
+        get displayShortName(): (string | null);
+
         /**
          * The localized display version of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_version()` for more details.
@@ -10849,7 +11012,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get display_version(): string | null;
+        get display_version(): (string | null);
+
         /**
          * The localized display version of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_display_version()` for more details.
@@ -10857,7 +11021,8 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get displayVersion(): string | null;
+        get displayVersion(): (string | null);
+
         /**
          * Whether the {@link WebKit.WebExtension} has background content that can run when needed.
          * See `webkit_web_extension_get_has_background_content()` for more details.
@@ -10866,6 +11031,7 @@ export namespace WebKit {
          * @default false
          */
         get has_background_content(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} has background content that can run when needed.
          * See `webkit_web_extension_get_has_background_content()` for more details.
@@ -10874,6 +11040,7 @@ export namespace WebKit {
          * @default false
          */
         get hasBackgroundContent(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} includes commands that users can invoke.
          * See `webkit_web_extension_get_has_commands()` for more details.
@@ -10882,6 +11049,7 @@ export namespace WebKit {
          * @default false
          */
         get has_commands(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} includes commands that users can invoke.
          * See `webkit_web_extension_get_has_commands()` for more details.
@@ -10890,6 +11058,7 @@ export namespace WebKit {
          * @default false
          */
         get hasCommands(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} includes rules used for content modification or blocking.
          * See `webkit_web_extension_get_content_modification_rules()` for more details.
@@ -10898,6 +11067,7 @@ export namespace WebKit {
          * @default false
          */
         get has_content_modification_rules(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} includes rules used for content modification or blocking.
          * See `webkit_web_extension_get_content_modification_rules()` for more details.
@@ -10906,6 +11076,7 @@ export namespace WebKit {
          * @default false
          */
         get hasContentModificationRules(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} has script or stylesheet content that can be injected into webpages.
          * See `webkit_web_extension_get_has_injected_content()` for more details.
@@ -10914,6 +11085,7 @@ export namespace WebKit {
          * @default false
          */
         get has_injected_content(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} has script or stylesheet content that can be injected into webpages.
          * See `webkit_web_extension_get_has_injected_content()` for more details.
@@ -10922,6 +11094,7 @@ export namespace WebKit {
          * @default false
          */
         get hasInjectedContent(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} has an options page.
          * See `webkit_web_extension_get_has_options_page()` for more details.
@@ -10930,6 +11103,7 @@ export namespace WebKit {
          * @default false
          */
         get has_options_page(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} has an options page.
          * See `webkit_web_extension_get_has_options_page()` for more details.
@@ -10938,6 +11112,7 @@ export namespace WebKit {
          * @default false
          */
         get hasOptionsPage(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} provides an alternative to the default new tab page.
          * See `webkit_web_extension_get_has_override_new_tab_page()` for more details.
@@ -10946,6 +11121,7 @@ export namespace WebKit {
          * @default false
          */
         get has_override_new_tab_page(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} provides an alternative to the default new tab page.
          * See `webkit_web_extension_get_has_override_new_tab_page()` for more details.
@@ -10954,6 +11130,7 @@ export namespace WebKit {
          * @default false
          */
         get hasOverrideNewTabPage(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} has background content that stays in memory as long as the extension is loaded.
          * See `webkit_web_extension_get_has_persistent_background_content()` for more details.
@@ -10962,6 +11139,7 @@ export namespace WebKit {
          * @default false
          */
         get has_persistent_background_content(): boolean;
+
         /**
          * Whether the {@link WebKit.WebExtension} has background content that stays in memory as long as the extension is loaded.
          * See `webkit_web_extension_get_has_persistent_background_content()` for more details.
@@ -10970,6 +11148,7 @@ export namespace WebKit {
          * @default false
          */
         get hasPersistentBackgroundContent(): boolean;
+
         /**
          * The parsed manifest version of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_manifest_version()` for more details.
@@ -10978,6 +11157,7 @@ export namespace WebKit {
          * @default null
          */
         get manifest_version(): string;
+
         /**
          * The parsed manifest version of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_manifest_version()` for more details.
@@ -10986,20 +11166,23 @@ export namespace WebKit {
          * @default null
          */
         get manifestVersion(): string;
+
         /**
          * The set of permissions that the {@link WebKit.WebExtension} may need for optional functionality.
          * See `webkit_web_extension_get_optional_permissions()` for more details.
          * @since 2.52
          * @read-only
          */
-        get optional_permissions(): string[] | null;
+        get optional_permissions(): (string[] | null);
+
         /**
          * The set of permissions that the {@link WebKit.WebExtension} may need for optional functionality.
          * See `webkit_web_extension_get_optional_permissions()` for more details.
          * @since 2.52
          * @read-only
          */
-        get optionalPermissions(): string[] | null;
+        get optionalPermissions(): (string[] | null);
+
         /**
          * A string pointing to the folder containing the extension manifest and resources.
          * See `webkit_web_extension_get_path()` for more details.
@@ -11008,20 +11191,23 @@ export namespace WebKit {
          * @default null
          */
         get path(): string;
+
         /**
          * The set of permissions that the {@link WebKit.WebExtension} requires for its base functionality.
          * See `webkit_web_extension_get_requested_permissions()` for more details.
          * @since 2.52
          * @read-only
          */
-        get requested_permissions(): string[] | null;
+        get requested_permissions(): (string[] | null);
+
         /**
          * The set of permissions that the {@link WebKit.WebExtension} requires for its base functionality.
          * See `webkit_web_extension_get_requested_permissions()` for more details.
          * @since 2.52
          * @read-only
          */
-        get requestedPermissions(): string[] | null;
+        get requestedPermissions(): (string[] | null);
+
         /**
          * The version of the {@link WebKit.WebExtension}.
          * See `webkit_web_extension_get_version()` for more details.
@@ -11029,7 +11215,7 @@ export namespace WebKit {
          * @read-only
          * @default null
          */
-        get version(): string | null;
+        get version(): (string | null);
 
         /**
          * Compile-time signal type information.
@@ -11041,36 +11227,26 @@ export namespace WebKit {
         $signals: WebExtension.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](extension_path: string): WebExtension;
+        static ["new"](extension_path: string): WebExtension;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebExtension.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebExtension.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebExtension.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebExtension.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebExtension.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebExtension.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebExtension.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebExtension.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WebExtension.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebExtension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Returns the extension's default action icon image for the specified size.
          * This icon serves as a default and should be used to represent the extension in contexts like action sheets or toolbars prior to
@@ -11082,55 +11258,64 @@ export namespace WebKit {
          * @param height The height to use when looking up the icon.
          * @returns the icon image, or `null` if no icon could be loaded.
          */
-        get_action_icon(width: number, height: number): Gio.Icon | null;
+        get_action_icon(width: number, height: number): (Gio.Icon | null);
+
         /**
          * Get the set of websites that the extension requires access to for injected content
          * and for receiving messages from websites.
          * @returns a    `null`-terminated array of match patterns matching all requested websites.
          */
         get_all_requested_match_patterns(): WebExtensionMatchPattern[];
+
         /**
          * Get the default locale for the extension.
          * @returns the default locale, or `null` if there was no default locale specified.
          */
-        get_default_locale(): string | null;
+        get_default_locale(): (string | null);
+
         /**
          * Get the localized display action label for the extension.
-         *
+         * 
          * This label serves as a default and should be used to represent the extension in contexts like action sheets or toolbars prior to
          * the extension being loaded into an extension context.
          * Once the extension is loaded, use the ``actionForTab:`` API to get the tab-specific label.
          * @returns the localized display action label, or `null` if there was no display action label specified.
          */
-        get_display_action_label(): string | null;
+        get_display_action_label(): (string | null);
+
         /**
          * Get the localized display description for the extension.
          * @returns the localized display description, or `null` if there was no display description specified.
          */
-        get_display_description(): string | null;
+        get_display_description(): (string | null);
+
         /**
          * Get the localized name for the extension.
          * @returns the localized name, or `null` if there was no name specified.
          */
-        get_display_name(): string | null;
+        get_display_name(): (string | null);
+
         /**
          * Get the localized short name for the extension.
          * @returns the localized name, or `null` if there was no short name specified.
          */
-        get_display_short_name(): string | null;
+        get_display_short_name(): (string | null);
+
         /**
          * Get the localized display version for the extension.
          * @returns the localized display version, or `null` if there was no display version specified.
          */
-        get_display_version(): string | null;
+        get_display_version(): (string | null);
+
         /**
          * Get whether the extension has background content that can run when needed.
          * @returns `TRUE` if the extension can run in the background even when no webpages are open.
          */
         get_has_background_content(): boolean;
+
         /**
          * Get whether the extension includes commands that users can invoke.
-         *
+         * 
          * These commands should be accessible via keyboard shortcuts,
          * menu items, or other user interface elements provided
          * by the app. The list of commands can be accessed
@@ -11139,35 +11324,39 @@ export namespace WebKit {
          * @returns `TRUE` if the extension contains one or more commands that can be performed by the user.
          */
         get_has_commands(): boolean;
+
         /**
          * Get whether the extension includes rules used for
          * content modification or blocking.
          * @returns `TRUE` if the extension contains one or more rules for content modification.
          */
         get_has_content_modification_rules(): boolean;
+
         /**
          * Get whether the extension has script or stylesheet content
          * that can be injected into webpages.
-         *
+         * 
          * Once the extension is loaded, use the ``hasInjectedContent``
          * property on an extension context, as the injectable content
          * can change after the extension is loaded.
          * @returns `TRUE` if the extension has content that can be injected by matching against the extension's requested match patterns.
          */
         get_has_injected_content(): boolean;
+
         /**
          * Get whether the extension has an options page.
-         *
+         * 
          * The app should provide access to this page through a
          * user interface element, which can be accessed via
          * ``optionsPageURL`` on an extension context.
          * @returns `TRUE` if the extension includes a dedicated options page where users can customize settings.
          */
         get_has_options_page(): boolean;
+
         /**
          * Get whether the extension provides an alternative to
          * the default new tab page.
-         *
+         * 
          * The app should prompt the user for permission to use
          * the extension's new tab page as the default, which can
          * be accessed via ``overrideNewTabPageURL``
@@ -11175,12 +11364,14 @@ export namespace WebKit {
          * @returns `TRUE` if the extension can specify a custom page that can be displayed when a new tab is opened in the app, instead of the default new tab page.
          */
         get_has_override_new_tab_page(): boolean;
+
         /**
          * Get whether the extension has background content that stays in memory as long
          * as the extension is loaded.
          * @returns `TRUE` if the extension can run in the background.
          */
         get_has_persistent_background_content(): boolean;
+
         /**
          * Returns the extension's icon image for the specified size.
          * This icon should represent the extension in settings or other areas that show the extension.
@@ -11190,89 +11381,98 @@ export namespace WebKit {
          * @param height The height to use when looking up the icon.
          * @returns the icon image, or `null` if no icon could be loaded.
          */
-        get_icon(width: number, height: number): Gio.Icon | null;
+        get_icon(width: number, height: number): (Gio.Icon | null);
+
         /**
          * Get the parsed manifest version, or `0` if there is no
          * version specified in the manifest.
-         *
+         * 
          * A {@link WebKit.WebExtensionError.UNSUPPORTED_MANIFEST_VERSION} error will be
          * reported if the manifest version isn't specified.
          * @returns the parsed manifest version.
          */
         get_manifest_version(): number;
+
         /**
          * Get the set of websites that the extension may need access to for optional functionality.
          * These match patterns can be requested by the extension at a later time.
          * @returns a    `null`-terminated array of match patterns matching the optional websites.
          */
         get_optional_permission_match_patterns(): WebExtensionMatchPattern[];
+
         /**
          * Get the set of permissions that the extension may need for
          * optional functionality. These permissions can be requested
          * by the extension at a later time.
          * @returns a `null`-terminated array of strings containing permission names, or `null` otherwise. This array and its contents are owned by WebKit and should not be modified or freed.
          */
-        get_optional_permissions(): string[] | null;
+        get_optional_permissions(): (string[] | null);
+
         /**
          * Get the path pointing to the folder containing the extension manifest and resources
          * @returns the path of the extension folder
          */
         get_path(): string;
+
         /**
          * Get the set of websites that the extension requires access to for its base functionality.
          * @returns a    `null`-terminated array of match patterns matching the required websites.
          */
         get_requested_permission_match_patterns(): WebExtensionMatchPattern[];
+
         /**
          * Get the set of permissions that the extension requires
          * for its base functionality.
          * @returns a `null`-terminated array of strings containing permission names, or `null` otherwise. This array and its contents are owned by WebKit and should not be modified or freed.
          */
-        get_requested_permissions(): string[] | null;
+        get_requested_permissions(): (string[] | null);
+
         /**
          * Get the version for the extension.
          * @returns the version, or `null` if there was no version specified.
          */
-        get_version(): string | null;
+        get_version(): (string | null);
+
         /**
          * Checks if a manifest version is supported by the extension.
          * @param manifest_version the version number to check
          * @returns `TRUE` if the extension specified a manifest version that is greater than or equal to `manifest_version`.
          */
         supports_manifest_version(manifest_version: number): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -11282,40 +11482,41 @@ export namespace WebKit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -11325,8 +11526,9 @@ export namespace WebKit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace WebInspector {
         // Signal signatures
@@ -11338,16 +11540,16 @@ export namespace WebKit {
              * attached to the inspected view, so you only need to handle this signal
              * if you want to attach the inspector view yourself (for example, to add
              * the inspector view to a browser tab).
-             *
+             * 
              * To prevent the inspector view from being attached you can connect to this
              * signal and simply return `true`.
              * @signal
              * @run-last
              */
-            attach: () => boolean | void;
+            attach: () => (boolean | void);
             /**
              * Emitted when the inspector should be shown.
-             *
+             * 
              * If the inspector is not attached the inspector window should be shown
              * on top of any other windows.
              * If the inspector is attached the inspector view should be made visible.
@@ -11360,7 +11562,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'bring-to-front': () => boolean | void;
+            "bring-to-front": () => (boolean | void);
             /**
              * Emitted when the inspector page is closed. If you are using your own
              * inspector window, you should connect to this signal and destroy your
@@ -11376,13 +11578,13 @@ export namespace WebKit {
              * {@link WebKit.WebInspector.SignalSignatures.closed | WebKit.WebInspector::closed}, or when the user clicks on the detach button
              * in the inspector view to show the inspector in a separate window. In this case
              * the signal {@link WebKit.WebInspector.SignalSignatures.open_window | WebKit.WebInspector::open-window} is emitted after this one.
-             *
+             * 
              * To prevent the inspector view from being detached you can connect to this
              * signal and simply return `true`.
              * @signal
              * @run-last
              */
-            detach: () => boolean | void;
+            detach: () => (boolean | void);
             /**
              * Emitted when the inspector is requested to open in a separate window.
              * If this signal is not handled, a {@link Gtk.Window} with the inspector will be
@@ -11390,20 +11592,19 @@ export namespace WebKit {
              * to use your own window.
              * This signal is emitted after {@link WebKit.WebInspector.SignalSignatures.detach | WebKit.WebInspector::detach} to show
              * the inspector in a separate window after being detached.
-             *
+             * 
              * To prevent the inspector from being shown you can connect to this
              * signal and simply return `true`
              * @signal
              * @run-last
              */
-            'open-window': () => boolean | void;
-            'notify::attached-height': (pspec: GObject.ParamSpec) => void;
-            'notify::can-attach': (pspec: GObject.ParamSpec) => void;
-            'notify::inspected-uri': (pspec: GObject.ParamSpec) => void;
+            "open-window": () => (boolean | void);
+            "notify::attached-height": (pspec: GObject.ParamSpec) => void;
+            "notify::can-attach": (pspec: GObject.ParamSpec) => void;
+            "notify::inspected-uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             attached_height: number;
             attachedHeight: number;
@@ -11416,24 +11617,24 @@ export namespace WebKit {
 
     /**
      * Access to the WebKit inspector.
-     *
+     * 
      * The WebKit Inspector is a graphical tool to inspect and change the
      * content of a {@link WebKit.WebView}. It also includes an interactive
      * JavaScript debugger. Using this class one can get a {@link Gtk.Widget}
      * which can be embedded into an application to show the inspector.
-     *
+     * 
      * The inspector is available when the {@link WebKit.Settings} of the
      * {@link WebKit.WebView} has set the {@link WebKit.Settings.enable_developer_extras}
      * to true, otherwise no inspector is available.
-     *
+     * 
      * ```c
      * // Enable the developer extras
      * WebKitSettings *settings = webkit_web_view_get_settings (WEBKIT_WEB_VIEW(my_webview));
      * g_object_set (G_OBJECT(settings), "enable-developer-extras", TRUE, NULL);
-     *
+     * 
      * // Load some data or reload to be able to inspect the page
      * webkit_web_view_load_uri (WEBKIT_WEB_VIEW(my_webview), "http://www.gnome.org");
-     *
+     * 
      * // Show the inspector
      * WebKitWebInspector *inspector = webkit_web_view_get_inspector (WEBKIT_WEB_VIEW(my_webview));
      * webkit_web_inspector_show (WEBKIT_WEB_INSPECTOR(inspector));
@@ -11444,19 +11645,20 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebInspector>;
 
         // Properties
-
         /**
          * The height that the inspector view should have when it is attached.
          * @read-only
          * @default 0
          */
         get attached_height(): number;
+
         /**
          * The height that the inspector view should have when it is attached.
          * @read-only
          * @default 0
          */
         get attachedHeight(): number;
+
         /**
          * Whether the `inspector` can be attached to the same window that contains
          * the inspected view.
@@ -11465,6 +11667,7 @@ export namespace WebKit {
          * @default false
          */
         get can_attach(): boolean;
+
         /**
          * Whether the `inspector` can be attached to the same window that contains
          * the inspected view.
@@ -11473,12 +11676,14 @@ export namespace WebKit {
          * @default false
          */
         get canAttach(): boolean;
+
         /**
          * The URI that is currently being inspected.
          * @read-only
          * @default null
          */
         get inspected_uri(): string;
+
         /**
          * The URI that is currently being inspected.
          * @read-only
@@ -11496,70 +11701,65 @@ export namespace WebKit {
         $signals: WebInspector.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebInspector.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebInspector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebInspector.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebInspector.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebInspector.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebInspector.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebInspector.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebInspector.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebInspector.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebInspector.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebInspector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WebInspector.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebInspector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Request `inspector` to be attached.
-         *
+         * 
          * The signal {@link WebKit.WebInspector.SignalSignatures.attach | WebKit.WebInspector::attach}
          * will be emitted. If the inspector is already attached it does nothing.
          */
         attach(): void;
+
         /**
          * Request `inspector` to be closed.
          */
         close(): void;
+
         /**
          * Request `inspector` to be detached.
-         *
+         * 
          * The signal {@link WebKit.WebInspector.SignalSignatures.detach | WebKit.WebInspector::detach}
          * will be emitted. If the inspector is already detached it does nothing.
          */
         detach(): void;
+
         /**
          * Get the height that the inspector view when attached.
-         *
+         * 
          * Get the height that the inspector view should have when
          * it's attached. If the inspector view is not attached this
          * returns 0.
          * @returns the height of the inspector view when attached
          */
         get_attached_height(): number;
+
         /**
          * Whether the `inspector` can be attached to the same window that contains
          * the inspected view.
          * @returns `true` if there is enough room for the inspector view inside the     window that contains the inspected view, or `false` otherwise.
          */
         get_can_attach(): boolean;
+
         /**
          * Get the URI that is currently being inspected.
-         *
+         * 
          * This can be `null` if
          * nothing has been loaded yet in the inspected view, if the inspector
          * has been closed or when inspected view was loaded from a HTML string
@@ -11567,25 +11767,29 @@ export namespace WebKit {
          * @returns the URI that is currently being inspected or `null`
          */
         get_inspected_uri(): string;
+
         /**
          * Get the {@link WebKit.WebViewBase} used to display the inspector.
-         *
+         * 
          * This might be `null` if the inspector hasn't been loaded yet,
          * or it has been closed.
          * @returns the {@link WebKit.WebViewBase} used to display the inspector or `null`
          */
         get_web_view(): WebViewBase;
+
         /**
          * Whether the `inspector` view is currently attached to the same window that contains
          * the inspected view.
          * @returns `true` if `inspector` is currently attached or `false` otherwise
          */
         is_attached(): boolean;
+
         /**
          * Request `inspector` to be shown.
          */
         show(): void;
     }
+
 
     namespace WebResource {
         // Signal signatures
@@ -11603,7 +11807,7 @@ export namespace WebKit {
              * @since 2.8
              * @run-last
              */
-            'failed-with-tls-errors': (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => void;
+            "failed-with-tls-errors": (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => void;
             /**
              * This signal is emitted when the resource load finishes successfully
              * or due to an error. In case of errors {@link WebKit.WebResource.SignalSignatures.failed | WebKit.WebResource::failed} signal
@@ -11622,13 +11826,12 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'sent-request': (arg0: URIRequest, arg1: URIResponse) => void;
-            'notify::response': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
+            "sent-request": (arg0: URIRequest, arg1: URIResponse) => void;
+            "notify::response": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             response: URIResponse;
             uri: string;
@@ -11637,12 +11840,12 @@ export namespace WebKit {
 
     /**
      * Represents a resource at the end of a URI.
-     *
+     * 
      * A {@link WebKit.WebResource} encapsulates content for each resource at the
      * end of a particular URI. For example, one {@link WebKit.WebResource} will
      * be created for each separate image and stylesheet when a page is
      * loaded.
-     *
+     * 
      * You can access the response and the URI for a given
      * {@link WebKit.WebResource}, using `webkit_web_resource_get_uri()` and
      * `webkit_web_resource_get_response()`, as well as the raw data, using
@@ -11653,12 +11856,12 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebResource>;
 
         // Properties
-
         /**
          * The {@link WebKit.URIResponse} associated with this resource.
          * @read-only
          */
         get response(): URIResponse;
+
         /**
          * The current active URI of the {@link WebKit.WebResource}.
          * See `webkit_web_resource_get_uri()` for more details.
@@ -11677,89 +11880,82 @@ export namespace WebKit {
         $signals: WebResource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebResource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebResource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebResource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebResource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebResource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebResource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebResource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebResource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebResource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WebResource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Asynchronously get the raw data for `resource`.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_web_resource_get_data_finish()` to get the result of the operation.
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         */
+        get_data(cancellable: (Gio.Cancellable | null)): globalThis.Promise<Uint8Array>;
 
         /**
          * Asynchronously get the raw data for `resource`.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_web_resource_get_data_finish()` to get the result of the operation.
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         */
-        get_data(cancellable: Gio.Cancellable | null): globalThis.Promise<Uint8Array>;
-        /**
-         * Asynchronously get the raw data for `resource`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_web_resource_get_data_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_data(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        get_data(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously get the raw data for `resource`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_web_resource_get_data_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_data(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Uint8Array> | void;
+        get_data(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Uint8Array> | void);
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_data
+    // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
+
         /**
          * Finish an asynchronous operation started with `webkit_web_resource_get_data()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a    string with the data of `resource`, or `null` in case of error. if `length`    is not `null`, the size of the data will be assigned to it.
          */
         get_data_finish(result: Gio.AsyncResult): Uint8Array;
+
         /**
          * Retrieves the {@link WebKit.URIResponse} of the resource load operation.
-         *
+         * 
          * This method returns `null` if called before the response
          * is received from the server. You can connect to notify::response
          * signal to be notified when the response is received.
          * @returns the {@link WebKit.URIResponse}, or `null` if     the response hasn't been received yet.
          */
         get_response(): URIResponse;
+
         /**
          * Returns the current active URI of `resource`.
-         *
+         * 
          * The active URI might change during
          * a load operation:
-         *
+         * 
          * <orderedlist>
          * <listitem><para>
          *   When the resource load starts, the active URI is the requested URI
@@ -11779,13 +11975,14 @@ export namespace WebKit {
          *   one and it will not change again.
          * </para></listitem>
          * </orderedlist>
-         *
+         * 
          * You can monitor the active URI by connecting to the notify::uri
          * signal of `resource`.
          * @returns the current active URI of `resource`
          */
         get_uri(): string;
     }
+
 
     namespace WebView {
         // Signal signatures
@@ -11800,14 +11997,14 @@ export namespace WebKit {
              * To handle this signal asynchronously you should keep a ref
              * of the request and return `true`. To disable HTTP authentication
              * entirely, connect to this signal and simply return `true`.
-             *
+             * 
              * The default signal handler will run a default authentication
              * dialog asynchronously for the user to interact with.
              * @signal
              * @since 2.2
              * @run-last
              */
-            authenticate: (arg0: AuthenticationRequest) => boolean | void;
+            authenticate: (arg0: AuthenticationRequest) => (boolean | void);
             /**
              * Emitted when closing a {@link WebKit.WebView} is requested. This occurs when a
              * call is made from JavaScript's <function>window.close</function> function or
@@ -11846,37 +12043,37 @@ export namespace WebKit {
              *  signal because showing the proposed context menu is the default behaviour.
              * </para></listitem>
              * </itemizedlist>
-             *
+             * 
              * If the signal handler returns `false` the context menu represented by `context_menu`
              * will be shown, if it return `true` the context menu will not be shown.
-             *
+             * 
              * The proposed {@link WebKit.ContextMenu} passed in `context_menu` argument is only valid
              * during the signal emission.
              * @signal
              * @run-last
              */
-            'context-menu': (arg0: ContextMenu, arg1: HitTestResult) => boolean | void;
+            "context-menu": (arg0: ContextMenu, arg1: HitTestResult) => (boolean | void);
             /**
              * Emitted after {@link WebKit.WebView.SignalSignatures.context_menu | WebKit.WebView::context-menu} signal, if the context menu is shown,
              * to notify that the context menu is dismissed.
              * @signal
              * @run-last
              */
-            'context-menu-dismissed': () => void;
+            "context-menu-dismissed": () => void;
             /**
              * Emitted when the creation of a new {@link WebKit.WebView} is requested.
              * If this signal is handled the signal handler should return the
              * newly created {@link WebKit.WebView}.
-             *
+             * 
              * The {@link WebKit.NavigationAction} parameter contains information about the
              * navigation action that triggered this signal.
-             *
+             * 
              * The new {@link WebKit.WebView} must be related to `web_view`, see
              * {@link WebKit.WebView.related_view} for more details.
-             *
+             * 
              * The new {@link WebKit.WebView} should not be displayed to the user
              * until the {@link WebKit.WebView.SignalSignatures.ready_to_show | WebKit.WebView::ready-to-show} signal is emitted.
-             *
+             * 
              * For creating views as response to automation tools requests, see the
              * {@link WebKit.AutomationSession.SignalSignatures.create_web_view | WebKit.AutomationSession::create-web-view} signal.
              * @signal
@@ -11889,7 +12086,7 @@ export namespace WebKit {
              * not to download a resource. The {@link WebKit.NavigationPolicyDecision} passed in the
              * `decision` argument is a generic type, but should be casted to a more
              * specific type when making the decision. For example:
-             *
+             * 
              * ```c
              * static gboolean
              * decide_policy_cb (WebKitWebView *web_view,
@@ -11918,7 +12115,7 @@ export namespace WebKit {
              *     return TRUE;
              * }
              * ```
-             *
+             * 
              * It is possible to make policy decision asynchronously, by simply calling `g_object_ref()`
              * on the `decision` argument and returning `true` to block the default signal handler.
              * If the last reference is removed on a {@link WebKit.PolicyDecision} and no decision has been
@@ -11928,7 +12125,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'decide-policy': (arg0: PolicyDecision, arg1: PolicyDecisionType) => boolean | void;
+            "decide-policy": (arg0: PolicyDecision, arg1: PolicyDecisionType) => (boolean | void);
             /**
              * Emitted when JavaScript code calls
              * <function>element.webkitRequestFullScreen</function>. If the
@@ -11941,7 +12138,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'enter-fullscreen': () => boolean | void;
+            "enter-fullscreen": () => (boolean | void);
             /**
              * Prior to 2.46, this signal was emitted when insecure content was
              * loaded in a secure content. Since 2.46, this signal is generally
@@ -11950,7 +12147,7 @@ export namespace WebKit {
              * @deprecated since 2.46
              * @run-last
              */
-            'insecure-content-detected': (arg0: InsecureContentEvent) => void;
+            "insecure-content-detected": (arg0: InsecureContentEvent) => void;
             /**
              * Emitted when the {@link WebKit.WebView} is about to restore its top level
              * window out of its full screen state. This signal can be used by
@@ -11959,7 +12156,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'leave-fullscreen': () => boolean | void;
+            "leave-fullscreen": () => (boolean | void);
             /**
              * Emitted when a load operation in `web_view` changes.
              * The signal is always emitted with {@link WebKit.LoadEvent.STARTED} when a
@@ -11973,10 +12170,10 @@ export namespace WebKit {
              * {@link WebKit.LoadEvent.STARTED} and before {@link WebKit.LoadEvent.COMMITTED}.
              * When the page content starts arriving the signal is emitted with
              * {@link WebKit.LoadEvent.COMMITTED} event.
-             *
+             * 
              * You can handle this signal and use a switch to track any ongoing
              * load operation.
-             *
+             * 
              * ```c
              * static void web_view_load_changed (WebKitWebView  *web_view,
              *                                    WebKitLoadEvent load_event,
@@ -12008,7 +12205,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'load-changed': (arg0: LoadEvent) => void;
+            "load-changed": (arg0: LoadEvent) => void;
             /**
              * Emitted when an error occurs during a load operation.
              * If the error happened when starting to load data for a page
@@ -12017,32 +12214,28 @@ export namespace WebKit {
              * Since a load error causes the load operation to finish, the signal
              * WebKitWebView::load-changed will always be emitted with
              * {@link WebKit.LoadEvent.FINISHED} event right after this one.
-             *
+             * 
              * By default, if the signal is not handled, a stock error page will be displayed.
              * You need to handle the signal if you want to provide your own error page.
              * @signal
              * @run-last
              */
-            'load-failed': (arg0: LoadEvent, arg1: string, arg2: GLib.Error) => boolean | void;
+            "load-failed": (arg0: LoadEvent, arg1: string, arg2: GLib.Error) => (boolean | void);
             /**
              * Emitted when a TLS error occurs during a load operation.
              * To allow an exception for this `certificate`
              * and the host of `failing_uri` use `webkit_web_context_allow_tls_certificate_for_host()`.
-             *
+             * 
              * To handle this signal asynchronously you should call `g_object_ref()` on `certificate`
              * and return `true`.
-             *
+             * 
              * If `false` is returned, {@link WebKit.WebView.SignalSignatures.load_failed | WebKit.WebView::load-failed} will be emitted. The load
              * will finish regardless of the returned value.
              * @signal
              * @since 2.6
              * @run-last
              */
-            'load-failed-with-tls-errors': (
-                arg0: string,
-                arg1: Gio.TlsCertificate,
-                arg2: Gio.TlsCertificateFlags,
-            ) => boolean | void;
+            "load-failed-with-tls-errors": (arg0: string, arg1: Gio.TlsCertificate, arg2: Gio.TlsCertificateFlags) => (boolean | void);
             /**
              * This signal is emitted when the mouse cursor moves over an
              * element such as a link, image or a media element. To determine
@@ -12055,16 +12248,16 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'mouse-target-changed': (arg0: HitTestResult, arg1: number) => void;
+            "mouse-target-changed": (arg0: HitTestResult, arg1: number) => void;
             /**
              * This signal is emitted when WebKit is requesting the client to
              * decide about a permission request, such as allowing the browser
              * to switch to fullscreen mode, sharing its location or similar
              * operations.
-             *
+             * 
              * A possible way to use this signal could be through a dialog
              * allowing the user decide what to do with the request:
-             *
+             * 
              * ```c
              * static gboolean permission_request_cb (WebKitWebView *web_view,
              *                                        WebKitPermissionRequest *request,
@@ -12077,7 +12270,7 @@ export namespace WebKit {
              *                                                 "Allow Permission Request?");
              *     gtk_widget_show (dialog);
              *     gint result = gtk_dialog_run (GTK_DIALOG (dialog));
-             *
+             * 
              *     switch (result) {
              *     case GTK_RESPONSE_YES:
              *         webkit_permission_request_allow (request);
@@ -12087,18 +12280,18 @@ export namespace WebKit {
              *         break;
              *     }
              *     gtk_widget_destroy (dialog);
-             *
+             * 
              *     return TRUE;
              * }
              * ```
-             *
+             * 
              * It is possible to handle permission requests asynchronously, by
              * simply calling `g_object_ref()` on the `request` argument and
              * returning `true` to block the default signal handler.  If the
              * last reference is removed on a {@link WebKit.PermissionRequest} and the
              * request has not been handled, `webkit_permission_request_deny()`
              * will be the default action.
-             *
+             * 
              * If the signal is not handled, the `request` will be completed automatically
              * by the specific {@link WebKit.PermissionRequest} that could allow or deny it. Check the
              * documentation of classes implementing {@link WebKit.PermissionRequest} interface to know
@@ -12106,7 +12299,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'permission-request': (arg0: PermissionRequest) => boolean | void;
+            "permission-request": (arg0: PermissionRequest) => (boolean | void);
             /**
              * Emitted when printing is requested on `web_view`, usually by a JavaScript call,
              * before the print dialog is shown. This signal can be used to set the initial
@@ -12114,18 +12307,18 @@ export namespace WebKit {
              * the print dialog. You can call `webkit_print_operation_set_print_settings()` and
              * `webkit_print_operation_set_page_setup()` and then return `false` to propagate the
              * event so that the print dialog is shown.
-             *
+             * 
              * You can connect to this signal and return `true` to cancel the print operation
              * or implement your own print dialog.
              * @signal
              * @run-last
              */
-            print: (arg0: PrintOperation) => boolean | void;
+            print: (arg0: PrintOperation) => (boolean | void);
             /**
              * This signal allows the User-Agent to respond to permission requests for powerful features, as
              * specified by the [Permissions W3C Specification](https://w3c.github.io/permissions/).
              * You can reply to the query using `webkit_permission_state_query_finish()`.
-             *
+             * 
              * You can handle the query asynchronously by calling `webkit_permission_state_query_ref()` on
              * `query` and returning `true`. If the last reference of `query` is removed and the query has not
              * been handled, the query result will be set to `WEBKIT_QUERY_PERMISSION_PROMPT`.
@@ -12133,7 +12326,7 @@ export namespace WebKit {
              * @since 2.40
              * @run-last
              */
-            'query-permission-state': (arg0: PermissionStateQuery) => boolean | void;
+            "query-permission-state": (arg0: PermissionStateQuery) => (boolean | void);
             /**
              * Emitted after {@link WebKit.WebView.SignalSignatures.create | WebKit.WebView::create} on the newly created {@link WebKit.WebView}
              * when it should be displayed to the user. When this signal is emitted
@@ -12144,7 +12337,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'ready-to-show': () => void;
+            "ready-to-show": () => void;
             /**
              * Emitted when a new resource is going to be loaded. The `request` parameter
              * contains the {@link WebKit.URIRequest} that will be sent to the server.
@@ -12153,7 +12346,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'resource-load-started': (arg0: WebResource, arg1: URIRequest) => void;
+            "resource-load-started": (arg0: WebResource, arg1: URIRequest) => void;
             /**
              * Emitted after {@link WebKit.WebView.SignalSignatures.ready_to_show | WebKit.WebView::ready-to-show} on the newly
              * created {@link WebKit.WebView} when JavaScript code calls
@@ -12165,7 +12358,7 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'run-as-modal': () => void;
+            "run-as-modal": () => void;
             /**
              * This signal is emitted when the user interacts with a <input
              * type='color' /> HTML element, requesting from WebKit to show
@@ -12174,17 +12367,17 @@ export namespace WebKit {
              * cancel the request or perform an actual color selection, the signal will
              * pass an instance of the {@link WebKit.ColorChooserRequest} in the `request`
              * argument.
-             *
+             * 
              * It is possible to handle this request asynchronously by increasing the
              * reference count of the request.
-             *
+             * 
              * The default signal handler will asynchronously run a regular
              * {@link Gtk.ColorChooser} for the user to interact with.
              * @signal
              * @since 2.8
              * @run-last
              */
-            'run-color-chooser': (arg0: ColorChooserRequest) => boolean | void;
+            "run-color-chooser": (arg0: ColorChooserRequest) => (boolean | void);
             /**
              * This signal is emitted when the user interacts with a <input
              * type='file' /> HTML element, requesting from WebKit to show
@@ -12194,13 +12387,13 @@ export namespace WebKit {
              * perform an actual selection of files, the signal will pass an
              * instance of the {@link WebKit.FileChooserRequest} in the `request`
              * argument.
-             *
+             * 
              * The default signal handler will asynchronously run a regular
              * {@link Gtk.FileChooserDialog} for the user to interact with.
              * @signal
              * @run-last
              */
-            'run-file-chooser': (arg0: FileChooserRequest) => boolean | void;
+            "run-file-chooser": (arg0: FileChooserRequest) => (boolean | void);
             /**
              * Emitted when JavaScript code calls <function>window.alert</function>,
              * <function>window.confirm</function> or <function>window.prompt</function>,
@@ -12223,7 +12416,7 @@ export namespace WebKit {
              *  {@link WebKit.ScriptDialogType.BEFORE_UNLOAD_CONFIRM}: message dialog with Stay and Leave buttons.
              * </para></listitem>
              * </itemizedlist>
-             *
+             * 
              * It is possible to handle the script dialog request asynchronously, by simply
              * caling `webkit_script_dialog_ref()` on the `dialog` argument and calling
              * `webkit_script_dialog_close()` when done.
@@ -12232,19 +12425,19 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'script-dialog': (arg0: ScriptDialog) => boolean | void;
+            "script-dialog": (arg0: ScriptDialog) => (boolean | void);
             /**
              * This signal is emitted when a notification should be presented to the
              * user. The `notification` is kept alive until either: 1) the web page cancels it
              * or 2) a navigation happens.
-             *
+             * 
              * The default handler will emit a notification using libnotify, if built with
              * support for it.
              * @signal
              * @since 2.8
              * @run-last
              */
-            'show-notification': (arg0: Notification) => boolean | void;
+            "show-notification": (arg0: Notification) => (boolean | void);
             /**
              * This signal is emitted when a select element in `web_view` needs to display a
              * dropdown menu. This signal can be used to show a custom menu, using `menu` to get
@@ -12252,20 +12445,20 @@ export namespace WebKit {
              * {@link WebKit.WebView} is given as `rectangle` parameter, it can be used to position the
              * menu.
              * To handle this signal asynchronously you should keep a ref of the `menu`.
-             *
+             * 
              * The default signal handler will pop up a `GtkMenu`.
              * @signal
              * @since 2.18
              * @run-last
              */
-            'show-option-menu': (arg0: OptionMenu, arg1: Gdk.Rectangle) => boolean | void;
+            "show-option-menu": (arg0: OptionMenu, arg1: Gdk.Rectangle) => (boolean | void);
             /**
              * This signal is emitted when a form is about to be submitted. The `request`
              * argument passed contains information about the text fields of the form. This
              * is typically used to store login information that can be used later to
              * pre-fill the form.
              * The form will not be submitted until `webkit_form_submission_request_submit()` is called.
-             *
+             * 
              * It is possible to handle the form submission request asynchronously, by
              * simply calling `g_object_ref()` on the `request` argument and calling
              * `webkit_form_submission_request_submit()` when done to continue with the form submission.
@@ -12274,12 +12467,12 @@ export namespace WebKit {
              * @signal
              * @run-last
              */
-            'submit-form': (arg0: FormSubmissionRequest) => void;
+            "submit-form": (arg0: FormSubmissionRequest) => void;
             /**
              * This signal is emitted when a {@link WebKit.UserMessage} is received from the
              * `WebKitWebPage` corresponding to `web_view`. You can reply to the message
              * using `webkit_user_message_send_reply()`.
-             *
+             * 
              * You can handle the user message asynchronously by calling `g_object_ref()` on
              * `message` and returning `true`. If the last reference of `message` is removed
              * and the message has not been replied to, the operation in the `WebKitWebPage` will
@@ -12288,7 +12481,7 @@ export namespace WebKit {
              * @since 2.28
              * @run-last
              */
-            'user-message-received': (arg0: UserMessage) => boolean | void;
+            "user-message-received": (arg0: UserMessage) => (boolean | void);
             /**
              * This signal is emitted when the web process terminates abnormally due
              * to `reason`.
@@ -12296,84 +12489,78 @@ export namespace WebKit {
              * @since 2.20
              * @run-last
              */
-            'web-process-terminated': (arg0: WebProcessTerminationReason) => void;
-            'notify::automation-presentation-type': (pspec: GObject.ParamSpec) => void;
-            'notify::camera-capture-state': (pspec: GObject.ParamSpec) => void;
-            'notify::default-content-security-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::display-capture-state': (pspec: GObject.ParamSpec) => void;
-            'notify::editable': (pspec: GObject.ParamSpec) => void;
-            'notify::estimated-load-progress': (pspec: GObject.ParamSpec) => void;
-            'notify::favicon': (pspec: GObject.ParamSpec) => void;
-            'notify::is-controlled-by-automation': (pspec: GObject.ParamSpec) => void;
-            'notify::is-immersive-mode-enabled': (pspec: GObject.ParamSpec) => void;
-            'notify::is-loading': (pspec: GObject.ParamSpec) => void;
-            'notify::is-muted': (pspec: GObject.ParamSpec) => void;
-            'notify::is-playing-audio': (pspec: GObject.ParamSpec) => void;
-            'notify::is-web-process-responsive': (pspec: GObject.ParamSpec) => void;
-            'notify::microphone-capture-state': (pspec: GObject.ParamSpec) => void;
-            'notify::network-session': (pspec: GObject.ParamSpec) => void;
-            'notify::page-id': (pspec: GObject.ParamSpec) => void;
-            'notify::related-view': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::theme-color': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::user-content-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::web-context': (pspec: GObject.ParamSpec) => void;
-            'notify::web-extension-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::website-policies': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            "web-process-terminated": (arg0: WebProcessTerminationReason) => void;
+            "notify::automation-presentation-type": (pspec: GObject.ParamSpec) => void;
+            "notify::camera-capture-state": (pspec: GObject.ParamSpec) => void;
+            "notify::default-content-security-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::display-capture-state": (pspec: GObject.ParamSpec) => void;
+            "notify::editable": (pspec: GObject.ParamSpec) => void;
+            "notify::estimated-load-progress": (pspec: GObject.ParamSpec) => void;
+            "notify::favicon": (pspec: GObject.ParamSpec) => void;
+            "notify::is-controlled-by-automation": (pspec: GObject.ParamSpec) => void;
+            "notify::is-immersive-mode-enabled": (pspec: GObject.ParamSpec) => void;
+            "notify::is-loading": (pspec: GObject.ParamSpec) => void;
+            "notify::is-muted": (pspec: GObject.ParamSpec) => void;
+            "notify::is-playing-audio": (pspec: GObject.ParamSpec) => void;
+            "notify::is-web-process-responsive": (pspec: GObject.ParamSpec) => void;
+            "notify::microphone-capture-state": (pspec: GObject.ParamSpec) => void;
+            "notify::network-session": (pspec: GObject.ParamSpec) => void;
+            "notify::page-id": (pspec: GObject.ParamSpec) => void;
+            "notify::related-view": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::theme-color": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::user-content-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::web-context": (pspec: GObject.ParamSpec) => void;
+            "notify::web-extension-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::website-policies": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                WebViewBase.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {
+        interface ConstructorProps extends WebViewBase.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
             automation_presentation_type: AutomationBrowsingContextPresentation;
             automationPresentationType: AutomationBrowsingContextPresentation;
             camera_capture_state: MediaCaptureState;
             cameraCaptureState: MediaCaptureState;
-            default_content_security_policy: string | null;
-            defaultContentSecurityPolicy: string | null;
+            default_content_security_policy: (string | null);
+            defaultContentSecurityPolicy: (string | null);
             display_capture_state: MediaCaptureState;
             displayCaptureState: MediaCaptureState;
             editable: boolean;
@@ -12396,8 +12583,8 @@ export namespace WebKit {
             microphoneCaptureState: MediaCaptureState;
             network_session: NetworkSession;
             networkSession: NetworkSession;
-            page_id: bigint | number;
-            pageId: bigint | number;
+            page_id: (bigint | number);
+            pageId: (bigint | number);
             related_view: WebView;
             relatedView: WebView;
             settings: Settings;
@@ -12420,13 +12607,13 @@ export namespace WebKit {
 
     /**
      * The central class of the WPE WebKit and WebKitGTK APIs.
-     *
+     * 
      * {@link WebKit.WebView} is the central class of the WPE WebKit and WebKitGTK
      * APIs. It is responsible for managing the drawing of the content and
      * forwarding of events. You can load any URI into the {@link WebKit.WebView} or
      * a data string. With {@link WebKit.Settings} you can control various aspects
      * of the rendering and loading of the content.
-     *
+     * 
      * Note that in WebKitGTK, {@link WebKit.WebView} is scrollable by itself, so
      * you don't need to embed it in a {@link Gtk.ScrolledWindow}.
      * @gir-type Class
@@ -12435,7 +12622,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebView>;
 
         // Properties
-
         /**
          * The {@link WebKit.AutomationBrowsingContextPresentation} of {@link WebKit.WebView}. This should only be used when
          * creating a new {@link WebKit.WebView} as a response to {@link WebKit.AutomationSession.SignalSignatures.create_web_view | WebKit.AutomationSession::create-web-view}
@@ -12446,6 +12632,7 @@ export namespace WebKit {
          * @default WebKit.AutomationBrowsingContextPresentation.WINDOW
          */
         get automation_presentation_type(): AutomationBrowsingContextPresentation;
+
         /**
          * The {@link WebKit.AutomationBrowsingContextPresentation} of {@link WebKit.WebView}. This should only be used when
          * creating a new {@link WebKit.WebView} as a response to {@link WebKit.AutomationSession.SignalSignatures.create_web_view | WebKit.AutomationSession::create-web-view}
@@ -12456,15 +12643,16 @@ export namespace WebKit {
          * @default WebKit.AutomationBrowsingContextPresentation.WINDOW
          */
         get automationPresentationType(): AutomationBrowsingContextPresentation;
+
         /**
          * Capture state of the camera device. Whenever the user grants a media-request sent by the web
          * page, requesting video capture capabilities (`navigator.mediaDevices.getUserMedia({video:
          * true})`) this property will be set to {@link WebKit.MediaCaptureState.ACTIVE}.
-         *
+         * 
          * The application can monitor this property and provide a visual indicator allowing to optionally
          * deactivate or mute the capture device by setting this property respectively to
          * {@link WebKit.MediaCaptureState.NONE} or {@link WebKit.MediaCaptureState.MUTED}.
-         *
+         * 
          * If the capture state of the device is set to {@link WebKit.MediaCaptureState.NONE} the web-page
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
@@ -12473,15 +12661,16 @@ export namespace WebKit {
          */
         get camera_capture_state(): MediaCaptureState;
         set camera_capture_state(val: MediaCaptureState);
+
         /**
          * Capture state of the camera device. Whenever the user grants a media-request sent by the web
          * page, requesting video capture capabilities (`navigator.mediaDevices.getUserMedia({video:
          * true})`) this property will be set to {@link WebKit.MediaCaptureState.ACTIVE}.
-         *
+         * 
          * The application can monitor this property and provide a visual indicator allowing to optionally
          * deactivate or mute the capture device by setting this property respectively to
          * {@link WebKit.MediaCaptureState.NONE} or {@link WebKit.MediaCaptureState.MUTED}.
-         *
+         * 
          * If the capture state of the device is set to {@link WebKit.MediaCaptureState.NONE} the web-page
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
@@ -12490,47 +12679,50 @@ export namespace WebKit {
          */
         get cameraCaptureState(): MediaCaptureState;
         set cameraCaptureState(val: MediaCaptureState);
+
         /**
          * The default Content-Security-Policy used by the webview as if it were set
          * by an HTTP header.
-         *
+         * 
          * This applies to all content loaded including through navigation or via the various
          * webkit_web_view_load_\* APIs. However do note that many WebKit APIs bypass
          * Content-Security-Policy in general such as {@link WebKit.UserContentManager} and
          * `webkit_web_view_run_javascript()`.
-         *
+         * 
          * Policies are additive so if a website sets its own policy it still applies
          * on top of the policy set here.
          * @since 2.38
          * @construct-only
          * @default null
          */
-        get default_content_security_policy(): string | null;
+        get default_content_security_policy(): (string | null);
+
         /**
          * The default Content-Security-Policy used by the webview as if it were set
          * by an HTTP header.
-         *
+         * 
          * This applies to all content loaded including through navigation or via the various
          * webkit_web_view_load_\* APIs. However do note that many WebKit APIs bypass
          * Content-Security-Policy in general such as {@link WebKit.UserContentManager} and
          * `webkit_web_view_run_javascript()`.
-         *
+         * 
          * Policies are additive so if a website sets its own policy it still applies
          * on top of the policy set here.
          * @since 2.38
          * @construct-only
          * @default null
          */
-        get defaultContentSecurityPolicy(): string | null;
+        get defaultContentSecurityPolicy(): (string | null);
+
         /**
          * Capture state of the display device. Whenever the user grants a media-request sent by the web
          * page, requesting screencasting capabilities (`navigator.mediaDevices.getDisplayMedia() this
          * property will be set to {@link WebKit.MediaCaptureState.ACTIVE}.
-         *
+         * 
          * The application can monitor this property and provide a visual indicator allowing to
          * optionally deactivate or mute the capture device by setting this property respectively to
          * {@link WebKit.MediaCaptureState.NONE} or {@link WebKit.MediaCaptureState.MUTED}.
-         *
+         * 
          * If the capture state of the device is set to {@link WebKit.MediaCaptureState.NONE} the web-page
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
@@ -12539,15 +12731,16 @@ export namespace WebKit {
          */
         get display_capture_state(): MediaCaptureState;
         set display_capture_state(val: MediaCaptureState);
+
         /**
          * Capture state of the display device. Whenever the user grants a media-request sent by the web
          * page, requesting screencasting capabilities (`navigator.mediaDevices.getDisplayMedia() this
          * property will be set to {@link WebKit.MediaCaptureState.ACTIVE}.
-         *
+         * 
          * The application can monitor this property and provide a visual indicator allowing to
          * optionally deactivate or mute the capture device by setting this property respectively to
          * {@link WebKit.MediaCaptureState.NONE} or {@link WebKit.MediaCaptureState.MUTED}.
-         *
+         * 
          * If the capture state of the device is set to {@link WebKit.MediaCaptureState.NONE} the web-page
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
@@ -12556,6 +12749,7 @@ export namespace WebKit {
          */
         get displayCaptureState(): MediaCaptureState;
         set displayCaptureState(val: MediaCaptureState);
+
         /**
          * Whether the pages loaded inside {@link WebKit.WebView} are editable. For more
          * information see `webkit_web_view_set_editable()`.
@@ -12564,6 +12758,7 @@ export namespace WebKit {
          */
         get editable(): boolean;
         set editable(val: boolean);
+
         /**
          * An estimate of the percent completion for the current loading operation.
          * This value will range from 0.0 to 1.0 and, once a load completes,
@@ -12576,6 +12771,7 @@ export namespace WebKit {
          * @default 0
          */
         get estimated_load_progress(): number;
+
         /**
          * An estimate of the percent completion for the current loading operation.
          * This value will range from 0.0 to 1.0 and, once a load completes,
@@ -12588,19 +12784,21 @@ export namespace WebKit {
          * @default 0
          */
         get estimatedLoadProgress(): number;
+
         /**
          * The favicon currently associated to the {@link WebKit.WebView}.
          * See `webkit_web_view_get_favicon()` for more details.
          * @read-only
          */
         get favicon(): Gdk.Texture;
+
         /**
          * Whether the {@link WebKit.WebView} is controlled by automation tools (e.g. WebDriver, Selenium). This is
          * required for views returned as a response to {@link WebKit.AutomationSession.SignalSignatures.create_web_view | WebKit.AutomationSession::create-web-view} signal,
          * alongside any view you want to control during an automation session.
-         *
+         * 
          * As a {@link GObject.ParamFlags.CONSTRUCT_ONLY}, you need to set it during construction and it can't be modified.
-         *
+         * 
          * If {@link WebKit.WebView.related_view} is also passed during construction, {@link WebKit.WebView.is_controlled_by_automation}
          * ignores its own parameter and inherits directly from the related view {@link WebKit.WebView.is_controlled_by_automation}
          * property. This is the recommended way when creating new views as a response to the {@link WebKit.WebView.SignalSignatures.create | WebKit.WebView::create}
@@ -12610,13 +12808,14 @@ export namespace WebKit {
          * @default false
          */
         get is_controlled_by_automation(): boolean;
+
         /**
          * Whether the {@link WebKit.WebView} is controlled by automation tools (e.g. WebDriver, Selenium). This is
          * required for views returned as a response to {@link WebKit.AutomationSession.SignalSignatures.create_web_view | WebKit.AutomationSession::create-web-view} signal,
          * alongside any view you want to control during an automation session.
-         *
+         * 
          * As a {@link GObject.ParamFlags.CONSTRUCT_ONLY}, you need to set it during construction and it can't be modified.
-         *
+         * 
          * If {@link WebKit.WebView.related_view} is also passed during construction, {@link WebKit.WebView.is_controlled_by_automation}
          * ignores its own parameter and inherits directly from the related view {@link WebKit.WebView.is_controlled_by_automation}
          * property. This is the recommended way when creating new views as a response to the {@link WebKit.WebView.SignalSignatures.create | WebKit.WebView::create}
@@ -12626,6 +12825,7 @@ export namespace WebKit {
          * @default false
          */
         get isControlledByAutomation(): boolean;
+
         /**
          * Whether the {@link WebKit.WebView} is in immersive mode.
          * @since 2.52
@@ -12633,6 +12833,7 @@ export namespace WebKit {
          * @default false
          */
         get is_immersive_mode_enabled(): boolean;
+
         /**
          * Whether the {@link WebKit.WebView} is in immersive mode.
          * @since 2.52
@@ -12640,6 +12841,7 @@ export namespace WebKit {
          * @default false
          */
         get isImmersiveModeEnabled(): boolean;
+
         /**
          * Whether the {@link WebKit.WebView} is currently loading a page. This property becomes
          * `true` as soon as a new load operation is requested and before the
@@ -12651,6 +12853,7 @@ export namespace WebKit {
          * @default false
          */
         get is_loading(): boolean;
+
         /**
          * Whether the {@link WebKit.WebView} is currently loading a page. This property becomes
          * `true` as soon as a new load operation is requested and before the
@@ -12662,6 +12865,7 @@ export namespace WebKit {
          * @default false
          */
         get isLoading(): boolean;
+
         /**
          * Whether the {@link WebKit.WebView} audio is muted. When `true`, audio is silenced.
          * It may still be playing, i.e. {@link WebKit.WebView.is_playing_audio} may be `true`.
@@ -12670,6 +12874,7 @@ export namespace WebKit {
          */
         get is_muted(): boolean;
         set is_muted(val: boolean);
+
         /**
          * Whether the {@link WebKit.WebView} audio is muted. When `true`, audio is silenced.
          * It may still be playing, i.e. {@link WebKit.WebView.is_playing_audio} may be `true`.
@@ -12678,6 +12883,7 @@ export namespace WebKit {
          */
         get isMuted(): boolean;
         set isMuted(val: boolean);
+
         /**
          * Whether the {@link WebKit.WebView} is currently playing audio from a page.
          * This property becomes `true` as soon as web content starts playing any
@@ -12688,6 +12894,7 @@ export namespace WebKit {
          * @default false
          */
         get is_playing_audio(): boolean;
+
         /**
          * Whether the {@link WebKit.WebView} is currently playing audio from a page.
          * This property becomes `true` as soon as web content starts playing any
@@ -12698,6 +12905,7 @@ export namespace WebKit {
          * @default false
          */
         get isPlayingAudio(): boolean;
+
         /**
          * Whether the web process currently associated to the {@link WebKit.WebView} is responsive.
          * @since 2.34
@@ -12705,6 +12913,7 @@ export namespace WebKit {
          * @default true
          */
         get is_web_process_responsive(): boolean;
+
         /**
          * Whether the web process currently associated to the {@link WebKit.WebView} is responsive.
          * @since 2.34
@@ -12712,15 +12921,16 @@ export namespace WebKit {
          * @default true
          */
         get isWebProcessResponsive(): boolean;
+
         /**
          * Capture state of the microphone device. Whenever the user grants a media-request sent by the web
          * page, requesting audio capture capabilities (`navigator.mediaDevices.getUserMedia({audio:
          * true})`) this property will be set to {@link WebKit.MediaCaptureState.ACTIVE}.
-         *
+         * 
          * The application can monitor this property and provide a visual indicator allowing to
          * optionally deactivate or mute the capture device by setting this property respectively to
          * {@link WebKit.MediaCaptureState.NONE} or {@link WebKit.MediaCaptureState.MUTED}.
-         *
+         * 
          * If the capture state of the device is set to {@link WebKit.MediaCaptureState.NONE} the web-page
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
@@ -12729,15 +12939,16 @@ export namespace WebKit {
          */
         get microphone_capture_state(): MediaCaptureState;
         set microphone_capture_state(val: MediaCaptureState);
+
         /**
          * Capture state of the microphone device. Whenever the user grants a media-request sent by the web
          * page, requesting audio capture capabilities (`navigator.mediaDevices.getUserMedia({audio:
          * true})`) this property will be set to {@link WebKit.MediaCaptureState.ACTIVE}.
-         *
+         * 
          * The application can monitor this property and provide a visual indicator allowing to
          * optionally deactivate or mute the capture device by setting this property respectively to
          * {@link WebKit.MediaCaptureState.NONE} or {@link WebKit.MediaCaptureState.MUTED}.
-         *
+         * 
          * If the capture state of the device is set to {@link WebKit.MediaCaptureState.NONE} the web-page
          * can still re-request the permission to the user. Permission desision caching is left to the
          * application.
@@ -12746,18 +12957,21 @@ export namespace WebKit {
          */
         get microphoneCaptureState(): MediaCaptureState;
         set microphoneCaptureState(val: MediaCaptureState);
+
         /**
          * The {@link WebKit.NetworkSession} of the view
          * @since 2.40
          * @construct-only
          */
         get network_session(): NetworkSession;
+
         /**
          * The {@link WebKit.NetworkSession} of the view
          * @since 2.40
          * @construct-only
          */
         get networkSession(): NetworkSession;
+
         /**
          * The identifier of the `WebKitWebPage` corresponding to the {@link WebKit.WebView}.
          * @since 2.28
@@ -12765,6 +12979,7 @@ export namespace WebKit {
          * @default 0
          */
         get page_id(): number;
+
         /**
          * The identifier of the `WebKitWebPage` corresponding to the {@link WebKit.WebView}.
          * @since 2.28
@@ -12772,6 +12987,7 @@ export namespace WebKit {
          * @default 0
          */
         get pageId(): number;
+
         /**
          * The related {@link WebKit.WebView} used when creating the view to share the
          * same web process and network session. This property is not readable
@@ -12780,6 +12996,7 @@ export namespace WebKit {
          * @construct-only
          */
         set related_view(val: WebView);
+
         /**
          * The related {@link WebKit.WebView} used when creating the view to share the
          * same web process and network session. This property is not readable
@@ -12788,24 +13005,28 @@ export namespace WebKit {
          * @construct-only
          */
         set relatedView(val: WebView);
+
         /**
          * The {@link WebKit.Settings} of the view.
          * @since 2.6
          * @write-only
          */
         set settings(val: Settings);
+
         /**
          * The theme color of the WebView's current page.
          * @since 2.50
          * @read-only
          */
         get theme_color(): Gdk.RGBA;
+
         /**
          * The theme color of the WebView's current page.
          * @since 2.50
          * @read-only
          */
         get themeColor(): Gdk.RGBA;
+
         /**
          * The main frame document title of this {@link WebKit.WebView}. If
          * the title has not been received yet, it will be `null`.
@@ -12813,6 +13034,7 @@ export namespace WebKit {
          * @default null
          */
         get title(): string;
+
         /**
          * The current active URI of the {@link WebKit.WebView}.
          * See `webkit_web_view_get_uri()` for more details.
@@ -12820,34 +13042,39 @@ export namespace WebKit {
          * @default null
          */
         get uri(): string;
+
         /**
          * The {@link WebKit.UserContentManager} of the view.
          * @since 2.6
          * @construct-only
          */
         get user_content_manager(): UserContentManager;
+
         /**
          * The {@link WebKit.UserContentManager} of the view.
          * @since 2.6
          * @construct-only
          */
         get userContentManager(): UserContentManager;
+
         /**
          * The {@link WebKit.WebContext} of the view.
          * @construct-only
          */
         get web_context(): WebContext;
+
         /**
          * The {@link WebKit.WebContext} of the view.
          * @construct-only
          */
         get webContext(): WebContext;
+
         /**
          * This configures `web_view` to treat the content as a WebExtension.
-         *
+         * 
          * Note that this refers to the web standard [WebExtensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
          * and not WebKitWebExtensions.
-         *
+         * 
          * In practice this limits the Content-Security-Policies that are allowed to be set. Some details can be found in
          * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
          * @since 2.38
@@ -12855,12 +13082,13 @@ export namespace WebKit {
          * @default WebKit.WebExtensionMode.NONE
          */
         get web_extension_mode(): WebExtensionMode;
+
         /**
          * This configures `web_view` to treat the content as a WebExtension.
-         *
+         * 
          * Note that this refers to the web standard [WebExtensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
          * and not WebKitWebExtensions.
-         *
+         * 
          * In practice this limits the Content-Security-Policies that are allowed to be set. Some details can be found in
          * [Chrome's documentation](https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/#content-security-policy).
          * @since 2.38
@@ -12868,18 +13096,21 @@ export namespace WebKit {
          * @default WebKit.WebExtensionMode.NONE
          */
         get webExtensionMode(): WebExtensionMode;
+
         /**
          * The {@link WebKit.WebsitePolicies} for the view.
          * @since 2.30
          * @construct-only
          */
         get website_policies(): WebsitePolicies;
+
         /**
          * The {@link WebKit.WebsitePolicies} for the view.
          * @since 2.30
          * @construct-only
          */
         get websitePolicies(): WebsitePolicies;
+
         /**
          * The zoom level of the {@link WebKit.WebView} content.
          * See `webkit_web_view_set_zoom_level()` for more details.
@@ -12887,6 +13118,7 @@ export namespace WebKit {
          */
         get zoom_level(): number;
         set zoom_level(val: number);
+
         /**
          * The zoom level of the {@link WebKit.WebView} content.
          * See `webkit_web_view_set_zoom_level()` for more details.
@@ -12905,179 +13137,258 @@ export namespace WebKit {
         $signals: WebView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): WebView;
+        static ["new"](): WebView;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WebView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param request
+         * @param request 
          * @virtual
          */
         vfunc_authenticate(request: AuthenticationRequest): boolean;
+
         /**
          * @virtual
          */
         vfunc_close(): void;
+
         /**
-         * @param context_menu
-         * @param hit_test_result
+         * @param context_menu 
+         * @param hit_test_result 
          * @virtual
          */
         vfunc_context_menu(context_menu: ContextMenu, hit_test_result: HitTestResult): boolean;
+
         /**
          * @virtual
          */
         vfunc_context_menu_dismissed(): void;
+
         /**
-         * @param decision
-         * @param type
+         * @param decision 
+         * @param type 
          * @virtual
          */
         vfunc_decide_policy(decision: PolicyDecision, type: PolicyDecisionType): boolean;
+
         /**
          * @virtual
          */
         vfunc_enter_fullscreen(): boolean;
+
         /**
-         * @param event
+         * @param event 
          * @virtual
          */
         vfunc_insecure_content_detected(event: InsecureContentEvent): void;
+
         /**
          * @virtual
          */
         vfunc_leave_fullscreen(): boolean;
+
         /**
-         * @param load_event
+         * @param load_event 
          * @virtual
          */
         vfunc_load_changed(load_event: LoadEvent): void;
+
         /**
-         * @param load_event
-         * @param failing_uri
-         * @param error
+         * @param load_event 
+         * @param failing_uri 
+         * @param error 
          * @virtual
          */
         vfunc_load_failed(load_event: LoadEvent, failing_uri: string, error: GLib.Error): boolean;
+
         /**
-         * @param failing_uri
-         * @param certificate
-         * @param errors
+         * @param failing_uri 
+         * @param certificate 
+         * @param errors 
          * @virtual
          */
-        vfunc_load_failed_with_tls_errors(
-            failing_uri: string,
-            certificate: Gio.TlsCertificate,
-            errors: Gio.TlsCertificateFlags,
-        ): boolean;
+        vfunc_load_failed_with_tls_errors(failing_uri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean;
+
         /**
-         * @param hit_test_result
-         * @param modifiers
+         * @param hit_test_result 
+         * @param modifiers 
          * @virtual
          */
         vfunc_mouse_target_changed(hit_test_result: HitTestResult, modifiers: number): void;
+
         /**
-         * @param permission_request
+         * @param permission_request 
          * @virtual
          */
         vfunc_permission_request(permission_request: PermissionRequest): boolean;
+
         /**
-         * @param print_operation
+         * @param print_operation 
          * @virtual
          */
         vfunc_print(print_operation: PrintOperation): boolean;
+
         /**
-         * @param query
+         * @param query 
          * @virtual
          */
         vfunc_query_permission_state(query: PermissionStateQuery): boolean;
+
         /**
          * @virtual
          */
         vfunc_ready_to_show(): void;
+
         /**
-         * @param resource
-         * @param request
+         * @param resource 
+         * @param request 
          * @virtual
          */
         vfunc_resource_load_started(resource: WebResource, request: URIRequest): void;
+
         /**
          * @virtual
          */
         vfunc_run_as_modal(): void;
+
         /**
-         * @param request
+         * @param request 
          * @virtual
          */
         vfunc_run_color_chooser(request: ColorChooserRequest): boolean;
+
         /**
-         * @param request
+         * @param request 
          * @virtual
          */
         vfunc_run_file_chooser(request: FileChooserRequest): boolean;
+
         /**
-         * @param dialog
+         * @param dialog 
          * @virtual
          */
         vfunc_script_dialog(dialog: ScriptDialog): boolean;
+
         /**
-         * @param notification
+         * @param notification 
          * @virtual
          */
         vfunc_show_notification(notification: Notification): boolean;
+
         /**
-         * @param menu
-         * @param rectangle
+         * @param menu 
+         * @param rectangle 
          * @virtual
          */
         vfunc_show_option_menu(menu: OptionMenu, rectangle: Gdk.Rectangle): boolean;
+
         /**
-         * @param request
+         * @param request 
          * @virtual
          */
         vfunc_submit_form(request: FormSubmissionRequest): void;
+
         /**
-         * @param message
+         * @param message 
          * @virtual
          */
         vfunc_user_message_received(message: UserMessage): boolean;
+
         /**
          * @virtual
          */
         vfunc_web_process_crashed(): boolean;
+
         /**
-         * @param reason
+         * @param reason 
          * @virtual
          */
         vfunc_web_process_terminated(reason: WebProcessTerminationReason): void;
 
         // Methods
+        /**
+         * Asynchronously call `body` with `arguments` in the script world with name `world_name` of the main frame current context in `web_view`.
+         * The `arguments` values must be one of the following types, or contain only the following GVariant types: number, string and dictionary.
+         * The result of the operation can be a Promise that will be properly passed to the callback.
+         * If `world_name` is `null`, the default world is used. Any value that is not `null` is a distin ct world.
+         * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
+         * When not provided, the document URL is used.
+         * 
+         * Note that if {@link WebKit.Settings.enable_javascript} is `false`, this method will do nothing.
+         * If you want to use this method but still prevent web content from executing its own
+         * JavaScript, then use {@link WebKit.Settings.enable_javascript_markup}.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_web_view_call_async_javascript_function_finish()` to get the result of the operation.
+         * 
+         * This is an example that shows how to pass arguments to a JS function that returns a Promise
+         * that resolves with the passed argument:
+         * 
+         * ```c
+         * static void
+         * web_view_javascript_finished (GObject      *object,
+         *                               GAsyncResult *result,
+         *                               gpointer      user_data)
+         * {
+         *     JSCValue               *value;
+         *     GError                 *error = NULL;
+         * 
+         *     value = webkit_web_view_call_async_javascript_function_finish (WEBKIT_WEB_VIEW (object), result, &error);
+         *     if (!value) {
+         *         g_warning ("Error running javascript: %s", error->message);
+         *         g_error_free (error);
+         *         return;
+         *     }
+         * 
+         *     if (jsc_value_is_number (value)) {
+         *         gint32        int_value = jsc_value_to_string (value);
+         *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
+         *         if (exception)
+         *             g_warning ("Error running javascript: %s", jsc_exception_get_message (exception));
+         *         else
+         *             g_print ("Script result: %d\n", int_value);
+         *         g_free (str_value);
+         *     } else {
+         *         g_warning ("Error running javascript: unexpected return value");
+         *     }
+         *     g_object_unref (value);
+         * }
+         * 
+         * static void
+         * web_view_evaluate_promise (WebKitWebView *web_view)
+         * {
+         *     GVariantDict dict;
+         *     g_variant_dict_init (&dict, NULL);
+         *     g_variant_dict_insert (&dict, "count", "u", 42);
+         *     GVariant *args = g_variant_dict_end (&dict);
+         *     const gchar *body = "return new Promise((resolve) => { resolve(count); });";
+         *     webkit_web_view_call_async_javascript_function (web_view, body, -1, arguments, NULL, NULL, NULL, web_view_javascript_finished, NULL);
+         * }
+         * ```
+         * @param body the function body
+         * @param length length of `body`, or -1 if `body` is a nul-terminated string
+         * @param _arguments a {@link GLib.Variant} with format `a{sv}` storing the function arguments, or `null`
+         * @param world_name the name of a `WebKitScriptWorld` or `null` to use the default
+         * @param source_uri the source URI
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         */
+        call_async_javascript_function(body: string, length: (bigint | number), _arguments: (GLib.Variant | null), world_name: (string | null), source_uri: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<JavaScriptCore.Value>;
 
         /**
          * Asynchronously call `body` with `arguments` in the script world with name `world_name` of the main frame current context in `web_view`.
@@ -13086,17 +13397,17 @@ export namespace WebKit {
          * If `world_name` is `null`, the default world is used. Any value that is not `null` is a distin ct world.
          * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
          * When not provided, the document URL is used.
-         *
+         * 
          * Note that if {@link WebKit.Settings.enable_javascript} is `false`, this method will do nothing.
          * If you want to use this method but still prevent web content from executing its own
          * JavaScript, then use {@link WebKit.Settings.enable_javascript_markup}.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_web_view_call_async_javascript_function_finish()` to get the result of the operation.
-         *
+         * 
          * This is an example that shows how to pass arguments to a JS function that returns a Promise
          * that resolves with the passed argument:
-         *
+         * 
          * ```c
          * static void
          * web_view_javascript_finished (GObject      *object,
@@ -13105,14 +13416,14 @@ export namespace WebKit {
          * {
          *     JSCValue               *value;
          *     GError                 *error = NULL;
-         *
+         * 
          *     value = webkit_web_view_call_async_javascript_function_finish (WEBKIT_WEB_VIEW (object), result, &error);
          *     if (!value) {
          *         g_warning ("Error running javascript: %s", error->message);
          *         g_error_free (error);
          *         return;
          *     }
-         *
+         * 
          *     if (jsc_value_is_number (value)) {
          *         gint32        int_value = jsc_value_to_string (value);
          *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
@@ -13126,81 +13437,7 @@ export namespace WebKit {
          *     }
          *     g_object_unref (value);
          * }
-         *
-         * static void
-         * web_view_evaluate_promise (WebKitWebView *web_view)
-         * {
-         *     GVariantDict dict;
-         *     g_variant_dict_init (&dict, NULL);
-         *     g_variant_dict_insert (&dict, "count", "u", 42);
-         *     GVariant *args = g_variant_dict_end (&dict);
-         *     const gchar *body = "return new Promise((resolve) => { resolve(count); });";
-         *     webkit_web_view_call_async_javascript_function (web_view, body, -1, arguments, NULL, NULL, NULL, web_view_javascript_finished, NULL);
-         * }
-         * ```
-         * @param body the function body
-         * @param length length of `body`, or -1 if `body` is a nul-terminated string
-         * @param _arguments a {@link GLib.Variant} with format `a{sv}` storing the function arguments, or `null`
-         * @param world_name the name of a `WebKitScriptWorld` or `null` to use the default
-         * @param source_uri the source URI
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         */
-        call_async_javascript_function(
-            body: string,
-            length: bigint | number,
-            _arguments: GLib.Variant | null,
-            world_name: string | null,
-            source_uri: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<JavaScriptCore.Value>;
-        /**
-         * Asynchronously call `body` with `arguments` in the script world with name `world_name` of the main frame current context in `web_view`.
-         * The `arguments` values must be one of the following types, or contain only the following GVariant types: number, string and dictionary.
-         * The result of the operation can be a Promise that will be properly passed to the callback.
-         * If `world_name` is `null`, the default world is used. Any value that is not `null` is a distin ct world.
-         * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
-         * When not provided, the document URL is used.
-         *
-         * Note that if {@link WebKit.Settings.enable_javascript} is `false`, this method will do nothing.
-         * If you want to use this method but still prevent web content from executing its own
-         * JavaScript, then use {@link WebKit.Settings.enable_javascript_markup}.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_web_view_call_async_javascript_function_finish()` to get the result of the operation.
-         *
-         * This is an example that shows how to pass arguments to a JS function that returns a Promise
-         * that resolves with the passed argument:
-         *
-         * ```c
-         * static void
-         * web_view_javascript_finished (GObject      *object,
-         *                               GAsyncResult *result,
-         *                               gpointer      user_data)
-         * {
-         *     JSCValue               *value;
-         *     GError                 *error = NULL;
-         *
-         *     value = webkit_web_view_call_async_javascript_function_finish (WEBKIT_WEB_VIEW (object), result, &error);
-         *     if (!value) {
-         *         g_warning ("Error running javascript: %s", error->message);
-         *         g_error_free (error);
-         *         return;
-         *     }
-         *
-         *     if (jsc_value_is_number (value)) {
-         *         gint32        int_value = jsc_value_to_string (value);
-         *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
-         *         if (exception)
-         *             g_warning ("Error running javascript: %s", jsc_exception_get_message (exception));
-         *         else
-         *             g_print ("Script result: %d\n", int_value);
-         *         g_free (str_value);
-         *     } else {
-         *         g_warning ("Error running javascript: unexpected return value");
-         *     }
-         *     g_object_unref (value);
-         * }
-         *
+         * 
          * static void
          * web_view_evaluate_promise (WebKitWebView *web_view)
          * {
@@ -13220,15 +13457,8 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the script finished
          */
-        call_async_javascript_function(
-            body: string,
-            length: bigint | number,
-            _arguments: GLib.Variant | null,
-            world_name: string | null,
-            source_uri: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        call_async_javascript_function(body: string, length: (bigint | number), _arguments: (GLib.Variant | null), world_name: (string | null), source_uri: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously call `body` with `arguments` in the script world with name `world_name` of the main frame current context in `web_view`.
          * The `arguments` values must be one of the following types, or contain only the following GVariant types: number, string and dictionary.
@@ -13236,17 +13466,17 @@ export namespace WebKit {
          * If `world_name` is `null`, the default world is used. Any value that is not `null` is a distin ct world.
          * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
          * When not provided, the document URL is used.
-         *
+         * 
          * Note that if {@link WebKit.Settings.enable_javascript} is `false`, this method will do nothing.
          * If you want to use this method but still prevent web content from executing its own
          * JavaScript, then use {@link WebKit.Settings.enable_javascript_markup}.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_web_view_call_async_javascript_function_finish()` to get the result of the operation.
-         *
+         * 
          * This is an example that shows how to pass arguments to a JS function that returns a Promise
          * that resolves with the passed argument:
-         *
+         * 
          * ```c
          * static void
          * web_view_javascript_finished (GObject      *object,
@@ -13255,14 +13485,14 @@ export namespace WebKit {
          * {
          *     JSCValue               *value;
          *     GError                 *error = NULL;
-         *
+         * 
          *     value = webkit_web_view_call_async_javascript_function_finish (WEBKIT_WEB_VIEW (object), result, &error);
          *     if (!value) {
          *         g_warning ("Error running javascript: %s", error->message);
          *         g_error_free (error);
          *         return;
          *     }
-         *
+         * 
          *     if (jsc_value_is_number (value)) {
          *         gint32        int_value = jsc_value_to_string (value);
          *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
@@ -13276,7 +13506,7 @@ export namespace WebKit {
          *     }
          *     g_object_unref (value);
          * }
-         *
+         * 
          * static void
          * web_view_evaluate_promise (WebKitWebView *web_view)
          * {
@@ -13296,102 +13526,96 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the script finished
          */
-        call_async_javascript_function(
-            body: string,
-            length: bigint | number,
-            _arguments: GLib.Variant | null,
-            world_name: string | null,
-            source_uri: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<JavaScriptCore.Value> | void;
+        call_async_javascript_function(body: string, length: (bigint | number), _arguments: (GLib.Variant | null), world_name: (string | null), source_uri: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<JavaScriptCore.Value> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_web_view_call_async_javascript_function()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link JavaScriptCore.Value} with the return value of the async function    or `null` in case of error
          */
         call_async_javascript_function_finish(result: Gio.AsyncResult): JavaScriptCore.Value;
+
         /**
          * Asynchronously check if it is possible to execute the given editing command.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_web_view_can_execute_editing_command_finish()` to get the result of the operation.
          * @param command the command to check
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        can_execute_editing_command(command: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        can_execute_editing_command(command: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously check if it is possible to execute the given editing command.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_web_view_can_execute_editing_command_finish()` to get the result of the operation.
-         * @param command the command to check
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        can_execute_editing_command(
-            command: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously check if it is possible to execute the given editing command.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_web_view_can_execute_editing_command_finish()` to get the result of the operation.
          * @param command the command to check
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        can_execute_editing_command(
-            command: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        can_execute_editing_command(command: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously check if it is possible to execute the given editing command.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_web_view_can_execute_editing_command_finish()` to get the result of the operation.
+         * @param command the command to check
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        can_execute_editing_command(command: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_web_view_can_execute_editing_command()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the editing command can be executed or `false` otherwise
          */
         can_execute_editing_command_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Determines whether `web_view` has a previous history item.
          * @returns `true` if able to move back or `false` otherwise.
          */
         can_go_back(): boolean;
+
         /**
          * Determines whether `web_view` has a next history item.
          * @returns `true` if able to move forward or `false` otherwise.
          */
         can_go_forward(): boolean;
+
         /**
          * Whether or not a MIME type can be displayed in `web_view`.
          * @param mime_type a MIME type
          * @returns `true` if the MIME type `mime_type` can be displayed or `false` otherwise
          */
         can_show_mime_type(mime_type: string): boolean;
+
         /**
          * Requests downloading of the specified URI string for `web_view`.
          * @param uri the URI to download
          * @returns a new {@link WebKit.Download} representing    the download operation.
          */
         download_uri(uri: string): Download;
+
         /**
          * Asynchronously evaluate `script` in the script world with name `world_name` of the main frame current context in `web_view`.
          * If `world_name` is `null`, the default world is used. Any value that is not `null` is a distinct world.
          * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
          * When not provided, the document URL is used.
-         *
+         * 
          * Note that if {@link WebKit.Settings.enable_javascript} is `false`, this method will do nothing.
          * If you want to use this method but still prevent web content from executing its own
          * JavaScript, then use {@link WebKit.Settings.enable_javascript_markup}.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_web_view_evaluate_javascript_finish()` to get the result of the operation.
-         *
+         * 
          * This is an example of using `webkit_web_view_evaluate_javascript()` with a script returning
          * a string:
-         *
+         * 
          * ```c
          * static void
          * web_view_javascript_finished (GObject      *object,
@@ -13400,14 +13624,14 @@ export namespace WebKit {
          * {
          *     JSCValue               *value;
          *     GError                 *error = NULL;
-         *
+         * 
          *     value = webkit_web_view_evaluate_javascript_finish (WEBKIT_WEB_VIEW (object), result, &error);
          *     if (!value) {
          *         g_warning ("Error running javascript: %s", error->message);
          *         g_error_free (error);
          *         return;
          *     }
-         *
+         * 
          *     if (jsc_value_is_string (value)) {
          *         gchar        *str_value = jsc_value_to_string (value);
          *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
@@ -13421,7 +13645,7 @@ export namespace WebKit {
          *     }
          *     g_object_unref (value);
          * }
-         *
+         * 
          * static void
          * web_view_get_link_url (WebKitWebView *web_view,
          *                        const gchar   *link_id)
@@ -13437,29 +13661,24 @@ export namespace WebKit {
          * @param source_uri the source URI
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        evaluate_javascript(
-            script: string,
-            length: bigint | number,
-            world_name: string | null,
-            source_uri: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<JavaScriptCore.Value>;
+        evaluate_javascript(script: string, length: (bigint | number), world_name: (string | null), source_uri: (string | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<JavaScriptCore.Value>;
+
         /**
          * Asynchronously evaluate `script` in the script world with name `world_name` of the main frame current context in `web_view`.
          * If `world_name` is `null`, the default world is used. Any value that is not `null` is a distinct world.
          * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
          * When not provided, the document URL is used.
-         *
+         * 
          * Note that if {@link WebKit.Settings.enable_javascript} is `false`, this method will do nothing.
          * If you want to use this method but still prevent web content from executing its own
          * JavaScript, then use {@link WebKit.Settings.enable_javascript_markup}.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_web_view_evaluate_javascript_finish()` to get the result of the operation.
-         *
+         * 
          * This is an example of using `webkit_web_view_evaluate_javascript()` with a script returning
          * a string:
-         *
+         * 
          * ```c
          * static void
          * web_view_javascript_finished (GObject      *object,
@@ -13468,14 +13687,14 @@ export namespace WebKit {
          * {
          *     JSCValue               *value;
          *     GError                 *error = NULL;
-         *
+         * 
          *     value = webkit_web_view_evaluate_javascript_finish (WEBKIT_WEB_VIEW (object), result, &error);
          *     if (!value) {
          *         g_warning ("Error running javascript: %s", error->message);
          *         g_error_free (error);
          *         return;
          *     }
-         *
+         * 
          *     if (jsc_value_is_string (value)) {
          *         gchar        *str_value = jsc_value_to_string (value);
          *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
@@ -13489,77 +13708,7 @@ export namespace WebKit {
          *     }
          *     g_object_unref (value);
          * }
-         *
-         * static void
-         * web_view_get_link_url (WebKitWebView *web_view,
-         *                        const gchar   *link_id)
-         * {
-         *     gchar *script = g_strdup_printf ("window.document.getElementById('%s').href;", link_id);
-         *     webkit_web_view_evaluate_javascript (web_view, script, -1, NULL, NULL, NULL, web_view_javascript_finished, NULL);
-         *     g_free (script);
-         * }
-         * ```
-         * @param script the script to evaluate
-         * @param length length of `script`, or -1 if `script` is a nul-terminated string
-         * @param world_name the name of a `WebKitScriptWorld` or `null` to use the default
-         * @param source_uri the source URI
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the script finished
-         */
-        evaluate_javascript(
-            script: string,
-            length: bigint | number,
-            world_name: string | null,
-            source_uri: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously evaluate `script` in the script world with name `world_name` of the main frame current context in `web_view`.
-         * If `world_name` is `null`, the default world is used. Any value that is not `null` is a distinct world.
-         * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
-         * When not provided, the document URL is used.
-         *
-         * Note that if {@link WebKit.Settings.enable_javascript} is `false`, this method will do nothing.
-         * If you want to use this method but still prevent web content from executing its own
-         * JavaScript, then use {@link WebKit.Settings.enable_javascript_markup}.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_web_view_evaluate_javascript_finish()` to get the result of the operation.
-         *
-         * This is an example of using `webkit_web_view_evaluate_javascript()` with a script returning
-         * a string:
-         *
-         * ```c
-         * static void
-         * web_view_javascript_finished (GObject      *object,
-         *                               GAsyncResult *result,
-         *                               gpointer      user_data)
-         * {
-         *     JSCValue               *value;
-         *     GError                 *error = NULL;
-         *
-         *     value = webkit_web_view_evaluate_javascript_finish (WEBKIT_WEB_VIEW (object), result, &error);
-         *     if (!value) {
-         *         g_warning ("Error running javascript: %s", error->message);
-         *         g_error_free (error);
-         *         return;
-         *     }
-         *
-         *     if (jsc_value_is_string (value)) {
-         *         gchar        *str_value = jsc_value_to_string (value);
-         *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
-         *         if (exception)
-         *             g_warning ("Error running javascript: %s", jsc_exception_get_message (exception));
-         *         else
-         *             g_print ("Script result: %s\n", str_value);
-         *         g_free (str_value);
-         *     } else {
-         *         g_warning ("Error running javascript: unexpected return value");
-         *     }
-         *     g_object_unref (value);
-         * }
-         *
+         * 
          * static void
          * web_view_get_link_url (WebKitWebView *web_view,
          *                        const gchar   *link_id)
@@ -13576,31 +13725,91 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the script finished
          */
-        evaluate_javascript(
-            script: string,
-            length: bigint | number,
-            world_name: string | null,
-            source_uri: string | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<JavaScriptCore.Value> | void;
+        evaluate_javascript(script: string, length: (bigint | number), world_name: (string | null), source_uri: (string | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously evaluate `script` in the script world with name `world_name` of the main frame current context in `web_view`.
+         * If `world_name` is `null`, the default world is used. Any value that is not `null` is a distinct world.
+         * The `source_uri` will be shown in exceptions and doesn't affect the behavior of the script.
+         * When not provided, the document URL is used.
+         * 
+         * Note that if {@link WebKit.Settings.enable_javascript} is `false`, this method will do nothing.
+         * If you want to use this method but still prevent web content from executing its own
+         * JavaScript, then use {@link WebKit.Settings.enable_javascript_markup}.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_web_view_evaluate_javascript_finish()` to get the result of the operation.
+         * 
+         * This is an example of using `webkit_web_view_evaluate_javascript()` with a script returning
+         * a string:
+         * 
+         * ```c
+         * static void
+         * web_view_javascript_finished (GObject      *object,
+         *                               GAsyncResult *result,
+         *                               gpointer      user_data)
+         * {
+         *     JSCValue               *value;
+         *     GError                 *error = NULL;
+         * 
+         *     value = webkit_web_view_evaluate_javascript_finish (WEBKIT_WEB_VIEW (object), result, &error);
+         *     if (!value) {
+         *         g_warning ("Error running javascript: %s", error->message);
+         *         g_error_free (error);
+         *         return;
+         *     }
+         * 
+         *     if (jsc_value_is_string (value)) {
+         *         gchar        *str_value = jsc_value_to_string (value);
+         *         JSCException *exception = jsc_context_get_exception (jsc_value_get_context (value));
+         *         if (exception)
+         *             g_warning ("Error running javascript: %s", jsc_exception_get_message (exception));
+         *         else
+         *             g_print ("Script result: %s\n", str_value);
+         *         g_free (str_value);
+         *     } else {
+         *         g_warning ("Error running javascript: unexpected return value");
+         *     }
+         *     g_object_unref (value);
+         * }
+         * 
+         * static void
+         * web_view_get_link_url (WebKitWebView *web_view,
+         *                        const gchar   *link_id)
+         * {
+         *     gchar *script = g_strdup_printf ("window.document.getElementById('%s').href;", link_id);
+         *     webkit_web_view_evaluate_javascript (web_view, script, -1, NULL, NULL, NULL, web_view_javascript_finished, NULL);
+         *     g_free (script);
+         * }
+         * ```
+         * @param script the script to evaluate
+         * @param length length of `script`, or -1 if `script` is a nul-terminated string
+         * @param world_name the name of a `WebKitScriptWorld` or `null` to use the default
+         * @param source_uri the source URI
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the script finished
+         */
+        evaluate_javascript(script: string, length: (bigint | number), world_name: (string | null), source_uri: (string | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<JavaScriptCore.Value> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_web_view_evaluate_javascript()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link JavaScriptCore.Value} with the result of the last executed statement in script    or `null` in case of error
          */
         evaluate_javascript_finish(result: Gio.AsyncResult): JavaScriptCore.Value;
+
         /**
          * Request to execute the given `command` for `web_view`.
-         *
+         * 
          * You can use `webkit_web_view_can_execute_editing_command()` to check whether
          * it's possible to execute the command.
          * @param command the command to execute
          */
         execute_editing_command(command: string): void;
+
         /**
          * Request to execute the given `command` with `argument` for `web_view`.
-         *
+         * 
          * You can use
          * `webkit_web_view_can_execute_editing_command()` to check whether
          * it's possible to execute the command.
@@ -13608,132 +13817,154 @@ export namespace WebKit {
          * @param argument the command argument
          */
         execute_editing_command_with_argument(command: string, argument: string): void;
+
         /**
          * Get the presentation type of {@link WebKit.WebView} when created for automation.
          * @returns a {@link WebKit.AutomationBrowsingContextPresentation}.
          */
         get_automation_presentation_type(): AutomationBrowsingContextPresentation;
+
         /**
          * Obtains the {@link WebKit.BackForwardList} associated with the given {@link WebKit.WebView}.
-         *
+         * 
          * The {@link WebKit.BackForwardList} is owned by the {@link WebKit.WebView}.
          * @returns the {@link WebKit.BackForwardList}
          */
         get_back_forward_list(): BackForwardList;
+
         /**
          * Gets the color that is used to draw the `web_view` background.
-         *
+         * 
          * Gets the color that is used to draw the `web_view` background before
          * the actual contents are rendered.
          * For more information see also `webkit_web_view_set_background_color()`
          */
         get_background_color(): Gdk.RGBA;
+
         /**
          * Get the camera capture state of a {@link WebKit.WebView}.
          * @returns The {@link WebKit.MediaCaptureState} of the camera device. If {@link WebKit.Settings.enable_mediastream} is `false`, this method will return {@link WebKit.MediaCaptureState.NONE}.
          */
         get_camera_capture_state(): MediaCaptureState;
+
         /**
          * Gets the web context of `web_view`.
          * @returns the {@link WebKit.WebContext} of the view
          */
         get_context(): WebContext;
+
         /**
          * Returns the current custom character encoding name of `web_view`.
          * @returns the current custom character encoding name or `null` if no    custom character encoding has been set.
          */
         get_custom_charset(): string;
+
         /**
          * Gets the configured default Content-Security-Policy.
          * @returns The default policy or `null`
          */
-        get_default_content_security_policy(): string | null;
+        get_default_content_security_policy(): (string | null);
+
         /**
          * Get the display capture state of a {@link WebKit.WebView}.
          * @returns The {@link WebKit.MediaCaptureState} of the display device. If {@link WebKit.Settings.enable_mediastream} is `false`, this method will return {@link WebKit.MediaCaptureState.NONE}.
          */
         get_display_capture_state(): MediaCaptureState;
+
         /**
          * Gets the web editor state of `web_view`.
          * @returns the {@link WebKit.EditorState} of the view
          */
         get_editor_state(): EditorState;
+
         /**
          * Gets the value of the {@link WebKit.WebView.estimated_load_progress} property.
-         *
+         * 
          * You can monitor the estimated progress of a load operation by
          * connecting to the notify::estimated-load-progress signal of `web_view`.
          * @returns an estimate of the of the percent complete for a document     load as a range from 0.0 to 1.0.
          */
         get_estimated_load_progress(): number;
+
         /**
          * Returns favicon currently associated to `web_view`.
-         *
+         * 
          * Returns favicon currently associated to `web_view`, if any. You can
          * connect to notify::favicon signal of `web_view` to be notified when
          * the favicon is available.
          * @returns the favicon image or `null` if there's no    icon associated with `web_view`.
          */
         get_favicon(): Gdk.Texture;
+
         /**
          * Gets the {@link WebKit.FindController}.
-         *
+         * 
          * Gets the {@link WebKit.FindController} that will allow the caller to query
          * the {@link WebKit.WebView} for the text to look for.
          * @returns the {@link WebKit.FindController} associated to this particular {@link WebKit.WebView}.
          */
         get_find_controller(): FindController;
+
         /**
          * Get the {@link WebKit.InputMethodContext} currently in use by `web_view`.
-         *
+         * 
          * Get the {@link WebKit.InputMethodContext} currently in use by `web_view`, or `null` if no input method is being used.
          * @returns a {@link WebKit.InputMethodContext}, or `null`
          */
-        get_input_method_context(): InputMethodContext | null;
+        get_input_method_context(): (InputMethodContext | null);
+
         /**
          * Get the {@link WebKit.WebInspector} associated to `web_view`
          * @returns the {@link WebKit.WebInspector} of `web_view`
          */
         get_inspector(): WebInspector;
+
         /**
          * Gets the mute state of `web_view`.
          * @returns `true` if `web_view` audio is muted or `false` is audio is not muted.
          */
         get_is_muted(): boolean;
+
         /**
          * Get whether the current web process of a {@link WebKit.WebView} is responsive.
          * @returns `true` if the web process attached to `web_view` is responsive, or `false` otherwise.
          */
         get_is_web_process_responsive(): boolean;
+
         /**
          * Return the main resource of `web_view`.
          * @returns the main {@link WebKit.WebResource} of the view    or `null` if nothing has been loaded.
          */
         get_main_resource(): WebResource;
+
         /**
          * Get the microphone capture state of a {@link WebKit.WebView}.
          * @returns The {@link WebKit.MediaCaptureState} of the microphone device. If {@link WebKit.Settings.enable_mediastream} is `false`, this method will return {@link WebKit.MediaCaptureState.NONE}.
          */
         get_microphone_capture_state(): MediaCaptureState;
+
         /**
          * Get the {@link WebKit.NetworkSession} associated to `web_view`.
          * @returns a {@link WebKit.NetworkSession}
          */
         get_network_session(): NetworkSession;
+
         /**
          * Get the identifier of the `WebKitWebPage` corresponding to
          * the {@link WebKit.WebView}
          * @returns the page ID of `web_view`.
          */
         get_page_id(): number;
+
         /**
          * Gets the current session state of `web_view`
          * @returns a {@link WebKit.WebViewSessionState}
          */
         get_session_state(): WebViewSessionState;
+
         /**
          * Gets the {@link WebKit.Settings} currently applied to `web_view`.
-         *
+         * 
          * If no other {@link WebKit.Settings} have been explicitly applied to
          * `web_view` with `webkit_web_view_set_settings()`, the default
          * {@link WebKit.Settings} will be returned. This method always returns
@@ -13749,16 +13980,18 @@ export namespace WebKit {
          * @returns the {@link WebKit.Settings} attached to `web_view`
          */
         get_settings(): Settings;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.get_settings
+    // Conflicted with Gtk.Widget.get_settings
         get_settings(...args: never[]): any;
+
         /**
          * Asynchronously retrieves a snapshot of `web_view` for `region`.
-         *
+         * 
          * `options` specifies how the snapshot should be rendered.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You must
          * call `webkit_web_view_get_snapshot_finish()` to get the result of the
          * operation.
@@ -13766,35 +13999,13 @@ export namespace WebKit {
          * @param options {@link WebKit.SnapshotOptions} for the snapshot
          * @param cancellable a {@link Gio.Cancellable}
          */
-        get_snapshot(
-            region: SnapshotRegion,
-            options: SnapshotOptions,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gdk.Texture>;
+        get_snapshot(region: SnapshotRegion, options: SnapshotOptions, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gdk.Texture>;
+
         /**
          * Asynchronously retrieves a snapshot of `web_view` for `region`.
-         *
+         * 
          * `options` specifies how the snapshot should be rendered.
-         *
-         * When the operation is finished, `callback` will be called. You must
-         * call `webkit_web_view_get_snapshot_finish()` to get the result of the
-         * operation.
-         * @param region the {@link WebKit.SnapshotRegion} for this snapshot
-         * @param options {@link WebKit.SnapshotOptions} for the snapshot
-         * @param cancellable a {@link Gio.Cancellable}
-         * @param callback a {@link Gio.AsyncReadyCallback}
-         */
-        get_snapshot(
-            region: SnapshotRegion,
-            options: SnapshotOptions,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously retrieves a snapshot of `web_view` for `region`.
-         *
-         * `options` specifies how the snapshot should be rendered.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You must
          * call `webkit_web_view_get_snapshot_finish()` to get the result of the
          * operation.
@@ -13803,12 +14014,23 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback}
          */
-        get_snapshot(
-            region: SnapshotRegion,
-            options: SnapshotOptions,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gdk.Texture> | void;
+        get_snapshot(region: SnapshotRegion, options: SnapshotOptions, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously retrieves a snapshot of `web_view` for `region`.
+         * 
+         * `options` specifies how the snapshot should be rendered.
+         * 
+         * When the operation is finished, `callback` will be called. You must
+         * call `webkit_web_view_get_snapshot_finish()` to get the result of the
+         * operation.
+         * @param region the {@link WebKit.SnapshotRegion} for this snapshot
+         * @param options {@link WebKit.SnapshotOptions} for the snapshot
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback}
+         */
+        get_snapshot(region: SnapshotRegion, options: SnapshotOptions, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gdk.Texture> | void);
+
         /**
          * Finishes an asynchronous operation started with `webkit_web_view_get_snapshot()`, producing
          * an image of the snapshot using the BGRA8888 pixel format.
@@ -13816,6 +14038,7 @@ export namespace WebKit {
          * @returns an image with the retrieved snapshot, or `null` in case of error.
          */
         get_snapshot_finish(result: Gio.AsyncResult): Gdk.Texture;
+
         /**
          * Gets the theme color that is specified by the content in the `web_view`.
          * If the `web_view` doesn't have a theme color it will fill the `rgba`
@@ -13823,17 +14046,19 @@ export namespace WebKit {
          * @returns Whether the currently loaded page defines a theme color.
          */
         get_theme_color(): [boolean, Gdk.RGBA];
+
         /**
          * Gets the value of the {@link WebKit.WebView.title} property.
-         *
+         * 
          * You can connect to notify::title signal of `web_view` to
          * be notified when the title has been received.
          * @returns The main frame document title of `web_view`.
          */
         get_title(): string;
+
         /**
          * Retrieves the {@link Gio.TlsCertificate} associated with the main resource of `web_view`.
-         *
+         * 
          * Retrieves the {@link Gio.TlsCertificate} associated with the main resource of `web_view`,
          * and the {@link Gio.TlsCertificateFlags} showing what problems, if any, have been found
          * with that certificate.
@@ -13841,7 +14066,7 @@ export namespace WebKit {
          * This function should be called after a response has been received from the
          * server, so you can connect to {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} and call this function
          * when it's emitted with {@link WebKit.LoadEvent.COMMITTED} event.
-         *
+         * 
          * Note that this function provides no information about the security of the web
          * page if the current {@link WebKit.TLSErrorsPolicy} is {@link WebKit.TLSErrorsPolicy.IGNORE},
          * as subresources of the page may be controlled by an attacker. This function
@@ -13851,12 +14076,13 @@ export namespace WebKit {
          * @returns `true` if the `web_view` connection uses HTTPS and a response has been received    from the server, or `false` otherwise.
          */
         get_tls_info(): [boolean, Gio.TlsCertificate, Gio.TlsCertificateFlags];
+
         /**
          * Returns the current active URI of `web_view`.
-         *
+         * 
          * The active URI might change during
          * a load operation:
-         *
+         * 
          * <orderedlist>
          * <listitem><para>
          *   When nothing has been loaded yet on `web_view` the active URI is `null`.
@@ -13901,94 +14127,105 @@ export namespace WebKit {
          *   or a navigation action within the same page is performed.
          * </para></listitem>
          * </orderedlist>
-         *
+         * 
          * You can monitor the active URI by connecting to the notify::uri
          * signal of `web_view`.
          * @returns the current active URI of `web_view` or `null`    if nothing has been loaded yet.
          */
         get_uri(): string;
+
         /**
          * Gets the user content manager associated to `web_view`.
          * @returns the {@link WebKit.UserContentManager} associated with the view
          */
         get_user_content_manager(): UserContentManager;
+
         /**
          * Get the view's {@link WebKit.WebExtensionMode}.
          * @returns the {@link WebKit.WebExtensionMode}
          */
         get_web_extension_mode(): WebExtensionMode;
+
         /**
          * Gets the default website policies.
-         *
+         * 
          * Gets the default website policies set on construction in the
          * `web_view`. These can be overridden on a per-origin basis via the
          * {@link WebKit.WebView.SignalSignatures.decide_policy | WebKit.WebView::decide-policy} signal handler.
-         *
+         * 
          * See also `webkit_policy_decision_use_with_policies()`.
          * @returns the default {@link WebKit.WebsitePolicies}     associated with the view.
          */
         get_website_policies(): WebsitePolicies;
+
         /**
          * Get the {@link WebKit.WindowProperties} object.
-         *
+         * 
          * Get the {@link WebKit.WindowProperties} object containing the properties
          * that the window containing `web_view` should have.
          * @returns the {@link WebKit.WindowProperties} of `web_view`
          */
         get_window_properties(): WindowProperties;
+
         /**
          * Set the zoom level of `web_view`.
-         *
+         * 
          * Get the zoom level of `web_view`, i.e. the factor by which the
          * view contents are scaled with respect to their original size.
          * @returns the current zoom level of `web_view`
          */
         get_zoom_level(): number;
+
         /**
          * Loads the previous history item.
-         *
+         * 
          * You can monitor the load operation by connecting to
          * {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} signal.
          */
         go_back(): void;
+
         /**
          * Loads the next history item.
-         *
+         * 
          * You can monitor the load operation by connecting to
          * {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} signal.
          */
         go_forward(): void;
+
         /**
          * Loads the specific history item `list_item`.
-         *
+         * 
          * You can monitor the load operation by connecting to
          * {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} signal.
          * @param list_item a {@link WebKit.BackForwardListItem}
          */
         go_to_back_forward_list_item(list_item: BackForwardListItem): void;
+
         /**
          * Gets whether the user is allowed to edit the HTML document.
-         *
+         * 
          * When `web_view` is not editable an element in the HTML document can only be edited if the
          * CONTENTEDITABLE attribute has been set on the element or one of its parent
          * elements. By default a {@link WebKit.WebView} is not editable.
          * @returns `true` if the user is allowed to edit the HTML document, or `false` otherwise.
          */
         is_editable(): boolean;
+
         /**
          * Requests to leave the immersive mode this {@link WebKit.WebView} is in.
-         *
+         * 
          * Users interact with web content to start XR sessions, and can typically
          * end the sessions themselves, but applications might need to end a session on their
          * own based on application or platform logic.
-         *
+         * 
          * Note that if WebXR is disabled, or if it is enabled but the `web_view` is not in
          * immersive mode, this API does nothing. See also `webkit_web_view_is_immersive_mode_enabled()`.
          */
         leave_immersive_mode(): void;
+
         /**
          * Load the given `content` string for the URI `content_uri`.
-         *
+         * 
          * This allows clients to display page-loading errors in the {@link WebKit.WebView} itself.
          * When this method is called from {@link WebKit.WebView.SignalSignatures.load_failed | WebKit.WebView::load-failed} signal to show an
          * error page, then the back-forward list is maintained appropriately.
@@ -13997,10 +14234,11 @@ export namespace WebKit {
          * @param content_uri the URI for the alternate page content
          * @param base_uri the base URI for relative locations or `null`
          */
-        load_alternate_html(content: string, content_uri: string, base_uri: string | null): void;
+        load_alternate_html(content: string, content_uri: string, base_uri: (string | null)): void;
+
         /**
          * Load the specified `bytes` into `web_view` using the given `mime_type` and `encoding`.
-         *
+         * 
          * When `mime_type` is `null`, it defaults to "text/html".
          * When `encoding` is `null`, it defaults to "UTF-8".
          * When `base_uri` is `null`, it defaults to "about:blank".
@@ -14010,15 +14248,11 @@ export namespace WebKit {
          * @param encoding the character encoding of `bytes`, or `null`
          * @param base_uri the base URI for relative locations or `null`
          */
-        load_bytes(
-            bytes: GLib.Bytes | Uint8Array,
-            mime_type: string | null,
-            encoding: string | null,
-            base_uri: string | null,
-        ): void;
+        load_bytes(bytes: (GLib.Bytes | Uint8Array), mime_type: (string | null), encoding: (string | null), base_uri: (string | null)): void;
+
         /**
          * Load the given `content` string with the specified `base_uri`.
-         *
+         * 
          * If `base_uri` is not `null`, relative URLs in the `content` will be
          * resolved against `base_uri` and absolute local paths must be children of the `base_uri`.
          * For security reasons absolute local paths that are not children of `base_uri`
@@ -14030,87 +14264,76 @@ export namespace WebKit {
          * @param content The HTML string to load
          * @param base_uri The base URI for relative locations or `null`
          */
-        load_html(content: string, base_uri: string | null): void;
+        load_html(content: string, base_uri: (string | null)): void;
+
         /**
          * Load the specified `plain_text` string into `web_view`.
-         *
+         * 
          * The mime type of document will be "text/plain". You can monitor the load
          * operation by connecting to {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} signal.
          * @param plain_text The plain text to load
          */
         load_plain_text(plain_text: string): void;
+
         /**
          * Requests loading of the specified {@link WebKit.URIRequest}.
-         *
+         * 
          * You can monitor the load operation by connecting to
          * {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} signal.
          * @param request a {@link WebKit.URIRequest} to load
          */
         load_request(request: URIRequest): void;
+
         /**
          * Requests loading of the specified URI string.
-         *
+         * 
          * You can monitor the load operation by connecting to
          * {@link WebKit.WebView.SignalSignatures.load_changed | WebKit.WebView::load-changed} signal.
          * @param uri an URI string
          */
         load_uri(uri: string): void;
+
         /**
          * Reloads the current contents of `web_view`.
-         *
+         * 
          * See also `webkit_web_view_reload_bypass_cache()`.
          */
         reload(): void;
+
         /**
          * Reloads the current contents of `web_view` without
          * using any cached data.
          */
         reload_bypass_cache(): void;
+
         /**
          * Restore the `web_view` session state from `state`
          * @param state a {@link WebKit.WebViewSessionState}
          */
         restore_session_state(state: WebViewSessionState): void;
+
         /**
          * Asynchronously save the current web page.
-         *
+         * 
          * Asynchronously save the current web page associated to the
          * {@link WebKit.WebView} into a self-contained format using the mode
          * specified in `save_mode`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `webkit_web_view_save_finish()` to get the result of the
          * operation.
          * @param save_mode the {@link WebKit.SaveMode} specifying how the web page should be saved.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        save(save_mode: SaveMode, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
+        save(save_mode: SaveMode, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.InputStream>;
+
         /**
          * Asynchronously save the current web page.
-         *
+         * 
          * Asynchronously save the current web page associated to the
          * {@link WebKit.WebView} into a self-contained format using the mode
          * specified in `save_mode`.
-         *
-         * When the operation is finished, `callback` will be called. You can
-         * then call `webkit_web_view_save_finish()` to get the result of the
-         * operation.
-         * @param save_mode the {@link WebKit.SaveMode} specifying how the web page should be saved.
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        save(
-            save_mode: SaveMode,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously save the current web page.
-         *
-         * Asynchronously save the current web page associated to the
-         * {@link WebKit.WebView} into a self-contained format using the mode
-         * specified in `save_mode`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `webkit_web_view_save_finish()` to get the result of the
          * operation.
@@ -14118,24 +14341,38 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        save(
-            save_mode: SaveMode,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.InputStream> | void;
+        save(save_mode: SaveMode, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously save the current web page.
+         * 
+         * Asynchronously save the current web page associated to the
+         * {@link WebKit.WebView} into a self-contained format using the mode
+         * specified in `save_mode`.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `webkit_web_view_save_finish()` to get the result of the
+         * operation.
+         * @param save_mode the {@link WebKit.SaveMode} specifying how the web page should be saved.
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        save(save_mode: SaveMode, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.InputStream> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_web_view_save()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.InputStream} with the result of saving    the current web page or `null` in case of error.
          */
         save_finish(result: Gio.AsyncResult): Gio.InputStream;
+
         /**
          * Asynchronously save the current web page.
-         *
+         * 
          * Asynchronously save the current web page associated to the
          * {@link WebKit.WebView} into a self-contained format using the mode
          * specified in `save_mode` and writing it to `file`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `webkit_web_view_save_to_file_finish()` to get the result of the
          * operation.
@@ -14143,39 +14380,15 @@ export namespace WebKit {
          * @param save_mode the {@link WebKit.SaveMode} specifying how the web page should be saved.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        save_to_file(
-            file: Gio.File,
-            save_mode: SaveMode,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        save_to_file(file: Gio.File, save_mode: SaveMode, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously save the current web page.
-         *
+         * 
          * Asynchronously save the current web page associated to the
          * {@link WebKit.WebView} into a self-contained format using the mode
          * specified in `save_mode` and writing it to `file`.
-         *
-         * When the operation is finished, `callback` will be called. You can
-         * then call `webkit_web_view_save_to_file_finish()` to get the result of the
-         * operation.
-         * @param file the {@link Gio.File} where the current web page should be saved to.
-         * @param save_mode the {@link WebKit.SaveMode} specifying how the web page should be saved.
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        save_to_file(
-            file: Gio.File,
-            save_mode: SaveMode,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously save the current web page.
-         *
-         * Asynchronously save the current web page associated to the
-         * {@link WebKit.WebView} into a self-contained format using the mode
-         * specified in `save_mode` and writing it to `file`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `webkit_web_view_save_to_file_finish()` to get the result of the
          * operation.
@@ -14184,21 +14397,35 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        save_to_file(
-            file: Gio.File,
-            save_mode: SaveMode,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        save_to_file(file: Gio.File, save_mode: SaveMode, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously save the current web page.
+         * 
+         * Asynchronously save the current web page associated to the
+         * {@link WebKit.WebView} into a self-contained format using the mode
+         * specified in `save_mode` and writing it to `file`.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `webkit_web_view_save_to_file_finish()` to get the result of the
+         * operation.
+         * @param file the {@link Gio.File} where the current web page should be saved to.
+         * @param save_mode the {@link WebKit.SaveMode} specifying how the web page should be saved.
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        save_to_file(file: Gio.File, save_mode: SaveMode, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_web_view_save_to_file()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the web page was successfully saved to a file or `false` otherwise.
          */
         save_to_file_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Send `message` to the `WebKitWebPage` corresponding to `web_view`.
-         *
+         * 
          * If `message` is floating, it's consumed.
          * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `callback`.
          * When the operation is finished, `callback` will be called. You can then call
@@ -14206,29 +14433,11 @@ export namespace WebKit {
          * @param message a {@link WebKit.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        send_message_to_page(
-            message: UserMessage,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<UserMessage>;
+        send_message_to_page(message: UserMessage, cancellable: (Gio.Cancellable | null)): globalThis.Promise<UserMessage>;
+
         /**
          * Send `message` to the `WebKitWebPage` corresponding to `web_view`.
-         *
-         * If `message` is floating, it's consumed.
-         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `callback`.
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_web_view_send_message_to_page_finish()` to get the message reply.
-         * @param message a {@link WebKit.UserMessage}
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
-         */
-        send_message_to_page(
-            message: UserMessage,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Send `message` to the `WebKitWebPage` corresponding to `web_view`.
-         *
+         * 
          * If `message` is floating, it's consumed.
          * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `callback`.
          * When the operation is finished, `callback` will be called. You can then call
@@ -14237,20 +14446,31 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
          */
-        send_message_to_page(
-            message: UserMessage,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<UserMessage> | void;
+        send_message_to_page(message: UserMessage, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Send `message` to the `WebKitWebPage` corresponding to `web_view`.
+         * 
+         * If `message` is floating, it's consumed.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `callback`.
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_web_view_send_message_to_page_finish()` to get the message reply.
+         * @param message a {@link WebKit.UserMessage}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
+         */
+        send_message_to_page(message: UserMessage, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<UserMessage> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_web_view_send_message_to_page()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKit.UserMessage} with the reply or `null` in case of error.
          */
         send_message_to_page_finish(result: Gio.AsyncResult): UserMessage;
+
         /**
          * Sets the color that will be used to draw the `web_view` background.
-         *
+         * 
          * Sets the color that will be used to draw the `web_view` background before
          * the actual contents are rendered. Note that if the web page loaded in `web_view`
          * specifies a background color, it will take precedence over the `rgba` color.
@@ -14258,18 +14478,20 @@ export namespace WebKit {
          * @param rgba a {@link Gdk.RGBA}
          */
         set_background_color(rgba: Gdk.RGBA): void;
+
         /**
          * Set the camera capture state of a {@link WebKit.WebView}.
-         *
+         * 
          * If {@link WebKit.Settings.enable_mediastream} is `false`, this method will have no visible effect. Once the
          * state of the device has been set to {@link WebKit.MediaCaptureState.NONE} it cannot be changed
          * anymore. The page can however request capture again using the mediaDevices API.
          * @param state a {@link WebKit.MediaCaptureState}
          */
         set_camera_capture_state(state: MediaCaptureState): void;
+
         /**
          * Sets the `allowlist` for CORS.
-         *
+         * 
          * Sets the `allowlist` for which
          * [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
          * checks are disabled in `web_view`. URI patterns must be of the form
@@ -14277,74 +14499,81 @@ export namespace WebKit {
          * character (`*`) to represent zero or more other characters. All three
          * components are required and must not be omitted from the URI
          * patterns.
-         *
+         * 
          * Disabling CORS checks permits resources from other origins to load
          * allowlisted resources. It does not permit the allowlisted resources
          * to load resources from other origins.
-         *
+         * 
          * If this function is called multiple times, only the allowlist set by
          * the most recent call will be effective.
          * @param allowlist an allowlist of URI patterns, or `null`
          */
-        set_cors_allowlist(allowlist: string[] | null): void;
+        set_cors_allowlist(allowlist: (string[] | null)): void;
+
         /**
          * Sets the current custom character encoding override of `web_view`.
-         *
+         * 
          * The custom character encoding will override any text encoding detected via HTTP headers or
          * META tags. Calling this method will stop any current load operation and reload the
          * current page. Setting the custom character encoding to `null` removes the character
          * encoding override.
          * @param charset a character encoding name or `null`
          */
-        set_custom_charset(charset: string | null): void;
+        set_custom_charset(charset: (string | null)): void;
+
         /**
          * Set the display capture state of a {@link WebKit.WebView}.
-         *
+         * 
          * If {@link WebKit.Settings.enable_mediastream} is `false`, this method will have no visible effect. Once the
          * state of the device has been set to {@link WebKit.MediaCaptureState.NONE} it cannot be changed
          * anymore. The page can however request capture again using the mediaDevices API.
          * @param state a {@link WebKit.MediaCaptureState}
          */
         set_display_capture_state(state: MediaCaptureState): void;
+
         /**
          * Sets whether the user is allowed to edit the HTML document.
-         *
+         * 
          * If `editable` is `true`, `web_view` allows the user to edit the HTML document. If
          * `editable` is `false`, an element in `web_view`'s document can only be edited if the
          * CONTENTEDITABLE attribute has been set on the element or one of its parent
          * elements. By default a {@link WebKit.WebView} is not editable.
-         *
+         * 
          * Normally, a HTML document is not editable unless the elements within the
          * document are editable. This function provides a way to make the contents
          * of a {@link WebKit.WebView} editable without altering the document or DOM structure.
          * @param editable a `gboolean` indicating the editable state
          */
         set_editable(editable: boolean): void;
+
         /**
          * Set the {@link WebKit.InputMethodContext} to be used by `web_view`.
-         *
+         * 
          * Set the {@link WebKit.InputMethodContext} to be used by `web_view`, or `null` to not use any input method.
          * Note that the same {@link WebKit.InputMethodContext} can't be set on more than one {@link WebKit.WebView} at the same time.
          * @param context the {@link WebKit.InputMethodContext} to set, or `null`
          */
-        set_input_method_context(context: InputMethodContext | null): void;
+        set_input_method_context(context: (InputMethodContext | null)): void;
+
         /**
          * Sets the mute state of `web_view`.
          * @param muted mute flag
          */
         set_is_muted(muted: boolean): void;
+
         /**
          * Set the microphone capture state of a {@link WebKit.WebView}.
-         *
+         * 
          * If {@link WebKit.Settings.enable_mediastream} is `false`, this method will have no visible effect. Once the
          * state of the device has been set to {@link WebKit.MediaCaptureState.NONE} it cannot be changed
          * anymore. The page can however request capture again using the mediaDevices API.
          * @param state a {@link WebKit.MediaCaptureState}
          */
         set_microphone_capture_state(state: MediaCaptureState): void;
+
         /**
          * Sets the {@link WebKit.Settings} to be applied to `web_view`.
-         *
+         * 
          * The
          * existing {@link WebKit.Settings} of `web_view` will be replaced by
          * `settings`. New settings are applied immediately on `web_view`.
@@ -14353,34 +14582,38 @@ export namespace WebKit {
          * @param settings a {@link WebKit.Settings}
          */
         set_settings(settings: Settings): void;
+
         /**
          * Set the zoom level of `web_view`.
-         *
+         * 
          * Set the zoom level of `web_view`, i.e. the factor by which the
          * view contents are scaled with respect to their original size.
          * @param zoom_level the zoom level
          */
         set_zoom_level(zoom_level: number): void;
+
         /**
          * Stops any ongoing loading operation in `web_view`.
-         *
+         * 
          * This method does nothing if no content is being loaded.
          * If there is a loading operation in progress, it will be cancelled and
          * {@link WebKit.WebView.SignalSignatures.load_failed | WebKit.WebView::load-failed} signal will be emitted with
          * {@link WebKit.NetworkError.CANCELLED} error.
          */
         stop_loading(): void;
+
         /**
          * Terminates the web process associated to `web_view`.
-         *
+         * 
          * When the web process gets terminated
          * using this method, the {@link WebKit.WebView.SignalSignatures.web_process_terminated | WebKit.WebView::web-process-terminated} signal is emitted with
          * {@link WebKit.WebProcessTerminationReason.TERMINATED_BY_API} as the reason for termination.
          */
         terminate_web_process(): void;
+
         /**
          * Tries to close the `web_view`.
-         *
+         * 
          * This will fire the onbeforeunload event
          * to ask the user for confirmation to close the page. If there isn't an
          * onbeforeunload event handler or the user confirms to close the page,
@@ -14389,55 +14622,52 @@ export namespace WebKit {
         try_close(): void;
     }
 
+
     namespace WebViewBase {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::can-target': (pspec: GObject.ParamSpec) => void;
-            'notify::css-classes': (pspec: GObject.ParamSpec) => void;
-            'notify::css-name': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::focusable': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::limit-events': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::overflow': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::root': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::can-target": (pspec: GObject.ParamSpec) => void;
+            "notify::css-classes": (pspec: GObject.ParamSpec) => void;
+            "notify::css-name": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::focusable": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::limit-events": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::overflow": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::root": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Widget.ConstructorProps, Gtk.Accessible.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.ConstraintTarget.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Gtk.Accessible.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.ConstraintTarget.ConstructorProps {}
+        }
     }
 
     /**
@@ -14456,113 +14686,115 @@ export namespace WebKit {
         $signals: WebViewBase.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebViewBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebViewBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebViewBase.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebViewBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebViewBase.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebViewBase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebViewBase.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebViewBase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebViewBase.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebViewBase.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebViewBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WebViewBase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebViewBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
+
         /**
          * The accessible role of the given {@link Gtk.Accessible} implementation.
-         *
+         * 
          * The accessible role cannot be changed once set.
          * @default Gtk.AccessibleRole.NONE
-         * @category Inherited from Gtk.Accessible
+          * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
+
         /**
          * Requests the user's screen reader to announce the given message.
-         *
+         * 
          * This kind of notification is useful for messages that
          * either have only a visual representation or that are not
          * exposed visually at all, e.g. a notification about a
          * successful operation.
-         *
+         * 
          * Also, by using this API, you can ensure that the message
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
          */
-        get_accessible_id(): string | null;
+        get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
          */
-        get_accessible_parent(): Gtk.Accessible | null;
+        get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the accessible role of an accessible object.
          * @returns the accessible role
          */
         get_accessible_role(): Gtk.AccessibleRole;
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
          */
         get_at_context(): Gtk.ATContext;
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
          */
         get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
          */
-        get_first_accessible_child(): Gtk.Accessible | null;
+        get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
          */
-        get_next_accessible_sibling(): Gtk.Accessible | null;
+        get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -14570,24 +14802,28 @@ export namespace WebKit {
          * @returns the value of state for the accessible
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Resets the accessible property to its default value.
          * @param property the accessible property
          */
         reset_property(property: Gtk.AccessibleProperty): void;
+
         /**
          * Resets the accessible relation to its default value.
          * @param relation the accessible relation
          */
         reset_relation(relation: Gtk.AccessibleRelation): void;
+
         /**
          * Resets the accessible state to its default value.
          * @param state the accessible state
          */
         reset_state(state: Gtk.AccessibleState): void;
+
         /**
          * Sets the parent and sibling of an accessible object.
-         *
+         * 
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
@@ -14598,102 +14834,114 @@ export namespace WebKit {
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
          */
-        set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
+        set_accessible_parent(parent: (Gtk.Accessible | null), next_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Updates the next accessible sibling.
-         *
+         * 
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
          */
-        update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
+        update_next_accessible_sibling(new_sibling: (Gtk.Accessible | null)): void;
+
         /**
          * Informs ATs that the platform state has changed.
-         *
+         * 
          * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
+
         /**
          * Updates an array of accessible properties.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param properties an array of accessible properties
          * @param values an array of `GValues`, one for each property
          */
         update_property(properties: Gtk.AccessibleProperty[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible relations.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param relations an array of accessible relations
          * @param values an array of `GValues`, one for each relation
          */
         update_relation(relations: Gtk.AccessibleRelation[], values: (GObject.Value | any)[]): void;
+
         /**
          * Updates an array of accessible states.
-         *
+         * 
          * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
-         *
+         * 
          * This function is meant to be used by language bindings.
          * @param states an array of accessible states
          * @param values an array of `GValues`, one for each state
          */
         update_state(states: Gtk.AccessibleState[], values: (GObject.Value | any)[]): void;
+
         /**
          * Retrieves the accessible identifier for the accessible object.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations.
-         *
+         * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @virtual
          */
-        vfunc_get_accessible_id(): string | null;
+        vfunc_get_accessible_id(): (string | null);
+
         /**
          * Retrieves the accessible parent for an accessible object.
-         *
+         * 
          * This function returns `NULL` for top level widgets.
          * @virtual
          */
-        vfunc_get_accessible_parent(): Gtk.Accessible | null;
+        vfunc_get_accessible_parent(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the implementation for the given accessible object.
          * @virtual
          */
-        vfunc_get_at_context(): Gtk.ATContext | null;
+        vfunc_get_at_context(): (Gtk.ATContext | null);
+
         /**
          * Queries the coordinates and dimensions of this accessible
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
+
         /**
          * Retrieves the first accessible child of an accessible object.
          * @virtual
          */
-        vfunc_get_first_accessible_child(): Gtk.Accessible | null;
+        vfunc_get_first_accessible_child(): (Gtk.Accessible | null);
+
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @virtual
          */
-        vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
+        vfunc_get_next_accessible_sibling(): (Gtk.Accessible | null);
+
         /**
          * Queries a platform state, such as focus.
-         *
+         * 
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
@@ -14701,14 +14949,16 @@ export namespace WebKit {
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
+
         /**
          * Gets the ID of the `buildable` object.
-         *
+         * 
          * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
-        get_buildable_id(): string | null;
+        get_buildable_id(): (string | null);
+
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
@@ -14717,7 +14967,8 @@ export namespace WebKit {
          * @param type kind of child or `null`
          * @virtual
          */
-        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
+        vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: (string | null)): void;
+
         /**
          * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
@@ -14727,12 +14978,8 @@ export namespace WebKit {
          * @param data user data created in custom_tag_start
          * @virtual
          */
-        vfunc_custom_finished(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_finished(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called at the end of each custom element handled by
          * the buildable.
@@ -14742,12 +14989,8 @@ export namespace WebKit {
          * @param data user data that will be passed in to parser functions
          * @virtual
          */
-        vfunc_custom_tag_end(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-            data: any | null,
-        ): void;
+        vfunc_custom_tag_end(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string, data: (any | null)): void;
+
         /**
          * Called for each unknown element under `<child>`.
          * @param builder a {@link Gtk.Builder} used to construct this object
@@ -14755,17 +14998,15 @@ export namespace WebKit {
          * @param tagname name of tag
          * @virtual
          */
-        vfunc_custom_tag_start(
-            builder: Gtk.Builder,
-            child: GObject.Object | null,
-            tagname: string,
-        ): [boolean, Gtk.BuildableParser, any];
+        vfunc_custom_tag_start(builder: Gtk.Builder, child: (GObject.Object | null), tagname: string): [boolean, Gtk.BuildableParser, any];
+
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
@@ -14773,53 +15014,59 @@ export namespace WebKit {
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
+
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
          *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
          *  the {@link Gtk.Widget.visible} property here.
-         * @param builder
+         * @param builder 
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
+
         /**
          * Sets a property of a buildable object.
          *  It is normally not necessary to implement this, `g_object_set_property()`
          *  is used by default. {@link Gtk.Window} implements this to delay showing itself
          *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
-         * @param builder
-         * @param name
-         * @param value
+         * @param builder 
+         * @param name 
+         * @param value 
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
+
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
-         * @param id
+         * @param id 
          * @virtual
          */
         vfunc_set_id(id: string): void;
     }
 
+
     namespace WebsiteDataAccessPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+        }
     }
 
     /**
      * A permission request for accessing website data from third-party domains.
-     *
+     * 
      * WebKitWebsiteDataAccessPermissionRequest represents a request for
      * permission to allow a third-party domain access its cookies.
-     *
+     * 
      * When a WebKitWebsiteDataAccessPermissionRequest is not handled by the user,
      * it is denied by default.
      * @gir-type Class
@@ -14838,62 +15085,52 @@ export namespace WebKit {
         $signals: WebsiteDataAccessPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebsiteDataAccessPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsiteDataAccessPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebsiteDataAccessPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebsiteDataAccessPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsiteDataAccessPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebsiteDataAccessPermissionRequest.SignalSignatures[K]> extends [
-                any,
-                ...infer Q,
-            ]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsiteDataAccessPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the current domain being browsed.
          * @returns the current domain name
          */
         get_current_domain(): string;
+
         /**
          * Get the domain requesting permission to access its cookies while browsing the current domain.
          * @returns the requesting domain name
          */
         get_requesting_domain(): string;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
@@ -14901,23 +15138,23 @@ export namespace WebKit {
         vfunc_deny(): void;
     }
 
+
     namespace WebsiteDataManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::base-cache-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::base-data-directory': (pspec: GObject.ParamSpec) => void;
-            'notify::is-ephemeral': (pspec: GObject.ParamSpec) => void;
-            'notify::origin-storage-ratio': (pspec: GObject.ParamSpec) => void;
-            'notify::total-storage-ratio': (pspec: GObject.ParamSpec) => void;
+            "notify::base-cache-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::base-data-directory": (pspec: GObject.ParamSpec) => void;
+            "notify::is-ephemeral": (pspec: GObject.ParamSpec) => void;
+            "notify::origin-storage-ratio": (pspec: GObject.ParamSpec) => void;
+            "notify::total-storage-ratio": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            base_cache_directory: string | null;
-            baseCacheDirectory: string | null;
-            base_data_directory: string | null;
-            baseDataDirectory: string | null;
+            base_cache_directory: (string | null);
+            baseCacheDirectory: (string | null);
+            base_data_directory: (string | null);
+            baseDataDirectory: (string | null);
             is_ephemeral: boolean;
             isEphemeral: boolean;
             origin_storage_ratio: number;
@@ -14929,16 +15166,16 @@ export namespace WebKit {
 
     /**
      * Manages data stored locally by web sites.
-     *
+     * 
      * You can use WebKitWebsiteDataManager to configure the local directories
      * where website data will be stored. Use {@link WebKit.WebsiteDataManager.base_data_directory}
      * and {@link WebKit.WebsiteDataManager.base_cache_directory} set a common base directory for all
      * website data and caches.
-     *
+     * 
      * A WebKitWebsiteDataManager can be ephemeral, in which case all the directory configuration
      * is not needed because website data will never persist. You can create an ephemeral WebKitWebsiteDataManager
      * with `webkit_website_data_manager_new_ephemeral()`.
-     *
+     * 
      * WebKitWebsiteDataManager can also be used to fetch website data, remove data
      * stored by particular websites, or clear data for all websites modified since a given
      * period of time.
@@ -14949,6 +15186,13 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebsiteDataManager>;
 
         // Properties
+        /**
+         * The base directory for caches. If `null`, a default location will be used.
+         * @since 2.10
+         * @construct-only
+         * @default null
+         */
+        get base_cache_directory(): (string | null);
 
         /**
          * The base directory for caches. If `null`, a default location will be used.
@@ -14956,28 +15200,24 @@ export namespace WebKit {
          * @construct-only
          * @default null
          */
-        get base_cache_directory(): string | null;
-        /**
-         * The base directory for caches. If `null`, a default location will be used.
-         * @since 2.10
-         * @construct-only
-         * @default null
-         */
-        get baseCacheDirectory(): string | null;
+        get baseCacheDirectory(): (string | null);
+
         /**
          * The base directory for website data. If `null`, a default location will be used.
          * @since 2.10
          * @construct-only
          * @default null
          */
-        get base_data_directory(): string | null;
+        get base_data_directory(): (string | null);
+
         /**
          * The base directory for website data. If `null`, a default location will be used.
          * @since 2.10
          * @construct-only
          * @default null
          */
-        get baseDataDirectory(): string | null;
+        get baseDataDirectory(): (string | null);
+
         /**
          * Whether the {@link WebKit.WebsiteDataManager} is ephemeral. An ephemeral {@link WebKit.WebsiteDataManager}
          * handles all websites data as non-persistent, and nothing will be written to the client
@@ -14988,6 +15228,7 @@ export namespace WebKit {
          * @default false
          */
         get is_ephemeral(): boolean;
+
         /**
          * Whether the {@link WebKit.WebsiteDataManager} is ephemeral. An ephemeral {@link WebKit.WebsiteDataManager}
          * handles all websites data as non-persistent, and nothing will be written to the client
@@ -14998,6 +15239,7 @@ export namespace WebKit {
          * @default false
          */
         get isEphemeral(): boolean;
+
         /**
          * The percentage of volume space that can be used for data storage for every domain.
          * If the maximum storage is reached the storage request will fail with a QuotaExceededError exception.
@@ -15008,6 +15250,7 @@ export namespace WebKit {
          * @default -1
          */
         set origin_storage_ratio(val: number);
+
         /**
          * The percentage of volume space that can be used for data storage for every domain.
          * If the maximum storage is reached the storage request will fail with a QuotaExceededError exception.
@@ -15018,6 +15261,7 @@ export namespace WebKit {
          * @default -1
          */
         set originStorageRatio(val: number);
+
         /**
          * The percentage of volume space that can be used for data storage for all domains.
          * If the maximum storage is reached the eviction will happen.
@@ -15028,6 +15272,7 @@ export namespace WebKit {
          * @default -1
          */
         set total_storage_ratio(val: number);
+
         /**
          * The percentage of volume space that can be used for data storage for all domains.
          * If the maximum storage is reached the eviction will happen.
@@ -15049,62 +15294,49 @@ export namespace WebKit {
         $signals: WebsiteDataManager.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebsiteDataManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebsiteDataManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsiteDataManager.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebsiteDataManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebsiteDataManager.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebsiteDataManager.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebsiteDataManager.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebsiteDataManager.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsiteDataManager.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebsiteDataManager.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebsiteDataManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WebsiteDataManager.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsiteDataManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
+         * 
+         * If `timespan` is 0, all website data will be removed.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_website_data_manager_clear_finish()` to get the result of the operation.
+         * 
+         * Due to implementation limitations, this function does not currently delete
+         * any stored cookies if `timespan` is nonzero. This behavior may change in the
+         * future.
+         * @param types {@link WebKit.WebsiteDataTypes}
+         * @param timespan a {@link GLib.TimeSpan}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         */
+        clear(types: WebsiteDataTypes, timespan: GLib.TimeSpan, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
 
         /**
          * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
-         *
+         * 
          * If `timespan` is 0, all website data will be removed.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_website_data_manager_clear_finish()` to get the result of the operation.
-         *
-         * Due to implementation limitations, this function does not currently delete
-         * any stored cookies if `timespan` is nonzero. This behavior may change in the
-         * future.
-         * @param types {@link WebKit.WebsiteDataTypes}
-         * @param timespan a {@link GLib.TimeSpan}
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         */
-        clear(
-            types: WebsiteDataTypes,
-            timespan: GLib.TimeSpan,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
-         *
-         * If `timespan` is 0, all website data will be removed.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_website_data_manager_clear_finish()` to get the result of the operation.
-         *
+         * 
          * Due to implementation limitations, this function does not currently delete
          * any stored cookies if `timespan` is nonzero. This behavior may change in the
          * future.
@@ -15113,20 +15345,16 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        clear(
-            types: WebsiteDataTypes,
-            timespan: GLib.TimeSpan,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        clear(types: WebsiteDataTypes, timespan: GLib.TimeSpan, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously clear the website data of the given `types` modified in the past `timespan`.
-         *
+         * 
          * If `timespan` is 0, all website data will be removed.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_website_data_manager_clear_finish()` to get the result of the operation.
-         *
+         * 
          * Due to implementation limitations, this function does not currently delete
          * any stored cookies if `timespan` is nonzero. This behavior may change in the
          * future.
@@ -15135,167 +15363,143 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        clear(
-            types: WebsiteDataTypes,
-            timespan: GLib.TimeSpan,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        clear(types: WebsiteDataTypes, timespan: GLib.TimeSpan, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_website_data_manager_clear()`
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if website data was successfully cleared, or `false` otherwise.
          */
         clear_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Asynchronously get the list of {@link WebKit.WebsiteData} for the given `types`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_website_data_manager_fetch_finish()` to get the result of the operation.
          * @param types {@link WebKit.WebsiteDataTypes}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        fetch(types: WebsiteDataTypes, cancellable: Gio.Cancellable | null): globalThis.Promise<WebsiteData[]>;
+        fetch(types: WebsiteDataTypes, cancellable: (Gio.Cancellable | null)): globalThis.Promise<WebsiteData[]>;
+
         /**
          * Asynchronously get the list of {@link WebKit.WebsiteData} for the given `types`.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_website_data_manager_fetch_finish()` to get the result of the operation.
-         * @param types {@link WebKit.WebsiteDataTypes}
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        fetch(
-            types: WebsiteDataTypes,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously get the list of {@link WebKit.WebsiteData} for the given `types`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_website_data_manager_fetch_finish()` to get the result of the operation.
          * @param types {@link WebKit.WebsiteDataTypes}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        fetch(
-            types: WebsiteDataTypes,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<WebsiteData[]> | void;
+        fetch(types: WebsiteDataTypes, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously get the list of {@link WebKit.WebsiteData} for the given `types`.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_website_data_manager_fetch_finish()` to get the result of the operation.
+         * @param types {@link WebKit.WebsiteDataTypes}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        fetch(types: WebsiteDataTypes, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<WebsiteData[]> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_website_data_manager_fetch()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.List} of {@link WebKit.WebsiteData}. You must free the {@link GLib.List} with    `g_list_free()` and unref the {@link WebKit.WebsiteData}<!-- -->s with `webkit_website_data_unref()` when you're done with them.
          */
         fetch_finish(result: Gio.AsyncResult): WebsiteData[];
+
         /**
          * Get the {@link WebKit.WebsiteDataManager.base_cache_directory} property.
          * @returns the base directory for caches, or `null` if    {@link WebKit.WebsiteDataManager.base_cache_directory} was not provided or `manager` is ephemeral.
          */
-        get_base_cache_directory(): string | null;
+        get_base_cache_directory(): (string | null);
+
         /**
          * Get the {@link WebKit.WebsiteDataManager.base_data_directory} property.
          * @returns the base directory for website data, or `null` if    {@link WebKit.WebsiteDataManager.base_data_directory} was not provided or `manager` is ephemeral.
          */
-        get_base_data_directory(): string | null;
+        get_base_data_directory(): (string | null);
+
         /**
          * Get the {@link WebKit.FaviconDatabase} of `manager`.
          * @returns a {@link WebKit.FaviconDatabase}, or `null` if website icons are disabled
          */
-        get_favicon_database(): FaviconDatabase | null;
+        get_favicon_database(): (FaviconDatabase | null);
+
         /**
          * Get whether website icons are enabled.
          * @returns `true` if website icons are enabled, or `false` otherwise.
          */
         get_favicons_enabled(): boolean;
+
         /**
          * Asynchronously get the list of {@link WebKit.ITPThirdParty} seen for `manager`.
-         *
+         * 
          * Every {@link WebKit.ITPThirdParty}
          * contains the list of {@link WebKit.ITPFirstParty} under which it has been seen.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_website_data_manager_get_itp_summary_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        get_itp_summary(cancellable: Gio.Cancellable | null): globalThis.Promise<ITPThirdParty[]>;
+        get_itp_summary(cancellable: (Gio.Cancellable | null)): globalThis.Promise<ITPThirdParty[]>;
+
         /**
          * Asynchronously get the list of {@link WebKit.ITPThirdParty} seen for `manager`.
-         *
+         * 
          * Every {@link WebKit.ITPThirdParty}
          * contains the list of {@link WebKit.ITPFirstParty} under which it has been seen.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_website_data_manager_get_itp_summary_finish()` to get the result of the operation.
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        get_itp_summary(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Asynchronously get the list of {@link WebKit.ITPThirdParty} seen for `manager`.
-         *
-         * Every {@link WebKit.ITPThirdParty}
-         * contains the list of {@link WebKit.ITPFirstParty} under which it has been seen.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_website_data_manager_get_itp_summary_finish()` to get the result of the operation.
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        get_itp_summary(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<ITPThirdParty[]> | void;
+        get_itp_summary(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously get the list of {@link WebKit.ITPThirdParty} seen for `manager`.
+         * 
+         * Every {@link WebKit.ITPThirdParty}
+         * contains the list of {@link WebKit.ITPFirstParty} under which it has been seen.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_website_data_manager_get_itp_summary_finish()` to get the result of the operation.
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        get_itp_summary(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ITPThirdParty[]> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_website_data_manager_get_itp_summary()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.List} of {@link WebKit.ITPThirdParty}.    You must free the {@link GLib.List} with `g_list_free()` and unref the {@link WebKit.ITPThirdParty}<!-- -->s with    `webkit_itp_third_party_unref()` when you're done with them.
          */
         get_itp_summary_finish(result: Gio.AsyncResult): ITPThirdParty[];
+
         /**
          * Asynchronously removes the website data in the given `website_data` list.
-         *
+         * 
          * Asynchronously removes the website data of the given `types` for websites in the given `website_data` list.
          * Use `webkit_website_data_manager_clear()` if you want to remove the website data for all sites.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_website_data_manager_remove_finish()` to get the result of the operation.
          * @param types {@link WebKit.WebsiteDataTypes}
          * @param website_data a {@link GLib.List} of {@link WebKit.WebsiteData}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
-        remove(
-            types: WebsiteDataTypes,
-            website_data: WebsiteData[],
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        remove(types: WebsiteDataTypes, website_data: WebsiteData[], cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously removes the website data in the given `website_data` list.
-         *
+         * 
          * Asynchronously removes the website data of the given `types` for websites in the given `website_data` list.
          * Use `webkit_website_data_manager_clear()` if you want to remove the website data for all sites.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `webkit_website_data_manager_remove_finish()` to get the result of the operation.
-         * @param types {@link WebKit.WebsiteDataTypes}
-         * @param website_data a {@link GLib.List} of {@link WebKit.WebsiteData}
-         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        remove(
-            types: WebsiteDataTypes,
-            website_data: WebsiteData[],
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously removes the website data in the given `website_data` list.
-         *
-         * Asynchronously removes the website data of the given `types` for websites in the given `website_data` list.
-         * Use `webkit_website_data_manager_clear()` if you want to remove the website data for all sites.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `webkit_website_data_manager_remove_finish()` to get the result of the operation.
          * @param types {@link WebKit.WebsiteDataTypes}
@@ -15303,18 +15507,30 @@ export namespace WebKit {
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        remove(
-            types: WebsiteDataTypes,
-            website_data: WebsiteData[],
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        remove(types: WebsiteDataTypes, website_data: WebsiteData[], cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously removes the website data in the given `website_data` list.
+         * 
+         * Asynchronously removes the website data of the given `types` for websites in the given `website_data` list.
+         * Use `webkit_website_data_manager_clear()` if you want to remove the website data for all sites.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `webkit_website_data_manager_remove_finish()` to get the result of the operation.
+         * @param types {@link WebKit.WebsiteDataTypes}
+         * @param website_data a {@link GLib.List} of {@link WebKit.WebsiteData}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        remove(types: WebsiteDataTypes, website_data: WebsiteData[], cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation started with `webkit_website_data_manager_remove()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if website data resources were successfully removed, or `false` otherwise.
          */
         remove_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set whether website icons are enabled. Website icons are disabled by default.
          * When website icons are disabled, the {@link WebKit.FaviconDatabase} of `manager` is closed and
@@ -15326,14 +15542,14 @@ export namespace WebKit {
         set_favicons_enabled(enabled: boolean): void;
     }
 
+
     namespace WebsitePolicies {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::autoplay': (pspec: GObject.ParamSpec) => void;
+            "notify::autoplay": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             autoplay: AutoplayPolicy;
         }
@@ -15341,7 +15557,7 @@ export namespace WebKit {
 
     /**
      * View specific website policies.
-     *
+     * 
      * WebKitWebsitePolicies allows you to configure per-page policies,
      * currently only autoplay policies are supported.
      * @gir-type Class
@@ -15351,7 +15567,6 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebsitePolicies>;
 
         // Properties
-
         /**
          * The {@link WebKit.AutoplayPolicy} of {@link WebKit.WebsitePolicies}.
          * @since 2.30
@@ -15370,36 +15585,26 @@ export namespace WebKit {
         $signals: WebsitePolicies.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WebsitePolicies.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): WebsitePolicies;
+        static ["new"](): WebsitePolicies;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WebsitePolicies.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsitePolicies.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WebsitePolicies.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebsitePolicies.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WebsitePolicies.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WebsitePolicies.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WebsitePolicies.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WebsitePolicies.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WebsitePolicies.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WebsitePolicies.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WebsitePolicies.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WebsitePolicies.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the {@link WebKit.WebsitePolicies.autoplay} property.
          * @returns {@link WebKit.AutoplayPolicy}
@@ -15407,21 +15612,21 @@ export namespace WebKit {
         get_autoplay_policy(): AutoplayPolicy;
     }
 
+
     namespace WindowProperties {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::fullscreen': (pspec: GObject.ParamSpec) => void;
-            'notify::geometry': (pspec: GObject.ParamSpec) => void;
-            'notify::locationbar-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::menubar-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::scrollbars-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::statusbar-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::toolbar-visible': (pspec: GObject.ParamSpec) => void;
+            "notify::fullscreen": (pspec: GObject.ParamSpec) => void;
+            "notify::geometry": (pspec: GObject.ParamSpec) => void;
+            "notify::locationbar-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::menubar-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::scrollbars-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::statusbar-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::toolbar-visible": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             fullscreen: boolean;
             geometry: Gdk.Rectangle;
@@ -15441,29 +15646,29 @@ export namespace WebKit {
 
     /**
      * Window properties of a {@link WebKit.WebView}.
-     *
+     * 
      * The content of a {@link WebKit.WebView} can request to change certain
      * properties of the window containing the view. This can include the x, y position
      * of the window, the width and height but also if a toolbar,
      * scrollbar, statusbar, locationbar should be visible to the user,
      * and the request to show the {@link WebKit.WebView} fullscreen.
-     *
+     * 
      * The {@link WebKit.WebView.SignalSignatures.ready_to_show | WebKit.WebView::ready-to-show} signal handler is the proper place
      * to apply the initial window properties. Then you can monitor the
      * {@link WebKit.WindowProperties} by connecting to ::notify signal.
-     *
+     * 
      * ```c
      * static void ready_to_show_cb (WebKitWebView *web_view, gpointer user_data)
      * {
      *     GtkWidget *window;
      *     WebKitWindowProperties *window_properties;
      *     gboolean visible;
-     *
+     * 
      *     // Create the window to contain the WebKitWebView.
      *     window = browser_window_new ();
      *     gtk_container_add (GTK_CONTAINER (window), GTK_WIDGET (web_view));
      *     gtk_widget_show (GTK_WIDGET (web_view));
-     *
+     * 
      *     // Get the WebKitWindowProperties of the web view and monitor it.
      *     window_properties = webkit_web_view_get_window_properties (web_view);
      *     g_signal_connect (window_properties, "notify::geometry",
@@ -15472,25 +15677,25 @@ export namespace WebKit {
      *                       G_CALLBACK (window_toolbar_visibility_changed), window);
      *     g_signal_connect (window_properties, "notify::menubar-visible",
      *                       G_CALLBACK (window_menubar_visibility_changed), window);
-     *
+     * 
      *     // Apply the window properties before showing the window.
      *     visible = webkit_window_properties_get_toolbar_visible (window_properties);
      *     browser_window_set_toolbar_visible (BROWSER_WINDOW (window), visible);
      *     visible = webkit_window_properties_get_menubar_visible (window_properties);
      *     browser_window_set_menubar_visible (BROWSER_WINDOW (window), visible);
-     *
+     * 
      *     if (webkit_window_properties_get_fullscreen (window_properties)) {
      *         gtk_window_fullscreen (GTK_WINDOW (window));
      *     } else {
      *         GdkRectangle geometry;
-     *
+     * 
      *         gtk_window_set_resizable (GTK_WINDOW (window),
      *                                   webkit_window_properties_get_resizable (window_properties));
      *         webkit_window_properties_get_geometry (window_properties, &geometry);
      *         gtk_window_move (GTK_WINDOW (window), geometry.x, geometry.y);
      *         gtk_window_resize (GTK_WINDOW (window), geometry.width, geometry.height);
      *     }
-     *
+     * 
      *     gtk_widget_show (window);
      * }
      * ```
@@ -15500,78 +15705,89 @@ export namespace WebKit {
         static $gtype: GObject.GType<WindowProperties>;
 
         // Properties
-
         /**
          * Whether window will be displayed fullscreen.
          * @construct-only
          * @default false
          */
         get fullscreen(): boolean;
+
         /**
          * The size and position of the window on the screen.
          * @construct-only
          */
         get geometry(): Gdk.Rectangle;
+
         /**
          * Whether the locationbar should be visible for the window.
          * @construct-only
          * @default true
          */
         get locationbar_visible(): boolean;
+
         /**
          * Whether the locationbar should be visible for the window.
          * @construct-only
          * @default true
          */
         get locationbarVisible(): boolean;
+
         /**
          * Whether the menubar should be visible for the window.
          * @construct-only
          * @default true
          */
         get menubar_visible(): boolean;
+
         /**
          * Whether the menubar should be visible for the window.
          * @construct-only
          * @default true
          */
         get menubarVisible(): boolean;
+
         /**
          * Whether the window can be resized.
          * @construct-only
          * @default true
          */
         get resizable(): boolean;
+
         /**
          * Whether the scrollbars should be visible for the window.
          * @construct-only
          * @default true
          */
         get scrollbars_visible(): boolean;
+
         /**
          * Whether the scrollbars should be visible for the window.
          * @construct-only
          * @default true
          */
         get scrollbarsVisible(): boolean;
+
         /**
          * Whether the statusbar should be visible for the window.
          * @construct-only
          * @default true
          */
         get statusbar_visible(): boolean;
+
         /**
          * Whether the statusbar should be visible for the window.
          * @construct-only
          * @default true
          */
         get statusbarVisible(): boolean;
+
         /**
          * Whether the toolbar should be visible for the window.
          * @construct-only
          * @default true
          */
         get toolbar_visible(): boolean;
+
         /**
          * Whether the toolbar should be visible for the window.
          * @construct-only
@@ -15589,68 +15805,65 @@ export namespace WebKit {
         $signals: WindowProperties.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<WindowProperties.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof WindowProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowProperties.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof WindowProperties.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WindowProperties.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof WindowProperties.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, WindowProperties.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof WindowProperties.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, WindowProperties.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof WindowProperties.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<WindowProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof WindowProperties.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<WindowProperties.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get whether the window should be shown in fullscreen state or not.
          * @returns `true` if the window should be fullscreen or `false` otherwise.
          */
         get_fullscreen(): boolean;
+
         /**
          * Get the geometry the window should have on the screen when shown.
          */
         get_geometry(): Gdk.Rectangle;
+
         /**
          * Get whether the window should have the locationbar visible or not.
          * @returns `true` if locationbar should be visible or `false` otherwise.
          */
         get_locationbar_visible(): boolean;
+
         /**
          * Get whether the window should have the menubar visible or not.
          * @returns `true` if menubar should be visible or `false` otherwise.
          */
         get_menubar_visible(): boolean;
+
         /**
          * Get whether the window should be resizable by the user or not.
          * @returns `true` if the window should be resizable or `false` otherwise.
          */
         get_resizable(): boolean;
+
         /**
          * Get whether the window should have the scrollbars visible or not.
          * @returns `true` if scrollbars should be visible or `false` otherwise.
          */
         get_scrollbars_visible(): boolean;
+
         /**
          * Get whether the window should have the statusbar visible or not.
          * @returns `true` if statusbar should be visible or `false` otherwise.
          */
         get_statusbar_visible(): boolean;
+
         /**
          * Get whether the window should have the toolbar visible or not.
          * @returns `true` if toolbar should be visible or `false` otherwise.
@@ -15658,24 +15871,27 @@ export namespace WebKit {
         get_toolbar_visible(): boolean;
     }
 
+
     namespace XRPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
+        }
     }
 
     /**
      * A permission request for accessing virtual reality (VR) and
      * augmented reality (AR) devices, including sensors and head-mounted
      * displays.
-     *
+     * 
      * WebKitXRPermissionRequest represents a request for permission to
      * decide whether WebKit can initialize an XR session through the
      * WebXR API.
-     *
+     * 
      * When a WebKitXRPermissionRequest is not handled by the user,
      * it is denied by default.
      * @gir-type Class
@@ -15694,53 +15910,43 @@ export namespace WebKit {
         $signals: XRPermissionRequest.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<XRPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof XRPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XRPermissionRequest.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof XRPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XRPermissionRequest.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof XRPermissionRequest.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, XRPermissionRequest.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof XRPermissionRequest.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, XRPermissionRequest.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof XRPermissionRequest.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<XRPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof XRPermissionRequest.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<XRPermissionRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the optional features that need user consent.
-         *
+         * 
          * These features can be granted by calling
          * `webkit_xr_permission_request_set_granted_optional_features()`
          * before allowing the request with `webkit_permission_request_allow()`.
          * @returns a {@link WebKit.XRSessionFeatures} flag combination
          */
         get_consent_optional_features(): XRSessionFeatures;
+
         /**
          * Gets the required features that need user consent.
-         *
+         * 
          * These features are automatically granted if the request is allowed with
          * `webkit_permission_request_allow()`.
          * @returns a {@link WebKit.XRSessionFeatures} flag combination
          */
         get_consent_required_features(): XRSessionFeatures;
+
         /**
          * Gets the features requested by the origin for the XR device, which
          * are either granted by default or have been explicitly granted by
@@ -15748,33 +15954,38 @@ export namespace WebKit {
          * @returns a {@link WebKit.XRSessionFeatures} flag combination
          */
         get_granted_features(): XRSessionFeatures;
+
         /**
          * Gets the full set of optional features requested by the web application.
-         *
+         * 
          * This includes both already granted features and those requiring consent.
          * @returns a {@link WebKit.XRSessionFeatures} flag combination
          */
         get_optional_features_requested(): XRSessionFeatures;
+
         /**
          * Gets the full set of required features requested by the web application.
-         *
+         * 
          * This includes both already granted features and those requiring consent.
          * @returns a {@link WebKit.XRSessionFeatures} flag combination
          */
         get_required_features_requested(): XRSessionFeatures;
+
         /**
          * Gets the security origin that initiated the permission request.
          * @returns the {@link WebKit.SecurityOrigin} that initiated the request
          */
         get_security_origin(): SecurityOrigin;
+
         /**
          * Gets the session mode for which permission is being requested.
          * @returns a {@link WebKit.XRSessionMode}
          */
         get_session_mode(): XRSessionMode;
+
         /**
          * Sets which optional features should be granted if the permission request is allowed.
-         *
+         * 
          * This function should be called with a subset of the features from
          * `webkit_xr_permission_request_get_consent_optional_features()` before calling
          * `webkit_permission_request_allow()`. If the request is denied, no features are
@@ -15782,25 +15993,30 @@ export namespace WebKit {
          * @param granted granted features
          */
         set_granted_optional_features(granted: XRSessionFeatures): void;
+
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
+
         /**
          * Allow the action which triggered this request.
          * @virtual
          */
         vfunc_allow(): void;
+
         /**
          * Deny the action which triggered this request.
          * @virtual
          */
         vfunc_deny(): void;
     }
+
 
     /**
      * Information about an application running in automation mode.
@@ -15811,43 +16027,48 @@ export namespace WebKit {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): ApplicationInfo;
+        }>);
+
+        static ["new"](): ApplicationInfo;
 
         // Methods
-
         /**
          * Get the name of the application.
-         *
+         * 
          * If `webkit_application_info_set_name()` hasn't been
          * called with a valid name, this returns `g_get_prgname()`.
          * @returns the application name
          */
         get_name(): string;
+
         /**
          * Get the application version previously set with `webkit_application_info_set_version()`.
          */
         get_version(): [number, number, number];
+
         /**
          * Atomically increments the reference count of `info` by one.
-         *
+         * 
          * This
          * function is MT-safe and may be called from any thread.
          * @returns The passed in {@link WebKit.ApplicationInfo}
          */
         ref(): ApplicationInfo;
+
         /**
          * Set the name of the application.
-         *
+         * 
          * If not provided, or `null` is passed,
          * `g_get_prgname()` will be used.
          * @param name the application name
          */
         set_name(name: string): void;
+
         /**
          * Set the application version.
-         *
+         * 
          * If the application doesn't use the format
          * major.minor.micro you can pass 0 as the micro to use major.minor, or pass
          * 0 as both micro and minor to use only major number. Any other format must
@@ -15856,10 +16077,11 @@ export namespace WebKit {
          * @param minor the minor version number
          * @param micro the micro version number
          */
-        set_version(major: bigint | number, minor: bigint | number, micro: bigint | number): void;
+        set_version(major: (bigint | number), minor: (bigint | number), micro: (bigint | number)): void;
+
         /**
          * Atomically decrements the reference count of `info` by one.
-         *
+         * 
          * If the
          * reference count drops to 0, all memory allocated by the {@link WebKit.ApplicationInfo} is
          * released. This function is MT-safe and may be called from any
@@ -15868,42 +16090,52 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AuthenticationRequestClass = typeof AuthenticationRequest;
+
     /**
      * @gir-type Alias
      */
     type AutomationSessionClass = typeof AutomationSession;
+
     /**
      * @gir-type Alias
      */
     type BackForwardListClass = typeof BackForwardList;
+
     /**
      * @gir-type Alias
      */
     type BackForwardListItemClass = typeof BackForwardListItem;
+
     /**
      * @gir-type Alias
      */
     type ClipboardPermissionRequestClass = typeof ClipboardPermissionRequest;
+
     /**
      * @gir-type Alias
      */
     type ColorChooserRequestClass = typeof ColorChooserRequest;
+
     /**
      * @gir-type Alias
      */
     type ContextMenuClass = typeof ContextMenu;
+
     /**
      * @gir-type Alias
      */
     type ContextMenuItemClass = typeof ContextMenuItem;
+
     /**
      * @gir-type Alias
      */
     type CookieManagerClass = typeof CookieManager;
+
     /**
      * Groups information used for user authentication.
      * @gir-type Struct
@@ -15913,49 +16145,50 @@ export namespace WebKit {
         static $gtype: GObject.GType<Credential>;
 
         // Constructors
-
         constructor(username: string, password: string, persistence: CredentialPersistence);
 
-        static ['new'](username: string, password: string, persistence: CredentialPersistence): Credential;
+        static ["new"](username: string, password: string, persistence: CredentialPersistence): Credential;
 
-        static new_for_certificate(
-            certificate: Gio.TlsCertificate | null,
-            persistence: CredentialPersistence,
-        ): Credential;
+        static new_for_certificate(certificate: (Gio.TlsCertificate | null), persistence: CredentialPersistence): Credential;
 
         static new_for_certificate_pin(pin: string, persistence: CredentialPersistence): Credential;
 
         // Methods
-
         /**
          * Make a copy of the {@link WebKit.Credential}.
          * @returns A copy of passed in {@link WebKit.Credential}
          */
         copy(): Credential;
+
         /**
          * Free the {@link WebKit.Credential}.
          */
         free(): void;
+
         /**
          * Get the certificate currently held by this {@link WebKit.Credential}.
          * @returns a {@link Gio.TlsCertificate}, or `null`
          */
         get_certificate(): Gio.TlsCertificate;
+
         /**
          * Get the password currently held by this {@link WebKit.Credential}.
          * @returns The password stored in the {@link WebKit.Credential}.
          */
         get_password(): string;
+
         /**
          * Get the persistence mode currently held by this {@link WebKit.Credential}.
          * @returns The {@link WebKit.CredentialPersistence} stored in the {@link WebKit.Credential}.
          */
         get_persistence(): CredentialPersistence;
+
         /**
          * Get the username currently held by this {@link WebKit.Credential}.
          * @returns The username stored in the {@link WebKit.Credential}.
          */
         get_username(): string;
+
         /**
          * Determine whether this credential has a password stored.
          * @returns `true` if the credential has a password or `false` otherwise.
@@ -15963,29 +16196,34 @@ export namespace WebKit {
         has_password(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DeviceInfoPermissionRequestClass = typeof DeviceInfoPermissionRequest;
+
     /**
      * @gir-type Alias
      */
     type DownloadClass = typeof Download;
+
     /**
      * @gir-type Alias
      */
     type EditorStateClass = typeof EditorState;
+
     /**
      * @gir-type Alias
      */
     type FaviconDatabaseClass = typeof FaviconDatabase;
+
     /**
      * Describes a web engine feature that may be toggled at runtime.
-     *
+     * 
      * The WebKit web engine includes a set of features which may be toggled
      * programmatically, each one represented by a {@link WebKit.Feature} that provides
      * information about it:
-     *
+     * 
      * - A unique “identifier”: {@link Feature.get_identifier}.
      * - A “default value”, which indicates whether the option is enabled
      *   automatically: {@link Feature.get_default_value}.
@@ -15998,7 +16236,7 @@ export namespace WebKit {
      *   {@link Feature.get_name}.
      * - An optional longer “detailed” description:
      *   {@link Feature.get_details}.
-     *
+     * 
      * The lists of available features can be obtained with
      * {@link Settings.get_all_features}, {@link Settings.get_experimental_features},
      * and {@link Settings.get_development_features}). As a rule of thumb,
@@ -16007,7 +16245,7 @@ export namespace WebKit {
      * applications might want to expose development features *when targeting
      * technically inclined users* for early testing of in-development features
      * (i.e. in “technology preview” or “canary” builds).
-     *
+     * 
      * Applications **must not** expose the list of all features to end users
      * because they often lack descriptions and control parts of the web engine
      * which are either intended to be used during development of WebKit itself,
@@ -16020,18 +16258,18 @@ export namespace WebKit {
         static $gtype: GObject.GType<Feature>;
 
         // Methods
-
         /**
          * Gets the category of the feature.
-         *
+         * 
          * Applications which include user interface to toggle features may want
          * to use the category to group related features together.
          * @returns Feature category.
          */
         get_category(): string;
+
         /**
          * Gets whether the feature is enabled by default.
-         *
+         * 
          * The default value may be used by applications which include user interface
          * to toggle features to restore its settings to their defaults. Note that
          * whether a feature is actually enabled must be checked with
@@ -16039,51 +16277,57 @@ export namespace WebKit {
          * @returns Whether the feature is enabled by default.
          */
         get_default_value(): boolean;
+
         /**
          * Gets a description for the `feature`.
-         *
+         * 
          * The detailed description should be considered an additional clarification
          * on the purpose of the feature, to be used as complementary aid to be
          * displayed along the feature name returned by {@link Feature.get_name}.
          * The returned string is suitable to be displayed to end users, but it
          * should not be relied upon being localized.
-         *
+         * 
          * Note that some *features may not* have a detailed description, and `NULL`
          * is returned in this case.
          * @returns Feature description.
          */
-        get_details(): string | null;
+        get_details(): (string | null);
+
         /**
          * Gets a string that uniquely identifies the `feature`.
          * @returns The identifier string for the feature.
          */
         get_identifier(): string;
+
         /**
          * Gets a short name for the `feature`.
-         *
+         * 
          * The returned string is suitable to be displayed to end users, but it
          * should not be relied upon being localized.
-         *
+         * 
          * Note that some *features may not* have a short name, and `NULL`
          * is returned in this case.
          * @returns Short feature name.
          */
-        get_name(): string | null;
+        get_name(): (string | null);
+
         /**
          * Gets the status of the feature.
          * @returns Feature status.
          */
         get_status(): FeatureStatus;
+
         /**
          * Atomically acquires a reference on the given `feature`.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The same `feature` with an additional reference.
          */
         ref(): Feature;
+
         /**
          * Atomically releases a reference on the given `feature`.
-         *
+         * 
          * If the reference was the last, the resources associated to the
          * `feature` are freed. This function is MT-safe and may be called from
          * any thread.
@@ -16091,12 +16335,13 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * Contains a set of toggle-able web engine features.
-     *
+     * 
      * The list supports passing around a set of {@link Feature} objects and
      * iterating over them:
-     *
+     * 
      * ```c
      * g_autoptr(WebKitFeatureList) list = `webkit_settings_get_experimental_features()`;
      * for (gsize i = 0; i < webkit_feature_list_get_length(list): i++) {
@@ -16104,7 +16349,7 @@ export namespace WebKit {
      *     // Do something with "feature".
      * }
      * ```
-     *
+     * 
      * Lists of features can be obtained with
      * {@link Settings.get_experimental_features},
      * {@link Settings.get_development_features}, and
@@ -16116,28 +16361,30 @@ export namespace WebKit {
         static $gtype: GObject.GType<FeatureList>;
 
         // Methods
-
         /**
          * Gets a feature given its index.
          * @param index index of the feature
          * @returns The feature at `index`.
          */
-        get(index: bigint | number): Feature;
+        get(index: (bigint | number)): Feature;
+
         /**
          * Gets the number of elements in the feature list.
          * @returns number of elements. Since 2.42
          */
         get_length(): number;
+
         /**
          * Atomically acquires a reference on the given `feature_list`.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The same `feature_list` with an additional reference.
          */
         ref(): FeatureList;
+
         /**
          * Atomically releases a reference on the given `feature_list`.
-         *
+         * 
          * If the reference was the last, the resources associated to the
          * `feature_list` are freed. This function is MT-safe and may be called
          * from any thread.
@@ -16145,29 +16392,35 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FileChooserRequestClass = typeof FileChooserRequest;
+
     /**
      * @gir-type Alias
      */
     type FindControllerClass = typeof FindController;
+
     /**
      * @gir-type Alias
      */
     type FormSubmissionRequestClass = typeof FormSubmissionRequest;
+
     /**
      * @gir-type Alias
      */
     type GeolocationManagerClass = typeof GeolocationManager;
+
     /**
      * @gir-type Alias
      */
     type GeolocationPermissionRequestClass = typeof GeolocationPermissionRequest;
+
     /**
      * An opaque struct to provide position updates to a {@link WebKit.GeolocationManager}.
-     *
+     * 
      * WebKitGeolocationPosition is an opaque struct used to provide position updates to a
      * {@link WebKit.GeolocationManager} using `webkit_geolocation_manager_update_position()`.
      * @gir-type Struct
@@ -16177,58 +16430,64 @@ export namespace WebKit {
         static $gtype: GObject.GType<GeolocationPosition>;
 
         // Constructors
-
         constructor(latitude: number, longitude: number, accuracy: number);
 
-        static ['new'](latitude: number, longitude: number, accuracy: number): GeolocationPosition;
+        static ["new"](latitude: number, longitude: number, accuracy: number): GeolocationPosition;
 
         // Methods
-
         /**
          * Make a copy of the {@link WebKit.GeolocationPosition}.
          * @returns a copy of `position`
          */
         copy(): GeolocationPosition;
+
         /**
          * Free the {@link WebKit.GeolocationPosition}
          */
         free(): void;
+
         /**
          * Set the `position` altitude.
          * @param altitude altitude in meters
          */
         set_altitude(altitude: number): void;
+
         /**
          * Set the accuracy of `position` altitude.
          * @param altitude_accuracy accuracy of position altitude in meters
          */
         set_altitude_accuracy(altitude_accuracy: number): void;
+
         /**
          * Set the `position` heading.
-         *
+         * 
          * Set the `position` heading, as a positive angle between the direction of movement and the North
          * direction, in clockwise direction.
          * @param heading heading in degrees
          */
         set_heading(heading: number): void;
+
         /**
          * Set the `position` speed.
          * @param speed speed in meters per second
          */
         set_speed(speed: number): void;
+
         /**
          * Set the `position` timestamp.
-         *
+         * 
          * By default it's the time when the `position` was created.
          * @param timestamp timestamp in seconds since the epoch, or 0 to use current time
          */
-        set_timestamp(timestamp: bigint | number): void;
+        set_timestamp(timestamp: (bigint | number)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type HitTestResultClass = typeof HitTestResult;
+
     /**
      * Describes a first party origin.
      * @gir-type Struct
@@ -16238,44 +16497,48 @@ export namespace WebKit {
         static $gtype: GObject.GType<ITPFirstParty>;
 
         // Methods
-
         /**
          * Get the domain name of `itp_first_party`.
          * @returns the domain name
          */
         get_domain(): string;
+
         /**
          * Get the last time a {@link WebKit.ITPThirdParty} has been seen under `itp_first_party`.
-         *
+         * 
          * Each `WebKitITPFirstParty` is created by `webkit_itp_third_party_get_first_parties()` and
          * therefore corresponds to exactly one {@link WebKit.ITPThirdParty}.
          * @returns the last update time as a {@link GLib.DateTime}
          */
         get_last_update_time(): GLib.DateTime;
+
         /**
          * Get whether `itp_first_party` has granted website data access to its {@link WebKit.ITPThirdParty}.
-         *
+         * 
          * Each `WebKitITPFirstParty` is created by `webkit_itp_third_party_get_first_parties()` and
          * therefore corresponds to exactly one {@link WebKit.ITPThirdParty}.
          * @returns `true` if website data access has been granted, or `false` otherwise
          */
         get_website_data_access_allowed(): boolean;
+
         /**
          * Atomically increments the reference count of `itp_first_party` by one.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The passed {@link WebKit.ITPFirstParty}
          */
         ref(): ITPFirstParty;
+
         /**
          * Atomically decrements the reference count of `itp_first_party` by one.
-         *
+         * 
          * If the reference count drops to 0, all memory allocated by
          * {@link WebKit.ITPFirstParty} is released. This function is MT-safe and may be
          * called from any thread.
          */
         unref(): void;
     }
+
 
     /**
      * Describes a third party origin.
@@ -16286,27 +16549,29 @@ export namespace WebKit {
         static $gtype: GObject.GType<ITPThirdParty>;
 
         // Methods
-
         /**
          * Get the domain name of `itp_third_party`.
          * @returns the domain name
          */
         get_domain(): string;
+
         /**
          * Get the list of {@link WebKit.ITPFirstParty} under which `itp_third_party` has been seen.
          * @returns a {@link GLib.List} of {@link WebKit.ITPFirstParty}
          */
         get_first_parties(): ITPFirstParty[];
+
         /**
          * Atomically increments the reference count of `itp_third_party` by one.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The passed {@link WebKit.ITPThirdParty}
          */
         ref(): ITPThirdParty;
+
         /**
          * Atomically decrements the reference count of `itp_third_party` by one.
-         *
+         * 
          * If the reference count drops to 0, all memory allocated by
          * {@link WebKit.ITPThirdParty} is released. This function is MT-safe and may be
          * called from any thread.
@@ -16314,16 +16579,19 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InputMethodContextClass = typeof InputMethodContext;
+
     /**
      * @gir-type Struct
      */
     abstract class InputMethodContextPrivate {
         static $gtype: GObject.GType<InputMethodContextPrivate>;
     }
+
 
     /**
      * Range of text in an preedit string to be shown underlined.
@@ -16334,54 +16602,56 @@ export namespace WebKit {
         static $gtype: GObject.GType<InputMethodUnderline>;
 
         // Constructors
-
         constructor(start_offset: number, end_offset: number);
 
-        static ['new'](start_offset: number, end_offset: number): InputMethodUnderline;
+        static ["new"](start_offset: number, end_offset: number): InputMethodUnderline;
 
         // Methods
-
         /**
          * Make a copy of the {@link WebKit.InputMethodUnderline}.
          * @returns A copy of passed in {@link WebKit.InputMethodUnderline}
          */
         copy(): InputMethodUnderline;
+
         /**
          * Free the {@link WebKit.InputMethodUnderline}.
          */
         free(): void;
+
         /**
          * Set the color of the underline.
-         *
+         * 
          * If `rgba` is `null` the foreground text color will be used
          * for the underline too.
          * @param rgba a {@link Gdk.RGBA} or `null`
          */
-        set_color(rgba: Gdk.RGBA | null): void;
+        set_color(rgba: (Gdk.RGBA | null)): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type MediaKeySystemPermissionRequestClass = typeof MediaKeySystemPermissionRequest;
+
     /**
      * A boxed type representing the settings for the memory pressure handler
-     *
+     * 
      * {@link WebKit.MemoryPressureSettings} is a boxed type that can be used to provide some custom settings
      * to control how the memory pressure situations are handled by the different processes.
-     *
+     * 
      * The memory pressure system implemented inside the different process will try to keep the memory usage
      * under the defined memory limit. In order to do that, it will check the used memory with a user defined
      * frequency and decide whether it should try to release memory. The thresholds passed will define how urgent
      * is to release that memory.
-     *
+     * 
      * Take into account that badly defined parameters can greatly reduce the performance of the engine. For
      * example, setting memory limit too low with a fast poll interval can cause the process to constantly
      * be trying to release memory.
-     *
+     * 
      * A {@link WebKit.MemoryPressureSettings} can be passed to a {@link WebKit.WebContext} constructor, and the settings will
      * be applied to all the web processes created by that context.
-     *
+     * 
      * A {@link WebKit.MemoryPressureSettings} can be passed to `webkit_website_data_manager_set_memory_pressure_settings()`,
      * and the settings will be applied to all the network processes created after that call by any instance of
      * {@link WebKit.WebsiteDataManager}.
@@ -16393,89 +16663,101 @@ export namespace WebKit {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): MemoryPressureSettings;
+        }>);
+
+        static ["new"](): MemoryPressureSettings;
 
         // Methods
-
         /**
          * Make a copy of `settings`.
          * @returns A copy of of the passed {@link WebKit.MemoryPressureSettings}.
          */
         copy(): MemoryPressureSettings;
+
         /**
          * Free the {@link WebKit.MemoryPressureSettings}.
          */
         free(): void;
+
         /**
          * Gets the conservative memory usage threshold.
          * @returns value in the `(0, 1)` range.
          */
         get_conservative_threshold(): number;
+
         /**
          * Gets the kill memory usage threshold.
          * @returns positive value, can be zero.
          */
         get_kill_threshold(): number;
+
         /**
          * Gets the memory usage limit.
          * @returns current value, in megabytes.
          */
         get_memory_limit(): number;
+
         /**
          * Gets the interval at which memory usage is checked.
          * @returns current interval value, in seconds.
          */
         get_poll_interval(): number;
+
         /**
          * Gets the strict memory usage threshold.
          * @returns value in the `(0, 1)` range.
          */
         get_strict_threshold(): number;
+
         /**
          * Sets the memory limit for the conservative policy to start working.
-         *
+         * 
          * Sets `value` as the fraction of the defined memory limit where the conservative
          * policy starts working. This policy will try to reduce the memory footprint by
          * releasing non critical memory.
-         *
+         * 
          * The threshold must be bigger than 0 and smaller than 1, and it must be smaller
          * than the strict threshold defined in `settings`. The default value is 0.33.
          * @param value fraction of the memory limit where the conservative policy starts working.
          */
         set_conservative_threshold(value: number): void;
+
         /**
          * Sets `value` as the fraction of the defined memory limit where the process will be
          * killed.
-         *
+         * 
          * The threshold must be a value bigger or equal to 0. A value of 0 means that the process
          * is never killed. If the threshold is not 0, then it must be bigger than the strict threshold
          * defined in `settings`. The threshold can also have values bigger than 1. The default value is 0.
          * @param value fraction of the memory limit where the process will be killed because   of excessive memory usage.
          */
         set_kill_threshold(value: number): void;
+
         /**
          * Sets `memory_limit` the memory limit value to `settings`.
-         *
+         * 
          * The default value is the system's RAM size with a maximum of 3GB.
          * @param memory_limit amount of memory (in MB) that the process is allowed to use.
          */
         set_memory_limit(memory_limit: number): void;
+
         /**
          * Sets `value` as the poll interval used by `settings`.
-         *
+         * 
          * The poll interval value must be bigger than 0. The default value is 30 seconds.
          * @param value period (in seconds) between memory usage measurements.
          */
         set_poll_interval(value: number): void;
+
         /**
          * Sets the memory limit for the strict policy to start working.
-         *
+         * 
          * Sets `value` as the fraction of the defined memory limit where the strict
          * policy starts working. This policy will try to reduce the memory footprint by
          * releasing critical memory.
-         *
+         * 
          * The threshold must be bigger than 0 and smaller than 1. Also, it must be bigger
          * than the conservative threshold defined in `settings`, and smaller than the kill
          * threshold if the latter is not 0. The default value is 0.5.
@@ -16483,6 +16765,7 @@ export namespace WebKit {
          */
         set_strict_threshold(value: number): void;
     }
+
 
     /**
      * Provides details about interaction resulting in a resource load.
@@ -16492,47 +16775,52 @@ export namespace WebKit {
         static $gtype: GObject.GType<NavigationAction>;
 
         // Methods
-
         /**
          * Make a copy of `navigation`.
          * @returns A copy of passed in {@link WebKit.NavigationAction}
          */
         copy(): NavigationAction;
+
         /**
          * Free the {@link WebKit.NavigationAction}
          */
         free(): void;
+
         /**
          * Gets the `navigation` target frame name. For example if navigation was triggered by clicking a
          * link with a target attribute equal to "_blank", this will return the value of that attribute.
          * In all other cases this function will return `null`.
          * @returns The name of the new frame this navigation action targets or `null`
          */
-        get_frame_name(): string | null;
+        get_frame_name(): (string | null);
+
         /**
          * Return the modifier keys.
-         *
+         * 
          * Return a bitmask of {@link Gdk.ModifierType} values describing the modifier keys that were in effect
          * when the navigation was requested
          * @returns the modifier keys
          */
         get_modifiers(): number;
+
         /**
          * Return the number of the mouse button that triggered the navigation.
-         *
+         * 
          * Return the number of the mouse button that triggered the navigation, or 0 if
          * the navigation was not started by a mouse event.
          * @returns the mouse button number or 0
          */
         get_mouse_button(): number;
+
         /**
          * Return the type of action that triggered the navigation.
          * @returns a {@link WebKit.NavigationType}
          */
         get_navigation_type(): NavigationType;
+
         /**
          * Return the {@link WebKit.URIRequest} associated with the navigation action.
-         *
+         * 
          * Modifications to the returned object are <emphasis>not</emphasis> taken
          * into account when the request is sent over the network, and is intended
          * only to aid in evaluating whether a navigation action should be taken or
@@ -16541,11 +16829,13 @@ export namespace WebKit {
          * @returns a {@link WebKit.URIRequest}
          */
         get_request(): URIRequest;
+
         /**
          * Returns whether the `navigation` was redirected.
          * @returns `true` if the original navigation was redirected, `false` otherwise.
          */
         is_redirect(): boolean;
+
         /**
          * Return whether the navigation was triggered by a user gesture like a mouse click.
          * @returns whether navigation action is a user gesture
@@ -16553,13 +16843,15 @@ export namespace WebKit {
         is_user_gesture(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NavigationPolicyDecisionClass = typeof NavigationPolicyDecision;
+
     /**
      * Configures network proxies.
-     *
+     * 
      * WebKitNetworkProxySettings can be used to provide a custom proxy configuration
      * to a {@link WebKit.NetworkSession}. You need to call `webkit_network_session_set_network_proxy_settings()`
      * with {@link WebKit.NetworkProxyMode.CUSTOM} and a WebKitNetworkProxySettings.
@@ -16570,16 +16862,14 @@ export namespace WebKit {
         static $gtype: GObject.GType<NetworkProxySettings>;
 
         // Constructors
+        constructor(default_proxy_uri: (string | null), ignore_hosts: (string[] | null));
 
-        constructor(default_proxy_uri: string | null, ignore_hosts: string[] | null);
-
-        static ['new'](default_proxy_uri: string | null, ignore_hosts: string[] | null): NetworkProxySettings;
+        static ["new"](default_proxy_uri: (string | null), ignore_hosts: (string[] | null)): NetworkProxySettings;
 
         // Methods
-
         /**
          * Adds a URI-scheme-specific proxy.
-         *
+         * 
          * URIs whose scheme matches `uri_scheme` will be proxied via `proxy_uri`.
          * As with the default proxy URI, if `proxy_uri` starts with "socks://", it will be treated as referring to
          * all three of the socks5, socks4a, and socks4 proxy types.
@@ -16587,36 +16877,43 @@ export namespace WebKit {
          * @param proxy_uri the proxy URI to use for `uri_scheme`
          */
         add_proxy_for_scheme(scheme: string, proxy_uri: string): void;
+
         /**
          * Make a copy of the {@link WebKit.NetworkProxySettings}.
          * @returns A copy of passed in {@link WebKit.NetworkProxySettings}
          */
         copy(): NetworkProxySettings;
+
         /**
          * Free the {@link WebKit.NetworkProxySettings}.
          */
         free(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NetworkSessionClass = typeof NetworkSession;
+
     /**
      * @gir-type Alias
      */
     type NotificationClass = typeof Notification;
+
     /**
      * @gir-type Alias
      */
     type NotificationPermissionRequestClass = typeof NotificationPermissionRequest;
+
     /**
      * @gir-type Alias
      */
     type OptionMenuClass = typeof OptionMenu;
+
     /**
      * One item of a {@link WebKit.OptionMenu}.
-     *
+     * 
      * The {@link WebKit.OptionMenu} is composed of WebKitOptionMenuItem<!-- -->s.
      * A WebKitOptionMenuItem always has a label and can contain a tooltip text.
      * You can use the WebKitOptionMenuItem of a {@link WebKit.OptionMenu} to build your
@@ -16628,41 +16925,47 @@ export namespace WebKit {
         static $gtype: GObject.GType<OptionMenuItem>;
 
         // Methods
-
         /**
          * Make a copy of the {@link WebKit.OptionMenuItem}.
          * @returns A copy of passed in {@link WebKit.OptionMenuItem}
          */
         copy(): OptionMenuItem;
+
         /**
          * Free the {@link WebKit.OptionMenuItem}.
          */
         free(): void;
+
         /**
          * Get the label of a {@link WebKit.OptionMenuItem}.
          * @returns The label of `item`.
          */
         get_label(): string;
+
         /**
          * Get the tooltip of a {@link WebKit.OptionMenuItem}.
          * @returns The tooltip of `item`, or `null`.
          */
         get_tooltip(): string;
+
         /**
          * Whether a {@link WebKit.OptionMenuItem} is enabled.
          * @returns `true` if the `item` is enabled or `false` otherwise.
          */
         is_enabled(): boolean;
+
         /**
          * Whether a {@link WebKit.OptionMenuItem} is a group child.
          * @returns `true` if the `item` is a group child or `false` otherwise.
          */
         is_group_child(): boolean;
+
         /**
          * Whether a {@link WebKit.OptionMenuItem} is a group label.
          * @returns `true` if the `item` is a group label or `false` otherwise.
          */
         is_group_label(): boolean;
+
         /**
          * Whether a {@link WebKit.OptionMenuItem} is the currently selected one.
          * @returns `true` if the `item` is selected or `false` otherwise.
@@ -16670,19 +16973,21 @@ export namespace WebKit {
         is_selected(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PermissionRequestInterface = typeof PermissionRequest;
+
     /**
      * This query represents a user's choice to allow or deny access to "powerful features" of the
      * platform, as specified in the [Permissions W3C
      * Specification](https://w3c.github.io/permissions/).
-     *
+     * 
      * When signalled by the {@link WebKit.WebView} through the `query-permission-state` signal, the application
      * has to eventually respond, via `webkit_permission_state_query_finish()`, whether it grants,
      * denies or requests a dedicated permission prompt for the given query.
-     *
+     * 
      * When a {@link WebKit.PermissionStateQuery} is not handled by the user, the user-agent is instructed to
      * `prompt` the user for the given permission.
      * @gir-type Struct
@@ -16691,47 +16996,53 @@ export namespace WebKit {
         static $gtype: GObject.GType<PermissionStateQuery>;
 
         // Methods
-
         /**
          * Notify the web-engine of the selected permission state for the given query. This function should
          * only be called as a response to the `WebKit.WebView::query-permission-state` signal.
          * @param state a {@link WebKit.PermissionState}
          */
         finish(state: PermissionState): void;
+
         /**
          * Get the permission name for which access is being queried.
          * @returns the permission name for `query`
          */
         get_name(): string;
+
         /**
          * Get the permission origin for which access is being queried.
          * @returns A {@link WebKit.SecurityOrigin} representing the origin from which the `query` was emitted.
          */
         get_security_origin(): SecurityOrigin;
+
         /**
          * Atomically increments the reference count of `query` by one.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The passed {@link WebKit.PermissionStateQuery}
          */
         ref(): PermissionStateQuery;
+
         /**
          * Atomically decrements the reference count of `query` by one.
-         *
+         * 
          * If the reference count drops to 0, all memory allocated by {@link WebKit.PermissionStateQuery} is
          * released. This function is MT-safe and may be called from any thread.
          */
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PointerLockPermissionRequestClass = typeof PointerLockPermissionRequest;
+
     /**
      * @gir-type Alias
      */
     type PolicyDecisionClass = typeof PolicyDecision;
+
     /**
      * @gir-type Struct
      */
@@ -16739,14 +17050,17 @@ export namespace WebKit {
         static $gtype: GObject.GType<PolicyDecisionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PrintOperationClass = typeof PrintOperation;
+
     /**
      * @gir-type Alias
      */
     type ResponsePolicyDecisionClass = typeof ResponsePolicyDecision;
+
     /**
      * Carries details to be shown in user-facing dialogs.
      * @gir-type Struct
@@ -16755,19 +17069,19 @@ export namespace WebKit {
         static $gtype: GObject.GType<ScriptDialog>;
 
         // Methods
-
         /**
          * Close `dialog`.
-         *
+         * 
          * When handling a {@link WebKit.ScriptDialog} asynchronously (webkit_script_dialog_ref()
          * was called in {@link WebKit.WebView.SignalSignatures.script_dialog | WebKit.WebView::script-dialog} callback), this function needs to be called to notify
          * that we are done with the script dialog. The dialog will be closed on destruction if this function
          * hasn't been called before.
          */
         close(): void;
+
         /**
          * Set whether the user confirmed the dialog.
-         *
+         * 
          * This method is used for {@link WebKit.ScriptDialogType.CONFIRM} and {@link WebKit.ScriptDialogType.BEFORE_UNLOAD_CONFIRM} dialogs when
          * {@link WebKit.WebView.SignalSignatures.script_dialog | WebKit.WebView::script-dialog} signal is emitted to set whether the user
          * confirmed the dialog or not. The default implementation of {@link WebKit.WebView.SignalSignatures.script_dialog | WebKit.WebView::script-dialog}
@@ -16777,27 +17091,31 @@ export namespace WebKit {
          * @param confirmed whether user confirmed the dialog
          */
         confirm_set_confirmed(confirmed: boolean): void;
+
         /**
          * Get the dialog type of a {@link WebKit.ScriptDialog}.
          * @returns the {@link WebKit.ScriptDialogType} of `dialog`
          */
         get_dialog_type(): ScriptDialogType;
+
         /**
          * Get the message of a {@link WebKit.ScriptDialog}.
          * @returns the message of `dialog`.
          */
         get_message(): string;
+
         /**
          * Get the default text of a {@link WebKit.ScriptDialog} of type {@link WebKit.ScriptDialogType.PROMPT}.
-         *
+         * 
          * It's an error to use this method with a {@link WebKit.ScriptDialog} that is not of type
          * {@link WebKit.ScriptDialogType.PROMPT}.
          * @returns the default text of `dialog`
          */
         prompt_get_default_text(): string;
+
         /**
          * Set the text entered by the user in the dialog.
-         *
+         * 
          * This method is used for {@link WebKit.ScriptDialogType.PROMPT} dialogs when
          * {@link WebKit.WebView.SignalSignatures.script_dialog | WebKit.WebView::script-dialog} signal is emitted to set the text
          * entered by the user. The default implementation of {@link WebKit.WebView.SignalSignatures.script_dialog | WebKit.WebView::script-dialog}
@@ -16807,17 +17125,19 @@ export namespace WebKit {
          * @param text the text to set
          */
         prompt_set_text(text: string): void;
+
         /**
          * Atomically increments the reference count of `dialog` by one.
-         *
+         * 
          * This
          * function is MT-safe and may be called from any thread.
          * @returns The passed in {@link WebKit.ScriptDialog}
          */
         ref(): ScriptDialog;
+
         /**
          * Atomically decrements the reference count of `dialog` by one.
-         *
+         * 
          * If the
          * reference count drops to 0, all memory allocated by the `WebKitScriptdialog` is
          * released. This function is MT-safe and may be called from any
@@ -16825,6 +17145,7 @@ export namespace WebKit {
          */
         unref(): void;
     }
+
 
     /**
      * A reply for a script message received.
@@ -16837,27 +17158,29 @@ export namespace WebKit {
         static $gtype: GObject.GType<ScriptMessageReply>;
 
         // Methods
-
         /**
          * Atomically increments the reference count of `script_message_reply` by one.
          * @returns the `script_message_reply` passed in.
          */
         ref(): ScriptMessageReply;
+
         /**
          * Reply to a script message with an error message.
          * @param error_message An error message to return as specified by the user's script message
          */
         return_error_message(error_message: string): void;
+
         /**
          * Reply to a script message with a value.
-         *
+         * 
          * This function can be called twice for passing the reply value in.
          * @param reply_value Reply value of the provided script message
          */
         return_value(reply_value: JavaScriptCore.Value): void;
+
         /**
          * Atomically decrements the reference count of `script_message_reply` by one.
-         *
+         * 
          * If the reference count drops to 0, all the memory allocated by the
          * {@link WebKit.ScriptMessageReply} is released. This function is MT-safe and may
          * be called from any thread.
@@ -16865,17 +17188,19 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SecurityManagerClass = typeof SecurityManager;
+
     /**
      * A security boundary for websites.
-     *
+     * 
      * {@link WebKit.SecurityOrigin} is a representation of a security domain
      * defined by websites. A security origin consists of a protocol, a
      * hostname, and an optional port number.
-     *
+     * 
      * Resources with the same security origin can generally access each
      * other for client-side scripting or database access. When comparing
      * origins, beware that if both protocol and host are `null`, the origins
@@ -16887,26 +17212,25 @@ export namespace WebKit {
         static $gtype: GObject.GType<SecurityOrigin>;
 
         // Constructors
-
         constructor(protocol: string, host: string, port: number);
 
-        static ['new'](protocol: string, host: string, port: number): SecurityOrigin;
+        static ["new"](protocol: string, host: string, port: number): SecurityOrigin;
 
         static new_for_uri(uri: string): SecurityOrigin;
 
         // Methods
-
         /**
          * Gets the hostname of `origin`.
-         *
+         * 
          * It is reasonable for this to be `null`
          * if its protocol does not require a host component.
          * @returns The host of the {@link WebKit.SecurityOrigin}
          */
-        get_host(): string | null;
+        get_host(): (string | null);
+
         /**
          * Gets the port of `origin`.
-         *
+         * 
          * This function will always return 0 if the
          * port is the default port for the given protocol. For example,
          * http://example.com has the same security origin as
@@ -16915,30 +17239,34 @@ export namespace WebKit {
          * @returns The port of the {@link WebKit.SecurityOrigin}.
          */
         get_port(): number;
+
         /**
          * Gets the protocol of `origin`.
          * @returns The protocol of the {@link WebKit.SecurityOrigin}
          */
-        get_protocol(): string | null;
+        get_protocol(): (string | null);
+
         /**
          * Atomically increments the reference count of `origin` by one.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The passed {@link WebKit.SecurityOrigin}
          */
         ref(): SecurityOrigin;
+
         /**
          * Gets a string representation of `origin`.
-         *
+         * 
          * The string representation
          * is a valid URI with only protocol, host, and port components, or
          * `null`.
          * @returns a URI representing `origin`.
          */
-        to_string(): string | null;
+        to_string(): (string | null);
+
         /**
          * Atomically decrements the reference count of `origin` by one.
-         *
+         * 
          * If the reference count drops to 0, all memory allocated by
          * {@link WebKit.SecurityOrigin} is released. This function is MT-safe and may be
          * called from any thread.
@@ -16946,26 +17274,32 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SettingsClass = typeof Settings;
+
     /**
      * @gir-type Alias
      */
     type URIRequestClass = typeof URIRequest;
+
     /**
      * @gir-type Alias
      */
     type URIResponseClass = typeof URIResponse;
+
     /**
      * @gir-type Alias
      */
     type URISchemeRequestClass = typeof URISchemeRequest;
+
     /**
      * @gir-type Alias
      */
     type URISchemeResponseClass = typeof URISchemeResponse;
+
     /**
      * A compiled set of rules which applied to resource loads.
      * @gir-type Struct
@@ -16975,25 +17309,26 @@ export namespace WebKit {
         static $gtype: GObject.GType<UserContentFilter>;
 
         // Methods
-
         /**
          * Obtain the identifier previously used to save the `user_content_filter`.
-         *
+         * 
          * Obtain the identifier previously used to save the `user_content_filter` in the
          * {@link WebKit.UserContentFilterStore}.
          * @returns the identifier for the filter
          */
         get_identifier(): string;
+
         /**
          * Atomically increments the reference count of `user_content_filter` by one.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns the `user_content_filter` passed in.
          */
         ref(): UserContentFilter;
+
         /**
          * Atomically decrements the reference count of `user_content_filter` by one.
-         *
+         * 
          * If the reference count drops to 0, all the memory allocated by the
          * {@link WebKit.UserContentFilter} is released. This function is MT-safe and may
          * be called from any thread.
@@ -17001,22 +17336,27 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UserContentFilterStoreClass = typeof UserContentFilterStore;
+
     /**
      * @gir-type Alias
      */
     type UserContentManagerClass = typeof UserContentManager;
+
     /**
      * @gir-type Alias
      */
     type UserMediaPermissionRequestClass = typeof UserMediaPermissionRequest;
+
     /**
      * @gir-type Alias
      */
     type UserMessageClass = typeof UserMessage;
+
     /**
      * A JavaScript snippet which can be injected in loaded pages.
      * @gir-type Struct
@@ -17026,50 +17366,31 @@ export namespace WebKit {
         static $gtype: GObject.GType<UserScript>;
 
         // Constructors
+        constructor(source: string, injected_frames: UserContentInjectedFrames, injection_time: UserScriptInjectionTime, allow_list: (string[] | null), block_list: (string[] | null));
 
-        constructor(
-            source: string,
-            injected_frames: UserContentInjectedFrames,
-            injection_time: UserScriptInjectionTime,
-            allow_list: string[] | null,
-            block_list: string[] | null,
-        );
+        static ["new"](source: string, injected_frames: UserContentInjectedFrames, injection_time: UserScriptInjectionTime, allow_list: (string[] | null), block_list: (string[] | null)): UserScript;
 
-        static ['new'](
-            source: string,
-            injected_frames: UserContentInjectedFrames,
-            injection_time: UserScriptInjectionTime,
-            allow_list: string[] | null,
-            block_list: string[] | null,
-        ): UserScript;
-
-        static new_for_world(
-            source: string,
-            injected_frames: UserContentInjectedFrames,
-            injection_time: UserScriptInjectionTime,
-            world_name: string,
-            allow_list: string[] | null,
-            block_list: string[] | null,
-        ): UserScript;
+        static new_for_world(source: string, injected_frames: UserContentInjectedFrames, injection_time: UserScriptInjectionTime, world_name: string, allow_list: (string[] | null), block_list: (string[] | null)): UserScript;
 
         // Methods
-
         /**
          * Atomically increments the reference count of `user_script` by one.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The passed {@link WebKit.UserScript}
          */
         ref(): UserScript;
+
         /**
          * Atomically decrements the reference count of `user_script` by one.
-         *
+         * 
          * If the reference count drops to 0, all memory allocated by
          * {@link WebKit.UserScript} is released. This function is MT-safe and may be called
          * from any thread.
          */
         unref(): void;
     }
+
 
     /**
      * A CSS style sheet which can be injected in loaded pages.
@@ -17080,44 +17401,24 @@ export namespace WebKit {
         static $gtype: GObject.GType<UserStyleSheet>;
 
         // Constructors
+        constructor(source: string, injected_frames: UserContentInjectedFrames, level: UserStyleLevel, allow_list: (string[] | null), block_list: (string[] | null));
 
-        constructor(
-            source: string,
-            injected_frames: UserContentInjectedFrames,
-            level: UserStyleLevel,
-            allow_list: string[] | null,
-            block_list: string[] | null,
-        );
+        static ["new"](source: string, injected_frames: UserContentInjectedFrames, level: UserStyleLevel, allow_list: (string[] | null), block_list: (string[] | null)): UserStyleSheet;
 
-        static ['new'](
-            source: string,
-            injected_frames: UserContentInjectedFrames,
-            level: UserStyleLevel,
-            allow_list: string[] | null,
-            block_list: string[] | null,
-        ): UserStyleSheet;
-
-        static new_for_world(
-            source: string,
-            injected_frames: UserContentInjectedFrames,
-            level: UserStyleLevel,
-            world_name: string,
-            allow_list: string[] | null,
-            block_list: string[] | null,
-        ): UserStyleSheet;
+        static new_for_world(source: string, injected_frames: UserContentInjectedFrames, level: UserStyleLevel, world_name: string, allow_list: (string[] | null), block_list: (string[] | null)): UserStyleSheet;
 
         // Methods
-
         /**
          * Atomically increments the reference count of `user_style_sheet` by one.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The passed {@link WebKit.UserStyleSheet}
          */
         ref(): UserStyleSheet;
+
         /**
          * Atomically decrements the reference count of `user_style_sheet` by one.
-         *
+         * 
          * If the reference count drops to 0, all memory allocated by
          * {@link WebKit.UserStyleSheet} is released. This function is MT-safe and may be
          * called from any thread.
@@ -17125,20 +17426,23 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WebContextClass = typeof WebContext;
+
     /**
      * @gir-type Alias
      */
     type WebExtensionClass = typeof WebExtension;
+
     /**
      * Represents a way to specify a group of URLs for use in WebExtensions.
-     *
+     * 
      * All match patterns are specified as strings. Apart from the special `<all_urls>` pattern, match patterns
      * consist of three parts: scheme, host, and path.
-     *
+     * 
      * Generally, match patterns are returned from a {@link WebKit.WebExtension}.
      * @gir-type Struct
      * @since 2.48
@@ -17148,7 +17452,9 @@ export namespace WebKit {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
 
         static new_all_hosts_and_schemes(): WebExtensionMatchPattern;
 
@@ -17159,18 +17465,18 @@ export namespace WebKit {
         static new_with_string(string: string): WebExtensionMatchPattern;
 
         // Static methods
-
         /**
          * Registers a custom URL scheme that can be used in match patterns.
-         *
+         * 
          * This method should be used to register any custom URL schemes used by the app for the extension base URLs,
          * other than `webkit-extension`, or if extensions should have access to other supported URL schemes when using `<all_urls>`.
          * @param urlScheme The custom URL scheme to register
          */
         static register_custom_URL_scheme(urlScheme: string): void;
+
         /**
          * Registers a custom URL scheme that can be used in match patterns.
-         *
+         * 
          * This method should be used to register any custom URL schemes used by the app for the extension base URLs,
          * other than `webkit-extension`, or if extensions should have access to other supported URL schemes when using `<all_urls>`.
          * @param urlScheme The custom URL scheme to register
@@ -17178,39 +17484,44 @@ export namespace WebKit {
         static register_custom_url_scheme(urlScheme: string): void;
 
         // Methods
-
         /**
          * Gets the host part of the pattern string, unless `webkit_web_extension_match_pattern_get_matches_all_urls` is `true`.
          * @returns The host string.
          */
         get_host(): string;
+
         /**
          * Gets whether the match pattern matches all host. This happens when
          * the pattern is `<all_urls>`, or if `*` is set as the host string.
          * @returns Whether this match pattern matches all hosts.
          */
         get_matches_all_hosts(): boolean;
+
         /**
          * Gets whether the match pattern matches all URLs, in other words, whether
          * the pattern is `<all_urls>`.
          * @returns Whether this match pattern matches all URLs.
          */
         get_matches_all_urls(): boolean;
+
         /**
          * Gets the path part of the pattern string, unless {@link WebExtensionMatchPattern.get_matches_all_urls} is `true`.
          * @returns The path string.
          */
         get_path(): string;
+
         /**
          * Gets the scheme part of the pattern string, unless `webkit_web_extension_match_pattern_get_matches_all_urls` is `true`.
          * @returns The scheme string.
          */
         get_scheme(): string;
+
         /**
          * Gets the original pattern string.
          * @returns The original pattern string.
          */
         get_string(): string;
+
         /**
          * Matches the `matchPattern` against the specified `pattern` with options.
          * @param pattern The {@link WebKit.WebExtensionMatchPattern} to match with `matchPattern`.
@@ -17218,6 +17529,7 @@ export namespace WebKit {
          * @returns Whether the pattern matches the specified `pattern`.
          */
         matches_pattern(pattern: WebExtensionMatchPattern, options: WebExtensionMatchPatternOptions): boolean;
+
         /**
          * Matches the `matchPattern` against the specified URL with options.
          * @param url The URL to match against the pattern.
@@ -17225,16 +17537,18 @@ export namespace WebKit {
          * @returns Whether the pattern matches the specified URL.
          */
         matches_url(url: string, options: WebExtensionMatchPatternOptions): boolean;
+
         /**
          * Atomically acquires a reference on the given `matchPattern`.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The same `matchPattern` with an additional reference.
          */
         ref(): WebExtensionMatchPattern;
+
         /**
          * Atomically releases a reference on the given `matchPattern`.
-         *
+         * 
          * If the reference was the last, the resources associated to the
          * `matchPattern` are freed. This function is MT-safe and may be called from
          * any thread.
@@ -17242,18 +17556,22 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WebInspectorClass = typeof WebInspector;
+
     /**
      * @gir-type Alias
      */
     type WebResourceClass = typeof WebResource;
+
     /**
      * @gir-type Alias
      */
     type WebViewBaseClass = typeof WebViewBase;
+
     /**
      * @gir-type Struct
      */
@@ -17261,16 +17579,19 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebViewBasePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WebViewClass = typeof WebView;
+
     /**
      * @gir-type Struct
      */
     abstract class WebViewPrivate {
         static $gtype: GObject.GType<WebViewPrivate>;
     }
+
 
     /**
      * Handles serialization of a web view's browsing state.
@@ -17281,29 +17602,29 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebViewSessionState>;
 
         // Constructors
+        constructor(data: (GLib.Bytes | Uint8Array));
 
-        constructor(data: GLib.Bytes | Uint8Array);
-
-        static ['new'](data: GLib.Bytes | Uint8Array): WebViewSessionState;
+        static ["new"](data: (GLib.Bytes | Uint8Array)): WebViewSessionState;
 
         // Methods
-
         /**
          * Atomically increments the reference count of `state` by one.
-         *
+         * 
          * This
          * function is MT-safe and may be called from any thread.
          * @returns The passed in {@link WebKit.WebViewSessionState}
          */
         ref(): WebViewSessionState;
+
         /**
          * Serializes a {@link WebKit.WebViewSessionState}.
          * @returns a {@link GLib.Bytes} containing the `state` serialized.
          */
         serialize(): GLib.Bytes;
+
         /**
          * Atomically decrements the reference count of `state` by one.
-         *
+         * 
          * If the
          * reference count drops to 0, all memory allocated by the {@link WebKit.WebViewSessionState} is
          * released. This function is MT-safe and may be called from any thread.
@@ -17311,20 +17632,21 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * Data stored locally by a web site.
-     *
+     * 
      * WebKitWebsiteData represents data stored in the client by a particular website.
      * A website is normally a set of URLs grouped by domain name. You can get the website name,
      * which is usually the domain, with `webkit_website_data_get_name()`.
      * Documents loaded from the file system, like file:// URIs, are all grouped in the same WebKitWebsiteData
      * with the name "Local files".
-     *
+     * 
      * A website can store different types of data in the client side. {@link WebKit.WebsiteDataTypes} is an enum containing
      * all the possible data types; use `webkit_website_data_get_types()` to get the bitmask of data types.
      * It's also possible to know the size of the data stored for some of the {@link WebKit.WebsiteDataTypes} by using
      * `webkit_website_data_get_size()`.
-     *
+     * 
      * A list of WebKitWebsiteData can be retrieved with `webkit_website_data_manager_fetch()`. See {@link WebKit.WebsiteDataManager}
      * for more information.
      * @gir-type Struct
@@ -17334,43 +17656,46 @@ export namespace WebKit {
         static $gtype: GObject.GType<WebsiteData>;
 
         // Methods
-
         /**
          * Gets the name of {@link WebKit.WebsiteData}.
-         *
+         * 
          * This is the website name, normally represented by
          * a domain or host name. All local documents are grouped in the same {@link WebKit.WebsiteData} using
          * the name "Local files".
          * @returns the website name of `website_data`.
          */
         get_name(): string;
+
         /**
          * Gets the size of the data of types `types` in a {@link WebKit.WebsiteData}.
-         *
+         * 
          * Note that currently the data size is only known for {@link WebKit.WebsiteDataTypes.DISK_CACHE} data type
          * so for all other types 0 will be returned.
          * @param types a bitmask  of {@link WebKit.WebsiteDataTypes}
          * @returns the size of `website_data` for the given `types`.
          */
         get_size(types: WebsiteDataTypes): number;
+
         /**
          * Gets the types of data stored in the client for a {@link WebKit.WebsiteData}.
-         *
+         * 
          * These are the
          * types actually present, not the types queried with `webkit_website_data_manager_fetch()`.
          * @returns a bitmask of {@link WebKit.WebsiteDataTypes} in `website_data`
          */
         get_types(): WebsiteDataTypes;
+
         /**
          * Atomically increments the reference count of `website_data` by one.
-         *
+         * 
          * This function is MT-safe and may be called from any thread.
          * @returns The passed {@link WebKit.WebsiteData}
          */
         ref(): WebsiteData;
+
         /**
          * Atomically decrements the reference count of `website_data` by one.
-         *
+         * 
          * If the reference count drops to 0, all memory allocated by
          * {@link WebKit.WebsiteData} is released. This function is MT-safe and may be
          * called from any thread.
@@ -17378,39 +17703,46 @@ export namespace WebKit {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type WebsiteDataAccessPermissionRequestClass = typeof WebsiteDataAccessPermissionRequest;
+
     /**
      * @gir-type Alias
      */
     type WebsiteDataManagerClass = typeof WebsiteDataManager;
+
     /**
      * @gir-type Alias
      */
     type WebsitePoliciesClass = typeof WebsitePolicies;
+
     /**
      * @gir-type Alias
      */
     type WindowPropertiesClass = typeof WindowProperties;
+
     /**
      * @gir-type Alias
      */
     type XRPermissionRequestClass = typeof XRPermissionRequest;
+
     namespace PermissionRequest {
         /**
          * Interface for implementing PermissionRequest.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Allow the action which triggered this request.
              * @virtual
              */
             vfunc_allow(): void;
+
             /**
              * Deny the action which triggered this request.
              * @virtual
@@ -17418,9 +17750,11 @@ export namespace WebKit {
             vfunc_deny(): void;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface PermissionRequestNamespace {
@@ -17429,7 +17763,7 @@ export namespace WebKit {
     }
     /**
      * A permission request.
-     *
+     * 
      * There are situations where an embedder would need to ask the user
      * for permission to do certain types of operations, such as switching
      * to fullscreen mode or reporting the user's location through the
@@ -17439,17 +17773,19 @@ export namespace WebKit {
      * @gir-type Interface
      */
     interface PermissionRequest extends GObject.Object, PermissionRequest.Interface {
-        // Methods
 
+        // Methods
         /**
          * Allow the action which triggered this request.
          */
         allow(): void;
+
         /**
          * Deny the action which triggered this request.
          */
         deny(): void;
     }
+
 
     export const PermissionRequest: PermissionRequestNamespace & {
         new (): PermissionRequest; // This allows `obj instanceof PermissionRequest`
@@ -17460,6 +17796,7 @@ export namespace WebKit {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

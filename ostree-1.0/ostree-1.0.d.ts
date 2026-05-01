@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace OSTree {
+
     /**
      * OSTree-1.0
      */
+
 
     /**
      * @gir-type Enum
@@ -28,6 +31,7 @@ export namespace OSTree {
         DEVELOPMENT,
         HOTFIX,
     }
+
 
     /**
      * Signature attributes available from an {@link OSTree.GpgVerifyResult}.
@@ -89,6 +93,7 @@ export namespace OSTree {
         USER_EMAIL,
     }
 
+
     /**
      * Formatting flags for `ostree_gpg_verify_result_describe()`.  Currently
      * there's only one possible output format, but this enumeration allows
@@ -101,6 +106,7 @@ export namespace OSTree {
          */
         GPG_SIGNATURE_FORMAT_DEFAULT,
     }
+
 
     /**
      * Enumeration for core object types; {@link OSTree.ObjectType.FILE} is for
@@ -134,6 +140,7 @@ export namespace OSTree {
         COMMIT_META,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -147,6 +154,7 @@ export namespace OSTree {
          */
         USER,
     }
+
 
     /**
      * @gir-type Enum
@@ -162,6 +170,7 @@ export namespace OSTree {
         UNION_FILES,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -176,6 +185,7 @@ export namespace OSTree {
         SKIP,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -186,6 +196,7 @@ export namespace OSTree {
         DIR,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -195,6 +206,7 @@ export namespace OSTree {
          */
         REPO_LIST_REFS_EXT_NONE,
     }
+
 
     /**
      * See the documentation of {@link OSTree.Repo} for more information about the
@@ -216,6 +228,7 @@ export namespace OSTree {
         BARE_USER,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -234,6 +247,7 @@ export namespace OSTree {
         REFS_ONLY,
     }
 
+
     /**
      * The remote change operation.
      * @gir-type Enum
@@ -245,6 +259,7 @@ export namespace OSTree {
         DELETE_IF_EXISTS,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -254,6 +269,7 @@ export namespace OSTree {
          */
         REPO_RESOLVE_REV_EXT_NONE,
     }
+
 
     /**
      * Parameters controlling optimization of static deltas.
@@ -270,74 +286,89 @@ export namespace OSTree {
         MAJOR,
     }
 
+
     const COMMIT_GVARIANT_STRING: string;
+
     const DIRMETA_GVARIANT_STRING: string;
+
     const FILEMETA_GVARIANT_STRING: string;
+
     /**
      * Maximum permitted size in bytes of metadata objects.  This is an
      * arbitrary number, but really, no one should be putting humongous
      * data in metadata.
      */
     const MAX_METADATA_SIZE: number;
+
     /**
      * Objects committed above this size will be allowed, but a warning
      * will be emitted.
      */
     const MAX_METADATA_WARN_SIZE: number;
+
     /**
      * Maximum depth of metadata.
      */
     const MAX_RECURSION: number;
+
     /**
      * Length of a sha256 digest when expressed as raw bytes
      */
     const SHA256_DIGEST_LEN: number;
+
     /**
      * Length of a sha256 digest when expressed as a hexadecimal string
      */
     const SHA256_STRING_LEN: number;
+
     const SUMMARY_GVARIANT_STRING: string;
+
     const SUMMARY_SIG_GVARIANT_STRING: string;
+
     /**
      * The mtime used for stored files.  This was originally 0, changed to 1 for
      * a few releases, then was reverted due to regressions it introduced from
      * users who had been using zero before.
      */
     const TIMESTAMP: number;
+
     const TREE_GVARIANT_STRING: string;
+
     const WITH_AUTOCLEANUPS: number;
+
     /**
      * @param csum An binary checksum of length 32
      * @returns Modified base64 encoding of `csum` The "modified" term refers to the fact that instead of '/', the '_' character is used.
      */
-    function checksum_b64_from_bytes(csum: Uint8Array | string): string;
+    function checksum_b64_from_bytes(csum: (Uint8Array | string)): string;
+
     /**
      * @param checksum An ASCII checksum
      * @returns Binary version of `checksum`.
      */
     function checksum_b64_to_bytes(checksum: string): Uint8Array;
+
     /**
      * @param bytes {@link GLib.Variant} of type ay
      * @returns Binary checksum data in `bytes`; do not free.  If `bytes` does not have the correct length, return `null`.
      */
     function checksum_bytes_peek(bytes: GLib.Variant): Uint8Array;
+
     /**
      * Like `ostree_checksum_bytes_peek()`, but also throws `error`.
      * @param bytes {@link GLib.Variant} of type ay
      * @returns Binary checksum data
      */
     function checksum_bytes_peek_validate(bytes: GLib.Variant): Uint8Array;
+
     /**
      * Compute the OSTree checksum for a given file.
      * @param f File path
      * @param objtype Object type
      * @param cancellable Cancellable
      */
-    function checksum_file(
-        f: Gio.File,
-        objtype: ObjectType,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Uint8Array];
+    function checksum_file(f: Gio.File, objtype: ObjectType, cancellable: (Gio.Cancellable | null)): [boolean, Uint8Array];
+
     /**
      * Asynchronously compute the OSTree checksum for a given file;
      * complete with `ostree_checksum_file_async_finish()`.
@@ -346,12 +377,7 @@ export namespace OSTree {
      * @param io_priority Priority for operation, see `G_IO_PRIORITY_DEFAULT`
      * @param cancellable Cancellable
      */
-    function checksum_file_async(
-        f: Gio.File,
-        objtype: ObjectType,
-        io_priority: number,
-        cancellable: Gio.Cancellable | null,
-    ): globalThis.Promise<[Uint8Array]>;
+    function checksum_file_async(f: Gio.File, objtype: ObjectType, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<[Uint8Array]>;
     /**
      * Asynchronously compute the OSTree checksum for a given file;
      * complete with `ostree_checksum_file_async_finish()`.
@@ -361,13 +387,7 @@ export namespace OSTree {
      * @param cancellable Cancellable
      * @param callback Invoked when operation is complete
      */
-    function checksum_file_async(
-        f: Gio.File,
-        objtype: ObjectType,
-        io_priority: number,
-        cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<Gio.File> | null,
-    ): void;
+    function checksum_file_async(f: Gio.File, objtype: ObjectType, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): void;
     /**
      * Asynchronously compute the OSTree checksum for a given file;
      * complete with `ostree_checksum_file_async_finish()`.
@@ -377,13 +397,8 @@ export namespace OSTree {
      * @param cancellable Cancellable
      * @param callback Invoked when operation is complete
      */
-    function checksum_file_async(
-        f: Gio.File,
-        objtype: ObjectType,
-        io_priority: number,
-        cancellable: Gio.Cancellable | null,
-        callback: Gio.AsyncReadyCallback<Gio.File> | null,
-    ): globalThis.Promise<[Uint8Array]> | void;
+    function checksum_file_async(f: Gio.File, objtype: ObjectType, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<Gio.File> | null)): (globalThis.Promise<[Uint8Array]> | void);
+
     /**
      * Finish computing the OSTree checksum for a given file; see
      * `ostree_checksum_file_async()`.
@@ -391,6 +406,7 @@ export namespace OSTree {
      * @param result Async result
      */
     function checksum_file_async_finish(f: Gio.File, result: Gio.AsyncResult): [boolean, Uint8Array];
+
     /**
      * Compute the OSTree checksum for a given input.
      * @param file_info File information
@@ -399,23 +415,20 @@ export namespace OSTree {
      * @param objtype Object type
      * @param cancellable Cancellable
      */
-    function checksum_file_from_input(
-        file_info: Gio.FileInfo,
-        xattrs: GLib.Variant | null,
-        _in: Gio.InputStream | null,
-        objtype: ObjectType,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Uint8Array];
+    function checksum_file_from_input(file_info: Gio.FileInfo, xattrs: (GLib.Variant | null), _in: (Gio.InputStream | null), objtype: ObjectType, cancellable: (Gio.Cancellable | null)): [boolean, Uint8Array];
+
     /**
      * @param csum An binary checksum of length 32
      * @returns String form of `csum`
      */
-    function checksum_from_bytes(csum: Uint8Array | string): string;
+    function checksum_from_bytes(csum: (Uint8Array | string)): string;
+
     /**
      * @param csum_v {@link GLib.Variant} of type ay
      * @returns String form of `csum_bytes`
      */
     function checksum_from_bytes_v(csum_v: GLib.Variant): string;
+
     /**
      * Convert `checksum` from a string to binary in-place, without
      * allocating memory.  Use this function in hot code paths.
@@ -423,32 +436,39 @@ export namespace OSTree {
      * @param buf Output buffer with at least 32 bytes of space
      */
     function checksum_inplace_to_bytes(checksum: string, buf: number): void;
+
     /**
      * @param checksum An ASCII checksum
      * @returns Binary checksum from `checksum` of length 32; free with `g_free()`.
      */
     function checksum_to_bytes(checksum: string): Uint8Array;
+
     /**
      * @param checksum An ASCII checksum
      * @returns New {@link GLib.Variant} of type ay with length 32
      */
     function checksum_to_bytes_v(checksum: string): GLib.Variant;
+
     function cmd__private__(): CmdPrivateVTable;
+
     /**
      * Compare two binary checksums, using `memcmp()`.
      * @param a A binary checksum
      * @param b A binary checksum
      */
     function cmp_checksum_bytes(a: number, b: number): number;
+
     /**
      * @param commit_variant Variant of type {@link OSTree.ObjectType.COMMIT}
      * @returns Checksum of the parent commit of `commit_variant`, or `null` if none
      */
     function commit_get_parent(commit_variant: GLib.Variant): string;
+
     /**
-     * @param commit_variant
+     * @param commit_variant 
      */
     function commit_get_timestamp(commit_variant: GLib.Variant): number;
+
     /**
      * A thin wrapper for `ostree_content_stream_parse()`; this function
      * converts an object content stream back into components.
@@ -457,12 +477,8 @@ export namespace OSTree {
      * @param trusted If `true`, assume the content has been validated
      * @param cancellable Cancellable
      */
-    function content_file_parse(
-        compressed: boolean,
-        content_path: Gio.File,
-        trusted: boolean,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
+    function content_file_parse(compressed: boolean, content_path: Gio.File, trusted: boolean, cancellable: (Gio.Cancellable | null)): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
+
     /**
      * A thin wrapper for `ostree_content_stream_parse()`; this function
      * converts an object content stream back into components.
@@ -472,13 +488,8 @@ export namespace OSTree {
      * @param trusted If `true`, assume the content has been validated
      * @param cancellable Cancellable
      */
-    function content_file_parse_at(
-        compressed: boolean,
-        parent_dfd: number,
-        path: string,
-        trusted: boolean,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
+    function content_file_parse_at(compressed: boolean, parent_dfd: number, path: string, trusted: boolean, cancellable: (Gio.Cancellable | null)): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
+
     /**
      * The reverse of `ostree_raw_file_to_content_stream()`; this function
      * converts an object content stream back into components.
@@ -488,19 +499,15 @@ export namespace OSTree {
      * @param trusted If `true`, assume the content has been validated
      * @param cancellable Cancellable
      */
-    function content_stream_parse(
-        compressed: boolean,
-        input: Gio.InputStream,
-        input_length: bigint | number,
-        trusted: boolean,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
+    function content_stream_parse(compressed: boolean, input: Gio.InputStream, input_length: (bigint | number), trusted: boolean, cancellable: (Gio.Cancellable | null)): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
+
     /**
      * @param dir_info a {@link Gio.FileInfo} containing directory information
      * @param xattrs Optional extended attributes
      * @returns A new {@link GLib.Variant} containing {@link OSTree.ObjectType.DIR_META}
      */
-    function create_directory_metadata(dir_info: Gio.FileInfo, xattrs: GLib.Variant | null): GLib.Variant;
+    function create_directory_metadata(dir_info: Gio.FileInfo, xattrs: (GLib.Variant | null)): GLib.Variant;
+
     /**
      * Compute the difference between directory `a` and `b` as 3 separate
      * sets of {@link OSTree.DiffItem} in `modified`, `removed`, and `added`.
@@ -512,15 +519,8 @@ export namespace OSTree {
      * @param added Added files
      * @param cancellable Cancellable
      */
-    function diff_dirs(
-        flags: DiffFlags,
-        a: Gio.File,
-        b: Gio.File,
-        modified: DiffItem[],
-        removed: Gio.File[],
-        added: Gio.File[],
-        cancellable: Gio.Cancellable | null,
-    ): boolean;
+    function diff_dirs(flags: DiffFlags, a: Gio.File, b: Gio.File, modified: DiffItem[], removed: Gio.File[], added: Gio.File[], cancellable: (Gio.Cancellable | null)): boolean;
+
     /**
      * Print the contents of a diff to stdout.
      * @param a First directory path
@@ -530,57 +530,67 @@ export namespace OSTree {
      * @param added Added files
      */
     function diff_print(a: Gio.File, b: Gio.File, modified: DiffItem[], removed: Gio.File[], added: Gio.File[]): void;
+
     /**
      * Use this function with {@link GLib.HashTable} and `ostree_object_name_serialize()`.
      * @param a A {@link GLib.Variant} containing a serialized object
      */
-    function hash_object_name(a: any | null): number;
+    function hash_object_name(a: (any | null)): number;
+
     /**
-     * @param objtype
+     * @param objtype 
      */
     function metadata_variant_type(objtype: ObjectType): GLib.VariantType;
+
     /**
      * Reverse `ostree_object_to_string()`.
      * @param str An ASCII checksum
      */
     function object_from_string(str: string): [string, ObjectType];
+
     /**
      * Reverse `ostree_object_name_serialize()`.  Note that `out_checksum` is
      * only valid for the lifetime of `variant`, and must not be freed.
      * @param variant A {@link GLib.Variant} of type (su)
      */
     function object_name_deserialize(variant: GLib.Variant): [string, ObjectType];
+
     /**
      * @param checksum An ASCII checksum
      * @param objtype An object type
      * @returns A new floating {@link GLib.Variant} containing checksum string and objtype
      */
     function object_name_serialize(checksum: string, objtype: ObjectType): GLib.Variant;
+
     /**
      * @param checksum An ASCII checksum
      * @param objtype Object type
      * @returns A string containing both `checksum` and a stringifed version of `objtype`
      */
     function object_to_string(checksum: string, objtype: ObjectType): string;
+
     /**
      * The reverse of `ostree_object_type_to_string()`.
      * @param str A stringified version of {@link OSTree.ObjectType}
      */
     function object_type_from_string(str: string): ObjectType;
+
     /**
      * Serialize `objtype` to a string; this is used for file extensions.
      * @param objtype an {@link OSTree.ObjectType}
      */
     function object_type_to_string(objtype: ObjectType): string;
+
     /**
      * Split a refspec like "gnome-ostree:gnome-ostree/buildmaster" into
      * two parts; `out_remote` will be set to "gnome-ostree", and `out_ref`
      * will be "gnome-ostree/buildmaster".
-     *
+     * 
      * If `refspec` refers to a local ref, `out_remote` will be `null`.
      * @param refspec A "refspec" string
      */
     function parse_refspec(refspec: string): [boolean, string, string];
+
     /**
      * Convert from a "bare" file representation into an
      * OSTREE_OBJECT_TYPE_FILE stream suitable for ostree pull.
@@ -589,12 +599,8 @@ export namespace OSTree {
      * @param xattrs Optional extended attributes
      * @param cancellable Cancellable
      */
-    function raw_file_to_archive_z2_stream(
-        input: Gio.InputStream,
-        file_info: Gio.FileInfo,
-        xattrs: GLib.Variant | null,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Gio.InputStream];
+    function raw_file_to_archive_z2_stream(input: Gio.InputStream, file_info: Gio.FileInfo, xattrs: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): [boolean, Gio.InputStream];
+
     /**
      * Convert from a "bare" file representation into an
      * OSTREE_OBJECT_TYPE_FILE stream.  This is a fundamental operation
@@ -604,32 +610,32 @@ export namespace OSTree {
      * @param xattrs Optional extended attributes
      * @param cancellable Cancellable
      */
-    function raw_file_to_content_stream(
-        input: Gio.InputStream,
-        file_info: Gio.FileInfo,
-        xattrs: GLib.Variant | null,
-        cancellable: Gio.Cancellable | null,
-    ): [boolean, Gio.InputStream, number];
+    function raw_file_to_content_stream(input: Gio.InputStream, file_info: Gio.FileInfo, xattrs: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): [boolean, Gio.InputStream, number];
+
     /**
-     * @param p
+     * @param p 
      */
-    function repo_commit_traverse_iter_cleanup(p: any | null): void;
+    function repo_commit_traverse_iter_cleanup(p: (any | null)): void;
+
     /**
      * Use this function to see if input strings are checksums.
      * @param sha256 SHA256 hex string
      * @returns `true` if `sha256` is a valid checksum string, `false` otherwise
      */
     function validate_checksum_string(sha256: string): boolean;
+
     /**
      * @param rev A revision string
      * @returns `true` if `rev` is a valid ref string
      */
     function validate_rev(rev: string): boolean;
+
     /**
      * @param checksum an ASCII string
      * @returns `true` if `checksum` is a valid ASCII SHA256 checksum
      */
     function validate_structureof_checksum_string(checksum: string): boolean;
+
     /**
      * Use this to validate the basic structure of `commit`, independent of
      * any other objects it references.
@@ -637,17 +643,20 @@ export namespace OSTree {
      * @returns `true` if `commit` is structurally valid
      */
     function validate_structureof_commit(commit: GLib.Variant): boolean;
+
     /**
      * @param checksum a {@link GLib.Variant} of type "ay"
      * @returns `true` if `checksum` is a valid binary SHA256 checksum
      */
     function validate_structureof_csum_v(checksum: GLib.Variant): boolean;
+
     /**
      * Use this to validate the basic structure of `dirmeta`.
      * @param dirmeta A dirmeta object, {@link OSTree.ObjectType.DIR_META}
      * @returns `true` if `dirmeta` is structurally valid
      */
     function validate_structureof_dirmeta(dirmeta: GLib.Variant): boolean;
+
     /**
      * Use this to validate the basic structure of `dirtree`, independent of
      * any other objects it references.
@@ -655,28 +664,33 @@ export namespace OSTree {
      * @returns `true` if `dirtree` is structurally valid
      */
     function validate_structureof_dirtree(dirtree: GLib.Variant): boolean;
+
     /**
      * @param mode A Unix filesystem mode
      * @returns `true` if `mode` represents a valid file type and permissions
      */
     function validate_structureof_file_mode(mode: number): boolean;
+
     /**
-     * @param objtype
+     * @param objtype 
      * @returns `true` if `objtype` represents a valid object type
      */
     function validate_structureof_objtype(objtype: number): boolean;
+
     /**
      * @gir-type Callback
      */
     interface RepoCommitFilter {
         (repo: Repo, path: string, file_info: Gio.FileInfo): RepoCommitFilterResult;
     }
+
     /**
      * @gir-type Callback
      */
     interface RepoCommitModifierXattrCallback {
         (repo: Repo, path: string, file_info: Gio.FileInfo): GLib.Variant;
     }
+
     /**
      * @gir-type Flags
      */
@@ -684,6 +698,7 @@ export namespace OSTree {
         NONE,
         IGNORE_XATTRS,
     }
+
 
     /**
      * @gir-type Flags
@@ -703,6 +718,7 @@ export namespace OSTree {
         GENERATE_SIZES,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -710,12 +726,14 @@ export namespace OSTree {
         REPO_COMMIT_STATE_PARTIAL,
     }
 
+
     /**
      * @gir-type Flags
      */
     enum RepoCommitTraverseFlags {
         REPO_COMMIT_TRAVERSE_FLAG_NONE,
     }
+
 
     /**
      * @gir-type Flags
@@ -739,6 +757,7 @@ export namespace OSTree {
         NO_PARENTS,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -761,6 +780,7 @@ export namespace OSTree {
         UNTRUSTED,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -769,6 +789,7 @@ export namespace OSTree {
         ALLOW_NOLABEL,
         KEEP_EXISTING,
     }
+
 
     /**
      * @gir-type Flags
@@ -779,6 +800,7 @@ export namespace OSTree {
         NOT_DEFAULT,
         NO_CLEAN,
     }
+
 
     /**
      * @gir-type Flags
@@ -798,6 +820,7 @@ export namespace OSTree {
         IGNORE_UNCONFIGURED,
     }
 
+
     /**
      * @gir-type Flags
      */
@@ -805,6 +828,7 @@ export namespace OSTree {
         NONE,
         ALLOW_OLDER,
     }
+
 
     namespace AsyncProgress {
         // Signal signatures
@@ -818,8 +842,9 @@ export namespace OSTree {
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -838,84 +863,82 @@ export namespace OSTree {
         $signals: AsyncProgress.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AsyncProgress.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): AsyncProgress;
+        static ["new"](): AsyncProgress;
 
-        static new_and_connect(changed: any | null, user_data: any | null): AsyncProgress;
+        static new_and_connect(changed: (any | null), user_data: (any | null)): AsyncProgress;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AsyncProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncProgress.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AsyncProgress.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AsyncProgress.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AsyncProgress.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AsyncProgress.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AsyncProgress.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AsyncProgress.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AsyncProgress.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AsyncProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AsyncProgress.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AsyncProgress.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param user_data
+         * @param user_data 
          * @virtual
          */
-        vfunc_changed(user_data: any | null): void;
+        vfunc_changed(user_data: (any | null)): void;
 
         // Methods
-
         /**
          * Process any pending signals, ensuring the main context is cleared
          * of sources used by this object.  Also ensures that no further
          * events will be queued.
          */
         finish(): void;
+
         get_status(): string;
+
         /**
-         * @param key
+         * @param key 
          */
         get_uint(key: string): number;
+
         /**
-         * @param key
+         * @param key 
          */
         get_uint64(key: string): number;
+
         /**
-         * @param status
+         * @param status 
          */
         set_status(status: string): void;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         set_uint(key: string, value: number): void;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
-        set_uint64(key: string, value: bigint | number): void;
+        set_uint64(key: string, value: (bigint | number)): void;
     }
+
 
     namespace BootconfigParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -934,89 +957,86 @@ export namespace OSTree {
         $signals: BootconfigParser.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<BootconfigParser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): BootconfigParser;
+        static ["new"](): BootconfigParser;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof BootconfigParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BootconfigParser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof BootconfigParser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BootconfigParser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof BootconfigParser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, BootconfigParser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof BootconfigParser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, BootconfigParser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof BootconfigParser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<BootconfigParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof BootconfigParser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<BootconfigParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns Copy of `self`
          */
         clone(): BootconfigParser;
+
         /**
-         * @param key
+         * @param key 
          */
         get(key: string): string;
+
         /**
-         * @param path
-         * @param cancellable
+         * @param path 
+         * @param cancellable 
          */
-        parse(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+        parse(path: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initialize a bootconfig from the given file.
          * @param dfd Directory fd
          * @param path File path
          * @param cancellable Cancellable
          */
-        parse_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
+        parse_at(dfd: number, path: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param key
-         * @param value
+         * @param key 
+         * @param value 
          */
         set(key: string, value: string): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set
+    // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+
         /**
-         * @param output
-         * @param cancellable
+         * @param output 
+         * @param cancellable 
          */
-        write(output: Gio.File, cancellable: Gio.Cancellable | null): boolean;
+        write(output: Gio.File, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param dfd
-         * @param path
-         * @param cancellable
+         * @param dfd 
+         * @param path 
+         * @param cancellable 
          */
-        write_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
+        write_at(dfd: number, path: string, cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace ChecksumInputStream {
         // Signal signatures
         interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
-            'notify::checksum': (pspec: GObject.ParamSpec) => void;
-            'notify::base-stream': (pspec: GObject.ParamSpec) => void;
-            'notify::close-base-stream': (pspec: GObject.ParamSpec) => void;
+            "notify::checksum": (pspec: GObject.ParamSpec) => void;
+            "notify::base-stream": (pspec: GObject.ParamSpec) => void;
+            "notify::close-base-stream": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gio.FilterInputStream.ConstructorProps {
             checksum: any;
         }
@@ -1029,7 +1049,6 @@ export namespace OSTree {
         static $gtype: GObject.GType<ChecksumInputStream>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -1045,44 +1064,36 @@ export namespace OSTree {
         $signals: ChecksumInputStream.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ChecksumInputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](stream: Gio.InputStream, checksum: GLib.Checksum): ChecksumInputStream;
+        static ["new"](stream: Gio.InputStream, checksum: GLib.Checksum): ChecksumInputStream;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ChecksumInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChecksumInputStream.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ChecksumInputStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ChecksumInputStream.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ChecksumInputStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ChecksumInputStream.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ChecksumInputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ChecksumInputStream.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ChecksumInputStream.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ChecksumInputStream.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof ChecksumInputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ChecksumInputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
 
+
     namespace Deployment {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1101,76 +1112,68 @@ export namespace OSTree {
         $signals: Deployment.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Deployment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            index: number,
-            osname: string,
-            csum: string,
-            deployserial: number,
-            bootcsum: string,
-            bootserial: number,
-        ): Deployment;
+        static ["new"](index: number, osname: string, csum: string, deployserial: number, bootcsum: string, bootserial: number): Deployment;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Deployment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Deployment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Deployment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Deployment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Deployment.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Deployment.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Deployment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Deployment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Deployment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @param v 
+         */
+        static hash(v: (any | null)): number;
 
         /**
-         * @param v
-         */
-        static hash(v: any | null): number;
-        /**
-         * @param state
+         * @param state 
          */
         static unlocked_state_to_string(state: DeploymentUnlockedState): string;
 
         // Methods
-
         /**
          * @returns New deep copy of `self`
          */
         clone(): Deployment;
+
         /**
          * @param bp A deployment
          * @returns `true` if deployments have the same osname, csum, and deployserial
          */
         equal(bp: Deployment): boolean;
+
         /**
          * @returns Boot configuration
          */
         get_bootconfig(): BootconfigParser;
+
         get_bootcsum(): string;
+
         get_bootserial(): number;
+
         get_csum(): string;
+
         get_deployserial(): number;
+
         get_index(): number;
+
         /**
          * @returns Origin
          */
         get_origin(): GLib.KeyFile;
+
         /**
          * Note this function only returns a *relative* path - if you want to
          * access, it, you must either use fd-relative api such as `openat()`,
@@ -1178,33 +1181,42 @@ export namespace OSTree {
          * @returns Path to deployment root directory, relative to sysroot
          */
         get_origin_relpath(): string;
+
         get_osname(): string;
+
         get_unlocked(): DeploymentUnlockedState;
+
         /**
-         * @param bootconfig
+         * @param bootconfig 
          */
         set_bootconfig(bootconfig: BootconfigParser): void;
+
         /**
-         * @param index
+         * @param index 
          */
         set_bootserial(index: number): void;
+
         /**
-         * @param index
+         * @param index 
          */
         set_index(index: number): void;
+
         /**
-         * @param origin
+         * @param origin 
          */
         set_origin(origin: GLib.KeyFile): void;
     }
 
+
     namespace GpgVerifyResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
+        }
     }
 
     /**
@@ -1223,39 +1235,29 @@ export namespace OSTree {
         $signals: GpgVerifyResult.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GpgVerifyResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GpgVerifyResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GpgVerifyResult.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GpgVerifyResult.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GpgVerifyResult.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GpgVerifyResult.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GpgVerifyResult.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GpgVerifyResult.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GpgVerifyResult.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GpgVerifyResult.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GpgVerifyResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GpgVerifyResult.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GpgVerifyResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Similar to `ostree_gpg_verify_result_describe()` but takes a {@link GLib.Variant} of
          * all attributes for a GPG signature instead of an {@link OSTree.GpgVerifyResult}
          * and signature index.
-         *
+         * 
          * The `variant` <emphasis>MUST</emphasis> have been created by
          * `ostree_gpg_verify_result_get_all()`.
          * @param variant a {@link GLib.Variant} from `ostree_gpg_verify_result_get_all()`
@@ -1263,34 +1265,30 @@ export namespace OSTree {
          * @param line_prefix optional line prefix string
          * @param flags flags to adjust the description format
          */
-        static describe_variant(
-            variant: GLib.Variant,
-            output_buffer: GLib.String,
-            line_prefix: string | null,
-            flags: GpgSignatureFormatFlags,
-        ): void;
+        static describe_variant(variant: GLib.Variant, output_buffer: GLib.String, line_prefix: (string | null), flags: GpgSignatureFormatFlags): void;
 
         // Methods
-
         /**
          * Counts all the signatures in `result`.
          * @returns signature count
          */
         count_all(): number;
+
         /**
          * Counts only the valid signatures in `result`.
          * @returns valid signature count
          */
         count_valid(): number;
+
         /**
          * Appends a brief, human-readable description of the GPG signature at
          * `signature_index` in `result` to the `output_buffer`.  The description
          * spans multiple lines.  A `line_prefix` string, if given, will precede
          * each line of the description.
-         *
+         * 
          * The `flags` argument is reserved for future variations to the description
          * format.  Currently must be 0.
-         *
+         * 
          * It is a programmer error to request an invalid `signature_index`.  Use
          * `ostree_gpg_verify_result_count_all()` to find the number of signatures in
          * `result`.
@@ -1299,17 +1297,13 @@ export namespace OSTree {
          * @param line_prefix optional line prefix string
          * @param flags flags to adjust the description format
          */
-        describe(
-            signature_index: number,
-            output_buffer: GLib.String,
-            line_prefix: string | null,
-            flags: GpgSignatureFormatFlags,
-        ): void;
+        describe(signature_index: number, output_buffer: GLib.String, line_prefix: (string | null), flags: GpgSignatureFormatFlags): void;
+
         /**
          * Builds a {@link GLib.Variant} tuple of requested attributes for the GPG signature at
          * `signature_index` in `result`.  See the {@link OSTree.GpgSignatureAttr} description
          * for the {@link GLib.VariantType} of each available attribute.
-         *
+         * 
          * It is a programmer error to request an invalid {@link OSTree.GpgSignatureAttr} or
          * an invalid `signature_index`.  Use `ostree_gpg_verify_result_count_all()` to
          * find the number of signatures in `result`.
@@ -1318,16 +1312,17 @@ export namespace OSTree {
          * @returns a new, floating, {@link GLib.Variant} tuple
          */
         get(signature_index: number, attrs: GpgSignatureAttr[]): GLib.Variant;
+
         /**
          * Builds a {@link GLib.Variant} tuple of all available attributes for the GPG signature
          * at `signature_index` in `result`.
-         *
+         * 
          * The child values in the returned {@link GLib.Variant} tuple are ordered to match the
          * {@link OSTree.GpgSignatureAttr} enumeration, which means the enum values can be
          * used as index values in functions like `g_variant_get_child()`.  See the
          * {@link OSTree.GpgSignatureAttr} description for the {@link GLib.VariantType} of each
          * available attribute.
-         *
+         * 
          * <note>
          *   <para>
          *     The {@link OSTree.GpgSignatureAttr} enumeration may be extended in the future
@@ -1338,7 +1333,7 @@ export namespace OSTree {
          *     type signature</emphasis>.
          *   </para>
          * </note>
-         *
+         * 
          * It is a programmer error to request an invalid `signature_index`.  Use
          * `ostree_gpg_verify_result_count_all()` to find the number of signatures in
          * `result`.
@@ -1346,6 +1341,7 @@ export namespace OSTree {
          * @returns a new, floating, {@link GLib.Variant} tuple
          */
         get_all(signature_index: number): GLib.Variant;
+
         /**
          * Searches `result` for a signature signed by `key_id`.  If a match is found,
          * the function returns `true` and sets `out_signature_index` so that further
@@ -1356,6 +1352,7 @@ export namespace OSTree {
          * @returns `true` on success, `false` on failure
          */
         lookup(key_id: string): [boolean, number];
+
         /**
          * Checks if the result contains at least one signature from the
          * trusted keyring.  You can call this function immediately after
@@ -1364,39 +1361,40 @@ export namespace OSTree {
          * @returns `true` if `result` was not `null` and had at least one signature from trusted keyring, otherwise `false`
          */
         require_valid_signature(): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1406,40 +1404,41 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1449,16 +1448,19 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace MutableTree {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1478,41 +1480,32 @@ export namespace OSTree {
         $signals: MutableTree.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MutableTree.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MutableTree;
+        static ["new"](): MutableTree;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MutableTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MutableTree.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MutableTree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MutableTree.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MutableTree.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MutableTree.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MutableTree.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MutableTree.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MutableTree.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MutableTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MutableTree.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MutableTree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param name
-         * @param out_subdir
+         * @param name 
+         * @param out_subdir 
          */
         ensure_dir(name: string, out_subdir: MutableTree): boolean;
+
         /**
          * Create all parent trees necessary for the given `split_path` to
          * exist.
@@ -1520,35 +1513,44 @@ export namespace OSTree {
          * @param metadata_checksum SHA256 checksum for metadata
          */
         ensure_parent_dirs(split_path: string[], metadata_checksum: string): [boolean, MutableTree];
+
         get_contents_checksum(): string;
+
         /**
          * @returns All children files (the value is a checksum)
          */
         get_files(): GLib.HashTable<string, string>;
+
         get_metadata_checksum(): string;
+
         /**
          * @returns All children directories
          */
         get_subdirs(): GLib.HashTable<string, MutableTree>;
+
         /**
-         * @param name
-         * @param out_file_checksum
-         * @param out_subdir
+         * @param name 
+         * @param out_file_checksum 
+         * @param out_subdir 
          */
         lookup(name: string, out_file_checksum: string, out_subdir: MutableTree): boolean;
+
         /**
-         * @param name
-         * @param checksum
+         * @param name 
+         * @param checksum 
          */
         replace_file(name: string, checksum: string): boolean;
+
         /**
-         * @param checksum
+         * @param checksum 
          */
         set_contents_checksum(checksum: string): void;
+
         /**
-         * @param checksum
+         * @param checksum 
          */
         set_metadata_checksum(checksum: string): void;
+
         /**
          * Traverse `start` number of elements starting from `split_path`; the
          * child will be returned in `out_subdir`.
@@ -1558,6 +1560,7 @@ export namespace OSTree {
         walk(split_path: string[], start: number): [boolean, MutableTree];
     }
 
+
     namespace Repo {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -1565,21 +1568,20 @@ export namespace OSTree {
              * Emitted during a pull operation upon GPG verification (if enabled).
              * Applications can connect to this signal to output the verification
              * results if desired.
-             *
+             * 
              * The signal will be emitted from whichever {@link GLib.MainContext} is the
              * thread-default at the point when `ostree_repo_pull_with_options()`
              * is called.
              * @signal
              * @run-last
              */
-            'gpg-verify-result': (arg0: string, arg1: GpgVerifyResult) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::remotes-config-dir': (pspec: GObject.ParamSpec) => void;
-            'notify::sysroot-path': (pspec: GObject.ParamSpec) => void;
+            "gpg-verify-result": (arg0: string, arg1: GpgVerifyResult) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::remotes-config-dir": (pspec: GObject.ParamSpec) => void;
+            "notify::sysroot-path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             path: Gio.File;
             remotes_config_dir: string;
@@ -1596,23 +1598,26 @@ export namespace OSTree {
         static $gtype: GObject.GType<Repo>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get path(): Gio.File;
+
         /**
          * @construct-only
          */
         get remotes_config_dir(): string;
+
         /**
          * @construct-only
          */
         get remotesConfigDir(): string;
+
         /**
          * @construct-only
          */
         get sysroot_path(): Gio.File;
+
         /**
          * @construct-only
          */
@@ -1628,62 +1633,54 @@ export namespace OSTree {
         $signals: Repo.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Repo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: Gio.File): Repo;
+        static ["new"](path: Gio.File): Repo;
 
         static new_default(): Repo;
 
         static new_for_sysroot_path(repo_path: Gio.File, sysroot_path: Gio.File): Repo;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Repo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Repo.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Repo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Repo.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Repo.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Repo.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Repo.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Repo.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Repo.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Repo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Repo.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Repo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param mode
-         * @param out_mode
+         * @param mode 
+         * @param out_mode 
          */
         static mode_from_string(mode: string, out_mode: RepoMode): boolean;
+
         /**
          * Convenient "changed" callback for use with
          * `ostree_async_progress_new_and_connect()` when pulling from a remote
          * repository.
-         *
+         * 
          * Depending on the state of the {@link OSTree.AsyncProgress}, either displays a
          * custom status message, or else outstanding fetch progress in bytes/sec,
          * or else outstanding content or metadata writes to the repository in
          * number of objects.
-         *
+         * 
          * Compatibility note: this function previously assumed that `user_data`
          * was a pointer to a `GSConsole` instance.  This is no longer the case,
          * and `user_data` is ignored.
          * @param progress Async progress
          * @param user_data User data
          */
-        static pull_default_console_progress_changed(progress: AsyncProgress, user_data: any | null): void;
+        static pull_default_console_progress_changed(progress: AsyncProgress, user_data: (any | null)): void;
+
         /**
          * This hash table is a set of {@link GLib.Variant} which can be accessed via
          * `ostree_object_name_deserialize()`.
@@ -1691,42 +1688,36 @@ export namespace OSTree {
         static traverse_new_reachable(): GLib.HashTable<GLib.Variant, GLib.Variant>;
 
         // Methods
-
         /**
-         * @param cancellable
+         * @param cancellable 
          */
-        abort_transaction(cancellable: Gio.Cancellable | null): boolean;
+        abort_transaction(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Add a GPG signature to a static delta.
          * @param key_id NULL-terminated array of GPG keys.
          * @param homedir GPG home directory, or `null`
          * @param cancellable A {@link Gio.Cancellable}
          */
-        add_gpg_signature_summary(
-            key_id: string[],
-            homedir: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        add_gpg_signature_summary(key_id: string[], homedir: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Append a GPG signature to a commit.
          * @param commit_checksum SHA256 of given commit to sign
          * @param signature_bytes Signature data
          * @param cancellable A {@link Gio.Cancellable}
          */
-        append_gpg_signature(
-            commit_checksum: string,
-            signature_bytes: GLib.Bytes | Uint8Array,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        append_gpg_signature(commit_checksum: string, signature_bytes: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Similar to `ostree_repo_checkout_tree()`, but uses directory-relative
          * paths for the destination, uses a new {@link OSTree.RepoCheckoutAtOptions},
          * and takes a commit checksum and optional subpath pair, rather than
          * requiring use of {@link Gio.File} APIs for the caller.
-         *
+         * 
          * It also replaces `ostree_repo_checkout_at()` which was not safe to
          * use with GObject introspection.
-         *
+         * 
          * Note in addition that unlike `ostree_repo_checkout_tree()`, the
          * default is not to use the repository-internal uncompressed objects
          * cache.
@@ -1736,20 +1727,16 @@ export namespace OSTree {
          * @param commit Checksum for commit
          * @param cancellable Cancellable
          */
-        checkout_at(
-            options: RepoCheckoutAtOptions | null,
-            destination_dfd: number,
-            destination_path: string,
-            commit: string,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        checkout_at(options: (RepoCheckoutAtOptions | null), destination_dfd: number, destination_path: string, commit: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Call this after finishing a succession of checkout operations; it
          * will delete any currently-unused uncompressed objects from the
          * cache.
          * @param cancellable Cancellable
          */
-        checkout_gc(cancellable: Gio.Cancellable | null): boolean;
+        checkout_gc(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Check out `source` into `destination`, which must live on the
          * physical filesystem.  `source` may be any subdirectory of a given
@@ -1762,29 +1749,25 @@ export namespace OSTree {
          * @param source_info Source info
          * @param cancellable Cancellable
          */
-        checkout_tree(
-            mode: RepoCheckoutMode,
-            overwrite_mode: RepoCheckoutOverwriteMode,
-            destination: Gio.File,
-            source: RepoFile,
-            source_info: Gio.FileInfo,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        checkout_tree(mode: RepoCheckoutMode, overwrite_mode: RepoCheckoutOverwriteMode, destination: Gio.File, source: RepoFile, source_info: Gio.FileInfo, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Complete the transaction. Any refs set with
          * `ostree_repo_transaction_set_ref()` or
          * `ostree_repo_transaction_set_refspec()` will be written out.
          * @param cancellable Cancellable
          */
-        commit_transaction(cancellable: Gio.Cancellable | null): [boolean, RepoTransactionStats | null];
+        commit_transaction(cancellable: (Gio.Cancellable | null)): [boolean, RepoTransactionStats | null];
+
         /**
          * @returns A newly-allocated copy of the repository config
          */
         copy_config(): GLib.KeyFile;
+
         /**
          * Create the underlying structure on disk for the repository, and call
          * `ostree_repo_open()` on the result, preparing it for use.
-         *
+         * 
          * Since version 2016.8, this function will succeed on an existing
          * repository, and finish creating any necessary files in a partially
          * created repository.  However, this function cannot change the mode
@@ -1793,7 +1776,8 @@ export namespace OSTree {
          * @param mode The mode to store the repository in
          * @param cancellable Cancellable
          */
-        create(mode: RepoMode, cancellable: Gio.Cancellable | null): boolean;
+        create(mode: RepoMode, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Remove the object of type `objtype` with checksum `sha256`
          * from the repository.  An error of type {@link Gio.IOErrorEnum.NOT_FOUND}
@@ -1802,11 +1786,13 @@ export namespace OSTree {
          * @param sha256 Checksum
          * @param cancellable Cancellable
          */
-        delete_object(objtype: ObjectType, sha256: string, cancellable: Gio.Cancellable | null): boolean;
+        delete_object(objtype: ObjectType, sha256: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * @returns The repository configuration; do not modify
          */
         get_config(): GLib.KeyFile;
+
         /**
          * In some cases it's useful for applications to access the repository
          * directly; for example, writing content into `repo/tmp` ensures it's
@@ -1815,22 +1801,27 @@ export namespace OSTree {
          * @returns File descriptor for repository root - owned by `self`
          */
         get_dfd(): number;
+
         /**
          * For more information see `ostree_repo_set_disable_fsync()`.
          * @returns Whether or not `fsync()` is enabled for this repo.
          */
         get_disable_fsync(): boolean;
+
         get_mode(): RepoMode;
+
         /**
          * Before this function can be used, `ostree_repo_init()` must have been
          * called.
          * @returns Parent repository, or `null` if none
          */
         get_parent(): Repo;
+
         /**
          * @returns Path to repo
          */
         get_path(): Gio.File;
+
         /**
          * OSTree remotes are represented by keyfile groups, formatted like:
          * `[remote "remotename"]`. This function returns a value named `option_name`
@@ -1842,6 +1833,7 @@ export namespace OSTree {
          * @returns `true` on success, otherwise `false` with `error` set
          */
         get_remote_boolean_option(remote_name: string, option_name: string, default_value: boolean): [boolean, boolean];
+
         /**
          * OSTree remotes are represented by keyfile groups, formatted like:
          * `[remote "remotename"]`. This function returns a value named `option_name`
@@ -1852,6 +1844,7 @@ export namespace OSTree {
          * @returns `true` on success, otherwise `false` with `error` set
          */
         get_remote_list_option(remote_name: string, option_name: string): [boolean, string[]];
+
         /**
          * OSTree remotes are represented by keyfile groups, formatted like:
          * `[remote "remotename"]`. This function returns a value named `option_name`
@@ -1862,11 +1855,12 @@ export namespace OSTree {
          * @param default_value Value returned if `option_name` is not present
          * @returns `true` on success, otherwise `false` with `error` set
          */
-        get_remote_option(remote_name: string, option_name: string, default_value: string | null): [boolean, string];
+        get_remote_option(remote_name: string, option_name: string, default_value: (string | null)): [boolean, string];
+
         /**
          * Verify `signatures` for `data` using GPG keys in the keyring for
          * `remote_name`, and return an {@link OSTree.GpgVerifyResult}.
-         *
+         * 
          * The `remote_name` parameter can be `null`. In that case it will do
          * the verifications using GPG keys in the keyrings of all remotes.
          * @param remote_name Name of remote
@@ -1877,14 +1871,8 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
          */
-        gpg_verify_data(
-            remote_name: string | null,
-            data: GLib.Bytes | Uint8Array,
-            signatures: GLib.Bytes | Uint8Array,
-            keyringdir: Gio.File | null,
-            extra_keyring: Gio.File | null,
-            cancellable: Gio.Cancellable | null,
-        ): GpgVerifyResult;
+        gpg_verify_data(remote_name: (string | null), data: (GLib.Bytes | Uint8Array), signatures: (GLib.Bytes | Uint8Array), keyringdir: (Gio.File | null), extra_keyring: (Gio.File | null), cancellable: (Gio.Cancellable | null)): GpgVerifyResult;
+
         /**
          * Set `out_have_object` to `true` if `self` contains the given object;
          * `false` otherwise.
@@ -1893,31 +1881,28 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `false` if an unexpected error occurred, `true` otherwise
          */
-        has_object(objtype: ObjectType, checksum: string, cancellable: Gio.Cancellable | null): [boolean, boolean];
+        has_object(objtype: ObjectType, checksum: string, cancellable: (Gio.Cancellable | null)): [boolean, boolean];
+
         /**
          * Copy object named by `objtype` and `checksum` into `self` from the
          * source repository `source`.  If both repositories are of the same
          * type and on the same filesystem, this will simply be a fast Unix
          * hard link operation.
-         *
+         * 
          * Otherwise, a copy will be performed.
          * @param source Source repo
          * @param objtype Object type
          * @param checksum checksum
          * @param cancellable Cancellable
          */
-        import_object_from(
-            source: Repo,
-            objtype: ObjectType,
-            checksum: string,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        import_object_from(source: Repo, objtype: ObjectType, checksum: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Copy object named by `objtype` and `checksum` into `self` from the
          * source repository `source`.  If both repositories are of the same
          * type and on the same filesystem, this will simply be a fast Unix
          * hard link operation.
-         *
+         * 
          * Otherwise, a copy will be performed.
          * @param source Source repo
          * @param objtype Object type
@@ -1925,23 +1910,20 @@ export namespace OSTree {
          * @param trusted If `true`, assume the source repo is valid and trusted
          * @param cancellable Cancellable
          */
-        import_object_from_with_trust(
-            source: Repo,
-            objtype: ObjectType,
-            checksum: string,
-            trusted: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        import_object_from_with_trust(source: Repo, objtype: ObjectType, checksum: string, trusted: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * @returns `true` if this repository is the root-owned system global repository
          */
         is_system(): boolean;
+
         /**
          * Returns whether the repository is writable by the current user.
          * If the repository is not writable, the `error` indicates why.
          * @returns `true` if this repository is writable
          */
         is_writable(): boolean;
+
         /**
          * This function synchronously enumerates all commit objects starting
          * with `start`, returning data in `out_commits`.
@@ -1950,11 +1932,8 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
          */
-        list_commit_objects_starting_with(
-            start: string,
-            out_commits: { [key: string]: any } | GLib.HashTable<any, any>,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        list_commit_objects_starting_with(start: string, out_commits: ({ [key: string]: any } | GLib.HashTable<any, any>), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * This function synchronously enumerates all objects in the
          * repository, returning data in `out_objects`.  `out_objects`
@@ -1964,10 +1943,8 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
          */
-        list_objects(
-            flags: RepoListObjectsFlags,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, GLib.HashTable<any, any>];
+        list_objects(flags: RepoListObjectsFlags, cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<any, any>];
+
         /**
          * If `refspec_prefix` is `null`, list all local and remote refspecs,
          * with their current values in `out_all_refs`.  Otherwise, only list
@@ -1975,10 +1952,8 @@ export namespace OSTree {
          * @param refspec_prefix Only list refs which match this prefix
          * @param cancellable Cancellable
          */
-        list_refs(
-            refspec_prefix: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, GLib.HashTable<string, string>];
+        list_refs(refspec_prefix: (string | null), cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<string, string>];
+
         /**
          * If `refspec_prefix` is `null`, list all local and remote refspecs,
          * with their current values in `out_all_refs`.  Otherwise, only list
@@ -1989,17 +1964,15 @@ export namespace OSTree {
          * @param flags Options controlling listing behavior
          * @param cancellable Cancellable
          */
-        list_refs_ext(
-            refspec_prefix: string | null,
-            flags: RepoListRefsExtFlags,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, GLib.HashTable<string, string>];
+        list_refs_ext(refspec_prefix: (string | null), flags: RepoListRefsExtFlags, cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<string, string>];
+
         /**
          * This function synchronously enumerates all static deltas in the
          * repository, returning its result in `out_deltas`.
          * @param cancellable Cancellable
          */
-        list_static_delta_names(cancellable: Gio.Cancellable | null): [boolean, string[]];
+        list_static_delta_names(cancellable: (Gio.Cancellable | null)): [boolean, string[]];
+
         /**
          * A version of `ostree_repo_load_variant()` specialized to commits,
          * capable of returning extended state information.  Currently
@@ -2008,16 +1981,15 @@ export namespace OSTree {
          * @param checksum Commit checksum
          */
         load_commit(checksum: string): [boolean, GLib.Variant | null, RepoCommitState | null];
+
         /**
          * Load content object, decomposing it into three parts: the actual
          * content (for regular files), the metadata, and extended attributes.
          * @param checksum ASCII SHA256 checksum
          * @param cancellable Cancellable
          */
-        load_file(
-            checksum: string,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, Gio.InputStream | null, Gio.FileInfo | null, GLib.Variant | null];
+        load_file(checksum: string, cancellable: (Gio.Cancellable | null)): [boolean, Gio.InputStream | null, Gio.FileInfo | null, GLib.Variant | null];
+
         /**
          * Load object as a stream; useful when copying objects between
          * repositories.
@@ -2025,11 +1997,8 @@ export namespace OSTree {
          * @param checksum ASCII SHA256 checksum
          * @param cancellable Cancellable
          */
-        load_object_stream(
-            objtype: ObjectType,
-            checksum: string,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, Gio.InputStream, number];
+        load_object_stream(objtype: ObjectType, checksum: string, cancellable: (Gio.Cancellable | null)): [boolean, Gio.InputStream, number];
+
         /**
          * Load the metadata object `sha256` of type `objtype`, storing the
          * result in `out_variant`.
@@ -2037,6 +2006,7 @@ export namespace OSTree {
          * @param sha256 Checksum string
          */
         load_variant(objtype: ObjectType, sha256: string): [boolean, GLib.Variant];
+
         /**
          * Attempt to load the metadata object `sha256` of type `objtype` if it
          * exists, storing the result in `out_variant`.  If it doesn't exist,
@@ -2045,32 +2015,35 @@ export namespace OSTree {
          * @param sha256 ASCII checksum
          */
         load_variant_if_exists(objtype: ObjectType, sha256: string): [boolean, GLib.Variant];
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
-        open(cancellable: Gio.Cancellable | null): boolean;
+        open(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Starts or resumes a transaction. In order to write to a repo, you
          * need to start a transaction. You can complete the transaction with
          * `ostree_repo_commit_transaction()`, or abort the transaction with
          * `ostree_repo_abort_transaction()`.
-         *
+         * 
          * Currently, transactions are not atomic, and aborting a transaction
          * will not erase any data you  write during the transaction.
          * @param cancellable Cancellable
          */
-        prepare_transaction(cancellable: Gio.Cancellable | null): [boolean, boolean];
+        prepare_transaction(cancellable: (Gio.Cancellable | null)): [boolean, boolean];
+
         /**
          * Delete content from the repository.  By default, this function will
          * only delete "orphaned" objects not referred to by any commit.  This
          * can happen during a local commit operation, when we have written
          * content objects but not saved the commit referencing them.
-         *
+         * 
          * However, if {@link OSTree.RepoPruneFlags.REFS_ONLY} is provided, instead
          * of traversing all commits, only refs will be used.  Particularly
          * when combined with `depth`, this is a convenient way to delete
          * history from the repository.
-         *
+         * 
          * Use the {@link OSTree.RepoPruneFlags.NO_PRUNE} to just determine
          * statistics on objects that would be deleted, without actually
          * deleting them.
@@ -2078,11 +2051,8 @@ export namespace OSTree {
          * @param depth Stop traversal after this many iterations (-1 for unlimited)
          * @param cancellable Cancellable
          */
-        prune(
-            flags: RepoPruneFlags,
-            depth: number,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, number, number, number];
+        prune(flags: RepoPruneFlags, depth: number, cancellable: (Gio.Cancellable | null)): [boolean, number, number, number];
+
         /**
          * Prune static deltas, if COMMIT is specified then delete static delta files only
          * targeting that commit; otherwise any static delta of non existing commits are
@@ -2090,20 +2060,21 @@ export namespace OSTree {
          * @param commit ASCII SHA256 checksum for commit, or `null` for each non existing commit
          * @param cancellable Cancellable
          */
-        prune_static_deltas(commit: string | null, cancellable: Gio.Cancellable | null): boolean;
+        prune_static_deltas(commit: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Connect to the remote repository, fetching the specified set of
          * refs `refs_to_fetch`.  For each ref that is changed, download the
          * commit, all metadata, and all content objects, storing them safely
          * on disk in `self`.
-         *
+         * 
          * If `flags` contains {@link OSTree.RepoPullFlags.MIRROR}, and
          * the `refs_to_fetch` is `null`, and the remote repository contains a
          * summary file, then all refs will be fetched.
-         *
+         * 
          * If `flags` contains {@link OSTree.RepoPullFlags.COMMIT_ONLY}, then only the
          * metadata for the commits in `refs_to_fetch` is pulled.
-         *
+         * 
          * Warning: This API will iterate the thread default main context,
          * which is a bug, but kept for compatibility reasons.  If you want to
          * avoid this, use `g_main_context_push_thread_default()` to push a new
@@ -2114,13 +2085,8 @@ export namespace OSTree {
          * @param progress Progress
          * @param cancellable Cancellable
          */
-        pull(
-            remote_name: string,
-            refs_to_fetch: string[] | null,
-            flags: RepoPullFlags,
-            progress: AsyncProgress | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        pull(remote_name: string, refs_to_fetch: (string[] | null), flags: RepoPullFlags, progress: (AsyncProgress | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * This is similar to `ostree_repo_pull()`, but only fetches a single
          * subpath.
@@ -2131,18 +2097,12 @@ export namespace OSTree {
          * @param progress Progress
          * @param cancellable Cancellable
          */
-        pull_one_dir(
-            remote_name: string,
-            dir_to_pull: string,
-            refs_to_fetch: string[] | null,
-            flags: RepoPullFlags,
-            progress: AsyncProgress | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        pull_one_dir(remote_name: string, dir_to_pull: string, refs_to_fetch: (string[] | null), flags: RepoPullFlags, progress: (AsyncProgress | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Like `ostree_repo_pull()`, but supports an extensible set of flags.
          * The following are currently defined:
-         *
+         * 
          *   * refs (as): Array of string refs
          *   * flags (i): An instance of {@link OSTree.RepoPullFlags}
          *   * subdir (s): Pull just this subdirectory
@@ -2160,12 +2120,8 @@ export namespace OSTree {
          * @param progress Progress
          * @param cancellable Cancellable
          */
-        pull_with_options(
-            remote_name_or_baseurl: string,
-            options: GLib.Variant,
-            progress: AsyncProgress | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        pull_with_options(remote_name_or_baseurl: string, options: GLib.Variant, progress: (AsyncProgress | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Return the size in bytes of object with checksum `sha256`, after any
          * compression has been applied.
@@ -2173,17 +2129,15 @@ export namespace OSTree {
          * @param sha256 Checksum
          * @param cancellable Cancellable
          */
-        query_object_storage_size(
-            objtype: ObjectType,
-            sha256: string,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, number];
+        query_object_storage_size(objtype: ObjectType, sha256: string, cancellable: (Gio.Cancellable | null)): [boolean, number];
+
         /**
          * Load the content for `rev` into `out_root`.
          * @param ref Ref or ASCII checksum
          * @param cancellable Cancellable
          */
-        read_commit(ref: string, cancellable: Gio.Cancellable | null): [boolean, Gio.File, string];
+        read_commit(ref: string, cancellable: (Gio.Cancellable | null)): [boolean, Gio.File, string];
+
         /**
          * OSTree commits can have arbitrary metadata associated; this
          * function retrieves them.  If none exists, `out_metadata` will be set
@@ -2191,17 +2145,19 @@ export namespace OSTree {
          * @param checksum ASCII SHA256 commit checksum
          * @param cancellable Cancellable
          */
-        read_commit_detached_metadata(checksum: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
+        read_commit_detached_metadata(checksum: string, cancellable: (Gio.Cancellable | null)): [boolean, GLib.Variant];
+
         /**
          * An OSTree repository can contain a high level "summary" file that
          * describes the available branches and other metadata.
-         *
+         * 
          * It is regenerated automatically after a commit if
          * `core/commit-update-summary` is set.
          * @param additional_metadata A GVariant of type a{sv}, or `null`
          * @param cancellable Cancellable
          */
-        regenerate_summary(additional_metadata: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
+        regenerate_summary(additional_metadata: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Create a new remote named `name` pointing to `url`.  If `options` is
          * provided, then it will be mapped to {@link GLib.KeyFile} entries, where the
@@ -2215,12 +2171,8 @@ export namespace OSTree {
          * @param options GVariant of type a{sv}
          * @param cancellable Cancellable
          */
-        remote_add(
-            name: string,
-            url: string,
-            options: GLib.Variant | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        remote_add(name: string, url: string, options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * A combined function handling the equivalent of
          * `ostree_repo_remote_add()`, `ostree_repo_remote_delete()`, with more
@@ -2232,30 +2184,25 @@ export namespace OSTree {
          * @param options GVariant of type a{sv}
          * @param cancellable Cancellable
          */
-        remote_change(
-            sysroot: Gio.File | null,
-            changeop: RepoRemoteChange,
-            name: string,
-            url: string,
-            options: GLib.Variant | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        remote_change(sysroot: (Gio.File | null), changeop: RepoRemoteChange, name: string, url: string, options: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Delete the remote named `name`.  It is an error if the provided
          * remote does not exist.
          * @param name Name of remote
          * @param cancellable Cancellable
          */
-        remote_delete(name: string, cancellable: Gio.Cancellable | null): boolean;
+        remote_delete(name: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Tries to fetch the summary file and any GPG signatures on the summary file
          * over HTTP, and returns the binary data in `out_summary` and `out_signatures`
          * respectively.
-         *
+         * 
          * If no summary file exists on the remote server, `out_summary` is set to
          * `NULL`.  Likewise if the summary file is not signed, `out_signatures` is
          * set to `NULL`.  In either case the function still returns `true`.
-         *
+         * 
          * Parse the summary data into a {@link GLib.Variant} using `g_variant_new_from_bytes()`
          * with #OSTREE_SUMMARY_GVARIANT_FORMAT as the format string.
          * @param name name of a remote
@@ -2264,16 +2211,12 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          */
-        remote_fetch_summary(
-            name: string,
-            out_summary: GLib.Bytes | null,
-            out_signatures: GLib.Bytes | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        remote_fetch_summary(name: string, out_summary: (GLib.Bytes | null), out_signatures: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Like `ostree_repo_remote_fetch_summary()`, but supports an extensible set of flags.
          * The following are currently defined:
-         *
+         * 
          * - override-url (s): Fetch summary from this URL if remote specifies no metalink in options
          * @param name name of a remote
          * @param options A GVariant a{sv} with an extensible set of flags
@@ -2282,13 +2225,8 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          */
-        remote_fetch_summary_with_options(
-            name: string,
-            options: GLib.Variant | null,
-            out_summary: GLib.Bytes | null,
-            out_signatures: GLib.Bytes | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        remote_fetch_summary_with_options(name: string, options: (GLib.Variant | null), out_summary: (GLib.Bytes | null), out_signatures: (GLib.Bytes | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Return whether GPG verification is enabled for the remote named `name`
          * through `out_gpg_verify`.  It is an error if the provided remote does
@@ -2297,6 +2235,7 @@ export namespace OSTree {
          * @returns `true` on success, `false` on failure
          */
         remote_get_gpg_verify(name: string): [boolean, boolean];
+
         /**
          * Return whether GPG verification of the summary is enabled for the remote
          * named `name` through `out_gpg_verify_summary`.  It is an error if the provided
@@ -2305,6 +2244,7 @@ export namespace OSTree {
          * @returns `true` on success, `false` on failure
          */
         remote_get_gpg_verify_summary(name: string): [boolean, boolean];
+
         /**
          * Return the URL of the remote named `name` through `out_url`.  It is an
          * error if the provided remote does not exist.
@@ -2312,12 +2252,13 @@ export namespace OSTree {
          * @returns `true` on success, `false` on failure
          */
         remote_get_url(name: string): [boolean, string];
+
         /**
          * Imports one or more GPG keys from the open `source_stream`, or from the
          * user's personal keyring if `source_stream` is `null`.  The `key_ids` array
          * can optionally restrict which keys are imported.  If `key_ids` is `null`,
          * then all keys are imported.
-         *
+         * 
          * The imported keys will be used to conduct GPG verification when pulling
          * from the remote named `name`.
          * @param name name of a remote
@@ -2327,27 +2268,21 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          */
-        remote_gpg_import(
-            name: string,
-            source_stream: Gio.InputStream | null,
-            key_ids: string[] | null,
-            out_imported: number | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        remote_gpg_import(name: string, source_stream: (Gio.InputStream | null), key_ids: (string[] | null), out_imported: (number | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * List available remote names in an {@link OSTree.Repo}.  Remote names are sorted
          * alphabetically.  If no remotes are available the function returns `null`.
          * @returns a `null`-terminated          array of remote names
          */
         remote_list(): string[];
+
         /**
          * @param remote_name Name of the remote.
          * @param cancellable Cancellable
          */
-        remote_list_refs(
-            remote_name: string,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, GLib.HashTable<string, string>];
+        remote_list_refs(remote_name: string, cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<string, string>];
+
         /**
          * Look up the given refspec, returning the checksum it references in
          * the parameter `out_rev`. Will fall back on remote directory if cannot
@@ -2356,6 +2291,7 @@ export namespace OSTree {
          * @param allow_noent Do not throw an error if refspec does not exist
          */
         resolve_rev(refspec: string, allow_noent: boolean): [boolean, string];
+
         /**
          * Look up the given refspec, returning the checksum it references in
          * the parameter `out_rev`. Differently from `ostree_repo_resolve_rev()`,
@@ -2366,20 +2302,22 @@ export namespace OSTree {
          * @param flags Options controlling behavior
          */
         resolve_rev_ext(refspec: string, allow_noent: boolean, flags: RepoResolveRevExtFlags): [boolean, string];
+
         /**
          * When ostree builds a mutable tree from directory like in
          * `ostree_repo_write_directory_to_mtree()`, it has to scan all files that you
          * pass in and compute their checksums. If your commit contains hardlinks from
          * ostree's existing repo, ostree can build a mapping of device numbers and
          * inodes to their checksum.
-         *
+         * 
          * There is an upfront cost to creating this mapping, as this will scan the
          * entire objects directory. If your commit is composed of mostly hardlinks to
          * existing ostree objects, then this will speed up considerably, so call it
          * before you call `ostree_write_directory_to_mtree()` or similar.
          * @param cancellable Cancellable
          */
-        scan_hardlinks(cancellable: Gio.Cancellable | null): boolean;
+        scan_hardlinks(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Set a custom location for the cache directory used for e.g.
          * per-remote summary caches. Setting this manually is useful when
@@ -2389,7 +2327,8 @@ export namespace OSTree {
          * @param path subpath in `dfd`
          * @param cancellable a {@link Gio.Cancellable}
          */
-        set_cache_dir(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
+        set_cache_dir(dfd: number, path: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Disable requests to `fsync()` to stable storage during commits.  This
          * option should only be used by build system tools which are creating
@@ -2398,6 +2337,7 @@ export namespace OSTree {
          * @param disable_fsync If `true`, do not fsync
          */
         set_disable_fsync(disable_fsync: boolean): void;
+
         /**
          * This is like `ostree_repo_transaction_set_ref()`, except it may be
          * invoked outside of a transaction.  This is presently safe for the
@@ -2407,12 +2347,8 @@ export namespace OSTree {
          * @param checksum The checksum to point it to, or `null` to unset
          * @param cancellable GCancellable
          */
-        set_ref_immediate(
-            remote: string | null,
-            ref: string,
-            checksum: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_ref_immediate(remote: (string | null), ref: string, checksum: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Add a GPG signature to a commit.
          * @param commit_checksum SHA256 of given commit to sign
@@ -2420,28 +2356,19 @@ export namespace OSTree {
          * @param homedir GPG home directory, or `null`
          * @param cancellable A {@link Gio.Cancellable}
          */
-        sign_commit(
-            commit_checksum: string,
-            key_id: string,
-            homedir: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        sign_commit(commit_checksum: string, key_id: string, homedir: (string | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * This function is deprecated, sign the summary file instead.
          * Add a GPG signature to a static delta.
-         * @param from_commit
-         * @param to_commit
-         * @param key_id
-         * @param homedir
-         * @param cancellable
+         * @param from_commit 
+         * @param to_commit 
+         * @param key_id 
+         * @param homedir 
+         * @param cancellable 
          */
-        sign_delta(
-            from_commit: string,
-            to_commit: string,
-            key_id: string,
-            homedir: string,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        sign_delta(from_commit: string, to_commit: string, key_id: string, homedir: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Given a directory representing an already-downloaded static delta
          * on disk, apply it, generating a new commit.  The directory must be
@@ -2451,17 +2378,14 @@ export namespace OSTree {
          * @param skip_validation If `true`, assume data integrity
          * @param cancellable Cancellable
          */
-        static_delta_execute_offline(
-            dir_or_file: Gio.File,
-            skip_validation: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        static_delta_execute_offline(dir_or_file: Gio.File, skip_validation: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Generate a lookaside "static delta" from `from` (`null` means
          * from-empty) which can generate the objects in `to`.  This delta is
          * an optimization over fetching individual objects, and can be
          * conveniently stored and applied offline.
-         *
+         * 
          * The `params` argument should be an a{sv}.  The following attributes
          * are known:
          *   - min-fallback-size: u: Minimum uncompressed size in megabytes to use fallback, 0 to disable fallbacks
@@ -2481,22 +2405,16 @@ export namespace OSTree {
          * @param params Parameters, see below
          * @param cancellable Cancellable
          */
-        static_delta_generate(
-            opt: StaticDeltaGenerateOpt,
-            from: string,
-            to: string,
-            metadata: GLib.Variant | null,
-            params: GLib.Variant | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        static_delta_generate(opt: StaticDeltaGenerateOpt, from: string, to: string, metadata: (GLib.Variant | null), params: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * If `checksum` is not `null`, then record it as the target of ref named
          * `ref`; if `remote` is provided, the ref will appear to originate from that
          * remote.
-         *
+         * 
          * Otherwise, if `checksum` is `null`, then record that the ref should
          * be deleted.
-         *
+         * 
          * The change will not be written out immediately, but when the transaction
          * is completed with `ostree_repo_commit_transaction()`. If the transaction
          * is instead aborted with `ostree_repo_abort_transaction()`, no changes will
@@ -2505,7 +2423,8 @@ export namespace OSTree {
          * @param ref The ref to write
          * @param checksum The checksum to point it to
          */
-        transaction_set_ref(remote: string | null, ref: string, checksum: string): void;
+        transaction_set_ref(remote: (string | null), ref: string, checksum: string): void;
+
         /**
          * Like `ostree_repo_transaction_set_ref()`, but takes concatenated
          * `refspec` format as input instead of separate remote and name
@@ -2514,6 +2433,7 @@ export namespace OSTree {
          * @param checksum The checksum to point it to
          */
         transaction_set_refspec(refspec: string, checksum: string): void;
+
         /**
          * Create a new set `out_reachable` containing all objects reachable
          * from `commit_checksum`, traversing `maxdepth` parent commits.
@@ -2521,11 +2441,8 @@ export namespace OSTree {
          * @param maxdepth Traverse this many parent commits, -1 for unlimited
          * @param cancellable Cancellable
          */
-        traverse_commit(
-            commit_checksum: string,
-            maxdepth: number,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, GLib.HashTable<GLib.Variant, GLib.Variant>];
+        traverse_commit(commit_checksum: string, maxdepth: number, cancellable: (Gio.Cancellable | null)): [boolean, GLib.HashTable<GLib.Variant, GLib.Variant>];
+
         /**
          * Check for a valid GPG signature on commit named by the ASCII
          * checksum `commit_checksum`.
@@ -2535,12 +2452,8 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `true` if there was a GPG signature from a trusted keyring, otherwise `false`
          */
-        verify_commit(
-            commit_checksum: string,
-            keyringdir: Gio.File | null,
-            extra_keyring: Gio.File | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        verify_commit(commit_checksum: string, keyringdir: (Gio.File | null), extra_keyring: (Gio.File | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Read GPG signature(s) on the commit named by the ASCII checksum
          * `commit_checksum` and return detailed results.
@@ -2550,12 +2463,8 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
          */
-        verify_commit_ext(
-            commit_checksum: string,
-            keyringdir: Gio.File | null,
-            extra_keyring: Gio.File | null,
-            cancellable: Gio.Cancellable | null,
-        ): GpgVerifyResult;
+        verify_commit_ext(commit_checksum: string, keyringdir: (Gio.File | null), extra_keyring: (Gio.File | null), cancellable: (Gio.Cancellable | null)): GpgVerifyResult;
+
         /**
          * Verify `signatures` for `summary` data using GPG keys in the keyring for
          * `remote_name`, and return an {@link OSTree.GpgVerifyResult}.
@@ -2565,12 +2474,8 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
          */
-        verify_summary(
-            remote_name: string,
-            summary: GLib.Bytes | Uint8Array,
-            signatures: GLib.Bytes | Uint8Array,
-            cancellable: Gio.Cancellable | null,
-        ): GpgVerifyResult;
+        verify_summary(remote_name: string, summary: (GLib.Bytes | Uint8Array), signatures: (GLib.Bytes | Uint8Array), cancellable: (Gio.Cancellable | null)): GpgVerifyResult;
+
         /**
          * Import an archive file `archive` into the repository, and write its
          * file structure to `mtree`.
@@ -2580,13 +2485,8 @@ export namespace OSTree {
          * @param autocreate_parents Autocreate parent directories
          * @param cancellable Cancellable
          */
-        write_archive_to_mtree(
-            archive: Gio.File,
-            mtree: MutableTree,
-            modifier: RepoCommitModifier | null,
-            autocreate_parents: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_archive_to_mtree(archive: Gio.File, mtree: MutableTree, modifier: (RepoCommitModifier | null), autocreate_parents: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Write a commit metadata object, referencing `root_contents_checksum`
          * and `root_metadata_checksum`.
@@ -2597,14 +2497,8 @@ export namespace OSTree {
          * @param root The tree to point the commit to
          * @param cancellable Cancellable
          */
-        write_commit(
-            parent: string | null,
-            subject: string | null,
-            body: string | null,
-            metadata: GLib.Variant | null,
-            root: RepoFile,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, string];
+        write_commit(parent: (string | null), subject: (string | null), body: (string | null), metadata: (GLib.Variant | null), root: RepoFile, cancellable: (Gio.Cancellable | null)): [boolean, string];
+
         /**
          * Replace any existing metadata associated with commit referred to by
          * `checksum` with `metadata`.  If `metadata` is `null`, then existing
@@ -2613,11 +2507,8 @@ export namespace OSTree {
          * @param metadata Metadata to associate with commit in with format "a{sv}", or `null` to delete
          * @param cancellable Cancellable
          */
-        write_commit_detached_metadata(
-            checksum: string,
-            metadata: GLib.Variant | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_commit_detached_metadata(checksum: string, metadata: (GLib.Variant | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Write a commit metadata object, referencing `root_contents_checksum`
          * and `root_metadata_checksum`.
@@ -2629,15 +2520,8 @@ export namespace OSTree {
          * @param time The time to use to stamp the commit
          * @param cancellable Cancellable
          */
-        write_commit_with_time(
-            parent: string | null,
-            subject: string | null,
-            body: string | null,
-            metadata: GLib.Variant | null,
-            root: RepoFile,
-            time: bigint | number,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, string];
+        write_commit_with_time(parent: (string | null), subject: (string | null), body: (string | null), metadata: (GLib.Variant | null), root: RepoFile, time: (bigint | number), cancellable: (Gio.Cancellable | null)): [boolean, string];
+
         /**
          * Save `new_config` in place of this repository's config file.  Note
          * that `new_config` should not be modified after - this function
@@ -2645,6 +2529,7 @@ export namespace OSTree {
          * @param new_config Overwrite the config file with this data.  Do not change later!
          */
         write_config(new_config: GLib.KeyFile): boolean;
+
         /**
          * Store the content object streamed as `object_input`,
          * with total length `length`.  The actual checksum will
@@ -2654,12 +2539,8 @@ export namespace OSTree {
          * @param length Length of `object_input`
          * @param cancellable Cancellable
          */
-        write_content(
-            expected_checksum: string | null,
-            object_input: Gio.InputStream,
-            length: bigint | number,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, Uint8Array | null];
+        write_content(expected_checksum: (string | null), object_input: Gio.InputStream, length: (bigint | number), cancellable: (Gio.Cancellable | null)): [boolean, Uint8Array | null];
+
         /**
          * Asynchronously store the content object `object`.  If provided, the
          * checksum `expected_checksum` will be verified.
@@ -2668,12 +2549,8 @@ export namespace OSTree {
          * @param length Length of `object`
          * @param cancellable Cancellable
          */
-        write_content_async(
-            expected_checksum: string | null,
-            object: Gio.InputStream,
-            length: bigint | number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<number>;
+        write_content_async(expected_checksum: (string | null), object: Gio.InputStream, length: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<number>;
+
         /**
          * Asynchronously store the content object `object`.  If provided, the
          * checksum `expected_checksum` will be verified.
@@ -2683,13 +2560,8 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @param callback Invoked when content is writed
          */
-        write_content_async(
-            expected_checksum: string | null,
-            object: Gio.InputStream,
-            length: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        write_content_async(expected_checksum: (string | null), object: Gio.InputStream, length: (bigint | number), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously store the content object `object`.  If provided, the
          * checksum `expected_checksum` will be verified.
@@ -2699,22 +2571,18 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @param callback Invoked when content is writed
          */
-        write_content_async(
-            expected_checksum: string | null,
-            object: Gio.InputStream,
-            length: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<number> | void;
+        write_content_async(expected_checksum: (string | null), object: Gio.InputStream, length: (bigint | number), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<number> | void);
+
         /**
          * Completes an invocation of `ostree_repo_write_content_async()`.
          * @param result a {@link Gio.AsyncResult}
          */
         write_content_finish(result: Gio.AsyncResult): [boolean, number];
+
         /**
          * Store the content object streamed as `object_input`, with total
          * length `length`.  The given `checksum` will be treated as trusted.
-         *
+         * 
          * This function should be used when importing file objects from local
          * disk, for example.
          * @param checksum Store content using this ASCII SHA256 checksum
@@ -2722,12 +2590,8 @@ export namespace OSTree {
          * @param length Length of `object_input`
          * @param cancellable Cancellable
          */
-        write_content_trusted(
-            checksum: string,
-            object_input: Gio.InputStream,
-            length: bigint | number,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_content_trusted(checksum: string, object_input: Gio.InputStream, length: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Store as objects all contents of the directory referred to by `dfd`
          * and `path` all children into the repository `self`, overlaying the
@@ -2738,13 +2602,8 @@ export namespace OSTree {
          * @param modifier Optional modifier
          * @param cancellable Cancellable
          */
-        write_dfd_to_mtree(
-            dfd: number,
-            path: string,
-            mtree: MutableTree,
-            modifier: RepoCommitModifier | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_dfd_to_mtree(dfd: number, path: string, mtree: MutableTree, modifier: (RepoCommitModifier | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Store objects for `dir` and all children into the repository `self`,
          * overlaying the resulting filesystem hierarchy into `mtree`.
@@ -2753,16 +2612,12 @@ export namespace OSTree {
          * @param modifier Optional modifier
          * @param cancellable Cancellable
          */
-        write_directory_to_mtree(
-            dir: Gio.File,
-            mtree: MutableTree,
-            modifier: RepoCommitModifier | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_directory_to_mtree(dir: Gio.File, mtree: MutableTree, modifier: (RepoCommitModifier | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Store the metadata object `variant`.  Return the checksum
          * as `out_csum`.
-         *
+         * 
          * If `expected_checksum` is not `null`, verify it against the
          * computed checksum.
          * @param objtype Object type
@@ -2770,12 +2625,8 @@ export namespace OSTree {
          * @param object Metadata
          * @param cancellable Cancellable
          */
-        write_metadata(
-            objtype: ObjectType,
-            expected_checksum: string | null,
-            object: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, Uint8Array | null];
+        write_metadata(objtype: ObjectType, expected_checksum: (string | null), object: GLib.Variant, cancellable: (Gio.Cancellable | null)): [boolean, Uint8Array | null];
+
         /**
          * Asynchronously store the metadata object `variant`.  If provided,
          * the checksum `expected_checksum` will be verified.
@@ -2784,12 +2635,8 @@ export namespace OSTree {
          * @param object Metadata
          * @param cancellable Cancellable
          */
-        write_metadata_async(
-            objtype: ObjectType,
-            expected_checksum: string | null,
-            object: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        write_metadata_async(objtype: ObjectType, expected_checksum: (string | null), object: GLib.Variant, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously store the metadata object `variant`.  If provided,
          * the checksum `expected_checksum` will be verified.
@@ -2799,13 +2646,8 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @param callback Invoked when metadata is writed
          */
-        write_metadata_async(
-            objtype: ObjectType,
-            expected_checksum: string | null,
-            object: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        write_metadata_async(objtype: ObjectType, expected_checksum: (string | null), object: GLib.Variant, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously store the metadata object `variant`.  If provided,
          * the checksum `expected_checksum` will be verified.
@@ -2815,18 +2657,14 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @param callback Invoked when metadata is writed
          */
-        write_metadata_async(
-            objtype: ObjectType,
-            expected_checksum: string | null,
-            object: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        write_metadata_async(objtype: ObjectType, expected_checksum: (string | null), object: GLib.Variant, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param result
-         * @param out_csum
+         * @param result 
+         * @param out_csum 
          */
         write_metadata_finish(result: Gio.AsyncResult, out_csum: number): boolean;
+
         /**
          * Store the metadata object `variant`; the provided `checksum` is
          * trusted.
@@ -2836,13 +2674,8 @@ export namespace OSTree {
          * @param length Length, may be 0 for unknown
          * @param cancellable Cancellable
          */
-        write_metadata_stream_trusted(
-            objtype: ObjectType,
-            checksum: string,
-            object_input: Gio.InputStream,
-            length: bigint | number,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_metadata_stream_trusted(objtype: ObjectType, checksum: string, object_input: Gio.InputStream, length: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Store the metadata object `variant`; the provided `checksum` is
          * trusted.
@@ -2851,12 +2684,8 @@ export namespace OSTree {
          * @param variant Metadata object
          * @param cancellable Cancellable
          */
-        write_metadata_trusted(
-            objtype: ObjectType,
-            checksum: string,
-            variant: GLib.Variant,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_metadata_trusted(objtype: ObjectType, checksum: string, variant: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Write all metadata objects for `mtree` to repo; the resulting
          * `out_file` points to the {@link OSTree.ObjectType.DIR_TREE} object that
@@ -2864,16 +2693,19 @@ export namespace OSTree {
          * @param mtree Mutable tree
          * @param cancellable Cancellable
          */
-        write_mtree(mtree: MutableTree, cancellable: Gio.Cancellable | null): [boolean, Gio.File];
+        write_mtree(mtree: MutableTree, cancellable: (Gio.Cancellable | null)): [boolean, Gio.File];
     }
+
 
     namespace RepoFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.File.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.File.ConstructorProps {}
+        }
     }
 
     /**
@@ -2892,92 +2724,88 @@ export namespace OSTree {
         $signals: RepoFile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<RepoFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof RepoFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof RepoFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RepoFile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof RepoFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, RepoFile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof RepoFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, RepoFile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof RepoFile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<RepoFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof RepoFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<RepoFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         ensure_resolved(): boolean;
+
         get_checksum(): string;
+
         /**
          * @returns Repository
          */
         get_repo(): Repo;
+
         /**
          * @returns The root directory for the commit referenced by this file
          */
         get_root(): RepoFile;
+
         /**
-         * @param out_xattrs
-         * @param cancellable
+         * @param out_xattrs 
+         * @param cancellable 
          */
-        get_xattrs(out_xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
+        get_xattrs(out_xattrs: GLib.Variant, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param name
-         * @param is_dir
-         * @param out_container
+         * @param name 
+         * @param is_dir 
+         * @param out_container 
          */
         tree_find_child(name: string, is_dir: boolean, out_container: GLib.Variant): number;
+
         tree_get_contents(): GLib.Variant;
+
         tree_get_contents_checksum(): string;
+
         tree_get_metadata(): GLib.Variant;
+
         tree_get_metadata_checksum(): string;
+
         /**
-         * @param n
-         * @param attributes
-         * @param flags
-         * @param out_info
-         * @param cancellable
+         * @param n 
+         * @param attributes 
+         * @param flags 
+         * @param out_info 
+         * @param cancellable 
          */
-        tree_query_child(
-            n: number,
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            out_info: Gio.FileInfo,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        tree_query_child(n: number, attributes: string, flags: Gio.FileQueryInfoFlags, out_info: Gio.FileInfo, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param checksum
-         * @param metadata
+         * @param checksum 
+         * @param metadata 
          */
         tree_set_metadata(checksum: string, metadata: GLib.Variant): void;
+
         /**
          * Gets an output stream for appending data to the file.
          * If the file doesn't already exist it is created.
-         *
+         * 
          * By default files created are generally readable by everyone,
          * but if you pass {@link Gio.FileCreateFlags.PRIVATE} in `flags` the file
          * will be made readable only to the current user, to the level that
          * is supported on the target filesystem.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * Some file systems don't allow all file names, and may return an
          * {@link Gio.IOErrorEnum.INVALID_FILENAME} error. If the file is a directory the
          * {@link Gio.IOErrorEnum.IS_DIRECTORY} error will be returned. Other errors are
@@ -2986,13 +2814,14 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileOutputStream}, or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        append_to(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileOutputStream;
+        append_to(flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileOutputStream;
+
         /**
          * Asynchronously opens `file` for appending.
-         *
+         * 
          * For more details, see `g_file_append_to()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_append_to_finish()` to get the result
          * of the operation.
@@ -3000,37 +2829,14 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        append_to_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileOutputStream>;
+        append_to_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileOutputStream>;
+
         /**
          * Asynchronously opens `file` for appending.
-         *
+         * 
          * For more details, see `g_file_append_to()` which is
          * the synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_append_to_finish()` to get the result
-         * of the operation.
-         * @param flags a set of {@link Gio.FileCreateFlags}
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        append_to_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously opens `file` for appending.
-         *
-         * For more details, see `g_file_append_to()` which is
-         * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_append_to_finish()` to get the result
          * of the operation.
@@ -3039,12 +2845,24 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        append_to_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileOutputStream> | void;
+        append_to_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously opens `file` for appending.
+         * 
+         * For more details, see `g_file_append_to()` which is
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_append_to_finish()` to get the result
+         * of the operation.
+         * @param flags a set of {@link Gio.FileCreateFlags}
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        append_to_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileOutputStream> | void);
+
         /**
          * Finishes an asynchronous file append operation started with
          * `g_file_append_to_async()`.
@@ -3052,9 +2870,10 @@ export namespace OSTree {
          * @returns a valid {@link Gio.FileOutputStream}   or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         append_to_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
+
         /**
          * Prepares the file attribute query string for copying to `file`.
-         *
+         * 
          * This function prepares an attribute query string to be
          * passed to `g_file_query_info()` to get a list of attributes
          * normally copied with the file (see `g_file_copy_attributes()`
@@ -3066,46 +2885,47 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns an attribute query string for `g_file_query_info()`,   or `null` if an error occurs.
          */
-        build_attribute_list_for_copy(flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null): string;
+        build_attribute_list_for_copy(flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null)): string;
+
         /**
          * Copies the file `source` to the location specified by `destination`.
          * Can not handle recursive copies of directories.
-         *
+         * 
          * If the flag {@link Gio.FileCopyFlags.OVERWRITE} is specified an already
          * existing `destination` file is overwritten.
-         *
+         * 
          * If the flag {@link Gio.FileCopyFlags.NOFOLLOW_SYMLINKS} is specified then symlinks
          * will be copied as symlinks, otherwise the target of the
          * `source` symlink will be copied.
-         *
+         * 
          * If the flag {@link Gio.FileCopyFlags.ALL_METADATA} is specified then all the metadata
          * that is possible to copy is copied, not just the default subset (which,
          * for instance, does not include the owner, see {@link Gio.FileInfo}).
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `progress_callback` is not `null`, then the operation can be monitored
          * by setting this to a {@link Gio.FileProgressCallback} function.
          * `progress_callback_data` will be passed to this function. It is guaranteed
          * that this callback will be called after all data has been transferred with
          * the total number of bytes copied during the operation.
-         *
+         * 
          * If the `source` file does not exist, then the {@link Gio.IOErrorEnum.NOT_FOUND} error
          * is returned, independent on the status of the `destination`.
-         *
+         * 
          * If {@link Gio.FileCopyFlags.OVERWRITE} is not specified and the target exists, then
          * the error {@link Gio.IOErrorEnum.EXISTS} is returned.
-         *
+         * 
          * If trying to overwrite a file over a directory, the {@link Gio.IOErrorEnum.IS_DIRECTORY}
          * error is returned. If trying to overwrite a directory with a directory the
          * {@link Gio.IOErrorEnum.WOULD_MERGE} error is returned.
-         *
+         * 
          * If the source is a directory and the target does not exist, or
          * {@link Gio.FileCopyFlags.OVERWRITE} is specified and the target is a file, then the
          * {@link Gio.IOErrorEnum.WOULD_RECURSE} error is returned.
-         *
+         * 
          * If you are interested in copying the {@link Gio.File} object itself (not the on-disk
          * file), see `g_file_dup()`.
          * @param destination destination {@link Gio.File}
@@ -3114,12 +2934,8 @@ export namespace OSTree {
          * @param progress_callback function to callback with   progress information, or `null` if progress information is not needed
          * @returns `true` on success, `false` otherwise.
          */
-        copy(
-            destination: Gio.File,
-            flags: Gio.FileCopyFlags,
-            cancellable: Gio.Cancellable | null,
-            progress_callback: Gio.FileProgressCallback | null,
-        ): boolean;
+        copy(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): boolean;
+
         /**
          * Version of {@link Gio.File.copy_async} using closures instead of callbacks for
          * easier binding in other languages.
@@ -3130,17 +2946,11 @@ export namespace OSTree {
          * @param progress_callback_closure {@link GObject.Closure} to invoke with progress   information, or `NULL` if progress information is not needed
          * @param ready_callback_closure {@link GObject.Closure} to invoke when the request is satisfied
          */
-        copy_async(
-            destination: Gio.File,
-            flags: Gio.FileCopyFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            progress_callback_closure: GObject.Closure | null,
-            ready_callback_closure: GObject.Closure,
-        ): void;
+        copy_async(destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback_closure: (GObject.Closure | null), ready_callback_closure: GObject.Closure): void;
+
         /**
          * Copies the file attributes from `source` to `destination`.
-         *
+         * 
          * Normally only a subset of the file attributes are copied,
          * those that are copies in a normal file copy operation
          * (which for instance does not include e.g. owner). However
@@ -3152,27 +2962,29 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the attributes were copied successfully,   `false` otherwise.
          */
-        copy_attributes(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null): boolean;
+        copy_attributes(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Finishes copying the file started with `g_file_copy_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns a `true` on success, `false` on error.
          */
         copy_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Creates a new file and returns an output stream for writing to it.
          * The file must not already exist.
-         *
+         * 
          * By default files created are generally readable by everyone,
          * but if you pass {@link Gio.FileCreateFlags.PRIVATE} in `flags` the file
          * will be made readable only to the current user, to the level
          * that is supported on the target filesystem.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If a file or directory with this name already exists the
          * {@link Gio.IOErrorEnum.EXISTS} error will be returned. Some file systems don't
          * allow all file names, and may return an {@link Gio.IOErrorEnum.INVALID_FILENAME}
@@ -3183,14 +2995,15 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileOutputStream} for the newly created   file, or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        create(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileOutputStream;
+        create(flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileOutputStream;
+
         /**
          * Asynchronously creates a new file and returns an output stream
          * for writing to it. The file must not already exist.
-         *
+         * 
          * For more details, see `g_file_create()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_create_finish()` to get the result
          * of the operation.
@@ -3198,39 +3011,15 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        create_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileOutputStream>;
+        create_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileOutputStream>;
+
         /**
          * Asynchronously creates a new file and returns an output stream
          * for writing to it. The file must not already exist.
-         *
+         * 
          * For more details, see `g_file_create()` which is
          * the synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_create_finish()` to get the result
-         * of the operation.
-         * @param flags a set of {@link Gio.FileCreateFlags}
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        create_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously creates a new file and returns an output stream
-         * for writing to it. The file must not already exist.
-         *
-         * For more details, see `g_file_create()` which is
-         * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_create_finish()` to get the result
          * of the operation.
@@ -3239,12 +3028,25 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        create_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileOutputStream> | void;
+        create_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously creates a new file and returns an output stream
+         * for writing to it. The file must not already exist.
+         * 
+         * For more details, see `g_file_create()` which is
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_create_finish()` to get the result
+         * of the operation.
+         * @param flags a set of {@link Gio.FileCreateFlags}
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        create_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileOutputStream> | void);
+
         /**
          * Finishes an asynchronous file create operation started with
          * `g_file_create_async()`.
@@ -3252,27 +3054,28 @@ export namespace OSTree {
          * @returns a {@link Gio.FileOutputStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         create_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
+
         /**
          * Creates a new file and returns a stream for reading and
          * writing to it. The file must not already exist.
-         *
+         * 
          * By default files created are generally readable by everyone,
          * but if you pass {@link Gio.FileCreateFlags.PRIVATE} in `flags` the file
          * will be made readable only to the current user, to the level
          * that is supported on the target filesystem.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If a file or directory with this name already exists, the
          * {@link Gio.IOErrorEnum.EXISTS} error will be returned. Some file systems don't
          * allow all file names, and may return an {@link Gio.IOErrorEnum.INVALID_FILENAME}
          * error, and if the name is too long, {@link Gio.IOErrorEnum.FILENAME_TOO_LONG}
          * will be returned. Other errors are possible too, and depend on what
          * kind of filesystem the file is on.
-         *
+         * 
          * Note that in many non-local file cases read and write streams are
          * not supported, so make sure you really need to do read and write
          * streaming, rather than just opening for reading or writing.
@@ -3280,14 +3083,15 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileIOStream} for the newly created   file, or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        create_readwrite(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileIOStream;
+        create_readwrite(flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileIOStream;
+
         /**
          * Asynchronously creates a new file and returns a stream
          * for reading and writing to it. The file must not already exist.
-         *
+         * 
          * For more details, see `g_file_create_readwrite()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_create_readwrite_finish()` to get
          * the result of the operation.
@@ -3295,39 +3099,15 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        create_readwrite_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileIOStream>;
+        create_readwrite_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileIOStream>;
+
         /**
          * Asynchronously creates a new file and returns a stream
          * for reading and writing to it. The file must not already exist.
-         *
+         * 
          * For more details, see `g_file_create_readwrite()` which is
          * the synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_create_readwrite_finish()` to get
-         * the result of the operation.
-         * @param flags a set of {@link Gio.FileCreateFlags}
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        create_readwrite_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously creates a new file and returns a stream
-         * for reading and writing to it. The file must not already exist.
-         *
-         * For more details, see `g_file_create_readwrite()` which is
-         * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_create_readwrite_finish()` to get
          * the result of the operation.
@@ -3336,12 +3116,25 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        create_readwrite_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileIOStream> | void;
+        create_readwrite_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously creates a new file and returns a stream
+         * for reading and writing to it. The file must not already exist.
+         * 
+         * For more details, see `g_file_create_readwrite()` which is
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_create_readwrite_finish()` to get
+         * the result of the operation.
+         * @param flags a set of {@link Gio.FileCreateFlags}
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        create_readwrite_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileIOStream> | void);
+
         /**
          * Finishes an asynchronous file create operation started with
          * `g_file_create_readwrite_async()`.
@@ -3349,14 +3142,15 @@ export namespace OSTree {
          * @returns a {@link Gio.FileIOStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         create_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
+
         /**
          * Deletes a file. If the `file` is a directory, it will only be
          * deleted if it is empty. This has the same semantics as `g_unlink()`.
-         *
+         * 
          * If `file` doesn’t exist, {@link Gio.IOErrorEnum.NOT_FOUND} will be returned. This allows
          * for deletion to be implemented avoiding
          * [time-of-check to time-of-use races](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use):
-         *
+         * 
          * ```
          * g_autoptr(GError) local_error = NULL;
          * if (!g_file_delete (my_file, my_cancellable, &local_error) &&
@@ -3368,15 +3162,16 @@ export namespace OSTree {
          *                g_file_peek_path (my_file), local_error->message);
          *   }
          * ```
-         *
-         *
+         * 
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the file was deleted. `false` otherwise.
          */
-        ['delete'](cancellable: Gio.Cancellable | null): boolean;
+        ["delete"](cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
@@ -3384,20 +3179,8 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        delete_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Asynchronously delete a file. If the `file` is a directory, it will
-         * only be deleted if it is empty.  This has the same semantics as
-         * `g_unlink()`.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
-         */
-        delete_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        delete_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
@@ -3406,68 +3189,60 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
          */
-        delete_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        delete_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously delete a file. If the `file` is a directory, it will
+         * only be deleted if it is empty.  This has the same semantics as
+         * `g_unlink()`.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
+         */
+        delete_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes deleting a file started with `g_file_delete_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the file was deleted. `false` otherwise.
          */
         delete_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Duplicates a {@link Gio.File} handle. This operation does not duplicate
          * the actual file or directory represented by the {@link Gio.File}; see
          * `g_file_copy()` if attempting to copy a file.
-         *
+         * 
          * `g_file_dup()` is useful when a second handle is needed to the same underlying
          * file, for use in a separate thread ({@link Gio.File} is not thread-safe). For use
          * within the same thread, use `g_object_ref()` to increment the existing object’s
          * reference count.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns a new {@link Gio.File} that is a duplicate   of the given {@link Gio.File}.
          */
         dup(): Gio.File;
+
         /**
          * Starts an asynchronous eject on a mountable.
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_eject_mountable_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param flags flags affecting the operation
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        eject_mountable(flags: Gio.MountUnmountFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        eject_mountable(flags: Gio.MountUnmountFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts an asynchronous eject on a mountable.
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_eject_mountable_finish()`.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         * @param flags flags affecting the operation
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        eject_mountable(
-            flags: Gio.MountUnmountFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts an asynchronous eject on a mountable.
-         * When this operation has completed, `callback` will be called with
-         * `user_user` data, and the operation can be finalized with
-         * `g_file_eject_mountable_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -3475,11 +3250,23 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        eject_mountable(
-            flags: Gio.MountUnmountFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        eject_mountable(flags: Gio.MountUnmountFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts an asynchronous eject on a mountable.
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * `g_file_eject_mountable_finish()`.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * @param flags flags affecting the operation
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        eject_mountable(flags: Gio.MountUnmountFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous eject operation started by
          * `g_file_eject_mountable()`.
@@ -3487,12 +3274,13 @@ export namespace OSTree {
          * @returns `true` if the `file` was ejected successfully.   `false` otherwise.
          */
         eject_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Starts an asynchronous eject on a mountable.
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_eject_mountable_with_operation_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -3500,37 +3288,14 @@ export namespace OSTree {
          * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        eject_mountable_with_operation(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        eject_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts an asynchronous eject on a mountable.
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_eject_mountable_with_operation_finish()`.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         * @param flags flags affecting the operation
-         * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        eject_mountable_with_operation(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts an asynchronous eject on a mountable.
-         * When this operation has completed, `callback` will be called with
-         * `user_user` data, and the operation can be finalized with
-         * `g_file_eject_mountable_with_operation_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -3539,12 +3304,24 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        eject_mountable_with_operation(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        eject_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts an asynchronous eject on a mountable.
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * `g_file_eject_mountable_with_operation_finish()`.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * @param flags flags affecting the operation
+         * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        eject_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous eject operation started by
          * `g_file_eject_mountable_with_operation()`.
@@ -3552,11 +3329,12 @@ export namespace OSTree {
          * @returns `true` if the `file` was ejected successfully.   `false` otherwise.
          */
         eject_mountable_with_operation_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Gets the requested information about the files in a directory.
          * The result is a {@link Gio.FileEnumerator} object that will give out
          * {@link Gio.FileInfo} objects for all the files in the directory.
-         *
+         * 
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
          * it's not possible to read a particular requested attribute
@@ -3569,12 +3347,12 @@ export namespace OSTree {
          * `G_FILE_ATTRIBUTE_STANDARD_NAME`. `G_FILE_ATTRIBUTE_STANDARD_NAME` should
          * always be specified if you plan to call `g_file_enumerator_get_child()` or
          * `g_file_enumerator_iterate()` on the returned enumerator.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will
          * be returned. If the file is not a directory, the {@link Gio.IOErrorEnum.NOT_DIRECTORY}
          * error will be returned. Other errors are possible too.
@@ -3583,19 +3361,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns A {@link Gio.FileEnumerator} if successful,   `null` on error. Free the returned object with `g_object_unref()`.
          */
-        enumerate_children(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.FileEnumerator;
+        enumerate_children(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): Gio.FileEnumerator;
+
         /**
          * Asynchronously gets the requested information about the files
          * in a directory. The result is a {@link Gio.FileEnumerator} object that will
          * give out {@link Gio.FileInfo} objects for all the files in the directory.
-         *
+         * 
          * For more details, see `g_file_enumerate_children()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_enumerate_children_finish()` to get the result of
          * the operation.
@@ -3604,44 +3379,16 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        enumerate_children_async(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileEnumerator>;
+        enumerate_children_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileEnumerator>;
+
         /**
          * Asynchronously gets the requested information about the files
          * in a directory. The result is a {@link Gio.FileEnumerator} object that will
          * give out {@link Gio.FileInfo} objects for all the files in the directory.
-         *
+         * 
          * For more details, see `g_file_enumerate_children()` which is
          * the synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called. You can
-         * then call `g_file_enumerate_children_finish()` to get the result of
-         * the operation.
-         * @param attributes an attribute query string
-         * @param flags a set of {@link Gio.FileQueryInfoFlags}
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        enumerate_children_async(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously gets the requested information about the files
-         * in a directory. The result is a {@link Gio.FileEnumerator} object that will
-         * give out {@link Gio.FileInfo} objects for all the files in the directory.
-         *
-         * For more details, see `g_file_enumerate_children()` which is
-         * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_enumerate_children_finish()` to get the result of
          * the operation.
@@ -3651,13 +3398,27 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        enumerate_children_async(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileEnumerator> | void;
+        enumerate_children_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously gets the requested information about the files
+         * in a directory. The result is a {@link Gio.FileEnumerator} object that will
+         * give out {@link Gio.FileInfo} objects for all the files in the directory.
+         * 
+         * For more details, see `g_file_enumerate_children()` which is
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `g_file_enumerate_children_finish()` to get the result of
+         * the operation.
+         * @param attributes an attribute query string
+         * @param flags a set of {@link Gio.FileQueryInfoFlags}
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        enumerate_children_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileEnumerator> | void);
+
         /**
          * Finishes an async enumerate children operation.
          * See `g_file_enumerate_children_async()`.
@@ -3665,72 +3426,55 @@ export namespace OSTree {
          * @returns a {@link Gio.FileEnumerator} or `null`   if an error occurred.   Free the returned object with `g_object_unref()`.
          */
         enumerate_children_finish(res: Gio.AsyncResult): Gio.FileEnumerator;
+
         /**
          * Checks if the two given `GFiles` refer to the same file.
-         *
+         * 
          * Note that two `GFiles` that differ can still refer to the same
          * file on the filesystem due to various forms of filename
          * aliasing.
-         *
+         * 
          * This call does no blocking I/O.
          * @param file2 the second {@link Gio.File}
          * @returns `true` if `file1` and `file2` are equal.
          */
         equal(file2: Gio.File): boolean;
+
         /**
          * Gets a {@link Gio.Mount} for the {@link Gio.File}.
-         *
+         * 
          * {@link Gio.Mount} is returned only for user interesting locations, see
          * {@link Gio.VolumeMonitor}. If the {@link Gio.FileIface} for `file` does not have a #mount,
          * `error` will be set to {@link Gio.IOErrorEnum.NOT_FOUND} and `null` #will be returned.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.Mount} where the `file` is located   or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        find_enclosing_mount(cancellable: Gio.Cancellable | null): Gio.Mount;
+        find_enclosing_mount(cancellable: (Gio.Cancellable | null)): Gio.Mount;
+
         /**
          * Asynchronously gets the mount for the file.
-         *
+         * 
          * For more details, see `g_file_find_enclosing_mount()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_find_enclosing_mount_finish()` to
          * get the result of the operation.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        find_enclosing_mount_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.Mount>;
+        find_enclosing_mount_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.Mount>;
+
         /**
          * Asynchronously gets the mount for the file.
-         *
+         * 
          * For more details, see `g_file_find_enclosing_mount()` which is
          * the synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_find_enclosing_mount_finish()` to
-         * get the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        find_enclosing_mount_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously gets the mount for the file.
-         *
-         * For more details, see `g_file_find_enclosing_mount()` which is
-         * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_find_enclosing_mount_finish()` to
          * get the result of the operation.
@@ -3738,11 +3482,23 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        find_enclosing_mount_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.Mount> | void;
+        find_enclosing_mount_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously gets the mount for the file.
+         * 
+         * For more details, see `g_file_find_enclosing_mount()` which is
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_find_enclosing_mount_finish()` to
+         * get the result of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        find_enclosing_mount_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.Mount> | void);
+
         /**
          * Finishes an asynchronous find mount request.
          * See `g_file_find_enclosing_mount_async()`.
@@ -3750,35 +3506,38 @@ export namespace OSTree {
          * @returns {@link Gio.Mount} for given `file` or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         find_enclosing_mount_finish(res: Gio.AsyncResult): Gio.Mount;
+
         /**
          * Gets the base name (the last component of the path) for a given {@link Gio.File}.
-         *
+         * 
          * If called for the top level of a system (such as the filesystem root
          * or a uri like sftp://host/) it will return a single directory separator
          * (and on Windows, possibly a drive letter).
-         *
+         * 
          * The base name is a byte string (not UTF-8). It has no defined encoding
          * or rules other than it may not contain zero bytes.  If you want to use
          * filenames in a user interface you should use the display name that you
          * can get by requesting the `G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME`
          * attribute with `g_file_query_info()`.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns string containing the {@link Gio.File}'s   base name, or `null` if given {@link Gio.File} is invalid. The returned string   should be freed with `g_free()` when no longer needed.
          */
-        get_basename(): string | null;
+        get_basename(): (string | null);
+
         /**
          * Gets a child of `file` with basename equal to `name`.
-         *
+         * 
          * Note that the file with that specific name might not exist, but
          * you can still have a {@link Gio.File} that points to it. You can use this
          * for instance to create that file.
-         *
+         * 
          * This call does no blocking I/O.
          * @param name string containing the child's basename
          * @returns a {@link Gio.File} to a child specified by `name`.   Free the returned object with `g_object_unref()`.
          */
         get_child(name: string): Gio.File;
+
         /**
          * Gets the child of `file` for a given `display_name` (i.e. a UTF-8
          * version of the name). If this function fails, it returns `null`
@@ -3786,100 +3545,108 @@ export namespace OSTree {
          * {@link Gio.File} for a new file and the user entered the filename in the
          * user interface, for instance when you select a directory and
          * type a filename in the file selector.
-         *
+         * 
          * This call does no blocking I/O.
          * @param display_name string to a possible child
          * @returns a {@link Gio.File} to the specified child, or   `null` if the display name couldn't be converted.   Free the returned object with `g_object_unref()`.
          */
         get_child_for_display_name(display_name: string): Gio.File;
+
         /**
          * Gets the parent directory for the `file`.
          * If the `file` represents the root directory of the
          * file system, then `null` will be returned.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns a {@link Gio.File} structure to the   parent of the given {@link Gio.File} or `null` if there is no parent. Free   the returned object with `g_object_unref()`.
          */
-        get_parent(): Gio.File | null;
+        get_parent(): (Gio.File | null);
+
         /**
          * Gets the parse name of the `file`.
          * A parse name is a UTF-8 string that describes the
          * file such that one can get the {@link Gio.File} back using
          * `g_file_parse_name()`.
-         *
+         * 
          * This is generally used to show the {@link Gio.File} as a nice
          * full-pathname kind of string in a user interface,
          * like in a location entry.
-         *
+         * 
          * For local files with names that can safely be converted
          * to UTF-8 the pathname is used, otherwise the IRI is used
          * (a form of URI that allows UTF-8 characters unescaped).
-         *
+         * 
          * This call does no blocking I/O.
          * @returns a string containing the {@link Gio.File}'s parse name.   The returned string should be freed with `g_free()`   when no longer needed.
          */
         get_parse_name(): string;
+
         /**
          * Gets the local pathname for {@link Gio.File}, if one exists. If non-`null`, this is
          * guaranteed to be an absolute, canonical path. It might contain symlinks.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns string containing the {@link Gio.File}'s path,   or `null` if no such path exists. The returned string should be freed   with `g_free()` when no longer needed.
          */
-        get_path(): string | null;
+        get_path(): (string | null);
+
         /**
          * Gets the path for `descendant` relative to `parent`.
-         *
+         * 
          * This call does no blocking I/O.
          * @param descendant input {@link Gio.File}
          * @returns string with the relative path from   `descendant` to `parent`, or `null` if `descendant` doesn't have `parent` as   prefix. The returned string should be freed with `g_free()` when   no longer needed.
          */
-        get_relative_path(descendant: Gio.File): string | null;
+        get_relative_path(descendant: Gio.File): (string | null);
+
         /**
          * Gets the URI for the `file`.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns a string containing the {@link Gio.File}'s URI. If the {@link Gio.File} was constructed   with an invalid URI, an invalid URI is returned.   The returned string should be freed with `g_free()`   when no longer needed.
          */
         get_uri(): string;
+
         /**
          * Gets the URI scheme for a {@link Gio.File}.
          * RFC 3986 decodes the scheme as:
-         *
+         * 
          * ```
          * URI = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
          * ```
-         *
+         * 
          * Common schemes include "file", "http", "ftp", etc.
-         *
+         * 
          * The scheme can be different from the one used to construct the {@link Gio.File},
          * in that it might be replaced with one that is logically equivalent to the {@link Gio.File}.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns a string containing the URI scheme for the given   {@link Gio.File} or `null` if the {@link Gio.File} was constructed with an invalid URI. The   returned string should be freed with `g_free()` when no longer needed.
          */
-        get_uri_scheme(): string | null;
+        get_uri_scheme(): (string | null);
+
         /**
          * Checks if `file` has a parent, and optionally, if it is `parent`.
-         *
+         * 
          * If `parent` is `null` then this function returns `true` if `file` has any
          * parent at all.  If `parent` is non-`null` then `true` is only returned
          * if `file` is an immediate child of `parent`.
          * @param parent the parent to check for, or `null`
          * @returns `true` if `file` is an immediate child of `parent` (or any parent in   the case that `parent` is `null`).
          */
-        has_parent(parent: Gio.File | null): boolean;
+        has_parent(parent: (Gio.File | null)): boolean;
+
         /**
          * Checks whether `file` has the prefix specified by `prefix`.
-         *
+         * 
          * In other words, if the names of initial elements of `file`'s
          * pathname match `prefix`. Only full pathname elements are matched,
          * so a path like /foo is not considered a prefix of /foobar, only
          * of /foo/bar.
-         *
+         * 
          * A {@link Gio.File} is not a prefix of itself. If you want to check for
          * equality, use `g_file_equal()`.
-         *
+         * 
          * This call does no I/O, as it works purely on names. As such it can
          * sometimes return `false` even if `file` is inside a `prefix` (from a
          * filesystem point of view), because the prefix of `file` is an alias
@@ -3888,182 +3655,189 @@ export namespace OSTree {
          * @returns `true` if the `file`'s parent, grandparent, etc is `prefix`,   `false` otherwise.
          */
         has_prefix(prefix: Gio.File): boolean;
+
         /**
          * Checks to see if a {@link Gio.File} has a given URI scheme.
-         *
+         * 
          * This call does no blocking I/O.
          * @param uri_scheme a string containing a URI scheme
          * @returns `true` if {@link Gio.File}'s backend supports the   given URI scheme, `false` if URI scheme is `null`,   not supported, or {@link Gio.File} is invalid.
          */
         has_uri_scheme(uri_scheme: string): boolean;
+
         /**
          * Creates a hash value for a {@link Gio.File}.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns 0 if `file` is not a valid {@link Gio.File}, otherwise an   integer that can be used as hash value for the {@link Gio.File}.   This function is intended for easily hashing a {@link Gio.File} to   add to a {@link GLib.HashTable} or similar data structure.
          */
         hash(): number;
+
         /**
          * Checks to see if a file is native to the platform.
-         *
+         * 
          * A native file is one expressed in the platform-native filename format,
          * e.g. "C:\Windows" or "/usr/bin/". This does not mean the file is local,
          * as it might be on a locally mounted remote filesystem.
-         *
+         * 
          * On some systems non-native files may be available using the native
          * filesystem via a userspace filesystem (FUSE), in these cases this call
          * will return `false`, but `g_file_get_path()` will still return a native path.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns `true` if `file` is native
          */
         is_native(): boolean;
+
         /**
          * Loads the contents of `file` and returns it as {@link GLib.Bytes}.
-         *
+         * 
          * If `file` is a resource:// based URI, the resulting bytes will reference the
          * embedded resource instead of a copy. Otherwise, this is equivalent to calling
          * `g_file_load_contents()` and `g_bytes_new_take()`.
-         *
+         * 
          * For resources, `etag_out` will be set to `null`.
-         *
+         * 
          * The data contained in the resulting {@link GLib.Bytes} is always zero-terminated, but
          * this is not included in the {@link GLib.Bytes} length. The resulting {@link GLib.Bytes} should be
          * freed with `g_bytes_unref()` when no longer in use.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link GLib.Bytes} or `null` and `error` is set
          */
-        load_bytes(cancellable: Gio.Cancellable | null): [GLib.Bytes, string];
+        load_bytes(cancellable: (Gio.Cancellable | null)): [GLib.Bytes, string];
+
         /**
          * Asynchronously loads the contents of `file` as {@link GLib.Bytes}.
-         *
+         * 
          * If `file` is a resource:// based URI, the resulting bytes will reference the
          * embedded resource instead of a copy. Otherwise, this is equivalent to calling
          * `g_file_load_contents_async()` and `g_bytes_new_take()`.
-         *
+         * 
          * `callback` should call `g_file_load_bytes_finish()` to get the result of this
          * asynchronous operation.
-         *
+         * 
          * See `g_file_load_bytes()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        load_bytes_async(cancellable: Gio.Cancellable | null): globalThis.Promise<[GLib.Bytes, string]>;
+        load_bytes_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<[GLib.Bytes, string]>;
+
         /**
          * Asynchronously loads the contents of `file` as {@link GLib.Bytes}.
-         *
+         * 
          * If `file` is a resource:// based URI, the resulting bytes will reference the
          * embedded resource instead of a copy. Otherwise, this is equivalent to calling
          * `g_file_load_contents_async()` and `g_bytes_new_take()`.
-         *
+         * 
          * `callback` should call `g_file_load_bytes_finish()` to get the result of this
          * asynchronous operation.
-         *
-         * See `g_file_load_bytes()` for more information.
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        load_bytes_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Asynchronously loads the contents of `file` as {@link GLib.Bytes}.
-         *
-         * If `file` is a resource:// based URI, the resulting bytes will reference the
-         * embedded resource instead of a copy. Otherwise, this is equivalent to calling
-         * `g_file_load_contents_async()` and `g_bytes_new_take()`.
-         *
-         * `callback` should call `g_file_load_bytes_finish()` to get the result of this
-         * asynchronous operation.
-         *
+         * 
          * See `g_file_load_bytes()` for more information.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        load_bytes_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[GLib.Bytes, string]> | void;
+        load_bytes_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously loads the contents of `file` as {@link GLib.Bytes}.
+         * 
+         * If `file` is a resource:// based URI, the resulting bytes will reference the
+         * embedded resource instead of a copy. Otherwise, this is equivalent to calling
+         * `g_file_load_contents_async()` and `g_bytes_new_take()`.
+         * 
+         * `callback` should call `g_file_load_bytes_finish()` to get the result of this
+         * asynchronous operation.
+         * 
+         * See `g_file_load_bytes()` for more information.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        load_bytes_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[GLib.Bytes, string]> | void);
+
         /**
          * Completes an asynchronous request to `g_file_load_bytes_async()`.
-         *
+         * 
          * For resources, `etag_out` will be set to `null`.
-         *
+         * 
          * The data contained in the resulting {@link GLib.Bytes} is always zero-terminated, but
          * this is not included in the {@link GLib.Bytes} length. The resulting {@link GLib.Bytes} should be
          * freed with `g_bytes_unref()` when no longer in use.
-         *
+         * 
          * See `g_file_load_bytes()` for more information.
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns a {@link GLib.Bytes} or `null` and `error` is set
          */
         load_bytes_finish(result: Gio.AsyncResult): [GLib.Bytes, string];
+
         /**
          * Loads the content of the file into memory. The data is always
          * zero-terminated, but this is not included in the resultant `length`.
          * The returned `contents` should be freed with `g_free()` when no longer
          * needed.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns `true` if the `file`'s contents were successfully loaded.   `false` if there were errors.
          */
-        load_contents(cancellable: Gio.Cancellable | null): [boolean, Uint8Array, string];
+        load_contents(cancellable: (Gio.Cancellable | null)): [boolean, Uint8Array, string];
+
         /**
          * Starts an asynchronous load of the `file`'s contents.
-         *
+         * 
          * For more details, see `g_file_load_contents()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the load operation has completed, `callback` will be called
          * with `user` data. To finish the operation, call
          * `g_file_load_contents_finish()` with the {@link Gio.AsyncResult} returned by
          * the `callback`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        load_contents_async(cancellable: Gio.Cancellable | null): globalThis.Promise<[Uint8Array, string]>;
+        load_contents_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<[Uint8Array, string]>;
+
         /**
          * Starts an asynchronous load of the `file`'s contents.
-         *
+         * 
          * For more details, see `g_file_load_contents()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the load operation has completed, `callback` will be called
          * with `user` data. To finish the operation, call
          * `g_file_load_contents_finish()` with the {@link Gio.AsyncResult} returned by
          * the `callback`.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        load_contents_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Starts an asynchronous load of the `file`'s contents.
-         *
-         * For more details, see `g_file_load_contents()` which is
-         * the synchronous version of this call.
-         *
-         * When the load operation has completed, `callback` will be called
-         * with `user` data. To finish the operation, call
-         * `g_file_load_contents_finish()` with the {@link Gio.AsyncResult} returned by
-         * the `callback`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        load_contents_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<[Uint8Array, string]> | void;
+        load_contents_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts an asynchronous load of the `file`'s contents.
+         * 
+         * For more details, see `g_file_load_contents()` which is
+         * the synchronous version of this call.
+         * 
+         * When the load operation has completed, `callback` will be called
+         * with `user` data. To finish the operation, call
+         * `g_file_load_contents_finish()` with the {@link Gio.AsyncResult} returned by
+         * the `callback`.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        load_contents_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<[Uint8Array, string]> | void);
+
         /**
          * Finishes an asynchronous load of the `file`'s contents.
          * The contents are placed in `contents`, and `length` is set to the
@@ -4074,6 +3848,7 @@ export namespace OSTree {
          * @returns `true` if the load was successful. If `false` and `error` is   present, it will be set appropriately.
          */
         load_contents_finish(res: Gio.AsyncResult): [boolean, Uint8Array, string];
+
         /**
          * Finishes an asynchronous partial load operation that was started
          * with `g_file_load_partial_contents_async()`. The data is always
@@ -4084,57 +3859,54 @@ export namespace OSTree {
          * @returns `true` if the load was successful. If `false` and `error` is   present, it will be set appropriately.
          */
         load_partial_contents_finish(res: Gio.AsyncResult): [boolean, Uint8Array, string];
+
         /**
          * Creates a directory.
-         *
+         * 
          * Note that this will only create a child directory
          * of the immediate parent directory of the path or URI given by the {@link Gio.File}.
          * To recursively create directories, see `g_file_make_directory_with_parents()`.
-         *
+         * 
          * This function will fail if the parent directory does not exist, setting
          * `error` to {@link Gio.IOErrorEnum.NOT_FOUND}. If the file system doesn't support
          * creating directories, this function will fail, setting `error` to
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED}. If the directory already exists,
          * {@link Gio.IOErrorEnum.EXISTS} will be returned.
-         *
+         * 
          * For a local {@link Gio.File} the newly created directory will have the default
          * (current) ownership and permissions of the current process.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` on successful creation, `false` otherwise.
          */
-        make_directory(cancellable: Gio.Cancellable | null): boolean;
+        make_directory(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously creates a directory.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        make_directory_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Asynchronously creates a directory.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
-         */
-        make_directory_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        make_directory_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously creates a directory.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
          */
-        make_directory_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        make_directory_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously creates a directory.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
+         */
+        make_directory_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous directory creation, started with
          * `g_file_make_directory_async()`.
@@ -4142,6 +3914,7 @@ export namespace OSTree {
          * @returns `true` on successful directory creation, `false` otherwise.
          */
         make_directory_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Creates a directory and any parent directories that may not
          * exist similar to 'mkdir -p'. If the file system does not support
@@ -4149,21 +3922,22 @@ export namespace OSTree {
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED}. If the directory itself already exists,
          * this function will fail setting `error` to {@link Gio.IOErrorEnum.EXISTS}, unlike
          * the similar `g_mkdir_with_parents()`.
-         *
+         * 
          * For a local {@link Gio.File} the newly created directories will have the default
          * (current) ownership and permissions of the current process.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if all directories have been successfully created, `false` otherwise.
          */
-        make_directory_with_parents(cancellable: Gio.Cancellable | null): boolean;
+        make_directory_with_parents(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Creates a symbolic link named `file` which contains the string
          * `symlink_value`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -4171,7 +3945,8 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` on the creation of a new symlink, `false` otherwise.
          */
-        make_symbolic_link(symlink_value: string, cancellable: Gio.Cancellable | null): boolean;
+        make_symbolic_link(symlink_value: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
@@ -4179,25 +3954,8 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        make_symbolic_link_async(
-            symlink_value: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Asynchronously creates a symbolic link named `file` which contains the
-         * string `symlink_value`.
-         * @param symlink_value a string with the path for the target   of the new symlink
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
-         */
-        make_symbolic_link_async(
-            symlink_value: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        make_symbolic_link_async(symlink_value: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
@@ -4206,12 +3964,18 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
          */
-        make_symbolic_link_async(
-            symlink_value: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        make_symbolic_link_async(symlink_value: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously creates a symbolic link named `file` which contains the
+         * string `symlink_value`.
+         * @param symlink_value a string with the path for the target   of the new symlink
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
+         */
+        make_symbolic_link_async(symlink_value: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous symbolic link creation, started with
          * `g_file_make_symbolic_link_async()`.
@@ -4219,21 +3983,22 @@ export namespace OSTree {
          * @returns `true` on successful directory creation, `false` otherwise.
          */
         make_symbolic_link_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Recursively measures the disk usage of `file`.
-         *
+         * 
          * This is essentially an analog of the 'du' command, but it also
          * reports the number of directories and non-directory files encountered
          * (including things like symbolic links).
-         *
+         * 
          * By default, errors are only reported against the toplevel file
          * itself.  Errors found while recursing are silently ignored, unless
          * {@link Gio.FileMeasureFlags.REPORT_ANY_ERROR} is given in `flags`.
-         *
+         * 
          * The returned size, `disk_usage`, is in bytes and should be formatted
          * with `g_format_size()` in order to get something reasonable for showing
          * in a user interface.
-         *
+         * 
          * `progress_callback` and `progress_data` can be given to request
          * periodic progress updates while scanning.  See the documentation for
          * {@link Gio.FileMeasureProgressCallback} for information about when and how the
@@ -4243,11 +4008,8 @@ export namespace OSTree {
          * @param progress_callback a {@link Gio.FileMeasureProgressCallback}
          * @returns `true` if successful, with the out parameters set.   `false` otherwise, with `error` set.
          */
-        measure_disk_usage(
-            flags: Gio.FileMeasureFlags,
-            cancellable: Gio.Cancellable | null,
-            progress_callback: Gio.FileMeasureProgressCallback | null,
-        ): [boolean, number, number, number];
+        measure_disk_usage(flags: Gio.FileMeasureFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileMeasureProgressCallback | null)): [boolean, number, number, number];
+
         /**
          * Collects the results from an earlier call to
          * `g_file_measure_disk_usage_async()`.  See `g_file_measure_disk_usage()` for
@@ -4256,10 +4018,11 @@ export namespace OSTree {
          * @returns `true` if successful, with the out parameters set.   `false` otherwise, with `error` set.
          */
         measure_disk_usage_finish(result: Gio.AsyncResult): [boolean, number, number, number];
+
         /**
          * Obtains a file or directory monitor for the given file,
          * depending on the type of the file.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -4267,15 +4030,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileMonitor} for the given `file`,   or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        monitor(flags: Gio.FileMonitorFlags, cancellable: Gio.Cancellable | null): Gio.FileMonitor;
+        monitor(flags: Gio.FileMonitorFlags, cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+
         /**
          * Obtains a directory monitor for the given file.
          * This may fail if directory monitoring is not supported.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * It does not make sense for `flags` to contain
          * {@link Gio.FileMonitorFlags.WATCH_HARD_LINKS}, since hard links can not be made to
          * directories.  It is not possible to monitor all the files in a
@@ -4285,15 +4049,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileMonitor} for the given `file`,   or `null` on error. Free the returned object with `g_object_unref()`.
          */
-        monitor_directory(flags: Gio.FileMonitorFlags, cancellable: Gio.Cancellable | null): Gio.FileMonitor;
+        monitor_directory(flags: Gio.FileMonitorFlags, cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+
         /**
          * Obtains a file monitor for the given file. If no file notification
          * mechanism exists, then regular polling of the file is used.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `flags` contains {@link Gio.FileMonitorFlags.WATCH_HARD_LINKS} then the monitor
          * will also attempt to report changes made to the file via another
          * filename (ie, a hard link). Without this flag, you can only rely on
@@ -4305,15 +4070,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileMonitor} for the given `file`,   or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        monitor_file(flags: Gio.FileMonitorFlags, cancellable: Gio.Cancellable | null): Gio.FileMonitor;
+        monitor_file(flags: Gio.FileMonitorFlags, cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+
         /**
          * Starts a `mount_operation`, mounting the volume that contains
          * the file `location`.
-         *
+         * 
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_mount_enclosing_volume_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -4321,41 +4087,16 @@ export namespace OSTree {
          * @param mount_operation a {@link Gio.MountOperation}   or `null` to avoid user interaction
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        mount_enclosing_volume(
-            flags: Gio.MountMountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        mount_enclosing_volume(flags: Gio.MountMountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts a `mount_operation`, mounting the volume that contains
          * the file `location`.
-         *
+         * 
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_mount_enclosing_volume_finish()`.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         * @param flags flags affecting the operation
-         * @param mount_operation a {@link Gio.MountOperation}   or `null` to avoid user interaction
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
-         */
-        mount_enclosing_volume(
-            flags: Gio.MountMountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts a `mount_operation`, mounting the volume that contains
-         * the file `location`.
-         *
-         * When this operation has completed, `callback` will be called with
-         * `user_user` data, and the operation can be finalized with
-         * `g_file_mount_enclosing_volume_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -4364,27 +4105,42 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
          */
-        mount_enclosing_volume(
-            flags: Gio.MountMountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        mount_enclosing_volume(flags: Gio.MountMountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts a `mount_operation`, mounting the volume that contains
+         * the file `location`.
+         * 
+         * When this operation has completed, `callback` will be called with
+         * `user_user` data, and the operation can be finalized with
+         * `g_file_mount_enclosing_volume_finish()`.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * @param flags flags affecting the operation
+         * @param mount_operation a {@link Gio.MountOperation}   or `null` to avoid user interaction
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
+         */
+        mount_enclosing_volume(flags: Gio.MountMountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a mount operation started by `g_file_mount_enclosing_volume()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful. If an error has occurred,   this function will return `false` and set `error`   appropriately if present.
          */
         mount_enclosing_volume_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
          * Using `mount_operation`, you can request callbacks when, for instance,
          * passwords are needed during authentication.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
@@ -4392,43 +4148,17 @@ export namespace OSTree {
          * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        mount_mountable(
-            flags: Gio.MountMountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.File>;
+        mount_mountable(flags: Gio.MountMountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+
         /**
          * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
          * Using `mount_operation`, you can request callbacks when, for instance,
          * passwords are needed during authentication.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_mount_mountable_finish()` to get
-         * the result of the operation.
-         * @param flags flags affecting the operation
-         * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        mount_mountable(
-            flags: Gio.MountMountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
-         * Using `mount_operation`, you can request callbacks when, for instance,
-         * passwords are needed during authentication.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
@@ -4437,51 +4167,67 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        mount_mountable(
-            flags: Gio.MountMountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.File> | void;
+        mount_mountable(flags: Gio.MountMountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
+         * Using `mount_operation`, you can request callbacks when, for instance,
+         * passwords are needed during authentication.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_mount_mountable_finish()` to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        mount_mountable(flags: Gio.MountMountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+
         /**
          * Finishes a mount operation. See `g_file_mount_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous mount operation that was started
          * with `g_file_mount_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.File} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         mount_mountable_finish(result: Gio.AsyncResult): Gio.File;
+
         /**
          * Tries to move the file or directory `source` to the location specified
          * by `destination`. If native move operations are supported then this is
          * used, otherwise a copy + delete fallback is used. The native
          * implementation may support moving directories (for instance on moves
          * inside the same filesystem), but the fallback code does not.
-         *
+         * 
          * If the flag {@link Gio.FileCopyFlags.OVERWRITE} is specified an already
          * existing `destination` file is overwritten.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `progress_callback` is not `null`, then the operation can be monitored
          * by setting this to a {@link Gio.FileProgressCallback} function.
          * `progress_callback_data` will be passed to this function. It is
          * guaranteed that this callback will be called after all data has been
          * transferred with the total number of bytes copied during the operation.
-         *
+         * 
          * If the `source` file does not exist, then the {@link Gio.IOErrorEnum.NOT_FOUND}
          * error is returned, independent on the status of the `destination`.
-         *
+         * 
          * If {@link Gio.FileCopyFlags.OVERWRITE} is not specified and the target exists,
          * then the error {@link Gio.IOErrorEnum.EXISTS} is returned.
-         *
+         * 
          * If trying to overwrite a file over a directory, the {@link Gio.IOErrorEnum.IS_DIRECTORY}
          * error is returned. If trying to overwrite a directory with a directory the
          * {@link Gio.IOErrorEnum.WOULD_MERGE} error is returned.
-         *
+         * 
          * If the source is a directory and the target does not exist, or
          * {@link Gio.FileCopyFlags.OVERWRITE} is specified and the target is a file, then
          * the {@link Gio.IOErrorEnum.WOULD_RECURSE} error may be returned (if the native
@@ -4492,12 +4238,8 @@ export namespace OSTree {
          * @param progress_callback {@link Gio.FileProgressCallback}   function for updates
          * @returns `true` on successful move, `false` otherwise.
          */
-        move(
-            destination: Gio.File,
-            flags: Gio.FileCopyFlags,
-            cancellable: Gio.Cancellable | null,
-            progress_callback: Gio.FileProgressCallback | null,
-        ): boolean;
+        move(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): boolean;
+
         /**
          * Version of {@link Gio.File.move_async} using closures instead of callbacks for
          * easier binding in other languages.
@@ -4508,14 +4250,8 @@ export namespace OSTree {
          * @param progress_callback_closure {@link GObject.Closure} to invoke with progress   information, or `NULL` if progress information is not needed
          * @param ready_callback_closure {@link GObject.Closure} to invoke when the request is satisfied
          */
-        move_async(
-            destination: Gio.File,
-            flags: Gio.FileCopyFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            progress_callback_closure: GObject.Closure | null,
-            ready_callback_closure: GObject.Closure,
-        ): void;
+        move_async(destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback_closure: (GObject.Closure | null), ready_callback_closure: GObject.Closure): void;
+
         /**
          * Finishes an asynchronous file movement, started with
          * `g_file_move_async()`.
@@ -4523,16 +4259,17 @@ export namespace OSTree {
          * @returns `true` on successful file move, `false` otherwise.
          */
         move_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Opens an existing file for reading and writing. The result is
          * a {@link Gio.FileIOStream} that can be used to read and write the contents
          * of the file.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will
          * be returned. If the file is a directory, the {@link Gio.IOErrorEnum.IS_DIRECTORY}
          * error will be returned. Other errors are possible too, and depend on
@@ -4543,47 +4280,28 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gio.FileIOStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        open_readwrite(cancellable: Gio.Cancellable | null): Gio.FileIOStream;
+        open_readwrite(cancellable: (Gio.Cancellable | null)): Gio.FileIOStream;
+
         /**
          * Asynchronously opens `file` for reading and writing.
-         *
+         * 
          * For more details, see `g_file_open_readwrite()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_open_readwrite_finish()` to get
          * the result of the operation.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        open_readwrite_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileIOStream>;
+        open_readwrite_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileIOStream>;
+
         /**
          * Asynchronously opens `file` for reading and writing.
-         *
+         * 
          * For more details, see `g_file_open_readwrite()` which is
          * the synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_open_readwrite_finish()` to get
-         * the result of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        open_readwrite_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously opens `file` for reading and writing.
-         *
-         * For more details, see `g_file_open_readwrite()` which is
-         * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_open_readwrite_finish()` to get
          * the result of the operation.
@@ -4591,11 +4309,23 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        open_readwrite_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileIOStream> | void;
+        open_readwrite_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously opens `file` for reading and writing.
+         * 
+         * For more details, see `g_file_open_readwrite()` which is
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_open_readwrite_finish()` to get
+         * the result of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        open_readwrite_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileIOStream> | void);
+
         /**
          * Finishes an asynchronous file read operation started with
          * `g_file_open_readwrite_async()`.
@@ -4603,131 +4333,128 @@ export namespace OSTree {
          * @returns a {@link Gio.FileIOStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         open_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
+
         /**
          * Exactly like `g_file_get_path()`, but caches the result via
          * `g_object_set_qdata_full()`.  This is useful for example in C
          * applications which mix `g_file_*` APIs with native ones.  It
          * also avoids an extra duplicated string when possible, so will be
          * generally more efficient.
-         *
+         * 
          * This call does no blocking I/O.
          * @returns string containing the {@link Gio.File}'s path,   or `null` if no such path exists. The returned string is owned by `file`.
          */
-        peek_path(): string | null;
+        peek_path(): (string | null);
+
         /**
          * Polls a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        poll_mountable(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        poll_mountable(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Polls a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_mount_mountable_finish()` to get
-         * the result of the operation.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
-         */
-        poll_mountable(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * Polls a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
          */
-        poll_mountable(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        poll_mountable(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Polls a file of type {@link Gio.FileType.MOUNTABLE}.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_mount_mountable_finish()` to get
+         * the result of the operation.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
+         */
+        poll_mountable(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a poll operation. See `g_file_poll_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous poll operation that was polled
          * with `g_file_poll_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully. `false` otherwise.
          */
         poll_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Returns the {@link Gio.AppInfo} that is registered as the default
          * application to handle the file specified by `file`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns a {@link Gio.AppInfo} if the handle was found,   `null` if there were errors.   When you are done with it, release it with `g_object_unref()`
          */
-        query_default_handler(cancellable: Gio.Cancellable | null): Gio.AppInfo;
+        query_default_handler(cancellable: (Gio.Cancellable | null)): Gio.AppInfo;
+
         /**
          * Async version of `g_file_query_default_handler()`.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        query_default_handler_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.AppInfo>;
-        /**
-         * Async version of `g_file_query_default_handler()`.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is done
-         */
-        query_default_handler_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        query_default_handler_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.AppInfo>;
+
         /**
          * Async version of `g_file_query_default_handler()`.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is done
          */
-        query_default_handler_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.AppInfo> | void;
+        query_default_handler_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Async version of `g_file_query_default_handler()`.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is done
+         */
+        query_default_handler_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.AppInfo> | void);
+
         /**
          * Finishes a `g_file_query_default_handler_async()` operation.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.AppInfo} if the handle was found,   `null` if there were errors.   When you are done with it, release it with `g_object_unref()`
          */
         query_default_handler_finish(result: Gio.AsyncResult): Gio.AppInfo;
+
         /**
          * Utility function to check if a particular file exists.
-         *
+         * 
          * The fallback implementation of this API is using {@link Gio.File.query_info}
          * and therefore may do blocking I/O. To asynchronously query the existence
          * of a file, use {@link Gio.File.query_info_async}.
-         *
+         * 
          * Note that in many cases it is [racy to first check for file existence](https://en.wikipedia.org/wiki/Time_of_check_to_time_of_use)
          * and then execute something based on the outcome of that, because the
          * file might have been created or removed in between the operations. The
          * general approach to handling that is to not check, but just do the
          * operation and handle the errors as they come.
-         *
+         * 
          * As an example of race-free checking, take the case of reading a file,
          * and if it doesn't exist, creating it. There are two racy versions: read
          * it, and on error create it; and: check if it exists, if not create it.
@@ -4735,7 +4462,7 @@ export namespace OSTree {
          * a partially written file as the result). The correct approach is to
          * always try to create the file with `g_file_create()` which will either
          * atomically create the file or fail with a {@link Gio.IOErrorEnum.EXISTS} error.
-         *
+         * 
          * However, in many cases an existence check is useful in a user interface,
          * for instance to make a menu item sensitive/insensitive, so that you don't
          * have to fool users that something is possible and then just show an error
@@ -4744,24 +4471,26 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the file exists (and can be detected without error),   `false` otherwise (or if cancelled).
          */
-        query_exists(cancellable: Gio.Cancellable | null): boolean;
+        query_exists(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Utility function to inspect the {@link Gio.FileType} of a file. This is
          * implemented using `g_file_query_info()` and as such does blocking I/O.
-         *
+         * 
          * The primary use case of this method is to check if a file is
          * a regular file, directory, or symlink.
          * @param flags a set of {@link Gio.FileQueryInfoFlags} passed to `g_file_query_info()`
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns The {@link Gio.FileType} of the file and {@link Gio.FileType.UNKNOWN}   if the file does not exist
          */
-        query_file_type(flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): Gio.FileType;
+        query_file_type(flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): Gio.FileType;
+
         /**
          * Similar to `g_file_query_info()`, but obtains information
          * about the filesystem the `file` is on, rather than the file itself.
          * For instance the amount of space available and the type of
          * the filesystem.
-         *
+         * 
          * The `attributes` value is a string that specifies the attributes
          * that should be gathered. It is not an error if it's not possible
          * to read a particular requested attribute from a file - it just
@@ -4773,12 +4502,12 @@ export namespace OSTree {
          * `G_FILE_ATTRIBUTE_FILESYSTEM_SIZE` (the total size of the filesystem
          * in bytes), `G_FILE_ATTRIBUTE_FILESYSTEM_FREE` (number of bytes available),
          * and `G_FILE_ATTRIBUTE_FILESYSTEM_TYPE` (type of the filesystem).
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will
          * be returned. Other errors are possible too, and depend on what
          * kind of filesystem the file is on.
@@ -4786,16 +4515,17 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileInfo} or `null` if there was an error.   Free the returned object with `g_object_unref()`.
          */
-        query_filesystem_info(attributes: string, cancellable: Gio.Cancellable | null): Gio.FileInfo;
+        query_filesystem_info(attributes: string, cancellable: (Gio.Cancellable | null)): Gio.FileInfo;
+
         /**
          * Asynchronously gets the requested information about the filesystem
          * that the specified `file` is on. The result is a {@link Gio.FileInfo} object
          * that contains key-value attributes (such as type or size for the
          * file).
-         *
+         * 
          * For more details, see `g_file_query_filesystem_info()` which is the
          * synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_query_info_finish()` to get the result of the
          * operation.
@@ -4803,43 +4533,17 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        query_filesystem_info_async(
-            attributes: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileInfo>;
+        query_filesystem_info_async(attributes: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileInfo>;
+
         /**
          * Asynchronously gets the requested information about the filesystem
          * that the specified `file` is on. The result is a {@link Gio.FileInfo} object
          * that contains key-value attributes (such as type or size for the
          * file).
-         *
+         * 
          * For more details, see `g_file_query_filesystem_info()` which is the
          * synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called. You can
-         * then call `g_file_query_info_finish()` to get the result of the
-         * operation.
-         * @param attributes an attribute query string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        query_filesystem_info_async(
-            attributes: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously gets the requested information about the filesystem
-         * that the specified `file` is on. The result is a {@link Gio.FileInfo} object
-         * that contains key-value attributes (such as type or size for the
-         * file).
-         *
-         * For more details, see `g_file_query_filesystem_info()` which is the
-         * synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_query_info_finish()` to get the result of the
          * operation.
@@ -4848,12 +4552,27 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        query_filesystem_info_async(
-            attributes: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileInfo> | void;
+        query_filesystem_info_async(attributes: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously gets the requested information about the filesystem
+         * that the specified `file` is on. The result is a {@link Gio.FileInfo} object
+         * that contains key-value attributes (such as type or size for the
+         * file).
+         * 
+         * For more details, see `g_file_query_filesystem_info()` which is the
+         * synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called. You can
+         * then call `g_file_query_info_finish()` to get the result of the
+         * operation.
+         * @param attributes an attribute query string
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        query_filesystem_info_async(attributes: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileInfo> | void);
+
         /**
          * Finishes an asynchronous filesystem info query.
          * See `g_file_query_filesystem_info_async()`.
@@ -4861,12 +4580,13 @@ export namespace OSTree {
          * @returns {@link Gio.FileInfo} for given `file`   or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
+
         /**
          * Gets the requested information about specified `file`.
-         *
+         * 
          * The result is a {@link Gio.FileInfo} object that contains key-value
          * attributes (such as the type or size of the file).
-         *
+         * 
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
          * it’s not possible to read a particular requested attribute
@@ -4875,33 +4595,33 @@ export namespace OSTree {
          * example, you can expect the returned {@link Gio.FileInfo} to have very few
          * attributes set. You should check whether an attribute is set using
          * {@link Gio.FileInfo.has_attribute} before trying to retrieve its value.
-         *
+         * 
          * It is guaranteed that if any of the following attributes are listed in
          * `attributes`, they will always be set in the returned {@link Gio.FileInfo},
          * even if the user doesn’t have permissions to access the file:
-         *
+         * 
          *  - {@link Gio.FILE_ATTRIBUTE_STANDARD_NAME}
          *  - {@link Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME}
-         *
+         * 
          * `attributes` should be a comma-separated list of attributes or attribute
          * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
          * `"standard::*"` means all attributes in the standard namespace.
          * An example attribute query might be `"standard::*,owner::user"`.
          * The standard attributes are available as defines, like
          * {@link Gio.FILE_ATTRIBUTE_STANDARD_NAME}.
-         *
+         * 
          * If `cancellable` is not `NULL`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * For symlinks, normally the information about the target of the
          * symlink is returned, rather than information about the symlink
          * itself. However if you pass {@link Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS}
          * in `flags` the information about the symlink itself will be returned.
          * Also, for symlinks that point to non-existing files the information
          * about the symlink itself will be returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will be
          * returned. Other errors are possible too, and depend on what kind of
          * file system the file is on.
@@ -4910,19 +4630,16 @@ export namespace OSTree {
          * @param cancellable optional cancellable object
          * @returns a {@link Gio.FileInfo} for the given `file`
          */
-        query_info(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.FileInfo;
+        query_info(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): Gio.FileInfo;
+
         /**
          * Asynchronously gets the requested information about specified `file`.
          * The result is a {@link Gio.FileInfo} object that contains key-value attributes
          * (such as type or size for the file).
-         *
+         * 
          * For more details, see `g_file_query_info()` which is the synchronous
          * version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_query_info_finish()` to get the result of the operation.
          * @param attributes an attribute query string
@@ -4930,20 +4647,16 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        query_info_async(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileInfo>;
+        query_info_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileInfo>;
+
         /**
          * Asynchronously gets the requested information about specified `file`.
          * The result is a {@link Gio.FileInfo} object that contains key-value attributes
          * (such as type or size for the file).
-         *
+         * 
          * For more details, see `g_file_query_info()` which is the synchronous
          * version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_query_info_finish()` to get the result of the operation.
          * @param attributes an attribute query string
@@ -4952,21 +4665,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        query_info_async(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        query_info_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously gets the requested information about specified `file`.
          * The result is a {@link Gio.FileInfo} object that contains key-value attributes
          * (such as type or size for the file).
-         *
+         * 
          * For more details, see `g_file_query_info()` which is the synchronous
          * version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_query_info_finish()` to get the result of the operation.
          * @param attributes an attribute query string
@@ -4975,13 +4683,8 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        query_info_async(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileInfo> | void;
+        query_info_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileInfo> | void);
+
         /**
          * Finishes an asynchronous file info query.
          * See `g_file_query_info_async()`.
@@ -4989,41 +4692,44 @@ export namespace OSTree {
          * @returns {@link Gio.FileInfo} for given `file`   or `null` on error. Free the returned object with   `g_object_unref()`.
          */
         query_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
+
         /**
          * Obtain the list of settable attributes for the file.
-         *
+         * 
          * Returns the type and full attribute name of all the attributes
          * that can be set on this file. This doesn't mean setting it will
          * always succeed though, you might get an access failure, or some
          * specific file may not support a specific attribute.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileAttributeInfoList} describing the settable attributes.   When you are done with it, release it with   `g_file_attribute_info_list_unref()`
          */
-        query_settable_attributes(cancellable: Gio.Cancellable | null): Gio.FileAttributeInfoList;
+        query_settable_attributes(cancellable: (Gio.Cancellable | null)): Gio.FileAttributeInfoList;
+
         /**
          * Obtain the list of attribute namespaces where new attributes
          * can be created by a user. An example of this is extended
          * attributes (in the "xattr" namespace).
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileAttributeInfoList} describing the writable namespaces.   When you are done with it, release it with   `g_file_attribute_info_list_unref()`
          */
-        query_writable_namespaces(cancellable: Gio.Cancellable | null): Gio.FileAttributeInfoList;
+        query_writable_namespaces(cancellable: (Gio.Cancellable | null)): Gio.FileAttributeInfoList;
+
         /**
          * Opens a file for reading. The result is a {@link Gio.FileInputStream} that
          * can be used to read the contents of the file.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will be
          * returned. If the file is a directory, the {@link Gio.IOErrorEnum.IS_DIRECTORY}
          * error will be returned. Other errors are possible too, and depend
@@ -5031,44 +4737,28 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gio.FileInputStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        read(cancellable: Gio.Cancellable | null): Gio.FileInputStream;
+        read(cancellable: (Gio.Cancellable | null)): Gio.FileInputStream;
+
         /**
          * Asynchronously opens `file` for reading.
-         *
+         * 
          * For more details, see `g_file_read()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_read_finish()` to get the result
          * of the operation.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        read_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.FileInputStream>;
+        read_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileInputStream>;
+
         /**
          * Asynchronously opens `file` for reading.
-         *
+         * 
          * For more details, see `g_file_read()` which is
          * the synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_read_finish()` to get the result
-         * of the operation.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        read_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously opens `file` for reading.
-         *
-         * For more details, see `g_file_read()` which is
-         * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_read_finish()` to get the result
          * of the operation.
@@ -5076,11 +4766,23 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        read_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileInputStream> | void;
+        read_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously opens `file` for reading.
+         * 
+         * For more details, see `g_file_read()` which is
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_read_finish()` to get the result
+         * of the operation.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        read_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileInputStream> | void);
+
         /**
          * Finishes an asynchronous file read operation started with
          * `g_file_read_async()`.
@@ -5088,27 +4790,28 @@ export namespace OSTree {
          * @returns a {@link Gio.FileInputStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         read_finish(res: Gio.AsyncResult): Gio.FileInputStream;
+
         /**
          * Returns an output stream for overwriting the file, possibly
          * creating a backup copy of the file first. If the file doesn't exist,
          * it will be created.
-         *
+         * 
          * This will try to replace the file in the safest way possible so
          * that any errors during the writing will not affect an already
          * existing copy of the file. For instance, for local files it
          * may write to a temporary file and then atomically rename over
          * the destination when the stream is closed.
-         *
+         * 
          * By default files created are generally readable by everyone,
          * but if you pass {@link Gio.FileCreateFlags.PRIVATE} in `flags` the file
          * will be made readable only to the current user, to the level that
          * is supported on the target filesystem.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If you pass in a non-`null` `etag` value and `file` already exists, then
          * this value is compared to the current entity tag of the file, and if
          * they differ an {@link Gio.IOErrorEnum.WRONG_ETAG} error is returned. This
@@ -5117,12 +4820,12 @@ export namespace OSTree {
          * after you've finished writing and closed the {@link Gio.FileOutputStream}. When
          * you load a new file you can use `g_file_input_stream_query_info()` to
          * get the etag of the file.
-         *
+         * 
          * If `make_backup` is `true`, this function will attempt to make a
          * backup of the current file before overwriting it. If this fails
          * a {@link Gio.IOErrorEnum.CANT_CREATE_BACKUP} error will be returned. If you
          * want to replace anyway, try again with `make_backup` set to `false`.
-         *
+         * 
          * If the file is a directory the {@link Gio.IOErrorEnum.IS_DIRECTORY} error will
          * be returned, and if the file is some other form of non-regular file
          * then a {@link Gio.IOErrorEnum.NOT_REGULAR_FILE} error will be returned. Some
@@ -5136,19 +4839,15 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileOutputStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        replace(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.FileOutputStream;
+        replace(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileOutputStream;
+
         /**
          * Asynchronously overwrites the file, replacing the contents,
          * possibly creating a backup copy of the file first.
-         *
+         * 
          * For more details, see `g_file_replace()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_replace_finish()` to get the result
          * of the operation.
@@ -5158,20 +4857,15 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        replace_async(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileOutputStream>;
+        replace_async(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileOutputStream>;
+
         /**
          * Asynchronously overwrites the file, replacing the contents,
          * possibly creating a backup copy of the file first.
-         *
+         * 
          * For more details, see `g_file_replace()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_replace_finish()` to get the result
          * of the operation.
@@ -5182,21 +4876,15 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        replace_async(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        replace_async(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously overwrites the file, replacing the contents,
          * possibly creating a backup copy of the file first.
-         *
+         * 
          * For more details, see `g_file_replace()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_replace_finish()` to get the result
          * of the operation.
@@ -5207,29 +4895,23 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        replace_async(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileOutputStream> | void;
+        replace_async(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileOutputStream> | void);
+
         /**
          * Replaces the contents of `file` with `contents` of `length` bytes.
-         *
+         * 
          * If `etag` is specified (not `null`), any existing file must have that etag,
          * or the error {@link Gio.IOErrorEnum.WRONG_ETAG} will be returned.
-         *
+         * 
          * If `make_backup` is `true`, this function will attempt to make a backup
          * of `file`. Internally, it uses `g_file_replace()`, so will try to replace the
          * file contents in the safest way possible. For example, atomic renames are
          * used when replacing local files’ contents.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * The returned `new_etag` can be used to verify that the file hasn't
          * changed the next time it is saved over.
          * @param contents a string containing the new contents for `file`
@@ -5239,29 +4921,24 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns `true` if successful. If an error has occurred, this function   will return `false` and set `error` appropriately if present.
          */
-        replace_contents(
-            contents: Uint8Array | string,
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, string];
+        replace_contents(contents: (Uint8Array | string), etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): [boolean, string];
+
         /**
          * Starts an asynchronous replacement of `file` with the given
          * `contents` of `length` bytes. `etag` will replace the document's
          * current entity tag.
-         *
+         * 
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_replace_contents_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `make_backup` is `true`, this function will attempt to
          * make a backup of `file`.
-         *
+         * 
          * Note that no copy of `contents` will be made, so it must stay valid
          * until `callback` is called. See `g_file_replace_contents_bytes_async()`
          * for a {@link GLib.Bytes} version that will automatically hold a reference to the
@@ -5272,29 +4949,24 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileCreateFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        replace_contents_async(
-            contents: Uint8Array | string,
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<string>;
+        replace_contents_async(contents: (Uint8Array | string), etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string>;
+
         /**
          * Starts an asynchronous replacement of `file` with the given
          * `contents` of `length` bytes. `etag` will replace the document's
          * current entity tag.
-         *
+         * 
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_replace_contents_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `make_backup` is `true`, this function will attempt to
          * make a backup of `file`.
-         *
+         * 
          * Note that no copy of `contents` will be made, so it must stay valid
          * until `callback` is called. See `g_file_replace_contents_bytes_async()`
          * for a {@link GLib.Bytes} version that will automatically hold a reference to the
@@ -5306,30 +4978,24 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        replace_contents_async(
-            contents: Uint8Array | string,
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        replace_contents_async(contents: (Uint8Array | string), etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Starts an asynchronous replacement of `file` with the given
          * `contents` of `length` bytes. `etag` will replace the document's
          * current entity tag.
-         *
+         * 
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_replace_contents_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `make_backup` is `true`, this function will attempt to
          * make a backup of `file`.
-         *
+         * 
          * Note that no copy of `contents` will be made, so it must stay valid
          * until `callback` is called. See `g_file_replace_contents_bytes_async()`
          * for a {@link GLib.Bytes} version that will automatically hold a reference to the
@@ -5341,25 +5007,20 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        replace_contents_async(
-            contents: Uint8Array | string,
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string> | void;
+        replace_contents_async(contents: (Uint8Array | string), etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string> | void);
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gio.File.replace_contents_async
         replace_contents_async(...args: never[]): any;
+
         /**
          * Same as `g_file_replace_contents_async()` but takes a {@link GLib.Bytes} input instead.
          * This function will keep a ref on `contents` until the operation is done.
          * Unlike `g_file_replace_contents_async()` this allows forgetting about the
          * content without waiting for the callback.
-         *
+         * 
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_replace_contents_finish()`.
@@ -5370,14 +5031,8 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        replace_contents_bytes_async(
-            contents: GLib.Bytes | Uint8Array,
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        replace_contents_bytes_async(contents: (GLib.Bytes | Uint8Array), etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous replace of the given `file`. See
          * `g_file_replace_contents_async()`. Sets `new_etag` to the new entity
@@ -5386,6 +5041,7 @@ export namespace OSTree {
          * @returns `true` on success, `false` on failure.
          */
         replace_contents_finish(res: Gio.AsyncResult): [boolean, string];
+
         /**
          * Finishes an asynchronous file replace operation started with
          * `g_file_replace_async()`.
@@ -5393,14 +5049,15 @@ export namespace OSTree {
          * @returns a {@link Gio.FileOutputStream}, or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         replace_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
+
         /**
          * Returns an output stream for overwriting the file in readwrite mode,
          * possibly creating a backup copy of the file first. If the file doesn't
          * exist, it will be created.
-         *
+         * 
          * For details about the behaviour, see `g_file_replace()` which does the
          * same thing but returns an output stream only.
-         *
+         * 
          * Note that in many non-local file cases read and write streams are not
          * supported, so make sure you really need to do read and write streaming,
          * rather than just opening for reading or writing.
@@ -5410,20 +5067,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileIOStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
-        replace_readwrite(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.FileIOStream;
+        replace_readwrite(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileIOStream;
+
         /**
          * Asynchronously overwrites the file in read-write mode,
          * replacing the contents, possibly creating a backup copy
          * of the file first.
-         *
+         * 
          * For more details, see `g_file_replace_readwrite()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_replace_readwrite_finish()` to get
          * the result of the operation.
@@ -5433,21 +5086,16 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        replace_readwrite_async(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileIOStream>;
+        replace_readwrite_async(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileIOStream>;
+
         /**
          * Asynchronously overwrites the file in read-write mode,
          * replacing the contents, possibly creating a backup copy
          * of the file first.
-         *
+         * 
          * For more details, see `g_file_replace_readwrite()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_replace_readwrite_finish()` to get
          * the result of the operation.
@@ -5458,22 +5106,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        replace_readwrite_async(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        replace_readwrite_async(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously overwrites the file in read-write mode,
          * replacing the contents, possibly creating a backup copy
          * of the file first.
-         *
+         * 
          * For more details, see `g_file_replace_readwrite()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_replace_readwrite_finish()` to get
          * the result of the operation.
@@ -5484,14 +5126,8 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        replace_readwrite_async(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileIOStream> | void;
+        replace_readwrite_async(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileIOStream> | void);
+
         /**
          * Finishes an asynchronous file replace operation started with
          * `g_file_replace_readwrite_async()`.
@@ -5499,23 +5135,25 @@ export namespace OSTree {
          * @returns a {@link Gio.FileIOStream}, or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         replace_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
+
         /**
          * Resolves a relative path for `file` to an absolute path.
-         *
+         * 
          * This call does no blocking I/O.
-         *
+         * 
          * If the `relative_path` is an absolute path name, the resolution
          * is done absolutely (without taking `file` path as base).
          * @param relative_path a given relative path string
          * @returns a {@link Gio.File} for the resolved path.
          */
         resolve_relative_path(relative_path: string): Gio.File;
+
         /**
          * Sets an attribute in the file with attribute name `attribute` to `value_p`.
-         *
+         * 
          * Some attributes can be unset by setting `type` to
          * {@link Gio.FileAttributeType.INVALID} and `value_p` to `null`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5526,18 +5164,13 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the attribute was set, `false` otherwise.
          */
-        set_attribute(
-            attribute: string,
-            type: Gio.FileAttributeType,
-            value_p: any | null,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: (any | null), flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Sets `attribute` of type {@link Gio.FileAttributeType.BYTE_STRING} to `value`.
          * If `attribute` is of a different type, this operation will fail,
          * returning `false`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5547,16 +5180,12 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set to `value`   in the `file`, `false` otherwise.
          */
-        set_attribute_byte_string(
-            attribute: string,
-            value: string,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_attribute_byte_string(attribute: string, value: string, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Sets `attribute` of type {@link Gio.FileAttributeType.INT32} to `value`.
          * If `attribute` is of a different type, this operation will fail.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5566,16 +5195,12 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set to `value`   in the `file`, `false` otherwise.
          */
-        set_attribute_int32(
-            attribute: string,
-            value: number,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_attribute_int32(attribute: string, value: number, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Sets `attribute` of type {@link Gio.FileAttributeType.INT64} to `value`.
          * If `attribute` is of a different type, this operation will fail.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5585,16 +5210,12 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set, `false` otherwise.
          */
-        set_attribute_int64(
-            attribute: string,
-            value: bigint | number,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_attribute_int64(attribute: string, value: (bigint | number), flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Sets `attribute` of type {@link Gio.FileAttributeType.STRING} to `value`.
          * If `attribute` is of a different type, this operation will fail.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5604,16 +5225,12 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set, `false` otherwise.
          */
-        set_attribute_string(
-            attribute: string,
-            value: string,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_attribute_string(attribute: string, value: string, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Sets `attribute` of type {@link Gio.FileAttributeType.UINT32} to `value`.
          * If `attribute` is of a different type, this operation will fail.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5623,16 +5240,12 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set to `value`   in the `file`, `false` otherwise.
          */
-        set_attribute_uint32(
-            attribute: string,
-            value: number,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_attribute_uint32(attribute: string, value: number, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Sets `attribute` of type {@link Gio.FileAttributeType.UINT64} to `value`.
          * If `attribute` is of a different type, this operation will fail.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5642,18 +5255,14 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set to `value`   in the `file`, `false` otherwise.
          */
-        set_attribute_uint64(
-            attribute: string,
-            value: bigint | number,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_attribute_uint64(attribute: string, value: (bigint | number), flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously sets the attributes of `file` with `info`.
-         *
+         * 
          * For more details, see `g_file_set_attributes_from_info()`,
          * which is the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_set_attributes_finish()` to get
          * the result of the operation.
@@ -5662,18 +5271,14 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        set_attributes_async(
-            info: Gio.FileInfo,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.FileInfo>;
+        set_attributes_async(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.FileInfo>;
+
         /**
          * Asynchronously sets the attributes of `file` with `info`.
-         *
+         * 
          * For more details, see `g_file_set_attributes_from_info()`,
          * which is the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_set_attributes_finish()` to get
          * the result of the operation.
@@ -5683,19 +5288,14 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        set_attributes_async(
-            info: Gio.FileInfo,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        set_attributes_async(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Asynchronously sets the attributes of `file` with `info`.
-         *
+         * 
          * For more details, see `g_file_set_attributes_from_info()`,
          * which is the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_set_attributes_finish()` to get
          * the result of the operation.
@@ -5705,29 +5305,25 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        set_attributes_async(
-            info: Gio.FileInfo,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.FileInfo> | void;
+        set_attributes_async(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.FileInfo> | void);
+
         /**
          * Finishes setting an attribute started in `g_file_set_attributes_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the attributes were set correctly, `false` otherwise.
          */
         set_attributes_finish(result: Gio.AsyncResult): [boolean, Gio.FileInfo];
+
         /**
          * Tries to set all attributes in the {@link Gio.FileInfo} on the target
          * values, not stopping on the first error.
-         *
+         * 
          * If there is any error during this operation then `error` will
          * be set to the first error. Error on particular fields are flagged
          * by setting the "status" field in the attribute value to
          * {@link Gio.FileAttributeStatus.ERROR_SETTING}, which means you can
          * also detect further errors.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5736,24 +5332,21 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `false` if there was any error, `true` otherwise.
          */
-        set_attributes_from_info(
-            info: Gio.FileInfo,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        set_attributes_from_info(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Renames `file` to the specified display name.
-         *
+         * 
          * The display name is converted from UTF-8 to the correct encoding
          * for the target filesystem if possible and the `file` is renamed to this.
-         *
+         * 
          * If you want to implement a rename operation in the user interface the
          * edit name (`G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME`) should be used as the
          * initial value in the rename widget, and then the result after editing
          * should be passed to `g_file_set_display_name()`.
-         *
+         * 
          * On success the resulting converted filename is returned.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -5761,13 +5354,14 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.File} specifying what `file` was renamed to,   or `null` if there was an error.   Free the returned object with `g_object_unref()`.
          */
-        set_display_name(display_name: string, cancellable: Gio.Cancellable | null): Gio.File;
+        set_display_name(display_name: string, cancellable: (Gio.Cancellable | null)): Gio.File;
+
         /**
          * Asynchronously sets the display name for a given {@link Gio.File}.
-         *
+         * 
          * For more details, see `g_file_set_display_name()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_set_display_name_finish()` to get
          * the result of the operation.
@@ -5775,37 +5369,14 @@ export namespace OSTree {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        set_display_name_async(
-            display_name: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<Gio.File>;
+        set_display_name_async(display_name: string, io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<Gio.File>;
+
         /**
          * Asynchronously sets the display name for a given {@link Gio.File}.
-         *
+         * 
          * For more details, see `g_file_set_display_name()` which is
          * the synchronous version of this call.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_set_display_name_finish()` to get
-         * the result of the operation.
-         * @param display_name a string
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        set_display_name_async(
-            display_name: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Asynchronously sets the display name for a given {@link Gio.File}.
-         *
-         * For more details, see `g_file_set_display_name()` which is
-         * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_set_display_name_finish()` to get
          * the result of the operation.
@@ -5814,12 +5385,24 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        set_display_name_async(
-            display_name: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<Gio.File> | void;
+        set_display_name_async(display_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously sets the display name for a given {@link Gio.File}.
+         * 
+         * For more details, see `g_file_set_display_name()` which is
+         * the synchronous version of this call.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_set_display_name_finish()` to get
+         * the result of the operation.
+         * @param display_name a string
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        set_display_name_async(display_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<Gio.File> | void);
+
         /**
          * Finishes setting a display name started with
          * `g_file_set_display_name_async()`.
@@ -5827,15 +5410,16 @@ export namespace OSTree {
          * @returns a {@link Gio.File} or `null` on error.   Free the returned object with `g_object_unref()`.
          */
         set_display_name_finish(res: Gio.AsyncResult): Gio.File;
+
         /**
          * Starts a file of type {@link Gio.FileType.MOUNTABLE}.
          * Using `start_operation`, you can request callbacks when, for instance,
          * passwords are needed during authentication.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
@@ -5843,43 +5427,17 @@ export namespace OSTree {
          * @param start_operation a {@link Gio.MountOperation}, or `null` to avoid user interaction
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
-        start_mountable(
-            flags: Gio.DriveStartFlags,
-            start_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        start_mountable(flags: Gio.DriveStartFlags, start_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts a file of type {@link Gio.FileType.MOUNTABLE}.
          * Using `start_operation`, you can request callbacks when, for instance,
          * passwords are needed during authentication.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_mount_mountable_finish()` to get
-         * the result of the operation.
-         * @param flags flags affecting the operation
-         * @param start_operation a {@link Gio.MountOperation}, or `null` to avoid user interaction
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied, or `null`
-         */
-        start_mountable(
-            flags: Gio.DriveStartFlags,
-            start_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts a file of type {@link Gio.FileType.MOUNTABLE}.
-         * Using `start_operation`, you can request callbacks when, for instance,
-         * passwords are needed during authentication.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
@@ -5888,28 +5446,44 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied, or `null`
          */
-        start_mountable(
-            flags: Gio.DriveStartFlags,
-            start_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        start_mountable(flags: Gio.DriveStartFlags, start_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts a file of type {@link Gio.FileType.MOUNTABLE}.
+         * Using `start_operation`, you can request callbacks when, for instance,
+         * passwords are needed during authentication.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_mount_mountable_finish()` to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param start_operation a {@link Gio.MountOperation}, or `null` to avoid user interaction
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied, or `null`
+         */
+        start_mountable(flags: Gio.DriveStartFlags, start_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a start operation. See `g_file_start_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous start operation that was started
          * with `g_file_start_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully. `false` otherwise.
          */
         start_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Stops a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_stop_mountable_finish()` to get
          * the result of the operation.
@@ -5917,39 +5491,15 @@ export namespace OSTree {
          * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        stop_mountable(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        stop_mountable(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Stops a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_stop_mountable_finish()` to get
-         * the result of the operation.
-         * @param flags flags affecting the operation
-         * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction.
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
-         */
-        stop_mountable(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Stops a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_stop_mountable_finish()` to get
          * the result of the operation.
@@ -5958,21 +5508,35 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
          */
-        stop_mountable(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        stop_mountable(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Stops a file of type {@link Gio.FileType.MOUNTABLE}.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_stop_mountable_finish()` to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction.
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
+         */
+        stop_mountable(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes a stop operation, see `g_file_stop_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous stop operation that was started
          * with `g_file_stop_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully.   `false` otherwise.
          */
         stop_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Checks if `file` supports thread-default main contexts
          * (see {@link GLib.MainContext.push_thread_default})
@@ -5981,6 +5545,7 @@ export namespace OSTree {
          * @returns Whether or not `file` supports thread-default contexts.
          */
         supports_thread_contexts(): boolean;
+
         /**
          * Sends `file` to the "Trashcan", if possible. This is similar to
          * deleting it, but the user can recover it before emptying the trashcan.
@@ -5991,42 +5556,38 @@ export namespace OSTree {
          * mounts, the {@link Gio.IOErrorEnum.NOT_SUPPORTED} error will be returned in that case.
          * Since 2.82, the `x-gvfs-trash` unix mount option can be used to enable
          * `g_file_trash()` support for particular system mounts.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` on successful trash, `false` otherwise.
          */
-        trash(cancellable: Gio.Cancellable | null): boolean;
+        trash(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        trash_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Asynchronously sends `file` to the Trash location, if possible.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
-         */
-        trash_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        trash_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
          */
-        trash_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        trash_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Asynchronously sends `file` to the Trash location, if possible.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
+         */
+        trash_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous file trashing operation, started with
          * `g_file_trash_async()`.
@@ -6034,49 +5595,29 @@ export namespace OSTree {
          * @returns `true` on successful trash, `false` otherwise.
          */
         trash_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_unmount_mountable_finish()` to get
          * the result of the operation.
          * @param flags flags affecting the operation
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        unmount_mountable(
-            flags: Gio.MountUnmountFlags,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        unmount_mountable(flags: Gio.MountUnmountFlags, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_unmount_mountable_finish()` to get
-         * the result of the operation.
-         * @param flags flags affecting the operation
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        unmount_mountable(
-            flags: Gio.MountUnmountFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_unmount_mountable_finish()` to get
          * the result of the operation.
@@ -6084,27 +5625,41 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        unmount_mountable(
-            flags: Gio.MountUnmountFlags,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        unmount_mountable(flags: Gio.MountUnmountFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_unmount_mountable_finish()` to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        unmount_mountable(flags: Gio.MountUnmountFlags, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an unmount operation, see `g_file_unmount_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous unmount operation that was started
          * with `g_file_unmount_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully.   `false` otherwise.
          */
         unmount_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Unmounts a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_unmount_mountable_finish()` to get
          * the result of the operation.
@@ -6112,39 +5667,15 @@ export namespace OSTree {
          * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          */
-        unmount_mountable_with_operation(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        unmount_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Unmounts a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
-         * When the operation is finished, `callback` will be called.
-         * You can then call `g_file_unmount_mountable_finish()` to get
-         * the result of the operation.
-         * @param flags flags affecting the operation
-         * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
-         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
-         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
-         */
-        unmount_mountable_with_operation(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Unmounts a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
-         * If `cancellable` is not `null`, then the operation can be cancelled by
-         * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_unmount_mountable_finish()` to get
          * the result of the operation.
@@ -6153,36 +5684,50 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
-        unmount_mountable_with_operation(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        unmount_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Unmounts a file of type {@link Gio.FileType.MOUNTABLE}.
+         * 
+         * If `cancellable` is not `null`, then the operation can be cancelled by
+         * triggering the cancellable object from another thread. If the operation
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
+         * 
+         * When the operation is finished, `callback` will be called.
+         * You can then call `g_file_unmount_mountable_finish()` to get
+         * the result of the operation.
+         * @param flags flags affecting the operation
+         * @param mount_operation a {@link Gio.MountOperation},   or `null` to avoid user interaction
+         * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         */
+        unmount_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an unmount operation,
          * see `g_file_unmount_mountable_with_operation()` for details.
-         *
+         * 
          * Finish an asynchronous unmount operation that was started
          * with `g_file_unmount_mountable_with_operation()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully.   `false` otherwise.
          */
         unmount_mountable_with_operation_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Gets an output stream for appending data to the file.
          * If the file doesn't already exist it is created.
-         *
+         * 
          * By default files created are generally readable by everyone,
          * but if you pass {@link Gio.FileCreateFlags.PRIVATE} in `flags` the file
          * will be made readable only to the current user, to the level that
          * is supported on the target filesystem.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * Some file systems don't allow all file names, and may return an
          * {@link Gio.IOErrorEnum.INVALID_FILENAME} error. If the file is a directory the
          * {@link Gio.IOErrorEnum.IS_DIRECTORY} error will be returned. Other errors are
@@ -6191,13 +5736,14 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_append_to(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileOutputStream;
+        vfunc_append_to(flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileOutputStream;
+
         /**
          * Asynchronously opens `file` for appending.
-         *
+         * 
          * For more details, see `g_file_append_to()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_append_to_finish()` to get the result
          * of the operation.
@@ -6207,12 +5753,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_append_to_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_append_to_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file append operation started with
          * `g_file_append_to_async()`.
@@ -6220,45 +5762,46 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_append_to_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
+
         /**
          * Copies the file `source` to the location specified by `destination`.
          * Can not handle recursive copies of directories.
-         *
+         * 
          * If the flag {@link Gio.FileCopyFlags.OVERWRITE} is specified an already
          * existing `destination` file is overwritten.
-         *
+         * 
          * If the flag {@link Gio.FileCopyFlags.NOFOLLOW_SYMLINKS} is specified then symlinks
          * will be copied as symlinks, otherwise the target of the
          * `source` symlink will be copied.
-         *
+         * 
          * If the flag {@link Gio.FileCopyFlags.ALL_METADATA} is specified then all the metadata
          * that is possible to copy is copied, not just the default subset (which,
          * for instance, does not include the owner, see {@link Gio.FileInfo}).
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `progress_callback` is not `null`, then the operation can be monitored
          * by setting this to a {@link Gio.FileProgressCallback} function.
          * `progress_callback_data` will be passed to this function. It is guaranteed
          * that this callback will be called after all data has been transferred with
          * the total number of bytes copied during the operation.
-         *
+         * 
          * If the `source` file does not exist, then the {@link Gio.IOErrorEnum.NOT_FOUND} error
          * is returned, independent on the status of the `destination`.
-         *
+         * 
          * If {@link Gio.FileCopyFlags.OVERWRITE} is not specified and the target exists, then
          * the error {@link Gio.IOErrorEnum.EXISTS} is returned.
-         *
+         * 
          * If trying to overwrite a file over a directory, the {@link Gio.IOErrorEnum.IS_DIRECTORY}
          * error is returned. If trying to overwrite a directory with a directory the
          * {@link Gio.IOErrorEnum.WOULD_MERGE} error is returned.
-         *
+         * 
          * If the source is a directory and the target does not exist, or
          * {@link Gio.FileCopyFlags.OVERWRITE} is specified and the target is a file, then the
          * {@link Gio.IOErrorEnum.WOULD_RECURSE} error is returned.
-         *
+         * 
          * If you are interested in copying the {@link Gio.File} object itself (not the on-disk
          * file), see `g_file_dup()`.
          * @param destination destination {@link Gio.File}
@@ -6267,21 +5810,17 @@ export namespace OSTree {
          * @param progress_callback function to callback with   progress information, or `null` if progress information is not needed
          * @virtual
          */
-        vfunc_copy(
-            destination: Gio.File,
-            flags: Gio.FileCopyFlags,
-            cancellable: Gio.Cancellable | null,
-            progress_callback: Gio.FileProgressCallback | null,
-        ): boolean;
+        vfunc_copy(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): boolean;
+
         /**
          * Copies the file `source` to the location specified by `destination`
          * asynchronously. For details of the behaviour, see `g_file_copy()`.
-         *
+         * 
          * If `progress_callback` is not `null`, then that function that will be called
          * just like in `g_file_copy()`. The callback will run in the default main context
          * of the thread calling `g_file_copy_async()` — the same context as `callback` is
          * run in.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `g_file_copy_finish()` to get the result of the operation.
          * @param destination destination {@link Gio.File}
@@ -6292,34 +5831,29 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_copy_async(
-            destination: Gio.File,
-            flags: Gio.FileCopyFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            progress_callback: Gio.FileProgressCallback | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_copy_async(destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes copying the file started with `g_file_copy_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_copy_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Creates a new file and returns an output stream for writing to it.
          * The file must not already exist.
-         *
+         * 
          * By default files created are generally readable by everyone,
          * but if you pass {@link Gio.FileCreateFlags.PRIVATE} in `flags` the file
          * will be made readable only to the current user, to the level
          * that is supported on the target filesystem.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If a file or directory with this name already exists the
          * {@link Gio.IOErrorEnum.EXISTS} error will be returned. Some file systems don't
          * allow all file names, and may return an {@link Gio.IOErrorEnum.INVALID_FILENAME}
@@ -6330,14 +5864,15 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_create(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileOutputStream;
+        vfunc_create(flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileOutputStream;
+
         /**
          * Asynchronously creates a new file and returns an output stream
          * for writing to it. The file must not already exist.
-         *
+         * 
          * For more details, see `g_file_create()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_create_finish()` to get the result
          * of the operation.
@@ -6347,12 +5882,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_create_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_create_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file create operation started with
          * `g_file_create_async()`.
@@ -6360,27 +5891,28 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_create_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
+
         /**
          * Creates a new file and returns a stream for reading and
          * writing to it. The file must not already exist.
-         *
+         * 
          * By default files created are generally readable by everyone,
          * but if you pass {@link Gio.FileCreateFlags.PRIVATE} in `flags` the file
          * will be made readable only to the current user, to the level
          * that is supported on the target filesystem.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If a file or directory with this name already exists, the
          * {@link Gio.IOErrorEnum.EXISTS} error will be returned. Some file systems don't
          * allow all file names, and may return an {@link Gio.IOErrorEnum.INVALID_FILENAME}
          * error, and if the name is too long, {@link Gio.IOErrorEnum.FILENAME_TOO_LONG}
          * will be returned. Other errors are possible too, and depend on what
          * kind of filesystem the file is on.
-         *
+         * 
          * Note that in many non-local file cases read and write streams are
          * not supported, so make sure you really need to do read and write
          * streaming, rather than just opening for reading or writing.
@@ -6388,14 +5920,15 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_create_readwrite(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileIOStream;
+        vfunc_create_readwrite(flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileIOStream;
+
         /**
          * Asynchronously creates a new file and returns a stream
          * for reading and writing to it. The file must not already exist.
-         *
+         * 
          * For more details, see `g_file_create_readwrite()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_create_readwrite_finish()` to get
          * the result of the operation.
@@ -6405,12 +5938,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_create_readwrite_async(
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_create_readwrite_async(flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file create operation started with
          * `g_file_create_readwrite_async()`.
@@ -6418,14 +5947,15 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_create_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
+
         /**
          * Deletes a file. If the `file` is a directory, it will only be
          * deleted if it is empty. This has the same semantics as `g_unlink()`.
-         *
+         * 
          * If `file` doesn’t exist, {@link Gio.IOErrorEnum.NOT_FOUND} will be returned. This allows
          * for deletion to be implemented avoiding
          * [time-of-check to time-of-use races](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use):
-         *
+         * 
          * ```
          * g_autoptr(GError) local_error = NULL;
          * if (!g_file_delete (my_file, my_cancellable, &local_error) &&
@@ -6437,15 +5967,16 @@ export namespace OSTree {
          *                g_file_peek_path (my_file), local_error->message);
          *   }
          * ```
-         *
-         *
+         * 
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_delete_file(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_delete_file(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously delete a file. If the `file` is a directory, it will
          * only be deleted if it is empty.  This has the same semantics as
@@ -6455,37 +5986,36 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
          * @virtual
          */
-        vfunc_delete_file_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_delete_file_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes deleting a file started with `g_file_delete_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_delete_file_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Duplicates a {@link Gio.File} handle. This operation does not duplicate
          * the actual file or directory represented by the {@link Gio.File}; see
          * `g_file_copy()` if attempting to copy a file.
-         *
+         * 
          * `g_file_dup()` is useful when a second handle is needed to the same underlying
          * file, for use in a separate thread ({@link Gio.File} is not thread-safe). For use
          * within the same thread, use `g_object_ref()` to increment the existing object’s
          * reference count.
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
         vfunc_dup(): Gio.File;
+
         /**
          * Starts an asynchronous eject on a mountable.
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_eject_mountable_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -6494,11 +6024,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_eject_mountable(
-            flags: Gio.MountUnmountFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_eject_mountable(flags: Gio.MountUnmountFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous eject operation started by
          * `g_file_eject_mountable()`.
@@ -6506,12 +6033,13 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_eject_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Starts an asynchronous eject on a mountable.
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_eject_mountable_with_operation_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -6521,12 +6049,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_eject_mountable_with_operation(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_eject_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous eject operation started by
          * `g_file_eject_mountable_with_operation()`.
@@ -6534,11 +6058,12 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_eject_mountable_with_operation_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Gets the requested information about the files in a directory.
          * The result is a {@link Gio.FileEnumerator} object that will give out
          * {@link Gio.FileInfo} objects for all the files in the directory.
-         *
+         * 
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
          * it's not possible to read a particular requested attribute
@@ -6551,12 +6076,12 @@ export namespace OSTree {
          * `G_FILE_ATTRIBUTE_STANDARD_NAME`. `G_FILE_ATTRIBUTE_STANDARD_NAME` should
          * always be specified if you plan to call `g_file_enumerator_get_child()` or
          * `g_file_enumerator_iterate()` on the returned enumerator.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will
          * be returned. If the file is not a directory, the {@link Gio.IOErrorEnum.NOT_DIRECTORY}
          * error will be returned. Other errors are possible too.
@@ -6565,19 +6090,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_enumerate_children(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.FileEnumerator;
+        vfunc_enumerate_children(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): Gio.FileEnumerator;
+
         /**
          * Asynchronously gets the requested information about the files
          * in a directory. The result is a {@link Gio.FileEnumerator} object that will
          * give out {@link Gio.FileInfo} objects for all the files in the directory.
-         *
+         * 
          * For more details, see `g_file_enumerate_children()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_enumerate_children_finish()` to get the result of
          * the operation.
@@ -6588,13 +6110,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_enumerate_children_async(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_enumerate_children_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an async enumerate children operation.
          * See `g_file_enumerate_children_async()`.
@@ -6602,38 +6119,41 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_enumerate_children_finish(res: Gio.AsyncResult): Gio.FileEnumerator;
+
         /**
          * Checks if the two given `GFiles` refer to the same file.
-         *
+         * 
          * Note that two `GFiles` that differ can still refer to the same
          * file on the filesystem due to various forms of filename
          * aliasing.
-         *
+         * 
          * This call does no blocking I/O.
          * @param file2 the second {@link Gio.File}
          * @virtual
          */
         vfunc_equal(file2: Gio.File): boolean;
+
         /**
          * Gets a {@link Gio.Mount} for the {@link Gio.File}.
-         *
+         * 
          * {@link Gio.Mount} is returned only for user interesting locations, see
          * {@link Gio.VolumeMonitor}. If the {@link Gio.FileIface} for `file` does not have a #mount,
          * `error` will be set to {@link Gio.IOErrorEnum.NOT_FOUND} and `null` #will be returned.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_find_enclosing_mount(cancellable: Gio.Cancellable | null): Gio.Mount;
+        vfunc_find_enclosing_mount(cancellable: (Gio.Cancellable | null)): Gio.Mount;
+
         /**
          * Asynchronously gets the mount for the file.
-         *
+         * 
          * For more details, see `g_file_find_enclosing_mount()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_find_enclosing_mount_finish()` to
          * get the result of the operation.
@@ -6642,11 +6162,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_find_enclosing_mount_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_find_enclosing_mount_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous find mount request.
          * See `g_file_find_enclosing_mount_async()`.
@@ -6654,23 +6171,25 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_find_enclosing_mount_finish(res: Gio.AsyncResult): Gio.Mount;
+
         /**
          * Gets the base name (the last component of the path) for a given {@link Gio.File}.
-         *
+         * 
          * If called for the top level of a system (such as the filesystem root
          * or a uri like sftp://host/) it will return a single directory separator
          * (and on Windows, possibly a drive letter).
-         *
+         * 
          * The base name is a byte string (not UTF-8). It has no defined encoding
          * or rules other than it may not contain zero bytes.  If you want to use
          * filenames in a user interface you should use the display name that you
          * can get by requesting the `G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME`
          * attribute with `g_file_query_info()`.
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
-        vfunc_get_basename(): string | null;
+        vfunc_get_basename(): (string | null);
+
         /**
          * Gets the child of `file` for a given `display_name` (i.e. a UTF-8
          * version of the name). If this function fails, it returns `null`
@@ -6678,132 +6197,143 @@ export namespace OSTree {
          * {@link Gio.File} for a new file and the user entered the filename in the
          * user interface, for instance when you select a directory and
          * type a filename in the file selector.
-         *
+         * 
          * This call does no blocking I/O.
          * @param display_name string to a possible child
          * @virtual
          */
         vfunc_get_child_for_display_name(display_name: string): Gio.File;
+
         /**
          * Gets the parent directory for the `file`.
          * If the `file` represents the root directory of the
          * file system, then `null` will be returned.
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
-        vfunc_get_parent(): Gio.File | null;
+        vfunc_get_parent(): (Gio.File | null);
+
         /**
          * Gets the parse name of the `file`.
          * A parse name is a UTF-8 string that describes the
          * file such that one can get the {@link Gio.File} back using
          * `g_file_parse_name()`.
-         *
+         * 
          * This is generally used to show the {@link Gio.File} as a nice
          * full-pathname kind of string in a user interface,
          * like in a location entry.
-         *
+         * 
          * For local files with names that can safely be converted
          * to UTF-8 the pathname is used, otherwise the IRI is used
          * (a form of URI that allows UTF-8 characters unescaped).
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
         vfunc_get_parse_name(): string;
+
         /**
          * Gets the local pathname for {@link Gio.File}, if one exists. If non-`null`, this is
          * guaranteed to be an absolute, canonical path. It might contain symlinks.
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
-        vfunc_get_path(): string | null;
+        vfunc_get_path(): (string | null);
+
         /**
          * Gets the path for `descendant` relative to `parent`.
-         *
+         * 
          * This call does no blocking I/O.
          * @param descendant input {@link Gio.File}
          * @virtual
          */
-        vfunc_get_relative_path(descendant: Gio.File): string | null;
+        vfunc_get_relative_path(descendant: Gio.File): (string | null);
+
         /**
          * Gets the URI for the `file`.
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
         vfunc_get_uri(): string;
+
         /**
          * Gets the URI scheme for a {@link Gio.File}.
          * RFC 3986 decodes the scheme as:
-         *
+         * 
          * ```
          * URI = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
          * ```
-         *
+         * 
          * Common schemes include "file", "http", "ftp", etc.
-         *
+         * 
          * The scheme can be different from the one used to construct the {@link Gio.File},
          * in that it might be replaced with one that is logically equivalent to the {@link Gio.File}.
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
-        vfunc_get_uri_scheme(): string | null;
+        vfunc_get_uri_scheme(): (string | null);
+
         /**
          * Checks to see if a {@link Gio.File} has a given URI scheme.
-         *
+         * 
          * This call does no blocking I/O.
          * @param uri_scheme a string containing a URI scheme
          * @virtual
          */
         vfunc_has_uri_scheme(uri_scheme: string): boolean;
+
         /**
          * Creates a hash value for a {@link Gio.File}.
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
         vfunc_hash(): number;
+
         /**
          * Checks to see if a file is native to the platform.
-         *
+         * 
          * A native file is one expressed in the platform-native filename format,
          * e.g. "C:\Windows" or "/usr/bin/". This does not mean the file is local,
          * as it might be on a locally mounted remote filesystem.
-         *
+         * 
          * On some systems non-native files may be available using the native
          * filesystem via a userspace filesystem (FUSE), in these cases this call
          * will return `false`, but `g_file_get_path()` will still return a native path.
-         *
+         * 
          * This call does no blocking I/O.
          * @virtual
          */
         vfunc_is_native(): boolean;
+
         /**
          * Creates a directory.
-         *
+         * 
          * Note that this will only create a child directory
          * of the immediate parent directory of the path or URI given by the {@link Gio.File}.
          * To recursively create directories, see `g_file_make_directory_with_parents()`.
-         *
+         * 
          * This function will fail if the parent directory does not exist, setting
          * `error` to {@link Gio.IOErrorEnum.NOT_FOUND}. If the file system doesn't support
          * creating directories, this function will fail, setting `error` to
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED}. If the directory already exists,
          * {@link Gio.IOErrorEnum.EXISTS} will be returned.
-         *
+         * 
          * For a local {@link Gio.File} the newly created directory will have the default
          * (current) ownership and permissions of the current process.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_make_directory(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_make_directory(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously creates a directory.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
@@ -6811,11 +6341,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
          * @virtual
          */
-        vfunc_make_directory_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_make_directory_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous directory creation, started with
          * `g_file_make_directory_async()`.
@@ -6823,10 +6350,11 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_make_directory_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Creates a symbolic link named `file` which contains the string
          * `symlink_value`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -6834,7 +6362,8 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_make_symbolic_link(symlink_value: string, cancellable: Gio.Cancellable | null): boolean;
+        vfunc_make_symbolic_link(symlink_value: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously creates a symbolic link named `file` which contains the
          * string `symlink_value`.
@@ -6844,12 +6373,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
          * @virtual
          */
-        vfunc_make_symbolic_link_async(
-            symlink_value: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_make_symbolic_link_async(symlink_value: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous symbolic link creation, started with
          * `g_file_make_symbolic_link_async()`.
@@ -6857,21 +6382,22 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_make_symbolic_link_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Recursively measures the disk usage of `file`.
-         *
+         * 
          * This is essentially an analog of the 'du' command, but it also
          * reports the number of directories and non-directory files encountered
          * (including things like symbolic links).
-         *
+         * 
          * By default, errors are only reported against the toplevel file
          * itself.  Errors found while recursing are silently ignored, unless
          * {@link Gio.FileMeasureFlags.REPORT_ANY_ERROR} is given in `flags`.
-         *
+         * 
          * The returned size, `disk_usage`, is in bytes and should be formatted
          * with `g_format_size()` in order to get something reasonable for showing
          * in a user interface.
-         *
+         * 
          * `progress_callback` and `progress_data` can be given to request
          * periodic progress updates while scanning.  See the documentation for
          * {@link Gio.FileMeasureProgressCallback} for information about when and how the
@@ -6881,11 +6407,8 @@ export namespace OSTree {
          * @param progress_callback a {@link Gio.FileMeasureProgressCallback}
          * @virtual
          */
-        vfunc_measure_disk_usage(
-            flags: Gio.FileMeasureFlags,
-            cancellable: Gio.Cancellable | null,
-            progress_callback: Gio.FileMeasureProgressCallback | null,
-        ): [boolean, bigint | number, bigint | number, bigint | number];
+        vfunc_measure_disk_usage(flags: Gio.FileMeasureFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileMeasureProgressCallback | null)): [boolean, bigint | number, bigint | number, bigint | number];
+
         /**
          * Collects the results from an earlier call to
          * `g_file_measure_disk_usage_async()`.  See `g_file_measure_disk_usage()` for
@@ -6893,17 +6416,16 @@ export namespace OSTree {
          * @param result the {@link Gio.AsyncResult} passed to your {@link Gio.AsyncReadyCallback}
          * @virtual
          */
-        vfunc_measure_disk_usage_finish(
-            result: Gio.AsyncResult,
-        ): [boolean, bigint | number, bigint | number, bigint | number];
+        vfunc_measure_disk_usage_finish(result: Gio.AsyncResult): [boolean, bigint | number, bigint | number, bigint | number];
+
         /**
          * Obtains a directory monitor for the given file.
          * This may fail if directory monitoring is not supported.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * It does not make sense for `flags` to contain
          * {@link Gio.FileMonitorFlags.WATCH_HARD_LINKS}, since hard links can not be made to
          * directories.  It is not possible to monitor all the files in a
@@ -6913,15 +6435,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_monitor_dir(flags: Gio.FileMonitorFlags, cancellable: Gio.Cancellable | null): Gio.FileMonitor;
+        vfunc_monitor_dir(flags: Gio.FileMonitorFlags, cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+
         /**
          * Obtains a file monitor for the given file. If no file notification
          * mechanism exists, then regular polling of the file is used.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `flags` contains {@link Gio.FileMonitorFlags.WATCH_HARD_LINKS} then the monitor
          * will also attempt to report changes made to the file via another
          * filename (ie, a hard link). Without this flag, you can only rely on
@@ -6933,15 +6456,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_monitor_file(flags: Gio.FileMonitorFlags, cancellable: Gio.Cancellable | null): Gio.FileMonitor;
+        vfunc_monitor_file(flags: Gio.FileMonitorFlags, cancellable: (Gio.Cancellable | null)): Gio.FileMonitor;
+
         /**
          * Starts a `mount_operation`, mounting the volume that contains
          * the file `location`.
-         *
+         * 
          * When this operation has completed, `callback` will be called with
          * `user_user` data, and the operation can be finalized with
          * `g_file_mount_enclosing_volume_finish()`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -6951,27 +6475,24 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
          * @virtual
          */
-        vfunc_mount_enclosing_volume(
-            flags: Gio.MountMountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_mount_enclosing_volume(flags: Gio.MountMountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes a mount operation started by `g_file_mount_enclosing_volume()`.
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_mount_enclosing_volume_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Mounts a file of type G_FILE_TYPE_MOUNTABLE.
          * Using `mount_operation`, you can request callbacks when, for instance,
          * passwords are needed during authentication.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
@@ -6981,51 +6502,48 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_mount_mountable(
-            flags: Gio.MountMountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_mount_mountable(flags: Gio.MountMountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes a mount operation. See `g_file_mount_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous mount operation that was started
          * with `g_file_mount_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_mount_mountable_finish(result: Gio.AsyncResult): Gio.File;
+
         /**
          * Tries to move the file or directory `source` to the location specified
          * by `destination`. If native move operations are supported then this is
          * used, otherwise a copy + delete fallback is used. The native
          * implementation may support moving directories (for instance on moves
          * inside the same filesystem), but the fallback code does not.
-         *
+         * 
          * If the flag {@link Gio.FileCopyFlags.OVERWRITE} is specified an already
          * existing `destination` file is overwritten.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If `progress_callback` is not `null`, then the operation can be monitored
          * by setting this to a {@link Gio.FileProgressCallback} function.
          * `progress_callback_data` will be passed to this function. It is
          * guaranteed that this callback will be called after all data has been
          * transferred with the total number of bytes copied during the operation.
-         *
+         * 
          * If the `source` file does not exist, then the {@link Gio.IOErrorEnum.NOT_FOUND}
          * error is returned, independent on the status of the `destination`.
-         *
+         * 
          * If {@link Gio.FileCopyFlags.OVERWRITE} is not specified and the target exists,
          * then the error {@link Gio.IOErrorEnum.EXISTS} is returned.
-         *
+         * 
          * If trying to overwrite a file over a directory, the {@link Gio.IOErrorEnum.IS_DIRECTORY}
          * error is returned. If trying to overwrite a directory with a directory the
          * {@link Gio.IOErrorEnum.WOULD_MERGE} error is returned.
-         *
+         * 
          * If the source is a directory and the target does not exist, or
          * {@link Gio.FileCopyFlags.OVERWRITE} is specified and the target is a file, then
          * the {@link Gio.IOErrorEnum.WOULD_RECURSE} error may be returned (if the native
@@ -7036,20 +6554,16 @@ export namespace OSTree {
          * @param progress_callback {@link Gio.FileProgressCallback}   function for updates
          * @virtual
          */
-        vfunc_move(
-            destination: Gio.File,
-            flags: Gio.FileCopyFlags,
-            cancellable: Gio.Cancellable | null,
-            progress_callback: Gio.FileProgressCallback | null,
-        ): boolean;
+        vfunc_move(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null)): boolean;
+
         /**
          * Asynchronously moves a file `source` to the location of `destination`. For details of the behaviour, see `g_file_move()`.
-         *
+         * 
          * If `progress_callback` is not `null`, then that function that will be called
          * just like in `g_file_move()`. The callback will run in the default main context
          * of the thread calling `g_file_move_async()` — the same context as `callback` is
          * run in.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `g_file_move_finish()` to get the result of the operation.
          * @param destination {@link Gio.File} pointing to the destination location
@@ -7060,14 +6574,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_move_async(
-            destination: Gio.File,
-            flags: Gio.FileCopyFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            progress_callback: Gio.FileProgressCallback | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_move_async(destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number, cancellable: (Gio.Cancellable | null), progress_callback: (Gio.FileProgressCallback | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file movement, started with
          * `g_file_move_async()`.
@@ -7075,16 +6583,17 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_move_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Opens an existing file for reading and writing. The result is
          * a {@link Gio.FileIOStream} that can be used to read and write the contents
          * of the file.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will
          * be returned. If the file is a directory, the {@link Gio.IOErrorEnum.IS_DIRECTORY}
          * error will be returned. Other errors are possible too, and depend on
@@ -7095,13 +6604,14 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_open_readwrite(cancellable: Gio.Cancellable | null): Gio.FileIOStream;
+        vfunc_open_readwrite(cancellable: (Gio.Cancellable | null)): Gio.FileIOStream;
+
         /**
          * Asynchronously opens `file` for reading and writing.
-         *
+         * 
          * For more details, see `g_file_open_readwrite()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_open_readwrite_finish()` to get
          * the result of the operation.
@@ -7110,11 +6620,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_open_readwrite_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_open_readwrite_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file read operation started with
          * `g_file_open_readwrite_async()`.
@@ -7122,13 +6629,14 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_open_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
+
         /**
          * Polls a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
@@ -7136,27 +6644,29 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
          * @virtual
          */
-        vfunc_poll_mountable(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_poll_mountable(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes a poll operation. See `g_file_poll_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous poll operation that was polled
          * with `g_file_poll_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_poll_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Checks whether `file` has the prefix specified by `prefix`.
-         *
+         * 
          * In other words, if the names of initial elements of `file`'s
          * pathname match `prefix`. Only full pathname elements are matched,
          * so a path like /foo is not considered a prefix of /foobar, only
          * of /foo/bar.
-         *
+         * 
          * A {@link Gio.File} is not a prefix of itself. If you want to check for
          * equality, use `g_file_equal()`.
-         *
+         * 
          * This call does no I/O, as it works purely on names. As such it can
          * sometimes return `false` even if `file` is inside a `prefix` (from a
          * filesystem point of view), because the prefix of `file` is an alias
@@ -7165,19 +6675,20 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_prefix_matches(file: Gio.File): boolean;
+
         /**
          * Utility function to check if a particular file exists.
-         *
+         * 
          * The fallback implementation of this API is using {@link Gio.File.query_info}
          * and therefore may do blocking I/O. To asynchronously query the existence
          * of a file, use {@link Gio.File.query_info_async}.
-         *
+         * 
          * Note that in many cases it is [racy to first check for file existence](https://en.wikipedia.org/wiki/Time_of_check_to_time_of_use)
          * and then execute something based on the outcome of that, because the
          * file might have been created or removed in between the operations. The
          * general approach to handling that is to not check, but just do the
          * operation and handle the errors as they come.
-         *
+         * 
          * As an example of race-free checking, take the case of reading a file,
          * and if it doesn't exist, creating it. There are two racy versions: read
          * it, and on error create it; and: check if it exists, if not create it.
@@ -7185,7 +6696,7 @@ export namespace OSTree {
          * a partially written file as the result). The correct approach is to
          * always try to create the file with `g_file_create()` which will either
          * atomically create the file or fail with a {@link Gio.IOErrorEnum.EXISTS} error.
-         *
+         * 
          * However, in many cases an existence check is useful in a user interface,
          * for instance to make a menu item sensitive/insensitive, so that you don't
          * have to fool users that something is possible and then just show an error
@@ -7194,13 +6705,14 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_query_exists(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_query_exists(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Similar to `g_file_query_info()`, but obtains information
          * about the filesystem the `file` is on, rather than the file itself.
          * For instance the amount of space available and the type of
          * the filesystem.
-         *
+         * 
          * The `attributes` value is a string that specifies the attributes
          * that should be gathered. It is not an error if it's not possible
          * to read a particular requested attribute from a file - it just
@@ -7212,12 +6724,12 @@ export namespace OSTree {
          * `G_FILE_ATTRIBUTE_FILESYSTEM_SIZE` (the total size of the filesystem
          * in bytes), `G_FILE_ATTRIBUTE_FILESYSTEM_FREE` (number of bytes available),
          * and `G_FILE_ATTRIBUTE_FILESYSTEM_TYPE` (type of the filesystem).
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will
          * be returned. Other errors are possible too, and depend on what
          * kind of filesystem the file is on.
@@ -7225,16 +6737,17 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_query_filesystem_info(attributes: string, cancellable: Gio.Cancellable | null): Gio.FileInfo;
+        vfunc_query_filesystem_info(attributes: string, cancellable: (Gio.Cancellable | null)): Gio.FileInfo;
+
         /**
          * Asynchronously gets the requested information about the filesystem
          * that the specified `file` is on. The result is a {@link Gio.FileInfo} object
          * that contains key-value attributes (such as type or size for the
          * file).
-         *
+         * 
          * For more details, see `g_file_query_filesystem_info()` which is the
          * synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_query_info_finish()` to get the result of the
          * operation.
@@ -7244,12 +6757,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_query_filesystem_info_async(
-            attributes: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_query_filesystem_info_async(attributes: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous filesystem info query.
          * See `g_file_query_filesystem_info_async()`.
@@ -7257,12 +6766,13 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
+
         /**
          * Gets the requested information about specified `file`.
-         *
+         * 
          * The result is a {@link Gio.FileInfo} object that contains key-value
          * attributes (such as the type or size of the file).
-         *
+         * 
          * The `attributes` value is a string that specifies the file
          * attributes that should be gathered. It is not an error if
          * it’s not possible to read a particular requested attribute
@@ -7271,33 +6781,33 @@ export namespace OSTree {
          * example, you can expect the returned {@link Gio.FileInfo} to have very few
          * attributes set. You should check whether an attribute is set using
          * {@link Gio.FileInfo.has_attribute} before trying to retrieve its value.
-         *
+         * 
          * It is guaranteed that if any of the following attributes are listed in
          * `attributes`, they will always be set in the returned {@link Gio.FileInfo},
          * even if the user doesn’t have permissions to access the file:
-         *
+         * 
          *  - {@link Gio.FILE_ATTRIBUTE_STANDARD_NAME}
          *  - {@link Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME}
-         *
+         * 
          * `attributes` should be a comma-separated list of attributes or attribute
          * wildcards. The wildcard `"*"` means all attributes, and a wildcard like
          * `"standard::*"` means all attributes in the standard namespace.
          * An example attribute query might be `"standard::*,owner::user"`.
          * The standard attributes are available as defines, like
          * {@link Gio.FILE_ATTRIBUTE_STANDARD_NAME}.
-         *
+         * 
          * If `cancellable` is not `NULL`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * For symlinks, normally the information about the target of the
          * symlink is returned, rather than information about the symlink
          * itself. However if you pass {@link Gio.FileQueryInfoFlags.NOFOLLOW_SYMLINKS}
          * in `flags` the information about the symlink itself will be returned.
          * Also, for symlinks that point to non-existing files the information
          * about the symlink itself will be returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will be
          * returned. Other errors are possible too, and depend on what kind of
          * file system the file is on.
@@ -7306,19 +6816,16 @@ export namespace OSTree {
          * @param cancellable optional cancellable object
          * @virtual
          */
-        vfunc_query_info(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.FileInfo;
+        vfunc_query_info(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): Gio.FileInfo;
+
         /**
          * Asynchronously gets the requested information about specified `file`.
          * The result is a {@link Gio.FileInfo} object that contains key-value attributes
          * (such as type or size for the file).
-         *
+         * 
          * For more details, see `g_file_query_info()` which is the synchronous
          * version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can
          * then call `g_file_query_info_finish()` to get the result of the operation.
          * @param attributes an attribute query string
@@ -7328,13 +6835,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_query_info_async(
-            attributes: string,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_query_info_async(attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file info query.
          * See `g_file_query_info_async()`.
@@ -7342,39 +6844,42 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_query_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
+
         /**
          * Obtain the list of settable attributes for the file.
-         *
+         * 
          * Returns the type and full attribute name of all the attributes
          * that can be set on this file. This doesn't mean setting it will
          * always succeed though, you might get an access failure, or some
          * specific file may not support a specific attribute.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_query_settable_attributes(cancellable: Gio.Cancellable | null): Gio.FileAttributeInfoList;
+        vfunc_query_settable_attributes(cancellable: (Gio.Cancellable | null)): Gio.FileAttributeInfoList;
+
         /**
          * Obtain the list of attribute namespaces where new attributes
          * can be created by a user. An example of this is extended
          * attributes (in the "xattr" namespace).
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_query_writable_namespaces(cancellable: Gio.Cancellable | null): Gio.FileAttributeInfoList;
+        vfunc_query_writable_namespaces(cancellable: (Gio.Cancellable | null)): Gio.FileAttributeInfoList;
+
         /**
          * Asynchronously opens `file` for reading.
-         *
+         * 
          * For more details, see `g_file_read()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_read_finish()` to get the result
          * of the operation.
@@ -7383,11 +6888,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_read_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_read_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file read operation started with
          * `g_file_read_async()`.
@@ -7395,14 +6897,15 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_read_finish(res: Gio.AsyncResult): Gio.FileInputStream;
+
         /**
          * Opens a file for reading. The result is a {@link Gio.FileInputStream} that
          * can be used to read the contents of the file.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * If the file does not exist, the {@link Gio.IOErrorEnum.NOT_FOUND} error will be
          * returned. If the file is a directory, the {@link Gio.IOErrorEnum.IS_DIRECTORY}
          * error will be returned. Other errors are possible too, and depend
@@ -7410,28 +6913,29 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @virtual
          */
-        vfunc_read_fn(cancellable: Gio.Cancellable | null): Gio.FileInputStream;
+        vfunc_read_fn(cancellable: (Gio.Cancellable | null)): Gio.FileInputStream;
+
         /**
          * Returns an output stream for overwriting the file, possibly
          * creating a backup copy of the file first. If the file doesn't exist,
          * it will be created.
-         *
+         * 
          * This will try to replace the file in the safest way possible so
          * that any errors during the writing will not affect an already
          * existing copy of the file. For instance, for local files it
          * may write to a temporary file and then atomically rename over
          * the destination when the stream is closed.
-         *
+         * 
          * By default files created are generally readable by everyone,
          * but if you pass {@link Gio.FileCreateFlags.PRIVATE} in `flags` the file
          * will be made readable only to the current user, to the level that
          * is supported on the target filesystem.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled
          * by triggering the cancellable object from another thread. If the
          * operation was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned.
-         *
+         * 
          * If you pass in a non-`null` `etag` value and `file` already exists, then
          * this value is compared to the current entity tag of the file, and if
          * they differ an {@link Gio.IOErrorEnum.WRONG_ETAG} error is returned. This
@@ -7440,12 +6944,12 @@ export namespace OSTree {
          * after you've finished writing and closed the {@link Gio.FileOutputStream}. When
          * you load a new file you can use `g_file_input_stream_query_info()` to
          * get the etag of the file.
-         *
+         * 
          * If `make_backup` is `true`, this function will attempt to make a
          * backup of the current file before overwriting it. If this fails
          * a {@link Gio.IOErrorEnum.CANT_CREATE_BACKUP} error will be returned. If you
          * want to replace anyway, try again with `make_backup` set to `false`.
-         *
+         * 
          * If the file is a directory the {@link Gio.IOErrorEnum.IS_DIRECTORY} error will
          * be returned, and if the file is some other form of non-regular file
          * then a {@link Gio.IOErrorEnum.NOT_REGULAR_FILE} error will be returned. Some
@@ -7459,19 +6963,15 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_replace(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.FileOutputStream;
+        vfunc_replace(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileOutputStream;
+
         /**
          * Asynchronously overwrites the file, replacing the contents,
          * possibly creating a backup copy of the file first.
-         *
+         * 
          * For more details, see `g_file_replace()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_replace_finish()` to get the result
          * of the operation.
@@ -7483,14 +6983,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_replace_async(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_replace_async(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file replace operation started with
          * `g_file_replace_async()`.
@@ -7498,14 +6992,15 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_replace_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
+
         /**
          * Returns an output stream for overwriting the file in readwrite mode,
          * possibly creating a backup copy of the file first. If the file doesn't
          * exist, it will be created.
-         *
+         * 
          * For details about the behaviour, see `g_file_replace()` which does the
          * same thing but returns an output stream only.
-         *
+         * 
          * Note that in many non-local file cases read and write streams are not
          * supported, so make sure you really need to do read and write streaming,
          * rather than just opening for reading or writing.
@@ -7515,20 +7010,16 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_replace_readwrite(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            cancellable: Gio.Cancellable | null,
-        ): Gio.FileIOStream;
+        vfunc_replace_readwrite(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: (Gio.Cancellable | null)): Gio.FileIOStream;
+
         /**
          * Asynchronously overwrites the file in read-write mode,
          * replacing the contents, possibly creating a backup copy
          * of the file first.
-         *
+         * 
          * For more details, see `g_file_replace_readwrite()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_replace_readwrite_finish()` to get
          * the result of the operation.
@@ -7540,14 +7031,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_replace_readwrite_async(
-            etag: string | null,
-            make_backup: boolean,
-            flags: Gio.FileCreateFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_replace_readwrite_async(etag: (string | null), make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file replace operation started with
          * `g_file_replace_readwrite_async()`.
@@ -7555,23 +7040,25 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_replace_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
+
         /**
          * Resolves a relative path for `file` to an absolute path.
-         *
+         * 
          * This call does no blocking I/O.
-         *
+         * 
          * If the `relative_path` is an absolute path name, the resolution
          * is done absolutely (without taking `file` path as base).
          * @param relative_path a given relative path string
          * @virtual
          */
         vfunc_resolve_relative_path(relative_path: string): Gio.File;
+
         /**
          * Sets an attribute in the file with attribute name `attribute` to `value_p`.
-         *
+         * 
          * Some attributes can be unset by setting `type` to
          * {@link Gio.FileAttributeType.INVALID} and `value_p` to `null`.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -7582,19 +7069,14 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_set_attribute(
-            attribute: string,
-            type: Gio.FileAttributeType,
-            value_p: any | null,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        vfunc_set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: (any | null), flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously sets the attributes of `file` with `info`.
-         *
+         * 
          * For more details, see `g_file_set_attributes_from_info()`,
          * which is the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_set_attributes_finish()` to get
          * the result of the operation.
@@ -7605,29 +7087,25 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_set_attributes_async(
-            info: Gio.FileInfo,
-            flags: Gio.FileQueryInfoFlags,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_set_attributes_async(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes setting an attribute started in `g_file_set_attributes_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_set_attributes_finish(result: Gio.AsyncResult): [boolean, Gio.FileInfo];
+
         /**
          * Tries to set all attributes in the {@link Gio.FileInfo} on the target
          * values, not stopping on the first error.
-         *
+         * 
          * If there is any error during this operation then `error` will
          * be set to the first error. Error on particular fields are flagged
          * by setting the "status" field in the attribute value to
          * {@link Gio.FileAttributeStatus.ERROR_SETTING}, which means you can
          * also detect further errors.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -7636,24 +7114,21 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_set_attributes_from_info(
-            info: Gio.FileInfo,
-            flags: Gio.FileQueryInfoFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        vfunc_set_attributes_from_info(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Renames `file` to the specified display name.
-         *
+         * 
          * The display name is converted from UTF-8 to the correct encoding
          * for the target filesystem if possible and the `file` is renamed to this.
-         *
+         * 
          * If you want to implement a rename operation in the user interface the
          * edit name (`G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME`) should be used as the
          * initial value in the rename widget, and then the result after editing
          * should be passed to `g_file_set_display_name()`.
-         *
+         * 
          * On success the resulting converted filename is returned.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -7661,13 +7136,14 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_set_display_name(display_name: string, cancellable: Gio.Cancellable | null): Gio.File;
+        vfunc_set_display_name(display_name: string, cancellable: (Gio.Cancellable | null)): Gio.File;
+
         /**
          * Asynchronously sets the display name for a given {@link Gio.File}.
-         *
+         * 
          * For more details, see `g_file_set_display_name()` which is
          * the synchronous version of this call.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_set_display_name_finish()` to get
          * the result of the operation.
@@ -7677,12 +7153,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_set_display_name_async(
-            display_name: string,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_set_display_name_async(display_name: string, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes setting a display name started with
          * `g_file_set_display_name_async()`.
@@ -7690,15 +7162,16 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_set_display_name_finish(res: Gio.AsyncResult): Gio.File;
+
         /**
          * Starts a file of type {@link Gio.FileType.MOUNTABLE}.
          * Using `start_operation`, you can request callbacks when, for instance,
          * passwords are needed during authentication.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_mount_mountable_finish()` to get
          * the result of the operation.
@@ -7708,28 +7181,25 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied, or `null`
          * @virtual
          */
-        vfunc_start_mountable(
-            flags: Gio.DriveStartFlags,
-            start_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_start_mountable(flags: Gio.DriveStartFlags, start_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes a start operation. See `g_file_start_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous start operation that was started
          * with `g_file_start_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_start_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Stops a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_stop_mountable_finish()` to get
          * the result of the operation.
@@ -7739,21 +7209,18 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied, or `null`
          * @virtual
          */
-        vfunc_stop_mountable(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_stop_mountable(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes a stop operation, see `g_file_stop_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous stop operation that was started
          * with `g_file_stop_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_stop_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Sends `file` to the "Trashcan", if possible. This is similar to
          * deleting it, but the user can recover it before emptying the trashcan.
@@ -7764,14 +7231,15 @@ export namespace OSTree {
          * mounts, the {@link Gio.IOErrorEnum.NOT_SUPPORTED} error will be returned in that case.
          * Since 2.82, the `x-gvfs-trash` unix mount option can be used to enable
          * `g_file_trash()` support for particular system mounts.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @virtual
          */
-        vfunc_trash(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_trash(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Asynchronously sends `file` to the Trash location, if possible.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the request
@@ -7779,11 +7247,8 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is satisfied
          * @virtual
          */
-        vfunc_trash_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_trash_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an asynchronous file trashing operation, started with
          * `g_file_trash_async()`.
@@ -7791,13 +7256,14 @@ export namespace OSTree {
          * @virtual
          */
         vfunc_trash_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Unmounts a file of type G_FILE_TYPE_MOUNTABLE.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_unmount_mountable_finish()` to get
          * the result of the operation.
@@ -7806,27 +7272,25 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_unmount_mountable(
-            flags: Gio.MountUnmountFlags,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_unmount_mountable(flags: Gio.MountUnmountFlags, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an unmount operation, see `g_file_unmount_mountable()` for details.
-         *
+         * 
          * Finish an asynchronous unmount operation that was started
          * with `g_file_unmount_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @virtual
          */
         vfunc_unmount_mountable_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Unmounts a file of type {@link Gio.FileType.MOUNTABLE}.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
-         *
+         * 
          * When the operation is finished, `callback` will be called.
          * You can then call `g_file_unmount_mountable_finish()` to get
          * the result of the operation.
@@ -7836,16 +7300,12 @@ export namespace OSTree {
          * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          * @virtual
          */
-        vfunc_unmount_mountable_with_operation(
-            flags: Gio.MountUnmountFlags,
-            mount_operation: Gio.MountOperation | null,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_unmount_mountable_with_operation(flags: Gio.MountUnmountFlags, mount_operation: (Gio.MountOperation | null), cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes an unmount operation,
          * see `g_file_unmount_mountable_with_operation()` for details.
-         *
+         * 
          * Finish an asynchronous unmount operation that was started
          * with `g_file_unmount_mountable_with_operation()`.
          * @param result a {@link Gio.AsyncResult}
@@ -7854,14 +7314,14 @@ export namespace OSTree {
         vfunc_unmount_mountable_with_operation_finish(result: Gio.AsyncResult): boolean;
     }
 
+
     namespace SePolicy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::path': (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             path: Gio.File;
         }
@@ -7874,7 +7334,6 @@ export namespace OSTree {
         static $gtype: GObject.GType<SePolicy>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -7890,48 +7349,38 @@ export namespace OSTree {
         $signals: SePolicy.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SePolicy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: Gio.File, cancellable: Gio.Cancellable | null): SePolicy;
+        static ["new"](path: Gio.File, cancellable: (Gio.Cancellable | null)): SePolicy;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SePolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SePolicy.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SePolicy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SePolicy.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SePolicy.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SePolicy.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SePolicy.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SePolicy.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SePolicy.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SePolicy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SePolicy.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SePolicy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Cleanup function for `ostree_sepolicy_setfscreatecon()`.
-         * @param unused
+         * @param unused 
          */
-        static fscreatecon_cleanup(unused: any | null): void;
+        static fscreatecon_cleanup(unused: (any | null)): void;
 
         // Methods
-
         /**
          * @returns Checksum of current policy
          */
         get_csum(): string;
+
         /**
          * Store in `out_label` the security context for the given `relpath` and
          * mode `unix_mode`.  If the policy does not specify a label, `null`
@@ -7940,15 +7389,18 @@ export namespace OSTree {
          * @param unix_mode Unix mode
          * @param cancellable Cancellable
          */
-        get_label(relpath: string, unix_mode: number, cancellable: Gio.Cancellable | null): [boolean, string];
+        get_label(relpath: string, unix_mode: number, cancellable: (Gio.Cancellable | null)): [boolean, string];
+
         /**
          * @returns Type of current policy
          */
         get_name(): string;
+
         /**
          * @returns Path to rootfs
          */
         get_path(): Gio.File;
+
         /**
          * Reset the security context of `target` based on the SELinux policy.
          * @param path Path string to use for policy lookup
@@ -7957,51 +7409,47 @@ export namespace OSTree {
          * @param flags Flags controlling behavior
          * @param cancellable Cancellable
          */
-        restorecon(
-            path: string,
-            info: Gio.FileInfo | null,
-            target: Gio.File,
-            flags: SePolicyRestoreconFlags,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, string];
+        restorecon(path: string, info: (Gio.FileInfo | null), target: Gio.File, flags: SePolicyRestoreconFlags, cancellable: (Gio.Cancellable | null)): [boolean, string];
+
         /**
          * @param path Use this path to determine a label
          * @param mode Used along with `path`
          */
         setfscreatecon(path: string, mode: number): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -8011,40 +7459,41 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -8054,17 +7503,17 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Sysroot {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::path': (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             path: Gio.File;
         }
@@ -8077,7 +7526,6 @@ export namespace OSTree {
         static $gtype: GObject.GType<Sysroot>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -8093,51 +7541,41 @@ export namespace OSTree {
         $signals: Sysroot.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Sysroot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: Gio.File | null): Sysroot;
+        static ["new"](path: (Gio.File | null)): Sysroot;
 
         static new_default(): Sysroot;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Sysroot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sysroot.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Sysroot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Sysroot.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Sysroot.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Sysroot.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Sysroot.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Sysroot.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Sysroot.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Sysroot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Sysroot.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Sysroot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * @param deployment_path A deployment path
          */
         static get_deployment_origin_path(deployment_path: Gio.File): Gio.File;
 
         // Methods
-
         /**
          * Delete any state that resulted from a partially completed
          * transaction, such as incomplete deployments.
          * @param cancellable Cancellable
          */
-        cleanup(cancellable: Gio.Cancellable | null): boolean;
+        cleanup(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Check out deployment tree with revision `revision`, performing a 3
          * way merge with `provided_merge_deployment` for configuration.
@@ -8148,14 +7586,8 @@ export namespace OSTree {
          * @param override_kernel_argv Use these as kernel arguments; if `null`, inherit options from provided_merge_deployment
          * @param cancellable Cancellable
          */
-        deploy_tree(
-            osname: string | null,
-            revision: string,
-            origin: GLib.KeyFile | null,
-            provided_merge_deployment: Deployment | null,
-            override_kernel_argv: string[] | null,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, Deployment];
+        deploy_tree(osname: (string | null), revision: string, origin: (GLib.KeyFile | null), provided_merge_deployment: (Deployment | null), override_kernel_argv: (string[] | null), cancellable: (Gio.Cancellable | null)): [boolean, Deployment];
+
         /**
          * Entirely replace the kernel arguments of `deployment` with the
          * values in `new_kargs`.
@@ -8163,52 +7595,51 @@ export namespace OSTree {
          * @param new_kargs Replace deployment's kernel arguments
          * @param cancellable Cancellable
          */
-        deployment_set_kargs(deployment: Deployment, new_kargs: string[], cancellable: Gio.Cancellable | null): boolean;
+        deployment_set_kargs(deployment: Deployment, new_kargs: string[], cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * By default, deployment directories are not mutable.  This function
          * will allow making them temporarily mutable, for example to allow
          * layering additional non-OSTree content.
          * @param deployment A deployment
          * @param is_mutable Whether or not deployment's files can be changed
-         * @param cancellable
+         * @param cancellable 
          */
-        deployment_set_mutable(
-            deployment: Deployment,
-            is_mutable: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        deployment_set_mutable(deployment: Deployment, is_mutable: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Configure the target deployment `deployment` such that it
          * is writable.  There are multiple modes, essentially differing
          * in whether or not any changes persist across reboot.
-         *
+         * 
          * The `OSTREE_DEPLOYMENT_UNLOCKED_HOTFIX` state is persistent
          * across reboots.
          * @param deployment Deployment
          * @param unlocked_state Transition to this unlocked state
          * @param cancellable Cancellable
          */
-        deployment_unlock(
-            deployment: Deployment,
-            unlocked_state: DeploymentUnlockedState,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        deployment_unlock(deployment: Deployment, unlocked_state: DeploymentUnlockedState, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Ensure that `self` is set up as a valid rootfs, by creating
          * /ostree/repo, among other things.
          * @param cancellable Cancellable
          */
-        ensure_initialized(cancellable: Gio.Cancellable | null): boolean;
+        ensure_initialized(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * @returns The currently booted deployment, or `null` if none
          */
         get_booted_deployment(): Deployment;
+
         get_bootversion(): number;
+
         /**
          * @param deployment A deployment
          * @returns Path to deployment root directory
          */
         get_deployment_directory(deployment: Deployment): Gio.File;
+
         /**
          * Note this function only returns a *relative* path - if you want
          * to access, it, you must either use fd-relative api such as `openat()`,
@@ -8217,10 +7648,12 @@ export namespace OSTree {
          * @returns Path to deployment root directory, relative to sysroot
          */
         get_deployment_dirpath(deployment: Deployment): string;
+
         /**
          * @returns Ordered list of deployments
          */
         get_deployments(): Deployment[];
+
         /**
          * Access a file descriptor that refers to the root directory of this
          * sysroot.  `ostree_sysroot_load()` must have been invoked prior to
@@ -8228,23 +7661,28 @@ export namespace OSTree {
          * @returns A file descriptor valid for the lifetime of `self`
          */
         get_fd(): number;
+
         /**
          * Find the deployment to use as a configuration merge source; this is
          * the first one in the current deployment list which matches osname.
          * @param osname Operating system group
          * @returns Configuration merge deployment
          */
-        get_merge_deployment(osname: string | null): Deployment;
+        get_merge_deployment(osname: (string | null)): Deployment;
+
         /**
          * @returns Path to rootfs
          */
         get_path(): Gio.File;
+
         /**
          * Retrieve the OSTree repository in sysroot `self`.
          * @param cancellable Cancellable
          */
-        get_repo(cancellable: Gio.Cancellable | null): [boolean, Repo];
+        get_repo(cancellable: (Gio.Cancellable | null)): [boolean, Repo];
+
         get_subbootversion(): number;
+
         /**
          * Initialize the directory structure for an "osname", which is a
          * group of operating system deployments, with a shared `/var`.  One
@@ -8252,72 +7690,79 @@ export namespace OSTree {
          * @param osname Name group of operating system checkouts
          * @param cancellable Cancellable
          */
-        init_osname(osname: string, cancellable: Gio.Cancellable | null): boolean;
+        init_osname(osname: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Load deployment list, bootversion, and subbootversion from the
          * rootfs `self`.
          * @param cancellable Cancellable
          */
-        load(cancellable: Gio.Cancellable | null): boolean;
+        load(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
-         * @param out_changed
-         * @param cancellable
+         * @param out_changed 
+         * @param cancellable 
          */
-        load_if_changed(out_changed: boolean, cancellable: Gio.Cancellable | null): boolean;
+        load_if_changed(out_changed: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Acquire an exclusive multi-process write lock for `self`.  This call
          * blocks until the lock has been acquired.  The lock is not
          * reentrant.
-         *
+         * 
          * Release the lock with `ostree_sysroot_unlock()`.  The lock will also
          * be released if `self` is deallocated.
          */
         lock(): boolean;
+
         /**
          * An asynchronous version of `ostree_sysroot_lock()`.
          * @param cancellable Cancellable
          */
-        lock_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * An asynchronous version of `ostree_sysroot_lock()`.
-         * @param cancellable Cancellable
-         * @param callback Callback
-         */
-        lock_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        lock_async(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * An asynchronous version of `ostree_sysroot_lock()`.
          * @param cancellable Cancellable
          * @param callback Callback
          */
-        lock_async(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        lock_async(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * An asynchronous version of `ostree_sysroot_lock()`.
+         * @param cancellable Cancellable
+         * @param callback Callback
+         */
+        lock_async(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Call when `ostree_sysroot_lock_async()` is ready.
          * @param result Result
          */
         lock_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * @param refspec A refspec
          * @returns A new config file which sets `refspec` as an origin
          */
         origin_new_from_refspec(refspec: string): GLib.KeyFile;
+
         /**
          * Like `ostree_sysroot_cleanup()` in that it cleans up incomplete deployments
          * and old boot versions, but does NOT prune the repository.
          * @param cancellable Cancellable
          */
-        prepare_cleanup(cancellable: Gio.Cancellable | null): boolean;
+        prepare_cleanup(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Prepend `new_deployment` to the list of deployments, commit, and
          * cleanup.  By default, all other deployments for the given `osname`
          * except the merge deployment and the booted deployment will be
          * garbage collected.
-         *
+         * 
          * If {@link OSTree.SysrootSimpleWriteDeploymentFlags.RETAIN} is
          * specified, then all current deployments will be kept.
-         *
+         * 
          * If {@link OSTree.SysrootSimpleWriteDeploymentFlags.NOT_DEFAULT} is
          * specified, then instead of prepending, the new deployment will be
          * added right after the booted or merge deployment, instead of first.
@@ -8327,45 +7772,44 @@ export namespace OSTree {
          * @param flags Flags controlling behavior
          * @param cancellable Cancellable
          */
-        simple_write_deployment(
-            osname: string | null,
-            new_deployment: Deployment,
-            merge_deployment: Deployment | null,
-            flags: SysrootSimpleWriteDeploymentFlags,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        simple_write_deployment(osname: (string | null), new_deployment: Deployment, merge_deployment: (Deployment | null), flags: SysrootSimpleWriteDeploymentFlags, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Try to acquire an exclusive multi-process write lock for `self`.  If
          * another process holds the lock, this function will return
          * immediately, setting `out_acquired` to `false`, and returning `true`
          * (and no error).
-         *
+         * 
          * Release the lock with `ostree_sysroot_unlock()`.  The lock will also
          * be released if `self` is deallocated.
          */
         try_lock(): [boolean, boolean];
+
         /**
          * Release any resources such as file descriptors referring to the
          * root directory of this sysroot.  Normally, those resources are
          * cleared by finalization, but in garbage collected languages that
          * may not be predictable.
-         *
+         * 
          * This undoes the effect of `ostree_sysroot_load()`.
          */
         unload(): void;
+
         /**
          * Clear the lock previously acquired with `ostree_sysroot_lock()`.  It
          * is safe to call this function if the lock has not been previously
          * acquired.
          */
         unlock(): void;
+
         /**
          * Assuming `new_deployments` have already been deployed in place on
          * disk, atomically update bootloader configuration.
          * @param new_deployments List of new deployments
          * @param cancellable Cancellable
          */
-        write_deployments(new_deployments: Deployment[], cancellable: Gio.Cancellable | null): boolean;
+        write_deployments(new_deployments: Deployment[], cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Immediately replace the origin file of the referenced `deployment`
          * with the contents of `new_origin`.  If `new_origin` is `null`,
@@ -8374,23 +7818,19 @@ export namespace OSTree {
          * @param new_origin Origin content
          * @param cancellable Cancellable
          */
-        write_origin_file(
-            deployment: Deployment,
-            new_origin: GLib.KeyFile | null,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        write_origin_file(deployment: Deployment, new_origin: (GLib.KeyFile | null), cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace SysrootUpgrader {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::osname': (pspec: GObject.ParamSpec) => void;
-            'notify::sysroot': (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::osname": (pspec: GObject.ParamSpec) => void;
+            "notify::sysroot": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
             flags: SysrootUpgraderFlags;
             osname: string;
@@ -8405,15 +7845,16 @@ export namespace OSTree {
         static $gtype: GObject.GType<SysrootUpgrader>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get flags(): SysrootUpgraderFlags;
+
         /**
          * @construct-only
          */
         get osname(): string;
+
         /**
          * @construct-only
          */
@@ -8429,49 +7870,30 @@ export namespace OSTree {
         $signals: SysrootUpgrader.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SysrootUpgrader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](sysroot: Sysroot, cancellable: Gio.Cancellable | null): SysrootUpgrader;
+        static ["new"](sysroot: Sysroot, cancellable: (Gio.Cancellable | null)): SysrootUpgrader;
 
-        static new_for_os(
-            sysroot: Sysroot,
-            osname: string | null,
-            cancellable: Gio.Cancellable | null,
-        ): SysrootUpgrader;
+        static new_for_os(sysroot: Sysroot, osname: (string | null), cancellable: (Gio.Cancellable | null)): SysrootUpgrader;
 
-        static new_for_os_with_flags(
-            sysroot: Sysroot,
-            osname: string | null,
-            flags: SysrootUpgraderFlags,
-            cancellable: Gio.Cancellable | null,
-        ): SysrootUpgrader;
+        static new_for_os_with_flags(sysroot: Sysroot, osname: (string | null), flags: SysrootUpgraderFlags, cancellable: (Gio.Cancellable | null)): SysrootUpgrader;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SysrootUpgrader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SysrootUpgrader.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SysrootUpgrader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SysrootUpgrader.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SysrootUpgrader.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SysrootUpgrader.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SysrootUpgrader.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SysrootUpgrader.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SysrootUpgrader.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SysrootUpgrader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SysrootUpgrader.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SysrootUpgrader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Check that the timestamp on `to_rev` is equal to or newer than
          * `from_rev`.  This protects systems against man-in-the-middle
@@ -8483,30 +7905,33 @@ export namespace OSTree {
         static check_timestamps(repo: Repo, from_rev: string, to_rev: string): boolean;
 
         // Methods
-
         /**
          * Write the new deployment to disk, perform a configuration merge
          * with /etc, and update the bootloader configuration.
          * @param cancellable Cancellable
          */
-        deploy(cancellable: Gio.Cancellable | null): boolean;
+        deploy(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * @returns A copy of the origin file, or `null` if unknown
          */
         dup_origin(): GLib.KeyFile;
+
         /**
          * @returns The origin file, or `null` if unknown
          */
         get_origin(): GLib.KeyFile;
+
         /**
          * @returns A one-line descriptive summary of the origin, or `null` if unknown
          */
         get_origin_description(): string;
+
         /**
          * Perform a pull from the origin.  First check if the ref has
          * changed, if so download the linked objects, and store the updated
          * ref locally.  Then `out_changed` will be `true`.
-         *
+         * 
          * If the origin remote is unchanged, `out_changed` will be set to
          * `false`.
          * @param flags Flags controlling pull behavior
@@ -8514,70 +7939,61 @@ export namespace OSTree {
          * @param progress Progress
          * @param cancellable Cancellable
          */
-        pull(
-            flags: RepoPullFlags,
-            upgrader_flags: SysrootUpgraderPullFlags,
-            progress: AsyncProgress | null,
-            cancellable: Gio.Cancellable | null,
-        ): [boolean, boolean];
+        pull(flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: (AsyncProgress | null), cancellable: (Gio.Cancellable | null)): [boolean, boolean];
+
         /**
          * Like `ostree_sysroot_upgrader_pull()`, but allows retrieving just a
          * subpath of the tree.  This can be used to download metadata files
          * from inside the tree such as package databases.
-         * @param dir_to_pull
-         * @param flags
-         * @param upgrader_flags
-         * @param progress
-         * @param out_changed
-         * @param cancellable
+         * @param dir_to_pull 
+         * @param flags 
+         * @param upgrader_flags 
+         * @param progress 
+         * @param out_changed 
+         * @param cancellable 
          */
-        pull_one_dir(
-            dir_to_pull: string,
-            flags: RepoPullFlags,
-            upgrader_flags: SysrootUpgraderPullFlags,
-            progress: AsyncProgress,
-            out_changed: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): boolean;
+        pull_one_dir(dir_to_pull: string, flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: AsyncProgress, out_changed: boolean, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Replace the origin with `origin`.
          * @param origin The new origin
          * @param cancellable Cancellable
          */
-        set_origin(origin: GLib.KeyFile | null, cancellable: Gio.Cancellable | null): boolean;
+        set_origin(origin: (GLib.KeyFile | null), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -8587,40 +8003,41 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -8630,19 +8047,22 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AsyncProgressClass = typeof AsyncProgress;
+
     /**
      * @gir-type Struct
      */
     abstract class Bootloader {
         static $gtype: GObject.GType<Bootloader>;
     }
+
 
     /**
      * @gir-type Struct
@@ -8651,12 +8071,14 @@ export namespace OSTree {
         static $gtype: GObject.GType<BootloaderGrub2>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class BootloaderInterface {
         static $gtype: GObject.GType<BootloaderInterface>;
     }
+
 
     /**
      * @gir-type Struct
@@ -8665,6 +8087,7 @@ export namespace OSTree {
         static $gtype: GObject.GType<BootloaderSyslinux>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -8672,16 +8095,19 @@ export namespace OSTree {
         static $gtype: GObject.GType<BootloaderUboot>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ChecksumInputStreamClass = typeof ChecksumInputStream;
+
     /**
      * @gir-type Struct
      */
     abstract class ChecksumInputStreamPrivate {
         static $gtype: GObject.GType<ChecksumInputStreamPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -8690,6 +8116,7 @@ export namespace OSTree {
         static $gtype: GObject.GType<CmdPrivateVTable>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -8697,20 +8124,26 @@ export namespace OSTree {
         static $gtype: GObject.GType<DiffItem>;
 
         // Fields
-
         refcount: number;
+
         src: Gio.File;
+
         target: Gio.File;
+
         src_info: Gio.FileInfo;
+
         target_info: Gio.FileInfo;
+
         src_checksum: string;
+
         target_checksum: string;
 
         // Methods
-
         ref(): DiffItem;
+
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -8719,12 +8152,14 @@ export namespace OSTree {
         static $gtype: GObject.GType<GpgVerifier>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class LibarchiveInputStream {
         static $gtype: GObject.GType<LibarchiveInputStream>;
     }
+
 
     /**
      * @gir-type Struct
@@ -8733,12 +8168,14 @@ export namespace OSTree {
         static $gtype: GObject.GType<LibarchiveInputStreamClass>;
     }
 
+
     /**
      * @gir-type Struct
      */
     abstract class LibarchiveInputStreamPrivate {
         static $gtype: GObject.GType<LibarchiveInputStreamPrivate>;
     }
+
 
     /**
      * Zlib decompression
@@ -8748,12 +8185,14 @@ export namespace OSTree {
         static $gtype: GObject.GType<LzmaCompressor>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class LzmaCompressorClass {
         static $gtype: GObject.GType<LzmaCompressorClass>;
     }
+
 
     /**
      * @gir-type Struct
@@ -8762,6 +8201,7 @@ export namespace OSTree {
         static $gtype: GObject.GType<LzmaDecompressor>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -8769,10 +8209,12 @@ export namespace OSTree {
         static $gtype: GObject.GType<LzmaDecompressorClass>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MutableTreeClass = typeof MutableTree;
+
     /**
      * @gir-type Struct
      */
@@ -8780,9 +8222,9 @@ export namespace OSTree {
         static $gtype: GObject.GType<MutableTreeIter>;
 
         // Fields
-
         in_files: boolean;
     }
+
 
     /**
      * An extensible options structure controlling checkout.  Ensure that
@@ -8796,18 +8238,27 @@ export namespace OSTree {
         static $gtype: GObject.GType<RepoCheckoutAtOptions>;
 
         // Fields
-
         mode: RepoCheckoutMode;
+
         overwrite_mode: RepoCheckoutOverwriteMode;
+
         enable_uncompressed_cache: boolean;
+
         enable_fsync: boolean;
+
         process_whiteouts: boolean;
+
         no_copy_fallback: boolean;
+
         unused_bools: boolean[];
+
         subpath: string;
+
         unused_ints: number[];
+
         unused_ptrs: any[];
     }
+
 
     /**
      * A structure allowing control over commits.
@@ -8817,32 +8268,32 @@ export namespace OSTree {
         static $gtype: GObject.GType<RepoCommitModifier>;
 
         // Constructors
+        constructor(flags: RepoCommitModifierFlags, commit_filter: (RepoCommitFilter | null));
 
-        constructor(flags: RepoCommitModifierFlags, commit_filter: RepoCommitFilter | null);
-
-        static ['new'](flags: RepoCommitModifierFlags, commit_filter: RepoCommitFilter | null): RepoCommitModifier;
+        static ["new"](flags: RepoCommitModifierFlags, commit_filter: (RepoCommitFilter | null)): RepoCommitModifier;
 
         // Methods
-
         ref(): RepoCommitModifier;
+
         /**
          * See the documentation for
          * `ostree_repo_devino_cache_new()`.  This function can
          * then be used for later calls to
          * `ostree_repo_write_directory_to_mtree()` to optimize commits.
-         *
+         * 
          * Note if your process has multiple writers, you should use separate
          * `OSTreeRepo` instances if you want to also use this API.
-         *
+         * 
          * This function will add a reference to `cache` without copying - you
          * should avoid further mutation of the cache.
          * @param cache A hash table caching device,inode to checksums
          */
         set_devino_cache(cache: RepoDevInoCache): void;
+
         /**
          * If `policy` is non-`null`, use it to look up labels to use for
          * "security.selinux" extended attributes.
-         *
+         * 
          * Note that any policy specified this way operates in addition to any
          * extended attributes provided via
          * `ostree_repo_commit_modifier_set_xattr_callback()`.  However if both
@@ -8850,7 +8301,8 @@ export namespace OSTree {
          * policy wins.
          * @param sepolicy Policy to use for labeling
          */
-        set_sepolicy(sepolicy: SePolicy | null): void;
+        set_sepolicy(sepolicy: (SePolicy | null)): void;
+
         /**
          * If set, this function should return extended attributes to use for
          * the given path.  This is useful for things like ACLs and SELinux,
@@ -8859,8 +8311,10 @@ export namespace OSTree {
          * @param callback Function to be invoked, should return extended attributes for path
          */
         set_xattr_callback(callback: RepoCommitModifierXattrCallback): void;
+
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -8869,43 +8323,43 @@ export namespace OSTree {
         static $gtype: GObject.GType<RepoCommitTraverseIter>;
 
         // Fields
-
         initialized: boolean;
+
         dummy: any[];
+
         dummy_checksum_data: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                initialized: boolean;
-                dummy: any[];
-                dummy_checksum_data: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            initialized: boolean;
+            dummy: any[];
+            dummy_checksum_data: number[];
+        }>);
 
         // Static methods
-
         /**
-         * @param p
+         * @param p 
          */
-        static cleanup(p: any | null): void;
+        static cleanup(p: (any | null)): void;
 
         // Methods
-
         clear(): void;
+
         /**
          * Return information on the current directory.  This function may
          * only be called if {@link OSTree.RepoCommitIterResult.DIR} was returned
          * from `ostree_repo_commit_traverse_iter_next()`.
          */
         get_dir(): [string, string, string];
+
         /**
          * Return information on the current file.  This function may only be
          * called if {@link OSTree.RepoCommitIterResult.FILE} was returned from
          * `ostree_repo_commit_traverse_iter_next()`.
          */
         get_file(): [string, string];
+
         /**
          * Initialize (in place) an iterator over the root of a commit object.
          * @param repo A repo
@@ -8913,6 +8367,7 @@ export namespace OSTree {
          * @param flags Flags
          */
         init_commit(repo: Repo, commit: GLib.Variant, flags: RepoCommitTraverseFlags): boolean;
+
         /**
          * Initialize (in place) an iterator over a directory tree.
          * @param repo A repo
@@ -8920,6 +8375,7 @@ export namespace OSTree {
          * @param flags Flags
          */
         init_dirtree(repo: Repo, dirtree: GLib.Variant, flags: RepoCommitTraverseFlags): boolean;
+
         /**
          * Step the interator to the next item.  Files will be returned first,
          * then subdirectories.  Call this in a loop; upon encountering
@@ -8929,14 +8385,15 @@ export namespace OSTree {
          * data for that directory.  Similarly, if
          * {@link OSTree.RepoCommitIterResult.FILE} is returned, call
          * `ostree_repo_commit_traverse_iter_get_file()`.
-         *
+         * 
          * If {@link OSTree.RepoCommitIterResult.ERROR} is returned, it is a
          * program error to call any further API on `iter` except for
          * `ostree_repo_commit_traverse_iter_clear()`.
          * @param cancellable Cancellable
          */
-        next(cancellable: Gio.Cancellable | null): RepoCommitIterResult;
+        next(cancellable: (Gio.Cancellable | null)): RepoCommitIterResult;
     }
+
 
     /**
      * @gir-type Struct
@@ -8946,20 +8403,24 @@ export namespace OSTree {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): RepoDevInoCache;
+        }>);
+
+        static ["new"](): RepoDevInoCache;
 
         // Methods
-
         ref(): RepoDevInoCache;
+
         unref(): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type RepoFileClass = typeof RepoFile;
+
     /**
      * @gir-type Struct
      */
@@ -8967,12 +8428,14 @@ export namespace OSTree {
         static $gtype: GObject.GType<RepoFileEnumerator>;
     }
 
+
     /**
      * @gir-type Struct
      */
     class RepoFileEnumeratorClass {
         static $gtype: GObject.GType<RepoFileEnumeratorClass>;
     }
+
 
     /**
      * A list of statistics for each transaction that may be
@@ -8983,17 +8446,25 @@ export namespace OSTree {
         static $gtype: GObject.GType<RepoTransactionStats>;
 
         // Fields
-
         metadata_objects_total: number;
+
         metadata_objects_written: number;
+
         content_objects_total: number;
+
         content_objects_written: number;
+
         content_bytes_written: number;
+
         padding1: number;
+
         padding2: number;
+
         padding3: number;
+
         padding4: number;
     }
+
 
     /**
      * @gir-type Struct
@@ -9002,13 +8473,17 @@ export namespace OSTree {
         static $gtype: GObject.GType<RollsumMatches>;
 
         // Fields
-
         crcmatches: number;
+
         bufmatches: number;
+
         total: number;
+
         match_size: number;
+
         matches: any[];
     }
+
 
     /**
      * @gir-type Struct
@@ -9017,6 +8492,7 @@ export namespace OSTree {
         static $gtype: GObject.GType<TlsCertInteraction>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -9024,11 +8500,13 @@ export namespace OSTree {
         static $gtype: GObject.GType<TlsCertInteractionClass>;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

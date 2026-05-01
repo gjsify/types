@@ -1,3 +1,4 @@
+
 import type GLib20 from '@girs/glib-2.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

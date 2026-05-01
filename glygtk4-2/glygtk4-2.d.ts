@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -24,9 +25,11 @@ import type freetype2 from '@girs/freetype2-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 
 export namespace GlyGtk4 {
+
     /**
      * GlyGtk4-2
      */
+
 
     /**
      * Gets the actual image from a frame. See the {@link Gly.Loader} docs
@@ -36,11 +39,13 @@ export namespace GlyGtk4 {
      * @since 2.0
      */
     function frame_get_texture(frame: Gly.Frame): Gdk.Texture;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

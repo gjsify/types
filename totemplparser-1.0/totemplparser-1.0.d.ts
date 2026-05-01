@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace TotemPlParser {
+
     /**
      * TotemPlParser-1.0
      */
+
 
     /**
      * Allows you to differentiate between different
@@ -29,28 +32,28 @@ export namespace TotemPlParser {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Error attempting to open a disc device when no disc is present
          */
         static NO_DISC: number;
+
         /**
          * An attempted mount operation failed
          */
         static MOUNT_FAILED: number;
+
         /**
          * Playlist to be saved is empty
          */
         static EMPTY_PLAYLIST: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -87,6 +90,7 @@ export namespace TotemPlParser {
         CANCELLED,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -121,38 +125,49 @@ export namespace TotemPlParser {
         IRIVER_PLA,
     }
 
+
     const PARSER_CONTENT_RATING_CLEAN: string;
+
     const PARSER_CONTENT_RATING_EXPLICIT: string;
+
     const PARSER_CONTENT_RATING_UNRATED: string;
+
     /**
      * Metadata field for an entry's abstract text.
      */
     const PARSER_FIELD_ABSTRACT: string;
+
     /**
      * Metadata field for an entry's album.
      */
     const PARSER_FIELD_ALBUM: string;
+
     /**
      * Metadata field for an entry's default audio-track selection. The default
      * track is defined as NULL. Note that the value is sent as a string.
      */
     const PARSER_FIELD_AUDIO_TRACK: string;
+
     /**
      * Metadata field for an entry's author/composer/director.
      */
     const PARSER_FIELD_AUTHOR: string;
+
     /**
      * Metadata field for an entry's "autoplay" flag, which is `true` if the entry should play automatically.
      */
     const PARSER_FIELD_AUTOPLAY: string;
+
     /**
      * Metadata field for an entry's base path.
      */
     const PARSER_FIELD_BASE: string;
+
     /**
      * Metadata field for an entry's contact details for the webmaster.
      */
     const PARSER_FIELD_CONTACT: string;
+
     /**
      * Metadata field for an entry's content rating. It is
      * `TOTEM_PL_PARSER_CONTENT_RATING_CLEAN` for clean content,
@@ -161,120 +176,150 @@ export namespace TotemPlParser {
      * rated.
      */
     const PARSER_FIELD_CONTENT_RATING: string;
+
     /**
      * Metadata field for an entry's content-type (usually a mime-type coming
      * from a web server).
      */
     const PARSER_FIELD_CONTENT_TYPE: string;
+
     /**
      * Metadata field for an entry's copyright line.
      */
     const PARSER_FIELD_COPYRIGHT: string;
+
     /**
      * Metadata field for an entry's description.
      */
     const PARSER_FIELD_DESCRIPTION: string;
+
     /**
      * Metadata field for an entry's download URI. Only used if an alternate download
      * location is available for the entry.
      * @since 2.26
      */
     const PARSER_FIELD_DOWNLOAD_URI: string;
+
     /**
      * Metadata field for an entry's playback duration, which should be parsed using `totem_pl_parser_parse_duration()`.
      */
     const PARSER_FIELD_DURATION: string;
+
     /**
      * Metadata field for an entry's playback duration, in milliseconds. It's only used when an entry's
      * duration is available in that format, so one would get either the `TOTEM_PL_PARSER_FIELD_DURATION`
      * or `TOTEM_PL_PARSER_FIELD_DURATION_MS` as metadata.
      */
     const PARSER_FIELD_DURATION_MS: string;
+
     /**
      * Metadata field for an entry's playback end time.
      */
     const PARSER_FIELD_ENDTIME: string;
+
     /**
      * Metadata field for an entry's filesize in bytes. This is only advisory, and can sometimes not match the actual filesize of the stream.
      */
     const PARSER_FIELD_FILESIZE: string;
+
     /**
      * Metadata field for an entry's primary genre. This is a string of
      * the form 'Genre1' or 'Genre1/SubGenre1".
      */
     const PARSER_FIELD_GENRE: string;
+
     /**
      * Metadata field for an entry's full genre. This is a concatenated
      * string of the form 'Genre1/SubGenre1,Genre2/SubGenre2" etc.
      */
     const PARSER_FIELD_GENRES: string;
+
     /**
      * Metadata field for an entry's identifier. Its use is dependent on the format
      * of the playlist parsed, and its origin.
      */
     const PARSER_FIELD_ID: string;
+
     /**
      * Metadata field for an entry's thumbnail image URI.
      * @since 2.26
      */
     const PARSER_FIELD_IMAGE_URI: string;
+
     /**
      * Metadata field used to tell the calling code that the parsing of a playlist
      * started. It is only `true` for the metadata passed to {@link TotemPlParser.Parser.SignalSignatures.playlist_started | TotemPlParser.Parser::playlist-started} or
      * {@link TotemPlParser.Parser.SignalSignatures.playlist_ended | TotemPlParser.Parser::playlist-ended} signal handlers.
      */
     const PARSER_FIELD_IS_PLAYLIST: string;
+
     /**
      * Metadata field for an entry's audio language.
      */
     const PARSER_FIELD_LANGUAGE: string;
+
     /**
      * Metadata field for an entry's "more info" URI.
      */
     const PARSER_FIELD_MOREINFO: string;
+
     /**
      * Metadata field for an entry's status in a playlist. This is usually
      * used when saving the state of an on-going playlist.
      */
     const PARSER_FIELD_PLAYING: string;
+
     /**
      * Metadata field for an entry's publication date, which should be parsed using `totem_pl_parser_parse_date()`.
      */
     const PARSER_FIELD_PUB_DATE: string;
+
     /**
      * Metadata field for an entry's preferred screen size.
      */
     const PARSER_FIELD_SCREENSIZE: string;
+
     /**
      * Metadata field for an entry's playback start time, which should be parsed using `totem_pl_parser_parse_duration()`.
      */
     const PARSER_FIELD_STARTTIME: string;
+
     /**
      * The URI of the entry's subtitle file.
      */
     const PARSER_FIELD_SUBTITLE_URI: string;
+
     /**
      * Metadata field for an entry's displayable title.
      */
     const PARSER_FIELD_TITLE: string;
+
     /**
      * Metadata field for an entry's preferred UI mode.
      */
     const PARSER_FIELD_UI_MODE: string;
+
     /**
      * Metadata field for an entry's URI.
      * @since 2.26
      */
     const PARSER_FIELD_URI: string;
+
     /**
      * Metadata field for an entry's playback volume.
      */
     const PARSER_FIELD_VOLUME: string;
+
     const PARSER_VERSION_MAJOR: number;
+
     const PARSER_VERSION_MICRO: number;
+
     const PARSER_VERSION_MINOR: number;
+
     function parser_error_quark(): GLib.Quark;
+
     function parser_metadata_get_type(): GObject.GType;
+
     namespace Parser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -283,7 +328,7 @@ export namespace TotemPlParser {
              * @signal
              * @run-last
              */
-            'entry-parsed': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            "entry-parsed": (arg0: string, arg1: GLib.HashTable<string, string>) => void;
             /**
              * The ::playlist-ended signal is emitted when a playlist is finished
              * parsing. It is only called when {@link TotemPlParser.Parser.SignalSignatures.playlist_started | TotemPlParser.Parser::playlist-started}
@@ -291,7 +336,7 @@ export namespace TotemPlParser {
              * @signal
              * @run-last
              */
-            'playlist-ended': (arg0: string) => void;
+            "playlist-ended": (arg0: string) => void;
             /**
              * The ::playlist-started signal is emitted when a playlist parsing has
              * started. This signal isn't emitted for all types of playlists, but
@@ -300,15 +345,14 @@ export namespace TotemPlParser {
              * @signal
              * @run-last
              */
-            'playlist-started': (arg0: string, arg1: GLib.HashTable<string, string>) => void;
-            'notify::debug': (pspec: GObject.ParamSpec) => void;
-            'notify::disable-unsafe': (pspec: GObject.ParamSpec) => void;
-            'notify::force': (pspec: GObject.ParamSpec) => void;
-            'notify::recurse': (pspec: GObject.ParamSpec) => void;
+            "playlist-started": (arg0: string, arg1: GLib.HashTable<string, string>) => void;
+            "notify::debug": (pspec: GObject.ParamSpec) => void;
+            "notify::disable-unsafe": (pspec: GObject.ParamSpec) => void;
+            "notify::force": (pspec: GObject.ParamSpec) => void;
+            "notify::recurse": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             debug: boolean;
             disable_unsafe: boolean;
@@ -326,13 +370,13 @@ export namespace TotemPlParser {
         static $gtype: GObject.GType<Parser>;
 
         // Properties
-
         /**
          * If `true`, the parser will output debug information.
          * @default false
          */
         get debug(): boolean;
         set debug(val: boolean);
+
         /**
          * If `true`, the parser will not parse unsafe locations, such as local devices
          * and local files if the playlist isn't local. This is useful if the library
@@ -341,6 +385,7 @@ export namespace TotemPlParser {
          */
         get disable_unsafe(): boolean;
         set disable_unsafe(val: boolean);
+
         /**
          * If `true`, the parser will not parse unsafe locations, such as local devices
          * and local files if the playlist isn't local. This is useful if the library
@@ -349,6 +394,7 @@ export namespace TotemPlParser {
          */
         get disableUnsafe(): boolean;
         set disableUnsafe(val: boolean);
+
         /**
          * If `true`, the parser will attempt to parse a playlist, even if it
          * appears to be unsupported (usually because of its filename extension).
@@ -356,6 +402,7 @@ export namespace TotemPlParser {
          */
         get force(): boolean;
         set force(val: boolean);
+
         /**
          * If `true`, the parser will recursively fetch playlists linked to by
          * the current one.
@@ -374,43 +421,34 @@ export namespace TotemPlParser {
         $signals: Parser.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Parser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Parser;
+        static ["new"](): Parser;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Parser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Parser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Parser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Checks if the first `len` bytes of `data` can be parsed.
          * @param data the data to check for parsability
          * @param len the length of data to check
          * @param debug `true` if debug statements should be printed
          */
-        static can_parse_from_data(data: string, len: bigint | number, debug: boolean): boolean;
+        static can_parse_from_data(data: string, len: (bigint | number), debug: boolean): boolean;
+
         /**
          * Checks if the file can be parsed. Files can be parsed if:
          * <itemizedlist>
@@ -421,6 +459,7 @@ export namespace TotemPlParser {
          * @param debug `true` if debug statements should be printed
          */
         static can_parse_from_filename(filename: string, debug: boolean): boolean;
+
         /**
          * Checks if the remote URI can be parsed. Note that this does
          * not actually try to open the remote URI, or deduce its mime-type
@@ -429,6 +468,7 @@ export namespace TotemPlParser {
          * @param debug `true` if debug statements should be printed
          */
         static can_parse_from_uri(uri: string, debug: boolean): boolean;
+
         /**
          * Parses the given date string and returns it as a <type>gint64</type>
          * denoting the date in seconds since the UNIX Epoch.
@@ -436,6 +476,7 @@ export namespace TotemPlParser {
          * @param debug `true` if debug statements should be printed
          */
         static parse_date(date_str: string, debug: boolean): number;
+
         /**
          * Parses the given duration string and returns it as a <type>gint64</type>
          * denoting the duration in seconds.
@@ -445,98 +486,80 @@ export namespace TotemPlParser {
         static parse_duration(duration: string, debug: boolean): number;
 
         // Virtual methods
-
         /**
-         * @param uri
-         * @param metadata
+         * @param uri 
+         * @param metadata 
          * @virtual
          */
         vfunc_entry_parsed(uri: string, metadata: GLib.HashTable<any, any>): void;
+
         /**
-         * @param uri
+         * @param uri 
          * @virtual
          */
         vfunc_playlist_ended(uri: string): void;
+
         /**
-         * @param uri
-         * @param metadata
+         * @param uri 
+         * @param metadata 
          * @virtual
          */
         vfunc_playlist_started(uri: string, metadata: GLib.HashTable<any, any>): void;
 
         // Methods
-
         /**
          * Adds a glob to the list of mimetypes to ignore, so that
          * any URI of that glob is ignored during playlist parsing.
          * @param glob a glob to ignore
          */
         add_ignored_glob(glob: string): void;
+
         /**
          * Adds a mimetype to the list of mimetypes to ignore, so that
          * any URI of that mimetype is ignored during playlist parsing.
          * @param mimetype the mimetype to ignore
          */
         add_ignored_mimetype(mimetype: string): void;
+
         /**
          * Adds a scheme to the list of schemes to ignore, so that
          * any URI using that scheme is ignored during playlist parsing.
          * @param scheme the scheme to ignore
          */
         add_ignored_scheme(scheme: string): void;
+
         /**
          * Parses a playlist given by the absolute URI `uri`. This method is
          * synchronous, and will block on (e.g.) network requests to slow
          * servers. `totem_pl_parser_parse_async()` is recommended instead.
-         *
+         * 
          * Return values are as `totem_pl_parser_parse_with_base()`.
          * @param uri the URI of the playlist to parse
          * @param fallback `true` if the parser should add the playlist URI to the end of the playlist on parse failure
          * @returns a {@link TotemPlParser.ParserResult}
          */
         parse(uri: string, fallback: boolean): ParserResult;
+
         /**
          * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
          * when this function is called, so can safely be freed after this function returns.
-         *
+         * 
          * For more details, see `totem_pl_parser_parse()`, which is the synchronous version of this function.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call `totem_pl_parser_parse_finish()`
          * to get the results of the operation.
          * @param uri the URI of the playlist to parse
          * @param fallback `true` if the parser should add the playlist URI to the end of the playlist on parse failure
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          */
-        parse_async(
-            uri: string,
-            fallback: boolean,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<ParserResult>;
+        parse_async(uri: string, fallback: boolean, cancellable: (Gio.Cancellable | null)): globalThis.Promise<ParserResult>;
+
         /**
          * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
          * when this function is called, so can safely be freed after this function returns.
-         *
+         * 
          * For more details, see `totem_pl_parser_parse()`, which is the synchronous version of this function.
-         *
-         * When the operation is finished, `callback` will be called. You can then call `totem_pl_parser_parse_finish()`
-         * to get the results of the operation.
-         * @param uri the URI of the playlist to parse
-         * @param fallback `true` if the parser should add the playlist URI to the end of the playlist on parse failure
-         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when parsing is finished
-         */
-        parse_async(
-            uri: string,
-            fallback: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
-         * when this function is called, so can safely be freed after this function returns.
-         *
-         * For more details, see `totem_pl_parser_parse()`, which is the synchronous version of this function.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call `totem_pl_parser_parse_finish()`
          * to get the results of the operation.
          * @param uri the URI of the playlist to parse
@@ -544,22 +567,34 @@ export namespace TotemPlParser {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when parsing is finished
          */
-        parse_async(
-            uri: string,
-            fallback: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<ParserResult> | void;
+        parse_async(uri: string, fallback: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
+         * when this function is called, so can safely be freed after this function returns.
+         * 
+         * For more details, see `totem_pl_parser_parse()`, which is the synchronous version of this function.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call `totem_pl_parser_parse_finish()`
+         * to get the results of the operation.
+         * @param uri the URI of the playlist to parse
+         * @param fallback `true` if the parser should add the playlist URI to the end of the playlist on parse failure
+         * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when parsing is finished
+         */
+        parse_async(uri: string, fallback: boolean, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<ParserResult> | void);
+
         /**
          * Finishes an asynchronous playlist parsing operation started with `totem_pl_parser_parse_async()`
          * or `totem_pl_parser_parse_with_base_async()`.
-         *
+         * 
          * If parsing of the playlist is cancelled part-way through, {@link TotemPlParser.ParserResult.CANCELLED} is returned when
          * this function is called.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns a {@link TotemPlParser.ParserResult}
          */
         parse_finish(async_result: Gio.AsyncResult): ParserResult;
+
         /**
          * Parses a playlist given by the absolute URI `uri`, using
          * `base` to resolve relative paths where appropriate.
@@ -568,13 +603,14 @@ export namespace TotemPlParser {
          * @param fallback `true` if the parser should add the playlist URI to the end of the playlist on parse failure
          * @returns a {@link TotemPlParser.ParserResult}
          */
-        parse_with_base(uri: string, base: string | null, fallback: boolean): ParserResult;
+        parse_with_base(uri: string, base: (string | null), fallback: boolean): ParserResult;
+
         /**
          * Starts asynchronous parsing of a playlist given by the absolute URI `uri`, using `base` to resolve relative paths where appropriate.
          * `parser` and `uri` are both reffed/copied when this function is called, so can safely be freed after this function returns.
-         *
+         * 
          * For more details, see `totem_pl_parser_parse_with_base()`, which is the synchronous version of this function.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call `totem_pl_parser_parse_finish()`
          * to get the results of the operation.
          * @param uri the URI of the playlist to parse
@@ -583,18 +619,13 @@ export namespace TotemPlParser {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when parsing is finished
          */
-        parse_with_base_async(
-            uri: string,
-            base: string | null,
-            fallback: boolean,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        parse_with_base_async(uri: string, base: (string | null), fallback: boolean, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Writes the playlist held by `parser` and `playlist` out to the path
          * pointed by `dest`. The playlist is written in the format `type` and is
          * given the title `title`.
-         *
+         * 
          * If the `output` file is a directory the #G_IO_ERROR_IS_DIRECTORY error
          * will be returned, and if the file is some other form of non-regular file
          * then a #G_IO_ERROR_NOT_REGULAR_FILE error will be returned. Some file
@@ -602,10 +633,10 @@ export namespace TotemPlParser {
          * #G_IO_ERROR_INVALID_FILENAME error, and if the name is too long,
          * #G_IO_ERROR_FILENAME_TOO_LONG will be returned. Other errors are possible
          * too, and depend on what kind of filesystem the file is on.
-         *
+         * 
          * In extreme cases, a #G_IO_ERROR_INVALID_ARGUMENT error can be returned, if
          * parts of the playlist to be written are too long.
-         *
+         * 
          * If writing a PLA playlist and there is an error converting a URI's encoding,
          * a code from {@link GLib.ConvertError} will be returned.
          * @param playlist a {@link TotemPlParser.Playlist}
@@ -615,10 +646,11 @@ export namespace TotemPlParser {
          * @returns `true` on success
          */
         save(playlist: Playlist, dest: Gio.File, title: string, type: ParserType): boolean;
+
         /**
          * Starts asynchronous version of `totem_pl_parser_save()`. For more details
          * see `totem_pl_parser_save()`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `totem_pl_parser_save_finish()` to get the results of the operation.
          * @param playlist a {@link TotemPlParser.Playlist}
@@ -627,38 +659,12 @@ export namespace TotemPlParser {
          * @param type a {@link TotemPlParser.ParserType} for the outputted playlist
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
-        save_async(
-            playlist: Playlist,
-            dest: Gio.File,
-            title: string,
-            type: ParserType,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<boolean>;
+        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts asynchronous version of `totem_pl_parser_save()`. For more details
          * see `totem_pl_parser_save()`.
-         *
-         * When the operation is finished, `callback` will be called. You can then call
-         * `totem_pl_parser_save_finish()` to get the results of the operation.
-         * @param playlist a {@link TotemPlParser.Playlist}
-         * @param dest output {@link Gio.File}
-         * @param title the playlist title
-         * @param type a {@link TotemPlParser.ParserType} for the outputted playlist
-         * @param cancellable a {@link Gio.Cancellable}, or `null`
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when saving has finished
-         */
-        save_async(
-            playlist: Playlist,
-            dest: Gio.File,
-            title: string,
-            type: ParserType,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts asynchronous version of `totem_pl_parser_save()`. For more details
-         * see `totem_pl_parser_save()`.
-         *
+         * 
          * When the operation is finished, `callback` will be called. You can then call
          * `totem_pl_parser_save_finish()` to get the results of the operation.
          * @param playlist a {@link TotemPlParser.Playlist}
@@ -668,17 +674,26 @@ export namespace TotemPlParser {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when saving has finished
          */
-        save_async(
-            playlist: Playlist,
-            dest: Gio.File,
-            title: string,
-            type: ParserType,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts asynchronous version of `totem_pl_parser_save()`. For more details
+         * see `totem_pl_parser_save()`.
+         * 
+         * When the operation is finished, `callback` will be called. You can then call
+         * `totem_pl_parser_save_finish()` to get the results of the operation.
+         * @param playlist a {@link TotemPlParser.Playlist}
+         * @param dest output {@link Gio.File}
+         * @param title the playlist title
+         * @param type a {@link TotemPlParser.ParserType} for the outputted playlist
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when saving has finished
+         */
+        save_async(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes an asynchronous playlist saving operation started with `totem_pl_parser_save_async()`.
-         *
+         * 
          * If saving of the playlist is cancelled part-way through, {@link Gio.IOErrorEnum.CANCELLED} will be
          * returned when this function is called.
          * @param async_result a {@link Gio.AsyncResult}
@@ -687,13 +702,16 @@ export namespace TotemPlParser {
         save_finish(async_result: Gio.AsyncResult): boolean;
     }
 
+
     namespace Playlist {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -713,42 +731,33 @@ export namespace TotemPlParser {
         $signals: Playlist.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Playlist.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Playlist;
+        static ["new"](): Playlist;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Playlist.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Playlist.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Playlist.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Playlist.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Playlist.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Playlist.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Playlist.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Playlist.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Playlist.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Appends a new empty element to `playlist`, and modifies `iter` so
          * it points to it. To fill in values, you need to call
          * `totem_pl_playlist_set()` or `totem_pl_playlist_set_value()`.
          */
         append(): PlaylistIter;
+
         /**
          * Gets the value for `key` (Such as `TOTEM_PL_PARSER_FIELD_URI`) in
          * the playlist item pointed by `iter`.
@@ -757,22 +766,25 @@ export namespace TotemPlParser {
          * @param value an empty {@link GObject.Value} to set
          * @returns `true` if `iter` contains data for `key`.
          */
-        get_value(iter: PlaylistIter, key: string, value: GObject.Value | any): boolean;
+        get_value(iter: PlaylistIter, key: string, value: (GObject.Value | any)): boolean;
+
         /**
          * Inserts a new empty element to `playlist` at `position`, and modifies
          * `iter` so it points to it. To fill in values, you need to call
          * `totem_pl_playlist_set()` or `totem_pl_playlist_set_value()`.
-         *
+         * 
          * `position` may be minor than 0 to prepend elements, or bigger than
          * the current `playlist` size to append elements.
          * @param position position in the playlist
          */
         insert(position: number): PlaylistIter;
+
         /**
          * Modifies `iter` so it points to the first element in `playlist`.
          * @returns `true` if there is such first element.
          */
         iter_first(): [boolean, PlaylistIter];
+
         /**
          * Modifies `iter` so it points to the next element it previously
          * pointed to. This function will return `false` if there was no
@@ -782,6 +794,7 @@ export namespace TotemPlParser {
          * @returns `true` if there was next element.
          */
         iter_next(iter: PlaylistIter): boolean;
+
         /**
          * Modifies `iter` so it points to the previous element it previously
          * pointed to. This function will return `false` if there was no
@@ -791,12 +804,14 @@ export namespace TotemPlParser {
          * @returns `true` if there was previous element.
          */
         iter_prev(iter: PlaylistIter): boolean;
+
         /**
          * Prepends a new empty element to `playlist`, and modifies `iter` so
          * it points to it. To fill in values, you need to call
          * `totem_pl_playlist_set()` or `totem_pl_playlist_set_value()`.
          */
         prepend(): PlaylistIter;
+
         /**
          * Sets the value for `key` in the element pointed by `iter`.
          * @param iter a {@link TotemPlParser.PlaylistIter} pointing to some item in `playlist`
@@ -804,7 +819,8 @@ export namespace TotemPlParser {
          * @param value {@link GObject.Value} containing the key value
          * @returns `true` if the value could be stored in `playlist`
          */
-        set_value(iter: PlaylistIter, key: string, value: GObject.Value | any): boolean;
+        set_value(iter: PlaylistIter, key: string, value: (GObject.Value | any)): boolean;
+
         /**
          * Returns the number of elements in `playlist`.
          * @returns The number of elements
@@ -812,10 +828,12 @@ export namespace TotemPlParser {
         size(): number;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ParserClass = typeof Parser;
+
     /**
      * @gir-type Struct
      */
@@ -823,10 +841,12 @@ export namespace TotemPlParser {
         static $gtype: GObject.GType<ParserPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PlaylistClass = typeof Playlist;
+
     /**
      * All the fields in the {@link TotemPlParser.PlaylistIter} structure are private and should never be accessed directly.
      * @gir-type Struct
@@ -836,14 +856,18 @@ export namespace TotemPlParser {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
+
+        }>);
     }
+
 
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

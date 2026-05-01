@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -19,9 +20,11 @@ import type Json from '@girs/json-1.0';
 import type Goa from '@girs/goa-1.0';
 
 export namespace Msg {
+
     /**
      * Msg-0
      */
+
 
     /**
      * The type of Drive
@@ -44,6 +47,7 @@ export namespace Msg {
         DOCUMENT_LIBRARY,
     }
 
+
     /**
      * This enumeration can be expanded at a later date.
      * @gir-type Struct
@@ -52,17 +56,17 @@ export namespace Msg {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * An unrecoverable error occurred.
          */
         static FAILED: number;
+
         static PROTOCOL_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
+
 
     /**
      * @gir-type Enum
@@ -77,25 +81,31 @@ export namespace Msg {
         ARCHIVE,
     }
 
+
     const API_ENDPOINT: string;
+
     function error_quark(): GLib.Quark;
+
     /**
-     * @param object
-     * @param name
+     * @param object 
+     * @param name 
      */
     function json_object_get_string(object: Json.Object, name: string): string;
+
     namespace Contact {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Handling of contact specific functions.
-     *
+     * 
      * Details: https://learn.microsoft.com/en-us/graph/api/resources/contact?view=graph-rest-1.0
      * @gir-type Class
      */
@@ -112,62 +122,57 @@ export namespace Msg {
         $signals: Contact.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Contact.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Contact;
+        static ["new"](): Contact;
 
         static new_from_json(json_object: Json.Object): Contact;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Contact.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Contact.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Contact.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Contact.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Contact.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Contact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Contact.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Contact.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets given name.
          * @returns given name
          */
         get_given_name(): string;
+
         /**
          * Gets ID
          * @returns identifier
          */
         get_id(): string;
+
         /**
          * @returns name of contact
          */
         get_name(): string;
+
         /**
          * Gets surname.
          * @returns surname
          */
         get_surname(): string;
+
         /**
          * Sets contacts given name
          * @param given_name new give name
          */
         set_given_name(given_name: string): void;
+
         /**
          * Sets contacts surname
          * @param surname new sirname
@@ -175,15 +180,17 @@ export namespace Msg {
         set_surname(surname: string): void;
     }
 
+
     namespace ContactService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            "notify::authorizer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Service.ConstructorProps {
 
-        interface ConstructorProps extends Service.ConstructorProps {}
+        }
     }
 
     /**
@@ -202,70 +209,65 @@ export namespace Msg {
         $signals: ContactService.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ContactService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](authorizer: Authorizer): ContactService;
+        static ["new"](authorizer: Authorizer): ContactService;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ContactService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ContactService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContactService.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ContactService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ContactService.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ContactService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ContactService.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ContactService.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ContactService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ContactService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ContactService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Create new contact #contact and return new contact object.
          * @param contact a {@link Msg.Contact}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Msg.Contact}
          */
-        create(contact: Contact, cancellable: Gio.Cancellable | null): Contact;
+        create(contact: Contact, cancellable: (Gio.Cancellable | null)): Contact;
+
         /**
          * Delets #contact.
          * @param contact a {@link Msg.Contact}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` for succes, else `false`
          */
-        ['delete'](contact: Contact, cancellable: Gio.Cancellable | null): boolean;
+        ["delete"](contact: Contact, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Get all contacts accessed by contact service.
          * @param cancellable a cancellable
          * @returns all contacts
          */
-        get_contacts(cancellable: Gio.Cancellable | null): Contact[];
+        get_contacts(cancellable: (Gio.Cancellable | null)): Contact[];
     }
+
 
     namespace Drive {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * {@link Msg.DriveService} is a subclass of {@link Msg.Service} for communicating with the MS Graph API.
-     *
+     * 
      * Details: https://learn.microsoft.com/en-us/graph/api/resources/drive?view=graph-rest-1.0
      * @gir-type Class
      */
@@ -282,73 +284,70 @@ export namespace Msg {
         $signals: Drive.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Drive.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Drive;
+        static ["new"](): Drive;
 
         static new_from_json(object: Json.Object): Drive;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Drive.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Drive.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Drive.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Drive.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Drive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Drive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get created time of drive.
          * @returns created time of drive
          */
         get_created(): GLib.DateTime;
+
         /**
          * Gets the drive type of the drive.
          * @returns the drive type of drive
          */
         get_drive_type(): DriveType;
+
         /**
          * Gets the ID of the drive.
          * @returns the id of the drive
          */
         get_id(): string;
+
         /**
          * Gets the modified time of the drive.
          * @returns modified time of drive
          */
         get_modified(): GLib.DateTime;
+
         /**
          * Gets tthe name of the drive.
          * @returns name of drive
          */
         get_name(): string;
+
         /**
          * Gets the remaining size of the drive.
          * @returns remaining size of drive
          */
         get_remaining(): number;
+
         /**
          * Gets the total size of the drive.
          * @returns total size of drive
          */
         get_total(): number;
+
         /**
          * Gets the used size of the drive.
          * @returns used size of drive
@@ -356,13 +355,16 @@ export namespace Msg {
         get_used(): number;
     }
 
+
     namespace DriveItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -381,7 +383,6 @@ export namespace Msg {
         $signals: DriveItem.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DriveItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -389,88 +390,91 @@ export namespace Msg {
         static new_from_json(object: Json.Object): DriveItem;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DriveItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DriveItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DriveItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DriveItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DriveItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DriveItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DriveItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DriveItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DriveItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get created time of drive item.
          * @returns created date time of drive item
          */
         get_created(): number;
+
         /**
          * Gets drive id of drive item.
          * @returns drive id of drive item
          */
         get_drive_id(): string;
+
         /**
          * Gets etag of drive item.
          * @returns etag of drive item
          */
         get_etag(): string;
+
         /**
          * Get id of drive item.
          * @returns id of drive item
          */
         get_id(): string;
+
         /**
          * Gets modified time of drive item.
          * @returns modified date time of drive item
          */
         get_modified(): number;
+
         /**
          * Gets name of drive item.
          * @returns name of drive item
          */
         get_name(): string;
+
         /**
          * Gets parent id of drive item.
          * @returns parent id of drive item
          */
         get_parent_id(): string;
+
         /**
          * Gets size of drive item.
          * @returns size of drive item
          */
         get_size(): number;
+
         /**
          * Gets user of drive item.
          * @returns user of drive item
          */
         get_user(): string;
+
         /**
          * Gets whether item is shared.
          * @returns `true` if item is shared, otherwise `false`
          */
         is_shared(): boolean;
+
         /**
          * Sets id of drive item.
          * @param id new id of drive item
          */
         set_id(id: string): void;
+
         /**
          * Sets name of drive item.
          * @param name new name of drive item
          */
         set_name(name: string): void;
+
         /**
          * Set parent id of drive item.
          * @param parent_id parent id
@@ -478,13 +482,16 @@ export namespace Msg {
         set_parent_id(parent_id: string): void;
     }
 
+
     namespace DriveItemFile {
         // Signal signatures
-        interface SignalSignatures extends DriveItem.SignalSignatures {}
+        interface SignalSignatures extends DriveItem.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends DriveItem.ConstructorProps {
 
-        interface ConstructorProps extends DriveItem.ConstructorProps {}
+        }
     }
 
     /**
@@ -503,43 +510,34 @@ export namespace Msg {
         $signals: DriveItemFile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DriveItemFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DriveItemFile;
+        static ["new"](): DriveItemFile;
 
         static new_from_json(object: Json.Object): DriveItemFile;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DriveItemFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveItemFile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DriveItemFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DriveItemFile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DriveItemFile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DriveItemFile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DriveItemFile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveItemFile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DriveItemFile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DriveItemFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DriveItemFile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveItemFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets mime type of drive item file.
          * @returns mime type of drive item file
          */
         get_mime_type(): string;
+
         /**
          * Gets thumbnail uri of drive item file.
          * @returns thumbnail uri of drive item file
@@ -547,13 +545,16 @@ export namespace Msg {
         get_thumbnail_uri(): string;
     }
 
+
     namespace DriveItemFolder {
         // Signal signatures
-        interface SignalSignatures extends DriveItem.SignalSignatures {}
+        interface SignalSignatures extends DriveItem.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends DriveItem.ConstructorProps {
 
-        interface ConstructorProps extends DriveItem.ConstructorProps {}
+        }
     }
 
     /**
@@ -572,46 +573,39 @@ export namespace Msg {
         $signals: DriveItemFolder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DriveItemFolder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DriveItemFolder;
+        static ["new"](): DriveItemFolder;
 
         static new_from_json(object: Json.Object): DriveItemFolder;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DriveItemFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveItemFolder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DriveItemFolder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DriveItemFolder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DriveItemFolder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DriveItemFolder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DriveItemFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveItemFolder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DriveItemFolder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DriveItemFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DriveItemFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveItemFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace DriveService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            "notify::authorizer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Service.ConstructorProps {
 
-        interface ConstructorProps extends Service.ConstructorProps {}
+        }
     }
 
     /**
@@ -630,36 +624,26 @@ export namespace Msg {
         $signals: DriveService.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DriveService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](authorizer: Authorizer): DriveService;
+        static ["new"](authorizer: Authorizer): DriveService;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DriveService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DriveService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DriveService.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DriveService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DriveService.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DriveService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DriveService.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DriveService.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DriveService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DriveService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DriveService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds item to parent folder
          * @param parent parent drive item
@@ -667,7 +651,8 @@ export namespace Msg {
          * @param cancellable a cancellable
          * @returns a new drive item
          */
-        add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable: Gio.Cancellable | null): DriveItem;
+        add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable: (Gio.Cancellable | null)): DriveItem;
+
         /**
          * Copy a file async on remote server to a new directory.
          * @param file source {@link Msg.DriveItem}
@@ -675,7 +660,8 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if accepted, `false` on error
          */
-        copy_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable | null): boolean;
+        copy_file(file: DriveItem, destination: DriveItem, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Creates a new folder called name under parent.
          * @param parent parent drive item
@@ -683,54 +669,62 @@ export namespace Msg {
          * @param cancellable a cancellable
          * @returns a newly created {@link Msg.DriveItem}
          */
-        create_folder(parent: DriveItem, name: string, cancellable: Gio.Cancellable | null): DriveItem;
+        create_folder(parent: DriveItem, name: string, cancellable: (Gio.Cancellable | null)): DriveItem;
+
         /**
          * Deletes item.
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a cancellable
          * @returns `true` when item has been deleted, otherwise `false`
          */
-        ['delete'](item: DriveItem, cancellable: Gio.Cancellable | null): boolean;
+        ["delete"](item: DriveItem, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Download item
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns input stream of drive item
          */
-        download_item(item: DriveItem, cancellable: Gio.Cancellable | null): Gio.InputStream;
+        download_item(item: DriveItem, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+
         /**
          * Download url
          * @param url url to download
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.InputStream} for url
          */
-        download_url(url: string, cancellable: Gio.Cancellable | null): Gio.InputStream;
+        download_url(url: string, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+
         /**
          * Queries the Microsoft Graph API for all the drives of the currently logged in user
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all drives the user can access
          */
-        get_drives(cancellable: Gio.Cancellable | null): Drive[];
+        get_drives(cancellable: (Gio.Cancellable | null)): Drive[];
+
         /**
          * Get root item of selected drive
          * @param drive a {@link Msg.Drive}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns root 'MsgDriveItem'
          */
-        get_root(drive: Drive, cancellable: Gio.Cancellable | null): DriveItem;
+        get_root(drive: Drive, cancellable: (Gio.Cancellable | null)): DriveItem;
+
         /**
          * Requests all shared with me items
          * @param cancellable a {@link Gio.Cancellable}
          * @returns shared with me list
          */
-        get_shared_with_me(cancellable: Gio.Cancellable | null): DriveItem[];
+        get_shared_with_me(cancellable: (Gio.Cancellable | null)): DriveItem[];
+
         /**
          * Get a list of all files in folder item
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all items in folder
          */
-        list_children(item: DriveItem, cancellable: Gio.Cancellable | null): DriveItem[];
+        list_children(item: DriveItem, cancellable: (Gio.Cancellable | null)): DriveItem[];
+
         /**
          * Move a file async on remote server to a new directory.
          * @param file source {@link Msg.DriveItem}
@@ -738,7 +732,8 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns moved {@link Msg.DriveItem}
          */
-        move_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable | null): DriveItem;
+        move_file(file: DriveItem, destination: DriveItem, cancellable: (Gio.Cancellable | null)): DriveItem;
+
         /**
          * Sets a new drive item name
          * @param item a {@link Msg.DriveItem}
@@ -746,14 +741,16 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the renamed {@link Msg.DriveItem}
          */
-        rename(item: DriveItem, new_name: string, cancellable: Gio.Cancellable | null): DriveItem;
+        rename(item: DriveItem, new_name: string, cancellable: (Gio.Cancellable | null)): DriveItem;
+
         /**
          * Creates an update stream for drive item in order to update it's content.
          * @param item a drive item
          * @param cancellable a cancellable
          * @returns an output stream
          */
-        update(item: DriveItem, cancellable: Gio.Cancellable | null): Gio.OutputStream;
+        update(item: DriveItem, cancellable: (Gio.Cancellable | null)): Gio.OutputStream;
+
         /**
          * Finish a update session of given #item.
          * @param item a {@link Msg.DriveItem}
@@ -761,17 +758,17 @@ export namespace Msg {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Msg.DriveItem} or `null` on error.
          */
-        update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): DriveItem;
+        update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable: (Gio.Cancellable | null)): DriveItem;
     }
+
 
     namespace GoaAuthorizer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::goa-object': (pspec: GObject.ParamSpec) => void;
+            "notify::goa-object": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
             goa_object: Goa.Object;
             goaObject: Goa.Object;
@@ -787,11 +784,11 @@ export namespace Msg {
         static $gtype: GObject.GType<GoaAuthorizer>;
 
         // Properties
-
         /**
          * @construct-only
          */
         get goa_object(): Goa.Object;
+
         /**
          * @construct-only
          */
@@ -807,87 +804,84 @@ export namespace Msg {
         $signals: GoaAuthorizer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](goa_object: Goa.Object): GoaAuthorizer;
+        static ["new"](goa_object: Goa.Object): GoaAuthorizer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof GoaAuthorizer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof GoaAuthorizer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof GoaAuthorizer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the GOA account used by `self` for authorization.
          * @returns A {@link Goa.Object}. The returned object is owned by {@link Msg.GoaAuthorizer} and should not be modified or freed.
          */
         get_goa_object(): Goa.Object;
+
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
-         *
+         * 
          * This method modifies `message` in place and is thread safe.
          * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
+
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
          * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
-         *
+         * 
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
+        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
-         *
+         * 
          * This method modifies `message` in place and is thread safe.
          * @param message A {@link Soup.Message}.
          * @virtual
          */
         vfunc_process_request(message: Soup.Message): void;
+
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
          * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
-         *
+         * 
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace InputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {
 
-        interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
+        }
     }
 
     /**
@@ -906,81 +900,71 @@ export namespace Msg {
         $signals: InputStream.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](service: Service, uri: string): InputStream;
+        static ["new"](service: Service, uri: string): InputStream;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof InputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof InputStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof InputStream.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof InputStream.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, InputStream.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof InputStream.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof InputStream.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<InputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets corresponding SoupMessage
          * @param stream a {@link Gio.InputStream}
          */
         static get_message(stream: Gio.InputStream): Soup.Message;
+
         /**
-         * @param stream
-         * @param io_priority
-         * @param cancellable
-         * @param callback
+         * @param stream 
+         * @param io_priority 
+         * @param cancellable 
+         * @param callback 
          */
-        static send_async(
-            stream: Gio.InputStream,
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<InputStream> | null,
-        ): void;
+        static send_async(stream: Gio.InputStream, io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<InputStream> | null)): void;
+
         /**
-         * @param stream
-         * @param result
+         * @param stream 
+         * @param result 
          */
         static send_finish(stream: Gio.InputStream, result: Gio.AsyncResult): boolean;
+
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @returns `true` if `seekable` can be seeked. `false` otherwise.
          */
         can_seek(): boolean;
+
         /**
          * Tests if the length of the stream can be adjusted with
          * `g_seekable_truncate()`.
          * @returns `true` if the stream can be truncated, `false` otherwise.
          */
         can_truncate(): boolean;
+
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
-         *
+         * 
          * Attempting to seek past the end of the stream will have different
          * results depending on if the stream is fixed-sized or resizable.  If
          * the stream is resizable then seeking past the end and then writing
          * will result in zeros filling the empty space.  Seeking past the end
          * of a resizable stream and reading will result in EOF.  Seeking past
          * the end of a fixed-sized stream will fail.
-         *
+         * 
          * Any operation that would result in a negative offset will fail.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -989,17 +973,19 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
+        seek(offset: (bigint | number), type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Tells the current position within the stream.
          * @returns the (positive or zero) offset from the beginning of the buffer, zero if the target is not seekable.
          */
         tell(): number;
+
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
          * previously shorter than `offset`, it is extended with NUL ('\0') bytes.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
@@ -1009,30 +995,33 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
          */
-        truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
+        truncate(offset: (bigint | number), cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Tests if the stream supports the {@link Gio.SeekableIface}.
          * @virtual
          */
         vfunc_can_seek(): boolean;
+
         /**
          * Tests if the length of the stream can be adjusted with
          * `g_seekable_truncate()`.
          * @virtual
          */
         vfunc_can_truncate(): boolean;
+
         /**
          * Seeks in the stream by the given `offset`, modified by `type`.
-         *
+         * 
          * Attempting to seek past the end of the stream will have different
          * results depending on if the stream is fixed-sized or resizable.  If
          * the stream is resizable then seeking past the end and then writing
          * will result in zeros filling the empty space.  Seeking past the end
          * of a resizable stream and reading will result in EOF.  Seeking past
          * the end of a fixed-sized stream will fail.
-         *
+         * 
          * Any operation that would result in a negative offset will fail.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
@@ -1041,17 +1030,19 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
+        vfunc_seek(offset: number, type: GLib.SeekType, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Tells the current position within the stream.
          * @virtual
          */
-        vfunc_tell(): bigint | number;
+        vfunc_tell(): (bigint | number);
+
         /**
          * Sets the length of the stream to `offset`. If the stream was previously
          * larger than `offset`, the extra data is discarded. If the stream was
          * previously shorter than `offset`, it is extended with NUL ('\0') bytes.
-         *
+         * 
          * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned. If an
@@ -1061,16 +1052,19 @@ export namespace Msg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_truncate_fn(offset: number, cancellable: Gio.Cancellable | null): boolean;
+        vfunc_truncate_fn(offset: number, cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace MailFolder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1090,64 +1084,59 @@ export namespace Msg {
         $signals: MailFolder.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MailFolder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MailFolder;
+        static ["new"](): MailFolder;
 
         static new_from_json(json_object: Json.Object): MailFolder;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MailFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MailFolder.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MailFolder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MailFolder.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MailFolder.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MailFolder.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MailFolder.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MailFolder.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MailFolder.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MailFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MailFolder.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MailFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns display name of mail folder
          */
         get_display_name(): string;
+
         /**
          * @returns total item number of mail folder
          */
         get_total_item_count(): number;
+
         /**
          * @returns unread item number of mail folder
          */
         get_unread_item_count(): number;
     }
 
+
     namespace Message {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * Handling of message specific functions.
-     *
+     * 
      * Details: https://learn.microsoft.com/en-us/graph/api/resources/message?view=graph-rest-1.0
      * @gir-type Class
      */
@@ -1164,66 +1153,62 @@ export namespace Msg {
         $signals: Message.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Message;
+        static ["new"](): Message;
 
         static new_from_json(json_object: Json.Object): Message;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Message.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Message.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Message.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Message.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Message.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Message.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Message.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns body preview of message
          */
         get_body_preview(): string;
+
         get_id(): string;
+
         /**
          * @returns subject of message
          */
         get_subject(): string;
+
         /**
-         * @param body
+         * @param body 
          */
         set_body(body: string): boolean;
+
         /**
-         * @param subject
+         * @param subject 
          */
         set_subject(subject: string): boolean;
     }
 
+
     namespace MessageService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            "notify::authorizer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Service.ConstructorProps {
 
-        interface ConstructorProps extends Service.ConstructorProps {}
+        }
     }
 
     /**
@@ -1242,81 +1227,75 @@ export namespace Msg {
         $signals: MessageService.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MessageService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](authorizer: Authorizer): MessageService;
+        static ["new"](authorizer: Authorizer): MessageService;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MessageService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MessageService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageService.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MessageService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MessageService.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MessageService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MessageService.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MessageService.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MessageService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MessageService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MessageService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Create new draft message #message and return new message object.
          * @param message a {@link Msg.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Msg.Message}
          */
-        create_draft(message: Message, cancellable: Gio.Cancellable | null): Message;
+        create_draft(message: Message, cancellable: (Gio.Cancellable | null)): Message;
+
         /**
          * Delets #message.
          * @param message a {@link Msg.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` for succes, else &FALSE
          */
-        ['delete'](message: Message, cancellable: Gio.Cancellable | null): boolean;
+        ["delete"](message: Message, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Get a specific mail folder for given service
          * @param type a {@link Msg.MessageMailFolderType}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Msg.MailFolder}
          */
-        get_mail_folder(type: MessageMailFolderType, cancellable: Gio.Cancellable | null): MailFolder;
+        get_mail_folder(type: MessageMailFolderType, cancellable: (Gio.Cancellable | null)): MailFolder;
+
         /**
          * Get all folders for given service
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all mail folders the user can access
          */
-        get_mail_folders(cancellable: Gio.Cancellable | null): MailFolder[];
+        get_mail_folders(cancellable: (Gio.Cancellable | null)): MailFolder[];
+
         /**
          * Get all messages for given service
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all messages the user can access
          */
-        get_messages(cancellable: Gio.Cancellable | null): Message[];
+        get_messages(cancellable: (Gio.Cancellable | null)): Message[];
     }
+
 
     namespace OAuth2Authorizer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::client-id': (pspec: GObject.ParamSpec) => void;
-            'notify::redirect-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::refresh-token': (pspec: GObject.ParamSpec) => void;
+            "notify::client-id": (pspec: GObject.ParamSpec) => void;
+            "notify::redirect-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::refresh-token": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
             client_id: string;
             clientId: string;
@@ -1334,32 +1313,36 @@ export namespace Msg {
         static $gtype: GObject.GType<OAuth2Authorizer>;
 
         // Properties
-
         /**
          * @construct-only
          * @default null
          */
         get client_id(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get clientId(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get redirect_uri(): string;
+
         /**
          * @construct-only
          * @default null
          */
         get redirectUri(): string;
+
         /**
          * @default null
          */
         get refresh_token(): string;
         set refresh_token(val: string);
+
         /**
          * @default null
          */
@@ -1376,100 +1359,95 @@ export namespace Msg {
         $signals: OAuth2Authorizer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<OAuth2Authorizer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](client_id: string, redirect_uri: string): OAuth2Authorizer;
+        static ["new"](client_id: string, redirect_uri: string): OAuth2Authorizer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof OAuth2Authorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2Authorizer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof OAuth2Authorizer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OAuth2Authorizer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof OAuth2Authorizer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, OAuth2Authorizer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof OAuth2Authorizer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, OAuth2Authorizer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof OAuth2Authorizer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<OAuth2Authorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof OAuth2Authorizer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<OAuth2Authorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param self
+         * @param self 
          */
         static test_load_credentials(self: Authorizer): boolean;
+
         /**
-         * @param self
+         * @param self 
          */
         static test_save_credentials(self: Authorizer): void;
 
         // Methods
-
         build_authentication_uri(): string;
+
         /**
-         * @param authorization_code
-         * @param cancellable
+         * @param authorization_code 
+         * @param cancellable 
          */
-        request_authorization(authorization_code: string, cancellable: Gio.Cancellable | null): boolean;
+        request_authorization(authorization_code: string, cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
-         *
+         * 
          * This method modifies `message` in place and is thread safe.
          * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
+
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
          * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
-         *
+         * 
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
+        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
-         *
+         * 
          * This method modifies `message` in place and is thread safe.
          * @param message A {@link Soup.Message}.
          * @virtual
          */
         vfunc_process_request(message: Soup.Message): void;
+
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
          * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
-         *
+         * 
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @virtual
          */
-        vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Service {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            "notify::authorizer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             authorizer: Authorizer;
         }
@@ -1482,7 +1460,6 @@ export namespace Msg {
         static $gtype: GObject.GType<Service>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -1498,62 +1475,49 @@ export namespace Msg {
         $signals: Service.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Service.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Service.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Service.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param msg
-         * @param tls_cert
-         * @param tls_errors
-         * @param session
+         * @param msg 
+         * @param tls_cert 
+         * @param tls_errors 
+         * @param session 
          */
-        static accept_certificate_cb(
-            msg: Soup.Message,
-            tls_cert: Gio.TlsCertificate,
-            tls_errors: Gio.TlsCertificateFlags,
-            session: any | null,
-        ): boolean;
+        static accept_certificate_cb(msg: Soup.Message, tls_cert: Gio.TlsCertificate, tls_errors: Gio.TlsCertificateFlags, session: (any | null)): boolean;
+
         static get_https_port(): number;
+
         /**
          * Get next link
          * @param object a {@link Json.Object}
          */
         static get_next_link(object: Json.Object): string;
+
         /**
          * Parse response data and check for errors. In case
          * no errors are found, return json root object.
          * @param bytes input bytes containing response buffer
          * @param object a pointer to the returning root object
          */
-        static parse_response(bytes: GLib.Bytes | Uint8Array, object: Json.Object): Json.Parser;
+        static parse_response(bytes: (GLib.Bytes | Uint8Array), object: Json.Object): Json.Parser;
 
         // Methods
-
         /**
          * Construct and checks a {@link Soup.Message} for transfer
          * @param method transfer method
@@ -1563,55 +1527,60 @@ export namespace Msg {
          * @returns a {@link Soup.Message} or NULL on error.
          */
         build_message(method: string, uri: string, etag: string, etag_if_match: boolean): Soup.Message;
+
         /**
          * Get related authorizer.
          * @returns a {@link Msg.Authorizer}
          */
         get_authorizer(): Authorizer;
+
         /**
          * Get related soup session
          * @returns a {@link Soup.Session}
          */
         get_session(): Soup.Session;
+
         /**
-         * @param cancellable
+         * @param cancellable 
          */
-        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
+        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Adds authorizer information to `message` and send it.
          * @param message a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Gio.InputStream}
          */
-        send(message: Soup.Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
+        send(message: Soup.Message, cancellable: (Gio.Cancellable | null)): Gio.InputStream;
+
         /**
          * A combination of `msg_service_send_and_read` and `msg_service_parse_response`
          * @param message a {@link Soup.Message}
-         * @param object
+         * @param object 
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Json.Parser} or `null` on error
          */
-        send_and_parse_response(
-            message: Soup.Message,
-            object: Json.Object,
-            cancellable: Gio.Cancellable | null,
-        ): Json.Parser;
+        send_and_parse_response(message: Soup.Message, object: Json.Object, cancellable: (Gio.Cancellable | null)): Json.Parser;
+
         /**
          * Adds authorizer information to `message` and send it.
          * @param message a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} or `null` on error.
          */
-        send_and_read(message: Soup.Message, cancellable: Gio.Cancellable | null): GLib.Bytes;
+        send_and_read(message: Soup.Message, cancellable: (Gio.Cancellable | null)): GLib.Bytes;
     }
+
 
     namespace User {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -1631,53 +1600,45 @@ export namespace Msg {
         $signals: User.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<User.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): User;
+        static ["new"](): User;
 
         static new_from_json(json_object: Json.Object): User;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof User.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, User.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof User.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof User.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, User.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, User.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof User.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<User.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * @returns mail of user or `null` if not existing
          */
         get_mail(): string;
     }
 
+
     namespace UserService {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
-            'notify::authorizer': (pspec: GObject.ParamSpec) => void;
+            "notify::authorizer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Service.ConstructorProps {
 
-        interface ConstructorProps extends Service.ConstructorProps {}
+        }
     }
 
     /**
@@ -1696,81 +1657,81 @@ export namespace Msg {
         $signals: UserService.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<UserService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](authorizer: Authorizer): UserService;
+        static ["new"](authorizer: Authorizer): UserService;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof UserService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof UserService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserService.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof UserService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, UserService.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof UserService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, UserService.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof UserService.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<UserService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof UserService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<UserService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get user information
          * @param name user name (`null` for me)
          * @param cancellable a {@link Gio.Cancellable}
          * @returns request user
          */
-        get_user(name: string, cancellable: Gio.Cancellable | null): User;
+        get_user(name: string, cancellable: (Gio.Cancellable | null)): User;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AuthorizerInterface = typeof Authorizer;
+
     /**
      * @gir-type Alias
      */
     type ContactClass = typeof Contact;
+
     /**
      * @gir-type Alias
      */
     type ContactServiceClass = typeof ContactService;
+
     /**
      * @gir-type Alias
      */
     type DriveClass = typeof Drive;
+
     /**
      * @gir-type Alias
      */
     type DriveItemClass = typeof DriveItem;
+
     /**
      * @gir-type Alias
      */
     type DriveItemFileClass = typeof DriveItemFile;
+
     /**
      * @gir-type Alias
      */
     type DriveItemFolderClass = typeof DriveItemFolder;
+
     /**
      * @gir-type Alias
      */
     type DriveServiceClass = typeof DriveService;
+
     /**
      * @gir-type Alias
      */
     type GoaAuthorizerClass = typeof GoaAuthorizer;
+
     /**
      * @gir-type Struct
      */
@@ -1778,10 +1739,12 @@ export namespace Msg {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type InputStreamClass = typeof InputStream;
+
     /**
      * @gir-type Struct
      */
@@ -1789,22 +1752,27 @@ export namespace Msg {
         static $gtype: GObject.GType<InputStreamPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MailFolderClass = typeof MailFolder;
+
     /**
      * @gir-type Alias
      */
     type MessageClass = typeof Message;
+
     /**
      * @gir-type Alias
      */
     type MessageServiceClass = typeof MessageService;
+
     /**
      * @gir-type Alias
      */
     type OAuth2AuthorizerClass = typeof OAuth2Authorizer;
+
     /**
      * @gir-type Struct
      */
@@ -1812,18 +1780,22 @@ export namespace Msg {
         static $gtype: GObject.GType<OAuth2AuthorizerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ServiceClass = typeof Service;
+
     /**
      * @gir-type Alias
      */
     type UserClass = typeof User;
+
     /**
      * @gir-type Alias
      */
     type UserServiceClass = typeof UserService;
+
     /**
      * @gir-type Struct
      */
@@ -1831,9 +1803,9 @@ export namespace Msg {
         static $gtype: GObject.GType<_DriveItemFileClass>;
 
         // Fields
-
         padding: any[];
     }
+
 
     /**
      * @gir-type Struct
@@ -1842,9 +1814,9 @@ export namespace Msg {
         static $gtype: GObject.GType<_DriveItemFolderClass>;
 
         // Fields
-
         padding: any[];
     }
+
 
     namespace Authorizer {
         /**
@@ -1852,32 +1824,35 @@ export namespace Msg {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds the necessary authorization to `message`. The type of `message`
              * can be DELETE, GET and POST.
-             *
+             * 
              * This method modifies `message` in place and is thread safe.
              * @param message A {@link Soup.Message}.
              * @virtual
              */
             vfunc_process_request(message: Soup.Message): void;
+
             /**
              * Synchronously forces `iface` to refresh any authorization tokens
              * held by it. See `msg_authorizer_refresh_authorization_async()` for the
              * asynchronous version of this call.
-             *
+             * 
              * This method is thread safe.
              * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
              * @virtual
              */
-            vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
+            vfunc_refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
         }
 
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface AuthorizerNamespace {
@@ -1888,27 +1863,29 @@ export namespace Msg {
      * @gir-type Interface
      */
     interface Authorizer extends GObject.Object, Authorizer.Interface {
-        // Methods
 
+        // Methods
         /**
          * Adds the necessary authorization to `message`. The type of `message`
          * can be DELETE, GET and POST.
-         *
+         * 
          * This method modifies `message` in place and is thread safe.
          * @param message A {@link Soup.Message}.
          */
         process_request(message: Soup.Message): void;
+
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
          * held by it. See `msg_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
-         *
+         * 
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
          */
-        refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
+        refresh_authorization(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     export const Authorizer: AuthorizerNamespace & {
         new (): Authorizer; // This allows `obj instanceof Authorizer`
@@ -1919,6 +1896,7 @@ export namespace Msg {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

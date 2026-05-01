@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -25,9 +26,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace GooCanvas {
+
     /**
      * GooCanvas-2.0
      */
+
 
     /**
      * @gir-type Enum
@@ -39,7 +42,7 @@ export namespace GooCanvas {
     /**
      * {@link GooCanvas.CairoAntialias} is simply a wrapper for the {@link cairo.Antialias} type,
      * allowing it to be used for {@link GObject.Object} properties.
-     *
+     * 
      * See the {@link cairo.Antialias} documentation.
      * @gir-type Enum
      */
@@ -49,6 +52,7 @@ export namespace GooCanvas {
         GRAY,
         SUBPIXEL,
     }
+
 
     /**
      * @gir-type Enum
@@ -60,7 +64,7 @@ export namespace GooCanvas {
     /**
      * {@link GooCanvas.CairoFillRule} is simply a wrapper for the {@link cairo.FillRule} type,
      * allowing it to be used for {@link GObject.Object} properties.
-     *
+     * 
      * See the {@link cairo.FillRule} documentation.
      * @gir-type Enum
      */
@@ -68,6 +72,7 @@ export namespace GooCanvas {
         WINDING,
         EVEN_ODD,
     }
+
 
     /**
      * @gir-type Enum
@@ -79,7 +84,7 @@ export namespace GooCanvas {
     /**
      * {@link GooCanvas.CairoHintMetrics} is simply a wrapper for the {@link cairo.HintMetrics} type,
      * allowing it to be used for {@link GObject.Object} properties.
-     *
+     * 
      * See the {@link cairo.HintMetrics} documentation.
      * @gir-type Enum
      */
@@ -88,6 +93,7 @@ export namespace GooCanvas {
         OFF,
         ON,
     }
+
 
     /**
      * @gir-type Enum
@@ -99,7 +105,7 @@ export namespace GooCanvas {
     /**
      * {@link GooCanvas.CairoLineCap} is simply a wrapper for the {@link cairo.LineCap} type,
      * allowing it to be used for {@link GObject.Object} properties.
-     *
+     * 
      * See the {@link cairo.LineCap} documentation.
      * @gir-type Enum
      */
@@ -108,6 +114,7 @@ export namespace GooCanvas {
         ROUND,
         SQUARE,
     }
+
 
     /**
      * @gir-type Enum
@@ -119,7 +126,7 @@ export namespace GooCanvas {
     /**
      * {@link GooCanvas.CairoLineJoin} is simply a wrapper for the {@link cairo.LineJoin} type,
      * allowing it to be used for {@link GObject.Object} properties.
-     *
+     * 
      * See the {@link cairo.LineJoin} documentation.
      * @gir-type Enum
      */
@@ -128,6 +135,7 @@ export namespace GooCanvas {
         ROUND,
         BEVEL,
     }
+
 
     /**
      * @gir-type Enum
@@ -139,7 +147,7 @@ export namespace GooCanvas {
     /**
      * {@link GooCanvas.CairoOperator} is simply a wrapper for the {@link cairo.Operator} type,
      * allowing it to be used for {@link GObject.Object} properties.
-     *
+     * 
      * See the {@link cairo.Operator} documentation.
      * @gir-type Enum
      */
@@ -159,6 +167,7 @@ export namespace GooCanvas {
         ADD,
         SATURATE,
     }
+
 
     /**
      * @gir-type Enum
@@ -243,6 +252,7 @@ export namespace GooCanvas {
         E,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -275,6 +285,7 @@ export namespace GooCanvas {
          */
         BOUNCE,
     }
+
 
     /**
      * @gir-type Enum
@@ -310,6 +321,7 @@ export namespace GooCanvas {
          */
         VISIBLE_ABOVE_THRESHOLD,
     }
+
 
     /**
      * @gir-type Enum
@@ -378,98 +390,96 @@ export namespace GooCanvas {
         ELLIPTICAL_ARC,
     }
 
+
     const CANVAS_POLYLINE_NUM_ARROW_POINTS: number;
+
     /**
-     * @param matrix
+     * @param matrix 
      */
     function cairo_matrix_copy(matrix: cairo.Matrix): cairo.Matrix;
+
     /**
-     * @param matrix
+     * @param matrix 
      */
     function cairo_matrix_free(matrix: cairo.Matrix): void;
+
     /**
      * This function is only intended to be used when implementing new canvas
      * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
-     *
+     * 
      * It finds a child property of a canvas item class by name.
      * @param iclass a {@link GObject.ObjectClass}
      * @param property_name the name of the child property to find
      * @returns the {@link GObject.ParamSpec} of the  child property or `null` if `class` has no child property with that name.
      */
-    function canvas_item_class_find_child_property(
-        iclass: typeof GObject.Object,
-        property_name: string,
-    ): GObject.ParamSpec;
+    function canvas_item_class_find_child_property(iclass: typeof GObject.Object, property_name: string): GObject.ParamSpec;
+
     /**
      * This function is only intended to be used when implementing new canvas
      * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
-     *
+     * 
      * It installs a child property on a canvas item class.
      * @param iclass a {@link GObject.ObjectClass}
      * @param property_id the id for the property
      * @param pspec the {@link GObject.ParamSpec} for the property
      */
-    function canvas_item_class_install_child_property(
-        iclass: typeof GObject.Object,
-        property_id: number,
-        pspec: GObject.ParamSpec,
-    ): void;
+    function canvas_item_class_install_child_property(iclass: typeof GObject.Object, property_id: number, pspec: GObject.ParamSpec): void;
+
     /**
      * This function is only intended to be used when implementing new canvas
      * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
-     *
+     * 
      * It returns all child properties of a canvas item class.
      * @param iclass a {@link GObject.ObjectClass}
      * @returns a newly allocated  array of {@link GObject.ParamSpec}*. The array must be freed with `g_free()`.
      */
     function canvas_item_class_list_child_properties(iclass: typeof GObject.Object): GObject.ParamSpec[];
+
     /**
      * This function is only intended to be used when implementing new canvas
      * item models, specifically layout container item models such as
      * {@link GooCanvas.CanvasTableModel}.
-     *
+     * 
      * It finds a child property of a canvas item class by name.
      * @param mclass a {@link GObject.ObjectClass}
      * @param property_name the name of the child property to find
      * @returns The {@link GObject.ParamSpec} of the child  property or `null` if `class` has no child property with that name.
      */
-    function canvas_item_model_class_find_child_property(
-        mclass: typeof GObject.Object,
-        property_name: string,
-    ): GObject.ParamSpec;
+    function canvas_item_model_class_find_child_property(mclass: typeof GObject.Object, property_name: string): GObject.ParamSpec;
+
     /**
      * This function is only intended to be used when implementing new canvas
      * item models, specifically layout container item models such as
      * {@link GooCanvas.CanvasTableModel}.
-     *
+     * 
      * It installs a child property on a canvas item class.
      * @param mclass a {@link GObject.ObjectClass}
      * @param property_id the id for the property
      * @param pspec the {@link GObject.ParamSpec} for the property
      */
-    function canvas_item_model_class_install_child_property(
-        mclass: typeof GObject.Object,
-        property_id: number,
-        pspec: GObject.ParamSpec,
-    ): void;
+    function canvas_item_model_class_install_child_property(mclass: typeof GObject.Object, property_id: number, pspec: GObject.ParamSpec): void;
+
     /**
      * This function is only intended to be used when implementing new canvas
      * item models, specifically layout container item models such as
      * {@link GooCanvas.CanvasTableModel}.
-     *
+     * 
      * It returns all child properties of a canvas item class.
      * @param mclass a {@link GObject.ObjectClass}
      * @returns a newly allocated array of {@link GObject.ParamSpec}*. The array must be freed with `g_free()`.
      */
     function canvas_item_model_class_list_child_properties(mclass: typeof GObject.Object): GObject.ParamSpec[];
+
     /**
      * @gir-type Alias
      */
-    type CairoMatrix = object | null;
+    type CairoMatrix = (object | null);
+
     /**
      * @gir-type Alias
      */
-    type CairoPattern = object | null;
+    type CairoPattern = (object | null);
+
     /**
      * @gir-type Flags
      */
@@ -548,91 +558,86 @@ export namespace GooCanvas {
         ALL,
     }
 
+
     namespace Canvas {
         // Signal signatures
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
             /**
              * This is emitted when a new canvas item is created, in model/view mode.
-             *
+             * 
              * Applications can set up signal handlers for the new items here.
              * @signal
              * @run-last
              */
-            'item-created': (arg0: CanvasItem, arg1: CanvasItemModel) => void;
-            'notify::anchor': (pspec: GObject.ParamSpec) => void;
-            'notify::automatic-bounds': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-rgb': (pspec: GObject.ParamSpec) => void;
-            'notify::bounds-from-origin': (pspec: GObject.ParamSpec) => void;
-            'notify::bounds-padding': (pspec: GObject.ParamSpec) => void;
-            'notify::clear-background': (pspec: GObject.ParamSpec) => void;
-            'notify::integer-layout': (pspec: GObject.ParamSpec) => void;
-            'notify::redraw-when-scrolled': (pspec: GObject.ParamSpec) => void;
-            'notify::resolution-x': (pspec: GObject.ParamSpec) => void;
-            'notify::resolution-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::units': (pspec: GObject.ParamSpec) => void;
-            'notify::x1': (pspec: GObject.ParamSpec) => void;
-            'notify::x2': (pspec: GObject.ParamSpec) => void;
-            'notify::y1': (pspec: GObject.ParamSpec) => void;
-            'notify::y2': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
-            'notify::hscroll-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::vscroll-policy': (pspec: GObject.ParamSpec) => void;
+            "item-created": (arg0: CanvasItem, arg1: CanvasItemModel) => void;
+            "notify::anchor": (pspec: GObject.ParamSpec) => void;
+            "notify::automatic-bounds": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-rgb": (pspec: GObject.ParamSpec) => void;
+            "notify::bounds-from-origin": (pspec: GObject.ParamSpec) => void;
+            "notify::bounds-padding": (pspec: GObject.ParamSpec) => void;
+            "notify::clear-background": (pspec: GObject.ParamSpec) => void;
+            "notify::integer-layout": (pspec: GObject.ParamSpec) => void;
+            "notify::redraw-when-scrolled": (pspec: GObject.ParamSpec) => void;
+            "notify::resolution-x": (pspec: GObject.ParamSpec) => void;
+            "notify::resolution-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::units": (pspec: GObject.ParamSpec) => void;
+            "notify::x1": (pspec: GObject.ParamSpec) => void;
+            "notify::x2": (pspec: GObject.ParamSpec) => void;
+            "notify::y1": (pspec: GObject.ParamSpec) => void;
+            "notify::y2": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
+            "notify::hscroll-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::vscroll-policy": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gtk.Container.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps,
-                Gtk.Scrollable.ConstructorProps {
+        interface ConstructorProps extends Gtk.Container.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.Scrollable.ConstructorProps {
             anchor: CanvasAnchorType;
             automatic_bounds: boolean;
             automaticBounds: boolean;
@@ -671,47 +676,47 @@ export namespace GooCanvas {
 
     /**
      * {@link GooCanvas.Canvas} is the main widget containing a number of canvas items.
-     *
+     * 
      * Here is a simple example:
-     *
+     * 
      * <informalexample><programlisting>
      *  &num;include &lt;goocanvas.h&gt;
-     *
+     * 
      *  static gboolean on_rect_button_press (GooCanvasItem  *view,
      *                                        GooCanvasItem  *target,
      *                                        GdkEventButton *event,
      *                                        gpointer        data);
-     *
+     * 
      *  int
      *  main (int argc, char *argv[])
      *  {
      *    GtkWidget *window, *scrolled_win, *canvas;
      *    GooCanvasItem *root, *rect_item, *text_item;
-     *
+     * 
      *    /&ast; Initialize GTK+. &ast;/
      *    gtk_init (&amp;argc, &amp;argv);
-     *
+     * 
      *    /&ast; Create the window and widgets. &ast;/
      *    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
      *    gtk_window_set_default_size (GTK_WINDOW (window), 640, 600);
      *    gtk_widget_show (window);
      *    g_signal_connect (window, "delete_event", G_CALLBACK (on_delete_event),
      *                      NULL);
-     *
+     * 
      *    scrolled_win = gtk_scrolled_window_new (NULL, NULL);
      *    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_win),
      *                                         GTK_SHADOW_IN);
      *    gtk_widget_show (scrolled_win);
      *    gtk_container_add (GTK_CONTAINER (window), scrolled_win);
-     *
+     * 
      *    canvas = goo_canvas_new&nbsp;();
      *    gtk_widget_set_size_request (canvas, 600, 450);
      *    goo_canvas_set_bounds (GOO_CANVAS (canvas), 0, 0, 1000, 1000);
      *    gtk_widget_show (canvas);
      *    gtk_container_add (GTK_CONTAINER (scrolled_win), canvas);
-     *
+     * 
      *    root = goo_canvas_get_root_item (GOO_CANVAS (canvas));
-     *
+     * 
      *    /&ast; Add a few simple items. &ast;/
      *    rect_item = goo_canvas_rect_new (root, 100, 100, 400, 400,
      *                                     "line-width", 10.0,
@@ -720,24 +725,24 @@ export namespace GooCanvas {
      *                                     "stroke-color", "yellow",
      *                                     "fill-color", "red",
      *                                     NULL);
-     *
+     * 
      *    text_item = goo_canvas_text_new (root, "Hello World", 300, 300, -1,
      *                                     GOO_CANVAS_ANCHOR_CENTER,
      *                                     "font", "Sans 24",
      *                                     NULL);
      *    goo_canvas_item_rotate (text_item, 45, 300, 300);
-     *
+     * 
      *    /&ast; Connect a signal handler for the rectangle item. &ast;/
      *    g_signal_connect (rect_item, "button_press_event",
      *                      G_CALLBACK (on_rect_button_press), NULL);
-     *
+     * 
      *    /&ast; Pass control to the GTK+ main event loop. &ast;/
      *    gtk_main&nbsp;();
-     *
+     * 
      *    return 0;
      *  }
-     *
-     *
+     * 
+     * 
      *  /&ast; This handles button presses in item views. We simply output a message to
      *     the console. &ast;/
      *  static gboolean
@@ -749,9 +754,9 @@ export namespace GooCanvas {
      *    g_print ("rect item received button press event\n");
      *    return TRUE;
      *  }
-     *
+     * 
      * </programlisting></informalexample>
-     *
+     * 
      * A {@link GooCanvas.Canvas} widget is usually placed inside a {@link Gtk.ScrolledWindow} widget
      * and can be scrolled with the scrollbar or with the scroll wheel on a mouse.
      * To disable mouse wheel scrolling, do this:
@@ -764,87 +769,118 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<Canvas>;
 
         // Properties
-
         get anchor(): CanvasAnchorType;
         set anchor(val: CanvasAnchorType);
+
         get automatic_bounds(): boolean;
         set automatic_bounds(val: boolean);
+
         get automaticBounds(): boolean;
         set automaticBounds(val: boolean);
+
         /**
          * @write-only
          */
         set background_color(val: string);
+
         /**
          * @write-only
          */
         set backgroundColor(val: string);
+
         /**
          * The color to use for the canvas background, specified as a GdkRGBA.
          * @since 2.0.1
          * @write-only
          */
         set background_color_gdk_rgba(val: Gdk.RGBA);
+
         /**
          * The color to use for the canvas background, specified as a GdkRGBA.
          * @since 2.0.1
          * @write-only
          */
         set backgroundColorGdkRgba(val: Gdk.RGBA);
+
         /**
          * @write-only
          */
         set background_color_rgb(val: number);
+
         /**
          * @write-only
          */
         set backgroundColorRgb(val: number);
+
         get bounds_from_origin(): boolean;
         set bounds_from_origin(val: boolean);
+
         get boundsFromOrigin(): boolean;
         set boundsFromOrigin(val: boolean);
+
         get bounds_padding(): number;
         set bounds_padding(val: number);
+
         get boundsPadding(): number;
         set boundsPadding(val: number);
+
         get clear_background(): boolean;
         set clear_background(val: boolean);
+
         get clearBackground(): boolean;
         set clearBackground(val: boolean);
+
         get integer_layout(): boolean;
         set integer_layout(val: boolean);
+
         get integerLayout(): boolean;
         set integerLayout(val: boolean);
+
         get redraw_when_scrolled(): boolean;
         set redraw_when_scrolled(val: boolean);
+
         get redrawWhenScrolled(): boolean;
         set redrawWhenScrolled(val: boolean);
+
         get resolution_x(): number;
         set resolution_x(val: number);
+
         get resolutionX(): number;
         set resolutionX(val: number);
+
         get resolution_y(): number;
         set resolution_y(val: number);
+
         get resolutionY(): number;
         set resolutionY(val: number);
+
         get scale(): number;
         set scale(val: number);
+
         get scale_x(): number;
         set scale_x(val: number);
+
         get scaleX(): number;
         set scaleX(val: number);
+
         get scale_y(): number;
         set scale_y(val: number);
+
         get scaleY(): number;
         set scaleY(val: number);
+
         get units(): Gtk.Unit;
         set units(val: Gtk.Unit);
+
         get x1(): number;
         set x1(val: number);
+
         get x2(): number;
         set x2(val: number);
+
         get y1(): number;
         set y1(val: number);
+
         get y2(): number;
         set y2(val: number);
 
@@ -858,151 +894,136 @@ export namespace GooCanvas {
         $signals: Canvas.SignalSignatures;
 
         // Fields
-
         container: Gtk.Container;
+
         root_item_model: CanvasItemModel;
+
         root_item: CanvasItem;
+
         bounds: CanvasBounds;
+
         idle_id: number;
+
         need_update: number;
+
         need_entire_subtree_update: number;
+
         before_initial_draw: number;
+
         hscroll_policy: number;
+
         vscroll_policy: number;
+
         pointer_item: CanvasItem;
+
         pointer_grab_item: CanvasItem;
+
         pointer_grab_initial_item: CanvasItem;
+
         pointer_grab_button: number;
+
         focused_item: CanvasItem;
+
         keyboard_grab_item: CanvasItem;
+
         canvas_window: Gdk.Window;
+
         canvas_x_offset: number;
+
         canvas_y_offset: number;
+
         hadjustment: Gtk.Adjustment;
+
         vadjustment: Gtk.Adjustment;
+
         freeze_count: number;
+
         tmp_window: Gdk.Window;
+
         device_to_pixels_x: number;
+
         device_to_pixels_y: number;
+
         widget_items: any[];
 
         // Constructors
-
         constructor(properties?: Partial<Canvas.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Canvas;
+        static ["new"](): Canvas;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Creates the path specified by the given {@link GooCanvas.CanvasPathCommand} array.
          * @param commands an array of  {@link GooCanvas.CanvasPathCommand}.
          * @param cr a cairo context.
          */
         static create_path(commands: CanvasPathCommand[], cr: cairo.Context): void;
+
         /**
-         * @param closure
-         * @param return_value
-         * @param n_param_values
-         * @param param_values
-         * @param invocation_hint
-         * @param marshal_data
+         * @param closure 
+         * @param return_value 
+         * @param n_param_values 
+         * @param param_values 
+         * @param invocation_hint 
+         * @param marshal_data 
          */
-        static marshal_BOOLEAN__BOXED(
-            closure: GObject.Closure,
-            return_value: GObject.Value | any,
-            n_param_values: number,
-            param_values: GObject.Value | any,
-            invocation_hint: any | null,
-            marshal_data: any | null,
-        ): void;
+        static marshal_BOOLEAN__BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
         /**
-         * @param closure
-         * @param return_value
-         * @param n_param_values
-         * @param param_values
-         * @param invocation_hint
-         * @param marshal_data
+         * @param closure 
+         * @param return_value 
+         * @param n_param_values 
+         * @param param_values 
+         * @param invocation_hint 
+         * @param marshal_data 
          */
-        static marshal_BOOLEAN__DOUBLE_DOUBLE_BOOLEAN_OBJECT(
-            closure: GObject.Closure,
-            return_value: GObject.Value | any,
-            n_param_values: number,
-            param_values: GObject.Value | any,
-            invocation_hint: any | null,
-            marshal_data: any | null,
-        ): void;
+        static marshal_BOOLEAN__DOUBLE_DOUBLE_BOOLEAN_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
         /**
-         * @param closure
-         * @param return_value
-         * @param n_param_values
-         * @param param_values
-         * @param invocation_hint
-         * @param marshal_data
+         * @param closure 
+         * @param return_value 
+         * @param n_param_values 
+         * @param param_values 
+         * @param invocation_hint 
+         * @param marshal_data 
          */
-        static marshal_BOOLEAN__OBJECT_BOXED(
-            closure: GObject.Closure,
-            return_value: GObject.Value | any,
-            n_param_values: number,
-            param_values: GObject.Value | any,
-            invocation_hint: any | null,
-            marshal_data: any | null,
-        ): void;
+        static marshal_BOOLEAN__OBJECT_BOXED(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
         /**
-         * @param closure
-         * @param return_value
-         * @param n_param_values
-         * @param param_values
-         * @param invocation_hint
-         * @param marshal_data
+         * @param closure 
+         * @param return_value 
+         * @param n_param_values 
+         * @param param_values 
+         * @param invocation_hint 
+         * @param marshal_data 
          */
-        static marshal_VOID__INT_INT(
-            closure: GObject.Closure,
-            return_value: GObject.Value | any,
-            n_param_values: number,
-            param_values: GObject.Value | any,
-            invocation_hint: any | null,
-            marshal_data: any | null,
-        ): void;
+        static marshal_VOID__INT_INT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
         /**
-         * @param closure
-         * @param return_value
-         * @param n_param_values
-         * @param param_values
-         * @param invocation_hint
-         * @param marshal_data
+         * @param closure 
+         * @param return_value 
+         * @param n_param_values 
+         * @param param_values 
+         * @param invocation_hint 
+         * @param marshal_data 
          */
-        static marshal_VOID__OBJECT_OBJECT(
-            closure: GObject.Closure,
-            return_value: GObject.Value | any,
-            n_param_values: number,
-            param_values: GObject.Value | any,
-            invocation_hint: any | null,
-            marshal_data: any | null,
-        ): void;
+        static marshal_VOID__OBJECT_OBJECT(closure: GObject.Closure, return_value: (GObject.Value | any), n_param_values: number, param_values: (GObject.Value | any), invocation_hint: (any | null), marshal_data: (any | null)): void;
+
         /**
          * Parses the given SVG path specification string.
          * @param path_data the sequence of path commands, specified as a string using the  same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable  Vector Graphics (SVG)</ulink> path element.
@@ -1010,33 +1031,32 @@ export namespace GooCanvas {
         static parse_path_data(path_data: string): CanvasPathCommand[];
 
         // Virtual methods
-
         /**
          * This function is only intended to be used when implementing new canvas
          * items, typically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It creates a new canvas item for the given item model, and recursively
          * creates items for any children.
-         *
+         * 
          * It uses the `create_item()` virtual method if it has been set.
          * Subclasses of {@link GooCanvas.Canvas} can define this method if they want to use
          * custom views for items.
-         *
+         * 
          * It emits the {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created} signal after creating the view, so
          * application code can connect signal handlers to the new view if desired.
          * @param model the item model to create a canvas item for.
          * @virtual
          */
         vfunc_create_item(model: CanvasItemModel): CanvasItem;
+
         /**
-         * @param item
-         * @param model
+         * @param item 
+         * @param model 
          * @virtual
          */
         vfunc_item_created(item: CanvasItem, model: CanvasItemModel): void;
 
         // Methods
-
         /**
          * Converts the given bounds in the canvas coordinate space to a bounding box
          * in item space. This is useful in the item `paint()` methods to convert the
@@ -1045,6 +1065,7 @@ export namespace GooCanvas {
          * @param bounds the bounds in canvas coordinate space, to be converted.
          */
         convert_bounds_to_item_space(item: CanvasItem, bounds: CanvasBounds): void;
+
         /**
          * Converts a coordinate from the given item's coordinate space to the canvas
          * coordinate space, applying all transformation matrices including the
@@ -1054,19 +1075,21 @@ export namespace GooCanvas {
          * @param y a pointer to the y coordinate to convert.
          */
         convert_from_item_space(item: CanvasItem, x: number, y: number): [number, number];
+
         /**
          * Converts a coordinate from pixels to the canvas coordinate space.
-         *
+         * 
          * The pixel coordinate space specifies pixels from the top-left of the entire
          * canvas window, according to the current scale setting.
          * See `goo_canvas_set_scale()`.
-         *
+         * 
          * The canvas coordinate space is specified in the call to
          * `goo_canvas_set_bounds()`.
          * @param x a pointer to the x coordinate to convert.
          * @param y a pointer to the y coordinate to convert.
          */
         convert_from_pixels(x: number, y: number): [number, number];
+
         /**
          * Converts a coordinate from the canvas coordinate space to the given
          * item's coordinate space, applying all transformation matrices including the
@@ -1076,12 +1099,13 @@ export namespace GooCanvas {
          * @param y a pointer to the y coordinate to convert.
          */
         convert_to_item_space(item: CanvasItem, x: number, y: number): [number, number];
+
         /**
          * Converts a coordinate from the canvas coordinate space to pixels.
-         *
+         * 
          * The canvas coordinate space is specified in the call to
          * `goo_canvas_set_bounds()`.
-         *
+         * 
          * The pixel coordinate space specifies pixels from the top-left of the entire
          * canvas window, according to the current scale setting.
          * See `goo_canvas_set_scale()`.
@@ -1089,6 +1113,7 @@ export namespace GooCanvas {
          * @param y a pointer to the y coordinate to convert.
          */
         convert_to_pixels(x: number, y: number): [number, number];
+
         /**
          * Converts a coordinate from pixels to the canvas's units,
          * ignoring scaling and ignoring the coordinate space specified
@@ -1097,6 +1122,7 @@ export namespace GooCanvas {
          * @param y a pointer to the y coordinate to convert.
          */
         convert_units_from_pixels(x: number, y: number): [number, number];
+
         /**
          * Converts a coordinate from the canvas's units to pixels,
          * ignoring scaling and ignoring the coordinate space specified
@@ -1105,6 +1131,7 @@ export namespace GooCanvas {
          * @param y a pointer to the y coordinate to convert.
          */
         convert_units_to_pixels(x: number, y: number): [number, number];
+
         /**
          * Creates a cairo context, initialized with the default canvas settings.
          * Note that this context should not be used for drawing. It should only be
@@ -1112,55 +1139,60 @@ export namespace GooCanvas {
          * @returns a new cairo context. It should be freed with `cairo_destroy()`.
          */
         create_cairo_context(): cairo.Context;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, typically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It creates a new canvas item for the given item model, and recursively
          * creates items for any children.
-         *
+         * 
          * It uses the `create_item()` virtual method if it has been set.
          * Subclasses of {@link GooCanvas.Canvas} can define this method if they want to use
          * custom views for items.
-         *
+         * 
          * It emits the {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created} signal after creating the view, so
          * application code can connect signal handlers to the new view if desired.
          * @param model the item model to create a canvas item for.
          * @returns a new canvas item.
          */
         create_item(model: CanvasItemModel): CanvasItem;
+
         /**
          * Gets the bounds of the canvas, in canvas units.
-         *
+         * 
          * By default, canvas units are pixels, though the {@link GooCanvas.Canvas.units} property
          * can be used to change the units to points, inches or millimeters.
          */
         get_bounds(): [number, number, number, number];
+
         /**
          * Gets the default line width, which depends on the current units setting.
          * @returns the default line width of the canvas.
          */
         get_default_line_width(): number;
+
         /**
          * Gets the canvas item associated with the given {@link GooCanvas.CanvasItemModel}.
          * This is only useful when `goo_canvas_set_root_item_model()` has been used to
          * set a model for the canvas.
-         *
+         * 
          * For simple applications you can use `goo_canvas_get_item()` to set up
          * signal handlers for your items, e.g.
-         *
+         * 
          * <informalexample><programlisting>
          *    item = goo_canvas_get_item (GOO_CANVAS (canvas), my_item);
          *    g_signal_connect (item, "button_press_event",
          *                      (GtkSignalFunc) on_my_item_button_press, NULL);
          * </programlisting></informalexample>
-         *
+         * 
          * More complex applications may want to use the {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}
          * signal to hook up their signal handlers.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @returns the canvas item corresponding to the given  {@link GooCanvas.CanvasItemModel}, or `null` if no canvas item has been created for it yet.
          */
         get_item(model: CanvasItemModel): CanvasItem;
+
         /**
          * Gets the item at the given point.
          * @param x the x coordinate of the point.
@@ -1169,6 +1201,7 @@ export namespace GooCanvas {
          * @returns the item found at the given point, or `null` if no  item was found.
          */
         get_item_at(x: number, y: number, is_pointer_event: boolean): CanvasItem;
+
         /**
          * Gets all items at the given point.
          * @param x the x coordinate of the point.
@@ -1177,6 +1210,7 @@ export namespace GooCanvas {
          * @returns a list of  items found at the given point, with the top item at the start of the list,  or `null` if no items were found. The list must be freed with `g_list_free()`.
          */
         get_items_at(x: number, y: number, is_pointer_event: boolean): CanvasItem[];
+
         /**
          * Gets a list of items inside or outside a given area.
          * @param area the area to compare with each item's bounds.
@@ -1185,65 +1219,68 @@ export namespace GooCanvas {
          * @param include_containers `true` if containers should be checked as well as  normal items.
          * @returns a list of  items in the given area, or `null` if no items are found.  The list should be freed with `g_list_free()`.
          */
-        get_items_in_area(
-            area: CanvasBounds,
-            inside_area: boolean,
-            allow_overlaps: boolean,
-            include_containers: boolean,
-        ): CanvasItem[];
+        get_items_in_area(area: CanvasBounds, inside_area: boolean, allow_overlaps: boolean, include_containers: boolean): CanvasItem[];
+
         /**
          * Gets the root item of the canvas, usually a {@link GooCanvas.CanvasGroup}.
          * @returns the root item, or `null` if there is no root item.
          */
         get_root_item(): CanvasItem;
+
         /**
          * Gets the root item model of the canvas.
          * @returns the root item model, or `null` if there is no root item model.
          */
         get_root_item_model(): CanvasItemModel;
+
         /**
          * Gets the current scale of the canvas.
-         *
+         * 
          * The scale specifies the magnification factor of the canvas, e.g. if an item
          * has a width of 2 pixels and the scale is set to 3, it will be displayed with
          * a width of 2 x 3 = 6 pixels.
          * @returns the current scale setting.
          */
         get_scale(): number;
+
         /**
          * Gets the static root item of the canvas.
-         *
+         * 
          * Static items are exactly the same as ordinary canvas items, except that
          * they do not move or change size when the canvas is scrolled or the scale
          * changes.
-         *
+         * 
          * Static items are added to the static root item in exactly the same way that
          * ordinary items are added to the root item.
          * @returns the static root item, or `null`.
          */
         get_static_root_item(): CanvasItem;
+
         /**
          * Gets the static root item model of the canvas.
-         *
+         * 
          * Static item models are exactly the same as ordinary item models, except that
          * the corresponding items do not move or change size when the canvas is
          * scrolled or the scale changes.
-         *
+         * 
          * Static items models are added to the static root item model in exactly the
          * same way that ordinary item models are added to the root item model.
          * @returns the static root item model, or `null`.
          */
         get_static_root_item_model(): CanvasItemModel;
+
         /**
          * Grabs the keyboard focus for the given item.
          * @param item the item to grab the focus.
          */
         grab_focus(item: CanvasItem): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Widget.grab_focus
+    // Conflicted with Gtk.Widget.grab_focus
         grab_focus(...args: never[]): any;
+
         /**
          * Attempts to grab the keyboard for the given item.
          * @param item the item to grab the keyboard for.
@@ -1252,12 +1289,14 @@ export namespace GooCanvas {
          * @returns {@link Gdk.GrabStatus.SUCCESS} if the grab succeeded.
          */
         keyboard_grab(item: CanvasItem, owner_events: boolean, time: number): Gdk.GrabStatus;
+
         /**
          * Ungrabs the keyboard, if the given item has the keyboard grab.
          * @param item the item that has the keyboard grab.
          * @param time the time of the event that lead to the keyboard ungrab. This should  come from the relevant {@link Gdk.Event}.
          */
         keyboard_ungrab(item: CanvasItem, time: number): void;
+
         /**
          * Attempts to grab the pointer for the given item.
          * @param item the item to grab the pointer for.
@@ -1266,43 +1305,41 @@ export namespace GooCanvas {
          * @param time the time of the event that lead to the pointer grab. This should  come from the relevant {@link Gdk.Event}.
          * @returns {@link Gdk.GrabStatus.SUCCESS} if the grab succeeded.
          */
-        pointer_grab(
-            item: CanvasItem,
-            event_mask: Gdk.EventMask,
-            cursor: Gdk.Cursor | null,
-            time: number,
-        ): Gdk.GrabStatus;
+        pointer_grab(item: CanvasItem, event_mask: Gdk.EventMask, cursor: (Gdk.Cursor | null), time: number): Gdk.GrabStatus;
+
         /**
          * Ungrabs the pointer, if the given item has the pointer grab.
          * @param item the item that has the grab.
          * @param time the time of the event that lead to the pointer ungrab. This should  come from the relevant {@link Gdk.Event}.
          */
         pointer_ungrab(item: CanvasItem, time: number): void;
+
         /**
          * This function should only be used by {@link GooCanvas.CanvasWidget} and subclass
          * implementations.
-         *
+         * 
          * It registers a widget item with the canvas, so that the canvas can do the
          * necessary actions to move and resize the widget as needed.
          * @param witem a {@link GooCanvas.CanvasWidget} item.
          */
         register_widget_item(witem: CanvasWidget): void;
+
         /**
          * Renders all or part of a canvas to the given cairo context.
-         *
+         * 
          * This example code could be used in a {@link Gtk.PrintOperation}
          * {@link Gtk.PrintOperation.SignalSignatures.draw_page | Gtk.PrintOperation::draw-page} callback to print each page in a multi-page
          * document (assuming the pages appear one after the other vertically in the
          * canvas). Note the call to `cairo_translate()` to translate the output to
          * the correct position on the printed page.
-         *
+         * 
          * <informalexample><programlisting>
          *    GooCanvasBounds bounds;
          *    bounds.x1 = 0;
          *    bounds.x2 = A4_PAGE_WIDTH;
          *    bounds.y1 = A4_PAGE_HEIGHT * page_num;
          *    bounds.y2 = A4_PAGE_HEIGHT * (page_num + 1);
-         *
+         * 
          *    cr = gtk_print_context_get_cairo_context (print_context);
          *    cairo_translate (cr, 0, -A4_PAGE_HEIGHT * page_num);
          *    goo_canvas_render (GOO_CANVAS (canvas), cr, &bounds, 0.0);
@@ -1311,39 +1348,43 @@ export namespace GooCanvas {
          * @param bounds the area to render, or `null` to render the entire canvas.
          * @param scale the scale to compare with each item's visibility threshold to see if they should be rendered. This only affects items that have their visibility set to {@link GooCanvas.CanvasItemVisibility.VISIBLE_ABOVE_THRESHOLD}.
          */
-        render(cr: cairo.Context, bounds: CanvasBounds | null, scale: number): void;
+        render(cr: cairo.Context, bounds: (CanvasBounds | null), scale: number): void;
+
         /**
          * This function is only intended to be used by subclasses of {@link GooCanvas.Canvas} or
          * {@link GooCanvas.CanvasItem} implementations.
-         *
+         * 
          * Requests that the given bounds be redrawn. If `is_static` is `true` the bounds
          * are assumed to be in the static item coordinate space, otherwise they are
          * assumed to be in the canvas coordinate space.
-         *
+         * 
          * If `is_static` is `false` this function behaves the same as
          * `goo_canvas_request_redraw()`.
          * @param bounds the bounds of the item to redraw.
          * @param is_static if the item is static.
          */
         request_item_redraw(bounds: CanvasBounds, is_static: boolean): void;
+
         /**
          * This function is only intended to be used by subclasses of {@link GooCanvas.Canvas} or
          * {@link GooCanvas.CanvasItem} implementations.
-         *
+         * 
          * Requests that the given bounds be redrawn. The bounds must be in the canvas
          * coordinate space.
          * @param bounds the bounds to redraw, in device space.
          */
         request_redraw(bounds: CanvasBounds): void;
+
         /**
          * This function is only intended to be used by subclasses of {@link GooCanvas.Canvas} or
          * {@link GooCanvas.CanvasItem} implementations.
-         *
+         * 
          * It schedules an update of the {@link GooCanvas.Canvas}. This will be performed in
          * the idle loop, after all pending events have been handled, but before
          * the canvas has been repainted.
          */
         request_update(): void;
+
         /**
          * Scrolls the canvas, placing the given point as close to the top-left of
          * the view as possible.
@@ -1351,9 +1392,10 @@ export namespace GooCanvas {
          * @param top the y coordinate to scroll to.
          */
         scroll_to(left: number, top: number): void;
+
         /**
          * Sets the bounds of the {@link GooCanvas.Canvas}, in canvas units.
-         *
+         * 
          * By default, canvas units are pixels, though the {@link GooCanvas.Canvas.units} property
          * can be used to change the units to points, inches or millimeters.
          * @param left the left edge.
@@ -1362,99 +1404,110 @@ export namespace GooCanvas {
          * @param bottom the bottom edge.
          */
         set_bounds(left: number, top: number, right: number, bottom: number): void;
+
         /**
          * Sets the root item of the canvas. Any existing canvas items are removed.
          * @param item the root canvas item.
          */
         set_root_item(item: CanvasItem): void;
+
         /**
          * Sets the root item model of the canvas.
-         *
+         * 
          * A hierarchy of canvas items will be created, corresponding to the hierarchy
          * of items in the model. Any current canvas items will be removed.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_root_item_model(model: CanvasItemModel): void;
+
         /**
          * Sets the scale of the canvas.
-         *
+         * 
          * The scale specifies the magnification factor of the canvas, e.g. if an item
          * has a width of 2 pixels and the scale is set to 3, it will be displayed with
          * a width of 2 x 3 = 6 pixels.
          * @param scale the new scale setting.
          */
         set_scale(scale: number): void;
+
         /**
          * Sets the static root item. Any existing static items are removed.
-         *
+         * 
          * Static items are exactly the same as ordinary canvas items, except that
          * they do not move or change size when the canvas is scrolled or the scale
          * changes.
-         *
+         * 
          * Static items are added to the static root item in exactly the same way that
          * ordinary items are added to the root item.
          * @param item the static root item.
          */
         set_static_root_item(item: CanvasItem): void;
+
         /**
          * Sets the static root item model. Any existing static item models are
          * removed.
-         *
+         * 
          * Static item models are exactly the same as ordinary item models, except that
          * the corresponding items do not move or change size when the canvas is
          * scrolled or the scale changes.
-         *
+         * 
          * Static items models are added to the static root item model in exactly the
          *  same way that ordinary item models are added to the root item model.
          * @param model the static root item model.
          */
         set_static_root_item_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It should be called in the finalize method of {@link GooCanvas.CanvasItem}
          * objects, to remove the canvas item from the {@link GooCanvas.Canvas}'s hash table.
          * @param model the item model whose canvas item is being finalized.
          */
         unregister_item(model: CanvasItemModel): void;
+
         /**
          * This function should only be used by {@link GooCanvas.CanvasWidget} and subclass
          * implementations.
-         *
+         * 
          * It unregisters a widget item from the canvas, when the item is no longer in
          * the canvas.
          * @param witem a {@link GooCanvas.CanvasWidget} item.
          */
         unregister_widget_item(witem: CanvasWidget): void;
+
         /**
          * This function is only intended to be used by subclasses of {@link GooCanvas.Canvas} or
          * {@link GooCanvas.CanvasItem} implementations.
-         *
+         * 
          * It updates any items that need updating.
-         *
+         * 
          * If the bounds of items change, they will request a redraw of the old and
          * new bounds so the display is updated correctly.
          */
         update(): void;
+
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
         set hscrollPolicy(val: Gtk.ScrollablePolicy);
+
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
          * @since 3.0
          * @default Gtk.ScrollablePolicy.MINIMUM
-         * @category Inherited from Gtk.Scrollable
+          * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
         set vscrollPolicy(val: Gtk.ScrollablePolicy);
+
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -1464,31 +1517,37 @@ export namespace GooCanvas {
          * @returns `true` if `border` has been set
          */
         get_border(): [boolean, Gtk.Border];
+
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
          */
         get_hadjustment(): Gtk.Adjustment;
+
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
+
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
          */
         get_vadjustment(): Gtk.Adjustment;
+
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
+
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
          */
-        set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
+        set_hadjustment(hadjustment: (Gtk.Adjustment | null)): void;
+
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
@@ -1496,11 +1555,13 @@ export namespace GooCanvas {
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
+
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
          */
-        set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
+        set_vadjustment(vadjustment: (Gtk.Adjustment | null)): void;
+
         /**
          * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
@@ -1508,6 +1569,7 @@ export namespace GooCanvas {
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
+
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
@@ -1519,13 +1581,16 @@ export namespace GooCanvas {
         vfunc_get_border(): [boolean, Gtk.Border];
     }
 
+
     namespace CanvasAccessibleFactory {
         // Signal signatures
-        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {
 
-        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
+        }
     }
 
     /**
@@ -1544,82 +1609,71 @@ export namespace GooCanvas {
         $signals: CanvasAccessibleFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasAccessibleFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasAccessibleFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasAccessibleFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasAccessibleFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasAccessibleFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof CanvasAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace CanvasEllipse {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::radius-x': (pspec: GObject.ParamSpec) => void;
-            'notify::radius-y': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::radius-x": (pspec: GObject.ParamSpec) => void;
+            "notify::radius-y": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             center_x: number;
             centerX: number;
@@ -1638,19 +1692,19 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasEllipse represents an ellipse item.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemSimple} and so inherits all of the style
      * properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItem} interface, so you can use the
      * {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasEllipse} use `goo_canvas_ellipse_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasEllipse}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * The ellipse can be specified either with the "center-x", "center-y",
      * "radius-x" and "radius-y" properties, or with the "x", "y", "width" and
      * "height" properties.
@@ -1660,29 +1714,39 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasEllipse>;
 
         // Properties
-
         get center_x(): number;
         set center_x(val: number);
+
         get centerX(): number;
         set centerX(val: number);
+
         get center_y(): number;
         set center_y(val: number);
+
         get centerY(): number;
         set centerY(val: number);
+
         get height(): number;
         set height(val: number);
+
         get radius_x(): number;
         set radius_x(val: number);
+
         get radiusX(): number;
         set radiusX(val: number);
+
         get radius_y(): number;
         set radius_y(val: number);
+
         get radiusY(): number;
         set radiusY(val: number);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -1696,95 +1760,100 @@ export namespace GooCanvas {
         $signals: CanvasEllipse.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemSimple;
+
         ellipse_data: CanvasEllipseData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasEllipse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasEllipse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasEllipse.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasEllipse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasEllipse.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasEllipse.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasEllipse.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasEllipse.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasEllipse.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasEllipse.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasEllipse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasEllipse.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasEllipse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -1794,13 +1863,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -1813,65 +1877,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -1881,43 +1944,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -1927,10 +1988,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -1939,6 +2001,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -1948,17 +2011,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -1967,39 +2033,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -2007,31 +2078,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -2040,47 +2116,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -2089,6 +2171,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -2097,16 +2180,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -2115,6 +2201,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -2123,27 +2210,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -2151,16 +2242,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -2171,95 +2263,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -2269,43 +2363,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -2315,10 +2407,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -2327,17 +2420,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -2346,47 +2442,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -2394,12 +2497,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -2408,61 +2512,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -2470,17 +2576,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -2490,22 +2598,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -2515,53 +2626,53 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasEllipseModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::radius-x': (pspec: GObject.ParamSpec) => void;
-            'notify::radius-y': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::radius-x": (pspec: GObject.ParamSpec) => void;
+            "notify::radius-y": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
             center_x: number;
             centerX: number;
@@ -2580,23 +2691,23 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasEllipseModel represents a model for ellipse items.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so inherits all of the
      * style properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItemModel} interface, so you can use the
      * {@link GooCanvas.CanvasItemModel} functions such as `goo_canvas_item_model_raise()` and
      * `goo_canvas_item_model_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasEllipseModel} use `goo_canvas_ellipse_model_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasEllipseModel}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * The ellipse can be specified either with the "center-x", "center-y",
      * "radius-x" and "radius-y" properties, or with the "x", "y", "width" and
      * "height" properties.
-     *
+     * 
      * To respond to events such as mouse clicks on the ellipse you must connect
      * to the signal handlers of the corresponding {@link GooCanvas.CanvasEllipse} objects.
      * (See `goo_canvas_get_item()` and {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}.)
@@ -2606,29 +2717,39 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasEllipseModel>;
 
         // Properties
-
         get center_x(): number;
         set center_x(val: number);
+
         get centerX(): number;
         set centerX(val: number);
+
         get center_y(): number;
         set center_y(val: number);
+
         get centerY(): number;
         set centerY(val: number);
+
         get height(): number;
         set height(val: number);
+
         get radius_x(): number;
         set radius_x(val: number);
+
         get radiusX(): number;
         set radiusX(val: number);
+
         get radius_y(): number;
         set radius_y(val: number);
+
         get radiusY(): number;
         set radiusY(val: number);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -2642,78 +2763,83 @@ export namespace GooCanvas {
         $signals: CanvasEllipseModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemModelSimple;
+
         ellipse_data: CanvasEllipseData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasEllipseModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasEllipseModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasEllipseModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasEllipseModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasEllipseModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasEllipseModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasEllipseModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasEllipseModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasEllipseModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasEllipseModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasEllipseModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasEllipseModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasEllipseModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -2726,45 +2852,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -2778,51 +2901,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -2831,24 +2963,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -2857,6 +2992,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -2865,16 +3001,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -2883,6 +3022,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -2891,17 +3031,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -2909,78 +3052,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -2988,30 +3139,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -3021,88 +3170,90 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasGrid {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::border-color': (pspec: GObject.ParamSpec) => void;
-            'notify::border-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::border-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::border-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::border-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-color': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::show-horz-grid-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::show-vert-grid-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-color': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-lines-on-top': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::x-step': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::y-step': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::border-color": (pspec: GObject.ParamSpec) => void;
+            "notify::border-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::border-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::border-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::border-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-color": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::show-horz-grid-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::show-vert-grid-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-color": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-lines-on-top": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::x-step": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::y-step": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             border_color: string;
             borderColor: string;
@@ -3165,36 +3316,36 @@ export namespace GooCanvas {
      * GooCanvasGrid represents a grid item.
      * A grid consists of a number of equally-spaced horizontal and vertical
      * grid lines, plus an optional border.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemSimple} and so inherits all of the style
      * properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItem} interface, so you can use the
      * {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasGrid} use `goo_canvas_grid_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasGrid}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * The grid's position and size is specified with the {@link GooCanvas.CanvasGrid.x},
      * {@link GooCanvas.CanvasGrid.y}, {@link GooCanvas.CanvasGrid.width} and {@link GooCanvas.CanvasGrid.height} properties.
-     *
+     * 
      * The {@link GooCanvas.CanvasGrid.x_step} and {@link GooCanvas.CanvasGrid.y_step} properties specify the
      * distance between grid lines. The  {@link GooCanvas.CanvasGrid.x_offset} and
      * {@link GooCanvas.CanvasGrid.y_offset} properties specify the distance before the first
      * grid lines.
-     *
+     * 
      * The horizontal or vertical grid lines can be hidden using the
      * {@link GooCanvas.CanvasGrid.show_horz_grid_lines} and {@link GooCanvas.CanvasGrid.show_vert_grid_lines}
      * properties.
-     *
+     * 
      * The width of the border can be set using the {@link GooCanvas.CanvasGrid.border_width}
      * property. The border is drawn outside the area specified with the
      * {@link GooCanvas.CanvasGrid.x}, {@link GooCanvas.CanvasGrid.y}, {@link GooCanvas.CanvasGrid.width} and
      * {@link GooCanvas.CanvasGrid.height} properties.
-     *
+     * 
      * Other properties allow the colors and widths of the grid lines to be set.
      * The grid line color and width properties override the standard
      * {@link GooCanvas.CanvasItemSimple.stroke_color} and {@link GooCanvas.CanvasItemSimple.line_width}
@@ -3205,161 +3356,213 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasGrid>;
 
         // Properties
-
         /**
          * @write-only
          */
         set border_color(val: string);
+
         /**
          * @write-only
          */
         set borderColor(val: string);
+
         /**
          * The color to use for the border, specified as a GdkRGBA.
          * @since 2.0.1
          */
         get border_color_gdk_rgba(): Gdk.RGBA;
         set border_color_gdk_rgba(val: Gdk.RGBA);
+
         /**
          * The color to use for the border, specified as a GdkRGBA.
          * @since 2.0.1
          */
         get borderColorGdkRgba(): Gdk.RGBA;
         set borderColorGdkRgba(val: Gdk.RGBA);
+
         get border_color_rgba(): number;
         set border_color_rgba(val: number);
+
         get borderColorRgba(): number;
         set borderColorRgba(val: number);
+
         get border_pattern(): CairoPattern;
         set border_pattern(val: CairoPattern);
+
         get borderPattern(): CairoPattern;
         set borderPattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set border_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
         set borderPixbuf(val: GdkPixbuf.Pixbuf);
+
         get border_width(): number;
         set border_width(val: number);
+
         get borderWidth(): number;
         set borderWidth(val: number);
+
         get height(): number;
         set height(val: number);
+
         /**
          * @write-only
          */
         set horz_grid_line_color(val: string);
+
         /**
          * @write-only
          */
         set horzGridLineColor(val: string);
+
         /**
          * The color to use for the horizontal grid lines, specified as a GdkRGBA.
          * @since 2.0.1
          */
         get horz_grid_line_color_gdk_rgba(): Gdk.RGBA;
         set horz_grid_line_color_gdk_rgba(val: Gdk.RGBA);
+
         /**
          * The color to use for the horizontal grid lines, specified as a GdkRGBA.
          * @since 2.0.1
          */
         get horzGridLineColorGdkRgba(): Gdk.RGBA;
         set horzGridLineColorGdkRgba(val: Gdk.RGBA);
+
         get horz_grid_line_color_rgba(): number;
         set horz_grid_line_color_rgba(val: number);
+
         get horzGridLineColorRgba(): number;
         set horzGridLineColorRgba(val: number);
+
         get horz_grid_line_pattern(): CairoPattern;
         set horz_grid_line_pattern(val: CairoPattern);
+
         get horzGridLinePattern(): CairoPattern;
         set horzGridLinePattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set horz_grid_line_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
         set horzGridLinePixbuf(val: GdkPixbuf.Pixbuf);
+
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
+
         get horzGridLineWidth(): number;
         set horzGridLineWidth(val: number);
+
         get show_horz_grid_lines(): boolean;
         set show_horz_grid_lines(val: boolean);
+
         get showHorzGridLines(): boolean;
         set showHorzGridLines(val: boolean);
+
         get show_vert_grid_lines(): boolean;
         set show_vert_grid_lines(val: boolean);
+
         get showVertGridLines(): boolean;
         set showVertGridLines(val: boolean);
+
         /**
          * @write-only
          */
         set vert_grid_line_color(val: string);
+
         /**
          * @write-only
          */
         set vertGridLineColor(val: string);
+
         /**
          * The color to use for the vertical grid lines, specified as a GdkRGBA.
          * @since 2.0.1
          */
         get vert_grid_line_color_gdk_rgba(): Gdk.RGBA;
         set vert_grid_line_color_gdk_rgba(val: Gdk.RGBA);
+
         /**
          * The color to use for the vertical grid lines, specified as a GdkRGBA.
          * @since 2.0.1
          */
         get vertGridLineColorGdkRgba(): Gdk.RGBA;
         set vertGridLineColorGdkRgba(val: Gdk.RGBA);
+
         get vert_grid_line_color_rgba(): number;
         set vert_grid_line_color_rgba(val: number);
+
         get vertGridLineColorRgba(): number;
         set vertGridLineColorRgba(val: number);
+
         get vert_grid_line_pattern(): CairoPattern;
         set vert_grid_line_pattern(val: CairoPattern);
+
         get vertGridLinePattern(): CairoPattern;
         set vertGridLinePattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set vert_grid_line_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
         set vertGridLinePixbuf(val: GdkPixbuf.Pixbuf);
+
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
+
         get vertGridLineWidth(): number;
         set vertGridLineWidth(val: number);
+
         get vert_grid_lines_on_top(): boolean;
         set vert_grid_lines_on_top(val: boolean);
+
         get vertGridLinesOnTop(): boolean;
         set vertGridLinesOnTop(val: boolean);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get x_offset(): number;
         set x_offset(val: number);
+
         get xOffset(): number;
         set xOffset(val: number);
+
         get x_step(): number;
         set x_step(val: number);
+
         get xStep(): number;
         set xStep(val: number);
+
         get y(): number;
         set y(val: number);
+
         get y_offset(): number;
         set y_offset(val: number);
+
         get yOffset(): number;
         set yOffset(val: number);
+
         get y_step(): number;
         set y_step(val: number);
+
         get yStep(): number;
         set yStep(val: number);
 
@@ -3373,94 +3576,98 @@ export namespace GooCanvas {
         $signals: CanvasGrid.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemSimple;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasGrid.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasGrid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGrid.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasGrid.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasGrid.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasGrid.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasGrid.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasGrid.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGrid.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasGrid.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasGrid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasGrid.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGrid.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -3470,13 +3677,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -3489,65 +3691,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -3557,43 +3758,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -3603,10 +3802,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -3615,6 +3815,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -3624,17 +3825,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -3643,39 +3847,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -3683,31 +3892,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -3716,47 +3930,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -3765,6 +3985,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -3773,16 +3994,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -3791,6 +4015,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -3799,27 +4024,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -3827,16 +4056,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -3847,95 +4077,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -3945,43 +4177,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -3991,10 +4221,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -4003,17 +4234,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -4022,47 +4256,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -4070,12 +4311,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -4084,61 +4326,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -4146,17 +4390,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -4166,22 +4412,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -4191,74 +4440,74 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasGridModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::border-color': (pspec: GObject.ParamSpec) => void;
-            'notify::border-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::border-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::border-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::border-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-color': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::show-horz-grid-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::show-vert-grid-lines': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-color': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-lines-on-top': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::x-step': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::y-step': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::border-color": (pspec: GObject.ParamSpec) => void;
+            "notify::border-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::border-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::border-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::border-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-color": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::show-horz-grid-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::show-vert-grid-lines": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-color": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-lines-on-top": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::x-step": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::y-step": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
             border_color: string;
             borderColor: string;
@@ -4321,41 +4570,41 @@ export namespace GooCanvas {
      * GooCanvasGridModel represents a model for grid items.
      * A grid consists of a number of equally-spaced horizontal and vertical
      * grid lines, plus an optional border.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so inherits all of the
      * style properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItemModel} interface, so you can use the
      * {@link GooCanvas.CanvasItemModel} functions such as `goo_canvas_item_model_raise()` and
      * `goo_canvas_item_model_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasGridModel} use `goo_canvas_grid_model_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasGridModel}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * To respond to events such as mouse clicks on the grid you must connect
      * to the signal handlers of the corresponding {@link GooCanvas.CanvasGrid} objects.
      * (See `goo_canvas_get_item()` and {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}.)
-     *
+     * 
      * The grid's position and size is specified with the {@link GooCanvas.CanvasGridModel.x},
      * {@link GooCanvas.CanvasGridModel.y}, {@link GooCanvas.CanvasGridModel.width} and
      * {@link GooCanvas.CanvasGridModel.height} properties.
-     *
+     * 
      * The {@link GooCanvas.CanvasGridModel.x_step} and {@link GooCanvas.CanvasGridModel.y_step} properties
      * specify the distance between grid lines. The  {@link GooCanvas.CanvasGridModel.x_offset}
      * and {@link GooCanvas.CanvasGridModel.y_offset} properties specify the distance before the
      * first grid lines.
-     *
+     * 
      * The horizontal or vertical grid lines can be hidden using the
      * {@link GooCanvas.CanvasGridModel.show_horz_grid_lines} and
      * {@link GooCanvas.CanvasGridModel.show_vert_grid_lines} properties.
-     *
+     * 
      * The width of the border can be set using the {@link GooCanvas.CanvasGridModel.border_width}
      * property. The border is drawn outside the area specified with the
      * {@link GooCanvas.CanvasGridModel.x}, {@link GooCanvas.CanvasGridModel.y}, {@link GooCanvas.CanvasGridModel.width} and
      * {@link GooCanvas.CanvasGridModel.height} properties.
-     *
+     * 
      * Other properties allow the colors and widths of the grid lines to be set.
      * The grid line color and width properties override the standard
      * {@link GooCanvas.CanvasItemModelSimple.stroke_color} and
@@ -4367,137 +4616,189 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasGridModel>;
 
         // Properties
-
         /**
          * @write-only
          */
         set border_color(val: string);
+
         /**
          * @write-only
          */
         set borderColor(val: string);
+
         get border_color_gdk_rgba(): Gdk.RGBA;
         set border_color_gdk_rgba(val: Gdk.RGBA);
+
         get borderColorGdkRgba(): Gdk.RGBA;
         set borderColorGdkRgba(val: Gdk.RGBA);
+
         get border_color_rgba(): number;
         set border_color_rgba(val: number);
+
         get borderColorRgba(): number;
         set borderColorRgba(val: number);
+
         get border_pattern(): CairoPattern;
         set border_pattern(val: CairoPattern);
+
         get borderPattern(): CairoPattern;
         set borderPattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set border_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
         set borderPixbuf(val: GdkPixbuf.Pixbuf);
+
         get border_width(): number;
         set border_width(val: number);
+
         get borderWidth(): number;
         set borderWidth(val: number);
+
         get height(): number;
         set height(val: number);
+
         /**
          * @write-only
          */
         set horz_grid_line_color(val: string);
+
         /**
          * @write-only
          */
         set horzGridLineColor(val: string);
+
         get horz_grid_line_color_gdk_rgba(): Gdk.RGBA;
         set horz_grid_line_color_gdk_rgba(val: Gdk.RGBA);
+
         get horzGridLineColorGdkRgba(): Gdk.RGBA;
         set horzGridLineColorGdkRgba(val: Gdk.RGBA);
+
         get horz_grid_line_color_rgba(): number;
         set horz_grid_line_color_rgba(val: number);
+
         get horzGridLineColorRgba(): number;
         set horzGridLineColorRgba(val: number);
+
         get horz_grid_line_pattern(): CairoPattern;
         set horz_grid_line_pattern(val: CairoPattern);
+
         get horzGridLinePattern(): CairoPattern;
         set horzGridLinePattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set horz_grid_line_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
         set horzGridLinePixbuf(val: GdkPixbuf.Pixbuf);
+
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
+
         get horzGridLineWidth(): number;
         set horzGridLineWidth(val: number);
+
         get show_horz_grid_lines(): boolean;
         set show_horz_grid_lines(val: boolean);
+
         get showHorzGridLines(): boolean;
         set showHorzGridLines(val: boolean);
+
         get show_vert_grid_lines(): boolean;
         set show_vert_grid_lines(val: boolean);
+
         get showVertGridLines(): boolean;
         set showVertGridLines(val: boolean);
+
         /**
          * @write-only
          */
         set vert_grid_line_color(val: string);
+
         /**
          * @write-only
          */
         set vertGridLineColor(val: string);
+
         get vert_grid_line_color_gdk_rgba(): Gdk.RGBA;
         set vert_grid_line_color_gdk_rgba(val: Gdk.RGBA);
+
         get vertGridLineColorGdkRgba(): Gdk.RGBA;
         set vertGridLineColorGdkRgba(val: Gdk.RGBA);
+
         get vert_grid_line_color_rgba(): number;
         set vert_grid_line_color_rgba(val: number);
+
         get vertGridLineColorRgba(): number;
         set vertGridLineColorRgba(val: number);
+
         get vert_grid_line_pattern(): CairoPattern;
         set vert_grid_line_pattern(val: CairoPattern);
+
         get vertGridLinePattern(): CairoPattern;
         set vertGridLinePattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set vert_grid_line_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
         set vertGridLinePixbuf(val: GdkPixbuf.Pixbuf);
+
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
+
         get vertGridLineWidth(): number;
         set vertGridLineWidth(val: number);
+
         get vert_grid_lines_on_top(): boolean;
         set vert_grid_lines_on_top(val: boolean);
+
         get vertGridLinesOnTop(): boolean;
         set vertGridLinesOnTop(val: boolean);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get x_offset(): number;
         set x_offset(val: number);
+
         get xOffset(): number;
         set xOffset(val: number);
+
         get x_step(): number;
         set x_step(val: number);
+
         get xStep(): number;
         set xStep(val: number);
+
         get y(): number;
         set y(val: number);
+
         get y_offset(): number;
         set y_offset(val: number);
+
         get yOffset(): number;
         set yOffset(val: number);
+
         get y_step(): number;
         set y_step(val: number);
+
         get yStep(): number;
         set yStep(val: number);
 
@@ -4511,77 +4812,81 @@ export namespace GooCanvas {
         $signals: CanvasGridModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemModelSimple;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasGridModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasGridModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGridModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasGridModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasGridModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasGridModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasGridModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasGridModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGridModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasGridModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasGridModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasGridModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGridModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -4594,45 +4899,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -4646,51 +4948,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -4699,24 +5010,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -4725,6 +5039,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -4733,16 +5048,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -4751,6 +5069,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -4759,17 +5078,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -4777,78 +5099,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -4856,30 +5186,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -4889,63 +5217,65 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasGroup {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             height: number;
             width: number;
@@ -4958,23 +5288,23 @@ export namespace GooCanvas {
      * {@link GooCanvas.CanvasGroup} represents a group of items. Groups can be nested to
      * any depth, to create a hierarchy of items. Items are ordered within each
      * group, with later items being displayed above earlier items.
-     *
+     * 
      * {@link GooCanvas.CanvasGroup} is a subclass of {@link GooCanvas.CanvasItemSimple} and so
      * inherits all of the style properties such as "stroke-color", "fill-color"
      * and "line-width". Setting a style property on a {@link GooCanvas.CanvasGroup} will affect
      * all children of the {@link GooCanvas.CanvasGroup} (unless the children override the
      * property setting).
-     *
+     * 
      * {@link GooCanvas.CanvasGroup} implements the {@link GooCanvas.CanvasItem} interface, so you can use
      * the {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`, and the properties such as "visibility" and
      * "pointer-events".
-     *
+     * 
      * If the {@link GooCanvas.CanvasGroup.width} and {@link GooCanvas.CanvasGroup.height} properties are
      * set to positive values then the group is clipped to the given size.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasGroup} use `goo_canvas_group_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasGroup}, use
      * `g_object_get()` and `g_object_set()`.
      * @gir-type Class
@@ -4983,13 +5313,15 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasGroup>;
 
         // Properties
-
         get height(): number;
         set height(val: number);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -5003,95 +5335,100 @@ export namespace GooCanvas {
         $signals: CanvasGroup.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemSimple;
+
         items: any[];
 
         // Constructors
-
         constructor(properties?: Partial<CanvasGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGroup.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasGroup.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasGroup.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasGroup.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasGroup.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGroup.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasGroup.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasGroup.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -5101,13 +5438,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -5120,65 +5452,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -5188,43 +5519,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -5234,10 +5563,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -5246,6 +5576,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -5255,17 +5586,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -5274,39 +5608,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -5314,31 +5653,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -5347,47 +5691,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -5396,6 +5746,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -5404,16 +5755,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -5422,6 +5776,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -5430,27 +5785,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -5458,16 +5817,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -5478,95 +5838,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -5576,43 +5938,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -5622,10 +5982,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -5634,17 +5995,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -5653,47 +6017,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -5701,12 +6072,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -5715,61 +6087,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -5777,17 +6151,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -5797,22 +6173,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -5822,49 +6201,49 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasGroupModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
             height: number;
             width: number;
@@ -5877,23 +6256,23 @@ export namespace GooCanvas {
      * {@link GooCanvas.CanvasGroupModel} represents a group of items. Groups can be nested to
      * any depth, to create a hierarchy of items. Items are ordered within each
      * group, with later items being displayed above earlier items.
-     *
+     * 
      * {@link GooCanvas.CanvasGroupModel} is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so
      * inherits all of the style properties such as "stroke-color", "fill-color"
      * and "line-width". Setting a style property on a {@link GooCanvas.CanvasGroupModel} will
      * affect all children of the {@link GooCanvas.CanvasGroupModel} (unless the children
      * override the property setting).
-     *
+     * 
      * {@link GooCanvas.CanvasGroupModel} implements the {@link GooCanvas.CanvasItemModel} interface, so you
      * can use the {@link GooCanvas.CanvasItemModel} functions such as
      * `goo_canvas_item_model_raise()` and `goo_canvas_item_model_rotate()`, and the
      * properties such as "visibility" and "pointer-events".
-     *
+     * 
      * To create a {@link GooCanvas.CanvasGroupModel} use `goo_canvas_group_model_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasGroupModel}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * To respond to events such as mouse clicks on the group you must connect
      * to the signal handlers of the corresponding {@link GooCanvas.CanvasGroup} objects.
      * (See `goo_canvas_get_item()` and {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}.)
@@ -5903,13 +6282,15 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasGroupModel>;
 
         // Properties
-
         get height(): number;
         set height(val: number);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -5923,78 +6304,83 @@ export namespace GooCanvas {
         $signals: CanvasGroupModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemModelSimple;
+
         children: any[];
 
         // Constructors
-
         constructor(properties?: Partial<CanvasGroupModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasGroupModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGroupModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasGroupModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasGroupModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasGroupModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasGroupModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasGroupModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasGroupModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasGroupModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasGroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasGroupModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasGroupModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -6007,45 +6393,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -6059,51 +6442,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -6112,24 +6504,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -6138,6 +6533,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -6146,16 +6542,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -6164,6 +6563,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -6172,17 +6572,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -6190,78 +6593,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -6269,30 +6680,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -6302,67 +6711,69 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasImage {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::alpha': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-to-fit': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::alpha": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-to-fit": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             alpha: number;
             height: number;
@@ -6378,21 +6789,21 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasImage represents an image item.
-     *
+     * 
      * <note><para>
      * It is usually necessary to set the "scale-to-fit" property to `true` to
      * scale the image to fit the given rectangle.
      * </para></note>
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemSimple} and so inherits all of the style
      * properties such as "operator" and "pointer-events".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItem} interface, so you can use the
      * {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasImage} use `goo_canvas_image_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasImage}, use
      * `g_object_get()` and `g_object_set()`.
      * @gir-type Class
@@ -6401,25 +6812,32 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasImage>;
 
         // Properties
-
         get alpha(): number;
         set alpha(val: number);
+
         get height(): number;
         set height(val: number);
+
         get pattern(): CairoPattern;
         set pattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set pixbuf(val: GdkPixbuf.Pixbuf);
+
         get scale_to_fit(): boolean;
         set scale_to_fit(val: boolean);
+
         get scaleToFit(): boolean;
         set scaleToFit(val: boolean);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -6433,94 +6851,98 @@ export namespace GooCanvas {
         $signals: CanvasImage.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemSimple;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasImage.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasImage.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasImage.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasImage.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasImage.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasImage.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasImage.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasImage.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -6530,13 +6952,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -6549,65 +6966,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -6617,43 +7033,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -6663,10 +7077,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -6675,6 +7090,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -6684,17 +7100,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -6703,39 +7122,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -6743,31 +7167,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -6776,47 +7205,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -6825,6 +7260,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -6833,16 +7269,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -6851,6 +7290,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -6859,27 +7299,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -6887,16 +7331,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -6907,95 +7352,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -7005,43 +7452,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -7051,10 +7496,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -7063,17 +7509,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -7082,47 +7531,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -7130,12 +7586,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -7144,61 +7601,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -7206,17 +7665,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -7226,22 +7687,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -7251,53 +7715,53 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasImageModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::alpha': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-to-fit': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::alpha": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-to-fit": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
             alpha: number;
             height: number;
@@ -7313,26 +7777,26 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasImageModel represent a model for image items.
-     *
+     * 
      * <note><para>
      * It is usually necessary to set the "scale-to-fit" property to `true` to
      * scale the image to fit the given rectangle. When using units other than
      * `GTK_UNIT_PIXEL` it is also necessary to set the "width" and "height"
      * properties to set the desired size.
      * </para></note>
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so inherits all of the
      * style properties such as "operator" and "pointer-events".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItemModel} interface, so you can use the
      * {@link GooCanvas.CanvasItemModel} functions such as `goo_canvas_item_model_raise()` and
      * `goo_canvas_item_model_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasImageModel} use `goo_canvas_image_model_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasImageModel}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * To respond to events such as mouse clicks on the image you must connect
      * to the signal handlers of the corresponding {@link GooCanvas.CanvasImage} objects.
      * (See `goo_canvas_get_item()` and {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}.)
@@ -7342,25 +7806,32 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasImageModel>;
 
         // Properties
-
         get alpha(): number;
         set alpha(val: number);
+
         get height(): number;
         set height(val: number);
+
         get pattern(): CairoPattern;
         set pattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set pixbuf(val: GdkPixbuf.Pixbuf);
+
         get scale_to_fit(): boolean;
         set scale_to_fit(val: boolean);
+
         get scaleToFit(): boolean;
         set scaleToFit(val: boolean);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -7374,77 +7845,81 @@ export namespace GooCanvas {
         $signals: CanvasImageModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemModelSimple;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasImageModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasImageModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasImageModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasImageModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasImageModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasImageModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasImageModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasImageModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasImageModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasImageModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasImageModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasImageModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasImageModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -7457,45 +7932,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -7509,51 +7981,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -7562,24 +8043,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -7588,6 +8072,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -7596,16 +8081,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -7614,6 +8102,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -7622,17 +8111,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -7640,78 +8132,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -7719,30 +8219,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -7752,27 +8250,32 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasItemAccessibleFactory {
         // Signal signatures
-        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {
 
-        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
+        }
     }
 
     /**
@@ -7791,74 +8294,63 @@ export namespace GooCanvas {
         $signals: CanvasItemAccessibleFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasItemAccessibleFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemAccessibleFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasItemAccessibleFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasItemAccessibleFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemAccessibleFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasItemAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace CanvasItemModelSimple {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, CanvasItemModel.ConstructorProps {
             antialias: CairoAntialias;
             clip_fill_rule: CairoFillRule;
@@ -7910,15 +8402,15 @@ export namespace GooCanvas {
      * {@link GooCanvas.CanvasItemModelSimple} is used as a base class for the standard canvas
      * item models. It can also be used as the base class for new custom canvas
      * item models.
-     *
+     * 
      * <note><para>
      * 	The Model/View canvas feature may be removed in a future version of
      * 	GooCanvas.
      * </para></note>
-     *
+     * 
      * It provides default implementations for many of the {@link GooCanvas.CanvasItemModel}
      * methods.
-     *
+     * 
      * Subclasses of {@link GooCanvas.CanvasItemModelSimple} only need to implement the
      * `create_item()` method of the {@link GooCanvas.CanvasItemModel} interface, to create
      * the default canvas item to view the item model.
@@ -7928,13 +8420,15 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasItemModelSimple>;
 
         // Properties
-
         get antialias(): CairoAntialias;
         set antialias(val: CairoAntialias);
+
         get clip_fill_rule(): CairoFillRule;
         set clip_fill_rule(val: CairoFillRule);
+
         get clipFillRule(): CairoFillRule;
         set clipFillRule(val: CairoFillRule);
+
         /**
          * The sequence of commands describing the clip path of the item, specified
          * as a string using the same syntax
@@ -7943,6 +8437,7 @@ export namespace GooCanvas {
          * @write-only
          */
         set clip_path(val: string);
+
         /**
          * The sequence of commands describing the clip path of the item, specified
          * as a string using the same syntax
@@ -7951,94 +8446,132 @@ export namespace GooCanvas {
          * @write-only
          */
         set clipPath(val: string);
+
         /**
          * @write-only
          */
         set fill_color(val: string);
+
         /**
          * @write-only
          */
         set fillColor(val: string);
+
         get fill_color_gdk_rgba(): Gdk.RGBA;
         set fill_color_gdk_rgba(val: Gdk.RGBA);
+
         get fillColorGdkRgba(): Gdk.RGBA;
         set fillColorGdkRgba(val: Gdk.RGBA);
+
         get fill_color_rgba(): number;
         set fill_color_rgba(val: number);
+
         get fillColorRgba(): number;
         set fillColorRgba(val: number);
+
         get fill_pattern(): CairoPattern;
         set fill_pattern(val: CairoPattern);
+
         get fillPattern(): CairoPattern;
         set fillPattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set fill_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
         set fillPixbuf(val: GdkPixbuf.Pixbuf);
+
         get fill_rule(): CairoFillRule;
         set fill_rule(val: CairoFillRule);
+
         get fillRule(): CairoFillRule;
         set fillRule(val: CairoFillRule);
+
         get font(): string;
         set font(val: string);
+
         get font_desc(): Pango.FontDescription;
         set font_desc(val: Pango.FontDescription);
+
         get fontDesc(): Pango.FontDescription;
         set fontDesc(val: Pango.FontDescription);
+
         get hint_metrics(): CairoHintMetrics;
         set hint_metrics(val: CairoHintMetrics);
+
         get hintMetrics(): CairoHintMetrics;
         set hintMetrics(val: CairoHintMetrics);
+
         get line_cap(): CairoLineCap;
         set line_cap(val: CairoLineCap);
+
         get lineCap(): CairoLineCap;
         set lineCap(val: CairoLineCap);
+
         get line_dash(): CanvasLineDash;
         set line_dash(val: CanvasLineDash);
+
         get lineDash(): CanvasLineDash;
         set lineDash(val: CanvasLineDash);
+
         get line_join(): CairoLineJoin;
         set line_join(val: CairoLineJoin);
+
         get lineJoin(): CairoLineJoin;
         set lineJoin(val: CairoLineJoin);
+
         get line_join_miter_limit(): number;
         set line_join_miter_limit(val: number);
+
         get lineJoinMiterLimit(): number;
         set lineJoinMiterLimit(val: number);
+
         get line_width(): number;
         set line_width(val: number);
+
         get lineWidth(): number;
         set lineWidth(val: number);
+
         get operator(): CairoOperator;
         set operator(val: CairoOperator);
+
         /**
          * @write-only
          */
         set stroke_color(val: string);
+
         /**
          * @write-only
          */
         set strokeColor(val: string);
+
         get stroke_color_gdk_rgba(): Gdk.RGBA;
         set stroke_color_gdk_rgba(val: Gdk.RGBA);
+
         get strokeColorGdkRgba(): Gdk.RGBA;
         set strokeColorGdkRgba(val: Gdk.RGBA);
+
         get stroke_color_rgba(): number;
         set stroke_color_rgba(val: number);
+
         get strokeColorRgba(): number;
         set strokeColorRgba(val: number);
+
         get stroke_pattern(): CairoPattern;
         set stroke_pattern(val: CairoPattern);
+
         get strokePattern(): CairoPattern;
         set strokePattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set stroke_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
@@ -8054,79 +8587,81 @@ export namespace GooCanvas {
         $signals: CanvasItemModelSimple.SignalSignatures;
 
         // Fields
-
         parent_object: GObject.Object;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasItemModelSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasItemModelSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemModelSimple.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasItemModelSimple.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasItemModelSimple.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasItemModelSimple.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasItemModelSimple.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasItemModelSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemModelSimple.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasItemModelSimple.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemModelSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -8139,45 +8674,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -8191,51 +8723,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -8244,24 +8785,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -8270,6 +8814,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -8278,16 +8823,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -8296,6 +8844,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -8304,17 +8853,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -8322,78 +8874,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -8401,30 +8961,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -8434,59 +8992,61 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasItemSimple {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, CanvasItem.ConstructorProps {
             antialias: CairoAntialias;
             clip_fill_rule: CairoFillRule;
@@ -8537,13 +9097,13 @@ export namespace GooCanvas {
     /**
      * {@link GooCanvas.CanvasItemSimple} is used as a base class for all of the standard canvas
      * items. It can also be used as the base class for new custom canvas items.
-     *
+     * 
      * It provides default implementations for many of the {@link GooCanvas.CanvasItem}
      * methods.
-     *
+     * 
      * For very simple items, all that is needed is to implement the `create_path()`
      * method. ({@link GooCanvas.CanvasEllipse}, {@link GooCanvas.CanvasRect} and {@link GooCanvas.CanvasPath} do this.)
-     *
+     * 
      * More complicated items need to implement the `update()`, `paint()` and
      * `is_item_at()` methods instead. ({@link GooCanvas.CanvasImage}, {@link GooCanvas.CanvasPolyline},
      * {@link GooCanvas.CanvasText} and {@link GooCanvas.CanvasWidget} do this.) They may also need to
@@ -8557,13 +9117,15 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasItemSimple>;
 
         // Properties
-
         get antialias(): CairoAntialias;
         set antialias(val: CairoAntialias);
+
         get clip_fill_rule(): CairoFillRule;
         set clip_fill_rule(val: CairoFillRule);
+
         get clipFillRule(): CairoFillRule;
         set clipFillRule(val: CairoFillRule);
+
         /**
          * The sequence of commands describing the clip path of the item, specified
          * as a string using the same syntax
@@ -8572,6 +9134,7 @@ export namespace GooCanvas {
          * @write-only
          */
         set clip_path(val: string);
+
         /**
          * The sequence of commands describing the clip path of the item, specified
          * as a string using the same syntax
@@ -8580,110 +9143,148 @@ export namespace GooCanvas {
          * @write-only
          */
         set clipPath(val: string);
+
         /**
          * @write-only
          */
         set fill_color(val: string);
+
         /**
          * @write-only
          */
         set fillColor(val: string);
+
         /**
          * The color to use to paint the interior of the item, specified as a GdkRGBA. To disable painting set the 'fill-pattern' property to NULL.
          * @since 2.0.1
          */
         get fill_color_gdk_rgba(): Gdk.RGBA;
         set fill_color_gdk_rgba(val: Gdk.RGBA);
+
         /**
          * The color to use to paint the interior of the item, specified as a GdkRGBA. To disable painting set the 'fill-pattern' property to NULL.
          * @since 2.0.1
          */
         get fillColorGdkRgba(): Gdk.RGBA;
         set fillColorGdkRgba(val: Gdk.RGBA);
+
         get fill_color_rgba(): number;
         set fill_color_rgba(val: number);
+
         get fillColorRgba(): number;
         set fillColorRgba(val: number);
+
         get fill_pattern(): CairoPattern;
         set fill_pattern(val: CairoPattern);
+
         get fillPattern(): CairoPattern;
         set fillPattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set fill_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
         set fillPixbuf(val: GdkPixbuf.Pixbuf);
+
         get fill_rule(): CairoFillRule;
         set fill_rule(val: CairoFillRule);
+
         get fillRule(): CairoFillRule;
         set fillRule(val: CairoFillRule);
+
         get font(): string;
         set font(val: string);
+
         get font_desc(): Pango.FontDescription;
         set font_desc(val: Pango.FontDescription);
+
         get fontDesc(): Pango.FontDescription;
         set fontDesc(val: Pango.FontDescription);
+
         get hint_metrics(): CairoHintMetrics;
         set hint_metrics(val: CairoHintMetrics);
+
         get hintMetrics(): CairoHintMetrics;
         set hintMetrics(val: CairoHintMetrics);
+
         get line_cap(): CairoLineCap;
         set line_cap(val: CairoLineCap);
+
         get lineCap(): CairoLineCap;
         set lineCap(val: CairoLineCap);
+
         get line_dash(): CanvasLineDash;
         set line_dash(val: CanvasLineDash);
+
         get lineDash(): CanvasLineDash;
         set lineDash(val: CanvasLineDash);
+
         get line_join(): CairoLineJoin;
         set line_join(val: CairoLineJoin);
+
         get lineJoin(): CairoLineJoin;
         set lineJoin(val: CairoLineJoin);
+
         get line_join_miter_limit(): number;
         set line_join_miter_limit(val: number);
+
         get lineJoinMiterLimit(): number;
         set lineJoinMiterLimit(val: number);
+
         get line_width(): number;
         set line_width(val: number);
+
         get lineWidth(): number;
         set lineWidth(val: number);
+
         get operator(): CairoOperator;
         set operator(val: CairoOperator);
+
         /**
          * @write-only
          */
         set stroke_color(val: string);
+
         /**
          * @write-only
          */
         set strokeColor(val: string);
+
         /**
          * The color to use for the item's perimeter, specified as a GdkRGBA. To disable painting set the 'stroke-pattern' property to NULL.
          * @since 2.0.1
          */
         get stroke_color_gdk_rgba(): Gdk.RGBA;
         set stroke_color_gdk_rgba(val: Gdk.RGBA);
+
         /**
          * The color to use for the item's perimeter, specified as a GdkRGBA. To disable painting set the 'stroke-pattern' property to NULL.
          * @since 2.0.1
          */
         get strokeColorGdkRgba(): Gdk.RGBA;
         set strokeColorGdkRgba(val: Gdk.RGBA);
+
         get stroke_color_rgba(): number;
         set stroke_color_rgba(val: number);
+
         get strokeColorRgba(): number;
         set strokeColorRgba(val: number);
+
         get stroke_pattern(): CairoPattern;
         set stroke_pattern(val: CairoPattern);
+
         get strokePattern(): CairoPattern;
         set strokePattern(val: CairoPattern);
+
         /**
          * @write-only
          */
         set stroke_pixbuf(val: GdkPixbuf.Pixbuf);
+
         /**
          * @write-only
          */
@@ -8699,80 +9300,76 @@ export namespace GooCanvas {
         $signals: CanvasItemSimple.SignalSignatures;
 
         // Fields
-
         canvas: Canvas;
+
         model: CanvasItemModelSimple;
+
         bounds: CanvasBounds;
+
         need_update: number;
+
         need_entire_subtree_update: number;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasItemSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasItemSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemSimple.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasItemSimple.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasItemSimple.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasItemSimple.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasItemSimple.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasItemSimple.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasItemSimple.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasItemSimple.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasItemSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasItemSimple.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasItemSimple.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param cr
+         * @param cr 
          * @virtual
          */
         vfunc_simple_create_path(cr: cairo.Context): void;
+
         /**
-         * @param x
-         * @param y
-         * @param cr
-         * @param is_pointer_event
+         * @param x 
+         * @param y 
+         * @param cr 
+         * @param is_pointer_event 
          * @virtual
          */
         vfunc_simple_is_item_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean): boolean;
+
         /**
-         * @param cr
-         * @param bounds
+         * @param cr 
+         * @param bounds 
          * @virtual
          */
         vfunc_simple_paint(cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
-         * @param cr
+         * @param cr 
          * @virtual
          */
         vfunc_simple_update(cr: cairo.Context): void;
 
         // Methods
-
         /**
          * This function is intended to be used by subclasses of {@link GooCanvas.CanvasItemSimple}.
-         *
+         * 
          * It is used as a callback for the "changed" signal of the item models.
          * It requests an update or redraw of the item as appropriate.
          * @param recompute_bounds if the item's bounds need to be recomputed.
          */
         changed(recompute_bounds: boolean): void;
+
         /**
          * This function is intended to be used by subclasses of {@link GooCanvas.CanvasItemSimple}.
-         *
+         * 
          * It checks if the given point is in the current path, using the item's
          * style settings.
          * @param x the x coordinate of the point.
@@ -8782,27 +9379,30 @@ export namespace GooCanvas {
          * @returns `true` if the given point is in the current path.
          */
         check_in_path(x: number, y: number, cr: cairo.Context, pointer_events: CanvasPointerEvents): boolean;
+
         /**
          * This function is intended to be used by subclasses of {@link GooCanvas.CanvasItemSimple},
          * typically in their `update()` or `get_requested_area()` methods.
-         *
+         * 
          * It ensures that the item's style is setup correctly. If the item has its
          * own {@link GooCanvas.CanvasStyle} it makes sure the parent is set correctly. If it
          * doesn't have its own style it uses the parent item's style.
          */
         check_style(): void;
+
         /**
          * Gets the item's line width.
          * @returns the item's line width.
          */
         get_line_width(): number;
+
         /**
          * This function is intended to be used by subclasses of {@link GooCanvas.CanvasItemSimple},
          * typically in their `update()` or `get_requested_area()` methods.
-         *
+         * 
          * It calculates the bounds of the current path, using the item's style
          * settings, and stores the results in the given {@link GooCanvas.CanvasBounds} struct.
-         *
+         * 
          * The returned bounds contains the bounding box of the path in device space,
          * converted to user space coordinates. To calculate the bounds completely in
          * user space, use `cairo_identity_matrix()` to temporarily reset the current
@@ -8811,33 +9411,37 @@ export namespace GooCanvas {
          * @param bounds the {@link GooCanvas.CanvasBounds} struct to store the resulting bounding box.
          */
         get_path_bounds(cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * This function is intended to be used by subclasses of {@link GooCanvas.CanvasItemSimple}.
-         *
+         * 
          * It paints the current path, using the item's style settings.
          * @param cr a cairo context.
          */
         paint_path(cr: cairo.Context): void;
+
         /**
          * This function should be called by subclasses of {@link GooCanvas.CanvasItemSimple}
          * in their `set_model()` method.
          * @param model the model that `item` will view.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is intended to be used by subclasses of {@link GooCanvas.CanvasItemSimple},
          * typically in their `update()` or `get_requested_area()` methods.
-         *
+         * 
          * It converts the item's bounds to a bounding box in the canvas (device)
          * coordinate space.
          * @param cr a cairo context.
          * @param bounds the bounds of the item, in the item's coordinate space.
          */
         user_bounds_to_device(cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * This function is intended to be used by subclasses of {@link GooCanvas.CanvasItemSimple},
          * typically in their `get_requested_area()` method.
-         *
+         * 
          * It converts the item's bounds to a bounding box in its parent's coordinate
          * space. If the item has no transformation matrix set then no conversion is
          * needed.
@@ -8845,65 +9449,79 @@ export namespace GooCanvas {
          * @param bounds the bounds of the item, in the item's coordinate space.
          */
         user_bounds_to_parent(cr: cairo.Context, bounds: CanvasBounds): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -8913,13 +9531,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -8932,65 +9545,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -9000,43 +9612,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -9046,10 +9656,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -9058,6 +9669,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -9067,17 +9679,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -9086,39 +9701,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -9126,31 +9746,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -9159,42 +9784,47 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -9203,6 +9833,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -9211,16 +9842,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -9229,6 +9863,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -9237,27 +9872,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -9265,16 +9904,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -9285,95 +9925,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -9383,43 +10025,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -9429,10 +10069,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -9441,17 +10082,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -9460,47 +10104,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -9508,12 +10159,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -9522,61 +10174,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -9584,17 +10238,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -9604,22 +10260,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -9629,50 +10288,50 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasPath {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::data': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::data": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             data: string;
             height: number;
@@ -9685,20 +10344,20 @@ export namespace GooCanvas {
     /**
      * GooCanvasPath represents a path item, which is a series of one or more
      * lines, bezier curves, or elliptical arcs.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemSimple} and so inherits all of the style
      * properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItem} interface, so you can use the
      * {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`.
-     *
+     * 
      * {@link GooCanvas.CanvasPath} uses the same path specification strings as the Scalable
      * Vector Graphics (SVG) path element. For details see the
      * <ulink url="http://www.w3.org/Graphics/SVG/">SVG specification</ulink>.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasPath} use `goo_canvas_path_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasPath}, use
      * `g_object_get()` and `g_object_set()`.
      * @gir-type Class
@@ -9707,7 +10366,6 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPath>;
 
         // Properties
-
         /**
          * The sequence of path commands, specified as a string using the same syntax
          * as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable Vector
@@ -9715,12 +10373,16 @@ export namespace GooCanvas {
          * @write-only
          */
         set data(val: string);
+
         get height(): number;
         set height(val: number);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -9734,94 +10396,98 @@ export namespace GooCanvas {
         $signals: CanvasPath.SignalSignatures;
 
         // Fields
-
         path_data: CanvasPathData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasPath.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasPath.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPath.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasPath.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasPath.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasPath.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasPath.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasPath.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPath.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasPath.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasPath.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPath.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -9831,13 +10497,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -9850,65 +10511,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -9918,43 +10578,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -9964,10 +10622,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -9976,6 +10635,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -9985,17 +10645,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -10004,39 +10667,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -10044,31 +10712,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -10077,47 +10750,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -10126,6 +10805,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -10134,16 +10814,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -10152,6 +10835,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -10160,27 +10844,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -10188,16 +10876,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -10208,95 +10897,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -10306,43 +10997,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -10352,10 +11041,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -10364,17 +11054,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -10383,47 +11076,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -10431,12 +11131,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -10445,61 +11146,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -10507,17 +11210,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -10527,22 +11232,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -10552,50 +11260,50 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasPathModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::data': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::data": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
             data: string;
             height: number;
@@ -10608,23 +11316,23 @@ export namespace GooCanvas {
     /**
      * GooCanvasPathModel represents a model for path items, which are a series of
      * one or more lines, bezier curves, or elliptical arcs.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so inherits all of the
      * style properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItemModel} interface, so you can use the
      * {@link GooCanvas.CanvasItemModel} functions such as `goo_canvas_item_model_raise()` and
      * `goo_canvas_item_model_rotate()`.
-     *
+     * 
      * {@link GooCanvas.CanvasPathModel} uses the same path specification strings as the Scalable
      * Vector Graphics (SVG) path element. For details see the
      * <ulink url="http://www.w3.org/Graphics/SVG/">SVG specification</ulink>.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasPathModel} use `goo_canvas_path_model_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasPathModel}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * To respond to events such as mouse clicks on the path you must connect
      * to the signal handlers of the corresponding {@link GooCanvas.CanvasPath} objects.
      * (See `goo_canvas_get_item()` and {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}.)
@@ -10634,17 +11342,20 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPathModel>;
 
         // Properties
-
         /**
          * @write-only
          */
         set data(val: string);
+
         get height(): number;
         set height(val: number);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -10658,78 +11369,83 @@ export namespace GooCanvas {
         $signals: CanvasPathModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemModelSimple;
+
         path_data: CanvasPathData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasPathModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasPathModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPathModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasPathModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasPathModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasPathModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasPathModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasPathModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPathModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasPathModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasPathModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasPathModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPathModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -10742,45 +11458,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -10794,51 +11507,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -10847,24 +11569,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -10873,6 +11598,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -10881,16 +11607,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -10899,6 +11628,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -10907,17 +11637,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -10925,78 +11658,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -11004,30 +11745,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -11037,70 +11776,72 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasPolyline {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::arrow-length': (pspec: GObject.ParamSpec) => void;
-            'notify::arrow-tip-length': (pspec: GObject.ParamSpec) => void;
-            'notify::arrow-width': (pspec: GObject.ParamSpec) => void;
-            'notify::close-path': (pspec: GObject.ParamSpec) => void;
-            'notify::end-arrow': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::points': (pspec: GObject.ParamSpec) => void;
-            'notify::start-arrow': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::arrow-length": (pspec: GObject.ParamSpec) => void;
+            "notify::arrow-tip-length": (pspec: GObject.ParamSpec) => void;
+            "notify::arrow-width": (pspec: GObject.ParamSpec) => void;
+            "notify::close-path": (pspec: GObject.ParamSpec) => void;
+            "notify::end-arrow": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::points": (pspec: GObject.ParamSpec) => void;
+            "notify::start-arrow": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             arrow_length: number;
             arrowLength: number;
@@ -11125,17 +11866,17 @@ export namespace GooCanvas {
     /**
      * GooCanvasPolyline represents a polyline item, which is a series of one or
      * more lines, with optional arrows at either end.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemSimple} and so inherits all of the style
      * properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItem} interface, so you can use the
      * {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasPolyline} use `goo_canvas_polyline_new()`, or
      * `goo_canvas_polyline_new_line()` for a simple line between two points.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasPolyline}, use
      * `g_object_get()` and `g_object_set()`.
      * @gir-type Class
@@ -11144,39 +11885,54 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPolyline>;
 
         // Properties
-
         get arrow_length(): number;
         set arrow_length(val: number);
+
         get arrowLength(): number;
         set arrowLength(val: number);
+
         get arrow_tip_length(): number;
         set arrow_tip_length(val: number);
+
         get arrowTipLength(): number;
         set arrowTipLength(val: number);
+
         get arrow_width(): number;
         set arrow_width(val: number);
+
         get arrowWidth(): number;
         set arrowWidth(val: number);
+
         get close_path(): boolean;
         set close_path(val: boolean);
+
         get closePath(): boolean;
         set closePath(val: boolean);
+
         get end_arrow(): boolean;
         set end_arrow(val: boolean);
+
         get endArrow(): boolean;
         set endArrow(val: boolean);
+
         get height(): number;
         set height(val: number);
+
         get points(): CanvasPoints;
         set points(val: CanvasPoints);
+
         get start_arrow(): boolean;
         set start_arrow(val: boolean);
+
         get startArrow(): boolean;
         set startArrow(val: boolean);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -11190,94 +11946,98 @@ export namespace GooCanvas {
         $signals: CanvasPolyline.SignalSignatures;
 
         // Fields
-
         polyline_data: CanvasPolylineData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasPolyline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasPolyline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPolyline.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasPolyline.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasPolyline.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasPolyline.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasPolyline.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasPolyline.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPolyline.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasPolyline.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasPolyline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasPolyline.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPolyline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -11287,13 +12047,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -11306,65 +12061,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -11374,43 +12128,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -11420,10 +12172,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -11432,6 +12185,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -11441,17 +12195,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -11460,39 +12217,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -11500,31 +12262,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -11533,47 +12300,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -11582,6 +12355,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -11590,16 +12364,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -11608,6 +12385,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -11616,27 +12394,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -11644,16 +12426,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -11664,95 +12447,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -11762,43 +12547,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -11808,10 +12591,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -11820,17 +12604,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -11839,47 +12626,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -11887,12 +12681,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -11901,61 +12696,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -11963,17 +12760,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -11983,22 +12782,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -12008,56 +12810,56 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasPolylineModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::arrow-length': (pspec: GObject.ParamSpec) => void;
-            'notify::arrow-tip-length': (pspec: GObject.ParamSpec) => void;
-            'notify::arrow-width': (pspec: GObject.ParamSpec) => void;
-            'notify::close-path': (pspec: GObject.ParamSpec) => void;
-            'notify::end-arrow': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::points': (pspec: GObject.ParamSpec) => void;
-            'notify::start-arrow': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::arrow-length": (pspec: GObject.ParamSpec) => void;
+            "notify::arrow-tip-length": (pspec: GObject.ParamSpec) => void;
+            "notify::arrow-width": (pspec: GObject.ParamSpec) => void;
+            "notify::close-path": (pspec: GObject.ParamSpec) => void;
+            "notify::end-arrow": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::points": (pspec: GObject.ParamSpec) => void;
+            "notify::start-arrow": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
             arrow_length: number;
             arrowLength: number;
@@ -12082,20 +12884,20 @@ export namespace GooCanvas {
     /**
      * GooCanvasPolylineModel represents a model for polyline items, which are a
      * series of one or more lines, with optional arrows at either end.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so inherits all of the
      * style properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItemModel} interface, so you can use the
      * {@link GooCanvas.CanvasItemModel} functions such as `goo_canvas_item_model_raise()` and
      * `goo_canvas_item_model_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasPolylineModel} use `goo_canvas_polyline_model_new()`, or
      * `goo_canvas_polyline_model_new_line()` for a simple line between two points.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasPolylineModel}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * To respond to events such as mouse clicks on the polyline you must connect
      * to the signal handlers of the corresponding {@link GooCanvas.CanvasPolyline} objects.
      * (See `goo_canvas_get_item()` and {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}.)
@@ -12105,39 +12907,54 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPolylineModel>;
 
         // Properties
-
         get arrow_length(): number;
         set arrow_length(val: number);
+
         get arrowLength(): number;
         set arrowLength(val: number);
+
         get arrow_tip_length(): number;
         set arrow_tip_length(val: number);
+
         get arrowTipLength(): number;
         set arrowTipLength(val: number);
+
         get arrow_width(): number;
         set arrow_width(val: number);
+
         get arrowWidth(): number;
         set arrowWidth(val: number);
+
         get close_path(): boolean;
         set close_path(val: boolean);
+
         get closePath(): boolean;
         set closePath(val: boolean);
+
         get end_arrow(): boolean;
         set end_arrow(val: boolean);
+
         get endArrow(): boolean;
         set endArrow(val: boolean);
+
         get height(): number;
         set height(val: number);
+
         get points(): CanvasPoints;
         set points(val: CanvasPoints);
+
         get start_arrow(): boolean;
         set start_arrow(val: boolean);
+
         get startArrow(): boolean;
         set startArrow(val: boolean);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -12151,80 +12968,83 @@ export namespace GooCanvas {
         $signals: CanvasPolylineModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemModelSimple;
+
         polyline_data: CanvasPolylineData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasPolylineModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasPolylineModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPolylineModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasPolylineModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasPolylineModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasPolylineModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasPolylineModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasPolylineModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasPolylineModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasPolylineModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasPolylineModel.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof CanvasPolylineModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasPolylineModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -12237,45 +13057,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -12289,51 +13106,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -12342,24 +13168,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -12368,6 +13197,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -12376,16 +13206,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -12394,6 +13227,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -12402,17 +13236,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -12420,78 +13257,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -12499,30 +13344,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -12532,65 +13375,67 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasRect {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::radius-x': (pspec: GObject.ParamSpec) => void;
-            'notify::radius-y': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::radius-x": (pspec: GObject.ParamSpec) => void;
+            "notify::radius-y": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             height: number;
             radius_x: number;
@@ -12605,16 +13450,16 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasRect represents a rectangle item.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemSimple} and so inherits all of the style
      * properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItem} interface, so you can use the
      * {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasRect} use `goo_canvas_rect_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasRect}, use
      * `g_object_get()` and `g_object_set()`.
      * @gir-type Class
@@ -12623,21 +13468,27 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasRect>;
 
         // Properties
-
         get height(): number;
         set height(val: number);
+
         get radius_x(): number;
         set radius_x(val: number);
+
         get radiusX(): number;
         set radiusX(val: number);
+
         get radius_y(): number;
         set radius_y(val: number);
+
         get radiusY(): number;
         set radiusY(val: number);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -12651,94 +13502,98 @@ export namespace GooCanvas {
         $signals: CanvasRect.SignalSignatures;
 
         // Fields
-
         rect_data: CanvasRectData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasRect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasRect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasRect.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasRect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasRect.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasRect.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasRect.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasRect.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasRect.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasRect.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasRect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasRect.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasRect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -12748,13 +13603,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -12767,65 +13617,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -12835,43 +13684,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -12881,10 +13728,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -12893,6 +13741,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -12902,17 +13751,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -12921,39 +13773,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -12961,31 +13818,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -12994,47 +13856,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -13043,6 +13911,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -13051,16 +13920,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -13069,6 +13941,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -13077,27 +13950,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -13105,16 +13982,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -13125,95 +14003,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -13223,43 +14103,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -13269,10 +14147,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -13281,17 +14160,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -13300,47 +14182,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -13348,12 +14237,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -13362,61 +14252,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -13424,17 +14316,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -13444,22 +14338,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -13469,51 +14366,51 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasRectModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::radius-x': (pspec: GObject.ParamSpec) => void;
-            'notify::radius-y': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::radius-x": (pspec: GObject.ParamSpec) => void;
+            "notify::radius-y": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
             height: number;
             radius_x: number;
@@ -13528,19 +14425,19 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasRectModel represents a model for rectangle items.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so inherits all of the
      * style properties such as "stroke-color", "fill-color" and "line-width".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItemModel} interface, so you can use the
      * {@link GooCanvas.CanvasItemModel} functions such as `goo_canvas_item_model_raise()` and
      * `goo_canvas_item_model_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasRectModel} use `goo_canvas_rect_model_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasRectModel}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * To respond to events such as mouse clicks on the rectangle you must connect
      * to the signal handlers of the corresponding {@link GooCanvas.CanvasRect} objects.
      * (See `goo_canvas_get_item()` and {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}.)
@@ -13550,21 +14447,27 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasRectModel>;
 
         // Properties
-
         get height(): number;
         set height(val: number);
+
         get radius_x(): number;
         set radius_x(val: number);
+
         get radiusX(): number;
         set radiusX(val: number);
+
         get radius_y(): number;
         set radius_y(val: number);
+
         get radiusY(): number;
         set radiusY(val: number);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -13578,78 +14481,83 @@ export namespace GooCanvas {
         $signals: CanvasRectModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemModelSimple;
+
         rect_data: CanvasRectData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasRectModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasRectModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasRectModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasRectModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasRectModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasRectModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasRectModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasRectModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasRectModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasRectModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasRectModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasRectModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasRectModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -13662,45 +14570,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -13714,51 +14619,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -13767,24 +14681,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -13793,6 +14710,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -13801,16 +14719,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -13819,6 +14740,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -13827,17 +14749,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -13845,78 +14770,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -13924,30 +14857,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -13957,41 +14888,46 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasStyle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
      * {@link GooCanvas.CanvasStyle} provides support for cascading style properties for canvas
      * items. It is intended to be used when implementing new canvas items.
-     *
+     * 
      * <note><para>
      * 	The cascading styles canvas feature may be removed in a future version
      *      of GooCanvas.
      * </para></note>
-     *
+     * 
      * Style properties are identified by a unique {@link GLib.Quark}, and contain
      * arbitrary data stored in a {@link GObject.Value}.
-     *
+     * 
      * {@link GooCanvas.CanvasStyle} also provides a few convenience functions such as
      * `goo_canvas_style_set_stroke_options()` and
      * `goo_canvas_style_set_fill_options()` which efficiently apply an item's
@@ -14011,93 +14947,90 @@ export namespace GooCanvas {
         $signals: CanvasStyle.SignalSignatures;
 
         // Fields
-
         properties: any[];
 
         // Constructors
-
         constructor(properties?: Partial<CanvasStyle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CanvasStyle;
+        static ["new"](): CanvasStyle;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasStyle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasStyle.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasStyle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasStyle.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasStyle.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasStyle.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasStyle.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasStyle.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasStyle.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasStyle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasStyle.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasStyle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Copies the given {@link GooCanvas.CanvasStyle}, by copying all of its properties.
          * Though the parent of the new style is left unset.
          * @returns a copy of the given {@link GooCanvas.CanvasStyle}.
          */
         copy(): CanvasStyle;
+
         /**
          * Gets the parent of the style.
          * @returns the parent of the given style, or `null`.
          */
         get_parent(): CanvasStyle;
+
         /**
          * Gets the value of a property.
-         *
+         * 
          * This searches though all the {@link GooCanvas.CanvasStyle}'s own list of property settings
          * and also all ancestor {@link GooCanvas.CanvasStyle} objects.
-         *
+         * 
          * Note that it returns a pointer to the internal {@link GObject.Value} setting, which should
          * not be changed.
          * @param property_id the property identifier.
          * @returns the property value, or `null` if it isn't set.
          */
         get_property(property_id: GLib.Quark): unknown;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.get_property
+    // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
+
         /**
          * Sets the standard cairo fill options using the given style.
          * @param cr a cairo context.
          * @returns `true` if a paint source is set, or `false` if the fill should be skipped.
          */
         set_fill_options(cr: cairo.Context): boolean;
+
         /**
          * Sets the parent of the style.
          * @param parent the new parent.
          */
         set_parent(parent: CanvasStyle): void;
+
         /**
          * Sets a property in the style, replacing any current setting.
-         *
+         * 
          * Note that this will override the property setting in ancestor
          * {@link GooCanvas.CanvasStyle} objects.
          * @param property_id the property identifier.
          * @param value the value of the property.
          */
-        set_property(property_id: GLib.Quark, value: GObject.Value | any): void;
+        set_property(property_id: GLib.Quark, value: (GObject.Value | any)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set_property
+    // Conflicted with GObject.Object.set_property
         set_property(...args: never[]): any;
+
         /**
          * Sets the standard cairo stroke options using the given style.
          * @param cr a cairo context.
@@ -14106,48 +15039,48 @@ export namespace GooCanvas {
         set_stroke_options(cr: cairo.Context): boolean;
     }
 
+
     namespace CanvasTable {
         // Signal signatures
         interface SignalSignatures extends CanvasGroup.SignalSignatures {
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous-columns': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous-rows': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::x-border-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::y-border-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous-columns": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous-rows": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::x-border-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::y-border-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasGroup.ConstructorProps, CanvasItem.ConstructorProps {
             column_spacing: number;
             columnSpacing: number;
@@ -14172,26 +15105,26 @@ export namespace GooCanvas {
      * {@link GooCanvas.CanvasTable} is a table container used to lay out other canvas items.
      * It is used in a similar way to how the GtkTable widget is used to lay out
      * GTK+ widgets.
-     *
+     * 
      * Items are added to the table using the normal methods, then
      * `goo_canvas_item_set_child_properties()` is used to specify how each child
      * item is to be positioned within the table (i.e. which row and column it is
      * in, how much padding it should have and whether it should expand or
      * shrink).
-     *
+     * 
      * {@link GooCanvas.CanvasTable} is a subclass of {@link GooCanvas.CanvasItemSimple} and so
      * inherits all of the style properties such as "stroke-color", "fill-color"
      * and "line-width". Setting a style property on a {@link GooCanvas.CanvasTable} will affect
      * all children of the {@link GooCanvas.CanvasTable} (unless the children override the
      * property setting).
-     *
+     * 
      * {@link GooCanvas.CanvasTable} implements the {@link GooCanvas.CanvasItem} interface, so you can use
      * the {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`, and the properties such as "visibility" and
      * "pointer-events".
-     *
+     * 
      * To create a {@link GooCanvas.CanvasTable} use `goo_canvas_table_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasTable}, use
      * `g_object_get()` and `g_object_set()`.
      * @gir-type Class
@@ -14200,37 +15133,51 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTable>;
 
         // Properties
-
         get column_spacing(): number;
         set column_spacing(val: number);
+
         get columnSpacing(): number;
         set columnSpacing(val: number);
+
         get homogeneous_columns(): boolean;
         set homogeneous_columns(val: boolean);
+
         get homogeneousColumns(): boolean;
         set homogeneousColumns(val: boolean);
+
         get homogeneous_rows(): boolean;
         set homogeneous_rows(val: boolean);
+
         get homogeneousRows(): boolean;
         set homogeneousRows(val: boolean);
+
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
+
         get horzGridLineWidth(): number;
         set horzGridLineWidth(val: number);
+
         get row_spacing(): number;
         set row_spacing(val: number);
+
         get rowSpacing(): number;
         set rowSpacing(val: number);
+
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
+
         get vertGridLineWidth(): number;
         set vertGridLineWidth(val: number);
+
         get x_border_spacing(): number;
         set x_border_spacing(val: number);
+
         get xBorderSpacing(): number;
         set xBorderSpacing(val: number);
+
         get y_border_spacing(): number;
         set y_border_spacing(val: number);
+
         get yBorderSpacing(): number;
         set yBorderSpacing(val: number);
 
@@ -14244,75 +15191,66 @@ export namespace GooCanvas {
         $signals: CanvasTable.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasTable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTable.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasTable.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasTable.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasTable.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasTable.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasTable.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTable.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasTable.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasTable.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace CanvasTableModel {
         // Signal signatures
         interface SignalSignatures extends CanvasGroupModel.SignalSignatures {
-            'notify::column-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous-columns': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous-rows': (pspec: GObject.ParamSpec) => void;
-            'notify::horz-grid-line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::row-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::vert-grid-line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::x-border-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::y-border-spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
+            "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous-columns": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous-rows": (pspec: GObject.ParamSpec) => void;
+            "notify::horz-grid-line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::row-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::vert-grid-line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::x-border-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::y-border-spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasGroupModel.ConstructorProps, CanvasItemModel.ConstructorProps {
             column_spacing: number;
             columnSpacing: number;
@@ -14337,26 +15275,26 @@ export namespace GooCanvas {
      * {@link GooCanvas.CanvasTableModel} is a model for a table container used to lay out other
      * canvas items. It is used in a similar way to how the GtkTable widget is used
      * to lay out GTK+ widgets.
-     *
+     * 
      * Item models are added to the table using the normal methods, then
      * `goo_canvas_item_model_set_child_properties()` is used to specify how each
      * child item is to be positioned within the table (i.e. which row and column
      * it is in, how much padding it should have and whether it should expand or
      * shrink).
-     *
+     * 
      * {@link GooCanvas.CanvasTableModel} is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so
      * inherits all of the style properties such as "stroke-color", "fill-color"
      * and "line-width". Setting a style property on a {@link GooCanvas.CanvasTableModel} will
      * affect all children of the {@link GooCanvas.CanvasTableModel} (unless the children
      * override the property setting).
-     *
+     * 
      * {@link GooCanvas.CanvasTableModel} implements the {@link GooCanvas.CanvasItemModel} interface, so you
      * can use the {@link GooCanvas.CanvasItemModel} functions such as
      * `goo_canvas_item_model_raise()` and `goo_canvas_item_rotate()`, and the
      * properties such as "visibility" and "pointer-events".
-     *
+     * 
      * To create a {@link GooCanvas.CanvasTableModel} use `goo_canvas_table_model_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasTableModel}, use
      * `g_object_get()` and `g_object_set()`.
      * @gir-type Class
@@ -14365,37 +15303,51 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTableModel>;
 
         // Properties
-
         get column_spacing(): number;
         set column_spacing(val: number);
+
         get columnSpacing(): number;
         set columnSpacing(val: number);
+
         get homogeneous_columns(): boolean;
         set homogeneous_columns(val: boolean);
+
         get homogeneousColumns(): boolean;
         set homogeneousColumns(val: boolean);
+
         get homogeneous_rows(): boolean;
         set homogeneous_rows(val: boolean);
+
         get homogeneousRows(): boolean;
         set homogeneousRows(val: boolean);
+
         get horz_grid_line_width(): number;
         set horz_grid_line_width(val: number);
+
         get horzGridLineWidth(): number;
         set horzGridLineWidth(val: number);
+
         get row_spacing(): number;
         set row_spacing(val: number);
+
         get rowSpacing(): number;
         set rowSpacing(val: number);
+
         get vert_grid_line_width(): number;
         set vert_grid_line_width(val: number);
+
         get vertGridLineWidth(): number;
         set vertGridLineWidth(val: number);
+
         get x_border_spacing(): number;
         set x_border_spacing(val: number);
+
         get xBorderSpacing(): number;
         set xBorderSpacing(val: number);
+
         get y_border_spacing(): number;
         set y_border_spacing(val: number);
+
         get yBorderSpacing(): number;
         set yBorderSpacing(val: number);
 
@@ -14409,86 +15361,76 @@ export namespace GooCanvas {
         $signals: CanvasTableModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasGroupModel;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasTableModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasTableModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTableModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasTableModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasTableModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasTableModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasTableModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasTableModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTableModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasTableModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasTableModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasTableModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTableModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace CanvasText {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::alignment': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor': (pspec: GObject.ParamSpec) => void;
-            'notify::ellipsize': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::use-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::alignment": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor": (pspec: GObject.ParamSpec) => void;
+            "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::use-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             alignment: Pango.Alignment;
             anchor: CanvasAnchorType;
@@ -14506,20 +15448,20 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasText represents a text item.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemSimple} and so inherits all of the style
      * properties such as "fill-color".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItem} interface, so you can use the
      * {@link GooCanvas.CanvasItem} functions such as `goo_canvas_item_raise()` and
      * `goo_canvas_item_rotate()`.
-     *
+     * 
      * The {@link GooCanvas.CanvasText.width} and {@link GooCanvas.CanvasText.height} properties specify the
      * area of the item. If it exceeds that area because there is too much text,
      * it is clipped. The properties can be set to -1 to disable clipping.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasText} use `goo_canvas_text_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasText}, use
      * `g_object_get()` and `g_object_set()`.
      * @gir-type Class
@@ -14528,27 +15470,36 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasText>;
 
         // Properties
-
         get alignment(): Pango.Alignment;
         set alignment(val: Pango.Alignment);
+
         get anchor(): CanvasAnchorType;
         set anchor(val: CanvasAnchorType);
+
         get ellipsize(): Pango.EllipsizeMode;
         set ellipsize(val: Pango.EllipsizeMode);
+
         get height(): number;
         set height(val: number);
+
         get text(): string;
         set text(val: string);
+
         get use_markup(): boolean;
         set use_markup(val: boolean);
+
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
+
         get width(): number;
         set width(val: number);
+
         get wrap(): Pango.WrapMode;
         set wrap(val: Pango.WrapMode);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -14562,105 +15513,109 @@ export namespace GooCanvas {
         $signals: CanvasText.SignalSignatures;
 
         // Fields
-
         text_data: CanvasTextData;
+
         layout_width: number;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasText.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasText.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasText.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasText.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasText.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasText.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasText.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasText.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the natural extents of the text, in the text item's coordinate space.
-         *
+         * 
          * The final extents of the text may be different, if the text item is placed
          * in a layout container such as {@link GooCanvas.CanvasTable}.
          */
         get_natural_extents(): [Pango.Rectangle | null, Pango.Rectangle | null];
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -14670,13 +15625,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -14689,65 +15639,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -14757,43 +15706,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -14803,10 +15750,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -14815,6 +15763,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -14824,17 +15773,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -14843,39 +15795,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -14883,31 +15840,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -14916,47 +15878,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -14965,6 +15933,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -14973,16 +15942,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -14991,6 +15963,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -14999,27 +15972,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -15027,16 +16004,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -15047,95 +16025,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -15145,43 +16125,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -15191,10 +16169,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -15203,17 +16182,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -15222,47 +16204,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -15270,12 +16259,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -15284,61 +16274,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -15346,17 +16338,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -15366,22 +16360,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -15391,55 +16388,55 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasTextModel {
         // Signal signatures
         interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
-            'notify::alignment': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor': (pspec: GObject.ParamSpec) => void;
-            'notify::ellipsize': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::use-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::alignment": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor": (pspec: GObject.ParamSpec) => void;
+            "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::use-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
             alignment: Pango.Alignment;
             anchor: CanvasAnchorType;
@@ -15457,19 +16454,19 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasTextModel represents a model for text items.
-     *
+     * 
      * It is a subclass of {@link GooCanvas.CanvasItemModelSimple} and so inherits all of the
      * style properties such as "fill-color".
-     *
+     * 
      * It also implements the {@link GooCanvas.CanvasItemModel} interface, so you can use the
      * {@link GooCanvas.CanvasItemModel} functions such as `goo_canvas_item_model_raise()` and
      * `goo_canvas_item_model_rotate()`.
-     *
+     * 
      * To create a {@link GooCanvas.CanvasTextModel} use `goo_canvas_text_model_new()`.
-     *
+     * 
      * To get or set the properties of an existing {@link GooCanvas.CanvasTextModel}, use
      * `g_object_get()` and `g_object_set()`.
-     *
+     * 
      * To respond to events such as mouse clicks on the text item you must connect
      * to the signal handlers of the corresponding {@link GooCanvas.CanvasText} objects.
      * (See `goo_canvas_get_item()` and {@link GooCanvas.Canvas.SignalSignatures.item_created | GooCanvas.Canvas::item-created}.)
@@ -15479,27 +16476,36 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTextModel>;
 
         // Properties
-
         get alignment(): Pango.Alignment;
         set alignment(val: Pango.Alignment);
+
         get anchor(): CanvasAnchorType;
         set anchor(val: CanvasAnchorType);
+
         get ellipsize(): Pango.EllipsizeMode;
         set ellipsize(val: Pango.EllipsizeMode);
+
         get height(): number;
         set height(val: number);
+
         get text(): string;
         set text(val: string);
+
         get use_markup(): boolean;
         set use_markup(val: boolean);
+
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
+
         get width(): number;
         set width(val: number);
+
         get wrap(): Pango.WrapMode;
         set wrap(val: Pango.WrapMode);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -15513,78 +16519,83 @@ export namespace GooCanvas {
         $signals: CanvasTextModel.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemModelSimple;
+
         text_data: CanvasTextData;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasTextModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasTextModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTextModel.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasTextModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasTextModel.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasTextModel.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasTextModel.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasTextModel.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasTextModel.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasTextModel.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasTextModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasTextModel.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasTextModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get title(): string;
         set title(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItemModel */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -15597,45 +16608,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -15649,51 +16657,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -15702,24 +16719,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -15728,6 +16748,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -15736,16 +16757,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -15754,6 +16778,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -15762,17 +16787,20 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
@@ -15780,78 +16808,86 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItemModel, position: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param recompute_bounds
+         * @param recompute_bounds 
          * @virtual
          */
         vfunc_changed(recompute_bounds: boolean): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_added(child_num: number): void;
+
         /**
-         * @param old_child_num
-         * @param new_child_num
+         * @param old_child_num 
+         * @param new_child_num 
          * @virtual
          */
         vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param child_num
+         * @param child_num 
          * @virtual
          */
         vfunc_child_removed(child_num: number): void;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItemModel;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @virtual
          */
         vfunc_get_parent(): CanvasItemModel;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @virtual
          */
         vfunc_get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
@@ -15859,30 +16895,28 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItemModel,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -15892,65 +16926,67 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItemModel): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
     }
+
 
     namespace CanvasWidget {
         // Signal signatures
         interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
-            'notify::anchor': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::widget': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::antialias': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-path': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-rule': (pspec: GObject.ParamSpec) => void;
-            'notify::font': (pspec: GObject.ParamSpec) => void;
-            'notify::font-desc': (pspec: GObject.ParamSpec) => void;
-            'notify::hint-metrics': (pspec: GObject.ParamSpec) => void;
-            'notify::line-cap': (pspec: GObject.ParamSpec) => void;
-            'notify::line-dash': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join': (pspec: GObject.ParamSpec) => void;
-            'notify::line-join-miter-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::line-width': (pspec: GObject.ParamSpec) => void;
-            'notify::operator': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-gdk-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color-rgba': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::description': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::pointer-events': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility-threshold': (pspec: GObject.ParamSpec) => void;
+            "notify::anchor": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::widget": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::antialias": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-path": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-rule": (pspec: GObject.ParamSpec) => void;
+            "notify::font": (pspec: GObject.ParamSpec) => void;
+            "notify::font-desc": (pspec: GObject.ParamSpec) => void;
+            "notify::hint-metrics": (pspec: GObject.ParamSpec) => void;
+            "notify::line-cap": (pspec: GObject.ParamSpec) => void;
+            "notify::line-dash": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join": (pspec: GObject.ParamSpec) => void;
+            "notify::line-join-miter-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::line-width": (pspec: GObject.ParamSpec) => void;
+            "notify::operator": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color-rgba": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::description": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
             anchor: CanvasAnchorType;
             height: number;
@@ -15963,13 +16999,13 @@ export namespace GooCanvas {
 
     /**
      * GooCanvasWidget provides support for placing any GtkWidget in the canvas.
-     *
+     * 
      * The {@link GooCanvas.CanvasWidget.width} and {@link GooCanvas.CanvasWidget.height} properties specify
      * the widget's size. If either of them is -1, then the requested size of the
      * widget is used instead, which is the default for both width and height.
-     *
+     * 
      * Note that there are a number of limitations in the use of {@link GooCanvas.CanvasWidget}:
-     *
+     * 
      * <itemizedlist><listitem><para>
      * It doesn't support any transformation besides simple translation.
      * This means you can't scale a canvas with a {@link GooCanvas.CanvasWidget} in it.
@@ -15991,17 +17027,21 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasWidget>;
 
         // Properties
-
         get anchor(): CanvasAnchorType;
         set anchor(val: CanvasAnchorType);
+
         get height(): number;
         set height(val: number);
+
         get widget(): Gtk.Widget;
         set widget(val: Gtk.Widget);
+
         get width(): number;
         set width(val: number);
+
         get x(): number;
         set x(val: number);
+
         get y(): number;
         set y(val: number);
 
@@ -16015,94 +17055,98 @@ export namespace GooCanvas {
         $signals: CanvasWidget.SignalSignatures;
 
         // Fields
-
         parent_object: CanvasItemSimple;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasWidget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasWidget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasWidget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasWidget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CanvasWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get description(): string;
         set description(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
-         * @category Inherited from GooCanvas.CanvasItem
+          * @category Inherited from GooCanvas.CanvasItem
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         /** @category Inherited from GooCanvas.CanvasItem */
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -16112,13 +17156,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -16131,65 +17170,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -16199,43 +17237,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -16245,10 +17281,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -16257,6 +17294,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -16266,17 +17304,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -16285,39 +17326,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -16325,31 +17371,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -16358,47 +17409,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -16407,6 +17464,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -16415,16 +17473,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -16433,6 +17494,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -16441,27 +17503,31 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
          * @param bounds a {@link GooCanvas.CanvasBounds} to return the new bounds in.
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
+
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
@@ -16469,16 +17535,17 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -16489,95 +17556,97 @@ export namespace GooCanvas {
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          * @virtual
          */
-        vfunc_allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
-         * @param stopped
+         * @param stopped 
          * @virtual
          */
         vfunc_animation_finished(stopped: boolean): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
         /**
-         * @param pspec
+         * @param pspec 
          * @virtual
          */
         vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          * @virtual
          */
         vfunc_get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @virtual
          */
         vfunc_get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @virtual
          */
         vfunc_get_child(child_num: number): CanvasItem;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_get_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @virtual
          */
         vfunc_get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -16587,43 +17656,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @virtual
          */
-        vfunc_get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @virtual
          */
         vfunc_get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @virtual
          */
         vfunc_get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @virtual
          */
         vfunc_get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @virtual
          */
         vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -16633,10 +17700,11 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -16645,17 +17713,20 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @virtual
          */
         vfunc_get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @virtual
          */
         vfunc_get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -16664,47 +17735,54 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @virtual
          */
         vfunc_is_visible(): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
@@ -16712,12 +17790,13 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -16726,61 +17805,63 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
-         * @param x
-         * @param y
-         * @param keyboard_tooltip
-         * @param tooltip
+         * @param x 
+         * @param y 
+         * @param keyboard_tooltip 
+         * @param tooltip 
          * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          * @virtual
          */
         vfunc_remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          * @virtual
          */
         vfunc_request_update(): void;
+
         /**
-         * @param target
-         * @param event
+         * @param target 
+         * @param event 
          * @virtual
          */
         vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          * @virtual
          */
         vfunc_set_canvas(canvas: Canvas): void;
+
         /**
-         * @param child
-         * @param property_id
-         * @param value
-         * @param pspec
+         * @param child 
+         * @param property_id 
+         * @param value 
+         * @param pspec 
          * @virtual
          */
-        vfunc_set_child_property(
-            child: CanvasItem,
-            property_id: number,
-            value: unknown,
-            pspec: GObject.ParamSpec,
-        ): void;
+        vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
@@ -16788,17 +17869,19 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          * @virtual
          */
         vfunc_set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -16808,22 +17891,25 @@ export namespace GooCanvas {
          * @virtual
          */
         vfunc_set_parent(parent: CanvasItem): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          * @virtual
          */
         vfunc_set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          * @virtual
          */
-        vfunc_set_transform(transform: cairo.Matrix | null): void;
+        vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -16833,13 +17919,16 @@ export namespace GooCanvas {
         vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
 
+
     namespace CanvasWidgetAccessibleFactory {
         // Signal signatures
-        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {
 
-        interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
+        }
     }
 
     /**
@@ -16858,34 +17947,24 @@ export namespace GooCanvas {
         $signals: CanvasWidgetAccessibleFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CanvasWidgetAccessibleFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasWidgetAccessibleFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasWidgetAccessibleFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CanvasWidgetAccessibleFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CanvasWidgetAccessibleFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CanvasWidgetAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CanvasWidgetAccessibleFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     /**
      * {@link GooCanvas.CanvasBounds} represents the bounding box of an item in the canvas.
@@ -16895,32 +17974,35 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasBounds>;
 
         // Fields
-
         x1: number;
+
         y1: number;
+
         x2: number;
+
         y2: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x1: number;
-                y1: number;
-                x2: number;
-                y2: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x1: number;
+            y1: number;
+            x2: number;
+            y2: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasClass = typeof Canvas;
+
     /**
      * @gir-type Alias
      */
     type CanvasEllipseClass = typeof CanvasEllipse;
+
     /**
      * @gir-type Struct
      */
@@ -16928,32 +18010,35 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasEllipseData>;
 
         // Fields
-
         center_x: number;
+
         center_y: number;
+
         radius_x: number;
+
         radius_y: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                center_x: number;
-                center_y: number;
-                radius_x: number;
-                radius_y: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            center_x: number;
+            center_y: number;
+            radius_x: number;
+            radius_y: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasEllipseModelClass = typeof CanvasEllipseModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasGridClass = typeof CanvasGrid;
+
     /**
      * @gir-type Struct
      */
@@ -16961,39 +18046,56 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasGridData>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
+
         x_step: number;
+
         y_step: number;
+
         x_offset: number;
+
         y_offset: number;
+
         horz_grid_line_width: number;
+
         vert_grid_line_width: number;
+
         border_width: number;
+
         show_horz_grid_lines: number;
+
         show_vert_grid_lines: number;
+
         vert_grid_lines_on_top: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasGridModelClass = typeof CanvasGridModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasGroupClass = typeof CanvasGroup;
+
     /**
      * @gir-type Alias
      */
     type CanvasGroupModelClass = typeof CanvasGroupModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasImageClass = typeof CanvasImage;
+
     /**
      * @gir-type Struct
      */
@@ -17001,33 +18103,41 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasImageData>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasImageModelClass = typeof CanvasImageModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasItemIface = typeof CanvasItem;
+
     /**
      * @gir-type Alias
      */
     type CanvasItemModelIface = typeof CanvasItemModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasItemModelSimpleClass = typeof CanvasItemModelSimple;
+
     /**
      * @gir-type Alias
      */
     type CanvasItemSimpleClass = typeof CanvasItemSimple;
+
     /**
      * This is the data common to both the model and view classes.
      * @gir-type Struct
@@ -17036,18 +18146,27 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasItemSimpleData>;
 
         // Fields
-
         style: CanvasStyle;
+
         clip_path_commands: any[];
+
         tooltip: string;
+
         visibility_threshold: number;
+
         visibility: number;
+
         pointer_events: number;
+
         can_focus: number;
+
         own_style: number;
+
         clip_fill_rule: number;
+
         is_static: number;
     }
+
 
     /**
      * {@link GooCanvas.CanvasLineDash} specifies a dash pattern to be used when drawing items.
@@ -17057,37 +18176,38 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasLineDash>;
 
         // Fields
-
         ref_count: number;
+
         num_dashes: number;
+
         dashes: number;
+
         dash_offset: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                ref_count: number;
-                num_dashes: number;
-                dashes: number;
-                dash_offset: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            ref_count: number;
+            num_dashes: number;
+            dashes: number;
+            dash_offset: number;
+        }>);
 
         static newv(dashes: number[]): CanvasLineDash;
 
         // Methods
-
         /**
          * Increments the reference count of the dash pattern.
          * @returns the dash pattern.
          */
         ref(): CanvasLineDash;
+
         /**
          * Sets the start offset into the dash pattern.
          * @param dash_offset the start offset into the dash pattern.
          */
         set_offset(dash_offset: number): void;
+
         /**
          * Decrements the reference count of the dash pattern. If it falls to 0
          * it is freed.
@@ -17095,10 +18215,12 @@ export namespace GooCanvas {
         unref(): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CanvasPathClass = typeof CanvasPath;
+
     /**
      * @gir-type Struct
      */
@@ -17106,22 +18228,21 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPathData>;
 
         // Fields
-
         path_commands: any[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                path_commands: any[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            path_commands: any[];
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasPathModelClass = typeof CanvasPathModel;
+
     /**
      * `GooCairoPoints` represents an array of points.
      * @gir-type Struct
@@ -17130,35 +18251,35 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPoints>;
 
         // Fields
-
         coords: number;
+
         num_points: number;
+
         ref_count: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                coords: number;
-                num_points: number;
-                ref_count: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            coords: number;
+            num_points: number;
+            ref_count: number;
+        }>);
 
-        static ['new'](num_points: number): CanvasPoints;
+        static ["new"](num_points: number): CanvasPoints;
 
         // Methods
-
         /**
          * Gets the coordinates of a point in the {@link GooCanvas.CanvasPoints} struct.
          * @param idx index of point to get.
          */
         get_point(idx: number): [number, number];
+
         /**
          * Increments the reference count of the given {@link GooCanvas.CanvasPoints} struct.
          * @returns the {@link GooCanvas.CanvasPoints} struct.
          */
         ref(): CanvasPoints;
+
         /**
          * Sets the coordinates of a point in the {@link GooCanvas.CanvasPoints} struct.
          * @param idx index of point to set.
@@ -17166,12 +18287,14 @@ export namespace GooCanvas {
          * @param y y value to set point coordinate to.
          */
         set_point(idx: number, x: number, y: number): void;
+
         /**
          * Decrements the reference count of the given {@link GooCanvas.CanvasPoints} struct,
          * freeing it if the reference count falls to zero.
          */
         unref(): void;
     }
+
 
     /**
      * @gir-type Struct
@@ -17180,34 +18303,39 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPolylineArrowData>;
 
         // Fields
-
         arrow_width: number;
+
         arrow_length: number;
+
         arrow_tip_length: number;
+
         line_start: number[];
+
         line_end: number[];
+
         start_arrow_coords: number[];
+
         end_arrow_coords: number[];
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                arrow_width: number;
-                arrow_length: number;
-                arrow_tip_length: number;
-                line_start: number[];
-                line_end: number[];
-                start_arrow_coords: number[];
-                end_arrow_coords: number[];
-            }>,
-        );
+        constructor(properties?: Partial<{
+            arrow_width: number;
+            arrow_length: number;
+            arrow_tip_length: number;
+            line_start: number[];
+            line_end: number[];
+            start_arrow_coords: number[];
+            end_arrow_coords: number[];
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasPolylineClass = typeof CanvasPolyline;
+
     /**
      * @gir-type Struct
      */
@@ -17215,37 +18343,43 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPolylineData>;
 
         // Fields
-
         coords: number;
+
         arrow_data: CanvasPolylineArrowData;
+
         num_points: number;
+
         close_path: number;
+
         start_arrow: number;
+
         end_arrow: number;
+
         reconfigure_arrows: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                coords: number;
-                num_points: number;
-                close_path: number;
-                start_arrow: number;
-                end_arrow: number;
-                reconfigure_arrows: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            coords: number;
+            num_points: number;
+            close_path: number;
+            start_arrow: number;
+            end_arrow: number;
+            reconfigure_arrows: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasPolylineModelClass = typeof CanvasPolylineModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasRectClass = typeof CanvasRect;
+
     /**
      * @gir-type Struct
      */
@@ -17253,36 +18387,41 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasRectData>;
 
         // Fields
-
         x: number;
+
         y: number;
+
         width: number;
+
         height: number;
+
         radius_x: number;
+
         radius_y: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-                radius_x: number;
-                radius_y: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+            radius_x: number;
+            radius_y: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasRectModelClass = typeof CanvasRectModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasStyleClass = typeof CanvasStyle;
+
     /**
      * {@link GooCanvas.CanvasStyleProperty} represents a property setting.
      * @gir-type Struct
@@ -17291,14 +18430,15 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasStyleProperty>;
 
         // Fields
-
         id: GLib.Quark;
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasTableClass = typeof CanvasTable;
+
     /**
      * @gir-type Struct
      */
@@ -17306,13 +18446,17 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTableData>;
 
         // Fields
-
         width: number;
+
         height: number;
+
         dimensions: CanvasTableDimension[];
+
         border_width: number;
+
         children: any[];
     }
+
 
     /**
      * @gir-type Struct
@@ -17321,23 +18465,24 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTableDimension>;
 
         // Fields
-
         size: number;
+
         default_spacing: number;
+
         spacings: number;
+
         homogeneous: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                size: number;
-                default_spacing: number;
-                spacings: number;
-                homogeneous: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            size: number;
+            default_spacing: number;
+            spacings: number;
+            homogeneous: number;
+        }>);
     }
+
 
     /**
      * @gir-type Struct
@@ -17346,14 +18491,17 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTableLayoutData>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CanvasTableModelClass = typeof CanvasTableModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasTextClass = typeof CanvasText;
+
     /**
      * @gir-type Struct
      */
@@ -17361,45 +18509,53 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasTextData>;
 
         // Fields
-
         text: string;
+
         x: number;
+
         y: number;
+
         width: number;
+
         use_markup: number;
+
         anchor: number;
+
         alignment: number;
+
         ellipsize: number;
+
         wrap: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                text: string;
-                x: number;
-                y: number;
-                width: number;
-                use_markup: number;
-                anchor: number;
-                alignment: number;
-                ellipsize: number;
-                wrap: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            text: string;
+            x: number;
+            y: number;
+            width: number;
+            use_markup: number;
+            anchor: number;
+            alignment: number;
+            ellipsize: number;
+            wrap: number;
+        }>);
     }
+
 
     /**
      * @gir-type Alias
      */
     type CanvasTextModelClass = typeof CanvasTextModel;
+
     /**
      * @gir-type Alias
      */
     type CanvasWidgetClass = typeof CanvasWidget;
+
     /**
      * GooCanvasPathCommand holds the data for each command in the path.
-     *
+     * 
      * The `relative` flag specifies that the coordinates for the command are
      * relative to the current point. Otherwise they are assumed to be absolute
      * coordinates.
@@ -17409,14 +18565,15 @@ export namespace GooCanvas {
         static $gtype: GObject.GType<CanvasPathCommand>;
     }
 
+
     namespace CanvasItem {
         /**
          * Interface for implementing CanvasItem.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds a child item to a container item at the given stack position.
              * @param child the item to add.
@@ -17424,16 +18581,17 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_add_child(child: CanvasItem, position: number): void;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-             *
+             * 
              * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-             *
+             * 
              * Note that the parent layout item will use a transform to move each of its
              * children for the layout, so there is no need for the child item to
              * reposition itself. It only needs to recalculate its device bounds.
-             *
+             * 
              * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
              * of the child item's allocated position from its requested position are
              * provided. Simple items can just add these to their bounds.
@@ -17444,95 +18602,97 @@ export namespace GooCanvas {
              * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
              * @virtual
              */
-            vfunc_allocate_area(
-                cr: cairo.Context,
-                requested_area: CanvasBounds,
-                allocated_area: CanvasBounds,
-                x_offset: number,
-                y_offset: number,
-            ): void;
+            vfunc_allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
             /**
-             * @param stopped
+             * @param stopped 
              * @virtual
              */
             vfunc_animation_finished(stopped: boolean): void;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_button_press_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_button_release_event(target: CanvasItem, event: Gdk.EventButton): boolean;
+
             /**
-             * @param pspec
+             * @param pspec 
              * @virtual
              */
             vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_enter_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_focus_in_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_focus_out_event(target: CanvasItem, event: Gdk.EventFocus): boolean;
+
             /**
              * Gets the bounds of the item.
-             *
+             * 
              * Note that the bounds includes the entire fill and stroke extents of the
              * item, whether they are painted or not.
              * @virtual
              */
             vfunc_get_bounds(): CanvasBounds;
+
             /**
              * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
              * @virtual
              */
             vfunc_get_canvas(): Canvas;
+
             /**
              * Gets the child item at the given stack position.
              * @param child_num the position of a child in the container's stack.
              * @virtual
              */
             vfunc_get_child(child_num: number): CanvasItem;
+
             /**
-             * @param child
-             * @param property_id
-             * @param value
-             * @param pspec
+             * @param child 
+             * @param property_id 
+             * @param value 
+             * @param pspec 
              * @virtual
              */
-            vfunc_get_child_property(
-                child: CanvasItem,
-                property_id: number,
-                value: unknown,
-                pspec: GObject.ParamSpec,
-            ): void;
+            vfunc_get_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
             /**
              * Returns `true` if the item is static. Static items do not move or change
              * size when the canvas is scrolled or the scale changes.
              * @virtual
              */
             vfunc_get_is_static(): boolean;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-             *
+             * 
              * It gets the items at the given point.
              * @param x the x coordinate of the point.
              * @param y the y coordinate of the point.
@@ -17542,43 +18702,41 @@ export namespace GooCanvas {
              * @param found_items the list of items found  so far.
              * @virtual
              */
-            vfunc_get_items_at(
-                x: number,
-                y: number,
-                cr: cairo.Context,
-                is_pointer_event: boolean,
-                parent_is_visible: boolean,
-                found_items: CanvasItem[],
-            ): CanvasItem[];
+            vfunc_get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
             /**
              * Gets the model of the given canvas item.
              * @virtual
              */
             vfunc_get_model(): CanvasItemModel;
+
             /**
              * Gets the number of children of the container.
              * @virtual
              */
             vfunc_get_n_children(): number;
+
             /**
              * Gets the parent of the given item.
              * @virtual
              */
             vfunc_get_parent(): CanvasItem;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-             *
+             * 
              * It gets the requested area of a child item.
              * @param cr a cairo context.
              * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
              * @virtual
              */
             vfunc_get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-             *
+             * 
              * It gets the requested area of a child item, assuming it is allocated the
              * given width. This is useful for text items whose requested height may change
              * depending on the allocated width.
@@ -17588,10 +18746,11 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-             *
+             * 
              * It gets the requested height of a child item, assuming it is allocated the
              * given width. This is useful for text items whose requested height may change
              * depending on the allocated width.
@@ -17600,17 +18759,20 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_get_requested_height(cr: cairo.Context, width: number): number;
+
             /**
              * Gets the item's style. If the item doesn't have its own style it will return
              * its parent's style.
              * @virtual
              */
             vfunc_get_style(): CanvasStyle;
+
             /**
              * Gets the transformation matrix of an item.
              * @virtual
              */
             vfunc_get_transform(): [boolean, cairo.Matrix];
+
             /**
              * Gets the transformation matrix of an item combined with any special
              * transform needed for the given child. These special transforms are used
@@ -17619,47 +18781,54 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_grab_broken_event(target: CanvasItem, event: Gdk.EventGrabBroken): boolean;
+
             /**
              * Checks if the item is visible.
-             *
+             * 
              * This entails checking the item's own visibility setting, as well as those
              * of its ancestors.
-             *
+             * 
              * Note that the item may be scrolled off the screen and so may not
              * be actually visible to the user.
              * @virtual
              */
             vfunc_is_visible(): boolean;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_key_press_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_key_release_event(target: CanvasItem, event: Gdk.EventKey): boolean;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_leave_notify_event(target: CanvasItem, event: Gdk.EventCrossing): boolean;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_motion_notify_event(target: CanvasItem, event: Gdk.EventMotion): boolean;
+
             /**
              * Moves a child item to a new stack position within the container.
              * @param old_position the current position of the child item.
@@ -17667,12 +18836,13 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_move_child(old_position: number, new_position: number): void;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-             *
+             * 
              * It paints the item and all children if they intersect the given bounds.
-             *
+             * 
              * Note that the `scale` argument may be different to the current scale in the
              * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
              * @param cr a cairo context.
@@ -17681,61 +18851,63 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
             /**
-             * @param x
-             * @param y
-             * @param keyboard_tooltip
-             * @param tooltip
+             * @param x 
+             * @param y 
+             * @param keyboard_tooltip 
+             * @param tooltip 
              * @virtual
              */
             vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
+
             /**
              * Removes the child item at the given position.
              * @param child_num the position of the child item to remove.
              * @virtual
              */
             vfunc_remove_child(child_num: number): void;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items.
-             *
+             * 
              * It requests that an update of the item is scheduled. It will be performed
              * as soon as the application is idle, and before the canvas is redrawn.
              * @virtual
              */
             vfunc_request_update(): void;
+
             /**
-             * @param target
-             * @param event
+             * @param target 
+             * @param event 
              * @virtual
              */
             vfunc_scroll_event(target: CanvasItem, event: Gdk.EventScroll): boolean;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-             *
+             * 
              * It sets the canvas of the item.
              * @param canvas a {@link GooCanvas.Canvas}
              * @virtual
              */
             vfunc_set_canvas(canvas: Canvas): void;
+
             /**
-             * @param child
-             * @param property_id
-             * @param value
-             * @param pspec
+             * @param child 
+             * @param property_id 
+             * @param value 
+             * @param pspec 
              * @virtual
              */
-            vfunc_set_child_property(
-                child: CanvasItem,
-                property_id: number,
-                value: unknown,
-                pspec: GObject.ParamSpec,
-            ): void;
+            vfunc_set_child_property(child: CanvasItem, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
             /**
              * Notifies the item that it is static. Static items do not move or change
              * size when the canvas is scrolled or the scale changes.
-             *
+             * 
              * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
              * children are added, to notify children whether they are static or not.
              * Containers should also pass on any changes in their own status to children.
@@ -17743,17 +18915,19 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_set_is_static(is_static: boolean): void;
+
             /**
              * Sets the model of the given canvas item.
              * @param model a {@link GooCanvas.CanvasItemModel}.
              * @virtual
              */
             vfunc_set_model(model: CanvasItemModel): void;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
              * It sets the parent of the child item.
-             *
+             * 
              * <note><para>
              * This function cannot be used to add an item to a group
              * or to change the parent of an item.
@@ -17763,22 +18937,25 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_set_parent(parent: CanvasItem): void;
+
             /**
              * Sets the item's style, by copying the properties from the given style.
              * @param style a style.
              * @virtual
              */
             vfunc_set_style(style: CanvasStyle): void;
+
             /**
              * Sets the transformation matrix of an item.
              * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
              * @virtual
              */
-            vfunc_set_transform(transform: cairo.Matrix | null): void;
+            vfunc_set_transform(transform: (cairo.Matrix | null)): void;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-             *
+             * 
              * Updates the item, if needed, and any children.
              * @param entire_tree if the entire subtree should be updated.
              * @param cr a cairo context.
@@ -17788,8 +18965,8 @@ export namespace GooCanvas {
             vfunc_update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             can_focus: boolean;
             canFocus: boolean;
@@ -17809,37 +18986,32 @@ export namespace GooCanvas {
     export interface CanvasItemNamespace {
         $gtype: GObject.GType<CanvasItem>;
         prototype: CanvasItem;
-
         /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
-         *
-         * It finds a child property of a canvas item class by name.
-         * @param iclass a {@link GObject.ObjectClass}
-         * @param property_name the name of the child property to find
-         */
+        * This function is only intended to be used when implementing new canvas
+        * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
+        * 
+        * It finds a child property of a canvas item class by name.
+        * @param iclass a {@link GObject.ObjectClass}
+        * @param property_name the name of the child property to find
+        */
         class_find_child_property(iclass: typeof GObject.Object, property_name: string): GObject.ParamSpec;
         /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
-         *
-         * It installs a child property on a canvas item class.
-         * @param iclass a {@link GObject.ObjectClass}
-         * @param property_id the id for the property
-         * @param pspec the {@link GObject.ParamSpec} for the property
-         */
-        class_install_child_property(
-            iclass: typeof GObject.Object,
-            property_id: number,
-            pspec: GObject.ParamSpec,
-        ): void;
+        * This function is only intended to be used when implementing new canvas
+        * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
+        * 
+        * It installs a child property on a canvas item class.
+        * @param iclass a {@link GObject.ObjectClass}
+        * @param property_id the id for the property
+        * @param pspec the {@link GObject.ParamSpec} for the property
+        */
+        class_install_child_property(iclass: typeof GObject.Object, property_id: number, pspec: GObject.ParamSpec): void;
         /**
-         * This function is only intended to be used when implementing new canvas
-         * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
-         *
-         * It returns all child properties of a canvas item class.
-         * @param iclass a {@link GObject.ObjectClass}
-         */
+        * This function is only intended to be used when implementing new canvas
+        * items, specifically layout container items such as {@link GooCanvas.CanvasTable}.
+        * 
+        * It returns all child properties of a canvas item class.
+        * @param iclass a {@link GObject.ObjectClass}
+        */
         class_list_child_properties(iclass: typeof GObject.Object): GObject.ParamSpec[];
     }
     /**
@@ -17848,58 +19020,69 @@ export namespace GooCanvas {
      * @gir-type Interface
      */
     interface CanvasItem extends GObject.Object, CanvasItem.Interface {
-        // Properties
 
+        // Properties
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         get description(): string;
         set description(val: string);
+
         get parent(): CanvasItem;
         set parent(val: CanvasItem);
+
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         get title(): string;
         set title(val: string);
+
         /**
          * The tooltip to display for the item, or `null` to display no tooltip.
-         *
+         * 
          * Note that this property has no effect unless the
          * {@link Gtk.Widget.has_tooltip} property is set to `true` on the {@link GooCanvas.Canvas}
          * containing this item.
          */
         get tooltip(): string;
         set tooltip(val: string);
+
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
         // Methods
-
         /**
          * Adds a child item to a container item at the given stack position.
          * @param child the item to add.
          * @param position the position of the item, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItem, position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It allocates an area to a child {@link GooCanvas.CanvasItem}.
-         *
+         * 
          * Note that the parent layout item will use a transform to move each of its
          * children for the layout, so there is no need for the child item to
          * reposition itself. It only needs to recalculate its device bounds.
-         *
+         * 
          * To help recalculate the item's device bounds, the `x_offset` and `y_offset`
          * of the child item's allocated position from its requested position are
          * provided. Simple items can just add these to their bounds.
@@ -17909,13 +19092,8 @@ export namespace GooCanvas {
          * @param x_offset the x offset of the allocated area from the requested area in  the device coordinate space.
          * @param y_offset the y offset of the allocated area from the requested area in  the device coordinate space.
          */
-        allocate_area(
-            cr: cairo.Context,
-            requested_area: CanvasBounds,
-            allocated_area: CanvasBounds,
-            x_offset: number,
-            y_offset: number,
-        ): void;
+        allocate_area(cr: cairo.Context, requested_area: CanvasBounds, allocated_area: CanvasBounds, x_offset: number, y_offset: number): void;
+
         /**
          * Animates an item from its current position to the given offsets, scale
          * and rotation.
@@ -17928,65 +19106,64 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It updates the canvas immediately, if an update is scheduled.
          * This ensures that all item bounds are up-to-date.
          */
         ensure_updated(): void;
+
         /**
          * Attempts to find the given child item with the container's stack.
          * @param child the child item to find.
          * @returns the position of the given `child` item, or -1 if it isn't found.
          */
         find_child(child: CanvasItem): number;
+
         /**
          * Gets the bounds of the item.
-         *
+         * 
          * Note that the bounds includes the entire fill and stroke extents of the
          * item, whether they are painted or not.
          */
         get_bounds(): CanvasBounds;
+
         /**
          * Returns the {@link GooCanvas.Canvas} containing the given {@link GooCanvas.CanvasItem}.
          * @returns the {@link GooCanvas.Canvas}.
          */
         get_canvas(): Canvas;
+
         /**
          * Gets the child item at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child item at the given stack position, or  `null` if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItem;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Returns `true` if the item is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
          * @returns `true` if the item is static.
          */
         get_is_static(): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It gets the items at the given point.
          * @param x the x coordinate of the point.
          * @param y the y coordinate of the point.
@@ -17996,43 +19173,41 @@ export namespace GooCanvas {
          * @param found_items the list of items found  so far.
          * @returns the  `found_items` list, with any more found items  added onto the start of the list, leaving the top item first.
          */
-        get_items_at(
-            x: number,
-            y: number,
-            cr: cairo.Context,
-            is_pointer_event: boolean,
-            parent_is_visible: boolean,
-            found_items: CanvasItem[],
-        ): CanvasItem[];
+        get_items_at(x: number, y: number, cr: cairo.Context, is_pointer_event: boolean, parent_is_visible: boolean, found_items: CanvasItem[]): CanvasItem[];
+
         /**
          * Gets the model of the given canvas item.
          * @returns the item's model, or `null` if it has no model.
          */
         get_model(): CanvasItemModel;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given item.
          * @returns the parent item, or `null` if the item has no parent.
          */
         get_parent(): CanvasItem;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item.
          * @param cr a cairo context.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space.
          * @returns `true` if the item should be allocated space.
          */
         get_requested_area(cr: cairo.Context, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested area of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -18042,10 +19217,11 @@ export namespace GooCanvas {
          * @returns `true` if the item's requested area changes due to the new allocated width.
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically layout items such as {@link GooCanvas.CanvasTable}.
-         *
+         * 
          * It gets the requested height of a child item, assuming it is allocated the
          * given width. This is useful for text items whose requested height may change
          * depending on the allocated width.
@@ -18054,6 +19230,7 @@ export namespace GooCanvas {
          * @returns the requested height of the item, given the allocated width,  or %-1 if the item doesn't support this method or its height doesn't  change when allocated different widths.
          */
         get_requested_height(cr: cairo.Context, width: number): number;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item, providing that the item has a simple transformation matrix
@@ -18063,17 +19240,20 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(): [boolean, number, number, number, number];
+
         /**
          * Gets the item's style. If the item doesn't have its own style it will return
          * its parent's style.
          * @returns the item's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item.
          * @returns `true` if a transform is set.
          */
         get_transform(): [boolean, cairo.Matrix];
+
         /**
          * Gets the transformation matrix of an item combined with any special
          * transform needed for the given child. These special transforms are used
@@ -18082,39 +19262,44 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_transform_for_child(child: CanvasItem): [boolean, cairo.Matrix];
+
         /**
          * Tests to see if the given item is a container.
          * @returns `true` if the item is a container.
          */
         is_container(): boolean;
+
         /**
          * Checks if the item is visible.
-         *
+         * 
          * This entails checking the item's own visibility setting, as well as those
          * of its ancestors.
-         *
+         * 
          * Note that the item may be scrolled off the screen and so may not
          * be actually visible to the user.
          * @returns `true` if the item is visible.
          */
         is_visible(): boolean;
+
         /**
          * Lowers an item in the stacking order.
          * @param below the item to lower `item` below, or `null` to lower `item` to the  bottom of the stack.
          */
-        lower(below: CanvasItem | null): void;
+        lower(below: (CanvasItem | null)): void;
+
         /**
          * Moves a child item to a new stack position within the container.
          * @param old_position the current position of the child item.
          * @param new_position the new position of the child item.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It paints the item and all children if they intersect the given bounds.
-         *
+         * 
          * Note that the `scale` argument may be different to the current scale in the
          * {@link GooCanvas.CanvasItem}, e.g. when the canvas is being printed.
          * @param cr a cairo context.
@@ -18122,31 +19307,36 @@ export namespace GooCanvas {
          * @param scale the scale to use to determine whether an item should be painted.  See {@link GooCanvas.CanvasItem.visibility_threshold}.
          */
         paint(cr: cairo.Context, bounds: CanvasBounds, scale: number): void;
+
         /**
          * Raises an item in the stacking order.
          * @param above the item to raise `item` above, or `null` to raise `item` to the top  of the stack.
          */
-        raise(above: CanvasItem | null): void;
+        raise(above: (CanvasItem | null)): void;
+
         /**
          * Removes an item from its parent. If the item is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the item being freed.
          */
         remove(): void;
+
         /**
          * Removes the child item at the given position.
          * @param child_num the position of the child item to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items.
-         *
+         * 
          * It requests that an update of the item is scheduled. It will be performed
          * as soon as the application is idle, and before the canvas is redrawn.
          */
         request_update(): void;
+
         /**
          * Rotates the item's coordinate system by the given amount, about the given
          * origin.
@@ -18155,47 +19345,53 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the item's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * It sets the canvas of the item.
          * @param canvas a {@link GooCanvas.Canvas}
          */
         set_canvas(canvas: Canvas): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItem}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItem, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItem, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Notifies the item that it is static. Static items do not move or change
          * size when the canvas is scrolled or the scale changes.
-         *
+         * 
          * Container items such as {@link GooCanvas.CanvasGroup} should call this function when
          * children are added, to notify children whether they are static or not.
          * Containers should also pass on any changes in their own status to children.
          * @param is_static if the item is static.
          */
         set_is_static(is_static: boolean): void;
+
         /**
          * Sets the model of the given canvas item.
          * @param model a {@link GooCanvas.CanvasItemModel}.
          */
         set_model(model: CanvasItemModel): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items (specifically container items such as {@link GooCanvas.CanvasGroup}).
          * It sets the parent of the child item.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add an item to a group
          * or to change the parent of an item.
@@ -18204,6 +19400,7 @@ export namespace GooCanvas {
          * @param parent the new parent item.
          */
         set_parent(parent: CanvasItem): void;
+
         /**
          * A convenience function to set the item's transformation matrix.
          * @param x the x coordinate of the origin of the item's coordinate space.
@@ -18212,16 +19409,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the item, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the item's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the item's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -18230,6 +19430,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the item's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -18238,21 +19439,24 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given item, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the item's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
          * @param ty the amount to move the origin in the vertical direction.
          */
         translate(tx: number, ty: number): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * items, specifically container items such as {@link GooCanvas.CanvasGroup}.
-         *
+         * 
          * Updates the item, if needed, and any children.
          * @param entire_tree if the entire subtree should be updated.
          * @param cr a cairo context.
@@ -18260,6 +19464,7 @@ export namespace GooCanvas {
          */
         update(entire_tree: boolean, cr: cairo.Context, bounds: CanvasBounds): void;
     }
+
 
     export const CanvasItem: CanvasItemNamespace & {
         new (): CanvasItem; // This allows `obj instanceof CanvasItem`
@@ -18271,8 +19476,8 @@ export namespace GooCanvas {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Adds a child at the given stack position.
              * @param child the child to add.
@@ -18280,78 +19485,86 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_add_child(child: CanvasItemModel, position: number): void;
+
             /**
-             * @param stopped
+             * @param stopped 
              * @virtual
              */
             vfunc_animation_finished(stopped: boolean): void;
+
             /**
-             * @param recompute_bounds
+             * @param recompute_bounds 
              * @virtual
              */
             vfunc_changed(recompute_bounds: boolean): void;
+
             /**
-             * @param child_num
+             * @param child_num 
              * @virtual
              */
             vfunc_child_added(child_num: number): void;
+
             /**
-             * @param old_child_num
-             * @param new_child_num
+             * @param old_child_num 
+             * @param new_child_num 
              * @virtual
              */
             vfunc_child_moved(old_child_num: number, new_child_num: number): void;
+
             /**
-             * @param pspec
+             * @param pspec 
              * @virtual
              */
             vfunc_child_notify(pspec: GObject.ParamSpec): void;
+
             /**
-             * @param child_num
+             * @param child_num 
              * @virtual
              */
             vfunc_child_removed(child_num: number): void;
+
             /**
              * Gets the child at the given stack position.
              * @param child_num the position of a child in the container's stack.
              * @virtual
              */
             vfunc_get_child(child_num: number): CanvasItemModel;
+
             /**
-             * @param child
-             * @param property_id
-             * @param value
-             * @param pspec
+             * @param child 
+             * @param property_id 
+             * @param value 
+             * @param pspec 
              * @virtual
              */
-            vfunc_get_child_property(
-                child: CanvasItemModel,
-                property_id: number,
-                value: unknown,
-                pspec: GObject.ParamSpec,
-            ): void;
+            vfunc_get_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
             /**
              * Gets the number of children of the container.
              * @virtual
              */
             vfunc_get_n_children(): number;
+
             /**
              * Gets the parent of the given model.
              * @virtual
              */
             vfunc_get_parent(): CanvasItemModel;
+
             /**
              * Gets the model's style. If the model doesn't have its own style it will
              * return its parent's style.
              * @virtual
              */
             vfunc_get_style(): CanvasStyle;
+
             /**
              * Gets the transformation matrix of an item model.
              * @param transform the place to store the transform.
              * @virtual
              */
             vfunc_get_transform(transform: cairo.Matrix): boolean;
+
             /**
              * Moves a child to a new stack position.
              * @param old_position the current position of the child.
@@ -18359,30 +19572,28 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_move_child(old_position: number, new_position: number): void;
+
             /**
              * Removes the child at the given position.
              * @param child_num the position of the child to remove.
              * @virtual
              */
             vfunc_remove_child(child_num: number): void;
+
             /**
-             * @param child
-             * @param property_id
-             * @param value
-             * @param pspec
+             * @param child 
+             * @param property_id 
+             * @param value 
+             * @param pspec 
              * @virtual
              */
-            vfunc_set_child_property(
-                child: CanvasItemModel,
-                property_id: number,
-                value: unknown,
-                pspec: GObject.ParamSpec,
-            ): void;
+            vfunc_set_child_property(child: CanvasItemModel, property_id: number, value: unknown, pspec: GObject.ParamSpec): void;
+
             /**
              * This function is only intended to be used when implementing new canvas
              * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
              * It sets the parent of the child model.
-             *
+             * 
              * <note><para>
              * This function cannot be used to add a model to a group
              * or to change the parent of a model.
@@ -18392,22 +19603,24 @@ export namespace GooCanvas {
              * @virtual
              */
             vfunc_set_parent(parent: CanvasItemModel): void;
+
             /**
              * Sets the model's style, by copying the properties from the given style.
              * @param style a style.
              * @virtual
              */
             vfunc_set_style(style: CanvasStyle): void;
+
             /**
              * Sets the transformation matrix of an item model.
              * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
              * @virtual
              */
-            vfunc_set_transform(transform: cairo.Matrix | null): void;
+            vfunc_set_transform(transform: (cairo.Matrix | null)): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             can_focus: boolean;
             canFocus: boolean;
@@ -18427,46 +19640,41 @@ export namespace GooCanvas {
     export interface CanvasItemModelNamespace {
         $gtype: GObject.GType<CanvasItemModel>;
         prototype: CanvasItemModel;
-
         /**
-         * This function is only intended to be used when implementing new canvas
-         * item models, specifically layout container item models such as
-         * {@link GooCanvas.CanvasTableModel}.
-         *
-         * It finds a child property of a canvas item class by name.
-         * @param mclass a {@link GObject.ObjectClass}
-         * @param property_name the name of the child property to find
-         */
+        * This function is only intended to be used when implementing new canvas
+        * item models, specifically layout container item models such as
+        * {@link GooCanvas.CanvasTableModel}.
+        * 
+        * It finds a child property of a canvas item class by name.
+        * @param mclass a {@link GObject.ObjectClass}
+        * @param property_name the name of the child property to find
+        */
         class_find_child_property(mclass: typeof GObject.Object, property_name: string): GObject.ParamSpec;
         /**
-         * This function is only intended to be used when implementing new canvas
-         * item models, specifically layout container item models such as
-         * {@link GooCanvas.CanvasTableModel}.
-         *
-         * It installs a child property on a canvas item class.
-         * @param mclass a {@link GObject.ObjectClass}
-         * @param property_id the id for the property
-         * @param pspec the {@link GObject.ParamSpec} for the property
-         */
-        class_install_child_property(
-            mclass: typeof GObject.Object,
-            property_id: number,
-            pspec: GObject.ParamSpec,
-        ): void;
+        * This function is only intended to be used when implementing new canvas
+        * item models, specifically layout container item models such as
+        * {@link GooCanvas.CanvasTableModel}.
+        * 
+        * It installs a child property on a canvas item class.
+        * @param mclass a {@link GObject.ObjectClass}
+        * @param property_id the id for the property
+        * @param pspec the {@link GObject.ParamSpec} for the property
+        */
+        class_install_child_property(mclass: typeof GObject.Object, property_id: number, pspec: GObject.ParamSpec): void;
         /**
-         * This function is only intended to be used when implementing new canvas
-         * item models, specifically layout container item models such as
-         * {@link GooCanvas.CanvasTableModel}.
-         *
-         * It returns all child properties of a canvas item class.
-         * @param mclass a {@link GObject.ObjectClass}
-         */
+        * This function is only intended to be used when implementing new canvas
+        * item models, specifically layout container item models such as
+        * {@link GooCanvas.CanvasTableModel}.
+        * 
+        * It returns all child properties of a canvas item class.
+        * @param mclass a {@link GObject.ObjectClass}
+        */
         class_list_child_properties(mclass: typeof GObject.Object): GObject.ParamSpec[];
     }
     /**
      * {@link GooCanvas.CanvasItemModel} defines the interface that models for canvas items must
      * implement, and contains methods for operating on canvas item models.
-     *
+     * 
      * <note><para>
      * 	The Model/View canvas feature may be removed in a future version of
      * 	GooCanvas.
@@ -18474,41 +19682,52 @@ export namespace GooCanvas {
      * @gir-type Interface
      */
     interface CanvasItemModel extends GObject.Object, CanvasItemModel.Interface {
-        // Properties
 
+        // Properties
         get can_focus(): boolean;
         set can_focus(val: boolean);
+
         get canFocus(): boolean;
         set canFocus(val: boolean);
+
         get description(): string;
         set description(val: string);
+
         get parent(): CanvasItemModel;
         set parent(val: CanvasItemModel);
+
         get pointer_events(): CanvasPointerEvents;
         set pointer_events(val: CanvasPointerEvents);
+
         get pointerEvents(): CanvasPointerEvents;
         set pointerEvents(val: CanvasPointerEvents);
+
         get title(): string;
         set title(val: string);
+
         get tooltip(): string;
         set tooltip(val: string);
+
         get transform(): CairoMatrix;
         set transform(val: CairoMatrix);
+
         get visibility(): CanvasItemVisibility;
         set visibility(val: CanvasItemVisibility);
+
         get visibility_threshold(): number;
         set visibility_threshold(val: number);
+
         get visibilityThreshold(): number;
         set visibilityThreshold(val: number);
 
         // Methods
-
         /**
          * Adds a child at the given stack position.
          * @param child the child to add.
          * @param position the position of the child, or -1 to place it last (at the top of  the stacking order).
          */
         add_child(child: CanvasItemModel, position: number): void;
+
         /**
          * Animates a model from its current position to the given offsets, scale
          * and rotation.
@@ -18521,45 +19740,42 @@ export namespace GooCanvas {
          * @param step_time the time between each animation step, in milliseconds.
          * @param type specifies what happens when the animation finishes.
          */
-        animate(
-            x: number,
-            y: number,
-            scale: number,
-            degrees: number,
-            absolute: boolean,
-            duration: number,
-            step_time: number,
-            type: CanvasAnimateType,
-        ): void;
+        animate(x: number, y: number, scale: number, degrees: number, absolute: boolean, duration: number, step_time: number, type: CanvasAnimateType): void;
+
         /**
          * Attempts to find the given child with the container's stack.
          * @param child the child to find.
          * @returns the position of the given `child`, or -1 if it isn't found.
          */
         find_child(child: CanvasItemModel): number;
+
         /**
          * Gets the child at the given stack position.
          * @param child_num the position of a child in the container's stack.
          * @returns the child at the given stack position, or `null`  if `child_num` is out of range.
          */
         get_child(child_num: number): CanvasItemModel;
+
         /**
          * Gets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to get.
          * @param value a location to return the value.
          */
-        get_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        get_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Gets the number of children of the container.
          * @returns the number of children.
          */
         get_n_children(): number;
+
         /**
          * Gets the parent of the given model.
          * @returns the parent model, or `null` if the model has no parent.
          */
         get_parent(): CanvasItemModel;
+
         /**
          * This function can be used to get the position, scale and rotation of an
          * item model, providing that the model has a simple transformation matrix
@@ -18573,51 +19789,60 @@ export namespace GooCanvas {
          * @returns `true` if a transform is set.
          */
         get_simple_transform(x: number, y: number, scale: number, rotation: number): boolean;
+
         /**
          * Gets the model's style. If the model doesn't have its own style it will
          * return its parent's style.
          * @returns the model's style.
          */
         get_style(): CanvasStyle;
+
         /**
          * Gets the transformation matrix of an item model.
          * @param transform the place to store the transform.
          * @returns `true` if a transform is set.
          */
         get_transform(transform: cairo.Matrix): boolean;
+
         /**
          * Tests to see if the given item model is a container.
          * @returns `true` if the item model is a container.
          */
         is_container(): boolean;
+
         /**
          * Lowers a model in the stacking order.
          * @param below the item model to lower `model` below, or `null` to lower `model` to the  bottom of the stack.
          */
-        lower(below: CanvasItemModel | null): void;
+        lower(below: (CanvasItemModel | null)): void;
+
         /**
          * Moves a child to a new stack position.
          * @param old_position the current position of the child.
          * @param new_position the new position of the child.
          */
         move_child(old_position: number, new_position: number): void;
+
         /**
          * Raises a model in the stacking order.
          * @param above the item model to raise `model` above, or `null` to raise `model` to the top  of the stack.
          */
-        raise(above: CanvasItemModel | null): void;
+        raise(above: (CanvasItemModel | null)): void;
+
         /**
          * Removes a model from its parent. If the model is in a canvas it will be
          * removed.
-         *
+         * 
          * This would normally also result in the model being freed.
          */
         remove(): void;
+
         /**
          * Removes the child at the given position.
          * @param child_num the position of the child to remove.
          */
         remove_child(child_num: number): void;
+
         /**
          * Rotates the model's coordinate system by the given amount, about the given
          * origin.
@@ -18626,24 +19851,27 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the rotation.
          */
         rotate(degrees: number, cx: number, cy: number): void;
+
         /**
          * Scales the model's coordinate system by the given amounts.
          * @param sx the amount to scale the horizontal axis.
          * @param sy the amount to scale the vertical axis.
          */
         scale(sx: number, sy: number): void;
+
         /**
          * Sets a child property of `child`.
          * @param child a child {@link GooCanvas.CanvasItemModel}.
          * @param property_name the name of the child property to set.
          * @param value the value to set the property to.
          */
-        set_child_property(child: CanvasItemModel, property_name: string, value: GObject.Value | any): void;
+        set_child_property(child: CanvasItemModel, property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * This function is only intended to be used when implementing new canvas
          * item models (specifically container models such as {@link GooCanvas.CanvasGroupModel}).
          * It sets the parent of the child model.
-         *
+         * 
          * <note><para>
          * This function cannot be used to add a model to a group
          * or to change the parent of a model.
@@ -18652,6 +19880,7 @@ export namespace GooCanvas {
          * @param parent the new parent item model.
          */
         set_parent(parent: CanvasItemModel): void;
+
         /**
          * A convenience function to set the item model's transformation matrix.
          * @param x the x coordinate of the origin of the model's coordinate space.
@@ -18660,16 +19889,19 @@ export namespace GooCanvas {
          * @param rotation the clockwise rotation of the model, in degrees.
          */
         set_simple_transform(x: number, y: number, scale: number, rotation: number): void;
+
         /**
          * Sets the model's style, by copying the properties from the given style.
          * @param style a style.
          */
         set_style(style: CanvasStyle): void;
+
         /**
          * Sets the transformation matrix of an item model.
          * @param transform the new transformation matrix, or `null` to reset the  transformation to the identity matrix.
          */
-        set_transform(transform: cairo.Matrix | null): void;
+        set_transform(transform: (cairo.Matrix | null)): void;
+
         /**
          * Skews the model's coordinate system along the x axis by the given amount,
          * about the given origin.
@@ -18678,6 +19910,7 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_x(degrees: number, cx: number, cy: number): void;
+
         /**
          * Skews the model's coordinate system along the y axis by the given amount,
          * about the given origin.
@@ -18686,11 +19919,13 @@ export namespace GooCanvas {
          * @param cy the y coordinate of the origin of the skew transform.
          */
         skew_y(degrees: number, cx: number, cy: number): void;
+
         /**
          * Stops any current animation for the given model, leaving it at its current
          * position.
          */
         stop_animation(): void;
+
         /**
          * Translates the origin of the model's coordinate system by the given amounts.
          * @param tx the amount to move the origin in the horizontal direction.
@@ -18698,6 +19933,7 @@ export namespace GooCanvas {
          */
         translate(tx: number, ty: number): void;
     }
+
 
     export const CanvasItemModel: CanvasItemModelNamespace & {
         new (): CanvasItemModel; // This allows `obj instanceof CanvasItemModel`
@@ -18708,6 +19944,7 @@ export namespace GooCanvas {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

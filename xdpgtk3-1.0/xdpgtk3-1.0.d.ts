@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -26,9 +27,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace XdpGtk3 {
+
     /**
      * XdpGtk3-1.0
      */
+
 
     /**
      * Creates a new {@link Parent} from `window`.
@@ -36,11 +39,13 @@ export namespace XdpGtk3 {
      * @returns a {@link Parent}
      */
     function parent_new_gtk(window: Gtk.Window): Xdp.Parent;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

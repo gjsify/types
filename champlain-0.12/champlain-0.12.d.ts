@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -27,9 +28,11 @@ import type Cogl from '@girs/cogl-1.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Champlain {
+
     /**
      * Champlain-0.12
      */
+
 
     /**
      * @gir-type Enum
@@ -48,6 +51,7 @@ export namespace Champlain {
          */
         MERCATOR,
     }
+
 
     /**
      * @gir-type Enum
@@ -74,6 +78,7 @@ export namespace Champlain {
          */
         MULTIPLE,
     }
+
 
     /**
      * @gir-type Enum
@@ -106,6 +111,7 @@ export namespace Champlain {
         DONE,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -128,92 +134,118 @@ export namespace Champlain {
         MILES,
     }
 
+
     /**
      * The major version of libchamplain (1, if `CHAMPLAIN_VERSION` is 1.2.3)
      */
     const MAJOR_VERSION: number;
+
     const MAP_SOURCE_MEMPHIS_LOCAL: string;
+
     const MAP_SOURCE_MEMPHIS_NETWORK: string;
+
     /**
      * Maps for Free Relief
      */
     const MAP_SOURCE_MFF_RELIEF: string;
+
     /**
      * OpenAerialMap
      * @deprecated OpenAerialMap isn't available any more and will be removed in the next release. As it doens't exist, it isn't registered to the factory and the 'create' method won't return any source.
      */
     const MAP_SOURCE_OAM: string;
+
     /**
      * Mapquest Open Aerial
      * @deprecated Mapquest isn't available any more and will be removed in the next release. As it doens't exist, it isn't registered to the factory and the 'create' method won't return any source.
      */
     const MAP_SOURCE_OSM_AERIAL_MAP: string;
+
     /**
      * OpenStreetMap Cycle Map
      */
     const MAP_SOURCE_OSM_CYCLE_MAP: string;
+
     /**
      * OpenStreetMap Mapnik
      */
     const MAP_SOURCE_OSM_MAPNIK: string;
+
     /**
      * @deprecated Mapquest isn't available any more and will be removed in the next release. As it doens't exist, it isn't registered to the factory and the 'create' method won't return any source.
      */
     const MAP_SOURCE_OSM_MAPQUEST: string;
+
     /**
      * OpenStreetMap Osmarender
      * @deprecated Osmarender isn't available any more and will be removed in the next release. As it doens't exist, it isn't registered to the factory and the 'create' method won't return any source.
      */
     const MAP_SOURCE_OSM_OSMARENDER: string;
+
     /**
      * OpenStreetMap Transport Map
      */
     const MAP_SOURCE_OSM_TRANSPORT_MAP: string;
+
     /**
      * OpenWeatherMap clouds layer
      */
     const MAP_SOURCE_OWM_CLOUDS: string;
+
     /**
      * OpenWeatherMap precipitation
      */
     const MAP_SOURCE_OWM_PRECIPITATION: string;
+
     /**
      * OpenWeatherMap sea level pressure
      */
     const MAP_SOURCE_OWM_PRESSURE: string;
+
     /**
      * OpenWeatherMap temperature
      */
     const MAP_SOURCE_OWM_TEMPERATURE: string;
+
     /**
      * OpenWeatherMap wind
      */
     const MAP_SOURCE_OWM_WIND: string;
+
     const MAX_LATITUDE: number;
+
     const MAX_LONGITUDE: number;
+
     /**
      * The micro version of libchamplain (3, if `CHAMPLAIN_VERSION` is 1.2.3)
      */
     const MICRO_VERSION: number;
+
     /**
      * The minor version of libchamplain (2, if `CHAMPLAIN_VERSION` is 1.2.3)
      */
     const MINOR_VERSION: number;
+
     const MIN_LATITUDE: number;
+
     const MIN_LONGITUDE: number;
+
     /**
      * The full version of libchamplain, like 1.2.3
      */
     const VERSION: number;
+
     /**
      * Numerically encoded version of libchamplain, like 0x010203
      */
     const VERSION_HEX: number;
+
     /**
      * The full version of libchamplain, in string form (suited for
      * string concatenation)
      */
     const VERSION_S: string;
+
     namespace Adjustment {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
@@ -222,14 +254,13 @@ export namespace Champlain {
              * @run-last
              */
             changed: () => void;
-            'notify::lower': (pspec: GObject.ParamSpec) => void;
-            'notify::step-increment': (pspec: GObject.ParamSpec) => void;
-            'notify::upper': (pspec: GObject.ParamSpec) => void;
-            'notify::value': (pspec: GObject.ParamSpec) => void;
+            "notify::lower": (pspec: GObject.ParamSpec) => void;
+            "notify::step-increment": (pspec: GObject.ParamSpec) => void;
+            "notify::upper": (pspec: GObject.ParamSpec) => void;
+            "notify::value": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             lower: number;
             step_increment: number;
@@ -249,27 +280,30 @@ export namespace Champlain {
         static $gtype: GObject.GType<Adjustment>;
 
         // Properties
-
         /**
          * @default 0
          */
         get lower(): number;
         set lower(val: number);
+
         /**
          * @default 0
          */
         get step_increment(): number;
         set step_increment(val: number);
+
         /**
          * @default 0
          */
         get stepIncrement(): number;
         set stepIncrement(val: number);
+
         /**
          * @default 0
          */
         get upper(): number;
         set upper(val: number);
+
         /**
          * @default 0
          */
@@ -286,87 +320,84 @@ export namespace Champlain {
         $signals: Adjustment.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Adjustment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](value: number, lower: number, upper: number, step_increment: number): Adjustment;
+        static ["new"](value: number, lower: number, upper: number, step_increment: number): Adjustment;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Adjustment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Adjustment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Adjustment.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Adjustment.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Adjustment.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Adjustment.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Adjustment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Adjustment.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Adjustment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_changed(): void;
 
         // Methods
-
         /**
-         * @param interpolate
-         * @param n_frames
-         * @param fps
+         * @param interpolate 
+         * @param n_frames 
+         * @param fps 
          */
         clamp(interpolate: boolean, n_frames: number, fps: number): boolean;
+
         get_value(): number;
+
         /**
-         * @param value
-         * @param lower
-         * @param upper
-         * @param step_increment
+         * @param value 
+         * @param lower 
+         * @param upper 
+         * @param step_increment 
          */
         get_values(value: number, lower: number, upper: number, step_increment: number): void;
+
         /**
-         * @param value
-         * @param n_frames
-         * @param fps
+         * @param value 
+         * @param n_frames 
+         * @param fps 
          */
         interpolate(value: number, n_frames: number, fps: number): void;
+
         interpolate_stop(): void;
+
         /**
-         * @param value
+         * @param value 
          */
         set_value(value: number): void;
+
         /**
-         * @param value
-         * @param lower
-         * @param upper
-         * @param step_increment
+         * @param value 
+         * @param lower 
+         * @param upper 
+         * @param step_increment 
          */
         set_values(value: number, lower: number, upper: number, step_increment: number): void;
     }
 
+
     namespace Coordinate {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {
 
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {}
+        }
     }
 
     /**
@@ -388,77 +419,76 @@ export namespace Champlain {
         $signals: Coordinate.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Coordinate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Coordinate;
+        static ["new"](): Coordinate;
 
         static new_full(latitude: number, longitude: number): Coordinate;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Coordinate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Coordinate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Coordinate.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Coordinate.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Coordinate.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Coordinate.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * The latitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
@@ -468,109 +498,104 @@ export namespace Champlain {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
+
     namespace CustomMarker {
         // Signal signatures
         interface SignalSignatures extends Marker.SignalSignatures {
-            'notify::draggable': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::draggable": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Marker.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Location.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Marker.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Location.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {}
+        }
     }
 
     /**
@@ -580,10 +605,7 @@ export namespace Champlain {
      * @since 0.10
      * @deprecated since 0.12.4: {@link Champlain.Marker} is a concrete class now and can be used instead.
      */
-    class CustomMarker
-        extends Marker
-        implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class CustomMarker extends Marker implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<CustomMarker>;
 
         /**
@@ -596,75 +618,74 @@ export namespace Champlain {
         $signals: CustomMarker.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CustomMarker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): CustomMarker;
+        static ["new"](): CustomMarker;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CustomMarker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomMarker.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CustomMarker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CustomMarker.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CustomMarker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CustomMarker.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CustomMarker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CustomMarker.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CustomMarker.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CustomMarker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CustomMarker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CustomMarker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
+
         /**
          * The latitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
@@ -674,14 +695,14 @@ export namespace Champlain {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
+
     namespace ErrorTileRenderer {
         // Signal signatures
         interface SignalSignatures extends Renderer.SignalSignatures {
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Renderer.ConstructorProps {
             tile_size: number;
             tileSize: number;
@@ -698,7 +719,6 @@ export namespace Champlain {
         static $gtype: GObject.GType<ErrorTileRenderer>;
 
         // Properties
-
         /**
          * The size of the rendered tile.
          * @since 0.8
@@ -706,6 +726,7 @@ export namespace Champlain {
          */
         get tile_size(): number;
         set tile_size(val: number);
+
         /**
          * The size of the rendered tile.
          * @since 0.8
@@ -724,41 +745,32 @@ export namespace Champlain {
         $signals: ErrorTileRenderer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ErrorTileRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](tile_size: number): ErrorTileRenderer;
+        static ["new"](tile_size: number): ErrorTileRenderer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ErrorTileRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ErrorTileRenderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ErrorTileRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ErrorTileRenderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ErrorTileRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ErrorTileRenderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ErrorTileRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ErrorTileRenderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ErrorTileRenderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ErrorTileRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ErrorTileRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ErrorTileRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the size of the rendered error tiles.
          * @returns the size of the rendered error tiles
          */
         get_tile_size(): number;
+
         /**
          * Sets the size of the rendered error tile.
          * @param size the size of the rendered error tiles
@@ -766,17 +778,17 @@ export namespace Champlain {
         set_tile_size(size: number): void;
     }
 
+
     namespace FileCache {
         // Signal signatures
         interface SignalSignatures extends TileCache.SignalSignatures {
-            'notify::cache-dir': (pspec: GObject.ParamSpec) => void;
-            'notify::size-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::cache-dir": (pspec: GObject.ParamSpec) => void;
+            "notify::size-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TileCache.ConstructorProps {
             cache_dir: string;
             cacheDir: string;
@@ -795,7 +807,6 @@ export namespace Champlain {
         static $gtype: GObject.GType<FileCache>;
 
         // Properties
-
         /**
          * The directory where the tile database is stored.
          * @since 0.6
@@ -803,6 +814,7 @@ export namespace Champlain {
          * @default null
          */
         get cache_dir(): string;
+
         /**
          * The directory where the tile database is stored.
          * @since 0.6
@@ -810,18 +822,20 @@ export namespace Champlain {
          * @default null
          */
         get cacheDir(): string;
+
         /**
          * The cache size limit in bytes.
-         *
+         * 
          * Note: this new value will not be applied until you call `champlain_file_cache_purge()`
          * @since 0.4
          * @default 100000000
          */
         get size_limit(): number;
         set size_limit(val: number);
+
         /**
          * The cache size limit in bytes.
-         *
+         * 
          * Note: this new value will not be applied until you call `champlain_file_cache_purge()`
          * @since 0.4
          * @default 100000000
@@ -839,55 +853,49 @@ export namespace Champlain {
         $signals: FileCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FileCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_full(size_limit: number, cache_dir: string | null, renderer: Renderer): FileCache;
+        static new_full(size_limit: number, cache_dir: (string | null), renderer: Renderer): FileCache;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the directory where the cache database is stored.
          * @returns the directory
          */
         get_cache_dir(): string;
+
         /**
          * Gets the cache size limit in bytes.
          * @returns size limit
          */
         get_size_limit(): number;
+
         /**
          * Purge the cache from the less popular tiles until cache's size limit is reached.
          */
         purge(): void;
+
         /**
          * Purge the cache from the less popular tiles until cache's size limit is reached.
          * This is a non blocking call as the purge will happen when the application is idle
          */
         purge_on_idle(): void;
+
         /**
          * Sets the cache size limit in bytes.
          * @param size_limit the cache limit in bytes
@@ -895,25 +903,27 @@ export namespace Champlain {
         set_size_limit(size_limit: number): void;
     }
 
+
     namespace FileTileSource {
         // Signal signatures
         interface SignalSignatures extends TileSource.SignalSignatures {
-            'notify::cache': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::cache": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends TileSource.ConstructorProps {
 
-        interface ConstructorProps extends TileSource.ConstructorProps {}
+        }
     }
 
     /**
@@ -935,46 +945,26 @@ export namespace Champlain {
         $signals: FileTileSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<FileTileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_full(
-            id: string,
-            name: string,
-            license: string,
-            license_uri: string,
-            min_zoom: number,
-            max_zoom: number,
-            tile_size: number,
-            projection: MapProjection,
-            renderer: Renderer,
-        ): FileTileSource;
+        static new_full(id: string, name: string, license: string, license_uri: string, min_zoom: number, max_zoom: number, tile_size: number, projection: MapProjection, renderer: Renderer): FileTileSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof FileTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof FileTileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof FileTileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof FileTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, FileTileSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof FileTileSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<FileTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof FileTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<FileTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Loads the OpenStreetMap XML file at the given path.
          * @param map_path a path to a map data file
@@ -982,13 +972,16 @@ export namespace Champlain {
         load_map_data(map_path: string): void;
     }
 
+
     namespace ImageRenderer {
         // Signal signatures
-        interface SignalSignatures extends Renderer.SignalSignatures {}
+        interface SignalSignatures extends Renderer.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends Renderer.ConstructorProps {
 
-        interface ConstructorProps extends Renderer.ConstructorProps {}
+        }
     }
 
     /**
@@ -1010,34 +1003,26 @@ export namespace Champlain {
         $signals: ImageRenderer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ImageRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): ImageRenderer;
+        static ["new"](): ImageRenderer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ImageRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageRenderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ImageRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageRenderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ImageRenderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ImageRenderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ImageRenderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ImageRenderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ImageRenderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ImageRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ImageRenderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ImageRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace KineticScrollView {
         // Signal signatures
@@ -1046,104 +1031,97 @@ export namespace Champlain {
              * @signal
              * @run-last
              */
-            'panning-completed': () => void;
-            'notify::decel-rate': (pspec: GObject.ParamSpec) => void;
-            'notify::mode': (pspec: GObject.ParamSpec) => void;
-            'notify::motion-buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "panning-completed": () => void;
+            "notify::decel-rate": (pspec: GObject.ParamSpec) => void;
+            "notify::mode": (pspec: GObject.ParamSpec) => void;
+            "notify::motion-buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             decel_rate: number;
             decelRate: number;
             mode: boolean;
@@ -1155,34 +1133,34 @@ export namespace Champlain {
     /**
      * @gir-type Class
      */
-    class KineticScrollView
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class KineticScrollView extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<KineticScrollView>;
 
         // Properties
-
         /**
          * @default 1.1
          */
         get decel_rate(): number;
         set decel_rate(val: number);
+
         /**
          * @default 1.1
          */
         get decelRate(): number;
         set decelRate(val: number);
+
         /**
          * @default false
          */
         get mode(): boolean;
         set mode(val: boolean);
+
         /**
          * @default 3
          */
         get motion_buffer(): number;
         set motion_buffer(val: number);
+
         /**
          * @default 3
          */
@@ -1199,47 +1177,38 @@ export namespace Champlain {
         $signals: KineticScrollView.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<KineticScrollView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](kinetic: boolean, viewport: Viewport): KineticScrollView;
-        // Conflicted with Clutter.Actor.new
+        static ["new"](kinetic: boolean, viewport: Viewport): KineticScrollView;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Clutter.Actor.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof KineticScrollView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KineticScrollView.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof KineticScrollView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KineticScrollView.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof KineticScrollView.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, KineticScrollView.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof KineticScrollView.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, KineticScrollView.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof KineticScrollView.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<KineticScrollView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof KineticScrollView.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<KineticScrollView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         stop(): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -1250,35 +1219,31 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -1286,19 +1251,21 @@ export namespace Champlain {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -1309,20 +1276,15 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @virtual
          */
-        vfunc_animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: unknown,
-            final_value: unknown,
-            progress: number,
-            value: unknown,
-        ): boolean;
+        vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -1330,26 +1292,24 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -1357,23 +1317,25 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: Clutter.Actor): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -1381,7 +1343,8 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -1390,38 +1353,42 @@ export namespace Champlain {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -1429,27 +1396,30 @@ export namespace Champlain {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): Clutter.Actor;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -1457,64 +1427,72 @@ export namespace Champlain {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
          */
         get_children(): Clutter.Actor[];
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          */
         sort_depth_order(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: Clutter.Actor): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -1522,6 +1500,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -1531,56 +1510,61 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -1588,9 +1572,10 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
@@ -1598,10 +1583,11 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
@@ -1609,13 +1595,14 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -1623,17 +1610,20 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -1643,7 +1633,8 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -1651,22 +1642,25 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -1677,6 +1671,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -1686,10 +1681,11 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
@@ -1699,122 +1695,115 @@ export namespace Champlain {
         vfunc_set_id(id_: string): void;
     }
 
+
     namespace Label {
         // Signal signatures
         interface SignalSignatures extends Marker.SignalSignatures {
-            'notify::alignment': (pspec: GObject.ParamSpec) => void;
-            'notify::color': (pspec: GObject.ParamSpec) => void;
-            'notify::draw-background': (pspec: GObject.ParamSpec) => void;
-            'notify::draw-shadow': (pspec: GObject.ParamSpec) => void;
-            'notify::ellipsize': (pspec: GObject.ParamSpec) => void;
-            'notify::font-name': (pspec: GObject.ParamSpec) => void;
-            'notify::image': (pspec: GObject.ParamSpec) => void;
-            'notify::single-line-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::text-color': (pspec: GObject.ParamSpec) => void;
-            'notify::use-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap': (pspec: GObject.ParamSpec) => void;
-            'notify::wrap-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::draggable': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::alignment": (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::draw-background": (pspec: GObject.ParamSpec) => void;
+            "notify::draw-shadow": (pspec: GObject.ParamSpec) => void;
+            "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
+            "notify::font-name": (pspec: GObject.ParamSpec) => void;
+            "notify::image": (pspec: GObject.ParamSpec) => void;
+            "notify::single-line-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::text-color": (pspec: GObject.ParamSpec) => void;
+            "notify::use-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap": (pspec: GObject.ParamSpec) => void;
+            "notify::wrap-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::draggable": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Marker.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Location.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Marker.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Location.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             alignment: Pango.Alignment;
             color: Clutter.Color;
             draw_background: boolean;
@@ -1844,14 +1833,10 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.10
      */
-    class Label
-        extends Marker
-        implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class Label extends Marker implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<Label>;
 
         // Properties
-
         /**
          * The label's alignment
          * @since 0.10
@@ -1859,6 +1844,7 @@ export namespace Champlain {
          */
         get alignment(): Pango.Alignment;
         set alignment(val: Pango.Alignment);
+
         /**
          * The label's color
          * @since 0.10
@@ -1866,6 +1852,7 @@ export namespace Champlain {
          */
         get color(): Clutter.Color;
         set color(val: Clutter.Color);
+
         /**
          * If the label has a background
          * @since 0.10
@@ -1873,6 +1860,7 @@ export namespace Champlain {
          */
         get draw_background(): boolean;
         set draw_background(val: boolean);
+
         /**
          * If the label has a background
          * @since 0.10
@@ -1880,6 +1868,7 @@ export namespace Champlain {
          */
         get drawBackground(): boolean;
         set drawBackground(val: boolean);
+
         /**
          * If the label background has a shadow
          * @since 0.12.10
@@ -1887,6 +1876,7 @@ export namespace Champlain {
          */
         get draw_shadow(): boolean;
         set draw_shadow(val: boolean);
+
         /**
          * If the label background has a shadow
          * @since 0.12.10
@@ -1894,6 +1884,7 @@ export namespace Champlain {
          */
         get drawShadow(): boolean;
         set drawShadow(val: boolean);
+
         /**
          * The label's ellipsize mode
          * @since 0.10
@@ -1901,6 +1892,7 @@ export namespace Champlain {
          */
         get ellipsize(): Pango.EllipsizeMode;
         set ellipsize(val: Pango.EllipsizeMode);
+
         /**
          * The label's text font name
          * @since 0.10
@@ -1908,6 +1900,7 @@ export namespace Champlain {
          */
         get font_name(): string;
         set font_name(val: string);
+
         /**
          * The label's text font name
          * @since 0.10
@@ -1915,12 +1908,14 @@ export namespace Champlain {
          */
         get fontName(): string;
         set fontName(val: string);
+
         /**
          * The image of the label
          * @since 0.10
          */
         get image(): Clutter.Actor;
         set image(val: Clutter.Actor);
+
         /**
          * If the label is in single line mode
          * @since 0.10
@@ -1928,6 +1923,7 @@ export namespace Champlain {
          */
         get single_line_mode(): boolean;
         set single_line_mode(val: boolean);
+
         /**
          * If the label is in single line mode
          * @since 0.10
@@ -1935,12 +1931,14 @@ export namespace Champlain {
          */
         get singleLineMode(): boolean;
         set singleLineMode(val: boolean);
+
         /**
          * The text of the label
          * @since 0.10
          */
         get text(): string;
         set text(val: string);
+
         /**
          * The label's text color
          * @since 0.10
@@ -1948,6 +1946,7 @@ export namespace Champlain {
          */
         get text_color(): Clutter.Color;
         set text_color(val: Clutter.Color);
+
         /**
          * The label's text color
          * @since 0.10
@@ -1955,6 +1954,7 @@ export namespace Champlain {
          */
         get textColor(): Clutter.Color;
         set textColor(val: Clutter.Color);
+
         /**
          * If the label's text uses markup
          * @since 0.10
@@ -1962,6 +1962,7 @@ export namespace Champlain {
          */
         get use_markup(): boolean;
         set use_markup(val: boolean);
+
         /**
          * If the label's text uses markup
          * @since 0.10
@@ -1969,6 +1970,7 @@ export namespace Champlain {
          */
         get useMarkup(): boolean;
         set useMarkup(val: boolean);
+
         /**
          * If the label's text wrap is set
          * @since 0.10
@@ -1976,6 +1978,7 @@ export namespace Champlain {
          */
         get wrap(): boolean;
         set wrap(val: boolean);
+
         /**
          * The label's text wrap mode
          * @since 0.10
@@ -1983,6 +1986,7 @@ export namespace Champlain {
          */
         get wrap_mode(): Pango.WrapMode;
         set wrap_mode(val: Pango.WrapMode);
+
         /**
          * The label's text wrap mode
          * @since 0.10
@@ -2001,12 +2005,11 @@ export namespace Champlain {
         $signals: Label.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Label.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Label;
+        static ["new"](): Label;
 
         static new_from_file(filename: string): Label;
 
@@ -2014,218 +2017,239 @@ export namespace Champlain {
 
         static new_with_image(actor: Clutter.Actor): Label;
 
-        static new_with_text(
-            text: string,
-            font: string | null,
-            text_color: Clutter.Color | null,
-            label_color: Clutter.Color | null,
-        ): Label;
+        static new_with_text(text: string, font: (string | null), text_color: (Clutter.Color | null), label_color: (Clutter.Color | null)): Label;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Label.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Label.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Label.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Label.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Label.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Label.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Label.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Label.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Label.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Get the label's text alignment.
          * @returns the label's text alignment.
          */
         get_alignment(): Pango.Alignment;
+
         /**
          * Gets the label's text attributes.
          * @returns the label's text attributes.
          */
         get_attributes(): Pango.AttrList;
+
         /**
          * Gets the label's background color.
          * @returns the label's background color.
          */
         get_color(): Clutter.Color;
+
         /**
          * Checks whether the label has a background.
          * @returns if the label has a background.
          */
         get_draw_background(): boolean;
+
         /**
          * Checks whether the label's background has a shadow.
          * @returns if the label's background has a shadow.
          */
         get_draw_shadow(): boolean;
+
         /**
          * Gets the label's text ellipsize mode.
          * @returns the label's text ellipsize mode.
          */
         get_ellipsize(): Pango.EllipsizeMode;
+
         /**
          * Gets the label's font name.
          * @returns the label's font name.
          */
         get_font_name(): string;
+
         /**
          * Get the label's image.
          * @returns the label's image.
          */
         get_image(): Clutter.Actor;
+
         /**
          * Checks the label's single line mode.
          * @returns the label's text single line mode.
          */
         get_single_line_mode(): boolean;
+
         /**
          * Get the label's text.
          * @returns the label's text.
          */
         get_text(): string;
+
         /**
          * Gets the label's text color.
          * @returns the label's text color.
          */
         get_text_color(): Clutter.Color;
+
         /**
          * Check whether the label uses markup.
          * @returns if the label's text contains markup.
          */
         get_use_markup(): boolean;
+
         /**
          * Checks whether the label text wraps.
          * @returns if the label's text wraps.
          */
         get_wrap(): boolean;
+
         /**
          * Gets the label's text wrap mode.
          * @returns the label's text wrap mode.
          */
         get_wrap_mode(): Pango.WrapMode;
+
         /**
          * Sets the label's text alignment.
          * @param alignment The label's alignment
          */
         set_alignment(alignment: Pango.Alignment): void;
+
         /**
          * Sets the label's text attributes.
          * @param list The label's text attributes.
          */
         set_attributes(list: Pango.AttrList): void;
+
         /**
          * Sets the label's background color.
          * @param color The label's background color or NULL to reset the background to the         default color. The color parameter is copied.
          */
-        set_color(color: Clutter.Color | null): void;
+        set_color(color: (Clutter.Color | null)): void;
+
         /**
          * Sets if the label has a background.
          * @param background value.
          */
         set_draw_background(background: boolean): void;
+
         /**
          * Sets if the label's background has a shadow.
          * @param shadow value.
          */
         set_draw_shadow(shadow: boolean): void;
+
         /**
          * Sets the label's text ellipsize mode.
          * @param mode The label's ellipsize mode.
          */
         set_ellipsize(mode: Pango.EllipsizeMode): void;
+
         /**
          * Sets the label's font name such as "Sans 12".
          * @param font_name The label's font name or NULL to reset the font to the default             value.
          */
-        set_font_name(font_name: string | null): void;
+        set_font_name(font_name: (string | null)): void;
+
         /**
          * Sets the label's image.
          * @param image The image as a `ClutterActor` or NULL to remove the current image.
          */
-        set_image(image: Clutter.Actor | null): void;
+        set_image(image: (Clutter.Actor | null)): void;
+
         /**
          * Sets if the label's text is on a single line.
          * @param mode The label's single line mode
          */
         set_single_line_mode(mode: boolean): void;
+
         /**
          * Sets the label's text.
          * @param text The new text of the label
          */
         set_text(text: string): void;
+
         /**
          * Sets the label's text color.
          * @param color The label's text color or NULL to reset the text to the default         color. The color parameter is copied.
          */
-        set_text_color(color: Clutter.Color | null): void;
+        set_text_color(color: (Clutter.Color | null)): void;
+
         /**
          * Sets if the label's text uses markup.
          * @param use_markup The value
          */
         set_use_markup(use_markup: boolean): void;
+
         /**
          * Sets if the label's text wrap.
          * @param wrap The label's wrap.
          */
         set_wrap(wrap: boolean): void;
+
         /**
          * Sets the label's text wrap mode.
          * @param wrap_mode The label's wrap mode.
          */
         set_wrap_mode(wrap_mode: Pango.WrapMode): void;
+
         /**
          * The latitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
@@ -2235,103 +2259,99 @@ export namespace Champlain {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
+
     namespace Layer {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {}
+        }
     }
 
     /**
@@ -2340,10 +2360,7 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.10
      */
-    abstract class Layer
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    abstract class Layer extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<Layer>;
 
         /**
@@ -2356,39 +2373,30 @@ export namespace Champlain {
         $signals: Layer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Layer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Gets the bounding box occupied by the elements inside the layer.
          * @virtual
          */
         vfunc_get_bounding_box(): BoundingBox;
+
         /**
          * {@link Champlain.View} calls this method to pass a reference to itself to the layer
          * when the layer is added to the view. When the layer is removed from the
@@ -2398,15 +2406,15 @@ export namespace Champlain {
          * @param view a {@link Champlain.View}
          * @virtual
          */
-        vfunc_set_view(view: View | null): void;
+        vfunc_set_view(view: (View | null)): void;
 
         // Methods
-
         /**
          * Gets the bounding box occupied by the elements inside the layer.
          * @returns The bounding box.
          */
         get_bounding_box(): BoundingBox;
+
         /**
          * {@link Champlain.View} calls this method to pass a reference to itself to the layer
          * when the layer is added to the view. When the layer is removed from the
@@ -2415,14 +2423,15 @@ export namespace Champlain {
          * by user code.
          * @param view a {@link Champlain.View}
          */
-        set_view(view: View | null): void;
+        set_view(view: (View | null)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -2433,35 +2442,31 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -2469,19 +2474,21 @@ export namespace Champlain {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -2492,20 +2499,15 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @virtual
          */
-        vfunc_animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: unknown,
-            final_value: unknown,
-            progress: number,
-            value: unknown,
-        ): boolean;
+        vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -2513,26 +2515,24 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -2540,23 +2540,25 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: Clutter.Actor): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -2564,7 +2566,8 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -2573,38 +2576,42 @@ export namespace Champlain {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -2612,27 +2619,30 @@ export namespace Champlain {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): Clutter.Actor;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -2640,64 +2650,72 @@ export namespace Champlain {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
          */
         get_children(): Clutter.Actor[];
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          */
         sort_depth_order(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: Clutter.Actor): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -2705,6 +2723,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -2714,56 +2733,61 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -2771,9 +2795,10 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
@@ -2781,10 +2806,11 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
@@ -2792,13 +2818,14 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -2806,17 +2833,20 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -2826,7 +2856,8 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -2834,22 +2865,25 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -2860,6 +2894,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -2869,10 +2904,11 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
@@ -2882,105 +2918,99 @@ export namespace Champlain {
         vfunc_set_id(id_: string): void;
     }
 
+
     namespace License {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
-            'notify::alignment': (pspec: GObject.ParamSpec) => void;
-            'notify::extra-text': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::alignment": (pspec: GObject.ParamSpec) => void;
+            "notify::extra-text": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             alignment: Pango.Alignment;
             extra_text: string;
             extraText: string;
@@ -2993,14 +3023,10 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.10
      */
-    class License
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class License extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<License>;
 
         // Properties
-
         /**
          * The license's alignment
          * @since 0.10
@@ -3008,6 +3034,7 @@ export namespace Champlain {
          */
         get alignment(): Pango.Alignment;
         set alignment(val: Pango.Alignment);
+
         /**
          * Sets additional text to be displayed in the license area.  The map's
          * license will be added below it. Your text can have multiple lines, just use
@@ -3016,6 +3043,7 @@ export namespace Champlain {
          */
         get extra_text(): string;
         set extra_text(val: string);
+
         /**
          * Sets additional text to be displayed in the license area.  The map's
          * license will be added below it. Your text can have multiple lines, just use
@@ -3035,74 +3063,70 @@ export namespace Champlain {
         $signals: License.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<License.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): License;
+        static ["new"](): License;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof License.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, License.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof License.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, License.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof License.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, License.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof License.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<License.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof License.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<License.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * This method connects to the necessary signals of {@link Champlain.View} to make the
          * license change automatically when the map source changes.
          * @param view a {@link Champlain.View}
          */
         connect_view(view: View): void;
+
         /**
          * This method disconnects from the signals previously connected by `champlain_license_connect_view()`.
          */
         disconnect_view(): void;
+
         /**
          * Get the license's text alignment.
          * @returns the license's text alignment.
          */
         get_alignment(): Pango.Alignment;
+
         /**
          * Gets the additional license text.
          * @returns the additional license text
          */
         get_extra_text(): string;
+
         /**
          * Set the license's text alignment.
          * @param alignment The license's text alignment
          */
         set_alignment(alignment: Pango.Alignment): void;
+
         /**
          * Show the additional license text on the map view.  The text will preceed the
          * map's licence when displayed. Use "\n" to separate the lines.
          * @param text the additional license text
          */
         set_extra_text(text: string): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -3113,35 +3137,31 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -3149,19 +3169,21 @@ export namespace Champlain {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -3172,20 +3194,15 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @virtual
          */
-        vfunc_animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: unknown,
-            final_value: unknown,
-            progress: number,
-            value: unknown,
-        ): boolean;
+        vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -3193,26 +3210,24 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -3220,23 +3235,25 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: Clutter.Actor): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -3244,7 +3261,8 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -3253,38 +3271,42 @@ export namespace Champlain {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -3292,27 +3314,30 @@ export namespace Champlain {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): Clutter.Actor;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -3320,64 +3345,72 @@ export namespace Champlain {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
          */
         get_children(): Clutter.Actor[];
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          */
         sort_depth_order(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: Clutter.Actor): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -3385,6 +3418,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -3394,56 +3428,61 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -3451,9 +3490,10 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
@@ -3461,10 +3501,11 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
@@ -3472,13 +3513,14 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -3486,17 +3528,20 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -3506,7 +3551,8 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -3514,22 +3560,25 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -3540,6 +3589,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -3549,10 +3599,11 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
@@ -3562,15 +3613,15 @@ export namespace Champlain {
         vfunc_set_id(id_: string): void;
     }
 
+
     namespace MapSource {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
             next_source: MapSource;
             nextSource: MapSource;
@@ -3588,19 +3639,20 @@ export namespace Champlain {
         static $gtype: GObject.GType<MapSource>;
 
         // Properties
-
         /**
          * Next source in the loading chain.
          * @since 0.6
          */
         get next_source(): MapSource;
         set next_source(val: MapSource);
+
         /**
          * Next source in the loading chain.
          * @since 0.6
          */
         get nextSource(): MapSource;
         set nextSource(val: MapSource);
+
         /**
          * Renderer used for tiles rendering.
          * @since 0.8
@@ -3618,34 +3670,24 @@ export namespace Champlain {
         $signals: MapSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MapSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MapSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MapSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MapSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MapSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MapSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Fills the tile with image data (either from cache, network or rendered
          * locally).
@@ -3653,41 +3695,49 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_fill_tile(tile: Tile): void;
+
         /**
          * Gets map source's id.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Gets map source's license.
          * @virtual
          */
         vfunc_get_license(): string;
+
         /**
          * Gets map source's license URI.
          * @virtual
          */
         vfunc_get_license_uri(): string;
+
         /**
          * Gets map source's maximum zoom level.
          * @virtual
          */
         vfunc_get_max_zoom_level(): number;
+
         /**
          * Gets map source's minimum zoom level.
          * @virtual
          */
         vfunc_get_min_zoom_level(): number;
+
         /**
          * Gets map source's name.
          * @virtual
          */
         vfunc_get_name(): string;
+
         /**
          * Gets map source's projection.
          * @virtual
          */
         vfunc_get_projection(): MapProjection;
+
         /**
          * Gets map source's tile size.
          * @virtual
@@ -3695,13 +3745,13 @@ export namespace Champlain {
         vfunc_get_tile_size(): number;
 
         // Methods
-
         /**
          * Fills the tile with image data (either from cache, network or rendered
          * locally).
          * @param tile a {@link Champlain.Tile}
          */
         fill_tile(tile: Tile): void;
+
         /**
          * Gets the number of tiles in a column at this zoom level for this map
          * source.
@@ -3709,11 +3759,13 @@ export namespace Champlain {
          * @returns the number of tiles in a column
          */
         get_column_count(zoom_level: number): number;
+
         /**
          * Gets map source's id.
          * @returns the map source's id.
          */
         get_id(): string;
+
         /**
          * Gets the latitude corresponding to this y position in the map source's
          * projection.
@@ -3722,16 +3774,19 @@ export namespace Champlain {
          * @returns the latitude
          */
         get_latitude(zoom_level: number, y: number): number;
+
         /**
          * Gets map source's license.
          * @returns the map source's license.
          */
         get_license(): string;
+
         /**
          * Gets map source's license URI.
          * @returns the map source's license URI.
          */
         get_license_uri(): string;
+
         /**
          * Gets the longitude corresponding to this x position in the map source's
          * projection.
@@ -3740,11 +3795,13 @@ export namespace Champlain {
          * @returns the longitude
          */
         get_longitude(zoom_level: number, x: number): number;
+
         /**
          * Gets map source's maximum zoom level.
          * @returns the maximum zoom level this map source supports
          */
         get_max_zoom_level(): number;
+
         /**
          * Gets meters per pixel at the position on the map using this map source's projection.
          * @param zoom_level the zoom level
@@ -3753,42 +3810,50 @@ export namespace Champlain {
          * @returns the meters per pixel
          */
         get_meters_per_pixel(zoom_level: number, latitude: number, longitude: number): number;
+
         /**
          * Gets map source's minimum zoom level.
          * @returns the miminum zoom level this map source supports
          */
         get_min_zoom_level(): number;
+
         /**
          * Gets map source's name.
          * @returns the map source's name.
          */
         get_name(): string;
+
         /**
          * Get the next source in the chain.
          * @returns the next source in the chain.
          */
         get_next_source(): MapSource;
+
         /**
          * Gets map source's projection.
          * @returns the map source's projection.
          */
         get_projection(): MapProjection;
+
         /**
          * Get the renderer used for tiles rendering.
          * @returns the renderer.
          */
         get_renderer(): Renderer;
+
         /**
          * Gets the number of tiles in a row at this zoom level for this map source.
          * @param zoom_level the zoom level
          * @returns the number of tiles in a row
          */
         get_row_count(zoom_level: number): number;
+
         /**
          * Gets map source's tile size.
          * @returns the tile's size (width and height) in pixels for this map source
          */
         get_tile_size(): number;
+
         /**
          * Gets the x position on the map using this map source's projection.
          * (0, 0) is located at the top left.
@@ -3797,6 +3862,7 @@ export namespace Champlain {
          * @returns the x position
          */
         get_x(zoom_level: number, longitude: number): number;
+
         /**
          * Gets the y position on the map using this map source's projection.
          * (0, 0) is located at the top left.
@@ -3805,11 +3871,13 @@ export namespace Champlain {
          * @returns the y position
          */
         get_y(zoom_level: number, latitude: number): number;
+
         /**
          * Sets the next map source in the chain.
          * @param next_source the next {@link Champlain.MapSource} in the chain
          */
         set_next_source(next_source: MapSource): void;
+
         /**
          * Sets the renderer used for tiles rendering.
          * @param renderer the renderer
@@ -3817,16 +3885,18 @@ export namespace Champlain {
         set_renderer(renderer: Renderer): void;
     }
 
+
     namespace MapSourceChain {
         // Signal signatures
         interface SignalSignatures extends MapSource.SignalSignatures {
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends MapSource.ConstructorProps {
 
-        interface ConstructorProps extends MapSource.ConstructorProps {}
+        }
     }
 
     /**
@@ -3848,40 +3918,31 @@ export namespace Champlain {
         $signals: MapSourceChain.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MapSourceChain.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MapSourceChain;
+        static ["new"](): MapSourceChain;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MapSourceChain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceChain.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MapSourceChain.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSourceChain.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MapSourceChain.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSourceChain.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MapSourceChain.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceChain.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MapSourceChain.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MapSourceChain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MapSourceChain.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceChain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Pops a map source from the top of the stack from the chain.
          */
         pop(): void;
+
         /**
          * Pushes a map source into the chain.
          * @param map_source the {@link Champlain.MapSource} to be pushed into the chain
@@ -3889,25 +3950,25 @@ export namespace Champlain {
         push(map_source: MapSource): void;
     }
 
+
     namespace MapSourceDesc {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::data': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
-            'notify::uri-format': (pspec: GObject.ParamSpec) => void;
+            "notify::data": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
+            "notify::uri-format": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            data: any | null;
+            data: (any | null);
             id: string;
             license: string;
             license_uri: string;
@@ -3935,37 +3996,41 @@ export namespace Champlain {
         static $gtype: GObject.GType<MapSourceDesc>;
 
         // Properties
-
         /**
          * User data passed to the constructor
          * @since 0.10
          * @construct-only
          */
-        get data(): any | null;
+        get data(): (any | null);
+
         /**
          * The id of the map source
          * @since 0.10
          * @construct-only
          */
         get id(): string;
+
         /**
          * The license of the map source
          * @since 0.10
          * @construct-only
          */
         get license(): string;
+
         /**
          * The license's uri for more information
          * @since 0.10
          * @construct-only
          */
         get license_uri(): string;
+
         /**
          * The license's uri for more information
          * @since 0.10
          * @construct-only
          */
         get licenseUri(): string;
+
         /**
          * The maximum zoom level
          * @since 0.10
@@ -3973,6 +4038,7 @@ export namespace Champlain {
          * @default 20
          */
         get max_zoom_level(): number;
+
         /**
          * The maximum zoom level
          * @since 0.10
@@ -3980,6 +4046,7 @@ export namespace Champlain {
          * @default 20
          */
         get maxZoomLevel(): number;
+
         /**
          * The minimum zoom level
          * @since 0.10
@@ -3987,6 +4054,7 @@ export namespace Champlain {
          * @default 0
          */
         get min_zoom_level(): number;
+
         /**
          * The minimum zoom level
          * @since 0.10
@@ -3994,12 +4062,14 @@ export namespace Champlain {
          * @default 0
          */
         get minZoomLevel(): number;
+
         /**
          * The name of the map source
          * @since 0.10
          * @construct-only
          */
         get name(): string;
+
         /**
          * The map projection of the map source
          * @since 0.10
@@ -4007,6 +4077,7 @@ export namespace Champlain {
          * @default Champlain.MapProjection.MERCATOR
          */
         get projection(): MapProjection;
+
         /**
          * The tile size of the map source
          * @since 0.10
@@ -4014,6 +4085,7 @@ export namespace Champlain {
          * @default 256
          */
         get tile_size(): number;
+
         /**
          * The tile size of the map source
          * @since 0.10
@@ -4021,12 +4093,14 @@ export namespace Champlain {
          * @default 256
          */
         get tileSize(): number;
+
         /**
          * The URI format of a network map source
          * @since 0.10
          * @construct-only
          */
         get uri_format(): string;
+
         /**
          * The URI format of a network map source
          * @since 0.10
@@ -4044,79 +4118,78 @@ export namespace Champlain {
         $signals: MapSourceDesc.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MapSourceDesc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MapSourceDesc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceDesc.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MapSourceDesc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSourceDesc.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MapSourceDesc.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSourceDesc.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MapSourceDesc.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceDesc.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MapSourceDesc.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MapSourceDesc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MapSourceDesc.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceDesc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets user data.
          * @returns the user data.
          */
-        get_data(): any | null;
+        get_data(): (any | null);
+
         /**
          * Gets map source's id.
          * @returns the map source's id.
          */
         get_id(): string;
+
         /**
          * Gets map source's license.
          * @returns the map source's license.
          */
         get_license(): string;
+
         /**
          * Gets map source's license URI.
          * @returns the map source's license URI.
          */
         get_license_uri(): string;
+
         /**
          * Gets map source's maximum zoom level.
          * @returns the maximum zoom level this map source supports
          */
         get_max_zoom_level(): number;
+
         /**
          * Gets map source's minimum zoom level.
          * @returns the miminum zoom level this map source supports
          */
         get_min_zoom_level(): number;
+
         /**
          * Gets map source's name.
          * @returns the map source's name.
          */
         get_name(): string;
+
         /**
          * Gets map source's projection.
          * @returns the map source's projection.
          */
         get_projection(): MapProjection;
+
         /**
          * Gets map source's tile size.
          * @returns the tile's size (width and height) in pixels for this map source
          */
         get_tile_size(): number;
+
         /**
          * Gets network map source's URI format.
          * @returns the URI format.
@@ -4124,13 +4197,16 @@ export namespace Champlain {
         get_uri_format(): string;
     }
 
+
     namespace MapSourceFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -4152,41 +4228,30 @@ export namespace Champlain {
         $signals: MapSourceFactory.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MapSourceFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MapSourceFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceFactory.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MapSourceFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSourceFactory.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MapSourceFactory.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MapSourceFactory.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MapSourceFactory.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MapSourceFactory.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MapSourceFactory.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MapSourceFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MapSourceFactory.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MapSourceFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * A method to obtain the singleton object.
          */
         static dup_default(): MapSourceFactory;
 
         // Methods
-
         /**
          * Note: The id should not contain any character that can't be in a filename as it
          * will be used as the cache directory name for that map source.
@@ -4194,29 +4259,34 @@ export namespace Champlain {
          * @returns a ready to use {@link Champlain.MapSource} matching the given name; returns NULL if the source with the given name doesn't exist.
          */
         create(id: string): MapSource;
+
         /**
          * Creates a cached map source.
          * @param id the wanted map source id
          * @returns a ready to use {@link Champlain.MapSourceChain} consisting of {@link Champlain.MemoryCache}, {@link Champlain.FileCache}, {@link Champlain.MapSource} matching the given name, and an error tile source created with champlain_map_source_factory_create_error_source (). Returns NULL if the source with the given name doesn't exist.
          */
         create_cached_source(id: string): MapSource;
+
         /**
          * Creates a map source generating error tiles.
          * @param tile_size the size of the error tile
          * @returns a ready to use map source generating error tiles.
          */
         create_error_source(tile_size: number): MapSource;
+
         /**
          * Creates a memory cached map source.
          * @param id the wanted map source id
          * @returns a ready to use {@link Champlain.MapSourceChain} consisting of {@link Champlain.MemoryCache} and {@link Champlain.MapSource} matching the given name. Returns NULL if the source with the given name doesn't exist.
          */
         create_memcached_source(id: string): MapSource;
+
         /**
          * Get the list of registered map sources.
          * @returns the list of registered map sources, the items should not be freed, the list should be freed with `g_slist_free`.
          */
         get_registered(): MapSourceDesc[];
+
         /**
          * Registers the new map source with the given constructor.  When this map
          * source is requested, the given constructor will be used to build the
@@ -4228,6 +4298,7 @@ export namespace Champlain {
         register(desc: MapSourceDesc): boolean;
     }
 
+
     namespace Marker {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
@@ -4237,14 +4308,14 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            'button-press': (arg0: Clutter.Event) => void;
+            "button-press": (arg0: Clutter.Event) => void;
             /**
              * Emitted when button is released. This signal is not emmitted at the end of dragging.
              * @signal
              * @since 0.10
              * @run-last
              */
-            'button-release': (arg0: Clutter.Event) => void;
+            "button-release": (arg0: Clutter.Event) => void;
             /**
              * Emitted when marker dragging ends (i.e. the button is released at the end
              * of dragging).
@@ -4252,7 +4323,7 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            'drag-finish': (arg0: Clutter.Event) => void;
+            "drag-finish": (arg0: Clutter.Event) => void;
             /**
              * Emmitted when the marker is dragged by mouse. dx and dy specify by how much
              * the marker has been dragged since last time.
@@ -4260,107 +4331,99 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            'drag-motion': (arg0: number, arg1: number, arg2: Clutter.Event) => void;
-            'notify::draggable': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "drag-motion": (arg0: number, arg1: number, arg2: Clutter.Event) => void;
+            "notify::draggable": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Location.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Location.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             draggable: boolean;
             selectable: boolean;
             selected: boolean;
@@ -4373,14 +4436,10 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.10
      */
-    class Marker
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class Marker extends Clutter.Actor implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<Marker>;
 
         // Properties
-
         /**
          * The draggable state of the marker
          * @since 0.10
@@ -4388,6 +4447,7 @@ export namespace Champlain {
          */
         get draggable(): boolean;
         set draggable(val: boolean);
+
         /**
          * The selectable state of the marker
          * @since 0.10
@@ -4395,6 +4455,7 @@ export namespace Champlain {
          */
         get selectable(): boolean;
         set selectable(val: boolean);
+
         /**
          * The selected state of the marker
          * @since 0.10
@@ -4413,50 +4474,43 @@ export namespace Champlain {
         $signals: Marker.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Marker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Marker;
+        static ["new"](): Marker;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Marker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Marker.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Marker.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Marker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Marker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Gets the selection color.
          */
         static get_selection_color(): Clutter.Color;
+
         /**
          * Gets the selection text color.
          */
         static get_selection_text_color(): Clutter.Color;
+
         /**
          * Changes the selection color, this is to ensure a better integration with
          * the desktop, this is automatically done by GtkChamplainEmbed.
          * @param color a {@link Clutter.Color}
          */
         static set_selection_color(color: Clutter.Color): void;
+
         /**
          * Changes the selection text color, this is to ensure a better integration with
          * the desktop, this is automatically done by GtkChamplainEmbed.
@@ -4465,100 +4519,116 @@ export namespace Champlain {
         static set_selection_text_color(color: Clutter.Color): void;
 
         // Methods
-
         /**
          * Animates the marker as if it were falling from the sky onto the map.
          */
         animate_in(): void;
+
         /**
          * Animates the marker as if it were falling from the sky onto the map after
          * delay.
          * @param delay The delay in milliseconds
          */
         animate_in_with_delay(delay: number): void;
+
         /**
          * Animates the marker as if it were drawn through the sky.
          */
         animate_out(): void;
+
         /**
          * Animates the marker as if it were drawn through the sky after
          * delay.
          * @param delay The delay in milliseconds
          */
         animate_out_with_delay(delay: number): void;
+
         /**
          * Checks whether the marker is draggable.
          * @returns the draggable or not state of the marker.
          */
         get_draggable(): boolean;
+
         /**
          * Checks whether the marker is selectable.
          * @returns the selectable or not state of the marker.
          */
         get_selectable(): boolean;
+
         /**
          * Checks whether the marker is selected.
          * @returns the selected or not state of the marker.
          */
         get_selected(): boolean;
+
         /**
          * Sets the marker as draggable or not.
          * @param value the draggable state
          */
         set_draggable(value: boolean): void;
+
         /**
          * Sets the marker as selectable or not.
          * @param value the selectable state
          */
         set_selectable(value: boolean): void;
+
         /**
          * Sets the marker as selected or not. This will affect the "Selected" look
          * of the marker.
          * @param value the selected state
          */
         set_selected(value: boolean): void;
+
         /**
          * The latitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
@@ -4566,13 +4636,14 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -4583,35 +4654,31 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -4619,19 +4686,21 @@ export namespace Champlain {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -4642,20 +4711,15 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @virtual
          */
-        vfunc_animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: unknown,
-            final_value: unknown,
-            progress: number,
-            value: unknown,
-        ): boolean;
+        vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -4663,26 +4727,24 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -4690,23 +4752,25 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: Clutter.Actor): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -4714,7 +4778,8 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -4723,38 +4788,42 @@ export namespace Champlain {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -4762,27 +4831,30 @@ export namespace Champlain {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): Clutter.Actor;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -4790,64 +4862,72 @@ export namespace Champlain {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
          */
         get_children(): Clutter.Actor[];
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          */
         sort_depth_order(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: Clutter.Actor): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -4855,6 +4935,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -4864,56 +4945,61 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -4921,9 +5007,10 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
@@ -4931,10 +5018,11 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
@@ -4942,13 +5030,14 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -4956,17 +5045,20 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -4976,7 +5068,8 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -4984,22 +5077,25 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -5010,6 +5106,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -5019,10 +5116,11 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
@@ -5032,106 +5130,99 @@ export namespace Champlain {
         vfunc_set_id(id_: string): void;
     }
 
+
     namespace MarkerLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
-            'notify::selection-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::surface': (pspec: GObject.ParamSpec) => void;
+            "notify::selection-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::surface": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Layer.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Exportable.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Layer.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Exportable.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             selection_mode: SelectionMode;
             selectionMode: SelectionMode;
         }
@@ -5143,14 +5234,10 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.10
      */
-    class MarkerLayer
-        extends Layer
-        implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class MarkerLayer extends Layer implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<MarkerLayer>;
 
         // Properties
-
         /**
          * Determines the type of selection that will be performed.
          * @since 0.10
@@ -5158,6 +5245,7 @@ export namespace Champlain {
          */
         get selection_mode(): SelectionMode;
         set selection_mode(val: SelectionMode);
+
         /**
          * Determines the type of selection that will be performed.
          * @since 0.10
@@ -5176,130 +5264,139 @@ export namespace Champlain {
         $signals: MarkerLayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MarkerLayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): MarkerLayer;
+        static ["new"](): MarkerLayer;
 
         static new_full(mode: SelectionMode): MarkerLayer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MarkerLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MarkerLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MarkerLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MarkerLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MarkerLayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MarkerLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds the marker to the layer.
          * @param marker a {@link Champlain.Marker}
          */
         add_marker(marker: Marker): void;
+
         /**
          * Fade in all markers in the layer with an animation
          */
         animate_in_all_markers(): void;
+
         /**
          * Fade out all markers in the layer with an animation
          */
         animate_out_all_markers(): void;
+
         /**
          * Gets a copy of the list of all markers inserted into the layer. You should
          * free the list but not its contents.
          * @returns the list
          */
         get_markers(): Marker[];
+
         /**
          * Gets a list of selected markers in the layer.
          * @returns the list
          */
         get_selected(): Marker[];
+
         /**
          * Gets the selection mode of the layer.
          * @returns the selection mode of the layer.
          */
         get_selection_mode(): SelectionMode;
+
         /**
          * Hides all the markers in the layer
          */
         hide_all_markers(): void;
+
         /**
          * Removes all markers from the layer.
          */
         remove_all(): void;
+
         /**
          * Removes the marker from the layer.
          * @param marker a {@link Champlain.Marker}
          */
         remove_marker(marker: Marker): void;
+
         /**
          * Selects all markers in the layer.
          */
         select_all_markers(): void;
+
         /**
          * Sets all markers draggable in the layer
          */
         set_all_markers_draggable(): void;
+
         /**
          * Sets all markers undraggable in the layer
          */
         set_all_markers_undraggable(): void;
+
         /**
          * Sets the selection mode of the layer.
-         *
+         * 
          * NOTE: changing selection mode to CHAMPLAIN_SELECTION_NONE or
          * CHAMPLAIN_SELECTION_SINGLE will clear all previously selected markers.
          * @param mode a {@link Champlain.SelectionMode} value
          */
         set_selection_mode(mode: SelectionMode): void;
+
         /**
          * Shows all markers in the layer
          */
         show_all_markers(): void;
+
         /**
          * Unselects all markers in the layer.
          */
         unselect_all_markers(): void;
+
         /**
          * A {@link cairo.Surface} representation
          * @since 0.12.12
-         * @category Inherited from Champlain.Exportable
+          * @category Inherited from Champlain.Exportable
          */
         get surface(): cairo.Surface;
         set surface(val: cairo.Surface);
+
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
          */
         get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
          */
         set_surface(surface: cairo.Surface): void;
+
         /**
          * Gets the surface
          * @virtual
          */
         vfunc_get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
@@ -5308,16 +5405,16 @@ export namespace Champlain {
         vfunc_set_surface(surface: cairo.Surface): void;
     }
 
+
     namespace MemoryCache {
         // Signal signatures
         interface SignalSignatures extends TileCache.SignalSignatures {
-            'notify::size-limit': (pspec: GObject.ParamSpec) => void;
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::size-limit": (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TileCache.ConstructorProps {
             size_limit: number;
             sizeLimit: number;
@@ -5334,7 +5431,6 @@ export namespace Champlain {
         static $gtype: GObject.GType<MemoryCache>;
 
         // Properties
-
         /**
          * The maximum number of tiles that are stored in the cache.
          * @since 0.8
@@ -5342,6 +5438,7 @@ export namespace Champlain {
          */
         get size_limit(): number;
         set size_limit(val: number);
+
         /**
          * The maximum number of tiles that are stored in the cache.
          * @since 0.8
@@ -5360,7 +5457,6 @@ export namespace Champlain {
         $signals: MemoryCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<MemoryCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -5368,37 +5464,30 @@ export namespace Champlain {
         static new_full(size_limit: number, renderer: Renderer): MemoryCache;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof MemoryCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MemoryCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof MemoryCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MemoryCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof MemoryCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, MemoryCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof MemoryCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, MemoryCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof MemoryCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<MemoryCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof MemoryCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<MemoryCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Cleans the contents of the cache.
          */
         clean(): void;
+
         /**
          * Gets the maximum number of tiles stored in the cache.
          * @returns maximum number of stored tiles
          */
         get_size_limit(): number;
+
         /**
          * Sets the maximum number of tiles stored in the cache.
          * @param size_limit maximum number of tiles stored in the cache
@@ -5406,28 +5495,28 @@ export namespace Champlain {
         set_size_limit(size_limit: number): void;
     }
 
+
     namespace NetworkBboxTileSource {
         // Signal signatures
         interface SignalSignatures extends TileSource.SignalSignatures {
-            'notify::api-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::proxy-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
-            'notify::cache': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::api-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::proxy-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
+            "notify::cache": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TileSource.ConstructorProps {
             api_uri: string;
             apiUri: string;
@@ -5449,7 +5538,6 @@ export namespace Champlain {
         static $gtype: GObject.GType<NetworkBboxTileSource>;
 
         // Properties
-
         /**
          * The URI of an OpenStreetMap API server
          * @since 0.8
@@ -5457,6 +5545,7 @@ export namespace Champlain {
          */
         get api_uri(): string;
         set api_uri(val: string);
+
         /**
          * The URI of an OpenStreetMap API server
          * @since 0.8
@@ -5464,18 +5553,21 @@ export namespace Champlain {
          */
         get apiUri(): string;
         set apiUri(val: string);
+
         /**
          * Used to override the default proxy for accessing the network.
          * @since 0.8
          */
         get proxy_uri(): string;
         set proxy_uri(val: string);
+
         /**
          * Used to override the default proxy for accessing the network.
          * @since 0.8
          */
         get proxyUri(): string;
         set proxyUri(val: string);
+
         /**
          * The map source's state. Useful to know if the data source is loading
          * or not.
@@ -5484,6 +5576,7 @@ export namespace Champlain {
          */
         get state(): State;
         set state(val: State);
+
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
@@ -5491,6 +5584,7 @@ export namespace Champlain {
          * @default libchamplain/0.12.22
          */
         set user_agent(val: string);
+
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
@@ -5509,69 +5603,50 @@ export namespace Champlain {
         $signals: NetworkBboxTileSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NetworkBboxTileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_full(
-            id: string,
-            name: string,
-            license: string,
-            license_uri: string,
-            min_zoom: number,
-            max_zoom: number,
-            tile_size: number,
-            projection: MapProjection,
-            renderer: Renderer,
-        ): NetworkBboxTileSource;
+        static new_full(id: string, name: string, license: string, license_uri: string, min_zoom: number, max_zoom: number, tile_size: number, projection: MapProjection, renderer: Renderer): NetworkBboxTileSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NetworkBboxTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkBboxTileSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NetworkBboxTileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NetworkBboxTileSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NetworkBboxTileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NetworkBboxTileSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NetworkBboxTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkBboxTileSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NetworkBboxTileSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NetworkBboxTileSource.SignalSignatures[K]> extends [any, ...infer Q]
-                ? Q
-                : never
-        ): void;
+        emit<K extends keyof NetworkBboxTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkBboxTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the URI of the API server.
          * @returns the URI of the API server.
          */
         get_api_uri(): string;
+
         /**
          * Asynchronously loads map data within a bounding box from the server.
          * The box must not exceed an edge size of 0.25 degree. There are also
          * limitations on the maximum number of nodes that can be requested.
-         *
+         * 
          * For details, see: <ulink role="online-location"
          * url="https://api.openstreetmap.org/api/capabilities">
          * https://api.openstreetmap.org/api/capabilities</ulink>
          * @param bbox bounding box of the requested area
          */
         load_map_data(bbox: BoundingBox): void;
+
         /**
          * Sets the URI of the API server.
          * @param api_uri an URI of an API server
          */
         set_api_uri(api_uri: string): void;
+
         /**
          * Sets the User-Agent header used communicating with the server.
          * @param user_agent A User-Agent string
@@ -5579,29 +5654,29 @@ export namespace Champlain {
         set_user_agent(user_agent: string): void;
     }
 
+
     namespace NetworkTileSource {
         // Signal signatures
         interface SignalSignatures extends TileSource.SignalSignatures {
-            'notify::max-conns': (pspec: GObject.ParamSpec) => void;
-            'notify::offline': (pspec: GObject.ParamSpec) => void;
-            'notify::proxy-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::uri-format': (pspec: GObject.ParamSpec) => void;
-            'notify::user-agent': (pspec: GObject.ParamSpec) => void;
-            'notify::cache': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::max-conns": (pspec: GObject.ParamSpec) => void;
+            "notify::offline": (pspec: GObject.ParamSpec) => void;
+            "notify::proxy-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::uri-format": (pspec: GObject.ParamSpec) => void;
+            "notify::user-agent": (pspec: GObject.ParamSpec) => void;
+            "notify::cache": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends TileSource.ConstructorProps {
             max_conns: number;
             maxConns: number;
@@ -5625,11 +5700,10 @@ export namespace Champlain {
         static $gtype: GObject.GType<NetworkTileSource>;
 
         // Properties
-
         /**
          * Specifies the max number of allowed simultaneous connections for this tile
          * source.
-         *
+         * 
          * Before changing this remember to verify how many simultaneous connections
          * your tile provider allows you to make.
          * @since 0.12.14
@@ -5637,10 +5711,11 @@ export namespace Champlain {
          */
         get max_conns(): number;
         set max_conns(val: number);
+
         /**
          * Specifies the max number of allowed simultaneous connections for this tile
          * source.
-         *
+         * 
          * Before changing this remember to verify how many simultaneous connections
          * your tile provider allows you to make.
          * @since 0.12.14
@@ -5648,6 +5723,7 @@ export namespace Champlain {
          */
         get maxConns(): number;
         set maxConns(val: number);
+
         /**
          * Specifies whether the network tile source can access network
          * @since 0.4
@@ -5655,30 +5731,35 @@ export namespace Champlain {
          */
         get offline(): boolean;
         set offline(val: boolean);
+
         /**
          * Used to override the default proxy for accessing the network.
          * @since 0.4
          */
         get proxy_uri(): string;
         set proxy_uri(val: string);
+
         /**
          * Used to override the default proxy for accessing the network.
          * @since 0.4
          */
         get proxyUri(): string;
         set proxyUri(val: string);
+
         /**
          * The uri format of the tile source, see `champlain_network_tile_source_set_uri_format`
          * @since 0.4
          */
         get uri_format(): string;
         set uri_format(val: string);
+
         /**
          * The uri format of the tile source, see `champlain_network_tile_source_set_uri_format`
          * @since 0.4
          */
         get uriFormat(): string;
         set uriFormat(val: string);
+
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
@@ -5686,6 +5767,7 @@ export namespace Champlain {
          * @default libchamplain/0.12.22
          */
         set user_agent(val: string);
+
         /**
          * The HTTP user agent used for requests
          * @since 0.12.16
@@ -5704,98 +5786,85 @@ export namespace Champlain {
         $signals: NetworkTileSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NetworkTileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static new_full(
-            id: string,
-            name: string,
-            license: string,
-            license_uri: string,
-            min_zoom: number,
-            max_zoom: number,
-            tile_size: number,
-            projection: MapProjection,
-            uri_format: string,
-            renderer: Renderer,
-        ): NetworkTileSource;
+        static new_full(id: string, name: string, license: string, license_uri: string, min_zoom: number, max_zoom: number, tile_size: number, projection: MapProjection, uri_format: string, renderer: Renderer): NetworkTileSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NetworkTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkTileSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NetworkTileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NetworkTileSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NetworkTileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NetworkTileSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NetworkTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkTileSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NetworkTileSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NetworkTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof NetworkTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the max number of allowed simultaneous connections for this tile
          * source.
          * @returns the max number of allowed simultaneous connections for this tile source.
          */
         get_max_conns(): number;
+
         /**
          * Gets offline status.
          * @returns TRUE when the tile source is set to be offline; FALSE otherwise.
          */
         get_offline(): boolean;
+
         /**
          * Gets the proxy uri used to access network.
          * @returns the proxy uri
          */
         get_proxy_uri(): string;
+
         /**
          * Default constructor of {@link Champlain.NetworkTileSource}.
          * @returns A URI format used for URI creation when downloading tiles. See `champlain_network_tile_source_set_uri_format()` for more information.
          */
         get_uri_format(): string;
+
         /**
          * Sets the max number of allowed simultaneous connections for this tile source.
-         *
+         * 
          * Before changing this remember to verify how many simultaneous connections
          * your tile provider allows you to make.
          * @param max_conns the number of allowed simultaneous connections
          */
         set_max_conns(max_conns: number): void;
+
         /**
          * Sets offline status.
          * @param offline TRUE when the tile source should be offline; FALSE otherwise
          */
         set_offline(offline: boolean): void;
+
         /**
          * Override the default proxy for accessing the network.
          * @param proxy_uri the proxy uri used to access network
          */
         set_proxy_uri(proxy_uri: string): void;
+
         /**
          * A URI format is a URI where x, y and zoom level information have been
          * marked for parsing and insertion.  There can be an unlimited number of
          * marked items in a URI format.  They are delimited by "#" before and after
          * the variable name. There are 4 defined variable names: X, Y, Z, and TMSY for
          * Y in TMS coordinates.
-         *
+         * 
          * For example, this is the OpenStreetMap URI format:
          * "https://tile.openstreetmap.org/\#Z\#/\#X\#/\#Y\#.png"
          * @param uri_format the URI format
          */
         set_uri_format(uri_format: string): void;
+
         /**
          * Sets the User-Agent header used communicating with the server.
          * @param user_agent A User-Agent string
@@ -5803,25 +5872,27 @@ export namespace Champlain {
         set_user_agent(user_agent: string): void;
     }
 
+
     namespace NullTileSource {
         // Signal signatures
         interface SignalSignatures extends TileSource.SignalSignatures {
-            'notify::cache': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::cache": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends TileSource.ConstructorProps {
 
-        interface ConstructorProps extends TileSource.ConstructorProps {}
+        }
     }
 
     /**
@@ -5843,7 +5914,6 @@ export namespace Champlain {
         $signals: NullTileSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NullTileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
@@ -5851,132 +5921,117 @@ export namespace Champlain {
         static new_full(renderer: Renderer): NullTileSource;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NullTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullTileSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NullTileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NullTileSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NullTileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NullTileSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NullTileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NullTileSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NullTileSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NullTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof NullTileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NullTileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace PathLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
-            'notify::closed': (pspec: GObject.ParamSpec) => void;
-            'notify::fill': (pspec: GObject.ParamSpec) => void;
-            'notify::fill-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-color': (pspec: GObject.ParamSpec) => void;
-            'notify::stroke-width': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::surface': (pspec: GObject.ParamSpec) => void;
+            "notify::closed": (pspec: GObject.ParamSpec) => void;
+            "notify::fill": (pspec: GObject.ParamSpec) => void;
+            "notify::fill-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-color": (pspec: GObject.ParamSpec) => void;
+            "notify::stroke-width": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::surface": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Layer.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Exportable.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Layer.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Exportable.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             closed: boolean;
             fill: boolean;
             fill_color: Clutter.Color;
@@ -5996,14 +6051,10 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.10
      */
-    class PathLayer
-        extends Layer
-        implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class PathLayer extends Layer implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<PathLayer>;
 
         // Properties
-
         /**
          * The shape is a closed path
          * @since 0.10
@@ -6011,6 +6062,7 @@ export namespace Champlain {
          */
         get closed(): boolean;
         set closed(val: boolean);
+
         /**
          * The shape should be filled
          * @since 0.10
@@ -6018,6 +6070,7 @@ export namespace Champlain {
          */
         get fill(): boolean;
         set fill(val: boolean);
+
         /**
          * The path's fill color
          * @since 0.10
@@ -6025,6 +6078,7 @@ export namespace Champlain {
          */
         get fill_color(): Clutter.Color;
         set fill_color(val: Clutter.Color);
+
         /**
          * The path's fill color
          * @since 0.10
@@ -6032,6 +6086,7 @@ export namespace Champlain {
          */
         get fillColor(): Clutter.Color;
         set fillColor(val: Clutter.Color);
+
         /**
          * The shape should be stroked
          * @since 0.10
@@ -6039,6 +6094,7 @@ export namespace Champlain {
          */
         get stroke(): boolean;
         set stroke(val: boolean);
+
         /**
          * The path's stroke color
          * @since 0.10
@@ -6046,6 +6102,7 @@ export namespace Champlain {
          */
         get stroke_color(): Clutter.Color;
         set stroke_color(val: Clutter.Color);
+
         /**
          * The path's stroke color
          * @since 0.10
@@ -6053,6 +6110,7 @@ export namespace Champlain {
          */
         get strokeColor(): Clutter.Color;
         set strokeColor(val: Clutter.Color);
+
         /**
          * The path's stroke width (in pixels)
          * @since 0.10
@@ -6060,6 +6118,7 @@ export namespace Champlain {
          */
         get stroke_width(): number;
         set stroke_width(val: number);
+
         /**
          * The path's stroke width (in pixels)
          * @since 0.10
@@ -6067,6 +6126,7 @@ export namespace Champlain {
          */
         get strokeWidth(): number;
         set strokeWidth(val: number);
+
         /**
          * Wether the path is visible
          * @since 0.10
@@ -6085,169 +6145,184 @@ export namespace Champlain {
         $signals: PathLayer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<PathLayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): PathLayer;
+        static ["new"](): PathLayer;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof PathLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PathLayer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof PathLayer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof PathLayer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a {@link Champlain.Location} object to the layer.
          * The node is prepended to the list.
          * @param location a {@link Champlain.Location}
          */
         add_node(location: Location): void;
+
         /**
          * Gets information whether the path is closed.
          * @returns TRUE when the path is closed, FALSE otherwise
          */
         get_closed(): boolean;
+
         /**
          * Returns the list of dash segment lengths.
          * @returns the list
          */
         get_dash(): number[];
+
         /**
          * Checks whether the path is filled.
          * @returns TRUE if the path is filled, FALSE otherwise.
          */
         get_fill(): boolean;
+
         /**
          * Gets the path's fill color.
          * @returns the path's fill color.
          */
         get_fill_color(): Clutter.Color;
+
         /**
          * Gets a copy of the list of all {@link Champlain.Location} objects inserted into the layer. You should
          * free the list but not its contents.
          * @returns the list
          */
         get_nodes(): Location[];
+
         /**
          * Checks whether the path is stroked.
          * @returns TRUE if the path is stroked, FALSE otherwise.
          */
         get_stroke(): boolean;
+
         /**
          * Gets the path's stroke color.
          * @returns the path's stroke color.
          */
         get_stroke_color(): Clutter.Color;
+
         /**
          * Gets the width of the stroke.
          * @returns the width of the stroke
          */
         get_stroke_width(): number;
+
         /**
          * Gets path visibility.
          * @returns TRUE when the path is visible, FALSE otherwise
          */
         get_visible(): boolean;
+
         /**
          * Inserts a {@link Champlain.Location} object to the specified position.
          * @param location a {@link Champlain.Location}
          * @param position position in the list where the {@link Champlain.Location} object should be inserted
          */
         insert_node(location: Location, position: number): void;
+
         /**
          * Removes all {@link Champlain.Location} objects from the layer.
          */
         remove_all(): void;
+
         /**
          * Removes the {@link Champlain.Location} object from the layer.
          * @param location a {@link Champlain.Location}
          */
         remove_node(location: Location): void;
+
         /**
          * Makes the path closed.
          * @param value TRUE to make the path closed
          */
         set_closed(value: boolean): void;
+
         /**
          * Sets dashed line pattern in a way similar to `cairo_set_dash()` of cairo. This
          * method supports only integer values for segment lengths. The values have to be
          * passed inside the data pointer of the list (using the GUINT_TO_POINTER conversion)
-         *
+         * 
          * Pass NULL to use solid line.
          * @param dash_pattern list of integer values representing lengths     of dashes/spaces (see cairo documentation of `cairo_set_dash()`)
          */
         set_dash(dash_pattern: number[]): void;
+
         /**
          * Sets the path to be filled
          * @param value if the path is filled
          */
         set_fill(value: boolean): void;
+
         /**
          * Set the path's fill color.
          * @param color The path's fill color or NULL to reset to the         default color. The color parameter is copied.
          */
-        set_fill_color(color: Clutter.Color | null): void;
+        set_fill_color(color: (Clutter.Color | null)): void;
+
         /**
          * Sets the path to be stroked
          * @param value if the path is stroked
          */
         set_stroke(value: boolean): void;
+
         /**
          * Set the path's stroke color.
          * @param color The path's stroke color or NULL to reset to the         default color. The color parameter is copied.
          */
-        set_stroke_color(color: Clutter.Color | null): void;
+        set_stroke_color(color: (Clutter.Color | null)): void;
+
         /**
          * Sets the width of the stroke
          * @param value the width of the stroke (in pixels)
          */
         set_stroke_width(value: number): void;
+
         /**
          * Sets path visibility.
          * @param value TRUE to make the path visible
          */
         set_visible(value: boolean): void;
+
         /**
          * A {@link cairo.Surface} representation
          * @since 0.12.12
-         * @category Inherited from Champlain.Exportable
+          * @category Inherited from Champlain.Exportable
          */
         get surface(): cairo.Surface;
         set surface(val: cairo.Surface);
+
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
          */
         get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
          */
         set_surface(surface: cairo.Surface): void;
+
         /**
          * Gets the surface
          * @virtual
          */
         vfunc_get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
@@ -6256,114 +6331,106 @@ export namespace Champlain {
         vfunc_set_surface(surface: cairo.Surface): void;
     }
 
+
     namespace Point {
         // Signal signatures
         interface SignalSignatures extends Marker.SignalSignatures {
-            'notify::color': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::draggable': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::selected': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::surface': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::draggable": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::selected": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::surface": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Marker.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Exportable.ConstructorProps,
-                Location.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Marker.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Exportable.ConstructorProps, Location.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             color: Clutter.Color;
-            size: number | any;
+            size: (number | any);
         }
     }
 
@@ -6373,26 +6440,23 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.10
      */
-    class Point
-        extends Marker
-        implements Atk.ImplementorIface, Exportable, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class Point extends Marker implements Atk.ImplementorIface, Exportable, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<Point>;
 
         // Properties
-
         /**
          * @default #333333ff
          */
         get color(): Clutter.Color;
         set color(val: Clutter.Color);
+
         /**
          * @default 12
          */
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        get size(): number | any;
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        set size(val: number | any);
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        get size(): (number | any);
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        set size(val: (number | any));
 
         /**
          * Compile-time signal type information.
@@ -6404,133 +6468,140 @@ export namespace Champlain {
         $signals: Point.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Point.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Point;
+        static ["new"](): Point;
 
         static new_full(size: number, color: Clutter.Color): Point;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Point.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Point.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Point.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Point.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Point.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Point.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Point.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the color of the point.
          * @returns the color.
          */
         get_color(): Clutter.Color;
+
         /**
          * Gets the size of the point.
          * @returns the size.
          */
         get_size(): number;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Clutter.Actor.get_size
+    // Conflicted with Clutter.Actor.get_size
         get_size(...args: never[]): any;
+
         /**
          * Set the color of the point.
          * @param color The color of the point or NULL to reset the background to the         default color. The color parameter is copied.
          */
-        set_color(color: Clutter.Color | null): void;
+        set_color(color: (Clutter.Color | null)): void;
+
         /**
          * Set the size of the point.
          * @param size The size of the point.
          */
         set_size(size: number): void;
+
         /**
          * A {@link cairo.Surface} representation
          * @since 0.12.12
-         * @category Inherited from Champlain.Exportable
+          * @category Inherited from Champlain.Exportable
          */
         get surface(): cairo.Surface;
         set surface(val: cairo.Surface);
+
         /**
          * The latitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate
          * @since 0.10
          * @default 0
-         * @category Inherited from Champlain.Location
+          * @category Inherited from Champlain.Location
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
          */
         get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
          */
         set_surface(surface: cairo.Surface): void;
+
         /**
          * Gets the surface
          * @virtual
          */
         vfunc_get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
          * @virtual
          */
         vfunc_set_surface(surface: cairo.Surface): void;
+
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
          */
         set_location(latitude: number, longitude: number): void;
+
         /**
          * Gets the latitude coordinate.
          * @virtual
          */
         vfunc_get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @virtual
          */
         vfunc_get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
@@ -6540,13 +6611,16 @@ export namespace Champlain {
         vfunc_set_location(latitude: number, longitude: number): void;
     }
 
+
     namespace Renderer {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
 
-        interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
+        }
     }
 
     /**
@@ -6568,34 +6642,24 @@ export namespace Champlain {
         $signals: Renderer.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Renderer.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Renderer.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Renderer.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * Renders the texture for the provided tile and calls `champlain_tile_set_content()`
          * to set the content of the tile. When the rendering is finished, the renderer
@@ -6605,6 +6669,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_render(tile: Tile): void;
+
         /**
          * Sets the data which is used to render tiles by the renderer.
          * @param data data used for tile rendering
@@ -6613,7 +6678,6 @@ export namespace Champlain {
         vfunc_set_data(data: Uint8Array): void;
 
         // Methods
-
         /**
          * Renders the texture for the provided tile and calls `champlain_tile_set_content()`
          * to set the content of the tile. When the rendering is finished, the renderer
@@ -6622,117 +6686,113 @@ export namespace Champlain {
          * @param tile the tile to render
          */
         render(tile: Tile): void;
+
         /**
          * Sets the data which is used to render tiles by the renderer.
          * @param data data used for tile rendering
          */
-        set_data(data: Uint8Array | string): void;
+        set_data(data: (Uint8Array | string)): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with GObject.Object.set_data
+    // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
     }
+
 
     namespace Scale {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
-            'notify::max-width': (pspec: GObject.ParamSpec) => void;
-            'notify::unit': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::max-width": (pspec: GObject.ParamSpec) => void;
+            "notify::unit": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             max_width: number;
             maxWidth: number;
             unit: Unit;
@@ -6745,14 +6805,10 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.10
      */
-    class Scale
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class Scale extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<Scale>;
 
         // Properties
-
         /**
          * The size of the map scale on screen in pixels.
          * @since 0.10
@@ -6760,6 +6816,7 @@ export namespace Champlain {
          */
         get max_width(): number;
         set max_width(val: number);
+
         /**
          * The size of the map scale on screen in pixels.
          * @since 0.10
@@ -6767,6 +6824,7 @@ export namespace Champlain {
          */
         get maxWidth(): number;
         set maxWidth(val: number);
+
         /**
          * The scale's units.
          * @since 0.10
@@ -6785,73 +6843,69 @@ export namespace Champlain {
         $signals: Scale.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Scale.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Scale;
+        static ["new"](): Scale;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Scale.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Scale.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Scale.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * This method connects to the necessary signals of {@link Champlain.View} to make the
          * scale adapt to the current latitude and longitude.
          * @param view a {@link Champlain.View}
          */
         connect_view(view: View): void;
+
         /**
          * This method disconnects from the signals previously connected by `champlain_scale_connect_view()`.
          */
         disconnect_view(): void;
+
         /**
          * Gets the maximum scale width.
          * @returns The maximum scale width in pixels.
          */
         get_max_width(): number;
+
         /**
          * Gets the unit used by the scale.
          * @returns The unit used by the scale
          */
         get_unit(): Unit;
+
         /**
          * Sets the maximum width of the scale on the screen in pixels
          * @param value the number of pixels
          */
         set_max_width(value: number): void;
+
         /**
          * Sets the scale unit.
          * @param unit a {@link Champlain.Unit}
          */
         set_unit(unit: Unit): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -6862,35 +6916,31 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -6898,19 +6948,21 @@ export namespace Champlain {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -6921,20 +6973,15 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @virtual
          */
-        vfunc_animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: unknown,
-            final_value: unknown,
-            progress: number,
-            value: unknown,
-        ): boolean;
+        vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -6942,26 +6989,24 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -6969,23 +7014,25 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: Clutter.Actor): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -6993,7 +7040,8 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -7002,38 +7050,42 @@ export namespace Champlain {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -7041,27 +7093,30 @@ export namespace Champlain {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): Clutter.Actor;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -7069,64 +7124,72 @@ export namespace Champlain {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
          */
         get_children(): Clutter.Actor[];
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          */
         sort_depth_order(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: Clutter.Actor): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -7134,6 +7197,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -7143,56 +7207,61 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -7200,9 +7269,10 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
@@ -7210,10 +7280,11 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
@@ -7221,13 +7292,14 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -7235,17 +7307,20 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -7255,7 +7330,8 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -7263,22 +7339,25 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -7289,6 +7368,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -7298,10 +7378,11 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
@@ -7310,6 +7391,7 @@ export namespace Champlain {
          */
         vfunc_set_id(id_: string): void;
     }
+
 
     namespace Tile {
         // Signal signatures
@@ -7321,112 +7403,104 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            'render-complete': (arg0: any | null, arg1: number, arg2: boolean) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::etag': (pspec: GObject.ParamSpec) => void;
-            'notify::fade-in': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
-            'notify::surface': (pspec: GObject.ParamSpec) => void;
+            "render-complete": (arg0: (any | null), arg1: number, arg2: boolean) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::etag": (pspec: GObject.ParamSpec) => void;
+            "notify::fade-in": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
+            "notify::surface": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Exportable.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
-            content: Clutter.Actor | any;
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Exportable.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
+            content: (Clutter.Actor | any);
             etag: string;
             fade_in: boolean;
             fadeIn: boolean;
-            size: number | any;
+            size: (number | any);
             state: State;
             x: number;
             y: number;
@@ -7441,23 +7515,20 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.4
      */
-    class Tile
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class Tile extends Clutter.Actor implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<Tile>;
 
         // Properties
-
         /**
          * The {@link Clutter.Actor} with the specific image content.  When changing this
          * property, the new actor will be faded in.
          * @since 0.4
          */
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        get content(): Clutter.Actor | any;
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        set content(val: Clutter.Actor | any);
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        get content(): (Clutter.Actor | any);
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        set content(val: (Clutter.Actor | any));
+
         /**
          * The tile's ETag. This information is sent by some web servers as a mean
          * to identify if a tile has changed.  This information is saved in the cache
@@ -7467,6 +7538,7 @@ export namespace Champlain {
          */
         get etag(): string;
         set etag(val: string);
+
         /**
          * Specifies whether the tile should fade in when loading
          * @since 0.6
@@ -7474,6 +7546,7 @@ export namespace Champlain {
          */
         get fade_in(): boolean;
         set fade_in(val: boolean);
+
         /**
          * Specifies whether the tile should fade in when loading
          * @since 0.6
@@ -7481,15 +7554,17 @@ export namespace Champlain {
          */
         get fadeIn(): boolean;
         set fadeIn(val: boolean);
+
         /**
          * The size of the tile in pixels
          * @since 0.4
          * @default 256
          */
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        get size(): number | any;
-        // This accessor conflicts with another accessor's type in a parent class or interface.
-        set size(val: number | any);
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        get size(): (number | any);
+    // This accessor conflicts with another accessor's type in a parent class or interface.
+        set size(val: (number | any));
+
         /**
          * The state of the tile
          * @since 0.4
@@ -7497,6 +7572,7 @@ export namespace Champlain {
          */
         get state(): State;
         set state(val: State);
+
         /**
          * The x position of the tile
          * @since 0.4
@@ -7504,6 +7580,7 @@ export namespace Champlain {
          */
         get x(): number;
         set x(val: number);
+
         /**
          * The y position of the tile
          * @since 0.4
@@ -7511,6 +7588,7 @@ export namespace Champlain {
          */
         get y(): number;
         set y(val: number);
+
         /**
          * The zoom level of the tile
          * @since 0.4
@@ -7518,6 +7596,7 @@ export namespace Champlain {
          */
         get zoom_level(): number;
         set zoom_level(val: number);
+
         /**
          * The zoom level of the tile
          * @since 0.4
@@ -7536,183 +7615,200 @@ export namespace Champlain {
         $signals: Tile.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Tile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Tile;
+        static ["new"](): Tile;
 
         static new_full(x: number, y: number, size: number, zoom_level: number): Tile;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Tile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Tile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Tile.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Tile.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Tile.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Tile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Displays the tile's content.
          */
         display_content(): void;
+
         /**
          * Gets the tile's content actor.
          * @returns the tile's content, this actor will change each time the tile's content changes. You should not unref this content, it is owned by the tile.
          */
         get_content(): Clutter.Actor;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Clutter.Actor.get_content
+    // Conflicted with Clutter.Actor.get_content
         get_content(...args: never[]): any;
+
         /**
          * Gets the tile's ETag.
          * @returns the tile's ETag
          */
         get_etag(): string;
+
         /**
          * Checks whether the tile should fade in.
          * @returns the return value determines whether the tile should fade in when loading.
          */
         get_fade_in(): boolean;
+
         /**
          * Gets the tile's last modified time.
          * @returns the tile's last modified time
          */
         get_modified_time(): GLib.TimeVal;
+
         /**
          * Gets the tile's size.
          * @returns the tile's size in pixels
          */
         get_size(): number;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Clutter.Actor.get_size
+    // Conflicted with Clutter.Actor.get_size
         get_size(...args: never[]): any;
+
         /**
          * Gets the current state of tile loading.
          * @returns the tile's {@link Champlain.State}
          */
         get_state(): State;
+
         /**
          * Gets the tile's x position.
          * @returns the tile's x position
          */
         get_x(): number;
+
         /**
          * Gets the tile's y position.
          * @returns the tile's y position
          */
         get_y(): number;
+
         /**
          * Gets the tile's zoom level.
          * @returns the tile's zoom level
          */
         get_zoom_level(): number;
+
         /**
          * Sets the tile's content. To also disppay the tile, you have to call
          * `champlain_tile_display_content()` in addition.
          * @param actor the new content
          */
         set_content(actor: Clutter.Actor): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Clutter.Actor.set_content
+    // Conflicted with Clutter.Actor.set_content
         set_content(...args: never[]): any;
+
         /**
          * Sets the tile's ETag
          * @param etag the tile's ETag as sent by the server
          */
         set_etag(etag: string): void;
+
         /**
          * Sets the flag determining whether the tile should fade in when loading
          * @param fade_in determines whether the tile should fade in when loading
          */
         set_fade_in(fade_in: boolean): void;
+
         /**
          * Sets the tile's modified time
          * @param time a {@link GLib.TimeVal}, the value will be copied
          */
         set_modified_time(time: GLib.TimeVal): void;
+
         /**
          * Sets the tile's size
          * @param size the size in pixels
          */
         set_size(size: number): void;
+
         /**
          * Sets the tile's {@link Champlain.State}
          * @param state a {@link Champlain.State}
          */
         set_state(state: State): void;
+
         /**
          * Sets the tile's x position
          * @param x the position
          */
         set_x(x: number): void;
+
         /**
          * Sets the tile's y position
          * @param y the position
          */
         set_y(y: number): void;
+
         /**
          * Sets the tile's zoom level
          * @param zoom_level the zoom level
          */
         set_zoom_level(zoom_level: number): void;
+
         /**
          * A {@link cairo.Surface} representation
          * @since 0.12.12
-         * @category Inherited from Champlain.Exportable
+          * @category Inherited from Champlain.Exportable
          */
         get surface(): cairo.Surface;
         set surface(val: cairo.Surface);
+
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
          */
         get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
          */
         set_surface(surface: cairo.Surface): void;
+
         /**
          * Gets the surface
          * @virtual
          */
         vfunc_get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
          * @virtual
          */
         vfunc_set_surface(surface: cairo.Surface): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -7723,35 +7819,31 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -7759,19 +7851,21 @@ export namespace Champlain {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -7782,20 +7876,15 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @virtual
          */
-        vfunc_animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: unknown,
-            final_value: unknown,
-            progress: number,
-            value: unknown,
-        ): boolean;
+        vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -7803,26 +7892,24 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -7830,23 +7917,25 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: Clutter.Actor): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -7854,7 +7943,8 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -7863,38 +7953,42 @@ export namespace Champlain {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -7902,27 +7996,30 @@ export namespace Champlain {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): Clutter.Actor;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -7930,64 +8027,72 @@ export namespace Champlain {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
          */
         get_children(): Clutter.Actor[];
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          */
         sort_depth_order(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: Clutter.Actor): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -7995,6 +8100,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -8004,56 +8110,61 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -8061,9 +8172,10 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
@@ -8071,10 +8183,11 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
@@ -8082,13 +8195,14 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -8096,17 +8210,20 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -8116,7 +8233,8 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -8124,22 +8242,25 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -8150,6 +8271,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -8159,10 +8281,11 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
@@ -8172,16 +8295,18 @@ export namespace Champlain {
         vfunc_set_id(id_: string): void;
     }
 
+
     namespace TileCache {
         // Signal signatures
         interface SignalSignatures extends MapSource.SignalSignatures {
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends MapSource.ConstructorProps {
 
-        interface ConstructorProps extends MapSource.ConstructorProps {}
+        }
     }
 
     /**
@@ -8203,34 +8328,24 @@ export namespace Champlain {
         $signals: TileCache.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TileCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileCache.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TileCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TileCache.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TileCache.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TileCache.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TileCache.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileCache.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TileCache.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TileCache.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * When a cache fills a tile and the next source in the chain is a tile cache,
          * it should call this function on the next source. This way all the caches
@@ -8243,12 +8358,14 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_on_tile_filled(tile: Tile): void;
+
         /**
          * Refreshes the tile access time in the cache.
          * @param tile a {@link Champlain.Tile}
          * @virtual
          */
         vfunc_refresh_tile_time(tile: Tile): void;
+
         /**
          * Stores the tile including the metadata into the cache.
          * @param tile a {@link Champlain.Tile}
@@ -8259,7 +8376,6 @@ export namespace Champlain {
         vfunc_store_tile(tile: Tile, contents: string, size: number): void;
 
         // Methods
-
         /**
          * When a cache fills a tile and the next source in the chain is a tile cache,
          * it should call this function on the next source. This way all the caches
@@ -8271,38 +8387,40 @@ export namespace Champlain {
          * @param tile a {@link Champlain.Tile}
          */
         on_tile_filled(tile: Tile): void;
+
         /**
          * Refreshes the tile access time in the cache.
          * @param tile a {@link Champlain.Tile}
          */
         refresh_tile_time(tile: Tile): void;
+
         /**
          * Stores the tile including the metadata into the cache.
          * @param tile a {@link Champlain.Tile}
          * @param contents the tile contents that should be stored
          * @param size size of the contents in bytes
          */
-        store_tile(tile: Tile, contents: string, size: bigint | number): void;
+        store_tile(tile: Tile, contents: string, size: (bigint | number)): void;
     }
+
 
     namespace TileSource {
         // Signal signatures
         interface SignalSignatures extends MapSource.SignalSignatures {
-            'notify::cache': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::license': (pspec: GObject.ParamSpec) => void;
-            'notify::license-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::projection': (pspec: GObject.ParamSpec) => void;
-            'notify::tile-size': (pspec: GObject.ParamSpec) => void;
-            'notify::next-source': (pspec: GObject.ParamSpec) => void;
-            'notify::renderer': (pspec: GObject.ParamSpec) => void;
+            "notify::cache": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::license": (pspec: GObject.ParamSpec) => void;
+            "notify::license-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::projection": (pspec: GObject.ParamSpec) => void;
+            "notify::tile-size": (pspec: GObject.ParamSpec) => void;
+            "notify::next-source": (pspec: GObject.ParamSpec) => void;
+            "notify::renderer": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends MapSource.ConstructorProps {
             cache: TileCache;
             id: string;
@@ -8330,37 +8448,41 @@ export namespace Champlain {
         static $gtype: GObject.GType<TileSource>;
 
         // Properties
-
         /**
          * The cache used for tile storage
          * @since 0.6
          */
         get cache(): TileCache;
         set cache(val: TileCache);
+
         /**
          * The id of the tile source
          * @since 0.4
          */
         get id(): string;
         set id(val: string);
+
         /**
          * The usage license of the tile source
          * @since 0.4
          */
         get license(): string;
         set license(val: string);
+
         /**
          * The usage license's uri for more information
          * @since 0.4
          */
         get license_uri(): string;
         set license_uri(val: string);
+
         /**
          * The usage license's uri for more information
          * @since 0.4
          */
         get licenseUri(): string;
         set licenseUri(val: string);
+
         /**
          * The maximum zoom level
          * @since 0.4
@@ -8368,6 +8490,7 @@ export namespace Champlain {
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
+
         /**
          * The maximum zoom level
          * @since 0.4
@@ -8375,6 +8498,7 @@ export namespace Champlain {
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
+
         /**
          * The minimum zoom level
          * @since 0.4
@@ -8382,6 +8506,7 @@ export namespace Champlain {
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
+
         /**
          * The minimum zoom level
          * @since 0.4
@@ -8389,12 +8514,14 @@ export namespace Champlain {
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
+
         /**
          * The name of the tile source
          * @since 0.4
          */
         get name(): string;
         set name(val: string);
+
         /**
          * The map projection of the tile source
          * @since 0.4
@@ -8402,6 +8529,7 @@ export namespace Champlain {
          */
         get projection(): MapProjection;
         set projection(val: MapProjection);
+
         /**
          * The tile size of the tile source
          * @since 0.4
@@ -8409,6 +8537,7 @@ export namespace Champlain {
          */
         get tile_size(): number;
         set tile_size(val: number);
+
         /**
          * The tile size of the tile source
          * @since 0.4
@@ -8427,85 +8556,85 @@ export namespace Champlain {
         $signals: TileSource.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<TileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof TileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof TileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof TileSource.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof TileSource.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof TileSource.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<TileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof TileSource.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<TileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Gets the cache used for storing tiles by this tile source.
          * @returns the cache
          */
         get_cache(): TileCache;
+
         /**
          * Sets the map source's cache used for storing tiles.
          * @param cache a {@link Champlain.TileCache}
          */
         set_cache(cache: TileCache): void;
+
         /**
          * Sets the tile source's id.
          * @param id an id
          */
         set_id(id: string): void;
+
         /**
          * Sets the tile source's license.
          * @param license the licence
          */
         set_license(license: string): void;
+
         /**
          * Sets the tile source's license URI.
          * @param license_uri the licence URI
          */
         set_license_uri(license_uri: string): void;
+
         /**
          * Sets the tile source's maximum zoom level.
          * @param zoom_level the maximum zoom level
          */
         set_max_zoom_level(zoom_level: number): void;
+
         /**
          * Sets the tile source's minimal zoom level.
          * @param zoom_level the minimal zoom level
          */
         set_min_zoom_level(zoom_level: number): void;
+
         /**
          * Sets the tile source's name.
          * @param name a name
          */
         set_name(name: string): void;
+
         /**
          * Sets the tile source's projection.
          * @param projection a {@link Champlain.MapProjection}
          */
         set_projection(projection: MapProjection): void;
+
         /**
          * Sets the tile source's tile size.
          * @param tile_size the tile size
          */
         set_tile_size(tile_size: number): void;
     }
+
 
     namespace View {
         // Signal signatures
@@ -8520,7 +8649,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed': () => void;
+            "animation-completed": () => void;
             /**
              * Indicates that the layers have been "relocated". In practice this means that
              * every layer should connect to this signal and redraw itself when the signal is
@@ -8530,107 +8659,107 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            'layer-relocated': () => void;
-            'notify::animate-zoom': (pspec: GObject.ParamSpec) => void;
-            'notify::background-pattern': (pspec: GObject.ParamSpec) => void;
-            'notify::deceleration': (pspec: GObject.ParamSpec) => void;
-            'notify::goto-animation-duration': (pspec: GObject.ParamSpec) => void;
-            'notify::goto-animation-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::horizontal-wrap': (pspec: GObject.ParamSpec) => void;
-            'notify::keep-center-on-resize': (pspec: GObject.ParamSpec) => void;
-            'notify::kinetic-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::latitude': (pspec: GObject.ParamSpec) => void;
-            'notify::longitude': (pspec: GObject.ParamSpec) => void;
-            'notify::map-source': (pspec: GObject.ParamSpec) => void;
-            'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::state': (pspec: GObject.ParamSpec) => void;
-            'notify::world': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-on-double-click': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "layer-relocated": () => void;
+            "notify::animate-zoom": (pspec: GObject.ParamSpec) => void;
+            "notify::background-pattern": (pspec: GObject.ParamSpec) => void;
+            "notify::deceleration": (pspec: GObject.ParamSpec) => void;
+            "notify::goto-animation-duration": (pspec: GObject.ParamSpec) => void;
+            "notify::goto-animation-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::horizontal-wrap": (pspec: GObject.ParamSpec) => void;
+            "notify::keep-center-on-resize": (pspec: GObject.ParamSpec) => void;
+            "notify::kinetic-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::latitude": (pspec: GObject.ParamSpec) => void;
+            "notify::longitude": (pspec: GObject.ParamSpec) => void;
+            "notify::map-source": (pspec: GObject.ParamSpec) => void;
+            "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::state": (pspec: GObject.ParamSpec) => void;
+            "notify::world": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-on-double-click": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8641,7 +8770,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::animate-zoom': () => void;
+            "animation-completed::animate-zoom": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8652,7 +8781,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::background-pattern': () => void;
+            "animation-completed::background-pattern": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8663,7 +8792,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::deceleration': () => void;
+            "animation-completed::deceleration": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8674,7 +8803,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::goto-animation-duration': () => void;
+            "animation-completed::goto-animation-duration": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8685,7 +8814,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::goto-animation-mode': () => void;
+            "animation-completed::goto-animation-mode": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8696,7 +8825,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::horizontal-wrap': () => void;
+            "animation-completed::horizontal-wrap": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8707,7 +8836,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::keep-center-on-resize': () => void;
+            "animation-completed::keep-center-on-resize": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8718,7 +8847,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::kinetic-mode': () => void;
+            "animation-completed::kinetic-mode": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8729,7 +8858,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::latitude': () => void;
+            "animation-completed::latitude": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8740,7 +8869,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::longitude': () => void;
+            "animation-completed::longitude": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8751,7 +8880,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::map-source': () => void;
+            "animation-completed::map-source": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8762,7 +8891,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::max-zoom-level': () => void;
+            "animation-completed::max-zoom-level": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8773,7 +8902,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::min-zoom-level': () => void;
+            "animation-completed::min-zoom-level": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8784,7 +8913,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::state': () => void;
+            "animation-completed::state": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8795,7 +8924,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::world': () => void;
+            "animation-completed::world": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8806,7 +8935,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::zoom-level': () => void;
+            "animation-completed::zoom-level": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8817,7 +8946,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::zoom-on-double-click': () => void;
+            "animation-completed::zoom-on-double-click": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8828,7 +8957,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::actions': () => void;
+            "animation-completed::actions": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8839,7 +8968,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::allocation': () => void;
+            "animation-completed::allocation": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8850,7 +8979,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::anchor-gravity': () => void;
+            "animation-completed::anchor-gravity": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8861,7 +8990,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::anchor-x': () => void;
+            "animation-completed::anchor-x": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8872,7 +9001,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::anchor-y': () => void;
+            "animation-completed::anchor-y": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8883,7 +9012,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::background-color': () => void;
+            "animation-completed::background-color": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8894,7 +9023,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::background-color-set': () => void;
+            "animation-completed::background-color-set": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8905,7 +9034,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::child-transform': () => void;
+            "animation-completed::child-transform": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8916,7 +9045,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::child-transform-set': () => void;
+            "animation-completed::child-transform-set": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8927,7 +9056,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::clip': () => void;
+            "animation-completed::clip": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8938,7 +9067,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::clip-rect': () => void;
+            "animation-completed::clip-rect": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8949,7 +9078,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::clip-to-allocation': () => void;
+            "animation-completed::clip-to-allocation": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8960,7 +9089,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::constraints': () => void;
+            "animation-completed::constraints": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8971,7 +9100,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::content': () => void;
+            "animation-completed::content": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8982,7 +9111,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::content-box': () => void;
+            "animation-completed::content-box": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -8993,7 +9122,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::content-gravity': () => void;
+            "animation-completed::content-gravity": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9004,7 +9133,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::content-repeat': () => void;
+            "animation-completed::content-repeat": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9015,7 +9144,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::depth': () => void;
+            "animation-completed::depth": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9026,7 +9155,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::effect': () => void;
+            "animation-completed::effect": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9037,7 +9166,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::first-child': () => void;
+            "animation-completed::first-child": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9048,7 +9177,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::fixed-position-set': () => void;
+            "animation-completed::fixed-position-set": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9059,7 +9188,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::fixed-x': () => void;
+            "animation-completed::fixed-x": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9070,7 +9199,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::fixed-y': () => void;
+            "animation-completed::fixed-y": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9081,7 +9210,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::has-clip': () => void;
+            "animation-completed::has-clip": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9092,7 +9221,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::has-pointer': () => void;
+            "animation-completed::has-pointer": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9103,7 +9232,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::height': () => void;
+            "animation-completed::height": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9114,7 +9243,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::last-child': () => void;
+            "animation-completed::last-child": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9125,7 +9254,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::layout-manager': () => void;
+            "animation-completed::layout-manager": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9136,7 +9265,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::magnification-filter': () => void;
+            "animation-completed::magnification-filter": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9147,7 +9276,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::mapped': () => void;
+            "animation-completed::mapped": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9158,7 +9287,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::margin-bottom': () => void;
+            "animation-completed::margin-bottom": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9169,7 +9298,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::margin-left': () => void;
+            "animation-completed::margin-left": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9180,7 +9309,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::margin-right': () => void;
+            "animation-completed::margin-right": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9191,7 +9320,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::margin-top': () => void;
+            "animation-completed::margin-top": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9202,7 +9331,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::min-height': () => void;
+            "animation-completed::min-height": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9213,7 +9342,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::min-height-set': () => void;
+            "animation-completed::min-height-set": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9224,7 +9353,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::min-width': () => void;
+            "animation-completed::min-width": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9235,7 +9364,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::min-width-set': () => void;
+            "animation-completed::min-width-set": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9246,7 +9375,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::minification-filter': () => void;
+            "animation-completed::minification-filter": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9257,7 +9386,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::name': () => void;
+            "animation-completed::name": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9268,7 +9397,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::natural-height': () => void;
+            "animation-completed::natural-height": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9279,7 +9408,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::natural-height-set': () => void;
+            "animation-completed::natural-height-set": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9290,7 +9419,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::natural-width': () => void;
+            "animation-completed::natural-width": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9301,7 +9430,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::natural-width-set': () => void;
+            "animation-completed::natural-width-set": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9312,7 +9441,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::offscreen-redirect': () => void;
+            "animation-completed::offscreen-redirect": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9323,7 +9452,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::opacity': () => void;
+            "animation-completed::opacity": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9334,7 +9463,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::pivot-point': () => void;
+            "animation-completed::pivot-point": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9345,7 +9474,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::pivot-point-z': () => void;
+            "animation-completed::pivot-point-z": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9356,7 +9485,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::position': () => void;
+            "animation-completed::position": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9367,7 +9496,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::reactive': () => void;
+            "animation-completed::reactive": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9378,7 +9507,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::realized': () => void;
+            "animation-completed::realized": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9389,7 +9518,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::request-mode': () => void;
+            "animation-completed::request-mode": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9400,7 +9529,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::rotation-angle-x': () => void;
+            "animation-completed::rotation-angle-x": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9411,7 +9540,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::rotation-angle-y': () => void;
+            "animation-completed::rotation-angle-y": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9422,7 +9551,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::rotation-angle-z': () => void;
+            "animation-completed::rotation-angle-z": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9433,7 +9562,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::rotation-center-x': () => void;
+            "animation-completed::rotation-center-x": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9444,7 +9573,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::rotation-center-y': () => void;
+            "animation-completed::rotation-center-y": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9455,7 +9584,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::rotation-center-z': () => void;
+            "animation-completed::rotation-center-z": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9466,7 +9595,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::rotation-center-z-gravity': () => void;
+            "animation-completed::rotation-center-z-gravity": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9477,7 +9606,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::rotation-center-zgravity': () => void;
+            "animation-completed::rotation-center-zgravity": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9488,7 +9617,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::scale-center-x': () => void;
+            "animation-completed::scale-center-x": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9499,7 +9628,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::scale-center-y': () => void;
+            "animation-completed::scale-center-y": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9510,7 +9639,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::scale-gravity': () => void;
+            "animation-completed::scale-gravity": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9521,7 +9650,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::scale-x': () => void;
+            "animation-completed::scale-x": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9532,7 +9661,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::scale-y': () => void;
+            "animation-completed::scale-y": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9543,7 +9672,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::scale-z': () => void;
+            "animation-completed::scale-z": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9554,7 +9683,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::show-on-set-parent': () => void;
+            "animation-completed::show-on-set-parent": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9565,7 +9694,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::size': () => void;
+            "animation-completed::size": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9576,7 +9705,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::text-direction': () => void;
+            "animation-completed::text-direction": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9587,7 +9716,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::transform': () => void;
+            "animation-completed::transform": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9598,7 +9727,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::transform-set': () => void;
+            "animation-completed::transform-set": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9609,7 +9738,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::translation-x': () => void;
+            "animation-completed::translation-x": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9620,7 +9749,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::translation-y': () => void;
+            "animation-completed::translation-y": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9631,7 +9760,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::translation-z': () => void;
+            "animation-completed::translation-z": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9642,7 +9771,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::visible': () => void;
+            "animation-completed::visible": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9653,7 +9782,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::width': () => void;
+            "animation-completed::width": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9664,7 +9793,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::x': () => void;
+            "animation-completed::x": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9675,7 +9804,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::x-align': () => void;
+            "animation-completed::x-align": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9686,7 +9815,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::x-expand': () => void;
+            "animation-completed::x-expand": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9697,7 +9826,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::y': () => void;
+            "animation-completed::y": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9708,7 +9837,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::y-align': () => void;
+            "animation-completed::y-align": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9719,7 +9848,7 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::y-expand': () => void;
+            "animation-completed::y-expand": () => void;
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -9730,19 +9859,12 @@ export namespace Champlain {
              * @detailed
              * @run-last
              */
-            'animation-completed::z-position': () => void;
+            "animation-completed::z-position": () => void;
             [key: `animation-completed::${string}`]: () => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             animate_zoom: boolean;
             animateZoom: boolean;
             background_pattern: Clutter.Actor;
@@ -9781,14 +9903,10 @@ export namespace Champlain {
      * @gir-type Class
      * @since 0.1
      */
-    class View
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class View extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<View>;
 
         // Properties
-
         /**
          * Animate zoom change when zooming in/out.
          * @since 0.12
@@ -9796,6 +9914,7 @@ export namespace Champlain {
          */
         get animate_zoom(): boolean;
         set animate_zoom(val: boolean);
+
         /**
          * Animate zoom change when zooming in/out.
          * @since 0.12
@@ -9803,18 +9922,21 @@ export namespace Champlain {
          */
         get animateZoom(): boolean;
         set animateZoom(val: boolean);
+
         /**
          * The pattern displayed in the background of the map.
          * @since 0.12.4
          */
         get background_pattern(): Clutter.Actor;
         set background_pattern(val: Clutter.Actor);
+
         /**
          * The pattern displayed in the background of the map.
          * @since 0.12.4
          */
         get backgroundPattern(): Clutter.Actor;
         set backgroundPattern(val: Clutter.Actor);
+
         /**
          * The deceleration rate for the kinetic mode. The default value is 1.1.
          * @since 0.10
@@ -9822,56 +9944,63 @@ export namespace Champlain {
          */
         get deceleration(): number;
         set deceleration(val: number);
+
         /**
          * The duration of an animation when going to a location.
          * A value of 0 means that the duration is calculated automatically for you.
-         *
+         * 
          * Please note that animation of `champlain_view_ensure_visible` also
          * involves a 'goto' animation.
          * @default 0
          */
         get goto_animation_duration(): number;
         set goto_animation_duration(val: number);
+
         /**
          * The duration of an animation when going to a location.
          * A value of 0 means that the duration is calculated automatically for you.
-         *
+         * 
          * Please note that animation of `champlain_view_ensure_visible` also
          * involves a 'goto' animation.
          * @default 0
          */
         get gotoAnimationDuration(): number;
         set gotoAnimationDuration(val: number);
+
         /**
          * The mode of animation when going to a location.
-         *
+         * 
          * Please note that animation of `champlain_view_ensure_visible` also
          * involves a 'goto' animation.
          * @default Clutter.AnimationMode.EASE_IN_OUT_CIRC
          */
         get goto_animation_mode(): Clutter.AnimationMode;
         set goto_animation_mode(val: Clutter.AnimationMode);
+
         /**
          * The mode of animation when going to a location.
-         *
+         * 
          * Please note that animation of `champlain_view_ensure_visible` also
          * involves a 'goto' animation.
          * @default Clutter.AnimationMode.EASE_IN_OUT_CIRC
          */
         get gotoAnimationMode(): Clutter.AnimationMode;
         set gotoAnimationMode(val: Clutter.AnimationMode);
+
         /**
          * Determines whether the view should wrap horizontally.
          * @default false
          */
         get horizontal_wrap(): boolean;
         set horizontal_wrap(val: boolean);
+
         /**
          * Determines whether the view should wrap horizontally.
          * @default false
          */
         get horizontalWrap(): boolean;
         set horizontalWrap(val: boolean);
+
         /**
          * Keep the current centered position when resizing the view.
          * @since 0.2.7
@@ -9879,6 +10008,7 @@ export namespace Champlain {
          */
         get keep_center_on_resize(): boolean;
         set keep_center_on_resize(val: boolean);
+
         /**
          * Keep the current centered position when resizing the view.
          * @since 0.2.7
@@ -9886,6 +10016,7 @@ export namespace Champlain {
          */
         get keepCenterOnResize(): boolean;
         set keepCenterOnResize(val: boolean);
+
         /**
          * Determines whether the view should use kinetic mode.
          * @since 0.10
@@ -9893,6 +10024,7 @@ export namespace Champlain {
          */
         get kinetic_mode(): boolean;
         set kinetic_mode(val: boolean);
+
         /**
          * Determines whether the view should use kinetic mode.
          * @since 0.10
@@ -9900,6 +10032,7 @@ export namespace Champlain {
          */
         get kineticMode(): boolean;
         set kineticMode(val: boolean);
+
         /**
          * The latitude coordonate of the map
          * @since 0.1
@@ -9907,6 +10040,7 @@ export namespace Champlain {
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate of the map
          * @since 0.1
@@ -9914,18 +10048,21 @@ export namespace Champlain {
          */
         get longitude(): number;
         set longitude(val: number);
+
         /**
          * The {@link Champlain.MapSource} being displayed
          * @since 0.2
          */
         get map_source(): MapSource;
         set map_source(val: MapSource);
+
         /**
          * The {@link Champlain.MapSource} being displayed
          * @since 0.2
          */
         get mapSource(): MapSource;
         set mapSource(val: MapSource);
+
         /**
          * The highest allowed level of zoom of the content.
          * @since 0.4
@@ -9933,6 +10070,7 @@ export namespace Champlain {
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
+
         /**
          * The highest allowed level of zoom of the content.
          * @since 0.4
@@ -9940,6 +10078,7 @@ export namespace Champlain {
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
+
         /**
          * The lowest allowed level of zoom of the content.
          * @since 0.4
@@ -9947,6 +10086,7 @@ export namespace Champlain {
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
+
         /**
          * The lowest allowed level of zoom of the content.
          * @since 0.4
@@ -9954,6 +10094,7 @@ export namespace Champlain {
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
+
         /**
          * The view's global state. Useful to inform using if the view is busy loading
          * tiles or not.
@@ -9962,16 +10103,18 @@ export namespace Champlain {
          * @default Champlain.State.NONE
          */
         get state(): State;
+
         /**
          * Set a bounding box to limit the world to. No tiles will be loaded
          * outside of this bounding box. It will not be possible to scroll outside
          * of this bounding box.
-         *
+         * 
          * Default world is the actual world.
          * @since 0.12.11
          */
         get world(): BoundingBox;
         set world(val: BoundingBox);
+
         /**
          * The level of zoom of the content.
          * @since 0.1
@@ -9979,6 +10122,7 @@ export namespace Champlain {
          */
         get zoom_level(): number;
         set zoom_level(val: number);
+
         /**
          * The level of zoom of the content.
          * @since 0.1
@@ -9986,6 +10130,7 @@ export namespace Champlain {
          */
         get zoomLevel(): number;
         set zoomLevel(val: number);
+
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @since 0.4
@@ -9993,6 +10138,7 @@ export namespace Champlain {
          */
         get zoom_on_double_click(): boolean;
         set zoom_on_double_click(val: boolean);
+
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @since 0.4
@@ -10011,41 +10157,32 @@ export namespace Champlain {
         $signals: View.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): View;
+        static ["new"](): View;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof View.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof View.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, View.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof View.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Adds a new layer to the view
          * @param layer a {@link Champlain.Layer}
          */
         add_layer(layer: Layer): void;
+
         /**
          * Adds a new overlay map source to render tiles with the supplied opacity on top
          * of the ordinary map source. Multiple overlay sources can be added.
@@ -10053,6 +10190,7 @@ export namespace Champlain {
          * @param opacity opacity to use
          */
         add_overlay_source(map_source: MapSource, opacity: number): void;
+
         /**
          * This function inserts a custom actor to the undrelying {@link Clutter.BinLayout}
          * manager. The inserted actors appear on top of the map. See `clutter_bin_layout_add()`
@@ -10062,18 +10200,21 @@ export namespace Champlain {
          * @param y_align y alignment
          */
         bin_layout_add(child: Clutter.Actor, x_align: Clutter.BinAlignment, y_align: Clutter.BinAlignment): void;
+
         /**
          * Centers the map on these coordinates.
          * @param latitude the longitude to center the map at
          * @param longitude the longitude to center the map at
          */
         center_on(latitude: number, longitude: number): void;
+
         /**
          * Changes the map's zoom level and center to make sure that the bounding
          * boxes of all inserted layers are visible.
          * @param animate TRUE to perform animation, FALSE otherwise
          */
         ensure_layers_visible(animate: boolean): void;
+
         /**
          * Changes the map's zoom level and center to make sure the given area
          * is visible
@@ -10081,57 +10222,68 @@ export namespace Champlain {
          * @param animate TRUE to perform animation, FALSE otherwise
          */
         ensure_visible(bbox: BoundingBox, animate: boolean): void;
+
         /**
          * Checks whether the view animates zoom level changes.
          * @returns TRUE if the view animates zooms, FALSE otherwise.
          */
         get_animate_zoom(): boolean;
+
         /**
          * Gets the current background texture displayed behind the map.
          * @returns The texture.
          */
         get_background_pattern(): Clutter.Content;
+
         /**
          * Gets the bounding box for view `view` at current zoom-level.
          * @returns the bounding box
          */
         get_bounding_box(): BoundingBox;
+
         /**
          * Gets the bounding box for view `view` at `zoom_level`.
          * @param zoom_level the level of zoom, a guint between 1 and 20
          * @returns the bounding box for the view at `zoom_level`.
          */
         get_bounding_box_for_zoom_level(zoom_level: number): BoundingBox;
+
         /**
          * Gets the latitude of the view's center.
          * @returns the latitude.
          */
         get_center_latitude(): number;
+
         /**
          * Gets the longitude of the view's center.
          * @returns the longitude.
          */
         get_center_longitude(): number;
+
         /**
          * Gets the view's deceleration rate.
          * @returns the view's deceleration rate.
          */
         get_deceleration(): number;
+
         /**
          * Returns the value of the {@link Champlain.View.horizontal_wrap} property.
          * @returns `true` if {@link Champlain.View.horizontal_wrap} is set.
          */
         get_horizontal_wrap(): boolean;
+
         /**
          * Checks whether to keep the center on resize
          * @returns TRUE if the view keeps the center on resize, FALSE otherwise.
          */
         get_keep_center_on_resize(): boolean;
+
         /**
          * Gets the view's scroll mode behaviour.
          * @returns TRUE for kinetic mode, FALSE for push mode.
          */
         get_kinetic_mode(): boolean;
+
         /**
          * Returns the {@link Champlain.License} actor which is inserted by default into the
          * layout manager. It can be manipulated using standard {@link Clutter.Actor} methods
@@ -10139,54 +10291,65 @@ export namespace Champlain {
          * @returns the license actor
          */
         get_license_actor(): License;
+
         /**
          * Gets the view's current map source.
          * @returns the view's current map source. If you need to keep a reference to the map source then you have to call `g_object_ref`().
          */
         get_map_source(): MapSource;
+
         /**
          * Gets the view's maximum allowed zoom level.
          * @returns the view's maximum allowed zoom level.
          */
         get_max_zoom_level(): number;
+
         /**
          * Gets the view's minimal allowed zoom level.
          * @returns the view's minimal allowed zoom level.
          */
         get_min_zoom_level(): number;
+
         /**
          * Gets a list of overlay sources.
          * @returns the list
          */
         get_overlay_sources(): MapSource[];
+
         /**
          * Gets the view's state.
          * @returns the state.
          */
         get_state(): State;
+
         /**
          * Gets the x and y coordinate of the viewport anchor in respect to the layer origin.
          */
         get_viewport_anchor(): [number, number];
+
         /**
          * Gets the x and y coordinate of the viewport in respect to the layer origin.
          */
         get_viewport_origin(): [number, number];
+
         /**
          * Get the bounding box that represents the extent of the world.
          * @returns a {@link Champlain.BoundingBox} that represents the current world
          */
         get_world(): BoundingBox;
+
         /**
          * Gets the view's current zoom level.
          * @returns the view's current zoom level.
          */
         get_zoom_level(): number;
+
         /**
          * Checks whether the view zooms on double click.
          * @returns TRUE if the view zooms on double click, FALSE otherwise.
          */
         get_zoom_on_double_click(): boolean;
+
         /**
          * Move from the current position to these coordinates. All tiles in the
          * intermediate view WILL be loaded!
@@ -10194,37 +10357,44 @@ export namespace Champlain {
          * @param longitude the longitude to center the map at
          */
         go_to(latitude: number, longitude: number): void;
+
         /**
          * Converts the latitude to view's y coordinate.
          * @param latitude the latitude
          * @returns the y coordinate
          */
         latitude_to_y(latitude: number): number;
+
         /**
          * Converts the longitude to view's x coordinate.
          * @param longitude the longitude
          * @returns the x coordinate
          */
         longitude_to_x(longitude: number): number;
+
         /**
          * Reloads all visible tiles.
          */
         reload_tiles(): void;
+
         /**
          * Removes the given layer from the view
          * @param layer a {@link Champlain.Layer}
          */
         remove_layer(layer: Layer): void;
+
         /**
          * Removes an overlay source from {@link Champlain.View}.
          * @param map_source a {@link Champlain.MapSource}
          */
         remove_overlay_source(map_source: MapSource): void;
+
         /**
          * Should the view animate zoom level changes.
          * @param value a `gboolean`
          */
         set_animate_zoom(value: boolean): void;
+
         /**
          * Sets the background texture displayed behind the map. Setting the background
          * pattern affects performence slightly - use reasonably large patterns for
@@ -10232,45 +10402,53 @@ export namespace Champlain {
          * @param background The background texture
          */
         set_background_pattern(background: Clutter.Content): void;
+
         /**
          * The deceleration rate for the kinetic mode.
          * @param rate a `gdouble` between 1.001 and 2.0
          */
         set_deceleration(rate: number): void;
+
         /**
          * Sets the value of the {@link Champlain.View.horizontal_wrap} property.
          * @param wrap `true` to enable horizontal wrapping
          */
         set_horizontal_wrap(wrap: boolean): void;
+
         /**
          * Keep the current centered position when resizing the view.
          * @param value a `gboolean`
          */
         set_keep_center_on_resize(value: boolean): void;
+
         /**
          * Determines the way the view reacts to scroll events.
          * @param kinetic TRUE for kinetic mode, FALSE for push mode
          */
         set_kinetic_mode(kinetic: boolean): void;
+
         /**
          * Changes the currently used map source. `g_object_unref`() will be called on
          * the previous one.
-         *
+         * 
          * As a side effect, changing the primary map source will also clear all
          * secondary map sources.
          * @param map_source a {@link Champlain.MapSource}
          */
         set_map_source(map_source: MapSource): void;
+
         /**
          * Changes the highest allowed level of zoom
          * @param zoom_level the level of zoom
          */
         set_max_zoom_level(zoom_level: number): void;
+
         /**
          * Changes the lowest allowed level of zoom
          * @param zoom_level the level of zoom
          */
         set_min_zoom_level(zoom_level: number): void;
+
         /**
          * Set a bounding box to limit the world to. No tiles will be loaded
          * outside of this bounding box. It will not be possible to scroll outside
@@ -10278,61 +10456,70 @@ export namespace Champlain {
          * @param bbox the {@link Champlain.BoundingBox} of the world
          */
         set_world(bbox: BoundingBox): void;
+
         /**
          * Changes the current level of zoom
          * @param zoom_level the level of zoom, a guint between 1 and 20
          */
         set_zoom_level(zoom_level: number): void;
+
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @param value a `gboolean`
          */
         set_zoom_on_double_click(value: boolean): void;
+
         /**
          * Stop the go to animation.  The view will stay where it was when the
          * animation was stopped.
          */
         stop_go_to(): void;
+
         /**
          * Will generate a {@link cairo.Surface} that represents the current view
          * of the map. Without any markers or layers. If the current {@link Champlain.Renderer}
          * used does not support this, this function will return `null`.
-         *
+         * 
          * If `include_layers` is set to `true` all layers that implement
          * {@link Champlain.Exportable} will be included in the surface.
-         *
+         * 
          * The {@link Champlain.View} also need to be in #CHAMPLAIN_STATE_DONE state.
          * @param include_layers Set to `true` if you want to include layers
          * @returns a {@link cairo.Surface} or `null` on failure. Free with          `cairo_surface_destroy()` when done.
          */
         to_surface(include_layers: boolean): cairo.Surface;
+
         /**
          * Converts the view's x coordinate to longitude.
          * @param x x coordinate of the view
          * @returns the longitude
          */
         x_to_longitude(x: number): number;
+
         /**
          * Converts the view's y coordinate to latitude.
          * @param y y coordinate of the view
          * @returns the latitude
          */
         y_to_latitude(y: number): number;
+
         /**
          * Zoom in the map by one level.
          */
         zoom_in(): void;
+
         /**
          * Zoom out the map by one level.
          */
         zoom_out(): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -10343,35 +10530,31 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -10379,19 +10562,21 @@ export namespace Champlain {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -10402,20 +10587,15 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @virtual
          */
-        vfunc_animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: unknown,
-            final_value: unknown,
-            progress: number,
-            value: unknown,
-        ): boolean;
+        vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -10423,26 +10603,24 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -10450,23 +10628,25 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: Clutter.Actor): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -10474,7 +10654,8 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -10483,38 +10664,42 @@ export namespace Champlain {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -10522,27 +10707,30 @@ export namespace Champlain {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): Clutter.Actor;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -10550,64 +10738,72 @@ export namespace Champlain {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
          */
         get_children(): Clutter.Actor[];
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          */
         sort_depth_order(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: Clutter.Actor): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -10615,6 +10811,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -10624,56 +10821,61 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -10681,9 +10883,10 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
@@ -10691,10 +10894,11 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
@@ -10702,13 +10906,14 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -10716,17 +10921,20 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -10736,7 +10944,8 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -10744,22 +10953,25 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -10770,6 +10982,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -10779,10 +10992,11 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
@@ -10792,6 +11006,7 @@ export namespace Champlain {
         vfunc_set_id(id_: string): void;
     }
 
+
     namespace Viewport {
         // Signal signatures
         interface SignalSignatures extends Clutter.Actor.SignalSignatures {
@@ -10800,104 +11015,97 @@ export namespace Champlain {
              * @run-last
              */
             relocated: () => void;
-            'notify::hadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::vadjustment': (pspec: GObject.ParamSpec) => void;
-            'notify::x-origin': (pspec: GObject.ParamSpec) => void;
-            'notify::y-origin': (pspec: GObject.ParamSpec) => void;
-            'notify::actions': (pspec: GObject.ParamSpec) => void;
-            'notify::allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-x': (pspec: GObject.ParamSpec) => void;
-            'notify::anchor-y': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color': (pspec: GObject.ParamSpec) => void;
-            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
-            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::clip': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
-            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
-            'notify::constraints': (pspec: GObject.ParamSpec) => void;
-            'notify::content': (pspec: GObject.ParamSpec) => void;
-            'notify::content-box': (pspec: GObject.ParamSpec) => void;
-            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
-            'notify::depth': (pspec: GObject.ParamSpec) => void;
-            'notify::effect': (pspec: GObject.ParamSpec) => void;
-            'notify::first-child': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
-            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
-            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
-            'notify::height': (pspec: GObject.ParamSpec) => void;
-            'notify::last-child': (pspec: GObject.ParamSpec) => void;
-            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::mapped': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height': (pspec: GObject.ParamSpec) => void;
-            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width': (pspec: GObject.ParamSpec) => void;
-            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
-            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
-            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
-            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
-            'notify::position': (pspec: GObject.ParamSpec) => void;
-            'notify::reactive': (pspec: GObject.ParamSpec) => void;
-            'notify::realized': (pspec: GObject.ParamSpec) => void;
-            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-z-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::rotation-center-zgravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-center-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
-            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::size': (pspec: GObject.ParamSpec) => void;
-            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
-            'notify::transform': (pspec: GObject.ParamSpec) => void;
-            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
-            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width': (pspec: GObject.ParamSpec) => void;
-            'notify::x': (pspec: GObject.ParamSpec) => void;
-            'notify::x-align': (pspec: GObject.ParamSpec) => void;
-            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::y': (pspec: GObject.ParamSpec) => void;
-            'notify::y-align': (pspec: GObject.ParamSpec) => void;
-            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
-            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+            "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
+            "notify::x-origin": (pspec: GObject.ParamSpec) => void;
+            "notify::y-origin": (pspec: GObject.ParamSpec) => void;
+            "notify::actions": (pspec: GObject.ParamSpec) => void;
+            "notify::allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-x": (pspec: GObject.ParamSpec) => void;
+            "notify::anchor-y": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color": (pspec: GObject.ParamSpec) => void;
+            "notify::background-color-set": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform": (pspec: GObject.ParamSpec) => void;
+            "notify::child-transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::clip": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-rect": (pspec: GObject.ParamSpec) => void;
+            "notify::clip-to-allocation": (pspec: GObject.ParamSpec) => void;
+            "notify::constraints": (pspec: GObject.ParamSpec) => void;
+            "notify::content": (pspec: GObject.ParamSpec) => void;
+            "notify::content-box": (pspec: GObject.ParamSpec) => void;
+            "notify::content-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::content-repeat": (pspec: GObject.ParamSpec) => void;
+            "notify::depth": (pspec: GObject.ParamSpec) => void;
+            "notify::effect": (pspec: GObject.ParamSpec) => void;
+            "notify::first-child": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-position-set": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-x": (pspec: GObject.ParamSpec) => void;
+            "notify::fixed-y": (pspec: GObject.ParamSpec) => void;
+            "notify::has-clip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-pointer": (pspec: GObject.ParamSpec) => void;
+            "notify::height": (pspec: GObject.ParamSpec) => void;
+            "notify::last-child": (pspec: GObject.ParamSpec) => void;
+            "notify::layout-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::magnification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::mapped": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height": (pspec: GObject.ParamSpec) => void;
+            "notify::min-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width": (pspec: GObject.ParamSpec) => void;
+            "notify::min-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::minification-filter": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-height-set": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width": (pspec: GObject.ParamSpec) => void;
+            "notify::natural-width-set": (pspec: GObject.ParamSpec) => void;
+            "notify::offscreen-redirect": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point": (pspec: GObject.ParamSpec) => void;
+            "notify::pivot-point-z": (pspec: GObject.ParamSpec) => void;
+            "notify::position": (pspec: GObject.ParamSpec) => void;
+            "notify::reactive": (pspec: GObject.ParamSpec) => void;
+            "notify::realized": (pspec: GObject.ParamSpec) => void;
+            "notify::request-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-angle-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-z-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::rotation-center-zgravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-center-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-x": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-y": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-z": (pspec: GObject.ParamSpec) => void;
+            "notify::show-on-set-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::size": (pspec: GObject.ParamSpec) => void;
+            "notify::text-direction": (pspec: GObject.ParamSpec) => void;
+            "notify::transform": (pspec: GObject.ParamSpec) => void;
+            "notify::transform-set": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-x": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-y": (pspec: GObject.ParamSpec) => void;
+            "notify::translation-z": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width": (pspec: GObject.ParamSpec) => void;
+            "notify::x": (pspec: GObject.ParamSpec) => void;
+            "notify::x-align": (pspec: GObject.ParamSpec) => void;
+            "notify::x-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::y": (pspec: GObject.ParamSpec) => void;
+            "notify::y-align": (pspec: GObject.ParamSpec) => void;
+            "notify::y-expand": (pspec: GObject.ParamSpec) => void;
+            "notify::z-position": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Clutter.Actor.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Clutter.Animatable.ConstructorProps,
-                Clutter.Container.ConstructorProps,
-                Clutter.Scriptable.ConstructorProps {
+        interface ConstructorProps extends Clutter.Actor.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Clutter.Animatable.ConstructorProps, Clutter.Container.ConstructorProps, Clutter.Scriptable.ConstructorProps {
             hadjustment: Adjustment;
             vadjustment: Adjustment;
             x_origin: number;
@@ -10910,33 +11118,34 @@ export namespace Champlain {
     /**
      * @gir-type Class
      */
-    class Viewport
-        extends Clutter.Actor
-        implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
-    {
+    class Viewport extends Clutter.Actor implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable {
         static $gtype: GObject.GType<Viewport>;
 
         // Properties
-
         get hadjustment(): Adjustment;
         set hadjustment(val: Adjustment);
+
         get vadjustment(): Adjustment;
         set vadjustment(val: Adjustment);
+
         /**
          * @default 0
          */
         get x_origin(): number;
         set x_origin(val: number);
+
         /**
          * @default 0
          */
         get xOrigin(): number;
         set xOrigin(val: number);
+
         /**
          * @default 0
          */
         get y_origin(): number;
         set y_origin(val: number);
+
         /**
          * @default 0
          */
@@ -10953,79 +11162,77 @@ export namespace Champlain {
         $signals: Viewport.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Viewport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Viewport;
+        static ["new"](): Viewport;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Viewport.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Viewport.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Viewport.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param hadjustment
-         * @param vadjustment
+         * @param hadjustment 
+         * @param vadjustment 
          */
         get_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
-         * @param x
-         * @param y
+         * @param x 
+         * @param y 
          */
         get_anchor(x: number, y: number): void;
+
         /**
-         * @param x
-         * @param y
+         * @param x 
+         * @param y 
          */
         get_origin(x: number, y: number): void;
+
         /**
-         * @param actor
-         * @param x
-         * @param y
+         * @param actor 
+         * @param x 
+         * @param y 
          */
         set_actor_position(actor: Clutter.Actor, x: number, y: number): void;
+
         /**
-         * @param hadjustment
-         * @param vadjustment
+         * @param hadjustment 
+         * @param vadjustment 
          */
         set_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void;
+
         /**
-         * @param child
+         * @param child 
          */
         set_child(child: Clutter.Actor): void;
+
         /**
-         * @param x
-         * @param y
+         * @param x 
+         * @param y 
          */
         set_origin(x: number, y: number): void;
+
         stop(): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -11036,35 +11243,31 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
          */
-        animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: GObject.Value | any,
-            final_value: GObject.Value | any,
-            progress: number,
-            value: GObject.Value | any,
-        ): boolean;
+        animate_property(animation: Clutter.Animation, property_name: string, initial_value: (GObject.Value | any), final_value: (GObject.Value | any), progress: number, value: (GObject.Value | any)): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
          */
         find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
          */
-        get_initial_state(property_name: string, value: GObject.Value | any): void;
+        get_initial_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
@@ -11072,19 +11275,21 @@ export namespace Champlain {
          * @returns `true` if the interpolation was successful,   and `false` otherwise
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
          */
-        set_final_state(property_name: string, value: GObject.Value | any): void;
+        set_final_state(property_name: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the `animate_property()` virtual function for `animatable`.
-         *
+         * 
          * The `initial_value` and `final_value` {@link GObject.Value}<!-- -->s must contain
          * the same type; `value` must have been initialized to the same
          * type of `initial_value` and `final_value`.
-         *
+         * 
          * All implementation of the {@link Clutter.Animatable} interface must
          * implement this function.
          * @param animation a {@link Clutter.Animation}
@@ -11095,20 +11300,15 @@ export namespace Champlain {
          * @param value return location for the animation value
          * @virtual
          */
-        vfunc_animate_property(
-            animation: Clutter.Animation,
-            property_name: string,
-            initial_value: unknown,
-            final_value: unknown,
-            progress: number,
-            value: unknown,
-        ): boolean;
+        vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
+
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
+
         /**
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
@@ -11116,26 +11316,24 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
+
         /**
          * Asks a {@link Clutter.Animatable} implementation to interpolate a
          * a named property between the initial and final values of
          * a {@link Clutter.Interval}, using `progress` as the interpolation
          * value, and store the result inside `value`.
-         *
+         * 
          * This function should be used for every property animation
          * involving {@link Clutter.Animatable}<!-- -->s.
-         *
+         * 
          * This function replaces `clutter_animatable_animate_property()`.
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @virtual
          */
-        vfunc_interpolate_value(
-            property_name: string,
-            interval: Clutter.Interval,
-            progress: number,
-        ): [boolean, GObject.Value | any];
+        vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
+
         /**
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
@@ -11143,23 +11341,25 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
          */
         add_actor(actor: Clutter.Actor): void;
+
         /**
          * Gets a container specific property of a child of `container`, In general,
          * a copy is made of the property contents and the caller is responsible for
          * freeing the memory by calling `g_value_unset()`.
-         *
+         * 
          * Note that `clutter_container_child_set_property()` is really intended for
          * language bindings, `clutter_container_child_set()` is much more convenient
          * for C programming.
@@ -11167,7 +11367,8 @@ export namespace Champlain {
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_get_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -11176,38 +11377,42 @@ export namespace Champlain {
          * @param pspec a {@link GObject.ParamSpec}
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Sets a container-specific property on a child of `container`.
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
          */
-        child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
+        child_set_property(child: Clutter.Actor, property: string, value: (GObject.Value | any)): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          */
         destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Finds a child actor of a container by its name. Search recurses
          * into any child container.
@@ -11215,27 +11420,30 @@ export namespace Champlain {
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
          */
         find_child_by_name(child_name: string): Clutter.Actor;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          */
         foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -11243,64 +11451,72 @@ export namespace Champlain {
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
          */
         get_children(): Clutter.Actor[];
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          */
-        lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        lower_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          */
-        raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        raise_child(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
          */
         remove_actor(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          */
         sort_depth_order(): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_added(actor: Clutter.Actor): void;
+
         /**
-         * @param actor
+         * @param actor 
          * @virtual
          */
         vfunc_actor_removed(actor: Clutter.Actor): void;
+
         /**
          * Adds a {@link Clutter.Actor} to `container`. This function will emit the
          * "actor-added" signal. The actor should be parented to
          * `container`. You cannot add a {@link Clutter.Actor} to more than one
          * {@link Clutter.Container}.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.add(), which is a
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
@@ -11308,6 +11524,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
+
         /**
          * Calls the {@link Clutter.ContainerIface}.child_notify() virtual function
          * of {@link Clutter.Container}. The default implementation will emit the
@@ -11317,56 +11534,61 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
+
         /**
          * Creates the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if the {@link Clutter.ContainerIface.SignalSignatures.child_meta_type | Clutter.ContainerIface::child_meta_type}
          * class member is not set to `G_TYPE_INVALID`.
-         *
+         * 
          * This function is only useful when adding a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Destroys the {@link Clutter.ChildMeta} wrapping `actor` inside the
          * `container`, if any.
-         *
+         * 
          * This function is only useful when removing a {@link Clutter.Actor} to
          * a {@link Clutter.Container} implementation outside of the
          * {@link Clutter.Container.SignalSignatures.add | Clutter.Container::add}() virtual function implementation.
-         *
+         * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
+
         /**
          * Calls `callback` for each child of `container` that was added
          * by the application (with `clutter_container_add_actor()`). Does
          * not iterate over "internal" children that are part of the
          * container's own implementation, if any.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
+
         /**
          * Calls `callback` for each child of `container`, including "internal"
          * children built in to the container itself that were never added
          * by the application.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
+
         /**
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
@@ -11374,9 +11596,10 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
+
         /**
          * Lowers `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.lower() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_below_sibling()`.
@@ -11384,10 +11607,11 @@ export namespace Champlain {
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
          * @virtual
          */
-        vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_lower(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Raises `actor` to `sibling` level, in the depth ordering.
-         *
+         * 
          * This function calls the {@link Clutter.ContainerIface}.raise() virtual function,
          * which has been deprecated. The default implementation will call
          * `clutter_actor_set_child_above_sibling()`.
@@ -11395,13 +11619,14 @@ export namespace Champlain {
          * @param sibling the sibling to raise to, or `null` to raise   to the top
          * @virtual
          */
-        vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
+        vfunc_raise(actor: Clutter.Actor, sibling: (Clutter.Actor | null)): void;
+
         /**
          * Removes `actor` from `container`. The actor should be unparented, so
          * if you want to keep it around you must hold a reference to it
          * yourself, using `g_object_ref()`. When the actor has been removed,
          * the "actor-removed" signal is emitted by `container`.
-         *
+         * 
          * This function will call {@link Clutter.ContainerIface}.remove(), which is a
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
@@ -11409,17 +11634,20 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
+
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
          */
         get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -11429,7 +11657,8 @@ export namespace Champlain {
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
          */
-        parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
+        parse_custom_node(script: Clutter.Script, value: (GObject.Value | any), name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -11437,22 +11666,25 @@ export namespace Champlain {
          * @param name the name of the property
          * @param value the value of the property
          */
-        set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
+        set_custom_property(script: Clutter.Script, name: string, value: (GObject.Value | any)): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
          */
         set_id(id_: string): void;
+
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @virtual
          */
         vfunc_get_id(): string;
+
         /**
          * Parses the passed JSON node. The implementation must set the type
          * of the passed {@link GObject.Value} pointer using `g_value_init()`.
@@ -11463,6 +11695,7 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
+
         /**
          * Overrides the common properties setting. The underlying virtual
          * function should be used when implementing custom properties.
@@ -11472,10 +11705,11 @@ export namespace Champlain {
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
+
         /**
          * Sets `id_` as the unique Clutter script it for this instance of
          * {@link Clutter.ScriptableIface}.
-         *
+         * 
          * This name can be used by user interface designer applications to
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
@@ -11485,16 +11719,19 @@ export namespace Champlain {
         vfunc_set_id(id_: string): void;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AdjustmentClass = typeof Adjustment;
+
     /**
      * @gir-type Struct
      */
     abstract class AdjustmentPrivate {
         static $gtype: GObject.GType<AdjustmentPrivate>;
     }
+
 
     /**
      * Defines the area of a ChamplainMapDataSource that contains data.
@@ -11505,38 +11742,39 @@ export namespace Champlain {
         static $gtype: GObject.GType<BoundingBox>;
 
         // Fields
-
         left: number;
+
         top: number;
+
         right: number;
+
         bottom: number;
 
         // Constructors
 
-        constructor(
-            properties?: Partial<{
-                left: number;
-                top: number;
-                right: number;
-                bottom: number;
-            }>,
-        );
+        constructor(properties?: Partial<{
+            left: number;
+            top: number;
+            right: number;
+            bottom: number;
+        }>);
 
-        static ['new'](): BoundingBox;
+        static ["new"](): BoundingBox;
 
         // Methods
-
         /**
          * Sets bbox equal to the bounding box containing both `bbox` and `other`.
          * @param other a {@link Champlain.BoundingBox}
          */
         compose(other: BoundingBox): void;
+
         /**
          * Makes a copy of the bounding box structure. The result must be
          * freed using `champlain_bounding_box_free()`.
          * @returns an allocated copy of `bbox`.
          */
         copy(): BoundingBox;
+
         /**
          * Checks whether `bbox` covers the given coordinates.
          * @param latitude the latitude of the point
@@ -11544,6 +11782,7 @@ export namespace Champlain {
          * @returns TRUE when the bounding box covers given coordinates, FALSE otherwise.
          */
         covers(latitude: number, longitude: number): boolean;
+
         /**
          * Extend the bounding box so it contains a point with `latitude` and `longitude`.
          * Do nothing if the point is already inside the bounding box.
@@ -11551,15 +11790,18 @@ export namespace Champlain {
          * @param longitude the longitude of the point
          */
         extend(latitude: number, longitude: number): void;
+
         /**
          * Frees a bounding box structure created with `champlain_bounding_box_new()` or
          * `champlain_bounding_box_copy()`.
          */
         free(): void;
+
         /**
          * Gets the center's latitude and longitude of the box to `latitude` and `longitude`.
          */
         get_center(): [number, number];
+
         /**
          * Checks whether `bbox` represents a valid bounding box on the map.
          * @returns TRUE when the bounding box is valid, FALSE otherwise.
@@ -11567,10 +11809,12 @@ export namespace Champlain {
         is_valid(): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CoordinateClass = typeof Coordinate;
+
     /**
      * @gir-type Struct
      */
@@ -11578,10 +11822,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<CoordinatePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CustomMarkerClass = typeof CustomMarker;
+
     /**
      * @gir-type Struct
      */
@@ -11589,10 +11835,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<CustomMarkerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ErrorTileRendererClass = typeof ErrorTileRenderer;
+
     /**
      * @gir-type Struct
      */
@@ -11600,14 +11848,17 @@ export namespace Champlain {
         static $gtype: GObject.GType<ErrorTileRendererPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ExportableIface = typeof Exportable;
+
     /**
      * @gir-type Alias
      */
     type FileCacheClass = typeof FileCache;
+
     /**
      * @gir-type Struct
      */
@@ -11615,10 +11866,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<FileCachePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FileTileSourceClass = typeof FileTileSource;
+
     /**
      * @gir-type Struct
      */
@@ -11626,10 +11879,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<FileTileSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ImageRendererClass = typeof ImageRenderer;
+
     /**
      * @gir-type Struct
      */
@@ -11637,10 +11892,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<ImageRendererPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type KineticScrollViewClass = typeof KineticScrollView;
+
     /**
      * @gir-type Struct
      */
@@ -11648,10 +11905,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<KineticScrollViewPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LabelClass = typeof Label;
+
     /**
      * @gir-type Struct
      */
@@ -11659,14 +11918,17 @@ export namespace Champlain {
         static $gtype: GObject.GType<LabelPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LayerClass = typeof Layer;
+
     /**
      * @gir-type Alias
      */
     type LicenseClass = typeof License;
+
     /**
      * @gir-type Struct
      */
@@ -11674,14 +11936,17 @@ export namespace Champlain {
         static $gtype: GObject.GType<LicensePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LocationIface = typeof Location;
+
     /**
      * @gir-type Alias
      */
     type MapSourceChainClass = typeof MapSourceChain;
+
     /**
      * @gir-type Struct
      */
@@ -11689,14 +11954,17 @@ export namespace Champlain {
         static $gtype: GObject.GType<MapSourceChainPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MapSourceClass = typeof MapSource;
+
     /**
      * @gir-type Alias
      */
     type MapSourceDescClass = typeof MapSourceDesc;
+
     /**
      * @gir-type Struct
      */
@@ -11704,16 +11972,19 @@ export namespace Champlain {
         static $gtype: GObject.GType<MapSourceDescPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MapSourceFactoryClass = typeof MapSourceFactory;
+
     /**
      * @gir-type Struct
      */
     abstract class MapSourceFactoryPrivate {
         static $gtype: GObject.GType<MapSourceFactoryPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -11722,20 +11993,24 @@ export namespace Champlain {
         static $gtype: GObject.GType<MapSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MarkerClass = typeof Marker;
+
     /**
      * @gir-type Alias
      */
     type MarkerLayerClass = typeof MarkerLayer;
+
     /**
      * @gir-type Struct
      */
     abstract class MarkerLayerPrivate {
         static $gtype: GObject.GType<MarkerLayerPrivate>;
     }
+
 
     /**
      * @gir-type Struct
@@ -11744,10 +12019,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<MarkerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type MemoryCacheClass = typeof MemoryCache;
+
     /**
      * @gir-type Struct
      */
@@ -11755,10 +12032,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<MemoryCachePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NetworkBboxTileSourceClass = typeof NetworkBboxTileSource;
+
     /**
      * @gir-type Struct
      */
@@ -11766,10 +12045,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<NetworkBboxTileSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NetworkTileSourceClass = typeof NetworkTileSource;
+
     /**
      * @gir-type Struct
      */
@@ -11777,10 +12058,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<NetworkTileSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NullTileSourceClass = typeof NullTileSource;
+
     /**
      * @gir-type Struct
      */
@@ -11788,10 +12071,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<NullTileSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PathLayerClass = typeof PathLayer;
+
     /**
      * @gir-type Struct
      */
@@ -11799,10 +12084,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<PathLayerPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PointClass = typeof Point;
+
     /**
      * @gir-type Struct
      */
@@ -11810,14 +12097,17 @@ export namespace Champlain {
         static $gtype: GObject.GType<PointPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type RendererClass = typeof Renderer;
+
     /**
      * @gir-type Alias
      */
     type ScaleClass = typeof Scale;
+
     /**
      * @gir-type Struct
      */
@@ -11825,10 +12115,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<ScalePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TileCacheClass = typeof TileCache;
+
     /**
      * @gir-type Struct
      */
@@ -11836,10 +12128,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<TileCachePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TileClass = typeof Tile;
+
     /**
      * @gir-type Struct
      */
@@ -11847,10 +12141,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<TilePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TileSourceClass = typeof TileSource;
+
     /**
      * @gir-type Struct
      */
@@ -11858,10 +12154,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<TileSourcePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ViewClass = typeof View;
+
     /**
      * @gir-type Struct
      */
@@ -11869,10 +12167,12 @@ export namespace Champlain {
         static $gtype: GObject.GType<ViewPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ViewportClass = typeof Viewport;
+
     /**
      * @gir-type Struct
      */
@@ -11880,19 +12180,21 @@ export namespace Champlain {
         static $gtype: GObject.GType<ViewportPrivate>;
     }
 
+
     namespace Exportable {
         /**
          * Interface for implementing Exportable.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the surface
              * @virtual
              */
             vfunc_get_surface(): cairo.Surface;
+
             /**
              * Set a {@link cairo.Surface} to be associated with this tile.
              * @param surface the {@link cairo.Surface}
@@ -11901,8 +12203,8 @@ export namespace Champlain {
             vfunc_set_surface(surface: cairo.Surface): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             surface: cairo.Surface;
         }
@@ -11917,8 +12219,8 @@ export namespace Champlain {
      * @gir-type Interface
      */
     interface Exportable extends GObject.Object, Exportable.Interface {
-        // Properties
 
+        // Properties
         /**
          * A {@link cairo.Surface} representation
          * @since 0.12.12
@@ -11927,18 +12229,19 @@ export namespace Champlain {
         set surface(val: cairo.Surface);
 
         // Methods
-
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
          */
         get_surface(): cairo.Surface;
+
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
          */
         set_surface(surface: cairo.Surface): void;
     }
+
 
     export const Exportable: ExportableNamespace & {
         new (): Exportable; // This allows `obj instanceof Exportable`
@@ -11950,18 +12253,20 @@ export namespace Champlain {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * Gets the latitude coordinate.
              * @virtual
              */
             vfunc_get_latitude(): number;
+
             /**
              * Gets the longitude coordinate.
              * @virtual
              */
             vfunc_get_longitude(): number;
+
             /**
              * Sets the coordinates of the location
              * @param latitude the latitude
@@ -11971,8 +12276,8 @@ export namespace Champlain {
             vfunc_set_location(latitude: number, longitude: number): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             latitude: number;
             longitude: number;
@@ -11988,8 +12293,8 @@ export namespace Champlain {
      * @gir-type Interface
      */
     interface Location extends GObject.Object, Location.Interface {
-        // Properties
 
+        // Properties
         /**
          * The latitude coordonate
          * @since 0.10
@@ -11997,6 +12302,7 @@ export namespace Champlain {
          */
         get latitude(): number;
         set latitude(val: number);
+
         /**
          * The longitude coordonate
          * @since 0.10
@@ -12006,17 +12312,18 @@ export namespace Champlain {
         set longitude(val: number);
 
         // Methods
-
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
          */
         get_latitude(): number;
+
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
          */
         get_longitude(): number;
+
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude
@@ -12024,6 +12331,7 @@ export namespace Champlain {
          */
         set_location(latitude: number, longitude: number): void;
     }
+
 
     export const Location: LocationNamespace & {
         new (): Location; // This allows `obj instanceof Location`
@@ -12034,6 +12342,7 @@ export namespace Champlain {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

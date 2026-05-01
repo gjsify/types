@@ -1,3 +1,4 @@
+
 import type EvinceView30 from '@girs/evinceview-3.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

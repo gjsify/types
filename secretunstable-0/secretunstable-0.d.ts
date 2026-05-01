@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -17,9 +18,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace SecretUnstable {
+
     /**
      * SecretUnstable-0
      */
+
 
     /**
      * Flags for `secret_collection_create()`.
@@ -31,6 +34,7 @@ export namespace SecretUnstable {
          */
         COLLECTION_CREATE_NONE,
     }
+
 
     /**
      * Flags which determine which parts of the {@link SecretUnstable.Collection} proxy are initialized.
@@ -47,6 +51,7 @@ export namespace SecretUnstable {
         LOAD_ITEMS,
     }
 
+
     /**
      * Flags for `secret_item_create()`.
      * @gir-type Flags
@@ -62,6 +67,7 @@ export namespace SecretUnstable {
         REPLACE,
     }
 
+
     /**
      * Flags which determine which parts of the {@link SecretUnstable.Item} proxy are initialized.
      * @gir-type Flags
@@ -76,6 +82,7 @@ export namespace SecretUnstable {
          */
         LOAD_SECRET,
     }
+
 
     /**
      * Various flags to be used with `secret_service_search()` and `secret_service_search_sync()`.
@@ -100,6 +107,7 @@ export namespace SecretUnstable {
         LOAD_SECRETS,
     }
 
+
     /**
      * Flags which determine which parts of the {@link SecretUnstable.Service} proxy are initialized
      * during a `secret_service_get()` or `secret_service_open()` operation.
@@ -120,37 +128,32 @@ export namespace SecretUnstable {
         LOAD_COLLECTIONS,
     }
 
+
     namespace Collection {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::created': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::locked': (pspec: GObject.ParamSpec) => void;
-            'notify::modified': (pspec: GObject.ParamSpec) => void;
-            'notify::service': (pspec: GObject.ParamSpec) => void;
-            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
-            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
-            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::g-name': (pspec: GObject.ParamSpec) => void;
-            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
-            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            "notify::created": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::locked": (pspec: GObject.ParamSpec) => void;
+            "notify::modified": (pspec: GObject.ParamSpec) => void;
+            "notify::service": (pspec: GObject.ParamSpec) => void;
+            "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-connection": (pspec: GObject.ParamSpec) => void;
+            "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name-owner": (pspec: GObject.ParamSpec) => void;
+            "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gio.DBusProxy.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.DBusInterface.ConstructorProps,
-                Gio.Initable.ConstructorProps {
-            created: bigint | number;
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
+            created: (bigint | number);
             label: string;
             locked: boolean;
-            modified: bigint | number;
+            modified: (bigint | number);
             service: Service;
         }
     }
@@ -163,36 +166,39 @@ export namespace SecretUnstable {
         static $gtype: GObject.GType<Collection>;
 
         // Properties
-
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * collection was created.
          */
         get created(): number;
-        set created(val: bigint | number);
+        set created(val: (bigint | number));
+
         /**
          * The human readable label for the collection.
-         *
+         * 
          * Setting this property will result in the label of the collection being
          * set asynchronously. To properly track the changing of the label use the
          * `secret_collection_set_label()` function.
          */
         get label(): string;
         set label(val: string);
+
         /**
          * Whether the collection is locked or not.
-         *
+         * 
          * To lock or unlock a collection use the `secret_service_lock()` or
          * `secret_service_unlock()` functions.
          * @read-only
          */
         get locked(): boolean;
+
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * collection was last modified.
          */
         get modified(): number;
-        set modified(val: bigint | number);
+        set modified(val: (bigint | number));
+
         /**
          * The {@link SecretUnstable.Service} object that this collection is associated with and
          * uses to interact with the actual D-Bus Secret Service.
@@ -210,56 +216,41 @@ export namespace SecretUnstable {
         $signals: Collection.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Collection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         static new_for_dbus_path_finish(result: Gio.AsyncResult): Collection;
 
-        static new_for_dbus_path_sync(
-            service: Service,
-            collection_path: string,
-            flags: CollectionFlags,
-            cancellable: Gio.Cancellable,
-        ): Collection;
+        static new_for_dbus_path_sync(service: Service, collection_path: string, flags: CollectionFlags, cancellable: Gio.Cancellable): Collection;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Collection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Collection.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Collection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Collection.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Collection.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Collection.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Collection.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Collection.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Collection.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Collection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Collection.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Collection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Create a new collection in the secret service.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that are required.
-         *
+         * 
          * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
          * default collection to store items in). This allows other applications to
          * easily identify and share a collection. If you specify an `alias`, and a
          * collection with that alias already exists, then a new collection will not
          * be created. The previous one will be returned instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
          * @param service a secret service object
@@ -269,32 +260,27 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        static create(
-            service: Service,
-            label: string,
-            alias: string,
-            flags: CollectionCreateFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<Collection>,
-        ): void;
+        static create(service: Service, label: string, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Collection>): void;
+
         /**
          * Finish operation to create a new collection in the secret service.
          * @param result the asynchronous result passed to the callback
          */
         static create_finish(result: Gio.AsyncResult): Collection;
+
         /**
          * Create a new collection in the secret service.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads. The secret service may prompt the user. `secret_service_prompt()`
          * will be used to handle any prompts that are required.
-         *
+         * 
          * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
          * default collection to store items in). This allows other applications to
          * easily identify and share a collection. If you specify an `alias`, and a
          * collection with that alias already exists, then a new collection will not
          * be created. The previous one will be returned instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
          * @param service a secret service object
@@ -303,20 +289,15 @@ export namespace SecretUnstable {
          * @param flags currently unused
          * @param cancellable optional cancellation object
          */
-        static create_sync(
-            service: Service,
-            label: string,
-            alias: string,
-            flags: CollectionCreateFlags,
-            cancellable: Gio.Cancellable,
-        ): Collection;
+        static create_sync(service: Service, label: string, alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable): Collection;
+
         /**
          * Lookup which collection is assigned to this alias. Aliases help determine
          * well known collections, such as 'default'.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param service a secret service object
          * @param alias the alias to lookup
@@ -324,44 +305,36 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        static for_alias(
-            service: Service,
-            alias: string,
-            flags: CollectionFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<Collection>,
-        ): void;
+        static for_alias(service: Service, alias: string, flags: CollectionFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Collection>): void;
+
         /**
          * Finish an asynchronous operation to lookup which collection is assigned
          * to an alias.
          * @param result asynchronous result passed to callback
          */
         static for_alias_finish(result: Gio.AsyncResult): Collection;
+
         /**
          * Lookup which collection is assigned to this alias. Aliases help determine
          * well known collections, such as 'default'.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block and should not be used in user interface threads.
          * @param service a secret service object
          * @param alias the alias to lookup
          * @param flags options for the collection initialization
          * @param cancellable optional cancellation object
          */
-        static for_alias_sync(
-            service: Service,
-            alias: string,
-            flags: CollectionFlags,
-            cancellable: Gio.Cancellable,
-        ): Collection;
+        static for_alias_sync(service: Service, alias: string, flags: CollectionFlags, cancellable: Gio.Cancellable): Collection;
+
         /**
          * Get a new collection proxy for a collection in the secret service.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param service a secret service object
          * @param collection_path the D-Bus path of the collection
@@ -369,57 +342,51 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        static new_for_dbus_path(
-            service: Service,
-            collection_path: string,
-            flags: CollectionFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<Collection>,
-        ): void;
+        static new_for_dbus_path(service: Service, collection_path: string, flags: CollectionFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Collection>): void;
 
         // Methods
+        /**
+         * Delete this collection.
+         * 
+         * This method returns immediately and completes asynchronously. The secret
+         * service may prompt the user. `secret_service_prompt()` will be used to handle
+         * any prompts that show up.
+         * @param cancellable optional cancellation object
+         */
+        ["delete"](cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
         /**
          * Delete this collection.
-         *
-         * This method returns immediately and completes asynchronously. The secret
-         * service may prompt the user. `secret_service_prompt()` will be used to handle
-         * any prompts that show up.
-         * @param cancellable optional cancellation object
-         */
-        ['delete'](cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
-        /**
-         * Delete this collection.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        ['delete'](cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        ["delete"](cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Delete this collection.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        ['delete'](
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        ["delete"](cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete operation to delete this collection.
          * @param result asynchronous result passed to the callback
          * @returns whether the collection was successfully deleted or not
          */
         delete_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Delete this collection.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
@@ -427,96 +394,105 @@ export namespace SecretUnstable {
          * @returns whether the collection was successfully deleted or not
          */
         delete_sync(cancellable: Gio.Cancellable): boolean;
+
         /**
          * Get the created date and time of the collection. The return value is
          * the number of seconds since the unix epoch, January 1st 1970.
          * @returns the created date and time
          */
         get_created(): number;
+
         /**
          * Get the flags representing what features of the {@link SecretUnstable.Collection} proxy
          * have been initialized.
-         *
+         * 
          * Use `secret_collection_load_items()`  to initialize further features
          * and change the flags.
          * @returns the flags for features initialized
          */
         get_flags(): CollectionFlags;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gio.DBusProxy.get_flags
+    // Conflicted with Gio.DBusProxy.get_flags
         get_flags(...args: never[]): any;
+
         /**
          * Get the list of items in this collection.
          * @returns a list of items, when done, the list should be freed with g_list_free, and each item should be released with `g_object_unref()`
          */
         get_items(): Item[];
+
         /**
          * Get the label of this collection.
          * @returns the label, which should be freed with `g_free()`
          */
         get_label(): string;
+
         /**
          * Get whether the collection is locked or not.
-         *
+         * 
          * Use `secret_service_lock()` or `secret_service_unlock()` to lock or unlock the
          * collection.
          * @returns whether the collection is locked or not
          */
         get_locked(): boolean;
+
         /**
          * Get the modified date and time of the collection. The return value is
          * the number of seconds since the unix epoch, January 1st 1970.
          * @returns the modified date and time
          */
         get_modified(): number;
+
         /**
          * Get the Secret Service object that this collection was created with.
          * @returns the Secret Service object
          */
         get_service(): Service;
+
         /**
          * Ensure that the {@link SecretUnstable.Collection} proxy has loaded all the items present
          * in the Secret Service. This affects the result of
          * `secret_collection_get_items()`.
-         *
+         * 
          * For collections returned from `secret_service_get_collections()` the items
          * will have already been loaded.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
         load_items(cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Ensure that the {@link SecretUnstable.Collection} proxy has loaded all the items present
          * in the Secret Service. This affects the result of
          * `secret_collection_get_items()`.
-         *
+         * 
          * For collections returned from `secret_service_get_collections()` the items
          * will have already been loaded.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         load_items(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Ensure that the {@link SecretUnstable.Collection} proxy has loaded all the items present
          * in the Secret Service. This affects the result of
          * `secret_collection_get_items()`.
-         *
+         * 
          * For collections returned from `secret_service_get_collections()` the items
          * will have already been loaded.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        load_items(
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        load_items(cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete an asynchronous operation to ensure that the {@link SecretUnstable.Collection} proxy
          * has loaded all the items present in the Secret Service.
@@ -524,99 +500,69 @@ export namespace SecretUnstable {
          * @returns whether the load was successful or not
          */
         load_items_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Ensure that the {@link SecretUnstable.Collection} proxy has loaded all the items present
          * in the Secret Service. This affects the result of
          * `secret_collection_get_items()`.
-         *
+         * 
          * For collections returned from `secret_service_get_collections()` the items
          * will have already been loaded.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param cancellable optional cancellation object
          * @returns whether the load was successful or not
          */
         load_items_sync(cancellable: Gio.Cancellable): boolean;
+
         /**
          * Refresh the properties on this collection. This fires off a request to
          * refresh, and the properties will be updated later.
-         *
+         * 
          * Calling this method is not normally necessary, as the secret service
          * will notify the client when properties change.
          */
         refresh(): void;
+
         /**
          * Search for items matching the `attributes` in the `collection`.
          * The `attributes` should be a table of string keys and string values.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
          * search will be returned. Otherwise only the first item will be returned.
          * This is almost always the unlocked item that was most recently stored.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
          * if necessary. In either case, locked and unlocked items will match the
          * search and be returned. If the unlock fails, the search does not fail.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
          * their secret values loaded and available via `secret_item_get_secret()`.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param schema the schema for the attributes
          * @param attributes search for items matching these attributes
          * @param flags search option flags
          * @param cancellable optional cancellation object
          */
-        search(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<Item[]>;
+        search(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), flags: SearchFlags, cancellable: Gio.Cancellable): globalThis.Promise<Item[]>;
+
         /**
          * Search for items matching the `attributes` in the `collection`.
          * The `attributes` should be a table of string keys and string values.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
          * search will be returned. Otherwise only the first item will be returned.
          * This is almost always the unlocked item that was most recently stored.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
          * if necessary. In either case, locked and unlocked items will match the
          * search and be returned. If the unlock fails, the search does not fail.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
          * their secret values loaded and available via `secret_item_get_secret()`.
-         *
-         * This function returns immediately and completes asynchronously.
-         * @param schema the schema for the attributes
-         * @param attributes search for items matching these attributes
-         * @param flags search option flags
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        search(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Search for items matching the `attributes` in the `collection`.
-         * The `attributes` should be a table of string keys and string values.
-         *
-         * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
-         * search will be returned. Otherwise only the first item will be returned.
-         * This is almost always the unlocked item that was most recently stored.
-         *
-         * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
-         * if necessary. In either case, locked and unlocked items will match the
-         * search and be returned. If the unlock fails, the search does not fail.
-         *
-         * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
-         * their secret values loaded and available via `secret_item_get_secret()`.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param schema the schema for the attributes
          * @param attributes search for items matching these attributes
@@ -624,26 +570,46 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Item[]> | void;
+        search(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), flags: SearchFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Search for items matching the `attributes` in the `collection`.
+         * The `attributes` should be a table of string keys and string values.
+         * 
+         * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
+         * search will be returned. Otherwise only the first item will be returned.
+         * This is almost always the unlocked item that was most recently stored.
+         * 
+         * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
+         * if necessary. In either case, locked and unlocked items will match the
+         * search and be returned. If the unlock fails, the search does not fail.
+         * 
+         * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
+         * their secret values loaded and available via `secret_item_get_secret()`.
+         * 
+         * This function returns immediately and completes asynchronously.
+         * @param schema the schema for the attributes
+         * @param attributes search for items matching these attributes
+         * @param flags search option flags
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        search(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), flags: SearchFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Item[]> | void);
+
         /**
          * Complete asynchronous operation to search for items in a collection.
          * @param result asynchronous result passed to callback
          * @returns a list of items that matched the search
          */
         search_finish(result: Gio.AsyncResult): Item[];
+
         /**
          * Search for items in `collection` matching the `attributes`, and return their
          * DBus object paths. Only the specified collection is searched. The `attributes`
          * should be a table of string keys and string values.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
-         *
+         * 
          * When your callback is called use `secret_collection_search_for_dbus_paths_finish()`
          * to get the results of this function. Only the DBus object paths of the
          * items will be returned. If you would like {@link SecretUnstable.Item} objects to be returned
@@ -652,40 +618,15 @@ export namespace SecretUnstable {
          * @param attributes search for items matching these attributes
          * @param cancellable optional cancellation object
          */
-        search_for_dbus_paths(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<string[]>;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): globalThis.Promise<string[]>;
+
         /**
          * Search for items in `collection` matching the `attributes`, and return their
          * DBus object paths. Only the specified collection is searched. The `attributes`
          * should be a table of string keys and string values.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
-         *
-         * When your callback is called use `secret_collection_search_for_dbus_paths_finish()`
-         * to get the results of this function. Only the DBus object paths of the
-         * items will be returned. If you would like {@link SecretUnstable.Item} objects to be returned
-         * instead, then use the `secret_collection_search()` function.
-         * @param schema the schema for the attributes
-         * @param attributes search for items matching these attributes
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        search_for_dbus_paths(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Search for items in `collection` matching the `attributes`, and return their
-         * DBus object paths. Only the specified collection is searched. The `attributes`
-         * should be a table of string keys and string values.
-         *
-         * This function returns immediately and completes asynchronously.
-         *
+         * 
          * When your callback is called use `secret_collection_search_for_dbus_paths_finish()`
          * to get the results of this function. Only the DBus object paths of the
          * items will be returned. If you would like {@link SecretUnstable.Item} objects to be returned
@@ -695,15 +636,29 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search_for_dbus_paths(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<string[]> | void;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Search for items in `collection` matching the `attributes`, and return their
+         * DBus object paths. Only the specified collection is searched. The `attributes`
+         * should be a table of string keys and string values.
+         * 
+         * This function returns immediately and completes asynchronously.
+         * 
+         * When your callback is called use `secret_collection_search_for_dbus_paths_finish()`
+         * to get the results of this function. Only the DBus object paths of the
+         * items will be returned. If you would like {@link SecretUnstable.Item} objects to be returned
+         * instead, then use the `secret_collection_search()` function.
+         * @param schema the schema for the attributes
+         * @param attributes search for items matching these attributes
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        search_for_dbus_paths(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string[]> | void);
+
         /**
          * Complete asynchronous operation to search for items in a collection.
-         *
+         * 
          * DBus object paths of the items will be returned. If you would to have
          * {@link SecretUnstable.Item} objects to be returned instead, then use the
          * `secret_collection_search()` and `secret_collection_search_finish()` functions.
@@ -711,14 +666,15 @@ export namespace SecretUnstable {
          * @returns an array of DBus object paths for matching items.
          */
         search_for_dbus_paths_finish(result: Gio.AsyncResult): string[];
+
         /**
          * Search for items matching the `attributes` in `collection`, and return their
          * DBus object paths. The `attributes` should be a table of string keys and
          * string values.
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
-         *
+         * 
          * DBus object paths of the items will be returned. If you would to have
          * {@link SecretUnstable.Item} objects to be returned instead, then use the
          * `secret_collection_search_sync()` function.
@@ -727,26 +683,23 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns an array of DBus object paths for matching items.
          */
-        search_for_dbus_paths_sync(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): string[];
+        search_for_dbus_paths_sync(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): string[];
+
         /**
          * Search for items matching the `attributes` in the `collection`.
          * The `attributes` should be a table of string keys and string values.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
          * search will be returned. Otherwise only the first item will be returned.
          * This is almost always the unlocked item that was most recently stored.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
          * if necessary. In either case, locked and unlocked items will match the
          * search and be returned. If the unlock fails, the search does not fail.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
          * their secret values loaded and available via `secret_item_get_secret()`.
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
          * @param schema the schema for the attributes
@@ -755,51 +708,47 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a list of items that matched the search
          */
-        search_sync(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags,
-            cancellable: Gio.Cancellable,
-        ): Item[];
+        search_sync(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), flags: SearchFlags, cancellable: Gio.Cancellable): Item[];
+
         /**
          * Set the label of this collection.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param label a new label
          * @param cancellable optional cancellation object
          */
         set_label(label: string, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Set the label of this collection.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param label a new label
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         set_label(label: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Set the label of this collection.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param label a new label
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        set_label(
-            label: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        set_label(label: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete asynchronous operation to set the label of this collection.
          * @param result asynchronous result passed to callback
          * @returns whether the change was successful or not
          */
         set_label_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set the label of this collection.
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
          * @param label a new label
@@ -807,38 +756,39 @@ export namespace SecretUnstable {
          * @returns whether the change was successful or not
          */
         set_label_sync(label: string, cancellable: Gio.Cancellable): boolean;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -847,85 +797,40 @@ export namespace SecretUnstable {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         *
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         *
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         *
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         *
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -935,11 +840,51 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -947,6 +892,7 @@ export namespace SecretUnstable {
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Finishes the async construction for the various g_async_initable_new
          * calls, returning the created object or `null` on error.
@@ -954,43 +900,45 @@ export namespace SecretUnstable {
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Collection;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -1001,11 +949,8 @@ export namespace SecretUnstable {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -1013,76 +958,83 @@ export namespace SecretUnstable {
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): Gio.DBusObject | null;
+        get_object(): (Gio.DBusObject | null);
+
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
+
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         *
+         * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: Gio.DBusObject | null): void;
+        set_object(object: (Gio.DBusObject | null)): void;
+
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): Gio.DBusObject | null;
+        vfunc_dup_object(): (Gio.DBusObject | null);
+
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
+
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         *
+         * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: Gio.DBusObject | null): void;
+        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1092,40 +1044,41 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -1135,42 +1088,37 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Item {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::attributes': (pspec: GObject.ParamSpec) => void;
-            'notify::created': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::locked': (pspec: GObject.ParamSpec) => void;
-            'notify::modified': (pspec: GObject.ParamSpec) => void;
-            'notify::service': (pspec: GObject.ParamSpec) => void;
-            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
-            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
-            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::g-name': (pspec: GObject.ParamSpec) => void;
-            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
-            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            "notify::attributes": (pspec: GObject.ParamSpec) => void;
+            "notify::created": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::locked": (pspec: GObject.ParamSpec) => void;
+            "notify::modified": (pspec: GObject.ParamSpec) => void;
+            "notify::service": (pspec: GObject.ParamSpec) => void;
+            "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-connection": (pspec: GObject.ParamSpec) => void;
+            "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name-owner": (pspec: GObject.ParamSpec) => void;
+            "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps
-            extends
-                Gio.DBusProxy.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.DBusInterface.ConstructorProps,
-                Gio.Initable.ConstructorProps {
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>;
-            created: bigint | number;
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
+            attributes: ({ [key: string]: any } | GLib.HashTable<string, string>);
+            created: (bigint | number);
             label: string;
             locked: boolean;
-            modified: bigint | number;
+            modified: (bigint | number);
             service: Service;
         }
     }
@@ -1183,43 +1131,47 @@ export namespace SecretUnstable {
         static $gtype: GObject.GType<Item>;
 
         // Properties
-
         /**
          * The attributes set on this item. Attributes are used to locate an
          * item. They are not guaranteed to be stored or transferred securely.
          */
         get attributes(): GLib.HashTable<string, string>;
-        set attributes(val: { [key: string]: any } | GLib.HashTable<string, string>);
+        set attributes(val: ({ [key: string]: any } | GLib.HashTable<string, string>));
+
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * item was created.
          */
         get created(): number;
-        set created(val: bigint | number);
+        set created(val: (bigint | number));
+
         /**
          * The human readable label for the item.
-         *
+         * 
          * Setting this property will result in the label of the item being
          * set asynchronously. To properly track the changing of the label use the
          * `secret_item_set_label()` function.
          */
         get label(): string;
         set label(val: string);
+
         /**
          * Whether the item is locked or not. An item may not be independently
          * lockable separate from other items in its collection.
-         *
+         * 
          * To lock or unlock a item use the `secret_service_lock()` or
          * `secret_service_unlock()` functions.
          * @read-only
          */
         get locked(): boolean;
+
         /**
          * The date and time (in seconds since the UNIX epoch) that this
          * item was last modified.
          */
         get modified(): number;
-        set modified(val: bigint | number);
+        set modified(val: (bigint | number));
+
         /**
          * The {@link SecretUnstable.Service} object that this item is associated with and
          * uses to interact with the actual D-Bus Secret Service.
@@ -1237,50 +1189,35 @@ export namespace SecretUnstable {
         $signals: Item.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         static new_for_dbus_path_finish(result: Gio.AsyncResult): Item;
 
-        static new_for_dbus_path_sync(
-            service: Service,
-            item_path: string,
-            flags: ItemFlags,
-            cancellable: Gio.Cancellable,
-        ): Item;
+        static new_for_dbus_path_sync(service: Service, item_path: string, flags: ItemFlags, cancellable: Gio.Cancellable): Item;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Item.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Item.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Item.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Item.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Item.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Create a new item in the secret service.
-         *
+         * 
          * If the `flags` contains {@link SecretUnstable.ItemCreateFlags.REPLACE}, then the secret
          * service will search for an item matching the `attributes`, and update that item
          * instead of creating a new one.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads. The secret service may prompt the user. `secret_service_prompt()`
          * will be used to handle any prompts that are required.
@@ -1293,28 +1230,21 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        static create(
-            collection: Collection,
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            label: string,
-            value: Value,
-            flags: ItemCreateFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<Item>,
-        ): void;
+        static create(collection: Collection, schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Item>): void;
+
         /**
          * Finish operation to create a new item in the secret service.
          * @param result the asynchronous result passed to the callback
          */
         static create_finish(result: Gio.AsyncResult): Item;
+
         /**
          * Create a new item in the secret service.
-         *
+         * 
          * If the `flags` contains {@link SecretUnstable.ItemCreateFlags.REPLACE}, then the secret
          * service will search for an item matching the `attributes`, and update that item
          * instead of creating a new one.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads. The secret service may prompt the user. `secret_service_prompt()`
          * will be used to handle any prompts that are required.
@@ -1326,53 +1256,49 @@ export namespace SecretUnstable {
          * @param flags flags for the creation of the new item
          * @param cancellable optional cancellation object
          */
-        static create_sync(
-            collection: Collection,
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            label: string,
-            value: Value,
-            flags: ItemCreateFlags,
-            cancellable: Gio.Cancellable,
-        ): Item;
+        static create_sync(collection: Collection, schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): Item;
+
         /**
          * Load the secret values for an secret items stored in the service.
-         *
+         * 
          * The `items` must all have the same SecretItem::service property.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param items the items to retrieve secrets for
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         static load_secrets(items: Item[], cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Item>): void;
+
         /**
          * Complete asynchronous operation to load the secret values for
          * secret items stored in the service.
-         *
+         * 
          * Items that are locked will not have their secrets loaded.
          * @param result asynchronous result passed to callback
          */
         static load_secrets_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Load the secret values for an secret items stored in the service.
-         *
+         * 
          * The `items` must all have the same SecretItem::service property.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
-         *
+         * 
          * Items that are locked will not have their secrets loaded.
          * @param items the items to retrieve secrets for
          * @param cancellable optional cancellation object
          */
         static load_secrets_sync(items: Item[], cancellable: Gio.Cancellable): boolean;
+
         /**
          * Get a new item proxy for a secret item in the secret service.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param service a secret service object
          * @param item_path the D-Bus path of the collection
@@ -1380,57 +1306,51 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        static new_for_dbus_path(
-            service: Service,
-            item_path: string,
-            flags: ItemFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<Item>,
-        ): void;
+        static new_for_dbus_path(service: Service, item_path: string, flags: ItemFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Item>): void;
 
         // Methods
+        /**
+         * Delete this item.
+         * 
+         * This method returns immediately and completes asynchronously. The secret
+         * service may prompt the user. `secret_service_prompt()` will be used to handle
+         * any prompts that show up.
+         * @param cancellable optional cancellation object
+         */
+        ["delete"](cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
         /**
          * Delete this item.
-         *
-         * This method returns immediately and completes asynchronously. The secret
-         * service may prompt the user. `secret_service_prompt()` will be used to handle
-         * any prompts that show up.
-         * @param cancellable optional cancellation object
-         */
-        ['delete'](cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
-        /**
-         * Delete this item.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        ['delete'](cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+        ["delete"](cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Delete this item.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        ['delete'](
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        ["delete"](cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete asynchronous operation to delete the secret item.
          * @param result asynchronous result passed to the callback
          * @returns whether the item was successfully deleted or not
          */
         delete_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Delete this secret item.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
@@ -1438,214 +1358,218 @@ export namespace SecretUnstable {
          * @returns whether the item was successfully deleted or not
          */
         delete_sync(cancellable: Gio.Cancellable): boolean;
+
         /**
          * Set the attributes of this item.
-         *
+         * 
          * The `attributes` are a mapping of string keys to string values.
          * Attributes are used to search for items. Attributes are not stored
          * or transferred securely by the secret service.
-         *
+         * 
          * Do not modify the attributes returned by this method. Use
          * `secret_item_set_attributes()` instead.
          * @returns a new reference to the attributes, which should not be modified, and released with `g_hash_table_unref()`
          */
         get_attributes(): GLib.HashTable<string, string>;
+
         /**
          * Get the created date and time of the item. The return value is
          * the number of seconds since the unix epoch, January 1st 1970.
          * @returns the created date and time
          */
         get_created(): number;
+
         /**
          * Get the flags representing what features of the {@link SecretUnstable.Item} proxy
          * have been initialized.
-         *
+         * 
          * Use `secret_item_load_secret()` to initialize further features
          * and change the flags.
          * @returns the flags for features initialized
          */
         get_flags(): ItemFlags;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gio.DBusProxy.get_flags
+    // Conflicted with Gio.DBusProxy.get_flags
         get_flags(...args: never[]): any;
+
         /**
          * Get the label of this item.
          * @returns the label, which should be freed with `g_free()`
          */
         get_label(): string;
+
         /**
          * Get whether the item is locked or not.
-         *
+         * 
          * Depending on the secret service an item may not be able to be locked
          * independently from the collection that it is in.
          * @returns whether the item is locked or not
          */
         get_locked(): boolean;
+
         /**
          * Get the modified date and time of the item. The return value is
          * the number of seconds since the unix epoch, January 1st 1970.
          * @returns the modified date and time
          */
         get_modified(): number;
+
         /**
          * Gets the name of the schema that this item was stored with. This is also
          * available at the <literal>xdg:schema</literal> attribute.
          * @returns the schema name
          */
         get_schema_name(): string;
+
         /**
          * Get the secret value of this item. If this item is locked or the secret
          * has not yet been loaded then this will return `null`.
-         *
+         * 
          * To load the secret call the `secret_item_load_secret()` method.
          * @returns the secret value which should be released with `secret_value_unref()`, or `null`
          */
         get_secret(): Value;
+
         /**
          * Get the Secret Service object that this item was created with.
          * @returns the Secret Service object
          */
         get_service(): Service;
+
         /**
          * Load the secret value of this item.
-         *
+         * 
          * Each item has a single secret which might be a password or some
          * other secret binary value.
-         *
+         * 
          * This function will fail if the secret item is locked.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          */
         load_secret(cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Load the secret value of this item.
-         *
+         * 
          * Each item has a single secret which might be a password or some
          * other secret binary value.
-         *
+         * 
          * This function will fail if the secret item is locked.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         load_secret(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Load the secret value of this item.
-         *
+         * 
          * Each item has a single secret which might be a password or some
          * other secret binary value.
-         *
+         * 
          * This function will fail if the secret item is locked.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        load_secret(
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        load_secret(cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete asynchronous operation to load the secret value of this item.
-         *
+         * 
          * The newly loaded secret value can be accessed by calling
          * `secret_item_get_secret()`.
          * @param result asynchronous result passed to callback
          * @returns whether the secret item succesfully loaded or not
          */
         load_secret_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Load the secret value of this item.
-         *
+         * 
          * Each item has a single secret which might be a password or some
          * other secret binary value.
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
          * @param cancellable optional cancellation object
          * @returns whether the secret item succesfully loaded or not
          */
         load_secret_sync(cancellable: Gio.Cancellable): boolean;
+
         /**
          * Refresh the properties on this item. This fires off a request to
          * refresh, and the properties will be updated later.
-         *
+         * 
          * Calling this method is not normally necessary, as the secret service
          * will notify the client when properties change.
          */
         refresh(): void;
+
         /**
          * Set the attributes of this item.
-         *
+         * 
          * The `attributes` are a mapping of string keys to string values.
          * Attributes are used to search for items. Attributes are not stored
          * or transferred securely by the secret service.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param schema the schema for the attributes
          * @param attributes a new set of attributes
          * @param cancellable optional cancellation object
          */
-        set_attributes(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<boolean>;
+        set_attributes(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Set the attributes of this item.
-         *
+         * 
          * The `attributes` are a mapping of string keys to string values.
          * Attributes are used to search for items. Attributes are not stored
          * or transferred securely by the secret service.
-         *
-         * This function returns immediately and completes asynchronously.
-         * @param schema the schema for the attributes
-         * @param attributes a new set of attributes
-         * @param cancellable optional cancellation object
-         * @param callback called when the asynchronous operation completes
-         */
-        set_attributes(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Set the attributes of this item.
-         *
-         * The `attributes` are a mapping of string keys to string values.
-         * Attributes are used to search for items. Attributes are not stored
-         * or transferred securely by the secret service.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param schema the schema for the attributes
          * @param attributes a new set of attributes
          * @param cancellable optional cancellation object
          * @param callback called when the asynchronous operation completes
          */
-        set_attributes(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        set_attributes(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Set the attributes of this item.
+         * 
+         * The `attributes` are a mapping of string keys to string values.
+         * Attributes are used to search for items. Attributes are not stored
+         * or transferred securely by the secret service.
+         * 
+         * This function returns immediately and completes asynchronously.
+         * @param schema the schema for the attributes
+         * @param attributes a new set of attributes
+         * @param cancellable optional cancellation object
+         * @param callback called when the asynchronous operation completes
+         */
+        set_attributes(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete operation to set the attributes of this item.
          * @param result asynchronous result passed to the callback
          * @returns whether the change was successful or not
          */
         set_attributes_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set the attributes of this item.
-         *
+         * 
          * The `attributes` are a mapping of string keys to string values.
          * Attributes are used to search for items. Attributes are not stored
          * or transferred securely by the secret service.
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
          * @param schema the schema for the attributes
@@ -1653,50 +1577,47 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
          */
-        set_attributes_sync(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): boolean;
+        set_attributes_sync(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): boolean;
+
         /**
          * Set the label of this item.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param label a new label
          * @param cancellable optional cancellation object
          */
         set_label(label: string, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Set the label of this item.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param label a new label
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         set_label(label: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Set the label of this item.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param label a new label
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        set_label(
-            label: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        set_label(label: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete asynchronous operation to set the label of this collection.
          * @param result asynchronous result passed to callback
          * @returns whether the change was successful or not
          */
         set_label_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set the label of this item.
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
          * @param label a new label
@@ -1704,57 +1625,58 @@ export namespace SecretUnstable {
          * @returns whether the change was successful or not
          */
         set_label_sync(label: string, cancellable: Gio.Cancellable): boolean;
+
         /**
          * Set the secret value of this item.
-         *
+         * 
          * Each item has a single secret which might be a password or some
          * other secret binary value.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param value a new secret value
          * @param cancellable optional cancellation object
          */
         set_secret(value: Value, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Set the secret value of this item.
-         *
+         * 
          * Each item has a single secret which might be a password or some
          * other secret binary value.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param value a new secret value
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         set_secret(value: Value, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Set the secret value of this item.
-         *
+         * 
          * Each item has a single secret which might be a password or some
          * other secret binary value.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param value a new secret value
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        set_secret(
-            value: Value,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        set_secret(value: Value, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete asynchronous operation to set the secret value of this item.
          * @param result asynchronous result passed to callback
          * @returns whether the change was successful or not
          */
         set_secret_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Set the secret value of this item.
-         *
+         * 
          * Each item has a single secret which might be a password or some
          * other secret binary value.
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
          * @param value a new secret value
@@ -1762,38 +1684,39 @@ export namespace SecretUnstable {
          * @returns whether the change was successful or not
          */
         set_secret_sync(value: Value, cancellable: Gio.Cancellable): boolean;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -1802,85 +1725,40 @@ export namespace SecretUnstable {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         *
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         *
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         *
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         *
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -1890,11 +1768,51 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -1902,6 +1820,7 @@ export namespace SecretUnstable {
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Finishes the async construction for the various g_async_initable_new
          * calls, returning the created object or `null` on error.
@@ -1909,43 +1828,45 @@ export namespace SecretUnstable {
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Item;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -1956,11 +1877,8 @@ export namespace SecretUnstable {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -1968,76 +1886,83 @@ export namespace SecretUnstable {
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): Gio.DBusObject | null;
+        get_object(): (Gio.DBusObject | null);
+
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
+
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         *
+         * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: Gio.DBusObject | null): void;
+        set_object(object: (Gio.DBusObject | null)): void;
+
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): Gio.DBusObject | null;
+        vfunc_dup_object(): (Gio.DBusObject | null);
+
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
+
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         *
+         * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: Gio.DBusObject | null): void;
+        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2047,40 +1972,41 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2090,31 +2016,28 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Prompt {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
-            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
-            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::g-name': (pspec: GObject.ParamSpec) => void;
-            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
-            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-connection": (pspec: GObject.ParamSpec) => void;
+            "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name-owner": (pspec: GObject.ParamSpec) => void;
+            "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gio.DBusProxy.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.DBusInterface.ConstructorProps,
-                Gio.Initable.ConstructorProps {}
+        }
     }
 
     /**
@@ -2135,98 +2058,77 @@ export namespace SecretUnstable {
         $signals: Prompt.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Prompt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Prompt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Prompt.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Prompt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Prompt.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Prompt.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Prompt.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Prompt.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Prompt.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Prompt.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Prompt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Prompt.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Prompt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Runs a prompt and performs the prompting. Returns `true` if the prompt
+         * was completed and not dismissed.
+         * 
+         * If `window_id` is non-zero then it is used as an XWindow id. The Secret
+         * Service can make its prompt transient for the window with this id. In some
+         * Secret Service implementations this is not possible, so the behavior
+         * depending on this should degrade gracefully.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param window_id XWindow id for parent window to be transient for
+         * @param return_type the variant type of the prompt result
+         * @param cancellable optional cancellation object
+         */
+        perform(window_id: (bigint | number), return_type: GLib.VariantType, cancellable: Gio.Cancellable): globalThis.Promise<GLib.Variant>;
 
         /**
          * Runs a prompt and performs the prompting. Returns `true` if the prompt
          * was completed and not dismissed.
-         *
+         * 
          * If `window_id` is non-zero then it is used as an XWindow id. The Secret
          * Service can make its prompt transient for the window with this id. In some
          * Secret Service implementations this is not possible, so the behavior
          * depending on this should degrade gracefully.
-         *
-         * This method will return immediately and complete asynchronously.
-         * @param window_id XWindow id for parent window to be transient for
-         * @param return_type the variant type of the prompt result
-         * @param cancellable optional cancellation object
-         */
-        perform(
-            window_id: bigint | number,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<GLib.Variant>;
-        /**
-         * Runs a prompt and performs the prompting. Returns `true` if the prompt
-         * was completed and not dismissed.
-         *
-         * If `window_id` is non-zero then it is used as an XWindow id. The Secret
-         * Service can make its prompt transient for the window with this id. In some
-         * Secret Service implementations this is not possible, so the behavior
-         * depending on this should degrade gracefully.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param window_id XWindow id for parent window to be transient for
          * @param return_type the variant type of the prompt result
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        perform(
-            window_id: bigint | number,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        perform(window_id: (bigint | number), return_type: GLib.VariantType, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Runs a prompt and performs the prompting. Returns `true` if the prompt
          * was completed and not dismissed.
-         *
+         * 
          * If `window_id` is non-zero then it is used as an XWindow id. The Secret
          * Service can make its prompt transient for the window with this id. In some
          * Secret Service implementations this is not possible, so the behavior
          * depending on this should degrade gracefully.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param window_id XWindow id for parent window to be transient for
          * @param return_type the variant type of the prompt result
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        perform(
-            window_id: bigint | number,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<GLib.Variant> | void;
+        perform(window_id: (bigint | number), return_type: GLib.VariantType, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Complete asynchronous operation to run a prompt and perform the prompting.
-         *
+         * 
          * Returns a variant result if the prompt was completed and not dismissed. The
          * type of result depends on the action the prompt is completing, and is
          * defined in the Secret Service DBus API specification.
@@ -2234,17 +2136,18 @@ export namespace SecretUnstable {
          * @returns `null` if the prompt was dismissed or an error occurred, a variant result if the prompt was successful
          */
         perform_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Runs a prompt and performs the prompting. Returns a variant result if the
          * prompt was completed and not dismissed. The type of result depends on the
          * action the prompt is completing, and is defined in the Secret Service DBus
          * API specification.
-         *
+         * 
          * If `window_id` is non-zero then it is used as an XWindow id. The Secret
          * Service can make its prompt transient for the window with this id. In some
          * Secret Service implementations this is not possible, so the behavior
          * depending on this should degrade gracefully.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param window_id XWindow id for parent window to be transient for
@@ -2252,22 +2155,19 @@ export namespace SecretUnstable {
          * @param return_type the variant type of the prompt result
          * @returns `null` if the prompt was dismissed or an error occurred
          */
-        perform_sync(
-            window_id: bigint | number,
-            cancellable: Gio.Cancellable,
-            return_type: GLib.VariantType,
-        ): GLib.Variant;
+        perform_sync(window_id: (bigint | number), cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
+
         /**
          * Runs a prompt and performs the prompting. Returns a variant result if the
          * prompt was completed and not dismissed. The type of result depends on the
          * action the prompt is completing, and is defined in the Secret Service DBus
          * API specification.
-         *
+         * 
          * If `window_id` is non-zero then it is used as an XWindow id. The Secret
          * Service can make its prompt transient for the window with this id. In some
          * Secret Service implementations this is not possible, so the behavior
          * depending on this should degrade gracefully.
-         *
+         * 
          * This runs the dialog in a recursive mainloop. When run from a user interface
          * thread, this means the user interface will remain responsive. Care should be
          * taken that appropriate user interface actions are disabled while running the
@@ -2277,39 +2177,40 @@ export namespace SecretUnstable {
          * @param return_type the variant type of the prompt result
          * @returns `null` if the prompt was dismissed or an error occurred
          */
-        run(window_id: bigint | number, cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
+        run(window_id: (bigint | number), cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -2318,85 +2219,40 @@ export namespace SecretUnstable {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         *
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         *
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         *
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         *
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -2406,11 +2262,51 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -2418,6 +2314,7 @@ export namespace SecretUnstable {
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Finishes the async construction for the various g_async_initable_new
          * calls, returning the created object or `null` on error.
@@ -2425,43 +2322,45 @@ export namespace SecretUnstable {
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Prompt;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -2472,11 +2371,8 @@ export namespace SecretUnstable {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -2484,76 +2380,83 @@ export namespace SecretUnstable {
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): Gio.DBusObject | null;
+        get_object(): (Gio.DBusObject | null);
+
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
+
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         *
+         * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: Gio.DBusObject | null): void;
+        set_object(object: (Gio.DBusObject | null)): void;
+
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): Gio.DBusObject | null;
+        vfunc_dup_object(): (Gio.DBusObject | null);
+
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
+
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         *
+         * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: Gio.DBusObject | null): void;
+        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2563,40 +2466,41 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -2606,31 +2510,28 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     namespace Service {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
-            'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
-            'notify::g-connection': (pspec: GObject.ParamSpec) => void;
-            'notify::g-default-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::g-flags': (pspec: GObject.ParamSpec) => void;
-            'notify::g-interface-info': (pspec: GObject.ParamSpec) => void;
-            'notify::g-interface-name': (pspec: GObject.ParamSpec) => void;
-            'notify::g-name': (pspec: GObject.ParamSpec) => void;
-            'notify::g-name-owner': (pspec: GObject.ParamSpec) => void;
-            'notify::g-object-path': (pspec: GObject.ParamSpec) => void;
+            "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
+            "notify::g-connection": (pspec: GObject.ParamSpec) => void;
+            "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::g-flags": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
+            "notify::g-interface-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name": (pspec: GObject.ParamSpec) => void;
+            "notify::g-name-owner": (pspec: GObject.ParamSpec) => void;
+            "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gio.DBusProxy.ConstructorProps, Gio.AsyncInitable.ConstructorProps, Gio.DBusInterface.ConstructorProps, Gio.Initable.ConstructorProps {
 
-        interface ConstructorProps
-            extends
-                Gio.DBusProxy.ConstructorProps,
-                Gio.AsyncInitable.ConstructorProps,
-                Gio.DBusInterface.ConstructorProps,
-                Gio.Initable.ConstructorProps {}
+        }
     }
 
     /**
@@ -2650,91 +2551,85 @@ export namespace SecretUnstable {
         $signals: Service.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Service.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Service.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Service.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Service.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Service.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Service.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Service.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
          * Disconnect the default {@link SecretUnstable.Service} proxy returned by `secret_service_get()`
          * and `secret_service_get_sync()`.
-         *
+         * 
          * It is not necessary to call this function, but you may choose to do so at
          * program exit. It is useful for testing that memory is not leaked.
-         *
+         * 
          * This function is safe to call at any time. But if other objects in this
          * library are still referenced, then this will not result in all memory
          * being freed.
          */
         static disconnect(): void;
+
         /**
          * Get a {@link SecretUnstable.Service} proxy for the Secret Service. If such a proxy object
          * already exists, then the same proxy is returned.
-         *
+         * 
          * If `flags` contains any flags of which parts of the secret service to
          * ensure are initialized, then those will be initialized before completing.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param flags flags for which service functionality to ensure is initialized
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         static get(flags: ServiceFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Service>): void;
+
         /**
          * Complete an asynchronous operation to get a {@link SecretUnstable.Service} proxy for the
          * Secret Service.
          * @param result the asynchronous result passed to the callback
          */
         static get_finish(result: Gio.AsyncResult): Service;
+
         /**
          * Get a {@link SecretUnstable.Service} proxy for the Secret Service. If such a proxy object
          * already exists, then the same proxy is returned.
-         *
+         * 
          * If `flags` contains any flags of which parts of the secret service to
          * ensure are initialized, then those will be initialized before returning.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param flags flags for which service functionality to ensure is initialized
          * @param cancellable optional cancellation object
          */
         static get_sync(flags: ServiceFlags, cancellable: Gio.Cancellable): Service;
+
         /**
          * Create a new {@link SecretUnstable.Service} proxy for the Secret Service.
-         *
+         * 
          * This function is rarely used, see `secret_service_get()` instead.
-         *
+         * 
          * The `service_gtype` argument should be set to `SECRET_TYPE_SERVICE` or a the type
          * of a derived class.
-         *
+         * 
          * If `flags` contains any flags of which parts of the secret service to
          * ensure are initialized, then those will be initialized before returning.
-         *
+         * 
          * If `service_bus_name` is `null` then the default is used.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param service_gtype the GType of the new secret service
          * @param service_bus_name the D-Bus service name of the secret service
@@ -2742,32 +2637,28 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        static open(
-            service_gtype: GObject.GType,
-            service_bus_name: string,
-            flags: ServiceFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<Service>,
-        ): void;
+        static open(service_gtype: GObject.GType, service_bus_name: string, flags: ServiceFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<Service>): void;
+
         /**
          * Complete an asynchronous operation to create a new {@link SecretUnstable.Service} proxy for
          * the Secret Service.
          * @param result the asynchronous result passed to the callback
          */
         static open_finish(result: Gio.AsyncResult): Service;
+
         /**
          * Create a new {@link SecretUnstable.Service} proxy for the Secret Service.
-         *
+         * 
          * This function is rarely used, see `secret_service_get_sync()` instead.
-         *
+         * 
          * The `service_gtype` argument should be set to `SECRET_TYPE_SERVICE` or a the
          * type of a derived class.
-         *
+         * 
          * If `flags` contains any flags of which parts of the secret service to
          * ensure are initialized, then those will be initialized before returning.
-         *
+         * 
          * If `service_bus_name` is `null` then the default is used.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param service_gtype the GType of the new secret service
@@ -2775,43 +2666,35 @@ export namespace SecretUnstable {
          * @param flags flags for which service functionality to ensure is initialized
          * @param cancellable optional cancellation object
          */
-        static open_sync(
-            service_gtype: GObject.GType,
-            service_bus_name: string,
-            flags: ServiceFlags,
-            cancellable: Gio.Cancellable,
-        ): Service;
+        static open_sync(service_gtype: GObject.GType, service_bus_name: string, flags: ServiceFlags, cancellable: Gio.Cancellable): Service;
 
         // Virtual methods
-
         /**
          * Get the GObject type for collections instantiated by this service.
          * This will always be either {@link SecretUnstable.Collection} or derived from it.
          * @virtual
          */
         vfunc_get_collection_gtype(): GObject.GType;
+
         /**
          * Get the GObject type for items instantiated by this collection.
          * This will always be either {@link SecretUnstable.Item} or derived from it.
          * @virtual
          */
         vfunc_get_item_gtype(): GObject.GType;
+
         /**
-         * @param prompt
-         * @param return_type
-         * @param cancellable
-         * @param callback
+         * @param prompt 
+         * @param return_type 
+         * @param cancellable 
+         * @param callback 
          * @virtual
          */
-        vfunc_prompt_async(
-            prompt: Prompt,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        vfunc_prompt_async(prompt: Prompt, return_type: GLib.VariantType, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Complete asynchronous operation to perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * Returns a variant result if the prompt was completed and not dismissed. The
          * type of result depends on the action the prompt is completing, and is defined
          * in the Secret Service DBus API specification.
@@ -2819,17 +2702,18 @@ export namespace SecretUnstable {
          * @virtual
          */
         vfunc_prompt_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * Runs a prompt and performs the prompting. Returns a variant result if the
          * prompt was completed and not dismissed. The type of result depends on the
          * action the prompt is completing, and is defined in the Secret Service DBus
          * API specification.
-         *
+         * 
          * This function is called by other parts of this library to handle prompts
          * for the various actions that can require prompting.
-         *
+         * 
          * Override the {@link SecretUnstable.ServiceClass} <literal>prompt_sync</literal> virtual method
          * to change the behavior of the propmting. The default behavior is to simply
          * run `secret_prompt_perform_sync()` on the prompt.
@@ -2841,65 +2725,53 @@ export namespace SecretUnstable {
         vfunc_prompt_sync(prompt: Prompt, cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
 
         // Methods
+        /**
+         * Remove unlocked items which match the attributes from the secret service.
+         * 
+         * The `attributes` should be a set of key and value string pairs.
+         * 
+         * If `service` is NULL, then `secret_service_get()` will be called to get
+         * the default {@link SecretUnstable.Service} proxy.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param schema the schema for the attributes
+         * @param attributes the attribute keys and values
+         * @param cancellable optional cancellation object
+         */
+        clear(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
         /**
          * Remove unlocked items which match the attributes from the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
-         * This method will return immediately and complete asynchronously.
-         * @param schema the schema for the attributes
-         * @param attributes the attribute keys and values
-         * @param cancellable optional cancellation object
-         */
-        clear(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<boolean>;
-        /**
-         * Remove unlocked items which match the attributes from the secret service.
-         *
-         * The `attributes` should be a set of key and value string pairs.
-         *
-         * If `service` is NULL, then `secret_service_get()` will be called to get
-         * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param schema the schema for the attributes
          * @param attributes the attribute keys and values
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        clear(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        clear(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Remove unlocked items which match the attributes from the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param schema the schema for the attributes
          * @param attributes the attribute keys and values
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        clear(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        clear(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish asynchronous operation to remove items from the secret
          * service.
@@ -2907,14 +2779,15 @@ export namespace SecretUnstable {
          * @returns whether items were removed or not
          */
         clear_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Remove unlocked items which match the attributes from the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param schema the schema for the attributes
@@ -2922,32 +2795,29 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns whether items were removed or not
          */
-        clear_sync(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): boolean;
+        clear_sync(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): boolean;
+
         /**
          * Create a new collection in the secret service, and return its path.
-         *
+         * 
          * Using this method requires that you setup a correct hash table of D-Bus
          * properties for the new collection. You may prefer to use
          * `secret_collection_create()` which does handles this for you.
-         *
+         * 
          * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
          * default collection to store items in). This allows other applications to
          * easily identify and share a collection. If a collection with the `alias`
          * already exists, then instead of creating a new collection, the existing
          * collection will be returned. If no collection with this alias exists, then a
          * new collection will be created and this alias will be assigned to it.
-         *
+         * 
          * `properties` is a set of properties for the new collection. The keys in the
          * hash table should be interface.property strings like
          * <literal>org.freedesktop.Secret.Collection.Label</literal>. The values
          * in the hash table should be {@link GLib.Variant} values of the properties.
-         *
+         * 
          * If you wish to have a
-         *
+         * 
          * This method will return immediately and complete asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that are required.
@@ -2956,70 +2826,29 @@ export namespace SecretUnstable {
          * @param flags not currently used
          * @param cancellable optional cancellation object
          */
-        create_collection_dbus_path(
-            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            alias: string,
-            flags: CollectionCreateFlags,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<string>;
+        create_collection_dbus_path(properties: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable): globalThis.Promise<string>;
+
         /**
          * Create a new collection in the secret service, and return its path.
-         *
+         * 
          * Using this method requires that you setup a correct hash table of D-Bus
          * properties for the new collection. You may prefer to use
          * `secret_collection_create()` which does handles this for you.
-         *
+         * 
          * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
          * default collection to store items in). This allows other applications to
          * easily identify and share a collection. If a collection with the `alias`
          * already exists, then instead of creating a new collection, the existing
          * collection will be returned. If no collection with this alias exists, then a
          * new collection will be created and this alias will be assigned to it.
-         *
+         * 
          * `properties` is a set of properties for the new collection. The keys in the
          * hash table should be interface.property strings like
          * <literal>org.freedesktop.Secret.Collection.Label</literal>. The values
          * in the hash table should be {@link GLib.Variant} values of the properties.
-         *
+         * 
          * If you wish to have a
-         *
-         * This method will return immediately and complete asynchronously. The secret
-         * service may prompt the user. `secret_service_prompt()` will be used to handle
-         * any prompts that are required.
-         * @param properties hash table of properties for the new collection
-         * @param alias an alias to check for before creating the new collection, or to assign to the new collection
-         * @param flags not currently used
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        create_collection_dbus_path(
-            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            alias: string,
-            flags: CollectionCreateFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Create a new collection in the secret service, and return its path.
-         *
-         * Using this method requires that you setup a correct hash table of D-Bus
-         * properties for the new collection. You may prefer to use
-         * `secret_collection_create()` which does handles this for you.
-         *
-         * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
-         * default collection to store items in). This allows other applications to
-         * easily identify and share a collection. If a collection with the `alias`
-         * already exists, then instead of creating a new collection, the existing
-         * collection will be returned. If no collection with this alias exists, then a
-         * new collection will be created and this alias will be assigned to it.
-         *
-         * `properties` is a set of properties for the new collection. The keys in the
-         * hash table should be interface.property strings like
-         * <literal>org.freedesktop.Secret.Collection.Label</literal>. The values
-         * in the hash table should be {@link GLib.Variant} values of the properties.
-         *
-         * If you wish to have a
-         *
+         * 
          * This method will return immediately and complete asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that are required.
@@ -3029,13 +2858,40 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        create_collection_dbus_path(
-            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            alias: string,
-            flags: CollectionCreateFlags,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<string> | void;
+        create_collection_dbus_path(properties: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Create a new collection in the secret service, and return its path.
+         * 
+         * Using this method requires that you setup a correct hash table of D-Bus
+         * properties for the new collection. You may prefer to use
+         * `secret_collection_create()` which does handles this for you.
+         * 
+         * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
+         * default collection to store items in). This allows other applications to
+         * easily identify and share a collection. If a collection with the `alias`
+         * already exists, then instead of creating a new collection, the existing
+         * collection will be returned. If no collection with this alias exists, then a
+         * new collection will be created and this alias will be assigned to it.
+         * 
+         * `properties` is a set of properties for the new collection. The keys in the
+         * hash table should be interface.property strings like
+         * <literal>org.freedesktop.Secret.Collection.Label</literal>. The values
+         * in the hash table should be {@link GLib.Variant} values of the properties.
+         * 
+         * If you wish to have a
+         * 
+         * This method will return immediately and complete asynchronously. The secret
+         * service may prompt the user. `secret_service_prompt()` will be used to handle
+         * any prompts that are required.
+         * @param properties hash table of properties for the new collection
+         * @param alias an alias to check for before creating the new collection, or to assign to the new collection
+         * @param flags not currently used
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        create_collection_dbus_path(properties: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+
         /**
          * Finish asynchronous operation to create a new collection in the secret
          * service.
@@ -3043,25 +2899,26 @@ export namespace SecretUnstable {
          * @returns a new string containing the D-Bus object path of the collection
          */
         create_collection_dbus_path_finish(result: Gio.AsyncResult): string;
+
         /**
          * Create a new collection in the secret service and return its path.
-         *
+         * 
          * Using this method requires that you setup a correct hash table of D-Bus
          * properties for the new collection. You may prefer to use
          * `secret_collection_create()` which does handles this for you.
-         *
+         * 
          * An `alias` is a well-known tag for a collection, such as 'default' (ie: the
          * default collection to store items in). This allows other applications to
          * easily identify and share a collection. If a collection with the `alias`
          * already exists, then instead of creating a new collection, the existing
          * collection will be returned. If no collection with this alias exists, then
          * a new collection will be created and this alias will be assigned to it.
-         *
+         * 
          * `properties` is a set of properties for the new collection. The keys in the
          * hash table should be interface.property strings like
          * <literal>org.freedesktop.Secret.Collection.Label</literal>. The values
          * in the hash table should be {@link GLib.Variant} values of the properties.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads. The secret service may prompt the user. `secret_service_prompt()`
          * will be used to handle any prompts that are required.
@@ -3071,29 +2928,25 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a new string containing the D-Bus object path of the collection
          */
-        create_collection_dbus_path_sync(
-            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            alias: string,
-            flags: CollectionCreateFlags,
-            cancellable: Gio.Cancellable,
-        ): string;
+        create_collection_dbus_path_sync(properties: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), alias: string, flags: CollectionCreateFlags, cancellable: Gio.Cancellable): string;
+
         /**
          * Create a new item in a secret service collection and return its D-Bus
          * object path.
-         *
+         * 
          * It is often easier to use `secret_password_store()` or `secret_item_create()`
          * rather than using this function. Using this method requires that you setup
          * a correct hash table of D-Bus `properties` for the new collection.
-         *
+         * 
          * If the `flags` contains {@link SecretUnstable.ItemCreateFlags.REPLACE}, then the secret
          * service will search for an item matching the `attributes`, and update that item
          * instead of creating a new one.
-         *
+         * 
          * `properties` is a set of properties for the new collection. The keys in the
          * hash table should be interface.property strings like
          * <literal>org.freedesktop.Secret.Item.Label</literal>. The values
          * in the hash table should be {@link GLib.Variant} values of the properties.
-         *
+         * 
          * This method will return immediately and complete asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that are required.
@@ -3103,30 +2956,25 @@ export namespace SecretUnstable {
          * @param flags flags for the creation of the new item
          * @param cancellable optional cancellation object
          */
-        create_item_dbus_path(
-            collection_path: string,
-            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            value: Value,
-            flags: ItemCreateFlags,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<string>;
+        create_item_dbus_path(collection_path: string, properties: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): globalThis.Promise<string>;
+
         /**
          * Create a new item in a secret service collection and return its D-Bus
          * object path.
-         *
+         * 
          * It is often easier to use `secret_password_store()` or `secret_item_create()`
          * rather than using this function. Using this method requires that you setup
          * a correct hash table of D-Bus `properties` for the new collection.
-         *
+         * 
          * If the `flags` contains {@link SecretUnstable.ItemCreateFlags.REPLACE}, then the secret
          * service will search for an item matching the `attributes`, and update that item
          * instead of creating a new one.
-         *
+         * 
          * `properties` is a set of properties for the new collection. The keys in the
          * hash table should be interface.property strings like
          * <literal>org.freedesktop.Secret.Item.Label</literal>. The values
          * in the hash table should be {@link GLib.Variant} values of the properties.
-         *
+         * 
          * This method will return immediately and complete asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that are required.
@@ -3137,31 +2985,25 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        create_item_dbus_path(
-            collection_path: string,
-            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            value: Value,
-            flags: ItemCreateFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        create_item_dbus_path(collection_path: string, properties: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Create a new item in a secret service collection and return its D-Bus
          * object path.
-         *
+         * 
          * It is often easier to use `secret_password_store()` or `secret_item_create()`
          * rather than using this function. Using this method requires that you setup
          * a correct hash table of D-Bus `properties` for the new collection.
-         *
+         * 
          * If the `flags` contains {@link SecretUnstable.ItemCreateFlags.REPLACE}, then the secret
          * service will search for an item matching the `attributes`, and update that item
          * instead of creating a new one.
-         *
+         * 
          * `properties` is a set of properties for the new collection. The keys in the
          * hash table should be interface.property strings like
          * <literal>org.freedesktop.Secret.Item.Label</literal>. The values
          * in the hash table should be {@link GLib.Variant} values of the properties.
-         *
+         * 
          * This method will return immediately and complete asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that are required.
@@ -3172,14 +3014,8 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        create_item_dbus_path(
-            collection_path: string,
-            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            value: Value,
-            flags: ItemCreateFlags,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<string> | void;
+        create_item_dbus_path(collection_path: string, properties: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+
         /**
          * Finish asynchronous operation to create a new item in the secret
          * service.
@@ -3187,23 +3023,24 @@ export namespace SecretUnstable {
          * @returns a new string containing the D-Bus object path of the item
          */
         create_item_dbus_path_finish(result: Gio.AsyncResult): string;
+
         /**
          * Create a new item in a secret service collection and return its D-Bus
          * object path.
-         *
+         * 
          * It is often easier to use `secret_password_store_sync()` or `secret_item_create_sync()`
          * rather than using this function. Using this method requires that you setup
          * a correct hash table of D-Bus `properties` for the new collection.
-         *
+         * 
          * If the `flags` contains {@link SecretUnstable.ItemCreateFlags.REPLACE}, then the secret
          * service will search for an item matching the `attributes`, and update that item
          * instead of creating a new one.
-         *
+         * 
          * `properties` is a set of properties for the new collection. The keys in the
          * hash table should be interface.property strings like
          * <literal>org.freedesktop.Secret.Item.Label</literal>. The values
          * in the hash table should be {@link GLib.Variant} values of the properties.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads. The secret service may prompt the user. `secret_service_prompt()`
          * will be used to handle any prompts that are required.
@@ -3214,56 +3051,46 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a new string containing the D-Bus object path of the item
          */
-        create_item_dbus_path_sync(
-            collection_path: string,
-            properties: { [key: string]: any } | GLib.HashTable<string, GLib.Variant>,
-            value: Value,
-            flags: ItemCreateFlags,
-            cancellable: Gio.Cancellable,
-        ): string;
+        create_item_dbus_path_sync(collection_path: string, properties: ({ [key: string]: any } | GLib.HashTable<string, GLib.Variant>), value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable): string;
+
         /**
          * Delete a secret item from the secret service.
-         *
+         * 
          * The item is represented by its D-Bus object path. If you already have a
          * {@link SecretUnstable.Item} proxy objects, use use `secret_item_delete()` instead.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param item_path the D-Bus path of item to delete
          * @param cancellable optional cancellation object
          */
         delete_item_dbus_path(item_path: string, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Delete a secret item from the secret service.
-         *
+         * 
          * The item is represented by its D-Bus object path. If you already have a
          * {@link SecretUnstable.Item} proxy objects, use use `secret_item_delete()` instead.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param item_path the D-Bus path of item to delete
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        delete_item_dbus_path(
-            item_path: string,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        delete_item_dbus_path(item_path: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Delete a secret item from the secret service.
-         *
+         * 
          * The item is represented by its D-Bus object path. If you already have a
          * {@link SecretUnstable.Item} proxy objects, use use `secret_item_delete()` instead.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param item_path the D-Bus path of item to delete
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        delete_item_dbus_path(
-            item_path: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        delete_item_dbus_path(item_path: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete an asynchronous operation to delete a secret item from the secret
          * service.
@@ -3271,12 +3098,13 @@ export namespace SecretUnstable {
          * @returns whether the deletion was successful or not
          */
         delete_item_dbus_path_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Delete a secret item from the secret service.
-         *
+         * 
          * The item is represented by its D-Bus object path. If you already have a
          * {@link SecretUnstable.Item} proxy objects, use use `secret_item_delete_sync()` instead.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param item_path the D-Bus path of item to delete
@@ -3284,50 +3112,51 @@ export namespace SecretUnstable {
          * @returns whether the deletion was successful or not
          */
         delete_item_dbus_path_sync(item_path: string, cancellable: Gio.Cancellable): boolean;
+
         /**
          * Ensure that the {@link SecretUnstable.Service} proxy has established a session with the
          * Secret Service. This session is used to transfer secrets.
-         *
+         * 
          * It is not normally necessary to call this method, as the session is
          * established as necessary. You can also pass the {@link SecretUnstable.ServiceFlags.OPEN_SESSION}
          * to `secret_service_get()` in order to ensure that a session has been established
          * by the time you get the {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
         ensure_session(cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Ensure that the {@link SecretUnstable.Service} proxy has established a session with the
          * Secret Service. This session is used to transfer secrets.
-         *
+         * 
          * It is not normally necessary to call this method, as the session is
          * established as necessary. You can also pass the {@link SecretUnstable.ServiceFlags.OPEN_SESSION}
          * to `secret_service_get()` in order to ensure that a session has been established
          * by the time you get the {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         ensure_session(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Ensure that the {@link SecretUnstable.Service} proxy has established a session with the
          * Secret Service. This session is used to transfer secrets.
-         *
+         * 
          * It is not normally necessary to call this method, as the session is
          * established as necessary. You can also pass the {@link SecretUnstable.ServiceFlags.OPEN_SESSION}
          * to `secret_service_get()` in order to ensure that a session has been established
          * by the time you get the {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        ensure_session(
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        ensure_session(cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation to ensure that the {@link SecretUnstable.Service} proxy
          * has established a session with the Secret Service.
@@ -3335,267 +3164,264 @@ export namespace SecretUnstable {
          * @returns whether a session is established or not
          */
         ensure_session_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Ensure that the {@link SecretUnstable.Service} proxy has established a session with the
          * Secret Service. This session is used to transfer secrets.
-         *
+         * 
          * It is not normally necessary to call this method, as the session is
          * established as necessary. You can also pass the {@link SecretUnstable.ServiceFlags.OPEN_SESSION}
          * to `secret_service_get_sync()` in order to ensure that a session has been
          * established by the time you get the {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param cancellable optional cancellation object
          * @returns whether a session is established or not
          */
         ensure_session_sync(cancellable: Gio.Cancellable): boolean;
+
         /**
          * Get the GObject type for collections instantiated by this service.
          * This will always be either {@link SecretUnstable.Collection} or derived from it.
          * @returns the gobject type for collections
          */
         get_collection_gtype(): GObject.GType;
+
         /**
          * Get a list of {@link SecretUnstable.Collection} objects representing all the collections
          * in the secret service.
-         *
+         * 
          * If the {@link SecretUnstable.ServiceFlags.LOAD_COLLECTIONS} flag was not specified when
          * initializing {@link SecretUnstable.Service} proxy object, then this method will return
          * `null`. Use `secret_service_load_collections()` to load the collections.
          * @returns a list of the collections in the secret service
          */
         get_collections(): Collection[];
+
         /**
          * Get the flags representing what features of the {@link SecretUnstable.Service} proxy
          * have been initialized.
-         *
+         * 
          * Use `secret_service_ensure_session()` or `secret_service_load_collections()`
          * to initialize further features and change the flags.
          * @returns the flags for features initialized
          */
         get_flags(): ServiceFlags;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gio.DBusProxy.get_flags
+    // Conflicted with Gio.DBusProxy.get_flags
         get_flags(...args: never[]): any;
+
         /**
          * Get the GObject type for items instantiated by this collection.
          * This will always be either {@link SecretUnstable.Item} or derived from it.
          * @returns the gobject type for items
          */
         get_item_gtype(): GObject.GType;
+
         /**
          * Get the secret value for an secret item stored in the service.
-         *
+         * 
          * The item is represented by its D-Bus object path. If you already have a
          * {@link SecretUnstable.Item} proxy object, use use `secret_item_get_secret()` to more simply
          * get its secret value.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param item_path the D-Bus path to item to retrieve secret for
          * @param cancellable optional cancellation object
          */
         get_secret_for_dbus_path(item_path: string, cancellable: Gio.Cancellable): globalThis.Promise<Value>;
+
         /**
          * Get the secret value for an secret item stored in the service.
-         *
+         * 
          * The item is represented by its D-Bus object path. If you already have a
          * {@link SecretUnstable.Item} proxy object, use use `secret_item_get_secret()` to more simply
          * get its secret value.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param item_path the D-Bus path to item to retrieve secret for
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        get_secret_for_dbus_path(
-            item_path: string,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        get_secret_for_dbus_path(item_path: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Get the secret value for an secret item stored in the service.
-         *
+         * 
          * The item is represented by its D-Bus object path. If you already have a
          * {@link SecretUnstable.Item} proxy object, use use `secret_item_get_secret()` to more simply
          * get its secret value.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param item_path the D-Bus path to item to retrieve secret for
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        get_secret_for_dbus_path(
-            item_path: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Value> | void;
+        get_secret_for_dbus_path(item_path: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Value> | void);
+
         /**
          * Complete asynchronous operation to get the secret value for an
          * secret item stored in the service.
-         *
+         * 
          * Will return `null` if the item is locked.
          * @param result asynchronous result passed to callback
          * @returns the newly allocated secret value for the item, which should be released with `secret_value_unref()`
          */
         get_secret_for_dbus_path_finish(result: Gio.AsyncResult): Value;
+
         /**
          * Get the secret value for an secret item stored in the service.
-         *
+         * 
          * The item is represented by its D-Bus object path. If you already have a
          * {@link SecretUnstable.Item} proxy object, use use `secret_item_load_secret_sync()` to more simply
          * get its secret value.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
-         *
+         * 
          * Will return `null` if the item is locked.
          * @param item_path the D-Bus path to item to retrieve secret for
          * @param cancellable optional cancellation object
          * @returns the newly allocated secret value for the item, which should be released with `secret_value_unref()`
          */
         get_secret_for_dbus_path_sync(item_path: string, cancellable: Gio.Cancellable): Value;
+
         /**
          * Get the secret values for an secret items stored in the service.
-         *
+         * 
          * The items are represented by their D-Bus object paths. If you already have
          * {@link SecretUnstable.Item} proxy objects, use use `secret_item_load_secrets()` to more simply
          * get their secret values.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param item_paths the D-Bus paths to items to retrieve secrets for
          * @param cancellable optional cancellation object
          */
-        get_secrets_for_dbus_paths(
-            item_paths: string,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<GLib.HashTable<string, Value>>;
+        get_secrets_for_dbus_paths(item_paths: string, cancellable: Gio.Cancellable): globalThis.Promise<GLib.HashTable<string, Value>>;
+
         /**
          * Get the secret values for an secret items stored in the service.
-         *
+         * 
          * The items are represented by their D-Bus object paths. If you already have
          * {@link SecretUnstable.Item} proxy objects, use use `secret_item_load_secrets()` to more simply
          * get their secret values.
-         *
-         * This function returns immediately and completes asynchronously.
-         * @param item_paths the D-Bus paths to items to retrieve secrets for
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        get_secrets_for_dbus_paths(
-            item_paths: string,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Get the secret values for an secret items stored in the service.
-         *
-         * The items are represented by their D-Bus object paths. If you already have
-         * {@link SecretUnstable.Item} proxy objects, use use `secret_item_load_secrets()` to more simply
-         * get their secret values.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param item_paths the D-Bus paths to items to retrieve secrets for
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        get_secrets_for_dbus_paths(
-            item_paths: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<GLib.HashTable<string, Value>> | void;
+        get_secrets_for_dbus_paths(item_paths: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Get the secret values for an secret items stored in the service.
+         * 
+         * The items are represented by their D-Bus object paths. If you already have
+         * {@link SecretUnstable.Item} proxy objects, use use `secret_item_load_secrets()` to more simply
+         * get their secret values.
+         * 
+         * This function returns immediately and completes asynchronously.
+         * @param item_paths the D-Bus paths to items to retrieve secrets for
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        get_secrets_for_dbus_paths(item_paths: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<GLib.HashTable<string, Value>> | void);
+
         /**
          * Complete asynchronous operation to get the secret values for an
          * secret items stored in the service.
-         *
+         * 
          * Items that are locked will not be included the results.
          * @param result asynchronous result passed to callback
          * @returns a newly allocated hash table of item_path keys to {@link SecretUnstable.Value} values.
          */
         get_secrets_for_dbus_paths_finish(result: Gio.AsyncResult): GLib.HashTable<string, Value>;
+
         /**
          * Get the secret values for an secret items stored in the service.
-         *
+         * 
          * The items are represented by their D-Bus object paths. If you already have
          * {@link SecretUnstable.Item} proxy objects, use use `secret_item_load_secrets_sync()` to more
          * simply get their secret values.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
-         *
+         * 
          * Items that are locked will not be included the results.
          * @param item_paths the D-Bus paths to items to retrieve secrets for
          * @param cancellable optional cancellation object
          * @returns a newly allocated hash table of item_path keys to {@link SecretUnstable.Value} values.
          */
-        get_secrets_for_dbus_paths_sync(
-            item_paths: string,
-            cancellable: Gio.Cancellable,
-        ): GLib.HashTable<string, Value>;
+        get_secrets_for_dbus_paths_sync(item_paths: string, cancellable: Gio.Cancellable): GLib.HashTable<string, Value>;
+
         /**
          * Get the set of algorithms being used to transfer secrets between this
          * secret service proxy and the Secret Service itself.
-         *
+         * 
          * This will be `null` if no session has been established. Use
          * `secret_service_ensure_session()` to establish a session.
          * @returns a string representing the algorithms for transferring secrets
          */
         get_session_algorithms(): string;
+
         /**
          * Get the D-Bus object path of the session object being used to transfer
          * secrets between this secret service proxy and the Secret Service itself.
-         *
+         * 
          * This will be `null` if no session has been established. Use
          * `secret_service_ensure_session()` to establish a session.
          * @returns a string representing the D-Bus object path of the session
          */
         get_session_dbus_path(): string;
+
         /**
          * Ensure that the {@link SecretUnstable.Service} proxy has loaded all the collections present
          * in the Secret Service. This affects the result of
          * `secret_service_get_collections()`.
-         *
+         * 
          * You can also pass the {@link SecretUnstable.ServiceFlags.LOAD_COLLECTIONS} to
          * `secret_service_get_sync()` in order to ensure that the collections have been
          * loaded by the time you get the {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          */
         load_collections(cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Ensure that the {@link SecretUnstable.Service} proxy has loaded all the collections present
          * in the Secret Service. This affects the result of
          * `secret_service_get_collections()`.
-         *
+         * 
          * You can also pass the {@link SecretUnstable.ServiceFlags.LOAD_COLLECTIONS} to
          * `secret_service_get_sync()` in order to ensure that the collections have been
          * loaded by the time you get the {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         load_collections(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Ensure that the {@link SecretUnstable.Service} proxy has loaded all the collections present
          * in the Secret Service. This affects the result of
          * `secret_service_get_collections()`.
-         *
+         * 
          * You can also pass the {@link SecretUnstable.ServiceFlags.LOAD_COLLECTIONS} to
          * `secret_service_get_sync()` in order to ensure that the collections have been
          * loaded by the time you get the {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        load_collections(
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        load_collections(cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Complete an asynchronous operation to ensure that the {@link SecretUnstable.Service} proxy
          * has loaded all the collections present in the Secret Service.
@@ -3603,49 +3429,49 @@ export namespace SecretUnstable {
          * @returns whether the load was successful or not
          */
         load_collections_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Ensure that the {@link SecretUnstable.Service} proxy has loaded all the collections present
          * in the Secret Service. This affects the result of
          * `secret_service_get_collections()`.
-         *
+         * 
          * You can also pass the {@link SecretUnstable.ServiceFlags.LOAD_COLLECTIONS} to
          * `secret_service_get_sync()` in order to ensure that the collections have been
          * loaded by the time you get the {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param cancellable optional cancellation object
          * @returns whether the load was successful or not
          */
         load_collections_sync(cancellable: Gio.Cancellable): boolean;
+
         /**
          * Lock items or collections in the secret service.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
          * @param objects the items or collections to lock
          * @param cancellable optional cancellation object
          */
-        lock(
-            objects: Gio.DBusProxy[],
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<[number, Gio.DBusProxy[] | null]>;
+        lock(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable): globalThis.Promise<[number, (Gio.DBusProxy[] | null)]>;
+
         /**
          * Lock items or collections in the secret service.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
@@ -3654,15 +3480,16 @@ export namespace SecretUnstable {
          * @param callback called when the operation completes
          */
         lock(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Lock items or collections in the secret service.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
@@ -3670,38 +3497,36 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        lock(
-            objects: Gio.DBusProxy[],
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<[number, Gio.DBusProxy[] | null]> | void;
+        lock(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<[number, (Gio.DBusProxy[] | null)]> | void);
+
         /**
          * Lock items or collections in the secret service.
-         *
+         * 
          * The items or collections are represented by their D-Bus object paths. If you
          * already have {@link SecretUnstable.Item} and {@link SecretUnstable.Collection} proxy objects, use use
          * `secret_service_lock()` instead.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
          * @param paths the D-Bus paths for items or collections to lock
          * @param cancellable optional cancellation object
          */
-        lock_dbus_paths(paths: string, cancellable: Gio.Cancellable): globalThis.Promise<[number, string[] | null]>;
+        lock_dbus_paths(paths: string, cancellable: Gio.Cancellable): globalThis.Promise<[number, (string[] | null)]>;
+
         /**
          * Lock items or collections in the secret service.
-         *
+         * 
          * The items or collections are represented by their D-Bus object paths. If you
          * already have {@link SecretUnstable.Item} and {@link SecretUnstable.Collection} proxy objects, use use
          * `secret_service_lock()` instead.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
@@ -3710,16 +3535,17 @@ export namespace SecretUnstable {
          * @param callback called when the operation completes
          */
         lock_dbus_paths(paths: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Lock items or collections in the secret service.
-         *
+         * 
          * The items or collections are represented by their D-Bus object paths. If you
          * already have {@link SecretUnstable.Item} and {@link SecretUnstable.Collection} proxy objects, use use
          * `secret_service_lock()` instead.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
@@ -3727,31 +3553,29 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        lock_dbus_paths(
-            paths: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<[number, string[] | null]> | void;
+        lock_dbus_paths(paths: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<[number, (string[] | null)]> | void);
+
         /**
          * Complete asynchronous operation to lock items or collections in the secret
          * service.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
          * @param result asynchronous result passed to the callback
          * @returns the number of items or collections that were locked
          */
         lock_dbus_paths_finish(result: Gio.AsyncResult): [number, string[] | null];
+
         /**
          * Lock items or collections in the secret service.
-         *
+         * 
          * The items or collections are represented by their D-Bus object paths. If you
          * already have {@link SecretUnstable.Item} and {@link SecretUnstable.Collection} proxy objects, use use
          * `secret_service_lock_sync()` instead.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
@@ -3760,25 +3584,27 @@ export namespace SecretUnstable {
          * @returns the number of items or collections that were locked
          */
         lock_dbus_paths_sync(paths: string, cancellable: Gio.Cancellable): [number, string[] | null];
+
         /**
          * Complete asynchronous operation to lock items or collections in the secret
          * service.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
          * @param result asynchronous result passed to the callback
          * @returns the number of items or collections that were locked
          */
         lock_finish(result: Gio.AsyncResult): [number, Gio.DBusProxy[] | null];
+
         /**
          * Lock items or collections in the secret service.
-         *
+         * 
          * The secret service may not be able to lock items individually, and may
          * lock an entire collection instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
@@ -3787,80 +3613,71 @@ export namespace SecretUnstable {
          * @returns the number of items or collections that were locked
          */
         lock_sync(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable): [number, Gio.DBusProxy[] | null];
+
         /**
          * Lookup a secret value in the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param schema the schema for the attributes
          * @param attributes the attribute keys and values
          * @param cancellable optional cancellation object
          */
-        lookup(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<Value>;
+        lookup(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): globalThis.Promise<Value>;
+
         /**
          * Lookup a secret value in the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
-         * This method will return immediately and complete asynchronously.
-         * @param schema the schema for the attributes
-         * @param attributes the attribute keys and values
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        lookup(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Lookup a secret value in the secret service.
-         *
-         * The `attributes` should be a set of key and value string pairs.
-         *
-         * If `service` is NULL, then `secret_service_get()` will be called to get
-         * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param schema the schema for the attributes
          * @param attributes the attribute keys and values
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        lookup(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Value> | void;
+        lookup(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Lookup a secret value in the secret service.
+         * 
+         * The `attributes` should be a set of key and value string pairs.
+         * 
+         * If `service` is NULL, then `secret_service_get()` will be called to get
+         * the default {@link SecretUnstable.Service} proxy.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param schema the schema for the attributes
+         * @param attributes the attribute keys and values
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        lookup(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Value> | void);
+
         /**
          * Finish asynchronous operation to lookup a secret value in the secret service.
-         *
+         * 
          * If no secret is found then `null` is returned.
          * @param result the asynchronous result passed to the callback
          * @returns a newly allocated {@link SecretUnstable.Value}, which should be released with `secret_value_unref()`, or `null` if no secret found
          */
         lookup_finish(result: Gio.AsyncResult): Value;
+
         /**
          * Lookup a secret value in the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param schema the schema for the attributes
@@ -3868,17 +3685,14 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a newly allocated {@link SecretUnstable.Value}, which should be released with `secret_value_unref()`, or `null` if no secret found
          */
-        lookup_sync(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): Value;
+        lookup_sync(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): Value;
+
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * This function is called by other parts of this library to handle prompts
          * for the various actions that can require prompting.
-         *
+         * 
          * Override the {@link SecretUnstable.ServiceClass} <literal>prompt_async</literal> virtual method
          * to change the behavior of the propmting. The default behavior is to simply
          * run `secret_prompt_perform()` on the prompt.
@@ -3886,17 +3700,14 @@ export namespace SecretUnstable {
          * @param return_type the variant type of the prompt result
          * @param cancellable optional cancellation object
          */
-        prompt(
-            prompt: Prompt,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<GLib.Variant>;
+        prompt(prompt: Prompt, return_type: GLib.VariantType, cancellable: Gio.Cancellable): globalThis.Promise<GLib.Variant>;
+
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * This function is called by other parts of this library to handle prompts
          * for the various actions that can require prompting.
-         *
+         * 
          * Override the {@link SecretUnstable.ServiceClass} <literal>prompt_async</literal> virtual method
          * to change the behavior of the propmting. The default behavior is to simply
          * run `secret_prompt_perform()` on the prompt.
@@ -3905,18 +3716,14 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        prompt(
-            prompt: Prompt,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        prompt(prompt: Prompt, return_type: GLib.VariantType, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * This function is called by other parts of this library to handle prompts
          * for the various actions that can require prompting.
-         *
+         * 
          * Override the {@link SecretUnstable.ServiceClass} <literal>prompt_async</literal> virtual method
          * to change the behavior of the propmting. The default behavior is to simply
          * run `secret_prompt_perform()` on the prompt.
@@ -3925,18 +3732,14 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        prompt(
-            prompt: Prompt,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<GLib.Variant> | void;
+        prompt(prompt: Prompt, return_type: GLib.VariantType, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * This function is called by other parts of this library to handle prompts
          * for the various actions that can require prompting.
-         *
+         * 
          * Override the {@link SecretUnstable.ServiceClass} <literal>prompt_async</literal> virtual method
          * to change the behavior of the propmting. The default behavior is to simply
          * run `secret_prompt_perform()` on the prompt.
@@ -3944,17 +3747,14 @@ export namespace SecretUnstable {
          * @param return_type the variant type of the prompt result
          * @param cancellable optional cancellation object
          */
-        prompt_at_dbus_path(
-            prompt_path: string,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<GLib.Variant>;
+        prompt_at_dbus_path(prompt_path: string, return_type: GLib.VariantType, cancellable: Gio.Cancellable): globalThis.Promise<GLib.Variant>;
+
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * This function is called by other parts of this library to handle prompts
          * for the various actions that can require prompting.
-         *
+         * 
          * Override the {@link SecretUnstable.ServiceClass} <literal>prompt_async</literal> virtual method
          * to change the behavior of the propmting. The default behavior is to simply
          * run `secret_prompt_perform()` on the prompt.
@@ -3963,18 +3763,14 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        prompt_at_dbus_path(
-            prompt_path: string,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        prompt_at_dbus_path(prompt_path: string, return_type: GLib.VariantType, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * This function is called by other parts of this library to handle prompts
          * for the various actions that can require prompting.
-         *
+         * 
          * Override the {@link SecretUnstable.ServiceClass} <literal>prompt_async</literal> virtual method
          * to change the behavior of the propmting. The default behavior is to simply
          * run `secret_prompt_perform()` on the prompt.
@@ -3983,15 +3779,11 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        prompt_at_dbus_path(
-            prompt_path: string,
-            return_type: GLib.VariantType,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<GLib.Variant> | void;
+        prompt_at_dbus_path(prompt_path: string, return_type: GLib.VariantType, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Complete asynchronous operation to perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * Returns a variant result if the prompt was completed and not dismissed. The
          * type of result depends on the action the prompt is completing, and is defined
          * in the Secret Service DBus API specification.
@@ -3999,19 +3791,17 @@ export namespace SecretUnstable {
          * @returns `null` if the prompt was dismissed or an error occurred, a variant result if the prompt was successful
          */
         prompt_at_dbus_path_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
-         * @param prompt_path
-         * @param cancellable
-         * @param return_type
+         * @param prompt_path 
+         * @param cancellable 
+         * @param return_type 
          */
-        prompt_at_dbus_path_sync(
-            prompt_path: string,
-            cancellable: Gio.Cancellable,
-            return_type: GLib.VariantType,
-        ): GLib.Variant;
+        prompt_at_dbus_path_sync(prompt_path: string, cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
+
         /**
          * Complete asynchronous operation to perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * Returns a variant result if the prompt was completed and not dismissed. The
          * type of result depends on the action the prompt is completing, and is defined
          * in the Secret Service DBus API specification.
@@ -4019,17 +3809,18 @@ export namespace SecretUnstable {
          * @returns `null` if the prompt was dismissed or an error occurred, a variant result if the prompt was successful
          */
         prompt_finish(result: Gio.AsyncResult): GLib.Variant;
+
         /**
          * Perform prompting for a {@link SecretUnstable.Prompt}.
-         *
+         * 
          * Runs a prompt and performs the prompting. Returns a variant result if the
          * prompt was completed and not dismissed. The type of result depends on the
          * action the prompt is completing, and is defined in the Secret Service DBus
          * API specification.
-         *
+         * 
          * This function is called by other parts of this library to handle prompts
          * for the various actions that can require prompting.
-         *
+         * 
          * Override the {@link SecretUnstable.ServiceClass} <literal>prompt_sync</literal> virtual method
          * to change the behavior of the propmting. The default behavior is to simply
          * run `secret_prompt_perform_sync()` on the prompt.
@@ -4039,42 +3830,42 @@ export namespace SecretUnstable {
          * @returns `null` if the prompt was dismissed or an error occurred, a variant result if the prompt was successful
          */
         prompt_sync(prompt: Prompt, cancellable: Gio.Cancellable, return_type: GLib.VariantType): GLib.Variant;
+
         /**
          * Lookup which collection is assigned to this alias. Aliases help determine
          * well known collections, such as 'default'. This method looks up the
          * dbus object path of the well known collection.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param alias the alias to lookup
          * @param cancellable optional cancellation object
          */
         read_alias_dbus_path(alias: string, cancellable: Gio.Cancellable): globalThis.Promise<string>;
+
         /**
          * Lookup which collection is assigned to this alias. Aliases help determine
          * well known collections, such as 'default'. This method looks up the
          * dbus object path of the well known collection.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param alias the alias to lookup
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
         read_alias_dbus_path(alias: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Lookup which collection is assigned to this alias. Aliases help determine
          * well known collections, such as 'default'. This method looks up the
          * dbus object path of the well known collection.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param alias the alias to lookup
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        read_alias_dbus_path(
-            alias: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<string> | void;
+        read_alias_dbus_path(alias: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<string> | void);
+
         /**
          * Finish an asynchronous operation to lookup which collection is assigned
          * to an alias. This method returns the DBus object path of the collection
@@ -4082,97 +3873,63 @@ export namespace SecretUnstable {
          * @returns the collection dbus object path, or `null` if none assigned to the alias
          */
         read_alias_dbus_path_finish(result: Gio.AsyncResult): string;
+
         /**
          * Lookup which collection is assigned to this alias. Aliases help determine
          * well known collections, such as 'default'. This method returns the dbus
          * object path of the collection.
-         *
+         * 
          * This method may block and should not be used in user interface threads.
          * @param alias the alias to lookup
          * @param cancellable optional cancellation object
          * @returns the collection dbus object path, or `null` if none assigned to the alias
          */
         read_alias_dbus_path_sync(alias: string, cancellable: Gio.Cancellable): string;
+
         /**
          * Search for items matching the `attributes`. All collections are searched.
          * The `attributes` should be a table of string keys and string values.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
          * search will be returned. Otherwise only the first item will be returned.
          * This is almost always the unlocked item that was most recently stored.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
          * if necessary. In either case, locked and unlocked items will match the
          * search and be returned. If the unlock fails, the search does not fail.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
          * their secret values loaded and available via `secret_item_get_secret()`.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param schema the schema for the attributes
          * @param attributes search for items matching these attributes
          * @param flags search option flags
          * @param cancellable optional cancellation object
          */
-        search(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<Item[]>;
+        search(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), flags: SearchFlags, cancellable: Gio.Cancellable): globalThis.Promise<Item[]>;
+
         /**
          * Search for items matching the `attributes`. All collections are searched.
          * The `attributes` should be a table of string keys and string values.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
          * search will be returned. Otherwise only the first item will be returned.
          * This is almost always the unlocked item that was most recently stored.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
          * if necessary. In either case, locked and unlocked items will match the
          * search and be returned. If the unlock fails, the search does not fail.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
          * their secret values loaded and available via `secret_item_get_secret()`.
-         *
-         * This function returns immediately and completes asynchronously.
-         * @param schema the schema for the attributes
-         * @param attributes search for items matching these attributes
-         * @param flags search option flags
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        search(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Search for items matching the `attributes`. All collections are searched.
-         * The `attributes` should be a table of string keys and string values.
-         *
-         * If `service` is NULL, then `secret_service_get()` will be called to get
-         * the default {@link SecretUnstable.Service} proxy.
-         *
-         * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
-         * search will be returned. Otherwise only the first item will be returned.
-         * This is almost always the unlocked item that was most recently stored.
-         *
-         * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
-         * if necessary. In either case, locked and unlocked items will match the
-         * search and be returned. If the unlock fails, the search does not fail.
-         *
-         * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
-         * their secret values loaded and available via `secret_item_get_secret()`.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
          * @param schema the schema for the attributes
          * @param attributes search for items matching these attributes
@@ -4180,26 +3937,49 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<Item[]> | void;
+        search(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), flags: SearchFlags, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Search for items matching the `attributes`. All collections are searched.
+         * The `attributes` should be a table of string keys and string values.
+         * 
+         * If `service` is NULL, then `secret_service_get()` will be called to get
+         * the default {@link SecretUnstable.Service} proxy.
+         * 
+         * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
+         * search will be returned. Otherwise only the first item will be returned.
+         * This is almost always the unlocked item that was most recently stored.
+         * 
+         * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
+         * if necessary. In either case, locked and unlocked items will match the
+         * search and be returned. If the unlock fails, the search does not fail.
+         * 
+         * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items will have
+         * their secret values loaded and available via `secret_item_get_secret()`.
+         * 
+         * This function returns immediately and completes asynchronously.
+         * @param schema the schema for the attributes
+         * @param attributes search for items matching these attributes
+         * @param flags search option flags
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        search(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), flags: SearchFlags, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<Item[]> | void);
+
         /**
          * Complete asynchronous operation to search for items.
          * @param result asynchronous result passed to callback
          * @returns a list of items that matched the search
          */
         search_finish(result: Gio.AsyncResult): Item[];
+
         /**
          * Search for items matching the `attributes`, and return their D-Bus object paths.
          * All collections are searched. The `attributes` should be a table of string keys
          * and string values.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
-         *
+         * 
          * When your callback is called use `secret_service_search_for_dbus_paths_finish()`
          * to get the results of this function. Only the D-Bus object paths of the
          * items will be returned. If you would like {@link SecretUnstable.Item} objects to be returned
@@ -4208,40 +3988,15 @@ export namespace SecretUnstable {
          * @param attributes search for items matching these attributes
          * @param cancellable optional cancellation object
          */
-        search_for_dbus_paths(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<[string[] | null, string[] | null]>;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): globalThis.Promise<[(string[] | null), (string[] | null)]>;
+
         /**
          * Search for items matching the `attributes`, and return their D-Bus object paths.
          * All collections are searched. The `attributes` should be a table of string keys
          * and string values.
-         *
+         * 
          * This function returns immediately and completes asynchronously.
-         *
-         * When your callback is called use `secret_service_search_for_dbus_paths_finish()`
-         * to get the results of this function. Only the D-Bus object paths of the
-         * items will be returned. If you would like {@link SecretUnstable.Item} objects to be returned
-         * instead, then use the `secret_service_search()` function.
-         * @param schema the schema for the attributes
-         * @param attributes search for items matching these attributes
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        search_for_dbus_paths(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Search for items matching the `attributes`, and return their D-Bus object paths.
-         * All collections are searched. The `attributes` should be a table of string keys
-         * and string values.
-         *
-         * This function returns immediately and completes asynchronously.
-         *
+         * 
          * When your callback is called use `secret_service_search_for_dbus_paths_finish()`
          * to get the results of this function. Only the D-Bus object paths of the
          * items will be returned. If you would like {@link SecretUnstable.Item} objects to be returned
@@ -4251,19 +4006,33 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        search_for_dbus_paths(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<[string[] | null, string[] | null]> | void;
+        search_for_dbus_paths(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Search for items matching the `attributes`, and return their D-Bus object paths.
+         * All collections are searched. The `attributes` should be a table of string keys
+         * and string values.
+         * 
+         * This function returns immediately and completes asynchronously.
+         * 
+         * When your callback is called use `secret_service_search_for_dbus_paths_finish()`
+         * to get the results of this function. Only the D-Bus object paths of the
+         * items will be returned. If you would like {@link SecretUnstable.Item} objects to be returned
+         * instead, then use the `secret_service_search()` function.
+         * @param schema the schema for the attributes
+         * @param attributes search for items matching these attributes
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        search_for_dbus_paths(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<[(string[] | null), (string[] | null)]> | void);
+
         /**
          * Complete asynchronous operation to search for items, and return their
          * D-Bus object paths.
-         *
+         * 
          * Matching items that are locked or unlocked, have their D-Bus paths placed
          * in the `locked` or `unlocked` arrays respectively.
-         *
+         * 
          * D-Bus object paths of the items will be returned in the `unlocked` or
          * `locked` arrays. If you would to have {@link SecretUnstable.Item} objects to be returned
          * instead, then us the `secret_service_search()` and
@@ -4272,17 +4041,18 @@ export namespace SecretUnstable {
          * @returns whether the search was successful or not
          */
         search_for_dbus_paths_finish(result: Gio.AsyncResult): [boolean, string[] | null, string[] | null];
+
         /**
          * Search for items matching the `attributes`, and return their D-Bus object
          * paths. All collections are searched. The `attributes` should be a table of
          * string keys and string values.
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
-         *
+         * 
          * Matching items that are locked or unlocked, have their D-Bus paths placed
          * in the `locked` or `unlocked` arrays respectively.
-         *
+         * 
          * D-Bus object paths of the items will be returned in the `unlocked` or
          * `locked` arrays. If you would to have {@link SecretUnstable.Item} objects to be returned
          * instead, then use the `secret_service_search_sync()` function.
@@ -4291,31 +4061,28 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns whether the search was successful or not
          */
-        search_for_dbus_paths_sync(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            cancellable: Gio.Cancellable,
-        ): [boolean, string[] | null, string[] | null];
+        search_for_dbus_paths_sync(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), cancellable: Gio.Cancellable): [boolean, string[] | null, string[] | null];
+
         /**
          * Search for items matching the `attributes`. All collections are searched.
          * The `attributes` should be a table of string keys and string values.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.ALL} is set in `flags`, then all the items matching the
          * search will be returned. Otherwise only the first item will be returned.
          * This is almost always the unlocked item that was most recently stored.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.UNLOCK} is set in `flags`, then items will be unlocked
          * if necessary. In either case, locked and unlocked items will match the
          * search and be returned. If the unlock fails, the search does not fail.
-         *
+         * 
          * If {@link SecretUnstable.SearchFlags.LOAD_SECRETS} is set in `flags`, then the items' secret
          * values will be loaded for any unlocked items. Loaded item secret values
          * are available via `secret_item_get_secret()`. If the load of a secret values
          * fail, then the
-         *
+         * 
          * This function may block indefinetely. Use the asynchronous version
          * in user interface threads.
          * @param schema the schema for the attributes
@@ -4324,76 +4091,66 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns a list of items that matched the search
          */
-        search_sync(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            flags: SearchFlags,
-            cancellable: Gio.Cancellable,
-        ): Item[];
+        search_sync(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), flags: SearchFlags, cancellable: Gio.Cancellable): Item[];
+
         /**
          * Assign a collection to this alias. Aliases help determine
          * well known collections, such as 'default'.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param alias the alias to assign the collection to
          * @param collection the collection to assign to the alias
          * @param cancellable optional cancellation object
          */
         set_alias(alias: string, collection: Collection, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Assign a collection to this alias. Aliases help determine
          * well known collections, such as 'default'.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param alias the alias to assign the collection to
          * @param collection the collection to assign to the alias
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        set_alias(
-            alias: string,
-            collection: Collection,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
+        set_alias(alias: string, collection: Collection, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Assign a collection to this alias. Aliases help determine
          * well known collections, such as 'default'.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param alias the alias to assign the collection to
          * @param collection the collection to assign to the alias
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        set_alias(
-            alias: string,
-            collection: Collection,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        set_alias(alias: string, collection: Collection, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation to assign a collection to an alias.
          * @param result asynchronous result passed to callback
          * @returns `true` if successful
          */
         set_alias_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Assign a collection to this alias. Aliases help determine
          * well known collections, such as 'default'.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block and should not be used in user interface threads.
          * @param alias the alias to assign the collection to
          * @param collection the collection to assign to the alias
@@ -4401,66 +4158,57 @@ export namespace SecretUnstable {
          * @returns `true` if successful
          */
         set_alias_sync(alias: string, collection: Collection, cancellable: Gio.Cancellable): boolean;
+
         /**
          * Assign a collection to this alias. Aliases help determine
          * well known collections, such as 'default'. This method takes the dbus object
          * path of the collection to assign to the alias.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param alias the alias to assign the collection to
          * @param collection_path the dbus object path of the collection to assign to the alias
          * @param cancellable optional cancellation object
          */
-        set_alias_to_dbus_path(
-            alias: string,
-            collection_path: string,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<boolean>;
+        set_alias_to_dbus_path(alias: string, collection_path: string, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Assign a collection to this alias. Aliases help determine
          * well known collections, such as 'default'. This method takes the dbus object
          * path of the collection to assign to the alias.
-         *
-         * This method will return immediately and complete asynchronously.
-         * @param alias the alias to assign the collection to
-         * @param collection_path the dbus object path of the collection to assign to the alias
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        set_alias_to_dbus_path(
-            alias: string,
-            collection_path: string,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Assign a collection to this alias. Aliases help determine
-         * well known collections, such as 'default'. This method takes the dbus object
-         * path of the collection to assign to the alias.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param alias the alias to assign the collection to
          * @param collection_path the dbus object path of the collection to assign to the alias
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        set_alias_to_dbus_path(
-            alias: string,
-            collection_path: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        set_alias_to_dbus_path(alias: string, collection_path: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Assign a collection to this alias. Aliases help determine
+         * well known collections, such as 'default'. This method takes the dbus object
+         * path of the collection to assign to the alias.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param alias the alias to assign the collection to
+         * @param collection_path the dbus object path of the collection to assign to the alias
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        set_alias_to_dbus_path(alias: string, collection_path: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish an asynchronous operation to assign a collection to an alias.
          * @param result asynchronous result passed to callback
          * @returns `true` if successful
          */
         set_alias_to_dbus_path_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Assign a collection to this alias. Aliases help determine
          * well known collections, such as 'default'. This method takes the dbus object
          * path of the collection to assign to the alias.
-         *
+         * 
          * This method may block and should not be used in user interface threads.
          * @param alias the alias to assign the collection to
          * @param collection_path the dbus object path of the collection to assign to the alias
@@ -4468,21 +4216,22 @@ export namespace SecretUnstable {
          * @returns `true` if successful
          */
         set_alias_to_dbus_path_sync(alias: string, collection_path: string, cancellable: Gio.Cancellable): boolean;
+
         /**
          * Store a secret value in the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If the attributes match a secret item already stored in the collection, then
          * the item will be updated with these new values.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * If `collection` is not specified, then the default collection will be
          * used. Use #SECRET_COLLECTION_SESSION to store the password in the session
          * collection, which doesn't get stored across login sessions.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param schema the schema to use to check attributes
          * @param attributes the attribute keys and values
@@ -4491,62 +4240,23 @@ export namespace SecretUnstable {
          * @param value the secret value
          * @param cancellable optional cancellation object
          */
-        store(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            collection: string,
-            label: string,
-            value: Value,
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<boolean>;
+        store(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), collection: string, label: string, value: Value, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
+
         /**
          * Store a secret value in the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If the attributes match a secret item already stored in the collection, then
          * the item will be updated with these new values.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * If `collection` is not specified, then the default collection will be
          * used. Use #SECRET_COLLECTION_SESSION to store the password in the session
          * collection, which doesn't get stored across login sessions.
-         *
-         * This method will return immediately and complete asynchronously.
-         * @param schema the schema to use to check attributes
-         * @param attributes the attribute keys and values
-         * @param collection a collection alias, or D-Bus object path of the collection where to store the secret
-         * @param label label for the secret
-         * @param value the secret value
-         * @param cancellable optional cancellation object
-         * @param callback called when the operation completes
-         */
-        store(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            collection: string,
-            label: string,
-            value: Value,
-            cancellable: Gio.Cancellable,
-            callback: Gio.AsyncReadyCallback<this>,
-        ): void;
-        /**
-         * Store a secret value in the secret service.
-         *
-         * The `attributes` should be a set of key and value string pairs.
-         *
-         * If the attributes match a secret item already stored in the collection, then
-         * the item will be updated with these new values.
-         *
-         * If `service` is NULL, then `secret_service_get()` will be called to get
-         * the default {@link SecretUnstable.Service} proxy.
-         *
-         * If `collection` is not specified, then the default collection will be
-         * used. Use #SECRET_COLLECTION_SESSION to store the password in the session
-         * collection, which doesn't get stored across login sessions.
-         *
+         * 
          * This method will return immediately and complete asynchronously.
          * @param schema the schema to use to check attributes
          * @param attributes the attribute keys and values
@@ -4556,36 +4266,56 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        store(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            collection: string,
-            label: string,
-            value: Value,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<boolean> | void;
+        store(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), collection: string, label: string, value: Value, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
+        /**
+         * Store a secret value in the secret service.
+         * 
+         * The `attributes` should be a set of key and value string pairs.
+         * 
+         * If the attributes match a secret item already stored in the collection, then
+         * the item will be updated with these new values.
+         * 
+         * If `service` is NULL, then `secret_service_get()` will be called to get
+         * the default {@link SecretUnstable.Service} proxy.
+         * 
+         * If `collection` is not specified, then the default collection will be
+         * used. Use #SECRET_COLLECTION_SESSION to store the password in the session
+         * collection, which doesn't get stored across login sessions.
+         * 
+         * This method will return immediately and complete asynchronously.
+         * @param schema the schema to use to check attributes
+         * @param attributes the attribute keys and values
+         * @param collection a collection alias, or D-Bus object path of the collection where to store the secret
+         * @param label label for the secret
+         * @param value the secret value
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        store(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), collection: string, label: string, value: Value, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<boolean> | void);
+
         /**
          * Finish asynchronous operation to store a secret value in the secret service.
          * @param result the asynchronous result passed to the callback
          * @returns whether the storage was successful or not
          */
         store_finish(result: Gio.AsyncResult): boolean;
+
         /**
          * Store a secret value in the secret service.
-         *
+         * 
          * The `attributes` should be a set of key and value string pairs.
-         *
+         * 
          * If the attributes match a secret item already stored in the collection, then
          * the item will be updated with these new values.
-         *
+         * 
          * If `collection` is `null`, then the default collection will be
          * used. Use #SECRET_COLLECTION_SESSION to store the password in the session
          * collection, which doesn't get stored across login sessions.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user interface
          * threads.
          * @param schema the schema for the attributes
@@ -4596,42 +4326,34 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @returns whether the storage was successful or not
          */
-        store_sync(
-            schema: Secret.Schema,
-            attributes: { [key: string]: any } | GLib.HashTable<string, string>,
-            collection: string,
-            label: string,
-            value: Value,
-            cancellable: Gio.Cancellable,
-        ): boolean;
+        store_sync(schema: Secret.Schema, attributes: ({ [key: string]: any } | GLib.HashTable<string, string>), collection: string, label: string, value: Value, cancellable: Gio.Cancellable): boolean;
+
         /**
          * Unlock items or collections in the secret service.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
          * @param objects the items or collections to unlock
          * @param cancellable optional cancellation object
          */
-        unlock(
-            objects: Gio.DBusProxy[],
-            cancellable: Gio.Cancellable,
-        ): globalThis.Promise<[number, Gio.DBusProxy[] | null]>;
+        unlock(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable): globalThis.Promise<[number, (Gio.DBusProxy[] | null)]>;
+
         /**
          * Unlock items or collections in the secret service.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
@@ -4640,15 +4362,16 @@ export namespace SecretUnstable {
          * @param callback called when the operation completes
          */
         unlock(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Unlock items or collections in the secret service.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
@@ -4656,38 +4379,36 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        unlock(
-            objects: Gio.DBusProxy[],
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<[number, Gio.DBusProxy[] | null]> | void;
+        unlock(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<[number, (Gio.DBusProxy[] | null)]> | void);
+
         /**
          * Unlock items or collections in the secret service.
-         *
+         * 
          * The items or collections are represented by their D-Bus object paths. If you
          * already have {@link SecretUnstable.Item} and {@link SecretUnstable.Collection} proxy objects, use use
          * `secret_service_unlock()` instead.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
          * @param paths the D-Bus paths for items or collections to unlock
          * @param cancellable optional cancellation object
          */
-        unlock_dbus_paths(paths: string, cancellable: Gio.Cancellable): globalThis.Promise<[number, string[] | null]>;
+        unlock_dbus_paths(paths: string, cancellable: Gio.Cancellable): globalThis.Promise<[number, (string[] | null)]>;
+
         /**
          * Unlock items or collections in the secret service.
-         *
+         * 
          * The items or collections are represented by their D-Bus object paths. If you
          * already have {@link SecretUnstable.Item} and {@link SecretUnstable.Collection} proxy objects, use use
          * `secret_service_unlock()` instead.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
@@ -4696,16 +4417,17 @@ export namespace SecretUnstable {
          * @param callback called when the operation completes
          */
         unlock_dbus_paths(paths: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
+
         /**
          * Unlock items or collections in the secret service.
-         *
+         * 
          * The items or collections are represented by their D-Bus object paths. If you
          * already have {@link SecretUnstable.Item} and {@link SecretUnstable.Collection} proxy objects, use use
          * `secret_service_unlock()` instead.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
-         *
+         * 
          * This method returns immediately and completes asynchronously. The secret
          * service may prompt the user. `secret_service_prompt()` will be used to handle
          * any prompts that show up.
@@ -4713,31 +4435,29 @@ export namespace SecretUnstable {
          * @param cancellable optional cancellation object
          * @param callback called when the operation completes
          */
-        unlock_dbus_paths(
-            paths: string,
-            cancellable: Gio.Cancellable,
-            callback?: Gio.AsyncReadyCallback<this>,
-        ): globalThis.Promise<[number, string[] | null]> | void;
+        unlock_dbus_paths(paths: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): (globalThis.Promise<[number, (string[] | null)]> | void);
+
         /**
          * Complete asynchronous operation to unlock items or collections in the secret
          * service.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
          * @param result asynchronous result passed to the callback
          * @returns the number of items or collections that were unlocked
          */
         unlock_dbus_paths_finish(result: Gio.AsyncResult): [number, string[] | null];
+
         /**
          * Unlock items or collections in the secret service.
-         *
+         * 
          * The items or collections are represented by their D-Bus object paths. If you
          * already have {@link SecretUnstable.Item} and {@link SecretUnstable.Collection} proxy objects, use use
          * `secret_service_unlock_sync()` instead.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
@@ -4746,25 +4466,27 @@ export namespace SecretUnstable {
          * @returns the number of items or collections that were unlocked
          */
         unlock_dbus_paths_sync(paths: string, cancellable: Gio.Cancellable): [number, string[] | null];
+
         /**
          * Complete asynchronous operation to unlock items or collections in the secret
          * service.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
          * @param result asynchronous result passed to the callback
          * @returns the number of items or collections that were unlocked
          */
         unlock_finish(result: Gio.AsyncResult): [number, Gio.DBusProxy[] | null];
+
         /**
          * Unlock items or collections in the secret service.
-         *
+         * 
          * The secret service may not be able to unlock items individually, and may
          * unlock an entire collection instead.
-         *
+         * 
          * If `service` is NULL, then `secret_service_get_sync()` will be called to get
          * the default {@link SecretUnstable.Service} proxy.
-         *
+         * 
          * This method may block indefinitely and should not be used in user
          * interface threads. The secret service may prompt the user.
          * `secret_service_prompt()` will be used to handle any prompts that show up.
@@ -4773,38 +4495,39 @@ export namespace SecretUnstable {
          * @returns the number of items or collections that were unlocked
          */
         unlock_sync(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable): [number, Gio.DBusProxy[] | null];
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -4813,85 +4536,40 @@ export namespace SecretUnstable {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
-         * For classes that also support the {@link Gio.Initable} interface, the default
-         * implementation of this method will run the `g_initable_init()` function
-         * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
-         * any interface methods.
-         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
-         */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Starts asynchronous initialization of the object implementing the
-         * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements {@link Gio.Initable} you can
-         * optionally call `g_initable_init()` instead.
-         *
-         * This method is intended for language bindings. If writing in C,
-         * `g_async_initable_new_async()` should typically be used instead.
-         *
-         * When the initialization is finished, `callback` will be called. You can
-         * then call `g_async_initable_init_finish()` to get the result of the
-         * initialization.
-         *
-         * Implementations may also support cancellation. If `cancellable` is not
-         * `null`, then initialization can be cancelled by triggering the cancellable
-         * object from another thread. If the operation was cancelled, the error
-         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
-         * the object doesn't support cancellable initialization, the error
-         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
-         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
-         * returns with an error, then all operations on the object except
-         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
-         * have undefined behaviour. They will often fail with `g_critical()` or
-         * `g_warning()`, but this must not be relied on.
-         *
-         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
-         * be initialized multiple times; for more information, see `g_initable_init()`.
-         * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to `init_async()` on the
-         * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -4901,11 +4579,51 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
-        init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         * 
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         * 
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         * 
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         * 
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         * 
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         * 
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -4913,6 +4631,7 @@ export namespace SecretUnstable {
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Finishes the async construction for the various g_async_initable_new
          * calls, returning the created object or `null` on error.
@@ -4920,43 +4639,45 @@ export namespace SecretUnstable {
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Service;
+
         /**
-         * @param args
+         * @param args 
          */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
+
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
          * initial construction. If the object also implements {@link Gio.Initable} you can
          * optionally call `g_initable_init()` instead.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_async_initable_new_async()` should typically be used instead.
-         *
+         * 
          * When the initialization is finished, `callback` will be called. You can
          * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not
          * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
          * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
          * have undefined behaviour. They will often fail with `g_critical()` or
          * `g_warning()`, but this must not be relied on.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
          * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
          * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
-         *
+         * 
          * For classes that also support the {@link Gio.Initable} interface, the default
          * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
@@ -4967,11 +4688,8 @@ export namespace SecretUnstable {
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          * @virtual
          */
-        vfunc_init_async(
-            io_priority: number,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_init_async(io_priority: number, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
@@ -4979,76 +4697,83 @@ export namespace SecretUnstable {
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
-        get_object(): Gio.DBusObject | null;
+        get_object(): (Gio.DBusObject | null);
+
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
         get_info(): Gio.DBusInterfaceInfo;
+
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         *
+         * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          */
-        set_object(object: Gio.DBusObject | null): void;
+        set_object(object: (Gio.DBusObject | null)): void;
+
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @virtual
          */
-        vfunc_dup_object(): Gio.DBusObject | null;
+        vfunc_dup_object(): (Gio.DBusObject | null);
+
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo;
+
         /**
          * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
-         *
+         * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
          * @virtual
          */
-        vfunc_set_object(object: Gio.DBusObject | null): void;
+        vfunc_set_object(object: (Gio.DBusObject | null)): void;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -5058,40 +4783,41 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
         /**
          * Initializes the object implementing the interface.
-         *
+         * 
          * This method is intended for language bindings. If writing in C,
          * `g_initable_new()` should typically be used instead.
-         *
+         * 
          * The object must be initialized before any real use after initial
          * construction, either with this function or `g_async_initable_init_async()`.
-         *
+         * 
          * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
          * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
          * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
-         *
+         * 
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except `g_object_ref()` and
          * `g_object_unref()` are considered to be invalid, and have undefined
          * behaviour. See the [description][iface@Gio.Initable#description] for more details.
-         *
+         * 
          * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
          * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
          * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
-         *
+         * 
          * If a class explicitly supports being initialized multiple times, it is
          * recommended that the method is idempotent: multiple calls with the same
          * arguments should return the same results. Only the first call initializes
          * the object; further calls return the result of the first call.
-         *
+         * 
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
          * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
@@ -5101,13 +4827,15 @@ export namespace SecretUnstable {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
     }
+
 
     /**
      * @gir-type Alias
      */
     type CollectionClass = typeof Collection;
+
     /**
      * @gir-type Struct
      */
@@ -5115,10 +4843,12 @@ export namespace SecretUnstable {
         static $gtype: GObject.GType<CollectionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ItemClass = typeof Item;
+
     /**
      * @gir-type Struct
      */
@@ -5126,10 +4856,12 @@ export namespace SecretUnstable {
         static $gtype: GObject.GType<ItemPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PromptClass = typeof Prompt;
+
     /**
      * @gir-type Struct
      */
@@ -5137,16 +4869,19 @@ export namespace SecretUnstable {
         static $gtype: GObject.GType<PromptPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ServiceClass = typeof Service;
+
     /**
      * @gir-type Struct
      */
     abstract class ServicePrivate {
         static $gtype: GObject.GType<ServicePrivate>;
     }
+
 
     /**
      * A secret value, like a password or other binary secret.
@@ -5156,15 +4891,13 @@ export namespace SecretUnstable {
         static $gtype: GObject.GType<Value>;
 
         // Constructors
+        constructor(secret: string, length: (bigint | number), content_type: string);
 
-        constructor(secret: string, length: bigint | number, content_type: string);
+        static ["new"](secret: string, length: (bigint | number), content_type: string): Value;
 
-        static ['new'](secret: string, length: bigint | number, content_type: string): Value;
-
-        static new_full(secret: string, length: bigint | number, content_type: string): Value;
+        static new_full(secret: string, length: (bigint | number), content_type: string): Value;
 
         // Methods
-
         /**
          * Get the secret data in the {@link SecretUnstable.Value}. The value is not necessarily
          * null-terminated unless it was created with `secret_value_new()` or a
@@ -5172,24 +4905,28 @@ export namespace SecretUnstable {
          * @returns the secret data
          */
         get(): Uint8Array;
+
         /**
          * Get the content type of the secret value, such as
          * <literal>text/plain</literal>.
          * @returns the content type
          */
         get_content_type(): string;
+
         /**
          * Get the secret data in the {@link SecretUnstable.Value} if it contains a textual
          * value. The content type must be <literal>text/plain</literal>.
          * @returns the content type
          */
         get_text(): string;
+
         /**
          * Add another reference to the {@link SecretUnstable.Value}. For each reference
          * `secret_value_unref()` should be called to unreference the value.
          * @returns the value
          */
         ref(): Value;
+
         /**
          * Unreference a {@link SecretUnstable.Value}. When the last reference is gone, then
          * the value will be freed.
@@ -5197,11 +4934,13 @@ export namespace SecretUnstable {
         unref(): void;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

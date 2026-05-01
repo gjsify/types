@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -16,9 +17,11 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 
 export namespace Signon {
+
     /**
      * Signon-2.0
      */
+
 
     /**
      * Possible Signon errors.
@@ -28,153 +31,186 @@ export namespace Signon {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         /**
          * Catch-all for errors not distinguished by another code.
          */
         static UNKNOWN: number;
+
         /**
          * Signon daemon internal error.
          */
         static INTERNAL_SERVER: number;
+
         /**
          * Error communicating with Sigon daemon.
          */
         static INTERNAL_COMMUNICATION: number;
+
         /**
          * The operation cannot be performed due to
          * insufficient client permissions.
          */
         static PERMISSION_DENIED: number;
+
         /**
          * The method with this name was not found.
          */
         static METHOD_NOT_KNOWN: number;
+
         /**
          * The service is temporarily unavailable.
          */
         static SERVICE_NOT_AVAILABLE: number;
+
         /**
          * Parameters for the query are invalid.
          */
         static INVALID_QUERY: number;
+
         /**
          * The requested method is not available.
          */
         static METHOD_NOT_AVAILABLE: number;
+
         /**
          * The identity mathching the {@link Signon.Identity}
          * was not found on the service.
          */
         static IDENTITY_NOT_FOUND: number;
+
         /**
          * Storing credentials failed.
          */
         static STORE_FAILED: number;
+
         /**
          * Removing credentials failed.
          */
         static REMOVE_FAILED: number;
+
         /**
          * Signing out failed.
          */
         static SIGNOUT_FAILED: number;
+
         /**
          * Identity operation was canceled
          * by the user.
          */
         static IDENTITY_OPERATION_CANCELED: number;
+
         /**
          * Query failed.
          */
         static CREDENTIALS_NOT_AVAILABLE: number;
+
         /**
          * Trying to remove non-existent reference.
          */
         static REFERENCE_NOT_FOUND: number;
+
         /**
          * The requested mechanism in not
          * available.
          */
         static MECHANISM_NOT_AVAILABLE: number;
+
         /**
          * The `SessionData` does not contain the necessary
          * information.
          */
         static MISSING_DATA: number;
+
         /**
          * The supplied credentials are invalid for
          * the mechanism implementation.
          */
         static INVALID_CREDENTIALS: number;
+
         /**
          * Authorization failed.
          */
         static NOT_AUTHORIZED: number;
+
         /**
          * An operation method has been called in an
          * incorrect state.
          */
         static WRONG_STATE: number;
+
         /**
          * The operation is not supported by the
          * mechanism implementation.
          */
         static OPERATION_NOT_SUPPORTED: number;
+
         /**
          * No network connection.
          */
         static NO_CONNECTION: number;
+
         /**
          * Network connection failed.
          */
         static NETWORK: number;
+
         /**
          * SSL connection failed.
          */
         static SSL: number;
+
         /**
          * Casting `SessionData` into subclass failed.
          */
         static RUNTIME: number;
+
         /**
          * Challenge was canceled.
          */
         static SESSION_CANCELED: number;
+
         /**
          * Challenge timed out.
          */
         static TIMED_OUT: number;
+
         /**
          * User interaction dialog failed.
          */
         static USER_INTERACTION: number;
+
         /**
          * Temporary failure in authentication.
          */
         static OPERATION_FAILED: number;
+
         /**
          * `deprecated`: Failure during data
          * encryption/decryption.
          */
         static ENCRYPTION_FAILED: number;
+
         /**
          * User declined Terms of Service.
          */
         static TOS_NOT_ACCEPTED: number;
+
         /**
          * User requested password reset sequence.
          */
         static FORGOT_PASSWORD: number;
+
         /**
          * Method or mechanism not
          * allowed for this identity.
          */
         static METHOD_OR_MECHANISM_NOT_ALLOWED: number;
+
         /**
          * Date/time incorrect on device.
          */
         static INCORRECT_DATE: number;
+
         /**
          * Placeholder to rearrange enumeration - userspace
          * specific.
@@ -182,13 +218,12 @@ export namespace Signon {
         static USER_ERROR: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
 
         // Static methods
-
         static quark(): GLib.Quark;
     }
+
 
     /**
      * @gir-type Enum
@@ -221,43 +256,54 @@ export namespace Signon {
         VALIDATION,
     }
 
+
     /**
      * Caption for the UI dialog.
      */
     const SESSION_DATA_CAPTION: string;
+
     /**
      * Proxy.
      */
     const SESSION_DATA_PROXY: string;
+
     /**
      * Realm.
      */
     const SESSION_DATA_REALM: string;
+
     /**
      * Requests the signon plugin to obtain a new token (boolean).
      */
     const SESSION_DATA_RENEW_TOKEN: string;
+
     /**
      * Secret.
      */
     const SESSION_DATA_SECRET: string;
+
     /**
      * Network timeout, in milliseconds (uint32).
      */
     const SESSION_DATA_TIMEOUT: string;
+
     /**
      * Policy for the signon process.
      */
     const SESSION_DATA_UI_POLICY: string;
+
     /**
      * Username.
      */
     const SESSION_DATA_USERNAME: string;
+
     /**
      * Platform-specific window id (for dialog transiency) - uint32.
      */
     const SESSION_DATA_WINDOW_ID: string;
+
     function error_quark(): GLib.Quark;
+
     /**
      * @gir-type Flags
      */
@@ -288,13 +334,16 @@ export namespace Signon {
         NETWORK,
     }
 
+
     namespace AuthService {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -314,70 +363,56 @@ export namespace Signon {
         $signals: AuthService.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AuthService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): AuthService;
+        static ["new"](): AuthService;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AuthService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AuthService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AuthService.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AuthService.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AuthService.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AuthService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AuthService.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * Lists all the available mechanisms.
+         * @param method the name of the method whose mechanisms must be retrieved.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         */
+        get_mechanisms(method: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
 
         /**
          * Lists all the available mechanisms.
          * @param method the name of the method whose mechanisms must be retrieved.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a callback to execute upon completion
          */
-        get_mechanisms(method: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
+        get_mechanisms(method: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
          * Lists all the available mechanisms.
          * @param method the name of the method whose mechanisms must be retrieved.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        get_mechanisms(
-            method: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
-        /**
-         * Lists all the available mechanisms.
-         * @param method the name of the method whose mechanisms must be retrieved.
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a callback to execute upon completion
-         */
-        get_mechanisms(
-            method: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string[]> | void;
+        get_mechanisms(method: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+
         /**
          * Completes an asynchronous request to `signon_auth_service_get_mechanisms()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns A list of available mechanisms.
          */
         get_mechanisms_finish(result: Gio.AsyncResult): string[];
+
         /**
          * Lists all the available mechanisms.
          * This is a blocking version of `signon_auth_service_get_mechanisms()`.
@@ -385,41 +420,44 @@ export namespace Signon {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A list of available mechanisms.
          */
-        get_mechanisms_sync(method: string, cancellable: Gio.Cancellable | null): string[];
+        get_mechanisms_sync(method: string, cancellable: (Gio.Cancellable | null)): string[];
+
         /**
          * Lists all the available methods.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          */
-        get_methods(cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
-        /**
-         * Lists all the available methods.
-         * @param cancellable a {@link Gio.Cancellable} or `null`
-         * @param callback a callback to execute upon completion
-         */
-        get_methods(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        get_methods(cancellable: (Gio.Cancellable | null)): globalThis.Promise<string[]>;
+
         /**
          * Lists all the available methods.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
          */
-        get_methods(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<string[]> | void;
+        get_methods(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Lists all the available methods.
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback a callback to execute upon completion
+         */
+        get_methods(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<string[]> | void);
+
         /**
          * Completes an asynchronous request to `signon_auth_service_get_methods()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns A list of available methods.
          */
         get_methods_finish(result: Gio.AsyncResult): string[];
+
         /**
          * Lists all the available methods.
          * This is a blocking version of `signon_auth_service_get_methods()`.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A list of available methods.
          */
-        get_methods_sync(cancellable: Gio.Cancellable | null): string[];
+        get_methods_sync(cancellable: (Gio.Cancellable | null)): string[];
     }
+
 
     namespace AuthSession {
         // Signal signatures
@@ -430,12 +468,13 @@ export namespace Signon {
              * @action
              * @run-last
              */
-            'state-changed': (arg0: number, arg1: string) => void;
+            "state-changed": (arg0: number, arg1: string) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        }
     }
 
     /**
@@ -455,45 +494,37 @@ export namespace Signon {
         $signals: AuthSession.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<AuthSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](id: number, method_name: string): AuthSession;
+        static ["new"](id: number, method_name: string): AuthSession;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof AuthSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof AuthSession.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof AuthSession.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof AuthSession.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof AuthSession.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<AuthSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof AuthSession.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<AuthSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Cancel the authentication session.
          */
         cancel(): void;
+
         /**
          * Get the current authentication method.
          * @returns the authentication method being used, or `null` on failure.
          */
         get_method(): string;
+
         /**
          * Performs one step of the authentication process. If the {@link Signon.AuthSession}
          * object is bound to an existing identity, the identity properties such as
@@ -505,29 +536,8 @@ export namespace Signon {
          * @param mechanism the authentication mechanism to be used.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        process(
-            session_data: GLib.Variant,
-            mechanism: string,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<GLib.Variant>;
-        /**
-         * Performs one step of the authentication process. If the {@link Signon.AuthSession}
-         * object is bound to an existing identity, the identity properties such as
-         * username and password will be also passed to the authentication plugin, so
-         * there's no need to fill them into `session_data`.
-         * `session_data` can be used to add additional authentication parameters to the
-         * session, or to override the parameters otherwise taken from the identity.
-         * @param session_data a dictionary of parameters.
-         * @param mechanism the authentication mechanism to be used.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a callback which will be called when the authentication reply is available.
-         */
-        process(
-            session_data: GLib.Variant,
-            mechanism: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        process(session_data: GLib.Variant, mechanism: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<GLib.Variant>;
+
         /**
          * Performs one step of the authentication process. If the {@link Signon.AuthSession}
          * object is bound to an existing identity, the identity properties such as
@@ -540,12 +550,22 @@ export namespace Signon {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the authentication reply is available.
          */
-        process(
-            session_data: GLib.Variant,
-            mechanism: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<GLib.Variant> | void;
+        process(session_data: GLib.Variant, mechanism: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Performs one step of the authentication process. If the {@link Signon.AuthSession}
+         * object is bound to an existing identity, the identity properties such as
+         * username and password will be also passed to the authentication plugin, so
+         * there's no need to fill them into `session_data`.
+         * `session_data` can be used to add additional authentication parameters to the
+         * session, or to override the parameters otherwise taken from the identity.
+         * @param session_data a dictionary of parameters.
+         * @param mechanism the authentication mechanism to be used.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a callback which will be called when the authentication reply is available.
+         */
+        process(session_data: GLib.Variant, mechanism: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<GLib.Variant> | void);
+
         /**
          * Collect the result of the `signon_auth_session_process()` operation.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_auth_session_process()`.
@@ -553,6 +573,7 @@ export namespace Signon {
          */
         process_finish(res: Gio.AsyncResult): GLib.Variant;
     }
+
 
     namespace Identity {
         // Signal signatures
@@ -562,12 +583,11 @@ export namespace Signon {
              * @signal
              * @run-last
              */
-            'signed-out': () => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
+            "signed-out": () => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             id: number;
         }
@@ -581,7 +601,6 @@ export namespace Signon {
         static $gtype: GObject.GType<Identity>;
 
         // Properties
-
         /**
          * @construct-only
          */
@@ -597,119 +616,107 @@ export namespace Signon {
         $signals: Identity.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Identity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Identity;
+        static ["new"](): Identity;
 
         static new_from_db(id: number): Identity;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Identity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Identity.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Identity.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Identity.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Identity.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Identity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Identity.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Identity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
          * Creates an authentication session for this identity.
          * @param method method.
          * @returns a new {@link Signon.AuthSession}.
          */
         create_session(method: string): AuthSession;
+
         /**
          * Get the id of the `identity`.
          * @returns the id of the {@link Signon.Identity}, or 0 if the identity has not being registered.
          */
         get_id(): number;
+
         /**
          * Get the most recent error that occurred on `identity`.
          * @returns a {@link GLib.Error} containing the most recent error, or `null` on failure.
          */
         get_last_error(): GLib.Error;
+
         /**
          * Fetches the {@link Signon.IdentityInfo} associated with this identity.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        query_info(cancellable: Gio.Cancellable | null): globalThis.Promise<IdentityInfo>;
-        /**
-         * Fetches the {@link Signon.IdentityInfo} associated with this identity.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a callback which will be called when the {@link Signon.IdentityInfo} is available.
-         */
-        query_info(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        query_info(cancellable: (Gio.Cancellable | null)): globalThis.Promise<IdentityInfo>;
+
         /**
          * Fetches the {@link Signon.IdentityInfo} associated with this identity.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the {@link Signon.IdentityInfo} is available.
          */
-        query_info(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<IdentityInfo> | void;
+        query_info(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Fetches the {@link Signon.IdentityInfo} associated with this identity.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a callback which will be called when the {@link Signon.IdentityInfo} is available.
+         */
+        query_info(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<IdentityInfo> | void);
+
         /**
          * Collect the result of the `signon_identity_query_info()` operation.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_identity_query_info()`.
          * @returns the {@link Signon.IdentityInfo} associated with this identity.
          */
         query_info_finish(res: Gio.AsyncResult): IdentityInfo;
+
         /**
          * Removes the corresponding credentials record from the database.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        remove(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Removes the corresponding credentials record from the database.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a callback which will be called when the operation has completed.
-         */
-        remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        remove(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Removes the corresponding credentials record from the database.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the operation has completed.
          */
-        remove(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        remove(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param res
+         * Removes the corresponding credentials record from the database.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a callback which will be called when the operation has completed.
+         */
+        remove(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
+        /**
+         * @param res 
          */
         remove_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Asks signond to close all authentication sessions for this
          * identity, and to remove any stored secrets associated with it (password and
          * authentication tokens).
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        sign_out(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Asks signond to close all authentication sessions for this
-         * identity, and to remove any stored secrets associated with it (password and
-         * authentication tokens).
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a callback which will be called when the operation has completed.
-         */
-        sign_out(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        sign_out(cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Asks signond to close all authentication sessions for this
          * identity, and to remove any stored secrets associated with it (password and
@@ -717,76 +724,75 @@ export namespace Signon {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the operation has completed.
          */
-        sign_out(
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        sign_out(cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param res
+         * Asks signond to close all authentication sessions for this
+         * identity, and to remove any stored secrets associated with it (password and
+         * authentication tokens).
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a callback which will be called when the operation has completed.
+         */
+        sign_out(cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
+        /**
+         * @param res 
          */
         sign_out_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Stores the data from `info` into the identity.
          * @param info the {@link Signon.IdentityInfo} data to store.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        store_info(info: IdentityInfo, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Stores the data from `info` into the identity.
-         * @param info the {@link Signon.IdentityInfo} data to store.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a callback which will be called when the authentication reply is available.
-         */
-        store_info(
-            info: IdentityInfo,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        store_info(info: IdentityInfo, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Stores the data from `info` into the identity.
          * @param info the {@link Signon.IdentityInfo} data to store.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the authentication reply is available.
          */
-        store_info(
-            info: IdentityInfo,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        store_info(info: IdentityInfo, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Stores the data from `info` into the identity.
+         * @param info the {@link Signon.IdentityInfo} data to store.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a callback which will be called when the authentication reply is available.
+         */
+        store_info(info: IdentityInfo, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Collect the result of the `signon_identity_store_info()` operation.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_identity_store_info()`.
          * @returns `true` if the info has been stored, `false` otherwise.
          */
         store_info_finish(res: Gio.AsyncResult): boolean;
+
         /**
          * Verifies the given secret.
          * @param secret the secret (password) to be verified.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
-        verify_secret(secret: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
-        /**
-         * Verifies the given secret.
-         * @param secret the secret (password) to be verified.
-         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
-         * @param callback a callback which will be called when the verification is done.
-         */
-        verify_secret(
-            secret: string,
-            cancellable: Gio.Cancellable | null,
-            callback: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        verify_secret(secret: string, cancellable: (Gio.Cancellable | null)): globalThis.Promise<boolean>;
+
         /**
          * Verifies the given secret.
          * @param secret the secret (password) to be verified.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the verification is done.
          */
-        verify_secret(
-            secret: string,
-            cancellable: Gio.Cancellable | null,
-            callback?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        verify_secret(secret: string, cancellable: (Gio.Cancellable | null), callback: (Gio.AsyncReadyCallback<this> | null)): void;
+
+        /**
+         * Verifies the given secret.
+         * @param secret the secret (password) to be verified.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a callback which will be called when the verification is done.
+         */
+        verify_secret(secret: string, cancellable: (Gio.Cancellable | null), callback?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
          * Collect the result of the `signon_identity_verify_secret()` operation.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_identity_verify_secret()`.
@@ -795,18 +801,22 @@ export namespace Signon {
         verify_secret_finish(res: Gio.AsyncResult): boolean;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AuthServiceClass = typeof AuthService;
+
     /**
      * @gir-type Alias
      */
     type AuthSessionClass = typeof AuthSession;
+
     /**
      * @gir-type Alias
      */
     type IdentityClass = typeof Identity;
+
     /**
      * Opaque struct. Use the accessor functions below.
      * @gir-type Struct
@@ -816,89 +826,105 @@ export namespace Signon {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): IdentityInfo;
+        }>);
+
+        static ["new"](): IdentityInfo;
 
         // Methods
-
         /**
          * Add an ACL to this identity. This is an helper function.
          * @param system_context the system context to add.
          * @param application_context the application context to add.
          */
         add_access_control(system_context: string, application_context: string): void;
+
         /**
          * Get a newly-allocated copy of `info`.
          * @returns a copy of the given {@link Signon.IdentityInfo}, or `null` on failure.
          */
         copy(): IdentityInfo;
+
         /**
          * Destroys the given {@link Signon.IdentityInfo} item.
          */
         free(): void;
+
         /**
          * Get an array of ACL statements of the identity.
          * @returns a {@link GLib.List} of {@link Signon.SecurityContext} representing ACL statements. Each element should be freed with `signon_security_context_copy()` after use.
          */
         get_access_control_list(): SecurityContext[];
+
         /**
          * Get the display name of `info`.
          * @returns the display name for the identity.
          */
         get_caption(): string;
+
         /**
          * Get the numeric ID of `info`.
          * @returns the numeric ID of the identity.
          */
         get_id(): number;
+
         /**
          * Get the type of the identity.
          * @returns the type of the identity.
          */
         get_identity_type(): IdentityType;
+
         /**
          * Get a hash table of the methods and mechanisms of `info`.
          * @returns the table of allowed methods and mechanisms.
          */
         get_methods(): GLib.HashTable;
+
         /**
          * Get an array of the realms of `info`.
          * @returns a `null` terminated array of realms.
          */
         get_realms(): string[];
+
         /**
          * Get whether the secret of `info` should be stored.
          * @returns `true` if Signon must store the secret, `false` otherwise.
          */
         get_storing_secret(): boolean;
+
         /**
          * Get the username of `info`.
          * @returns the username, or `null`.
          */
         get_username(): string;
+
         /**
          * Remove `method` from the list of allowed authentication methods. If all
          * methods are removed, then all methods are allowed.
          * @param method an authentication method.
          */
         remove_method(method: string): void;
+
         /**
          * Specifies the ACL for this identity. The actual meaning of the ACL depends
          * on the security framework used by signond.
          * @param access_control_list a {@link GLib.List} of {@link Signon.SecurityContext} representing ACL security domains.
          */
         set_access_control_list(access_control_list: SecurityContext[]): void;
+
         /**
          * Sets the caption (display name) for the identity.
          * @param caption the caption.
          */
         set_caption(caption: string): void;
+
         /**
          * Specifies the type of this identity.
          * @param type the type of the identity.
          */
         set_identity_type(type: IdentityType): void;
+
         /**
          * Adds a method to the list of allowed methods. If this method is not called
          * even once, then all methods are allowed.
@@ -907,11 +933,13 @@ export namespace Signon {
          * @param mechanisms a `null`-termianted list of mechanisms.
          */
         set_method(method: string, mechanisms: string[]): void;
+
         /**
          * Specify what realms this identity can be used in.
          * @param realms a `null`-terminated list of realms.
          */
         set_realms(realms: string[]): void;
+
         /**
          * Sets the secret (password) for the identity, and whether the signon daemon
          * should remember it.
@@ -919,12 +947,14 @@ export namespace Signon {
          * @param store_secret whether signond should store the secret in its DB.
          */
         set_secret(secret: string, store_secret: boolean): void;
+
         /**
          * Sets the username for the identity.
          * @param username the username.
          */
         set_username(username: string): void;
     }
+
 
     /**
      * Opaque struct. Use the accessor functions below.
@@ -935,38 +965,44 @@ export namespace Signon {
 
         // Constructors
 
-        constructor(properties?: Partial<{}>);
+        constructor(properties?: Partial<{
 
-        static ['new'](): SecurityContext;
+        }>);
+
+        static ["new"](): SecurityContext;
 
         static new_from_values(system_context: string, application_context: string): SecurityContext;
 
         // Methods
-
         /**
          * Get a newly-allocated copy of `info`.
          * @returns a copy of the given {@link Signon.IdentityInfo}, or `null` on failure.
          */
         copy(): SecurityContext;
+
         /**
          * Destroys the given {@link Signon.SecurityContext} item.
          */
         free(): void;
+
         /**
          * Get the application context of `ctx`.
          * @returns the application context.
          */
         get_application_context(): string;
+
         /**
          * Get the system context of `ctx`.
          * @returns the system context.
          */
         get_system_context(): string;
+
         /**
          * Sets the application context.
          * @param application_context the application context.
          */
         set_application_context(application_context: string): void;
+
         /**
          * Sets the system context.
          * @param system_context the system context.
@@ -974,11 +1010,13 @@ export namespace Signon {
         set_system_context(system_context: string): void;
     }
 
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 import type Poppler018 from '@girs/poppler-0.18';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

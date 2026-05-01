@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -30,9 +31,11 @@ import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
 export namespace Midori {
+
     /**
      * Midori-0.6
      */
+
 
     /**
      * @gir-type Enum
@@ -48,6 +51,7 @@ export namespace Midori {
         NONE,
         HISTORY,
     }
+
 
     /**
      * @gir-type Enum
@@ -66,6 +70,7 @@ export namespace Midori {
         DELAYED_PAGES,
     }
 
+
     /**
      * @gir-type Enum
      */
@@ -82,6 +87,7 @@ export namespace Midori {
         NONE,
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -89,50 +95,55 @@ export namespace Midori {
         static $gtype: GObject.GType<GLib.Error>;
 
         // Static fields
-
         static OPEN: number;
+
         static NAMING: number;
+
         static FILENAME: number;
+
         static EXECUTE: number;
+
         static COMPILE: number;
+
         static TYPE: number;
 
         // Constructors
-
-        constructor(options: { message: string; code: number });
+        constructor(options: { message: string, code: number });
     }
 
+
     const keys: GLib.DebugKey[];
+
     /**
      * @gir-type Callback
      */
     interface DatabaseCallback {
         (): boolean;
     }
+
     namespace App {
         // Signal signatures
         interface SignalSignatures extends Gtk.Application.SignalSignatures {
-            'notify::exec-path': (pspec: GObject.ParamSpec) => void;
-            'notify::active-window': (pspec: GObject.ParamSpec) => void;
-            'notify::app-menu': (pspec: GObject.ParamSpec) => void;
-            'notify::menubar': (pspec: GObject.ParamSpec) => void;
-            'notify::register-session': (pspec: GObject.ParamSpec) => void;
-            'notify::screensaver-active': (pspec: GObject.ParamSpec) => void;
-            'notify::action-group': (pspec: GObject.ParamSpec) => void;
-            'notify::application-id': (pspec: GObject.ParamSpec) => void;
-            'notify::flags': (pspec: GObject.ParamSpec) => void;
-            'notify::inactivity-timeout': (pspec: GObject.ParamSpec) => void;
-            'notify::is-busy': (pspec: GObject.ParamSpec) => void;
-            'notify::is-registered': (pspec: GObject.ParamSpec) => void;
-            'notify::is-remote': (pspec: GObject.ParamSpec) => void;
-            'notify::resource-base-path': (pspec: GObject.ParamSpec) => void;
-            'notify::version': (pspec: GObject.ParamSpec) => void;
+            "notify::exec-path": (pspec: GObject.ParamSpec) => void;
+            "notify::active-window": (pspec: GObject.ParamSpec) => void;
+            "notify::app-menu": (pspec: GObject.ParamSpec) => void;
+            "notify::menubar": (pspec: GObject.ParamSpec) => void;
+            "notify::register-session": (pspec: GObject.ParamSpec) => void;
+            "notify::screensaver-active": (pspec: GObject.ParamSpec) => void;
+            "notify::action-group": (pspec: GObject.ParamSpec) => void;
+            "notify::application-id": (pspec: GObject.ParamSpec) => void;
+            "notify::flags": (pspec: GObject.ParamSpec) => void;
+            "notify::inactivity-timeout": (pspec: GObject.ParamSpec) => void;
+            "notify::is-busy": (pspec: GObject.ParamSpec) => void;
+            "notify::is-registered": (pspec: GObject.ParamSpec) => void;
+            "notify::is-remote": (pspec: GObject.ParamSpec) => void;
+            "notify::resource-base-path": (pspec: GObject.ParamSpec) => void;
+            "notify::version": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Application.ConstructorProps {
-            exec_path: Gio.File | null;
+            exec_path: (Gio.File | null);
             execPath: Gio.File;
         }
     }
@@ -144,9 +155,9 @@ export namespace Midori {
         static $gtype: GObject.GType<App>;
 
         // Properties
+        get exec_path(): (Gio.File | null);
+        set exec_path(val: (Gio.File | null));
 
-        get exec_path(): Gio.File | null;
-        set exec_path(val: Gio.File | null);
         get execPath(): Gio.File;
         set execPath(val: Gio.File);
 
@@ -160,42 +171,34 @@ export namespace Midori {
         $signals: App.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): App;
+        static ["new"](): App;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof App.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof App.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, App.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof App.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        get_exec_path(): (Gio.File | null);
 
-        get_exec_path(): Gio.File | null;
         /**
-         * @param value
+         * @param value 
          */
-        set_exec_path(value: Gio.File | null): void;
+        set_exec_path(value: (Gio.File | null)): void;
     }
+
 
     namespace Browser {
         // Signal signatures
@@ -203,101 +206,100 @@ export namespace Midori {
             /**
              * @signal
              */
-            'default-tab': () => boolean | void;
-            'notify::web-context': (pspec: GObject.ParamSpec) => void;
-            'notify::is-loading': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::tab': (pspec: GObject.ParamSpec) => void;
-            'notify::trash': (pspec: GObject.ParamSpec) => void;
-            'notify::is-fullscreen': (pspec: GObject.ParamSpec) => void;
-            'notify::is-locked': (pspec: GObject.ParamSpec) => void;
-            'notify::show-menubar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "default-tab": () => (boolean | void);
+            "notify::web-context": (pspec: GObject.ParamSpec) => void;
+            "notify::is-loading": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::tab": (pspec: GObject.ParamSpec) => void;
+            "notify::trash": (pspec: GObject.ParamSpec) => void;
+            "notify::is-fullscreen": (pspec: GObject.ParamSpec) => void;
+            "notify::is-locked": (pspec: GObject.ParamSpec) => void;
+            "notify::show-menubar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.ApplicationWindow.ConstructorProps {
             web_context: WebKit2.WebContext;
             webContext: WebKit2.WebContext;
             is_loading: boolean;
             isLoading: boolean;
-            uri: string | null;
-            tab: Tab | null;
+            uri: (string | null);
+            tab: (Tab | null);
             trash: Gio.ListStore;
             is_fullscreen: boolean;
             isFullscreen: boolean;
@@ -313,27 +315,36 @@ export namespace Midori {
         static $gtype: GObject.GType<Browser>;
 
         // Properties
-
         get web_context(): WebKit2.WebContext;
         set web_context(val: WebKit2.WebContext);
+
         get webContext(): WebKit2.WebContext;
         set webContext(val: WebKit2.WebContext);
+
         get is_loading(): boolean;
         set is_loading(val: boolean);
+
         get isLoading(): boolean;
         set isLoading(val: boolean);
-        get uri(): string | null;
-        set uri(val: string | null);
-        get tab(): Tab | null;
-        set tab(val: Tab | null);
+
+        get uri(): (string | null);
+        set uri(val: (string | null));
+
+        get tab(): (Tab | null);
+        set tab(val: (Tab | null));
+
         get trash(): Gio.ListStore;
         set trash(val: Gio.ListStore);
+
         get is_fullscreen(): boolean;
         set is_fullscreen(val: boolean);
+
         get isFullscreen(): boolean;
         set isFullscreen(val: boolean);
+
         get is_locked(): boolean;
         set is_locked(val: boolean);
+
         get isLocked(): boolean;
         set isLocked(val: boolean);
 
@@ -347,180 +358,189 @@ export namespace Midori {
         $signals: Browser.SignalSignatures;
 
         // Fields
-
         tabs: Gtk.Stack;
+
         overlay: Gtk.Overlay;
+
         statusbar: Statusbar;
 
         // Constructors
-
         constructor(properties?: Partial<Browser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](app: App, is_locked: boolean): Browser;
-        // Conflicted with Gtk.ApplicationWindow.new
+        static ["new"](app: App, is_locked: boolean): Browser;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.ApplicationWindow.new
+        static ["new"](...args: never[]): any;
 
         static incognito(app: App): Browser;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Browser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Browser.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Browser.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Browser.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Browser.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Browser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Browser.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Browser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param button
+         * @param button 
          */
         add_button(button: Gtk.Button): void;
+
         /**
-         * @param widget
+         * @param widget 
          */
         add_panel(widget: Gtk.Widget): void;
+
         /**
-         * @param tab
+         * @param tab 
          */
         add(tab: Tab): void;
+
         get_web_context(): WebKit2.WebContext;
+
         /**
-         * @param value
+         * @param value 
          */
         set_web_context(value: WebKit2.WebContext): void;
+
         get_is_loading(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_is_loading(value: boolean): void;
-        get_uri(): string | null;
+
+        get_uri(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_uri(value: string | null): void;
-        get_tab(): Tab | null;
+        set_uri(value: (string | null)): void;
+
+        get_tab(): (Tab | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_tab(value: Tab | null): void;
+        set_tab(value: (Tab | null)): void;
+
         get_trash(): Gio.ListStore;
+
         /**
-         * @param value
+         * @param value 
          */
         set_trash(value: Gio.ListStore): void;
+
         get_is_fullscreen(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_is_fullscreen(value: boolean): void;
+
         get_is_locked(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_is_locked(value: boolean): void;
     }
 
+
     namespace ClearPrivateData {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {
 
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
+        }
     }
 
     /**
@@ -539,53 +559,44 @@ export namespace Midori {
         $signals: ClearPrivateData.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<ClearPrivateData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](parent: Gtk.Window): ClearPrivateData;
-        // Conflicted with Gtk.Dialog.new
+        static ["new"](parent: Gtk.Window): ClearPrivateData;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Dialog.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof ClearPrivateData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClearPrivateData.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof ClearPrivateData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ClearPrivateData.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof ClearPrivateData.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, ClearPrivateData.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof ClearPrivateData.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, ClearPrivateData.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof ClearPrivateData.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<ClearPrivateData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof ClearPrivateData.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<ClearPrivateData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace SuggestionItem {
         // Signal signatures
         interface SignalSignatures extends DatabaseItem.SignalSignatures {
-            'notify::search': (pspec: GObject.ParamSpec) => void;
-            'notify::database': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::date': (pspec: GObject.ParamSpec) => void;
+            "notify::search": (pspec: GObject.ParamSpec) => void;
+            "notify::database": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::date": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends DatabaseItem.ConstructorProps {
-            search: string | null;
+            search: (string | null);
         }
     }
 
@@ -596,9 +607,8 @@ export namespace Midori {
         static $gtype: GObject.GType<SuggestionItem>;
 
         // Properties
-
-        get search(): string | null;
-        set search(val: string | null);
+        get search(): (string | null);
+        set search(val: (string | null));
 
         /**
          * Compile-time signal type information.
@@ -610,56 +620,46 @@ export namespace Midori {
         $signals: SuggestionItem.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SuggestionItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static for_input(uri: string, title: string | null): SuggestionItem;
+        static for_input(uri: string, title: (string | null)): SuggestionItem;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SuggestionItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SuggestionItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SuggestionItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SuggestionItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SuggestionItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SuggestionItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SuggestionItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SuggestionItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SuggestionItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        get_search(): (string | null);
 
-        get_search(): string | null;
         /**
-         * @param value
+         * @param value 
          */
-        set_search(value: string | null): void;
+        set_search(value: (string | null)): void;
     }
+
 
     namespace Completion {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::incognito': (pspec: GObject.ParamSpec) => void;
-            'notify::key': (pspec: GObject.ParamSpec) => void;
+            "notify::incognito": (pspec: GObject.ParamSpec) => void;
+            "notify::key": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             incognito: boolean;
-            key: string | null;
+            key: (string | null);
         }
     }
 
@@ -670,11 +670,11 @@ export namespace Midori {
         static $gtype: GObject.GType<Completion>;
 
         // Properties
-
         get incognito(): boolean;
         set incognito(val: boolean);
-        get key(): string | null;
-        set key(val: string | null);
+
+        get key(): (string | null);
+        set key(val: (string | null));
 
         /**
          * Compile-time signal type information.
@@ -686,96 +686,94 @@ export namespace Midori {
         $signals: Completion.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Completion.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](incognito: boolean): Completion;
+        static ["new"](incognito: boolean): Completion;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Completion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Completion.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Completion.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Completion.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Completion.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Completion.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Completion.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Completion.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Completion.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Completion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Completion.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Completion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param model
+         * @param model 
          */
         add(model: Gio.ListModel): void;
+
         get_incognito(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_incognito(value: boolean): void;
-        get_key(): string | null;
+
+        get_key(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_key(value: string | null): void;
+        set_key(value: (string | null)): void;
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
          */
         get_n_items(): number;
+
         /**
          * Get the item at `position`.
-         *
+         * 
          * If `position` is greater than the number of items in `list`, `null` is
          * returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.
-         *
+         * 
          * This function is meant to be used by language bindings in place
          * of `g_list_model_get_item()`.
-         *
+         * 
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): A | null;
+        get_item(position: number): (A | null);
+
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
-         *
+         * 
          * This function should only be called by classes implementing
          * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
-         *
+         * 
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
@@ -784,7 +782,7 @@ export namespace Midori {
          * made from a fresh mainloop dispatch.  It is particularly not
          * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
-         *
+         * 
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
@@ -794,33 +792,36 @@ export namespace Midori {
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
+
         /**
          * Get the item at `position`. If `position` is greater than the number of
          * items in `list`, `null` is returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.  See `g_list_model_get_n_items()`.
-         *
+         * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): A | null;
+        vfunc_get_item(position: number): (A | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
@@ -829,18 +830,18 @@ export namespace Midori {
         vfunc_get_n_items(): number;
     }
 
+
     namespace DatabaseStatement {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::database': (pspec: GObject.ParamSpec) => void;
-            'notify::query': (pspec: GObject.ParamSpec) => void;
+            "notify::database": (pspec: GObject.ParamSpec) => void;
+            "notify::query": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
-            database: Database | null;
-            query: string | null;
+            database: (Database | null);
+            query: (string | null);
         }
     }
 
@@ -851,11 +852,11 @@ export namespace Midori {
         static $gtype: GObject.GType<DatabaseStatement>;
 
         // Properties
+        get database(): (Database | null);
+        set database(val: (Database | null));
 
-        get database(): Database | null;
-        set database(val: Database | null);
-        get query(): string | null;
-        set query(val: string | null);
+        get query(): (string | null);
+        set query(val: (string | null));
 
         /**
          * Compile-time signal type information.
@@ -867,93 +868,92 @@ export namespace Midori {
         $signals: DatabaseStatement.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DatabaseStatement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](database: Database, query: string): DatabaseStatement;
+        static ["new"](database: Database, query: string): DatabaseStatement;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DatabaseStatement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatabaseStatement.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DatabaseStatement.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DatabaseStatement.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DatabaseStatement.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DatabaseStatement.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DatabaseStatement.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatabaseStatement.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DatabaseStatement.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DatabaseStatement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DatabaseStatement.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DatabaseStatement.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
-         * @param cancellable
+         * @param cancellable 
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
 
         // Methods
+        /**
+         * @param cancellable 
+         */
+        init(cancellable: (Gio.Cancellable | null)): boolean;
+
+        exec(): boolean;
+
+        step(): boolean;
+
+        row_id(): number;
 
         /**
-         * @param cancellable
+         * @param name 
          */
-        init(cancellable: Gio.Cancellable | null): boolean;
-        exec(): boolean;
-        step(): boolean;
-        row_id(): number;
+        get_string(name: string): (string | null);
+
         /**
-         * @param name
-         */
-        get_string(name: string): string | null;
-        /**
-         * @param name
+         * @param name 
          */
         get_int64(name: string): number;
+
         /**
-         * @param name
+         * @param name 
          */
         get_double(name: string): number;
-        get_database(): Database | null;
+
+        get_database(): (Database | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_database(value: Database | null): void;
-        get_query(): string | null;
+        set_database(value: (Database | null)): void;
+
+        get_query(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_query(value: string | null): void;
+        set_query(value: (string | null)): void;
     }
+
 
     namespace DatabaseItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::database': (pspec: GObject.ParamSpec) => void;
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::date': (pspec: GObject.ParamSpec) => void;
+            "notify::database": (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::date": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            database: Database | null;
-            id: bigint | number;
+            database: (Database | null);
+            id: (bigint | number);
             uri: string;
-            title: string | null;
-            date: bigint | number;
+            title: (string | null);
+            date: (bigint | number);
         }
     }
 
@@ -964,17 +964,20 @@ export namespace Midori {
         static $gtype: GObject.GType<DatabaseItem>;
 
         // Properties
+        get database(): (Database | null);
+        set database(val: (Database | null));
 
-        get database(): Database | null;
-        set database(val: Database | null);
         get id(): number;
-        set id(val: bigint | number);
+        set id(val: (bigint | number));
+
         get uri(): string;
         set uri(val: string);
-        get title(): string | null;
-        set title(val: string | null);
+
+        get title(): (string | null);
+        set title(val: (string | null));
+
         get date(): number;
-        set date(val: bigint | number);
+        set date(val: (bigint | number));
 
         /**
          * Compile-time signal type information.
@@ -986,104 +989,102 @@ export namespace Midori {
         $signals: DatabaseItem.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<DatabaseItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](uri: string, title: string | null, date: bigint | number): DatabaseItem;
+        static ["new"](uri: string, title: (string | null), date: (bigint | number)): DatabaseItem;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DatabaseItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatabaseItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DatabaseItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DatabaseItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DatabaseItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DatabaseItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DatabaseItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DatabaseItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DatabaseItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DatabaseItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DatabaseItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DatabaseItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        ["delete"](): globalThis.Promise<boolean>;
 
-        ['delete'](): globalThis.Promise<boolean>;
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        ['delete'](_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        ["delete"](_callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _callback_
+         * @param _callback_ 
          */
-        ['delete'](_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
+        ["delete"](_callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_finish(_res_: Gio.AsyncResult): boolean;
-        get_database(): Database | null;
+
+        get_database(): (Database | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_database(value: Database | null): void;
+        set_database(value: (Database | null)): void;
+
         get_id(): number;
+
         /**
-         * @param value
+         * @param value 
          */
-        set_id(value: bigint | number): void;
+        set_id(value: (bigint | number)): void;
+
         get_uri(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_uri(value: string): void;
-        get_title(): string | null;
+
+        get_title(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_title(value: string | null): void;
+        set_title(value: (string | null)): void;
+
         get_date(): number;
+
         /**
-         * @param value
+         * @param value 
          */
-        set_date(value: bigint | number): void;
+        set_date(value: (bigint | number)): void;
     }
+
 
     namespace Database {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::table': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::key': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
-            'notify::first-use': (pspec: GObject.ParamSpec) => void;
-            'notify::last-row-id': (pspec: GObject.ParamSpec) => void;
-            'notify::errmsg': (pspec: GObject.ParamSpec) => void;
+            "notify::table": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::key": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
+            "notify::first-use": (pspec: GObject.ParamSpec) => void;
+            "notify::last-row-id": (pspec: GObject.ParamSpec) => void;
+            "notify::errmsg": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
-        interface ConstructorProps<A extends GObject.Object = GObject.Object>
-            extends
-                GObject.Object.ConstructorProps,
-                Gio.Initable.ConstructorProps,
-                Gio.ListModel.ConstructorProps,
-                Loggable.ConstructorProps {
-            table: string | null;
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps, Gio.ListModel.ConstructorProps, Loggable.ConstructorProps {
+            table: (string | null);
             path: string;
-            key: string | null;
+            key: (string | null);
             readonly: boolean;
             first_use: boolean;
             firstUse: boolean;
-            last_row_id: bigint | number;
-            lastRowId: bigint | number;
+            last_row_id: (bigint | number);
+            lastRowId: (bigint | number);
             errmsg: string;
         }
     }
@@ -1091,34 +1092,38 @@ export namespace Midori {
     /**
      * @gir-type Class
      */
-    class Database<A extends GObject.Object = GObject.Object>
-        extends GObject.Object
-        implements Gio.Initable, Gio.ListModel<A>, Loggable
-    {
+    class Database<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.Initable, Gio.ListModel<A>, Loggable {
         static $gtype: GObject.GType<Database>;
 
         // Properties
+        get table(): (string | null);
+        set table(val: (string | null));
 
-        get table(): string | null;
-        set table(val: string | null);
         get path(): string;
         set path(val: string);
-        get key(): string | null;
-        set key(val: string | null);
+
+        get key(): (string | null);
+        set key(val: (string | null));
+
         get readonly(): boolean;
         set readonly(val: boolean);
+
         get first_use(): boolean;
         set first_use(val: boolean);
+
         get firstUse(): boolean;
         set firstUse(val: boolean);
+
         /**
          * @read-only
          */
         get last_row_id(): number;
+
         /**
          * @read-only
          */
         get lastRowId(): number;
+
         /**
          * @read-only
          */
@@ -1134,361 +1139,372 @@ export namespace Midori {
         $signals: Database.SignalSignatures;
 
         // Fields
-
         db: any;
 
         // Constructors
-
         constructor(properties?: Partial<Database.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](path: string): Database;
+        static ["new"](path: string): Database;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Database.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Database.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Database.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Database.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Database.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Database.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Database.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Database.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Database.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
+        /**
+         * @param cancellable 
+         * @virtual
+         */
+        vfunc_init(cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
-         * @param cancellable
+         * @param item 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_init(cancellable: Gio.Cancellable | null): boolean;
+        vfunc_delete(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param item
-         * @param _callback_
-         * @virtual
-         */
-        vfunc_delete(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
-        /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_delete_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
-         * @param uri
-         * @param _callback_
+         * @param uri 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_lookup(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_lookup(uri: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
-        vfunc_lookup_finish(_res_: Gio.AsyncResult): DatabaseItem | null;
+        vfunc_lookup_finish(_res_: Gio.AsyncResult): (DatabaseItem | null);
+
         /**
-         * @param filter
-         * @param max_items
-         * @param cancellable
-         * @param _callback_
+         * @param filter 
+         * @param max_items 
+         * @param cancellable 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_query(
-            filter: string | null,
-            max_items: number,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        vfunc_query(filter: (string | null), max_items: number, cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
-        vfunc_query_finish(_res_: Gio.AsyncResult): DatabaseItem[] | null;
+        vfunc_query_finish(_res_: Gio.AsyncResult): (DatabaseItem[] | null);
+
         /**
-         * @param item
-         * @param _callback_
+         * @param item 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_update(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_update(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_update_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
-         * @param item
-         * @param _callback_
+         * @param item 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_insert(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_insert(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_insert_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
-         * @param timespan
-         * @param _callback_
+         * @param timespan 
+         * @param _callback_ 
          * @virtual
          */
-        vfunc_clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        vfunc_clear(timespan: GLib.TimeSpan, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param _res_
+         * @param _res_ 
          * @virtual
          */
         vfunc_clear_finish(_res_: Gio.AsyncResult): boolean;
 
         // Methods
+        /**
+         * @param cancellable 
+         */
+        init(cancellable: (Gio.Cancellable | null)): boolean;
 
         /**
-         * @param cancellable
-         */
-        init(cancellable: Gio.Cancellable | null): boolean;
-        /**
-         * @param path
+         * @param path 
          */
         exists(path: string): boolean;
+
         /**
-         * @param filename
+         * @param filename 
          */
         exec_script(filename: string): boolean;
+
         /**
-         * @param callback
+         * @param callback 
          */
         transaction(callback: DatabaseCallback): boolean;
+
         /**
-         * @param query
+         * @param query 
          */
         exec(query: string): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
-        ['delete'](item: DatabaseItem): globalThis.Promise<boolean>;
+        ["delete"](item: DatabaseItem): globalThis.Promise<boolean>;
+
         /**
-         * @param item
-         * @param _callback_
+         * @param item 
+         * @param _callback_ 
          */
-        ['delete'](item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        ["delete"](item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param item
-         * @param _callback_
+         * @param item 
+         * @param _callback_ 
          */
-        ['delete'](
-            item: DatabaseItem,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        ["delete"](item: DatabaseItem, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         delete_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
-         * @param uri
+         * @param uri 
          */
-        lookup(uri: string): globalThis.Promise<DatabaseItem | null>;
+        lookup(uri: string): globalThis.Promise<(DatabaseItem | null)>;
+
         /**
-         * @param uri
-         * @param _callback_
+         * @param uri 
+         * @param _callback_ 
          */
-        lookup(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        lookup(uri: string, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param uri
-         * @param _callback_
+         * @param uri 
+         * @param _callback_ 
          */
-        lookup(
-            uri: string,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<DatabaseItem | null> | void;
+        lookup(uri: string, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(DatabaseItem | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        lookup_finish(_res_: Gio.AsyncResult): DatabaseItem | null;
+        lookup_finish(_res_: Gio.AsyncResult): (DatabaseItem | null);
+
         /**
-         * @param item
+         * @param item 
          */
         contains(item: DatabaseItem): boolean;
+
         /**
-         * @param filter
-         * @param max_items
-         * @param cancellable
+         * @param filter 
+         * @param max_items 
+         * @param cancellable 
          */
-        query(
-            filter: string | null,
-            max_items: bigint | number,
-            cancellable: Gio.Cancellable | null,
-        ): globalThis.Promise<DatabaseItem[] | null>;
+        query(filter: (string | null), max_items: (bigint | number), cancellable: (Gio.Cancellable | null)): globalThis.Promise<(DatabaseItem[] | null)>;
+
         /**
-         * @param filter
-         * @param max_items
-         * @param cancellable
-         * @param _callback_
+         * @param filter 
+         * @param max_items 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        query(
-            filter: string | null,
-            max_items: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            _callback_: Gio.AsyncReadyCallback<this> | null,
-        ): void;
+        query(filter: (string | null), max_items: (bigint | number), cancellable: (Gio.Cancellable | null), _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param filter
-         * @param max_items
-         * @param cancellable
-         * @param _callback_
+         * @param filter 
+         * @param max_items 
+         * @param cancellable 
+         * @param _callback_ 
          */
-        query(
-            filter: string | null,
-            max_items: bigint | number,
-            cancellable: Gio.Cancellable | null,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<DatabaseItem[] | null> | void;
+        query(filter: (string | null), max_items: (bigint | number), cancellable: (Gio.Cancellable | null), _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<(DatabaseItem[] | null)> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
-        query_finish(_res_: Gio.AsyncResult): DatabaseItem[] | null;
+        query_finish(_res_: Gio.AsyncResult): (DatabaseItem[] | null);
+
         /**
-         * @param item
+         * @param item 
          */
         update(item: DatabaseItem): globalThis.Promise<boolean>;
+
         /**
-         * @param item
-         * @param _callback_
+         * @param item 
+         * @param _callback_ 
          */
-        update(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        update(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param item
-         * @param _callback_
+         * @param item 
+         * @param _callback_ 
          */
-        update(
-            item: DatabaseItem,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        update(item: DatabaseItem, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         update_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
-         * @param item
+         * @param item 
          */
         insert(item: DatabaseItem): globalThis.Promise<boolean>;
+
         /**
-         * @param item
-         * @param _callback_
+         * @param item 
+         * @param _callback_ 
          */
-        insert(item: DatabaseItem, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        insert(item: DatabaseItem, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param item
-         * @param _callback_
+         * @param item 
+         * @param _callback_ 
          */
-        insert(
-            item: DatabaseItem,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        insert(item: DatabaseItem, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         insert_finish(_res_: Gio.AsyncResult): boolean;
+
         /**
-         * @param timespan
+         * @param timespan 
          */
         clear(timespan: GLib.TimeSpan): globalThis.Promise<boolean>;
+
         /**
-         * @param timespan
-         * @param _callback_
+         * @param timespan 
+         * @param _callback_ 
          */
-        clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        clear(timespan: GLib.TimeSpan, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param timespan
-         * @param _callback_
+         * @param timespan 
+         * @param _callback_ 
          */
-        clear(
-            timespan: GLib.TimeSpan,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<boolean> | void;
+        clear(timespan: GLib.TimeSpan, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<boolean> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         clear_finish(_res_: Gio.AsyncResult): boolean;
-        get_table(): string | null;
+
+        get_table(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_table(value: string | null): void;
+        set_table(value: (string | null)): void;
+
         get_path(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_path(value: string): void;
-        get_key(): string | null;
+
+        get_key(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_key(value: string | null): void;
+        set_key(value: (string | null)): void;
+
         get_readonly(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_readonly(value: boolean): void;
+
         get_first_use(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_first_use(value: boolean): void;
+
         get_last_row_id(): number;
+
         get_errmsg(): string;
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
          */
         get_n_items(): number;
+
         /**
          * Get the item at `position`.
-         *
+         * 
          * If `position` is greater than the number of items in `list`, `null` is
          * returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.
-         *
+         * 
          * This function is meant to be used by language bindings in place
          * of `g_list_model_get_item()`.
-         *
+         * 
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
          */
-        get_item(position: number): A | null;
+        get_item(position: number): (A | null);
+
         /**
          * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
-         *
+         * 
          * This function should only be called by classes implementing
          * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
-         *
+         * 
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
@@ -1497,7 +1513,7 @@ export namespace Midori {
          * made from a fresh mainloop dispatch.  It is particularly not
          * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
-         *
+         * 
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
@@ -1507,42 +1523,48 @@ export namespace Midori {
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
+
         /**
          * Get the item at `position`. If `position` is greater than the number of
          * items in `list`, `null` is returned.
-         *
+         * 
          * `null` is never returned for an index that is smaller than the length
          * of the list.  See `g_list_model_get_n_items()`.
-         *
+         * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
          * @virtual
          */
-        vfunc_get_item(position: number): A | null;
+        vfunc_get_item(position: number): (A | null);
+
         /**
          * Gets the type of the items in `list`.
-         *
+         * 
          * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
-         *
+         * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
+
         /**
          * Gets the number of items in `list`.
-         *
+         * 
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @virtual
          */
         vfunc_get_n_items(): number;
+
         get_domain(): string;
+
         get_logging(): boolean;
     }
+
 
     namespace DownloadButton {
         // Signal signatures
@@ -1550,63 +1572,64 @@ export namespace Midori {
             /**
              * @signal
              */
-            'show-downloads': () => void;
-            'notify::always-show-image': (pspec: GObject.ParamSpec) => void;
-            'notify::image': (pspec: GObject.ParamSpec) => void;
-            'notify::image-position': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::relief': (pspec: GObject.ParamSpec) => void;
-            'notify::use-stock': (pspec: GObject.ParamSpec) => void;
-            'notify::use-underline': (pspec: GObject.ParamSpec) => void;
-            'notify::xalign': (pspec: GObject.ParamSpec) => void;
-            'notify::yalign': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "show-downloads": () => void;
+            "notify::always-show-image": (pspec: GObject.ParamSpec) => void;
+            "notify::image": (pspec: GObject.ParamSpec) => void;
+            "notify::image-position": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::relief": (pspec: GObject.ParamSpec) => void;
+            "notify::use-stock": (pspec: GObject.ParamSpec) => void;
+            "notify::use-underline": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::yalign": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Button.ConstructorProps {
 
-        interface ConstructorProps extends Gtk.Button.ConstructorProps {}
+        }
     }
 
     /**
@@ -1625,54 +1648,45 @@ export namespace Midori {
         $signals: DownloadButton.SignalSignatures;
 
         // Fields
-
         popover: Gtk.Popover;
+
         clear: Gtk.Button;
+
         listbox: Gtk.ListBox;
 
         // Constructors
-
         constructor(properties?: Partial<DownloadButton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): DownloadButton;
+        static ["new"](): DownloadButton;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DownloadButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadButton.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DownloadButton.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DownloadButton.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DownloadButton.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DownloadButton.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DownloadButton.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadButton.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DownloadButton.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DownloadButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DownloadButton.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
-
         /**
          * @virtual
          */
         vfunc_show_downloads(): void;
 
         // Methods
-
         /**
-         * @param item
+         * @param item 
          */
         create_row(item: GObject.Object): Gtk.Widget;
     }
+
 
     namespace DownloadItem {
         // Signal signatures
@@ -1681,28 +1695,27 @@ export namespace Midori {
              * @signal
              */
             finished: () => void;
-            'notify::content-type': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
-            'notify::basename': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::download': (pspec: GObject.ParamSpec) => void;
-            'notify::loading': (pspec: GObject.ParamSpec) => void;
-            'notify::error': (pspec: GObject.ParamSpec) => void;
+            "notify::content-type": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
+            "notify::basename": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::download": (pspec: GObject.ParamSpec) => void;
+            "notify::loading": (pspec: GObject.ParamSpec) => void;
+            "notify::error": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             content_type: string;
             contentType: string;
             icon: Gio.Icon;
-            filename: string | null;
-            basename: string | null;
+            filename: (string | null);
+            basename: (string | null);
             progress: number;
-            download: WebKit2.Download | null;
+            download: (WebKit2.Download | null);
             loading: boolean;
-            error: string | null;
+            error: (string | null);
         }
     }
 
@@ -1713,31 +1726,38 @@ export namespace Midori {
         static $gtype: GObject.GType<DownloadItem>;
 
         // Properties
-
         /**
          * @read-only
          */
         get content_type(): string;
+
         /**
          * @read-only
          */
         get contentType(): string;
+
         /**
          * @read-only
          */
         get icon(): Gio.Icon;
-        get filename(): string | null;
-        set filename(val: string | null);
-        get basename(): string | null;
-        set basename(val: string | null);
+
+        get filename(): (string | null);
+        set filename(val: (string | null));
+
+        get basename(): (string | null);
+        set basename(val: (string | null));
+
         get progress(): number;
         set progress(val: number);
-        get download(): WebKit2.Download | null;
-        set download(val: WebKit2.Download | null);
+
+        get download(): (WebKit2.Download | null);
+        set download(val: (WebKit2.Download | null));
+
         get loading(): boolean;
         set loading(val: boolean);
-        get error(): string | null;
-        set error(val: string | null);
+
+        get error(): (string | null);
+        set error(val: (string | null));
 
         /**
          * Compile-time signal type information.
@@ -1749,129 +1769,132 @@ export namespace Midori {
         $signals: DownloadItem.SignalSignatures;
 
         // Fields
-
-        mime_type: string | null;
+        mime_type: (string | null);
 
         // Constructors
-
         constructor(properties?: Partial<DownloadItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](filename: string): DownloadItem;
+        static ["new"](filename: string): DownloadItem;
 
         static with_download(download: WebKit2.Download): DownloadItem;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DownloadItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadItem.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DownloadItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DownloadItem.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DownloadItem.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DownloadItem.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DownloadItem.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadItem.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DownloadItem.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DownloadItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DownloadItem.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         cancel(): void;
+
         get_content_type(): string;
+
         get_icon(): Gio.Icon;
-        get_filename(): string | null;
+
+        get_filename(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_filename(value: string | null): void;
-        get_basename(): string | null;
+        set_filename(value: (string | null)): void;
+
+        get_basename(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_basename(value: string | null): void;
+        set_basename(value: (string | null)): void;
+
         get_progress(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_progress(value: number): void;
-        get_download(): WebKit2.Download | null;
+
+        get_download(): (WebKit2.Download | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_download(value: WebKit2.Download | null): void;
+        set_download(value: (WebKit2.Download | null)): void;
+
         get_loading(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_loading(value: boolean): void;
-        get_error(): string | null;
+
+        get_error(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_error(value: string | null): void;
+        set_error(value: (string | null)): void;
     }
+
 
     namespace DownloadRow {
         // Signal signatures
         interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {
-            'notify::item': (pspec: GObject.ParamSpec) => void;
-            'notify::activatable': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::item": (pspec: GObject.ParamSpec) => void;
+            "notify::activatable": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
             item: DownloadItem;
         }
@@ -1884,7 +1907,6 @@ export namespace Midori {
         static $gtype: GObject.GType<DownloadRow>;
 
         // Properties
-
         get item(): DownloadItem;
         set item(val: DownloadItem);
 
@@ -1898,123 +1920,119 @@ export namespace Midori {
         $signals: DownloadRow.SignalSignatures;
 
         // Fields
-
         icon: Gtk.Image;
+
         filename: Gtk.Label;
+
         progress: Gtk.ProgressBar;
+
         cancel: Gtk.Button;
+
         open: Gtk.Button;
+
         error: Gtk.Image;
+
         status: Gtk.Label;
 
         // Constructors
-
         constructor(properties?: Partial<DownloadRow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](item: DownloadItem): DownloadRow;
-        // Conflicted with Gtk.ListBoxRow.new
+        static ["new"](item: DownloadItem): DownloadRow;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.ListBoxRow.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof DownloadRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadRow.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof DownloadRow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DownloadRow.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof DownloadRow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, DownloadRow.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof DownloadRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, DownloadRow.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof DownloadRow.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<DownloadRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof DownloadRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<DownloadRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_item(): DownloadItem;
+
         /**
-         * @param value
+         * @param value 
          */
         set_item(value: DownloadItem): void;
     }
 
+
     namespace Favicon {
         // Signal signatures
         interface SignalSignatures extends Gtk.Image.SignalSignatures {
-            'notify::surface': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::file': (pspec: GObject.ParamSpec) => void;
-            'notify::gicon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-set': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-size': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::pixbuf-animation': (pspec: GObject.ParamSpec) => void;
-            'notify::pixel-size': (pspec: GObject.ParamSpec) => void;
-            'notify::resource': (pspec: GObject.ParamSpec) => void;
-            'notify::stock': (pspec: GObject.ParamSpec) => void;
-            'notify::storage-type': (pspec: GObject.ParamSpec) => void;
-            'notify::use-fallback': (pspec: GObject.ParamSpec) => void;
-            'notify::xalign': (pspec: GObject.ParamSpec) => void;
-            'notify::xpad': (pspec: GObject.ParamSpec) => void;
-            'notify::yalign': (pspec: GObject.ParamSpec) => void;
-            'notify::ypad': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::surface": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::file": (pspec: GObject.ParamSpec) => void;
+            "notify::gicon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-set": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-size": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::pixbuf-animation": (pspec: GObject.ParamSpec) => void;
+            "notify::pixel-size": (pspec: GObject.ParamSpec) => void;
+            "notify::resource": (pspec: GObject.ParamSpec) => void;
+            "notify::stock": (pspec: GObject.ParamSpec) => void;
+            "notify::storage-type": (pspec: GObject.ParamSpec) => void;
+            "notify::use-fallback": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::xpad": (pspec: GObject.ParamSpec) => void;
+            "notify::yalign": (pspec: GObject.ParamSpec) => void;
+            "notify::ypad": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Image.ConstructorProps {
             surface: cairo.Surface;
-            uri: string | null;
+            uri: (string | null);
         }
     }
 
@@ -2025,13 +2043,13 @@ export namespace Midori {
         static $gtype: GObject.GType<Favicon>;
 
         // Properties
-
         /**
          * @write-only
          */
         set surface(val: cairo.Surface);
-        get uri(): string | null;
-        set uri(val: string | null);
+
+        get uri(): (string | null);
+        set uri(val: (string | null));
 
         /**
          * Compile-time signal type information.
@@ -2043,62 +2061,56 @@ export namespace Midori {
         $signals: Favicon.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Favicon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Favicon;
+        static ["new"](): Favicon;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Favicon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Favicon.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Favicon.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Favicon.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Favicon.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Favicon.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Favicon.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Favicon.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Favicon.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Favicon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Favicon.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Favicon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param value 
+         */
+        set_surface(value: (cairo.Surface | null)): void;
+
+        get_uri(): (string | null);
 
         /**
-         * @param value
+         * @param value 
          */
-        set_surface(value: cairo.Surface | null): void;
-        get_uri(): string | null;
-        /**
-         * @param value
-         */
-        set_uri(value: string | null): void;
+        set_uri(value: (string | null)): void;
     }
+
 
     namespace HistoryDatabase {
         // Signal signatures
         interface SignalSignatures extends Database.SignalSignatures {
-            'notify::table': (pspec: GObject.ParamSpec) => void;
-            'notify::path': (pspec: GObject.ParamSpec) => void;
-            'notify::key': (pspec: GObject.ParamSpec) => void;
-            'notify::readonly': (pspec: GObject.ParamSpec) => void;
-            'notify::first-use': (pspec: GObject.ParamSpec) => void;
-            'notify::last-row-id': (pspec: GObject.ParamSpec) => void;
-            'notify::errmsg': (pspec: GObject.ParamSpec) => void;
+            "notify::table": (pspec: GObject.ParamSpec) => void;
+            "notify::path": (pspec: GObject.ParamSpec) => void;
+            "notify::key": (pspec: GObject.ParamSpec) => void;
+            "notify::readonly": (pspec: GObject.ParamSpec) => void;
+            "notify::first-use": (pspec: GObject.ParamSpec) => void;
+            "notify::last-row-id": (pspec: GObject.ParamSpec) => void;
+            "notify::errmsg": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Database.ConstructorProps<A> {
 
-        interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Database.ConstructorProps<A> {}
+        }
     }
 
     /**
@@ -2117,90 +2129,82 @@ export namespace Midori {
         $signals: HistoryDatabase.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<HistoryDatabase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof HistoryDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HistoryDatabase.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof HistoryDatabase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HistoryDatabase.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof HistoryDatabase.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, HistoryDatabase.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof HistoryDatabase.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, HistoryDatabase.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof HistoryDatabase.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<HistoryDatabase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof HistoryDatabase.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<HistoryDatabase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         /**
-         * @param incognito
+         * @param incognito 
          */
         static get_default(incognito: boolean): HistoryDatabase;
     }
 
+
     namespace Navigationbar {
         // Signal signatures
         interface SignalSignatures extends Gtk.ActionBar.SignalSignatures {
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {
 
-        interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {}
+        }
     }
 
     /**
@@ -2219,96 +2223,95 @@ export namespace Midori {
         $signals: Navigationbar.SignalSignatures;
 
         // Fields
-
         actionbox: Gtk.Box;
+
         go_back: Gtk.Button;
+
         go_forward: Gtk.Button;
+
         reload: Gtk.Button;
+
         stop_loading: Gtk.Button;
+
         homepage: Gtk.Button;
+
         urlbar: Urlbar;
+
         restore: Gtk.Button;
 
         // Constructors
-
         constructor(properties?: Partial<Navigationbar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Navigationbar;
+        static ["new"](): Navigationbar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Navigationbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Navigationbar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Navigationbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Navigationbar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Navigationbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Navigationbar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Navigationbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Navigationbar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Navigationbar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Navigationbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Navigationbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Navigationbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace NetworkCheck {
         // Signal signatures
         interface SignalSignatures extends Gtk.ActionBar.SignalSignatures {
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {
 
-        interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {}
+        }
     }
 
     /**
@@ -2327,46 +2330,37 @@ export namespace Midori {
         $signals: NetworkCheck.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<NetworkCheck.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): NetworkCheck;
+        static ["new"](): NetworkCheck;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof NetworkCheck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkCheck.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof NetworkCheck.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NetworkCheck.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof NetworkCheck.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, NetworkCheck.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof NetworkCheck.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, NetworkCheck.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof NetworkCheck.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<NetworkCheck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof NetworkCheck.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<NetworkCheck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
     }
+
 
     namespace Plugins {
         // Signal signatures
         interface SignalSignatures extends Peas.Engine.SignalSignatures {
-            'notify::builtin-path': (pspec: GObject.ParamSpec) => void;
-            'notify::loaded-plugins': (pspec: GObject.ParamSpec) => void;
-            'notify::nonglobal-loaders': (pspec: GObject.ParamSpec) => void;
-            'notify::plugin-list': (pspec: GObject.ParamSpec) => void;
+            "notify::builtin-path": (pspec: GObject.ParamSpec) => void;
+            "notify::loaded-plugins": (pspec: GObject.ParamSpec) => void;
+            "notify::nonglobal-loaders": (pspec: GObject.ParamSpec) => void;
+            "notify::plugin-list": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Peas.Engine.ConstructorProps, Loggable.ConstructorProps {
             builtin_path: string;
             builtinPath: string;
@@ -2380,9 +2374,9 @@ export namespace Midori {
         static $gtype: GObject.GType<Plugins>;
 
         // Properties
-
         get builtin_path(): string;
         set builtin_path(val: string);
+
         get builtinPath(): string;
         set builtinPath(val: string);
 
@@ -2396,114 +2390,103 @@ export namespace Midori {
         $signals: Plugins.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Plugins.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Plugins.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugins.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Plugins.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plugins.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Plugins.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Plugins.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Plugins.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Plugins.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Plugins.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Plugins.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Plugins.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Plugins.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @param t_type 
+         * @param t_dup_func 
+         * @param name 
+         * @param object 
+         */
+        plug(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, name: string, object: GObject.Object): Peas.ExtensionSet;
+
+        get_builtin_path(): string;
 
         /**
-         * @param t_type
-         * @param t_dup_func
-         * @param name
-         * @param object
-         */
-        plug(
-            t_type: GObject.GType,
-            t_dup_func: GObject.BoxedCopyFunc,
-            name: string,
-            object: GObject.Object,
-        ): Peas.ExtensionSet;
-        get_builtin_path(): string;
-        /**
-         * @param value
+         * @param value 
          */
         set_builtin_path(value: string): void;
+
         get_domain(): string;
+
         get_logging(): boolean;
     }
+
 
     namespace LabelWidget {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::widget': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::widget": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
-            title: string | null;
+            title: (string | null);
             label: Gtk.Label;
-            widget: (Gtk.Widget | null) | any;
+            widget: ((Gtk.Widget | null) | any);
         }
     }
 
@@ -2514,13 +2497,14 @@ export namespace Midori {
         static $gtype: GObject.GType<LabelWidget>;
 
         // Properties
+        get title(): (string | null);
+        set title(val: (string | null));
 
-        get title(): string | null;
-        set title(val: string | null);
         get label(): Gtk.Label;
         set label(val: Gtk.Label);
-        // This accessor conflicts with a property or field in a parent class or interface.
-        widget: (Gtk.Widget | null) | any;
+
+    // This accessor conflicts with a property or field in a parent class or interface.
+         widget: (Gtk.Widget | null) | any;
 
         /**
          * Compile-time signal type information.
@@ -2532,140 +2516,137 @@ export namespace Midori {
         $signals: LabelWidget.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<LabelWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](title: string | null, widget: Gtk.Widget | null): LabelWidget;
-        // Conflicted with Gtk.Box.new
+        static ["new"](title: (string | null), widget: (Gtk.Widget | null)): LabelWidget;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Box.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof LabelWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelWidget.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof LabelWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LabelWidget.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof LabelWidget.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, LabelWidget.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof LabelWidget.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, LabelWidget.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof LabelWidget.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<LabelWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof LabelWidget.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<LabelWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        get_title(): (string | null);
 
-        get_title(): string | null;
         /**
-         * @param value
+         * @param value 
          */
-        set_title(value: string | null): void;
+        set_title(value: (string | null)): void;
+
         get_label(): Gtk.Label;
+
         /**
-         * @param value
+         * @param value 
          */
         set_label(value: Gtk.Label): void;
-        get_widget(): Gtk.Widget | null;
+
+        get_widget(): (Gtk.Widget | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_widget(value: Gtk.Widget | null): void;
+        set_widget(value: (Gtk.Widget | null)): void;
     }
+
 
     namespace Preferences {
         // Signal signatures
         interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
-            'notify::use-header-bar': (pspec: GObject.ParamSpec) => void;
-            'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::application': (pspec: GObject.ParamSpec) => void;
-            'notify::attached-to': (pspec: GObject.ParamSpec) => void;
-            'notify::decorated': (pspec: GObject.ParamSpec) => void;
-            'notify::default-height': (pspec: GObject.ParamSpec) => void;
-            'notify::default-width': (pspec: GObject.ParamSpec) => void;
-            'notify::deletable': (pspec: GObject.ParamSpec) => void;
-            'notify::destroy-with-parent': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-map': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::gravity': (pspec: GObject.ParamSpec) => void;
-            'notify::has-resize-grip': (pspec: GObject.ParamSpec) => void;
-            'notify::has-toplevel-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::hide-titlebar-when-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::icon': (pspec: GObject.ParamSpec) => void;
-            'notify::icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::is-active': (pspec: GObject.ParamSpec) => void;
-            'notify::is-maximized': (pspec: GObject.ParamSpec) => void;
-            'notify::mnemonics-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::modal': (pspec: GObject.ParamSpec) => void;
-            'notify::resizable': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-grip-visible': (pspec: GObject.ParamSpec) => void;
-            'notify::role': (pspec: GObject.ParamSpec) => void;
-            'notify::screen': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-pager-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::skip-taskbar-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::startup-id': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::transient-for': (pspec: GObject.ParamSpec) => void;
-            'notify::type': (pspec: GObject.ParamSpec) => void;
-            'notify::type-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::urgency-hint': (pspec: GObject.ParamSpec) => void;
-            'notify::window-position': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
+            "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::application": (pspec: GObject.ParamSpec) => void;
+            "notify::attached-to": (pspec: GObject.ParamSpec) => void;
+            "notify::decorated": (pspec: GObject.ParamSpec) => void;
+            "notify::default-height": (pspec: GObject.ParamSpec) => void;
+            "notify::default-width": (pspec: GObject.ParamSpec) => void;
+            "notify::deletable": (pspec: GObject.ParamSpec) => void;
+            "notify::destroy-with-parent": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-map": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::gravity": (pspec: GObject.ParamSpec) => void;
+            "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
+            "notify::has-toplevel-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::hide-titlebar-when-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::icon": (pspec: GObject.ParamSpec) => void;
+            "notify::icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::is-active": (pspec: GObject.ParamSpec) => void;
+            "notify::is-maximized": (pspec: GObject.ParamSpec) => void;
+            "notify::mnemonics-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::modal": (pspec: GObject.ParamSpec) => void;
+            "notify::resizable": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-grip-visible": (pspec: GObject.ParamSpec) => void;
+            "notify::role": (pspec: GObject.ParamSpec) => void;
+            "notify::screen": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-pager-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::skip-taskbar-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::startup-id": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::transient-for": (pspec: GObject.ParamSpec) => void;
+            "notify::type": (pspec: GObject.ParamSpec) => void;
+            "notify::type-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::urgency-hint": (pspec: GObject.ParamSpec) => void;
+            "notify::window-position": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
+        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {
 
-        interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
+        }
     }
 
     /**
@@ -2684,75 +2665,66 @@ export namespace Midori {
         $signals: Preferences.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Preferences.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](parent: Gtk.Window): Preferences;
-        // Conflicted with Gtk.Dialog.new
+        static ["new"](parent: Gtk.Window): Preferences;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.Dialog.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Preferences.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Preferences.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Preferences.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Preferences.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Preferences.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Preferences.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Preferences.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param label
-         * @param widget
+         * @param label 
+         * @param widget 
          */
         add(label: string, widget: Gtk.Widget): void;
+
         /**
-         * @param args
+         * @param args 
          */
-        // Conflicted with Gtk.Container.add
+    // Conflicted with Gtk.Container.add
         add(...args: never[]): any;
     }
+
 
     namespace CoreSettings {
         // Signal signatures
         interface SignalSignatures extends Settings.SignalSignatures {
-            'notify::last-window-width': (pspec: GObject.ParamSpec) => void;
-            'notify::last-window-height': (pspec: GObject.ParamSpec) => void;
-            'notify::load-on-startup': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-spell-checking': (pspec: GObject.ParamSpec) => void;
-            'notify::auto-load-images': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-javascript': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-plugins': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-caret-browsing': (pspec: GObject.ParamSpec) => void;
-            'notify::close-buttons-on-tabs': (pspec: GObject.ParamSpec) => void;
-            'notify::location-entry-search': (pspec: GObject.ParamSpec) => void;
-            'notify::homepage': (pspec: GObject.ParamSpec) => void;
-            'notify::proxy-type': (pspec: GObject.ParamSpec) => void;
-            'notify::http-proxy': (pspec: GObject.ParamSpec) => void;
-            'notify::http-proxy-port': (pspec: GObject.ParamSpec) => void;
-            'notify::first-party-cookies-only': (pspec: GObject.ParamSpec) => void;
-            'notify::maximum-history-age': (pspec: GObject.ParamSpec) => void;
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            "notify::last-window-width": (pspec: GObject.ParamSpec) => void;
+            "notify::last-window-height": (pspec: GObject.ParamSpec) => void;
+            "notify::load-on-startup": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-spell-checking": (pspec: GObject.ParamSpec) => void;
+            "notify::auto-load-images": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-javascript": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-plugins": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-caret-browsing": (pspec: GObject.ParamSpec) => void;
+            "notify::close-buttons-on-tabs": (pspec: GObject.ParamSpec) => void;
+            "notify::location-entry-search": (pspec: GObject.ParamSpec) => void;
+            "notify::homepage": (pspec: GObject.ParamSpec) => void;
+            "notify::proxy-type": (pspec: GObject.ParamSpec) => void;
+            "notify::http-proxy": (pspec: GObject.ParamSpec) => void;
+            "notify::http-proxy-port": (pspec: GObject.ParamSpec) => void;
+            "notify::first-party-cookies-only": (pspec: GObject.ParamSpec) => void;
+            "notify::maximum-history-age": (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Settings.ConstructorProps {
             last_window_width: number;
             lastWindowWidth: number;
@@ -2795,67 +2767,96 @@ export namespace Midori {
         static $gtype: GObject.GType<CoreSettings>;
 
         // Properties
-
         get last_window_width(): number;
         set last_window_width(val: number);
+
         get lastWindowWidth(): number;
         set lastWindowWidth(val: number);
+
         get last_window_height(): number;
         set last_window_height(val: number);
+
         get lastWindowHeight(): number;
         set lastWindowHeight(val: number);
+
         get load_on_startup(): StartupType;
         set load_on_startup(val: StartupType);
+
         get loadOnStartup(): StartupType;
         set loadOnStartup(val: StartupType);
+
         get enable_spell_checking(): boolean;
         set enable_spell_checking(val: boolean);
+
         get enableSpellChecking(): boolean;
         set enableSpellChecking(val: boolean);
+
         get auto_load_images(): boolean;
         set auto_load_images(val: boolean);
+
         get autoLoadImages(): boolean;
         set autoLoadImages(val: boolean);
+
         get enable_javascript(): boolean;
         set enable_javascript(val: boolean);
+
         get enableJavascript(): boolean;
         set enableJavascript(val: boolean);
+
         get enable_plugins(): boolean;
         set enable_plugins(val: boolean);
+
         get enablePlugins(): boolean;
         set enablePlugins(val: boolean);
+
         get enable_caret_browsing(): boolean;
         set enable_caret_browsing(val: boolean);
+
         get enableCaretBrowsing(): boolean;
         set enableCaretBrowsing(val: boolean);
+
         get close_buttons_on_tabs(): boolean;
         set close_buttons_on_tabs(val: boolean);
+
         get closeButtonsOnTabs(): boolean;
         set closeButtonsOnTabs(val: boolean);
+
         get location_entry_search(): string;
         set location_entry_search(val: string);
+
         get locationEntrySearch(): string;
         set locationEntrySearch(val: string);
+
         get homepage(): string;
         set homepage(val: string);
+
         get proxy_type(): ProxyType;
         set proxy_type(val: ProxyType);
+
         get proxyType(): ProxyType;
         set proxyType(val: ProxyType);
+
         get http_proxy(): string;
         set http_proxy(val: string);
+
         get httpProxy(): string;
         set httpProxy(val: string);
+
         get http_proxy_port(): number;
         set http_proxy_port(val: number);
+
         get httpProxyPort(): number;
         set httpProxyPort(val: number);
+
         get first_party_cookies_only(): boolean;
         set first_party_cookies_only(val: boolean);
+
         get firstPartyCookiesOnly(): boolean;
         set firstPartyCookiesOnly(val: boolean);
+
         get maximum_history_age(): number;
         set maximum_history_age(val: number);
+
         get maximumHistoryAge(): number;
         set maximumHistoryAge(val: number);
 
@@ -2869,142 +2870,165 @@ export namespace Midori {
         $signals: CoreSettings.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<CoreSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof CoreSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreSettings.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof CoreSettings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoreSettings.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CoreSettings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CoreSettings.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof CoreSettings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, CoreSettings.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof CoreSettings.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CoreSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof CoreSettings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<CoreSettings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
-
         static get_default(): CoreSettings;
 
         // Methods
-
         /**
-         * @param plugin
+         * @param plugin 
          */
         get_plugin_enabled(plugin: string): boolean;
+
         /**
-         * @param plugin
-         * @param enabled
+         * @param plugin 
+         * @param enabled 
          */
         set_plugin_enabled(plugin: string, enabled: boolean): void;
+
         /**
-         * @param keywords
-         * @param search
+         * @param keywords 
+         * @param search 
          */
-        uri_for_search(keywords: string | null, search: string | null): string;
+        uri_for_search(keywords: (string | null), search: (string | null)): string;
+
         get_last_window_width(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_last_window_width(value: number): void;
+
         get_last_window_height(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_last_window_height(value: number): void;
+
         get_load_on_startup(): StartupType;
+
         /**
-         * @param value
+         * @param value 
          */
         set_load_on_startup(value: StartupType): void;
+
         get_enable_spell_checking(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_enable_spell_checking(value: boolean): void;
+
         get_auto_load_images(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_auto_load_images(value: boolean): void;
+
         get_enable_javascript(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_enable_javascript(value: boolean): void;
+
         get_enable_plugins(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_enable_plugins(value: boolean): void;
+
         get_enable_caret_browsing(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_enable_caret_browsing(value: boolean): void;
+
         get_close_buttons_on_tabs(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_close_buttons_on_tabs(value: boolean): void;
+
         get_location_entry_search(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_location_entry_search(value: string): void;
+
         get_homepage(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_homepage(value: string): void;
+
         get_proxy_type(): ProxyType;
+
         /**
-         * @param value
+         * @param value 
          */
         set_proxy_type(value: ProxyType): void;
+
         get_http_proxy(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_http_proxy(value: string): void;
+
         get_http_proxy_port(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_http_proxy_port(value: number): void;
+
         get_first_party_cookies_only(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_first_party_cookies_only(value: boolean): void;
+
         get_maximum_history_age(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_maximum_history_age(value: number): void;
     }
 
+
     namespace Settings {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            'notify::filename': (pspec: GObject.ParamSpec) => void;
+            "notify::filename": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             filename: string;
         }
@@ -3017,7 +3041,6 @@ export namespace Midori {
         static $gtype: GObject.GType<Settings>;
 
         // Properties
-
         get filename(): string;
         set filename(val: string);
 
@@ -3031,124 +3054,119 @@ export namespace Midori {
         $signals: Settings.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Settings;
+        static ["new"](): Settings;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Settings.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Settings.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param group
-         * @param key
-         * @param value
-         * @param _default_
+         * @param group 
+         * @param key 
+         * @param value 
+         * @param _default_ 
          */
         set_boolean(group: string, key: string, value: boolean, _default_: boolean): void;
+
         /**
-         * @param group
-         * @param key
-         * @param _default_
+         * @param group 
+         * @param key 
+         * @param _default_ 
          */
         get_boolean(group: string, key: string, _default_: boolean): boolean;
+
         /**
-         * @param group
-         * @param key
-         * @param value
-         * @param _default_
+         * @param group 
+         * @param key 
+         * @param value 
+         * @param _default_ 
          */
-        set_string(group: string, key: string, value: string, _default_: string | null): void;
+        set_string(group: string, key: string, value: string, _default_: (string | null)): void;
+
         /**
-         * @param group
-         * @param key
-         * @param _default_
+         * @param group 
+         * @param key 
+         * @param _default_ 
          */
-        get_string(group: string, key: string, _default_: string | null): string | null;
+        get_string(group: string, key: string, _default_: (string | null)): (string | null);
+
         get_filename(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_filename(value: string): void;
     }
 
+
     namespace Statusbar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {
-            'notify::label': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::label": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Statusbar.ConstructorProps {
-            label: string | null;
+            label: (string | null);
         }
     }
 
@@ -3159,9 +3177,8 @@ export namespace Midori {
         static $gtype: GObject.GType<Statusbar>;
 
         // Properties
-
-        get label(): string | null;
-        set label(val: string | null);
+        get label(): (string | null);
+        set label(val: (string | null));
 
         /**
          * Compile-time signal type information.
@@ -3173,107 +3190,97 @@ export namespace Midori {
         $signals: Statusbar.SignalSignatures;
 
         // Fields
-
         has_children: boolean;
 
         // Constructors
-
         constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Statusbar;
+        static ["new"](): Statusbar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Statusbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Statusbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Statusbar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Statusbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        get_label(): (string | null);
 
-        get_label(): string | null;
         /**
-         * @param value
+         * @param value 
          */
-        set_label(value: string | null): void;
+        set_label(value: (string | null)): void;
     }
+
 
     namespace SuggestionRow {
         // Signal signatures
         interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {
-            'notify::item': (pspec: GObject.ParamSpec) => void;
-            'notify::location': (pspec: GObject.ParamSpec) => void;
-            'notify::regex': (pspec: GObject.ParamSpec) => void;
-            'notify::key': (pspec: GObject.ParamSpec) => void;
-            'notify::activatable': (pspec: GObject.ParamSpec) => void;
-            'notify::selectable': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::item": (pspec: GObject.ParamSpec) => void;
+            "notify::location": (pspec: GObject.ParamSpec) => void;
+            "notify::regex": (pspec: GObject.ParamSpec) => void;
+            "notify::key": (pspec: GObject.ParamSpec) => void;
+            "notify::activatable": (pspec: GObject.ParamSpec) => void;
+            "notify::selectable": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
             item: DatabaseItem;
-            location: string | null;
-            regex: GLib.Regex | null;
-            key: string | null;
+            location: (string | null);
+            regex: (GLib.Regex | null);
+            key: (string | null);
         }
     }
 
@@ -3284,15 +3291,17 @@ export namespace Midori {
         static $gtype: GObject.GType<SuggestionRow>;
 
         // Properties
-
         get item(): DatabaseItem;
         set item(val: DatabaseItem);
-        get location(): string | null;
-        set location(val: string | null);
-        get regex(): GLib.Regex | null;
-        set regex(val: GLib.Regex | null);
-        get key(): string | null;
-        set key(val: string | null);
+
+        get location(): (string | null);
+        set location(val: (string | null));
+
+        get regex(): (GLib.Regex | null);
+        set regex(val: (GLib.Regex | null));
+
+        get key(): (string | null);
+        set key(val: (string | null));
 
         /**
          * Compile-time signal type information.
@@ -3304,117 +3313,114 @@ export namespace Midori {
         $signals: SuggestionRow.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<SuggestionRow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](item: DatabaseItem): SuggestionRow;
-        // Conflicted with Gtk.ListBoxRow.new
+        static ["new"](item: DatabaseItem): SuggestionRow;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.ListBoxRow.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof SuggestionRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionRow.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof SuggestionRow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SuggestionRow.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof SuggestionRow.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, SuggestionRow.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof SuggestionRow.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, SuggestionRow.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof SuggestionRow.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<SuggestionRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof SuggestionRow.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<SuggestionRow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_item(): DatabaseItem;
+
         /**
-         * @param value
+         * @param value 
          */
         set_item(value: DatabaseItem): void;
-        get_location(): string | null;
+
+        get_location(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_location(value: string | null): void;
-        get_regex(): GLib.Regex | null;
+        set_location(value: (string | null)): void;
+
+        get_regex(): (GLib.Regex | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_regex(value: GLib.Regex | null): void;
-        get_key(): string | null;
+        set_regex(value: (GLib.Regex | null)): void;
+
+        get_key(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_key(value: string | null): void;
+        set_key(value: (string | null)): void;
     }
+
 
     namespace Switcher {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
-            'notify::stack': (pspec: GObject.ParamSpec) => void;
-            'notify::show-close-buttons': (pspec: GObject.ParamSpec) => void;
-            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
-            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
-            'notify::spacing': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::stack": (pspec: GObject.ParamSpec) => void;
+            "notify::show-close-buttons": (pspec: GObject.ParamSpec) => void;
+            "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
+            "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
+            "notify::spacing": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
-            stack: Gtk.Stack | null;
+            stack: (Gtk.Stack | null);
             show_close_buttons: boolean;
             showCloseButtons: boolean;
         }
@@ -3427,11 +3433,12 @@ export namespace Midori {
         static $gtype: GObject.GType<Switcher>;
 
         // Properties
+        get stack(): (Gtk.Stack | null);
+        set stack(val: (Gtk.Stack | null));
 
-        get stack(): Gtk.Stack | null;
-        set stack(val: Gtk.Stack | null);
         get show_close_buttons(): boolean;
         set show_close_buttons(val: boolean);
+
         get showCloseButtons(): boolean;
         set showCloseButtons(val: boolean);
 
@@ -3445,145 +3452,138 @@ export namespace Midori {
         $signals: Switcher.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Switcher.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Switcher;
+        static ["new"](): Switcher;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Switcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Switcher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Switcher.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Switcher.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Switcher.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Switcher.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Switcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Switcher.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Switcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        get_stack(): (Gtk.Stack | null);
 
-        get_stack(): Gtk.Stack | null;
         /**
-         * @param value
+         * @param value 
          */
-        set_stack(value: Gtk.Stack | null): void;
+        set_stack(value: (Gtk.Stack | null)): void;
+
         get_show_close_buttons(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_show_close_buttons(value: boolean): void;
     }
 
+
     namespace Tab {
         // Signal signatures
         interface SignalSignatures extends WebKit2.WebView.SignalSignatures {
-            'notify::id': (pspec: GObject.ParamSpec) => void;
-            'notify::progress': (pspec: GObject.ParamSpec) => void;
-            'notify::can-go-back': (pspec: GObject.ParamSpec) => void;
-            'notify::can-go-forward': (pspec: GObject.ParamSpec) => void;
-            'notify::item': (pspec: GObject.ParamSpec) => void;
-            'notify::display-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::display-title': (pspec: GObject.ParamSpec) => void;
-            'notify::color': (pspec: GObject.ParamSpec) => void;
-            'notify::pinned': (pspec: GObject.ParamSpec) => void;
-            'notify::secure': (pspec: GObject.ParamSpec) => void;
-            'notify::link-uri': (pspec: GObject.ParamSpec) => void;
-            'notify::automation-presentation-type': (pspec: GObject.ParamSpec) => void;
-            'notify::camera-capture-state': (pspec: GObject.ParamSpec) => void;
-            'notify::default-content-security-policy': (pspec: GObject.ParamSpec) => void;
-            'notify::display-capture-state': (pspec: GObject.ParamSpec) => void;
-            'notify::editable': (pspec: GObject.ParamSpec) => void;
-            'notify::estimated-load-progress': (pspec: GObject.ParamSpec) => void;
-            'notify::favicon': (pspec: GObject.ParamSpec) => void;
-            'notify::is-controlled-by-automation': (pspec: GObject.ParamSpec) => void;
-            'notify::is-ephemeral': (pspec: GObject.ParamSpec) => void;
-            'notify::is-loading': (pspec: GObject.ParamSpec) => void;
-            'notify::is-muted': (pspec: GObject.ParamSpec) => void;
-            'notify::is-playing-audio': (pspec: GObject.ParamSpec) => void;
-            'notify::is-web-process-responsive': (pspec: GObject.ParamSpec) => void;
-            'notify::microphone-capture-state': (pspec: GObject.ParamSpec) => void;
-            'notify::page-id': (pspec: GObject.ParamSpec) => void;
-            'notify::related-view': (pspec: GObject.ParamSpec) => void;
-            'notify::settings': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::user-content-manager': (pspec: GObject.ParamSpec) => void;
-            'notify::web-context': (pspec: GObject.ParamSpec) => void;
-            'notify::web-extension-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::website-policies': (pspec: GObject.ParamSpec) => void;
-            'notify::zoom-level': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::id": (pspec: GObject.ParamSpec) => void;
+            "notify::progress": (pspec: GObject.ParamSpec) => void;
+            "notify::can-go-back": (pspec: GObject.ParamSpec) => void;
+            "notify::can-go-forward": (pspec: GObject.ParamSpec) => void;
+            "notify::item": (pspec: GObject.ParamSpec) => void;
+            "notify::display-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::display-title": (pspec: GObject.ParamSpec) => void;
+            "notify::color": (pspec: GObject.ParamSpec) => void;
+            "notify::pinned": (pspec: GObject.ParamSpec) => void;
+            "notify::secure": (pspec: GObject.ParamSpec) => void;
+            "notify::link-uri": (pspec: GObject.ParamSpec) => void;
+            "notify::automation-presentation-type": (pspec: GObject.ParamSpec) => void;
+            "notify::camera-capture-state": (pspec: GObject.ParamSpec) => void;
+            "notify::default-content-security-policy": (pspec: GObject.ParamSpec) => void;
+            "notify::display-capture-state": (pspec: GObject.ParamSpec) => void;
+            "notify::editable": (pspec: GObject.ParamSpec) => void;
+            "notify::estimated-load-progress": (pspec: GObject.ParamSpec) => void;
+            "notify::favicon": (pspec: GObject.ParamSpec) => void;
+            "notify::is-controlled-by-automation": (pspec: GObject.ParamSpec) => void;
+            "notify::is-ephemeral": (pspec: GObject.ParamSpec) => void;
+            "notify::is-loading": (pspec: GObject.ParamSpec) => void;
+            "notify::is-muted": (pspec: GObject.ParamSpec) => void;
+            "notify::is-playing-audio": (pspec: GObject.ParamSpec) => void;
+            "notify::is-web-process-responsive": (pspec: GObject.ParamSpec) => void;
+            "notify::microphone-capture-state": (pspec: GObject.ParamSpec) => void;
+            "notify::page-id": (pspec: GObject.ParamSpec) => void;
+            "notify::related-view": (pspec: GObject.ParamSpec) => void;
+            "notify::settings": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::user-content-manager": (pspec: GObject.ParamSpec) => void;
+            "notify::web-context": (pspec: GObject.ParamSpec) => void;
+            "notify::web-extension-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::website-policies": (pspec: GObject.ParamSpec) => void;
+            "notify::zoom-level": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends WebKit2.WebView.ConstructorProps {
             id: string;
             progress: number;
-            can_go_back: boolean | any;
+            can_go_back: (boolean | any);
             canGoBack: boolean;
-            can_go_forward: boolean | any;
+            can_go_forward: (boolean | any);
             canGoForward: boolean;
-            item: DatabaseItem | null;
+            item: (DatabaseItem | null);
             display_uri: string;
             displayUri: string;
             display_title: string;
             displayTitle: string;
-            color: string | null;
+            color: (string | null);
             pinned: boolean;
             secure: boolean;
             link_uri: string;
@@ -3598,39 +3598,53 @@ export namespace Midori {
         static $gtype: GObject.GType<Tab>;
 
         // Properties
-
         /**
          * @read-only
          */
         get id(): string;
+
         get progress(): number;
         set progress(val: number);
-        // This accessor conflicts with a field or function name in a parent class or interface.
-        can_go_back: boolean | any;
+
+    // This accessor conflicts with a field or function name in a parent class or interface.
+         can_go_back: boolean | any;
+
         get canGoBack(): boolean;
         set canGoBack(val: boolean);
-        // This accessor conflicts with a field or function name in a parent class or interface.
-        can_go_forward: boolean | any;
+
+    // This accessor conflicts with a field or function name in a parent class or interface.
+         can_go_forward: boolean | any;
+
         get canGoForward(): boolean;
         set canGoForward(val: boolean);
-        get item(): DatabaseItem | null;
-        set item(val: DatabaseItem | null);
+
+        get item(): (DatabaseItem | null);
+        set item(val: (DatabaseItem | null));
+
         get display_uri(): string;
         set display_uri(val: string);
+
         get displayUri(): string;
         set displayUri(val: string);
+
         get display_title(): string;
         set display_title(val: string);
+
         get displayTitle(): string;
         set displayTitle(val: string);
-        get color(): string | null;
-        set color(val: string | null);
+
+        get color(): (string | null);
+        set color(val: (string | null));
+
         get pinned(): boolean;
         set pinned(val: boolean);
+
         get secure(): boolean;
         set secure(val: boolean);
+
         get link_uri(): string;
         set link_uri(val: string);
+
         get linkUri(): string;
         set linkUri(val: string);
 
@@ -3644,100 +3658,105 @@ export namespace Midori {
         $signals: Tab.SignalSignatures;
 
         // Fields
-
         popover: Gtk.Popover;
 
         // Constructors
-
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](
-            related: Tab | null,
-            web_context: WebKit2.WebContext,
-            uri: string | null,
-            title: string | null,
-        ): Tab;
-        // Conflicted with WebKit2.WebView.new
+        static ["new"](related: (Tab | null), web_context: WebKit2.WebContext, uri: (string | null), title: (string | null)): Tab;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with WebKit2.WebView.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Tab.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Tab.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Tab.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_id(): string;
+
         get_progress(): number;
+
         /**
-         * @param value
+         * @param value 
          */
         set_progress(value: number): void;
+
         get_can_go_back(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_can_go_back(value: boolean): void;
+
         get_can_go_forward(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_can_go_forward(value: boolean): void;
-        get_item(): DatabaseItem | null;
+
+        get_item(): (DatabaseItem | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_item(value: DatabaseItem | null): void;
+        set_item(value: (DatabaseItem | null)): void;
+
         get_display_uri(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_display_uri(value: string): void;
+
         get_display_title(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_display_title(value: string): void;
-        get_color(): string | null;
+
+        get_color(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_color(value: string | null): void;
+        set_color(value: (string | null)): void;
+
         get_pinned(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_pinned(value: boolean): void;
+
         get_secure(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_secure(value: boolean): void;
+
         get_link_uri(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_link_uri(value: string): void;
     }
+
 
     namespace Tally {
         // Signal signatures
@@ -3746,63 +3765,62 @@ export namespace Midori {
              * @signal
              */
             clicked: () => void;
-            'notify::tab': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::title': (pspec: GObject.ParamSpec) => void;
-            'notify::show-close': (pspec: GObject.ParamSpec) => void;
-            'notify::active': (pspec: GObject.ParamSpec) => void;
-            'notify::above-child': (pspec: GObject.ParamSpec) => void;
-            'notify::visible-window': (pspec: GObject.ParamSpec) => void;
-            'notify::border-width': (pspec: GObject.ParamSpec) => void;
-            'notify::child': (pspec: GObject.ParamSpec) => void;
-            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::tab": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::title": (pspec: GObject.ParamSpec) => void;
+            "notify::show-close": (pspec: GObject.ParamSpec) => void;
+            "notify::active": (pspec: GObject.ParamSpec) => void;
+            "notify::above-child": (pspec: GObject.ParamSpec) => void;
+            "notify::visible-window": (pspec: GObject.ParamSpec) => void;
+            "notify::border-width": (pspec: GObject.ParamSpec) => void;
+            "notify::child": (pspec: GObject.ParamSpec) => void;
+            "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
             tab: Tab;
-            uri: string | null;
-            title: string | null;
+            uri: (string | null);
+            title: (string | null);
             show_close: boolean;
             showClose: boolean;
             active: boolean;
@@ -3816,17 +3834,21 @@ export namespace Midori {
         static $gtype: GObject.GType<Tally>;
 
         // Properties
-
         get tab(): Tab;
         set tab(val: Tab);
-        get uri(): string | null;
-        set uri(val: string | null);
-        get title(): string | null;
-        set title(val: string | null);
+
+        get uri(): (string | null);
+        set uri(val: (string | null));
+
+        get title(): (string | null);
+        set title(val: (string | null));
+
         get show_close(): boolean;
         set show_close(val: boolean);
+
         get showClose(): boolean;
         set showClose(val: boolean);
+
         get active(): boolean;
         set active(val: boolean);
 
@@ -3840,172 +3862,171 @@ export namespace Midori {
         $signals: Tally.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Tally.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](tab: Tab): Tally;
-        // Conflicted with Gtk.EventBox.new
+        static ["new"](tab: Tab): Tally;
 
-        static ['new'](...args: never[]): any;
+        // Conflicted with Gtk.EventBox.new
+        static ["new"](...args: never[]): any;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Tally.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tally.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Tally.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tally.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Tally.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Tally.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Tally.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Tally.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Tally.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Tally.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Tally.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Tally.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         get_tab(): Tab;
+
         /**
-         * @param value
+         * @param value 
          */
         set_tab(value: Tab): void;
-        get_uri(): string | null;
+
+        get_uri(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_uri(value: string | null): void;
-        get_title(): string | null;
+        set_uri(value: (string | null)): void;
+
+        get_title(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_title(value: string | null): void;
+        set_title(value: (string | null)): void;
+
         get_show_close(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_show_close(value: boolean): void;
+
         get_active(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_active(value: boolean): void;
     }
 
+
     namespace Urlbar {
         // Signal signatures
         interface SignalSignatures extends Gtk.Entry.SignalSignatures {
-            'notify::key': (pspec: GObject.ParamSpec) => void;
-            'notify::regex': (pspec: GObject.ParamSpec) => void;
-            'notify::location': (pspec: GObject.ParamSpec) => void;
-            'notify::uri': (pspec: GObject.ParamSpec) => void;
-            'notify::secure': (pspec: GObject.ParamSpec) => void;
-            'notify::activates-default': (pspec: GObject.ParamSpec) => void;
-            'notify::attributes': (pspec: GObject.ParamSpec) => void;
-            'notify::buffer': (pspec: GObject.ParamSpec) => void;
-            'notify::caps-lock-warning': (pspec: GObject.ParamSpec) => void;
-            'notify::completion': (pspec: GObject.ParamSpec) => void;
-            'notify::cursor-position': (pspec: GObject.ParamSpec) => void;
-            'notify::editable': (pspec: GObject.ParamSpec) => void;
-            'notify::enable-emoji-completion': (pspec: GObject.ParamSpec) => void;
-            'notify::has-frame': (pspec: GObject.ParamSpec) => void;
-            'notify::im-module': (pspec: GObject.ParamSpec) => void;
-            'notify::inner-border': (pspec: GObject.ParamSpec) => void;
-            'notify::input-hints': (pspec: GObject.ParamSpec) => void;
-            'notify::input-purpose': (pspec: GObject.ParamSpec) => void;
-            'notify::invisible-char': (pspec: GObject.ParamSpec) => void;
-            'notify::invisible-char-set': (pspec: GObject.ParamSpec) => void;
-            'notify::max-length': (pspec: GObject.ParamSpec) => void;
-            'notify::max-width-chars': (pspec: GObject.ParamSpec) => void;
-            'notify::overwrite-mode': (pspec: GObject.ParamSpec) => void;
-            'notify::placeholder-text': (pspec: GObject.ParamSpec) => void;
-            'notify::populate-all': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-activatable': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-gicon': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-stock': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-storage-type': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::primary-icon-tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::progress-fraction': (pspec: GObject.ParamSpec) => void;
-            'notify::progress-pulse-step': (pspec: GObject.ParamSpec) => void;
-            'notify::scroll-offset': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-activatable': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-gicon': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-name': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-pixbuf': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-stock': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-storage-type': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::secondary-icon-tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::selection-bound': (pspec: GObject.ParamSpec) => void;
-            'notify::shadow-type': (pspec: GObject.ParamSpec) => void;
-            'notify::show-emoji-icon': (pspec: GObject.ParamSpec) => void;
-            'notify::tabs': (pspec: GObject.ParamSpec) => void;
-            'notify::text': (pspec: GObject.ParamSpec) => void;
-            'notify::text-length': (pspec: GObject.ParamSpec) => void;
-            'notify::truncate-multiline': (pspec: GObject.ParamSpec) => void;
-            'notify::visibility': (pspec: GObject.ParamSpec) => void;
-            'notify::width-chars': (pspec: GObject.ParamSpec) => void;
-            'notify::xalign': (pspec: GObject.ParamSpec) => void;
-            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
-            'notify::can-default': (pspec: GObject.ParamSpec) => void;
-            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
-            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
-            'notify::events': (pspec: GObject.ParamSpec) => void;
-            'notify::expand': (pspec: GObject.ParamSpec) => void;
-            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
-            'notify::halign': (pspec: GObject.ParamSpec) => void;
-            'notify::has-default': (pspec: GObject.ParamSpec) => void;
-            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
-            'notify::height-request': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
-            'notify::margin': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
-            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
-            'notify::name': (pspec: GObject.ParamSpec) => void;
-            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
-            'notify::opacity': (pspec: GObject.ParamSpec) => void;
-            'notify::parent': (pspec: GObject.ParamSpec) => void;
-            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
-            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
-            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
-            'notify::style': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
-            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
-            'notify::valign': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
-            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
-            'notify::visible': (pspec: GObject.ParamSpec) => void;
-            'notify::width-request': (pspec: GObject.ParamSpec) => void;
-            'notify::window': (pspec: GObject.ParamSpec) => void;
+            "notify::key": (pspec: GObject.ParamSpec) => void;
+            "notify::regex": (pspec: GObject.ParamSpec) => void;
+            "notify::location": (pspec: GObject.ParamSpec) => void;
+            "notify::uri": (pspec: GObject.ParamSpec) => void;
+            "notify::secure": (pspec: GObject.ParamSpec) => void;
+            "notify::activates-default": (pspec: GObject.ParamSpec) => void;
+            "notify::attributes": (pspec: GObject.ParamSpec) => void;
+            "notify::buffer": (pspec: GObject.ParamSpec) => void;
+            "notify::caps-lock-warning": (pspec: GObject.ParamSpec) => void;
+            "notify::completion": (pspec: GObject.ParamSpec) => void;
+            "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
+            "notify::editable": (pspec: GObject.ParamSpec) => void;
+            "notify::enable-emoji-completion": (pspec: GObject.ParamSpec) => void;
+            "notify::has-frame": (pspec: GObject.ParamSpec) => void;
+            "notify::im-module": (pspec: GObject.ParamSpec) => void;
+            "notify::inner-border": (pspec: GObject.ParamSpec) => void;
+            "notify::input-hints": (pspec: GObject.ParamSpec) => void;
+            "notify::input-purpose": (pspec: GObject.ParamSpec) => void;
+            "notify::invisible-char": (pspec: GObject.ParamSpec) => void;
+            "notify::invisible-char-set": (pspec: GObject.ParamSpec) => void;
+            "notify::max-length": (pspec: GObject.ParamSpec) => void;
+            "notify::max-width-chars": (pspec: GObject.ParamSpec) => void;
+            "notify::overwrite-mode": (pspec: GObject.ParamSpec) => void;
+            "notify::placeholder-text": (pspec: GObject.ParamSpec) => void;
+            "notify::populate-all": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-activatable": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-gicon": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-stock": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-storage-type": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::primary-icon-tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::progress-fraction": (pspec: GObject.ParamSpec) => void;
+            "notify::progress-pulse-step": (pspec: GObject.ParamSpec) => void;
+            "notify::scroll-offset": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-activatable": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-gicon": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-name": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-pixbuf": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-stock": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-storage-type": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::secondary-icon-tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::selection-bound": (pspec: GObject.ParamSpec) => void;
+            "notify::shadow-type": (pspec: GObject.ParamSpec) => void;
+            "notify::show-emoji-icon": (pspec: GObject.ParamSpec) => void;
+            "notify::tabs": (pspec: GObject.ParamSpec) => void;
+            "notify::text": (pspec: GObject.ParamSpec) => void;
+            "notify::text-length": (pspec: GObject.ParamSpec) => void;
+            "notify::truncate-multiline": (pspec: GObject.ParamSpec) => void;
+            "notify::visibility": (pspec: GObject.ParamSpec) => void;
+            "notify::width-chars": (pspec: GObject.ParamSpec) => void;
+            "notify::xalign": (pspec: GObject.ParamSpec) => void;
+            "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
+            "notify::can-default": (pspec: GObject.ParamSpec) => void;
+            "notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::composite-child": (pspec: GObject.ParamSpec) => void;
+            "notify::double-buffered": (pspec: GObject.ParamSpec) => void;
+            "notify::events": (pspec: GObject.ParamSpec) => void;
+            "notify::expand": (pspec: GObject.ParamSpec) => void;
+            "notify::focus-on-click": (pspec: GObject.ParamSpec) => void;
+            "notify::halign": (pspec: GObject.ParamSpec) => void;
+            "notify::has-default": (pspec: GObject.ParamSpec) => void;
+            "notify::has-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
+            "notify::height-request": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::hexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::is-focus": (pspec: GObject.ParamSpec) => void;
+            "notify::margin": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-bottom": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-end": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-left": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-right": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-start": (pspec: GObject.ParamSpec) => void;
+            "notify::margin-top": (pspec: GObject.ParamSpec) => void;
+            "notify::name": (pspec: GObject.ParamSpec) => void;
+            "notify::no-show-all": (pspec: GObject.ParamSpec) => void;
+            "notify::opacity": (pspec: GObject.ParamSpec) => void;
+            "notify::parent": (pspec: GObject.ParamSpec) => void;
+            "notify::receives-default": (pspec: GObject.ParamSpec) => void;
+            "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
+            "notify::sensitive": (pspec: GObject.ParamSpec) => void;
+            "notify::style": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
+            "notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
+            "notify::valign": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand": (pspec: GObject.ParamSpec) => void;
+            "notify::vexpand-set": (pspec: GObject.ParamSpec) => void;
+            "notify::visible": (pspec: GObject.ParamSpec) => void;
+            "notify::width-request": (pspec: GObject.ParamSpec) => void;
+            "notify::window": (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
-
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
-            key: string | null;
-            regex: GLib.Regex | null;
-            location: string | null;
+            key: (string | null);
+            regex: (GLib.Regex | null);
+            location: (string | null);
             uri: string;
             secure: boolean;
         }
@@ -4018,15 +4039,18 @@ export namespace Midori {
         static $gtype: GObject.GType<Urlbar>;
 
         // Properties
+        get key(): (string | null);
+        set key(val: (string | null));
 
-        get key(): string | null;
-        set key(val: string | null);
-        get regex(): GLib.Regex | null;
-        set regex(val: GLib.Regex | null);
-        get location(): string | null;
-        set location(val: string | null);
+        get regex(): (GLib.Regex | null);
+        set regex(val: (GLib.Regex | null));
+
+        get location(): (string | null);
+        set location(val: (string | null));
+
         get uri(): string;
         set uri(val: string);
+
         get secure(): boolean;
         set secure(val: boolean);
 
@@ -4040,72 +4064,75 @@ export namespace Midori {
         $signals: Urlbar.SignalSignatures;
 
         // Constructors
-
         constructor(properties?: Partial<Urlbar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
-        static ['new'](): Urlbar;
+        static ["new"](): Urlbar;
 
         // Signals
+        /** @signal */
+        connect<K extends keyof Urlbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Urlbar.SignalSignatures[K]>): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
 
         /** @signal */
-        connect<K extends keyof Urlbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Urlbar.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof Urlbar.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Urlbar.SignalSignatures[K]>,
-        ): number;
+        connect_after<K extends keyof Urlbar.SignalSignatures>(signal: K, callback: GObject.SignalCallback<this, Urlbar.SignalSignatures[K]>): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+
         /** @signal */
-        emit<K extends keyof Urlbar.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Urlbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
+        emit<K extends keyof Urlbar.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Urlbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
         // Methods
-
         /**
-         * @param item
+         * @param item 
          */
         create_row(item: GObject.Object): Gtk.Widget;
+
         popdown(): void;
-        get_key(): string | null;
+
+        get_key(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_key(value: string | null): void;
-        get_regex(): GLib.Regex | null;
+        set_key(value: (string | null)): void;
+
+        get_regex(): (GLib.Regex | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_regex(value: GLib.Regex | null): void;
-        get_location(): string | null;
+        set_regex(value: (GLib.Regex | null)): void;
+
+        get_location(): (string | null);
+
         /**
-         * @param value
+         * @param value 
          */
-        set_location(value: string | null): void;
+        set_location(value: (string | null)): void;
+
         get_uri(): string;
+
         /**
-         * @param value
+         * @param value 
          */
         set_uri(value: string): void;
+
         get_secure(): boolean;
+
         /**
-         * @param value
+         * @param value 
          */
         set_secure(value: boolean): void;
     }
+
 
     /**
      * @gir-type Alias
      */
     type AppClass = typeof App;
+
     /**
      * @gir-type Struct
      */
@@ -4113,10 +4140,12 @@ export namespace Midori {
         static $gtype: GObject.GType<AppPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type BrowserClass = typeof Browser;
+
     /**
      * @gir-type Struct
      */
@@ -4124,10 +4153,12 @@ export namespace Midori {
         static $gtype: GObject.GType<BrowserPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type ClearPrivateDataClass = typeof ClearPrivateData;
+
     /**
      * @gir-type Struct
      */
@@ -4135,10 +4166,12 @@ export namespace Midori {
         static $gtype: GObject.GType<ClearPrivateDataPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SuggestionItemClass = typeof SuggestionItem;
+
     /**
      * @gir-type Struct
      */
@@ -4146,10 +4179,12 @@ export namespace Midori {
         static $gtype: GObject.GType<SuggestionItemPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CompletionClass = typeof Completion;
+
     /**
      * @gir-type Struct
      */
@@ -4157,10 +4192,12 @@ export namespace Midori {
         static $gtype: GObject.GType<CompletionPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DatabaseStatementClass = typeof DatabaseStatement;
+
     /**
      * @gir-type Struct
      */
@@ -4168,10 +4205,12 @@ export namespace Midori {
         static $gtype: GObject.GType<DatabaseStatementPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DatabaseItemClass = typeof DatabaseItem;
+
     /**
      * @gir-type Struct
      */
@@ -4179,10 +4218,12 @@ export namespace Midori {
         static $gtype: GObject.GType<DatabaseItemPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DatabaseClass = typeof Database;
+
     /**
      * @gir-type Struct
      */
@@ -4190,10 +4231,12 @@ export namespace Midori {
         static $gtype: GObject.GType<DatabasePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DownloadButtonClass = typeof DownloadButton;
+
     /**
      * @gir-type Struct
      */
@@ -4201,10 +4244,12 @@ export namespace Midori {
         static $gtype: GObject.GType<DownloadButtonPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DownloadItemClass = typeof DownloadItem;
+
     /**
      * @gir-type Struct
      */
@@ -4212,10 +4257,12 @@ export namespace Midori {
         static $gtype: GObject.GType<DownloadItemPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type DownloadRowClass = typeof DownloadRow;
+
     /**
      * @gir-type Struct
      */
@@ -4223,10 +4270,12 @@ export namespace Midori {
         static $gtype: GObject.GType<DownloadRowPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type FaviconClass = typeof Favicon;
+
     /**
      * @gir-type Struct
      */
@@ -4234,10 +4283,12 @@ export namespace Midori {
         static $gtype: GObject.GType<FaviconPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type HistoryDatabaseClass = typeof HistoryDatabase;
+
     /**
      * @gir-type Struct
      */
@@ -4245,10 +4296,12 @@ export namespace Midori {
         static $gtype: GObject.GType<HistoryDatabasePrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NavigationbarClass = typeof Navigationbar;
+
     /**
      * @gir-type Struct
      */
@@ -4256,10 +4309,12 @@ export namespace Midori {
         static $gtype: GObject.GType<NavigationbarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type NetworkCheckClass = typeof NetworkCheck;
+
     /**
      * @gir-type Struct
      */
@@ -4267,10 +4322,12 @@ export namespace Midori {
         static $gtype: GObject.GType<NetworkCheckPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PluginsClass = typeof Plugins;
+
     /**
      * @gir-type Struct
      */
@@ -4278,10 +4335,12 @@ export namespace Midori {
         static $gtype: GObject.GType<PluginsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type LabelWidgetClass = typeof LabelWidget;
+
     /**
      * @gir-type Struct
      */
@@ -4289,10 +4348,12 @@ export namespace Midori {
         static $gtype: GObject.GType<LabelWidgetPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type PreferencesClass = typeof Preferences;
+
     /**
      * @gir-type Struct
      */
@@ -4300,10 +4361,12 @@ export namespace Midori {
         static $gtype: GObject.GType<PreferencesPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type CoreSettingsClass = typeof CoreSettings;
+
     /**
      * @gir-type Struct
      */
@@ -4311,10 +4374,12 @@ export namespace Midori {
         static $gtype: GObject.GType<CoreSettingsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SettingsClass = typeof Settings;
+
     /**
      * @gir-type Struct
      */
@@ -4322,10 +4387,12 @@ export namespace Midori {
         static $gtype: GObject.GType<SettingsPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type StatusbarClass = typeof Statusbar;
+
     /**
      * @gir-type Struct
      */
@@ -4333,10 +4400,12 @@ export namespace Midori {
         static $gtype: GObject.GType<StatusbarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SuggestionRowClass = typeof SuggestionRow;
+
     /**
      * @gir-type Struct
      */
@@ -4344,10 +4413,12 @@ export namespace Midori {
         static $gtype: GObject.GType<SuggestionRowPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type SwitcherClass = typeof Switcher;
+
     /**
      * @gir-type Struct
      */
@@ -4355,10 +4426,12 @@ export namespace Midori {
         static $gtype: GObject.GType<SwitcherPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TabClass = typeof Tab;
+
     /**
      * @gir-type Struct
      */
@@ -4366,10 +4439,12 @@ export namespace Midori {
         static $gtype: GObject.GType<TabPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type TallyClass = typeof Tally;
+
     /**
      * @gir-type Struct
      */
@@ -4377,10 +4452,12 @@ export namespace Midori {
         static $gtype: GObject.GType<TallyPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type UrlbarClass = typeof Urlbar;
+
     /**
      * @gir-type Struct
      */
@@ -4388,59 +4465,69 @@ export namespace Midori {
         static $gtype: GObject.GType<UrlbarPrivate>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type AppActivatableIface = typeof AppActivatable;
+
     /**
      * @gir-type Alias
      */
     type BrowserActivatableIface = typeof BrowserActivatable;
+
     /**
      * @gir-type Alias
      */
     type ClearPrivateDataActivatableIface = typeof ClearPrivateDataActivatable;
+
     /**
      * @gir-type Alias
      */
     type CompletionActivatableIface = typeof CompletionActivatable;
+
     /**
      * @gir-type Alias
      */
     type LoggableIface = typeof Loggable;
+
     /**
      * @gir-type Alias
      */
     type PreferencesActivatableIface = typeof PreferencesActivatable;
+
     /**
      * @gir-type Alias
      */
     type TabActivatableIface = typeof TabActivatable;
+
     namespace AppActivatable {
         /**
          * Interface for implementing AppActivatable.
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_activate(): void;
+
             /**
              * @virtual
              */
             vfunc_get_app(): App;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_app(value: App): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {
             app: App;
         }
@@ -4454,20 +4541,22 @@ export namespace Midori {
      * @gir-type Interface
      */
     interface AppActivatable extends Peas.ExtensionBase, AppActivatable.Interface {
-        // Properties
 
+        // Properties
         get app(): App;
         set app(val: App);
 
         // Methods
-
         activate(): void;
+
         get_app(): App;
+
         /**
-         * @param value
+         * @param value 
          */
         set_app(value: App): void;
     }
+
 
     export const AppActivatable: AppActivatableNamespace & {
         new (): AppActivatable; // This allows `obj instanceof AppActivatable`
@@ -4479,25 +4568,27 @@ export namespace Midori {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_activate(): void;
+
             /**
              * @virtual
              */
             vfunc_get_browser(): Browser;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_browser(value: Browser): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             browser: Browser;
         }
@@ -4511,20 +4602,22 @@ export namespace Midori {
      * @gir-type Interface
      */
     interface BrowserActivatable extends GObject.Object, BrowserActivatable.Interface {
-        // Properties
 
+        // Properties
         get browser(): Browser;
         set browser(val: Browser);
 
         // Methods
-
         activate(): void;
+
         get_browser(): Browser;
+
         /**
-         * @param value
+         * @param value 
          */
         set_browser(value: Browser): void;
     }
+
 
     export const BrowserActivatable: BrowserActivatableNamespace & {
         new (): BrowserActivatable; // This allows `obj instanceof BrowserActivatable`
@@ -4536,36 +4629,40 @@ export namespace Midori {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_activate(): void;
+
             /**
-             * @param timespan
-             * @param _callback_
+             * @param timespan 
+             * @param _callback_ 
              * @virtual
              */
-            vfunc_clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+            vfunc_clear(timespan: GLib.TimeSpan, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
             /**
-             * @param _res_
+             * @param _res_ 
              * @virtual
              */
             vfunc_clear_finish(_res_: Gio.AsyncResult): void;
+
             /**
              * @virtual
              */
             vfunc_get_box(): Gtk.Box;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_box(value: Gtk.Box): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             box: Gtk.Box;
         }
@@ -4579,41 +4676,44 @@ export namespace Midori {
      * @gir-type Interface
      */
     interface ClearPrivateDataActivatable extends GObject.Object, ClearPrivateDataActivatable.Interface {
-        // Properties
 
+        // Properties
         get box(): Gtk.Box;
         set box(val: Gtk.Box);
 
         // Methods
-
         activate(): void;
+
         /**
-         * @param timespan
+         * @param timespan 
          */
         clear(timespan: GLib.TimeSpan): globalThis.Promise<void>;
+
         /**
-         * @param timespan
-         * @param _callback_
+         * @param timespan 
+         * @param _callback_ 
          */
-        clear(timespan: GLib.TimeSpan, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        clear(timespan: GLib.TimeSpan, _callback_: (Gio.AsyncReadyCallback<this> | null)): void;
+
         /**
-         * @param timespan
-         * @param _callback_
+         * @param timespan 
+         * @param _callback_ 
          */
-        clear(
-            timespan: GLib.TimeSpan,
-            _callback_?: Gio.AsyncReadyCallback<this> | null,
-        ): globalThis.Promise<void> | void;
+        clear(timespan: GLib.TimeSpan, _callback_?: (Gio.AsyncReadyCallback<this> | null)): (globalThis.Promise<void> | void);
+
         /**
-         * @param _res_
+         * @param _res_ 
          */
         clear_finish(_res_: Gio.AsyncResult): void;
+
         get_box(): Gtk.Box;
+
         /**
-         * @param value
+         * @param value 
          */
         set_box(value: Gtk.Box): void;
     }
+
 
     export const ClearPrivateDataActivatable: ClearPrivateDataActivatableNamespace & {
         new (): ClearPrivateDataActivatable; // This allows `obj instanceof ClearPrivateDataActivatable`
@@ -4625,25 +4725,27 @@ export namespace Midori {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_activate(): void;
+
             /**
              * @virtual
              */
             vfunc_get_completion(): Completion;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_completion(value: Completion): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {
             completion: Completion;
         }
@@ -4657,29 +4759,33 @@ export namespace Midori {
      * @gir-type Interface
      */
     interface CompletionActivatable extends Peas.ExtensionBase, CompletionActivatable.Interface {
-        // Properties
 
+        // Properties
         get completion(): Completion;
         set completion(val: Completion);
 
         // Methods
-
         activate(): void;
+
         get_completion(): Completion;
+
         /**
-         * @param value
+         * @param value 
          */
         set_completion(value: Completion): void;
     }
+
 
     export const CompletionActivatable: CompletionActivatableNamespace & {
         new (): CompletionActivatable; // This allows `obj instanceof CompletionActivatable`
     };
 
     namespace Loggable {
-        // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        // Constructor properties interface
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+
+        }
     }
 
     export interface LoggableNamespace {
@@ -4690,11 +4796,13 @@ export namespace Midori {
      * @gir-type Interface
      */
     interface Loggable extends GObject.Object {
-        // Methods
 
+        // Methods
         get_domain(): string;
+
         get_logging(): boolean;
     }
+
 
     export const Loggable: LoggableNamespace & {
         new (): Loggable; // This allows `obj instanceof Loggable`
@@ -4706,25 +4814,27 @@ export namespace Midori {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_activate(): void;
+
             /**
              * @virtual
              */
             vfunc_get_preferences(): Preferences;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_preferences(value: Preferences): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             preferences: Preferences;
         }
@@ -4738,20 +4848,22 @@ export namespace Midori {
      * @gir-type Interface
      */
     interface PreferencesActivatable extends GObject.Object, PreferencesActivatable.Interface {
-        // Properties
 
+        // Properties
         get preferences(): Preferences;
         set preferences(val: Preferences);
 
         // Methods
-
         activate(): void;
+
         get_preferences(): Preferences;
+
         /**
-         * @param value
+         * @param value 
          */
         set_preferences(value: Preferences): void;
     }
+
 
     export const PreferencesActivatable: PreferencesActivatableNamespace & {
         new (): PreferencesActivatable; // This allows `obj instanceof PreferencesActivatable`
@@ -4763,25 +4875,27 @@ export namespace Midori {
          * Contains only the virtual methods that need to be implemented.
          */
         interface Interface {
-            // Virtual methods
 
+            // Virtual methods
             /**
              * @virtual
              */
             vfunc_activate(): void;
+
             /**
              * @virtual
              */
             vfunc_get_tab(): Tab;
+
             /**
-             * @param value
+             * @param value 
              * @virtual
              */
             vfunc_set_tab(value: Tab): void;
         }
 
-        // Constructor properties interface
 
+        // Constructor properties interface
         interface ConstructorProps extends Peas.ExtensionBase.ConstructorProps {
             tab: Tab;
         }
@@ -4795,20 +4909,22 @@ export namespace Midori {
      * @gir-type Interface
      */
     interface TabActivatable extends Peas.ExtensionBase, TabActivatable.Interface {
-        // Properties
 
+        // Properties
         get tab(): Tab;
         set tab(val: Tab);
 
         // Methods
-
         activate(): void;
+
         get_tab(): Tab;
+
         /**
-         * @param value
+         * @param value 
          */
         set_tab(value: Tab): void;
     }
+
 
     export const TabActivatable: TabActivatableNamespace & {
         new (): TabActivatable; // This allows `obj instanceof TabActivatable`
@@ -4819,6 +4935,7 @@ export namespace Midori {
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189

@@ -1,3 +1,4 @@
+
 import type Unity70 from '@girs/unity-7.0';
 
 declare global {
@@ -7,3 +8,5 @@ declare global {
 }
 
 export default GjsGiImports;
+
+

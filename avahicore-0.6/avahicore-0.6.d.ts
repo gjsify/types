@@ -1,3 +1,4 @@
+
 /**
  * Type Definitions for Gjs (https://gjs.guide/)
  *
@@ -13,9 +14,11 @@ import '@girs/gjs';
 import type GObject from '@girs/gobject-2.0';
 
 export namespace AvahiCore {
+
     /**
      * AvahiCore-0.6
      */
+
 
     /**
      * @gir-type Enum
@@ -26,7 +29,9 @@ export namespace AvahiCore {
         UNSPEC,
     }
 
+
     function server_get_host_name(): string;
+
     /**
      * @gir-type Flags
      */
@@ -42,12 +47,14 @@ export namespace AvahiCore {
         USE_MULTICAST,
     }
 
+
     /**
      * @gir-type Struct
      */
     class StringList {
         static $gtype: GObject.GType<StringList>;
     }
+
 
     /**
      * @gir-type Struct
@@ -56,6 +63,7 @@ export namespace AvahiCore {
         static $gtype: GObject.GType<Address>;
     }
 
+
     /**
      * @gir-type Struct
      */
@@ -63,15 +71,18 @@ export namespace AvahiCore {
         static $gtype: GObject.GType<Client>;
     }
 
+
     /**
      * @gir-type Alias
      */
     type IfIndex = number;
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
      */
     const __name__: string;
+
     /**
      * Version of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
